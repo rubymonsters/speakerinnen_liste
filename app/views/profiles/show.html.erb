@@ -1,0 +1,71 @@
+
+
+<p id="notice"><%= notice %></p>
+
+<div class="row name">
+  <div class="span12">
+  <h1> Profil von <%= @profile.firstname + " " + @profile.lastname %>
+  </h1>
+  </div>
+</div>
+
+<div class="row contact">
+  <div class="span4">
+    <%= @profile.picture %>
+  </div>
+
+  <div class="span8">
+    <p>
+      <b>Email:</b>
+      <%= @profile.email %>
+    </p>
+    <p>
+      <b>Twitter:</b>
+      <%= @profile.twitter %>
+    </p>
+  </div>
+
+</div>
+
+
+<div class="row topic">
+  <div class="span12">
+    <h2>Ich kann Vorträge halten über: </h2>
+    <p>
+    <%= @profile.topics %>
+    </p>
+    
+    <h2>auf</h2>
+    <p>
+    <%= @profile.languages %>
+    </p>
+    <h2>Ich wohne in:</h2>
+    <p>
+    <%= @profile.city %>
+    </p>
+  </div>
+</div>
+
+<div class="row bio">
+  <div class="span12">
+  <p>
+  <h2>Über mich:</h2>
+  <%= @profile.bio %>
+  </p>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<%= link_to 'Edit', edit_profile_path(@profile) %> |
+<%= link_to 'Back', profiles_path %>
+
