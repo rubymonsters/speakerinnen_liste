@@ -11,9 +11,8 @@
 
 <div class="row contact">
   <div class="span4">
-    <%= @profile.picture %>
+    <%= image_tag(@profile.picture_url, :width => 600) if @profile.picture.present? %>  
   </div>
-
   <div class="span8">
     <p>
       <b>Email:</b>
@@ -24,47 +23,34 @@
       <%= @profile.twitter %>
     </p>
   </div>
-
 </div>
-
 
 <div class="row topic">
   <div class="span12">
-    <h2>Ich kann Vorträge halten über: </h2>
+    <h2>Ich kann Vorträge halten über: 
+    </h2>
     <p>
-    <%= @profile.topics %>
+      <%= @profile.topics %>
     </p>
-    
     <h2>auf</h2>
     <p>
-    <%= @profile.languages %>
+      <%= @profile.languages %>
     </p>
     <h2>Ich wohne in:</h2>
     <p>
-    <%= @profile.city %>
+      <%= @profile.city %>
     </p>
   </div>
 </div>
 
 <div class="row bio">
   <div class="span12">
-  <p>
-  <h2>Über mich:</h2>
-  <%= @profile.bio %>
-  </p>
+    <h2>Über mich:</h2>
+    <p>
+      <%= @profile.bio %>
+    </p>
+  </div>
 </div>
-</div>
-
-
-
-
-
-
-
-
-
-
-
 
 <%= link_to 'Edit', edit_profile_path(@profile) %> |
 <%= link_to 'Back', profiles_path %>

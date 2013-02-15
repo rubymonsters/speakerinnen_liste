@@ -31,6 +31,9 @@ GEM
     arel (3.0.2)
     bootstrap-sass (2.0.4.0)
     builder (3.0.4)
+    carrierwave (0.8.0)
+      activemodel (>= 3.2.0)
+      activesupport (>= 3.2.0)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
       railties (~> 3.2.0)
@@ -106,6 +109,7 @@ PLATFORMS
 
 DEPENDENCIES
   bootstrap-sass
+  carrierwave
   coffee-rails (~> 3.2.1)
   jquery-rails
   rails (= 3.2.11)
