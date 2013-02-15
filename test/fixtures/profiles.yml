@@ -1,13 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  firstname: MyString
-  lastname: MyString
-  email: MyString
+  firstname: Horst
+  lastname: lastname
+  email: name@mail.de
   bio: MyText
   topics: MyString
-  languages: MyString
-  city: MyString
+  languages: Deutsch
+  city: Berlin
   twitter: MyString
   picture: MyString
 
