@@ -6,10 +6,19 @@ gem 'bootstrap-sass'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
+
 gem 'carrierwave'
 
 
+# use sqlite3 database in development mode
+group :development do
+  gem 'sqlite3'
+end
+
+# use postgres database in production mode
+group :production do
+  gem 'pg'
+end
 
 # Gems used only for assets and not required
 # in production environments by default.
