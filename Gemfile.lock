@@ -31,6 +31,8 @@ GEM
     arel (3.0.2)
     bootstrap-sass (2.3.0.0)
       sass (~> 3.2)
+    bootswatch-rails (0.3.2)
+      railties (>= 3.1)
     builder (3.0.4)
     carrierwave (0.8.0)
       activemodel (>= 3.2.0)
@@ -56,9 +58,10 @@ GEM
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
-    pg (0.14.1)
     mime-types (1.21)
     multi_json (1.6.1)
+    pg (0.14.1)
+    pg (0.14.1-x86-mingw32)
     polyglot (0.3.3)
     rack (1.4.5)
     rack-cache (1.2)
@@ -113,6 +116,7 @@ PLATFORMS
 
 DEPENDENCIES
   bootstrap-sass (~> 2.3.0)
+  bootswatch-rails
   carrierwave
   coffee-rails (~> 3.2.1)
   jquery-rails
