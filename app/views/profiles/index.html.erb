@@ -1,21 +1,24 @@
 <h1>Listing profiles</h1>
 
-<table>
-  <tr>
-    <th>Firstname</th>
-    <th>Lastname</th>
-    <th>Email</th>
-    <th>Bio</th>
-    <th>Topics</th>
-    <th>Languages</th>
-    <th>City</th>
-    <th>Twitter</th>
-    <th>Picture</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<table class="table">
+  <thead>  
+    <tr>
+     <th>Firstname</th>
+     <th>Lastname</th>
+     <th>Email</th>
+     <th>Bio</th>
+     <th>Topics</th>
+     <th>Languages</th>
+     <th>City</th>
+     <th>Twitter</th>
+     <th>Picture</th>
+     <th>Show</th>
+     <th>Edit</th>
+     <th>Destroy</th>
+    </tr>
+  </thead>
 
+<tbody>
 <% @profiles.each do |profile| %>
   <tr>
     <td><%= profile.firstname %></td>
@@ -32,6 +35,7 @@
     <td><%= link_to 'Destroy', profile, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
+</tbody>
 </table>
 
 <br />
