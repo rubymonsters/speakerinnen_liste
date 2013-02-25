@@ -1,0 +1,43 @@
+<div class="container">
+  <h3>
+    <%= profile.firstname %>&nbsp;<%= profile.lastname %>
+  </h3>
+  <div class="row">
+    <div class="span3">
+      <%= image_tag(profile.picture_url, :width => 600) if profile.picture.present? %>  
+    </div>
+    <div class="span9">
+      <div class="muted">
+        Ich kann Votrage halten uber:
+      </div>
+      <div>
+        <%= profile.topics %>
+      </div>
+      <div class="muted">
+        Auf:
+      </div>
+      <div>
+        <%= profile.languages %>
+      </div>
+    </div>
+  </div>
+  <div class="muted">
+    Ich habe schon Vortrage halten uber:
+  </div>
+  <div>
+    <%= profile.bio %>
+  </div>
+  <div class="muted">
+    Kontakt:
+  </div>
+  <div>
+    <%= mail_to profile.email %><br/>
+    <%= profile.twitter %>
+  </div>
+  <div class="btn-toolbar">
+    <%= link_to 'Show', profile, :class =>"btn btn-success btn-small" %>
+    <%= link_to 'Edit', edit_profile_path(profile), :class =>"btn btn-danger btn-small" %>
+    <%= link_to 'Destroy', profile, method: :delete, data: { confirm: 'Are you sure?' }, :class =>"btn btn-primary btn-small" %>
+  </div>
+  <h1><hr/></h1>
+</div>
