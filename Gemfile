@@ -7,11 +7,8 @@ gem 'bootswatch-rails'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-
-gem 'carrierwave'
-
-# Easy log-in
 gem 'devise'
+gem 'carrierwave'
 
 
 # use sqlite3 database in development mode
