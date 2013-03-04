@@ -1,6 +1,6 @@
 class RemoveUsers < ActiveRecord::Migration
   def up
-    drop_table(:users)
+    drop_table(:users) rescue nil
   end
 
   def down

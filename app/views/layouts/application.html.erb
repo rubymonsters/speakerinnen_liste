@@ -7,9 +7,32 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="brand" href="/">Speakerinnen Liste</a>
+      <ul class="nav">
+        <li class="active"><a href="/profiles">Profile</a></li>
+      </ul>
+      <p class="navbar-text pull-right">
+        <% if profile_signed_in? %>
+          Logged in as <strong><%= current_profile.email %></strong>.
+          <%= link_to 'Account', edit_profile_registration_path, :class => 'navbar-link' %> |
+          <%= link_to "Logout", destroy_profile_session_path, method: :delete, :class => 'navbar-link' %>
+        <% else %>
+          <%= link_to "Sign up", new_profile_registration_path, :class => 'navbar-link' %> |
+          <%= link_to "Login", new_profile_session_path, :class => 'navbar-link' %>
+        <% end %>
+      </p>
+    </div>
+  </div>
+</div>
 <div class="container">
-<%= yield %>
+  <div class="row">
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+  </div>
+  <%= yield %>
 </div>
 
 </body>

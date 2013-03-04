@@ -34,8 +34,13 @@ ActiveRecord::Schema.define(:version => 20130304200508) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string   "unconfirmed_email"
   end
 
+  add_index "profiles", ["confirmation_token"], :name => "index_profiles_on_confirmation_token", :unique => true
   add_index "profiles", ["email"], :name => "index_profiles_on_email", :unique => true
   add_index "profiles", ["reset_password_token"], :name => "index_profiles_on_reset_password_token", :unique => true
 

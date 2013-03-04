@@ -34,4 +34,11 @@ SpeakerinnenListe::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  # mail default url
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+
+  # mail default url
+  #config.action_mailer.default_url_options = { :host => 'http://lit-eyrie-6703.herokuapp.com/' }
+
 end
