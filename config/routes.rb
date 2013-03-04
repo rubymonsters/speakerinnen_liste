@@ -1,7 +1,6 @@
 SpeakerinnenListe::Application.routes.draw do
-  devise_for :profiles
 
-  devise_for :users
+  devise_for :profiles
 
   resources :profiles
 

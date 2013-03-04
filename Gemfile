@@ -10,9 +10,6 @@ gem 'bootswatch-rails'
 
 gem 'carrierwave'
 
-# Easy log-in
-gem 'devise'
-
 
 # use sqlite3 database in development mode
 group :development do
