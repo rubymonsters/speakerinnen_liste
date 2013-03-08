@@ -1,5 +1,7 @@
 class ProfilesController < ApplicationController
-  
+  include ProfilesHelper
+  before_filter :require_permision, :only=> [:edit, :destroy, :update]
+
   def index
     @profiles = Profile.all
   end
@@ -31,7 +33,7 @@ class ProfilesController < ApplicationController
     @profile = Profile.find(params[:id])
     if @profile.update_attributes(params[:profile])
        redirect_to @profile, notice: 'Profile was successfully updated.' 
-    else
+    else current_profile
       render action: "edit" 
     end
   end
@@ -40,5 +42,12 @@ class ProfilesController < ApplicationController
     @profile = Profile.find(params[:id])
     @profile.destroy
     redirect_to profiles_url 
+  end
+
+  def require_permision
+    profile = Profile.find(params[:id])
+    unless can_edit_profile?(current_profile, profile)
+      redirect_to profiles_url, notice: 'No Permission to edit the Profile'
+    end
   end
 end

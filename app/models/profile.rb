@@ -10,6 +10,10 @@ class Profile < ActiveRecord::Base
   attr_accessible :bio, :city, :email, :firstname, :languages, :lastname, :picture, :topics, :twitter
 
   mount_uploader :picture, PictureUploader
+
+  def is_admin?
+    email == "jane_admin@server.org"
+  end
 end
 
 
