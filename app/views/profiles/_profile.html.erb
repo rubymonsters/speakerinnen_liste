@@ -36,8 +36,8 @@
   </div>
   <div class="btn-toolbar">
     <%= link_to 'Show', profile, :class =>"btn btn-success btn-small" %>
-    <%= link_to 'Edit', edit_profile_path(profile), :class =>"btn btn-danger btn-small" %>
-    <%= link_to 'Destroy', profile, method: :delete, data: { confirm: 'Are you sure?' }, :class =>"btn btn-primary btn-small" %>
+    <%= link_to 'Edit', edit_profile_path(profile), :class =>"btn btn-danger btn-small" if current_profile == profile %>
+    <%= link_to 'Destroy', profile, method: :delete, data: { confirm: 'Are you sure?' }, :class =>"btn btn-primary btn-small" if current_profile == profile %>
   </div>
   <h1><hr/></h1>
 </div>

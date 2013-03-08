@@ -11,12 +11,15 @@
   <div class="navbar-inner">
     <div class="container">
       <a class="brand" href="/">Speakerinnen Liste</a>
-      <ul class="nav">
-        <li class="active"><a href="/profiles">Profile</a></li>
+      <ul class="nav" id="main-menu-left">
+        <li><a href="/profiles">Speakerinnen</a></li>
+        <li><a href="/profiles">Kontakt</a></li>
+        <li><a href="/profiles">Impressum</a></li>
       </ul>
       <p class="navbar-text pull-right">
         <% if profile_signed_in? %>
-          Logged in as <strong><%= current_profile.email %></strong>.
+          Eingelogged als <strong><%= current_profile.email %></strong>. | 
+           <%= link_to 'Mein Profil', edit_profile_path(current_profile), :class => 'navbar-link' %> |
           <%= link_to 'Account', edit_profile_registration_path, :class => 'navbar-link' %> |
           <%= link_to "Logout", destroy_profile_session_path, method: :delete, :class => 'navbar-link' %>
         <% else %>
@@ -29,8 +32,8 @@
 </div>
 <div class="container">
   <div class="row">
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <p id="notice"><%= notice %></p>
+    <p id="alert"><%= alert %></p>
   </div>
   <%= yield %>
 </div>

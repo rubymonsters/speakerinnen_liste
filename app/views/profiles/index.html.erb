@@ -1,5 +1,16 @@
-<h1>Speakerinnen</h1>
-<%= render :partial => "profile", :collection => @profiles %>
-<!-- <div class="btn-toolbar">
-<%= link_to 'New Profile', new_profile_path, :class =>"btn btn-inverse btn-small" %>
-</div> -->
+<div class="span12">
+  <h1>Speakerinnen</h1>
+</div>
+<div class="span12">
+  <p>
+    Keine Ausreden mehr für frauenlose Panels.
+    Diese Liste ist work in progress – bei Wunsch auf Eintragung, bitte melden.
+
+    Es wird empfohlen, sich die Liste einmal komplett durchzulesen, dann geht auch nichts verloren, denn manche Damen haben sehr spezielle und interessante Fachgebiete. Sie wollen schließlich einen tollen Event – und Sie wissen ja: dafür muss man sich auch ein bisschen Zeit nehmen :)
+    Mit STRG+F kann man per Browsersuchfunktion (in der Regel) nach Stichworten suchen.
+    Die Reihenfolge der Damen ergab sich durch ihr Hinzufügen und hat keinerlei weitere Aussage.
+  <p>
+</div>
+<div class="span12">
+  <%= render :partial => "profile", :collection => @profiles %>
+</div>
