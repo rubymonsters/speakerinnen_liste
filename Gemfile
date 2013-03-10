@@ -14,6 +14,7 @@ gem 'carrierwave'
 # use sqlite3 database in development mode
 group :development do
   gem 'sqlite3'
+  gem "letter_opener"
 end
 
 # use postgres database in production mode

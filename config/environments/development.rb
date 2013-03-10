@@ -26,7 +26,7 @@ SpeakerinnenListe::Application.configure do
   config.active_record.mass_assignment_sanitizer = :strict
 
   # Log the query plan for queries taking more than this (works
-  # with SQLite, MySQL, and PostgreSQL)
+  # with SQLite, MySQL, config.action_mailer.delivery_method = :letter_openerand PostgreSQL)
   config.active_record.auto_explain_threshold_in_seconds = 0.5
 
   # Do not compress assets
@@ -38,6 +38,6 @@ SpeakerinnenListe::Application.configure do
   # mail default url
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 
-  
+  config.action_mailer.delivery_method = :letter_opener
 
 end
