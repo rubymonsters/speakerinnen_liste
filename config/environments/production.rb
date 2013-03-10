@@ -62,7 +62,7 @@ SpeakerinnenListe::Application.configure do
   config.active_support.deprecation = :notify
 
   # mail default url
-  config.action_mailer.default_url_options = { :host => 'http://nameless-cove-8935.herokuapp.com/' }
+  config.action_mailer.default_url_options = { :host => 'nameless-cove-8935.herokuapp.com' }
 
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)
