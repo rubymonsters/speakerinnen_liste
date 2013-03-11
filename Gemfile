@@ -9,7 +9,7 @@ gem 'bootswatch-rails'
 
 gem 'devise'
 gem 'carrierwave'
-
+gem "fog", "~> 1.3.1"
 
 # use sqlite3 database in development mode
 group :development do
