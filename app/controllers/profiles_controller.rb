@@ -6,16 +6,16 @@ class ProfilesController < ApplicationController
     @profiles = Profile.all
   end
 
-
   def show
     @profile = Profile.find(params[:id])   
   end
 
-
+  # action, view, routes should be deleted
   def new
     @profile = Profile.new
   end
 
+  # should reuse the devise view
   def edit
     @profile = Profile.find(params[:id])
   end
