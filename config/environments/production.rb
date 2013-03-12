@@ -76,7 +76,7 @@ SpeakerinnenListe::Application.configure do
     # verschlüsselter smtp port
     port: 587,
     authentication: "plain",
-    user_name: "immerwahrclara@gmail.com",
+    user_name: "ruby.monsters@gmail.com",
     # environment variable that I send seperatly to heroku
     password: ENV['SMTP_PASSWORD'],
     enable_starttls_auto: true
