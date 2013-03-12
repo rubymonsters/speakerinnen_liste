@@ -11,43 +11,65 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :firstname %><br />
-    <%= f.text_field :firstname %>
+
+    <div class="control-group">
+    <%= f.label :Vorname, class:"control-label"%>
+    <div class="controls">
+      <%= f.text_field :firstname, class:"input-xlarge", id:"input01"%>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :lastname %><br />
-    <%= f.text_field :lastname %>
+  
+  <div class="control-group">
+    <%= f.label :Nachname, class:"control-label" %>
+    <div class="controls">
+      <%= f.text_field :lastname, class:"input-xlarge", id:"input01" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
+
+  <div class="control-group">
+    <%= f.label :Bio, class:"control-label" %>
+    <div class="controls">
+      <%= f.text_area :bio, class:"input-xlarge", id:"input01" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :bio %><br />
-    <%= f.text_area :bio %>
+
+  <div class="control-group">
+    <%= f.label :Themen, class:"control-label" %>
+    <div class="controls">
+      <%= f.text_field :topics, class:"input-xlarge", id:"input01" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :topics %><br />
-    <%= f.text_field :topics %>
+  
+  <div class="control-group">
+    <%= f.label :Sprachen, class:"control-label" %>
+    <div class="controls">
+      <%= f.text_field :languages, class:"input-xlarge", id:"input01" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :languages %><br />
-    <%= f.text_field :languages %>
+
+  <div class="control-group">
+    <%= f.label :Stadt, class:"control-label" %>
+    <div class="controls">
+      <%= f.text_field :city, class:"input-xlarge", id:"input01" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :city %><br />
-    <%= f.text_field :city %>
+
+  <div class="control-group">
+    <%= f.label :Twitter, class:"control-label" %>
+    <div class="controls">
+      <%= f.text_field :twitter, class:"input-xlarge", id:"input01" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :twitter %><br />
-    <%= f.text_field :twitter %>
+
+  <div class="control-group">
+    <%= f.label :Foto, class:"control-label" %>
+    <div class="controls">
+      <%= image_tag(@profile.picture_url, :width => 100) if @profile.picture.present? %>
+      <%= f.file_field :picture, class:"input-xlarge", id:"input01" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :picture %><br />
-    <%= f.file_field :picture %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+
+  <div class="form-actions">
+    <%= f.submit "Update Profil", class:"btn btn-danger"%>
   </div>
 <% end %>

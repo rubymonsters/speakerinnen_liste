@@ -1,31 +1,54 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+ <form class="form-horizontal well">
+  <fieldset>
+    <legend>Account von <%= @profile.firstname %></legend>
 
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
-  <%= devise_error_messages! %>
+    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+    <%= devise_error_messages! %>
+    
+    <div class="control-group">
+      <%= f.label :email, class:"control-label" %>
+      <div class="controls">
+        <%= f.email_field :email, :autofocus => true, class:"input-xlarge", id:"input01"%>
+      </div>
+    </div>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, :autofocus => true %></div>
+    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+      <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+    <% end %>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
+    <div class="controll-group">
+      <%= f.label :current_password, class:"control-label" %> 
+      <div class="controls">
+        <%= f.password_field :current_password, class:"input-xlarge", id:"input01" %>
+        <p class="help-block">(we need your current password to confirm your changes)</p>
+        <br>
+      </div>
+    </div>
 
-  <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-  <%= f.password_field :password, :autocomplete => "off" %></div>
+    <div class="controll-group">
+      <%= f.label :password, class:"control-label"%>
+      <div class="controls">
+        <%= f.password_field :password, :autocomplete => "off", class:"input-xlarge", id:"input01" %>
+      <p class="help-block">(leave blank if you don't want to change it)</p>
+      <br>
+      </div>
+    </div>
 
-  <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></div>
+    <div class="controll-group">
+      <%= f.label :password_confirmation, class:"control-label" %>
+      <div class="controls">
+        <%= f.password_field :password_confirmation, class:"input-xlarge", id:"input01" %>
+      </div>
+    </div>
+  <div class="form-actions">
+    <%= f.submit "Update Account", class:"btn btn-danger"%>
+  </div>
 
-  <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-  <%= f.password_field :current_password %></div>
-
-  <div><%= f.submit "Update" %></div>
 <% end %>
 
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %>.</p>
-
-<%= link_to 'Show', @profile %> |
-<%= link_to 'Edit', edit_profile_path(@profile) %> |
-<%= link_to "Back", :back %>
+<h3>Lösche meinen Account</h3>
+  <div class="form-actions">
+    <p>Unhappy? <%= button_to "Löschen", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete, class:"btn btn-primary" %>.</p>
+  </div>
+</fieldset>
+</form>

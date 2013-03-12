@@ -1,6 +1,5 @@
-<h2>Sign up</h2>
 
-    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :class => "form-horizontal well"}) do |f| %>
   <%= devise_error_messages! %>
 
   <% if @profile.errors.any? %>
@@ -14,54 +13,91 @@
       </ul>
     </div>
   <% end %>
+  <fieldset>
+    <legend>Sign up</legend>
 
-  <div class="field">
-    <%= f.label :firstname %><br />
-    <%= f.text_field :firstname %>
+    <div class="control-group">
+    <%= f.label :firstname, class:"control-label"%>
+    <div class="controls">
+      <%= f.text_field :firstname, class:"input-xlarge", id:"input01"%>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :lastname %><br />
-    <%= f.text_field :lastname %>
-  </div>
-
-  <div class="field">
-    <%= f.label :bio %><br />
-    <%= f.text_area :bio %>
-  </div>
-  <div class="field">
-    <%= f.label :topics %><br />
-    <%= f.text_field :topics %>
-  </div>
-  <div class="field">
-    <%= f.label :languages %><br />
-    <%= f.text_field :languages %>
-  </div>
-  <div class="field">
-    <%= f.label :city %><br />
-    <%= f.text_field :city %>
-  </div>
-  <div class="field">
-    <%= f.label :twitter %><br />
-    <%= f.text_field :twitter %>
-  </div>
-  <div class="field">
-    <%= f.label :picture %><br />
-    <%= f.file_field :picture %>
+  
+  <div class="control-group">
+    <%= f.label :lastname, class:"control-label" %>
+    <div class="controls">
+      <%= f.text_field :lastname, class:"input-xlarge", id:"input01" %>
+    </div>
   </div>
 
+  <div class="control-group">
+    <%= f.label :bio, class:"control-label" %>
+    <div class="controls">
+      <%= f.text_area :bio, class:"input-xlarge", id:"input01" %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :topics, class:"control-label" %>
+    <div class="controls">
+      <%= f.text_field :topics, class:"input-xlarge", id:"input01" %>
+    </div>
+  </div>
+  
+  <div class="control-group">
+    <%= f.label :languages, class:"control-label" %>
+    <div class="controls">
+      <%= f.text_field :languages, class:"input-xlarge", id:"input01" %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :city, class:"control-label" %>
+    <div class="controls">
+      <%= f.text_field :city, class:"input-xlarge", id:"input01" %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :twitter, class:"control-label" %>
+    <div class="controls">
+      <%= f.text_field :twitter, class:"input-xlarge", id:"input01" %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :picture, class:"control-label" %>
+    <div class="controls">
+      <%= f.file_field :picture, class:"input-xlarge", id:"input01" %>
+    </div>
+  </div>
+  <hr>
+  <div class="control-group">
+    <%= f.label :email, class:"control-label" %>
+    <div class="controls">
+      <%= f.email_field :email, :autofocus => true, class:"input-xlarge", id:"input01"%>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :password, class:"control-label" %>
+    <div class="controls">
+      <%= f.password_field :password, class:"input-xlarge", id:"input01" %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :password_confirmation, class:"control-label" %>
+    <div class="controls">
+      <%= f.password_field :password_confirmation, class:"input-xlarge", id:"input01" %>
+    </div>
+  </div>
 
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, :autofocus => true %></div>
-
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
-
-  <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></div>
-
-
-  <div><%= f.submit "Sign up" %></div>
+  <div class="form-actions">
+    <%= f.submit "Sign up", class:"btn btn-primary"%>
+  </div>
 <% end %>
-
 <%= render "devise/shared/links" %>
+  </fieldset>
+</form>
