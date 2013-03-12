@@ -1,9 +1,8 @@
- <form class="form-horizontal well">
+    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put,:class => "form-horizontal well" }) do |f| %>
+    <%= devise_error_messages! %>
+
   <fieldset>
     <legend>Account von <%= @profile.firstname %></legend>
-
-    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
-    <%= devise_error_messages! %>
     
     <div class="control-group">
       <%= f.label :email, class:"control-label" %>
@@ -17,7 +16,7 @@
     <% end %>
 
     <div class="controll-group">
-      <%= f.label :current_password, class:"control-label" %> 
+      <%= f.label :altes_passwort, class:"control-label" %> 
       <div class="controls">
         <%= f.password_field :current_password, class:"input-xlarge", id:"input01" %>
         <p class="help-block">(we need your current password to confirm your changes)</p>
@@ -26,7 +25,7 @@
     </div>
 
     <div class="controll-group">
-      <%= f.label :password, class:"control-label"%>
+      <%= f.label :neues_passwort, class:"control-label"%>
       <div class="controls">
         <%= f.password_field :password, :autocomplete => "off", class:"input-xlarge", id:"input01" %>
       <p class="help-block">(leave blank if you don't want to change it)</p>
@@ -35,7 +34,7 @@
     </div>
 
     <div class="controll-group">
-      <%= f.label :password_confirmation, class:"control-label" %>
+      <%= f.label :passwort_confirmation, class:"control-label" %>
       <div class="controls">
         <%= f.password_field :password_confirmation, class:"input-xlarge", id:"input01" %>
       </div>

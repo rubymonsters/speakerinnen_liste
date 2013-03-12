@@ -1,4 +1,4 @@
-<%= form_for(@profile, :html => { :multipart => true }) do |f| %>
+<%= form_for(@profile, :html => { :multipart => true, :class => "form-horizontal well"}) do |f| %>
   <% if @profile.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
@@ -11,6 +11,8 @@
     </div>
   <% end %>
 
+  <fieldset>
+    <legend>Profile von <%= @profile.firstname %></legend>
 
     <div class="control-group">
     <%= f.label :Vorname, class:"control-label"%>
@@ -72,4 +74,7 @@
   <div class="form-actions">
     <%= f.submit "Update Profil", class:"btn btn-danger"%>
   </div>
+
+  </fieldset>
+</form>
 <% end %>
