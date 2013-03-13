@@ -7,7 +7,7 @@ class Profile < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
-  attr_accessible :bio, :city, :email, :firstname, :languages, :lastname, :picture, :topics, :twitter
+  attr_accessible :bio, :city, :email, :firstname, :languages, :lastname, :picture, :topics, :twitter, :remove_picture
 
   mount_uploader :picture, PictureUploader
 

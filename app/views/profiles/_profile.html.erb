@@ -6,7 +6,7 @@
     <div class="span3">
       <%= image_tag(profile.picture_url, :width => 300) if profile.picture.present? %>  
     </div>
-    <div class="span6">
+    <div class="span5">
       <div class="header_small">
         Themen:
       </div>
@@ -26,7 +26,7 @@
   </div>
   <p>
 <div class="row">
-  <div class="span9">
+  <div class="span8">
     <div class="header_small">
       Kontakt:
     </div>
@@ -43,7 +43,7 @@
 
 
 <div class="row">
-  <div class="span9">
+  <div class="span8">
     <div class="btn-toolbar">
       <%= link_to 'Show', profile, :class =>"btn btn-success btn-small" %>
       <% if can_edit_profile?(current_profile, profile) %>
@@ -51,7 +51,8 @@
         <%= link_to 'Destroy', profile, method: :delete, data: { confirm: 'Are you sure?' }, :class =>"btn btn-primary btn-small" %>
       <% end %>
     </div>
+    <hr/>
   </div>
 </div>
 
-<hr/>
+
