@@ -1,9 +1,3 @@
-@import "bootswatch/amelia/variables";
-
-@import "bootstrap";
-
-@import "bootswatch/amelia/bootswatch";
-
 .header {
   font-size: 18px;
   font-weight: 400;
@@ -23,3 +17,9 @@ img {
               0 16px 5px -10px #333;
 
 }
+@import "bootswatch/amelia/variables";
+
+@import "bootstrap";
+
+@import "bootswatch/amelia/bootswatch";
+
