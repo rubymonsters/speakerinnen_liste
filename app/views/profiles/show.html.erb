@@ -1,59 +1,69 @@
-
-
 <p id="notice"><%= notice %></p>
 
 <div class="row name">
   <div class="span12">
-  <h1> Profil von <%= @profile.firstname + " " + @profile.lastname %>
-  </h1>
+  <h2> Profil von <%= @profile.firstname + " " + @profile.lastname %>
+  </h2>
   </div>
 </div>
+<br>
 
 <div class="row contact">
   <div class="span4">
-    <%= image_tag(@profile.picture_url, :width => 600) if @profile.picture.present? %>  
+    <%= image_tag(@profile.picture_url, :width => 300) if @profile.picture.present? %>  
   </div>
-  <div class="span8">
-    <p>
-      <b>Email:</b>
-      <%= @profile.email %>
-    </p>
-    <p>
-      <b>Twitter:</b>
-      <%= @profile.twitter %>
-    </p>
+    <div class="span6">
+      <div class="header">Themen:</div>
+        <%= @profile.topics %>
+      <p>
+    </div>
+
+     <div class="span6">
+      <div class="header">Sprachen:</div>
+        <%= @profile.languages %>
+      <p>
+    </div>
+
+    <div class="span6">
+      <div class="header">Vorträge gehalten auf:</div>
+        CeBit
+      <p>
+    </div>
+  </div>
+  <br>
+
+  <div class="row contact">
+    <div class="span6">
+      <div class="header">Bio:</div>
+        <%= @profile.bio %>
+      </p>
+    </div>
+  </div>
+  
+  <div class="row contact">
+    <div class="span6">
+      <div class="header">Email:</div>
+        <%= mail_to @profile.email%>
+      <p>
+    </div>
+  </div>
+
+  
+  <div class="row contact">
+    <div class="span6">
+      <div class="header">Twitter:</div>
+        <%= @profile.twitter %>
+      </p>
+    </div>
+  </div>
+<br>
+ <div class="row contact"> 
+    <div class="span6">
+      <%= link_to 'Back', profiles_path, class:"btn btn-inverse btn-small" %>
+      <% if can_edit_profile?(current_profile, @profile) %>
+       <%= link_to 'Edit', edit_profile_path(@profile), class:"btn btn-danger btn-small" %>
+      <% end %>
+    </div>
   </div>
 </div>
-
-<div class="row topic">
-  <div class="span12">
-    <h2>Ich kann Vorträge halten über: 
-    </h2>
-    <p>
-      <%= @profile.topics %>
-    </p>
-    <h2>auf</h2>
-    <p>
-      <%= @profile.languages %>
-    </p>
-    <h2>Ich wohne in:</h2>
-    <p>
-      <%= @profile.city %>
-    </p>
-  </div>
-</div>
-
-<div class="row bio">
-  <div class="span12">
-    <h2>Über mich:</h2>
-    <p>
-      <%= @profile.bio %>
-    </p>
-  </div>
-</div>
-
-<%= link_to 'Back', profiles_path %>
-<% if can_edit_profile?(current_profile, @profile) %>
-| <%= link_to 'Edit', edit_profile_path(@profile) %>
-<% end %>
 

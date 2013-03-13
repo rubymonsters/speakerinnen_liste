@@ -12,3 +12,9 @@
  *= require_tree .
  */
 body { padding-top: 50px; }
+
+.header {
+  font-size: 29px;
+  font-weight: 800;
+  line-height: 30px;
+}

@@ -4,42 +4,72 @@
   </h3>
   <div class="row">
     <div class="span3">
-      <%= image_tag(profile.picture_url, :width => 600) if profile.picture.present? %>  
+      <%= image_tag(profile.picture_url, :width => 300) if profile.picture.present? %>  
     </div>
-    <div class="span9">
-      <div class="muted">
-        Ich kann Voträge halten über:
+    <div class="span6">
+      <div class="header_small">
+        Themen:
       </div>
-      <div>
         <%= profile.topics %>
+        <p>
+    </div>
+
+    <div class="span6">
+      <div class="header_small">
+        Sprachen:
       </div>
-      <div class="muted">
-        Auf:
-      </div>
-      <div>
         <%= profile.languages %>
-      </div>
+        <p>
+    </div>
+
+    <div class="span6">
+      <div class="header_small">Vorträge gehalten auf der:</div>
+        CeBit
+      <p>
     </div>
   </div>
-  <div class="muted">
-    Ich habe schon Vortrage gehalten über:
-  </div>
-  <div>
+  <p>
+<div class="row">
+  <div class="span9">
+    <div class="header_small">
+      Bio:
+    </div>
     <%= profile.bio %>
+    <p>
   </div>
-  <div class="muted">
-    Kontakt:
-  </div>
-  <div>
-    <%= mail_to profile.email %><br/>
-    <%= profile.twitter %>
-  </div>
-  <div class="btn-toolbar">
-    <%= link_to 'Show', profile, :class =>"btn btn-success btn-small" %>
-    <% if can_edit_profile?(current_profile, profile) %>
-      <%= link_to 'Edit', edit_profile_path(profile), :class =>"btn btn-danger btn-small" %>
-      <%= link_to 'Destroy', profile, method: :delete, data: { confirm: 'Are you sure?' }, :class =>"btn btn-primary btn-small" %>
-    <% end %>
-  </div>
-  <h1><hr/></h1>
 </div>
+
+<div class="row">
+  <div class="span9">
+    <div class="header_small">
+      Kontakt:
+    </div>
+    <%= mail_to profile.email %>
+    <p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="span9">
+    <div class="header_small">
+      Twitter:
+    </div>
+    <%= profile.twitter %>
+    <p>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="span9">
+    <div class="btn-toolbar">
+      <%= link_to 'Show', profile, :class =>"btn btn-success btn-small" %>
+      <% if can_edit_profile?(current_profile, profile) %>
+        <%= link_to 'Edit', edit_profile_path(profile), :class =>"btn btn-danger btn-small" %>
+        <%= link_to 'Destroy', profile, method: :delete, data: { confirm: 'Are you sure?' }, :class =>"btn btn-primary btn-small" %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<hr/>
