@@ -8,7 +8,7 @@
 </div>
 <br>
 
-<div class="row contact">
+<div class="row">
   <div class="span4">
     <%= image_tag(@profile.picture_url, :width => 300) if @profile.picture.present? %>  
   </div>
@@ -16,15 +16,11 @@
       <div class="header">Themen:</div>
         <%= @profile.topics %>
       <p>
-    </div>
 
-     <div class="span6">
       <div class="header">Sprachen:</div>
         <%= @profile.languages %>
       <p>
-    </div>
 
-    <div class="span6">
       <div class="header">Vorträge gehalten auf:</div>
         CeBit
       <p>
@@ -32,33 +28,20 @@
   </div>
   <br>
 
-  <div class="row contact">
+  <div class="row">
     <div class="span6">
       <div class="header">Bio:</div>
         <%= @profile.bio %>
       </p>
-    </div>
-  </div>
   
-  <div class="row contact">
-    <div class="span6">
       <div class="header">Email:</div>
         <%= mail_to @profile.email%>
       <p>
-    </div>
-  </div>
-
   
-  <div class="row contact">
-    <div class="span6">
       <div class="header">Twitter:</div>
         <%= @profile.twitter %>
       </p>
-    </div>
-  </div>
-<br>
- <div class="row contact"> 
-    <div class="span6">
+      <br>
       <%= link_to 'Back', profiles_path, class:"btn btn-inverse btn-small" %>
       <% if can_edit_profile?(current_profile, @profile) %>
        <%= link_to 'Edit', edit_profile_path(@profile), class:"btn btn-danger btn-small" %>

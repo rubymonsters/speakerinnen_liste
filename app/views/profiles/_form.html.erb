@@ -68,6 +68,12 @@
     <div class="controls">
       <%= image_tag(@profile.picture_url, :width => 100) if @profile.picture.present? %>
       <%= f.file_field :picture, class:"input-xlarge", id:"input01" %>
+      <br>
+      <br>
+      <label>
+      <%= f.check_box :remove_picture %>
+      Lösche das Foto
+      </label>
     </div>
   </div>
 
