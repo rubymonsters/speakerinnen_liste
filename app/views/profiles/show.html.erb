@@ -9,44 +9,63 @@
 <br>
 
 <div class="row">
-  <div class="span4">
-    <%= image_tag(@profile.picture_url, :width => 300) if @profile.picture.present? %>  
-  </div>
+  <% if @profile.picture.present? %>
+
+    <div class="span4">
+      <%= image_tag(@profile.picture_url, :width => 300) %>  
+    </div>
+
     <div class="span6">
       <div class="header">Themen:</div>
         <%= @profile.topics %>
       <p>
-
       <div class="header">Sprachen:</div>
         <%= @profile.languages %>
       <p>
-
       <div class="header">Vorträge gehalten auf:</div>
         CeBit
       <p>
     </div>
-  </div>
+
+  <else>
+    
+    <div class="span6">
+      <div class="header">Themen:</div>
+        <%= @profile.topics %>
+      <p>
+      <div class="header">Sprachen:</div>
+        <%= @profile.languages %>
+      <p>
+      <div class="header">Vorträge gehalten auf:</div>
+        CeBit
+      <p>
+    </div>
+
+  <% end %>
+</div>
   <br>
 
   <div class="row">
+    
     <div class="span6">
       <div class="header">Bio:</div>
         <%= @profile.bio %>
       </p>
-  
       <div class="header">Email:</div>
         <%= mail_to @profile.email%>
       <p>
-  
       <div class="header">Twitter:</div>
         <%= @profile.twitter %>
       </p>
       <br>
       <%= link_to 'Back', profiles_path, class:"btn btn-inverse btn-small" %>
+
       <% if can_edit_profile?(current_profile, @profile) %>
        <%= link_to 'Edit', edit_profile_path(@profile), class:"btn btn-danger btn-small" %>
       <% end %>
+
     </div>
+
   </div>
 </div>
 

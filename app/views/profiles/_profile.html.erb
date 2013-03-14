@@ -2,29 +2,43 @@
   <h3>
     <%= profile.firstname %>&nbsp;<%= profile.lastname %>
   </h3>
-  <div class="row">
-    <div class="span3">
-      <%= image_tag(profile.picture_url, :width => 300) if profile.picture.present? %>  
-    </div>
-    <div class="span5">
-      <div class="header_small">
-        Themen:
+  <div class="row"> 
+    <% if profile.picture.present? %>
+      
+      <div class="span3">
+        <%= image_tag(profile.picture_url, :width => 300) %>  
       </div>
+      
+      <div class="span5">
+        <div class="header_small">Themen:</div>
         <%= profile.topics %>
         <p>
-
-      <div class="header_small">
-        Sprachen:
-      </div>
+        <div class="header_small">Sprachen:</div>
         <%= profile.languages %>
         <p>
+        <div class="header_small">Vorträge gehalten auf der:</div>
+          Republica
+        <p>
+      </div>
 
-      <div class="header_small">Vorträge gehalten auf der:</div>
-        CeBit
-      <p>
-    </div>
+      <% else %>
+
+        <div class="span8">
+          <div class="header_small">Themen:</div>
+          <%= profile.topics %>
+          <p>
+          <div class="header_small">Sprachen:</div>
+          <%= profile.languages %>
+          <p>
+          <div class="header_small">Vorträge gehalten auf der:</div>
+          Republica
+          <p>
+        </div>
+        
+      <% end %>
   </div>
   <p>
+
 <div class="row">
   <div class="span8">
     <div class="header_small">
