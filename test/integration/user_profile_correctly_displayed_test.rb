@@ -9,14 +9,14 @@ class UserProfileCorrectlyDisplayedTest < ActionDispatch::IntegrationTest
     get profile_path(profiles(:one))
     assert_response :success 
     # name is right & in right place
-    assert_select 'h1', /#{profiles(:one).firstname} #{profiles(:one).lastname}/
+    assert_select 'h2', /#{profiles(:one).firstname} #{profiles(:one).lastname}/
     # email / twitter
-    assert_select ".contact p", /#{profiles(:one).email}/
-    assert_select ".contact p", /#{profiles(:one).twitter}/
+    assert_select "div", /#{profiles(:one).email}/
+    assert_select "div", /#{profiles(:one).twitter}/
     # topics
-    assert_select ".topic p", profiles(:one).topics
+    assert_select "div", /#{profiles(:one).topics}/
     # bio
-    assert_select ".bio p", /#{profiles(:one).bio}/
+    assert_select "div", /#{profiles(:one).bio}/
   end
 end
 
