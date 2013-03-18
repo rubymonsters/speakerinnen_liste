@@ -9,4 +9,17 @@ class SearchIntegrationTest < ActiveSupport::TestCase
     result = Profile.basic_search('WEATHER') 
     assert_equal [testprofile], result 
   end
+
+  test "restricted searchable columns" do
+    profile1 = Profile.create(
+      :email => "carla@example.org",
+      :password => "password",
+      :bio => "biography")
+    profile2 = Profile.create(
+      :email => "debbie@example.org",
+      :password => "password",
+      :city => "biography")
+    result = Profile.restricted_search ("biography")
+    assert_equal [profile1], result 
+  end
 end  
