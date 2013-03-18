@@ -11,10 +11,10 @@ one:
   twitter: MyString
   picture: MyString
 
-two:
-  firstname: MyString
+jane:
+  firstname: jane
   lastname: MyString
-  email: MyString
+  email: jane_admin@server.org
   bio: MyText
   topics: MyString
   languages: MyString

@@ -1,5 +1,5 @@
 <div class="container">
-  <h3>
+  <h3 class="profile_name">
     <%= profile.firstname %>&nbsp;<%= profile.lastname %>
   </h3>
   <div class="row"> 
@@ -12,13 +12,13 @@
       <div class="span5">
         <div class="header_small">Themen:</div>
         <%= profile.topics %>
-        <p>
+        <p></p>
         <div class="header_small">Sprachen:</div>
         <%= profile.languages %>
-        <p>
+        <p></p>
         <div class="header_small">Vorträge gehalten auf der:</div>
           Republica
-        <p>
+        <p></p>
       </div>
 
       <% else %>
@@ -26,32 +26,29 @@
         <div class="span8">
           <div class="header_small">Themen:</div>
           <%= profile.topics %>
-          <p>
+          <p></p>
           <div class="header_small">Sprachen:</div>
           <%= profile.languages %>
-          <p>
+          <p></p>
           <div class="header_small">Vorträge gehalten auf der:</div>
           Republica
-          <p>
+          <p></p>
         </div>
         
       <% end %>
   </div>
-  <p>
-
-<div class="row">
-  <div class="span8">
-    <div class="header_small">
+  <p></p>
+  <div class="row">
+    <div class="span8">
+      <div class="header_small">
       Kontakt:
-    </div>
-    <%= mail_to profile.email %>
-    <p>
-
-    <div class="header_small">
+      </div>
+      <%= mail_to profile.email %>
+      <p></p>  <div class="header_small">
       Twitter:
-    </div>
-    <%= profile.twitter %>
-    <p>
+      </div>
+      <%= profile.twitter %>
+    <p></p>
   </div>
 </div>
 

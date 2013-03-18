@@ -1,6 +1,8 @@
 require 'test_helper'
 
 class ProfilesControllerTest < ActionController::TestCase
+  include Devise::TestHelpers
+
   setup do
     @profile = profiles(:one)
   end
@@ -18,9 +20,9 @@ class ProfilesControllerTest < ActionController::TestCase
 
   test "should create profile" do
     assert_difference('Profile.count') do
-      post :create, profile: { bio: @profile.bio, city: @profile.city, email: @profile.email, firstname: @profile.firstname, languages: @profile.languages, lastname: @profile.lastname, picture: @profile.picture, topics: @profile.topics, twitter: @profile.twitter }
+      post :create, profile: { bio: @profile.bio, city: @profile.city, email: "email@email.de", password: "12345678",
+        firstname: @profile.firstname, languages: @profile.languages, lastname: @profile.lastname, picture: @profile.picture, topics: @profile.topics, twitter: @profile.twitter }
     end
-
     assert_redirected_to profile_path(assigns(:profile))
   end
 
@@ -29,21 +31,41 @@ class ProfilesControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should get edit" do
+  test "should get edit if user signed in as admin" do
+    jane = profiles(:jane)
+    jane.confirm!
+    sign_in(jane)
+
     get :edit, id: @profile
     assert_response :success
   end
 
-  test "should update profile" do
+  test "should update profile if user signed in as admin" do
+    jane = profiles(:jane)
+    jane.confirm!
+    sign_in(jane)
+
     put :update, id: @profile, profile: { bio: @profile.bio, city: @profile.city, email: @profile.email, firstname: @profile.firstname, languages: @profile.languages, lastname: @profile.lastname, picture: @profile.picture, topics: @profile.topics, twitter: @profile.twitter }
     assert_redirected_to profile_path(assigns(:profile))
   end
 
-  test "should destroy profile" do
+  test "should not destroy profile if user is not sign in" do
+    assert_difference('Profile.count', 0) do
+      delete :destroy, id: @profile
+      puts response.body
+    end
+    assert_redirected_to profiles_path
+  end
+
+  test "should destroy profile if user signed in as admin" do
+    jane = profiles(:jane)
+    jane.confirm!
+    sign_in(jane)
+
     assert_difference('Profile.count', -1) do
       delete :destroy, id: @profile
     end
-
     assert_redirected_to profiles_path
   end
+
 end
