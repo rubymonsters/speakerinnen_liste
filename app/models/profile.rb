@@ -11,6 +11,10 @@ class Profile < ActiveRecord::Base
 
   mount_uploader :picture, PictureUploader
 
+  def self.restricted_search (query)
+    search_by_bio(query)
+  end
+
   def is_admin?
     email == "jane_admin@server.org"
   end
