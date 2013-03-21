@@ -3,7 +3,18 @@
 one:
   firstname: Horst
   lastname: lastname
-  email: name@mail.de
+  email: horst@mail.de
+  bio: MyText
+  topics: MyString
+  languages: Deutsch
+  city: Berlin
+  twitter: MyString
+  picture: MyString
+
+two:
+  firstname: Inge
+  lastname: lastname
+  email: inge@mail.de
   bio: MyText
   topics: MyString
   languages: Deutsch

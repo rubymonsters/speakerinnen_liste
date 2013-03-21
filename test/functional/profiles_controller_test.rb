@@ -5,6 +5,7 @@ class ProfilesControllerTest < ActionController::TestCase
 
   setup do
     @profile = profiles(:one)
+    @profile2 = profiles(:two)
   end
 
   test "should get index" do
@@ -31,6 +32,24 @@ class ProfilesControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  test "should edit own profile" do
+    horst = profiles(:one)
+    horst.confirm!
+    sign_in(horst)
+
+    get :edit, id: @profile
+    assert_response :success
+  end
+
+  test "should not edit different profile" do
+    horst = profiles(:one)
+    horst.confirm!
+    sign_in(horst)
+
+    get :edit, id: @profile2
+    assert_response :redirect
+  end
+
   test "should get edit if user signed in as admin" do
     jane = profiles(:jane)
     jane.confirm!
@@ -52,7 +71,6 @@ class ProfilesControllerTest < ActionController::TestCase
   test "should not destroy profile if user is not sign in" do
     assert_difference('Profile.count', 0) do
       delete :destroy, id: @profile
-      puts response.body
     end
     assert_redirected_to profiles_path
   end
