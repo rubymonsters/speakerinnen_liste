@@ -41,7 +41,7 @@ class ProfilesController < ApplicationController
   def destroy
     @profile = Profile.find(params[:id])
     @profile.destroy
-    redirect_to profiles_url 
+    redirect_to profiles_url, notice: 'Profile was successfully deleted.'
   end
 
   def require_permision

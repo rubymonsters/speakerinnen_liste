@@ -14,40 +14,36 @@ class ProfilesControllerTest < ActionController::TestCase
     assert_not_nil assigns(:profiles)
   end
 
-  test "should get new" do
-    get :new
-    assert_response :success
-  end
-
-  test "should create profile" do
-    assert_difference('Profile.count') do
-      post :create, profile: { bio: @profile.bio, city: @profile.city, email: "email@email.de", password: "12345678",
-        firstname: @profile.firstname, languages: @profile.languages, lastname: @profile.lastname, picture: @profile.picture, topics: @profile.topics, twitter: @profile.twitter }
-    end
-    assert_redirected_to profile_path(assigns(:profile))
-  end
-
   test "should show profile" do
-    get :show, id: @profile
+    get :show, id: @profile.id
     assert_response :success
   end
+
+# edit
 
   test "should edit own profile" do
     horst = profiles(:one)
     horst.confirm!
     sign_in(horst)
 
-    get :edit, id: @profile
+    get :edit, id: @profile.id
     assert_response :success
   end
 
-  test "should not edit different profile" do
+  test "should not be able edit different profile" do
     horst = profiles(:one)
     horst.confirm!
     sign_in(horst)
 
-    get :edit, id: @profile2
+    get :edit, id: @profile2.id
     assert_response :redirect
+    assert_equal 'No Permission to edit the Profile', flash[:notice]
+  end
+
+  test "should not be able edit profile if user is not signed in" do
+    get :edit, id: @profile2.id
+    assert_response :redirect
+    assert_equal 'No Permission to edit the Profile', flash[:notice]
   end
 
   test "should get edit if user signed in as admin" do
@@ -55,8 +51,34 @@ class ProfilesControllerTest < ActionController::TestCase
     jane.confirm!
     sign_in(jane)
 
-    get :edit, id: @profile
+    get :edit, id: @profile.id
     assert_response :success
+  end
+
+# update
+
+  test "should update own profile" do
+    horst = profiles(:one)
+    horst.confirm!
+    sign_in(horst)
+
+    put :update, id: @profile.id, profile: { bio: @profile2.bio }
+    assert_redirected_to profile_path(assigns(:profile))
+    assert_equal 'Profile was successfully updated.', flash[:notice]
+  end
+
+  test "should not be able to update different profile" do
+    horst = profiles(:one)
+    horst.confirm!
+    sign_in(horst)
+
+    put :update, id: @profile2.id, profile: { bio: @profile.bio }
+    assert_redirected_to profiles_path
+  end
+
+  test "should not be able to update profile if user is not signed in" do
+    put :update, id: @profile2.id, profile: { bio: @profile.bio }
+    assert_redirected_to profiles_path
   end
 
   test "should update profile if user signed in as admin" do
@@ -64,13 +86,39 @@ class ProfilesControllerTest < ActionController::TestCase
     jane.confirm!
     sign_in(jane)
 
-    put :update, id: @profile, profile: { bio: @profile.bio, city: @profile.city, email: @profile.email, firstname: @profile.firstname, languages: @profile.languages, lastname: @profile.lastname, picture: @profile.picture, topics: @profile.topics, twitter: @profile.twitter }
+    put :update, id: @profile.id, profile: { bio: @profile2.bio }
     assert_redirected_to profile_path(assigns(:profile))
+    assert_equal 'Profile was successfully updated.', flash[:notice]
+  end
+
+# destroy
+
+  test "should destroy own profile if user is signed" do
+    horst = profiles(:one)
+    horst.confirm!
+    sign_in(horst)
+
+    assert_difference('Profile.count', -1) do
+      delete :destroy, id: @profile.id
+    end
+    assert_redirected_to profiles_path
+    assert_equal 'Profile was successfully deleted.', flash[:notice]
+  end
+
+  test "should not be able to destroy different profile" do
+    horst = profiles(:one)
+    horst.confirm!
+    sign_in(horst)
+
+    assert_difference('Profile.count', 0) do
+      delete :destroy, id: @profile2.id
+    end
+    assert_redirected_to profiles_path
   end
 
   test "should not destroy profile if user is not sign in" do
     assert_difference('Profile.count', 0) do
-      delete :destroy, id: @profile
+      delete :destroy, id: @profile.id
     end
     assert_redirected_to profiles_path
   end
@@ -81,9 +129,9 @@ class ProfilesControllerTest < ActionController::TestCase
     sign_in(jane)
 
     assert_difference('Profile.count', -1) do
-      delete :destroy, id: @profile
+      delete :destroy, id: @profile.id
     end
     assert_redirected_to profiles_path
+    assert_equal 'Profile was successfully deleted.', flash[:notice]
   end
-
 end

@@ -2,7 +2,7 @@ SpeakerinnenListe::Application.routes.draw do
 
   devise_for :profiles
 
-  resources :profiles
+  resources :profiles, :except => [:new, :create]
 
 
   # The priority is based upon order of creation:
