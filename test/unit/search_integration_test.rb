@@ -10,7 +10,7 @@ class SearchIntegrationTest < ActiveSupport::TestCase
     assert_equal [testprofile], result 
   end
 
-  test "restricted searchable columns" do
+  test "restricted search should only search specified columns" do
     profile1 = Profile.create(
       :email => "carla@example.org",
       :password => "password",
@@ -19,7 +19,29 @@ class SearchIntegrationTest < ActiveSupport::TestCase
       :email => "debbie@example.org",
       :password => "password",
       :city => "biography")
-    result = Profile.restricted_search ("biography")
+    result = Profile.restricted_search("biography", [:bio])
     assert_equal [profile1], result 
   end
+
+  test "create a hash that combines query and columns to search" do
+    result = Profile.query_combiner("biography", [:bio, :email])
+    expected = {:bio => "biography", :email => "biography"}
+    assert_equal expected, result
+  end
+
+  test "there is a list of safe columns to search" do
+    expected = [:bio, :firstname, :lastname, :topics, :languages, :city]
+    assert_equal expected, Profile.safe_search_columns
+  end
+
+  test "search matches with at least one column" do
+    profile1 = Profile.create(
+      :firstname => 'Carla',
+      :lastname => 'Drago',
+      :email => "carla@example.org",
+      :password => "password")
+    result = Profile.safe_search("Drago")
+    assert_equal [profile1], result 
+  end
+
 end  
