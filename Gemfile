@@ -19,6 +19,11 @@ group :development do
   gem "letter_opener"
 end
 
+
+group :development, :test do
+  gem 'capybara', '~> 2.0.2'
+end
+
 # use postgres database in production mode
 group :production do
   gem 'pg'
