@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130304200508) do
+ActiveRecord::Schema.define(:version => 20130328122746) do
 
   create_table "profiles", :force => true do |t|
     t.string   "firstname"
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(:version => 20130304200508) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
+    t.string   "talks"
   end
 
   add_index "profiles", ["confirmation_token"], :name => "index_profiles_on_confirmation_token", :unique => true

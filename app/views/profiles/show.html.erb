@@ -16,28 +16,28 @@
     </div>
 
     <div class="span6">
-      <div class="header">Themen:</div>
+      <div class="header">Meine Themen:</div>
         <%= @profile.topics %>
       <p></p>
-      <div class="header">Sprachen:</div>
+      <div class="header">Meine Sprache/n:</div>
         <%= @profile.languages %>
       <p></p>
       <div class="header">Vorträge gehalten auf:</div>
-        CeBit
+        <%= @profile.talks %>
       <p></p>
     </div>
 
   <% else %>
     
     <div class="span6">
-      <div class="header">Themen:</div>
+      <div class="header">Meine Themen:</div>
         <%= @profile.topics %>
       <p></p>
-      <div class="header">Sprachen:</div>
+      <div class="header">Meine Sprache/n:</div>
         <%= @profile.languages %>
       <p></p>
       <div class="header">Vorträge gehalten auf:</div>
-        CeBit
+        <%= @profile.talks %>
       <p></p>
     </div>
 

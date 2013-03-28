@@ -10,28 +10,28 @@
       </div>
       
       <div class="span5">
-        <div class="header_small">Themen:</div>
+        <div class="header_small">Meine Themen:</div>
         <%= profile.topics %>
         <p></p>
-        <div class="header_small">Sprachen:</div>
+        <div class="header_small">Meine Sprache/n:</div>
         <%= profile.languages %>
         <p></p>
-        <div class="header_small">Vorträge gehalten auf der:</div>
-          Republica
+        <div class="header_small">Vorträge gehalten auf:</div>
+          <%= profile.talks %>
         <p></p>
       </div>
 
       <% else %>
 
         <div class="span8">
-          <div class="header_small">Themen:</div>
+          <div class="header_small">Meine Themen:</div>
           <%= profile.topics %>
           <p></p>
-          <div class="header_small">Sprachen:</div>
+          <div class="header_small">Meine Sprache/n:</div>
           <%= profile.languages %>
           <p></p>
-          <div class="header_small">Vorträge gehalten auf der:</div>
-          Republica
+          <div class="header_small">Vorträge gehalten auf:</div>
+            <%= profile.talks %>
           <p></p>
         </div>
         
