@@ -19,7 +19,7 @@ class ProfileTest < ActiveSupport::TestCase
                           :bio => "Testbio"
                           )
     testprofile.valid?
-    p testprofile.errors
+   # p testprofile.errors
 
     assert !testprofile.valid?, "Does not validate Profile without email"
   end
@@ -28,7 +28,7 @@ class ProfileTest < ActiveSupport::TestCase
     testprofile = Profile.new(:email => "horst@mail.de")
 
     testprofile.valid?
-    p testprofile.errors
+    # p testprofile.errors
 
     assert !testprofile.valid?, "Does not validate Profile with already taken email"
   end
