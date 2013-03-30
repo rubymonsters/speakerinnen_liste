@@ -10,6 +10,7 @@ one:
   city: Berlin
   twitter: MyString
   picture: MyString
+  talks: CCC
 
 two:
   firstname: Inge
@@ -21,7 +22,7 @@ two:
   city: Berlin
   twitter: MyString
   picture: MyString
-
+  talks: Repuclica
 jane:
   firstname: jane
   lastname: MyString
