@@ -4,6 +4,7 @@ one:
   firstname: Horst
   lastname: lastname
   email: horst@mail.de
+  encrypted_password: Testpassword
   bio: MyText
   topics: MyString
   languages: Deutsch
@@ -23,6 +24,7 @@ two:
   twitter: MyString
   picture: MyString
   talks: Repuclica
+
 jane:
   firstname: jane
   lastname: MyString
