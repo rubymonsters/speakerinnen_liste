@@ -1,20 +1,37 @@
-require 'test_helper'
+# require 'test_helper'
 
-class ConfirmationInstructionsTest < ActionMailer::TestCase
-  def test_welcome_email
-    testprofile = profiles(:one)
+# class ConfirmationInstructionsTest < ActionMailer::TestCase
+#   def test_welcome_email
+#     testprofile = profiles(:one)
  
-    # Send the email, then test that it got queued
-    email = ProfileMailer.welcome_email(testprofile).deliver
-    assert !ActionMailer::Base.deliveries.empty?
+#     # Send the email, then test that it got queued
+#     email = ProfileMailer.welcome_email(testprofile).deliver
+#     assert !ActionMailer::Base.deliveries.empty?
  
-    # Test the body of the sent email contains what we expect it to
-    assert_equal [testprofile.email], email.to
-    assert_equal "Welcome to My Awesome Site", email.subject
-    assert_match(/<h1>Welcome to example.com, #{testprofile.name}<\/h1>/, email.encoded)
-    assert_match(/Welcome to example.com, #{testprofile.name}/, email.encoded)
-  end
-end
+#     # Test the body of the sent email contains what we expect it to
+#     assert_require 'test_helper'
+
+# class ConfirmationInstructionsTest < ActionMailer::TestCase
+#   def test_welcome_email
+#     testprofile = profiles(:one)
+ 
+#     # Send the email, then test that it got queued
+#     email = ProfileMailer.welcome_email(testprofile).deliver
+#     assert !ActionMailer::Base.deliveries.empty?
+ 
+#     # Test the body of the sent email contains what we expect it to
+#     assert_equal [testprofile.email], email.to
+#     assert_equal "Welcome to My Awesome Site", email.subject
+#     assert_match(/<h1>Welcome to example.com, #{testprofile.name}<\/h1>/, email.encoded)
+#     assert_match(/Welcome to example.com, #{testprofile.name}/, email.encoded)
+#   end
+# end
+equal [testprofile.email], email.to
+#     assert_equal "Welcome to My Awesome Site", email.subject
+#     assert_match(/<h1>Welcome to example.com, #{testprofile.name}<\/h1>/, email.encoded)
+#     assert_match(/Welcome to example.com, #{testprofile.name}/, email.encoded)
+#   end
+# end
 
 # require 'test_helper'
 

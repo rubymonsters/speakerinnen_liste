@@ -8,6 +8,7 @@ class ProfileTest < ActionController::IntegrationTest
   end
 
   test "login works not with wrong password" do
+    # follows the test
     Capybara.current_driver = Capybara.javascript_driver
 
     visit '/profiles'
@@ -17,14 +18,15 @@ class ProfileTest < ActionController::IntegrationTest
     fill_in('profile[email]', :with => 'Ranja@web.de')
     fill_in('profile[password]', :with => '12345678')
     click_button "Login" 
-    # find(:xpath, "(//a[text()='Login'])[0]").click
-    # page.first(:link, "Login").click
+    # opens the site where you are in the test right now
     save_and_open_page
+    assert page.has_content?('Invalid email or password.')
+    
     # within 'h1' do
     #     page.should have_content "Speakerinnen"
     #   end
-    assert page.has_content?('Invalid email or password.')
 
+    # if signed in successfully a flash message is shown
     # assert page.has_selector? ".notice", text: "Signed in successfully."
     # assert page.has_content?('Signed in successfully.')
   end
