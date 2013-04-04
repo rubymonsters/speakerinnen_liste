@@ -4,7 +4,7 @@ one:
   firstname: Horst
   lastname: lastname
   email: horst@mail.de
-  encrypted_password: Testpassword
+  encrypted_password: <%= Profile.new.send(:password_digest, 'Testpassword') %>
   bio: MyText
   topics: MyString
   languages: Deutsch

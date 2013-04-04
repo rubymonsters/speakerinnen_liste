@@ -26,7 +26,7 @@
 #     assert_match(/Welcome to example.com, #{testprofile.name}/, email.encoded)
 #   end
 # end
-equal [testprofile.email], email.to
+# equal [testprofile.email], email.to
 #     assert_equal "Welcome to My Awesome Site", email.subject
 #     assert_match(/<h1>Welcome to example.com, #{testprofile.name}<\/h1>/, email.encoded)
 #     assert_match(/Welcome to example.com, #{testprofile.name}/, email.encoded)
