@@ -14,5 +14,9 @@
 </div>
 
 <div class="span12">
+  <% if params[:tag] %>
+    <h4>Du hast nach dem Tag "<%= params[:tag] %>" gesucht und <%= params[:tag_counts] %> gefunden:</h4>
+  <% end %>
+
   <%= render :partial => "profile", :collection => @profiles %>
 </div>

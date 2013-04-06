@@ -19,6 +19,7 @@ group :development do
   gem "letter_opener"
 end
 
+gem 'acts-as-taggable-on'
 
 group :development, :test do
   gem 'capybara', '~> 2.0.2'

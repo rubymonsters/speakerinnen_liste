@@ -14,8 +14,8 @@
     </div>
 
     <div class="span6">
-      <div class="header">Meine Themen:</div>
-        <%= @profile.topics %>
+      <div class="header">Meine Tags:</div>
+      <%= raw @profile.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
       <p></p>
       <div class="header">Meine Sprache/n:</div>
         <%= @profile.languages %>
@@ -28,8 +28,8 @@
   <% else %>
     
     <div class="span6">
-      <div class="header">Meine Themen:</div>
-        <%= @profile.topics %>
+      <div class="header">Meine Tags:</div>
+      <%= raw @profile.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
       <p></p>
       <div class="header">Meine Sprache/n:</div>
         <%= @profile.languages %>

@@ -1,4 +1,5 @@
 <div class="container">
+ 
   <h3 class="profile_name">
     <%= profile.firstname %>&nbsp;<%= profile.lastname %>
   </h3>
@@ -10,8 +11,8 @@
       </div>
       
       <div class="span5">
-        <div class="header_small">Meine Themen:</div>
-        <%= profile.topics %>
+        <div class="header_small">Tags:</div>
+          <%= raw profile.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
         <p></p>
         <div class="header_small">Meine Sprache/n:</div>
         <%= profile.languages %>
@@ -24,8 +25,8 @@
       <% else %>
 
         <div class="span8">
-          <div class="header_small">Meine Themen:</div>
-          <%= profile.topics %>
+          <div class="header_small">Tags:</div>
+          <%= raw profile.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
           <p></p>
           <div class="header_small">Meine Sprache/n:</div>
           <%= profile.languages %>
@@ -49,6 +50,7 @@
       </div>
       <%= profile.twitter %>
     <p></p>
+   
   </div>
 </div>
 

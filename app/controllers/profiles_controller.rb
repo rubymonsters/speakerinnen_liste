@@ -2,9 +2,14 @@ class ProfilesController < ApplicationController
   include ProfilesHelper
   before_filter :require_permision, :only=> [:edit, :destroy, :update]
 
+
   def index
+  if params[:tag]
+    @profiles = Profile.tagged_with(params[:tag])
+  else
     @profiles = Profile.all
   end
+end
 
   def show
     @profile = Profile.find(params[:id])   
