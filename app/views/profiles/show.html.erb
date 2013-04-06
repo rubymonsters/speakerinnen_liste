@@ -1,6 +1,6 @@
 <div class="row name">
   <div class="span12">
-  <h2> Profil von <%= @profile.firstname + " " + @profile.lastname %>
+  <h2> <%= t ".profile_from" %><%= @profile.firstname + " " + @profile.lastname %>
   </h2>
   </div>
 </div>
@@ -14,13 +14,13 @@
     </div>
 
     <div class="span6">
-      <div class="header">Meine Themen:</div>
+      <div class="header"><%= t ".topics" %></div>
         <%= @profile.topics %>
       <p></p>
-      <div class="header">Meine Sprache/n:</div>
+      <div class="header"><%= t ".languages" %></div>
         <%= @profile.languages %>
       <p></p>
-      <div class="header">Vorträge gehalten auf:</div>
+      <div class="header"><%= t ".talks" %></div>
         <%= @profile.talks %>
       <p></p>
     </div>
@@ -28,13 +28,13 @@
   <% else %>
     
     <div class="span6">
-      <div class="header">Meine Themen:</div>
+      <div class="header"><%= t ".topics" %></div>
         <%= @profile.topics %>
       <p></p>
-      <div class="header">Meine Sprache/n:</div>
+      <div class="header"><%= t ".languages" %></div>
         <%= @profile.languages %>
       <p></p>
-      <div class="header">Vorträge gehalten auf:</div>
+      <div class="header"><%= t ".talks" %></div>
         <%= @profile.talks %>
       <p></p>
     </div>
@@ -46,20 +46,20 @@
   <div class="row">
     
     <div class="span6">
-      <div class="header">Bio:</div>
+      <div class="header"><%= t ".bio" %></div>
         <%= @profile.bio %>
       </p>
-      <div class="header">Email:</div>
+      <div class="header"><%= t ".email" %></div>
         <%= mail_to @profile.email%>
       <p></p>
-      <div class="header">Twitter:</div>
+      <div class="header"><%= t ".twitter" %></div>
         <%= @profile.twitter %>
       <p></p>
       <br>
-      <%= link_to 'Back', profiles_path, class:"btn btn-inverse btn-small" %>
+      <%= link_to(t(".back"), profiles_path, class:"btn btn-inverse btn-small") %>
 
       <% if can_edit_profile?(current_profile, @profile) %>
-       <%= link_to 'Edit', edit_profile_path(@profile), class:"btn btn-danger btn-small" %>
+       <%= link_to(t(".edit"), edit_profile_path(@profile), class:"btn btn-danger btn-small") %>
       <% end %>
 
     </div>

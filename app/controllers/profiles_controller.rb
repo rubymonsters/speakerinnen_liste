@@ -23,7 +23,8 @@ class ProfilesController < ApplicationController
   def create
     @profile = Profile.new(params[:profile])
     if @profile.save
-      redirect_to @profile, notice: 'Profile was successfully created.' 
+
+      redirect_to @profile, notice: (I18n.t("flash.profiles.created"))
     else
       render action: "new" 
     end
@@ -32,7 +33,7 @@ class ProfilesController < ApplicationController
   def update
     @profile = Profile.find(params[:id])
     if @profile.update_attributes(params[:profile])
-       redirect_to @profile, notice: 'Profile was successfully updated.' 
+       redirect_to @profile, notice: (I18n.t("flash.profiles.updated"))
     else current_profile
       render action: "edit" 
     end
@@ -41,13 +42,13 @@ class ProfilesController < ApplicationController
   def destroy
     @profile = Profile.find(params[:id])
     @profile.destroy
-    redirect_to profiles_url, notice: 'Profile was successfully deleted.'
+    redirect_to profiles_url, notice: (I18n.t("flash.profiles.destroyed"))
   end
 
   def require_permision
     profile = Profile.find(params[:id])
     unless can_edit_profile?(current_profile, profile)
-      redirect_to profiles_url, notice: 'No Permission to edit the Profile'
+      redirect_to profiles_url, notice: (I18n.t("flash.profiles.no_permission"))
     end
   end
 end
