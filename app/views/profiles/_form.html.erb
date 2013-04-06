@@ -1,7 +1,7 @@
 <%= form_for(@profile, :html => { :multipart => true, :class => "form-horizontal well"}) do |f| %>
   <% if @profile.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
+      <h2><%= pluralize(@profile.errors.count, "error") %> <%= t ".not_saved" %></h2>
 
       <ul>
       <% @profile.errors.full_messages.each do |msg| %>
@@ -12,24 +12,24 @@
   <% end %>
 
   <fieldset>
-    <legend>Profile von <%= @profile.firstname %></legend>
-
+    <legend><%= t ".profile_from" %><%= @profile.firstname %></legend>
+123
     <div class="control-group">
-    <%= f.label :Vorname, class:"control-label"%>
+    <%= f.label :firstname, class:"control-label"%>
     <div class="controls">
       <%= f.text_field :firstname, class:"input-xlarge", id:"input01"%>
     </div>
   </div>
   
   <div class="control-group">
-    <%= f.label :Nachname, class:"control-label" %>
+    <%= f.label :lastname, class:"control-label" %>
     <div class="controls">
       <%= f.text_field :lastname, class:"input-xlarge", id:"input01" %>
     </div>
   </div>
 
   <div class="control-group">
-    <%= f.label :Bio, class:"control-label" %>
+    <%= f.label :bio, class:"control-label" %>
     <div class="controls">
       <%= f.text_area :bio, class:"input-xlarge", id:"input01" %>
     </div>
@@ -43,35 +43,35 @@
   </div>
 
   <div class="control-group">
-    <%= f.label :Vorträge, class:"control-label" %>
+    <%= f.label :talks, class:"control-label" %>
     <div class="controls">
       <%= f.text_field :talks, class:"input-xlarge", id:"input01" %>
     </div>
   </div>
   
   <div class="control-group">
-    <%= f.label :Sprachen, class:"control-label" %>
+    <%= f.label :languages, class:"control-label" %>
     <div class="controls">
       <%= f.text_field :languages, class:"input-xlarge", id:"input01" %>
     </div>
   </div>
 
   <div class="control-group">
-    <%= f.label :Stadt, class:"control-label" %>
+    <%= f.label :city, class:"control-label" %>
     <div class="controls">
       <%= f.text_field :city, class:"input-xlarge", id:"input01" %>
     </div>
   </div>
 
   <div class="control-group">
-    <%= f.label :Twitter, class:"control-label" %>
+    <%= f.label :twitter, class:"control-label" %>
     <div class="controls">
       <%= f.text_field :twitter, class:"input-xlarge", id:"input01" %>
     </div>
   </div>
 
   <div class="control-group">
-    <%= f.label :Foto, class:"control-label" %>
+    <%= f.label :picture, class:"control-label" %>
     <div class="controls">
       <%= image_tag(@profile.picture_url, :width => 100) if @profile.picture.present? %>
       <%= f.file_field :picture, class:"input-xlarge", id:"input01" %>
@@ -79,15 +79,14 @@
       <br>
       <label>
       <%= f.check_box :remove_picture %>
-      Lösche das Foto
+      <%= t ".delete_profile" %>
       </label>
     </div>
   </div>
 
   <div class="form-actions">
-    <%= f.submit "Update Profil", class:"btn btn-danger"%>
+    <%= f.submit(t(".update"), class:"btn btn-danger")%>
   </div>
-
   </fieldset>
 </form>
 <% end %>

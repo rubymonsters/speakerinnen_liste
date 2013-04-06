@@ -1,0 +1,82 @@
+de:
+  home:
+    index:
+      title: "Was ist die Speakerinnen Liste?"
+      text: "Dies ist ein Typoblindtext. An ihm kann man sehen, ob alle Buchstaben da sind und wie sie aussehen. Manchmal benutzt man Worte wie Hamburgefonts, Rafgenduks oder Handgloves, um Schriften zu testen. Manchmal Sätze, die alle Buchstaben des Alphabets enthalten - man nennt diese Sätze »Pangrams«. Sehr bekannt ist dieser: The quick brown fox jumps over the lazy old dog. Oft werden in Typoblindtexte auch fremdsprachige Satzteile eingebaut (AVAIL® and Wefox™ are testing aussi la Kerning), um die Wirkung in anderen Sprachen zu testen. In Lateinisch sieht zum Beispiel fast jede Schrift gut aus. Quod erat demonstrandum. Seit 1975 fehlen in den meisten Testtexten die Zahlen, weswegen nach TypoGb. 204 § ab dem Jahr 2034 Zahlen in 86 der Texte zur Pflicht werden. Nichteinhaltung wird mit bis zu 245 € oder 368 $ bestraft. Genauso wichtig in sind mittlerweile auch Âçcèñtë, die in neueren Schriften aber fast immer enthalten sind. Ein wichtiges aber schwierig zu integrierendes Feld sind OpenType-Funktionalitäten. Je nach Software und Voreinstellungen können eingebaute Kapitälchen, Kerning oder Ligaturen (sehr pfiffig) nicht richtig dargestellt werden.Dies ist ein Typoblindtext. An ihm kann man sehen, ob alle Buchstaben da sind und wie sie aussehen. Manchmal benutzt man Worte wie Hamburgefonts, Rafgenduks"
+  layouts:
+    application:
+      title: "SpeakerinnenListe"
+      list: "Speakerinnen"
+      contact: "Kontakt"
+      impressum: "Impressum"
+      logged_as: "Eingelogt als" 
+      my_profile: "Mein Profil"
+      account: "Benutzerkonto"
+      logout: "Ausloggen"
+      signup: "Registrieren"
+      login: "Anmelden"
+  profiles:
+    form:
+      not_saved: 'hinderte diese Profil am speichern:'
+      profile_from: 'Profil von'
+      delete_profile: 'Lösche das Foto'
+      update: "Aktualisiere das Profil"
+    profile:
+      profile.topics: 'Meine Themen:'
+      profile.languages: 'Meine Sprache/n:'
+      profile.talks: 'Vorträge gehalten auf:'
+      contact: 'Kontakt:'  
+      twitter: 'Twitter:'
+      show: 'Show'
+      edit: "Edit"
+      destroy: "Destroy"
+      sure: "Are you sure?"
+    edit:
+      show: "Anzeigen"
+      back: "Zurück"
+    index:
+      title: "Speakerinnen"
+      text: "Keine Ausreden mehr für frauenlose Panels. Diese Liste ist work in progress – bei Wunsch auf Eintragung, bitte melden. Es wird empfohlen, sich die Liste einmal komplett durchzulesen, dann geht auch nichts verloren, denn manche Damen haben sehr spezielle und interessante Fachgebiete. Sie wollen schließlich einen tollen Event – und Sie wissen ja: dafür muss man sich auch ein bisschen Zeit nehmen :) Mit STRG+F kann man per Browsersuchfunktion (in der Regel) nach Stichworten suchen. Die Reihenfolge der Damen ergab sich durch ihr Hinzufügen und hat keinerlei weitere Aussage."
+    new:
+      new_profile: "Neues Profil"
+      back: "Zurück"
+    show:
+      profile_from: 'Profil von'
+      profile.topics: 'Meine Themen:'
+      profile.languages: 'Meine Sprache/n:'
+      profile.talks: 'Vorträge gehalten auf:' 
+      bio: "Bio:"
+      email: "Email:"
+      twitter: 'Twitter:'  
+      back: "Zurück"
+      edit: "Bearbeiten"
+  flash:
+    profiles:
+      created: 'Profil wurde erfolgreich erstellt.'
+      updated: 'Profil wurde erfolgreich geändert.'
+      destroyed: 'Profile wurde erfolgreich gelöscht.'
+      no_permission: 'Keine Rechte das Profil zu bearbeiten'
+  activerecord:
+    attributes:
+      profile:    
+        firstname: 'Vorname'
+        lastname: "Nachname"
+        bio: "Bio"
+        topics: "Themen"
+        talks: "Vorträge"
+        languages: "Sprachen"
+        city: "Stadt"
+        twitter: "Twitter"
+        picture: "Bild"
+  devise:
+    registrations:
+      edit:
+        account_from: "Account von" 
+        password_needed: '(wir brauchen dein jetziges Passwort um es ändern zu können)'
+        password_blank: "(leer lassen wenn das Passwort nicht geändert werden soll)"
+        update: "Aktualisier Account"
+        delete_account: "Lösche meinen Account"
+        unhappy: "Unglücklich?"
+        delete: "Löschen"
+        sure: "Sicher?"
+        confirmation: "Warte auf die Bestätigung von: "
