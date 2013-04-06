@@ -10,8 +10,10 @@
 #   timeout: 5000
 
 development:
-  adapter: sqlite3
-  database: db/development.sqlite3
+  adapter: postgresql
+  database: speakerinnen_development
+  pool: 5
+  timeout: 5000
 
 
 
@@ -26,8 +28,7 @@ test:
   timeout: 5000
   # adapter: postgresql
   # database: tts_test
-  # username: myapp
-  # password: password # from psql setup, see Postgresql
+  
 
 
 production:

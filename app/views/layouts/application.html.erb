@@ -16,6 +16,13 @@
         <li><a href="/profiles"><%= t ".contact" %></a></li>
         <li><a href="/profiles"><%= t ".impressum" %></a></li>
       </ul>
+        <%= form_tag("/search", :method => "get", :class =>"navbar-form pull-left") do %>
+          <%= text_field_tag(:q, nil, :class => "span2") %>
+          <%= label_tag(:q) do %> 
+           <%= button_tag("Search", :class => "btn") %>
+          <% end %>
+        <% end %>
+
       <p class="navbar-text pull-right">
         <% if profile_signed_in? %>
           <%= t ".logged_as" %> <strong><%= current_profile.firstname %></strong>.|
