@@ -10,13 +10,13 @@
       </div>
       
       <div class="span5">
-        <div class="header_small">Meine Themen:</div>
+        <div class="header_small"><%= t ".topics" %></div>
         <%= profile.topics %>
         <p></p>
-        <div class="header_small">Meine Sprache/n:</div>
+        <div class="header_small"><%= t ".languages" %></div>
         <%= profile.languages %>
         <p></p>
-        <div class="header_small">Vorträge gehalten auf:</div>
+        <div class="header_small"><%= t ".talks" %></div>
           <%= profile.talks %>
         <p></p>
       </div>
@@ -24,13 +24,13 @@
       <% else %>
 
         <div class="span8">
-          <div class="header_small">Meine Themen:</div>
+          <div class="header_small"><%= t ".topics" %></div>
           <%= profile.topics %>
           <p></p>
-          <div class="header_small">Meine Sprache/n:</div>
+          <div class="header_small"><%= t ".languages" %></div>
           <%= profile.languages %>
           <p></p>
-          <div class="header_small">Vorträge gehalten auf:</div>
+          <div class="header_small"><%= t ".talks" %></div>
             <%= profile.talks %>
           <p></p>
         </div>
@@ -41,11 +41,11 @@
   <div class="row">
     <div class="span8">
       <div class="header_small">
-      Kontakt:
+      <%= t ".contact" %>
       </div>
       <%= mail_to profile.email %>
       <p></p>  <div class="header_small">
-      Twitter:
+      <%= t ".twitter" %>
       </div>
       <%= profile.twitter %>
     <p></p>
@@ -56,10 +56,10 @@
 <div class="row">
   <div class="span8">
     <div class="btn-toolbar">
-      <%= link_to 'Show', profile, :class =>"btn btn-success btn-small" %>
+      <%= link_to(t(".show"), profile, :class =>"btn btn-success btn-small") %>
       <% if can_edit_profile?(current_profile, profile) %>
-        <%= link_to 'Edit', edit_profile_path(profile), :class =>"btn btn-danger btn-small" %>
-        <%= link_to 'Destroy', profile, method: :delete, data: { confirm: 'Are you sure?' }, :class =>"btn btn-primary btn-small" %>
+        <%= link_to(t(".edit"), edit_profile_path(profile), :class =>"btn btn-danger btn-small") %>
+        <%= link_to(t(".destroy"), profile, method: :delete, data: { confirm: t(".sure")}, :class =>"btn btn-primary btn-small") %>
       <% end %>
     </div>
     <hr/>

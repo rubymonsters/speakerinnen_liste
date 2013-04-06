@@ -2,7 +2,7 @@
     <%= devise_error_messages! %>
 
   <fieldset>
-    <legend>Account von <%= @profile.firstname %></legend>
+    <legend><%= t ".account_from" %> <%= @profile.firstname %></legend>
     
     <div class="control-group">
       <%= f.label :email, class:"control-label" %>
@@ -12,23 +12,23 @@
     </div>
 
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-      <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+      <div><%= t ".confirmation" %><%= resource.unconfirmed_email %></div>
     <% end %>
 
     <div class="controll-group">
       <%= f.label :altes_passwort, class:"control-label" %> 
       <div class="controls">
         <%= f.password_field :current_password, class:"input-xlarge", id:"input01" %>
-        <p class="help-block">(we need your current password to confirm your changes)</p>
+        <p class="help-block"><%= t ".password_needed" %></p>
         <br>
       </div>
     </div>
 
     <div class="controll-group">
-      <%= f.label :neues_passwort, class:"control-label"%>
+      <%= f.label :neues_passwort, class:"control-label" %>
       <div class="controls">
         <%= f.password_field :password, :autocomplete => "off", class:"input-xlarge", id:"input01" %>
-      <p class="help-block">(leave blank if you don't want to change it)</p>
+      <p class="help-block"><%= t ".password_blank" %></p>
       <br>
       </div>
     </div>
@@ -40,14 +40,14 @@
       </div>
     </div>
   <div class="form-actions">
-    <%= f.submit "Update Account", class:"btn btn-danger"%>
+    <%= f.submit(t(".update"), class:"btn btn-danger") %>
   </div>
 
 <% end %>
 
-<h3>Lösche meinen Account</h3>
+<h3><%= t ".delete_account" %></h3>
   <div class="form-actions">
-    <p>Unhappy? <%= button_to "Löschen", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete, class:"btn btn-primary" %>.</p>
+    <p><%= t ".unhappy" %><%= button_to(t(".delete"), registration_path(resource_name), :data => { :confirm => t(".sure") }, :method => :delete, class:"btn btn-primary") %>.</p>
   </div>
 </fieldset>
 </form>
