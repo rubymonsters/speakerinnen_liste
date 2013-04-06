@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>SpeakerinnenListe</title>
+  <title><%= t ".title" %></title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
@@ -10,21 +10,21 @@
 <div class="navbar navbar-fixed-top">
   <div class="navbar-inner">
     <div class="container">
-      <a class="brand" href="/">Speakerinnen Liste</a>
+      <a class="brand" href="/"><%= t ".title" %></a>
       <ul class="nav" id="main-menu-left">
-        <li><a href="/profiles">Speakerinnen</a></li>
-        <li><a href="/profiles">Kontakt</a></li>
-        <li><a href="/profiles">Impressum</a></li>
+        <li><a href="/profiles"><%= t ".list" %></a></li>
+        <li><a href="/profiles"><%= t ".contact" %></a></li>
+        <li><a href="/profiles"><%= t ".impressum" %></a></li>
       </ul>
       <p class="navbar-text pull-right">
         <% if profile_signed_in? %>
-          Eingelogged als <strong><%= current_profile.firstname %></strong>. | 
-           <%= link_to 'Mein Profil', profile_path(current_profile), :class => 'navbar-link' %> |
-          <%= link_to 'Account', edit_profile_registration_path, :class => 'navbar-link' %> |
-          <%= link_to "Logout", destroy_profile_session_path, method: :delete, :class => 'navbar-link' %>
+          <%= t ".logged_as" %> <strong><%= current_profile.firstname %></strong>.|
+          <%= link_to(t(".my_profile"), profile_path(current_profile), :class => 'navbar-link')%> |
+          <%= link_to(t(".account"), edit_profile_registration_path, :class => 'navbar-link') %> |
+          <%= link_to(t(".logout"), destroy_profile_session_path, method: :delete, :class => 'navbar-link') %>
         <% else %>
-          <%= link_to "Sign up", new_profile_registration_path, :class => 'navbar-link' %> |
-          <%= link_to "Login", new_profile_session_path, :class => 'navbar-link' %>
+          <%= link_to(t(".signup"), new_profile_registration_path, :class => 'navbar-link') %> |
+          <%= link_to(t(".login"), new_profile_session_path, :class => 'navbar-link') %>
         <% end %>
       </p>
     </div>
