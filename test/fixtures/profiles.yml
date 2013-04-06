@@ -6,7 +6,6 @@ one:
   email: horst@mail.de
   encrypted_password: <%= Profile.new.send(:password_digest, 'Testpassword') %>
   bio: MyText
-  topics: MyString
   languages: Deutsch
   city: Berlin
   twitter: MyString
@@ -18,7 +17,6 @@ two:
   lastname: lastname
   email: inge@mail.de
   bio: MyText
-  topics: MyString
   languages: Deutsch
   city: Berlin
   twitter: MyString
@@ -30,7 +28,6 @@ jane:
   lastname: MyString
   email: jane_admin@server.org
   bio: MyText
-  topics: MyString
   languages: MyString
   city: MyString
   twitter: MyString
