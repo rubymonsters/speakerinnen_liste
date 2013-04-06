@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   private
 
 def set_locale
-  I18n.locale = :de
+  I18n.locale = :en
   # I18n.locale = params[:locale] if params[:locale].present?
   # current_user.locale
   # request.subdomain
