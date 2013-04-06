@@ -9,7 +9,7 @@ class ProfileTest < ActionController::IntegrationTest
 
   test "viewing index page profile" do
     visit '/profiles'
-    assert page.has_content?('Meine Themen')
+    assert page.has_content?(I18n.t("profiles.profile.topics"))
   end
 
   test "login works with password" do
