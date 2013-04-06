@@ -1,6 +1,8 @@
 <div class="container">
   <h3 class="profile_name">
+    <%= link_to profile_path(profile) do %>
     <%= profile.firstname %>&nbsp;<%= profile.lastname %>
+    <% end %>
   </h3>
   <div class="row"> 
     <% if profile.picture.present? %>
