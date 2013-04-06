@@ -4,7 +4,6 @@ class ProfilesController < ApplicationController
 
 
   def index
-    p params
   if params[:topic]
     @profiles = Profile.tagged_with(params[:topic])
   else

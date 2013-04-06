@@ -6,6 +6,8 @@ SpeakerinnenListe::Application.routes.draw do
 
   get 'topics/:topic', to: 'profiles#index', as: :topic
 
+  match 'search' => 'search#search'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

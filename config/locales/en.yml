@@ -53,8 +53,8 @@ en:
   flash:
     profiles:
       created: 'Profile was successfully created.'
-      updated: 'Profile was successfully created.'
-      destroyed: 'Profile was successfully created.'
+      updated: 'Profile was successfully updated.'
+      destroyed: 'Profile was successfully deleted.'
       no_permission: 'No Permission to edit the Profile'
   activerecord:
     attributes:

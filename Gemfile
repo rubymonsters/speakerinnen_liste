@@ -7,6 +7,8 @@ gem 'bootswatch-rails'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
+gem 'kaminari'
+
 gem 'devise'
 gem 'carrierwave'
 gem "fog", "~> 1.3.1"

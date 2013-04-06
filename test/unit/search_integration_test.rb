@@ -30,7 +30,7 @@ class SearchIntegrationTest < ActiveSupport::TestCase
   end
 
   test "there is a list of safe columns to search" do
-    expected = [:bio, :firstname, :lastname, :topics, :languages, :city]
+    expected = [:bio, :firstname, :lastname, :languages, :city]
     assert_equal expected, Profile.safe_search_columns
   end
 

@@ -23,7 +23,7 @@ class ProfileTest < ActionController::IntegrationTest
     visit profile_path(@horst)
     click_link('Edit')
     assert_equal find_field('profile[topic_list]').value, 'Fruehling'
-    save_and_open_page
+    # save_and_open_page
   end
 
   test "show Sommer tag" do
@@ -33,8 +33,7 @@ class ProfileTest < ActionController::IntegrationTest
       click_link('Sommer')
     end
     assert page.has_css?('h3.profile_name', :count => 1)
-    save_and_open_page
-
+    # save_and_open_page
   end
 
    test "show Fruehling tag" do
@@ -44,8 +43,7 @@ class ProfileTest < ActionController::IntegrationTest
       click_link('Fruehling')
     end
     assert page.has_css?('h3.profile_name', :count => 2)
-    save_and_open_page
-
+    # save_and_open_page
   end
  
 end

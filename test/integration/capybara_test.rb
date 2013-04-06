@@ -9,7 +9,7 @@ class ProfileTest < ActionController::IntegrationTest
 
   test "viewing index page profile" do
     visit '/profiles'
-    assert page.has_content?('My topics')
+    assert page.has_content?(I18n.t("profiles.profile.topics"))
   end
 
   test "login works with password" do
@@ -21,7 +21,7 @@ class ProfileTest < ActionController::IntegrationTest
     fill_in('profile[password]', :with => 'Testpassword')
     click_button "Login" 
     # opens the site where you are in the test right now
-    save_and_open_page
+    # save_and_open_page
 
     assert page.has_content?('Signed in successfully.')
   end
@@ -38,7 +38,7 @@ class ProfileTest < ActionController::IntegrationTest
     fill_in('profile[password]', :with => 'wrongpassword')
     click_button "Login" 
     # opens the site where you are in the test right now
-    save_and_open_page
+    # save_and_open_page
     assert page.has_content?('Invalid email or password.')
   end
  
