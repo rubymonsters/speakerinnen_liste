@@ -6,12 +6,7 @@
     </p>
   <% else %>
   <p style="font-size:18px">
-    You searched for <b>"<%= params[:q] %>"</b> and we found <%= @results.size %> 
-    <% if @results.size == 1 %>
-      result. 
-    <% else %>
-      results.
-    <% end %>
+    You searched for <b>"<%= params[:q] %>"</b> and we found <%= pluralize(@results.size, "result") %>. 
   </p>
     <%= render :partial => "/profiles/profile", :collection => @results %>
   <% end %>
