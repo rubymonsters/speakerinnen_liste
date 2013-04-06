@@ -3,7 +3,7 @@ SpeakerinnenListe::Application.routes.draw do
   devise_for :profiles
 
   resources :profiles, :except => [:new, :create]
-
+  match 'search' => 'search#search'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
