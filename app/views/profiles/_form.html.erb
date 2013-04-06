@@ -13,80 +13,79 @@
 
   <fieldset>
     <legend><%= t ".profile_from" %><%= @profile.firstname %></legend>
-123
     <div class="control-group">
-    <%= f.label :firstname, class:"control-label"%>
-    <div class="controls">
-      <%= f.text_field :firstname, class:"input-xlarge", id:"input01"%>
+      <%= f.label :firstname, class:"control-label"%>
+      <div class="controls">
+        <%= f.text_field :firstname, class:"input-xlarge", id:"input01"%>
+      </div>
     </div>
-  </div>
   
-  <div class="control-group">
-    <%= f.label :lastname, class:"control-label" %>
-    <div class="controls">
-      <%= f.text_field :lastname, class:"input-xlarge", id:"input01" %>
+    <div class="control-group">
+      <%= f.label :lastname, class:"control-label" %>
+      <div class="controls">
+        <%= f.text_field :lastname, class:"input-xlarge", id:"input01" %>
+      </div>
     </div>
-  </div>
 
-  <div class="control-group">
-    <%= f.label :bio, class:"control-label" %>
-    <div class="controls">
-      <%= f.text_area :bio, class:"input-xlarge", id:"input01" %>
+    <div class="control-group">
+      <%= f.label :bio, class:"control-label" %>
+      <div class="controls">
+        <%= f.text_area :bio, class:"input-xlarge", id:"input01" %>
+      </div>
     </div>
-  </div>
 
-  <div class="control-group">
-    <%= f.label :topics, class:"control-label" %>
-    <div class="controls">
-      <%= f.text_field :topics, class:"input-xlarge", id:"input01" %>
+    <div class="control-group">
+      <%= f.label :topics, class:"control-label" %>
+      <div class="controls">
+        <%= f.text_field :topics, class:"input-xlarge", id:"input01" %>
+      </div>
     </div>
-  </div>
 
-  <div class="control-group">
-    <%= f.label :talks, class:"control-label" %>
-    <div class="controls">
-      <%= f.text_field :talks, class:"input-xlarge", id:"input01" %>
+    <div class="control-group">
+      <%= f.label :talks, class:"control-label" %>
+      <div class="controls">
+        <%= f.text_field :talks, class:"input-xlarge", id:"input01" %>
+      </div>
     </div>
-  </div>
-  
-  <div class="control-group">
-    <%= f.label :languages, class:"control-label" %>
-    <div class="controls">
-      <%= f.text_field :languages, class:"input-xlarge", id:"input01" %>
+    
+    <div class="control-group">
+      <%= f.label :languages, class:"control-label" %>
+      <div class="controls">
+        <%= f.text_field :languages, class:"input-xlarge", id:"input01" %>
+      </div>
     </div>
-  </div>
 
-  <div class="control-group">
-    <%= f.label :city, class:"control-label" %>
-    <div class="controls">
-      <%= f.text_field :city, class:"input-xlarge", id:"input01" %>
+    <div class="control-group">
+      <%= f.label :city, class:"control-label" %>
+      <div class="controls">
+        <%= f.text_field :city, class:"input-xlarge", id:"input01" %>
+      </div>
     </div>
-  </div>
 
-  <div class="control-group">
-    <%= f.label :twitter, class:"control-label" %>
-    <div class="controls">
-      <%= f.text_field :twitter, class:"input-xlarge", id:"input01" %>
+    <div class="control-group">
+      <%= f.label :twitter, class:"control-label" %>
+      <div class="controls">
+        <%= f.text_field :twitter, class:"input-xlarge", id:"input01" %>
+      </div>
     </div>
-  </div>
 
-  <div class="control-group">
-    <%= f.label :picture, class:"control-label" %>
-    <div class="controls">
-      <%= image_tag(@profile.picture_url, :width => 100) if @profile.picture.present? %>
-      <%= f.file_field :picture, class:"input-xlarge", id:"input01" %>
-      <br>
-      <br>
-      <label>
-      <%= f.check_box :remove_picture %>
-      <%= t ".delete_profile" %>
-      </label>
+    <div class="control-group">
+      <%= f.label :picture, class:"control-label" %>
+      <div class="controls">
+        <%= image_tag(@profile.picture_url, :width => 100) if @profile.picture.present? %>
+        <%= f.file_field :picture, class:"input-xlarge", id:"input01" %>
+        <br>
+        <br>
+        <label>
+        <%= f.check_box :remove_picture %>
+        <%= t ".delete_profile" %>
+        </label>
+      </div>
     </div>
-  </div>
 
-  <div class="form-actions">
-    <%= f.submit(t(".update"), class:"btn btn-danger")%>
-  </div>
+    <div class="form-actions">
+      <%= f.submit(t(".update"), class:"btn btn-danger")%>
+    </div>
   </fieldset>
 </form>
 <% end %>
