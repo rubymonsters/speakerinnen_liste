@@ -4,7 +4,7 @@ SpeakerinnenListe::Application.routes.draw do
 
   resources :profiles, :except => [:new, :create]
 
-  get 'tags/:tag', to: 'profiles#index', as: :tag
+  get 'topics/:topic', to: 'profiles#index', as: :topic
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

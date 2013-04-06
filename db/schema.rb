@@ -11,14 +11,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130406093746) do
+ActiveRecord::Schema.define(:version => 20130406112654) do
 
   create_table "profiles", :force => true do |t|
     t.string   "firstname"
     t.string   "lastname"
     t.string   "email"
     t.text     "bio"
-    t.string   "topics"
     t.string   "languages"
     t.string   "city"
     t.string   "twitter"

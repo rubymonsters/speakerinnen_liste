@@ -4,8 +4,9 @@ class ProfilesController < ApplicationController
 
 
   def index
-  if params[:tag]
-    @profiles = Profile.tagged_with(params[:tag])
+    p params
+  if params[:topic]
+    @profiles = Profile.tagged_with(params[:topic])
   else
     @profiles = Profile.all
   end

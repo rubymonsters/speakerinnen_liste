@@ -9,10 +9,9 @@
       <div class="span3">
         <%= image_tag(profile.picture_url, :width => 300) %>  
       </div>
-      
       <div class="span5">
         <div class="header_small">Tags:</div>
-          <%= raw profile.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
+          <%= raw profile.topic_list.map { |t| link_to t, topic_path(t) }.join(', ') %>
         <p></p>
         <div class="header_small">Meine Sprache/n:</div>
         <%= profile.languages %>
@@ -26,7 +25,7 @@
 
         <div class="span8">
           <div class="header_small">Tags:</div>
-          <%= raw profile.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
+          <%= raw profile.topic_list.map { |t| link_to t, topic_path(t) }.join(', ') %>
           <p></p>
           <div class="header_small">Meine Sprache/n:</div>
           <%= profile.languages %>

@@ -15,7 +15,7 @@
 
     <div class="span6">
       <div class="header">Meine Tags:</div>
-      <%= raw @profile.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
+      <%= raw @profile.topic_list.map { |t| link_to t, topic_path(t) }.join(', ') %>
       <p></p>
       <div class="header">Meine Sprache/n:</div>
         <%= @profile.languages %>
@@ -29,7 +29,7 @@
     
     <div class="span6">
       <div class="header">Meine Tags:</div>
-      <%= raw @profile.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
+      <%= raw @profile.topic_list.map { |t| link_to t, topic_path(t) }.join(', ') %>
       <p></p>
       <div class="header">Meine Sprache/n:</div>
         <%= @profile.languages %>
