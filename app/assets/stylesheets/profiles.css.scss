@@ -23,6 +23,7 @@ img {
 
 }
 
+
 #topics_cloud {
   width: 400px;
   line-height: 1.6em;
@@ -35,3 +36,9 @@ img {
     font-weight: bold;
     font-size: 16px;
   }
+
+// this is css to style the search box in the nav bar
+.navbar form { width: 210px; }
+.navbar form input { float: left; }
+.navbar form label { float: left; }
+

@@ -13,8 +13,8 @@
       <a class="brand" href="/"><%= t ".title" %></a>
       <ul class="nav" id="main-menu-left">
         <li><a href="/profiles"><%= t ".list" %></a></li>
-        <li><a href="/profiles"><%= t ".contact" %></a></li>
-        <li><a href="/profiles"><%= t ".impressum" %></a></li>
+        <li><a href="/contact"><%= t ".contact" %></a></li>
+        <li><a href="/impressum"><%= t ".impressum" %></a></li>
       </ul>
         <%= form_tag("/search", :method => "get", :class =>"navbar-form pull-left") do %>
           <%= text_field_tag(:q, nil, :class => "span2") %>
@@ -25,7 +25,7 @@
 
       <p class="navbar-text pull-right">
         <% if profile_signed_in? %>
-          <%= t ".logged_as" %> <strong><%= current_profile.firstname %></strong>.|
+          
           <%= link_to(t(".my_profile"), profile_path(current_profile), :class => 'navbar-link')%> |
           <%= link_to(t(".account"), edit_profile_registration_path, :class => 'navbar-link') %> |
           <%= link_to(t(".logout"), destroy_profile_session_path, method: :delete, :class => 'navbar-link') %>
