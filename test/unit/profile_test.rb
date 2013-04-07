@@ -7,9 +7,22 @@ class ProfileTest < ActiveSupport::TestCase
     assert_equal profiles(:one).firstname, "Horst", "Firstname is there"
   end
 
-  test "is_admin?" do
-    assert Profile.new(email: "jane_admin@server.org").is_admin?, "returns true for an admin"
-    assert (not Profile.new(email: "some_other_email@server.org").is_admin?), "returns false for non-admin"
+  test "admin? is true when an admin user" do
+    profile = Profile.new
+    profile.admin = true
+    profile.save
+    assert profile.admin?, "returns true for an admin"
+  end
+
+  test "admin? is false for non-admin user" do
+    profile = Profile.new
+    profile.admin = false
+    profile.save
+    assert (not profile.admin?), "returns false for non-admin"
+  end
+
+  test "admin? is false by default" do
+    assert (not Profile.new.admin?), "default setting for admin is false"
   end
 
   test "does not validate profile without email" do
