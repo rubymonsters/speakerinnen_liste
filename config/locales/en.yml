@@ -62,7 +62,7 @@ en:
         firstname: 'Firstname'
         lastname: "Lastname"
         bio: "Bio"
-        topics: "Topics"
+        topic_list: "Tags, seperated by comma"
         talks: "Talks"
         languages: "Languages"
         city: "City"
