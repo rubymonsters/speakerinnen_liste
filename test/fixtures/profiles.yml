@@ -32,3 +32,4 @@ jane:
   city: MyString
   twitter: MyString
   picture: MyString
+  admin: true
