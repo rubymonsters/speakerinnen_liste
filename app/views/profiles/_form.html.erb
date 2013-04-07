@@ -40,6 +40,13 @@
         <%= f.text_field :topic_list, class:"input-xlarge", id:"input01" %>
       </div>
     </div>
+
+    <div class="control-group">
+      <%= f.label :tag_list, class:"control-label" %>
+      <div class="controls tag_list">
+        <%= ActsAsTaggableOn::Tag.uniq.pluck(:name).join(' ,') %>
+      </div>
+    </div>
     
     <div class="control-group">
       <%= f.label :talks, class:"control-label" %>
