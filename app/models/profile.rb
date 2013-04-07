@@ -32,10 +32,6 @@ class Profile < ActiveRecord::Base
   def self.safe_search (query)
     restricted_search(query, safe_search_columns)
   end
-
-  def is_admin?
-    email == "jane_admin@server.org"
-  end
 end
 
 
