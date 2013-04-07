@@ -43,5 +43,4 @@ class SearchIntegrationTest < ActiveSupport::TestCase
     result = Profile.safe_search("Drago")
     assert_equal [profile1], result 
   end
-
 end  
