@@ -13,8 +13,8 @@
       <a class="brand" href="/"><%= t ".title" %></a>
       <ul class="nav" id="main-menu-left">
         <li><a href="/profiles"><%= t ".list" %></a></li>
-        <li><a href="/profiles"><%= t ".contact" %></a></li>
-        <li><a href="/profiles"><%= t ".impressum" %></a></li>
+        <li><a href="/contact"><%= t ".contact" %></a></li>
+        <li><a href="/impressum"><%= t ".impressum" %></a></li>
       </ul>
         <%= form_tag("/search", :method => "get", :class =>"navbar-form pull-left") do %>
           <%= text_field_tag(:q, nil, :class => "span2") %>
