@@ -23,6 +23,7 @@ img {
 
 }
 
+<<<<<<< HEAD
 #topics_cloud {
   width: 400px;
   line-height: 1.6em;
@@ -30,3 +31,10 @@ img {
   .m { font-size: 1.2em; }
   .l { font-size: 1.8em; }
 }
+=======
+// this is css to style the search box in the nav bar
+.navbar form { width: 210px; }
+.navbar form input { float: left; }
+.navbar form label { float: left; }
+
+>>>>>>> fixed the layout of the main nav
