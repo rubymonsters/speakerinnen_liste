@@ -23,7 +23,7 @@ class ProfileTest < ActionController::IntegrationTest
     # opens the site where you are in the test right now
     # save_and_open_page
 
-    assert page.has_content?('Signed in successfully.')
+    assert page.has_content?('Login in successfully.')
   end
 
   test "login works not with wrong password" do
