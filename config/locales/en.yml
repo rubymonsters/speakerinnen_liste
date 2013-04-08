@@ -24,7 +24,7 @@ en:
     profile:
       topics: 'My topics:'
       languages: 'My languages:'
-      talks: 'Talks held at:'
+      talks: 'Previous Talks:'
       contact: 'Contact:'  
       twitter: 'Twitter:'
       show: 'Show'
