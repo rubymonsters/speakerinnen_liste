@@ -7,7 +7,7 @@
   </p>
 </div>
 <div class="span12" id="topics_cloud">
-  <h3>Tagcloud:</h3>
+  <h3>TopicCloud:</h3>
   <% tag_cloud Profile.topic_counts, %w[s m l] do |topic, css_class| %>
     <%= link_to topic.name, topic_path(topic.name), class: css_class %>
   <% end %>
