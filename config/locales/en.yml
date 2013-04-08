@@ -62,8 +62,8 @@ en:
         firstname: 'Firstname'
         lastname: "Lastname"
         bio: "Bio"
-        topic_list: "Tags, seperated by comma"
-        tag_list: "already existing Tags"
+        topic_list: "Topics, comma seperated"
+        tag_list: "Already existing Topics"
         talks: "Talks"
         languages: "Languages"
         city: "City"
