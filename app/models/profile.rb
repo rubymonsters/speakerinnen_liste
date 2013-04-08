@@ -61,7 +61,7 @@ class Profile < ActiveRecord::Base
     where(auth.slice(:provider, :uid)).first_or_create do |profile|
       profile.provider = auth.provider
       profile.uid = auth.uid
-      profile.username = auth.info.nickname
+      profile.firstname = auth.info.nickname
     end
   end
   
