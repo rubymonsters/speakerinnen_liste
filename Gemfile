@@ -9,28 +9,21 @@ gem 'bootswatch-rails'
 
 gem 'kaminari'
 
+gem 'pg'
 gem 'devise'
 gem 'carrierwave'
 gem "fog", "~> 1.3.1"
 gem "mini_magick", "~> 3.5.0"
 gem 'textacular', '~> 3.0', require: 'textacular/rails'
 gem "jquery-rails"
+gem 'acts-as-taggable-on'
 
-# use sqlite3 database in development mode
 group :development do
-  gem 'sqlite3'
   gem "letter_opener"
 end
 
-gem 'acts-as-taggable-on'
-
 group :development, :test do
   gem 'capybara', '~> 2.0.2'
-end
-
-# use postgres database in production mode
-group :production do
-  gem 'pg'
 end
 
 # Gems used only for assets and not required
