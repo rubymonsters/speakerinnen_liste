@@ -8,6 +8,6 @@
   <p style="font-size:18px">
     You searched for <b>"<%= params[:q] %>"</b> and we found <%= pluralize(@results.size, "result") %>. 
   </p>
-    <%= render :partial => "/profiles/profile", :collection => @results %>
+    <%= render :partial => "/profiles/profile", :collection => @results.map(&:profile) %>
   <% end %>
 </div>
