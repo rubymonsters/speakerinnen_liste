@@ -12,26 +12,6 @@ class Profile < ActiveRecord::Base
   acts_as_taggable_on :topics
 
   mount_uploader :picture, PictureUploader
-
-  def self.restricted_search (query, columns_to_search)
-    basic_search(query_combiner(query, columns_to_search), false)
-  end
-
-  def self.query_combiner (query, columns_to_search)
-    combined_query = {}
-    columns_to_search.each do |column| 
-      combined_query.store(column, query)
-    end
-    combined_query
-  end
-
-  def self.safe_search_columns 
-    [:bio, :firstname, :lastname, :languages, :city] # TODO add :topics,
-  end
-
-  def self.safe_search (query)
-    restricted_search(query, safe_search_columns)
-  end
 end
 
 
