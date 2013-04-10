@@ -37,7 +37,7 @@
     <div class="control-group">
       <%= f.label :topic_list, class:"control-label" %>
       <div class="controls">
-        <%= f.text_field :topic_list, class:"input-xlarge", id:"tag-field" %>
+        <%= f.text_field :topic_list, class:"input-xlarge", id:"tag-field-form" %>
       </div>
     </div>
 
@@ -102,10 +102,10 @@
 <script type="text/javascript">
   $(".add-tag-trigger").click(function() {
     var nameOfTag    = $(this).html();
-    var existingTags = $("#tag-field").val();
+    var existingTags = $("#tag-field-form").val();
     //check if tag is in the list of tags
     if (existingTags.indexOf(nameOfTag) < 0) {
-      $("#tag-field").val(existingTags+', '+nameOfTag);
+      $("#tag-field-form").val(existingTags+', '+nameOfTag);
     }
   });
 </script>
