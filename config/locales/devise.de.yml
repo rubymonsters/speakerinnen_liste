@@ -53,3 +53,5 @@ de:
         subject: 'Anleitung um Ihr Passwort zurückzusetzen'
       unlock_instructions:
         subject: 'Anleitung um Ihren Account freizuschalten'
+    submit:
+      create: "Registrierung"

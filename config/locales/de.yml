@@ -22,14 +22,14 @@ de:
       delete_profile: 'Lösche das Foto'
       update: "Aktualisiere das Profil"
     profile:
-      profile.topics: 'Meine Themen:'
-      profile.languages: 'Meine Sprache/n:'
-      profile.talks: 'Vorträge gehalten auf:'
+      topics: 'Meine Themen:'
+      languages: 'Meine Sprache/n:'
+      talks: 'Vorträge gehalten auf:'
       contact: 'Kontakt:'  
       twitter: 'Twitter:'
-      show: 'Show'
-      edit: "Edit"
-      destroy: "Destroy"
+      show: 'Anzeigen'
+      edit: "Bearbeiten"
+      destroy: "Löschen"
       sure: "Are you sure?"
     edit:
       show: "Anzeigen"
@@ -42,9 +42,9 @@ de:
       back: "Zurück"
     show:
       profile_from: 'Profil von'
-      profile.topics: 'Meine Themen:'
-      profile.languages: 'Meine Sprache/n:'
-      profile.talks: 'Vorträge gehalten auf:' 
+      topics: 'Meine Themen:'
+      languages: 'Meine Sprache/n:'
+      talks: 'Vorträge gehalten auf:' 
       bio: "Bio:"
       email: "Email:"
       twitter: 'Twitter:'  
@@ -75,9 +75,15 @@ de:
         account_from: "Account von" 
         password_needed: '(wir brauchen dein jetziges Passwort um es ändern zu können)'
         password_blank: "(leer lassen wenn das Passwort nicht geändert werden soll)"
-        update: "Aktualisier Account"
+        update: "Aktualisiere Account"
         delete_account: "Lösche meinen Account"
         unhappy: "Unglücklich?"
         delete: "Löschen"
         sure: "Sicher?"
         confirmation: "Warte auf die Bestätigung von: "
+      new:
+        sign_up: "Registrieren"
+    sessions:
+      new:
+        login: "Anmelden"
+        
