@@ -2,7 +2,7 @@ SpeakerinnenListe::Application.routes.draw do
 
   devise_for :profiles
 
-  resources :profiles, :except => [:new, :create]
+  
 
   get 'topics/:topic', to: 'profiles#index', as: :topic
 
@@ -11,6 +11,11 @@ SpeakerinnenListe::Application.routes.draw do
   match 'contact' => 'home#contact'
 
   match 'impressum' => 'home#impressum'
+
+  scope "(:locale)", :locale => /en|de/ do
+    root :to => 'profiles#index'
+    resources :profiles, :except => [:new, :create]
+  end
 
 
   # The priority is based upon order of creation:
@@ -62,7 +67,7 @@ SpeakerinnenListe::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'profiles#index'
+  # root :to => 'profiles#index'
 
   # See how all your routes lay out with "rake routes"
 

@@ -1,10 +1,12 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  before_filter :set_locale
-  private
 
+  before_filter :set_locale
+  
+  private
   def set_locale
-    I18n.locale = :en
+    I18n.locale = params[:locale] || I18n.default_locale
+    Rails.application.routes.default_url_options[:locale] = I18n.locale
     # I18n.locale = params[:locale] if params[:locale].present?
     # current_user.locale
     # request.subdomain
