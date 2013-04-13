@@ -45,7 +45,7 @@
       <%= f.label :tag_list, class:"control-label" %>
       <div class="controls tag_list">
         <% ActsAsTaggableOn::Tag.uniq.pluck(:name).each do |tag_name| %>
-          <span class="label label-inverse add-tag-trigger"><%= tag_name %></span>
+          <span class="badge badge-inverse add-tag-trigger"><%= tag_name %></span>
         <% end %>
       </div>
     </div>

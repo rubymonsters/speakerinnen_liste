@@ -9,6 +9,7 @@ en:
       list: "Speakerinnen"
       contact: "Contact"
       impressum: "Impressum"
+      search: "Search"
       logged_as: "Logged in as" 
       my_profile: "My profile"
       account: "Account"
@@ -81,3 +82,8 @@ en:
         delete: "Delete"
         sure: "Are you sure?"
         confirmation: "Waiting for confirmation from: "
+      new:
+        sign_up: "Signup"
+    sessions:
+      new:
+        login: "Login"

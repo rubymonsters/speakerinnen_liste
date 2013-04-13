@@ -10,17 +10,18 @@
 <div class="navbar navbar-fixed-top">
   <div class="navbar-inner">
     <div class="container">
-      <a class="brand" href="/"><%= t ".title" %></a>
+      <%= link_to t(".title"), root_path, :class => "brand" %>
+
       <ul class="nav" id="main-menu-left">
-        <li><a href="/profiles"><%= t ".list" %></a></li>
-        <li><a href="/contact"><%= t ".contact" %></a></li>
-        <li><a href="/impressum"><%= t ".impressum" %></a></li>
+        <li><%= link_to t(".list"), profiles_path %></li>
+        <li><%= link_to t(".contact"), contact_path %></li>
+        <li><%= link_to t(".impressum"), impressum_path %></li>
       </ul>
 
-      <%= form_tag("/search", :method => "get", :class =>"navbar-form pull-left") do %>
+      <%= form_tag(search_path, :method => "get", :class =>"navbar-form pull-left") do %>
         <%= text_field_tag(:q, nil, :class => "span2") %>
         <%= label_tag(:q) do %> 
-          <%= button_tag("Search", :class => "btn") %>
+          <%= button_tag(t(".search"), :class => "btn") %>
         <% end %>
       <% end %>
 
@@ -31,7 +32,6 @@
 
       <p class="navbar-text pull-right">
         <% if profile_signed_in? %>
-          
           <%= link_to(t(".my_profile"), profile_path(current_profile), :class => 'navbar-link')%> |
           <%= link_to(t(".account"), edit_profile_registration_path, :class => 'navbar-link') %> |
           <%= link_to(t(".logout"), destroy_profile_session_path, method: :delete, :class => 'navbar-link') %>

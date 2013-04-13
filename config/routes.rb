@@ -1,19 +1,19 @@
 SpeakerinnenListe::Application.routes.draw do
 
-  devise_for :profiles
-
-  
-
-  get 'topics/:topic', to: 'profiles#index', as: :topic
-
-  match 'search' => 'search#search'
-  
-  match 'contact' => 'home#contact'
-
-  match 'impressum' => 'home#impressum'
-
   scope "(:locale)", :locale => /en|de/ do
-    root :to => 'profiles#index'
+
+    devise_for :profiles
+    
+    get 'topics/:topic', to: 'profiles#index', as: :topic
+
+    match 'search' => 'search#search'
+    
+    match 'contact' => 'home#contact'
+
+    match 'impressum' => 'home#impressum'
+
+    get '/', to: 'profiles#index', as: :root
+    
     resources :profiles, :except => [:new, :create]
   end
 

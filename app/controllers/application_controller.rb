@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   private
   def set_locale
     I18n.locale = params[:locale] || I18n.default_locale
-    Rails.application.routes.default_url_options[:locale] = I18n.locale
+    # Rails.application.routes.default_url_options[:locale] = I18n.locale
     # I18n.locale = params[:locale] if params[:locale].present?
     # current_user.locale
     # request.subdomain
@@ -14,7 +14,11 @@ class ApplicationController < ActionController::Base
     # request.remote_ip
   end
 
-  # def default_url_options(options = {})
-    # {locale: I18n.locale}
-  # end
+  def default_url_options
+    # super.merge(:locale => I18n.locale)
+
+    options = super
+    options.update(:locale => I18n.locale)
+    options
+  end
 end
