@@ -45,4 +45,11 @@ class ProfileTest < ActiveSupport::TestCase
 
     assert !testprofile.valid?, "Does not validate Profile with already taken email"
   end
+
+  test "fullname is firstname plus lastname" do
+    assert_equal profiles(:one).fullname, profiles(:one).firstname + ' ' + profiles(:one).lastname, "Fullname is there"
+    assert_equal profiles(:one).fullname, "Horst lastname", "Fullname is there"
+  end
+
+
 end

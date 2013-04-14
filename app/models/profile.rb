@@ -12,6 +12,10 @@ class Profile < ActiveRecord::Base
   acts_as_taggable_on :topics
 
   mount_uploader :picture, PictureUploader
+
+  def fullname
+    self[:firstname] + ' ' + self[:lastname]
+  end
 end
 
 
