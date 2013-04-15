@@ -10,7 +10,7 @@ class UserRedirectedToLoginTest < ActionDispatch::IntegrationTest
     
     click_link 'Login'
 
-    assert_equal '/profiles/sign_in', page.current_path
+    assert_equal '/en/profiles/sign_in', page.current_path
 
     # WHEN: we click the login button
     # check login button is there

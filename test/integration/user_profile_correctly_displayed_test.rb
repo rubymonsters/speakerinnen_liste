@@ -6,7 +6,7 @@ class UserProfileCorrectlyDisplayedTest < ActionDispatch::IntegrationTest
 
     # user = Profile.create(:firstname => "Debbie", :lastname => "Blass", :email => "sdf@asdf.com", :topics => "Ruby", :languages => "en", :bio => "bla bla")
     # use fixtures -> profiles.yml
-    get profile_path(profiles(:one))
+    get profile_path(profiles(:one), :locale => "en")
     assert_response :success 
     # name is right & in right place
     assert_select 'h2', /#{profiles(:one).firstname} #{profiles(:one).lastname}/

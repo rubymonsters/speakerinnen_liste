@@ -14,9 +14,10 @@ class SearchForUserTest < ActionController::IntegrationTest
     click_button('Search')
     #do a search 
     #show a results page
-    click_link(testprofile.firstname + "\u00A0" + testprofile.lastname)
+    click_link(testprofile.fullname)
     #show profile page
 
-    assert_equal current_path, profile_path(testprofile) 
+    assert_equal current_path, profile_path(testprofile, {:locale=>"en"})
+
   end
 end

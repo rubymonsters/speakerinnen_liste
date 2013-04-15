@@ -7,11 +7,11 @@ class StartPageTest < ActionDispatch::IntegrationTest
     #GIVEN: we are on the start page where we have a profile link
     get "/"
     assert_response :success
-    assert_select "a[href=?]", "/profiles"
+    assert_select "a[href=?]", "/en/profiles"
     assert_select "h3.profile_name", :minimum => 2
     #WHEN: we click the profil button
     #THEN: we end up on the profil page
-    get '/profiles'
+    get '/en/profiles'
     assert_response :success
 
     #GIVEN: we are on the start page where we have a login link

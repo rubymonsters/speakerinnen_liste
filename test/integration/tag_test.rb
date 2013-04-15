@@ -20,7 +20,7 @@ class ProfileTest < ActionController::IntegrationTest
     fill_in('profile[password]', :with => 'Testpassword')
     click_button "Login" 
 
-    visit profile_path(@horst)
+    visit profile_path(@horst, :locale => "en")
     click_link('Edit')
     assert_equal find_field('profile[topic_list]').value, 'Fruehling'
     # save_and_open_page
