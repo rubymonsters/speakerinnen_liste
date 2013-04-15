@@ -14,7 +14,7 @@ class Profile < ActiveRecord::Base
   mount_uploader :picture, PictureUploader
 
   def fullname
-    self[:firstname] + ' ' + self[:lastname]
+    "#{firstname} #{lastname}"
   end
 end
 
