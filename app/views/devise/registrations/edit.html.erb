@@ -15,14 +15,16 @@
       <div><%= t ".confirmation" %><%= resource.unconfirmed_email %></div>
     <% end %>
 
-    <div class="controll-group">
-      <%= f.label :altes_passwort, class:"control-label" %> 
-      <div class="controls">
-        <%= f.password_field :current_password, class:"input-xlarge", id:"input01" %>
-        <p class="help-block"><%= t ".password_needed" %></p>
-        <br>
+    <% if f.object.encrypted_password.present? %>
+      <div class="controll-group">
+        <%= f.label :altes_passwort, class:"control-label" %> 
+        <div class="controls">
+          <%= f.password_field :current_password, class:"input-xlarge", id:"input01" %>
+          <p class="help-block"><%= t ".password_needed" %></p>
+          <br>
+        </div>
       </div>
-    </div>
+    <% end %>
 
     <div class="controll-group">
       <%= f.label :neues_passwort, class:"control-label" %>

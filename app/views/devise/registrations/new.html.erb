@@ -1,3 +1,4 @@
+
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :class => "form-horizontal well"}) do |f| %>
   
   <% if @profile.errors.any? %>
@@ -94,28 +95,32 @@
     </div>
   </div>
 
-  <div class="control-group">
-    <%= f.label :password, class:"control-label" %>
-    <div class="controls">
-      <%= f.password_field :password, class:"input-xlarge" %>
-    </div>
-  </div>
 
-  <div class="control-group">
-    <%= f.label :password_confirmation, class:"control-label" %>
-    <div class="controls">
-      <%= f.password_field :password_confirmation, class:"input-xlarge" %>
+  <% if f.object.password_required? %>
+    <div class="control-group">
+      <%= f.label :password, class:"control-label" %>
+      <div class="controls">
+        <%= f.password_field :password, class:"input-xlarge" %>
+      </div>
     </div>
-  </div>
+
+    <div class="control-group">
+      <%= f.label :password_confirmation, class:"control-label" %>
+      <div class="controls">
+        <%= f.password_field :password_confirmation, class:"input-xlarge" %>
+      </div>
+    </div>
+  <% end %>
+
 
 
   <div class="form-actions">
     <%= f.submit(t(".sign_up"), class:"btn btn-primary")%>
   </div>
+  <% end %>
 
 
 
-<% end %>
 <%= render "devise/shared/links" %>
   </fieldset>
 </form>
