@@ -1,23 +1,24 @@
 require 'test_helper'
 
 class UserProfileCorrectlyDisplayedTest < ActionDispatch::IntegrationTest
-  fixtures :profiles
-  test "User Profile Correctly Displayed" do
 
-    # user = Profile.create(:firstname => "Debbie", :lastname => "Blass", :email => "sdf@asdf.com", :topics => "Ruby", :languages => "en", :bio => "bla bla")
-    # use fixtures -> profiles.yml
-    get profile_path(profiles(:one), :locale => "en")
-    assert_response :success 
-    # name is right & in right place
-    assert_select 'h2', /#{profiles(:one).firstname} #{profiles(:one).lastname}/
-    # email / twitter
-    assert_select "div", /#{profiles(:one).email}/
-    assert_select "div", /#{profiles(:one).twitter}/
-    # bio
-    assert_select "div", /#{profiles(:one).bio}/
+  test "user profile is correctly displayed" do
+    visit '/'
+    page.first('a', text: 'Show').click
+
+    assert page.has_css?('h2', :count => 1), 'one headline of the fullname'
+    assert page.has_content?('My topics')
+    assert page.has_content?('Bio')
+    assert page.has_content?('Twitter')
+  end
+
+  test "user profile is correctly displayed in german" do
+    visit '/de'
+    page.first('a', text: 'Anzeigen').click
+
+    assert page.has_css?('h2', :count => 1), 'one headline of the fullname'
+    assert page.has_content?('Meine Themen')
+    assert page.has_content?('Bio')
+    assert page.has_content?('Twitter')
   end
 end
-
-
-#Twitter is optional. Test that word twitter does not appear on show page if someone did not enter anything there
-
