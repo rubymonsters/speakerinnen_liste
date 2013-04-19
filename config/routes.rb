@@ -1,8 +1,9 @@
 SpeakerinnenListe::Application.routes.draw do
 
+
   scope "(:locale)", :locale => /en|de/ do
 
-    devise_for :profiles
+    devise_for :profiles, controllers: {omniauth_callbacks: "omniauth_callbacks"}
     
     get 'topics/:topic', to: 'profiles#index', as: :topic
 

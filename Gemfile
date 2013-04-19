@@ -11,6 +11,7 @@ gem 'kaminari'
 
 gem 'pg'
 gem 'devise'
+gem 'omniauth-twitter'
 gem 'carrierwave'
 gem "fog", "~> 1.3.1"
 gem "mini_magick", "~> 3.5.0"
