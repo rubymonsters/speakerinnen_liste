@@ -12,7 +12,7 @@
   <% end %>
 
   <fieldset>
-    <legend><%= t ".profile_from" %><%= @profile.firstname %></legend>
+    <legend><%= t ".profile_from" %> <%= @profile.firstname %></legend>
     <div class="control-group">
       <%= f.label :firstname, class:"control-label"%>
       <div class="controls">
@@ -105,7 +105,10 @@
     var existingTags = $("#tag-field-form").val();
     //check if tag is in the list of tags
     if (existingTags.indexOf(nameOfTag) < 0) {
-      $("#tag-field-form").val(existingTags+', '+nameOfTag);
-    }
-  });
+      if (existingTags.length == 0) 
+        $("#tag-field-form").val(nameOfTag);
+      else
+        $("#tag-field-form").val(existingTags+', '+nameOfTag);
+      }
+    });
 </script>
