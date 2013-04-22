@@ -14,7 +14,7 @@
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
       <div><%= t ".confirmation" %><%= resource.unconfirmed_email %></div>
     <% end %>
-
+    
     <% if f.object.encrypted_password.present? %>
       <div class="controll-group">
         <%= f.label :altes_passwort, class:"control-label" %> 
@@ -24,27 +24,27 @@
           <br>
         </div>
       </div>
+
+      <div class="controll-group">
+        <%= f.label :neues_passwort, class:"control-label" %>
+        <div class="controls">
+          <%= f.password_field :password, :autocomplete => "off", class:"input-xlarge", id:"input01" %>
+        <p class="help-block"><%= t ".password_blank" %></p>
+        <br>
+        </div>
+      </div>
+
+      <div class="controll-group">
+        <%= f.label :passwort_confirmation, class:"control-label" %>
+        <div class="controls">
+          <%= f.password_field :password_confirmation, class:"input-xlarge", id:"input01" %>
+        </div>
+      </div>
     <% end %>
-
-    <div class="controll-group">
-      <%= f.label :neues_passwort, class:"control-label" %>
-      <div class="controls">
-        <%= f.password_field :password, :autocomplete => "off", class:"input-xlarge", id:"input01" %>
-      <p class="help-block"><%= t ".password_blank" %></p>
-      <br>
-      </div>
+    
+    <div class="form-actions">
+      <%= f.submit(t(".update"), class:"btn btn-danger") %>
     </div>
-
-    <div class="controll-group">
-      <%= f.label :passwort_confirmation, class:"control-label" %>
-      <div class="controls">
-        <%= f.password_field :password_confirmation, class:"input-xlarge", id:"input01" %>
-      </div>
-    </div>
-  <div class="form-actions">
-    <%= f.submit(t(".update"), class:"btn btn-danger") %>
-  </div>
-
 <% end %>
 
 <h3><%= t ".delete_account" %></h3>
