@@ -105,10 +105,12 @@
     var existingTags = $("#tag-field-form").val();
     //check if tag is in the list of tags
     if (existingTags.indexOf(nameOfTag) < 0) {
-      if (existingTags.length == 0) 
+      if (existingTags.length == 0) {
         $("#tag-field-form").val(nameOfTag);
-      else
+      } else {
         $("#tag-field-form").val(existingTags+', '+nameOfTag);
       }
-    });
+    }
+  });
 </script>
+
