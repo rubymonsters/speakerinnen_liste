@@ -45,7 +45,11 @@
       <%= f.label :tag_list, class:"control-label" %>
       <div class="controls tag_list">
         <% ActsAsTaggableOn::Tag.uniq.pluck(:name).each do |tag_name| %>
-          <span class="badge badge-inverse add-tag-trigger"><%= tag_name %></span>
+          <% if @profile.topic_list.include?(tag_name) %>
+            <span class="badge add-tag-trigger"><%= tag_name %></span>
+          <% else %>
+            <span class="badge badge-inverse add-tag-trigger"><%= tag_name %></span>
+          <% end %>
         <% end %>
       </div>
     </div>
@@ -110,6 +114,10 @@
       } else {
         $("#tag-field-form").val(existingTags+', '+nameOfTag);
       }
+      $(this).removeClass("badge-inverse");
+    } else {
+      console.log(nameOfTag);
+      $("#tag-field-form").remove(nameOfTag);
     }
   });
 </script>

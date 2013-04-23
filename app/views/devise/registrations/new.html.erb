@@ -47,7 +47,11 @@
       <%= f.label :tag_list, class:"control-label" %>
       <div class="controls tag_list">
         <% ActsAsTaggableOn::Tag.uniq.pluck(:name).each do |tag_name| %>
-          <span class="badge badge-inverse add-tag-trigger"><%= tag_name %></span>
+          <% if @profile.topic_list.include?(tag_name) %>
+              <span class="badge add-tag-trigger"><%= tag_name %></span>
+            <% else %>
+              <span class="badge badge-inverse add-tag-trigger"><%= tag_name %></span>
+          <% end %>
         <% end %>
       </div>
     </div>
@@ -112,30 +116,30 @@
     </div>
   <% end %>
 
-
-
   <div class="form-actions">
     <%= f.submit(t(".sign_up"), class:"btn btn-primary")%>
   </div>
   <% end %>
 
-
+<script type="text/javascript">
+  $(".add-tag-trigger").click(function() {
+    var nameOfTag    = $(this).html();
+    var existingTags = $("#tag-field-new").val();
+    //check if tag is in the list of tags
+     {
+      if (existingTags.length == 0) {
+        $("#tag-field-new").val(nameOfTag);
+      } else {
+        $("#tag-field-new").val(existingTags+', '+nameOfTag);
+      }
+      $(this).removeClass("badge-inverse");
+    } else {
+      
+      $(this).addClass("badge-inverse");
+    }
+  });
+</script>
 
 <%= render "devise/shared/links" %>
   </fieldset>
 </form>
-
-<script type="text/javascript">
-  $(".add-tag-trigger").click(function() {
-    var nameOfTag    = $(this).html();
-    var existingTags = $("#tag-field-form").val();
-    //check if tag is in the list of tags
-    if (existingTags.indexOf(nameOfTag) < 0) {
-      if (existingTags.length == 0) {
-        $("#tag-field-form").val(nameOfTag);
-      } else {
-        $("#tag-field-form").val(existingTags+', '+nameOfTag);
-      }
-    }
-   });
-</script>
