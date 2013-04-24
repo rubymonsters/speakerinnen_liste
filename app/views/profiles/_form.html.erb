@@ -112,12 +112,13 @@
       if (existingTags.length == 0) {
         $("#tag-field-form").val(nameOfTag);
       } else {
-        $("#tag-field-form").val(existingTags+', '+nameOfTag);
+        $("#tag-field-form").val(existingTags+' '+nameOfTag);
       }
       $(this).removeClass("badge-inverse");
     } else {
-      console.log(nameOfTag);
-      $("#tag-field-form").remove(nameOfTag);
+      var newTags = existingTags.replace(nameOfTag, "").replace(/  /g, " ");
+      $("#tag-field-form").val(newTags);
+      $(this).addClass("badge-inverse");
     }
   });
 </script>
