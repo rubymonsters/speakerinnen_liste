@@ -15,7 +15,7 @@
 
     <div class="span6">
       <div class="header"><%= t ".topics" %></div>
-      <%= raw @profile.topic_list.map { |t| link_to t, topic_path(t) }.join(', ') %>
+      <%= raw @profile.topic_list.map { |t| link_to t, topic_path(t) }.join(' ') %>
       <div class="header"><%= t ".languages" %></div>
         <%= @profile.languages %>
       <p></p>
@@ -28,7 +28,7 @@
     
     <div class="span6">
       <div class="header"><%= t ".topics" %></div>
-      <%= raw @profile.topic_list.map { |t| link_to t, topic_path(t) }.join(', ') %>
+      <%= raw @profile.topic_list.map { |t| link_to t, topic_path(t) }.join(' ') %>
       <p></p>
       <div class="header"><%= t ".languages" %></div>
         <%= @profile.languages %>

@@ -1,4 +1,9 @@
 class Profile < ActiveRecord::Base
+
+  def initialize
+    ActsAsTaggableOn.delimiter = ' '
+  end
+
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
@@ -17,8 +22,6 @@ class Profile < ActiveRecord::Base
     "#{firstname} #{lastname}"
   end
   
-
-
   def self.from_omniauth(auth)
     where(auth.slice(:provider, :uid)).first_or_create do |profile|
       profile.provider = auth.provider
@@ -27,13 +30,9 @@ class Profile < ActiveRecord::Base
     end
   end
 
-
-
   def password_required?
     super && provider.blank?
   end
-
-
 
   def update_with_password(params, *options)
     if encrypted_password.blank?
@@ -42,8 +41,6 @@ class Profile < ActiveRecord::Base
       super
     end
   end
-
-
   
   def self.new_with_session(params, session)
     if session["devise.user_attributes"]
@@ -55,7 +52,6 @@ class Profile < ActiveRecord::Base
       super
     end    
   end
-
   
   def self.from_omniauth(auth)
     where(auth.slice(:provider, :uid)).first_or_create do |profile|
