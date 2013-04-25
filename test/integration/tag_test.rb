@@ -9,7 +9,7 @@ class ProfileTest < ActionController::IntegrationTest
 
     @inge = profiles(:two)
     @inge.confirmed_at = Time.now
-    @inge.topic_list = "Fruehling" "Sommer"
+    @inge.topic_list = "Fruehling" " " "Sommer"
     @inge.save
   end
 
@@ -39,11 +39,11 @@ class ProfileTest < ActionController::IntegrationTest
    test "show Fruehling tag" do
     visit '/profiles'
     assert page.has_content?('Fruehling')
+    # save_and_open_page
     within "#topics_cloud" do
       click_link('Fruehling')
     end
     assert page.has_css?('h3.profile_name', :count => 2)
-    # save_and_open_page
   end
  
 end
