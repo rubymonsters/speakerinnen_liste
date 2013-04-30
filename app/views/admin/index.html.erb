@@ -1,2 +1,38 @@
-<h1>Admin#index</h1>
-<p>Find me in app/views/admin/index.html.erb</p>
+<h1>Admin interface for tags:</h1>
+
+<div class="container">
+  <div class="row"> 
+    <div class="span12">
+
+<table>
+  <tr>
+    <th>Name of Tag</th>
+    <th>Used</th>
+    <th>Name of Users</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @tags.each do |tag| %>
+  <tr>
+    <td><%= tag.name %></td>
+    <td></td>
+    <td><%= %> %></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+
+
+
+    </div>
+    <hr/>
+  </div>
+</div>
+
