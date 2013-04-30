@@ -11,11 +11,11 @@ class SearchIntegrationTest < ActiveSupport::TestCase
   end
 
   test "search should only search specified columns" do
-    profile1 = Profile.new!(
+    profile1 = Profile.create!(
       :email => "carla@example.org",
       :password => "password",
       :bio => "biography")
-    profile2 = Profile.new!(
+    profile2 = Profile.create!(
       :email => "debbie@example.org",
       :password => "password",
       :twitter => "biography")
@@ -24,7 +24,7 @@ class SearchIntegrationTest < ActiveSupport::TestCase
   end
 
   test "search is across topics" do
-    profile1 = Profile.new!(
+    profile1 = Profile.create!(
       :email => "carla@example.org",
       :password => "password",
       :bio => "biography")
