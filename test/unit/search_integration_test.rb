@@ -2,7 +2,7 @@ require 'test_helper'
 
 class SearchIntegrationTest < ActiveSupport::TestCase
   test "correctly integrated postgres fulltext search" do 
-    testprofile = Profile.create!(
+    testprofile = Profile.new!(
       :email => "carla@railsgirls.com", 
       :password => "PeterandPaul", 
       :bio => "Carla is very interested in weather, programming, sleeping, shopping, veggiemite and photos.")
@@ -11,11 +11,11 @@ class SearchIntegrationTest < ActiveSupport::TestCase
   end
 
   test "search should only search specified columns" do
-    profile1 = Profile.create!(
+    profile1 = Profile.new!(
       :email => "carla@example.org",
       :password => "password",
       :bio => "biography")
-    profile2 = Profile.create!(
+    profile2 = Profile.new!(
       :email => "debbie@example.org",
       :password => "password",
       :twitter => "biography")
@@ -24,7 +24,7 @@ class SearchIntegrationTest < ActiveSupport::TestCase
   end
 
   test "search is across topics" do
-    profile1 = Profile.create!(
+    profile1 = Profile.new!(
       :email => "carla@example.org",
       :password => "password",
       :bio => "biography")

@@ -52,4 +52,11 @@ class ProfileTest < ActiveSupport::TestCase
   end
 
 
+  test "twitter @ symbol correcty removed" do
+      testprofile = Profile.new(:twitter => "@tweeter", :email => "me@me.com")
+      expected_twitter = "tweeter"
+      assert expected_twitter, testprofile.twitter
+  end
+
+
 end

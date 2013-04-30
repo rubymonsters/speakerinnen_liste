@@ -24,16 +24,6 @@ end
     @profile = Profile.find(params[:id])
   end
 
-  # def create
-  #   @profile = Profile.new(self.class.clean_twitter(params[:profile]))
-  #   if @profile.save
-
-  #     redirect_to @profile, notice: (I18n.t("flash.profiles.created"))
-  #   else
-  #     render action: "new" 
-  #   end
-  # end
-
   def update
     @profile = Profile.find(params[:id])
     if @profile.update_attributes(params[:profile])

@@ -13,7 +13,7 @@ class Profile < ActiveRecord::Base
 
   mount_uploader :picture, PictureUploader
 
-  before_save(:on => :create) do
+  before_save(:on => [:create, :update]) do
     self.twitter = self.twitter[1..-1] if self.twitter.index("@") == 0 && attribute_present?("twitter")
   end
 
