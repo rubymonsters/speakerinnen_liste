@@ -27,7 +27,7 @@ end
   def update
     @profile = Profile.find(params[:id])
     if @profile.update_attributes(params[:profile])
-       redirect_to @profile, notice: (I18n.t("flash.profiles.updated"))
+      redirect_to @profile, notice: (I18n.t("flash.profiles.updated"))
     else current_profile
       render action: "edit" 
     end

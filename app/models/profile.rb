@@ -24,6 +24,7 @@ class Profile < ActiveRecord::Base
   
   def self.from_omniauth(auth)
     where(auth.slice(:provider, :uid)).first_or_create do |profile|
+      p auth
       profile.provider = auth.provider
       profile.uid = auth.uid
       profile.twitter = auth.info.nickname
