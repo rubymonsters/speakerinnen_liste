@@ -1,7 +1,7 @@
 SpeakerinnenListe::Application.routes.draw do
 
 
-  get "admin/index"
+ match 'admin' => "admin#index"
 
   scope "(:locale)", :locale => /en|de/ do
 
