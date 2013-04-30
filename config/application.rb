@@ -12,11 +12,6 @@ end
 module SpeakerinnenListe
   class Application < Rails::Application
 
-    #If you would like to remove unused tag objects after removing taggings
-    ActsAsTaggableOn.remove_unused_tags = true 
-    #If you want to change the default delimiter (it defaults to ','). You can also pass in an array of delimiters such as ([',', '|']):
-    ActsAsTaggableOn.delimiter = ' '
-
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
