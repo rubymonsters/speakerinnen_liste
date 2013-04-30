@@ -52,7 +52,8 @@
       <%= mail_to @profile.email%>
     <p></p>
     <div class="header"><%= t ".twitter" %></div>
-      <%= @profile.twitter %>
+      <%=link_to "@" + @profile.twitter, "http://twitter.com/#{@profile.twitter}" %>
+      
     <p></p>
     <br>
     <%= link_to(t(".back"), profiles_path, class:"btn btn-inverse btn-small") %>
