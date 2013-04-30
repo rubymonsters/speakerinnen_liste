@@ -134,4 +134,11 @@ class ProfilesControllerTest < ActionController::TestCase
     assert_redirected_to profiles_path
     assert_equal 'Profile was successfully deleted.', flash[:notice]
   end
+
+  # test "twitter @ symbol correcty removed" do
+  #   input_hash={:twitter => "@nickname", :email => "me@me.com"}
+  #   expected_hash={:twitter => "nickname", :email => "me@me.com"}
+
+  #   assert_equal expected_hash, ProfilesController.clean_twitter(input_hash)
+  # end
 end

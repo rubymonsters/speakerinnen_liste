@@ -13,6 +13,11 @@ class Profile < ActiveRecord::Base
 
   mount_uploader :picture, PictureUploader
 
+  before_save(:on => :create) do
+    self.twitter = self.twitter[1..-1] if self.twitter.index("@") == 0 && attribute_present?("twitter")
+  end
+
+
   def fullname
     "#{firstname} #{lastname}"
   end
@@ -21,7 +26,7 @@ class Profile < ActiveRecord::Base
     where(auth.slice(:provider, :uid)).first_or_create do |profile|
       profile.provider = auth.provider
       profile.uid = auth.uid
-      profile.firstname = auth.info.nickname
+      profile.twitter = auth.info.nickname
     end
   end
 
@@ -34,25 +39,6 @@ class Profile < ActiveRecord::Base
       update_attributes(params, *options)
     else
       super
-    end
-  end
-  
-  def self.new_with_session(params, session)
-    if session["devise.user_attributes"]
-      new(session["devise.user_attributes"], without_protection: true) do |profile|
-        profile.attributes = params
-        profile.valid?
-      end
-    else
-      super
-    end    
-  end
-  
-  def self.from_omniauth(auth)
-    where(auth.slice(:provider, :uid)).first_or_create do |profile|
-      profile.provider = auth.provider
-      profile.uid = auth.uid
-      profile.firstname = auth.info.nickname
     end
   end
   

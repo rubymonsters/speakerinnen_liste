@@ -2,7 +2,6 @@ class ProfilesController < ApplicationController
   include ProfilesHelper
   before_filter :require_permision, :only=> [:edit, :destroy, :update]
 
-
   def index
   if params[:topic]
     @profiles = Profile.tagged_with(params[:topic])
@@ -25,15 +24,15 @@ end
     @profile = Profile.find(params[:id])
   end
 
-  def create
-    @profile = Profile.new(params[:profile])
-    if @profile.save
+  # def create
+  #   @profile = Profile.new(self.class.clean_twitter(params[:profile]))
+  #   if @profile.save
 
-      redirect_to @profile, notice: (I18n.t("flash.profiles.created"))
-    else
-      render action: "new" 
-    end
-  end
+  #     redirect_to @profile, notice: (I18n.t("flash.profiles.created"))
+  #   else
+  #     render action: "new" 
+  #   end
+  # end
 
   def update
     @profile = Profile.find(params[:id])
@@ -56,4 +55,6 @@ end
       redirect_to profiles_url, notice: (I18n.t("flash.profiles.no_permission"))
     end
   end
+
+  
 end

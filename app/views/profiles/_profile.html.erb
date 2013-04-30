@@ -48,7 +48,7 @@
       <div class="header_small">
         <%= t ".twitter" %>
       </div>
-      <%= profile.twitter %>
+      <%=link_to "@" + profile.twitter, "http://twitter.com/#{profile.twitter}" %>
       <p></p>
     </div>
   </div>
