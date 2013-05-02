@@ -7,6 +7,7 @@ class SearchForUserTest < ActionController::IntegrationTest
         :password => "PeterandPaul",
         :firstname => "Carla", 
         :lastname => "Drago", 
+        :twitter => "tweeter",
         :bio => "weather, programming, sleeping, shopping, veggiemite and photos.")
 
     visit('/')

@@ -2,7 +2,7 @@ require 'test_helper'
 
 class SearchIntegrationTest < ActiveSupport::TestCase
   test "correctly integrated postgres fulltext search" do 
-    testprofile = Profile.new!(
+    testprofile = Profile.create!(
       :email => "carla@railsgirls.com", 
       :password => "PeterandPaul", 
       :bio => "Carla is very interested in weather, programming, sleeping, shopping, veggiemite and photos.")
