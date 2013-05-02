@@ -51,8 +51,10 @@
     <div class="header"><%= t ".email" %></div>
       <%= mail_to @profile.email%>
     <p></p>
-    <div class="header"><%= t ".twitter" %></div>
-      <%=link_to "@" + @profile.twitter, "http://twitter.com/#{@profile.twitter}" %>
+      <% if @profile.twitter.present? %>
+        <div class="header"><%= t ".twitter" %></div>
+          <%=link_to "@" + @profile.twitter, "http://twitter.com/#{@profile.twitter}" %>
+      <% end %>
       
     <p></p>
     <br>
