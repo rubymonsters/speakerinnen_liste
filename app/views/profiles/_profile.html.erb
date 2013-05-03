@@ -11,13 +11,13 @@
       </div>
       <div class="span5">
         <div class="header_small"><%= t ".topics" %></div>
-          <%= raw profile.topic_list.map { |t| link_to t, topic_path(t) }.join(' ') %>
+        <%= raw profile.topic_list.map { |t| link_to t, topic_path(t) }.join(' ') %>
         <p></p>
         <div class="header_small"><%= t ".languages" %></div>
         <%= profile.languages %>
         <p></p>
         <div class="header_small"><%= t ".talks" %></div>
-          <%= profile.talks %>
+        <%= profile.talks %>
         <p></p>
       </div>
 
@@ -31,7 +31,7 @@
         <%= profile.languages %>
         <p></p>
         <div class="header_small"><%= t ".talks" %></div>
-          <%= profile.talks %>
+        <%= profile.talks %>
         <p></p>
       </div>
         
@@ -41,12 +41,12 @@
   <div class="row">
     <div class="span8">
       <div class="header_small">
-        <%= t ".contact" %>
+      <%= t ".contact" %>
       </div>
       <%= mail_to profile.email %>
       <p></p> 
       <div class="header_small">
-        <%= t ".twitter" %>
+      <%= t ".twitter" %>
       </div>
       <%= profile.twitter %>
       <p></p>

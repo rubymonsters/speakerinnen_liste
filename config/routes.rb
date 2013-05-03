@@ -3,6 +3,8 @@ SpeakerinnenListe::Application.routes.draw do
 
  match 'admin' => "admin#index"
 
+ resources :admin
+
   scope "(:locale)", :locale => /en|de/ do
 
     devise_for :profiles, controllers: {omniauth_callbacks: "omniauth_callbacks"}
