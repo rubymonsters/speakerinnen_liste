@@ -3,12 +3,12 @@ class ProfilesController < ApplicationController
   before_filter :require_permision, :only=> [:edit, :destroy, :update]
 
   def index
-  if params[:topic]
-    @profiles = Profile.tagged_with(params[:topic])
-  else
-    @profiles = Profile.all
+    if params[:topic]
+      @profiles = Profile.tagged_with(params[:topic])
+    else
+      @profiles = Profile.all
+    end
   end
-end
 
   def show
     @profile = Profile.find(params[:id])   
