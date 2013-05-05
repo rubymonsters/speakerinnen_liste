@@ -1,9 +1,9 @@
 SpeakerinnenListe::Application.routes.draw do
 
-
- match 'admin' => "admin#index"
-
- resources :admin
+  namespace :admin do
+    resources :tags
+    root :to => 'tags#index'
+  end
 
   scope "(:locale)", :locale => /en|de/ do
 

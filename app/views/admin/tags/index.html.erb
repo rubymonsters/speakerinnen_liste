@@ -1,0 +1,30 @@
+<h1>Admin interface for tags:</h1>
+
+<div class="container">
+  <div class="row"> 
+    <div class="span12">
+
+      <table class="table table-bordered table-hovered table-condensed">
+        <tr>
+          <th>Name of Tag</th>
+          <th>Used</th>
+          <th></th>
+          <th></th>
+        </tr>
+
+      <% @tags.each do |tag| %>
+        <tr>
+          <td><%= tag.name %></td>
+          <td><%= tag.taggings.count %></td>
+          <td><%= link_to "edit", edit_admin_tag_path(tag.id) %></td>
+          <td><%= link_to 'Delete', admin_tag_path(tag.id), :method => :delete, :confirm => "Do you want to delete the tag #{tag.name}?" %></td>
+        </tr>
+      <% end %>
+
+      </table>
+      <br />
+    </div>
+    <hr/>
+  </div>
+</div>
+
