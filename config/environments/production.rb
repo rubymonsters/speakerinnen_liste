@@ -72,7 +72,7 @@ SpeakerinnenListe::Application.configure do
   config.action_mailer.delivery_method = :smtp
   
   config.action_mailer.smtp_settings = {
-    address: "mail.carladrago.com",
+    address: "smtp.carladrago.com",
     # verschlüsselter smtp port
     port: 587,
     authentication: "plain",
