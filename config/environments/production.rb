@@ -72,11 +72,11 @@ SpeakerinnenListe::Application.configure do
   config.action_mailer.delivery_method = :smtp
   
   config.action_mailer.smtp_settings = {
-    address: "smtp.carladrago.com",
+    address: "smtp.gmail.com",
     # verschlüsselter smtp port
     port: 587,
     authentication: "plain",
-    user_name: "speakerinnen@carladrago.com",
+    user_name: "claraimmerwahr@googlemail.com",
     # environment variable that I send seperatly to heroku
     password: ENV['SMTP_PASSWORD'],
     enable_starttls_auto: true
