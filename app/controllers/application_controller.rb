@@ -2,6 +2,12 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   before_filter :set_locale
+
+  def authenticate_admin!
+    authenticate_or_request_with_http_basic do |nick, pass| 
+      nick == "frodo" and pass == "thering" 
+    end
+  end
   
   private
   def set_locale
@@ -21,4 +27,6 @@ class ApplicationController < ActionController::Base
     options.update(:locale => I18n.locale)
     options
   end
+
+
 end

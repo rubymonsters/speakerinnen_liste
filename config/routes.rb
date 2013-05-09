@@ -1,8 +1,11 @@
 SpeakerinnenListe::Application.routes.draw do
 
+  get "dashboard/index"
+
   namespace :admin do
-    resources :tags
-    root :to => 'tags#index'
+    resources :tags, :except => [:new, :create]
+    resources :profiles
+    root :to => 'dashboard#index'
   end
 
   scope "(:locale)", :locale => /en|de/ do
