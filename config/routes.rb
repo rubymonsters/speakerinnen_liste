@@ -1,5 +1,19 @@
 SpeakerinnenListe::Application.routes.draw do
 
+  get "profiles/index"
+
+  get "profiles/edit"
+
+  get "profiles/new"
+
+  get "profiles/destroy"
+
+  get "profiles/update"
+
+  get "profiles/create"
+
+  get "profiles/show"
+
   get "dashboard/index"
 
   namespace :admin do
