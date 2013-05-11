@@ -2,7 +2,7 @@
 <ul>
 	<% @profiles.each do |profile|  %>
 		<li>
-			<%= profile.name %>
+			<%=link_to (profile.firstname + profile.lastname), edit_admin_profile_path(profile) %>
 		</li>
 	<% end %>
 <ul>
