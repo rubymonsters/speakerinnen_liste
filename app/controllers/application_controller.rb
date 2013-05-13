@@ -4,8 +4,8 @@ class ApplicationController < ActionController::Base
   before_filter :set_locale
 
   def authenticate_admin!
-    authenticate_or_request_with_http_basic do |nick, pass| 
-      nick == "frodo" and pass == "thering" 
+    unless current_profile && current_profile.admin?
+      redirect_to profiles_url, notice: (I18n.t("flash.profiles.no_permission"))
     end
   end
   

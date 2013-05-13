@@ -13,14 +13,12 @@ class Profile < ActiveRecord::Base
 
   mount_uploader :picture, PictureUploader
 
-
   before_save(:on => [:create, :update]) do
     self.twitter.gsub!(/^@/, '') if twitter
   end
 
-
   def fullname
-    "#{firstname} #{lastname}"
+    "#{firstname} #{lastname}".strip
   end
   
   def self.from_omniauth(auth)
@@ -54,8 +52,9 @@ class Profile < ActiveRecord::Base
       super
     end    
   end
-
+  
 end
+
 
 
 
