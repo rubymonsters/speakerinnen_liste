@@ -28,5 +28,8 @@ class Admin::ProfilesController < Admin::BaseController
   end
 
   def destroy
+    @profile = Profile.find(params[:id])
+    @profile.destroy
+    redirect_to admin_profiles_path, notice: (I18n.t("flash.profiles.destroyed"))
   end
 end

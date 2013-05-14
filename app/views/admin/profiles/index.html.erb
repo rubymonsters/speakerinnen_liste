@@ -1,8 +1,26 @@
 <h1>Admin::Profiles#index</h1>
-<ul>
+<table>
+		<tr>
+			<td>
+				<b>Profile</b>
+			</td>
+		</tr>
 	<% @profiles.each do |profile|  %>
-		<li>
-			<%= link_to name_or_email(profile), edit_admin_profile_path(profile) %>
-		</li>
+		<tr>
+			<td style="width:200px">
+				<%= name_or_email(profile) %>
+			</td>
+			<td style="width:60px">
+				<%= link_to ('Show'), admin_profile_path(profile) %>
+			</td>
+			<td style="width:60px">
+				<%= link_to ('Edit'), edit_admin_profile_path(profile) %>
+			</td>
+			<td style="width:60px">
+				<%= link_to ('Destroy'), admin_profile_path(profile), :confirm => 'Are you sure?', :method => :delete %>
+			</td>
+		</tr>
 	<% end %>
-<ul>
+</table>
+<br>
+<%= link_to ('New Profile'), profiles_new_path %> (Doesnt work, because you are already signed in.)
