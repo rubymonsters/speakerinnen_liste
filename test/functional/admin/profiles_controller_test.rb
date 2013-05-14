@@ -1,7 +1,16 @@
 require 'test_helper'
 
 class Admin::ProfilesControllerTest < ActionController::TestCase
+  include Devise::TestHelpers
 
+  setup do
+    @profile1 = profiles(:one)
+    @profile2 = profiles(:two)
+
+    jane = profiles(:jane)
+    jane.confirm!
+    sign_in(jane)
+  end
 
   test "should get index" do
     get :index
@@ -9,32 +18,26 @@ class Admin::ProfilesControllerTest < ActionController::TestCase
   end
 
   test "should get edit" do
-    get :edit
-    assert_response :success
-  end
-
-  test "should get new" do
-    get :new
+    get :edit, id: @profile1.id
     assert_response :success
   end
 
   test "should get destroy" do
-    get :destroy
-    assert_response :success
+    assert_difference('Profile.count', -1) do
+      delete :destroy, id: @profile1.id
+    end
+    assert_redirected_to admin_profiles_path
+    assert_equal 'Profile was successfully deleted.', flash[:notice]
   end
 
   test "should get update" do
-    get :update
-    assert_response :success
-  end
-
-  test "should get create" do
-    get :create
-    assert_response :success
+    get :update, id: @profile1.id, profile: { bio: @profile2.bio }
+    assert_redirected_to admin_profile_path(@profile1)
+    assert_equal 'Profile was successfully updated.', flash[:notice]
   end
 
   test "should get show" do
-    get :show
+    get :show, id: @profile1.id
     assert_response :success
   end
 

@@ -1,7 +1,7 @@
 require 'test_helper'
 
-class Admin::DashboardControllerTest < ActionController::TestCase
-	include Devise::TestHelpers
+class Admin::TagsControllerTest < ActionController::TestCase
+  include Devise::TestHelpers
 
 	def setup
     jane = profiles(:jane)
@@ -13,6 +13,4 @@ class Admin::DashboardControllerTest < ActionController::TestCase
 		get :index
 		assert_response :success
   end
-
 end
-
