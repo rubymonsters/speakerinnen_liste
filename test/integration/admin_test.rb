@@ -9,11 +9,17 @@ class AdminTest < ActionController::IntegrationTest
   end
 
   test "visit admin page with right credentials" do
+    visit '/'
+    assert page.has_content?('Login')
+    click_link('Login')
+    assert page.has_content?('Email')
+    fill_in('profile[email]', :with => 'jane_admin@server.org')
+    fill_in('profile[password]', :with => 'Testpassword')
+    click_button "Login" 
+    
     visit '/admin'
-    save_and_open_page
     assert page.has_content?("Tags")
     assert page.has_content?("Profiles")
-    assert_equal 200, page.status_code
   end
 
 end
