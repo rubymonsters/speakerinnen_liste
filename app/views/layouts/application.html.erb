@@ -25,7 +25,7 @@
         <% end %>
       <% end %>
 
-      <p class="navbar-text  pull-left">
+      <p class="navbar-text pull-left">
         <%= link_to_unless I18n.locale == :en, "E", locale: :en %> | 
         <%= link_to_unless I18n.locale == :de, "D", locale: :de %>
       </p>
@@ -39,6 +39,11 @@
           <%= link_to(t(".signup"), new_profile_registration_path, :class => 'navbar-link') %> |
           <%= link_to(t(".login"), new_profile_session_path, :class => 'navbar-link') %> |
           <%= link_to("Twitter", profile_omniauth_authorize_path(:twitter), :class => 'navbar-link') %>
+        <% end %>
+      </p>
+      <p class="navbar-text pull-right">
+        <% if admin?(current_profile) %>
+          <%= link_to "admin", admin_root_path %>
         <% end %>
       </p>
     </div>

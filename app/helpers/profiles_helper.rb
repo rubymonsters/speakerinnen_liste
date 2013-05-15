@@ -7,4 +7,5 @@ module ProfilesHelper
       false
     end
   end
+
 end
