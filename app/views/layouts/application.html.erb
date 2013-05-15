@@ -41,6 +41,11 @@
           <%= link_to("Twitter", profile_omniauth_authorize_path(:twitter), :class => 'navbar-link') %>
         <% end %>
       </p>
+      <p class="navbar-text pull-right">
+        <% if current_profile && current_profile.admin == true %>
+          <%= link_to "admin", admin_profiles_path %>
+        <% end %>
+      </p>
     </div>
   </div>
 </div>

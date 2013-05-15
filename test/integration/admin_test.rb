@@ -17,7 +17,7 @@ class AdminTest < ActionController::IntegrationTest
     fill_in('profile[password]', :with => 'Testpassword')
     click_button "Login" 
     
-    visit '/admin'
+    click_link('admin')
     assert page.has_content?("Tags")
     assert page.has_content?("Profiles")
   end
