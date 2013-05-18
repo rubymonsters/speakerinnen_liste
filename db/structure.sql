@@ -58,7 +58,7 @@ CREATE TABLE profiles (
     confirmation_sent_at timestamp without time zone,
     unconfirmed_email character varying(255),
     talks character varying(255),
-    admin boolean,
+    admin boolean DEFAULT false,
     provider character varying(255),
     uid character varying(255)
 );
@@ -272,3 +272,5 @@ INSERT INTO schema_migrations (version) VALUES ('20130407114403');
 INSERT INTO schema_migrations (version) VALUES ('20130408192616');
 
 INSERT INTO schema_migrations (version) VALUES ('20130408194211');
+
+INSERT INTO schema_migrations (version) VALUES ('20130517204532');
