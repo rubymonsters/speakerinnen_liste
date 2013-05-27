@@ -2,13 +2,16 @@ class Profile < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
+
+  include AutoHtml
+
   devise :database_authenticatable, :registerable, :omniauthable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
   attr_accessible :bio, :city, :email, :firstname, :languages, :lastname, :picture, :twitter, :remove_picture, :talks
-  attr_accessible :content, :name, :topic_list
+  attr_accessible :content, :name, :topic_list, :media_url
   acts_as_taggable_on :topics
 
   mount_uploader :picture, PictureUploader
@@ -53,6 +56,14 @@ class Profile < ActiveRecord::Base
     else
       super
     end    
+  end
+
+  auto_html_for :media_url do 
+    html_escape
+    image
+    youtube(:width => 400, :height => 250)
+    vimeo(:width => 400, :height => 250)
+    simple_format
   end
 
 end

@@ -60,7 +60,8 @@ CREATE TABLE profiles (
     talks character varying(255),
     admin boolean,
     provider character varying(255),
-    uid character varying(255)
+    uid character varying(255),
+    media_url character varying(255)
 );
 
 
@@ -272,3 +273,5 @@ INSERT INTO schema_migrations (version) VALUES ('20130407114403');
 INSERT INTO schema_migrations (version) VALUES ('20130408192616');
 
 INSERT INTO schema_migrations (version) VALUES ('20130408194211');
+
+INSERT INTO schema_migrations (version) VALUES ('20130525141752');
