@@ -19,6 +19,9 @@
         <div class="header_small"><%= t ".talks" %></div>
         <%= profile.talks %>
         <p></p>
+        <div class="header_small"><%= t ".media" %></div>
+        <%= profile.media_url_html %>
+        <p></p>
       </div>
 
     <% else %>
@@ -32,6 +35,9 @@
         <p></p>
         <div class="header_small"><%= t ".talks" %></div>
         <%= profile.talks %>
+        <p></p>
+        <div class="header_small"><%= t ".media" %></div>
+        <%= profile.media_url_html %>
         <p></p>
       </div>
         
