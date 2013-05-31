@@ -1,0 +1,19 @@
+<%= form_for @message, :url => contact_path do |f| %>
+  <%= f.label :name, "Your Name" %>
+  <br>
+  <%= f.text_field :name, :placeholder => "Write your name here!" %>
+  <br>
+  <%= f.label :email, "Your Email Address" %>
+  <br>
+  <%= f.text_area :email, :size => "10" %>
+  <br>
+  <%= f.label :subject, "Your Email Subject" %>
+  <br>
+  <%= f.text_area :subject, :size => "10" %>
+  <br>
+  <%= f.label :body, "Your Message" %>
+  <br>
+  <%= f.text_field :name, :size => "50", :placeholder => "Like any good invitation, please give the details of where, when, with whom, and any other relevant information." %>
+  <br>
+  <%= f.submit %>
+<% end %>

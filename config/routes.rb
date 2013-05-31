@@ -13,7 +13,11 @@ SpeakerinnenListe::Application.routes.draw do
 
     match 'search' => 'search#search'
     
-    match 'contact' => 'home#contact'
+    #match 'contact' => 'home#contact'
+
+    match 'contact' => 'contact#new', :as => 'contact', :via => :get
+
+    match 'contact' => 'contact#create', :as => 'contact', :via => :post
 
     match 'impressum' => 'home#impressum'
 
