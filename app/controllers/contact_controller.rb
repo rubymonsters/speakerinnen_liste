@@ -8,8 +8,8 @@ class ContactController < ApplicationController
 		@message = Message.new(params[:message])
 
 		if @message.valid?
-			NotificationsMailer.new_message(@message).deliver
-			redirect to(root_path, :notice => "Yay! Your message was sent.")
+			NotificationsMailer.new_message(@message, nil).deliver
+			redirect_to(root_path, :notice => "Yay! Your message was sent.")
 		else
 			flash.now.alert = "Please fill out all the fields so that the speaker can have all the details she needs."
 			render :new
