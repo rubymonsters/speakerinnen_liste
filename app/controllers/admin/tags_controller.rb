@@ -1,5 +1,4 @@
-class Admin::TagsController < ApplicationController
-	http_basic_authenticate_with :name => "frodo", :password => "thering" 
+class Admin::TagsController < Admin::BaseController
 
 	def index
     @tags = ActsAsTaggableOn::Tag.all.sort_by {|tag| tag.name.downcase}

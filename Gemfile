@@ -22,10 +22,14 @@ gem 'auto_html'
 
 group :development do
   gem "letter_opener"
+  gem "quiet_assets" # mutes asset pipeline log messages
+  gem "puma" # better ruby webserver no error messages: "Could not determine content-length of response body."
+  # start with: rails s Puma
 end
 
 group :development, :test do
   gem 'capybara', '~> 2.0.2'
+  gem 'sqlite3'
 end
 
 # Gems used only for assets and not required

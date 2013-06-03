@@ -27,6 +27,7 @@ jane:
   firstname: jane
   lastname: MyString
   email: jane_admin@server.org
+  encrypted_password: <%= Profile.new.send(:password_digest, 'Testpassword') %>
   bio: MyText
   languages: MyString
   city: MyString

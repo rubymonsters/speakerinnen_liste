@@ -7,7 +7,7 @@
       <table class="table table-bordered table-hovered table-condensed">
         <tr>
           <th>Name of Tag</th>
-          <th>Used</th>
+          <th>Count</th>
           <th></th>
           <th></th>
         </tr>
@@ -17,7 +17,7 @@
           <td><%= tag.name %></td>
           <td><%= tag.taggings.count %></td>
           <td><%= link_to "edit", edit_admin_tag_path(tag.id) %></td>
-          <td><%= link_to 'Delete', admin_tag_path(tag.id), :method => :delete, :confirm => "Do you want to delete the tag #{tag.name}?" %></td>
+          <td><%= link_to 'delete', admin_tag_path(tag.id), :method => :delete, :confirm => "Do you want to delete the tag #{tag.name}?" %></td>
         </tr>
       <% end %>
 

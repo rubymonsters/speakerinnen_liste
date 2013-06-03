@@ -8,10 +8,48 @@
 </head>
 <body>
 <!-- NAVBAR STARTS HERE-->  
-<div class="navbar navbar-fixed-top">
-  <div class="navbar-inner">
-    <div class="container">
-      <%= link_to t(".title"), root_path, :class => "brand" %>
+<div class="wrapper">
+   <div class="page">
+    <div class="header-container">
+      <div class="top-header">
+        <div class="right">
+            <div class="btn drop-down-holder addpadding">
+               log in     <div class="icon"></div>
+                <div class="drop-down">
+                    <div class="eckschen"></div>
+                    <div class="inner rb full">
+                        <ul>
+                            <li><a href="#">Account</a></li>
+                            <li><a href="#">Newsletter</a></li>
+                            <li><a href="#">Invitations</a></li>                    
+                            <li><a href="#">Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="btn"><a href="#"> Invite Friends</a></div>
+        </div>
+                <div class="clear"></div>
+    </div>
+
+    <div class="header">
+        <div class="logo-wrapper with-user">
+            <a href="#" class="logo"> <%= link_to t(".title"), root_path, :class => "brand" %></a>
+         </div>
+
+<a href="#" class="mqbtn">Choose by topic  <%= button_tag(t(".search"), :class => "btn") %></a>
+
+<a href="#" class="mqbtn">Choose by location   <p class="navbar-text pull-left">
+        <%= link_to_unless I18n.locale == :en, "E", locale: :en %> | 
+        <%= link_to_unless I18n.locale == :de, "D", locale: :de %>
+      </p></a>
+
+
+<a href="#" class="mqbtn">Choose by language</a>
+
+</div>
+
+
 
       <ul class="nav" id="main-menu-left">
         <li><%= link_to t(".list"), profiles_path %></li>
@@ -25,10 +63,7 @@
         <% end %>
       <% end %>
 
-      <p class="navbar-text  pull-left">
-        <%= link_to_unless I18n.locale == :en, "E", locale: :en %> | 
-        <%= link_to_unless I18n.locale == :de, "D", locale: :de %>
-      </p>
+    
 
       <p class="navbar-text pull-right">
         <% if profile_signed_in? %>
@@ -39,6 +74,12 @@
           <%= link_to(t(".signup"), new_profile_registration_path, :class => 'navbar-link') %> |
           <%= link_to(t(".login"), new_profile_session_path, :class => 'navbar-link') %> |
           <%= link_to("Twitter", profile_omniauth_authorize_path(:twitter), :class => 'navbar-link') %>
+        <% end %>
+      </p>
+      <!-- admin link if admin -->
+      <p class="navbar-text pull-right">
+        <% if admin?(current_profile) %>
+          <%= link_to "admin", admin_root_path %>
         <% end %>
       </p>
     </div>

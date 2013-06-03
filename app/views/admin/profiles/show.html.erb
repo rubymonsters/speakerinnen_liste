@@ -1,0 +1,89 @@
+<h1>Admin::Profiles#show</h1>
+<p>Find me in app/views/admin/profiles/show.html.erb</p>
+
+<div class="row name">
+  <div class="span12">
+    <h2> <%= t ".profile_from" %> <%= @profile.fullname %>
+    </h2>
+  </div>
+</div>
+<br>
+
+<div class="row">
+  <% if @profile.picture.present? %>
+
+    <div class="span4">
+      <%= image_tag(@profile.picture_url, :width => 300) %>  
+    </div>
+
+    <div class="span6">
+      <div class="header"><%= t ".firstname" %></div>
+        <%= @profile.firstname %>
+      <div class="header"><%= t ".lastname" %></div>
+        <%= @profile.lastname %>
+      <div class="header"><%= t ".bio" %></div>
+        <%= @profile.bio %>
+      <div class="header"><%= t ".city" %></div>
+        <%= @profile.city %>
+      <div class="header"><%= t ".topics" %></div>
+      <%= raw @profile.topic_list.map { |t| link_to t, topic_path(t) }.join(' ') %>
+      <div class="header"><%= t ".languages" %></div>
+        <%= @profile.languages %>
+      <p></p>
+      <div class="header"><%= t ".talks" %></div>
+        <%= @profile.talks %>
+      <div class="header"><%= t ".twitter" %></div>
+        <%= @profile.twitter %>
+      <p></p>
+    </div>
+
+  <% else %>
+    
+  <div class="span6">
+    <div class="header"><%= t ".firstname" %></div>
+      <%= @profile.firstname %>
+    <div class="header"><%= t ".lastname" %></div>
+      <%= @profile.lastname %>
+    <div class="header"><%= t ".bio" %></div>
+      <%= @profile.bio %>
+    <div class="header"><%= t ".city" %></div>
+      <%= @profile.city %>
+    <div class="header"><%= t ".topics" %></div>
+      <%= raw @profile.topic_list.map { |t| link_to t, topic_path(t) }.join(' ') %>
+    <div class="header"><%= t ".languages" %></div>
+      <%= @profile.languages %>
+    <p></p>
+    <div class="header"><%= t ".talks" %></div>
+      <%= @profile.talks %>
+    <div class="header"><%= t ".twitter" %></div>
+      <%= @profile.twitter %>
+    <p></p>
+    </div>
+
+  <% end %>
+</div>
+  <br>
+
+<div class="row">
+    
+  <div class="span6">
+    <div class="header"><%= t ".bio" %></div>
+      <%= @profile.bio %>
+    <p></p>
+    <div class="header"><%= t ".email" %></div>
+      <%= mail_to @profile.email%>
+    <p></p>
+      <% if @profile.twitter.present? %>
+        <div class="header"><%= t ".twitter" %></div>
+          <%=link_to "@" + @profile.twitter, "http://twitter.com/#{@profile.twitter}" %>
+      <% end %>
+      
+    <p></p>
+    <br>
+    <%= link_to(t(".back"), admin_profiles_path, class:"btn btn-inverse btn-small") %>
+    <%= link_to(t(".edit"), edit_admin_profile_path(@profile), class:"btn btn-danger btn-small") %>
+
+  </div>
+</div>
+
+
