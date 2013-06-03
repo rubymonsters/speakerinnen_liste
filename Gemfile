@@ -28,6 +28,7 @@ end
 
 group :development, :test do
   gem 'capybara', '~> 2.0.2'
+  gem 'sqlite3'
 end
 
 # Gems used only for assets and not required
