@@ -63,6 +63,7 @@
       <% end %>
       
     <p></p>
+    <%= render partial: 'contact/form', locals: {url: contact_profile_path(@profile)} %> 
     <br>
     <%= link_to(t(".back"), profiles_path, class:"btn btn-inverse btn-small") %>
 
