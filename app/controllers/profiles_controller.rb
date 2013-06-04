@@ -11,7 +11,9 @@ class ProfilesController < ApplicationController
   end
 
   def show
-    @profile = Profile.find(params[:id])   
+    @profile = Profile.find(params[:id])
+    @message = Message.new
+   
   end
 
   # action, view, routes should be deleted

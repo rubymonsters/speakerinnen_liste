@@ -30,13 +30,19 @@ SpeakerinnenListe::Application.routes.draw do
 
     match 'search' => 'search#search'
     
-    match 'contact' => 'home#contact'
+    #match 'contact' => 'home#contact'
+
+    get  'contact' => 'contact#new',    :as => 'contact'
+    post 'contact' => 'contact#create', :as => 'contact'
 
     match 'impressum' => 'home#impressum'
 
     get '/', to: 'profiles#index', as: :root
     
-    resources :profiles, :except => [:new, :create]
+    resources :profiles, :except => [:new, :create] do
+      get  'contact' => 'contact#new',    :as => 'contact', :on => :member
+      post 'contact' => 'contact#create', :as => 'contact', :on => :member 
+    end
   end
 
 

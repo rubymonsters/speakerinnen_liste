@@ -60,7 +60,8 @@ CREATE TABLE profiles (
     talks character varying(255),
     admin boolean DEFAULT false,
     provider character varying(255),
-    uid character varying(255)
+    uid character varying(255),
+    media_url character varying(255)
 );
 
 
