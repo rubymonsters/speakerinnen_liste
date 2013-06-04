@@ -54,15 +54,15 @@
     <div class="header"><%= t ".bio" %></div>
       <%= @profile.bio %>
     <p></p>
-    <div class="header"><%= t ".email" %></div>
-      <%= mail_to @profile.email%>
-    <p></p>
       <% if @profile.twitter.present? %>
         <div class="header"><%= t ".twitter" %></div>
           <%=link_to "@" + @profile.twitter, "http://twitter.com/#{@profile.twitter}" %>
       <% end %>
-      
-    <p></p>
+    <br>
+    <hr>
+    <br>
+    <div class="header"><%= "#{t(".contact")} #{@profile.fullname}:"%></div>
+    <br>
     <%= render partial: 'contact/form', locals: {url: contact_profile_path(@profile)} %> 
     <br>
     <%= link_to(t(".back"), profiles_path, class:"btn btn-inverse btn-small") %>

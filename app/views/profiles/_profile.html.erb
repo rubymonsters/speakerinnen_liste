@@ -47,11 +47,6 @@
   <p></p>
   <div class="row">
     <div class="span8">
-      <div class="header_small">
-      <%= t ".contact" %>
-      </div>
-      <%= mail_to profile.email %>
-      <p></p> 
       <% if profile.twitter.present? %>
         <div class="header_small">
           <%= t ".twitter" %>

@@ -48,7 +48,8 @@ en:
       talks: 'Previous Talks:' 
       bio: "Bio: "
       email: "Email: "
-      twitter: 'Twitter:'  
+      twitter: 'Twitter:'
+      contact: 'Write an email to'  
       back: "Back"
       edit: "Edit"
   flash:
