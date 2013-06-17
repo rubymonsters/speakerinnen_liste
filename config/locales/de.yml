@@ -48,7 +48,8 @@ de:
       talks: 'Vorträge gehalten auf:' 
       bio: "Bio:"
       email: "Email:"
-      twitter: 'Twitter:'  
+      twitter: 'Twitter:'
+      contact: 'Schreibe eine Mail an'  
       back: "Zurück"
       edit: "Bearbeiten"
   flash:

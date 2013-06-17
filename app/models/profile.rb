@@ -56,7 +56,7 @@ class Profile < ActiveRecord::Base
     end    
   end
 
-
+  
   auto_html_for :media_url do 
     html_escape
     image
