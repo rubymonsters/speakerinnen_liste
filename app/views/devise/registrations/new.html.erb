@@ -1,17 +1,7 @@
 
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :class => "form-horizontal well"}) do |f| %>
+  <%= render 'shared/error_messages' %>
   
-  <% if @profile.errors.any? %>
-    <div id="error_explanation">
-      <p><%= pluralize(@profile.errors.count, "error") %> prohibited this profile from being saved:</p>
-
-      <ul>
-      <% @profile.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
   <fieldset>
     <legend>Sign up</legend>
 

@@ -58,7 +58,7 @@ CREATE TABLE profiles (
     confirmation_sent_at timestamp without time zone,
     unconfirmed_email character varying(255),
     talks character varying(255),
-    admin boolean,
+    admin boolean DEFAULT false,
     provider character varying(255),
     uid character varying(255),
     media_url character varying(255)

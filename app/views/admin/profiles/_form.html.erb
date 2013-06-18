@@ -1,15 +1,5 @@
 <%= form_for @profile, :url => admin_profile_path(@profile), :html => { :multipart => true, :class => "form-horizontal well"} do |f| %>
-  <% if @profile.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@profile.errors.count, "error") %> <%= t ".not_saved" %></h2>
-
-      <ul>
-      <% @profile.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+ <%= render 'shared/error_messages' %>
 
   <fieldset>
     <legend><%= t ".profile_from" %> <%= @profile.firstname %></legend>
