@@ -15,7 +15,7 @@ class ProfilesController < ApplicationController
     @message = Message.new
    
   end
-b
+
   # action, view, routes should be deleted
   def new
     @profile = Profile.new
