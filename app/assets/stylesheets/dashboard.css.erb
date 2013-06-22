@@ -1,6 +1,3 @@
-// Place all the styles related to the dashboard controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
 article,aside,details,figcaption,figure,footer,header,hgroup,nav,section{display:block;}
 audio,canvas,video{display:inline-block;*display:inline;*zoom:1;}
 audio:not([controls]){display:none;}
@@ -66,14 +63,21 @@ h2{font-size:3.0em;padding:12px 0px;margin:12px 0px;}
 h3{font-size:2.0em;border-top:2px solid #ccc;margin:5px 0px;padding:12px 0px 4px 0px;}
 h4{border-top:1px solid #ccc;border-bottom:1px solid #ccc;padding:12px 0px;margin:0px 0px 12px 0px;font-size:1.4em;}
 h5{font-size:1.25em;}
-article .content{height:100%;width:100%;z-index:55;position:absolute;top:0px;left:0px;overflow:auto;text-align:center;display:block;background-image:url('../img/dot-pattern.png');}
+article .content{height:100%;width:100%;z-index:55;position:absolute;top:0px;left:0px;
+	overflow:auto;text-align:center;display:block;
+	background-image:url('../img/dot-pattern.png');}
 article .content img{margin:0 auto 15px auto;}
 article .content .disciplines{margin:0 auto;}
 .dots{position:absolute;width:100%;height:100%;z-index:1;top:0px;background-color:rgba(0, 0, 0, 0.4);}
 .no-rgba article{text-shadow:1px 1px 5px #000000;}
 .about header{position:absolute;z-index:100;}
-header{padding:40px;width:100%;position:fixed;top:0px;font-weight:100;z-index:10;}
-header a#logo{width:160px;height:56px;display:inline-block;background:url(../img/logo.png) no-repeat center center;}
+header{padding:0 15px 0 15px;width:100%;position:fixed;top:0px;font-weight:100;z-index:10;}
+
+header a#logo{width:180px;height:70px; display:inline-block;background:url(<%=asset_path "logo8.png"%>) no-repeat center center; z-index: 1000; text-indent: -9999px;   transition: all 0.2s ease-in-out 0s;}
+header a#logo:hover {opacity: 0.7;  -webkit-transition: all .2s ease-in-out;
+-moz-transition: all .2s ease-in-out;
+-o-transition: all .2s ease-in-out;}
+
 header a#grid-btn{background:url(../img/icon-grid.png) no-repeat center center;width:27px;height:27px;display:inline-block;float:left;}
 header a#about-btn{color:#000;height:27px;display:inline-block;padding:5px 0px 0px 10px;display:inline-block;line-height:1.0em;float:left;margin-left:10px;border-left:1px solid #fff;}
 header a#about-btn:hover{color:#ffb94a;}
@@ -90,7 +94,8 @@ nav#main-nav div.nav-item#logo-small{padding:15px 28px 11px 22px;}
 .disciplines{padding:12px 0px 30px 0px;font-size:1.2em;}
 .disciplines a{display:inline-block;margin:0px 15px;color:#fff;}
 .disciplines a:hover{opacity:0.8;}
-nav#slide-nav{width:40px;height:80px;margin:0 auto;position:fixed;bottom:0px;right:40px;z-index:25;}nav#slide-nav div{width:40px;height:40px;float:left;background-color:rgba(0, 0, 0, 0.8);background-repeat:no-repeat;background-position:center;-webkit-transition:opacity 0.15s ease;opacity:0.6;cursor:pointer;}nav#slide-nav div:hover{opacity:1;}
+nav#slide-nav{width:40px;height:80px;margin:0 auto;position:fixed;bottom:0px;right:40px;z-index:25;}nav
+#slide-nav div{width:40px;height:40px;float:left;background-color:rgba(0, 0, 0, 0.8);background-repeat:no-repeat;background-position:center;-webkit-transition:opacity 0.15s ease;opacity:0.6;cursor:pointer;}nav#slide-nav div:hover{opacity:1;}
 
 .underline{display:inline-block;border-bottom:10px double rgba(256, 256, 256, 0.4);}
 .italic{font-style:italic;}
@@ -149,15 +154,14 @@ transform:  translate(-25px, 20px) rotate(0deg) scale(1.3);
 
 
 #about-top .full-wrap{position:absolute;top:0px;left:0px;width:100%;
-  height:100%;z-index:25;
-  background-image:url(../img/dot-pattern.png);}
+  height:100%;z-index:0;
+  background-image:url(<%=asset_path "dot-pattern.png"%>);}
 #about-top .large{font-size:2.7em;color:#fff; margin-top: 40px;}
 #about-top #home-logos{background-color:#fff;background-color:rgba(256, 256, 256, 0.9);color:#444;display:inline-block;padding:14px 20px 12px 12px;margin-left:10px;position:absolute;bottom:40px;font-family:'Merriweather',Georgia,serif;}
 #about-top #home-logos span{color:#444;display:inline-block;vertical-align:top;}
 #about-top #home-logos a{display:inline-block;height:21px;background-position:center;background-repeat:no-repeat;margin-left:12px;opacity:1;-webkit-transition:all 0.1s ease;-moz-transition:all 0.1s ease;transition:all 0.1s ease;}
 #about-top #home-logos a:hover{opacity:0.8;}
-#about-top #home-logos a.bestdesigns{width:132px;background-image:url(../img/logo-bestdesigns.png);}
-#about-top #home-logos a.cssa{width:45px;background-image:url(../img/logo-cssa.png);}
+
 .white-bg{background-color:#fff;font-size:15px;padding:20px 0px;
 width:100%;z-index:99999;}
 .white-bg .italic{display:inline-block;margin-bottom:6px;}
