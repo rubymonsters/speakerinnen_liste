@@ -9,7 +9,7 @@
 <div class="span12" id="topics_cloud">
   <h3>TopicCloud:</h3>
   <% tag_cloud Profile.topic_counts, %w[s m l] do |topic, css_class| %>
-    <%= link_to topic.name, topic_path(topic.name), class: css_class %>
+    <%= topic_link topic, class: css_class %>
   <% end %>
 </div>
 <div class="span8">

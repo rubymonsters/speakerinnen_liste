@@ -8,4 +8,7 @@ module ProfilesHelper
     end
   end
 
+  def topic_link(topic, options={})
+ 	link_to topic.name, topic_path(topic.name), options
+  end
 end
