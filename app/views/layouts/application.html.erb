@@ -3,12 +3,35 @@
 <head>
   <title><%= t ".title" %></title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+   <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 </head>
 <body>
+
 <!-- NAVBAR STARTS HERE-->  
-<div class="navbar navbar-fixed-top">
+ <header id="top">
+  <%= link_to t(".title"), root_path, :id => "logo" %>
+    <div class="right">
+     <p> <a href="#" class="header-btn">Are you speaker?</a>&nbsp;&nbsp;:&nbsp;&nbsp; </a></p>
+     <p> <% if profile_signed_in? %>
+          <%= link_to(t(".my_profile"), profile_path(current_profile), :class => 'header-btn')%> |
+          <%= link_to(t(".account"), edit_profile_registration_path, :class => 'header-btn') %> |
+          <%= link_to(t(".logout"), destroy_profile_session_path, method: :delete, :class => 'header-btn') %>
+        <% else %>
+          <%= link_to(t(".signup"), new_profile_registration_path, :class => 'header-btn') %> |
+          <%= link_to(t(".login"), new_profile_session_path, :class => 'header-btn') %> |
+         <!--  <%= link_to("Twitter", profile_omniauth_authorize_path(:twitter), :class => 'header-btn') %> -->
+        <% end %>
+      </p>
+      <p class="navbar-text pull-left"> Language:
+        <%= link_to_unless I18n.locale == :en, "EN", locale: :en %> | 
+        <%= link_to_unless I18n.locale == :de, "DE", locale: :de %>
+      </p> 
+    </div>
+  </header>
+
+
+<!-- <div class="navbar navbar-fixed-top">
   <div class="navbar-inner">
     <div class="container">
       <%= link_to t(".title"), root_path, :class => "brand" %>
@@ -41,8 +64,8 @@
           <%= link_to("Twitter", profile_omniauth_authorize_path(:twitter), :class => 'navbar-link') %>
         <% end %>
       </p>
-      <!-- admin link if admin -->
-      <p class="navbar-text pull-right">
+  admin link if admin 
+     <p class="navbar-text pull-right">
         <% if admin?(current_profile) %>
           <%= link_to "admin", admin_root_path %>
         <% end %>
@@ -50,18 +73,20 @@
     </div>
   </div>
 </div>
-
+</div>
+</div>
+ --> 
 <!-- CONTENT STARTS HERE-->  
-<div class="container">
+<!-- <div class="container">
   <div class="row">
     <p id="notice"><%= notice %></p>
     <p id="alert"><%= alert %></p>
-  </div>
+  </div> --> 
   <%= yield %>
-</div>
+
 
 <!-- FOOTER STARTS HERE-->  
-<hr>
+<!-- <hr>
 <footer id="footer">
   <div class="container">
       <ul class="nav nav-pills">
@@ -71,6 +96,6 @@
       </ul>
   </div>
 </footer>
-<hr>
+<hr>-->
 </body>
 </html>
