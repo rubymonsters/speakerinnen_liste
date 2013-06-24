@@ -9,8 +9,8 @@
                         $(".badge").stop().animate({
                             opacity: 0 }, 50);
                     } else {
-                        $(".badge").stop().animate({
-                            opacity: 1 }, 50);}});
+                    $(".badge").stop().animate({
+                    opacity: 1 }, 50);}});
                 </script>
               
       <div class="container">
@@ -20,12 +20,14 @@
           <br/>
           <span class="text-white-bg tagline-second">Find female professionals for your tech conference </span>
           <br/>
-             <br/>
-             <form class="form-inline">
-          <span class="text-white-bg"><div id="search-bar">
-             <input type="text" class="topic-search" placeholder="Search for talk topic" name="location" id="header-topic">  <button class="btn btn-large"  id="submit_topic" type="submit">Search</button>
-        
-           </div></span></form>
+          <%= form_tag(search_path, :method => "get", :class =>"navbar-form pull-left") do %>
+            <span class="text-white-bg">
+              <div id="search-bar">
+                <%= text_field_tag(:q, nil, :class => "span2", :placeholder => "Search for talk topic") %>
+                <%= button_tag("Search", :class => "btn btn-large") %>
+              </div>
+            </span>
+          <% end %>
         </div>
       </div>
     </div>
@@ -90,10 +92,9 @@
 
 
 
-    <div class="white-bg" id="storytellers">
+    <div class="white-bg" id="speakers">
 
       <div class="container">
-
         <h1>Our New Speakers</h1>
            <h4> We care about women-men ration on tech conferences. We encourage women porfesionals to be more visible in tech industry. </h4>
            <div class="row">
@@ -175,7 +176,7 @@
           </div>
      
 
-    <div class="photo-bar storytellers">
+    <div class="photo-bar speakers">
       <div class="container large">
         <div class="photo-text"><div class="photo-text"><span class="text-black-bg">Organizer,</span><br> <span class="text-black-bg">find your speaker</span></div>
       </div>
@@ -236,8 +237,7 @@
           <p>///// </p>
         </div>
      </div>
-      <hr>
-      <a href="#" id="our-work">Find you speakers >> </a>
+      <%= link_to "Find you speakers >>", profiles_path, :id => "find-more" %>
         <div class="clearfix"></div>
         <br>
    

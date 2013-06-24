@@ -37,7 +37,7 @@ SpeakerinnenListe::Application.routes.draw do
 
     match 'impressum' => 'home#impressum'
 
-    get '/', to: 'profiles#index', as: :root
+    get '/', to: 'dashboard#index', as: :root
     
     resources :profiles, :except => [:new, :create] do
       get  'contact' => 'contact#new',    :as => 'contact', :on => :member

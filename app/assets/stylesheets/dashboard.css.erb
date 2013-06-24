@@ -63,9 +63,7 @@ h2{font-size:3.0em;padding:12px 0px;margin:12px 0px;}
 h3{font-size:2.0em;border-top:2px solid #ccc;margin:5px 0px;padding:12px 0px 4px 0px;}
 h4{border-top:1px solid #ccc;border-bottom:1px solid #ccc;padding:12px 0px;margin:0px 0px 12px 0px;font-size:1.4em;}
 h5{font-size:1.25em;}
-article .content{height:100%;width:100%;z-index:55;position:absolute;top:0px;left:0px;
-	overflow:auto;text-align:center;display:block;
-	background-image:url('../img/dot-pattern.png');}
+
 article .content img{margin:0 auto 15px auto;}
 article .content .disciplines{margin:0 auto;}
 .dots{position:absolute;width:100%;height:100%;z-index:1;top:0px;background-color:rgba(0, 0, 0, 0.4);}
@@ -77,7 +75,6 @@ header a#logo{width:180px;height:70px; display:inline-block;background:url(<%=as
 header a#logo:hover {opacity: 0.7;  -webkit-transition: all .2s ease-in-out;
 -moz-transition: all .2s ease-in-out;
 -o-transition: all .2s ease-in-out;}
-
 
 header .right{float:right;padding:10px 0px 0px 0px;}
 header .right a.header-btn{color:#0000;
@@ -121,16 +118,14 @@ a li:hover {
 }
 
 
-
 #about-top{
   background:url(<%=asset_path "curie1.png"%>)  no-repeat center center;
   background-attachment:fixed;
   -webkit-background-size:cover;
   -moz-background-size:cover;-o-background-size:cover;
    background-size:cover;
-  min-height:668px;
+  min-height:700px;
   height: 90%;
-   
 }
 
 .badge img{
@@ -154,12 +149,10 @@ transform:  translate(-25px, 20px) rotate(0deg) scale(1.3);
 
 /*  background: no-repeat center center;*/
 
-
-
 #about-top .full-wrap{position:absolute;top:0px;left:0px;width:100%;
-  height:100%;z-index:0;
+  height:90%;z-index:0;
   background-image:url(<%=asset_path "dot-pattern.png"%>);}
-#about-top .large{font-size:2.7em;color:#fff; margin-top: 40px;}
+#about-top .large{font-size:3.2em;color:#fff; margin-top: 40px;}
 #about-top #home-logos{background-color:#fff;background-color:rgba(256, 256, 256, 0.9);color:#444;display:inline-block;padding:14px 20px 12px 12px;margin-left:10px;position:absolute;bottom:40px;font-family:'Merriweather',Georgia,serif;}
 #about-top #home-logos span{color:#444;display:inline-block;vertical-align:top;}
 #about-top #home-logos a{display:inline-block;height:21px;background-position:center;background-repeat:no-repeat;margin-left:12px;opacity:1;-webkit-transition:all 0.1s ease;-moz-transition:all 0.1s ease;transition:all 0.1s ease;}
@@ -174,8 +167,8 @@ width:100%;z-index:99999;}
 .white-bg .large{font-size:300%;}
 .white-bg ul{margin:0px;padding:0px;}
 .white-bg ul li{list-style-type:none;margin:0px 0px 8px 0px;padding:0px;}
-.white-bg a#our-work{color:#444;font-size:2.0em;text-align:right;display:block;margin:20px auto 0px auto;}
-.white-bg a#our-work:hover{opacity:0.8;}
+.white-bg a#find-more{color:#444;font-size:2.0em;text-align:right;display:block;margin:20px auto 0px auto;}
+.white-bg a#find-more:hover{opacity:0.8;}
 
 
 #about-content{z-index:55;box-shadow:1px 1px 20px rgba(0, 0, 0, 0.6);}
@@ -190,15 +183,9 @@ p{margin:6px 0px 12px 0px;}
   box-shadow:inset 0px 0px 20px rgba(0, 0, 0, 0.5);
   font-size:26px;width:100%;}
 
+.heading {margin: 10% 0 0 -15%;}
 
-  .heading {
-  margin-top: 15%;
-}
-
-
-/*.photo-bar.about-disciplines{background-image:url(../img/about-disciplines-1920.jpg);}*/
-
-.photo-bar.storytellers{background-image:url(<%=asset_path "curie5.png"%>);}
+.photo-bar.speakers{background-image:url(<%=asset_path "curie5.png"%>);}
 .photo-bar.work-with{background-image:url(<%=asset_path "curie7.png"%>);}
 .photo-bar.work-with .container_24{padding:40px 0px;font-size:60%;}
 .photo-bar .large{font-size:150%;}
@@ -207,9 +194,8 @@ p{margin:6px 0px 12px 0px;}
 .photo-bar .photo-text.small{font-size:70%;}
 .text-white-bg{display:inline-block;
   background-color:rgba(256, 256, 256, 0.7);
-  padding:12px;margin:10px 10px;color:#000;}
-.no-rgba .text-white-bg{background-color:#ffffff;}
-.tagline-second { font-size:50%; font-weight: bold; }
+  padding:12px 12px 20px 12px;margin: 10px 10px;color:#000;}
+.tagline-second { font-size:50%; font-weight: lighter; }
 .tagline { font-size:70%;}
 .text-black-bg{display:inline-block;background-color:rgba(0, 0, 0, 0.8);padding:12px;color:#fff;}
 .no-grba .text-black-bg{background-color:#000000;}
@@ -233,4 +219,14 @@ p{margin:6px 0px 12px 0px;}
 .spinit {transition: 1s; -o-transition: 1s; -moz-transition: 1s; -webkit-transition: 1s; -webkit-transform: rotate(360deg); transform: rotate(360deg);}
 .spinback {transition: 1s; -o-transition: 1s; -moz-transition: 1s; -webkit-transition: 1s; -webkit-transform: rotate(0deg); transform: rotate(0deg);}
 
+input[type="text"] {
+  height: 43px;
+  padding: 0 14px;
+  width: 290px;
+  margin:0;
+}
+
+.white-bg li {
+  text-decoration: none;
+}
 
