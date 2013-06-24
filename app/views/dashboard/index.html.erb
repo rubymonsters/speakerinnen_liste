@@ -43,40 +43,18 @@
         <h4> We care about women-men ratio on tech conferences. We encourage women porfesionals to be more visible in tech industry. </h4>
         <br>
         <div class="row">
-    
-        <div class="span3">
-          <ul>
-            <a href=#><li>Ruby on Rails</li></a>
-            <a href=#><li>Python</li> </a>
-             <a href=#><li>Web Design</li></a>
-            <a href=#><li>IOS</li> </a>
-          </ul>
+
+          <% @topics.each_slice(4) do |topics| %>
+            <div class="span3">
+              <ul>
+                <% topics.each do |topic| %>
+                  <li> <%= link_to topic %></li>
+                <% end %> 
+              </ul>
+            </div>
+          <% end %>
+
         </div>
-        <div class="span3">
-          <ul>
-     <a href=#><li>Web Design</li></a>
-<a href=#><li>UX/UI Design</li> </a>
-    <a href=#><li>Front-End Development</li></a>
-    <a href=#><li>Platform Development</li></a>
-          </ul>
-        </div>
-        <div class="span3">
-          <ul>
-         <a href=#><li>Android</li>
-        <a href=#><li>Back-End Development</li></a>
-      <a href=#><li>Back-End Development</li></a>
-         <a href=#><li>Back-End Development</li></a>
-          </ul>
-        </div>
-        <div class="span3">
-          <ul>
-          <a href=#> <li>Back-End Development</li></a>
-        <a href=#><li>Back-End Development</li></a>
-        <a href=#><li>Front-End Development</li></a>
-      <a href=#><li>Other</li></a>
-          </ul>
-        </div>
-      </div>
         <br>
         <br>
       </div>
@@ -87,10 +65,6 @@
         <div class="photo-text"><span class="text-black-bg">Do you have a clue?</span><br> <span class="text-black-bg">Get on the Speakerlinn Liste ______</span></div>
       </div>
     </div>
-
-
-
-
 
     <div class="white-bg" id="speakers">
 
