@@ -16,15 +16,15 @@
       <div class="container">
         <div class="heading">
         <div class="large serif">
-          <span class="text-white-bg">Organizer, find your speaker</span>
+          <span class="text-white-bg"><%=t ".Organizer find your speaker" %></span>
           <br/>
-          <span class="text-white-bg tagline-second">Find female professionals for your tech conference </span>
+          <span class="text-white-bg tagline-second"><%=t ".Find female professionals for your conference" %></span>
           <br/>
           <%= form_tag(search_path, :method => "get", :class =>"navbar-form pull-left") do %>
             <span class="text-white-bg">
               <div id="search-bar">
-                <%= text_field_tag(:q, nil, :class => "span2", :placeholder => "Search for talk topic") %>
-                <%= button_tag("Search", :class => "btn btn-large") %>
+                <%= text_field_tag(:q, nil, :class => "span2", :placeholder => (t ".Search for talk topic")) %>
+                <%= button_tag((t ".Search"), :class => "btn btn-large") %>
               </div>
             </span>
           <% end %>
