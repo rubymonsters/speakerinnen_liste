@@ -29,13 +29,12 @@
             </span>
           <% end %>
         </div>
-      </div>
-    </div>
+        </div>
+       </div>
      
-    </div>
+     </div>
 
-  </section>
-
+</section>
 
     <div class="white-bg">
       <div class="container">
@@ -43,12 +42,11 @@
         <h4> We care about women-men ratio on tech conferences. We encourage women porfesionals to be more visible in tech industry. </h4>
         <br>
         <div class="row">
-
           <% @topics.each_slice(4) do |topics| %>
             <div class="span3">
               <ul>
                 <% topics.each do |topic| %>
-                  <li> <%= topic_link topic %></li>
+                  <li><%= topic_link topic %></li>
                 <% end %> 
               </ul>
             </div>
@@ -60,9 +58,9 @@
       </div>
     </div>
 
-   <div class="photo-bar about-disciplines">
+    <div class="photo-bar about-disciplines">
       <div class="container large">
-        <div class="photo-text"><span class="text-black-bg">Do you have a clue?</span><br> <span class="text-black-bg">Get on the Speakerlinn Liste ______</span></div>
+        <div class="photo-text"><span class="text-black-bg">Do you have something to say?</span><br> <span class="text-black-bg">Get on the Speakerinnen Liste ______</span></div>
       </div>
     </div>
 
@@ -71,12 +69,12 @@
       <div class="container">
 
         <h1>Our New Speakers</h1>
-           <h4> We care about women-men ration on tech conferences. We encourage women porfesionals to be more visible in tech industry. </h4>
+           <h4> We care about women-men ration on tech conferences. We encourage women profesionals to be more visible in tech industry. </h4>
            <div class="row">
-                <% @profiles.each do |profile|  %>
+                <% @profiles.each do |profile| %>
                 <div class="span3">
                   <div class="speaker">
-                    <div><%= link_to image_tag(profile.picture_url), profile %> 
+                    <div><%= link_to image_tag(profile.picture_url, alt="Picture of the person"), profile %> 
                     </div>
                     <div class="name"><%= link_to profile.fullname, profile %></div>
                     <div class="desc"><%= profile.topic_list.first if profile.topic_list.present? %></div>
@@ -84,15 +82,15 @@
                       <% if profile.twitter.present? %>
                         <div class="header_small">
                          <%= t ".twitter" %>
-                         </div>
+                        </div>
                          <%=link_to "@" + profile.twitter, "http://twitter.com/#{profile.twitter}" %>
                         <% end %>
                     </div>
                   </div>
                 </div>
-              <% end %>
-          </div>
-        </div>     
+                <% end %>
+      </div>
+    </div>     
 
     <div class="photo-bar speakers">
       <div class="container large">
@@ -101,7 +99,6 @@
       </div>
     </div>
      
-
 
   <section id="about-content">
     <div class="white-bg">
@@ -121,23 +118,17 @@
     </div>
     </div>
   </section>
- 
- 
-   
-
-    
 
     <div class="photo-bar work-with serif small">
       <div class="container large">
-        <div class="photo-text"><span class="text-black-bg">Do you have a clue?</span><br> <span class="text-black-bg">Get on the Speakerlinn Liste ______</span></div>
+        <div class="photo-text"><span class="text-black-bg">Do you have something to say?</span><br> <span class="text-black-bg">Get on the Speakerinnen Liste ______</span></div>
       </div>
-     
-    </div>
+     </div>
+    
     <div class="white-bg" id="work">
-
       <div class="container">
 
-        <h1>SpeakerInnen Liste</h1>
+        <h1>Speakerinnen Liste</h1>
         <div class="row">
         <div class="span4">
           <h4>Rails Girls</h4>
