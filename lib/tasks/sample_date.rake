@@ -10,7 +10,9 @@ namespace :db do
                  city: "Berlin",
                  topic_list: "Comics",
                  languages: "English, German",
-                 talks: "Republica"
+                 talks: "Republica",
+                 picture: File.open(Dir.glob(File.join(Rails.root, 'app/assets/images/sampleimages', '*')).sample),
+                 twitter: "example"
                  )
     10.times do |n|
       firstname  = Faker::Name.first_name
@@ -25,6 +27,8 @@ namespace :db do
       languages = all_languages.sample(rand(3)+1).join(", ") 
       all_talks = ["29C3", "Republica", "DEF CON", "Rails Camp", "EuRuKo2013", "Ruby User Group"]
       talks = all_talks.sample(rand(4)). join(", ")
+      sample_image = File.open(Dir.glob(File.join(Rails.root, 'app/assets/images/sampleimages', '*')).sample)
+      twitter = Faker::Name.first_name
       Profile.create!(  firstname: firstname,
                         lastname: lastname,
                         email: email,
@@ -34,7 +38,10 @@ namespace :db do
                         city: city,
                         topic_list: topic_list,
                         languages: languages,
-                        talks: talks)
+                        talks: talks,
+                        picture: sample_image,
+                        twitter: twitter
+                        )
     end
   end
 end

@@ -15,7 +15,7 @@
               
       <div class="container">
         <div class="heading">
-        <div class="large serif">
+          <div class="large serif">
           <span class="text-white-bg">Organizer, find your speaker</span>
           <br/>
           <span class="text-white-bg tagline-second">Find female professionals for your tech conference </span>
@@ -80,9 +80,9 @@
                     <img src="img/Pani.jpg">
                     <div class="name"><%= profile.fullname %></div>
                     <div class="desc"><%= profile.topic_list.first if profile.topic_list.present? %></div>
-                    <div class="contact-info">
-                      <a href=""><p>@dsadas</p></a>
-                    </div>
+                    <div class="twitter"><%= "@" + profile.twitter if profile.twitter %></div>
+                    <br>
+                    <div class="picture"><%= image_tag(profile.picture_url, :width => 100) %></div>
                   </div>
                 </div>
                 <% end %>
