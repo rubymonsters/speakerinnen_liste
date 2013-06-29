@@ -60,7 +60,7 @@
 
     <div class="photo-bar about-disciplines">
       <div class="container large">
-        <div class="photo-text"><span class="text-black-bg">Do you have something to say?</span><br> <span class="text-black-bg">Get on the Speakerinnen Liste ______</span></div>
+        <div class="photo-text"><span class="text-black-bg">Do you have something to say?</span><br><span class="text-black-bg">Get on the SpeakerInnen List ______</span><%= link_to(t(".signup"), new_profile_registration_path) %></div>
       </div>
     </div>
 
@@ -89,7 +89,8 @@
                 </div>
                 <% end %>
           </div>
-        </div>   
+              <%= link_to "Browse more speakers >>", profiles_path, :id => "find-more" %>
+        </div> 
       </div>
     </div>     
   
@@ -143,7 +144,7 @@
         </div>
         <div class="span4">
           <h4>Contact</h4>
-          <span class="italic">This is how it started </span>
+          <%= link_to t(".contact"), contact_path %>
           <p>///// </p>
         </div>
      </div>
