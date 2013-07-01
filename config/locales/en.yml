@@ -1,4 +1,10 @@
 en:
+  dashboard:
+    index: 
+      Organizer find your speaker: "Organizer find your speaker"
+      Find female professionals for your conference: "Find female speakers, coaches & moderators for your conference"
+      Search for talk topic: "Search for talk topic"
+      Search: "Search"
   home:
     index:
       title: "What is this ?"

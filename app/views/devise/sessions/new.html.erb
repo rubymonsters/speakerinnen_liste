@@ -1,41 +1,60 @@
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => { :class => "form-horizontal well"}) do |f| %>
-
-  <fieldset>
-    <legend>Login</legend>
-
-  <div class="control-group">
-    <%= f.label :email, class:"control-label" %>
-    <div class="controls">
-      <%= f.email_field :email, :autofocus => true, class:"input-xlarge", id:"input01" %>
-    </div>
-  </div>
+<div id="container">
   
-  <div class="control-group">
-    <%= f.label :password, class:"control-label" %>
-      <div class="controls">
-      <%= f.password_field :password, class:"input-xlarge", id:"input01" %>
-    </div>
-  </div>
+      <div id="badge-log">
+        <div id="badge-inner">
 
-  <div class="control-group">
-    <% if devise_mapping.rememberable? -%>
-      <%= f.label :remember_me, class:"control-label" %>
-      <div class="controls">
-        <label class="checkbox">
-          <%= f.check_box :remember_me , id:"optionsCheckbox"%> 
-        </label>
+          <div id="logo">
+            <%= image_tag("logo8.png", id:"logo8") %>
+          </div>
+        
+          <div id="login">
+
+          <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+
+            <div class="control-group">
+              <%= f.email_field :email, :autofocus => true, class:"input-xlarge", id:"input01", placeholder: "Email" %>
+            </div>
+            <div class="control-group">
+              <%= f.password_field :password, class:"input-xlarge", id:"input01", placeholder: "Password" %>
+           </div>
+            
+        <div class="control-group">
+             <%- if devise_mapping.recoverable? && controller_name != 'passwords' %>
+            <%= link_to "Forgot your password?", new_password_path(resource_name), class:"forgot-p" %><br />
+           <% end -%>
+       </div> 
+        <div class="control-group">
+            <% if devise_mapping.rememberable? -%> <p>Remember me</p>
+            <%= f.check_box :remember_me , id:"optionsCheckbox", class:"remember"   %> 
+             <% end -%> 
+          </div> 
+
+           <div class="control-group">
+            <%= f.submit(t(".login"), class:"log-in-button")%>
+           </div>
+              
+            <div class="control-group">
+             <%- if devise_mapping.omniauthable? %>
+               <%- resource_class.omniauth_providers.each do |provider| %>
+               <div class="log-in-button-twitter"><%= link_to "Sign in with #{provider.to_s.titleize}", omniauth_authorize_path(resource_name, provider) %> </div>
+                 <% end -%>
+              <% end -%>
+             </div>
+
+            
+          <% end %>
+          </div>
+        </div>
       </div>
-    <% end -%>
-  </div>
-
-
-  <div class="form-actions">
-    <%= f.submit(t(".login"), class:"btn btn-success")%>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
-  </fieldset>
-</form>
+        <div class="span5 offset1">
+             <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
+          <%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name) %><br />
+        <% end -%>
+ 
+      <%- if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks' %>
+        <%= link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name) %><br />
+      <% end -%>
+   </div>
+    </div>
 
 
