@@ -1,4 +1,10 @@
 de:
+  dashboard:
+    index: 
+      Organizer find your speaker: "Konferenzmanager!"
+      Find female professionals for your conference: "Finde weibliche Sprecherinnen und Moderatorinnen für Deine Konferenz"
+      Search for talk topic: "Suche nach einem Thema"
+      Search: "Suche"
   home:
     index:
       title: "Was ist die Speakerinnen Liste?"
