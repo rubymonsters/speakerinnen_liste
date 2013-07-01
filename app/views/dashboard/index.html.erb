@@ -1,20 +1,20 @@
 <section id="about-top">
 
-    <div class="full-wrap">
-       <div class="badge"><%= image_tag("badge2-bw.png", :alt => "badge") %> </div>
- 
-              <script>
-                    $(window).scroll(function() {
-                    if ($(this).scrollTop() > 0) {
-                        $(".badge").stop().animate({
-                            opacity: 0 }, 50);
-                    } else {
-                    $(".badge").stop().animate({
-                    opacity: 1 }, 50);}});
-                </script>
-              
-      <div class="container">
-        <div class="heading">
+  <div class="full-wrap">
+    <div class="badge"><%= image_tag("badge2-bw.png", :alt => "badge") %> </div>
+
+    <script>
+      $(window).scroll(function() {
+      if ($(this).scrollTop() > 0) {
+      $(".badge").stop().animate({
+      opacity: 0 }, 50);
+      } else {
+      $(".badge").stop().animate({
+      opacity: 1 }, 50);}});
+    </script>
+
+    <div class="container">
+      <div class="heading">
         <div class="large serif">
           <span class="text-white-bg"><%=t ".Organizer find your speaker" %></span>
           <br/>
@@ -29,109 +29,108 @@
             </span>
           <% end %>
         </div>
-        </div>
-       </div>
-     
-     </div>
+      </div>
+    </div>
+
+  </div>
 
 </section>
 
-    <div class="white-bg">
-      <div class="container">
-        <h1>Our Disciplines</h1>
-        <h4> We care about women-men ratio on tech conferences. We encourage women porfesionals to be more visible in tech industry. </h4>
-        <br>
-        <div class="row">
-          <% @topics.each_slice(4) do |topics| %>
-            <div class="span3">
-              <ul>
-                <% topics.each do |topic| %>
-                  <li><%= topic_link topic %></li>
-                <% end %> 
-              </ul>
-            </div>
-          <% end %>
-
+<div class="white-bg">
+  <div class="container">
+    <h1>Our Disciplines</h1>
+    <h4> We care about women-men ratio on tech conferences. We encourage women porfesionals to be more visible in tech industry. </h4>
+    <br>
+    <div class="row">
+      <% @topics.each_slice(4) do |topics| %>
+        <div class="span3">
+          <ul>
+            <% topics.each do |topic| %>
+              <li><%= topic_link topic %></li>
+            <% end %> 
+          </ul>
         </div>
-        <br>
-        <br>
-      </div>
-    </div>
+      <% end %>
 
-    <div class="photo-bar about-disciplines">
-      <div class="container large">
-        <div class="photo-text"><span class="text-black-bg">Do you have something to say?</span><br><span class="text-black-bg">Get on the SpeakerInnen List ______</span><%= link_to(t(".signup"), new_profile_registration_path) %></div>
-      </div>
     </div>
+    <br>
+    <br>
+  </div>
+</div>
 
-    
-    <div class="white-bg" id="speakers">
-      <div class="container">
-        <h1>Our New Speakers</h1>
-           <h4> We care about women-men ration on tech conferences. We encourage women profesionals to be more visible in tech industry. </h4>
-           <div class="row">
-                <% @profiles.each do |profile| %>
-                <div class="span3">
-                  <div class="speaker">
-                    <div><%= link_to image_tag(profile.picture_url, alt="Picture of the person"), profile %> 
-                    </div>
-                    <div class="name"><%= link_to profile.fullname, profile %></div>
-                    <div class="desc"><%= profile.topic_list.first if profile.topic_list.present? %></div>
-                    <div class="contact-info">
-                      <% if profile.twitter.present? %>
-                        <div class="header_small">
-                         <%= t ".twitter" %>
-                        </div>
-                         <%=link_to "@" + profile.twitter, "http://twitter.com/#{profile.twitter}" %>
-                        <% end %>
-                    </div>
-                  </div>
+<div class="photo-bar about-disciplines">
+  <div class="container large">
+    <div class="photo-text"><span class="text-black-bg">Do you have something to say?</span><br><span class="text-black-bg">Get on the SpeakerInnen List ______<%= link_to(t(".signup"), new_profile_registration_path) %></span></div>
+  </div>
+</div>
+
+<div class="white-bg" id="speakers">
+  <div class="container">
+    <h1>Our New Speakers</h1>
+    <h4> We care about women-men ration on tech conferences. We encourage women profesionals to be more visible in tech industry. </h4>
+    <div class="row">
+      <% @profiles.each do |profile| %>
+        <div class="span3">
+          <div class="speaker">
+            <div><%= link_to(image_tag(profile.picture_url), profile) %> 
+            </div>
+            <div class="name"><%= link_to profile.fullname, profile %></div>
+            <div class="desc"><%= profile.topic_list.first if profile.topic_list.present? %></div>
+            <div class="contact-info">
+              <% if profile.twitter.present? %>
+                <div class="header_small">
+                  <%= t ".twitter" %>
                 </div>
-                <% end %>
+                <%=link_to "@" + profile.twitter, "http://twitter.com/#{profile.twitter}" %>
+              <% end %>
+            </div>
           </div>
-              <%= link_to "Browse more speakers >>", profiles_path, :id => "find-more" %>
-        </div> 
-      </div>
-    </div>     
-  
-    <div class="photo-bar speakers">
-      <div class="container large">
-        <div class="photo-text"><div class="photo-text"><span class="text-black-bg">Organizer,</span><br> <span class="text-black-bg">find your speaker</span></div>
-      </div>
-      </div>
+        </div>
+      <% end %>
     </div>
-     
+    <%= link_to "Browse more speakers >>", profiles_path, :id => "find-more" %>
+  </div> 
+</div>
+   
 
-  <section id="about-content">
-    <div class="white-bg">
+<div class="photo-bar speakers">
+  <div class="container large">
+    <div class="photo-text"><div class="photo-text"><span class="text-black-bg">Organizer,</span><br> <span class="text-black-bg">find your speaker</span></div>
+    </div>
+  </div>
+</div>
+
+
+<section id="about-content">
+  <div class="white-bg">
     <div class="container">
-     <div class="row">
-      <div class="span5">
-        <h1>Our Vision</h1>
-        <p>We believe that female speakers should be easier to find for tech-y event organizers.</p>
-        <p>We believe that event organizers should have the best speakers at their events, regardless of the speakers’ gender identification.</p>
-        <p>We believe in collaboration and not competition, so we encourage our speakers and event organizers to support each other and help speakers speak better. </p>
+      <div class="row">
+        <div class="span5">
+          <h1>Our Vision</h1>
+          <p>We believe that female speakers should be easier to find for tech-y event organizers.</p>
+          <p>We believe that event organizers should have the best speakers at their events, regardless of the speakers’ gender identification.</p>
+          <p>We believe in collaboration and not competition, so we encourage our speakers and event organizers to support each other and help speakers speak better. </p>
+        </div>
+        <div class="span6 offset1 home">
+          <blockquote>We believe in collaboration and not competition, so we encourage our speakers and event organizers to support each other and help speakers speak better.</blockquote>
+        </div>
       </div>
-      <div class="span6 offset1 home">
-        <blockquote>We believe in collaboration and not competition, so we encourage our speakers and event organizers to support each other and help speakers speak better.</blockquote>
-      </div>
-     </div>
-     </div>
     </div>
-    </div>
-  </section>
+  </div>
+</section>
 
-    <div class="photo-bar work-with serif small">
-      <div class="container large">
-        <div class="photo-text"><span class="text-black-bg">Do you have something to say?</span><br> <span class="text-black-bg">Get on the Speakerinnen Liste ______</span></div>
-      </div>
-     </div>
-    
-    <div class="white-bg" id="work">
-      <div class="container">
+<div class="photo-bar work-with serif small">
+  <div class="container large">
+    <div class="photo-text"><span class="text-black-bg">Do you have something to say?</span><br> <span class="text-black-bg">Get on the Speakerinnen Liste ______</span></div>
+  </div>
+</div>
 
-        <h1>Speakerinnen Liste</h1>
-        <div class="row">
+<section>
+  <div class="white-bg" id="work">
+    <div class="container">
+
+      <h1>Speakerinnen Liste</h1>
+      <div class="row">
         <div class="span4">
           <h4>Rails Girls</h4>
           <span class="italic">This is how it started</span>
@@ -147,14 +146,15 @@
           <%= link_to t(".contact"), contact_path %>
           <p>///// </p>
         </div>
-     </div>
-      <%= link_to "Find you speakers >>", profiles_path, :id => "find-more" %>
-        <div class="clearfix"></div>
-        <br>
-   
       </div>
-
-    </div>  
+      <%= link_to "Find you speakers >>", profiles_path, :id => "find-more" %>
+      <div class="clearfix"></div>
+      <br>
 
     </div>
-  </section>
+
+  </div>  
+
+</section>
+
+
