@@ -5,6 +5,10 @@ en:
       Find female professionals for your conference: "Find female speakers, coaches & moderators for your conference"
       Search for talk topic: "Search for talk topic"
       Search: "Search"
+      RailsGirls: |
+        8 women supported by 4 coaches coded this web application as a Rails Girls Berlin learning project.
+        <a href="http://railsgirlsberlin.de">Rails Girls</a> is an international not-for-profit group that aims to get women into programming with workshops, scholarships, and a safe learning community.
+      contact: "Click here to contact us"
   home:
     index:
       title: "What is this ?"
