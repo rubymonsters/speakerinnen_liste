@@ -1,7 +1,6 @@
 <%= form_for(@profile, :html => { :multipart => true, :class => "form-horizontal well"}) do |f| %>
   <%= render 'shared/error_messages' %>
-  TEST
-  <fieldset>
+  <fieldset >
     <legend><%= t ".profile_from" %> <%= @profile.firstname %></legend>
     <div class="control-group">
       <%= f.label :firstname, class:"control-label"%>
@@ -9,7 +8,6 @@
         <%= f.text_field :firstname, class:"input-xlarge", id:"input01"%>
       </div>
     </div>
-  
     <div class="control-group">
       <%= f.label :lastname, class:"control-label" %>
       <div class="controls">
