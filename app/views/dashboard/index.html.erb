@@ -1,21 +1,20 @@
 <section id="about-top">
 
-  <div class="full-wrap">
-    <div class="badge"><%= image_tag("badge2-bw.png", :alt => "badge") %> </div>
-
-    <script>
-      $(window).scroll(function() {
-      if ($(this).scrollTop() > 0) {
-      $(".badge").stop().animate({
-      opacity: 0 }, 50);
-      } else {
-      $(".badge").stop().animate({
-      opacity: 1 }, 50);}});
-    </script>
-
-    <div class="container">
-      <div class="heading">
-        <div class="large serif">
+       <div class="badge"><%= image_tag("badge2-bw.png", :alt => "badge") %> </div>
+ 
+              <script>
+                    $(window).scroll(function() {
+                    if ($(this).scrollTop() > 0) {
+                        $(".badge").stop().animate({
+                            opacity: 0 }, 50);
+                    } else {
+                    $(".badge").stop().animate({
+                    opacity: 1 }, 50);}});
+                </script>
+              
+      <div class="container">
+        <div class="heading">
+          <div class="large serif">
           <span class="text-white-bg"><%=t ".Organizer find your speaker" %></span>
           <br/>
           <span class="text-white-bg tagline-second"><%=t ".Find female professionals for your conference" %></span>
