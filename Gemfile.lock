@@ -1,3 +1,11 @@
+GIT
+  remote: git://github.com/dejan/auto_html.git
+  revision: 12eccf91a50f30029b8055d7c70ac20ced56b751
+  specs:
+    auto_html (1.6.0)
+      redcarpet (~> 2.0)
+      rinku (~> 1.5.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -32,9 +40,6 @@ GEM
       rails (>= 3, < 5)
     addressable (2.3.5)
     arel (3.0.2)
-    auto_html (1.6.0)
-      redcarpet (~> 2.0)
-      rinku (~> 1.5.0)
     bcrypt-ruby (3.1.0)
     bcrypt-ruby (3.1.0-x86-mingw32)
     bootstrap-sass (2.3.2.0)
@@ -205,7 +210,7 @@ PLATFORMS
 
 DEPENDENCIES
   acts-as-taggable-on
-  auto_html
+  auto_html!
   bootstrap-sass (~> 2.3.0)
   bootswatch-rails
   capybara (~> 2.0.2)
