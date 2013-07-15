@@ -8,4 +8,4 @@ before_script:
 - cp config/database.yml.travis config/database.yml
 - bundle exec rake db:create db:migrate RAILS_ENV=test
 script:
-- bundle exec rake spec
+- bundle exec rake test
