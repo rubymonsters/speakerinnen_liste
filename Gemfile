@@ -19,7 +19,7 @@ gem "mini_magick", "~> 3.5.0"
 gem 'textacular', '~> 3.0', require: 'textacular/rails'
 gem "jquery-rails"
 gem 'acts-as-taggable-on'
-gem 'auto_html'
+gem 'auto_html', github: 'dejan/auto_html'
 
 group :development do
   gem "letter_opener"
