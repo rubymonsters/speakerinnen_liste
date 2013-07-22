@@ -3,8 +3,8 @@
 <head>
   <title><%= t ".title" %></title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
-   <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 </head>
 <body>
 
@@ -23,15 +23,15 @@
         <% end %>
       </p>
       <p class="navbar-text pull-left"> Language:
-        <%= link_to_unless I18n.locale == :en, "EN", locale: :en %> | 
+        <%= link_to_unless I18n.locale == :en, "EN", locale: :en %> |
         <%= link_to_unless I18n.locale == :de, "DE", locale: :de %>
-      </p> 
+      </p>
     </div>
   </header>
 
     <p id="notice"><%= notice %></p>
     <p id="alert"><%= alert %></p>
-  
+
   <%= yield %>
 
 </body>
