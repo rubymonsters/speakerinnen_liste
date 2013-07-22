@@ -4,7 +4,7 @@ class UserProfileCorrectlyDisplayedTest < ActionDispatch::IntegrationTest
 
   test "user profile is correctly displayed" do
     visit '/'
-    page.first('a', text: 'Show').click
+    page.first('div.speaker a').click
 
     assert page.has_css?('h2', :count => 1), 'one headline of the fullname'
     assert page.has_content?('My topics')
@@ -14,7 +14,7 @@ class UserProfileCorrectlyDisplayedTest < ActionDispatch::IntegrationTest
 
   test "user profile is correctly displayed in german" do
     visit '/de'
-    page.first('a', text: 'Anzeigen').click
+    page.first('div.speaker a').click
 
     assert page.has_css?('h2', :count => 1), 'one headline of the fullname'
     assert page.has_content?('Meine Themen')

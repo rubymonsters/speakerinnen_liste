@@ -1,22 +1,17 @@
 require 'test_helper' 
 
-class ProfileTest < ActionController::IntegrationTest
+class LoginTest < ActionController::IntegrationTest
   def setup
     horst = profiles(:one)
     horst.confirmed_at = Time.now
     horst.save
   end
 
-  test "viewing index page profile" do
-    visit '/profiles'
-    assert page.has_content?(I18n.t("profiles.profile.topics"))
-  end
-
   test "login works with password" do
-    visit '/profiles'
+    visit '/'
     assert page.has_content?('Login')
     click_link('Login')
-    assert page.has_content?('Email')
+    #assert page.has_content?('profile_email')
     fill_in('profile[email]', :with => 'horst@mail.de')
     fill_in('profile[password]', :with => 'Testpassword')
     click_button "Login" 
@@ -30,10 +25,10 @@ class ProfileTest < ActionController::IntegrationTest
     # follows the test but doesnt work with confirmed profile
     # Capybara.current_driver = Capybara.javascript_driver
 
-    visit '/profiles'
+    visit '/'
     assert page.has_content?('Login')
     click_link('Login')
-    assert page.has_content?('Email')
+    #assert page.has_content?('profile_email')
     fill_in('profile[email]', :with => 'horst@mail.de')
     fill_in('profile[password]', :with => 'wrongpassword')
     click_button "Login" 
