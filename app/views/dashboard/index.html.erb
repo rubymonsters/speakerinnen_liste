@@ -15,16 +15,16 @@
       <div class="container">
         <div class="heading">
           <div class="large serif">
-          <span class="text-white-bg"><%=t ".heading" %></span>
+          <span class="text-white-bg"><%= t(".heading") %></span>
           <br/>
-          <span class="text-white-bg tagline-second"><%=t ".Find female professionals for your conference" %></span>
+          <span class="text-white-bg tagline-second"><%= t(".tagline") %></span>
           <br/>
           <%= form_tag(search_path, :method => "get", :class =>"navbar-form pull-left") do %>
             <span class="text-white-bg">
               <div id="search-bar">
-                <%= text_field_tag(:q, nil, :class => "span2", :id => "search-field", :placeholder => (t ".Search for talk topic")) %>
+                <%= text_field_tag(:q, nil, :class => "span2", :id => "search-field", :placeholder => (t ".search_text")) %>
                 <label for="search-field">
-                <%= button_tag((t ".Search"), :class => "btn btn-large") %></label>
+                <%= button_tag((t ".search"), :class => "btn btn-large") %></label>
               </div>
             </span>
           <% end %>
@@ -38,8 +38,8 @@
 
 <div class="white-bg">
   <div class="container">
-    <h1>Our Disciplines</h1>
-    <h4> We care about women-men ratio on tech conferences. We encourage women porfesionals to be more visible in tech industry. </h4>
+    <h1><%= t(".description") %></h1>
+    <h4><%= t(".description_text") %></h4>
     <br>
     <div class="row">
       <% @topics.each_slice(4) do |topics| %>
@@ -60,7 +60,8 @@
 
 <div class="photo-bar about-disciplines">
   <div class="container large">
-    <div class="photo-text"><span class="text-black-bg">Do you have something to say?</span><br><span class="text-black-bg">Get on the SpeakerInnen List ______<%= link_to(t(".signup"), new_profile_registration_path) %></span></div>
+    <div class="photo-text"><span class="text-black-bg"><%= t(".speaker_shoutout") %>
+    </span><br><span class="text-black-bg"><%= t(".speaker_text") %><%= link_to(t(".signup"), new_profile_registration_path) %></span></div>
   </div>
 </div>
 
@@ -138,12 +139,12 @@
         </div>
         <div class="span4">
           <h4>About</h4>
-          <span class="italic">Something</span>
+          <span class="italic"><%= t(".About").html_safe %></span>
           <p>////</p>
         </div>
         <div class="span4">
           <h4>Contact</h4>
-          <%= link_to t(".contact"), contact_path %>
+          <%= link_to t(".Contact"), contact_path %>
           <p>///// </p>
         </div>
       </div>

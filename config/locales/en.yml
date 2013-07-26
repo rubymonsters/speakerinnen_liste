@@ -2,21 +2,23 @@ en:
   dashboard:
     index: 
       about-top:
-        heading: "Organizers, find your speakers"
-        tagline: 
-      Organizer find your speaker: 
-      Find female professionals for your conference: "Find female speakers, coaches & moderators for your conference"
-      Search for talk topic: "Search by talk topic"
-      Search: "Search"
-      Our Topics: "Our Topics"
-      Our Newest Speakers: "Our Newest Speakers"
+      heading: "Organizers, find your speakers"
+      tagline: "Find female speakers, coaches & moderators for your conference"
+      search_text: "Search by talk topic"
+      search: "Search"
+      description: "Our Topics"
+      description_text: "We care about women-men ratio on tech conferences. We encourage women porfesionals to be more visible in tech industry."
+      speaker_shoutout: "Do you have something to say?"
+      speaker_text: "Get on the SpeakerInnen List ______"
+      speakers:
+      new_profiles: "Our Newest Speakers"
+      profiles_text: "Great female speakers ahead!"
       Our Vision: "Our Vision"
       RailsGirls: |
         "8 women supported by 4 coaches coded this web application as a Rails Girls Berlin learning project.
         <a href="http://railsgirlsberlin.de">Rails Girls</a> is an international not-for-profit group that aims to get women into programming with workshops, scholarships, and a safe learning community."
-      About Us: "About Us"
-
-      contact: "Click here to contact us"
+      About: "We want a balanced speaker ratio on the conferences we go to. Most conferences in tech, marketing, digital media but also in other areas unfortunately have mostly male speakers, moderators or coaches (see here some examples: http://50prozent.noblogs.org). We want to change that ratio and help event organisers to find female speakers for their conferences. And female speakers, moderators or coaches to be more visible on the web."
+      Contact: "Click here to contact us"
   home:
     index:
       title: "What is this?"
