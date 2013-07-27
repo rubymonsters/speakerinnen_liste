@@ -5,7 +5,7 @@ class ContactTest < ActionDispatch::IntegrationTest
 
   test "contact form is shown in german" do
     visit '/de'
-    click_link('Click here to contact us')
+    click_link('Klicke hier um uns zu kontaktieren')
     assert page.has_content?('Your Message')
   end
 

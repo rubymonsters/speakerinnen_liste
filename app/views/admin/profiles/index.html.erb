@@ -11,16 +11,15 @@
 				<%= name_or_email(profile) %>
 			</td>
 			<td style="width:60px">
-				<%= link_to ('Show'), admin_profile_path(profile) %>
+				<%= link_to t('.show'), admin_profile_path(profile) %>
 			</td>
 			<td style="width:60px">
-				<%= link_to ('Edit'), edit_admin_profile_path(profile) %>
+				<%= link_to t('.edit'), edit_admin_profile_path(profile) %>
 			</td>
 			<td style="width:60px">
-				<%= link_to ('Destroy'), admin_profile_path(profile), :confirm => 'Are you sure?', :method => :delete %>
+				<%= link_to t('.destroy'), admin_profile_path(profile), :confirm => 'Are you sure?', :method => :delete %>
 			</td>
 		</tr>
 	<% end %>
 </table>
-<br>
-<%= link_to ('New Profile'), profiles_new_path %> (Doesnt work, because you are already signed in.)
+

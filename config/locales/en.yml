@@ -21,7 +21,8 @@ en:
         "8 women supported by 4 coaches coded this web application as a Rails Girls Berlin learning project.
         <a href="http://railsgirlsberlin.de">Rails Girls</a> is an international not-for-profit group that aims to get women into programming with workshops, scholarships, and a safe learning community."
       About: "We want a balanced speaker ratio on the conferences we go to. Most conferences in tech, marketing, digital media but also in other areas unfortunately have mostly male speakers, moderators or coaches (see here some examples: http://50prozent.noblogs.org). We want to change that ratio and help event organisers to find female speakers for their conferences. And female speakers, moderators or coaches to be more visible on the web."
-      Contact: "Click here to contact us"
+      contact: "Contact"
+      contact_link: "Click here to contact us"
   home:
     index:
       title: "What is this?"

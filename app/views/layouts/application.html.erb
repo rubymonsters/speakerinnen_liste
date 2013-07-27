@@ -22,8 +22,7 @@
           <%= link_to(t(".logout"), destroy_profile_session_path, method: :delete, :class => 'header-btn') %>
         <% else %>
           <%= link_to(t(".signup"), new_profile_registration_path, :class => 'header-btn') %> |
-          <%= link_to(t(".login"), new_profile_session_path, :class => 'header-btn') %> |
-   <%= link_to("Login with Twitter", profile_omniauth_authorize_path(:twitter), :class => 'header-btn') %>
+          <%= link_to(t(".login"), new_profile_session_path, :class => 'header-btn') %>
         <% end %>
       </p>
     </div>
