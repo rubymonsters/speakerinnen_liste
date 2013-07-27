@@ -1,18 +1,18 @@
 en:
   dashboard:
     index: 
-      about-top:
-      heading: "Organizers, find your speakers"
-      tagline: "Find female speakers, coaches & moderators for your conference"
-      search_text: "Search by talk topic"
-      search: "Search"
+      search:
+        heading: "Organizers, find your speakers"
+        tagline: "Find female speakers, coaches & moderators for your conference"
+        search_text: "Search by talk topic"
+        search: "Search"
       description: "Our Topics"
       description_text: "We care about women-men ratio on tech conferences. We encourage women porfesionals to be more visible in tech industry."
       speaker_shoutout: "Do you have something to say?"
       speaker_text: "Get on the SpeakerInnen List ______"
       speakers:
-      new_profiles: "Our Newest Speakers"
-      profiles_text: "Great female speakers ahead!"
+        new_speaker_heading: "Our Newest Speakers"
+        speaker_text: "We care about women-men ration on tech conferences. We encourage women profesionals to be more visible in tech industry."
       Our Vision: "Our Vision"
       RailsGirls: |
         "8 women supported by 4 coaches coded this web application as a Rails Girls Berlin learning project.

@@ -15,16 +15,16 @@
       <div class="container">
         <div class="heading">
           <div class="large serif">
-          <span class="text-white-bg"><%= t(".heading") %></span>
+          <span class="text-white-bg"><%= t(:heading, scope: "dashboard.index.search") %></span>
           <br/>
-          <span class="text-white-bg tagline-second"><%= t(".tagline") %></span>
+          <span class="text-white-bg tagline-second"><%= t(:tagline, scope: "dashboard.index.search") %></span>
           <br/>
           <%= form_tag(search_path, :method => "get", :class =>"navbar-form pull-left") do %>
             <span class="text-white-bg">
               <div id="search-bar">
-                <%= text_field_tag(:q, nil, :class => "span2", :id => "search-field", :placeholder => (t ".search_text")) %>
+                <%= text_field_tag(:q, nil, :class => "span2", :id => "search-field", :placeholder => t(:search_text, scope: "dashboard.index.search")) %>
                 <label for="search-field">
-                <%= button_tag((t ".search"), :class => "btn btn-large") %></label>
+                <%= button_tag((t(:search, scope: "dashboard.index.search")), :class => "btn btn-large") %></label>
               </div>
             </span>
           <% end %>
@@ -67,8 +67,8 @@
 
 <div class="white-bg" id="speakers">
   <div class="container">
-    <h1>Our New Speakers</h1>
-    <h4> We care about women-men ration on tech conferences. We encourage women profesionals to be more visible in tech industry. </h4>
+    <h1><%= t(:new_speaker_heading, scope: "dashboard.index.speakers") %></h1>
+    <h4><%= t(:speaker_text, scope: "dashboard.index.speakers") %></h4>
     <div class="row">
       <% @profiles.each do |profile| %>
         <div class="span3">
@@ -122,7 +122,7 @@
 
 <div class="photo-bar work-with serif small">
   <div class="container large">
-    <div class="photo-text"><span class="text-black-bg">Do you have something to say?</span><br> <span class="text-black-bg">Get on the Speakerinnen Liste ______</span></div>
+    <div class="photo-text"><span class="text-black-bg">Do you have something to say?</span><br> <span class="text-black-bg">Get on the Speakerinnen List______</span></div>
   </div>
 </div>
 
@@ -130,7 +130,7 @@
   <div class="white-bg" id="work">
     <div class="container">
 
-      <h1>Speakerinnen Liste</h1>
+      <h1>SpeakerInnen</h1>
       <div class="row">
         <div class="span4">
           <h4>Rails Girls</h4>
@@ -148,7 +148,7 @@
           <p>///// </p>
         </div>
       </div>
-      <%= link_to "Find you speakers >>", profiles_path, :id => "find-more" %>
+      <%= link_to "Find your speakers >>", profiles_path, :id => "find-more" %>
       <div class="clearfix"></div>
       <br>
 
