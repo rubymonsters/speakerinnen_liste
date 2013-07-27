@@ -52,11 +52,11 @@ class Profile < ActiveRecord::Base
       end
     else
       super
-    end    
+    end
   end
 
   
-  auto_html_for :media_url do 
+  auto_html_for :media_url do
     html_escape
     image
     youtube(:width => 400, :height => 250)
