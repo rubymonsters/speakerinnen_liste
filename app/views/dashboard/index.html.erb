@@ -96,7 +96,7 @@
 
 <div class="photo-bar speakers">
   <div class="container large">
-    <div class="photo-text"><div class="photo-text"><span class="text-black-bg">Organizer,</span><br> <span class="text-black-bg">find your speaker</span></div>
+    <div class="photo-text"><div class="photo-text"><span class="text-black-bg">Organizers,</span><br> <span class="text-black-bg">find your speakers</span></div>
     </div>
   </div>
 </div>
@@ -107,13 +107,11 @@
     <div class="container">
       <div class="row">
         <div class="span5">
-          <h1>Our Vision</h1>
-          <p>We believe that female speakers should be easier to find for tech-y event organizers.</p>
-          <p>We believe that event organizers should have the best speakers at their events, regardless of the speakers’ gender identification.</p>
-          <p>We believe in collaboration and not competition, so we encourage our speakers and event organizers to support each other and help speakers speak better. </p>
+          <h1><%= t(:heading, scope: "dashboard.index.mission_statement") %></h1>
+          <%= t(:content, scope: "dashboard.index.mission_statement").html_safe %>
         </div>
         <div class="span6 offset1 home">
-          <blockquote>We believe in collaboration and not competition, so we encourage our speakers and event organizers to support each other and help speakers speak better.</blockquote>
+          <blockquote><%= t(:quote, scope: "dashboard.index.mission_statement") %></blockquote>
         </div>
       </div>
     </div>
