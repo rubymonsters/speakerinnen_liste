@@ -52,7 +52,7 @@ class Profile < ActiveRecord::Base
       end
     else
       super
-    end    
+    end
   end
 
   

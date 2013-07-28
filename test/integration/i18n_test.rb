@@ -1,4 +1,4 @@
-require 'test_helper' 
+require 'test_helper'
 
 class InternationalisationTest < ActionController::IntegrationTest
 
@@ -9,11 +9,11 @@ class InternationalisationTest < ActionController::IntegrationTest
     assert page.has_content?('Suche'), 'in yield Translation does not work'
   end
 
-    test "locale en works" do
+  test "locale en works" do
     visit '/'
     click_link('DE')
     click_link('EN')
     assert page.has_content?('Login'), 'in Application.html.erb translation does not work'
     assert page.has_content?('Search'), 'in yield Translation does not work'
-  end 
+  end
 end

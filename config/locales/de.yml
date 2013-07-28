@@ -1,14 +1,28 @@
 de:
   dashboard:
     index: 
-      Organizer find your speaker: "Konferenzmanager!"
-      Find female professionals for your conference: "Finde weibliche Sprecherinnen und Moderatorinnen für Deine Konferenz"
-      Search for talk topic: "Suche nach einem Thema"
-      Search: "Suche"
+      search:
+        heading: "Organizers, find your speakers"
+        tagline: "Find female speakers, coaches & moderators for your conference"
+        search_text: "Search by talk topic"
+        search: "Suche"
+      description: "Our Topics"
+      description_text: "We care about women-men ratio on tech conferences. We encourage women porfesionals to be more visible in tech industry."
+      speaker_shoutout: "Do you have something to say?"
+      speaker_text: "Get on the SpeakerInnen List ______"
+      speakers:
+        new_speaker_heading: "Our Newest Speakers"
+        speaker_text: "We care about women-men ration on tech conferences. We encourage women profesionals to be more visible in tech industry."
+      mission_statement:
+        heading: "Our Vision"
+        content: "<p>We believe that female speakers should be easier to find for tech-y event organizers.</p><p>We believe that event organizers should have the best speakers at their events, regardless of the speakers’ gender identification.</p><p>We believe in collaboration and not competition, so we encourage our speakers and event organizers to support each other and help speakers speak better. </p>"
+        quote: "We believe in collaboration and not competition, so we encourage our speakers and event organizers to support each other and help speakers speak better."
       RailsGirls: |
-        8 women supported by 4 coaches coded this web application as a Rails Girls Berlin learning project.
-        <a href="http://railsgirlsberlin.de">Rails Girls</a> is an international not-for-profit group that aims to get women into programming with workshops, scholarships, and a safe learning community.
-      contact: "Click here to contact us"
+        "8 women supported by 4 coaches coded this web application as a Rails Girls Berlin learning project.
+        <a href="http://railsgirlsberlin.de">Rails Girls</a> is an international not-for-profit group that aims to get women into programming with workshops, scholarships, and a safe learning community."
+      About: "We want a balanced speaker ratio on the conferences we go to. Most conferences in tech, marketing, digital media but also in other areas unfortunately have mostly male speakers, moderators or coaches (see here some examples: http://50prozent.noblogs.org). We want to change that ratio and help event organisers to find female speakers for their conferences. And female speakers, moderators or coaches to be more visible on the web."
+      contact: "Kontakt"
+      contact_link: "Klicke hier um uns zu kontaktieren"
   home:
     index:
       title: "Was ist die Speakerinnen Liste?"

@@ -1,4 +1,4 @@
-require 'test_helper'
+ require 'test_helper'
 
 class StartPageTest < ActionDispatch::IntegrationTest
   fixtures :profiles
@@ -20,6 +20,6 @@ class StartPageTest < ActionDispatch::IntegrationTest
     assert page.has_css?('div.badge', :count => 1), "just one badge"
     assert page.has_content?('Anmelden')
     assert page.has_content?('Registrieren')
-    assert page.has_content?('Contact')
+    assert page.has_content?('Kontakt')
   end
 end
