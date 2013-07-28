@@ -24,6 +24,9 @@
           <%= link_to(t(".signup"), new_profile_registration_path, :class => 'header-btn') %> |
           <%= link_to(t(".login"), new_profile_session_path, :class => 'header-btn') %>
         <% end %>
+        <% if admin?(current_profile) %>
+            <%= link_to "admin", admin_root_path %>
+        <% end %>
       </p>
     </div>
       <div class="span1">
