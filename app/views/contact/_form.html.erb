@@ -1,17 +1,17 @@
 <%= form_for @message, :url => url do |f| %>
-  <%= f.label :name, "Your Name" %>
+  <%= f.label :name, t(".name") %>
   <br>
   <%= f.text_field :name, :placeholder => "Write your name here!" %>
   <br>
-  <%= f.label :email, "Your Email Address" %>
+  <%= f.label :email, t(".email") %>
   <br>
   <%= f.text_area :email, :style => "width: 250px; height: 30px" %>
   <br>
-  <%= f.label :subject, "Your Email Subject" %>
+  <%= f.label :subject, t(".subject") %>
   <br>
   <%= f.text_area :subject, :style => "width: 250px; height: 30px" %>
   <br>
-  <%= f.label :body, "Your Message" %>
+  <%= f.label :body, t(".body") %>
   <br>
   <%= f.text_field :body, :style => "width: 750px; height: 100px" , :placeholder => "Like any good invitation, please give the details of where, when, with whom, and any other relevant information." %>
   <br>
