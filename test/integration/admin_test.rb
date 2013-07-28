@@ -9,7 +9,7 @@ class AdminTest < ActionController::IntegrationTest
   end
 
   test "visit admin page with right credentials" do
-    skip("pending admin link")
+    # skip("pending admin link")
     visit '/'
     assert page.has_content?('Login')
     click_link('Login')
