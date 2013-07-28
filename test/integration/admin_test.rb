@@ -9,11 +9,10 @@ class AdminTest < ActionController::IntegrationTest
   end
 
   test "visit admin page with right credentials" do
-    # skip("pending admin link")
     visit '/'
     assert page.has_content?('Login')
     click_link('Login')
-    assert page.has_content?('Email')
+    assert page.has_content?('Forgot your password?')
     fill_in('profile[email]', :with => 'jane_admin@server.org')
     fill_in('profile[password]', :with => 'Testpassword')
     click_button "Login" 

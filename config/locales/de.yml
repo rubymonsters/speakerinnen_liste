@@ -1,4 +1,10 @@
 de:
+  admin:
+    profiles:
+      index:
+        show: "show"
+        edit: "edit"
+        destory: "destroy"
   dashboard:
     index: 
       search:
@@ -40,6 +46,14 @@ de:
       logout: "Ausloggen"
       signup: "Registrieren"
       login: "Anmelden"
+  contact:
+    form:
+      name: "Your Name"
+      name_placeholder: "Write your name here!"
+      email: "Your Email Address"
+      subject: "Your Email Subject"
+      body: "Your Message"
+      body_placeholder: "Please give the details of where, when, with whom, and any other relevant information."
   profiles:
     form:
       not_saved: 'hinderte diese Profil am speichern:'
