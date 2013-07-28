@@ -11,9 +11,15 @@ namespace :db do
                  topic_list: "Comics",
                  languages: "English, German",
                  talks: "Republica",
-                 picture: File.open(Dir.glob(File.join(Rails.root, 'app/assets/images/sampleimages', '*')).sample),
-                 twitter: "example"
+                 picture: File.open(Dir.glob(File.join(Rails.root, 'app/assets/images', '*')).sample),
+                 twitter: "example",
                  )
+
+    admin = Profile.where(email: "example@speakerinnen.org").first
+    admin.admin = true
+    admin.confirmed_at = Time.now
+    admin.save!
+
     10.times do |n|
       firstname  = Faker::Name.first_name
       lastname  = Faker::Name.last_name
@@ -27,7 +33,7 @@ namespace :db do
       languages = all_languages.sample(rand(3)+1).join(", ") 
       all_talks = ["29C3", "Republica", "DEF CON", "Rails Camp", "EuRuKo2013", "Ruby User Group"]
       talks = all_talks.sample(rand(4)). join(", ")
-      sample_image = File.open(Dir.glob(File.join(Rails.root, 'app/assets/images/sampleimages', '*')).sample)
+      sample_image = File.open(Dir.glob(File.join(Rails.root, 'app/assets/images', '*')).sample)
       twitter = Faker::Name.first_name
       Profile.create!(  firstname: firstname,
                         lastname: lastname,
