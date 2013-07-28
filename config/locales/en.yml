@@ -47,6 +47,7 @@ en:
       email: "Your Email Address"
       subject: "Your Email Subject"
       body: "Your Message"
+      body_placeholder: "Like any good invitation, please give the details of where, when, with whom, and any other relevant information."
   profiles:
     form:
       not_saved: 'prohibited this profile from being saved: '
@@ -80,7 +81,7 @@ en:
       bio: "Bio: "
       email: "Email: "
       twitter: 'Twitter:'
-      contact: 'Write an email'  
+      contact: 'Write an email to'  
       back: "Back"
       edit: "Edit"
   flash:
