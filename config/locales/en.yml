@@ -64,6 +64,8 @@ en:
       topics: 'My topics:'
       languages: 'My languages:'
       talks: 'Previous Talks:'
+      media: "Examples of previous talks:"
+      bio: "Bio: "
       contact: 'Contact:'  
       twitter: 'Twitter:'
       show: 'Show'
