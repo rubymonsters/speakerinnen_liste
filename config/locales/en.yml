@@ -24,9 +24,10 @@ en:
         content: "<p>We believe that female speakers should be easier to find for tech-y event organizers.</p><p>We believe that event organizers should have the best speakers at their events, regardless of the speakers’ gender identification.</p><p>We believe in collaboration and not competition, so we encourage our speakers and event organizers to support each other and help speakers speak better. </p>"
         quote: "We believe in collaboration and not competition, so we encourage our speakers and event organizers to support each other and help speakers speak better."
       railsgirls: |
-        "8 women supported by 4 coaches coded this web application as a Rails Girls Berlin learning project.
-        <a href="http://railsgirlsberlin.de">Rails Girls</a> is an international not-for-profit group that aims to get women into programming with workshops, scholarships, and a safe learning community."
-      about: "We want a balanced speaker ratio on the conferences we go to. Most conferences in tech, marketing, digital media but also in other areas unfortunately have mostly male speakers, moderators or coaches (see here some examples: http://50prozent.noblogs.org). We want to change that ratio and help event organisers to find female speakers for their conferences. And female speakers, moderators or coaches to be more visible on the web."
+        8 women supported by 4 coaches coded this web application as a Rails Girls Berlin learning project.
+        <a href="http://railsgirlsberlin.de">Rails Girls</a> is an international not-for-profit group that aims to get women into programming with workshops, scholarships, and a safe learning community.
+      about:  |
+        We want a balanced speaker ratio on the conferences we go to. Most conferences in tech, marketing, digital media but also in other areas unfortunately have mostly male speakers, moderators or coaches (see <a href="http://50prozent.noblogs.org">here</a> some examples). We want to change that ratio and help event organisers to find female speakers for their conferences. And female speakers, moderators or coaches to be more visible on the web.
       contact: "Contact"
       contact_link: "Click here to contact us"
   home:
