@@ -70,24 +70,7 @@
     <h1><%= t(:new_speaker_heading, scope: "dashboard.index.speakers") %></h1>
     <h4><%= t(:speaker_text, scope: "dashboard.index.speakers") %></h4>
     <div class="row">
-      <% @profiles.each do |profile| %>
-        <div class="span3">
-          <div class="speaker">
-            <div><%= link_to(image_tag(profile.picture_url), profile) %> 
-            </div>
-            <div class="name"><%= link_to profile.fullname, profile %></div>
-            <div class="desc"><%= profile.topic_list.first if profile.topic_list.present? %></div>
-            <div class="contact-info">
-              <% if profile.twitter.present? %>
-                <div class="header_small">
-                  <%= t ".twitter" %>
-                </div>
-                <%=link_to "@" + profile.twitter, "http://twitter.com/#{profile.twitter}" %>
-              <% end %>
-            </div>
-          </div>
-        </div>
-      <% end %>
+      <%= render :partial => "profiles/profile", :collection => @profiles %>
     </div>
     <%= link_to "Browse more speakers >>", profiles_path, :id => "find-more" %>
   </div> 
