@@ -378,48 +378,6 @@ header .right .header-btn  {
   border-bottom:1px dotted #ddd;
 }
 
-/*nav*/
-
-nav#main-nav {
-  position:fixed;
-  top:0px;
-  left:0px;
-  width:100%;
-  z-index:500;
-  background-color:rgba(0, 0, 0, 0.9);
-  font-family:'Merriweather',Georgia,serif;
-  overflow:auto;
-  font-size:80%;
-  border-bottom:1px solid #222;
-  box-shadow:1px 1px 10px #000000;
-  display:hidden;
-}
-
-nav#main-nav div.nav-item {
-  display:inline-block;
-  padding:20px 20px;
-  border-right:1px solid #222;
-  margin:0px;
-  color:#ddd;
-  float:left;
-  background-color:transparent;
-  -webkit-transition:background-color 0.25s ease;
-  cursor:pointer;
-}
-
-nav#main-nav div.nav-item:hover {
-  background-color:#333;
-}
-
-nav#main-nav div.nav-item#logo-small {
-  padding:15px 28px 11px 22px;
-}
-
-.no-rgba nav#main-nav {
-  background-color:#000;
-}
-
-
 
 .white *{color:#444;}
 
@@ -445,7 +403,11 @@ p.overview{font-size:200%;line-height:1.6em;}
 
 #top {
   background-color: #fff;
-  height: 60px;
+  height: 67px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+ -moz-box-shadow:inset 0px 1px 11px #999099;
+-webkit-box-shadow:inset 0px 1px 11px #999099;
+box-shadow:inset 0px 1px 11px #999099;
 }
 
 /*badge*/
@@ -722,5 +684,6 @@ input[type="text"] {
   width: 290px;
   margin:0;
 }
+
 
 

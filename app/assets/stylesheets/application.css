@@ -18,3 +18,7 @@
 	padding: 1em 0;
 	text-align: center;
 }
+
+#signup .form-horizontal .well {
+  background-color: #ffffff;
+}
