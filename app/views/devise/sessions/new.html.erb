@@ -36,7 +36,7 @@
             <div class="control-group">
              <%- if devise_mapping.omniauthable? %>
                <%- resource_class.omniauth_providers.each do |provider| %>
-               <div class="log-in-button-twitter"><%= link_to "Sign in with #{provider.to_s.titleize}", omniauth_authorize_path(resource_name, provider) %> </div>
+                <div class="log-in-button-twitter"><%= link_to "Sign in with #{provider.to_s.titleize}", omniauth_authorize_path(resource_name, provider) %> </div>
                  <% end -%>
               <% end -%>
              </div>
