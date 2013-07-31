@@ -54,9 +54,6 @@
       </div>
     </div>
 
-  </div>
-  <div class="span6">
-
 
   <div class="control-group">
     <%= f.label :talks, class:"control-label" %>
@@ -72,6 +69,8 @@
     </div>
   </div>
 
+ 
+
   <div class="control-group">
     <%= f.label :city, class:"control-label" %>
     <div class="controls">
@@ -79,12 +78,16 @@
     </div>
   </div>
 
+   </div>
+  <div class="span6">
+ 
   <div class="control-group">
     <%= f.label :twitter, class:"control-label" %>
     <div class="controls">
       <%= f.text_field :twitter, class:"input-xlarge" %>
     </div>
   </div>
+
 
   <div class="control-group">
     <%= f.label :picture, class:"control-label" %>
@@ -93,6 +96,10 @@
     </div>
   </div>
   <hr>
+
+  
+
+
   <div class="control-group">
     <%= f.label :email, class:"control-label" %>
     <div class="controls">
@@ -120,10 +127,13 @@
   <div class="form-actions">
     <%= f.submit(t(".sign_up"), class:"btn btn-primary")%>
   </div>
-
+  
   <% end %>
-
-
+  <div class="forget-password">
+   <%= render "devise/shared/links" %>
+ </div>
+</div>
+</div>
 
 <script type="text/javascript">
   $(".add-tag-trigger").click(function() {
@@ -144,10 +154,8 @@
     }
   });
 </script>
-<%= render "devise/shared/links" %>
+
   </fieldset>
 </form>
 
 
-</div>
-</div>
