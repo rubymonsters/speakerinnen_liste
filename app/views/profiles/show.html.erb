@@ -1,15 +1,13 @@
-<div class="row">
-  <div class="span12">
+
+  <div class="container">
     <h2> <%= t ".profile_from" %> <%= @profile.fullname %>
     </h2>
-  </div>
-</div>
 <br>
 
 <div class="row">
   <% if @profile.picture.present? %>
 
-    <div class="span4">
+    <div class="span5">
       <%= image_tag(@profile.picture_url, :width => 300) %>  
     </div>
 
