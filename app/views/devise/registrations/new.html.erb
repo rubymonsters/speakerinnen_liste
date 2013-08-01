@@ -1,6 +1,6 @@
 
 
-<div id="signup" class="signup">
+<div class="container">
 
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :class => "form-horizontal well"}) do |f| %>
   <%= render 'shared/error_messages' %>
@@ -9,23 +9,23 @@
   <fieldset>
   <legend> Sign up </legend>
    <div class="row">
-    <div class="span6">
+    <div class="span6 control-group-one">
     
-    <div class="control-group">
+    <div class="control-group ">
     <%= f.label :firstname,  class:"control-label"%>
     <div class="controls">
       <%= f.text_field :firstname, :autofocus => true, class:"input-xlarge", id:"input01"%>
     </div>
   </div>
   
-  <div class="control-group">
+  <div class="control-group ">
     <%= f.label :lastname, class:"control-label" %>
     <div class="controls">
       <%= f.text_field :lastname, class:"input-xlarge", id:"input01" %>
     </div>
   </div>
 
-  <div class="control-group">
+  <div class="control-group ">
     <%= f.label :bio, class:"control-label" %>
     <div class="controls">
       <%= f.text_area :bio, class:"input-xlarge", id:"input01" %>
@@ -95,7 +95,7 @@
       <%= f.file_field :picture, class:"input-xlarge" %>
     </div>
   </div>
-  <hr>
+  
 
   
 

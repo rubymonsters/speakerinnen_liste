@@ -1,25 +1,26 @@
-<div class="span12">
-  <h1><%= t ".title" %></h1>
-</div>
-<div class="span8">
+<div class="container profiles">
+  <h1 class="title-profiles"><%= t ".title" %></h1>
+
+
   <p>
     <%= t ".text" %>
   </p>
-</div>
-<div class="span12" id="topics_cloud">
+
+
+<div id="topics_cloud">
   <h3>TopicCloud:</h3>
   <% tag_cloud Profile.topic_counts, %w[s m l] do |topic, css_class| %>
     <%= topic_link topic, class: css_class %>
   <% end %>
 </div>
-<div class="span8">
+
     <hr>
-  </div>
-<div class="span12">
+
+
   <% if params[:topic] %>
     <h4>Du hast nach dem Tag "<%= params[:topic] %>" gesucht und <%= params[:topic_counts] %> gefunden:</h4> 
     <!-- TODO Topic counts working -->
   <% end %>
 
   <%= render :partial => "profile", :collection => @profiles %>
-</div>;
+</div>
