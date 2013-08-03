@@ -19,21 +19,15 @@
           <br/>
           <span class="text-white-bg tagline-second"><%= t(:tagline, scope: "dashboard.index.search") %></span>
           <br/>
-          <%= form_tag(search_path, :method => "get", :class =>"navbar-form pull-left") do %>
-            <span class="text-white-bg">
-              <div id="search-bar">
-                <%= text_field_tag(:q, nil, :class => "span2", :id => "search-field", :placeholder => t(:search_text, scope: "dashboard.index.search")) %>
-                <label for="search-field">
-                <%= button_tag((t(:search, scope: "dashboard.index.search")), :class => "btn btn-large") %></label>
+              <div id="search-bar" class="white-search">
+                <%= form_tag(search_path, :method => "get", :class =>"") do %>
+                <%= text_field_tag(:q, nil, :class => "", :id => "search-field", :placeholder => t(:search_text, scope: "dashboard.index.search")) %>
+                <%= button_tag((t(:search, scope: "dashboard.index.search")), :class => "btn btn-large ") %>
               </div>
-            </span>
+           
           <% end %>
-        </div>
-      </div>
-    </div>
-
   </div>
-
+      </div>
 </section>
 
 <div class="white-bg">
@@ -46,7 +40,7 @@
         <div class="span3">
           <ul>
             <% topics.each do |topic| %>
-              <li><%= topic_link topic %></li>
+              <li class="topics"><%= topic_link topic %></li>
             <% end %> 
           </ul>
         </div>
