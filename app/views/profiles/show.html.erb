@@ -9,7 +9,7 @@
             <%= image_tag(@profile.picture_url, :width => 300) %> 
         </div>
 
-        <div class="span6 info-profiles">
+        <div class="span5 info-profiles">
             <%= t ".topics" %>
             <%= raw @profile.topic_list.map { |t| link_to t, topic_path(t) }.join(' ') %>
             <%= t ".languages" %>
@@ -24,9 +24,7 @@
             <% end %>
         </div>
       </div>
-       <div class="row info-profiles">
-               <h5><%= t ".bio" %> <%= @profile.bio %> lorem ipsum lorem ipsum is ns lorem ipsum lorem ipsum is ns</h5>  
-            </div>
+     
 
        <% else %>
            <div class="row"> 
@@ -34,7 +32,7 @@
                 <%= image_tag("avatar.jpg", :alt => "avatar") %> 
             </div>
 
-            <div class="span6 info-profiles">
+            <div class="span5 info-profiles">
                <h4> <%= t ".topics" %><span><%= raw @profile.topic_list.map { |t| link_to t, topic_path(t) }.join('  ') %></span></h4>
                <h5><%= t ".languages" %><span> <%= @profile.languages %></span> </h5>
                <h5><%= t ".talks" %><span><%= @profile.talks %> </span></h5>  
@@ -42,27 +40,54 @@
                  <h5><% if @profile.twitter.present? %>
                 <%= t ".twitter" %>
                 <span><%=link_to "@" + @profile.twitter, "http://twitter.com/#{@profile.twitter}" %></span></h5>
-                <% end %>  
+                <% end %> 
+
+              <div class="info-profiles-bio">
+               <p><%= t ".bio" %> <%= @profile.bio %></p>  
+               </div>
+               
             </div>
-           </div>
-            <div class="row info-profiles">
-               <h5><%= t ".bio" %><span> <%= @profile.bio %> lorem ipsum lorem ipsum is ns lorem ipsum lorem ipsum is ns</span></h5>  
+              <div class="span3">
+                <a data-toggle="modal" href="#contact" class="btn  btn-large buttons-modals">Contact</a>
+                <%= link_to(t(".back"), profiles_path, class:"btn  btn-large buttons-modals") %>
+                <% if can_edit_profile?(current_profile, @profile) %>
+                <%= link_to(t(".edit"), edit_profile_path(@profile), class:"btn  btn-large buttons-modals") %>
+            </div> 
+
+          <% end %>  
+
+           
+        
+
+              
+    
+
+
+    <div class="modal fade" id="contact">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h5 class="modal-title"><%= "#{t(".contact")} #{@profile.fullname}:"%></h5>
+        </div>
+      
+        <div class="modal-body">
+            <div class="span6">
+                <%= render partial: 'contact/form', locals: {url: contact_profile_path(@profile)} %> 
+                <% end %> 
             </div>
-      </div>
-  <% end %>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">Close</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
 
 
-<!-- 
 
-    <div class="header"><%= "#{t(".contact")} #{@profile.fullname}:"%></div>
 
-    <%= render partial: 'contact/form', locals: {url: contact_profile_path(@profile)} %> 
-
-    <%= link_to(t(".back"), profiles_path, class:"btn btn-inverse btn-small") %>
-
-    <% if can_edit_profile?(current_profile, @profile) %>
-     <%= link_to(t(".edit"), edit_profile_path(@profile), class:"btn btn-danger btn-small") %>
-    <% end %> -->
  
 
 
