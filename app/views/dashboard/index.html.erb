@@ -119,9 +119,12 @@
         </div>
         <div class="span4">
           <h4><%= t(".contact") %></h4>
-          <%= link_to t(".contact_link"), contact_path %>
-          
-        </div>
+          <span class="italic"><%= t(".address") %></span>
+          <p>
+          <%= link_to t(".contact_link"), contact_path %> 
+          <p>
+          <span class="italic"><%= t(".github").html_safe %></span>
+       </div>
       </div>
       <%= link_to "Find your speakers >>", profiles_path, :id => "find-more" %>
       <div class="clearfix"></div>

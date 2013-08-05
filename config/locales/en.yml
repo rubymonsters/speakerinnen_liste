@@ -28,8 +28,11 @@ en:
         <a href="http://railsgirlsberlin.de">Rails Girls</a> is an international not-for-profit group that aims to get women into programming with workshops, scholarships, and a safe learning community.
       about:  |
         We want a balanced speaker ratio on the conferences we go to. Most conferences in tech, marketing, digital media but also in other areas unfortunately have mostly male speakers, moderators or coaches (see <a href="http://50prozent.noblogs.org">here</a> some examples). We want to change that ratio and help event organisers to find female speakers for their conferences. And female speakers, moderators or coaches to be more visible on the web.
-      contact: "Contact"
+      contact: "Contact / License"
       contact_link: "Click here to contact us"
+      address: "Rubymonsters c/o Travis CI GmbH, Prinzessinnenstr. 20, 10969 Berlin, Germany"
+      github: |
+        Fork us on <a href="http://github.com/rubymonsters/speakerinnen_liste">GitHub!</a>
   home:
     index:
       title: "What is this?"
