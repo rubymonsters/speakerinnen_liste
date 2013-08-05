@@ -1,17 +1,15 @@
 <section id="about-top">
 
        <div class="badge"><%= image_tag("badge2-bw.png", :alt => "badge") %> </div>
- 
-              <script>
-                    $(window).scroll(function() {
-                    if ($(this).scrollTop() > 0) {
-                        $(".badge").stop().animate({
+          <script>
+            $(window).scroll(function() {
+              if ($(this).scrollTop() > 0) {
+                $(".badge").stop().animate({
                             opacity: 0 }, 50);
                     } else {
                     $(".badge").stop().animate({
                     opacity: 1 }, 50);}});
                 </script>
-              
       <div class="container">
         <div class="heading">
           <div class="large serif">
@@ -24,9 +22,8 @@
                 <%= text_field_tag(:q, nil, :class => "", :id => "search-field", :placeholder => t(:search_text, scope: "dashboard.index.search")) %>
                 <%= button_tag((t(:search, scope: "dashboard.index.search")), :class => "btn btn-large ") %>
               </div>
-           
           <% end %>
-  </div>
+        </div>
       </div>
 </section>
 
