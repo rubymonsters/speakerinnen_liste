@@ -3,17 +3,17 @@ class ProfilesController < ApplicationController
   before_filter :require_permision, :only=> [:edit, :destroy, :update]
 
   def index
+    scope = Profile.no_admin
     if params[:topic]
-      @profiles = Profile.tagged_with(params[:topic])
+      @profiles = scope.tagged_with(params[:topic])
     else
-      @profiles = Profile.all
+      @profiles = scope.all
     end
   end
 
   def show
-    @profile = Profile.find(params[:id])
+    @profile = Profile.no_admin.find(params[:id])
     @message = Message.new
-   
   end
 
   # action, view, routes should be deleted
@@ -48,5 +48,4 @@ class ProfilesController < ApplicationController
     end
   end
 
-  
 end

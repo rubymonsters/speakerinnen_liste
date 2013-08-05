@@ -5,8 +5,18 @@ class Profile < ActiveRecord::Base
 
   include AutoHtml
 
+  auto_html_for :media_url do
+    html_escape
+    image
+    youtube(:width => 400, :height => 250)
+    vimeo(:width => 400, :height => 250)
+    simple_format
+  end
+
   devise :database_authenticatable, :registerable, :omniauthable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
+
+  mount_uploader :picture, PictureUploader
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
@@ -14,22 +24,35 @@ class Profile < ActiveRecord::Base
   attr_accessible :content, :name, :topic_list, :media_url
   acts_as_taggable_on :topics
 
-  mount_uploader :picture, PictureUploader
-
   before_save(:on => [:create, :update]) do
     self.twitter.gsub!(/^@/, '') if twitter
   end
 
-  def fullname
-    "#{firstname} #{lastname}".strip
-  end
-  
   def self.from_omniauth(auth)
     where(auth.slice(:provider, :uid)).first_or_create do |profile|
       profile.provider = auth.provider
       profile.uid = auth.uid
       profile.twitter = auth.info.nickname
     end
+  end
+
+  def self.new_with_session(params, session)
+    if session["devise.user_attributes"]
+      new(session["devise.user_attributes"], without_protection: true) do |profile|
+        profile.attributes = params
+        profile.valid?
+      end
+    else
+      super
+    end
+  end
+
+  def self.no_admin
+    where(:admin => false)
+  end
+
+  def fullname
+    "#{firstname} #{lastname}".strip
   end
 
   def password_required?
@@ -42,26 +65,6 @@ class Profile < ActiveRecord::Base
     else
       super
     end
-  end
-  
-  def self.new_with_session(params, session)
-    if session["devise.user_attributes"]
-      new(session["devise.user_attributes"], without_protection: true) do |profile|
-        profile.attributes = params
-        profile.valid?
-      end
-    else
-      super
-    end
-  end
-
-  
-  auto_html_for :media_url do
-    html_escape
-    image
-    youtube(:width => 400, :height => 250)
-    vimeo(:width => 400, :height => 250)
-    simple_format
   end
 
 end
