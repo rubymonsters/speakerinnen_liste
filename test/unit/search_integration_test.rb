@@ -1,12 +1,12 @@
 require 'test_helper'
 
 class SearchIntegrationTest < ActiveSupport::TestCase
-  test "correctly integrated postgres fulltext search" do 
+  test "correctly integrated postgres fulltext search" do
     testprofile = Profile.create!(
-      :email => "carla@railsgirls.com", 
-      :password => "PeterandPaul", 
+      :email => "carla@railsgirls.com",
+      :password => "PeterandPaul",
       :bio => "Carla is very interested in weather, programming, sleeping, shopping, veggiemite and photos.")
-    results = Search.basic_search('WEATHER') 
+    results = Search.basic_search('WEATHER')
     assert_equal [testprofile], results.map(&:profile)
   end
 

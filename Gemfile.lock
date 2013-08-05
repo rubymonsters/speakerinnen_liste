@@ -42,6 +42,10 @@ GEM
     arel (3.0.2)
     bcrypt-ruby (3.1.0)
     bcrypt-ruby (3.1.0-x86-mingw32)
+    bootstrap-sass (2.3.2.0)
+      sass (~> 3.2)
+    bootswatch-rails (0.5.0)
+      railties (>= 3.1)
     builder (3.0.4)
     capybara (2.0.3)
       mime-types (>= 1.16)
@@ -207,6 +211,8 @@ PLATFORMS
 DEPENDENCIES
   acts-as-taggable-on
   auto_html!
+  bootstrap-sass (~> 2.3.0)
+  bootswatch-rails
   capybara (~> 2.0.2)
   carrierwave
   coffee-rails (~> 3.2.1)

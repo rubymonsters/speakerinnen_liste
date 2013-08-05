@@ -14,7 +14,7 @@ class LoginTest < ActionController::IntegrationTest
     #assert page.has_content?('profile_email')
     fill_in('profile[email]', :with => 'horst@mail.de')
     fill_in('profile[password]', :with => 'Testpassword')
-    click_button "Login" 
+    click_button "Login"
     # opens the site where you are in the test right now
     # save_and_open_page
 
@@ -36,5 +36,5 @@ class LoginTest < ActionController::IntegrationTest
     # save_and_open_page
     assert page.has_content?('Invalid email or password.')
   end
- 
+
 end

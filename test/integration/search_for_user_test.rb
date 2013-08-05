@@ -5,8 +5,8 @@ class SearchForUserTest < ActionController::IntegrationTest
     testprofile = Profile.create(
         :email => "carla@railsgirls.com",
         :password => "PeterandPaul",
-        :firstname => "Carla", 
-        :lastname => "Drago", 
+        :firstname => "Carla",
+        :lastname => "Drago",
         :twitter => "tweeter",
         :bio => "weather, programming, sleeping, shopping, veggiemite and photos.")
 
@@ -17,6 +17,5 @@ class SearchForUserTest < ActionController::IntegrationTest
     click_link(testprofile.fullname)
 
     assert_equal current_path, profile_path(testprofile, {:locale=>"en"})
-
   end
 end
