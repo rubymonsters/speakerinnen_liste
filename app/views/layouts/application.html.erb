@@ -11,9 +11,10 @@
   <%= link_to t(".title"), root_path, :id => "logo" %>
     <div class="right">
       <div class="row">
-        <div class="span2">
-     <p> <a href="profiles/sign_up" class="header-btn">Are you a speaker?</a></p>
-        </div>
+      <!-- Do we need a second landing page for speakers? -->
+        <!-- <div class="span2"> -->
+          <!-- <p><a href="profiles/sign_up" class="header-btn">Are you a speaker?</a></p> -->
+        <!-- </div> -->
         <div class="span4">
      <p> <% if profile_signed_in? %>
           <%= link_to(t(".my_profile"), profile_path(current_profile), :class => 'header-btn')%> |

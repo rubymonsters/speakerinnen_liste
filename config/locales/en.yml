@@ -49,7 +49,7 @@ en:
       my_profile: "My profile"
       account: "Account"
       logout: "Logout"
-      signup: "Sign up"
+      signup: "Sign up as a speaker"
       login: "Login"
   contact:
     form:
