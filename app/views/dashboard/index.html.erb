@@ -15,7 +15,7 @@
       <div class="container">
         <div class="heading">
           <div class="large serif">
-          <span class="text-white-bg"><%= t(:heading, scope: ".dashboard.index.search") %></span>
+          <span class="text-white-bg"><%= t(:heading, scope: "dashboard.index.search") %></span>
           <br/>
           <span class="text-white-bg tagline-second"><%= t(:tagline, scope: "dashboard.index.search") %></span>
           <br/>
@@ -66,7 +66,7 @@
     <div class="row">
       <%= render :partial => "profiles/profile", :collection => @profiles %>
     </div>
-    <%= link_to "Browse more speakers >>", profiles_path, :id => "find-more" %>
+    <%= link_to t(:speaker_index, scope: "dashboard.index.speakers"), profiles_path, :id => "find-more" %>
   </div> 
 </div>
    
