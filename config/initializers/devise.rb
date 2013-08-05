@@ -1,5 +1,11 @@
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
+
+if Rails.env.development?
+  ENV['TWITTER_CONSUMER_KEY']    = 'tQmHSwEglb2R2DzHUBro6w'
+  ENV['TWITTER_CONSUMER_SECRET'] = '0yl59xiJUO9chotANfcs1oe9ZMSR5emw0H8Zj1ndS8'
+end
+
 Devise.setup do |config|
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,

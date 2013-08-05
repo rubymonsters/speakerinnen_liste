@@ -11,8 +11,8 @@ namespace :db do
                  topic_list: "Comics",
                  languages: "English, German",
                  talks: "Republica",
-                 picture: File.open(Dir.glob(File.join(Rails.root, 'app/assets/images/sampleimages', '*')).sample),
-                 twitter: "example"
+                 # picture: File.open(Dir.glob(File.join(Rails.root, 'app/assets/images/sampleimages', '*')).sample),
+                 twitter: "example",
                  )
     10.times do |n|
       firstname  = Faker::Name.first_name

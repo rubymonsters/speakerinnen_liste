@@ -1,75 +1,95 @@
-<div class="row">
-  <div class="span12">
-    <h2> <%= t ".profile_from" %> <%= @profile.fullname %>
-    </h2>
-  </div>
-</div>
-<br>
 
-<div class="row">
-  <% if @profile.picture.present? %>
-
-    <div class="span4">
-      <%= image_tag(@profile.picture_url, :width => 300) %>  
+  <div class="container profiles">
+    <div class="white-bg">
+       <h1><%= t ".profile_from" %> <%= @profile.fullname %></h1>
     </div>
+     <% if @profile.picture.present? %>
+      <div class="row info-profiles"> 
+        <div class="span3 photo">
+            <%= image_tag(@profile.picture_url, :width => 300) %> 
+        </div>
 
-    <div class="span6">
-      <div class="header"><%= t ".topics" %></div>
-      <%= raw @profile.topic_list.map { |t| link_to t, topic_path(t) }.join(' ') %>
-      <div class="header"><%= t ".languages" %></div>
-        <%= @profile.languages %>
-      <p></p>
-      <div class="header"><%= t ".talks" %></div>
-        <%= @profile.talks %>
-      <p></p>
-      <div class="header"><%= t ".media" %></div>
-        <%= @profile.media_url_html %>
-      <p></p>
-    </div>
+        <div class="span5 info-profiles">
+            <%= t ".topics" %>
+            <%= raw @profile.topic_list.map { |t| link_to t, topic_path(t) }.join(' ') %>
+            <%= t ".languages" %>
+            <%= @profile.languages %>
+            <%= t ".talks" %>
+            <%= @profile.talks %>   
+            <%= t ".media" %>
+            <%= @profile.media_url_html %>
+              <h5><% if @profile.twitter.present? %>
+                <%= t ".twitter" %>
+                <%=link_to "@" + @profile.twitter, "http://twitter.com/#{@profile.twitter}" %></h5>
+            <% end %>
+        </div>
+      </div>
+     
 
-  <% else %>
+       <% else %>
+           <div class="row"> 
+            <div class="span3 photo">
+                <%= image_tag("avatar.jpg", :alt => "avatar") %> 
+            </div>
+
+            <div class="span5 info-profiles">
+               <h4> <%= t ".topics" %><span><%= raw @profile.topic_list.map { |t| link_to t, topic_path(t) }.join('  ') %></span></h4>
+               <h5><%= t ".languages" %><span> <%= @profile.languages %></span> </h5>
+               <h5><%= t ".talks" %><span><%= @profile.talks %> </span></h5>  
+               <h5><%= t ".media" %><span><%= @profile.media_url_html %> </span></h5> 
+                 <h5><% if @profile.twitter.present? %>
+                <%= t ".twitter" %>
+                <span><%=link_to "@" + @profile.twitter, "http://twitter.com/#{@profile.twitter}" %></span></h5>
+                <% end %> 
+
+              <div class="info-profiles-bio">
+               <p><%= t ".bio" %> <%= @profile.bio %></p>  
+               </div>
+               
+            </div>
+              <div class="span3">
+                <a data-toggle="modal" href="#contact" class="btn  btn-large buttons-modals">Contact</a>
+                <%= link_to(t(".back"), profiles_path, class:"btn  btn-large buttons-modals") %>
+                <% if can_edit_profile?(current_profile, @profile) %>
+                <%= link_to(t(".edit"), edit_profile_path(@profile), class:"btn  btn-large buttons-modals") %>
+            </div> 
+
+          <% end %>  
+
+           
+        
+
+              
     
-    <div class="span6">
-      <div class="header"><%= t ".topics" %></div>
-      <%= raw @profile.topic_list.map { |t| link_to t, topic_path(t) }.join(' ') %>
-      <p></p>
-      <div class="header"><%= t ".languages" %></div>
-        <%= @profile.languages %>
-      <p></p>
-      <div class="header"><%= t ".talks" %></div>
-        <%= @profile.talks %>
-      <p></p>
-      <div class="header"><%= t ".media" %></div>
-        <%= @profile.media_url_html %>
-      <p></p>
-    </div>
 
-  <% end %>
-</div>
-  <br>
 
-<div class="row">
-    
-  <div class="span6">
-    <div class="header"><%= t ".bio" %></div>
-      <%= @profile.bio %>
-    <p></p>
-      <% if @profile.twitter.present? %>
-        <div class="header"><%= t ".twitter" %></div>
-          <%=link_to "@" + @profile.twitter, "http://twitter.com/#{@profile.twitter}" %>
-      <% end %>
-    <br>
-    <hr>
-    <br>
-    <div class="header"><%= "#{t(".contact")} #{@profile.fullname}:"%></div>
-    <br>
-    <%= render partial: 'contact/form', locals: {url: contact_profile_path(@profile)} %> 
-    <br>
-    <%= link_to(t(".back"), profiles_path, class:"btn btn-inverse btn-small") %>
+    <div class="modal fade" id="contact">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h5 class="modal-title"><%= "#{t(".contact")} #{@profile.fullname}:"%></h5>
+        </div>
+      
+        <div class="modal-body">
+            <div class="span6">
+                <%= render partial: 'contact/form', locals: {url: contact_profile_path(@profile)} %> 
+                <% end %> 
+            </div>
+        </div>
 
-    <% if can_edit_profile?(current_profile, @profile) %>
-     <%= link_to(t(".edit"), edit_profile_path(@profile), class:"btn btn-danger btn-small") %>
-    <% end %>
-  </div>
-</div>
+        <div class="modal-footer">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">Close</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
+
+
+
+ 
+
+
+
 
