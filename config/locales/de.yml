@@ -64,6 +64,8 @@ de:
       topics: 'Meine Themen:'
       languages: 'Meine Sprache/n:'
       talks: 'Vorträge gehalten auf:'
+      media: "Examples of previous talks:"
+      bio: "Bio: "
       contact: 'Kontakt:'  
       twitter: 'Twitter:'
       show: 'Anzeigen'
@@ -83,7 +85,8 @@ de:
       profile_from: 'Profil von'
       topics: 'Meine Themen:'
       languages: 'Meine Sprache/n:'
-      talks: 'Vorträge gehalten auf:' 
+      talks: 'Vorträge gehalten auf:'
+      media: "Examples of previous talks:" 
       bio: "Bio:"
       email: "Email:"
       twitter: 'Twitter:'

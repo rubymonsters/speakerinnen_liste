@@ -1,29 +1,38 @@
+
+
+<div class="container">
+
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :class => "form-horizontal well"}) do |f| %>
   <%= render 'shared/error_messages' %>
-  
-  <fieldset>
-    <legend>Sign up</legend>
+ 
 
-    <div class="control-group">
-    <%= f.label :firstname, class:"control-label"%>
+  <fieldset>
+  <legend> Sign up </legend>
+   <div class="row">
+    <div class="span6 control-group-one">
+    
+    <div class="control-group ">
+    <%= f.label :firstname,  class:"control-label"%>
     <div class="controls">
-      <%= f.text_field :firstname, class:"input-xlarge", id:"input01"%>
+      <%= f.text_field :firstname, :autofocus => true, class:"input-xlarge", id:"input01"%>
     </div>
   </div>
   
-  <div class="control-group">
+  <div class="control-group ">
     <%= f.label :lastname, class:"control-label" %>
     <div class="controls">
       <%= f.text_field :lastname, class:"input-xlarge", id:"input01" %>
     </div>
   </div>
 
-  <div class="control-group">
+  <div class="control-group ">
     <%= f.label :bio, class:"control-label" %>
     <div class="controls">
       <%= f.text_area :bio, class:"input-xlarge", id:"input01" %>
     </div>
   </div>
+
+
 
   <div class="control-group">
     <%= f.label :topic_list, class:"control-label" %>
@@ -60,6 +69,8 @@
     </div>
   </div>
 
+ 
+
   <div class="control-group">
     <%= f.label :city, class:"control-label" %>
     <div class="controls">
@@ -67,6 +78,9 @@
     </div>
   </div>
 
+   </div>
+  <div class="span6">
+ 
   <div class="control-group">
     <%= f.label :twitter, class:"control-label" %>
     <div class="controls">
@@ -74,17 +88,22 @@
     </div>
   </div>
 
+
   <div class="control-group">
     <%= f.label :picture, class:"control-label" %>
     <div class="controls">
       <%= f.file_field :picture, class:"input-xlarge" %>
     </div>
   </div>
-  <hr>
+  
+
+  
+
+
   <div class="control-group">
     <%= f.label :email, class:"control-label" %>
     <div class="controls">
-      <%= f.email_field :email, :autofocus => true, class:"input-xlarge"%>
+      <%= f.email_field :email,  class:"input-xlarge"%>
     </div>
   </div>
 
@@ -108,7 +127,13 @@
   <div class="form-actions">
     <%= f.submit(t(".sign_up"), class:"btn btn-primary")%>
   </div>
+  
   <% end %>
+  <div class="forget-password">
+   <%= render "devise/shared/links" %>
+ </div>
+</div>
+</div>
 
 <script type="text/javascript">
   $(".add-tag-trigger").click(function() {
@@ -129,6 +154,8 @@
     }
   });
 </script>
-<%= render "devise/shared/links" %>
+
   </fieldset>
 </form>
+
+

@@ -32,7 +32,7 @@ class ProfileTest < ActionController::IntegrationTest
     within "#topics_cloud" do
       click_link('Sommer')
     end
-    assert page.has_css?('h3.profile_name', :count => 1)
+    assert page.has_css?('div.name', :count => 1)
     # save_and_open_page
   end
 
@@ -43,7 +43,7 @@ class ProfileTest < ActionController::IntegrationTest
     within "#topics_cloud" do
       click_link('Fruehling')
     end
-    assert page.has_css?('h3.profile_name', :count => 2)
+    assert page.has_css?('div.name', :count => 2)
   end
  
 end

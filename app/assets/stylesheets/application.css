@@ -11,3 +11,14 @@
  *= require_self
  *= require_tree .
  */
+
+#notice, #alert {
+	margin-top: 100px;
+	background-color: #eee;
+	padding: 1em 0;
+	text-align: center;
+}
+
+#signup .form-horizontal .well {
+  background-color: #ffffff;
+}

@@ -19,16 +19,21 @@ en:
       speakers:
         new_speaker_heading: "Our Newest Speakers"
         speaker_text: "We care about women-men ration on tech conferences. We encourage women professionals to be more visible at tech conferences."
+        speaker_index: "Browse more speakers >>"
       mission_statement:
         heading: "Our Vision"
         content: "<p>We believe that female speakers should be easier to find for tech-y event organizers.</p><p>We believe that event organizers should have the best speakers at their events, regardless of the speakers’ gender identification.</p><p>We believe in collaboration and not competition, so we encourage our speakers and event organizers to support each other and help speakers speak better. </p>"
         quote: "We believe in collaboration and not competition, so we encourage our speakers and event organizers to support each other and help speakers speak better."
       railsgirls: |
-        "8 women supported by 4 coaches coded this web application as a Rails Girls Berlin learning project.
-        <a href="http://railsgirlsberlin.de">Rails Girls</a> is an international not-for-profit group that aims to get women into programming with workshops, scholarships, and a safe learning community."
-      about: "We want a balanced speaker ratio on the conferences we go to. Most conferences in tech, marketing, digital media but also in other areas unfortunately have mostly male speakers, moderators or coaches (see here some examples: http://50prozent.noblogs.org). We want to change that ratio and help event organisers to find female speakers for their conferences. And female speakers, moderators or coaches to be more visible on the web."
-      contact: "Contact"
+        8 women supported by 4 coaches coded this web application as a Rails Girls Berlin learning project.
+        <a href="http://railsgirlsberlin.de">Rails Girls</a> is an international not-for-profit group that aims to get women into programming with workshops, scholarships, and a safe learning community.
+      about:  |
+        We want a balanced speaker ratio on the conferences we go to. Most conferences in tech, marketing, digital media but also in other areas unfortunately have mostly male speakers, moderators or coaches (see <a href="http://50prozent.noblogs.org">here</a> some examples). We want to change that ratio and help event organisers to find female speakers for their conferences. And female speakers, moderators or coaches to be more visible on the web.
+      contact: "Contact / License"
       contact_link: "Click here to contact us"
+      address: "Rubymonsters c/o Travis CI GmbH, Prinzessinnenstr. 20, 10969 Berlin, Germany"
+      github: |
+        Fork us on <a href="http://github.com/rubymonsters/speakerinnen_liste">GitHub!</a>
   home:
     index:
       title: "What is this?"
@@ -64,6 +69,8 @@ en:
       topics: 'My topics:'
       languages: 'My languages:'
       talks: 'Previous Talks:'
+      media: "Examples of previous talks:"
+      bio: "Bio: "
       contact: 'Contact:'  
       twitter: 'Twitter:'
       show: 'Show'
