@@ -116,7 +116,7 @@
         </div>
         <div class="span4">
           <h4><%= t(".contact") %></h4>
-          <span class="italic"><%= t(".address") %></span>
+          <span class="italic"><%= t(".address").html_safe %></span>
           <p>
           <%= link_to t(".contact_link"), contact_path %> 
           <p>
