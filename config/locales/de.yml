@@ -44,7 +44,8 @@ de:
       my_profile: "Mein Profil"
       account: "Benutzerkonto"
       logout: "Ausloggen"
-      signup: "Registrieren als Speakerin"
+      signup_email: "Registrieren als Speakerin via E-Mail"
+      signup_twitter: "...oder Twitter"
       login: "Anmelden"
   contact:
     form:

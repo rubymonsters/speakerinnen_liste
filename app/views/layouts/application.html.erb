@@ -22,7 +22,7 @@
           <%= link_to(t(".logout"), destroy_profile_session_path, method: :delete, :class => 'header-btn') %>
         <% else %>
           <%= link_to(t(".signup_email"), new_profile_registration_path, :class => 'header-btn') %> 
-          <%= link_to(t(".signup_twitter"), new_profile_registration_path, :class => 'header-btn') %> |
+          <%= link_to(t(".signup_twitter"), omniauth_authorize_path("profile", "twitter"), :class => 'header-btn') %> |
           <%= link_to(t(".login"), new_profile_session_path, :class => 'header-btn') %>
         <% end %>
          <% if admin?(current_profile) %>
