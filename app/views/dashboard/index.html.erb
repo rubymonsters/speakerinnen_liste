@@ -4,12 +4,18 @@
           <script>
             $(window).scroll(function() {
               if ($(this).scrollTop() > 0) {
-                $(".badge").stop().animate({
-                            opacity: 0 }, 50);
-                    } else {
-                    $(".badge").stop().animate({
-                    opacity: 1 }, 50);}});
-                </script>
+                $(".badge").stop().animate({ opacity: 0 }, 50);
+              } else {
+                $(".badge").stop().animate({ opacity: 1 }, 50);
+              }
+              //stops badge from covering other links
+              if ($(this).scrollTop() > 700) {
+                $(".badge").hide();
+              } else {
+                $(".badge").show();
+              }
+            });
+          </script>
       <div class="container">
         <div class="heading">
           <div class="large serif">
