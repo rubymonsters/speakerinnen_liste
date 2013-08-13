@@ -3,7 +3,7 @@
        <div class="badge"><%= image_tag("badge2-bw.png", :alt => "badge") %> </div>
           <script>
             $(window).scroll(function() {
-              if ($(this).scrollTop() > 0) {
+              if ($(this).scrollTop() > 100) {
                 $(".badge").stop().animate({ opacity: 0 }, 50);
               } else {
                 $(".badge").stop().animate({ opacity: 1 }, 50);
