@@ -50,8 +50,7 @@ en:
       my_profile: "My profile"
       account: "Account"
       logout: "Logout"
-      signup_email: "Sign up as a speaker with email"
-      signup_twitter: "...or twitter"
+      signup: "Sign up as a speaker"
       login: "Login"
   contact:
     form:
