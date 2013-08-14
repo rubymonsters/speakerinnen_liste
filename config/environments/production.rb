@@ -76,7 +76,7 @@ SpeakerinnenListe::Application.configure do
     # verschlüsselter smtp port
     port: 587,
     authentication: "plain",
-    user_name: "claraimmerwahr@googlemail.com",
+    user_name: "immerwahrclara@googlemail.com",
     # environment variable that I send seperatly to heroku
     password: ENV['SMTP_PASSWORD'],
     enable_starttls_auto: true
