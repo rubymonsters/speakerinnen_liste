@@ -12,38 +12,43 @@
           <%= form_for(Profile.new) do |f| %>
 
             <div class="control-group">
-              <%= f.email_field :email, :autofocus => true, class:"input-xlarge", placeholder: "Email" %>
-            </div>
-            <div class="control-group">
-              <%= f.password_field :password, class:"input-xlarge", placeholder: "Password" %>
-           </div>
-            
-        <div class="control-group">
-            <% if devise_mapping.rememberable? -%> <p>Remember me</p>
-            <%= f.check_box :remember_me , id:"optionsCheckbox", class:"remember"   %> 
-             <% end -%> 
-          </div> 
-
-           <div class="control-group">
-            <%= f.submit(t(".login"), class:"btn")%>
-           </div>
-              
-            <div class="control-group">
              <%- if devise_mapping.omniauthable? %>
                <%- Profile.omniauth_providers.each do |provider| %>
-                <div class="btn"><%= link_to "Sign in with #{provider.to_s.titleize}", omniauth_authorize_path(:profile, provider) %> </div>
-                 <% end -%>
+                <div class="btn"><%= link_to "Sign in with #{provider.to_s.titleize}", omniauth_authorize_path(:profile, provider) %> 
+                </div>
               <% end -%>
-             </div>
+              <% end -%>
+            </div>
 
-            
+            <span>Or sign in with your email</span>
+
+            <div class="control-group">
+              <div class="controls">
+                <%= f.email_field :email, :autofocus => true, class:"input-xlarge", placeholder: "Email" %>
+              </div>
+            </div>
+
+            <% if f.object.password_required? %>
+                <div class="control-group">
+                  <div class="controls">
+                    <%= f.password_field :password, class:"input-xlarge", placeholder: "Password" %>
+                  </div>
+                </div>
+
+                <div class="control-group">
+                  <div class="controls">
+                    <%= f.password_field :password_confirmation, class:"input-xlarge", placeholder: "Password Confirmation" %>
+                  </div>
+                </div>
+              <% end %>
+              
           <% end %>
           </div>
         </div>
       </div>
         <div class="span5 offset1">
              <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
-          <%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(:profile) %><br />
-        <% end -%>
-   </div>
+              <%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(:profile) %><br />
+              <% end -%>
+       </div>
     </div>
