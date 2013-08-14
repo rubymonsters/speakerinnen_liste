@@ -1,0 +1,49 @@
+<div id="container">
+  
+      <div id="badge-log">
+        <div id="badge-inner">
+
+          <div id="logo">
+            <%= image_tag("logo8.png", id:"logo8") %>
+          </div>
+        
+          <div id="login">
+
+          <%= form_for(Profile.new) do |f| %>
+
+            <div class="control-group">
+              <%= f.email_field :email, :autofocus => true, class:"input-xlarge", placeholder: "Email" %>
+            </div>
+            <div class="control-group">
+              <%= f.password_field :password, class:"input-xlarge", placeholder: "Password" %>
+           </div>
+            
+        <div class="control-group">
+            <% if devise_mapping.rememberable? -%> <p>Remember me</p>
+            <%= f.check_box :remember_me , id:"optionsCheckbox", class:"remember"   %> 
+             <% end -%> 
+          </div> 
+
+           <div class="control-group">
+            <%= f.submit(t(".login"), class:"btn")%>
+           </div>
+              
+            <div class="control-group">
+             <%- if devise_mapping.omniauthable? %>
+               <%- Profile.omniauth_providers.each do |provider| %>
+                <div class="btn"><%= link_to "Sign in with #{provider.to_s.titleize}", omniauth_authorize_path(:profile, provider) %> </div>
+                 <% end -%>
+              <% end -%>
+             </div>
+
+            
+          <% end %>
+          </div>
+        </div>
+      </div>
+        <div class="span5 offset1">
+             <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
+          <%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(:profile) %><br />
+        <% end -%>
+   </div>
+    </div>
