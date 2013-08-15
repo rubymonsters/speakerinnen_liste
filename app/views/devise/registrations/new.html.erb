@@ -55,13 +55,20 @@
     </div>
 
 
-  <div class="control-group">
+ 
+
+ 
+
+   </div>
+  <div class="span6">
+
+   <div class="control-group">
     <%= f.label :talks, class:"control-label" %>
     <div class="controls">
       <%= f.text_field :talks, class:"input-xlarge" %>
     </div>
   </div>
-
+ 
   <div class="control-group">
     <%= f.label :languages, class:"control-label" %>
     <div class="controls">
@@ -69,7 +76,6 @@
     </div>
   </div>
 
- 
 
   <div class="control-group">
     <%= f.label :city, class:"control-label" %>
@@ -78,9 +84,7 @@
     </div>
   </div>
 
-   </div>
-  <div class="span6">
- 
+
   <div class="control-group">
     <%= f.label :twitter, class:"control-label" %>
     <div class="controls">
@@ -92,20 +96,31 @@
   <div class="control-group">
     <%= f.label :picture, class:"control-label" %>
     <div class="controls">
-      <%= f.file_field :picture, class:"input-xlarge" %>
+      <%= f.file_field :picture %>
     </div>
   </div>
 
-  <div class="form-actions">
-    <%= f.submit(t(".sign_up"), class:"btn btn-primary")%>
-  </div>
-  
+  <div class="control-group">
+     <%= f.label :email, class:"control-label" %>
+       <div class="controls">
+    <%= f.email_field :email, :autofocus => true %></div>
+      </div>
+
+      
+     <div class="control-group">
+        <%= f.submit(t(".sign_up"), class:"btn btn-primary")%>
+      </div>
+
   <% end %>
+   </div>
+  </div>
+  </div>
+</div>
+
   <div class="forget-password">
    <%= render "devise/shared/links" %>
  </div>
-</div>
-</div>
+
 
 <script type="text/javascript">
   $(".add-tag-trigger").click(function() {

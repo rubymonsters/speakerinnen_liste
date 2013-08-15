@@ -11,16 +11,9 @@
 
           <%= form_for(Profile.new) do |f| %>
 
-            <div class="control-group">
-             <%- if devise_mapping.omniauthable? %>
-               <%- Profile.omniauth_providers.each do |provider| %>
-                <div class="btn"><%= link_to "Sign up with #{provider.to_s.titleize}", omniauth_authorize_path(:profile, provider) %> 
-                </div>
-              <% end -%>
-              <% end -%>
-            </div>
+            
 
-            <span>Or sign up with your email</span>
+           
 
             <div class="control-group">
               <div class="controls">
@@ -40,7 +33,23 @@
                     <%= f.password_field :password_confirmation, class:"input-xlarge", placeholder: "Password Confirmation" %>
                   </div>
                 </div>
-              <% end %>
+
+              <div class="control-group">  
+                <%= f.submit("Sign up", class: "btn")%>  
+              </div>
+
+    
+
+            <div class="control-group">
+             <%- if devise_mapping.omniauthable? %>
+               <%- Profile.omniauth_providers.each do |provider| %>
+                <div class="btn"><%= link_to "Or sign up with #{provider.to_s.titleize}", omniauth_authorize_path(:profile, provider) %> 
+                </div>
+              <% end -%>
+              <% end -%>
+            </div>
+
+        <% end %>
               
           <% end %>
           </div>
