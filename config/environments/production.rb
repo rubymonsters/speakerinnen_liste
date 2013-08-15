@@ -68,9 +68,9 @@ SpeakerinnenListe::Application.configure do
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
 
   config.action_mailer.default_url_options = { :host => 'speakerinnen-liste.herokuapp.com'}
-  
+
   config.action_mailer.delivery_method = :smtp
-  
+
   config.action_mailer.perform_deliveries = true
 
   config.action_mailer.raise_delivery_errors = false
@@ -78,15 +78,17 @@ SpeakerinnenListe::Application.configure do
   config.action_mailer.default :charset => "utf-8"
 
   config.action_mailer.smtp_settings = {
-    address: "smtp.gmail.com",
-    # verschlüsselter smtp port
-    port: 587,
-    domain: "speakerinnen-liste.herokuapp.com",
+    # These are configured on Heroku with `heroku config:set`, see
+    # https://devcenter.heroku.com/articles/config-vars
+    # For the server and the port there is a fallback default so we
+    # don't have to set those explicitly.
+    port:      ENV['SMTP_PORT']   || 587,
+    address:   ENV['SMTP_SERVER'] || 'smtp.gmail.com',
+    domain:    ENV['SMTP_DOMAIN'] || "speakerinnen-liste.herokuapp.com",
+    user_name: ENV['SMTP_LOGIN'],
+    password:  ENV['SMTP_PASSWORD'],
     authentication: "plain",
     enable_starttls_auto: true,
-    user_name: "immerwahrclara@gmail.com",
-    # environment variable that I sspeakerinnen-liste.herokuapp.comend seperatly to heroku
-    password: ENV['SMTP_PASSWORD'],
   }
-  
+
 end
