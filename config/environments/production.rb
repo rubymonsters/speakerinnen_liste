@@ -62,24 +62,31 @@ SpeakerinnenListe::Application.configure do
   config.active_support.deprecation = :notify
 
   # mail default url
-  config.action_mailer.default_url_options = { :host => 'staging-speakerinnen-liste.herokuapp.com' }
 
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
 
-
+  config.action_mailer.default_url_options = { :host => 'speakerinnen-liste.herokuapp.com'}
+  
   config.action_mailer.delivery_method = :smtp
   
+  config.action_mailer.perform_deliveries = true
+
+  config.action_mailer.raise_delivery_errors = false
+
+  config.action_mailer.default :charset => "utf-8"
+
   config.action_mailer.smtp_settings = {
     address: "smtp.gmail.com",
     # verschlüsselter smtp port
     port: 587,
+    domain: "speakerinnen-liste.herokuapp.com",
     authentication: "plain",
-    user_name: "immerwahrclara@googlemail.com",
-    # environment variable that I send seperatly to heroku
+    enable_starttls_auto: true,
+    user_name: "immerwahrclara@gmail.com",
+    # environment variable that I sspeakerinnen-liste.herokuapp.comend seperatly to heroku
     password: ENV['SMTP_PASSWORD'],
-    enable_starttls_auto: true
-}
-  config.action_mailer.raise_delivery_errors = true
+  }
+  
 end
