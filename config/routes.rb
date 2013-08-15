@@ -43,6 +43,9 @@ SpeakerinnenListe::Application.routes.draw do
       get  'contact' => 'contact#new',    :as => 'contact', :on => :member
       post 'contact' => 'contact#create', :as => 'contact', :on => :member 
     end
+
+    get 'sign_up' => 'pages#sign_up'
+  
   end
 
 
