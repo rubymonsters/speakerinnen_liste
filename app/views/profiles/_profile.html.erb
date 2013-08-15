@@ -1,7 +1,11 @@
 <div class="span3">
   <div class="speaker">
     <div>
-      <%= link_to(image_tag(profile.picture_url || "images/avatar.jpg" ), profile) %>
+      <% if profile.picture.present? %>
+        <%= image_tag(profile.picture_url , :class => "photo") %>
+      <% else %>
+        <%= image_tag("avatar.jpg", :alt => "avatar", :class => "photo") %>          
+      <% end %>
     </div>
     <div class="name"><%= link_to profile.fullname, profile %></div>
     <div class="desc"><%= profile.topic_list.first if profile.topic_list.present? %></div>
