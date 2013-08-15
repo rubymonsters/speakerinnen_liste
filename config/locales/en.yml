@@ -84,6 +84,9 @@ en:
     index:
       title: "SpeakerInnen"
       text: "This is another example text."
+      search1: "You have searched for"
+      search2: "and you have found"
+      search3: "profiles."
     new:
       new_profile: "New Profile"
       back: "Back"

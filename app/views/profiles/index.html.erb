@@ -8,7 +8,7 @@
 
 
 <div id="topics_cloud">
-  <h3>TopicCloud:</h3>
+  <h3>Topic Cloud:</h3>
   <% tag_cloud Profile.topic_counts, %w[s m l] do |topic, css_class| %>
     <%= topic_link topic, class: css_class %>
   <% end %>
@@ -17,10 +17,10 @@
     <hr>
 
 
-  <% if params[:topic] %>
+<!--   <% if params[:topic] %>
     <h4>Du hast nach dem Tag "<%= params[:topic] %>" gesucht und <%= params[:topic_counts] %> gefunden:</h4> 
-    <!-- TODO Topic counts working -->
-  <% end %>
+    <!-- TODO Topic counts working
+  <% end %> -->
 
   <%= render :partial => "profile", :collection => @profiles %>
 </div>
