@@ -100,7 +100,9 @@
 
 <div class="photo-bar work-with serif small">
   <div class="container large">
-    <div class="photo-text"><span class="text-black-bg">Do you have something to say?</span><br> <span class="text-black-bg">Get on the Speakerinnen List</span></div>
+     <div class="photo-text"><span class="text-black-bg"><%= t(".speaker_shoutout") %>
+    </span><br><span class="text-black-bg"><%= t(".speaker_text") %><%= link_to(t(".signup"), new_profile_registration_path) %></span>
+    </div>
   </div>
 </div>
 

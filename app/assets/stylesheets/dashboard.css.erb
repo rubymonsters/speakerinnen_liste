@@ -647,7 +647,7 @@ margin-bottom: 0;
 }
 
 .speaker .name {
-  font-weight:bold;
+  font-weight:normal;
   padding:5px 5px 0px 5px;
   display:inline-block;
 }
@@ -669,11 +669,24 @@ margin-bottom: 0;
 }
 
 .speaker .contact-info a:hover {
-  opacity:0.8;
+  -webkit-transition: 1s;
+-moz-transition: 1s;
+-ms-transition: 1s;
+-o-transition: 1s;
+transition: 1s;
+-webkit-filter: grayscale(100%);
+-moz-filter: grayscale(100%);
+-ms-filter: grayscale(100%);
+-o-filter: grayscale(100%);
+filter: grayscale(100%);
 }
 
 .speaker img:hover {
-  opacity: 0.7
+  -webkit-filter: grayscale(0%);
+-moz-filter: grayscale(0%);
+-ms-filter: grayscale(0%);
+-o-filter: grayscale(0%);
+filter: grayscale(00%);
 }
 
 /*clearfix*/
