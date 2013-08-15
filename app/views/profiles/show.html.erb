@@ -17,27 +17,21 @@
                         <%= raw @profile.topic_list.map { |t| link_to t, topic_path(t) }.join('  ') %>
                      </span>
                </h4>
-               <h5>
-                  <%= t ".languages" %><span> <%= @profile.languages %></span>
-               </h5>
-               <h5>
-                  <%= t ".talks" %><span><%= @profile.talks %></span>
-               </h5>
-               <h5>
-                  <%= t ".media" %><span><%= @profile.media_url_html %></span>
-               </h5>
+               <h5><%= t ".languages" %>
+               <span> <%= @profile.languages %></span></h5>
+              
+               <h5><%= t ".talks" %> </h5>
+                 <span><%= @profile.talks %></span>
+              
+               <h5><%= t ".media" %></h5>
+                <span><%= @profile.media_url_html %></span>
+            
                <% if @profile.twitter.present? %>
-                  <h5>
-                     <%= t ".twitter" %>
+                  <h5> <%= t ".twitter" %>  </h5>
                      <span><%=link_to "@" + @profile.twitter, "http://twitter.com/#{@profile.twitter}" %></span>
-                  </h5>
                <% end %> 
 
-               <div class="info-profiles-bio">
-                  <p>
-                     <%= t ".bio" %> <%= @profile.bio %>
-                  </p>
-               </div>
+              
             </div>
     
          <div class="span3">
@@ -49,9 +43,14 @@
                <%= link_to(t(".edit"), edit_profile_path(@profile), class:"btn  btn-large buttons-modals") %>
             <% end %>
          </div>
-     </div>
- </div>
+      </div>
+        <div class="info-profiles-bio">
+            <h5> <%= t ".bio" %></h5><span> <%= @profile.bio %></span>
+        </div>
+    </div>
+   
 
+         
          <div class="modal fade" id="contact">
             <div class="modal-dialog">
                <div class="modal-content">
@@ -72,4 +71,6 @@
             </div>
             <!-- /.modal-dialog -->
          </div>
+
+
          <!-- /.modal -->
