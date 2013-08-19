@@ -14,12 +14,13 @@ gem 'pg'
 gem 'devise'
 gem 'omniauth-twitter'
 gem 'carrierwave'
-gem "fog", "~> 1.3.1"
+gem "fog", "~> 1.3"
 gem "mini_magick", "~> 3.5.0"
 gem 'textacular', '~> 3.0', require: 'textacular/rails'
 gem "jquery-rails"
 gem 'acts-as-taggable-on'
 gem 'auto_html', github: 'dejan/auto_html'
+gem 'mandrill-api'
 
 group :development do
   gem "letter_opener"

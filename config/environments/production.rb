@@ -77,18 +77,26 @@ SpeakerinnenListe::Application.configure do
 
   config.action_mailer.default :charset => "utf-8"
 
-  config.action_mailer.smtp_settings = {
-    # These are configured on Heroku with `heroku config:set`, see
-    # https://devcenter.heroku.com/articles/config-vars
-    # For the server and the port there is a fallback default so we
-    # don't have to set those explicitly.
-    port:      ENV['SMTP_PORT']   || 587,
-    address:   ENV['SMTP_SERVER'] || 'smtp.gmail.com',
-    domain:    ENV['SMTP_DOMAIN'] || "speakerinnen-liste.herokuapp.com",
-    user_name: ENV['SMTP_LOGIN'],
-    password:  ENV['SMTP_PASSWORD'],
-    authentication: "plain",
-    enable_starttls_auto: true,
-  }
+  # config.action_mailer.smtp_settings = {
+  #   # These are configured on Heroku with `heroku config:set`, see
+  #   # https://devcenter.heroku.com/articles/config-vars
+  #   # For the server and the port there is a fallback default so we
+  #   # don't have to set those explicitly.
+  #   port:      ENV['SMTP_PORT']   || 587,
+  #   address:   ENV['SMTP_SERVER'] || 'smtp.gmail.com',
+  #   domain:    ENV['SMTP_DOMAIN'] || "speakerinnen-liste.herokuapp.com",
+  #   user_name: ENV['SMTP_LOGIN'],
+  #   password:  ENV['SMTP_PASSWORD'],
+  #   authentication: "plain",
+  #   enable_starttls_auto: true,
+  # }
 
+  config.action_mailer.smtp_settings = {
+    :port =>           '587',
+    :address =>        'smtp.mandrillapp.com',
+    :user_name =>      ENV['MANDRILL_USERNAME'],
+    :password =>       ENV['MANDRILL_APIKEY'],
+    :domain =>         'heroku.com',
+    :authentication => :plain
+  }
 end
