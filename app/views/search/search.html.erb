@@ -1,13 +1,13 @@
 <div class="span12">
   <%= paginate @results %>
   <% if @results.size == 0 %>
-    <p style="font-size:18px">
-      You searched for <b>"<%= params[:q] %>"</b> but we didnt find anything.
+    <p id="notice">
+      You searched for <b>"<%= params[:q] %>"</b> but we didn't find anything.
     </p>
   <% else %>
-  <p style="font-size:18px">
+    <p id="notice">
     You searched for <b>"<%= params[:q] %>"</b> and we found <%= pluralize(@results.size, "result") %>. 
-  </p>
+    </p>
     <%= render :partial => "/profiles/profile", :collection => @results.map(&:profile) %>
   <% end %>
 </div>
