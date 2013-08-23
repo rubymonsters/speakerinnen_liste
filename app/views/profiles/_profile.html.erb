@@ -4,7 +4,19 @@
       <%= link_to(image_tag(profile.picture_url || "avatar.jpg" ), profile) %>
     </div>
     <div class="name"><%= link_to profile.fullname, profile %></div>
-    <div class="desc"><%= profile.topic_list.first if profile.topic_list.present? %></div>
+
+    <div class="desc">
+    <%=
+      if profile.topic_list.present?
+        if @search_query
+          profile.topic_list.detect {|topic| topic.downcase == @search_query.downcase }
+        else
+          profile.topic_list.first 
+        end
+      end
+    %>
+    </div>
+
     <div class="contact-info">
       <% if profile.twitter.present? %>
         <div class="header_small">
