@@ -8,7 +8,7 @@
 
 
 <div id="topics_cloud">
-  <h3>Topic:</h3>
+  <h3>Topics:</h3>
   <% tag_cloud Profile.topic_counts, %w[s m l] do |topic, css_class| %>
     <%= topic_link topic, class: css_class %>
   <% end %>
