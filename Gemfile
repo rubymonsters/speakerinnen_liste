@@ -18,7 +18,7 @@ gem "fog", "~> 1.3"
 gem "mini_magick", "~> 3.5.0"
 gem 'textacular', '~> 3.0', require: 'textacular/rails'
 gem "jquery-rails"
-gem 'acts-as-taggable-on'
+gem 'acts-as-taggable-on', github: 'rubymonsters/acts-as-taggable-on'
 gem 'auto_html', github: 'dejan/auto_html'
 gem 'mandrill-api'
 
