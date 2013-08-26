@@ -1,11 +1,6 @@
 require 'test_helper' 
 
 class SignUpTest < ActionController::IntegrationTest
-  #def setup
-    #horst = profiles(:one)
-    #horst.confirmed_at = Time.now
-    #horst.save
-  #end
 
   test "sign up with email sends out confirmation link" do
     visit '/'
@@ -16,7 +11,7 @@ class SignUpTest < ActionController::IntegrationTest
     fill_in('profile[password_confirmation]', :with => 'Testpassword')
     click_button "Sign up"
     # opens the site where you are in the test right now
-    save_and_open_page
+    #save_and_open_page
     assert page.has_content?('A message with a confirmation link has been sent to your email address. Please open the link to activate your account.')
   end
   
@@ -42,7 +37,7 @@ class SignUpTest < ActionController::IntegrationTest
       fill_in('profile[password_confirmation]', :with => 'Testpassword')
       click_button "Sign up"
       # opens the site where you are in the test right now
-      save_and_open_page
+      #save_and_open_page
       assert page.has_content?('Email has already been taken')
     end
 
@@ -53,14 +48,14 @@ class SignUpTest < ActionController::IntegrationTest
         :uid => '123545',
         :info => {
           :nickname => 'JonnieHallman'
-          }
+        }
       })
 
       visit '/'
       click_link('Sign up as a speaker')
       click_link('Or sign up with Twitter')
       assert page.has_content?('Sign up')
-      save_and_open_page
+      #save_and_open_page
       find_field('profile_email')
     end
 end
