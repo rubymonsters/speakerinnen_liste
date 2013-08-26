@@ -12,6 +12,7 @@
  *= require_tree .
  */
 
+
 #notice, #alert {
 	margin-top: 100px;
 	background-color: #eee;
