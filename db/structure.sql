@@ -94,6 +94,16 @@ CREATE TABLE schema_migrations (
 
 
 --
+-- Name: searches; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE searches (
+    profile_id integer,
+    search_field text
+);
+
+
+--
 -- Name: taggings; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -107,24 +117,6 @@ CREATE TABLE taggings (
     context character varying(128),
     created_at timestamp without time zone
 );
-
-
---
--- Name: tags; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE TABLE tags (
-    id integer NOT NULL,
-    name character varying(255)
-);
-
-
---
--- Name: searches; Type: VIEW; Schema: public; Owner: -
---
-
-CREATE VIEW searches AS
-    SELECT profiles.id AS profile_id, profiles.bio, profiles.firstname, profiles.lastname, profiles.languages, profiles.city, tags.name AS tag FROM ((profiles LEFT JOIN taggings ON ((taggings.taggable_id = profiles.id))) LEFT JOIN tags ON ((tags.id = taggings.tag_id)));
 
 
 --
@@ -144,6 +136,16 @@ CREATE SEQUENCE taggings_id_seq
 --
 
 ALTER SEQUENCE taggings_id_seq OWNED BY taggings.id;
+
+
+--
+-- Name: tags; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE tags (
+    id integer NOT NULL,
+    name character varying(255)
+);
 
 
 --
@@ -253,6 +255,13 @@ CREATE UNIQUE INDEX unique_schema_migrations ON schema_migrations USING btree (v
 
 
 --
+-- Name: _RETURN; Type: RULE; Schema: public; Owner: -
+--
+
+CREATE RULE "_RETURN" AS ON SELECT TO searches DO INSTEAD SELECT profiles.id AS profile_id, array_to_string(ARRAY[profiles.bio, (profiles.firstname)::text, (profiles.lastname)::text, (profiles.languages)::text, (profiles.city)::text, array_to_string(array_agg(DISTINCT tags.name), ' '::text)], ' '::text) AS search_field FROM ((profiles LEFT JOIN taggings ON ((taggings.taggable_id = profiles.id))) LEFT JOIN tags ON ((tags.id = taggings.tag_id))) GROUP BY profiles.id;
+
+
+--
 -- PostgreSQL database dump complete
 --
 
@@ -277,3 +286,5 @@ INSERT INTO schema_migrations (version) VALUES ('20130408194211');
 INSERT INTO schema_migrations (version) VALUES ('20130517204532');
 
 INSERT INTO schema_migrations (version) VALUES ('20130525141752');
+
+INSERT INTO schema_migrations (version) VALUES ('20130826181457');
