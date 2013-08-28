@@ -1,5 +1,17 @@
+<div class="container profiles">
 
-    <%= render 'form' %>
+    <%= form_for(@profile, :html => { :multipart => true, :class => "form-horizontal well"}) do |f| %>
+      <%= render 'shared/error_messages' %>
+      <fieldset >
 
-    <%= link_to(t(".show"), @profile) %> |
-    <%= link_to(t(".back"), profiles_path) %>
+        <legend>Update profile</legend>
+
+        <%= render partial: "shared/profile_formfields", locals: { form_type: :update_profile, :f => f } %>
+
+      </fieldset>
+    <% end %>
+
+  <!-- Not sure if these are necessary?? -->
+  <%= link_to(t(".show"), @profile) %> |
+  <%= link_to(t(".back"), profiles_path) %>
+</div>
