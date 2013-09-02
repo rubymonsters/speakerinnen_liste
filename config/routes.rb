@@ -23,9 +23,13 @@ SpeakerinnenListe::Application.routes.draw do
 
     resources :profiles, :except => [:new, :create] do
       get  'contact' => 'contact#new',    :as => 'contact', :on => :member
-      post 'contact' => 'contact#create', :as => 'contact', :on => :member 
+      post 'contact' => 'contact#create', :as => 'contact', :on => :member
     end
 
-    get 'sign_up' => 'pages#sign_up'
+    devise_scope :profile do
+      get 'sign_up' => 'devise/registrations#new'
+    end
+
+    #get 'sign_up' => 'profiles#new'
   end
 end
