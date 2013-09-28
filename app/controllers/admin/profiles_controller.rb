@@ -1,5 +1,5 @@
 class Admin::ProfilesController < Admin::BaseController
-  
+
   def index
     @profiles = Profile.all.sort_by {|profile| profile.firstname.downcase}
   end
@@ -11,7 +11,7 @@ class Admin::ProfilesController < Admin::BaseController
   end
 
   def show
-    @profile = Profile.find(params[:id])   
+    @profile = Profile.find(params[:id])
   end
 
   def edit
@@ -22,8 +22,8 @@ class Admin::ProfilesController < Admin::BaseController
     @profile = Profile.find(params[:id])
     if @profile.update_attributes(params[:profile])
       redirect_to admin_profile_path(@profile), notice: (I18n.t("flash.profiles.updated"))
-    else 
-      render :edit 
+    else
+      render :edit
     end
   end
 

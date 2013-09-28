@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
       redirect_to profiles_url, notice: (I18n.t("flash.profiles.no_permission"))
     end
   end
-  
+
   private
   def set_locale
     I18n.locale = params[:locale] || I18n.default_locale

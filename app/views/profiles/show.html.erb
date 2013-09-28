@@ -4,9 +4,11 @@
       <span class="icon icon-arrow-left"></span> back
     </div>
   <% end %>
+
   <div class="white-bg">
     <h1><%= @profile.fullname %></h1>
   </div>
+
   <div class="row">
     <div class="span3 photo">
       <% if @profile.picture.present? %>
@@ -15,8 +17,8 @@
         <%= image_tag("avatar.jpg", :alt => "avatar", :class => "photo") %> 
       <% end %>
     </div>
-    <div class="span5">
 
+    <div class="span5">
       <% if @profile.twitter.present? %>
         <h5> <%= t ".twitter" %> <span><%=link_to "@" + @profile.twitter, "http://twitter.com/#{@profile.twitter}" %></span></h5>
       <% end %>
@@ -32,23 +34,23 @@
       <h5><%= t ".talks" %>
         <span> <%= @profile.talks %></span>
       </h5>
-
     </div>
 
     <div class="span3">
       <a data-toggle="modal" href="#contact" class="btn  btn-large buttons-modals">
-    <span class="icon icon-envelope"></span> Contact
-    </a>
+        <span class="icon icon-envelope"></span> Contact
+      </a>
 
-    <% if can_edit_profile?(current_profile, @profile) %>
-      <%= link_to(edit_profile_path(@profile)) do %>
-        <div class="btn  btn-large buttons-modals">
-          <span class="icon icon-edit"></span> Edit
-        </div>
+      <% if can_edit_profile?(current_profile, @profile) %>
+        <%= link_to(edit_profile_path(@profile)) do %>
+          <div class="btn  btn-large buttons-modals">
+            <span class="icon icon-edit"></span> Edit
+          </div>
+        <% end %>
       <% end %>
-    <% end %>
     </div>
   </div>
+
   <div class="info-profiles-bio">
     <div class="span6 info-profiles-text">
       <h5> <%= t ".bio" %></h5><span> <%= @profile.bio %></span>
