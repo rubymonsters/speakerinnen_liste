@@ -35,9 +35,7 @@
             <div class="control-group">
               <%- if devise_mapping.omniauthable? %>
                 <%- Profile.omniauth_providers.each do |provider| %>
-                  <div class="btn">
-                    <%= link_to "Or sign up with #{provider.to_s.titleize}", omniauth_authorize_path(:profile, provider) %> 
-                  </div>
+                  <%= link_to "Or sign up with #{provider.to_s.titleize}", omniauth_authorize_path(:profile, provider), class: 'btn' %> 
                 <% end -%>
              <% end -%>
             </div>
