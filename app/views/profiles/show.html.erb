@@ -12,7 +12,7 @@
   <div class="row">
     <div class="span3 photo">
       <% if @profile.picture.present? %>
-        <%= image_tag(@profile.picture_url , :class => "photo") %>
+        <%= image_tag(@profile.picture.profile.url , :class => "photo") %>
       <% else %>
         <%= image_tag("avatar.jpg", :alt => "avatar", :class => "photo") %> 
       <% end %>
