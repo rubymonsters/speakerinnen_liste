@@ -14,7 +14,7 @@ class Profile < ActiveRecord::Base
   end
 
   devise :database_authenticatable, :registerable, :omniauthable,
-         :recoverable, :rememberable, :trackable, :validatable, :confirmable
+    :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
   mount_uploader :picture, PictureUploader
 

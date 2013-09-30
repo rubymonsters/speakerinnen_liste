@@ -1,18 +1,13 @@
 <div class="container profiles">
   <h1 class="title-profiles"><%= t ".title" %></h1>
+  <%= t ".text" %>
 
+  <div id="topics_cloud">
+    <h3>Topics:</h3>
+    <% tag_cloud Profile.topic_counts, %w[s m l] do |topic, css_class| %>
+      <%= topic_link topic, class: css_class %>
+    <% end %>
+  </div>
 
-<!--   <p>
-    <%= t ".text" %>
-  </p> -->
-
-
-<div id="topics_cloud">
-  <h3>Topics:</h3>
-  <% tag_cloud Profile.topic_counts, %w[s m l] do |topic, css_class| %>
-    <%= topic_link topic, class: css_class %>
-  <% end %>
-</div>
-
-  <%= render :partial => "profile", :collection => @profiles %>
+  <%= render partial: "profile", collection: @profiles %>
 </div>
