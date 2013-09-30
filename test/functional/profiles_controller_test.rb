@@ -19,7 +19,7 @@ class ProfilesControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-# edit
+  # edit
 
   test "should edit own profile" do
     horst = profiles(:one)
@@ -55,7 +55,7 @@ class ProfilesControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-# update
+  # update
 
   test "should update own profile" do
     horst = profiles(:one)
@@ -91,7 +91,7 @@ class ProfilesControllerTest < ActionController::TestCase
     assert_equal 'Profile was successfully updated.', flash[:notice]
   end
 
-# destroy
+  # destroy
 
   test "should destroy own profile if user is signed" do
     horst = profiles(:one)

@@ -4,5 +4,4 @@ module LayoutsHelper
       true
     end
   end
-
 end

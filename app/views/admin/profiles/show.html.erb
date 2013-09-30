@@ -18,34 +18,49 @@
   <div class="span6">
     <div class="header"><%= t ".firstname" %></div>
     <%= @profile.firstname %>
+    
     <div class="header"><%= t ".lastname" %></div>
     <%= @profile.lastname %>
+    
     <div class="header"><%= t ".bio" %></div>
     <%= @profile.bio %>
+    
     <div class="header"><%= t ".city" %></div>
     <%= @profile.city %>
+    
     <div class="header"><%= t ".topics" %></div>
     <%= raw @profile.topic_list.map { |t| link_to t, topic_path(t) }.join(' ') %>
+    
     <div class="header"><%= t ".languages" %></div>
     <%= @profile.languages %>
+    
     <p></p>
+    
     <div class="header"><%= t ".talks" %></div>
     <%= @profile.talks %>
+    
     <div class="header"><%= t ".twitter" %></div>
     <%= @profile.twitter %>
+    
     <p></p>
+
   </div>
 </div>
+
 <br>
 
 <div class="row">
   <div class="span6">
     <div class="header"><%= t ".bio" %></div>
     <%= @profile.bio %>
+    
     <p></p>
+    
     <div class="header"><%= t ".email" %></div>
     <%= mail_to @profile.email%>
+    
     <p></p>
+    
     <% if @profile.twitter.present? %>
       <div class="header"><%= t ".twitter" %></div>
       <%=link_to "@" + @profile.twitter, "http://twitter.com/#{@profile.twitter}" %>
@@ -53,10 +68,8 @@
 
     <p></p>
     <br>
+    
     <%= link_to(t(".back"), admin_profiles_path, class:"btn btn-inverse btn-small") %>
     <%= link_to(t(".edit"), edit_admin_profile_path(@profile), class:"btn btn-danger btn-small") %>
-
   </div>
 </div>
-
-

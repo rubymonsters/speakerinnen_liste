@@ -42,7 +42,7 @@
       </div>
     </div>
 
-  </div><!-- / .span6 (left column) -->
+  </div>
   <div class="span6">
 
     <div class="control-group">
@@ -104,12 +104,9 @@
     <div class="control-group">
       <%= f.submit(form_type.to_s.gsub("_", " "), class:"btn btn-primary")%>
     </div>
+  </div>
+</div>
 
-  </div><!-- / .span6 (right column) -->
-</div><!-- / row -->
-
-
-<!-- keep the JS in here so it's not duplicated -->
 <script type="text/javascript">
   $(".add-tag-trigger").click(function() {
     var nameOfTag    = $(this).html();

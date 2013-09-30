@@ -1,5 +1,4 @@
 class Message
-
   include ActiveModel::Validations
   include ActiveModel::Conversion
   extend ActiveModel::Naming
@@ -18,5 +17,4 @@ class Message
   def persisted?
     false
   end
-
 end

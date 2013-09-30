@@ -1,5 +1,4 @@
 class Admin::ProfilesController < Admin::BaseController
-
   def index
     @profiles = Profile.all.sort_by {|profile| profile.firstname.downcase}
   end

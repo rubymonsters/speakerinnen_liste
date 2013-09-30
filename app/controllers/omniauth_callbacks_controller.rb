@@ -1,5 +1,4 @@
 class OmniauthCallbacksController < ApplicationController
-
   def all
     profile = Profile.from_omniauth(request.env["omniauth.auth"])
     if profile.persisted?

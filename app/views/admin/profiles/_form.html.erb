@@ -37,11 +37,11 @@
       <div class="controls tag_list input-xlarge">
         <% ActsAsTaggableOn::Tag.uniq.pluck(:name).each do |tag_name| %>
           <% if @profile.topic_list.include?(tag_name) %>
-          <span class="badge add-tag-trigger"><%= tag_name %></span>
-      <% else %>
-          <span class="badge badge-inverse add-tag-trigger"><%= tag_name %></span>
-      <% end %>
-      <% end %>
+            <span class="badge add-tag-trigger"><%= tag_name %></span>
+          <% else %>
+            <span class="badge badge-inverse add-tag-trigger"><%= tag_name %></span>
+          <% end %>
+        <% end %>
       </div>
     </div>
 
@@ -95,22 +95,21 @@
 <% end %>
 
 <script type="text/javascript">
-$(".add-tag-trigger").click(function() {
-  var nameOfTag    = $(this).html();
-  var existingTags = $("#tag-field-form").val();
-  //check if tag is in the list of tags
-  if (existingTags.indexOf(nameOfTag) < 0) {
-  if (existingTags.length == 0) {
-    $("#tag-field-form").val(nameOfTag);
-  } else {
-    $("#tag-field-form").val(existingTags+' '+nameOfTag);
-  }
-    $(this).removeClass("badge-inverse");
-  } else {
-    var newTags = existingTags.replace(nameOfTag, "").replace(/  /g, " ");
-    $("#tag-field-form").val(newTags);
-    $(this).addClass("badge-inverse");
-  }
-});
+  $(".add-tag-trigger").click(function() {
+    var nameOfTag    = $(this).html();
+    var existingTags = $("#tag-field-form").val();
+    //check if tag is in the list of tags
+    if (existingTags.indexOf(nameOfTag) < 0) {
+      if (existingTags.length == 0) {
+        $("#tag-field-form").val(nameOfTag);
+      } else {
+        $("#tag-field-form").val(existingTags+' '+nameOfTag);
+      }
+      $(this).removeClass("badge-inverse");
+    } else {
+      var newTags = existingTags.replace(nameOfTag, "").replace(/  /g, " ");
+      $("#tag-field-form").val(newTags);
+      $(this).addClass("badge-inverse");
+    }
+  });
 </script>
-

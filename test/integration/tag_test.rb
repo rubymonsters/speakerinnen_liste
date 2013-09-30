@@ -36,7 +36,7 @@ class ProfileTest < ActionController::IntegrationTest
     # save_and_open_page
   end
 
-   test "show Fruehling tag" do
+  test "show Fruehling tag" do
     visit '/profiles'
     assert page.has_content?('Fruehling')
     # save_and_open_page
@@ -45,5 +45,4 @@ class ProfileTest < ActionController::IntegrationTest
     end
     assert page.has_css?('div.name', :count => 2)
   end
- 
 end
