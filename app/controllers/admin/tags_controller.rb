@@ -1,6 +1,6 @@
 class Admin::TagsController < Admin::BaseController
 
-	def index
+  def index
     @tags = ActsAsTaggableOn::Tag.all.sort_by {|tag| tag.name.downcase}
   end
 
@@ -11,7 +11,7 @@ class Admin::TagsController < Admin::BaseController
   def update
     @tag = ActsAsTaggableOn::Tag.find(params[:id])
     if @tag.update_attributes(params[:tag])
-       redirect_to admin_tags_path, notice: (I18n.t("flash.tags.updated"))
+      redirect_to admin_tags_path, notice: (I18n.t("flash.tags.updated"))
     else 
       render action: "edit" 
     end

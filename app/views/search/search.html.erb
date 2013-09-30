@@ -6,7 +6,7 @@
     </p>
   <% else %>
     <p id="notice">
-    You searched for <b>"<%= params[:q] %>"</b> and we found <%= pluralize(@results.size, "result") %>. 
+      You searched for <b>"<%= params[:q] %>"</b> and we found <%= pluralize(@results.size, "result") %>. 
     </p>
     <%= render :partial => "/profiles/profile", :collection => @results.map(&:profile) %>
   <% end %>

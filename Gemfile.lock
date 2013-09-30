@@ -6,6 +6,13 @@ GIT
       redcarpet (~> 2.0)
       rinku (~> 1.5.0)
 
+GIT
+  remote: git://github.com/rubymonsters/acts-as-taggable-on.git
+  revision: 8d71023e9805d85f1bd4394d8d5ef4296cc29049
+  specs:
+    acts-as-taggable-on (2.4.2.pre)
+      rails (>= 3, < 4)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -36,8 +43,6 @@ GEM
     activesupport (3.2.11)
       i18n (~> 0.6)
       multi_json (~> 1.0)
-    acts-as-taggable-on (2.4.1)
-      rails (>= 3, < 5)
     addressable (2.3.5)
     arel (3.0.2)
     bcrypt-ruby (3.1.1)
@@ -215,7 +220,7 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
-  acts-as-taggable-on
+  acts-as-taggable-on!
   auto_html!
   bootstrap-sass (~> 2.3.0)
   bootswatch-rails
