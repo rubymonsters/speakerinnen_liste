@@ -12,6 +12,7 @@ Devise.setup do |config|
   # note that it will be overwritten if you use your own mailer class with default "from" parameter.
   config.omniauth :twitter, ENV["TWITTER_CONSUMER_KEY"], ENV["TWITTER_CONSUMER_SECRET"]
   config.mailer_sender = "speakerInnen@gmail.com"
+  config.secret_key = '9bc4fa01ac1df6f9de2ee4eccf8c06bd85ba81d36fc31a577d9ae72180fc9403af74301ba0fcb22a9fb78881cbec22d14106d348527567ef80b9f5c7253724ff'
 
   # Configure the class responsible to send e-mails.
   # config.mailer = "Devise::Mailer"
