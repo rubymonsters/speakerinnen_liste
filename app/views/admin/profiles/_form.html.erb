@@ -93,23 +93,3 @@
     <%= link_to(t(".back"), admin_profiles_path, class:"btn btn-inverse btn-small") %>
   </fieldset>
 <% end %>
-
-<script type="text/javascript">
-  $(".add-tag-trigger").click(function() {
-    var nameOfTag    = $(this).html();
-    var existingTags = $("#tag-field-form").val();
-    //check if tag is in the list of tags
-    if (existingTags.indexOf(nameOfTag) < 0) {
-      if (existingTags.length == 0) {
-        $("#tag-field-form").val(nameOfTag);
-      } else {
-        $("#tag-field-form").val(existingTags+' '+nameOfTag);
-      }
-      $(this).removeClass("badge-inverse");
-    } else {
-      var newTags = existingTags.replace(nameOfTag, "").replace(/  /g, " ");
-      $("#tag-field-form").val(newTags);
-      $(this).addClass("badge-inverse");
-    }
-  });
-</script>
