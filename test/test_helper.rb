@@ -1,7 +1,6 @@
 ENV["RAILS_ENV"] = "test"
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
-
 require 'capybara/rails'
 
 class ActiveSupport::TestCase
@@ -29,4 +28,3 @@ class ActionController::TestCase
   # They are meant to be used with functional tests only. Instead, fill in the form or explicitly 
   # set the user in session;
 end
-

@@ -7,7 +7,6 @@
       </div>
 
       <div id="login">
-
         <%= form_for(Profile.new) do |f| %>
           <div class="control-group">
             <div class="controls">
@@ -39,12 +38,12 @@
                 <% end -%>
              <% end -%>
             </div>
-
-          <% end %> <!-- end of outter if -->
-        <% end %> <!-- end of form -->
+          <% end %>
+        <% end %>
       </div>
     </div>
   </div>
+
   <div class="span5 offset1">
     <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
       <%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(:profile) %><br />

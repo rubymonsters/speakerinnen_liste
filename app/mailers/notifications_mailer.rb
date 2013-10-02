@@ -10,5 +10,4 @@ class NotificationsMailer < ActionMailer::Base
     end
     mail(mail_parameters)
   end
-
 end

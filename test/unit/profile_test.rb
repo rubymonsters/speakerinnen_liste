@@ -27,10 +27,10 @@ class ProfileTest < ActiveSupport::TestCase
 
   test "does not validate profile without email" do
     testprofile = Profile.new(
-                          :firstname => "Testfirstname",
-                          :lastname => "Testlastname",
-                          :bio => "Testbio"
-                          )
+      :firstname => "Testfirstname",
+      :lastname => "Testlastname",
+      :bio => "Testbio"
+    )
     testprofile.valid?
    # p testprofile.errors
 
@@ -39,10 +39,7 @@ class ProfileTest < ActiveSupport::TestCase
 
   test "does not validate profile with already taken email" do
     testprofile = Profile.new(:email => "horst@mail.de")
-
     testprofile.valid?
-    # p testprofile.errors
-
     assert !testprofile.valid?, "Does not validate Profile with already taken email"
   end
 
@@ -58,9 +55,9 @@ class ProfileTest < ActiveSupport::TestCase
     assert_equal profile.twitter, "nickname"
   end
 
- test "twitter @ symbol correcty removed" do
-      testprofile = Profile.new(:twitter => "@tweeter", :email => "me@me.com")
-      expected_twitter = "tweeter"
-      assert expected_twitter, testprofile.twitter
+  test "twitter @ symbol correcty removed" do
+    testprofile = Profile.new(:twitter => "@tweeter", :email => "me@me.com")
+    expected_twitter = "tweeter"
+    assert expected_twitter, testprofile.twitter
   end
 end

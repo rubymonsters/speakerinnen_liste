@@ -1,5 +1,4 @@
 class ContactController < ApplicationController
-
   def new 
     @message = Message.new
   end
@@ -19,5 +18,4 @@ class ContactController < ApplicationController
       render :new
     end
   end
-
 end

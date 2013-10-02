@@ -7,12 +7,12 @@
       </div>
 
       <div id="login">
-
         <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
 
           <div class="control-group">
             <%= f.email_field :email, :autofocus => true, class:"input-xlarge", placeholder: "Email" %>
           </div>
+
           <div class="control-group">
             <%= f.password_field :password, class:"input-xlarge", placeholder: "Password" %>
           </div>
@@ -22,6 +22,7 @@
               <%= link_to "Forgot your password?", new_password_path(resource_name), class:"forgot-p" %><br />
             <% end -%>
           </div> 
+
           <div class="control-group">
             <% if devise_mapping.rememberable? -%> <p>Remember me</p>
               <%= f.check_box :remember_me , id:"optionsCheckbox", class:"remember"   %> 
@@ -39,20 +40,17 @@
               <% end -%>
             <% end -%>
           </div>
-
       <% end %>
       </div>
     </div>
   </div>
+
   <div class="span5 offset1">
     <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
       <%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name) %><br />
   <% end -%>
-
     <%- if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks' %>
       <%= link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name) %><br />
   <% end -%>
   </div>
 </div>
-
-

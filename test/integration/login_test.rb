@@ -36,5 +36,4 @@ class LoginTest < ActionController::IntegrationTest
     # save_and_open_page
     assert page.has_content?('Invalid email or password.')
   end
-
 end

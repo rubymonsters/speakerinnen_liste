@@ -1,5 +1,6 @@
 class ProfilesController < ApplicationController
   include ProfilesHelper
+  
   before_filter :require_permision, :only=> [:edit, :destroy, :update]
 
   def index
@@ -47,5 +48,4 @@ class ProfilesController < ApplicationController
       redirect_to profiles_url, notice: (I18n.t("flash.profiles.no_permission"))
     end
   end
-
 end

@@ -20,5 +20,4 @@ class AdminTest < ActionController::IntegrationTest
     assert page.has_content?("Tags")
     assert page.has_content?("Profiles")
   end
-
 end

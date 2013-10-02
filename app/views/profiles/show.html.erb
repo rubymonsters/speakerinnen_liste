@@ -20,7 +20,9 @@
 
     <div class="span5">
       <% if @profile.twitter.present? %>
-        <h5> <%= t ".twitter" %> <span><%=link_to "@" + @profile.twitter, "http://twitter.com/#{@profile.twitter}" %></span></h5>
+        <h5>
+          <%= t ".twitter" %> <span><%=link_to "@" + @profile.twitter, "http://twitter.com/#{@profile.twitter}" %></span>
+        </h5>
       <% end %>
 
       <h5>
@@ -55,12 +57,13 @@
     <div class="span6 info-profiles-text">
       <h5> <%= t ".bio" %></h5><span> <%= @profile.bio %></span>
     </div>
+
     <div class="span6 pull-right info-profiles-media">
       <h5><%= t ".media" %></h5>
       <%= @profile.media_url_html %>
     </div>
   </div>
-</div><!-- / .profiles -->
+</div>
 
 <!-- This is the contact form -->
 <div class="modal fade" id="contact">
@@ -78,6 +81,6 @@
       <div class="modal-footer">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">Close</button>
       </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+    </div>
+  </div>
+</div>

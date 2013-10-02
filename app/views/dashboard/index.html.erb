@@ -1,5 +1,4 @@
 <section id="about-top">
-
   <div class="badge"><%= image_tag("badge2-bw.png", :alt => "badge") %> </div>
   <script>
     $(window).scroll(function() {
@@ -42,14 +41,13 @@
     <div class="row disciplines">
       <% @topics.each_slice(4) do |topics| %>
         <div class="span3">
-        <ul>
-          <% topics.each do |topic| %>
-            <li class="topics"><%= topic_link topic %></li>
-        <% end %> 
-        </ul>
-      </div>
-    <% end %>
-
+          <ul>
+            <% topics.each do |topic| %>
+              <li class="topics"><%= topic_link topic %></li>
+            <% end %> 
+          </ul>
+        </div>
+      <% end %>
     </div>
     <br>
     <br>
@@ -58,8 +56,11 @@
 
 <div class="photo-bar about-disciplines">
   <div class="container large">
-    <div class="photo-text"><span class="text-black-bg"><%= t(".speaker_shoutout") %>
-  </span><br><span class="text-black-bg"><%= t(".speaker_text") %><%= link_to(t(".signup"), new_profile_registration_path) %></span></div>
+    <div class="photo-text">
+      <span class="text-black-bg"><%= t(".speaker_shoutout") %></span>
+      <br>
+      <span class="text-black-bg"><%= t(".speaker_text") %><%= link_to(t(".signup"), new_profile_registration_path) %></span>
+    </div>
   </div>
 </div>
 
@@ -99,8 +100,10 @@
 
 <div class="photo-bar work-with serif small">
   <div class="container large">
-    <div class="photo-text"><span class="text-black-bg"><%= t(".speaker_shoutout") %>
-    </span><br><span class="text-black-bg"><%= t(".speaker_text") %><%= link_to(t(".signup"), new_profile_registration_path) %></span>
+    <div class="photo-text">
+      <span class="text-black-bg"><%= t(".speaker_shoutout") %></span>
+      <br>
+      <span class="text-black-bg"><%= t(".speaker_text") %><%= link_to(t(".signup"), new_profile_registration_path) %></span>
     </div>
   </div>
 </div>
@@ -108,7 +111,6 @@
 <section>
   <div class="white-bg" id="work">
     <div class="container">
-
       <h1>SpeakerInnen</h1>
       <div class="row">
         <div class="span4">
@@ -125,7 +127,7 @@
           <h4><%= t(".contact") %></h4>
           <span class="italic"><%= t(".address").html_safe %></span>
           <p>
-          <%= link_to t(".contact_link"), contact_path %> 
+            <%= link_to t(".contact_link"), contact_path %> 
           <p>
           <span class="italic"><%= t(".github").html_safe %></span>
         </div>
@@ -133,7 +135,6 @@
       <%= link_to "Find your speakers >>", profiles_path, :id => "find-more" %>
       <div class="clearfix"></div>
       <br>
-
     </div>
   </div>
 </section>

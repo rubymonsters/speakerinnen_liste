@@ -1,8 +1,4 @@
 class Profile < ActiveRecord::Base
-  # Include default devise modules. Others available are:
-  # :token_authenticatable, :confirmable,
-  # :lockable, :timeoutable and :omniauthable
-
   include AutoHtml
 
   auto_html_for :media_url do
@@ -66,9 +62,4 @@ class Profile < ActiveRecord::Base
       super
     end
   end
-
 end
-
-
-
-

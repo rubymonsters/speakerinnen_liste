@@ -40,5 +40,4 @@ class Admin::ProfilesControllerTest < ActionController::TestCase
     get :show, id: @profile1.id
     assert_response :success
   end
-
 end

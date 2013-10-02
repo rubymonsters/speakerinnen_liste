@@ -5,7 +5,8 @@ class SearchIntegrationTest < ActiveSupport::TestCase
     testprofile = Profile.create!(
       :email => "carla@railsgirls.com",
       :password => "PeterandPaul",
-      :bio => "Carla is very interested in weather, programming, sleeping, shopping, veggiemite and photos.")
+      :bio => "Carla is very interested in weather, programming, sleeping, shopping, veggiemite and photos."
+    )
     results = Search.basic_search('WEATHER')
     assert_equal [testprofile], results.map(&:profile)
   end
@@ -14,11 +15,13 @@ class SearchIntegrationTest < ActiveSupport::TestCase
     profile1 = Profile.create!(
       :email => "carla@example.org",
       :password => "password",
-      :bio => "biography")
+      :bio => "biography"
+    )
     profile2 = Profile.create!(
       :email => "debbie@example.org",
       :password => "password",
-      :twitter => "biography")
+      :twitter => "biography"
+    )
     results = Search.basic_search("biography")
     assert_equal [profile1], results.map(&:profile)
   end
@@ -27,11 +30,11 @@ class SearchIntegrationTest < ActiveSupport::TestCase
     profile1 = Profile.create!(
       :email => "carla@example.org",
       :password => "password",
-      :bio => "biography")
+      :bio => "biography"
+    )
     profile1.topic_list.add("summer")
     profile1.save!
     results = Search.basic_search("summer")
     assert_equal [profile1], results.map(&:profile)
   end
-
 end
