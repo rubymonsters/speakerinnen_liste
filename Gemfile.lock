@@ -72,6 +72,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.6.3)
+    database_cleaner (1.2.0)
     devise (3.1.1)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)
@@ -79,6 +80,7 @@ GEM
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
     erubis (2.7.0)
+    eventmachine (1.0.3)
     excon (0.25.3)
     execjs (2.0.2)
     factory_girl (4.1.0)
@@ -88,6 +90,8 @@ GEM
       railties (>= 3.0.0)
     faker (1.0.1)
       i18n (~> 0.4)
+    faye-websocket (0.4.7)
+      eventmachine (>= 0.12.0)
     ffi (1.9.0)
     fog (1.15.0)
       builder
@@ -102,6 +106,7 @@ GEM
     formatador (0.2.4)
     hashie (2.0.5)
     hike (1.2.3)
+    http_parser.rb (0.5.3)
     i18n (0.6.5)
     journey (1.0.4)
     jquery-rails (3.0.4)
@@ -144,6 +149,10 @@ GEM
       omniauth-oauth (~> 1.0)
     orm_adapter (0.4.0)
     pg (0.17.0)
+    poltergeist (1.1.2)
+      capybara (~> 2.0.1)
+      faye-websocket (~> 0.4.4)
+      http_parser.rb (~> 0.5.3)
     polyglot (0.3.3)
     puma (2.6.0)
       rack (>= 1.1, < 2.0)
@@ -224,6 +233,7 @@ DEPENDENCIES
   capybara (~> 2.0.2)
   carrierwave
   coffee-rails (~> 3.2.1)
+  database_cleaner (~> 1.2.0)
   devise
   factory_girl_rails (= 4.1.0)
   faker (= 1.0.1)
@@ -235,6 +245,7 @@ DEPENDENCIES
   mini_magick (~> 3.5.0)
   omniauth-twitter
   pg
+  poltergeist
   puma
   quiet_assets
   rails (= 3.2.11)

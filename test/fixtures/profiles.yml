@@ -9,7 +9,6 @@ one:
   languages: Deutsch
   city: Berlin
   twitter: MyString
-  picture: MyString
   talks: CCC
 
 two:
@@ -20,7 +19,6 @@ two:
   languages: Deutsch
   city: Berlin
   twitter: MyString
-  picture: MyString
   talks: Repuclica
 
 jane:
@@ -32,5 +30,4 @@ jane:
   languages: MyString
   city: MyString
   twitter: MyString
-  picture: MyString
   admin: true

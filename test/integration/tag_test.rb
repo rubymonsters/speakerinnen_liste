@@ -1,6 +1,6 @@
 require 'test_helper' 
 
-class ProfileTest < ActionController::IntegrationTest
+class TagTest < ActionController::IntegrationTest
   def setup
     @horst = profiles(:one)
     @horst.confirmed_at = Time.now

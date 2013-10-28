@@ -259,7 +259,6 @@ CREATE UNIQUE INDEX unique_schema_migrations ON schema_migrations USING btree (v
 --
 
 CREATE RULE "_RETURN" AS ON SELECT TO searches DO INSTEAD SELECT profiles.id AS profile_id, array_to_string(ARRAY[profiles.bio, (profiles.firstname)::text, (profiles.lastname)::text, (profiles.languages)::text, (profiles.city)::text, array_to_string(array_agg(DISTINCT tags.name), ' '::text)], ' '::text) AS search_field FROM ((profiles LEFT JOIN taggings ON ((taggings.taggable_id = profiles.id))) LEFT JOIN tags ON ((tags.id = taggings.tag_id))) GROUP BY profiles.id;
-ALTER VIEW searches SET ();
 
 
 --

@@ -35,6 +35,8 @@ end
 
 group :test do
   gem 'factory_girl_rails', '4.1.0'
+  gem 'poltergeist'
+  gem "database_cleaner", "~> 1.2.0"
 end
 
 
