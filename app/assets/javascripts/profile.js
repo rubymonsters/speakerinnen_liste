@@ -16,4 +16,4 @@ $(function() {
       $(this).addClass("badge-inverse");
     }
   });
-}
+});
