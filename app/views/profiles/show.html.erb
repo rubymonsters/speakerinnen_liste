@@ -20,22 +20,22 @@
 
     <div class="span5">
       <% if @profile.twitter.present? %>
-        <h5>
-          <%= t ".twitter" %> <span><%=link_to "@" + @profile.twitter, "http://twitter.com/#{@profile.twitter}" %></span>
-        </h5>
+        <h5><%= t ".twitter" %></h5>
+        <span><%=link_to "@" + @profile.twitter, "http://twitter.com/#{@profile.twitter}" %></span>
+        
       <% end %>
 
-      <h5>
-        <%= t ".topics" %> <span><%= raw @profile.topic_list.map { |t| link_to t, topic_path(t) }.join('  ') %></span>
-      </h5>
+      <h5><%= t ".topics" %></h5>
+      <span><%= raw @profile.topic_list.map { |t| link_to t, topic_path(t) }.join('  ') %></span>
+      
 
-      <h5><%= t ".languages" %>
-        <span> <%= @profile.languages %></span>
-      </h5>
+      <h5><%= t ".languages" %></h5>
+      <span> <%= @profile.languages %></span>
+      
 
-      <h5><%= t ".talks" %>
-        <span> <%= @profile.talks %></span>
-      </h5>
+      <h5><%= t ".talks" %></h5>
+      <span> <%= @profile.talks %></span>
+      
     </div>
 
     <div class="span3">
