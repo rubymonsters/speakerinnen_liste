@@ -1,6 +1,6 @@
 class ProfilesController < ApplicationController
   include ProfilesHelper
-  
+
   before_filter :require_permision, :only=> [:edit, :destroy, :update]
 
   def index
@@ -22,6 +22,19 @@ class ProfilesController < ApplicationController
     @profile = Profile.new
   end
 
+# 	def create
+# require 'pry' ; binding.pry
+#     @profile = Profile.new(params[:profile])
+#     if @profile.valid?
+#       @profile.save!
+#       sign_in @profile
+#       redirect_to edit_profile_path(@profile)
+#     else
+#       flash.now.alert = @profile.errors.full_messages
+#       render action: "new"
+#     end
+# 	end
+
   # should reuse the devise view
   def edit
     @profile = Profile.find(params[:id])
@@ -32,7 +45,7 @@ class ProfilesController < ApplicationController
     if @profile.update_attributes(params[:profile])
       redirect_to @profile, notice: (I18n.t("flash.profiles.updated"))
     else current_profile
-      render action: "edit" 
+      render action: "edit"
     end
   end
 

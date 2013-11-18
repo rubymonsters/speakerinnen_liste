@@ -46,7 +46,7 @@
     <% end %>
 
     <% if alert %>
-      <p id="alert"><%= alert %></p>
+      <p id="alert"><%= Array(alert).join("<br>").html_safe %></p>
     <% end %>
 
     <%= yield %>
