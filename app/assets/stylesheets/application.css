@@ -13,9 +13,16 @@
  */
 
 
-#notice, #alert {
+#alert {
+  margin-top: 100px;
+  background-color: rgb(233, 170, 168);
+  padding: 1em 0;
+  text-align: center;
+}
+
+#notice {
 	margin-top: 100px;
-	background-color: #eee;
+	background-color: rgb(233, 212, 168);
 	padding: 1em 0;
 	text-align: center;
 }
