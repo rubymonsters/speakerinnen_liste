@@ -1,10 +1,10 @@
 en:
   admin:
     profiles:
-        index:
-          show: "show"
-          edit: "edit"
-          destory: "destroy"
+      index:
+        show: "show"
+        edit: "edit"
+        destory: "destroy"
   dashboard:
     index: 
       search:
