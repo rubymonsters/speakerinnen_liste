@@ -34,7 +34,7 @@ en:
       address: | 
         twitter: <a href="http://twitter.com/rubymonsters">@rubymonsters</a>
       github: |
-        Fork us on <a href="http://github.com/rubymonsters/speakerinnen_liste">GitHub!</a>
+        Here is our repository on <a href="http://github.com/rubymonsters/speakerinnen_liste">GitHub!</a>
   home:
     index:
       title: "What is this?"

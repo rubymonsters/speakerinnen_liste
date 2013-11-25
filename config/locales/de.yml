@@ -18,12 +18,12 @@ de:
       speaker_text: "Registriere Dich auf der SpeakerinnenListe: "
       speakers:
         new_speaker_heading: "Unsere neuesten SpeakerInnen"
-        speaker_text: "Uns ist die Verteilung der Männer und Frauen auf Konferenzbühnen wichtig. Wir ermutigen Frauen, in ihrem professionellen Umfeld sichtbarer zu werden."
+        speaker_text: "Keine Ausreden mehr für Panels ohne Frauen!"
         speaker_index: "Mehr SpeakerInnen anschauen >>"
       mission_statement:
         heading: "Unsere Vision"
-        content: "<p>We believe that female speakers should be easier to find for tech-y event organizers.</p><p>We believe that event organizers should have the best speakers at their events, regardless of the speakers’ gender identification.</p><p>We believe in collaboration and not competition, so we encourage our speakers and event organizers to support each other and help speakers speak better. </p>"
-        quote: "We believe in collaboration and not competition, so we encourage our speakers and event organizers to support each other and help speakers speak better."
+        content: "<p>Wir finden, dass weibliche SpeakerInnen für Event-Organisatoren einfacher zu finden sein sollen.</p><p>Wir finden auch, dass Konferenzen die besten SpeakerInnen auf ihren Bühnen haben sollten, egal von welchem Geschlecht.</p><p>Wir glauben an Kollaboration und nicht an Wettbewerb. So ermutigen wir unsere SpeakerInnen und Event-Organisatoren sich gegenseitig zu unterstützen.</p>"
+        quote: "Wir glauben an Kollaboration und nicht an Wettbewerb. So ermutigen wir unsere SpeakerInnen und Event-Organisatoren sich gegenseitig zu unterstützen."
       railsgirls: |
         Die SpeakerInnen Liste wurde von 8 Frauen mit der Unterstützung von 4 Coaches ale Lernprojekt der Rails Girls Berlin gebaut. Die <a href="http://railsgirlsberlin.de">Rails Girls</a> sind eine internationale Non-Profit-Gruppe, die Frauen motiviert, sich mit dem Programmieren zu beschäftigen. Das Ganze über wunderbare Workshops, Lerngruppen, Stipendien und eine angenehme Lern-Community.
       about: "Wir wollen genauso viele weibliche wie männliche SpeakerInnen auf den Konferenzen, auf die wir gehen. Die meisten Konferenzen zu Tech-Themen, Marketing, Digital Media aber auch in anderen Bereichen haben leider meistens viel mehr männliche Referenten, Moderatoren oder Trainer (s. hier einige Beispiele http://50prozent.noblogs.org). Wir arbeiten auf eine ausgeglichene Verteilung hin und möchten Event-Organisatoren helfen, weibliche SpeakerInnen für ihre Konferenzen zu finden. Außerdem wollen wir weibliche SpeakerInnen, Moderatorinnen und Coaches im Web sichtbarer machen."
