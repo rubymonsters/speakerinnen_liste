@@ -23,7 +23,9 @@ en:
       mission_statement:
         heading: "Our Vision"
         content: "<p>We believe that female speakers should be easier to find for tech-y event organizers.</p><p>We believe that event organizers should have the best speakers at their events, regardless of the speakers’ gender identification.</p><p>We believe in collaboration and not competition, so we encourage our speakers and event organizers to support each other and help speakers speak better. </p>"
-        quote: "We believe in collaboration and not competition, so we encourage our speakers and event organizers to support each other and help speakers speak better."
+        quote: "We believe in collaboration and not competition,"
+        quote_text: "so we encourage our speakers and event organizers to support each other
+       <p> and help speakers speak better."
       railsgirls: |
         8 women supported by 4 coaches coded this web application as a Rails Girls Berlin learning project.
         <a href="http://railsgirlsberlin.de">Rails Girls</a> is an international not-for-profit group that aims to get women into programming with workshops, scholarships, and a safe learning community.

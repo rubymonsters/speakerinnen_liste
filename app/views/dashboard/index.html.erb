@@ -33,6 +33,27 @@
     </div>
 </section>
 
+<div class="white-bg" id="speakers">
+  <div class="container">
+    <h1><%= t(:new_speaker_heading, scope: "dashboard.index.speakers") %></h1>
+    <h4><%= t(:speaker_text, scope: "dashboard.index.speakers") %></h4>
+    <div class="row">
+      <%= render :partial => "profiles/profile", :collection => @profiles %>
+    </div>
+    <%= link_to t(:speaker_index, scope: "dashboard.index.speakers"), profiles_path, :id => "find-more" %>
+  </div> 
+</div>
+
+<div class="photo-bar about-disciplines">
+  <div class="container large">
+    <div class="photo-text">
+      <span class="text-black-bg"><%= t(".speaker_shoutout") %></span>
+      <br>
+      <span class="text-black-bg  tagline-second"><%= t(".speaker_text") %><%= link_to(t(".signup"), new_profile_registration_path) %></span>
+    </div>
+  </div>
+</div>
+
 <div class="white-bg">
   <div class="container">
     <h1><%= t(".description") %></h1>
@@ -54,56 +75,17 @@
   </div>
 </div>
 
-<div class="photo-bar about-disciplines">
-  <div class="container large">
-    <div class="photo-text">
-      <span class="text-black-bg"><%= t(".speaker_shoutout") %></span>
-      <br>
-      <span class="text-black-bg"><%= t(".speaker_text") %><%= link_to(t(".signup"), new_profile_registration_path) %></span>
-    </div>
-  </div>
-</div>
-
-<div class="white-bg" id="speakers">
-  <div class="container">
-    <h1><%= t(:new_speaker_heading, scope: "dashboard.index.speakers") %></h1>
-    <h4><%= t(:speaker_text, scope: "dashboard.index.speakers") %></h4>
-    <div class="row">
-      <%= render :partial => "profiles/profile", :collection => @profiles %>
-    </div>
-    <%= link_to t(:speaker_index, scope: "dashboard.index.speakers"), profiles_path, :id => "find-more" %>
-  </div> 
-</div>
-
 <div class="photo-bar speakers">
   <div class="container large">
-    <div class="photo-text"><div class="photo-text"><span class="text-black-bg">Organizers,</span><br> <span class="text-black-bg">find your speakers</span></div>
-    </div>
-  </div>
-</div>
-
-<section id="about-content">
-  <div class="white-bg">
-    <div class="container">
-      <div class="row">
-        <div class="span5">
-          <h1><%= t(:heading, scope: "dashboard.index.mission_statement") %></h1>
-          <%= t(:content, scope: "dashboard.index.mission_statement").html_safe %>
-        </div>
-        <div class="span6 offset1 home">
-          <blockquote><%= t(:quote, scope: "dashboard.index.mission_statement") %></blockquote>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="photo-bar work-with serif small">
-  <div class="container large">
     <div class="photo-text">
-      <span class="text-black-bg"><%= t(".speaker_shoutout") %></span>
-      <br>
-      <span class="text-black-bg"><%= t(".speaker_text") %><%= link_to(t(".signup"), new_profile_registration_path) %></span>
+        <span class="text-black-bg">
+          <%= t(:quote, scope: "dashboard.index.mission_statement").html_safe %>
+        </span>
+        <br>
+        <span class="text-black-bg tagline-second">
+          <%= t(:quote_text, scope: "dashboard.index.mission_statement").html_safe
+          %>
+        </span>
     </div>
   </div>
 </div>
@@ -119,8 +101,8 @@
         </div>
 
         <div class="span4">
-          <h4>About</h4>
-          <span class="italic"><%= t(".about").html_safe %></span>
+          <h4>Vision</h4>
+          <span class="italic"><%= t(:content, scope: "dashboard.index.mission_statement").html_safe %></span>
         </div>
 
         <div class="span4">
