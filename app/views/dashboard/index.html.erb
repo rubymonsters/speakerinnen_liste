@@ -23,14 +23,19 @@
         <br/>
         <span class="text-white-bg tagline-second"><%= t(:tagline, scope: "dashboard.index.search") %></span>
         <br/>
-        <div id="search-bar" class="white-search">
-          <%= form_tag(search_path, :method => "get", :class =>"") do %>
-            <%= text_field_tag(:q, nil, :class => "", :id => "search-field", :placeholder => t(:search_text, scope: "dashboard.index.search")) %>
-          <%= button_tag((t(:search, scope: "dashboard.index.search")), :class => "btn btn-large ") %>
+        <div class="text-white-bg tagline-second">
+          <a href="#topics">Topics >></a>
+          <br>
+          <%= link_to t(:speaker_index, scope: "dashboard.index.speakers"), profiles_path %>
+          <br>
+            <%= form_tag(search_path, :method => "get", :class =>"") do %>
+              <%= text_field_tag(:q, nil, :class => "", :id => "search-field", :placeholder => t(:search_text, scope: "dashboard.index.search")) %>
+              <%= button_tag((t(:search, scope: "dashboard.index.search")), :class => "btn btn-large ") %>
+            <% end %>
         </div>
-      <% end %>
       </div>
     </div>
+  </div>
 </section>
 
 <div class="white-bg" id="speakers">
@@ -53,10 +58,10 @@
     </div>
   </div>
 </div>
-
+<a id="topics"></a>
 <div class="white-bg">
   <div class="container">
-    <h1><%= t(".description") %></h1>
+    <h1><%= t(".description")%></h1>
     <h4><%= t(".description_text") %></h4>
     <br>
     <div class="row disciplines">
