@@ -609,7 +609,7 @@ margin-bottom: 0;
 }
 
 
-/*text black backgound*/
+/*text black background*/
 
 .text-black-bg {
   display:inline-block;
@@ -623,7 +623,6 @@ margin-bottom: 0;
 }
 
 .photo-bar {
-  hbackground:url(<%=asset_path "debbisundbessie2.png"%>) no-repeat center center;
   background-attachment:fixed;
   -webkit-background-size:cover;
   -moz-background-size:cover;
@@ -634,9 +633,16 @@ margin-bottom: 0;
 
 .heading {margin: 10% 0 0 -15%;}
 
-.photo-bar.speakers{background-image:url(<%=asset_path "maren_buehne_gespiegelt.png"%>);}
-.photo-bar.about-disciplines{background-image:url(<%=asset_path "debbisundbessie2.png"%>);}
-.photo-bar.work-with{background-image:url(<%=asset_path "maren_buehne.png"%>);}
+.photo-bar.speakers {
+  background-image:url(<%=asset_path "maren_talk_mirrored.png"%>);
+  }
+
+.photo-bar.about-disciplines {
+  background-image:url(<%=asset_path "coaching.png"%>);
+  }
+
+/* .photo-bar.work-with { background-image:url(<%=asset_path "maren_buehne.png"%>); }*/
+
 .photo-bar.work-with .container_24{padding:40px 0px;font-size:60%;}
 .photo-bar .large{font-size:150%;}
 .photo-bar .small *{font-size:150%;}
