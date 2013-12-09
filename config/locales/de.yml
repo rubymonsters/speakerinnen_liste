@@ -8,8 +8,8 @@ de:
   dashboard:
     index: 
       search:
-        heading: "Organizers, find your speakers"
-        tagline: "Find female speakers, coaches & moderators for your conference"
+        heading: "Mehr Frauen auf die Bühnen"
+        tagline: "Finde weibliche Sprecherinnen, Coaches & Moderatorinnen für Deine Konferenz"
         search_text: "Suche nach Themen"
         search: "Suche"
       description: "Unsere Themen"
@@ -26,7 +26,7 @@ de:
       quote: "Wir glauben an Kollaboration - nicht an Wettbewerb."
       quote_text: "So ermutigen wir unsere SpeakerInnen und Event-Organisatoren sich gegenseitig zu unterstützen."
       railsgirls: |
-        Die SpeakerInnen Liste wurde von 8 Frauen mit der Unterstützung von 4 Coaches ale Lernprojekt der Rails Girls Berlin gebaut. Die <a href="http://railsgirlsberlin.de">Rails Girls</a> sind eine internationale Non-Profit-Gruppe, die Frauen motiviert, sich mit dem Programmieren zu beschäftigen. Das Ganze über wunderbare Workshops, Lerngruppen, Stipendien und eine angenehme Lern-Community.
+        Die SpeakerInnen Liste wurde von 8 Frauen mit der Unterstützung von 4 Coaches als Lernprojekt der Rails Girls Berlin gebaut. Die <a href="http://railsgirlsberlin.de">Rails Girls</a> sind eine internationale Non-Profit-Gruppe, die Frauen motiviert, sich mit dem Programmieren zu beschäftigen. Das Ganze über wunderbare Workshops, Lerngruppen, Stipendien und eine angenehme Lern-Community.
       about: "Wir wollen genauso viele weibliche wie männliche SpeakerInnen auf den Konferenzen, auf die wir gehen. Die meisten Konferenzen zu Tech-Themen, Marketing, Digital Media aber auch in anderen Bereichen haben leider meistens viel mehr männliche Referenten, Moderatoren oder Trainer (s. hier einige Beispiele http://50prozent.noblogs.org). Wir arbeiten auf eine ausgeglichene Verteilung hin und möchten Event-Organisatoren helfen, weibliche SpeakerInnen für ihre Konferenzen zu finden. Außerdem wollen wir weibliche SpeakerInnen, Moderatorinnen und Coaches im Web sichtbarer machen."
       contact: "Kontakt"
       contact_link: "Klicke hier, um uns zu kontaktieren"
@@ -58,7 +58,7 @@ de:
       email: "Deine Email-Adresse"
       subject: "Deine Betreffzeile"
       body: "Deine Nachricht"
-      body_placeholder: "Please give the details of where, when, with whom, and any other relevant information."
+      body_placeholder: "Bitte gib ein paar Details zu Deiner Anfrage: Wo, wann, was und andere relevante Informationen."
   profiles:
     form:
       not_saved: "Dieses Profil konnte nicht gespeichert werden:"
