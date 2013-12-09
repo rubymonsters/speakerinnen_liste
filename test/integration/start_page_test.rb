@@ -14,13 +14,12 @@ class StartPageTest < ActionDispatch::IntegrationTest
   end
 
   test "start page is shown in german" do
-    skip('until we finish the translations')
     visit '/de'
 
     assert page.has_css?('div.speaker .name', :minimum => 1)
     assert page.has_css?('div.badge', :count => 1), "just one badge"
     assert page.has_content?('Anmelden')
-    assert page.has_content?('Registrieren')
+    assert page.has_content?('Als Speakerin registrieren')
     assert page.has_content?('Kontakt')
   end
 end

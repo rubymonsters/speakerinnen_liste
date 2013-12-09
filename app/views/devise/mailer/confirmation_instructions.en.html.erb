@@ -1,0 +1,13 @@
+<p>Welcome to SpeakerInnen, <%= @email %>!</p>
+
+<p>We're so happy you're taking the first step to being a speaker on SpeakerInnen!</p>
+
+<p>You can confirm your sign-up by clicking the link below:</p>
+
+<p><%= link_to 'Confirm my account', confirmation_url(@resource, :locale => I18n.locale, :confirmation_token => @token) %></p>
+
+<p>Email us anytime with any questions or feedback, because we want to improve SpeakerInnen for our speakers.</p>
+
+<p>Thanks,<br>
+
+Bettina & Maren</p>
