@@ -24,14 +24,15 @@
         <span class="text-white-bg tagline-second"><%= t(:tagline, scope: "dashboard.index.search") %></span>
         <br/>
         <div class="text-white-bg tagline-second">
+          <%= form_tag(search_path, :method => "get", :class =>"") do %>
+            <%= text_field_tag(:q, nil, :class => "", :id => "search-field", :placeholder => t(:search_text, scope: "dashboard.index.search")) %>
+            <%= button_tag((t(:search, scope: "dashboard.index.search")), :class => "btn btn-large ") %>
+          <% end %>
+          <br>
           <a href="#topics">Topics >></a>
           <br>
           <%= link_to t(:speaker_index, scope: "dashboard.index.speakers"), profiles_path %>
           <br>
-            <%= form_tag(search_path, :method => "get", :class =>"") do %>
-              <%= text_field_tag(:q, nil, :class => "", :id => "search-field", :placeholder => t(:search_text, scope: "dashboard.index.search")) %>
-              <%= button_tag((t(:search, scope: "dashboard.index.search")), :class => "btn btn-large ") %>
-            <% end %>
         </div>
       </div>
     </div>
@@ -52,9 +53,13 @@
 <div class="photo-bar about-disciplines">
   <div class="container large">
     <div class="photo-text">
-      <span class="text-black-bg"><%= t(".speaker_shoutout") %></span>
+      <span class="text-white-bg">
+        <%= t(:quote, scope: "dashboard.index").html_safe %>
+      </span>
       <br>
-      <span class="text-black-bg  tagline-second"><%= t(".speaker_text") %><%= link_to(t(".signup"), new_profile_registration_path) %></span>
+      <span class="text-white-bg  tagline-second">
+        <%= t(:quote_text, scope: "dashboard.index").html_safe  %>
+      </span>
     </div>
   </div>
 </div>
@@ -83,13 +88,13 @@
 <div class="photo-bar speakers">
   <div class="container large">
     <div class="photo-text">
-        <span class="text-black-bg">
-          <%= t(:quote, scope: "dashboard.index.mission_statement").html_safe %>
+        <span class="text-white-bg">
+          <%= t(:speaker_shoutout, scope: "dashboard.index").html_safe %>
         </span>
         <br>
-        <span class="text-black-bg tagline-second">
-          <%= t(:quote_text, scope: "dashboard.index.mission_statement").html_safe
-          %>
+        <span class="text-white-bg  tagline-second">
+          <%= t(:speaker_text, scope: "dashboard.index").html_safe %>
+          <%= link_to(t(".signup"), new_profile_registration_path)  %>
         </span>
     </div>
   </div>
