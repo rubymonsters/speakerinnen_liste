@@ -40,13 +40,13 @@
 
     <div class="span3">
       <a data-toggle="modal" href="#contact" class="btn  btn-large buttons-modals">
-        <span class="icon icon-envelope"></span> Contact
+        <span class="icon icon-envelope"></span> <%= t(:contact, scope: "profiles.profile") %>
       </a>
 
       <% if can_edit_profile?(current_profile, @profile) %>
         <%= link_to(edit_profile_path(@profile)) do %>
           <div class="btn  btn-large buttons-modals">
-            <span class="icon icon-edit"></span> Edit
+            <span class="icon icon-edit"></span> <%= t(:edit, scope: "profiles.profile") %>
           </div>
         <% end %>
       <% end %>
@@ -79,7 +79,7 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">Close</button>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><%= t(:close, scope: "general") %></button>
       </div>
     </div>
   </div>

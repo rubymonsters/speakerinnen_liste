@@ -1,10 +1,12 @@
 de:
+  general:
+    close: "Schließen"
   admin:
     profiles:
       index:
         show: "Details"
         edit: "Bearbeiten"
-        destory: "Löschen"
+        destroy: "Löschen"
   dashboard:
     index: 
       search:
@@ -59,6 +61,8 @@ de:
       subject: "Deine Betreffzeile"
       body: "Deine Nachricht"
       body_placeholder: "Bitte gib ein paar Details zu Deiner Anfrage: Wo, wann, was und andere relevante Informationen."
+      notice: "Yay! Deine E-Mail wurde gesendet."
+      error: "Bitte fülle alle Felder aus, damit die Speakerin alle Informationen bekommt, die sie benötigt."
   profiles:
     form:
       not_saved: "Dieses Profil konnte nicht gespeichert werden:"
@@ -71,8 +75,8 @@ de:
       talks: "Vorträge gehalten auf:"
       media: "Beispiele meiner Vorträge:"
       bio: "Bio: "
-      contact: "Kontakt:"  
-      twitter: "Twitter:"
+      contact: "Kontakt"  
+      twitter: "Twitter"
       show: "Anzeigen"
       edit: "Bearbeiten"
       destroy: "Löschen"
@@ -95,7 +99,7 @@ de:
       bio: "Bio:"
       email: "Email:"
       twitter: "Twitter:"
-      contact: "Schreibe eine Email an:"  
+      contact: "Schreibe eine Email an"  
       back: "Zurück"
       edit: "Bearbeiten"
   flash:

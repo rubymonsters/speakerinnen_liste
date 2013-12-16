@@ -198,6 +198,8 @@ de:
   activemodel:
     errors:
       <<: *errors
+    models:
+      message: Nachricht
   activerecord:
     errors:
       <<: *errors

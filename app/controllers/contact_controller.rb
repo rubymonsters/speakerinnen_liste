@@ -12,9 +12,9 @@ class ContactController < ApplicationController
 
     if @message.valid?
       NotificationsMailer.new_message(@message, @profile && @profile.email).deliver
-      redirect_to(root_path, :notice => "Yay! Your message was sent.")
+      redirect_to(root_path, :notice => t(:notice, scope: "contact.form"))
     else
-      flash.now.alert = "Please fill out all the fields so that the speaker can have all the details she needs."
+      flash.now.alert = t(:error, scope: "contact.form") 
       render :new
     end
   end

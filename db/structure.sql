@@ -265,6 +265,8 @@ CREATE RULE "_RETURN" AS ON SELECT TO searches DO INSTEAD SELECT profiles.id AS 
 -- PostgreSQL database dump complete
 --
 
+SET search_path TO "$user",public;
+
 INSERT INTO schema_migrations (version) VALUES ('20130211181848');
 
 INSERT INTO schema_migrations (version) VALUES ('20130304192943');

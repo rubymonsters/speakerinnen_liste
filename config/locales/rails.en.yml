@@ -200,6 +200,8 @@ en:
   activemodel:
     errors:
       <<: *errors
+    models:
+      message: Message
   activerecord:
     errors:
       <<: *errors

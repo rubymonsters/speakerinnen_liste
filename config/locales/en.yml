@@ -1,10 +1,12 @@
 en:
+  general:
+    close: "Close"
   admin:
     profiles:
       index:
         show: "show"
         edit: "edit"
-        destory: "destroy"
+        destroy: "destroy"
   dashboard:
     index: 
       search:
@@ -62,6 +64,8 @@ en:
       subject: "Your Email Subject"
       body: "Your Message"
       body_placeholder: "Please give the details of where, when, with whom, and any other relevant information."
+      notice: "Yay! Your message was sent."
+      error: "Please fill out all the fields so that the speaker can have all the details she needs."
   profiles:
     form:
       not_saved: 'prohibited this profile from being saved: '
@@ -74,8 +78,8 @@ en:
       talks: 'Previous Talks:'
       media: "Examples of previous talks:"
       bio: "Bio: "
-      contact: 'Contact:'  
-      twitter: 'Twitter:'
+      contact: 'Contact'  
+      twitter: 'Twitter'
       show: 'Show'
       edit: "Edit"
       destroy: "Delete"
