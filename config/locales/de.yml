@@ -19,17 +19,17 @@ de:
       speaker_shoutout: "Hast Du etwas Interessantes zu erzählen?"
       speaker_text: "Registriere Dich auf der SpeakerinnenListe: "
       speakers:
-        new_speaker_heading: "Unsere neuesten SpeakerInnen"
+        new_speaker_heading: "Unsere neuesten Speakerinnen"
         speaker_text: "Keine Ausreden mehr für Panels ohne Frauen!"
-        speaker_index: "Mehr SpeakerInnen anschauen >>"
+        speaker_index: "Mehr Speakerinnen anschauen >>"
       mission_statement:
         heading: "Unsere Vision"
-        content: "<p>Wir finden, dass weibliche SpeakerInnen für Event-Organisatoren einfacher zu finden sein sollen.</p><p>Wir finden auch, dass Konferenzen die besten SpeakerInnen auf ihren Bühnen haben sollten, egal von welchem Geschlecht.</p><p>Wir glauben an Kollaboration und nicht an Wettbewerb. So ermutigen wir unsere SpeakerInnen und Event-Organisatoren sich gegenseitig zu unterstützen.</p>"
+        content: "<p>Wir finden, dass weibliche Speakerinnen für Event-Organisatoren einfacher zu finden sein sollen.</p><p>Wir finden auch, dass Konferenzen die besten Speaker und Speakerinnen auf ihren Bühnen haben sollten, egal von welchem Geschlecht.</p><p>Wir glauben an Kollaboration und nicht an Wettbewerb. So ermutigen wir unsere Speakerinnen und Event-Organisatoren sich gegenseitig zu unterstützen.</p>"
       quote: "Wir glauben an Kollaboration - nicht an Wettbewerb."
       quote_text: "So ermutigen wir unsere SpeakerInnen und Event-Organisatoren sich gegenseitig zu unterstützen."
       railsgirls: |
-        Die SpeakerInnen Liste wurde von 8 Frauen mit der Unterstützung von 4 Coaches als Lernprojekt der Rails Girls Berlin gebaut. Die <a href="http://railsgirlsberlin.de">Rails Girls</a> sind eine internationale Non-Profit-Gruppe, die Frauen motiviert, sich mit dem Programmieren zu beschäftigen. Das Ganze über wunderbare Workshops, Lerngruppen, Stipendien und eine angenehme Lern-Community.
-      about: "Wir wollen genauso viele weibliche wie männliche SpeakerInnen auf den Konferenzen, auf die wir gehen. Die meisten Konferenzen zu Tech-Themen, Marketing, Digital Media aber auch in anderen Bereichen haben leider meistens viel mehr männliche Referenten, Moderatoren oder Trainer (s. hier einige Beispiele http://50prozent.noblogs.org). Wir arbeiten auf eine ausgeglichene Verteilung hin und möchten Event-Organisatoren helfen, weibliche SpeakerInnen für ihre Konferenzen zu finden. Außerdem wollen wir weibliche SpeakerInnen, Moderatorinnen und Coaches im Web sichtbarer machen."
+        Die Speakerinnen-Liste wurde von 8 Frauen mit der Unterstützung von 4 Coaches als Lernprojekt der Rails Girls Berlin gebaut. Die <a href="http://railsgirlsberlin.de">Rails Girls</a> sind eine internationale Non-Profit-Gruppe, die Frauen motiviert, sich mit dem Programmieren zu beschäftigen. Das Ganze über wunderbare Workshops, Lerngruppen, Stipendien und eine angenehme Lern-Community.
+      about: "Wir wollen genauso viele weibliche wie männliche Speaker und Speakerinnen auf den Konferenzen, auf die wir gehen. Die meisten Konferenzen zu Tech-Themen, Marketing, Digital Media aber auch in anderen Bereichen haben leider meistens viel mehr männliche Referenten, Moderatoren oder Trainer (s. hier einige Beispiele http://50prozent.noblogs.org). Wir arbeiten auf eine ausgeglichene Verteilung hin und möchten Event-Organisatoren helfen, weibliche Speakerinnen für ihre Konferenzen zu finden. Außerdem wollen wir weibliche Speakerinnen, Moderatorinnen und Coaches im Web sichtbarer machen."
       contact: "Kontakt"
       contact_link: "Klicke hier, um uns zu kontaktieren"
       address: | 
@@ -38,12 +38,12 @@ de:
         Hier ist unser Code auf <a href="http://github.com/rubymonsters/speakerinnen_liste">GitHub!</a>
   home:
     index:
-      title: "Was ist die SpeakerInnen-Liste?"
+      title: "Was ist die Speakerinnen-Liste?"
       text: "Dies ist ein Typoblindtext. An ihm kann man sehen, ob alle Buchstaben da sind und wie sie aussehen. Manchmal benutzt man Worte wie Hamburgefonts, Rafgenduks oder Handgloves, um Schriften zu testen. Manchmal Sätze, die alle Buchstaben des Alphabets enthalten - man nennt diese Sätze »Pangrams«. Sehr bekannt ist dieser: The quick brown fox jumps over the lazy old dog. Oft werden in Typoblindtexte auch fremdsprachige Satzteile eingebaut (AVAIL® and Wefox™ are testing aussi la Kerning), um die Wirkung in anderen Sprachen zu testen. In Lateinisch sieht zum Beispiel fast jede Schrift gut aus. Quod erat demonstrandum. Seit 1975 fehlen in den meisten Testtexten die Zahlen, weswegen nach TypoGb. 204 § ab dem Jahr 2034 Zahlen in 86 der Texte zur Pflicht werden. Nichteinhaltung wird mit bis zu 245 € oder 368 $ bestraft. Genauso wichtig in sind mittlerweile auch Âçcèñtë, die in neueren Schriften aber fast immer enthalten sind. Ein wichtiges aber schwierig zu integrierendes Feld sind OpenType-Funktionalitäten. Je nach Software und Voreinstellungen können eingebaute Kapitälchen, Kerning oder Ligaturen (sehr pfiffig) nicht richtig dargestellt werden.Dies ist ein Typoblindtext. An ihm kann man sehen, ob alle Buchstaben da sind und wie sie aussehen. Manchmal benutzt man Worte wie Hamburgefonts, Rafgenduks"
   layouts:
     application:
-      title: "SpeakerinnenListe"
-      list: "SpeakerInnen"
+      title: "Speakerinnen-Liste"
+      list: "Speakerinnen"
       contact: "Kontakt"
       impressum: "Impressum"
       search: "Suchen"
