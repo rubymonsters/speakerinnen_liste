@@ -140,6 +140,7 @@ en:
         confirmation: "Waiting for confirmation from: "
       new:
         sign_up: "Signup"
+        password: "Password"
     sessions:
       new:
         login: "Login"
