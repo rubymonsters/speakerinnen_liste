@@ -38,17 +38,16 @@
                 <%- Profile.omniauth_providers.each do |provider| %>
                   <%= link_to "Or sign up with #{provider.to_s.titleize}", omniauth_authorize_path(:profile, provider), class: 'btn' %>
                 <% end -%>
-             <% end -%>
+              <% end -%>
+            </div>
+            <div class="confirmation">
+              <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
+                <%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(:profile) %><br />
+              <% end -%>
             </div>
           <% end %>
         <% end %>
       </div>
     </div>
-  </div>
-
-  <div class="span5 offset1">
-    <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
-      <%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(:profile) %><br />
-    <% end -%>
   </div>
 </div>

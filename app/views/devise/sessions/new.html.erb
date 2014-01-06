@@ -18,15 +18,15 @@
           </div>
 
           <div class="control-group">
-            <%- if devise_mapping.recoverable? && controller_name != 'passwords' %>
+            <% if devise_mapping.recoverable? && controller_name != 'passwords' %>
               <%= link_to "Forgot your password?", new_password_path(resource_name), class:"forgot-p" %><br />
-            <% end -%>
+            <% end %>
           </div> 
 
           <div class="control-group">
-            <% if devise_mapping.rememberable? -%> <p>Remember me</p>
-              <%= f.check_box :remember_me , id:"optionsCheckbox", class:"remember"   %> 
-            <% end -%> 
+            <% if devise_mapping.rememberable? %> <p>Remember me</p>
+              <%= f.check_box :remember_me , id:"optionsCheckbox", class:"remember" %> 
+            <% end %> 
           </div> 
 
           <div class="control-group">
@@ -34,23 +34,24 @@
           </div>
 
           <div class="control-group">
-            <%- if devise_mapping.omniauthable? %>
-              <%- resource_class.omniauth_providers.each do |provider| %>
+            <% if devise_mapping.omniauthable? %>
+              <% resource_class.omniauth_providers.each do |provider| %>
                 <%= link_to "Sign in with #{provider.to_s.titleize}", omniauth_authorize_path(resource_name, provider), class:'btn' %> 
-              <% end -%>
-            <% end -%>
+              <% end %>
+            <% end %>
+          </div>
+          <br>
+          <div class="confirmation">
+            <% if devise_mapping.confirmable? && controller_name != 'confirmations' %>
+              <%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name) %><br />
+            <% end %>
+
+            <% if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks' %>
+              <%= link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name) %><br />
+            <% end %>
           </div>
       <% end %>
       </div>
     </div>
-  </div>
-
-  <div class="span5 offset1">
-    <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
-      <%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name) %><br />
-  <% end -%>
-    <%- if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks' %>
-      <%= link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name) %><br />
-  <% end -%>
   </div>
 </div>
