@@ -135,6 +135,7 @@ de:
         confirmation: "Warte auf die Bestätigung von: "
       new:
         sign_up: "Registrieren"
+        password: "Passwort"
     sessions:
       new:
         login: "Anmelden"
