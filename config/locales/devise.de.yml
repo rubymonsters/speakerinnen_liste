@@ -38,6 +38,12 @@ de:
       signed_up_but_unconfirmed: 'Du hast dich erfolgreich registriert. Wir konnten Dich noch nicht anmelden, da Dein Account noch nicht bestätigt ist. Du erhälst in Kürze eine E-Mail mit der Anleitung, wie Du Deinen Account freischalten kannst.'
       update_needs_confirmation: "Deine Daten wurden aktualisiert, aber Du musst Deine neue E-Mail-Adresse bestätigen. Du erhälst in wenigen Minuten eine E-Mail, mit der Du die Änderung Ihrer E-Mail-Adresse abschließen kannst."
       updated: 'Deine Daten wurden aktualisiert.'
+      email: "Email"
+      password: "Passwort"
+      confirmation: "Bestätige Dein Passwort"
+      signup: "Registrieren"
+      signup_via: "Oder registriere Dich über Twitter"
+      no_confirmation: "Keine Bestätigungsmail erhalten?"
     sessions:
       signed_in: 'Erfolgreich angemeldet.'
       signed_out: 'Erfolgreich abgemeldet.'
