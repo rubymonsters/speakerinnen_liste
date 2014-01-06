@@ -21,6 +21,7 @@ gem "jquery-rails"
 gem 'acts-as-taggable-on', github: 'rubymonsters/acts-as-taggable-on'
 gem 'auto_html', github: 'dejan/auto_html'
 gem 'mandrill-api'
+gem 'simple_form'
 
 group :development do
   gem "letter_opener"
