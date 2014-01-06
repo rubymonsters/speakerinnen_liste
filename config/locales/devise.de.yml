@@ -47,13 +47,14 @@ de:
       no_confirmation: "Keine Bestätigungsmail erhalten?"
       forgot_password: "Passwort vergessen?"
       remember: "Angemeldet bleiben"
+      send_instructions: "Schicke mir eine E-Mail"
     sessions:
       signed_in: 'Erfolgreich angemeldet.'
       signed_out: 'Erfolgreich abgemeldet.'
     unlocks:
       send_instructions: 'Du erhälst in wenigen Minuten eine E-Mail mit der Anleitung, wie Du Deinen Account entsperren kannst.'
       send_paranoid_instructions: "Falls Deine E-Mail-Adresse in unserer Datenbank existiert, erhälst Du in wenigen Minuten eine E-Mail mit der Anleitung, wie Du Deinen Account entsperren kannst."
-      unlocked: 'Dein Account wurde entsperrt. Du  jetzt angemeldet.'
+      unlocked: 'Dein Account wurde entsperrt. Du bist jetzt angemeldet.'
   errors:
     messages:
       already_confirmed: "wurde bereits bestätigt"
