@@ -9,8 +9,8 @@
       <div id="login">
         <h4>Forgot your password?</h4>
 
-        <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { class: 'form', method: :post }) do |f| %>
-          <%= f.email_field :email, autofocus: true %> 
+        <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { class: 'form', method: :post }) do |f| %>
+          <%= f.input :email, autofocus: true, label: false, placeholder: "Email"  %> 
           <%= f.submit "Send me reset password instructions", class:'btn' %>
         <% end %>
       </div>

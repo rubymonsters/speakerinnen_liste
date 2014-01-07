@@ -2,52 +2,35 @@
   <div id="badge-log">
     <div id="badge-inner">
 
-      <%= render 'shared/error_messages' %>
-
       <div id="logo">
         <%= image_tag("logo8.png", id:"logo8") %>
       </div>
 
       <div id="login">
-        <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :class => "new_profile"}) do |f| %>
-          <div class="control-group">
-            <div class="controls">
-              <%= f.email_field :email, :autofocus => true, class:"input-xlarge", placeholder: t(:email, scope: "devise.registrations") %>
-            </div>
-          </div>
+        <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :class => "form-vertical"}) do |f| %>
+            <%= f.input :email, :autofocus => true, label: false %>
 
           <% if f.object.password_required? %>
-            <div class="control-group">
-              <div class="controls">
-                <%= f.password_field :password, class:"input-xlarge", placeholder: t(:password, scope: "devise.registrations") %>
-              </div>
-            </div>
+            <%= f.input :password, placeholder: t(:password, scope: "devise.registrations"), label: false %>
+            <%= f.input :password_confirmation, placeholder: t(:confirmation, scope: "devise.registrations"), label: false %>
 
-            <div class="control-group">
-              <div class="controls">
-                <%= f.password_field :password_confirmation, class:"input-xlarge", placeholder: t(:confirmation, scope: "devise.registrations") %>
-              </div>
-            </div>
-
-            <div class="control-group">
-              <%= f.submit(t(:signup, scope: "devise.registrations"), class: "btn") %>
-            </div>
-
-            <div class="control-group">
-              <%- if devise_mapping.omniauthable? %>
-                <%- Profile.omniauth_providers.each do |provider| %>
+            <%= f.button :submit, label: (t(:signup, scope: "devise.registrations")) %>
+            <br>
+              <% if devise_mapping.omniauthable? %>
+                <% Profile.omniauth_providers.each do |provider| %>
                   <%= link_to t(:signup_via, scope: "devise.registrations"), omniauth_authorize_path(:profile, provider), class: 'btn' %>
-                <% end -%>
-              <% end -%>
-            </div>
-            <div class="confirmation">
-              <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
+                <% end %>
+              <% end %>
+              <br>
+              <br>
+              <% if devise_mapping.confirmable? && controller_name != 'confirmations' %>
                 <%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(:profile) %><br />
-              <% end -%>
-            </div>
+              <% end %>
+
           <% end %>
         <% end %>
       </div>
+
     </div>
   </div>
 </div>

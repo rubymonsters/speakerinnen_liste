@@ -6,13 +6,11 @@
 
         <%= f.hidden_field :reset_password_token %>
 
-        <%= f.input :password, placeholder: "New password", :autofocus => true %>
+        <%= f.input :password, placeholder: "New password", :autofocus => true, label: false %>
 
 
-        <%= f.input :password_confirmation, placeholder: "Confirm new password" %>
-        <%= f.submit "Change my password" %></div>
+        <%= f.input :password_confirmation, placeholder: "Confirm new password", label: false %>
+        <%= f.submit "New password", class:'btn' %>
       <% end %>
-
-      <%= render "devise/shared/links" %>
     </div>
 </div>
