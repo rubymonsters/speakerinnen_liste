@@ -19,7 +19,7 @@
             <% resource_class.omniauth_providers.each do |provider| %>
               <%= link_to "Sign in with #{provider.to_s.titleize}", omniauth_authorize_path(resource_name, provider), class:'btn' %> 
             <% end %>
-            <% end %> <br />
+          <% end %> <br />
 
           <% if devise_mapping.recoverable? && controller_name != 'passwords' %>
             <%= link_to "Forgot your password?", new_password_path(resource_name) %><br />

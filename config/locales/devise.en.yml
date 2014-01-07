@@ -46,6 +46,9 @@ en:
       signup: "Sign up"
       signup_via: "Or sign up with Twitter"
       no_confirmation: "Didn't receive confirmation instructions?"
+      forgot_password: "Forgot your password?"
+      remeber: "Remeber me"
+      send_instructions: "Send me reset password instructions"
     sessions:
       signed_in: "Login successfully."
       signed_out: "Logout successfully."
