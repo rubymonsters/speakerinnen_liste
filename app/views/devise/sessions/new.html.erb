@@ -9,24 +9,24 @@
       <div id="login">
         <%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name, :html => { :class => 'form-vertical' })) do |f| %>
 
-          <%= f.input :email, :autofocus => true, placeholder: "Email", label: false %>
-          <%= f.input :password, class:"input-xlarge", placeholder: "Password", label: false %>
-          <%= f.input :remember_me, :as => :boolean, :label => false, :inline_label => 'Remember me' if devise_mapping.rememberable? %>
+          <%= f.input :email, :autofocus => true, placeholder: t(:email, scope: "devise.registrations"), label: false %>
+          <%= f.input :password, class:"input-xlarge", placeholder: t(:password, scope: "devise.registrations"), label: false %>
+          <%= f.input :remember_me, :as => :boolean, :label => false, :inline_label => t(:remember, scope: "devise.registrations") if devise_mapping.rememberable? %>
 
           <%= f.submit(t(".login"), class:"btn")%><br />
 
           <% if devise_mapping.omniauthable? %>
             <% resource_class.omniauth_providers.each do |provider| %>
-              <%= link_to "Sign in with #{provider.to_s.titleize}", omniauth_authorize_path(resource_name, provider), class:'btn' %> 
+              <%= link_to t(:signin_via, scope: "devise.registrations"), omniauth_authorize_path(resource_name, provider), class:'btn' %> 
             <% end %>
           <% end %> <br />
 
           <% if devise_mapping.recoverable? && controller_name != 'passwords' %>
-            <%= link_to "Forgot your password?", new_password_path(resource_name) %><br />
+            <%= link_to t(:forgot_password, scope: "devise.registrations"), new_password_path(resource_name) %><br />
           <% end %>
 
           <% if devise_mapping.confirmable? && controller_name != 'confirmations' %>
-            <%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name) %><br />
+            <%= link_to t(:no_confirmation, scope: "devise.registrations"), new_confirmation_path(resource_name) %><br />
           <% end %>
 
           <% if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks' %>

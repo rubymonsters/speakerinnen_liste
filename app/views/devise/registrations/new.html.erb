@@ -14,7 +14,7 @@
             <%= f.input :password, placeholder: t(:password, scope: "devise.registrations"), label: false %>
             <%= f.input :password_confirmation, placeholder: t(:confirmation, scope: "devise.registrations"), label: false %>
 
-            <%= f.button :submit, label: (t(:signup, scope: "devise.registrations")) %>
+            <%= f.submit t(:signup, scope: "devise.registrations"), class:'btn' %>
             <br>
               <% if devise_mapping.omniauthable? %>
                 <% Profile.omniauth_providers.each do |provider| %>
@@ -24,7 +24,7 @@
               <br>
               <br>
               <% if devise_mapping.confirmable? && controller_name != 'confirmations' %>
-                <%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(:profile) %><br />
+                <%= link_to t(:no_confirmation, scope: "devise.registrations"), new_confirmation_path(:profile) %><br />
               <% end %>
 
           <% end %>
