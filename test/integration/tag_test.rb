@@ -9,7 +9,7 @@ class TagTest < ActionController::IntegrationTest
 
     @inge = profiles(:two)
     @inge.confirmed_at = Time.now
-    @inge.topic_list = "Fruehling" " " "Sommer"
+    @inge.topic_list = "Fruehling", " ", "Sommer"
     @inge.save
   end
 

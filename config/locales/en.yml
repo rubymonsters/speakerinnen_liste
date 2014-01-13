@@ -120,7 +120,7 @@ en:
         firstname: 'First Name'
         lastname: "Last Name"
         bio: "Bio"
-        topic_list: "Topics (seperated with space)"
+        topic_list: "Topics (seperated with comma or semicolon)"
         tag_list: "Already existing Topics"
         talks: "Talks"
         languages: "Languages"

@@ -115,7 +115,7 @@ de:
         firstname: "Vorname"
         lastname: "Nachname"
         bio: "Bio"
-        topic_list: "Tags (mit Leerzeichen getrennt)"
+        topic_list: "Themen (getrennt mit Komma oder Semikolon)"
         tag_list: "schon vorhandene Tags"
         talks: "Vorträge"
         languages: "Sprachen"
