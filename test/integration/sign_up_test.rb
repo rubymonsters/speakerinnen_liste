@@ -38,7 +38,7 @@ class SignUpTest < ActionController::IntegrationTest
     click_button "Sign up"
     # opens the site where you are in the test right now
     #save_and_open_page
-    assert page.has_content?('Email has already been taken')
+    assert page.has_content?('has already been taken')
   end
 
   test "after signing up with twitter the user is required to enter the email address" do
