@@ -8,7 +8,7 @@
 
       <div id="login">
         <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :class => "form-vertical"}) do |f| %>
-            <%= f.input :email, :autofocus => true, label: false %>
+            <%= f.input :email, placeholder: t(:email, scope: "devise.registrations"), :autofocus => true, label: false %>
 
           <% if f.object.password_required? %>
             <%= f.input :password, placeholder: t(:password, scope: "devise.registrations"), label: false %>
