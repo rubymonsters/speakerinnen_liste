@@ -2,7 +2,7 @@
   <%= form_for(@profile, :html => { :multipart => true, :class => "form-horizontal well"}) do |f| %>
     <%= render 'shared/error_messages' %>
     <fieldset >
-      <legend>Update profile</legend>
+      <legend><%= t(:update, scope: "profiles.form")%></legend>
       <%= render partial: "shared/profile_formfields", 
                  locals: { form_type: :update_profile, f: f } %>
     </fieldset>

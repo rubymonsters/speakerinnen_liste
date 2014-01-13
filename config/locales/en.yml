@@ -70,7 +70,7 @@ en:
     form:
       not_saved: 'prohibited this profile from being saved: '
       profile_from: "Profile from"
-      delete_profile: 'Delete picture'
+      delete_picture: 'Delete picture'
       update: "Update profile"
     profile:
       topics: 'My topics:'
@@ -84,6 +84,7 @@ en:
       edit: "Edit"
       destroy: "Delete"
       sure: "Are you sure?"
+      link: "Be sure to add 'http://'"
     edit:
       show: "Show"
       back: "Back"

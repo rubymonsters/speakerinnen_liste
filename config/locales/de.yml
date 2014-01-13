@@ -10,7 +10,7 @@ de:
   dashboard:
     index: 
       search:
-        heading: "Mehr Frauen auf die Bühnen"
+        heading: "Mehr Frauen auf die Bühnen!"
         tagline: "Finde weibliche Sprecherinnen, Coaches & Moderatorinnen für Deine Konferenz"
         search_text: "Suche nach Themen"
         search: "Suche"
@@ -67,7 +67,7 @@ de:
     form:
       not_saved: "Dieses Profil konnte nicht gespeichert werden:"
       profile_from: "Profil von"
-      delete_profile: "Lösche das Foto"
+      delete_picture: "Lösche das Foto"
       update: "Aktualisiere das Profil"
     profile:
       topics: 'Meine Themen:'
@@ -81,6 +81,7 @@ de:
       edit: "Bearbeiten"
       destroy: "Löschen"
       sure: "Bist Du sicher?"
+      link: "Bitte 'http://' davor schreiben."
     edit:
       show: "Anzeigen"
       back: "Zurück"

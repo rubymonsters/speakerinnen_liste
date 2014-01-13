@@ -55,7 +55,7 @@
     <div class="control-group">
       <%= f.label :media_url, class:"control-label" %>
       <div class="controls">
-        <%= f.text_field :media_url, class:"input-xlarge", id:"input01", :placeholder => "Be sure to add 'http://' " %>
+        <%= f.text_field :media_url, class:"input-xlarge", id:"input01", :placeholder => t(:link, scope: "profiles.profile") %>
       </div>
     </div>
 
@@ -90,7 +90,7 @@
     <div class="profile-delete-pic">
       <div>
         <%= f.check_box :remove_picture %>
-        <%= t ".delete_profile_picture" %>
+        <%= t(:delete_picture, scope: "profiles.form") %>
       </div>
     </div>
 
@@ -102,7 +102,7 @@
     </div>
 
     <div class="control-group">
-      <%= f.submit(form_type.to_s.gsub("_", " "), class:"btn btn-primary")%>
+      <%= f.submit t(:update, scope: "profiles.form"), class:"btn btn-primary" %>
     </div>
   </div>
 </div>
