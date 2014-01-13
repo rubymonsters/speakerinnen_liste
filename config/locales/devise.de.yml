@@ -1,7 +1,7 @@
 de:
   devise:
     confirmations:
-      confirmed: 'Vielen Dank für Ihre Registrierung. Du bist jetzt angemeldet.'
+      confirmed: 'Vielen Dank für Ihre Registrierung. Bitte logge Dich ein.'
       send_instructions: 'Du erhälst in wenigen Minuten eine E-Mail, mit der Du Ihre Registrierung bestätigen kannst.'
       send_paranoid_instructions: 'Falls Deine E-Mail-Adresse in unserer Datenbank existiert erhälst Du in wenigen Minuten eine E-Mail mit der die Du Deine Registrierung bestätigen kannst.'
     failure:
