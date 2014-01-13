@@ -30,6 +30,9 @@ de:
       send_paranoid_instructions: "Falls Deine E-Mail-Adresse in unserer Datenbank existiert erhälst Du in wenigen Minuten eine E-Mail mit der Anleitung, wie Du Dein Passwort zurücksetzen kannst."
       updated: 'Dein Passwort wurde geändert. Du bist jetzt angemeldet.'
       updated_not_active: 'Dein Passwort wurde geändert.'
+      new_password: "Neues Passwort"
+      password_confirmation: "Bestätige Dein Passwort"
+      edit_password: "Ändere dein Passwort"
     registrations:
       destroyed: 'Dein Account wurde gelöscht.'
       signed_up: 'Du hast dich erfolgreich registriert.'
