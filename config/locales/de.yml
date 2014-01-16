@@ -28,11 +28,11 @@ de:
       quote: "Wir glauben an Kollaboration - nicht an Wettbewerb."
       quote_text: "So ermutigen wir unsere Speakerinnen und Event-Organisatoren, sich gegenseitig zu unterstützen."
       railsgirls: |
-        Die Speakerinnen-Liste wurde von 8 Frauen mit der Unterstützung von 4 Coaches als Lernprojekt der Rails Girls Berlin gebaut. Die <a href="http://railsgirlsberlin.de">Rails Girls</a> sind eine internationale Non-Profit-Gruppe, die Frauen motiviert, sich mit dem Programmieren zu beschäftigen. Das Ganze über wunderbare Workshops, Lerngruppen, Stipendien und eine angenehme Lern-Community.
+        <p>Die Speakerinnen-Liste wurde von 8 Frauen mit der Unterstützung von 4 Coaches als Lernprojekt der Rails Girls Berlin gebaut.</p><p> Die <a href="http://railsgirlsberlin.de">Rails Girls</a> sind eine internationale Non-Profit-Gruppe, die Frauen motiviert, sich mit dem Programmieren zu beschäftigen. Das Ganze über wunderbare Workshops, Lerngruppen, Stipendien und eine angenehme Lern-Community.</p>
       about: "Wir wollen genauso viele weibliche wie männliche Speaker und Speakerinnen auf den Konferenzen, auf die wir gehen. Die meisten Konferenzen zu Tech-Themen, Marketing, Digital Media aber auch in anderen Bereichen haben leider meistens viel mehr männliche Referenten, Moderatoren oder Trainer (s. hier einige Beispiele http://50prozent.noblogs.org). Wir arbeiten auf eine ausgeglichene Verteilung hin und möchten Event-Organisatoren helfen, weibliche Speakerinnen für ihre Konferenzen zu finden. Außerdem wollen wir weibliche Speakerinnen, Moderatorinnen und Coaches im Web sichtbarer machen."
       contact: "Kontakt"
       contact_link: "Klicke hier, um uns zu kontaktieren"
-      address: | 
+      address: |
         twitter: <a href="http://twitter.com/rubymonsters">@rubymonsters</a>
       github: |
         Hier ist unser Code auf <a href="http://github.com/rubymonsters/speakerinnen_liste">GitHub!</a>

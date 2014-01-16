@@ -90,7 +90,7 @@ en:
       back: "Back"
     index:
       title: "SpeakerInnen"
-      text: "This is another example text."
+      text: "<p>We believe that female speakers should be easier to find for event organizers.</p><p>We believe that event organizers should have the best speakers at their events, regardless of the speakers’ gender identification.</p><p>We believe in collaboration and not competition, so we encourage our speakers and event organizers to support each other and help speakers speak better. </p>"
       search1: "You have searched for"
       search2: "and you have found"
       search3: "profiles."
