@@ -78,7 +78,7 @@ en:
       talks: 'Previous Talks:'
       media: "Examples of previous talks:"
       bio: "Bio: "
-      contact: 'Contact'  
+      contact: 'Contact'
       twitter: 'Twitter'
       show: 'Show'
       edit: "Edit"
@@ -100,12 +100,12 @@ en:
     show:
       topics: 'My topics:'
       languages: 'My languages:'
-      talks: 'Previous Talks:' 
+      talks: 'Previous Talks:'
       media: "Examples of previous talks:"
       bio: "Bio: "
       email: "Email: "
       twitter: 'Twitter:'
-      contact: 'Write an email to'  
+      contact: 'Write an email to'
       back: "Back"
       edit: "Edit"
   flash:
