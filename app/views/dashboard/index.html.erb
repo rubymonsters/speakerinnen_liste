@@ -28,9 +28,9 @@
             <%= text_field_tag(:q, nil, :class => "", :id => "search-field", :placeholder => t(:search_text, scope: "dashboard.index.search")) %>
             <%= button_tag((t(:search, scope: "dashboard.index.search")), :class => "btn btn-large ") %>
           <% end %>
-          <br>
-          <a href="#topics">Topics >></a>
-          <br>
+          <br />
+          <%= link_to t(:topics, scope: "dashboard.index.speakers"), "#topics"   %>
+          <br />
           <%= link_to t(:speaker_index, scope: "dashboard.index.speakers"), profiles_path %>
           <br>
         </div>
@@ -59,11 +59,14 @@
       <br>
       <span class="text-white-bg  tagline-second">
         <%= t(:quote_text, scope: "dashboard.index").html_safe  %>
+
+        <!-- Anker für Topics -->
+        <a id="topics"></a>
+
       </span>
     </div>
   </div>
 </div>
-<a id="topics"></a>
 <div class="white-bg">
   <div class="container">
     <h1><%= t(".description")%></h1>

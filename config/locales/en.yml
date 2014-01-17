@@ -12,7 +12,7 @@ en:
       search:
         heading: "Organizers, find your speakers"
         tagline: "Find female speakers, coaches & moderators for your conference"
-        search_text: "Search by talk topic"
+        search_text: ""
         search: "Search"
       description: "Our Topics"
       description_text: "We care about women-men ratio at tech conferences. We encourage women professionals to be more visible in tech industry."
@@ -22,6 +22,7 @@ en:
         new_speaker_heading: "Our Newest Speakers"
         speaker_text: "We care about women-men ration at tech conferences. We encourage women professionals to be more visible at tech conferences."
         speaker_index: "Browse more speakers >>"
+        topics: "Topics >>"
       mission_statement:
         heading: "Our Vision"
         content: "<p>We believe that female speakers should be easier to find for tech-y event organizers.</p><p>We believe that event organizers should have the best speakers at their events, regardless of the speakers’ gender identification.</p><p>We believe in collaboration and not competition, so we encourage our speakers and event organizers to support each other and help speakers speak better. </p>"

@@ -12,7 +12,7 @@ de:
       search:
         heading: "Mehr Frauen auf die Bühnen!"
         tagline: "Finde weibliche Sprecherinnen, Coaches & Moderatorinnen für Deine Konferenz"
-        search_text: "Suche nach Themen"
+        search_text: ""
         search: "Suche"
       description: "Unsere Themen"
       description_text: "Uns ist die Verteilung der Männer und Frauen auf Konferenzbühnen wichtig. Wir ermutigen Frauen, in ihrem professionellen Umfeld sichtbarer zu werden."
@@ -22,6 +22,7 @@ de:
         new_speaker_heading: "Unsere neuesten Speakerinnen"
         speaker_text: "Keine Ausreden mehr für Panels ohne Frauen!"
         speaker_index: "Mehr Speakerinnen anschauen >>"
+        topics: "Themen >>"
       mission_statement:
         heading: "Unsere Vision"
         content: "<p>Wir finden, dass weibliche Speakerinnen für Event-Organisatoren einfacher zu finden sein sollen.</p><p>Wir finden auch, dass Konferenzen die besten Speaker und Speakerinnen auf ihren Bühnen haben sollten, egal von welchem Geschlecht.</p><p>Wir glauben an Kollaboration und nicht an Wettbewerb. So ermutigen wir unsere Speakerinnen und Event-Organisatoren sich gegenseitig zu unterstützen.</p>"
@@ -72,7 +73,7 @@ de:
     profile:
       topics: 'Meine Themen:'
       languages: "Meine Sprache/n:"
-      talks: "Vorträge gehalten auf:"
+      talks: "Vorträge gehalten über:"
       media: "Beispiele meiner Vorträge:"
       bio: "Bio: "
       contact: "Kontakt"  
@@ -95,7 +96,7 @@ de:
       profile_from: "Profil von"
       topics: "Meine Themen:"
       languages: "Meine Sprache/n:"
-      talks: "Vorträge gehalten auf:"
+      talks: "Vorträge gehalten über:"
       media: "Beispiele meiner Vorträge:" 
       bio: "Bio:"
       email: "Email:"
@@ -117,7 +118,7 @@ de:
         bio: "Bio"
         topic_list: "Themen (getrennt mit Komma oder Semikolon)"
         tag_list: "schon vorhandene Tags"
-        talks: "Vorträge"
+        talks: "Vortragsthemen"
         languages: "Sprachen"
         city: "Stadt"
         twitter: "Twitter"
