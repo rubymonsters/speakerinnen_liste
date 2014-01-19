@@ -1,10 +1,10 @@
 <div class="container profiles">
   <h1 class="title-profiles">
-    <%= t ".title" %>
+    <%= t(:title, scope: "profiles.index") %>
   </h1>
   <div class=row>
     <div class=span6>
-      <%= t(".text").html_safe %>
+      <%= t(:text, scope: "profiles.index").html_safe %>
     </div>
     <div class=span6 style="vertical-align:bottom">
       <%= form_tag(search_path, :method => "get", :class =>"") do %>
