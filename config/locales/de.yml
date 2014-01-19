@@ -22,7 +22,7 @@ de:
         new_speaker_heading: "Unsere neuesten Speakerinnen"
         speaker_text: "Keine Ausreden mehr für Panels ohne Frauen!"
         speaker_index: "Mehr Speakerinnen anschauen >>"
-        topics: "Themen >>"
+        topics: "Themenliste >>"
       mission_statement:
         heading: "Unsere Vision"
         content: "<p>Wir finden, dass weibliche Speakerinnen für Event-Organisatoren einfacher zu finden sein sollen.</p><p>Wir finden auch, dass Konferenzen die besten Speaker und Speakerinnen auf ihren Bühnen haben sollten, egal von welchem Geschlecht.</p><p>Wir glauben an Kollaboration und nicht an Wettbewerb. So ermutigen wir unsere Speakerinnen und Event-Organisatoren sich gegenseitig zu unterstützen.</p>"
@@ -57,7 +57,7 @@ de:
   contact:
     form:
       name: "Dein Name"
-      name_placeholder: "Hier kommt Dein Name hin!"
+      name_placeholder: ""
       email: "Deine Email-Adresse"
       subject: "Deine Betreffzeile"
       body: "Deine Nachricht"

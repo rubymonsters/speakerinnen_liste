@@ -22,7 +22,7 @@ en:
         new_speaker_heading: "Our Newest Speakers"
         speaker_text: "We care about women-men ration at tech conferences. We encourage women professionals to be more visible at tech conferences."
         speaker_index: "Browse more speakers >>"
-        topics: "Topics >>"
+        topics: "List of Topics >>"
       mission_statement:
         heading: "Our Vision"
         content: "<p>We believe that female speakers should be easier to find for tech-y event organizers.</p><p>We believe that event organizers should have the best speakers at their events, regardless of the speakers’ gender identification.</p><p>We believe in collaboration and not competition, so we encourage our speakers and event organizers to support each other and help speakers speak better. </p>"
@@ -60,7 +60,7 @@ en:
   contact:
     form:
       name: "Your Name"
-      name_placeholder: "Write your name here!"
+      name_placeholder: ""
       email: "Your Email Address"
       subject: "Your Email Subject"
       body: "Your Message"
