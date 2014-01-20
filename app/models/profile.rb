@@ -24,6 +24,10 @@ class Profile < ActiveRecord::Base
     self.twitter.gsub!(/^@/, '') if twitter
   end
 
+  def after_confirmation
+    AdminMailer.new_profile_confirmed(self).deliver
+  end
+
   def self.from_omniauth(auth)
     where(auth.slice(:provider, :uid)).first_or_create do |profile|
       profile.provider = auth.provider
