@@ -43,6 +43,10 @@ class Profile < ActiveRecord::Base
     end
   end
 
+  def self.published
+    where(published: true)
+  end
+
   def self.no_admin
     where(:admin => false)
   end

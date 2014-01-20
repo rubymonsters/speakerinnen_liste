@@ -4,7 +4,7 @@ class ProfilesController < ApplicationController
   before_filter :require_permision, :only=> [:edit, :destroy, :update]
 
   def index
-    scope = Profile.no_admin
+    scope = Profile.published
     if params[:topic]
       @profiles = scope.tagged_with(params[:topic])
     else
@@ -13,7 +13,7 @@ class ProfilesController < ApplicationController
   end
 
   def show
-    @profile = Profile.no_admin.find(params[:id])
+    @profile = Profile.find(params[:id])
     @message = Message.new
   end
 
