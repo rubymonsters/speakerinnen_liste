@@ -19,7 +19,7 @@
     </div>
 
 
-    <div class="span5 text-black-bg">
+    <div class="span5 text-white-bg">
       <% if @profile.twitter.present? %>
         <h5><%= t ".twitter" %></h5>
         <span><%=link_to "@" + @profile.twitter, "http://twitter.com/#{@profile.twitter}" %></span>
@@ -59,12 +59,13 @@
   </div>
 
   <div class="info-profiles-bio">
-    <div class="span6 info-profiles-text text-black-bg">
+    <div class="span6 info-profiles-text text-white-bg">
       <h5> <%= t ".bio" %></h5>
       <span><%= @profile.bio %></span>
     </div>
 
-    <div class="span6 pull-right info-profiles-media text-black-bg">
+    <div class="span6 pull-right info-profiles-media text-white-bg">
+
       <h5><%= t ".media" %></h5>
       <span><%= @profile.media_url_html %></span>
     </div>
