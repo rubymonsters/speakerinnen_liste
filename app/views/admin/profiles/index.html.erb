@@ -1,24 +1,32 @@
-<h1>Admin::Profiles#index</h1>
-<table>
-		<tr>
-			<td>
-				<b>Profile</b>
-			</td>
-		</tr>
-	<% @profiles.each do |profile|  %>
-		<tr>
-			<td style="width:200px">
-				<%= name_or_email(profile) %>
-			</td>
-			<td style="width:60px">
-				<%= link_to t('.show'), admin_profile_path(profile) %>
-			</td>
-			<td style="width:60px">
-				<%= link_to t('.edit'), edit_admin_profile_path(profile) %>
-			</td>
-			<td style="width:60px">
-				<%= link_to t('.destroy'), admin_profile_path(profile), :confirm => 'Are you sure?', :method => :delete %>
-			</td>
-		</tr>
-	<% end %>
-</table>
+<div class="container profiles">
+  <h1 class="title-profiles">Admin::Profiles#index</h1>
+  <table>
+    <tr>
+      <td>
+        <b>Profile</b>
+      </td>
+    </tr>
+    <% @profiles.each do |profile|  %>
+    <tr>
+      <td style="width:200px">
+        <%= name_or_email(profile) %>
+      </td>
+      <td style="width:60px">
+        <%= link_to t('.show'), admin_profile_path(profile) %>
+      </td>
+      <td style="width:60px">
+        <%= link_to t('.edit'), edit_admin_profile_path(profile) %>
+      </td>
+      <td style="width:60px">
+        <%= link_to t('.destroy'), admin_profile_path(profile), :confirm => 'Are you sure?', :method => :delete %>
+      </td>
+      <td style="width:150px">
+        <%= form_for profile do |f| %>
+          <%= f.label "Published" %>
+          <%= f.check_box :published %>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+  </table>
+</div>
