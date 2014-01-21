@@ -1,6 +1,6 @@
 class Admin::ProfilesController < Admin::BaseController
   def index
-    @profiles = Profile.all.sort_by {|profile| profile.firstname.downcase}
+    @profiles = Profile.order("created_at DESC")
   end
 
   def new
