@@ -21,10 +21,18 @@
         <%= link_to t('.destroy'), admin_profile_path(profile), :confirm => 'Are you sure?', :method => :delete %>
       </td>
       <td style="width:150px">
-        <%= form_for profile do |f| %>
-          <%= f.label "Published" %>
-          <%= f.check_box :published %>
+        <% if profile.published %>
+          <%= form_for profile,{ :url => unpublish_admin_profile_path(profile.id), :method => "post" } do |f| %>
+            <%= f.submit "Unpublish" %>
+          <% end %>
+        <% else %>
+          <%= form_for profile,{ :url => publish_admin_profile_path(profile.id), :method => "post" } do |f| %>
+            <%= f.submit "Publish" %>
+          <% end %>
         <% end %>
+      </td>
+      <td style="width:60px; color:red">
+        <%= "admin" if profile.admin %>
       </td>
     </tr>
   <% end %>
