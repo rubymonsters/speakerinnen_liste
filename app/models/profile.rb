@@ -47,7 +47,7 @@ class Profile < ActiveRecord::Base
     end
   end
 
-  def self.published
+  def self.is_published
     where(published: true)
   end
 
