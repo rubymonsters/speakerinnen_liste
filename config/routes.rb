@@ -2,7 +2,12 @@ SpeakerinnenListe::Application.routes.draw do
 
   namespace :admin do
     resources :tags, :except => [:new, :create]
-    resources :profiles
+    resources :profiles do
+      member do
+        post "publish"
+        post "unpublish"
+      end
+    end
     root to: 'dashboard#index'
   end
 

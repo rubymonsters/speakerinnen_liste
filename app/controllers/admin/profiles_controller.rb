@@ -31,4 +31,19 @@ class Admin::ProfilesController < Admin::BaseController
     @profile.destroy
     redirect_to admin_profiles_path, notice: (I18n.t("flash.profiles.destroyed"))
   end
+
+  def publish
+    @profile = Profile.find(params[:id])
+    @profile.published = true
+    @profile.save
+    redirect_to admin_profiles_path, notice: (I18n.t("flash.profiles.updated"))
+  end
+
+  def unpublish
+    @profile = Profile.find(params[:id])
+    @profile.published = false
+    @profile.save
+    redirect_to admin_profiles_path, notice: (I18n.t("flash.profiles.updated"))
+  end
+
 end
