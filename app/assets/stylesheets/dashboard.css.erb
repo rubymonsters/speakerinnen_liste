@@ -290,17 +290,22 @@ input[type="search"]::-webkit-search-decoration,input[type="search"]::-webkit-se
   -webkit-appearance:none;
 }
 
-button::-moz-focus-inner,input::-moz-focus-inner{ 
+button::-moz-focus-inner,input::-moz-focus-inner{
   border:0;
   padding:0;
 }
 input,
+{
+  overflow:auto;
+  vertical-align:top;
+  resize:none;
+}
+
 textarea {
   overflow:auto;
   vertical-align:top;
   resize:vertical;
 }
-
 input:invalid,textarea:invalid {
   background-color:#f0dddd;
 }
@@ -352,18 +357,18 @@ header {
 
 header a#logo {
   width: 180px;
-  height: 70px; 
+  height: 70px;
   margin-left: -13%;
   margin-top: -0.3%;
   display:inline-block;
-  background:url(<%=asset_path "logo8.png"%>) no-repeat center center; 
-  z-index: 1000; 
-  text-indent: -9999px;   
+  background:url(<%=asset_path "logo8.png"%>) no-repeat center center;
+  z-index: 1000;
+  text-indent: -9999px;
   transition: all 0.2s ease-in-out 0s;
 }
 
 header a#logo:hover {
-  opacity: 0.7;  
+  opacity: 0.7;
   -webkit-transition: all .2s ease-in-out;
   -moz-transition: all .2s ease-in-out;
   -o-transition: all .2s ease-in-out;
@@ -383,7 +388,7 @@ header .right .header-btn  {
   padding:15px 0;
   border-bottom:0px solid #fff;
   transition: all 0.2s ease-in-out 0s;
-  font-family: "Helvetica Neue", Helvetica; 
+  font-family: "Helvetica Neue", Helvetica;
 }
 
 .language {
@@ -460,7 +465,7 @@ box-shadow:inset 0px 1px 11px #999099;
 
 #about-top .large {
   font-size:3.2em;
-  color:#fff; 
+  color:#fff;
   margin-top: 40px;
   margin-left: 2em;
 }
@@ -528,10 +533,10 @@ box-shadow:inset 0px 1px 11px #999099;
   margin-bottom:6px;
 }
 
-.white-bg .home blockquote { 
+.white-bg .home blockquote {
   border-top:1px solid #aaa;
   border-bottom:1px solid #aaa;
-  text-align:center; 
+  text-align: center;
   border-left: none;
   font-size:1.4em;
   margin:6em 0 2em 0;
@@ -688,7 +693,7 @@ margin-bottom: 0;
   padding:0px 5px 10px 5px;
 }
 
-.speaker .contact-info { 
+.speaker .contact-info {
   padding:0px 5px;
 }
 
@@ -726,7 +731,7 @@ filter: grayscale(00%);
   clear:both;
   display:block;
   overflow:hidden;
-  visibility:hidden; 
+  visibility:hidden;
   height:0;}
 
 .clearfix:before,.clearfix:after,.container_24:before,.container_24:after {
@@ -776,8 +781,12 @@ a li:hover,  .topics a:hover {
   border-left: solid 2px #c1c1c1;
   -webkit-transition: all .2s ease-in-out;
   -moz-transition: all .2s ease-in-out;
-  -o-transition: all .2s ease-in-out; 
+  -o-transition: all .2s ease-in-out;
   font-size: 1.6em;
 }
 
-
+.copyright {
+  text-align: right;
+  margin-right: 10px;
+  font-size: 12px
+}
