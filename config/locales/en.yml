@@ -4,11 +4,11 @@ en:
   admin:
     profiles:
       index:
-        show: "show"
-        edit: "edit"
-        destroy: "destroy"
+        show: "Show"
+        edit: "Edit"
+        destroy: "Destroy"
   dashboard:
-    index: 
+    index:
       search:
         heading: "Organizers, find your speakers"
         tagline: "Find female speakers, coaches & moderators for your conference"
@@ -36,7 +36,7 @@ en:
         We want a balanced speaker ratio on the conferences we go to. Most conferences in tech, marketing, digital media but also in other areas unfortunately have mostly male speakers, moderators or coaches (see <a href="http://50prozent.noblogs.org">here</a> some examples). We want to change that ratio and help event organisers to find female speakers for their conferences. And female speakers, moderators or coaches to be more visible on the web.
       contact: "Contact"
       contact_link: "Click here to contact us via email."
-      address: | 
+      address: |
         twitter: <a href="http://twitter.com/rubymonsters">@rubymonsters</a>
       github: |
         Here is our repository on <a href="http://github.com/rubymonsters/speakerinnen_liste">GitHub!</a>
@@ -51,7 +51,7 @@ en:
       contact: "Contact"
       impressum: "Legal Details"
       search: "Search"
-      logged_as: "Logged in as" 
+      logged_as: "Logged in as"
       my_profile: "My profile"
       account: "Account"
       logout: "Logout"
@@ -117,7 +117,7 @@ en:
       no_permission: 'No permission to edit the profile'
   activerecord:
     attributes:
-      profile:    
+      profile:
         firstname: 'First Name'
         lastname: "Last Name"
         bio: "Bio"
@@ -131,7 +131,7 @@ en:
   devise:
     registrations:
       edit:
-        account_from: "Account from" 
+        account_from: "Account from"
         password_needed: '(we need your current password in order to change it)'
         password_blank: "(leave blank if you do not want to change the password)"
         update: "Update Account"

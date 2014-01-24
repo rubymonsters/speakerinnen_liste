@@ -76,7 +76,7 @@ de:
       talks: "Vorträge gehalten über:"
       media: "Beispiele meiner Vorträge:"
       bio: "Bio: "
-      contact: "Kontakt"  
+      contact: "Kontakt"
       twitter: "Twitter"
       show: "Anzeigen"
       edit: "Bearbeiten"
@@ -97,11 +97,11 @@ de:
       topics: "Meine Themen:"
       languages: "Meine Sprache/n:"
       talks: "Vorträge gehalten über:"
-      media: "Beispiele meiner Vorträge:" 
+      media: "Beispiele meiner Vorträge:"
       bio: "Bio:"
       email: "Email:"
       twitter: "Twitter:"
-      contact: "Schreibe eine Email an"  
+      contact: "Schreibe eine Email an"
       back: "Zurück"
       edit: "Bearbeiten"
   flash:
@@ -112,7 +112,7 @@ de:
       no_permission: "Du hast nicht die Rechte, das Profil zu bearbeiten"
   activerecord:
     attributes:
-      profile:    
+      profile:
         firstname: "Vorname"
         lastname: "Nachname"
         bio: "Bio"
@@ -126,7 +126,7 @@ de:
   devise:
     registrations:
       edit:
-        account_from: "Account von" 
+        account_from: "Account von"
         password_needed: '(wir brauchen dein jetziges Passwort um es ändern zu können)'
         password_blank: "(leer lassen wenn das Passwort nicht geändert werden soll)"
         update: "Aktualisiere Account"

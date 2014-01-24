@@ -44,7 +44,7 @@ en:
       update_needs_confirmation: "You updated your account successfully, but we need to verify your new email address. Please check your email and click on the confirm link to finalize confirming your new email address."
       updated: "You updated your account successfully."
       email: "Email"
-      password: "Password" 
+      password: "Password"
       confirmation: "Password Confirmation"
       signup: "Sign up"
       signup_via: "Or sign up with Twitter"
