@@ -73,6 +73,7 @@ en:
       profile_from: "Profile from"
       delete_picture: 'Delete picture'
       update: "Update profile"
+      copyright_photo: "Please take care that you have the copyrights of that photo."
     profile:
       topics: 'My topics:'
       languages: 'My languages:'
