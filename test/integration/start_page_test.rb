@@ -11,6 +11,7 @@ class StartPageTest < ActionDispatch::IntegrationTest
     assert page.has_content?('Login')
     assert page.has_content?('Sign up')
     assert page.has_content?('Contact')
+    assert page.has_content?('Impressum')
   end
 
   test "start page is shown in german" do
@@ -21,5 +22,6 @@ class StartPageTest < ActionDispatch::IntegrationTest
     assert page.has_content?('Anmelden')
     assert page.has_content?('Als Speakerin registrieren')
     assert page.has_content?('Kontakt')
+    assert page.has_content?('Impressum')
   end
 end
