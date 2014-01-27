@@ -37,7 +37,7 @@ class Admin::ProfilesController < Admin::BaseController
     @profile.published = true
     @profile.save
     # Tells the AdminMailer to send publish mail to the speakerin
-    # AdminMailer.profile_published(@profile).deliver
+    AdminMailer.profile_published(@profile).deliver
     redirect_to admin_profiles_path, notice: (I18n.t("flash.profiles.updated"))
   end
 

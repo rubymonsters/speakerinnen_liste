@@ -9,6 +9,7 @@ class AdminMailer < ActionMailer::Base
 
   def profile_published(profile)
     @profile = profile
+    @url = "www.speakerinnen.org"
     mail(to: @profile.email, subject: 'Your are now pulished on the Speakerinnen Website')
   end
 
