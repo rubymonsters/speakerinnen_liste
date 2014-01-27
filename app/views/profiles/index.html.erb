@@ -8,8 +8,8 @@
     </div>
     <div class=span6 style="vertical-align:bottom">
       <%= form_tag(search_path, :method => "get", :class =>"") do %>
-        <%= text_field_tag(:q, nil, :class => "", :id => "search-field", :placeholder => t(:search_text, scope: "dashboard.index.search")) %>
-        <%= button_tag((t(:search, scope: "dashboard.index.search")), :class => "btn btn-large ") %>
+        <%= text_field_tag(:q, nil, :class => "", :id => "search-field", :placeholder => t(:search_text, scope: "pages.home.search")) %>
+        <%= button_tag((t(:search, scope: "pages.home.search")), :class => "btn btn-large ") %>
       <% end %>
     </div>
   </div>
