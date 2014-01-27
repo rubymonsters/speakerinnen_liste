@@ -124,13 +124,9 @@
         <div class="span4">
           <h4><%= t(".contact") %></h4>
           <span class="italic"><%= t(".address").html_safe %></span>
-          <p>
-            <%= link_to t(".contact_link"), contact_path %>
-          <p>
-          <p>
-            <%= link_to t(".impressum_link"), impressum_path %> 
-          <p>
+          <span class="italic"><%= link_to t(".contact_link"), contact_path %></span>
           <span class="italic"><%= t(".github").html_safe %></span>
+          <span class="italic"><%= link_to t(".impressum_link"), impressum_path %></span> 
         </div>
       </div>
       <div class="clearfix"></div>
