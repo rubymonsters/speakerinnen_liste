@@ -8,7 +8,7 @@ SpeakerinnenListe::Application.routes.draw do
         post "unpublish"
       end
     end
-    root to: 'dashboard#index'
+    root to: 'pages#home'
   end
 
   scope "(:locale)", :locale => /en|de/ do
@@ -22,9 +22,9 @@ SpeakerinnenListe::Application.routes.draw do
     get  'contact' => 'contact#new',    :as => 'contact'
     post 'contact' => 'contact#create', :as => 'contact'
 
-    match 'impressum' => 'home#impressum'
+    match 'impressum' => 'pages#impressum'
 
-    get '/', to: 'dashboard#index', as: :root
+    get '/', to: 'pages#home', as: :root
 
     resources :profiles, :except => [:new, :create] do
       get  'contact' => 'contact#new',    :as => 'contact', :on => :member
