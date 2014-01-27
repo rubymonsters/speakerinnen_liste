@@ -62,7 +62,8 @@ CREATE TABLE profiles (
     provider character varying(255),
     uid character varying(255),
     media_url character varying(255),
-    published boolean DEFAULT false
+    published boolean DEFAULT false,
+    website character varying(255)
 );
 
 
@@ -293,3 +294,5 @@ INSERT INTO schema_migrations (version) VALUES ('20130525141752');
 INSERT INTO schema_migrations (version) VALUES ('20130826181457');
 
 INSERT INTO schema_migrations (version) VALUES ('20140120190118');
+
+INSERT INTO schema_migrations (version) VALUES ('20140127194625');

@@ -21,8 +21,15 @@
 
     <div class="span5 text-white-bg">
       <% if @profile.twitter.present? %>
-        <h5><%= t ".twitter" %></h5>
+        <h5><%= t(:twitter, scope: "profiles.profile") %></h5>
         <span><%=link_to "@" + @profile.twitter, "http://twitter.com/#{@profile.twitter}" %></span>
+        <hr>
+      <% end %>
+
+      <% if @profile.website.present? %>
+        <h5><%= t(:website, scope: "profiles.profile") %></h5>
+        <span><%=link_to @profile.website,"http://#{@profile.website}", :target => '_blank' %></span>
+        <hr>
       <% end %>
 
       <h5><%= t ".topics" %></h5>

@@ -80,9 +80,10 @@ en:
       languages: 'My languages:'
       talks: 'Previous Talks:'
       media: "Examples of previous talks:"
-      bio: "Bio: "
-      contact: 'Contact'
-      twitter: 'Twitter'
+      bio: "Bio:"
+      contact: "Contact"
+      website: "My Website/Blog:"
+      twitter: "My Twitternick:"
       show: 'Show'
       edit: "Edit"
       destroy: "Delete"
