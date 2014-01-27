@@ -1,0 +1,140 @@
+<section id="about-top">
+  <div class="badge"><%= image_tag("badge2-bw.png", :alt => "badge") %> </div>
+  <script>
+    $(window).scroll(function() {
+       if ($(this).scrollTop() > 100) {
+         $(".badge").stop().animate({ opacity: 0 }, 50);
+       } else {
+         $(".badge").stop().animate({ opacity: 1 }, 50);
+       }
+       //stops badge from covering other links
+       if ($(this).scrollTop() > 700) {
+         $(".badge").hide();
+       } else {
+         $(".badge").show();
+       }
+    });
+  </script>
+
+  <div class="container">
+    <div class="heading">
+      <div class="large serif">
+        <span class="text-white-bg"><%= t(:heading, scope: "pages.home.search") %></span>
+        <br/>
+        <span class="text-white-bg tagline-second"><%= t(:tagline, scope: "pages.home.search") %></span>
+        <br/>
+        <div class="text-white-bg tagline-second">
+          <%= form_tag(search_path, :method => "get", :class =>"") do %>
+            <%= text_field_tag(:q, nil, :class => "", :id => "search-field", :placeholder => t(:search_text, scope: "pages.home.search")) %>
+            <%= button_tag((t(:search, scope: "pages.home.search")), :class => "btn btn-large ") %>
+          <% end %>
+          <br />
+          <%= link_to t(:topics, scope: "pages.home.speakers"), "#topics"   %>
+          <br />
+          <%= link_to t(:speaker_index, scope: "pages.home.speakers"), profiles_path %>
+          <br>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="white-bg" id="speakers">
+  <div class="container">
+    <h1><%= t(:new_speaker_heading, scope: "pages.home.speakers") %></h1>
+    <h4><%= t(:speaker_text, scope: "pages.home.speakers") %></h4>
+    <div class="row">
+      <%= render :partial => "profiles/profile", :collection => @profiles %>
+    </div>
+    <%= link_to t(:speaker_index, scope: "pages.home.speakers"), profiles_path, :id => "find-more" %>
+  </div>
+</div>
+
+<div class="photo-bar about-disciplines">
+  <div class="container large">
+    <div class="photo-text">
+      <span class="text-white-bg">
+        <%= t(:quote, scope: "pages.home").html_safe %>
+      </span>
+      <br>
+      <span class="text-white-bg  tagline-second">
+        <%= t(:quote_text, scope: "pages.home").html_safe  %>
+
+        <!-- Anker für Topics -->
+        <a id="topics"></a>
+
+      </span>
+    </div>
+  </div>
+  <div class="copyright">
+    Copyright by Ute Mayer
+  </div>
+</div>
+<div class="white-bg">
+  <div class="container">
+    <h1><%= t(".description")%></h1>
+    <h4><%= t(".description_text") %></h4>
+    <br>
+    <div class="row disciplines">
+      <% @topics.each_slice(4) do |topics| %>
+        <div class="span3">
+          <ul>
+            <% topics.each do |topic| %>
+              <li class="topics"><%= topic_link topic %></li>
+            <% end %> 
+          </ul>
+        </div>
+      <% end %>
+    </div>
+    <br>
+    <br>
+  </div>
+</div>
+
+<div class="photo-bar speakers">
+  <div class="container large">
+    <div class="photo-text">
+        <span class="text-white-bg">
+          <%= t(:speaker_shoutout, scope: "pages.home").html_safe %>
+        </span>
+        <br>
+        <span class="text-white-bg  tagline-second">
+          <%= t(:speaker_text, scope: "pages.home").html_safe %>
+          <%= link_to(t(".signup"), new_profile_registration_path)  %>
+        </span>
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="white-bg" id="work">
+    <div class="container">
+      <h1>Speakerinnen</h1>
+      <div class="row">
+        <div class="span4">
+          <h4>Rails Girls</h4>
+          <span class="italic"><%= t(".railsgirls").html_safe %></span>
+        </div>
+
+        <div class="span4">
+          <h4>Vision</h4>
+          <span class="italic"><%= t(:content, scope: "pages.home.mission_statement").html_safe %></span>
+        </div>
+
+        <div class="span4">
+          <h4><%= t(".contact") %></h4>
+          <span class="italic"><%= t(".address").html_safe %></span>
+          <p>
+            <%= link_to t(".contact_link"), contact_path %>
+          <p>
+          <p>
+            <%= link_to t(".impressum_link"), impressum_path %> 
+          <p>
+          <span class="italic"><%= t(".github").html_safe %></span>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+      <br>
+    </div>
+  </div>
+</section>
