@@ -4,7 +4,7 @@
     <%= simple_form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post, :class => 'form-vertical' }) do |f| %>
 
       <%= f.input :email, :label => false, placeholder: "Email", :autofocus => true %>
-      <%= f.submit "Resend confirmation instructions", class: 'btn' %>
+      <%= f.submit "Resend confirmation instructions", class: 'btn btn-info' %>
     <% end %>
     <br />
     <%= render "devise/shared/links" %>
