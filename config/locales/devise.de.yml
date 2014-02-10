@@ -34,6 +34,7 @@ de:
       password_confirmation: "Bestätige Dein Passwort"
       edit_password: "Ändere dein Passwort"
     registrations:
+      explanation_email: "Wir brauchen Deine Emailadresse, damit Organisatoren mit Dir in Kontakt treten können"
       destroyed: 'Dein Account wurde gelöscht.'
       signed_up: 'Du hast dich erfolgreich registriert.'
       signed_up_but_inactive: 'Du hast Dich erfolgreich registriert. Wir konnten Dich noch nicht anmelden, da Dein Account inaktiv ist.'
