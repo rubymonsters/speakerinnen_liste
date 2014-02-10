@@ -1,12 +1,14 @@
 <div class="container profiles">
-  <%= link_to(t(".show"), @profile) %> |
-  <%= link_to(profiles_path) do %>
-    <div class="row pull-right">
-      <span class="icon icon-arrow-left"></span> back
-    </div>
-  <% end %>
   <%= simple_form_for(@profile, :html => { :multipart => true, :class => "form-horizontal well"}) do |f| %>
     <%= render 'shared/error_messages' %>
+    <br>
+    <%= link_to(profiles_path) do %>
+      <div class="row pull-right">
+        <span class="icon icon-arrow-left"></span> SpeakerinnenListe |
+        <%= link_to(t(".show"), @profile) %>
+      </div>
+    <% end %>
+    <br>
     <fieldset >
       <legend><%= t(:update, scope: "profiles.form")%></legend>
       <%= render partial: "shared/profile_formfields",

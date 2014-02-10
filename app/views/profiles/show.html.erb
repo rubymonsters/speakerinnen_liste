@@ -1,20 +1,20 @@
 <div class="container profiles">
-  <%= link_to(profiles_path) do %>
-    <div class="row pull-right">
-      <span class="icon icon-arrow-left"></span> back
-    </div>
-  <% end %>
 
   <div class="white-bg">
     <h1><%= @profile.fullname %></h1>
+  <%= link_to(profiles_path) do %>
+    <div class="row pull-right">
+      <span class="icon icon-arrow-left"></span> SpeakerinnenListe
+    </div>
+  <% end %>
   </div>
-
+  <br>
   <div class="row">
     <div class="span3 photo">
       <% if @profile.picture.present? %>
         <%= image_tag(@profile.picture.profile.url , :class => "photo") %>
       <% else %>
-        <%= image_tag("avatar.jpg", :alt => "avatar", :class => "photo") %> 
+        <%= image_tag("avatar.jpg", :alt => "avatar", :class => "photo") %>
       <% end %>
     </div>
 
@@ -53,7 +53,7 @@
       <% if can_edit_profile?(current_profile, @profile) %>
         <%= link_to(edit_profile_path(@profile)) do %>
           <div class="btn  btn-large buttons-modals">
-            <span class="icon icon-edit"></span> 
+            <span class="icon icon-edit"></span>
             <%= t(:edit, scope: "profiles.profile") %>
           </div>
         <% end %>
@@ -85,7 +85,7 @@
       </div>
       <div class="modal-body">
         <div class="span6">
-          <%= render partial: 'contact/form', locals: {url: contact_profile_path(@profile)} %> 
+          <%= render partial: 'contact/form', locals: {url: contact_profile_path(@profile)} %>
         </div>
       </div>
       <div class="modal-footer">
