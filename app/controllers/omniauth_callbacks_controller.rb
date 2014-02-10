@@ -6,7 +6,6 @@ class OmniauthCallbacksController < ApplicationController
       sign_in_and_redirect profile
     else
       session["devise.user_attributes"] = profile.attributes
-      puts profile.attributes
       redirect_to new_profile_registration_url
     end
   end
