@@ -8,7 +8,7 @@ SpeakerinnenListe::Application.routes.draw do
         post "unpublish"
       end
     end
-    root to: 'pages#home'
+    root to: 'dashboard#index'
   end
 
   scope "(:locale)", :locale => /en|de/ do
