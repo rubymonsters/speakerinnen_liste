@@ -29,6 +29,40 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
+-- Name: medialinks; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE medialinks (
+    id integer NOT NULL,
+    profile_id integer,
+    url text,
+    title text,
+    description text,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: medialinks_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE medialinks_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: medialinks_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE medialinks_id_seq OWNED BY medialinks.id;
+
+
+--
 -- Name: profiles; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -173,6 +207,13 @@ ALTER SEQUENCE tags_id_seq OWNED BY tags.id;
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY medialinks ALTER COLUMN id SET DEFAULT nextval('medialinks_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY profiles ALTER COLUMN id SET DEFAULT nextval('profiles_id_seq'::regclass);
 
 
@@ -188,6 +229,14 @@ ALTER TABLE ONLY taggings ALTER COLUMN id SET DEFAULT nextval('taggings_id_seq':
 --
 
 ALTER TABLE ONLY tags ALTER COLUMN id SET DEFAULT nextval('tags_id_seq'::regclass);
+
+
+--
+-- Name: medialinks_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY medialinks
+    ADD CONSTRAINT medialinks_pkey PRIMARY KEY (id);
 
 
 --
@@ -296,3 +345,5 @@ INSERT INTO schema_migrations (version) VALUES ('20130826181457');
 INSERT INTO schema_migrations (version) VALUES ('20140120190118');
 
 INSERT INTO schema_migrations (version) VALUES ('20140127194625');
+
+INSERT INTO schema_migrations (version) VALUES ('20140217201851');

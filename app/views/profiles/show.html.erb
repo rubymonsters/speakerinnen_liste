@@ -70,7 +70,26 @@
     <div class="span6 pull-right info-profiles-media text-white-bg">
 
       <h5><%= t ".media" %></h5>
-      <span><%= @profile.media_url_html %></span>
+
+      <ul>
+        <% @profile.medialinks.each do |medialink| %>
+        <li>
+          <%= link_to medialink.title, medialink.url, class: "medialink" %>
+        </li>
+        <% end %>
+      </ul>
+
+      <% if can_edit_profile?(current_profile, @profile) %>
+        <%= form_for [@profile, @medialink] do |f| %>
+          <%= f.label :url %>
+          <%= f.text_field :url %>
+          <%= f.label :title %>
+          <%= f.text_area :title %>
+          <%= f.label :description %>
+          <%= f.text_area :description %>
+          <%= f.submit %>
+        <% end %>
+      <% end %>
     </div>
   </div>
 </div>

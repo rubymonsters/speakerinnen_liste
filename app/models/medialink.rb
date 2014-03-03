@@ -1,3 +1,4 @@
 class Medialink < ActiveRecord::Base
-  attr_accessible :link, :title
+  attr_accessible :url, :title, :description
+  belongs_to :profile
 end
