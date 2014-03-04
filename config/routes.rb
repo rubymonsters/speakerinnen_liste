@@ -23,6 +23,7 @@ SpeakerinnenListe::Application.routes.draw do
     post 'contact' => 'contact#create', :as => 'contact'
 
     match 'impressum' => 'pages#impressum'
+    match 'about' => 'pages#about'
 
     get '/', to: 'pages#home', as: :root
 
