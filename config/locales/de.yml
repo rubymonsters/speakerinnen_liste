@@ -8,7 +8,7 @@ de:
         edit: "Bearbeiten"
         destroy: "Löschen"
   pages:
-    home: 
+    home:
       search:
         heading: "Mehr Frauen auf die Bühnen!"
         tagline: "Finde weibliche Sprecherinnen, Coaches & Moderatorinnen für Deine Konferenz"
@@ -45,7 +45,7 @@ de:
       contact: "Kontakt"
       impressum: "Impressum"
       search: "Suchen"
-      logged_as: "Eingeloggt als" 
+      logged_as: "Eingeloggt als"
       my_profile: "Mein Profil"
       account: "Benutzerkonto"
       logout: "Ausloggen"
@@ -82,6 +82,8 @@ de:
       destroy: "Löschen"
       sure: "Bist Du sicher?"
       link: "Bitte 'http://' davor schreiben."
+    medialinks:
+      edit: "Bearbeite deine Medialinks"
     edit:
       show: "Anzeigen"
       back: "Zurück"

@@ -1,4 +1,7 @@
 class MedialinksController < ApplicationController
+  def show
+    @profile = Profile.find(params[:profile_id])
+  end
 
   def create
     #make sure @profile is the profile to the correct user

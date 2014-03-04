@@ -25,14 +25,6 @@
     <%= f.input :city %>
     <%= f.input :twitter %>
     <%= f.input :website %>
-    <%= f.fields_for :medialinks do | details | %>
-      <div class="field">
-        link <%= details.text_field :link %>
-      </div>
-      <div class="field">
-        <%= details.text_field :title %>
-      </div>
-    <% end %>
 
     <div class="control-group">
       <%= f.label :picture, class:"control-label" %>

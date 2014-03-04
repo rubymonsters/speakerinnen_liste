@@ -1,0 +1,45 @@
+<div class="container profiles">
+  <h1 class="title-profiles">Medialinks</h1>
+    <div class="row">
+      <div class="span12">
+        <table class="table table-bordered table-hovered table-condensed">
+          <tr>
+            <th>Link</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th></th>
+            <th></th>
+          </tr>
+          <% if @profile %>
+          <% @profile.medialinks.each do |link| %>
+            <tr>
+              <td><%= link.url %></td>
+              <td><%= link.title %></td>
+              <td><%= link.description %></td>
+              <td><%= link_to "edit" %></td>
+              <td>
+                <%= link_to 'delete' %>
+              </td>
+            </tr>
+          <% end %>
+          <% end %>
+        </table>
+        <br />
+      </div>
+      <hr/>
+  </div>
+<%= p @profile %>
+<% if @profile %>
+-      <% if can_edit_profile?(current_profile, @profile) %>
+-        <%= form_for [@profile, @medialink] do |f| %>
+-          <%= f.label :url %>
+-          <%= f.text_field :url %>
+-          <%= f.label :title %>
+-          <%= f.text_area :title %>
+-          <%= f.label :description %>
+-          <%= f.text_area :description %>
+-          <%= f.submit %>
+-        <% end %>
+-      <% end %>
+<% end %>
+</div>
