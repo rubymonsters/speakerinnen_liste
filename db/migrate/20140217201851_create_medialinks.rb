@@ -1,8 +1,10 @@
 class CreateMedialinks < ActiveRecord::Migration
   def change
     create_table :medialinks do |t|
-      t.string :link
-      t.string :title
+      t.belongs_to :profile
+      t.text :url
+      t.text :title
+      t.text :description
 
       t.timestamps
     end

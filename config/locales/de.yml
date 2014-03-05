@@ -102,6 +102,8 @@ de:
       destroy: "Löschen"
       sure: "Bist Du sicher?"
       link: "Bitte 'http://' davor schreiben."
+    medialinks:
+      edit: "Verwalte deine Medialinks"
     edit:
       show: "Anzeigen"
       back: "Zurück"

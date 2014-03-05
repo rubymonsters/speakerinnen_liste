@@ -14,7 +14,7 @@
           if @search_query
             profile.topic_list.detect {|topic| topic.downcase == @search_query.downcase }
           else
-            profile.topic_list.first 
+            profile.topic_list.first
           end
         end
       %>

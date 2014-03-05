@@ -11,8 +11,8 @@ class Admin::TagsController < Admin::BaseController
     @tag = ActsAsTaggableOn::Tag.find(params[:id])
     if @tag.update_attributes(params[:tag])
       redirect_to admin_tags_path, notice: (I18n.t("flash.tags.updated"))
-    else 
-      render action: "edit" 
+    else
+      render action: "edit"
     end
   end
 

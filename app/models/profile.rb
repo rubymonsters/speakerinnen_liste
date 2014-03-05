@@ -18,8 +18,11 @@ class Profile < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
   attr_accessible :bio, :city, :email, :firstname, :languages, :lastname, :picture, :twitter, :remove_picture, :talks, :website
-  attr_accessible :content, :name, :topic_list, :media_url
+  attr_accessible :content, :name, :topic_list, :media_url, :medialinks
   acts_as_taggable_on :topics
+
+  has_many :medialinks
+  accepts_nested_attributes_for :medialinks
 
   before_save(:on => [:create, :update]) do
     self.twitter.gsub!(/^@/, '') if twitter

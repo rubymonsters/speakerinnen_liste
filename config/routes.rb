@@ -28,6 +28,7 @@ SpeakerinnenListe::Application.routes.draw do
     get '/', to: 'pages#home', as: :root
 
     resources :profiles, :except => [:new, :create] do
+      resources :medialinks
       get  'contact' => 'contact#new',    :as => 'contact', :on => :member
       post 'contact' => 'contact#create', :as => 'contact', :on => :member
     end
