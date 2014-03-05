@@ -90,7 +90,7 @@ en:
       sure: "Are you sure?"
       link: "Be sure to add 'http://'"
     medialinks:
-      edit: "Edit your medialinks"
+      edit: "Manage your medialinks"
     edit:
       show: "Show"
       back: "Back"
