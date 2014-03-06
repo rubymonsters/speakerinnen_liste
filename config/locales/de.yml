@@ -30,7 +30,7 @@ de:
       quote_text: "So ermutigen wir unsere Speakerinnen* und Event-Organisatoren, sich gegenseitig zu unterstützen."
       footer:
         about_title: "Über Speakerinnen*"
-        about: "Die Speakerinnen-Liste hat das Ziel, die Sichtbarkeit von Frauen* bei Konferenzen, Panels, Talkshows und überall da erhöhen, wo öffentlich gesprochen wird.<br>
+        about: "Die Speakerinnen-Liste hat das Ziel, die Sichtbarkeit von Frauen* bei Konferenzen, Panels, Talkshows und überall da zu erhöhen, wo öffentlich gesprochen wird.<br>
                 Hier können Veranstalter_innen Expertinnen finden, die kompetent über ihre Themen sprechen können und wollen.<br>
 
                 Frauen* können sich selbst mit ihren Themen und Referenzen in die Datenbank eintragen und so besser findbar werden."
@@ -55,7 +55,7 @@ de:
             Wir sind davon überzeugt, dass es viel mehr kompetente Frauen gibt, als auf den Bühnen sprechen.<br>
             Mädchen brauchen weibliche Vorbilder, Frauen brauchen die Gewissheit, dass eine andere - ihre - Sicht auf ein Thema genauso relevant ist.
             Veranstaltungen brauchen mehr Diversität.<br><br>
-            Die Speakerinnen-Liste ist die Idee vieler Frauen und wurde technisch als Lernprojekt der Rails Girls Berlin gebaut.<br>
+            Die Speakerinnen-Liste ist die Idee vieler Frauen und wurde technisch als Lernprojekt der Rubymonsters, einer Lerngruppe der Rails Girls Berlin, gebaut.<br>
             Die Rails Girls sind eine internationale Non-Profit-Gruppe, die Frauen motiviert, sich mit dem Programmieren zu beschäftigen.
             Das Ganze über wunderbare Workshops, Lerngruppen, Stipendien und eine angenehme Lern-Community.'
   layouts:

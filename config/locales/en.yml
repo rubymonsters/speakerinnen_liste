@@ -15,9 +15,9 @@ en:
         search_text: ""
         search: "Search"
       description: "Our Topics"
-      description_text: "We care about women-men ratio at tech conferences. We encourage women professionals to be more visible in tech industry."
+      description_text: "We care about women-men ratio at conferences. We encourage women professionals to be more visible in their professional environment."
       speaker_shoutout: "Do you have something interesting to say?"
-      speaker_text: "Get on the Speakerinnen List: "
+      speaker_text: "Get on the Speakerinnen* List: "
       speakers:
         new_speaker_heading: "Our Newest Speakers"
         speaker_text: "We care about women-men ration at tech conferences. We encourage women professionals to be more visible at tech conferences."
@@ -33,7 +33,7 @@ en:
         about_title: "About"
         about: 'We want a balanced speaker ratio on the conferences we go to. <br>
                 Most conferences in tech, marketing, digital media but also in other areas unfortunately have mostly male speakers,
-                moderators or coaches (see <a href="http://50prozent.noblogs.org">here</a> some examples).<br>
+                moderators or coaches.<br>
                 We want to change that ratio and help event organisers to find female speakers for their conferences.
                 And female speakers, moderators or coaches to be more visible on the web.'
         about_more: ">> more"
@@ -50,14 +50,23 @@ en:
       title: "Imprint"
     about:
       title: "About Speakerinnen*"
+      text: 'Viele Menschen stört, dass Männer viel häufiger als Experten zu Konferenzen eingeladen oder von den Medien befragt werden.
+            Biologisch gibt es dafür keinen Grund: Männer sind nicht klüger als Frauen.<br>
+            Wer Organisator_innen auf die Diskrepanz hinweist, bekommt oft die Reaktion, dass keine geeignete Frau zu finden war.
+            Wir sind davon überzeugt, dass es viel mehr kompetente Frauen gibt, als auf den Bühnen sprechen.<br>
+            Mädchen brauchen weibliche Vorbilder, Frauen brauchen die Gewissheit, dass eine andere - ihre - Sicht auf ein Thema genauso relevant ist.
+            Veranstaltungen brauchen mehr Diversität.<br><br>
+            Die Speakerinnen-Liste ist die Idee vieler Frauen und wurde technisch als Lernprojekt der Rubymonsters, einer Lerngruppe der Rails Girls Berlin, gebaut.<br>
+            Die Rails Girls sind eine internationale Non-Profit-Gruppe, die Frauen motiviert, sich mit dem Programmieren zu beschäftigen.
+            Das Ganze über wunderbare Workshops, Lerngruppen, Stipendien und eine angenehme Lern-Community.'
   home:
     index:
       title: "What is this?"
       text: "This is just an example text."
   layouts:
     application:
-      title: "Speakerinnen"
-      list: "Speakerinnen"
+      title: "Speakerinnen*"
+      list: "Speakerinnen*"
       contact: "Contact"
       impressum: "Legal Details"
       search: "Search"
