@@ -1,9 +1,18 @@
 <div class="container profiles">
   <h1 class="title-profiles">Medialinks</h1>
+  <span class="italic"><%= t(:medialink_description, scope: "profiles.medialinks") %></span>
+    <%= link_to(profiles_path) do %>
+      <div class="row pull-right">
+        <span class="icon icon-arrow-left"></span> SpeakerinnenListe |
+        <%= link_to(t(:show, scope: "profiles.edit"), @profile) %>
+      </div>
+    <% end %>
+  <br>
+  <br>
     <div class="row">
       <div class="span2">
         <%= link_to '<i class="icon-plus icon-white"></i> Hinzufügen'.html_safe,
-                  new_profile_medialink_path(@profile), class: "btn btn-success" %>
+                  new_profile_medialink_path(@profile), class: "btn btn-info" %>
         <br>
         <br>
       </div>

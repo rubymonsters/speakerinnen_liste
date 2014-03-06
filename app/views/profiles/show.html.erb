@@ -73,21 +73,23 @@
 
     <div class="span6 pull-right info-profiles-media text-white-bg">
 
-      <h5><%= t ".media" %></h5>
+      <% if @profile.medialinks.present? %>
+        <h5><%= t ".media" %></h5>
 
-      <ul>
-        <% @profile.medialinks.each do |medialink| %>
-        <li>
-          <h5>
-            <%= link_to('<i class="icon-share"></i> '.html_safe + medialink.title, medialink.url, class: "medialink") %>
-          </h5>
-        </li>
-        <li>
-          Beschreibung:<%= medialink.description %>
-        </li>
-        <hr>
-        <% end %>
-      </ul>
+        <ul>
+          <% @profile.medialinks.each do |medialink| %>
+          <li>
+            <h5>
+              <%= link_to('<i class="icon-share"></i> '.html_safe + medialink.title, medialink.url, class: "medialink") %>
+            </h5>
+          </li>
+          <li>
+            Beschreibung:<%= medialink.description %>
+          </li>
+          <hr>
+          <% end %>
+        </ul>
+      <% end %>
 
     </div>
   </div>
