@@ -15,7 +15,6 @@ class ProfilesController < ApplicationController
   def show
     @profile = Profile.find(params[:id])
     @message = Message.new
-    @medialink = @profile.medialinks.find(params[:id])
     # @medialink = Medialink.new(url: "http://")
   end
 
