@@ -15,7 +15,7 @@ class ProfilesController < ApplicationController
   def show
     @profile = Profile.find(params[:id])
     @message = Message.new
-    @medialink = Medialink.new(url: "http://")
+    # @medialink = Medialink.new(url: "http://")
   end
 
   # action, view, routes should be deleted
