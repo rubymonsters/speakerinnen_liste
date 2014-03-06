@@ -43,7 +43,7 @@ de:
         links_text: "Hier gibt es Links zu ähnlichen Projekten:"
         contact: "Kontakt"
         contact_link: "Schreibe uns eine E-Mail"
-        address: '<a href="http://twitter.com/rubymonsters">Twitter</a>'
+        address: '<a href="http://twitter.com/speakerinnen">Twitter</a>'
         github: '<a href="http://github.com/rubymonsters/speakerinnen_liste">GitHub</a>'
     imprint:
       title: "Impressum"
