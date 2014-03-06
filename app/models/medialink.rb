@@ -1,4 +1,6 @@
 class Medialink < ActiveRecord::Base
+  include AutoHtml
+
   attr_accessible :url, :title, :description
   belongs_to :profile
 
