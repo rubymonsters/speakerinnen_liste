@@ -1,0 +1,54 @@
+<div class="container profiles">
+  <h3>Admin::Medialinks für das Profil <%= @profile.fullname %></h3>
+      <div class="row pull-right">
+        <%= link_to(admin_profiles_path) do %>
+          <span class="icon icon-arrow-left"></span> List of Profiles
+        <% end %>
+        |
+
+        <%= link_to(t(:show, scope: "profiles.edit"), admin_profile_path(@profile)) %>
+      </div>
+  <br>
+  <br>
+    <div class="row">
+      <div class="span2">
+        <%= link_to '<i class="icon-plus icon-white"></i> Hinzufügen'.html_safe,
+                  new_admin_profile_medialink_path(@profile), class: "btn btn-info" %>
+        <br>
+        <br>
+      </div>
+      <div class="span10">
+      </div>
+    </div>
+    <div class="row">
+      <div class="span12">
+        <table class="table table-striped table-hovered">
+          <tr>
+      <!-- # TODO translation -->
+            <th>Link</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th></th>
+            <th></th>
+          </tr>
+          <% @medialinks.each do |medialink| %>
+            <tr>
+              <td><%= link_to medialink.url, medialink.url %></td>
+              <td><%= medialink.title %></td>
+              <td><%= medialink.description %></td>
+              <td><%= link_to '<i class="icon-pencil"></i> edit'.html_safe,
+                              edit_admin_profile_medialink_path(@profile, medialink) %></td>
+              <td>
+                <%= link_to '<i class="icon-remove"></i> delete'.html_safe,
+                            admin_profile_medialink_path(@profile, medialink),
+                            confirm: 'Are you sure?',
+                            method: :delete %>
+              </td>
+            </tr>
+          <% end %>
+        </table>
+        <br />
+      </div>
+      <hr/>
+  </div>
+</div>
