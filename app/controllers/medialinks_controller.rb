@@ -1,39 +1,38 @@
 class MedialinksController < ApplicationController
+
+  before_filter :fetch_profile_from_params
+  before_filter :ensure_own_medialinks
+
   def index
-    @profile    = current_profile
     @medialinks = @profile.medialinks.order(:created_at)
   end
 
   def new
-    @profile = current_profile
     @medialink = Medialink.new(url: 'http://')
   end
 
   def edit
-    @profile = current_profile
     @medialink = @profile.medialinks.find(params[:id])
   end
 
   def update
-    @profile = current_profile
-    @medialink = current_profile.medialinks.find(params[:id])
+    @medialink = @profile.medialinks.find(params[:id])
     if @medialink.update_attributes(params[:medialink])
       # TODO translation flash
-      redirect_to profile_medialinks_path(current_profile.id), notice: (I18n.t("flash.medialink.updated"))
+      redirect_to profile_medialinks_path(@profile), notice: (I18n.t("flash.medialink.updated"))
     else
       render action: "edit"
     end
   end
 
   def destroy
-    @medialink = current_profile.medialinks.find(params[:id])
+    @medialink = @profile.medialinks.find(params[:id])
     @medialink.destroy
       # TODO translation flash
-    redirect_to profile_medialinks_path(current_profile), notice: (I18n.t("flash.medialink.destroyed"))
+    redirect_to profile_medialinks_path(@profile), notice: (I18n.t("flash.medialink.destroyed"))
   end
 
   def create
-    @profile = current_profile
     @medialink = @profile.medialinks.build(params[:medialink])
     if @medialink.save
       # TODO translation flash
@@ -46,4 +45,15 @@ class MedialinksController < ApplicationController
     end
   end
 
+  protected
+
+  def fetch_profile_from_params
+    @profile = Profile.find(params[:profile_id])
+  end
+
+  def ensure_own_medialinks
+    if @profile != current_profile
+      redirect_to root_path, notice: 'Sorry, but you can not edit other peoples medialinks. OK?'
+    end
+  end
 end

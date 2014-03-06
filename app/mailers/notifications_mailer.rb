@@ -1,6 +1,6 @@
 class NotificationsMailer < ActionMailer::Base
-  default :from => "speakerInnen@gmail.com"
-  default :to => "speakerInnen@gmail.com"
+  default :from => "speakerinnen@lists.riseup.net"
+  default :to   => "speakerinnen@lists.riseup.net"
 
   def new_message(message, to)
     @message = message

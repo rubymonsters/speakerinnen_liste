@@ -46,15 +46,13 @@
         <%= t(:contact, scope: "profiles.profile") %>
       </a>
 
-      <% if can_edit_profile?(current_profile, @profile) %>
+      <% if current_profile == @profile %>
         <%= link_to(edit_profile_path(@profile)) do %>
           <div class="btn  btn-large buttons-modals">
             <span class="icon icon-edit"></span>
             <%= t(:edit, scope: "profiles.profile") %>
           </div>
         <% end %>
-      <% end %>
-      <% if can_edit_profile?(current_profile, @profile) %>
         <%= link_to(profile_medialinks_path(@profile)) do %>
           <div class="btn  btn-large buttons-modals">
             <span class="icon icon-edit"></span>
@@ -73,23 +71,22 @@
 
     <div class="span6 pull-right info-profiles-media text-white-bg">
 
-      <%# if @profile.medialinks.present? %>
+      <% if @profile.medialinks.any? %>
         <h5><%= t ".media" %></h5>
 
         <ul>
           <% @profile.medialinks.each do |medialink| %>
           <li>
             <h5>
-              <%= link_to('<i class="icon-share"></i> '.html_safe + medialink.title, medialink.url, class: "medialink") %>
+              <span class="medialink"> <%= medialink.title %>
             </h5>
-          </li>
-          <li>
-            Beschreibung:<%= medialink.description %>
+            <%= medialink.url_html %>
+            <%= medialink.description %>
           </li>
           <hr>
           <% end %>
         </ul>
-      <%# end %>
+      <% end %>
 
     </div>
   </div>

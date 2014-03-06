@@ -58,16 +58,25 @@ body {
   text-shadow:none;
 }
 
-
 .underline {
   display:inline-block;
   border-bottom:10px double rgba(255, 255, 255, 0.4);
 }
+<!-- Fließtext -->
 
 .italic {
   font-style:italic;
 }
 
+.italic a{
+  font-style:italic;
+  border-bottom:2px dotted #888;
+}
+
+.italic a:hover{
+  font-style:italic;
+  background: #d8d8d8;
+}
 .center {
   text-align:center;
 }
@@ -93,26 +102,22 @@ p {
   margin:6px 0px 12px 0px;
 }
 
-/*links*/
+<!-- /*links*/ -->
 
 a {
   color:#000000;
   text-decoration:none;
-  border-bottom: 2px dotted #999;
   list-style: none;
 }
 
 a:visited {
   color:#000000;
   text-decoration:none;
-  border-bottom: 2px dotted #999;
 }
 
 a:hover {
   color:#000000;
   text-decoration:none;
-  border-bottom: 2px dotted #999;
-  background: #d8d8d8;
 }
 
 a:focus {
@@ -136,11 +141,8 @@ a li, .topics a {
   border-radius: 2px;
   list-style: none;
   text-decoration: none;
-  background-color: #eaeaea;
   font-size: 1.5em;
   padding: 4px;
-
-
 }
 
 a li:hover, .topics a:hover {
@@ -400,10 +402,6 @@ header .right .header-btn  {
 .language {
   margin-left: -2em;
 }
- .header-btn a:hover {
-  border-bottom:1px dotted #ddd;
-}
-
 
 .white *{color:#444;}
 
@@ -572,6 +570,7 @@ box-shadow:inset 0px 1px 11px #999099;
 }
 
 .text-white-bg a{
+  border-bottom:2px dotted #888;
 }
 
 .text-white-bg a:hover{
@@ -598,6 +597,9 @@ box-shadow:inset 0px 1px 11px #999099;
   padding:12px 12px 20px 12px;
   margin: 10px 10px;
   color:#000;
+}
+
+.text-white-bg a{
 
 }
 

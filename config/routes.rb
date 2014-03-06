@@ -3,6 +3,7 @@ SpeakerinnenListe::Application.routes.draw do
   namespace :admin do
     resources :tags, :except => [:new, :create]
     resources :profiles do
+      resources :medialinks
       member do
         post "publish"
         post "unpublish"

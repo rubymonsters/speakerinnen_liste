@@ -6,24 +6,30 @@
         <th>
           Speakerinnen
         </th>
+        <th>
+          MedLi
+        </th>
       </tr>
     </thead>
     <tbody>
     <% @profiles.each do |profile|  %>
       <tr>
-        <td style="width:200px">
+        <td>
           <%= name_or_email(profile) %>
         </td>
-        <td style="width:60px">
+        <td>
+          <%= link_to(profile.medialinks.size, admin_profile_medialinks_path(profile)) %>
+        </td>
+        <td>
           <%= link_to t('.show'), admin_profile_path(profile) %>
         </td>
-        <td style="width:60px">
+        <td>
           <%= link_to t('.edit'), edit_admin_profile_path(profile) %>
         </td>
-        <td style="width:150px">
+        <td>
           <%= link_to t('.destroy'), admin_profile_path(profile), confirm: 'Are you sure?', method: :delete %>
         </td>
-        <td style="width:150px">
+        <td>
           <% if profile.published %>
             <%= form_for profile,{ url: unpublish_admin_profile_path(profile.id), method: "post" } do |f| %>
             <%= f.submit "Unpublish", class: "btn btn-small btn-warning" %>
@@ -34,7 +40,7 @@
             <% end %>
           <% end %>
         </td>
-        <td style="width:60px; color:red">
+        <td>
           <%= "Admin" if profile.admin %>
         </td>
       </tr>

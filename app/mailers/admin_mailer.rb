@@ -4,7 +4,7 @@ class AdminMailer < ActionMailer::Base
   def new_profile_confirmed(profile)
     @profile = profile
     @url  = 'https://github.com/rubymonsters/speakerinnen_liste/wiki/Approve-new-Speakerinnen*-so-they-get-published'
-    mail(to: 'tyranja@cassiopeia.uberspace.de', subject: 'Publish new Speakerinnen Profile')
+    mail(to: 'annalist@riseup.net', subject: 'Publish new Speakerinnen Profile')
   end
 
   def profile_published(profile)
