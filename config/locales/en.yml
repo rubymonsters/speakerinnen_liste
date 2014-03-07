@@ -15,7 +15,7 @@ en:
         search_text: ""
         search: "Search"
       description: "Our Topics"
-      description_text: "We care about women-men ratio at conferences. We encourage women professionals to be more visible in their professional environment."
+      description_text: "We feel strongly about a balanced representation of men and women on stage. We encourage women to become more visible in their profession and field of expertise."
       speaker_shoutout: "Do you have something interesting to say?"
       speaker_text: "Get on the Speakerinnen* List: "
       speakers:
@@ -27,19 +27,18 @@ en:
         heading: "Our Vision"
         content: "<p>We believe that female speakers should be easier to find for tech-y event organizers.</p><p>We believe that event organizers should have the best speakers at their events, regardless of the speakers’ gender identification.</p><p>We believe in collaboration and not competition, so we encourage our speakers and event organizers to support each other and help speakers speak better. </p>"
       quote: "We believe in collaboration and not competition"
-      quote_text: "so we encourage our speakers and event organizers to support each other
-       <p> and help speakers speak better."
+      quote_text: "so we encourage our speakers and event organizers to support each other <p> and help speakers speak better."
       footer:
         about_title: "About"
-        about: 'We want a balanced speaker ratio on the conferences we go to. <br>
-                Most conferences in tech, marketing, digital media but also in other areas unfortunately have mostly male speakers,
-                moderators or coaches.<br>
-                We want to change that ratio and help event organisers to find female speakers for their conferences.
-                And female speakers, moderators or coaches to be more visible on the web.'
+        about: |
+                The Speakerinnen* List aims to increase the visibility and participation of women at (but not limited to) conferences, panels and talkshows.<br>
+                Organizers and hosts can find experts, who gladly (and competently) share their knowledge. <br>
+                Women can register to our database with the themes they are interested in covering, an add references to their abilities.
         about_more: ">> more"
-        railsgirls: '8 women supported by 4 coaches coded this web application as a Rails Girls Berlin learning project.<br><br>
-                  <a href="http://railsgirlsberlin.de">Rails Girls</a> is an international not-for-profit group that aims to get women into programming
-                  with workshops, scholarships, and a safe learning community.'
+        railsgirls: |
+                8 women supported by 4 coaches coded this web application as a Rails Girls Berlin learning project.<br><br>
+                <a href="http://railsgirlsberlin.de">Rails Girls</a> is an international not-for-profit group that aims to get women into programming
+                with workshops, scholarships, and a safe learning community.
         links: "Links"
         links_text: "Here you find links to similar project:"
         contact: "Contact"
@@ -50,15 +49,11 @@ en:
       title: "Imprint"
     about:
       title: "About Speakerinnen*"
-      text: 'Viele Menschen stört, dass Männer viel häufiger als Experten zu Konferenzen eingeladen oder von den Medien befragt werden.
-            Biologisch gibt es dafür keinen Grund: Männer sind nicht klüger als Frauen.<br>
-            Wer Organisator_innen auf die Diskrepanz hinweist, bekommt oft die Reaktion, dass keine geeignete Frau zu finden war.
-            Wir sind davon überzeugt, dass es viel mehr kompetente Frauen gibt, als auf den Bühnen sprechen.<br>
-            Mädchen brauchen weibliche Vorbilder, Frauen brauchen die Gewissheit, dass eine andere - ihre - Sicht auf ein Thema genauso relevant ist.
-            Veranstaltungen brauchen mehr Diversität.<br><br>
-            Die Speakerinnen-Liste ist die Idee vieler Frauen und wurde technisch als Lernprojekt der Rubymonsters, einer Lerngruppe der Rails Girls Berlin, gebaut.<br>
-            Die Rails Girls sind eine internationale Non-Profit-Gruppe, die Frauen motiviert, sich mit dem Programmieren zu beschäftigen.
-            Das Ganze über wunderbare Workshops, Lerngruppen, Stipendien und eine angenehme Lern-Community.'
+      text: |
+            Many people are saddened by the fact that conferences and media invite more men than women. There is no explanation for this in Biology: men are not smarter than women.<br> 
+            Pointing out this discrepancy to organisers is often ill-received. They simply couldn't find women suitable for the job. We're convinced that there are more competent women, in addition to the ones who already courageously took the stage.<br>
+            Girls need female role-models and women need the confirmation that the opinion of others - theirs - on a certain topic, is just as valued. Events need more diversity.<br><br>
+            The Speakerinnen List sprung from the idea of many women, and is built technically as a study project by Rails Girls Berlin. Rails Girls is an international not-for-profit organization, that aims to get women excited about programming. With workshops, study groups and scholarships, Rails Girls is an extraordinary study community.
   home:
     index:
       title: "What is this?"
