@@ -57,7 +57,8 @@ de:
             Veranstaltungen brauchen mehr Diversität.<br><br>
             Die Speakerinnen-Liste ist die Idee vieler Frauen und wurde technisch als Lernprojekt der Rubymonsters, einer Lerngruppe der Rails Girls Berlin, gebaut.<br>
             Die <a href='http://railsgirlsberlin.de', target='_blank'>Rails Girls</a> sind eine internationale Non-Profit-Gruppe, die Frauen motiviert, sich mit dem Programmieren zu beschäftigen.
-            Das Ganze über wunderbare Workshops, Lerngruppen, Stipendien und eine angenehme Lern-Community."
+            Das Ganze über wunderbare Workshops, Lerngruppen, Stipendien und eine angenehme Lern-Community.<br><br>
+            <small>* Mit Frauen* meinen wir alle, die sich selbst als Frau verstehen.</small>"
   layouts:
     application:
       title: "Speakerinnen-Liste"

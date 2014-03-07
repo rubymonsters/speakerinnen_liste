@@ -54,7 +54,9 @@ en:
             Girls need female role-models and women need the confirmation that the opinion of others - theirs - on a certain topic, is just as valued. Events need more diversity.<br><br>
             The Speakerinnen List sprung from the idea of many women,
             and is built technically as a study project by Rails Girls Berlin.
-            Rails Girls is an international not-for-profit organization, that aims to get women excited about programming. With workshops, study groups and scholarships, Rails Girls is an extraordinary study community."
+            Rails Girls is an international not-for-profit organization,
+            that aims to get women excited about programming. With workshops, study groups and scholarships, Rails Girls is an extraordinary study community.<br>
+            <small>* Talking about woman* we mean everybody who defines herself as a woman.</small>"
   home:
     index:
       title: "What is this?"
