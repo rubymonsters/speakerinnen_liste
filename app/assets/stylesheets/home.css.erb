@@ -44,6 +44,7 @@ body {
   margin:0;
   font-size:1em;
   line-height:1.4;
+  background-color: whitesmoke;
 }
 
 ::-moz-selection {
@@ -54,7 +55,7 @@ body {
 
 ::selection {
   background:#ecd10c;
-  color:#222;
+  color:#3c3c3a;
   text-shadow:none;
 }
 
@@ -62,6 +63,7 @@ body {
   display:inline-block;
   border-bottom:10px double rgba(255, 255, 255, 0.4);
 }
+/* Fließtext */
 
 .italic {
   font-style:italic;
@@ -69,12 +71,15 @@ body {
 
 .italic a{
   font-style:italic;
-  border-bottom:2px dotted #888;
+  background-color: whitesmoke;
+  padding: 0px 4px;
+  /*border-bottom:2px dotted #888; */
 }
 
 .italic a:hover{
   font-style:italic;
   background: #d8d8d8;
+  padding: 0px 4px;
 }
 .center {
   text-align:center;
@@ -104,18 +109,17 @@ p {
 /*links*/
 
 a {
-  color:#000000;
+  color:#7B7B78;
   text-decoration:none;
   list-style: none;
 }
 
 a:visited {
-  color:#000000;
   text-decoration:none;
 }
 
 a:hover {
-  color:#000000;
+  color:#3c3c3a;
   text-decoration:none;
 }
 
@@ -128,30 +132,41 @@ a:hover,a:active {
 }
 
 a:active {
-  color:#000000;
+  color:#3c3c3a;
 }
 
 ul, li {
   list-style: none;
 }
 
-a li, .topics a {
+a li {
   transition: all 0.2s ease-in-out 0s;
-  border-radius: 2px;
   list-style: none;
   text-decoration: none;
   font-size: 1.5em;
-  padding: 4px;
+  padding: 0px 4px;
+  }
+
+  /* --------------Topics---------------- */
+.topics a {
+  font-size: 1.5em;
+  }
+
+a li, .topics li {
+  transition: all 0.2s ease-in-out 0s;
+  list-style: none;
+  text-decoration: none;
+  padding: 0px 8px;
+  color: 7b7b78;
 }
 
 a li:hover, .topics a:hover {
-  background-color: #e2e2e2;
-  border-left: solid 2px #c1c1c1;
   -webkit-transition: all .2s ease-in-out;
   -moz-transition: all .2s ease-in-out;
   -o-transition: all .2s ease-in-out;
-  padding: 4px;
-    font-size: 1.6em;
+  background-color: whitesmoke;
+  padding: 0px 8px;
+  font-size: 1.7em;
 }
 
 
@@ -358,7 +373,7 @@ header {
   right: 0; left: 0;
   font-weight:200;
   z-index:10;
-  color: #000;
+  color: #3c3c3a;
 }
 
 header a#logo {
@@ -385,11 +400,9 @@ header .right {
   float:right;
   padding:10px 0;
   font-weight: 400;
-  color:#000;
 }
 
 header .right .header-btn  {
-  color:#000;
   line-height:1.0em;
   font-family:'Merriweather',Georgia,serif;
   padding:15px 0;
@@ -402,10 +415,13 @@ header .right .header-btn  {
   margin-left: -2em;
 }
 
+
+
+
 .white *{color:#444;}
 
 .disciplines{padding:12px 0px 30px 0px;font-size:1.2em;}
-.disciplines a{display:inline-block;margin:0px 15px;color:#fff;}
+.disciplines a{display:inline-block;margin:0px 15px}
 .disciplines a:hover{opacity:0.8;}
 nav#slide-nav{width:40px;height:80px;margin:0 auto;position:fixed;bottom:0px;right:40px;z-index:25;}nav
 #slide-nav div{width:40px;height:40px;float:left;background-color:rgba(0, 0, 0, 0.8);background-repeat:no-repeat;background-position:center;-webkit-transition:opacity 0.15s ease;opacity:0.6;cursor:pointer;}nav#slide-nav div:hover{opacity:1;}
@@ -424,13 +440,13 @@ p.overview{font-size:200%;line-height:1.6em;}
   height: 90%;
 }
 
-#top {
+.top {
   background-color: #fff;
   height: 67px;
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
- -moz-box-shadow:inset 0px 1px 11px #999099;
--webkit-box-shadow:inset 0px 1px 11px #999099;
-box-shadow:inset 0px 1px 11px #999099;
+  -moz-box-shadow:inset 0px 1px 11px #999099;
+  -webkit-box-shadow:inset 0px 1px 11px #999099;
+  box-shadow:inset 0px 1px 11px #999099;
 }
 
 /*badge*/
@@ -547,7 +563,6 @@ box-shadow:inset 0px 1px 11px #999099;
 }
 
 .white-bg *{
-  color: #222;
   font-family: 'Merriweather',Georgia,serif;
   line-height:1.8em;
 }
@@ -561,29 +576,11 @@ box-shadow:inset 0px 1px 11px #999099;
   padding:0px;
 }
 
-.white-bg ul li a {
+.white-bg ul li {
   color:black;
   list-style-type:none;
   margin:0px 0px 8px 0px;
   padding:0px;
-}
-
-.text-white-bg a{
-  border-bottom:2px dotted #888;
-}
-
-.text-white-bg a:hover{
-}
-.white-bg a#find-more {
-  color:#444;
-  font-size:2.0em;
-  text-align:right;
-  display:block;
-  margin:20px auto 0px auto;
-}
-
-.white-bg a#find-more:hover{
-  opacity:0.8;
 }
 
 .white-bg li {
@@ -595,11 +592,19 @@ box-shadow:inset 0px 1px 11px #999099;
   background-color:rgba(255, 255, 255, 0.7);
   padding:12px 12px 20px 12px;
   margin: 10px 10px;
-  color:#000;
+  color:#3c3c3a;
 }
 
-.text-white-bg a{
+.text-white-bg a {
+  color:#3c3c3a;
+  padding: 0px 4px;
+  background-color:whitesmoke;
+}
 
+.text-white-bg a:hover {
+  color: whitesmoke;
+  background-color:#3c3c3a;
+  padding: 0px 4px;
 }
 
 .white-search {
@@ -656,11 +661,11 @@ margin-bottom: 0;
 
 .heading {margin: 10% 0 0 -15%;}
 
-.photo-bar.speakers {
+.speakerin-photo {
   background-image:url(<%=asset_path "maren_buehne.jpg"%>);
   }
 
-.photo-bar.about-disciplines {
+.coaching-photo {
   background-image:url(<%=asset_path "coaching.jpg"%>);
   }
 
@@ -668,7 +673,6 @@ margin-bottom: 0;
 .photo-bar .large{font-size:150%;}
 .photo-bar .small *{font-size:150%;}
 .photo-bar .photo-text{
-  color:#fff;
   font-family:'Merriweather',Georgia,serif;
   margin:80px 0px;
   }
@@ -775,25 +779,15 @@ input[type="text"] {
   margin:0;
 }
 
-a li, .disciplines .topics li {
+/* a li, .disciplines .topics li {
   transition: all 0.2s ease-in-out 0s;
   border-radius: 2px;
   list-style: none;
   text-decoration: none;
-  background-color: #eaeaea;
+  background-color: whitesmoke;
   padding: 4px;
   font-size: 1.6em;
-
-}
-
-a li:hover,  .topics a:hover {
-  background-color: #e2e2e2;
-  border-left: solid 2px #c1c1c1;
-  -webkit-transition: all .2s ease-in-out;
-  -moz-transition: all .2s ease-in-out;
-  -o-transition: all .2s ease-in-out;
-  font-size: 1.6em;
-}
+} */
 
 .copyright {
   text-align: right;
