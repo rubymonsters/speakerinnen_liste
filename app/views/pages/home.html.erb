@@ -39,18 +39,21 @@
   </div>
 </section>
 
-<div class="white-bg" id="speakers">
+<div class="white-bg">
   <div class="container">
-    <h1><%= t(:new_speaker_heading, scope: "pages.home.speakers") %></h1>
-    <h4><%= t(:speaker_text, scope: "pages.home.speakers") %></h4>
+    <h1>
+      <%= t(:new_speaker_heading, scope: "pages.home.speakers") %></h1>
+    <h4 class="text-white-bg">
+      <%= t(:speaker_text, scope: "pages.home.speakers") %>
+      <%= link_to t(:speaker_index, scope: "pages.home.speakers"), profiles_path, :id => "find-more" %>
+    </h4>
     <div class="row">
       <%= render :partial => "profiles/profile", :collection => @profiles %>
     </div>
-    <%= link_to t(:speaker_index, scope: "pages.home.speakers"), profiles_path, :id => "find-more" %>
   </div>
 </div>
 
-<div class="photo-bar about-disciplines">
+<div class="photo-bar coaching-photo">
   <div class="container large">
     <div class="photo-text">
       <span class="text-white-bg">
@@ -60,8 +63,6 @@
       <span class="text-white-bg  tagline-second">
         <%= t(:quote_text, scope: "pages.home").html_safe  %>
 
-        <!-- Anker für Topics -->
-        <a id="topics"></a>
 
       </span>
     </div>
@@ -70,6 +71,8 @@
     Copyright by Ute Mayer
   </div>
 </div>
+<!-- Anker für Topics -->
+<a id="topics"></a>
 <div class="white-bg">
   <div class="container">
     <h1><%= t(".description")%></h1>
@@ -91,7 +94,7 @@
   </div>
 </div>
 
-<div class="photo-bar speakers">
+<div class="photo-bar speakerin-photo">
   <div class="container large">
     <div class="photo-text">
         <span class="text-white-bg">
