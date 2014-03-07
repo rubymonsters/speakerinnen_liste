@@ -31,7 +31,7 @@ de:
       footer:
         about_title: "Über Speakerinnen*"
         about: "Die Speakerinnen-Liste hat das Ziel, die Sichtbarkeit von Frauen* bei Konferenzen, Panels, Talkshows und überall da zu erhöhen, wo öffentlich gesprochen wird.<br>
-                Hier können Veranstalter_innen Expertinnen finden, die kompetent über ihre Themen sprechen können und wollen.<br>
+                Hier können Veranstalter_innen Expertinnen* finden, die kompetent über ihre Themen sprechen können und wollen.<br>
 
                 Frauen* können sich selbst mit ihren Themen und Referenzen in die Datenbank eintragen und so besser findbar werden."
         about_more: ">> mehr"
@@ -43,8 +43,8 @@ de:
         links_text: "Hier gibt es Links zu ähnlichen Projekten:"
         contact: "Kontakt"
         contact_link: "Schreibe uns eine E-Mail"
-        address: '<a href="http://twitter.com/speakerinnen">Twitter</a>'
-        github: '<a href="http://github.com/rubymonsters/speakerinnen_liste">GitHub</a>'
+        address: "<a href='http://twitter.com/speakerinnen', target='_blank'>Twitter</a>"
+        github: "<a href='http://github.com/rubymonsters/speakerinnen_liste', target='_blank'>GitHub</a>"
     imprint:
       title: "Impressum"
     about:

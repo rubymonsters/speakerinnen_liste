@@ -82,6 +82,7 @@ body {
   background: #d8d8d8;
   padding: 0px 4px;
 }
+
 .center {
   text-align:center;
 }
@@ -225,8 +226,14 @@ pre,code,kbd,samp{font-family:monospace, serif;_font-family:'courier new',monosp
 pre{white-space:pre;white-space:pre-wrap;word-wrap:break-word;}
 q{quotes:none;}
 q:before,q:after{content:"";content:none;}
-small{font-size:85%;}
+
+small {
+  font-size:85%;
+  color:#000;
+  }
+
 sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline;}
+
 sup{top:-0.5em;}
 sub{bottom:-0.25em;}
 
@@ -577,8 +584,7 @@ p.overview{font-size:200%;line-height:1.6em;}
   padding:0px;
 }
 
-.white-bg ul li {
-  color:black;
+.white-bg ul li a{
   list-style-type:none;
   margin:0px 0px 8px 0px;
   padding:0px;

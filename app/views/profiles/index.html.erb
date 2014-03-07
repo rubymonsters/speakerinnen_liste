@@ -13,6 +13,13 @@
       <% end %>
     </div>
   </div>
+  <hr>
+  <br>
+  <div class='row'>
+    <div class='span12'>
+      <%= render partial: "profile", collection: @profiles %>
+    </div>
+  </div>
   <div class='row'>
     <div class='span12' id='topics_cloud'>
       <h3>Topics:</h3>
@@ -21,6 +28,5 @@
       <% end %>
     </div>
   </div>
-  <hr>
-  <%= render partial: "profile", collection: @profiles %>
 </div>
+<br>
