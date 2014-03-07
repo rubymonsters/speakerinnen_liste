@@ -11,7 +11,7 @@ de:
     home:
       search:
         heading: "Mehr Frauen auf die Bühnen!"
-        tagline: "Finde Rednerinnen, Referentinnen, Moderatorinnen & weibliche Coaches für Deine Konferenz"
+        tagline: "Finde Rednerinnen, Referentinnen & Moderatorinnen für Deine Konferenz"
         search_text: ""
         search: "Suche"
       description: "Unsere Themen"
@@ -25,7 +25,7 @@ de:
         topics: "Themenliste >>"
       mission_statement:
         heading: "Unsere Vision"
-        content: "<p>Wir finden, dass weibliche Speakerinnen* für Event-Organisatoren einfacher zu finden sein sollen.</p><p>Wir finden auch, dass Konferenzen die besten Speaker und Speakerinnen auf ihren Bühnen haben sollten, egal von welchem Geschlecht.</p><p>Wir glauben an Kollaboration und nicht an Wettbewerb. So ermutigen wir unsere Speakerinnen und Event-Organisatoren sich gegenseitig zu unterstützen.</p>"
+        content: "<p>Wir finden, dass weibliche Speakerinnen* für Event-Organisatoren einfacher zu finden sein sollen.</p><p>Wir finden auch, dass Konferenzen die besten Speaker und Speakerinnen auf ihren Bühnen haben sollten, egal von welchem Geschlecht.</p><p>Wir glauben an Kollaboration und nicht an Wettbewerb. Wir ermutigen unsere Speakerinnen und Event-Organisatoren sich gegenseitig zu unterstützen.</p>"
       quote: "Wir glauben an Kollaboration - nicht an Wettbewerb."
       quote_text: "So ermutigen wir unsere Speakerinnen* und Event-Organisatoren, sich gegenseitig zu unterstützen."
       footer:
@@ -35,9 +35,9 @@ de:
 
                 Frauen* können sich selbst mit ihren Themen und Referenzen in die Datenbank eintragen und so besser findbar werden."
         about_more: ">> mehr"
-        railsgirls: 'Die Speakerinnen-Liste wurde von 8 Frauen mit der Unterstützung von 4 Coaches als Lernprojekt der Rails Girls Berlin gebaut.<br><br>
-                    Die <a href="http://railsgirlsberlin.de">Rails Girls</a> sind eine internationale Non-Profit-Gruppe, die Frauen motiviert,
-                    sich mit dem Programmieren zu beschäftigen. Das Ganze über wunderbare Workshops, Lerngruppen, Stipendien und eine angenehme Lern-Community.'
+        railsgirls: "Die Speakerinnen-Liste wurde von 8 Frauen mit der Unterstützung von 4 Coaches als Lernprojekt der Rails Girls Berlin gebaut.<br><br>
+                    Die <a href='http://railsgirlsberlin.de', target='_blank'>Rails Girls</a> sind eine internationale Non-Profit-Gruppe, die Frauen motiviert,
+                    sich mit dem Programmieren zu beschäftigen. Das Ganze über wunderbare Workshops, Lerngruppen, Stipendien und eine angenehme Lern-Community."
         # about: "Wir wollen genauso viele weibliche wie männliche Speaker und Speakerinnen auf den Konferenzen, auf die wir gehen. Die meisten Konferenzen zu Tech-Themen, Marketing, Digital Media aber auch in anderen Bereichen haben leider meistens viel mehr männliche Referenten, Moderatoren oder Trainer (s. hier einige Beispiele http://50prozent.noblogs.org). Wir arbeiten auf eine ausgeglichene Verteilung hin und möchten Event-Organisatoren helfen, weibliche Speakerinnen für ihre Konferenzen zu finden. Außerdem wollen wir weibliche Speakerinnen, Moderatorinnen und Coaches im Web sichtbarer machen."
         links: "Links"
         links_text: "Hier gibt es Links zu ähnlichen Projekten:"
@@ -49,15 +49,15 @@ de:
       title: "Impressum"
     about:
       title: "Zum Hintergrund"
-      text: 'Viele Menschen stört, dass Männer viel häufiger als Experten zu Konferenzen eingeladen oder von den Medien befragt werden.
+      text: "Viele Menschen stört, dass Männer viel häufiger als Experten zu Konferenzen eingeladen oder von den Medien befragt werden.
             Biologisch gibt es dafür keinen Grund: Männer sind nicht klüger als Frauen.<br>
             Wer Organisator_innen auf die Diskrepanz hinweist, bekommt oft die Reaktion, dass keine geeignete Frau zu finden war.
             Wir sind davon überzeugt, dass es viel mehr kompetente Frauen gibt, als auf den Bühnen sprechen.<br>
             Mädchen brauchen weibliche Vorbilder, Frauen brauchen die Gewissheit, dass eine andere - ihre - Sicht auf ein Thema genauso relevant ist.
             Veranstaltungen brauchen mehr Diversität.<br><br>
             Die Speakerinnen-Liste ist die Idee vieler Frauen und wurde technisch als Lernprojekt der Rubymonsters, einer Lerngruppe der Rails Girls Berlin, gebaut.<br>
-            Die Rails Girls sind eine internationale Non-Profit-Gruppe, die Frauen motiviert, sich mit dem Programmieren zu beschäftigen.
-            Das Ganze über wunderbare Workshops, Lerngruppen, Stipendien und eine angenehme Lern-Community.'
+            Die <a href='http://railsgirlsberlin.de', target='_blank'>Rails Girls</a> sind eine internationale Non-Profit-Gruppe, die Frauen motiviert, sich mit dem Programmieren zu beschäftigen.
+            Das Ganze über wunderbare Workshops, Lerngruppen, Stipendien und eine angenehme Lern-Community."
   layouts:
     application:
       title: "Speakerinnen-Liste"
