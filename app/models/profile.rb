@@ -63,6 +63,14 @@ class Profile < ActiveRecord::Base
     "#{firstname} #{lastname}".strip
   end
 
+  def website_with_protocol
+    if website =~ /^https?:\/\//
+      return website
+    else
+      return 'http://'+ website
+    end
+  end
+
   def password_required?
     super && provider.blank?
   end

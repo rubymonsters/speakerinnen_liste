@@ -19,12 +19,10 @@
     </div>
   </div>
   <div class="span6">
-    <%# f.input :talks %>
-    <%# f.input :media_url, as: :text, input_html: { rows: 1, style: "width:250px" }, placeholder: t(:link, scope: "profiles.profile") %>
     <%= f.input :languages %>
     <%= f.input :city %>
     <%= f.input :twitter %>
-    <%= f.input :website %>
+    <%= f.input :website, placeholder: "http://" %>
 
     <div class="control-group">
       <%= f.label :picture, class:"control-label" %>

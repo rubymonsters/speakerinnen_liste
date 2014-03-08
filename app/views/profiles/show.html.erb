@@ -28,7 +28,7 @@
 
       <% if @profile.website.present? %>
         <h5><%= t(:website, scope: "profiles.profile") %></h5>
-        <span><%=link_to @profile.website,"http://#{@profile.website}", :target => '_blank' %></span>
+        <span><%=link_to @profile.website,@profile.website_with_protocol, :target => '_blank' %></span>
         <hr>
       <% end %>
 
