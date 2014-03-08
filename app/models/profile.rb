@@ -71,6 +71,10 @@ class Profile < ActiveRecord::Base
     end
   end
 
+  def self.random
+    order("RANDOM()")
+  end
+
   def password_required?
     super && provider.blank?
   end
