@@ -102,8 +102,7 @@
         </span>
         <br>
         <span class="text-white-bg  tagline-second">
-          <%= t(:speaker_text, scope: "pages.home").html_safe %>
-          <%= link_to(t(".signup"), new_profile_registration_path)  %>
+          <%= link_to(t(:speaker_text, scope: "pages.home").html_safe, new_profile_registration_path) %>
         </span>
     </div>
   </div>
