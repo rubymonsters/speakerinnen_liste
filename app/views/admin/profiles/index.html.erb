@@ -4,10 +4,21 @@
     <thead>
       <tr>
         <th>
+          <%= @profiles.size %>
           Speakerinnen
         </th>
         <th>
+          Erstellt am:
+        </th>
+        <th>
           MedLi
+        </th>
+        <th>
+        </th>
+        <th>
+        </th>
+        <th>
+          <%= @profiles.select {|profile| profile.published?}.size %> Published
         </th>
       </tr>
     </thead>
@@ -15,13 +26,13 @@
     <% @profiles.each do |profile|  %>
       <tr>
         <td>
-          <%= name_or_email(profile) %>
+          <%= link_to name_or_email(profile), admin_profile_path(profile) %>
+        </td>
+        <td>
+          <%= profile.created_at.strftime('%d.%m.%Y um %H:%M Uhr') %>
         </td>
         <td>
           <%= link_to(profile.medialinks.size, admin_profile_medialinks_path(profile)) %>
-        </td>
-        <td>
-          <%= link_to t('.show'), admin_profile_path(profile) %>
         </td>
         <td>
           <%= link_to t('.edit'), edit_admin_profile_path(profile) %>
