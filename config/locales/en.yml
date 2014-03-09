@@ -41,7 +41,7 @@ en:
         links_text: "Here you find links to similar projects:"
         contact: "Contact"
         contact_link: "Write us an email"
-        address: '<a href="http://twitter.com/speakerinnen">Twitter</a>'
+        address: "<a href='http://twitter.com/speakerinnen'>Twitter</a>"
         github: '<a href="http://github.com/rubymonsters/speakerinnen_liste">GitHub</a>'
     imprint:
       title: "Legal Details"
@@ -109,21 +109,21 @@ en:
     index:
       title: "Speakerinnen*"
       text: "<p>We believe that female speakers should be easier to find for event organizers.</p><p>We believe that event organizers should have the best speakers at their events, regardless of the speakers’ gender identification.</p><p>We believe in collaboration and not competition, so we encourage our speakers and event organizers to support each other and help speakers speak better.</p>"
-      search1: "You have searched for"
+      search1: "You searched for"
       search2: "and you have found"
       search3: "profiles."
     new:
       new_profile: "New Profile"
       back: "Back"
     show:
-      topics: 'My topics:'
-      languages: 'My languages:'
-      talks: 'Previous Talks:'
+      topics: "My topics:"
+      languages: "My languages:"
+      talks: "Previous Talks:"
       media: "Examples of previous talks:"
       bio: "Bio: "
       email: "Email: "
-      twitter: 'Twitter:'
-      contact: 'Write an email to'
+      twitter: "Twitter:"
+      contact: "Write an email to"
       back: "Back"
       edit: "Edit"
   flash:
@@ -131,15 +131,15 @@ en:
       created: 'Profile was successfully created.'
       updated: 'Profile was successfully updated.'
       destroyed: 'Profile was successfully deleted.'
-      no_permission: 'No permission to edit the profile'
+      no_permission: "You don’t have permission to edit the profile"
   activerecord:
     attributes:
       profile:
-        firstname: 'First Name'
+        firstname: "First Name"
         lastname: "Last Name"
         bio: "Bio"
-        topic_list: "Topics (seperated with comma or semicolon)"
-        tag_list: "Already existing Topics"
+        topic_list: "Topics (separated with commas or semicolons)"
+        tag_list: "Existing Topics"
         talks: "Talks"
         languages: "Languages"
         city: "City"
@@ -148,8 +148,8 @@ en:
   devise:
     registrations:
       edit:
-        account_from: "Account from"
-        password_needed: '(we need your current password in order to change it)'
+        account_from: "Account of"
+        password_needed: "(we need your current password in order to change it)"
         password_blank: "(leave blank if you do not want to change the password)"
         update: "Update Account"
         delete_account: "Delete my Account"
@@ -158,8 +158,8 @@ en:
         sure: "Are you sure?"
         confirmation: "Waiting for confirmation from: "
       new:
-        sign_up: "Signup"
+        sign_up: "Register"
         password: "Password"
     sessions:
       new:
-        login: "Login"
+        login: "Log in"
