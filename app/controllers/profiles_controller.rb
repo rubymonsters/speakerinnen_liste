@@ -4,7 +4,7 @@ class ProfilesController < ApplicationController
   before_filter :require_permision, :only=> [:edit, :destroy, :update]
 
   def index
-    scope = Profile.is_published
+    scope = Profile.is_published.order("created_at DESC")
     if params[:topic]
       @profiles = scope.tagged_with(params[:topic])
     else
