@@ -5,18 +5,13 @@
     <%= f.input :bio, input_html: { rows: 10, style: "width:250px"}  %>
     <%= f.input :topic_list %>
 
-    <div class="control-group">
-      <%= f.label :tag_list, class:"control-label" %>
-      <div class="controls tag_list">
-        <% ActsAsTaggableOn::Tag.uniq.pluck(:name).each do |tag_name| %>
-          <% if @profile.topic_list.include?(tag_name) %>
-            <span class="badge add-tag-trigger"><%= tag_name %></span>
-          <% else %>
-            <span class="badge badge-inverse add-tag-trigger"><%= tag_name %></span>
-          <% end %>
-        <% end %>
-      </div>
-    </div>
+    <%# Used by "tag-it" for autocompletion %>
+    <ul class="hidden" id="availableTags">
+      <% ActsAsTaggableOn::Tag.uniq.pluck(:name).each do |tag_name| %>
+        <li><%= tag_name %></li>
+      <% end %>
+    </ul>
+
   </div>
   <div class="span6">
     <%= f.input :languages %>
