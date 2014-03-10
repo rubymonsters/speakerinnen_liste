@@ -12,7 +12,7 @@
     <fieldset >
       <legend><%= t(:update, scope: "profiles.form")%></legend>
       <%= render partial: "shared/profile_formfields",
-                 locals: { form_type: :update_profile, f: f } %>
+                 locals: { form_type: :update_profile, f: f, profile: @profile } %>
     </fieldset>
   <% end %>
 

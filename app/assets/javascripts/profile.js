@@ -17,3 +17,10 @@ $(function() {
     }
   });
 });
+
+$(document).ready(function() {
+  var topics = $('#availableTags li').map(function(index, li) {
+    return $(li).text();
+  });
+  $('#profile_topic_list').tagit({availableTags: topics});
+});
