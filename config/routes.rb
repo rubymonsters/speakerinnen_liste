@@ -39,8 +39,8 @@ SpeakerinnenListe::Application.routes.draw do
     end
 
     #get 'sign_up' => 'profiles#new'
-    constraints(:host => /^speakerinnen.com/) do
-      root :to => redirect("http://www.speakerinnen.com")
+    constraints(:host => /^(speakerinnen-liste.herokuapp.com|speakerinnen.org)$/) do
+      root :to => redirect("http://www.speakerinnen.org")
       # match '/*path', :to => redirect {|params| "http://www.example.com/#{params[:path]}"}
     end
   end
