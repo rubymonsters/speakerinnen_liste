@@ -20,47 +20,43 @@ en:
       speaker_text: "Get on the Speakerinnen* List: "
       speakers:
         new_speaker_heading: "Our Newest Speakers"
-        speaker_text: "We care about women-men ratio at conferences. We encourage women professionals to be more visible conferences."
+        speaker_text: "No more excuses for panels without women!"
         speaker_index: "Browse all speakers >>"
         topics: "List of Topics >>"
       mission_statement:
         heading: "Our Vision"
-        content: "<p>We believe that female speakers should be easier to find for tech-y event organizers.</p><p>We believe that event organizers should have the best speakers at their events, regardless of the speakers’ gender identification.</p><p>We believe in collaboration and not competition, so we encourage our speakers and event organizers to support each other and help speakers speak better. </p>"
-      quote: "We believe in collaboration and not competition"
-      quote_text: "So we encourage our speakers and event organizers to support each other <p> and help speakers so improve their performance."
+        content: "<p>We believe that female speakers should be easier to find for event organizers.</p><p>We believe that event organizers should have the best speakers at their events, regardless of the speakers’ gender identification.</p><p>We believe in collaboration and not competition, so we encourage our speakers and event organizers to support each other and help speakers speak better.</p>"
+      quote: "We believe in collaboration — not competition"
+      quote_text: "So we encourage our speakers and event organizers to support each other and help speakers to improve their performance."
       footer:
-        about_title: "About"
-        about: "The Speakerinnen* List aims to increase the visibility and participation of women at (but not limited to) conferences, panels and talkshows.<br>
+        about_title: "About Speakerinnen"
+        about: "The Speakerinnen* List aims to increase the visibility and participation of women at (but not limited to) conferences, panels and talk shows.<br>
                 Organizers and hosts can find experts, who gladly (and competently) share their knowledge. <br>
-                Women can register to our database with the themes they are interested in covering, an add references to their abilities."
+                Women can register in our database with the topics they are interested in covering, and can add references to their abilities."
         about_more: ">> more"
         railsgirls: "8 women supported by 4 coaches coded this web application as a Rails Girls Berlin learning project.<br><br>
                 <a href='http://railsgirlsberlin.de', target='_blank'>Rails Girls</a> is an international not-for-profit group that aims to get women into programming
                 with workshops, scholarships, and a safe learning community."
         links: "Links"
-        links_text: "Here you find links to similar project:"
+        links_text: "Here you find links to similar projects:"
         contact: "Contact"
-        contact_link: "Write us an email."
-        address: '<a href="http://twitter.com/rubymonsters">Twitter</a>'
+        contact_link: "Write us an email"
+        address: "<a href='http://twitter.com/speakerinnen'>Twitter</a>"
         github: '<a href="http://github.com/rubymonsters/speakerinnen_liste">GitHub</a>'
     imprint:
-      title: "Imprint"
+      title: "Legal Details"
     about:
       title: "About Speakerinnen*"
-      text: "Many people are saddened by the fact that conferences and media invite more men than women.
-            There is no explanation for this in Biology: men are not smarter than women.<br>
-            Pointing out this discrepancy to organisers is often ill-received.
-            They simply couldn't find women suitable for the job. We're convinced that there are more competent women, in addition to the ones who already courageously took the stage.<br>
-            Girls need female role-models and women need the confirmation that the opinion of others - theirs - on a certain topic, is just as valued. Events need more diversity.<br><br>
-            The Speakerinnen List sprung from the idea of many women,
-            and is built technically as a study project by Rails Girls Berlin.
-            Rails Girls is an international not-for-profit organization,
-            that aims to get women excited about programming. With workshops, study groups and scholarships, Rails Girls is an extraordinary study community.<br>
-            <small>* Talking about woman* we mean everybody who defines herself as a woman.</small>"
-  home:
-    index:
-      title: "What is this?"
-      text: "This is just an example text."
+      text: "Many people don’t like it that men more often than women are invited as experts to conferences or to speak to the media.
+            There is no basis for this in biology: men are not smarter than women.<br>
+            Pointing out this discrepancy to organisers often gets the response is that no suitable woman was found.
+            We are convinced that there are more competent women out there to take the stage.<br>
+            Girls need female role-models and women need the confirmation that their option on a certain topic is just as valued as any other. Events need more diversity.<br><br>
+            The Speakerinnen List sprung from an idea of several women,
+            and was built as a learning project by Rubymonsters, a study group of Rails Girls Berlin.
+            <a href='http://railsgirlsberlin.de', target='_blank'>Rails Girls</a> is an international not-for-profit organization,
+            that aims to get women excited about programming. With workshops, study groups and scholarships, Rails Girls is an extraordinary learning community.<br>
+            <small>* When we say women* we mean everyone who defines herself as a woman.</small>"
   layouts:
     application:
       title: "Speakerinnen*"
@@ -71,9 +67,9 @@ en:
       logged_as: "Logged in as"
       my_profile: "My profile"
       account: "Account"
-      logout: "Logout"
-      signup: "Sign up as a speaker"
-      login: "Login"
+      logout: "Log out"
+      signup: "Register as a speaker"
+      login: "Log in"
   contact:
     form:
       name: "Your Name"
@@ -81,53 +77,53 @@ en:
       email: "Your Email Address"
       subject: "Your Email Subject"
       body: "Your Message"
-      body_placeholder: "Please give the details of where, when, with whom, and any other relevant information."
+      body_placeholder: "Please give a few details about your request: where, when, what, and other relevant information."
       notice: "Yay! Your message was sent."
       error: "Please fill out all the fields so that the speaker can have all the details she needs."
   profiles:
     form:
-      not_saved: 'prohibited this profile from being saved: '
-      profile_from: "Profile from"
-      delete_picture: 'Delete picture'
+      not_saved: "This profile could not be saved: "
+      profile_from: "Profile of"
+      delete_picture: "Delete photo"
       update: "Update profile"
-      copyright_photo: "Please take care that you have the copyrights of that photo."
+      copyright_photo: "Please make sure that you have all copyrights for this photo."
     profile:
-      topics: 'My topics:'
-      languages: 'My languages:'
-      talks: 'Previous Talks:'
+      topics: "My topics:"
+      languages: "My languages:"
+      talks: "Previous Talks:"
       media: "Examples of previous talks:"
       bio: "Bio:"
       contact: "Contact"
       website: "My Website/Blog:"
-      twitter: "My Twitternick:"
-      show: 'Show'
+      twitter: "My Twitter handle:"
+      show: "Show"
       edit: "Edit"
       destroy: "Delete"
       sure: "Are you sure?"
       link: "Be sure to add 'http://'"
     medialinks:
-      edit: "Manage your medialinks"
+      edit: "Manage your media links"
     edit:
       show: "Show"
       back: "Back"
     index:
       title: "Speakerinnen*"
-      text: "<p>We believe that female speakers should be easier to find for event organizers.</p><p>We believe that event organizers should have the best speakers at their events, regardless of the speakers’ gender identification.</p><p>We believe in collaboration and not competition, so we encourage our speakers and event organizers to support each other and help speakers speak better. </p>"
-      search1: "You have searched for"
+      text: "<p>We believe that female speakers should be easier to find for event organizers.</p><p>We believe that event organizers should have the best speakers at their events, regardless of the speakers’ gender identification.</p><p>We believe in collaboration and not competition, so we encourage our speakers and event organizers to support each other and help speakers speak better.</p>"
+      search1: "You searched for"
       search2: "and you have found"
       search3: "profiles."
     new:
       new_profile: "New Profile"
       back: "Back"
     show:
-      topics: 'My topics:'
-      languages: 'My languages:'
-      talks: 'Previous Talks:'
+      topics: "My topics:"
+      languages: "My languages:"
+      talks: "Previous Talks:"
       media: "Examples of previous talks:"
       bio: "Bio: "
       email: "Email: "
-      twitter: 'Twitter:'
-      contact: 'Write an email to'
+      twitter: "Twitter:"
+      contact: "Write an email to"
       back: "Back"
       edit: "Edit"
   flash:
@@ -135,15 +131,15 @@ en:
       created: 'Profile was successfully created.'
       updated: 'Profile was successfully updated.'
       destroyed: 'Profile was successfully deleted.'
-      no_permission: 'No permission to edit the profile'
+      no_permission: "You don’t have permission to edit the profile"
   activerecord:
     attributes:
       profile:
-        firstname: 'First Name'
+        firstname: "First Name"
         lastname: "Last Name"
         bio: "Bio"
-        topic_list: "Topics (seperated with comma or semicolon)"
-        tag_list: "Already existing Topics"
+        topic_list: "Topics (separated with commas or semicolons)"
+        tag_list: "Existing Topics"
         talks: "Talks"
         languages: "Languages"
         city: "City"
@@ -152,8 +148,8 @@ en:
   devise:
     registrations:
       edit:
-        account_from: "Account from"
-        password_needed: '(we need your current password in order to change it)'
+        account_from: "Account of"
+        password_needed: "(we need your current password in order to change it)"
         password_blank: "(leave blank if you do not want to change the password)"
         update: "Update Account"
         delete_account: "Delete my Account"
@@ -162,8 +158,8 @@ en:
         sure: "Are you sure?"
         confirmation: "Waiting for confirmation from: "
       new:
-        sign_up: "Signup"
+        sign_up: "Register"
         password: "Password"
     sessions:
       new:
-        login: "Login"
+        login: "Log in"
