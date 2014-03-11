@@ -29,13 +29,13 @@
       <% if @profile.website.present? %>
         <h5><%= t(:website, scope: "profiles.profile") %></h5>
         <span><%=link_to @profile.website,@profile.website_with_protocol, :target => '_blank' %></span>
-        <hr
+        <hr>
       <% end %>
 
-      <h5><%= t ".topics" %></h5>
+      <h5><%= t(:topics, scope: "profiles.profile") %></h5>
       <span><%= raw @profile.topic_list.map { |t| link_to t, topic_path(t) }.join('  ') %></span>
       <hr>
-      <h5><%= t ".languages" %></h5>
+      <h5><%= t(:languages, scope: "profiles.profile") %></h5>
       <span> <%= @profile.languages %></span>
       <hr>
 
