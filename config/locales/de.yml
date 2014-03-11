@@ -140,7 +140,7 @@ de:
         firstname: "Vorname"
         lastname: "Nachname"
         bio: "Bio"
-        topic_list: "Themen (getrennt mit Komma oder Semikolon)"
+        topic_list: "Themen  bitte gucke zuerst, ob Dein Thema schon vorhanden ist "
         tag_list: "schon vorhandene Tags"
         talks: "Vortragsthemen"
         languages: "Sprachen"

@@ -18,6 +18,11 @@
   <div class='row'>
     <%= render partial: "profile", collection: @profiles %>
   </div>
+  <div class="row">
+    <div class="span12">
+      <%= paginate @profiles %>
+    </div>
+  </div>
   <div class='row'>
     <div class='span12' id='topics-cloud'>
       <h3>

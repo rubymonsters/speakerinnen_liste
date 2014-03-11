@@ -4,11 +4,10 @@ class ProfilesController < ApplicationController
   before_filter :require_permision, :only=> [:edit, :destroy, :update]
 
   def index
-    scope = Profile.is_published.order("created_at DESC")
     if params[:topic]
-      @profiles = scope.tagged_with(params[:topic])
+      @profiles = Profile.is_published.tagged_with(params[:topic]).order("created_at DESC").page(params[:page]).per(24)
     else
-      @profiles = scope.all
+      @profiles = Profile.is_published.order("created_at DESC").page(params[:page]).per(24)
     end
   end
 
