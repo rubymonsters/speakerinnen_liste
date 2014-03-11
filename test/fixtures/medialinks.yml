@@ -1,9 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  link: MyString
+  url: MyString
   title: MyString
 
 two:
-  link: MyString
+  url: MyString
   title: MyString
