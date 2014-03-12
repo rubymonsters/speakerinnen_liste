@@ -30,13 +30,15 @@ en:
       quote_text: "So we encourage our speakers and event organizers to support each other and help speakers to improve their performance."
       footer:
         about_title: "About Speakerinnen"
-        about: "The Speakerinnen* List aims to increase the visibility and participation of women at (but not limited to) conferences, panels and talk shows.<br>
-                Organizers and hosts can find experts, who gladly (and competently) share their knowledge. <br>
-                Women can register in our database with the topics they are interested in covering, and can add references to their abilities."
+        about: |
+              The Speakerinnen* List aims to increase the visibility and participation of women at (but not limited to) conferences, panels and talk shows.<br>
+              Organizers and hosts can find experts, who gladly (and competently) share their knowledge. <br>
+              Women can register in our database with the topics they are interested in covering, and can add references to their abilities.
         about_more: ">> more"
-        railsgirls: "8 women supported by 4 coaches coded this web application as a Rails Girls Berlin learning project.<br><br>
-                <a href='http://railsgirlsberlin.de', target='_blank'>Rails Girls</a> is an international not-for-profit group that aims to get women into programming
-                with workshops, scholarships, and a safe learning community."
+        railsgirls: |
+              8 women supported by 4 coaches coded this web application as a Rails Girls Berlin learning project.<br><br>
+              <a href='http://railsgirlsberlin.de', target='_blank'>Rails Girls</a> is an international not-for-profit group that aims to get women into programming
+              with workshops, scholarships, and a safe learning community.
         links: "Links"
         links_text: "Here you find links to similar projects:"
         contact: "Contact"
@@ -47,7 +49,8 @@ en:
       title: "Legal Details"
     about:
       title: "About Speakerinnen*"
-      text: "Many people don’t like it that men more often than women are invited as experts to conferences or to speak to the media.
+      text: |
+            Many people don’t like it that men more often than women are invited as experts to conferences or to speak to the media.
             There is no basis for this in biology: men are not smarter than women.<br>
             Pointing out this discrepancy to organisers often gets the response is that no suitable woman was found.
             We are convinced that there are more competent women out there to take the stage.<br>
@@ -56,7 +59,7 @@ en:
             and was built as a learning project by Rubymonsters, a study group of Rails Girls Berlin.
             <a href='http://railsgirlsberlin.de', target='_blank'>Rails Girls</a> is an international not-for-profit organization,
             that aims to get women excited about programming. With workshops, study groups and scholarships, Rails Girls is an extraordinary learning community.<br>
-            <small>* When we say women* we mean everyone who defines herself as a woman.</small>"
+            <small>* When we say women* we mean everyone who defines herself as a woman.</small>
   layouts:
     application:
       title: "Speakerinnen*"
@@ -139,7 +142,7 @@ en:
         firstname: "First Name"
         lastname: "Last Name"
         bio: "Bio"
-        topic_list: "Topics (separated with commas or semicolons)"
+        topic_list: "Topics (please have a look if your topic already exists)"
         tag_list: "Existing Topics"
         talks: "Talks"
         languages: "Languages"
