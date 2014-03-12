@@ -30,14 +30,15 @@ de:
       quote_text: "So ermutigen wir unsere Speakerinnen* und Event-Organisatoren, sich gegenseitig zu unterstützen."
       footer:
         about_title: "Über Speakerinnen*"
-        about: "Die Speakerinnen-Liste hat das Ziel, die Sichtbarkeit von Frauen* bei Konferenzen, Panels, Talkshows und überall da zu erhöhen, wo öffentlich gesprochen wird.<br>
+        about: |
+                Die Speakerinnen-Liste hat das Ziel, die Sichtbarkeit von Frauen* bei Konferenzen, Panels, Talkshows und überall da zu erhöhen, wo öffentlich gesprochen wird.<br>
                 Hier können Veranstalter_innen Expertinnen* finden, die kompetent über ihre Themen sprechen können und wollen.<br>
-
-                Frauen* können sich selbst mit ihren Themen und Referenzen in die Datenbank eintragen und so besser findbar werden."
+                Frauen* können sich selbst mit ihren Themen und Referenzen in die Datenbank eintragen und so besser findbar werden.
         about_more: ">> mehr"
-        railsgirls: "Die Speakerinnen-Liste wurde von 8 Frauen mit der Unterstützung von 4 Coaches als Lernprojekt der Rails Girls Berlin gebaut.<br><br>
-                    Die <a href='http://railsgirlsberlin.de', target='_blank'>Rails Girls</a> sind eine internationale Non-Profit-Gruppe, die Frauen motiviert,
-                    sich mit dem Programmieren zu beschäftigen. Das Ganze über wunderbare Workshops, Lerngruppen, Stipendien und eine angenehme Lern-Community."
+        railsgirls: |
+                Die Speakerinnen-Liste wurde von 8 Frauen mit der Unterstützung von 4 Coaches als Lernprojekt der Rails Girls Berlin gebaut.<br><br>
+                Die <a href='http://railsgirlsberlin.de', target='_blank'>Rails Girls</a> sind eine internationale Non-Profit-Gruppe, die Frauen motiviert,
+                sich mit dem Programmieren zu beschäftigen. Das Ganze über wunderbare Workshops, Lerngruppen, Stipendien und eine angenehme Lern-Community.
         # about: "Wir wollen genauso viele weibliche wie männliche Speaker und Speakerinnen auf den Konferenzen, auf die wir gehen. Die meisten Konferenzen zu Tech-Themen, Marketing, Digital Media aber auch in anderen Bereichen haben leider meistens viel mehr männliche Referenten, Moderatoren oder Trainer (s. hier einige Beispiele http://50prozent.noblogs.org). Wir arbeiten auf eine ausgeglichene Verteilung hin und möchten Event-Organisatoren helfen, weibliche Speakerinnen für ihre Konferenzen zu finden. Außerdem wollen wir weibliche Speakerinnen, Moderatorinnen und Coaches im Web sichtbarer machen."
         links: "Links"
         links_text: "Hier gibt es Links zu ähnlichen Projekten:"
@@ -49,7 +50,8 @@ de:
       title: "Impressum"
     about:
       title: "Zum Hintergrund"
-      text: "Viele Menschen stört, dass Männer viel häufiger als Experten zu Konferenzen eingeladen oder von den Medien befragt werden.
+      text: |
+            Viele Menschen stört, dass Männer viel häufiger als Experten zu Konferenzen eingeladen oder von den Medien befragt werden.
             Biologisch gibt es dafür keinen Grund: Männer sind nicht klüger als Frauen.<br>
             Wer Organisator_innen auf die Diskrepanz hinweist, bekommt oft die Reaktion, dass keine geeignete Frau zu finden war.
             Wir sind davon überzeugt, dass es viel mehr kompetente Frauen gibt, als auf den Bühnen sprechen.<br>
@@ -58,7 +60,7 @@ de:
             Die Speakerinnen-Liste ist die Idee vieler Frauen und wurde technisch als Lernprojekt der Rubymonsters, einer Lerngruppe der Rails Girls Berlin, gebaut.<br>
             Die <a href='http://railsgirlsberlin.de', target='_blank'>Rails Girls</a> sind eine internationale Non-Profit-Gruppe, die Frauen motiviert, sich mit dem Programmieren zu beschäftigen.
             Das Ganze über wunderbare Workshops, Lerngruppen, Stipendien und eine angenehme Lern-Community.<br><br>
-            <small>* Mit Frauen* meinen wir alle, die sich selbst als Frau verstehen.</small>"
+            <small>* Mit Frauen* meinen wir alle, die sich selbst als Frau verstehen.</small>
   layouts:
     application:
       title: "Speakerinnen-Liste"
@@ -140,7 +142,7 @@ de:
         firstname: "Vorname"
         lastname: "Nachname"
         bio: "Bio"
-        topic_list: "Themen  bitte gucke zuerst, ob Dein Thema schon vorhanden ist "
+        topic_list: "Themen (bitte schaue zuerst, ob Dein Thema schon vorhanden ist)"
         tag_list: "schon vorhandene Tags"
         talks: "Vortragsthemen"
         languages: "Sprachen"
