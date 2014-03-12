@@ -6,6 +6,14 @@ The aim of the app is to provide a way for conference/event organisers to find a
 
 ==================
 
+Do you want to contribute?
+
+If you want to contribute, you can get an overview over the open issues. We are happy to answer your questions if you consider to help. All the issues have a link to their specification. If you want to work on an issue feel free to assign yourself.
+
+https://github.com/rubymonsters/speakerinnen_liste/issues/216
+
+==================
+
 User Stories
 
 Here the user is the organizer.
