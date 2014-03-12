@@ -49,7 +49,7 @@
             showAutocompleteOnFocus: false,
 
             // When enabled, quotes are unneccesary for inputting multi-word tags.
-            allowSpaces: false,
+            allowSpaces: true,
 
             // The below options are for using a single field instead of several
             // for our form values.
