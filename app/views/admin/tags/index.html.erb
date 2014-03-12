@@ -1,11 +1,12 @@
 <div class="container profiles">
   <h1 class="title-profiles">Admin interface for tags:</h1>
-    <div class="row"> 
+    <div class="row">
       <div class="span12">
         <table class="table table-bordered table-hovered table-condensed">
           <tr>
             <th>Name of Tag</th>
-            <th>Count</th>
+            <th>Count taggings</th>
+            <th>Count profiles</th>
             <th></th>
             <th></th>
           </tr>
@@ -14,9 +15,10 @@
             <tr>
               <td><%= tag.name %></td>
               <td><%= tag.taggings.count %></td>
+              <td><%= Profile.tagged_with(tag.name).count %></td>
               <td><%= link_to "edit", edit_admin_tag_path(tag.id) %></td>
               <td>
-                <%= link_to 'delete', admin_tag_path(tag.id), :method => :delete, 
+                <%= link_to 'delete', admin_tag_path(tag.id), :method => :delete,
                   :confirm => "Do you want to delete the tag #{tag.name}?" %>
               </td>
             </tr>
