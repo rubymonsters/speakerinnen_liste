@@ -17,14 +17,15 @@
 
 #alert {
   margin-top: 100px;
-  background-color: rgb(233, 170, 168);
+  background-color: #B4035D;
+  color: white;
   padding: 1em 0;
   text-align: center;
 }
 
 #notice {
   margin-top: 100px;
-  background-color: rgb(233, 212, 168);
+  background-color: #E8CD30;
   padding: 1em 0;
   text-align: center;
 }

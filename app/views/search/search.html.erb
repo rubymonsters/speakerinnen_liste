@@ -1,15 +1,23 @@
 <div class="container profiles">
-  <div class="span12">
-    <%= paginate @results %>
-    <% if @results.size == 0 %>
-      <p id="notice">
-        You searched for <b>"<%= params[:q] %>"</b> but we didn't find anything.
-      </p>
-    <% else %>
-      <p id="notice">
-        You searched for <b>"<%= params[:q] %>"</b> and we found <%= pluralize(@results.size, "result") %>.
-      </p>
-      <%= render :partial => "/profiles/profile", :collection => @results.map(&:profile) %>
-    <% end %>
+  <div class="row">
+    <div class="span12">
+      <% if @results.size == 0 %>
+        <p id="alert">
+          You searched for <strong>"<%= params[:q] %>"</strong> but unfortunately we didn't find anything.
+        </p>
+      <% else %>
+        <p id="notice">
+          You searched for <strong><%= params[:q] %></strong> and we found <%= pluralize(@results.total_count, "result") %>. Yeah!
+        </p>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <%= render :partial => "/profiles/profile", :collection => @results.map(&:profile) %>
+  </div>
+  <div class="row">
+    <div class="span12 text-center">
+      <%= paginate @results %>
+    </div>
   </div>
 </div>
