@@ -18,7 +18,7 @@ class Profile < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
   attr_accessible :bio, :city, :email, :firstname, :languages, :lastname, :picture, :twitter, :remove_picture, :talks, :website
-  attr_accessible :content, :name, :topic_list, :media_url, :medialinks
+  attr_accessible :content, :name, :topic_list, :media_url, :medialinks, :main_topic
   acts_as_taggable_on :topics
 
   has_many :medialinks
@@ -61,6 +61,10 @@ class Profile < ActiveRecord::Base
 
   def fullname
     "#{firstname} #{lastname}".strip
+  end
+
+  def main_topic_or_first_topic
+    main_topic.present? ? main_topic : topic_list.first
   end
 
   def website_with_protocol

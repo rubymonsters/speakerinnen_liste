@@ -97,7 +97,8 @@ CREATE TABLE profiles (
     uid character varying(255),
     media_url character varying(255),
     published boolean DEFAULT false,
-    website character varying(255)
+    website character varying(255),
+    main_topic character varying(255)
 );
 
 

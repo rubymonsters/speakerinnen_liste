@@ -10,7 +10,7 @@ namespace :db do
                     city: "Berlin",
                     topic_list: "Comics",
                     languages: "English, German",
-                    talks: "Republica",
+                    main_topic: "Republica",
                     picture: File.open(Dir.glob(File.join(Rails.root, 'app/assets/images', '*')).sample),
                     twitter: "example",
                    )
@@ -28,9 +28,9 @@ namespace :db do
       bio           = Faker::Lorem.paragraph
       city          = Faker::Address.city
       all_topics    = ["Ruby", "Rails", "Gender", "Netpolitics", "Opensource", "Encryption", "Batman"]
-      topic_list    = all_topics.sample(rand(4)+1).join(" ")
+      topic_list    = all_topics.sample(rand(4)+1).join(", ")
       all_languages = ["English", "German", "French", "Polish", "Italian", "Spanish", "Czech"]
-      languages     = all_languages.sample(rand(3)+1).join(", ") 
+      languages     = all_languages.sample(rand(3)+1).join(", ")
       all_talks = ["29C3", "Republica", "DEF CON", "Rails Camp", "EuRuKo2013", "Ruby User Group"]
       talks = all_talks.sample(rand(4)). join(", ")
       sample_image = File.open(Dir.glob(File.join(Rails.root, 'app/assets/images', '*')).sample)
