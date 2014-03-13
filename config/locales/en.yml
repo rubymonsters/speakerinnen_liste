@@ -89,7 +89,7 @@ en:
       profile_from: "Profile of"
       delete_picture: "Delete photo"
       update: "Update profile"
-      copyright_photo: "Please make sure that you have all copyrights for this photo."
+      copyright_photo: "Please make sure you use .jpg, .jpeg or .png and that you have all copyrights for this photo."
     profile:
       topics: "My topics:"
       languages: "My languages:"

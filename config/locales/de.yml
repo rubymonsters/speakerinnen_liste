@@ -90,7 +90,7 @@ de:
       profile_from: "Profil von"
       delete_picture: "Lösche das Foto"
       update: "Aktualisiere das Profil"
-      copyright_photo: "Bitte achte darauf, daß Du die Rechte zu diesem Foto besitzt!"
+      copyright_photo: "Bitte nutze .jpg, .jpeg oder .png und achte darauf, daß Du die Rechte zu diesem Foto besitzt!"
     profile:
       topics: 'Meine Themen:'
       languages: "Meine Sprache/n:"

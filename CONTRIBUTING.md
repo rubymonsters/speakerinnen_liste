@@ -4,6 +4,13 @@ So you want to make Speakerinnen Liste better. Great!
 
 Here are the steps to contribute:
 
+##Grab an issue
+
+Here, you'll have an overview over the open issues: https://github.com/rubymonsters/speakerinnen_liste/issues/216. We are happy to answer your questions if you consider to help. All the issues have a link to their specification. If you want to work on an issue feel free to assign yourself.
+
+If you have other ideas feel free to open an own issue!
+
+
 ## Working on your own branch
 
 1. [Fork](https://help.github.com/articles/fork-a-repo) the main repository.
