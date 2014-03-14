@@ -1,13 +1,15 @@
 <div class="container profiles">
   <div class="row">
-  <h1 class="title-profiles">Admin::Medialinks</h1>für die Speakerin: <strong><%= @profile.fullname %></strong>
+    <div class="span12" >
+      <h1 class="title-profiles">Admin::Medialinks</h1>für die Speakerin: <strong><%= @profile.fullname %></strong>
+    </div>
+  </div>
+  <div class="row">
     <div class="span12 text-right" >
       <%= link_to(t(:show, scope: "admin.profiles.index"), admin_profile_path(@profile), class:"btn btn-small") %>
       <%= link_to(t(:show_all, scope: "admin.profiles.index"), admin_profiles_path, class:"btn btn-small") %>
     </div>
   </div>
-  <br>
-  <br>
   <div class="row">
     <div class="span2">
       <%= link_to '<i class="icon-plus icon-white"></i> Hinzufügen'.html_safe,
