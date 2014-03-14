@@ -42,11 +42,11 @@
     <div style="clear:both">&nbsp;</div>
 
     <% if notice %>
-      <p id="notice"><%= notice %></p>
+      <p class="notice"><%= notice %></p>
     <% end %>
 
     <% if alert %>
-      <p id="alert"><%= Array(alert).join("<br>").html_safe %></p>
+      <p class="alert"><%= Array(alert).join("<br>").html_safe %></p>
     <% end %>
 
     <%= yield %>
