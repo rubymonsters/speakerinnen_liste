@@ -1,75 +1,80 @@
 <div class="container profiles">
   <h1 class="title-profiles">Admin::Profiles#show</h1>
-
-  <div class="row name">
-    <div class="span12">
-      <h2> <%= t ".profile_from" %> <%= @profile.fullname %> </h2>
+  <div class="row">
+    <div class="span12 text-right">
+      <%= link_to(t(:edit, scope: "admin.profiles.index"), edit_admin_profile_path(@profile), class:"btn btn-danger btn-small") %>
+      <%= link_to(t(:show_all, scope: "admin.profiles.index"), admin_profiles_path, class:"btn btn-small") %>
     </div>
   </div>
-  <br/>
-
   <div class="row">
-    <% if @profile.picture.present? %>
-      <div class="span4">
-        <%= image_tag(@profile.picture_url, :width => 300) %>  
-      </div>
-    <% end %>
-
-    <div class="span6">
-      <div class="header"><%= t ".firstname" %></div>
-      <%= @profile.firstname %>
-
-      <div class="header"><%= t ".lastname" %></div>
-      <%= @profile.lastname %>
-
-      <div class="header"><%= t ".bio" %></div>
-      <%= @profile.bio %>
-
-      <div class="header"><%= t ".city" %></div>
-      <%= @profile.city %>
-
-      <div class="header"><%= t ".topics" %></div>
-      <%= raw @profile.topic_list.map { |t| link_to t, topic_path(t) }.join(' ') %>
-
-      <div class="header"><%= t ".languages" %></div>
-      <%= @profile.languages %>
-
-      <p></p>
-
-      <div class="header"><%= t ".talks" %></div>
-      <%= @profile.talks %>
-
-      <div class="header"><%= t ".twitter" %></div>
-      <%= @profile.twitter %>
-      <p></p>
-
-
-    </div>
-  </div>
-
-  <br>
-
-  <div class="row">
-    <div class="span6">
-      <div class="header"><%= t ".bio" %></div>
-      <%= @profile.bio %>
-
-      <p></p>
-
-      <div class="header"><%= t ".email" %></div>
-      <%= mail_to @profile.email%>
-
-      <p></p>
-
-      <% if @profile.twitter.present? %>
-        <div class="header"><%= t ".twitter" %></div>
-        <%=link_to "@" + @profile.twitter, "http://twitter.com/#{@profile.twitter}" %>
+    <div class="span4">
+      <% if @profile.picture.present? %>
+        <%= image_tag(@profile.picture.profile.url , class: "photo") %>
+      <% else %>
+        <%= image_tag("avatar.jpg", :alt => "avatar", class: "photo") %>
       <% end %>
+      <div class="main-topic"> <%= @profile.main_topic %></div>
+    </div>
 
-      <p></p>
+    <div class="span8 text-profile">
+        <h5><%= t(:firstname, scope: "profiles.profile") %></h5>
+        <span><%= @profile.firstname if @profile.firstname %></span>
+        <hr>
 
-      <%= link_to(t(".back"), admin_profiles_path, class:"btn btn-inverse btn-small") %>
-      <%= link_to(t(".edit"), edit_admin_profile_path(@profile), class:"btn btn-danger btn-small") %>
+        <h5><%= t(:lastname, scope: "profiles.profile") %></h5>
+        <span><%= @profile.lastname if @profile.lastname %></span>
+        <hr>
+
+        <h5><%= t(:twitter, scope: "profiles.profile") %></h5>
+        <span><%=link_to "@" + @profile.twitter, "http://twitter.com/#{@profile.twitter}" if @profile.twitter %></span>
+        <hr>
+
+        <h5><%= t(:email, scope: "profiles.profile") %></h5>
+        <span><%= @profile.email if @profile.email %></span>
+        <hr>
+
+        <h5><%= t(:website, scope: "profiles.profile") %></h5>
+        <span><%=link_to @profile.website,@profile.website_with_protocol, :target => '_blank' if @profile.website %></span>
+        <hr>
+
+        <h5><%= t(:topics, scope: "profiles.profile") %></h5>
+        <span><%= raw @profile.topic_list.map { |t| link_to t, topic_path(t) }.join('  ') %></span>
+        <hr>
+
+        <h5><%= t(:languages, scope: "profiles.profile") %></h5>
+        <span> <%= @profile.languages if @profile.languages %></span>
+        <hr>
+
+        <h5><%= t(:city, scope: "profiles.profile") %></h5>
+        <span> <%= @profile.city if @profile.city %></span>
+        <hr>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="info-profiles-bio">
+      <div class="span6 info-profiles-text text-profile">
+        <h5> <%= t(:bio, scope: "profiles.profile") %></h5>
+        <span><%= simple_format(@profile.bio) if @profile.bio %></span>
+      </div>
+
+      <div class="span6 pull-right info-profiles-media text-profile">
+        <% if @profile.medialinks.any? %>
+          <h5><%= t(:media, scope: "profiles.profile") %></h5>
+          <ul>
+            <% @profile.medialinks.each do |medialink| %>
+            <li>
+              <h5>
+                <span class="medialink"><%= medialink.title %>
+              </h5>
+              <%= medialink.url_html %>
+              <%= medialink.description %>
+            </li>
+            <hr>
+            <% end %>
+          </ul>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

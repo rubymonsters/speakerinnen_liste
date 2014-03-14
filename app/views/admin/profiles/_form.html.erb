@@ -1,102 +1,49 @@
-<%= form_for @profile, url: admin_profile_path(@profile),
+<%= simple_form_for @profile, url: admin_profile_path(@profile),
                        html: { multipart: true, class: "form-horizontal well"} do |f| %>
   <%= render 'shared/error_messages' %>
 
-  <fieldset>
-    <legend><%= t ".profile_from" %> <%= @profile.firstname %></legend>
-    <div class="control-group">
-      <%= f.label :firstname, class:"control-label"%>
-      <div class="controls">
-        <%= f.text_field :firstname, class:"input-xlarge", id:"input01"%>
-      </div>
-    </div>
+  <div class="row">
+    <div class="span6 control-group-one">
+      <%= f.input :firstname %>
+      <%= f.input :lastname %>
+      <%= f.input :bio, input_html: { rows: 10, style: "width:250px"}  %>
+      <%= f.input :topic_list %>
+      <%= f.input :main_topic %>
 
-    <div class="control-group">
-      <%= f.label :lastname, class:"control-label" %>
-      <div class="controls">
-        <%= f.text_field :lastname, class:"input-xlarge", id:"input01" %>
-      </div>
-    </div>
-
-    <div class="control-group">
-      <%= f.label :bio, class:"control-label" %>
-      <div class="controls">
-        <%= f.text_area :bio, class:"input-xlarge", id:"input01" %>
-      </div>
-    </div>
-
-    <div class="control-group">
-      <%= f.label :topic_list, class:"control-label" %>
-      <div class="controls">
-        <%= f.text_field :topic_list, class:"input-xlarge", id:"tag-field-form" %>
-      </div>
-    </div>
-
-    <div class="control-group">
-      <%= f.label :main_topic, class:"control-label" %>
-      <div class="controls">
-        <%= f.text_field :main_topic, class:"input-xlarge", id:"input01" %>
-      </div>
-    </div>
-
-    <div class="control-group">
-      <%= f.label :tag_list, class:"control-label" %>
-      <div class="controls tag_list input-xlarge">
+      <%# Used by "tag-it" for autocompletion %>
+      <ul class="hidden" id="availableTags">
         <% ActsAsTaggableOn::Tag.uniq.pluck(:name).each do |tag_name| %>
-          <% if @profile.topic_list.include?(tag_name) %>
-            <span class="badge add-tag-trigger"><%= tag_name %></span>
-          <% else %>
-            <span class="badge badge-inverse add-tag-trigger"><%= tag_name %></span>
-          <% end %>
+          <li><%= tag_name %></li>
         <% end %>
-      </div>
-    </div>
+      </ul>
 
-    <div class="control-group">
-      <%= f.label :talks, class:"control-label" %>
-      <div class="controls">
-        <%= f.text_field :talks, class:"input-xlarge", id:"input01" %>
-      </div>
     </div>
+    <div class="span6">
+      <%= f.input :languages %>
+      <%= f.input :city %>
+      <%= f.input :twitter %>
+      <%= f.input :website, placeholder: "http://" %>
 
-    <div class="control-group">
-      <%= f.label :languages, class:"control-label" %>
-      <div class="controls">
-        <%= f.text_field :languages, class:"input-xlarge", id:"input01" %>
+      <div class="control-group">
+        <%= f.label :picture, class:"control-label" %>
+        <div class="controls">
+          <%= image_tag(@profile.picture_url, :width => 100) if @profile.picture.present? %>
+          <%= f.file_field :picture %>
+          <div class="hint">
+            <%= t(:copyright_photo, scope: "profiles.form") %>
+          </div>
+        </div>
       </div>
-    </div>
 
-    <div class="control-group">
-      <%= f.label :city, class:"control-label" %>
-      <div class="controls">
-        <%= f.text_field :city, class:"input-xlarge", id:"input01" %>
-      </div>
-    </div>
-
-    <div class="control-group">
-      <%= f.label :twitter, class:"control-label" %>
-      <div class="controls">
-        <%= f.text_field :twitter, class:"input-xlarge", id:"input01" %>
-      </div>
-    </div>
-
-    <div class="control-group">
-      <%= f.label :picture, class:"control-label" %>
-      <div class="controls">
-        <%= image_tag(@profile.picture_url, :width => 100) if @profile.picture.present? %>
-        <%= f.file_field :picture, class:"input-xlarge", id:"input01" %>
-        <br>
-        <br>
-        <label>
+      <div class="profile-delete-pic">
+        <div>
           <%= f.check_box :remove_picture %>
-          <%= t(:delete_picture, scope: 'profiles.form') %>
-        </label>
+          <%= t(:delete_picture, scope: "profiles.form") %>
+        </div>
       </div>
-    </div>
 
-    <div class="form-actions">
-      <%= f.submit("update", class:"btn btn-danger")%>
+      <%= f.input :email %>
+      <%= f.button :submit, t(:update, scope: "profiles.form"), class:"btn btn-danger" %>
     </div>
-    <%= link_to(t(".back"), admin_profiles_path, class:"btn btn-inverse btn-small") %>
-  </fieldset>
+  </div>
 <% end %>

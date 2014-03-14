@@ -4,8 +4,10 @@ de:
   admin:
     profiles:
       index:
-        show: "Details"
+        show: "Zeige das Profil"
+        show_all: "Zeige alle Speakerinnen"
         edit: "Bearbeiten"
+        back: "Zurück"
         destroy: "Löschen"
   pages:
     home:
@@ -92,6 +94,8 @@ de:
       update: "Aktualisiere das Profil"
       copyright_photo: "Bitte nutze .jpg, .jpeg oder .png und achte darauf, daß Du die Rechte zu diesem Foto besitzt!"
     profile:
+      firstname: 'Vorname:'
+      lastname: 'Nachname:'
       topics: 'Meine Themen:'
       languages: "Meine Sprache/n:"
       talks: "Vorträge gehalten über:"
@@ -106,6 +110,7 @@ de:
       destroy: "Löschen"
       sure: "Bist Du sicher?"
       link: "Bitte 'http://' davor schreiben."
+      email: "Email:"
     medialinks:
       edit: "Verwalte deine Referenzen"
       medialink_description: "Hier kannst du Du URLs von Deinen Vorträgen etc. eingeben, die als Referenz erscheinen werden."

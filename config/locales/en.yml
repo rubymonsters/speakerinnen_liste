@@ -4,8 +4,10 @@ en:
   admin:
     profiles:
       index:
-        show: "Show"
+        show: "Show the Profile"
+        show_all: "Show all Speakerinnen"
         edit: "Edit"
+        back: "Back"
         destroy: "Destroy"
   pages:
     home:
@@ -105,6 +107,7 @@ en:
       destroy: "Delete"
       sure: "Are you sure?"
       link: "Be sure to add 'http://'"
+      email: "Email:"
     medialinks:
       edit: "Manage your media links"
     edit:

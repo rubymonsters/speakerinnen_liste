@@ -9,19 +9,19 @@
   <body>
     <%= admin_header_class = 'admin' if controller_path =~ /admin\// %>
     <header class="top" class="<%= admin_header_class %>">
-      <%= link_to t(".title"), root_path, :id => "logo" %>
+    <%= link_to t(:title, scope: "layouts/application"), root_path, id: "logo" %>
       <div class="right">
         <div class="row">
           <div class="span4">
             <p>
               <% if profile_signed_in? %>
-                <%= link_to(t(".my_profile"), profile_path(current_profile))%> |
-                <%= link_to(t(".account"), edit_profile_registration_path) %> |
-                <%= link_to(t(".logout"), destroy_profile_session_path, method: :delete) %>
+                <%= link_to(t(:my_profile, scope: "layouts.application"), profile_path(current_profile))%> |
+                <%= link_to(t(:account, scope: "layouts.application"), edit_profile_registration_path) %> |
+                <%= link_to(t(:logout, scope: "layouts.application"), destroy_profile_session_path, method: :delete) %>
               <% else %>
-                <%= link_to(t(".signup"), sign_up_path) %>
+                <%= link_to(t(:signup, scope: "layouts.application"), sign_up_path) %>
                 |
-                <%= link_to(t(".login"), new_profile_session_path) %>
+                <%= link_to(t(:login, scope: "layouts.application"), new_profile_session_path) %>
               <% end %>
               <% if admin?(current_profile) %>
               |||
