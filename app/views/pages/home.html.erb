@@ -119,12 +119,13 @@
         <div class="span4">
           <h4><%= t(:about_title, scope:"pages.home.footer") %></h4>
           <span class="italic"><%= t(:about, scope:"pages.home.footer").html_safe %>
-             <%= link_to t(:about_more, scope: "pages.home.footer").html_safe, about_path %></span>
+             <%= link_to t(:more, scope: "pages.home.footer").html_safe, about_path %></span>
         </div>
 
         <div class="span4">
           <h4>Rails Girls</h4>
-          <span class="italic"><%= t(:railsgirls, scope: "pages.home.footer").html_safe %></span>
+          <span class="italic"><%= t(:railsgirls, scope: "pages.home.footer").html_safe %>
+          <a href="http://railsgirlsberlin.de", target="_blank"><%= t(:more, scope: "pages.home.footer").html_safe %></a></span>
         </div>
 
         <div class="span4">
@@ -154,7 +155,10 @@
                 </span>
             </li>
           </ul>
-          <%= link_to t(:link_more, scope: "pages.home.footer").html_safe, links_path %>
+          <br>
+          <span class="italic">
+            <%= link_to t(:more, scope: "pages.home.footer").html_safe, links_path %>
+          </span>
         </div>
       </div>
       <div class="clearfix"></div>

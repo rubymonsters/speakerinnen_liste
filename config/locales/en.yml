@@ -36,14 +36,14 @@ en:
               The Speakerinnen* List aims to increase the visibility and participation of women at (but not limited to) conferences, panels and talk shows.<br>
               Organizers and hosts can find experts, who gladly (and competently) share their knowledge. <br>
               Women can register in our database with the topics they are interested in covering, and can add references to their abilities.
-        about_more: ">> more"
+        more: ">> more"
         railsgirls: |
               8 women supported by 4 coaches coded this web application as a Rails Girls Berlin learning project.<br><br>
               <a href='http://railsgirlsberlin.de', target='_blank'>Rails Girls</a> is an international not-for-profit group that aims to get women into programming
               with workshops, scholarships, and a safe learning community.
         links: "Links"
         links_text: "Here you find links to similar projects:"
-        link_more: ">> more"
+        more: ">> more"
         contact: "Contact"
         contact_link: "Write us an email"
         address: "<a href='http://twitter.com/speakerinnen'>Twitter</a>"
