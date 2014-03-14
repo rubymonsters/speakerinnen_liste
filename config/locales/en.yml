@@ -142,7 +142,7 @@ en:
         firstname: "First Name"
         lastname: "Last Name"
         bio: "Bio"
-        topic_list: "Your Topics as Tags<br><small>(please have a look first, if your topic already exists)</small>"
+        topic_list: "Your Topics as Tags<br><small>(With comma seperated, please have a look first, if your topic already exists)</small>"
         main_topic: "Your Favorite<br><small>(Enter here your most favorite topic again.</small>"
         tag_list: "Existing Topics"
         talks: "Talks"
