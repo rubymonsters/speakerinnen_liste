@@ -43,6 +43,7 @@ en:
               with workshops, scholarships, and a safe learning community.
         links: "Links"
         links_text: "Here you find links to similar projects:"
+        link_more: ">> more"
         contact: "Contact"
         contact_link: "Write us an email"
         address: "<a href='http://twitter.com/speakerinnen'>Twitter</a>"
@@ -62,6 +63,8 @@ en:
             <a href='http://railsgirlsberlin.de', target='_blank'>Rails Girls</a> is an international not-for-profit organization,
             that aims to get women excited about programming. With workshops, study groups and scholarships, Rails Girls is an extraordinary learning community.<br>
             <small>* When we say women* we mean everyone who defines herself as a woman.</small>
+    links:
+      title: "Collection"
   layouts:
     application:
       title: "Speakerinnen*"

@@ -44,6 +44,7 @@ de:
         # about: "Wir wollen genauso viele weibliche wie männliche Speaker und Speakerinnen auf den Konferenzen, auf die wir gehen. Die meisten Konferenzen zu Tech-Themen, Marketing, Digital Media aber auch in anderen Bereichen haben leider meistens viel mehr männliche Referenten, Moderatoren oder Trainer (s. hier einige Beispiele http://50prozent.noblogs.org). Wir arbeiten auf eine ausgeglichene Verteilung hin und möchten Event-Organisatoren helfen, weibliche Speakerinnen für ihre Konferenzen zu finden. Außerdem wollen wir weibliche Speakerinnen, Moderatorinnen und Coaches im Web sichtbarer machen."
         links: "Links"
         links_text: "Hier gibt es Links zu ähnlichen Projekten:"
+        link_more: ">> mehr"
         contact: "Kontakt"
         contact_link: "Schreibe uns eine E-Mail"
         address: "<a href='http://twitter.com/speakerinnen', target='_blank'>Twitter</a>"
@@ -63,6 +64,8 @@ de:
             Die <a href='http://railsgirlsberlin.de', target='_blank'>Rails Girls</a> sind eine internationale Non-Profit-Gruppe, die Frauen motiviert, sich mit dem Programmieren zu beschäftigen.
             Das Ganze über wunderbare Workshops, Lerngruppen, Stipendien und eine angenehme Lern-Community.<br><br>
             <small>* Mit Frauen* meinen wir alle, die sich selbst als Frau verstehen.</small>
+    links:
+      title: "Sammlung"
   layouts:
     application:
       title: "Speakerinnen-Liste"
