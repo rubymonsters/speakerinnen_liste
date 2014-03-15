@@ -37,13 +37,13 @@ class ProfilesControllerTest < ActionController::TestCase
 
     get :edit, id: @profile2.id
     assert_response :redirect
-    assert_equal 'No permission to edit the profile', flash[:notice]
+    assert_equal 'Du hast nicht die Rechte, das Profil zu bearbeiten', flash[:notice]
   end
 
   test "should not be able edit profile if user is not signed in" do
     get :edit, id: @profile2.id
     assert_response :redirect
-    assert_equal 'No permission to edit the profile', flash[:notice]
+    assert_equal 'Du hast nicht die Rechte, das Profil zu bearbeiten', flash[:notice]
   end
 
   test "should get edit if user signed in as admin" do
@@ -64,7 +64,7 @@ class ProfilesControllerTest < ActionController::TestCase
 
     put :update, id: @profile.id, profile: { bio: @profile2.bio }
     assert_redirected_to profile_path(assigns(:profile))
-    assert_equal 'Profile was successfully updated.', flash[:notice]
+    assert_equal 'Profil wurde erfolgreich geändert.', flash[:notice]
   end
 
   test "should not be able to update different profile" do
@@ -88,7 +88,7 @@ class ProfilesControllerTest < ActionController::TestCase
 
     put :update, id: @profile.id, profile: { bio: @profile2.bio }
     assert_redirected_to profile_path(assigns(:profile))
-    assert_equal 'Profile was successfully updated.', flash[:notice]
+    assert_equal 'Profil wurde erfolgreich geändert.', flash[:notice]
   end
 
   # destroy
@@ -102,7 +102,7 @@ class ProfilesControllerTest < ActionController::TestCase
       delete :destroy, id: @profile.id
     end
     assert_redirected_to profiles_path
-    assert_equal 'Profile was successfully deleted.', flash[:notice]
+    assert_equal 'Profil wurde erfolgreich gelöscht.', flash[:notice]
   end
 
   test "should not be able to destroy different profile" do
@@ -132,7 +132,7 @@ class ProfilesControllerTest < ActionController::TestCase
       delete :destroy, id: @profile.id
     end
     assert_redirected_to profiles_path
-    assert_equal 'Profile was successfully deleted.', flash[:notice]
+    assert_equal 'Profil wurde erfolgreich gelöscht.', flash[:notice]
   end
 
   # test "twitter @ symbol correcty removed" do
