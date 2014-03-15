@@ -4,16 +4,14 @@ class InternationalisationTest < ActionController::IntegrationTest
 
   test "locale de works" do
     visit '/'
-    click_link('DE')
     assert page.has_content?('Anmelden'), 'in Application.html.erb translation does not work'
     assert page.has_content?('Suche'), 'in yield Translation does not work'
   end
 
   test "locale en works" do
     visit '/'
-    click_link('DE')
-    click_link('EN')
-    assert page.has_content?('Login'), 'in Application.html.erb translation does not work'
+    click_link('ENG')
+    assert page.has_content?('Log in'), 'in Application.html.erb translation does not work'
     assert page.has_content?('Search'), 'in yield Translation does not work'
   end
 end
