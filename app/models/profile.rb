@@ -1,5 +1,6 @@
 class Profile < ActiveRecord::Base
   include AutoHtml
+	translates :bio, :main_topic
 
   auto_html_for :media_url do
     html_escape

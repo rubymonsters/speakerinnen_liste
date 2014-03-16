@@ -63,6 +63,40 @@ ALTER SEQUENCE medialinks_id_seq OWNED BY medialinks.id;
 
 
 --
+-- Name: profile_translations; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE profile_translations (
+    id integer NOT NULL,
+    profile_id integer,
+    locale character varying(255) NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    main_topic character varying(255),
+    bio text
+);
+
+
+--
+-- Name: profile_translations_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE profile_translations_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: profile_translations_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE profile_translations_id_seq OWNED BY profile_translations.id;
+
+
+--
 -- Name: profiles; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -215,6 +249,13 @@ ALTER TABLE ONLY medialinks ALTER COLUMN id SET DEFAULT nextval('medialinks_id_s
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY profile_translations ALTER COLUMN id SET DEFAULT nextval('profile_translations_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY profiles ALTER COLUMN id SET DEFAULT nextval('profiles_id_seq'::regclass);
 
 
@@ -241,6 +282,14 @@ ALTER TABLE ONLY medialinks
 
 
 --
+-- Name: profile_translations_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY profile_translations
+    ADD CONSTRAINT profile_translations_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: profiles_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -262,6 +311,20 @@ ALTER TABLE ONLY taggings
 
 ALTER TABLE ONLY tags
     ADD CONSTRAINT tags_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: index_profile_translations_on_locale; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_profile_translations_on_locale ON profile_translations USING btree (locale);
+
+
+--
+-- Name: index_profile_translations_on_profile_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_profile_translations_on_profile_id ON profile_translations USING btree (profile_id);
 
 
 --
@@ -348,3 +411,7 @@ INSERT INTO schema_migrations (version) VALUES ('20140120190118');
 INSERT INTO schema_migrations (version) VALUES ('20140127194625');
 
 INSERT INTO schema_migrations (version) VALUES ('20140217201851');
+
+INSERT INTO schema_migrations (version) VALUES ('20140313204403');
+
+INSERT INTO schema_migrations (version) VALUES ('20140316183319');

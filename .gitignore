@@ -19,3 +19,6 @@
 /config/database.yml
 /db/structure.sql
 
+# to ignore already cached file:
+# git rm --cached filename_not_to_be_tracked
+

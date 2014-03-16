@@ -23,7 +23,7 @@ gem 'acts-as-taggable-on', github: 'rubymonsters/acts-as-taggable-on'
 gem 'auto_html', github: 'dejan/auto_html'
 gem 'mandrill-api'
 gem 'simple_form'
-
+gem 'globalize', '~> 3.1.0'
 group :development do
   gem 'letter_opener'
   gem 'quiet_assets' # mutes asset pipeline log messages
