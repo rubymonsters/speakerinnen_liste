@@ -37,6 +37,7 @@ class ProfilesController < ApplicationController
   # should reuse the devise view
   def edit
     @profile = Profile.find(params[:id])
+    build_missing_translations(@profile)
   end
 
   def update
@@ -44,6 +45,7 @@ class ProfilesController < ApplicationController
     if @profile.update_attributes(params[:profile])
       redirect_to @profile, notice: (I18n.t("flash.profiles.updated"))
     else current_profile
+      build_missing_translations(@profile)
       render action: "edit"
     end
   end
@@ -60,4 +62,15 @@ class ProfilesController < ApplicationController
       redirect_to profiles_url, notice: (I18n.t("flash.profiles.no_permission"))
     end
   end
+
+  private
+
+  def build_missing_translations(object)
+    I18n.available_locales.each do |locale|
+      unless object.translated_locales.include?(locale)
+        object.translations.build(locale: locale)
+      end
+    end
+  end
+
 end

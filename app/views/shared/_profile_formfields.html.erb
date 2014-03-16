@@ -4,7 +4,17 @@
     <%= f.input :lastname %>
     <%= f.input :bio, input_html: { rows: 10, style: "width:250px"}  %>
     <%= f.input :topic_list %>
-    <%= f.input :main_topic %>
+    <%#= f.input :main_topic %>
+
+    <%= f.fields_for :translations, @profile.translations.sort_by(&:locale) do |translation| %>
+      <div class='control-group string optional'>
+        <%= translation.hidden_field :locale %>
+        <%= translation.label :main_topic, "Main Topic (#{translation.object.locale})", class: 'string optional control-label' %>
+        <div class='controls'>
+          <%= translation.text_field :main_topic, class: 'string optional' %>
+        </div>
+      </div>
+    <% end %>
 
     <%# Used by "tag-it" for autocompletion %>
     <ul class="hidden" id="availableTags">

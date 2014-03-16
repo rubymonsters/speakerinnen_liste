@@ -1,6 +1,8 @@
 class Profile < ActiveRecord::Base
   include AutoHtml
-	translates :bio, :main_topic
+
+  translates :bio, :main_topic, :fallback_for_empty_translations => true
+  accepts_nested_attributes_for :translations
 
   auto_html_for :media_url do
     html_escape
@@ -20,10 +22,11 @@ class Profile < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
   attr_accessible :bio, :city, :email, :firstname, :languages, :lastname, :picture, :twitter, :remove_picture, :talks, :website
   attr_accessible :content, :name, :topic_list, :media_url, :medialinks, :main_topic
+  attr_accessible :translations_attributes
+
   acts_as_taggable_on :topics
 
   has_many :medialinks
-  accepts_nested_attributes_for :medialinks
 
   before_save(:on => [:create, :update]) do
     self.twitter.gsub!(/^@/, '') if twitter
