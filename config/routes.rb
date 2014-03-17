@@ -2,6 +2,7 @@ SpeakerinnenListe::Application.routes.draw do
 
   namespace :admin do
     resources :tags, :except => [:new, :create]
+    resources :categories
     resources :profiles do
       resources :medialinks
       member do
@@ -28,6 +29,8 @@ SpeakerinnenListe::Application.routes.draw do
     match 'links' => 'pages#links'
 
     get '/', to: 'pages#home', as: :root
+
+    resources :categories, :only => :show
 
     resources :profiles, :except => [:new, :create] do
       resources :medialinks
