@@ -25,7 +25,7 @@ class Profile < ActiveRecord::Base
   accepts_nested_attributes_for :medialinks
 
   before_save(:on => [:create, :update]) do
-    self.twitter.gsub!(/^@/, '') if twitter
+    self.twitter.gsub!(/^@|https|http:\/|\/www.|twitter.com\/|/, '') if twitter
   end
 
   def after_confirmation
