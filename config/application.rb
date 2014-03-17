@@ -36,6 +36,8 @@ module SpeakerinnenListe
     # globlalize fallback
     config.i18n.fallbacks = true
     config.i18n.available_locales = [:en, :de]
+
+    Globalize.fallbacks = {:en => [:en, :de], :de => [:de, :en]}
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"
 

@@ -105,7 +105,6 @@ CREATE TABLE profiles (
     firstname character varying(255),
     lastname character varying(255),
     email character varying(255),
-    bio text,
     languages character varying(255),
     city character varying(255),
     twitter character varying(255),
@@ -131,8 +130,7 @@ CREATE TABLE profiles (
     uid character varying(255),
     media_url character varying(255),
     published boolean DEFAULT false,
-    website character varying(255),
-    main_topic character varying(255)
+    website character varying(255)
 );
 
 
@@ -373,7 +371,7 @@ CREATE UNIQUE INDEX unique_schema_migrations ON schema_migrations USING btree (v
 -- Name: _RETURN; Type: RULE; Schema: public; Owner: -
 --
 
-CREATE RULE "_RETURN" AS ON SELECT TO searches DO INSTEAD SELECT profiles.id AS profile_id, array_to_string(ARRAY[profiles.bio, (profiles.firstname)::text, (profiles.lastname)::text, (profiles.languages)::text, (profiles.city)::text, array_to_string(array_agg(DISTINCT tags.name), ' '::text)], ' '::text) AS search_field FROM ((profiles LEFT JOIN taggings ON ((taggings.taggable_id = profiles.id))) LEFT JOIN tags ON ((tags.id = taggings.tag_id))) GROUP BY profiles.id;
+CREATE RULE "_RETURN" AS ON SELECT TO searches DO INSTEAD SELECT profiles.id AS profile_id, array_to_string(ARRAY[profiles.firstname, profiles.lastname, profiles.languages, profiles.city, (array_to_string(array_agg(DISTINCT tags.name), ' '::text))::character varying], ' '::text) AS search_field FROM ((profiles LEFT JOIN taggings ON ((taggings.taggable_id = profiles.id))) LEFT JOIN tags ON ((tags.id = taggings.tag_id))) GROUP BY profiles.id;
 
 
 --
@@ -415,3 +413,5 @@ INSERT INTO schema_migrations (version) VALUES ('20140217201851');
 INSERT INTO schema_migrations (version) VALUES ('20140313204403');
 
 INSERT INTO schema_migrations (version) VALUES ('20140316183319');
+
+INSERT INTO schema_migrations (version) VALUES ('20140317175539');
