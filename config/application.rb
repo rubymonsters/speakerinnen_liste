@@ -38,6 +38,10 @@ module SpeakerinnenListe
     config.i18n.fallbacks = {'de' => 'en', 'en' => 'de'}
     config.i18n.available_locales = [:en, :de]
 
+    config.i18n.enforce_available_locales = true
+    # or if one of your gem compete for pre-loading, use
+    I18n.config.enforce_available_locales = true
+
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"
 
