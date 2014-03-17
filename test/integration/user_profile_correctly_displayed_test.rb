@@ -1,10 +1,23 @@
 require 'test_helper'
 
 class UserProfileCorrectlyDisplayedTest < ActionDispatch::IntegrationTest
+  def setup
+    @horst = profiles(:one)
+    @horst.confirmed_at = Time.now
+    @horst.topic_list = "Fruehling"
+    @horst.published = true
+    @horst.save
+
+    @inge = profiles(:two)
+    @inge.confirmed_at = Time.now
+    @inge.topic_list = "Fruehling", " ", "Sommer"
+    @inge.published = true
+    @inge.save
+  end
 
   test "user profile is correctly displayed" do
-    visit '/'
-    page.first('div.speaker a').click
+    visit '/en'
+    click_link('Horst lastname')
 
     assert page.has_css?('h1', :count => 1), 'one headline of the fullname'
     assert page.has_content?('My topics')
@@ -14,7 +27,7 @@ class UserProfileCorrectlyDisplayedTest < ActionDispatch::IntegrationTest
 
   test "user profile is correctly displayed in german" do
     visit '/de'
-    page.first('div.speaker a').click
+    click_link('Inge lastname')
 
     assert page.has_css?('h1', :count => 1), 'one headline of the fullname'
     assert page.has_content?('Meine Themen')
