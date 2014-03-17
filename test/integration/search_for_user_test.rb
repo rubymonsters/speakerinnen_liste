@@ -10,7 +10,7 @@ class SearchForUserTest < ActionController::IntegrationTest
         :twitter => "tweeter",
         :bio => "weather, programming, sleeping, shopping, veggiemite and photos.")
 
-    visit('/')
+    visit('/en')
     fill_in('search-field', :with => 'weather')
     click_button('Search')
     # save_and_open_page

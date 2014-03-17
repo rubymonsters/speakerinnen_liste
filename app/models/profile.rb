@@ -29,7 +29,7 @@ class Profile < ActiveRecord::Base
   has_many :medialinks
 
   before_save(:on => [:create, :update]) do
-    self.twitter.gsub!(/^@/, '') if twitter
+    self.twitter.gsub!(/^@|https|http:\/|\/www.|twitter.com\/|/, '') if twitter
   end
 
   def after_confirmation
