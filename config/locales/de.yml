@@ -70,6 +70,7 @@ de:
   layouts:
     application:
       title: "Speakerinnen-Liste"
+      home: "HOME"
       list: "Speakerinnen"
       contact: "Kontakt"
       impressum: "Impressum"

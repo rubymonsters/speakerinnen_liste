@@ -69,7 +69,8 @@ en:
       title: "Collection"
   layouts:
     application:
-      title: "Speakerinnen*"
+      title: "Speakerinnen-List"
+      home: "HOME"
       list: "Speakerinnen*"
       contact: "Contact"
       impressum: "Legal Details"
