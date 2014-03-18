@@ -27,6 +27,8 @@ SpeakerinnenListe::Application.routes.draw do
     match 'impressum' => 'pages#impressum'
     match 'about' => 'pages#about'
     match 'links' => 'pages#links'
+    match 'faq' => 'pages#faq'
+    match 'press' => 'pages#press'
 
     get '/', to: 'pages#home', as: :root
 

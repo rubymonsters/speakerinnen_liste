@@ -50,6 +50,8 @@ de:
         github: "<a href='http://github.com/rubymonsters/speakerinnen_liste', target='_blank'>GitHub</a>"
     imprint:
       title: "Impressum"
+    press:
+      title: "Presse"
     about:
       title: "Zum Hintergrund"
       text: |
@@ -72,6 +74,9 @@ de:
       contact: "Kontakt"
       impressum: "Impressum"
       search: "Suchen"
+      faq: "FAQ"
+      about: "ABOUT"
+      press: "PRESSE"
       logged_as: "Eingeloggt als"
       my_profile: "Mein Profil"
       account: "Benutzerkonto"
