@@ -10,33 +10,31 @@
     <%= admin_header_class = 'admin' if controller_path =~ /admin\// %>
     <header class="top" class="<%= admin_header_class %>">
     <%= link_to t(:title, scope: "layouts/application"), root_path, id: "logo" %>
-      <div class="right">
-        <div class="row">
-          <div class="span4">
-            <p>
-              <% if profile_signed_in? %>
-                <%= link_to(t(:my_profile, scope: "layouts.application"), profile_path(current_profile))%> |
-                <%= link_to(t(:account, scope: "layouts.application"), edit_profile_registration_path) %> |
-                <%= link_to(t(:logout, scope: "layouts.application"), destroy_profile_session_path, method: :delete) %>
-              <% else %>
-                <%= link_to(t(:signup, scope: "layouts.application"), sign_up_path) %>
-                |
-                <%= link_to(t(:login, scope: "layouts.application"), new_profile_session_path) %>
-              <% end %>
-              <% if admin?(current_profile) %>
-              |||
-              <%= link_to "Admin", admin_root_path, {style: "color: #B4035D"} %>
-              <% end %>
-            </p>
+        <div class="row header pull-right">
+          <div class="span6">
+            <%= link_to(t(:faq, scope: "layouts.application"), faq_path)%> |
+            <%= link_to(t(:about, scope: "layouts.application"), about_path)%>|
+            <%= link_to(t(:press, scope: "layouts.application"), press_path)%>
           </div>
-          <div class="span1">
-            <p class="language">
-              <%= link_to_unless I18n.locale == :en, "ENG", locale: :en %> |
-              <%= link_to_unless I18n.locale == :de, "DEU", locale: :de %>
-            </p>
+          <div class="span6">
+            <% if profile_signed_in? %>
+              <%= link_to(t(:my_profile, scope: "layouts.application"), profile_path(current_profile))%> |
+              <%= link_to(t(:account, scope: "layouts.application"), edit_profile_registration_path) %> |
+              <%= link_to(t(:logout, scope: "layouts.application"), destroy_profile_session_path, method: :delete) %>
+            <% else %>
+              <%= link_to(t(:signup, scope: "layouts.application"), sign_up_path) %>
+              |
+              <%= link_to(t(:login, scope: "layouts.application"), new_profile_session_path) %>
+            <% end %>
+            <% if admin?(current_profile) %>
+            |||
+            <%= link_to "Admin", admin_root_path, {style: "color: #B4035D"} %>
+            <% end %>
+            ||||||
+            <%= link_to_unless I18n.locale == :en, "ENG", locale: :en %> |
+            <%= link_to_unless I18n.locale == :de, "DEU", locale: :de %>
           </div>
         </div>
-      </div>
     </header>
 
     <div style="clear:both">&nbsp;</div>
