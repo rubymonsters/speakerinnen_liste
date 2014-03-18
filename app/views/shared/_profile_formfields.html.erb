@@ -1,37 +1,7 @@
 <div class="row">
-  <div class="span6 control-group-one">
+  <div class="span6 control-group-one pull-left">
     <%= f.input :firstname %>
     <%= f.input :lastname %>
-    <%#= f.input :bio, input_html: { rows: 10, style: "width:250px"}  %>
-    <%= f.input :topic_list %>
-    <%#= f.input :main_topic %>
-
-    <%= f.fields_for :translations, @profile.translations.sort_by(&:locale) do |translation| %>
-      <div class='control-group string optional'>
-        <%= translation.hidden_field :locale %>
-        <%= translation.label :main_topic, "Main Topic (#{translation.object.locale})", class: 'string optional control-label' %>
-        <div class='controls'>
-          <%= translation.text_field :main_topic, class: 'string optional' %>
-        </div>
-      </div>
-      <div class='control-group string optional'>
-        <%= translation.hidden_field :locale %>
-        <%= translation.label :bio, "Bio (#{translation.object.locale})", class: 'string optional control-label' %>
-        <div class='controls'>
-          <%= translation.text_field :bio, class: 'string optional' %>
-        </div>
-      </div>
-    <% end %>
-
-    <%# Used by "tag-it" for autocompletion %>
-    <ul class="hidden" id="availableTags">
-      <% ActsAsTaggableOn::Tag.uniq.pluck(:name).each do |tag_name| %>
-        <li><%= tag_name %></li>
-      <% end %>
-    </ul>
-
-  </div>
-  <div class="span6">
     <%= f.input :languages %>
     <%= f.input :city %>
     <%= f.input :twitter %>
@@ -56,6 +26,39 @@
     </div>
 
     <%= f.input :email %>
+
+  </div>
+  <div class="span6">
+    <%= f.input :topic_list %>
+    <%= f.fields_for :translations, @profile.translations.sort_by(&:locale) do |translation| %>
+      <div class='control-group string optional'>
+        <%= translation.hidden_field :locale %>
+        <%= translation.label :main_topic, t(:main_topic, scope: "activerecord.attributes.profile", language:  @profile.language(translation)).html_safe, class: 'string optional control-label' %>
+        <div class='controls'>
+          <%= translation.text_field :main_topic, class: 'string optional' %>
+        </div>
+      </div>
+      <div class='control-group string optional'>
+        <%= translation.hidden_field :locale %>
+        <%= translation.label :bio, t(:bio, scope: "activerecord.attributes.profile", language: @profile.language(translation)).html_safe, class: 'string optional control-label' %>
+        <div class='controls'>
+          <%= translation.text_area :bio, rows: 5, class: 'string optional' %>
+        </div>
+        <% if translation.object.locale == :de %>
+          <hr>
+          <%= t(:translation, scope: "activerecord.attributes.profile").html_safe %>
+        <% end %>
+      </div>
+    <% end %>
+
+    <%# Used by "tag-it" for autocompletion %>
+    <ul class="hidden" id="availableTags">
+      <% ActsAsTaggableOn::Tag.uniq.pluck(:name).each do |tag_name| %>
+        <li><%= tag_name %></li>
+      <% end %>
+    </ul>
+
     <%= f.button :submit, t(:update, scope: "profiles.form"), class:"btn btn-info" %>
   </div>
 </div>
+

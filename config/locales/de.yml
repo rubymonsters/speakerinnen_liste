@@ -148,15 +148,16 @@ de:
       profile:
         firstname: "Vorname"
         lastname: "Nachname"
-        bio: "Bio"
+        bio: 'Deine Bio auf %{language}'
         topic_list: "Deine Themen als Tags<br><small>(Mit Komma getrennt. Bitte schaue zuerst, ob Dein Thema schon vorhanden ist)</small>"
-        main_topic: "Dein Lieblingsthema<br><small>(Trage Dein wichtigstes Thema hier noch mal ein.)</small>"
+        main_topic: "Dein Lieblingsthema<br>auf %{language}<small> (Trage Dein wichtigstes Thema hier noch mal ein.)</small>"
         tag_list: "schon vorhandene Tags"
         talks: "Vortragsthemen"
         languages: "Sprachen"
         city: "Stadt"
         twitter: "Twitter"
         picture: "Bild"
+        translation: "<strong>Falls Du Dein Lieblingsthema und Deine Bio auf Englisch <br>übersetzt haben möchtest, kannst Du es hier tun:</strong>"
   devise:
     registrations:
       edit:

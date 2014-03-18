@@ -147,15 +147,16 @@ en:
       profile:
         firstname: "First Name"
         lastname: "Last Name"
-        bio: "Bio"
+        bio: "Bio in %{language}"
         topic_list: "Your Topics as Tags<br><small>(With comma seperated, please have a look first, if your topic already exists)</small>"
-        main_topic: "Your Favorite<br><small>(Enter here your most favorite topic again.</small>"
+        main_topic: "Your Favorite in %{language}<br><small>(Enter here your most favorite topic again.</small>"
         tag_list: "Existing Topics"
         talks: "Talks"
         languages: "Languages"
         city: "City"
         twitter: "Twitter"
         picture: "Picture"
+        translation: "<strong>Your Favorite Topic and your Bio in English:</strong>"
   devise:
     registrations:
       edit:
