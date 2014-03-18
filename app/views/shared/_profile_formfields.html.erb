@@ -42,7 +42,7 @@
         <%= translation.hidden_field :locale %>
         <%= translation.label :bio, t(:bio, scope: "activerecord.attributes.profile", language: @profile.language(translation)).html_safe, class: 'string optional control-label' %>
         <div class='controls'>
-          <%= translation.text_area :bio, rows: 5, class: 'string optional' %>
+          <%= translation.text_area :bio, rows: 15, class: 'string optional' %>
         </div>
         <% if translation.object.locale == :de %>
           <hr>

@@ -147,12 +147,13 @@ en:
       profile:
         firstname: "First Name"
         lastname: "Last Name"
-        bio: "Bio in %{language}"
-        topic_list: "Your Topics as Tags<br><small>(With comma seperated, please have a look first, if your topic already exists)</small>"
-        main_topic: "Your Favorite in %{language}<br><small>(Enter here your most favorite topic again.</small>"
+        bio: "Bio in %{language}<br>
+        <small>(Here you can add a short or long bio of yourself. Please also add specific expertise and topics you feel comfortable speaking about. This will help organizers of events to understand whether you might be the person they're looking for)</small>"
+        topic_list: "Your Topics as Tags<br><small>(Please have a look first, if your topic already exists)</small>"
+        main_topic: "Your Favorite in %{language}<br><small>(Please choose one topic as your favorite topic and enter it again. It will be visible along with your name and picture at the speaker overview site)</small>"
         tag_list: "Existing Topics"
         talks: "Talks"
-        languages: "Languages"
+        languages: "Languages<br><small>(Please add programming languages in 'Topics', not here)</small>"
         city: "City"
         twitter: "Twitter"
         picture: "Picture"

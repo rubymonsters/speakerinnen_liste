@@ -115,7 +115,13 @@ de:
       email: "Email:"
     medialinks:
       edit: "Verwalte deine Referenzen"
-      medialink_description: "Hier kannst du Du URLs von Deinen Vorträgen etc. eingeben, die als Referenz erscheinen werden."
+      medialink_description: "Hier ist Platz für Beispiele von bereits gehaltenen Vorträgen, Podiumsdiskussionen, Fernsehauftritten uvm.<br> 
+      Am besten nicht zu viele - aber auch nicht zu wenige - möglichst verschiedene Referenzen: 
+      sie ermöglichen Veranstalter_innen, sich einen Eindruck von Dir zu machen.
+      <br>
+      YouTube-Clips können direkt abgespielt werden, alle anderen URLs erscheinen als klickbare Links. 
+      Es können auch Audio-Dateien oder Texte verlinkt werden!
+      <br>"
     edit:
       show: "Anzeigen"
       back: "Zurück"
@@ -148,12 +154,13 @@ de:
       profile:
         firstname: "Vorname"
         lastname: "Nachname"
-        bio: 'Deine Bio auf %{language}'
-        topic_list: "Deine Themen als Tags<br><small>(Mit Komma getrennt. Bitte schaue zuerst, ob Dein Thema schon vorhanden ist)</small>"
-        main_topic: "Dein Lieblingsthema<br>auf %{language}<small> (Trage Dein wichtigstes Thema hier noch mal ein.)</small>"
+        bio: 'Deine Bio auf %{language}<br>
+              <small>(Hier ist Platz für eine kurze oder auch längere Bio. Außerdem sollten hier Fachkenntnisse und mögliche Vortragsthemen genauer beschrieben werden. Das hilft Veranstalterinnen und Veranstaltern herauszufinden, ob Ihr die Richtigen für ihr Event sein könntet)</small>'
+        topic_list: "Deine Themen als Tags<br><small>(Bitte schaue zuerst, ob Dein Thema schon vorhanden ist)</small>"
+        main_topic: "Dein Lieblingsthema<br>auf %{language}<small>(Trage Dein wichtigstes Thema hier noch mal ein)</small>"
         tag_list: "schon vorhandene Tags"
         talks: "Vortragsthemen"
-        languages: "Sprachen"
+        languages: "Sprachen<br><small>(Programmiersprachen bitte bei Themen angeben, nicht hier)</small>"
         city: "Stadt"
         twitter: "Twitter"
         picture: "Bild"
