@@ -70,14 +70,14 @@ en:
   layouts:
     application:
       title: "Speakerinnen-List"
-      home: "HOME"
+      home: "Home"
       list: "Speakerinnen*"
       contact: "Contact"
       impressum: "Legal Details"
       search: "Search"
       faq: "FAQ"
-      about: "ABOUT"
-      press: "PRESS"
+      about: "About"
+      press: "Press"
       logged_as: "Logged in as"
       my_profile: "My profile"
       account: "Account"
