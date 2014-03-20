@@ -11,10 +11,10 @@
     <header class="top" class="<%= admin_header_class %>">
         <div class="row pull-right">
           <div class="span6 header-link">
-            <%= link_to(t(:home, scope: "layouts.application"), root_path, id: "logo")%> |
-            <%= link_to(t(:faq, scope: "layouts.application"), faq_path)%> |
-            <%= link_to(t(:about, scope: "layouts.application"), about_path)%> |
-            <%= link_to(t(:press, scope: "layouts.application"), press_path)%>
+            <%= link_to(t(:home, scope: "layouts.application"), root_path, id: "logo")%>
+            <%# link_to(t(:faq, scope: "layouts.application"), faq_path)%>
+            <%# link_to(t(:about, scope: "layouts.application"), about_path)%>
+            <%# link_to(t(:press, scope: "layouts.application"), press_path)%>
           </div>
           <div class="span4">
             <% if profile_signed_in? %>
