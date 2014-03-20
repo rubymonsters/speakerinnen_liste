@@ -45,7 +45,7 @@ de:
         links: "Links"
         links_text: "Hier gibt es Links zu ähnlichen Projekten:"
         contact: "Kontakt"
-        contact_link: "Schreibe uns eine E-Mail"
+        contact_link: "E-Mail"
         address: "<a href='http://twitter.com/speakerinnen', target='_blank'>Twitter</a>"
         github: "<a href='http://github.com/rubymonsters/speakerinnen_liste', target='_blank'>GitHub</a>"
     imprint:
@@ -118,7 +118,7 @@ de:
       destroy: "Löschen"
       sure: "Bist Du sicher?"
       link: "Bitte 'http://' davor schreiben."
-      email: "E-mail:"
+      email: "E-Mail:"
     medialinks:
       edit: "Verwalte deine Referenzen"
       medialink_description: "Hier ist Platz für Beispiele von bereits gehaltenen Vorträgen, Podiumsdiskussionen, Fernsehauftritten uvm.<br> 

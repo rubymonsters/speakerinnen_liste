@@ -45,7 +45,7 @@ en:
         links_text: "Here you find links to similar projects:"
         more: ">> more"
         contact: "Contact"
-        contact_link: "Write us an email"
+        contact_link: "Email"
         address: "<a href='http://twitter.com/speakerinnen'>Twitter</a>"
         github: '<a href="http://github.com/rubymonsters/speakerinnen_liste">GitHub</a>'
     imprint:
