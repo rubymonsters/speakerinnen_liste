@@ -88,7 +88,7 @@ de:
     form:
       name: "Dein Name"
       name_placeholder: ""
-      email: "Deine Email-Adresse"
+      email: "Deine E-mail-Adresse"
       subject: "Deine Betreffzeile"
       body: "Deine Nachricht"
       body_placeholder: "Bitte gib ein paar Details zu Deiner Anfrage: Wo, wann, was und andere relevante Informationen."
@@ -118,7 +118,7 @@ de:
       destroy: "Löschen"
       sure: "Bist Du sicher?"
       link: "Bitte 'http://' davor schreiben."
-      email: "Email:"
+      email: "E-mail:"
     medialinks:
       edit: "Verwalte deine Referenzen"
       medialink_description: "Hier ist Platz für Beispiele von bereits gehaltenen Vorträgen, Podiumsdiskussionen, Fernsehauftritten uvm.<br> 
@@ -144,9 +144,9 @@ de:
       talks: "Vorträge gehalten über:"
       media: "Meine Vorträge:"
       bio: "Bio:"
-      email: "Email:"
+      email: "E-mail:"
       twitter: "Twitter:"
-      contact: "Schreibe eine Email an"
+      contact: "Schreibe eine E-mail an"
       back: "Zurück"
       edit: "Bearbeiten"
   flash:
@@ -171,7 +171,7 @@ de:
         city: "Stadt"
         twitter: "Twitter"
         picture: "Bild"
-        translation: "<strong>Falls Du Dein Lieblingsthema und Deine Bio auf Englisch <br>übersetzt haben möchtest, kannst Du es hier tun:</strong>"
+        translation: "<strong>Hier kannst Du Dein Hauptthema und Deine Bio auf Deutsch und Englisch eintragen:</strong>"
   devise:
     registrations:
       edit:

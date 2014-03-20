@@ -163,7 +163,7 @@ en:
         city: "City"
         twitter: "Twitter"
         picture: "Picture"
-        translation: "<strong>Your Favorite Topic and your Bio in English:</strong>"
+        translation: "<strong>You can fill in your maintopic and your bio both in German and English:</strong>"
   devise:
     registrations:
       edit:
