@@ -31,7 +31,7 @@ de:
       quote: "Wir glauben an Kollaboration - nicht an Wettbewerb."
       quote_text: "So ermutigen wir unsere Speakerinnen* und Event-Organisatoren, sich gegenseitig zu unterstützen."
       footer:
-        about_title: "Über Speakerinnen*"
+        about_title: "Über Speakerinnen*-Liste"
         about: |
                 Die Speakerinnen-Liste hat das Ziel, die Sichtbarkeit von Frauen* bei Konferenzen, Panels, Talkshows und überall da zu erhöhen, wo öffentlich gesprochen wird.<br>
                 Hier können Veranstalter_innen Expertinnen* finden, die kompetent über ihre Themen sprechen können und wollen.<br>
@@ -42,6 +42,8 @@ de:
                 Die <a href='http://railsgirlsberlin.de', target='_blank'>Rails Girls</a> sind eine internationale Non-Profit-Gruppe, die Frauen motiviert,
                 sich mit dem Programmieren zu beschäftigen. Das Ganze über wunderbare Workshops, Lerngruppen, Stipendien und eine angenehme Lern-Community.
         # about: "Wir wollen genauso viele weibliche wie männliche Speaker und Speakerinnen auf den Konferenzen, auf die wir gehen. Die meisten Konferenzen zu Tech-Themen, Marketing, Digital Media aber auch in anderen Bereichen haben leider meistens viel mehr männliche Referenten, Moderatoren oder Trainer (s. hier einige Beispiele http://50prozent.noblogs.org). Wir arbeiten auf eine ausgeglichene Verteilung hin und möchten Event-Organisatoren helfen, weibliche Speakerinnen für ihre Konferenzen zu finden. Außerdem wollen wir weibliche Speakerinnen, Moderatorinnen und Coaches im Web sichtbarer machen."
+        press: "Wir in der Presse"
+        faq: "FAQs"
         links: "Links"
         links_text: "Hier gibt es Links zu ähnlichen Projekten:"
         contact: "Kontakt"
@@ -146,7 +148,7 @@ de:
       bio: "Bio:"
       email: "E-mail:"
       twitter: "Twitter:"
-      contact: "Schreibe eine E-mail an"
+      contact: "E-mail"
       back: "Zurück"
       edit: "Bearbeiten"
   flash:

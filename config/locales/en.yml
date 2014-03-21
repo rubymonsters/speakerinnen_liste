@@ -31,7 +31,7 @@ en:
       quote: "We believe in collaboration — not competition"
       quote_text: "So we encourage our speakers and event organizers to support each other and help speakers to improve their performance."
       footer:
-        about_title: "About Speakerinnen"
+        about_title: "About Speakerinnen*-List"
         about: |
               The Speakerinnen* List aims to increase the visibility and participation of women at (but not limited to) conferences, panels and talk shows.<br>
               Organizers and hosts can find experts, who gladly (and competently) share their knowledge. <br>
@@ -41,6 +41,8 @@ en:
               8 women supported by 4 coaches coded this web application as a Rails Girls Berlin learning project.<br><br>
               <a href='http://railsgirlsberlin.de', target='_blank'>Rails Girls</a> is an international not-for-profit group that aims to get women into programming
               with workshops, scholarships, and a safe learning community.
+        press: "We in the press"
+        faq: "FAQs"
         links: "Links"
         links_text: "Here you find links to similar projects:"
         more: ">> more"
@@ -139,7 +141,7 @@ en:
       bio: "Bio: "
       email: "Email: "
       twitter: "Twitter:"
-      contact: "Write an email to"
+      contact: "Email"
       back: "Back"
       edit: "Edit"
   flash:
