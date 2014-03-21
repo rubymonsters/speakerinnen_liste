@@ -39,7 +39,7 @@
         <br>
         <%= translation.label :main_topic, t(:main_topic, scope: "activerecord.attributes.profile", language:  @profile.language(translation)).html_safe, class: 'string optional control-label' %>
         <div class='controls'>
-          <%= translation.text_field :main_topic, class: 'string optional' %>
+          <%= translation.text_field :main_topic, placeholder: "Only 18 characters please", class: 'string optional' %>
         </div>
       </div>
       <div class='control-group string optional'>
