@@ -103,6 +103,7 @@ en:
       delete_picture: "Delete photo"
       update: "Update profile"
       copyright_photo: "Please make sure you use .jpg, .jpeg or .png and that you have all copyrights for this photo."
+      main_topic: "Your main topic in 18 characters"
     profile:
       topics: "My topics:"
       languages: "My languages:"
