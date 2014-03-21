@@ -91,6 +91,7 @@ en:
       name: "Your Name"
       name_placeholder: ""
       email: "Your Email Address"
+      medialink_placeholder: "Please fill in only 18 characters"
       subject: "Your Email Subject"
       body: "Your Message"
       body_placeholder: "Please give a few details about your request: where, when, what, and other relevant information."
