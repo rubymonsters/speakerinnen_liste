@@ -1,13 +1,13 @@
 <%= @message.name %> contacted you via the Speakerinnen website. Here is the message:
 
 
-Name of the sender: <%= @message.name %>
+The name of the sender: <%= @message.name %>
 
-Contact E-mail: <%= @message.email %>
+The sender's mail address: <%= @message.email %>
 
-The Subject: <%= @message.subject %>
+The subject: <%= @message.subject %>
 
-The Message: <%= @message.body %>
+The message: <%= @message.body %>
 
 
-Please don't click reply, use the contact Email adress instead.
+Please don't click reply, send your reply to <%= @message.email %> instead.

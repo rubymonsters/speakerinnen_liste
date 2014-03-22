@@ -10,7 +10,7 @@ class AdminMailer < ActionMailer::Base
   def profile_published(profile)
     @profile = profile
     @url = "www.speakerinnen.org"
-    mail(to: @profile.email, subject: 'Your are now published on the Speakerinnen Website')
+    mail(to: @profile.email, subject: 'Your are now published on the Speakerinnen-Website')
   end
 
 end

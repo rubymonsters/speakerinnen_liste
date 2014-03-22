@@ -1,13 +1,13 @@
-<%= @message.name %> hat dich über die Speakerinnen Website kontaktiert. Das ist die Nachricht:
+<%= @message.name %> hat dich über die Speakerinnen-Website kontaktiert. Das ist die Nachricht:
 
 
-Name des/der Absender_in: <%= @message.name %>
+Absender_in: <%= @message.name %>
 
-Kontakt E-Mail: <%= @message.email %>
+Mailadresse: <%= @message.email %>
 
 Der Betreff: <%= @message.subject %>
 
 Die Nachricht: <%= @message.body %>
 
 
-Bitte klicke nicht auf "antworten", sondern benutze die Kontakt E-Mail-Adresse des Absenders / der Absenderin!
+Bitte klicke nicht auf "antworten", sondern schicke Deine Antwort an <%= @message.email %>!

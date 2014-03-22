@@ -91,7 +91,7 @@ de:
       name: "Dein Name"
       name_placeholder: ""
       medialink_placeholder: "Bitte nur 18 Zeichen eingeben"
-      email: "Deine E-mail-Adresse"
+      email: "Deine E-Mail-Adresse"
       subject: "Deine Betreffzeile"
       body: "Deine Nachricht"
       body_placeholder: "Bitte gib ein paar Details zu Deiner Anfrage: Wo, wann, was und andere relevante Informationen."
