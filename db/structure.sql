@@ -193,7 +193,8 @@ CREATE TABLE profiles (
     uid character varying(255),
     media_url character varying(255),
     published boolean DEFAULT false,
-    website character varying(255)
+    website character varying(255),
+    admin_comment text
 );
 
 
@@ -514,3 +515,5 @@ INSERT INTO schema_migrations (version) VALUES ('20140317201619');
 INSERT INTO schema_migrations (version) VALUES ('20140317202150');
 
 INSERT INTO schema_migrations (version) VALUES ('20140323075148');
+
+INSERT INTO schema_migrations (version) VALUES ('20140323150343');
