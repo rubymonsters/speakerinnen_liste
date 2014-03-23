@@ -20,6 +20,10 @@
         <th>
           <%= @profiles.select {|profile| profile.published?}.size %> Published
         </th>
+        <th>
+        </th>
+        <th>Kommentar:
+        </th>
       </tr>
     </thead>
     <tbody>
@@ -53,6 +57,12 @@
         </td>
         <td>
           <%= "Admin" if profile.admin %>
+        </td>
+        <td>
+          <%= form_for profile,{ url: admin_comment_admin_profile_path(profile.id), method: "post" } do |f| %>
+            <%= f.text_field "admin_comment" %>
+            <%= f.submit "Kommentar hinzufügen" %>
+          <% end  %>
         </td>
       </tr>
   <% end %>

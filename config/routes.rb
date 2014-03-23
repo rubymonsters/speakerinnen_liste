@@ -8,6 +8,7 @@ SpeakerinnenListe::Application.routes.draw do
       member do
         post "publish"
         post "unpublish"
+        post "admin_comment"
       end
     end
     root to: 'dashboard#index'
