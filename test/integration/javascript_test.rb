@@ -13,10 +13,12 @@ class JavascriptTest < ActionDispatch::IntegrationTest
     @inge = profiles(:two)
     @inge.confirmed_at = Time.now
     @inge.topic_list = "Fruehling"
+    @inge.published = true
     @inge.save
    
     @horst = profiles(:one)
     @horst.confirmed_at = Time.now
+    @horst.published = true
     @horst.save
   end
 
@@ -26,14 +28,14 @@ class JavascriptTest < ActionDispatch::IntegrationTest
 
   test 'using tag autocompletion' do
     visit '/profiles'
-    click_link('Login')
+    click_link('Anmelden')
     fill_in('profile[email]', :with => 'horst@mail.de')
     fill_in('profile[password]', :with => 'Testpassword')
-    click_button "Login" 
+    click_button "Anmelden" 
 
     visit profile_path(@horst, :locale => "en")
     click_link('Edit')
-    find('.add-tag-trigger').click
+    fill_in('Fr').click
     assert_equal find_field('profile[topic_list]').value, 'Fruehling'
   end
 end

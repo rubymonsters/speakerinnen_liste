@@ -37,7 +37,7 @@ class SignUpTest < ActionController::IntegrationTest
     fill_in('profile[password_confirmation]', :with => 'Testpassword')
     click_button "Sign up"
     # opens the site where you are in the test right now
-    #save_and_open_page
+    # save_and_open_page
     assert page.has_content?('has already been taken')
   end
 

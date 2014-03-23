@@ -464,7 +464,7 @@ CREATE UNIQUE INDEX unique_schema_migrations ON schema_migrations USING btree (v
 -- Name: _RETURN; Type: RULE; Schema: public; Owner: -
 --
 
-CREATE RULE "_RETURN" AS ON SELECT TO searches DO INSTEAD SELECT profiles.id AS profile_id, array_to_string(ARRAY[profiles.firstname, profiles.lastname, profiles.languages, profiles.city, (array_to_string(array_agg(DISTINCT tags.name), ' '::text))::character varying], ' '::text) AS search_field FROM ((profiles LEFT JOIN taggings ON ((taggings.taggable_id = profiles.id))) LEFT JOIN tags ON ((tags.id = taggings.tag_id))) GROUP BY profiles.id;
+CREATE RULE "_RETURN" AS ON SELECT TO searches DO INSTEAD SELECT profiles.id AS profile_id, array_to_string(ARRAY[profiles.firstname, profiles.lastname, profiles.languages, profiles.city, (medialinks.title)::character varying, (medialinks.description)::character varying, (profile_translations.bio)::character varying, profile_translations.main_topic, (array_to_string(array_agg(DISTINCT tags.name), ' '::text))::character varying], ' '::text) AS search_field FROM ((((profiles LEFT JOIN medialinks ON ((medialinks.profile_id = profiles.id))) LEFT JOIN profile_translations ON ((profile_translations.profile_id = profiles.id))) LEFT JOIN taggings ON ((taggings.taggable_id = profiles.id))) LEFT JOIN tags ON ((tags.id = taggings.tag_id))) GROUP BY profiles.id, medialinks.title, medialinks.description, profile_translations.main_topic, profile_translations.bio;
 
 
 --
@@ -512,3 +512,5 @@ INSERT INTO schema_migrations (version) VALUES ('20140317175539');
 INSERT INTO schema_migrations (version) VALUES ('20140317201619');
 
 INSERT INTO schema_migrations (version) VALUES ('20140317202150');
+
+INSERT INTO schema_migrations (version) VALUES ('20140323075148');

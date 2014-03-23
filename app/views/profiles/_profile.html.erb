@@ -8,15 +8,7 @@
       <%= link_to profile.fullname, profile %>
     </div>
     <div class="desc">
-      <%=
-        if profile.topic_list.present? || profile.main_topic.present?
-          if @search_query
-            profile.topic_list.detect {|topic| topic.downcase == @search_query.downcase }
-          else
-            profile.main_topic_or_first_topic
-          end
-        end
-      %>
+      <%= profile.main_topic_or_first_topic %>
     </div>
 
     <div class="contact-info">
