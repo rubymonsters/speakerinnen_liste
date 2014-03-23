@@ -48,4 +48,12 @@ class Admin::ProfilesController < Admin::BaseController
     redirect_to admin_profiles_path, notice: (I18n.t("flash.profiles.updated"))
   end
 
+  def admin_comment
+    @profile = Profile.find(params[:id])
+    if @profile.update_attributes(params[:profile])
+      redirect_to admin_profiles_path(@profile), notice: (I18n.t("flash.profiles.updated"))
+    else
+      render :index
+    end
+  end
 end

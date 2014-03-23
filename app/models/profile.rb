@@ -23,6 +23,7 @@ class Profile < ActiveRecord::Base
   attr_accessible :bio, :city, :email, :firstname, :languages, :lastname, :picture, :twitter, :remove_picture, :talks, :website
   attr_accessible :content, :name, :topic_list, :media_url, :medialinks, :main_topic
   attr_accessible :translations_attributes
+  attr_accessible :admin_comment
 
   acts_as_taggable_on :topics
 
@@ -69,8 +70,9 @@ class Profile < ActiveRecord::Base
 
   def main_topic_or_first_topic
     main_topic.present? ? main_topic : topic_list.first
-  end  
-  
+  end
+    # main_topic.present? ? main_topic.truncate(18, seperator: '') : topic_list.first.truncate(18, seperator: '')
+
   def language(translation)
     if translation.object.locale == :en && I18n.locale == :de
       "Englisch"
