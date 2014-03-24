@@ -49,3 +49,17 @@
 #signup .form-horizontal .well {
   background-color: #ffffff;
 }
+
+.pretty th .current {
+  padding-right: 12px;
+  background-repeat: no-repeat;
+  background-position: right center;
+}
+
+.pretty th .asc {
+  background-image: url(/assets/up_arrow.gif);
+}
+
+.pretty th .desc {
+  background-image: url(/assets/down_arrow.gif);
+}
