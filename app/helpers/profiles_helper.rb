@@ -9,6 +9,6 @@ module ProfilesHelper
   end
 
   def topic_link(topic, options={})
-    link_to topic.name, topic_path(topic.name), options
+    link_to topic.name, topic_path(topic.name.gsub("/", "%2F")), options
   end
 end
