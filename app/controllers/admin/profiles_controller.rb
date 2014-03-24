@@ -1,6 +1,9 @@
 class Admin::ProfilesController < Admin::BaseController
+  helper_method :sort_column, :sort_direction
   def index
-    @profiles = Profile.order("created_at DESC")
+    #@search = Profile.search(params[:q])
+    #@profiles = @search.result
+    @profiles = Profile.order(sort_column + " " + sort_direction)
   end
 
   def new
@@ -56,4 +59,15 @@ class Admin::ProfilesController < Admin::BaseController
       render :index
     end
   end
+
+  private
+
+  def sort_column
+    Profile.column_names.include?(params[:sort]) ? params[:sort] : "created_at"
+  end
+
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "desc"
+  end
+
 end

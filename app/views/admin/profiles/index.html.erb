@@ -1,14 +1,16 @@
 <div class="container profiles">
   <h1 class="title-profiles">Admin::Profiles#index</h1>
-  <table class="table table-striped">
+  <table class="table table-striped pretty">
     <thead>
       <tr>
         <th>
-          <%= @profiles.size %>
-          Speakerinnen
+          <%= sortable "lastname", "Name" %>
+          <%#<%= @profiles.size %>
+          <%#Speakerinnen%>
         </th>
         <th>
-          Erstellt am:
+          <%= sortable "created_at", "Erstellt am:"%>
+          <!--Erstellt am:-->
         </th>
         <th>
           MedLi
@@ -18,7 +20,8 @@
         <th>
         </th>
         <th>
-          <%= @profiles.select {|profile| profile.published?}.size %> Published
+        <%= sortable "published", "Published" %>
+        <!--[> @profiles.select {|profile| profile.published?}.size <] Published-->
         </th>
         <th>
         </th>
