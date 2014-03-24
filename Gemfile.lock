@@ -158,8 +158,6 @@ GEM
       capybara (~> 2.0.1)
       faye-websocket (~> 0.4.4)
       http_parser.rb (~> 0.5.3)
-    polyamorous (0.6.4)
-      activerecord (>= 3.0)
     polyglot (0.3.3)
     puma (2.6.0)
       rack (>= 1.1, < 2.0)
@@ -189,10 +187,6 @@ GEM
       thor (>= 0.14.6, < 2.0)
     raindrops (0.13.0)
     rake (10.1.0)
-    ransack (1.1.0)
-      actionpack (>= 3.0)
-      activerecord (>= 3.0)
-      polyamorous (~> 0.6.0)
     rdoc (3.12.2)
       json (~> 1.4)
     redcarpet (2.3.0)
@@ -270,7 +264,6 @@ DEPENDENCIES
   puma
   quiet_assets
   rails (= 3.2.16)
-  ransack
   sass-rails (~> 3.2.3)
   simple_form
   textacular (~> 3.0)
