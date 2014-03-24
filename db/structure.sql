@@ -226,16 +226,6 @@ CREATE TABLE schema_migrations (
 
 
 --
--- Name: searches; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE TABLE searches (
-    profile_id integer,
-    search_field text
-);
-
-
---
 -- Name: taggings; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -249,6 +239,32 @@ CREATE TABLE taggings (
     context character varying(128),
     created_at timestamp without time zone
 );
+
+
+--
+-- Name: tags; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE tags (
+    id integer NOT NULL,
+    name character varying(255)
+);
+
+
+--
+-- Name: profiles_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY profiles
+    ADD CONSTRAINT profiles_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: searches; Type: VIEW; Schema: public; Owner: -
+--
+
+CREATE VIEW searches AS
+    SELECT profiles.id AS profile_id, array_to_string(ARRAY[profiles.firstname, profiles.lastname, profiles.languages, profiles.city, (string_agg(DISTINCT medialinks.title, ' '::text))::character varying, (string_agg(DISTINCT medialinks.description, ' '::text))::character varying, (string_agg(DISTINCT profile_translations.bio, ' '::text))::character varying, (string_agg(DISTINCT (profile_translations.main_topic)::text, ' '::text))::character varying, (string_agg(DISTINCT (tags.name)::text, ' '::text))::character varying], ' '::text) AS search_field FROM ((((profiles LEFT JOIN medialinks ON ((medialinks.profile_id = profiles.id))) LEFT JOIN profile_translations ON ((profile_translations.profile_id = profiles.id))) LEFT JOIN taggings ON ((taggings.taggable_id = profiles.id))) LEFT JOIN tags ON ((tags.id = taggings.tag_id))) GROUP BY profiles.id;
 
 
 --
@@ -268,16 +284,6 @@ CREATE SEQUENCE taggings_id_seq
 --
 
 ALTER SEQUENCE taggings_id_seq OWNED BY taggings.id;
-
-
---
--- Name: tags; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE TABLE tags (
-    id integer NOT NULL,
-    name character varying(255)
-);
 
 
 --
@@ -381,14 +387,6 @@ ALTER TABLE ONLY profile_translations
 
 
 --
--- Name: profiles_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
---
-
-ALTER TABLE ONLY profiles
-    ADD CONSTRAINT profiles_pkey PRIMARY KEY (id);
-
-
---
 -- Name: taggings_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -458,13 +456,6 @@ CREATE INDEX index_taggings_on_taggable_id_and_taggable_type_and_context ON tagg
 --
 
 CREATE UNIQUE INDEX unique_schema_migrations ON schema_migrations USING btree (version);
-
-
---
--- Name: _RETURN; Type: RULE; Schema: public; Owner: -
---
-
-CREATE RULE "_RETURN" AS ON SELECT TO searches DO INSTEAD SELECT profiles.id AS profile_id, array_to_string(ARRAY[profiles.firstname, profiles.lastname, profiles.languages, profiles.city, (string_agg(DISTINCT medialinks.title, ' '::text))::character varying, (string_agg(DISTINCT medialinks.description, ' '::text))::character varying, (string_agg(DISTINCT profile_translations.bio, ' '::text))::character varying, (string_agg(DISTINCT (profile_translations.main_topic)::text, ' '::text))::character varying, (string_agg(DISTINCT (tags.name)::text, ' '::text))::character varying], ' '::text) AS search_field FROM ((((profiles LEFT JOIN medialinks ON ((medialinks.profile_id = profiles.id))) LEFT JOIN profile_translations ON ((profile_translations.profile_id = profiles.id))) LEFT JOIN taggings ON ((taggings.taggable_id = profiles.id))) LEFT JOIN tags ON ((tags.id = taggings.tag_id))) GROUP BY profiles.id;
 
 
 --
