@@ -6,23 +6,18 @@
     <div class="span6 control-group-one">
       <%= f.input :firstname %>
       <%= f.input :lastname %>
-      <%= f.input :bio, input_html: { rows: 10, style: "width:250px"}  %>
+      <%= f.input :email %>
+      <%= f.input :languages %>
+      <%= f.input :city %>
+      <%= f.input :twitter %>
+      <%= f.input :website, placeholder: "http://" %>
       <%= f.input :topic_list %>
-      <%= f.input :main_topic %>
-
       <%# Used by "tag-it" for autocompletion %>
       <ul class="hidden" id="availableTags">
         <% ActsAsTaggableOn::Tag.uniq.pluck(:name).each do |tag_name| %>
           <li><%= tag_name %></li>
         <% end %>
       </ul>
-
-    </div>
-    <div class="span6">
-      <%= f.input :languages %>
-      <%= f.input :city %>
-      <%= f.input :twitter %>
-      <%= f.input :website, placeholder: "http://" %>
 
       <div class="control-group">
         <%= f.label :picture, class:"control-label" %>
@@ -41,8 +36,30 @@
           <%= t(:delete_picture, scope: "profiles.form") %>
         </div>
       </div>
+    </div>
+    <div class="span6">
 
-      <%= f.input :email %>
+      <%= f.fields_for :translations, @profile.translations.sort_by(&:locale) do |translation| %>
+        <div class='control-group string optional'>
+          <%= translation.hidden_field :locale %>
+          <% if translation.object.locale == :de %>
+            <%= t(:translation, scope: "activerecord.attributes.profile").html_safe %>
+          <% end %>
+          <br>
+          <%= translation.label :main_topic, t(:main_topic, scope: "activerecord.attributes.profile", language:  @profile.language(translation)).html_safe, class: 'string optional control-label' %>
+          <div class='controls'>
+            <%= translation.text_field :main_topic, placeholder: t(:main_topic, scope: "profiles.form"), class: 'string optional' %>
+          </div>
+        </div>
+        <div class='control-group string optional'>
+          <%= translation.hidden_field :locale %>
+          <%= translation.label :bio, t(:bio, scope: "activerecord.attributes.profile", language: @profile.language(translation)).html_safe, class: 'string optional control-label' %>
+          <div class='controls'>
+            <%= translation.text_area :bio, rows: 15, class: 'string optional' %>
+          </div>
+          <hr>
+        </div>
+      <% end %>
       <%= f.button :submit, t(:update, scope: "profiles.form"), class:"btn btn-danger" %>
     </div>
   </div>
