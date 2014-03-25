@@ -30,7 +30,7 @@ class Profile < ActiveRecord::Base
   has_many :medialinks
 
   before_save(:on => [:create, :update]) do
-    self.twitter.gsub!(/^@|https|http:\/|\/www.|twitter.com\/|/, '') if twitter
+    self.twitter.gsub!(/^@|https:|http:|\/\/|www.|twitter.com\//, '') if twitter
   end
 
   def after_confirmation
@@ -91,6 +91,14 @@ class Profile < ActiveRecord::Base
     else
       return 'http://'+ website
     end
+  end
+
+  def twitter_name_formatted
+    twitter.gsub(/^@|https:|http:|\/\/|www.|twitter.com\//, '')
+  end
+
+  def twitter_link_formatted
+    "http://twitter.com/"  + twitter.gsub(/^@|https:|http:|\/\/|www.|twitter.com\//, '')
   end
 
   def self.random
