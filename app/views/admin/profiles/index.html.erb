@@ -4,13 +4,11 @@
     <thead>
       <tr>
         <th>
-          <%= sortable "lastname", "Name" %>
-          <%#<%= @profiles.size %>
-          <%#Speakerinnen%>
+          <%= @profiles.size %>
+          <%= sortable "lastname", "Speakerinnen" %>
         </th>
         <th>
           <%= sortable "created_at", "Erstellt am:"%>
-          <!--Erstellt am:-->
         </th>
         <th>
           MedLi
@@ -20,8 +18,8 @@
         <th>
         </th>
         <th>
+         <%= @profiles.select {|profile| profile.published?}.size %>
         <%= sortable "published", "Published" %>
-        <!--[> @profiles.select {|profile| profile.published?}.size <] Published-->
         </th>
         <th>
         </th>

@@ -29,7 +29,7 @@ class AdminTest < ActionController::IntegrationTest
     click_button "Anmelden"
     first(:link, 'Admin').click
     click_link('Profiles')
-    assert page.has_content?("Name")
+    assert page.has_content?("Speakerinnen")
     assert page.has_content?("Jane")
     assert page.has_content?("Kommentar")
   end
