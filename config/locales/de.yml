@@ -50,25 +50,14 @@ de:
         contact_link: "E-Mail"
         address: "<a href='http://twitter.com/speakerinnen', target='_blank'>Twitter</a>"
         github: "<a href='http://github.com/rubymonsters/speakerinnen_liste', target='_blank'>GitHub</a>"
+        faq_short: |
+            <strong>Warum gibt es Thema XYZ noch nicht?</strong><br>
+            Weil es noch niemand angelegt hat. Alle Themen, die in der Speakerinnen-Liste zu sehen sind, wurden von mindestens einer Speakerin in ihrem Profil als Tags eingegeben. Daraus entstehen automatisch auf der Seite die für alle sichtbaren Themen.<br>
+            <br><strong>Können sich alle einfach eintragen?</strong><br>
+            Ja.
+        women: "* Mit Frauen* meinen wir alle, die sich selbst als Frau verstehen."
     imprint:
       title: "Impressum"
-    press:
-      title: "Presse"
-    about:
-      title: "Über uns"
-      text: |
-            Viele Menschen stört, dass Männer viel häufiger als Experten zu Konferenzen eingeladen oder von den Medien befragt werden.
-            Biologisch gibt es dafür keinen Grund: Männer sind nicht klüger als Frauen.<br>
-            Wer Organisator_innen auf die Diskrepanz hinweist, bekommt oft die Reaktion, dass keine geeignete Frau zu finden war.
-            Wir sind davon überzeugt, dass es viel mehr kompetente Frauen gibt, als auf den Bühnen sprechen.<br>
-            Mädchen brauchen weibliche Vorbilder, Frauen brauchen die Gewissheit, dass eine andere - ihre - Sicht auf ein Thema genauso relevant ist.
-            Veranstaltungen brauchen mehr Diversität.<br><br>
-            Die Speakerinnen-Liste ist die Idee vieler Frauen und wurde technisch als Lernprojekt der Rubymonsters, einer Lerngruppe der Rails Girls Berlin, gebaut.<br>
-            Die <a href='http://railsgirlsberlin.de', target='_blank'>Rails Girls</a> sind eine internationale Non-Profit-Gruppe, die Frauen motiviert, sich mit dem Programmieren zu beschäftigen.
-            Das Ganze über wunderbare Workshops, Lerngruppen, Stipendien und eine angenehme Lern-Community.<br><br>
-            <small>* Mit Frauen* meinen wir alle, die sich selbst als Frau verstehen.</small>
-    links:
-      title: "Sammlung"
   layouts:
     application:
       title: "Speakerinnen-Liste"

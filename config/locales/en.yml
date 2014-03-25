@@ -41,7 +41,7 @@ en:
               8 women supported by 4 coaches coded this web application as a Rails Girls Berlin learning project.<br><br>
               <a href='http://railsgirlsberlin.de', target='_blank'>Rails Girls</a> is an international not-for-profit group that aims to get women into programming
               with workshops, scholarships, and a safe learning community.
-        press: "We in the press"
+        press: "Media Coverage"
         faq: "FAQs"
         links: "Links"
         links_text: "Here you find links to similar projects:"
@@ -50,25 +50,14 @@ en:
         contact_link: "Email"
         address: "<a href='http://twitter.com/speakerinnen'>Twitter</a>"
         github: '<a href="http://github.com/rubymonsters/speakerinnen_liste">GitHub</a>'
+        faq_short: |
+                <strong>Why is there no speaker for the topic I am looking for?</strong><br>
+                Possibly, nobody has created a tag for this topic yet. As soon as a speaker names this topic as one of her tags, this topic becomes visible as a tag within the topic range.<br>
+                <br><strong>Can anybody join in?</strong><br>
+                Yes.  
+        women: "* When we say women* we mean everyone who defines herself as a woman."
     imprint:
       title: "Legal Details"
-    press:
-      title: "Press"
-    about:
-      title: "About Speakerinnen*"
-      text: |
-            Many people don’t like it that men more often than women are invited as experts to conferences or to speak to the media.
-            There is no basis for this in biology: men are not smarter than women.<br>
-            Pointing out this discrepancy to organisers often gets the response is that no suitable woman was found.
-            We are convinced that there are more competent women out there to take the stage.<br>
-            Girls need female role-models and women need the confirmation that their option on a certain topic is just as valued as any other. Events need more diversity.<br><br>
-            The Speakerinnen List sprung from an idea of several women,
-            and was built as a learning project by Rubymonsters, a study group of Rails Girls Berlin.
-            <a href='http://railsgirlsberlin.de', target='_blank'>Rails Girls</a> is an international not-for-profit organization,
-            that aims to get women excited about programming. With workshops, study groups and scholarships, Rails Girls is an extraordinary learning community.<br>
-            <small>* When we say women* we mean everyone who defines herself as a woman.</small>
-    links:
-      title: "Collection"
   layouts:
     application:
       title: "Speakerinnen-List"
