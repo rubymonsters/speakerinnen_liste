@@ -16,7 +16,7 @@
       <% if @profile.picture.present? %>
         <%= image_tag(@profile.picture.profile.url , class: "photo") %>
       <% else %>
-        <%= image_tag("avatar.jpg", :alt => "avatar", class: "photo") %>
+        <%= image_tag("avatar.jpg", alt: "avatar", class: "photo") %>
       <% end %>
       <div class="main-topic"> <%= @profile.main_topic_or_first_topic %></div>
     </div>
@@ -24,13 +24,13 @@
     <div class="span5 text-profile">
       <% if @profile.twitter.present? %>
         <h5><%= t(:twitter, scope: "profiles.profile") %></h5>
-        <span><%=link_to "@" + @profile.twitter_name_formatted, @profile.twitter_link_formatted, :target => '_blank' %></span>
+        <span><%=link_to "@" + @profile.twitter_name_formatted, @profile.twitter_link_formatted, target: '_blank' %></span>
         <hr>
       <% end %>
 
       <% if @profile.website.present? %>
         <h5><%= t(:website, scope: "profiles.profile") %></h5>
-        <span><%=link_to @profile.website,@profile.website_with_protocol, :target => '_blank' %></span>
+        <span><%=link_to @profile.website,@profile.website_with_protocol, target: '_blank' %></span>
         <hr>
       <% end %>
 

@@ -16,7 +16,7 @@
         <div class="header_small">
           <%= t ".twitter" %>
         </div>
-        <%=link_to "@" + profile.twitter, "http://twitter.com/#{profile.twitter}" %>
+        <%=link_to "@" + profile.twitter_name_formatted, profile.twitter_link_formatted, target: '_blank' %>
       <% end %>
     </div>
   </div>
