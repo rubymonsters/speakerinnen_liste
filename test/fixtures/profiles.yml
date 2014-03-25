@@ -20,8 +20,8 @@ two:
   talks: Repuclica
 
 jane:
-  firstname: jane
-  lastname: MyString
+  firstname: Jane
+  lastname: Admin
   email: jane_admin@server.org
   encrypted_password: <%= Profile.new.send(:password_digest, 'Testpassword') %>
   languages: MyString
