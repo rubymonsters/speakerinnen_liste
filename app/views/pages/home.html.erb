@@ -123,12 +123,7 @@
 
         <div class="span4">
           <h4><%= link_to t(:faq, scope: "pages.home.footer"), faq_path %></h4>
-          <span class="italic">
-            <strong>Warum gibt es Thema XYZ noch nicht?</strong><br>
-            Weil es noch niemand angelegt hat. Alle Themen, die in der Speakerinnen-Liste zu sehen sind, wurden von mindestens einer Speakerin in ihrem Profil als 'Tags' eingegeben. Daraus entstehen automatisch auf der Seite die für alle sichtbaren Themen.<br>
-            <strong>Können sich alle einfach eintragen?</strong><br>
-            Ja.
-            <br>
+          <span class="italic"><%= t(:faq_short, scope:"pages.home.footer").html_safe %>
             <%= link_to t(:more, scope: "pages.home.footer").html_safe, faq_path %>
           </span>
         </div>
@@ -162,7 +157,7 @@
     <div class="clearfix"></div>
     <div class="row">
       <div class="span12">
-        <h5>* Mit Frauen* meinen wir alle, die sich selbst als Frau verstehen.</h5>
+        <%= t(:women, scope: "pages.home.footer").html_safe %>
       </div>
     </div>
     <br>
