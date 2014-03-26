@@ -56,6 +56,8 @@ de:
             <br><strong>Können sich alle einfach eintragen?</strong><br>
             Ja.
         women: "* Mit Frauen* meinen wir alle, die sich selbst als Frau verstehen."
+    about:
+      title: "Über uns"
     imprint:
       title: "Impressum"
   layouts:

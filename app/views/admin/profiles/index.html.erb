@@ -1,9 +1,9 @@
 <div class="container profiles">
   <h1 class="title-profiles">Admin::Profiles#index</h1>
-  <table class="table table-striped pretty" style="table-layout:fixed">
+  <table class="table table-striped pretty">
     <thead>
       <tr>
-        <th style="width:180px; overflow:hidden">
+        <th>
           <%= @profiles.size %>
           <%= sortable "lastname", "Speakerinnen" %>
         </th>
@@ -17,7 +17,7 @@
         </th>
         <th>
         </th>
-        <th style="width:100px;">
+        <th>
          <%= @profiles.select {|profile| profile.published?}.size %>
         <%= sortable "published", "Published" %>
         </th>

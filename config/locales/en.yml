@@ -54,8 +54,10 @@ en:
                 <strong>Why is there no speaker for the topic I am looking for?</strong><br>
                 Possibly, nobody has created a tag for this topic yet. As soon as a speaker names this topic as one of her tags, this topic becomes visible as a tag within the topic range.<br>
                 <br><strong>Can anybody join in?</strong><br>
-                Yes.  
+                Yes.
         women: "* When we say women* we mean everyone who defines herself as a woman."
+    about:
+      title: "About us"
     imprint:
       title: "Legal Details"
   layouts:
