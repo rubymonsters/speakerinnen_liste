@@ -1,0 +1,41 @@
+<div class="container profiles">
+  <h1 class="title-profiles">Admin interface für Kategorien:</h1>
+  <div class="row">
+    <div class="span2">
+      <%= link_to '<i class="icon-plus icon-white"></i> Hinzufügen'.html_safe,
+                new_admin_category_path(@category), class: "btn btn-info" %>
+      <br>
+      <br>
+    </div>
+    <div class="span10">
+    </div>
+  </div>
+    <div class="row">
+      <div class="span12">
+        <table class="table table-bordered table-hovered table-condensed">
+          <tr>
+            <th>Name der Kategorie</th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+          </tr>
+
+          <% @categories.each do |categorie| %>
+            <tr>
+              <td><%= categorie.name %></td>
+              <td></td>
+              <td></td>
+              <td><%= link_to "edit", edit_admin_category_path(categorie.id) %></td>
+              <td>
+                <%= link_to 'delete', admin_category_path(categorie.id), :method => :delete,
+                  :confirm => "Do you want to delete the categorie #{categorie.name}?" %>
+              </td>
+            </tr>
+          <% end %>
+        </table>
+        <br />
+      </div>
+      <hr/>
+  </div>
+</div>
