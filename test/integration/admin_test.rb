@@ -18,7 +18,7 @@ class AdminTest < ActionController::IntegrationTest
     click_button "Anmelden"
     first(:link, 'Admin').click
     assert page.has_content?("Tags")
-    assert page.has_content?("Profiles")
+    assert page.has_content?("Profile")
   end
 
   test "see on admin profile page the correct table" do
@@ -28,7 +28,7 @@ class AdminTest < ActionController::IntegrationTest
     fill_in('profile[password]', :with => 'Testpassword')
     click_button "Anmelden"
     first(:link, 'Admin').click
-    click_link('Profiles')
+    click_link('Profile')
     assert page.has_content?("Speakerinnen")
     assert page.has_content?("Jane")
     assert page.has_content?("Kommentar")

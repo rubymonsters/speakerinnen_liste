@@ -4,13 +4,13 @@ class UserProfileCorrectlyDisplayedTest < ActionDispatch::IntegrationTest
   def setup
     @horst = profiles(:one)
     @horst.confirmed_at = Time.now
-    @horst.topic_list = "Fruehling"
+    @horst.topic_list = "fruehling"
     @horst.published = true
     @horst.save
 
     @inge = profiles(:two)
     @inge.confirmed_at = Time.now
-    @inge.topic_list = "Fruehling", " ", "Sommer"
+    @inge.topic_list = "fruehling", " ", "sommer"
     @inge.published = true
     @inge.save
   end
