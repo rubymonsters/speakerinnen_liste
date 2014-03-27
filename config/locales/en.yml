@@ -58,6 +58,8 @@ en:
         women: "* When we say women* we mean everyone who defines herself as a woman."
     about:
       title: "About us"
+    press:
+      title: "Press about us"
     imprint:
       title: "Legal Details"
   layouts:
