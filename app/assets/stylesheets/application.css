@@ -50,16 +50,16 @@
   background-color: #ffffff;
 }
 
-.pretty th .current {
+.sort-arrows th .current {
   padding-right: 12px;
   background-repeat: no-repeat;
   background-position: right center;
 }
 
-.pretty th .asc {
+.sort-arrows th .asc {
   background-image: url(/assets/up_arrow.gif);
 }
 
-.pretty th .desc {
+.sort-arrows th .desc {
   background-image: url(/assets/down_arrow.gif);
 }

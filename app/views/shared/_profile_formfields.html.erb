@@ -30,6 +30,13 @@
   </div>
   <div class="span6">
     <%= f.input :topic_list %>
+    <%#Used by "tag-it" for autocompletion%>
+    <ul class="hidden" id="availableTags">
+      <% ActsAsTaggableOn::Tag.uniq.pluck(:name).each do |tag_name| %>
+        <li><%= tag_name %></li>
+      <% end %>
+    </ul>
+
     <%= f.fields_for :translations, @profile.translations.sort_by(&:locale) do |translation| %>
       <div class='control-group string optional'>
         <%= translation.hidden_field :locale %>
@@ -51,13 +58,6 @@
         <hr>
       </div>
     <% end %>
-
-    <%# Used by "tag-it" for autocompletion %>
-    <ul class="hidden" id="availableTags">
-      <% ActsAsTaggableOn::Tag.uniq.pluck(:name).each do |tag_name| %>
-        <li><%= tag_name %></li>
-      <% end %>
-    </ul>
 
     <%= f.button :submit, t(:update, scope: "profiles.form"), class:"btn btn-info" %>
   </div>
