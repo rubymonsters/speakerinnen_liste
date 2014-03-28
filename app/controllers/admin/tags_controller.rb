@@ -1,6 +1,7 @@
 class Admin::TagsController < Admin::BaseController
   def index
     @tags = ActsAsTaggableOn::Tag.all.sort_by {|tag| tag.name.downcase}
+    @categories = Category.all
   end
 
   def edit
