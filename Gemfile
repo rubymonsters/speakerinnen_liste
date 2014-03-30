@@ -34,8 +34,6 @@ end
 
 group :development, :test do
   gem 'capybara', '~> 2.0.2'
-  gem 'guard-test'
-  gem 'rb-inotify', '~> 0.9'
 end
 
 group :test do

@@ -27,7 +27,7 @@ class Admin::CategoriesController < Admin::BaseController
   def update
     @category = Category.find(params[:id])
     if @category.update_attributes(params[:category])
-      redirect_to category_path(@category)
+      redirect_to admin_categories_path
     else
       render action: "edit"
     end

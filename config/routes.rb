@@ -1,5 +1,6 @@
 SpeakerinnenListe::Application.routes.draw do
 
+  # route post to /tags/merge to here
   namespace :admin do
     resources :tags, :except => [:new, :create]
     resources :categories

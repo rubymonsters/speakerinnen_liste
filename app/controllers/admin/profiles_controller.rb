@@ -1,8 +1,6 @@
 class Admin::ProfilesController < Admin::BaseController
   helper_method :sort_column, :sort_direction
   def index
-    #@search = Profile.search(params[:q])
-    #@profiles = @search.result
     @profiles = Profile.order(sort_column + " " + sort_direction)
   end
 
