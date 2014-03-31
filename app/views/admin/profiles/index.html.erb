@@ -1,10 +1,15 @@
 <div class="container profiles">
   <h1 class="title-profiles">Admin interface für Profile</h1>
+  <div class="row">
+    <div class="span12 text-center">
+      <%= paginate @profiles %>
+    </div>
+  </div>
   <table class="table table-striped sort-arrows">
     <thead>
       <tr>
         <th>
-          <%= @profiles.size %>
+          <%= Profile.all.size %>
           <%= sortable "lastname", "Speakerinnen" %>
         </th>
         <th>
@@ -18,8 +23,8 @@
         <th>
         </th>
         <th>
-         <%= @profiles.select {|profile| profile.published?}.size %>
-        <%= sortable "published", "Published" %>
+          <%= Profile.all.select {|profile| profile.published?}.size %>
+          <%= sortable "published", "Published" %>
         </th>
         <th>
         </th>
@@ -69,4 +74,9 @@
   <% end %>
     </tbody>
   </table>
+  <div class="row">
+    <div class="span12 text-center">
+      <%= paginate @profiles %>
+    </div>
+  </div>
 </div>
