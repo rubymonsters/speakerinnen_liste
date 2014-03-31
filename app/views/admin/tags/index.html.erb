@@ -17,6 +17,15 @@
               <td><%= tag.name %></td>
               <td><%= tag.taggings.count %></td>
               <td><%= Profile.tagged_with(tag.name).count %></td>
+              <td>
+              <% @categories.each do |category| %>
+                <%= form_for category,{ url: set_category_admin_tag_path(category.id) , method: "post" } do |f| %>
+                  <%= f.check_box :name %>
+                  <%= f.label(:name, category.name) %>
+                  <%= f.submit :submit %>
+                <% end %>
+              <% end %>
+              </td>
               <td><%= link_to "edit", edit_admin_tag_path(tag.id) %></td>
               <td>
                 <%= link_to 'delete', admin_tag_path(tag.id), :method => :delete,
