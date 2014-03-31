@@ -6,7 +6,7 @@ ActsAsTaggableOn.delimiter = [',', ';']
 ActsAsTaggableOn.force_lowercase = true
 
 ActsAsTaggableOn::Tag.class_eval do
-  has_many :categories, through: :category_tags
+  has_and_belongs_to_many :categories
   #attr_accessible :name
 
   #def self.merge(attrs)

@@ -36,6 +36,6 @@ class Admin::CategoriesController < Admin::BaseController
   def destroy
     @category = Category.find(params[:id])
     @category.destroy
-    redirect_to admin_categories_path, notice: (I18n.t("flash.profiles.destroyed"))
+    redirect_to admin_categories_path, notice: ("You deleted '#{@category.name}'.")
   end
 end

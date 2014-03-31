@@ -1,7 +1,7 @@
 class Admin::ProfilesController < Admin::BaseController
   helper_method :sort_column, :sort_direction
   def index
-    @profiles = Profile.order(sort_column + " " + sort_direction)
+    @profiles = Profile.order(sort_column + " " + sort_direction).order("created_at DESC").page(params[:page]).per(100)
   end
 
   def new

@@ -60,23 +60,21 @@ ALTER SEQUENCE categories_id_seq OWNED BY categories.id;
 
 
 --
--- Name: category_tags; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: categories_tags; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
-CREATE TABLE category_tags (
+CREATE TABLE categories_tags (
     id integer NOT NULL,
     category_id integer,
-    tag_id integer,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    tag_id integer
 );
 
 
 --
--- Name: category_tags_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+-- Name: categories_tags_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE category_tags_id_seq
+CREATE SEQUENCE categories_tags_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -85,10 +83,10 @@ CREATE SEQUENCE category_tags_id_seq
 
 
 --
--- Name: category_tags_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+-- Name: categories_tags_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE category_tags_id_seq OWNED BY category_tags.id;
+ALTER SEQUENCE categories_tags_id_seq OWNED BY categories_tags.id;
 
 
 --
@@ -311,7 +309,7 @@ ALTER TABLE ONLY categories ALTER COLUMN id SET DEFAULT nextval('categories_id_s
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY category_tags ALTER COLUMN id SET DEFAULT nextval('category_tags_id_seq'::regclass);
+ALTER TABLE ONLY categories_tags ALTER COLUMN id SET DEFAULT nextval('categories_tags_id_seq'::regclass);
 
 
 --
@@ -361,7 +359,7 @@ ALTER TABLE ONLY categories
 -- Name: category_tags_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
-ALTER TABLE ONLY category_tags
+ALTER TABLE ONLY categories_tags
     ADD CONSTRAINT category_tags_pkey PRIMARY KEY (id);
 
 
@@ -517,3 +515,7 @@ INSERT INTO schema_migrations (version) VALUES ('20140317202150');
 INSERT INTO schema_migrations (version) VALUES ('20140323075148');
 
 INSERT INTO schema_migrations (version) VALUES ('20140323150343');
+
+INSERT INTO schema_migrations (version) VALUES ('20140330183449');
+
+INSERT INTO schema_migrations (version) VALUES ('20140330185248');

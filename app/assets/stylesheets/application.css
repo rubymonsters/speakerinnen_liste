@@ -10,8 +10,8 @@
  *
  *= require jquery.ui.all
  *= require tag-it/jquery.tagit
- *= require_self
  *= require_tree .
+ *= require_self
  */
 
 
@@ -21,6 +21,7 @@
   color: white;
   padding: 1em 0;
   text-align: center;
+  text-shadow: none;
 }
 
 .notice {
