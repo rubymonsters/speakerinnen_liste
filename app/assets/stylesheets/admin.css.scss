@@ -5,3 +5,20 @@
 header#top.admin {
  background-color: #FFFFCC;
 }
+
+.admin-tags-categorization {
+  td {
+    padding-right: 4px;
+    padding-bottom: 5px;
+    a {
+      padding: 2px 4px;
+      border-radius: 2px;
+    }
+  }
+  .active {
+    color: white;
+    background-color: silver;
+  }
+}
+
+
