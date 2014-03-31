@@ -1,0 +1,46 @@
+<div class="container profiles">
+  <h1 class="title-profiles">Admin interface für Tags:</h1>
+  <div class="row">
+    <div class="span4">
+      <%= form_tag(categorization_admin_tags_path, method: :get, class: 'form-inline') do %>
+        <%= text_field_tag 'q', params[:q], class: 'input-medium search-query' %>
+        <%= submit_tag 'Filter', class: "btn" %>
+      <% end %>
+
+    </div>
+    <div class="span8 text-right">
+      <%= paginate @tags %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="span12">
+      <table class="admin-tags-categorization table">
+        <% @tags.each do |tag| %>
+          <tr>
+            <td>
+              <%= tag.name %>
+            </td>
+            <% @categories.each do |category| %>
+              <td>
+                <% if tag.categories.map(&:id).include?(category.id) %>
+                  <%= link_to category.name, remove_category_admin_tag_path(tag, category_id: category.id, page: params[:page], q: params[:q]),
+                            method: :post,
+                            class: "active"  %>
+                <% else %>
+                  <%= link_to category.name, set_category_admin_tag_path(tag, category_id: category.id, page: params[:page], q: params[:q]),
+                            method: :post %>
+                <% end %>
+              </td>
+            <% end %>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="span12 text-center">
+      <%= paginate @tags %>
+    </div>
+  </div>
+</div>
+
