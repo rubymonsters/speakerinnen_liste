@@ -10,8 +10,11 @@ class Admin::TagsController < Admin::BaseController
 
   def update
     @tag = ActsAsTaggableOn::Tag.find(params[:id])
-    if @tag.update_attributes(params[:tag])
-      redirect_to admin_tags_path, notice: (I18n.t("flash.tags.updated"))
+    if existing_tag = ActsAsTaggableOn::Tag.where(name: params[:tag][:name]).first
+      existing_tag.merge(@tag)
+      redirect_to categorization_admin_tags_path, notice: ("'#{@tag.name}' was merged with the tag '#{existing_tag.name}'.")
+    elsif @tag.update_attributes(params[:tag])
+      redirect_to categorization_admin_tags_path, notice: ("'#{@tag.name}' was updated.")
     else
       render action: "edit"
     end
@@ -21,10 +24,6 @@ class Admin::TagsController < Admin::BaseController
     @tag = ActsAsTaggableOn::Tag.find(params[:id])
     @tag.destroy
     redirect_to admin_tags_path, notice: (I18n.t("flash.tags.destroyed"))
-  end
-
-  def merge
-    ActsAsTaggableOn::Tag.merge(params[:tag])
   end
 
   def remove_category
