@@ -23,7 +23,8 @@ class Admin::TagsController < Admin::BaseController
   def destroy
     @tag = ActsAsTaggableOn::Tag.find(params[:id])
     @tag.destroy
-    redirect_to admin_tags_path, notice: (I18n.t("flash.tags.destroyed"))
+    redirect_to categorization_admin_tags_path, notice: ("'#{@tag.name}' was destroyed.")
+
   end
 
   def remove_category

@@ -32,6 +32,10 @@
                 <% end %>
               </td>
             <% end %>
+              <td>
+                | <%= link_to '<i class="icon-trash"></i>'.html_safe, admin_tag_path(tag.id), :method => :delete,
+                  :confirm => "Do you want to delete the tag #{tag.name}?" %>
+              </td>
           </tr>
         <% end %>
       </table>
