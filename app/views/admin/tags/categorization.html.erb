@@ -18,7 +18,7 @@
         <% @tags.each do |tag| %>
           <tr>
             <td>
-              <%= tag.name %>
+              <%= link_to tag.name, edit_admin_tag_path(tag.id) %>
             </td>
             <% @categories.each do |category| %>
               <td>
