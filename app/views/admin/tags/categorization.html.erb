@@ -4,6 +4,7 @@
     <div class="span4">
       <%= form_tag(categorization_admin_tags_path, method: :get, class: 'form-inline') do %>
         <%= text_field_tag 'q', params[:q], class: 'input-medium search-query' %>
+        <%= check_box_tag 'uncategorized' %>
         <%= submit_tag 'Filter', class: "btn" %>
       <% end %>
 
