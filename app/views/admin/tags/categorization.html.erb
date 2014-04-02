@@ -3,11 +3,16 @@
   <div class="row">
     <div class="span4">
       <%= form_tag(categorization_admin_tags_path, method: :get, class: 'form-inline') do %>
+        <%= label_tag 'Suche nach einem bestimmtem Tag' %>
         <%= text_field_tag 'q', params[:q], class: 'input-medium search-query' %>
-        <%= check_box_tag 'uncategorized' %>
+        <br>
+        <br>
+        <%= check_box_tag 'uncategorized', params[:uncategorized], params[:uncategorized] %>
+        <%= label_tag 'uncategorized', 'Alle Tags ohne Kategorien anzeigen', class: 'checkbox inline' %><br>
+        <br>
         <%= submit_tag 'Filter', class: "btn" %>
       <% end %>
-
+    <br>
     </div>
     <div class="span8 text-right">
       <%= paginate @tags %>
