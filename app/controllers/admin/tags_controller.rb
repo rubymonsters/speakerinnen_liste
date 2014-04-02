@@ -48,20 +48,20 @@ class Admin::TagsController < Admin::BaseController
                       .includes(:categories).where('categories.id IS NULL')
                       .order('tags.name ASC')
                       .page(params[:page])
-                      .per(100)
+                      .per(20)
     elsif params[:q]
         @tags       = ActsAsTaggableOn::Tag.where("name ILIKE ?", "%" + params[:q] + "%")
                       .order('tags.name ASC')
                       .page(params[:page])
-                      .per(100)
+                      .per(20)
     elsif params[:uncategorized]
         @tags       = ActsAsTaggableOn::Tag
                       .includes(:categories).where('categories.id IS NULL')
                       .order('tags.name ASC')
                       .page(params[:page])
-                      .per(100)
+                      .per(20)
     else
-      @tags       = ActsAsTaggableOn::Tag.order('name ASC').page(params[:page]).per(100)
+      @tags       = ActsAsTaggableOn::Tag.order('name ASC').page(params[:page]).per(20)
     end
     @categories = Category.all
   end
