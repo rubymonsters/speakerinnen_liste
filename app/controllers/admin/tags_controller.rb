@@ -45,7 +45,7 @@ class Admin::TagsController < Admin::BaseController
     if params[:q] && params[:uncategorized]
         @tags       = ActsAsTaggableOn::Tag
                       .where("name ILIKE ?", "%" + params[:q] + "%")
-                      .joins(:categories)
+                      .joins(:categories).where(categories: { id: nil})
                       .order('name ASC')
                       .page(params[:page])
                       .per(100)
@@ -56,7 +56,7 @@ class Admin::TagsController < Admin::BaseController
                       .per(100)
     elsif params[:uncategorized]
         @tags       = ActsAsTaggableOn::Tag
-                      .joins(:categories)
+                      .joins(:categories_tags).where(categories_tags: { id: nil})
                       .order('name ASC')
                       .page(params[:page])
                       .per(100)
