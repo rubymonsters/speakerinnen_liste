@@ -56,7 +56,7 @@ class Admin::TagsController < Admin::BaseController
                       .per(100)
     elsif params[:uncategorized]
         @tags       = ActsAsTaggableOn::Tag
-                      .joins(:categories_tags).where(categories_tags: { id: nil})
+                      .joins(:categories).where(categories: { id: nil})
                       .order('name ASC')
                       .page(params[:page])
                       .per(100)
