@@ -14,7 +14,8 @@
       <% end %>
     <br>
     </div>
-    <div class="span8 text-right">
+    <div class="span8 text-center">
+      <strong><%= "Die Anzahl der Tags ist #{@tags.total_count}." %></strong>
       <%= paginate @tags %>
     </div>
   </div>
@@ -29,11 +30,11 @@
             <% @categories.each do |category| %>
               <td>
                 <% if tag.categories.map(&:id).include?(category.id) %>
-                  <%= link_to category.name, remove_category_admin_tag_path(tag, category_id: category.id, page: params[:page], q: params[:q]),
+                  <%= link_to category.name, remove_category_admin_tag_path(tag, category_id: category.id, page: params[:page], q: params[:q], uncategorized: params[:uncategorized]),
                             method: :post,
                             class: "active"  %>
                 <% else %>
-                  <%= link_to category.name, set_category_admin_tag_path(tag, category_id: category.id, page: params[:page], q: params[:q]),
+                  <%= link_to category.name, set_category_admin_tag_path(tag, category_id: category.id, page: params[:page], q: params[:q], uncategorized: params[:uncategorized]),
                             method: :post %>
                 <% end %>
               </td>

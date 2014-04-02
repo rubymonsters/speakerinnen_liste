@@ -31,14 +31,14 @@ class Admin::TagsController < Admin::BaseController
     @tag      = ActsAsTaggableOn::Tag.find(params[:id])
     @category = Category.find(params[:category_id])
     @tag.categories.delete @category
-    redirect_to categorization_admin_tags_path(page: params[:page], q: params[:q]), alert: ("The tag '#{@tag.name}' is deleted from the category '#{@category.name}'.")
+    redirect_to categorization_admin_tags_path(page: params[:page], q: params[:q], uncategorized: params[:uncategorized]), alert: ("The tag '#{@tag.name}' is deleted from the category '#{@category.name}'.")
   end
 
   def set_category
     @tag      = ActsAsTaggableOn::Tag.find(params[:id])
     @category = Category.find(params[:category_id])
     @tag.categories << @category
-    redirect_to categorization_admin_tags_path(page: params[:page], q: params[:q]), notice: ("Just added the tag '#{@tag.name}' to the category '#{@category.name}'.")
+    redirect_to categorization_admin_tags_path(page: params[:page], q: params[:q], uncategorized: params[:uncategorized]), notice: ("Just added the tag '#{@tag.name}' to the category '#{@category.name}'.")
   end
 
   def categorization
