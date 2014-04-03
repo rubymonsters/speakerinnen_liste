@@ -97,7 +97,6 @@ de:
       delete_picture: "Lösche das Foto"
       update: "Aktualisiere das Profil"
       copyright_photo: "Bitte nutze .jpg, .jpeg oder .png und achte darauf, daß Du die Rechte zu diesem Foto besitzt!"
-      main_topic: "Dein Hauptthema in 18 Zeichen"
     profile:
       firstname: 'Vorname:'
       lastname: 'Nachname:'
