@@ -29,6 +29,7 @@ class TagTest < ActionController::IntegrationTest
 
   test "show Sommer tag" do
     visit '/profiles'
+    # save_and_open_page
     assert page.has_content?('sommer')
     within ".topics-cloud" do
       click_link('sommer')
