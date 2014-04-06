@@ -1,12 +1,14 @@
 class CategoriesController < ApplicationController
+  include CategoriesHelper
+
   def new
     @category = Category.new
   end
 
   def show
-    @category = Category.find(params[:id]) 
+    @category = Category.find(params[:id])
   end
-  
+
   def index
     @categories = Category.all
   end
