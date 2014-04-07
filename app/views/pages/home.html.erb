@@ -77,11 +77,11 @@
     <h4><%= t(".description_text") %></h4>
     <br>
     <div class="row disciplines">
-      <% @categories.each_slice(4) do |category| %>
+      <% @categories.each_slice(4) do |sliced_categories| %>
         <div class="span3">
           <ul>
-            <% category.each do |link| %>
-              <li class="categories"><%= category_link link %></li>
+            <% sliced_categories.each do |category| %>
+              <li class="categories"><%= category_link category %></li>
             <% end %>
           </ul>
         </div>
