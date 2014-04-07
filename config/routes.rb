@@ -42,7 +42,7 @@ SpeakerinnenListe::Application.routes.draw do
 
     get '/', to: 'pages#home', as: :root
 
-    get 'categories/:category', to: 'profiles#index', as: :category
+    get 'categories/:category', to: 'profiles#category', as: :category
 
     resources :profiles, :except => [:new, :create] do
       resources :medialinks
