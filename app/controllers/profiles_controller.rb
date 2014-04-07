@@ -1,5 +1,6 @@
 class ProfilesController < ApplicationController
   include ProfilesHelper
+  include CategoriesHelper
 
   before_filter :require_permision, :only=> [:edit, :destroy, :update]
 
@@ -14,13 +15,10 @@ class ProfilesController < ApplicationController
         end
 
         @profiles = Profile.is_published.tagged_with(@tags_name, any: true).order("created_at DESC").page(params[:page]).per(24)
-        #@profiles = Profile.is_published.tagged_with(@tags.all.name).order("created_at DESC").page(params[:page]).per(24)
       else
         @profiles = Profile.is_published.order("created_at DESC").page(params[:page]).per(24)
         redirect_to profiles_url, notice: ("No Tag for that Category found!")
       end
-      # @profiles = Profile.is_published.includes(:categories).where(categories.id: params[:category]).order("created_at DESC").page(params[:page]).per(24)
-      # @profiles = Profile.is_published.tagged_with(params[:topic]).order("created_at DESC").page(params[:page]).per(24)
     elsif params[:topic]
       @profiles = Profile.is_published.tagged_with(params[:topic]).order("created_at DESC").page(params[:page]).per(24)
     else
