@@ -1,0 +1,18 @@
+<div class="container profiles">
+  <h1 class="title-profiles">
+    <%= @category.name %>
+  </h1>
+  <br>
+  <div class='row'>
+    <%= render partial: "tag" %>
+  </div>
+  <div class='row'>
+    <%= render partial: "profile", collection: @profiles %>
+  </div>
+  <div class="row">
+    <div class="span12 text-center">
+      <%= paginate @profiles %>
+    </div>
+  </div>
+</div>
+<br>
