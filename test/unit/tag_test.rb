@@ -17,18 +17,24 @@ class TagTest < ActiveSupport::TestCase
     assert_equal profiles(:one).topics.length, 0
     profiles(:one).topic_list.add("Juni")
     profiles(:one).save!
-    assert_equal profiles(:one).topic_list.first,  "juni", "Tags ar e lowercase after saving them"
+    assert_equal profiles(:one).topic_list.first,  "juni", "Tags are lowercase after saving them"
   end
 
-  #test "tag get merged into another tag" do
-    #profiles(:one).topic_list.add("Somer", "Herbst")
-    #profiles(:two).topic_list.add("Sommer")
+  test "tag get merged into another tag" do
+    profiles(:one).topic_list.add("Somer", "Herbst")
+    profiles(:one).save!
+    profiles(:two).topic_list.add("Sommer")
+    profiles(:two).save!
+    assert_equal ActsAsTaggableOn::Tag.count,3
+    old_tag = ActsAsTaggableOn::Tag.find_by_name("somer")
+    new_tag = ActsAsTaggableOn::Tag.find_by_name("sommer")
+    assert_equal old_tag.name, "somer"
+    assert_equal new_tag.name, "sommer"
+    assert_equal ActsAsTaggableOn::Tagging.count, 3
 
-
-
-    #tag = ActsAsTaggableOn::Tag.where(name: "Somer")
-    #tag.merge("Sommer")
-
-  #end
+    #new_tag.merge(old_tag)
+    #assert_equal profiles(:one).topic_list, ["sommer", "herbst"]
+    #assert_equal profiles(:two).topic_list, ["sommer"]
+  end
 
 end

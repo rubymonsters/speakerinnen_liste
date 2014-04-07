@@ -69,7 +69,7 @@ class Profile < ActiveRecord::Base
   end
 
   def main_topic_or_first_topic
-    main_topic.present? ? main_topic.truncate(18, seperator: '') : topic_list.first
+    main_topic.present? ? main_topic : topic_list.first
   end
 
   def language(translation)

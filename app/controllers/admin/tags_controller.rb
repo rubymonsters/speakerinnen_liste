@@ -23,31 +23,45 @@ class Admin::TagsController < Admin::BaseController
   def destroy
     @tag = ActsAsTaggableOn::Tag.find(params[:id])
     @tag.destroy
-    redirect_to admin_tags_path, notice: (I18n.t("flash.tags.destroyed"))
+    redirect_to categorization_admin_tags_path, notice: ("'#{@tag.name}' was destroyed.")
+
   end
 
   def remove_category
     @tag      = ActsAsTaggableOn::Tag.find(params[:id])
     @category = Category.find(params[:category_id])
     @tag.categories.delete @category
-    redirect_to categorization_admin_tags_path(page: params[:page], q: params[:q]), alert: ("The tag '#{@tag.name}' is deleted from the category '#{@category.name}'.")
+    redirect_to categorization_admin_tags_path(page: params[:page], q: params[:q], uncategorized: params[:uncategorized]), alert: ("The tag '#{@tag.name}' is deleted from the category '#{@category.name}'.")
   end
 
   def set_category
     @tag      = ActsAsTaggableOn::Tag.find(params[:id])
     @category = Category.find(params[:category_id])
     @tag.categories << @category
-    redirect_to categorization_admin_tags_path(page: params[:page], q: params[:q]), notice: ("Just added the tag '#{@tag.name}' to the category '#{@category.name}'.")
+    redirect_to categorization_admin_tags_path(page: params[:page], q: params[:q], uncategorized: params[:uncategorized]), notice: ("Just added the tag '#{@tag.name}' to the category '#{@category.name}'.")
   end
 
   def categorization
-    if params[:q]
-      @tags       = ActsAsTaggableOn::Tag.where("name ILIKE ?", "%" + params[:q] + "%")
-                    .order('name ASC')
-                    .page(params[:page])
-                    .per(100)
+    if params[:q] && params[:uncategorized]
+        @tags       = ActsAsTaggableOn::Tag
+                      .where("tags.name ILIKE ?", "%" + params[:q] + "%")
+                      .includes(:categories).where('categories.id IS NULL')
+                      .order('tags.name ASC')
+                      .page(params[:page])
+                      .per(20)
+    elsif params[:q]
+        @tags       = ActsAsTaggableOn::Tag.where("name ILIKE ?", "%" + params[:q] + "%")
+                      .order('tags.name ASC')
+                      .page(params[:page])
+                      .per(20)
+    elsif params[:uncategorized]
+        @tags       = ActsAsTaggableOn::Tag
+                      .includes(:categories).where('categories.id IS NULL')
+                      .order('tags.name ASC')
+                      .page(params[:page])
+                      .per(20)
     else
-      @tags       = ActsAsTaggableOn::Tag.order('name ASC').page(params[:page]).per(100)
+      @tags       = ActsAsTaggableOn::Tag.order('name ASC').page(params[:page]).per(20)
     end
     @categories = Category.all
   end

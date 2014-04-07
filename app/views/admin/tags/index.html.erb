@@ -28,7 +28,7 @@
               </td>
               <td><%= link_to "edit", edit_admin_tag_path(tag.id) %></td>
               <td>
-                <%= link_to 'delete', admin_tag_path(tag.id), :method => :delete,
+                <%= link_to 'delete', admin_tag_path(tag.id), :method => :delete, class: "btn",
                   :confirm => "Do you want to delete the tag #{tag.name}?" %>
               </td>
             </tr>

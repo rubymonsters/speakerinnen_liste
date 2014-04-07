@@ -24,7 +24,7 @@ en:
         new_speaker_heading: "Our Newest Speakers"
         speaker_text: "No more excuses for panels without women!"
         speaker_index: "Browse all speakers >>"
-        topics: "List of Topics >>"
+        categories: "Categories and Topics >>"
       mission_statement:
         heading: "Our Vision"
         content: "<p>We believe that female speakers should be easier to find for event organizers.</p><p>We believe that event organizers should have the best speakers at their events, regardless of the speakers’ gender identification.</p><p>We believe in collaboration and not competition, so we encourage our speakers and event organizers to support each other and help speakers speak better.</p>"
@@ -97,7 +97,6 @@ en:
       delete_picture: "Delete photo"
       update: "Update profile"
       copyright_photo: "Please make sure you use .jpg, .jpeg or .png and that you have all copyrights for this photo."
-      main_topic: "Your main topic in 18 characters"
     profile:
       topics: "My topics:"
       languages: "My languages:"

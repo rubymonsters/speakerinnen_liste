@@ -29,8 +29,9 @@ class TagTest < ActionController::IntegrationTest
 
   test "show Sommer tag" do
     visit '/profiles'
+    # save_and_open_page
     assert page.has_content?('sommer')
-    within "#topics-cloud" do
+    within ".topics-cloud" do
       click_link('sommer')
     end
     assert page.has_css?('div.name', :count => 1)
@@ -39,7 +40,7 @@ class TagTest < ActionController::IntegrationTest
   test "show Fruehling tag" do
     visit '/profiles'
     assert page.has_content?('fruehling')
-    within "#topics-cloud" do
+    within ".topics-cloud" do
       click_link('fruehling')
     end
     assert page.has_css?('div.name', :count => 2)
