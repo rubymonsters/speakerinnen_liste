@@ -29,7 +29,7 @@
             <%= button_tag((t(:search, scope: "pages.home.search")), :class => "btn btn-large ") %>
           <% end %>
           <br />
-          <%= link_to t(:topics, scope: "pages.home.speakers"), "#topics"   %>
+          <%= link_to t(:categories, scope: "pages.home.speakers"), "#categories_anker"   %>
           <br />
           <%= link_to t(:speaker_index, scope: "pages.home.speakers"), profiles_path %>
           <br>
@@ -69,14 +69,14 @@
     Copyright by Ute Mayer
   </div>
 </div>
-<!-- Anker für Topics -->
-<a id="topics"></a>
+<!-- Anker für Kategorien -->
+<a id="categories_anker"></a>
 <div class="white-bg">
   <div class="container">
     <h1><%= t(".description")%></h1>
     <h4><%= t(".description_text") %></h4>
     <br>
-    <div class="row disciplines">
+    <div class="row disciplines categories">
       <% @categories.each_slice(4) do |sliced_categories| %>
         <div class="span3">
           <ul>
