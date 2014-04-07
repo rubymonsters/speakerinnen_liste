@@ -60,8 +60,14 @@
           });
         </script>
       </h3>
-      <% tag_cloud Profile.topic_counts.sort { |x, y| x.name <=> y.name }, %w[s m l] do |topic, css_class| %>
-        <%= topic_link topic, class: css_class %>
+      <% if params[:category] %>
+        <% tag_cloud @tags.all.sort { |x, y| x.name <=> y.name }, %w[s m l] do |topic, css_class| %>
+          <%= topic_link topic, class: css_class %>
+        <% end %>
+      <% else %>
+        <% tag_cloud Profile.topic_counts.sort { |x, y| x.name <=> y.name }, %w[s m l] do |topic, css_class| %>
+          <%= topic_link topic, class: css_class %>
+        <% end %>
       <% end %>
     </div>
   </div>
