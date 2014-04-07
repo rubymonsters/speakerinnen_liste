@@ -83,7 +83,7 @@ de:
     form:
       name: "Dein Name"
       name_placeholder: ""
-      medialink_placeholder: "Bitte nur 18 Zeichen eingeben"
+      medialink_placeholder: "Bitte nur 21 Zeichen eingeben"
       email: "Deine E-Mail-Adresse"
       subject: "Deine Betreffzeile"
       body: "Deine Nachricht"
