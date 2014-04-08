@@ -25,7 +25,7 @@
         <% @tags.each do |tag| %>
           <tr>
             <td>
-              <%= link_to tag.name, edit_admin_tag_path(tag.id) %>
+              <%= link_to tag.name, edit_admin_tag_path(tag.id, page: params[:page]) %>
             </td>
             <% @categories.each do |category| %>
               <td>

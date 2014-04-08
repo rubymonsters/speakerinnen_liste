@@ -12,9 +12,9 @@ class Admin::TagsController < Admin::BaseController
     @tag = ActsAsTaggableOn::Tag.find(params[:id])
     if existing_tag = ActsAsTaggableOn::Tag.where(name: params[:tag][:name]).first
       existing_tag.merge(@tag)
-      redirect_to categorization_admin_tags_path, notice: ("'#{@tag.name}' was merged with the tag '#{existing_tag.name}'.")
+      redirect_to categorization_admin_tags_path(page: params[:page]), notice: ("'#{@tag.name}' was merged with the tag '#{existing_tag.name}'.")
     elsif @tag.update_attributes(params[:tag])
-      redirect_to categorization_admin_tags_path, notice: ("'#{@tag.name}' was updated.")
+      redirect_to categorization_admin_tags_path(page: params[:page]), notice: ("'#{@tag.name}' was updated.")
     else
       render action: "edit"
     end
