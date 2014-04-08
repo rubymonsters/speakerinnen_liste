@@ -6,9 +6,9 @@ class ProfilesController < ApplicationController
 
   def index
     if params[:topic]
-      @profiles = Profile.is_published.tagged_with(params[:topic]).order("created_at DESC").page(params[:page]).per(24)
+      @profiles = profiles_for_scope(params[:topic])
     else
-      @profiles = Profile.is_published.order("created_at DESC").page(params[:page]).per(24)
+      @profiles = profiles_for_index
     end
   end
 
@@ -17,10 +17,9 @@ class ProfilesController < ApplicationController
     @tags     = @category.tags
     if @tags.any?
       tag_names = @tags.map(&:name)
-
-      @profiles = Profile.is_published.tagged_with(tag_names, any: true).order("created_at DESC").page(params[:page]).per(24)
+      @profiles = profiles_for_scope(tag_names)
     else
-      @profiles = Profile.is_published.order("created_at DESC").page(params[:page]).per(24)
+      @profiles = profiles_for_index
       redirect_to profiles_url, notice: ("No Tag for that Category found!")
     end
   end
@@ -88,7 +87,15 @@ class ProfilesController < ApplicationController
   end
 
   def profiles_for_index
+    Profile.is_published.order("created_at DESC").page(params[:page]).per(24)
+  end
 
+  def profiles_for_scope(tag_names)
+    Profile.is_published
+            .tagged_with(tag_names, any: true)
+            .order("created_at DESC")
+            .page(params[:page])
+            .per(24)
   end
 
 end
