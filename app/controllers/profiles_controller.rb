@@ -5,21 +5,7 @@ class ProfilesController < ApplicationController
   before_filter :require_permision, :only=> [:edit, :destroy, :update]
 
   def index
-    if params[:category]
-      @category = Category.find_by_name(params[:category])
-      @tags     = @category.tags
-      if @tags.any?
-        @tags.each do |tag|
-          @tags_name ||= []
-          @tags_name << tag.name
-        end
-
-        @profiles = Profile.is_published.tagged_with(@tags_name, any: true).order("created_at DESC").page(params[:page]).per(24)
-      else
-        @profiles = Profile.is_published.order("created_at DESC").page(params[:page]).per(24)
-        redirect_to profiles_url, notice: ("No Tag for that Category found!")
-      end
-    elsif params[:topic]
+    if params[:topic]
       @profiles = Profile.is_published.tagged_with(params[:topic]).order("created_at DESC").page(params[:page]).per(24)
     else
       @profiles = Profile.is_published.order("created_at DESC").page(params[:page]).per(24)
@@ -27,26 +13,18 @@ class ProfilesController < ApplicationController
   end
 
   def category
-    if params[:category]
-      @category = Category.find_by_name(params[:category])
-      @tags     = @category.tags
-      if @tags.any?
-        @tags.each do |tag|
-          @tags_name ||= []
-          @tags_name << tag.name
-        end
+    @category = Category.find_by_name(params[:category])
+    @tags     = @category.tags
+    if @tags.any?
+      tag_names = @tags.map(&:name)
 
-        @profiles = Profile.is_published.tagged_with(@tags_name, any: true).order("created_at DESC").page(params[:page]).per(24)
-      else
-        @profiles = Profile.is_published.order("created_at DESC").page(params[:page]).per(24)
-        redirect_to profiles_url, notice: ("No Tag for that Category found!")
-      end
-    elsif params[:topic]
-      @profiles = Profile.is_published.tagged_with(params[:topic]).order("created_at DESC").page(params[:page]).per(24)
+      @profiles = Profile.is_published.tagged_with(tag_names, any: true).order("created_at DESC").page(params[:page]).per(24)
     else
       @profiles = Profile.is_published.order("created_at DESC").page(params[:page]).per(24)
+      redirect_to profiles_url, notice: ("No Tag for that Category found!")
     end
   end
+
   def show
     @profile = Profile.find(params[:id])
     @message = Message.new
@@ -107,6 +85,10 @@ class ProfilesController < ApplicationController
         object.translations.build(locale: locale)
       end
     end
+  end
+
+  def profiles_for_index
+
   end
 
 end
