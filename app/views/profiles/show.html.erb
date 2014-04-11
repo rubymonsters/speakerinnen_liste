@@ -18,7 +18,7 @@
       <% else %>
         <%= image_tag("avatar.jpg", alt: "avatar", class: "photo") %>
       <% end %>
-      <div class="main-topic"> <%= @profile.main_topic_or_first_topic %></div>
+      <div class="main-topic"><%= @profile.main_topic_or_first_topic %></div>
     </div>
 
     <div class="span5 text-profile">
@@ -35,15 +35,15 @@
       <% end %>
 
       <h5><%= t(:topics, scope: "profiles.profile") %></h5>
-      <span class='topics-cloud' ><%= raw @profile.topic_list.map { |t| link_to t, topic_path(t) }.join(' ') %></span>
+      <span class='topics-cloud'><%= raw @profile.topic_list.map { |t| link_to t, topic_path(t) }.join(' ') %></span>
       <hr>
       <h5><%= t(:languages, scope: "profiles.profile") %></h5>
-      <span> <%= @profile.languages %></span>
+      <span><%= @profile.languages %></span>
       <hr>
 
       <% if @profile.city.present? %>
         <h5><%= t(:city, scope: "profiles.profile") %></h5>
-        <span> <%= @profile.city %></span>
+        <span><%= @profile.city %></span>
         <hr>
       <% end %>
 

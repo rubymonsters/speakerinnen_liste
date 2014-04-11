@@ -1,6 +1,8 @@
 class ProfilesController < ApplicationController
   include ProfilesHelper
   include CategoriesHelper
+  include ActsAsTaggableOn::TagsHelper
+
 
   before_filter :require_permision, :only=> [:edit, :destroy, :update]
 
