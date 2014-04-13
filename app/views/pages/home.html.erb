@@ -1,39 +1,40 @@
-<section id="about-top">
-  <div class="badge"><%= image_tag("badge2-bw.png", :alt => "badge") %> </div>
+<section class="photo-bar" id="curie-photo" >
+  <div class="curie-badge">
+    <%= image_tag("badge2-bw.png", alt: "curie-badge") %>
+  </div>
   <script>
     $(window).scroll(function() {
        if ($(this).scrollTop() > 100) {
-         $(".badge").stop().animate({ opacity: 0 }, 50);
+         $(".curie-badge").stop().animate({ opacity: 0 }, 50);
        } else {
-         $(".badge").stop().animate({ opacity: 1 }, 50);
+         $(".curie-badge").stop().animate({ opacity: 1 }, 50);
+
        }
        //stops badge from covering other links
        if ($(this).scrollTop() > 700) {
-         $(".badge").hide();
+         $(".curie-badge").hide();
        } else {
-         $(".badge").show();
+         $(".curie-badge").show();
        }
     });
   </script>
 
   <div class="container">
-    <div class="heading">
-      <div class="large serif">
-        <span class="text-white-bg"><%= t(:heading, scope: "pages.home.search") %></span>
-        <br/>
-        <span class="text-white-bg tagline-second"><%= t(:tagline, scope: "pages.home.search") %></span>
-        <br/>
-        <div class="text-white-bg tagline-second">
-          <%= form_tag(search_path, :method => "get", :class =>"") do %>
-            <%= text_field_tag(:q, nil, :class => "", :id => "search-field", :placeholder => t(:search_text, scope: "pages.home.search")) %>
-            <%= button_tag((t(:search, scope: "pages.home.search")), :class => "btn btn-large ") %>
-          <% end %>
-          <br />
-          <%= link_to t(:categories, scope: "pages.home.speakers"), "#categories_anker"   %>
-          <br />
-          <%= link_to t(:speaker_index, scope: "pages.home.speakers"), profiles_path %>
-          <br>
-        </div>
+    <div id="heading">
+      <span class="text-white-bg tagline"><%= t(:heading, scope: "pages.home.search") %></span>
+      <br/>
+      <span class="text-white-bg tagline-second"><%= t(:tagline, scope: "pages.home.search") %></span>
+      <br/>
+      <div class="text-white-bg tagline-second">
+        <%= form_tag(search_path, method: "get", class:"") do %>
+          <%= text_field_tag(:q, nil, class: "", id: "search-field", placeholder: t(:search_text, scope: "pages.home.search")) %>
+          <%= button_tag((t(:search, scope: "pages.home.search")), class: "btn btn-large ") %>
+        <% end %>
+        <br />
+        <%= link_to t(:categories, scope: "pages.home.speakers"), "#categories_anker"   %>
+        <br />
+        <%= link_to t(:speaker_index, scope: "pages.home.speakers"), profiles_path %>
+        <br>
       </div>
     </div>
   </div>
@@ -45,25 +46,21 @@
       <%= t(:new_speaker_heading, scope: "pages.home.speakers") %></h1>
     <h4 class="text-white-bg">
       <%= t(:speaker_text, scope: "pages.home.speakers") %>
-      <%= link_to t(:speaker_index, scope: "pages.home.speakers"), profiles_path, :id => "find-more" %>
+      <%= link_to t(:speaker_index, scope: "pages.home.speakers"), profiles_path, id: "find-more" %>
     </h4>
     <div class="row">
-      <%= render :partial => "profiles/profile", :collection => @profiles %>
+      <%= render partial: "profiles/profile", collection: @profiles %>
     </div>
   </div>
 </div>
 
-<div class="photo-bar coaching-photo">
-  <div class="container large">
-    <div class="photo-text">
-      <span class="text-white-bg">
-        <%= t(:quote, scope: "pages.home").html_safe %>
-      </span>
-      <br>
-      <span class="text-white-bg  tagline-second">
-        <%= t(:quote_text, scope: "pages.home").html_safe %>
-      </span>
-    </div>
+<div class="photo-bar" id="coaching-photo">
+  <div class="container">
+    <span class="text-white-bg tagline"><%= t(:quote, scope: "pages.home") %></span>
+    <br>
+    <span class="text-white-bg  tagline-second">
+      <%= t(:quote_text, scope: "pages.home").html_safe %>
+    </span>
   </div>
   <div class="copyright">
     Copyright by Ute Mayer
@@ -76,12 +73,12 @@
     <h1><%= t(".description")%></h1>
     <h4><%= t(".description_text") %></h4>
     <br>
-    <div class="row disciplines categories">
+    <div class="row">
       <% @categories.each_slice(3) do |sliced_categories| %>
         <div class="span3">
           <ul>
             <% sliced_categories.each do |category| %>
-              <li class="categories"><%= category_link category %></li>
+              <li class="category"><%= category_link category %></li>
             <% end %>
           </ul>
         </div>
@@ -92,17 +89,15 @@
   </div>
 </div>
 
-<div class="photo-bar speakerin-photo">
-  <div class="container large">
-    <div class="photo-text">
-        <span class="text-white-bg">
-          <%= t(:speaker_shoutout, scope: "pages.home").html_safe %>
-        </span>
-        <br>
-        <span class="text-white-bg  tagline-second">
-          <%= link_to(t(:speaker_text, scope: "pages.home").html_safe, new_profile_registration_path) %>
-        </span>
-    </div>
+<div class="photo-bar" id="speakerin-photo">
+  <div class="container">
+    <span class="text-white-bg tagline">
+      <%= t(:speaker_shoutout, scope: "pages.home").html_safe %>
+    </span>
+    <br>
+    <span class="text-white-bg  tagline-second">
+      <%= link_to(t(:speaker_text, scope: "pages.home").html_safe, new_profile_registration_path) %>
+    </span>
   </div>
       <div class="copyright">
         Copyright by Tilman Vogler
