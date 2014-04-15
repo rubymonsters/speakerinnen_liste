@@ -1,5 +1,34 @@
+#start_page {
+  font-family:'Merriweather',Georgia,serif;
+  padding: 0;
+  }
+
+#start_page h1 {
+  font-weight:normal;
+  font-size: 3em;
+  line-height: 1.3em;
+  margin:40px 0 20px 0;
+  }
+
+#start_page h2 {
+  font-weight: lighter;
+  font-size: 1.4em;
+  line-height: 1.6em;
+  }
+
+#start_page h4 {
+  font-weight:  normal;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  padding: 20px 0;
+  margin-bottom: 50px;
+  font-size: 1.4em;
+  line-height: 1.6em;
+  }
+
 #curie-photo {
   background-image:url(<%=asset_path "curie.jpg"%>);
+  min-height: 600px;
   }
 
 #speakerin-photo {
@@ -10,10 +39,7 @@
   background-image:url(<%=asset_path "coaching.jpg"%>);
   }
 
-.heading {
-  padding: 0;
-  }
-
+/* --------------------- Photo Bar --------------*/
 .photo-bar {
   background-attachment:fixed;
   -webkit-background-size:cover;
@@ -24,15 +50,11 @@
   padding:80px 0px;
   }
 
-/* ---------------------Text on Pics --------------*/
 .text-white-bg {
   display:inline-block;
   background-color:rgba(255, 255, 255, 0.7);
   padding:12px 12px 20px 12px;
-  margin: 10px 10px;
   color:#3c3c3a;
-  font-family:'Merriweather',Georgia,serif;
-  font-size:24px;
 }
 
 .text-white-bg a {
@@ -47,20 +69,55 @@
   padding: 0px 4px;
 }
 
-.tagline {
-  font-size:4em;
+/*+++++++++++++ Text Bar ++++++++++++++++*/
+
+.text-bar {
+  background-color:#fff;
+  line-height: 1.8em;
+  z-index:99999;
+  padding-bottom: 50px;
   }
 
+.text-bar a:hover {
+  color: whitesmoke;
+  background-color:#3c3c3a;
+  padding: 0px 4px;
+}
 
-.tagline-second {
-  font-weight: lighter;
-  }
+/*
+.none-photo-bg .italic {
+  display:inline-block;
+  margin-bottom:6px;
+}
 
+.white-bg .home blockquote {
+  border-top:1px solid #aaa;
+  border-bottom:1px solid #aaa;
+  text-align: center;
+  border-left: none;
+  font-size:1.4em;
+  margin:6em 0 2em 0;
+  padding:22px 0px;
+}
 
-  /* --------------Topics---------------- */
+.white-bg {
+  font-family: 'Merriweather',Georgia,serif;
+  line-height:1.8em;
+}
+
+.white-bg .large {
+  font-size:300%;
+}
+
+*/
+
+  /* --------------Profiles---------------- */
+
+  /* --------------Category---------------- */
 .category a {
   font-size: 1.5em;
   background-color: whitesmoke;
+  line-height:1.8em;
   }
 
 .category a:hover {
@@ -79,7 +136,9 @@
 }
 
 
-
+.gray-bg *{
+  color: #222;
+}
 
 
 

@@ -1,8 +1,27 @@
-// Place all the styles related to the Pages controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.pages {
+  font-family: 'Merriweather',Georgia;
+  background-color: white;
+  line-height: 1.8em;
+}
 
 .imprint {
   padding-top: 50px;
 }
+
+.pages li {
+  line-height: 1.5em;
+  }
+
+.pages h1 {
+  padding-top: 30px;
+  font-size: 4.0em;
+  -webkit-margin-before: 0.67em;
+  -webkit-margin-after: 0.67em;
+  -webkit-margin-start: 0px;
+  -webkit-margin-end: 0px;
+  font-family: 'Merriweather',Georgia,serif;
+  line-height: 1.8em;
+  font-weight: 300;
+}
+
 

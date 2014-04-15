@@ -18,8 +18,8 @@ class ProfilesController < ApplicationController
     @category = Category.find_by_name(params[:category])
     @tags     = @category.tags
     if @tags.any?
-      tag_names = @tags.map(&:name)
-      @profiles = profiles_for_scope(tag_names)
+      @tag_names = @tags.map(&:name)
+      @profiles = profiles_for_scope(@tag_names)
     else
       @profiles = profiles_for_index
       redirect_to profiles_url, notice: ("No Tag for that Category found!")

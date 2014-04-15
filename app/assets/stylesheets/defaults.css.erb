@@ -1,3 +1,16 @@
+html  {
+  -webkit-text-size-adjust:100%;
+  -ms-text-size-adjust:100%;
+}
+
+body {
+  margin:0;
+  font-size: 100%;
+  line-height: normal;
+  background-color: whitesmoke;
+}
+
+
   /*basics*/
 
 article,
@@ -27,25 +40,6 @@ audio:not([controls]) {
 [hidden]  {
   display:none;
   }
-
-html  {
-  font-size:100%;
-  -webkit-text-size-adjust:100%;
-  -ms-text-size-adjust:100%;
-}
-
-html,button,input,select,textarea {
-  font-family:sans-serif;
-  color:#666;
-  font-size: 14px;
-}
-
-body {
-  margin:0;
-  font-size:1em;
-  line-height:1.4;
-  background-color: whitesmoke;
-}
 
 ::-moz-selection {
   background:#ecd10c;
@@ -136,7 +130,7 @@ a:hover,a:active {
 a:active {
   color:#3c3c3a;
 }
-
+/*
 ul, li {
   list-style: none;
 }
@@ -148,15 +142,9 @@ a li {
   font-size: 1.5em;
   padding: 0px 4px;
   }
+*/
 
 /*h-tags*/
-
-h1,h2,h3,h4,h5  {
-  font-family:"proxima-nova-alt","Helvetica Neue",Helvetica,Arial,Verdana,sans-serif;
-  font-weight:normal;
-  margin:5px 0px;
-  padding:0px;
-}
 
 h1 {
   font-size:4.0em;
@@ -190,10 +178,10 @@ h5 {
 
 
 
-/**/
+
+/*+++++++++++++++++++++++++++++*/
 
 abbr[title]{border-bottom:1px dotted;}
-b,strong{font-weight:bold;}
 blockquote{margin:1em 40px;}
 dfn{font-style:italic;}
 ins{background:#ff9;color:#000;text-decoration:none;}
@@ -213,11 +201,11 @@ sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline;}
 sup{top:-0.5em;}
 sub{bottom:-0.25em;}
 
-/*list*/
+/*list
 ul,ol {
   margin:1em 0;
   padding:0 0 0 40px;
-}
+}*/
 nav ul,nav ol {
   list-style:none;
   list-style-image:none;
@@ -427,59 +415,6 @@ nav#slide-nav{width:40px;height:80px;margin:0 auto;position:fixed;bottom:0px;rig
 
 p.overview{font-size:200%;line-height:1.6em;}
 
-
-/*white background*/
-
-.white-bg {
-  background-color:#fff;
-  font-size: 15px;
-  padding: 20px 0px;
-  width: 100%;z-index:99999;
-}
-
-.white-bg .italic {
-  display:inline-block;
-  margin-bottom:6px;
-}
-
-.white-bg .home blockquote {
-  border-top:1px solid #aaa;
-  border-bottom:1px solid #aaa;
-  text-align: center;
-  border-left: none;
-  font-size:1.4em;
-  margin:6em 0 2em 0;
-  padding:22px 0px;
-}
-
-.white-bg *{
-  font-family: 'Merriweather',Georgia,serif;
-  line-height:1.8em;
-}
-
-.white-bg .large {
-  font-size:300%;
-}
-
-.white-bg ul {
-  margin:0px;
-  padding:0px;
-}
-
-.white-bg ul li a{
-  list-style-type:none;
-  margin:0px 0px 8px 0px;
-  padding:0px;
-}
-
-.white-bg li {
-  text-decoration: none;
-}
-.white-bg ul.pages li {
-  list-style: circle;
-  list-style-position: inside;
-  text-indent: 20px;
-}
 
 .white-search {
   background-color:rgba(255, 255, 255, 0.7);
