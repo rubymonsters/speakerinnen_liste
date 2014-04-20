@@ -62,22 +62,22 @@
         <%= t(:quote_text, scope: "pages.home").html_safe %>
       </h2>
     </div>
-    <div class="copyright">
-      Copyright by Ute Mayer
-    </div>
   </div>
 
   <!-- Anker für Kategorien -->
   <a id="categories_anker"></a>
 
   <div class="text-bar">
+    <div class="copyright">
+      Copyright by Ute Mayer
+    </div>
     <div class="container">
       <h1><%= t(".description")%></h1>
       <h4><%= t(".description_text") %></h4>
       <div class="row">
-        <% @categories.each_slice(3) do |sliced_categories| %>
-          <div class="span4">
-            <ul>
+        <% @categories.each_slice(5) do |sliced_categories| %>
+          <div class="span6">
+            <ul class="categories">
               <% sliced_categories.each do |category| %>
                 <li class="category"><%= category_link category %></li>
               <% end %>
@@ -100,12 +100,12 @@
         <%= link_to(t(:speaker_text, scope: "pages.home").html_safe, new_profile_registration_path) %>
       </h2>
     </div>
-        <div class="copyright">
-          Copyright by Tilman Vogler
-        </div>
   </div>
 
   <div class="text-bar">
+    <div class="copyright">
+      Copyright by Tilman Vogler
+    </div>
     <div class="container">
       <h1>Speakerinnen*</h1>
       <div class="row">
