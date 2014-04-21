@@ -35,7 +35,7 @@
     </script>
   </h3>
   <% if params[:category] %>
-    <% tag_cloud Profile.tagged_with(@tag_names, any: true).topic_counts.sort { |x,y| x.name <=> y.name }, %w[s m l] do |topic, css_class| %>
+    <% tag_cloud @tags.sort { |x,y| x.name <=> y.name }, %w[s m l] do |topic, css_class| %>
       <%= topic_link topic, class: css_class %>
     <% end %>
   <% else %>

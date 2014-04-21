@@ -26,7 +26,7 @@
       <h2 class="text-white-bg"><%= t(:tagline, scope: "pages.home.search") %></h2>
       <br/>
       <h2 class="text-white-bg">
-        <%= form_tag(search_path, method: "get", class:"") do %>
+        <%= form_tag(search_path, method: "get", class:"well") do %>
           <%= text_field_tag(:q, nil, class: "", id: "search-field", placeholder: t(:search_text, scope: "pages.home.search")) %>
           <%= button_tag((t(:search, scope: "pages.home.search")), class: "btn btn-large ") %>
         <% end %>
