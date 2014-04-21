@@ -2,13 +2,11 @@
   <div style="margin-top:50px">
     <h2><%= t(:edit_password, scope: "devise.passwords")%></h2>
 
-      <%= simple_form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put, :class => 'form-vertical' }) do |f| %>
+      <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put, class: 'form-vertical' }) do |f| %>
 
         <%= f.hidden_field :reset_password_token %>
 
-        <%= f.input :password, placeholder: t(:new_password, scope: "devise.passwords"), :autofocus => true, label: false %>
-
-
+        <%= f.input :password, placeholder: t(:new_password, scope: "devise.passwords"), autofocus: true, label: false %>
         <%= f.input :password, placeholder: t(:password_confirmation, scope: "devise.passwords"), label: false %>
         <%= f.submit t(:new_password, scope: "devise.passwords"), class:'btn btn-info' %>
       <% end %>

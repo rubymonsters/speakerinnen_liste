@@ -76,11 +76,15 @@
   line-height: 1.8em;
 }
 
-.well input[type="text"], .well .input-xlarge, ul.tagit {
+.well input[type="text"], textarea, .well .input-xlarge, ul.tagit {
   height: 43px;
   padding: 0 14px;
   width: 250px;
   margin: 0;
+}
+
+.well textarea {
+  height: 400px;
 }
 
 ul.tagit {
@@ -99,7 +103,6 @@ ul.tagit {
 }
 
 .well input[type="submit"].btn {
-	width: 55%;
 	height: 43px;
   margin-left: 39%;
   color: #fff;

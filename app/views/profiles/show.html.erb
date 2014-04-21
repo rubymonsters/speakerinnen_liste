@@ -1,14 +1,14 @@
 <div class="container profiles">
   <div class="row">
-    <div class="span12">
-      <div class="white-bg">
-        <h1><%= @profile.fullname %></h1>
-        <%= link_to(profiles_path) do %>
-        <div class="row pull-right">
-          <span class="icon icon-arrow-left"></span> SpeakerinnenListe
-        </div>
-        <% end %>
-      </div>
+    <div class="span8">
+    <br>
+      <h1><%= @profile.fullname %></h1>
+    <br>
+    </div>
+    <div class="span4 text-right">
+      <%= link_to(profiles_path) do %>
+        <span class="icon icon-arrow-left"></span> SpeakerinnenListe
+      <% end %>
     </div>
   </div>
   <div class="row">
@@ -30,7 +30,7 @@
 
       <% if @profile.website.present? %>
         <h5><%= t(:website, scope: "profiles.profile") %></h5>
-        <span><%=link_to @profile.website,@profile.website_with_protocol, target: '_blank' %></span>
+        <span><%=link_to @profile.website, @profile.website_with_protocol, target: '_blank' %></span>
         <hr>
       <% end %>
 
