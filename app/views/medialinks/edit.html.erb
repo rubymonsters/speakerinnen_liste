@@ -1,7 +1,7 @@
 <div class="container profiles">
   <div class="row">
     <div class="span6 control-group-one pull-left">
-      <h1 class="title-profiles">Medialinks</h1>
+      <h1 class="title-profiles"><%= t(:add, scope: "medialinks.edit") %></h1>
       <%= simple_form_for [@profile, @medialink], html: {class: 'form-horizontal well'} do |f| %>
         <%= f.input :url %>
         <%= f.input :title %>

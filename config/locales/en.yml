@@ -95,7 +95,7 @@ en:
       not_saved: "This profile could not be saved: "
       profile_from: "Profile of"
       delete_picture: "Delete photo"
-      update: "Update profile"
+      update: "Update your profile"
       copyright_photo: "Please make sure you use .jpg, .jpeg or .png and that you have all copyrights for this photo."
     profile:
       topics: "My topics:"
@@ -116,7 +116,8 @@ en:
     medialinks:
       edit: "Manage your media links"
     edit:
-      show: "Show"
+      show: "Show Profile"
+      home: "Show all Speakerinnnen*"
       back: "Back"
     index:
       title: "Speakerinnen*"
@@ -183,3 +184,6 @@ en:
     sessions:
       new:
         login: "Log in"
+  medialinks:
+    edit:
+      add: "Add Medialink"

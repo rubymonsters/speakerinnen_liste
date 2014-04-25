@@ -5,7 +5,7 @@ de:
     profiles:
       index:
         show: "Zeige das Profil"
-        show_all: "Zeige alle Speakerinnen"
+        show_all: "Zeige alle Speakerinnen*"
         edit: "Bearbeiten"
         back: "Zurück"
         destroy: "Löschen"
@@ -64,9 +64,9 @@ de:
       title: "Impressum"
   layouts:
     application:
-      title: "Speakerinnen-Liste"
+      title: "Speakerinnen*-Liste"
       home: "Home"
-      list: "Speakerinnen"
+      list: "Speakerinnen*"
       contact: "Kontakt"
       impressum: "Impressum"
       search: "Suchen"
@@ -95,7 +95,7 @@ de:
       not_saved: "Dieses Profil konnte nicht gespeichert werden:"
       profile_from: "Profil von"
       delete_picture: "Lösche das Foto"
-      update: "Aktualisiere das Profil"
+      update: "Aktualisiere Dein Profil"
       copyright_photo: "Bitte nutze .jpg, .jpeg oder .png und achte darauf, daß Du die Rechte zu diesem Foto besitzt!"
     profile:
       firstname: 'Vorname:'
@@ -125,7 +125,8 @@ de:
       Es können auch Audio-Dateien oder Texte verlinkt werden!
       <br>"
     edit:
-      show: "Anzeigen"
+      show: "Profil anzeigen"
+      home: "Alle Speakerinnen* anzeigen"
       back: "Zurück"
     index:
       title: "Speakerinnen*"
@@ -191,3 +192,6 @@ de:
     sessions:
       new:
         login: "Anmelden"
+  medialinks:
+    edit:
+      add: "Neuer Medialink"

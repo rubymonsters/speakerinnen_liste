@@ -1,12 +1,23 @@
 <div class="container profiles">
-  <h1 class="title-profiles">Referenzen</h1>
-  <span class="italic"><%= t(:medialink_description, scope: "profiles.medialinks").html_safe %></span>
-    <%= link_to(profiles_path) do %>
-      <div class="row pull-right">
-        <span class="icon icon-arrow-left"></span> SpeakerinnenListe |
+  <div class="text-white-bg">
+    <div class="row">
+      <div class="span12">
+        <h1>Referenzen</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="span12 text-right">
+        <%= link_to(t(:home, scope: "profiles.edit"), profiles_path) %> |
         <%= link_to(t(:show, scope: "profiles.edit"), @profile) %>
       </div>
-    <% end %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="span12">
+      <span class="italic"><%= t(:medialink_description, scope: "profiles.medialinks").html_safe %></span>
+    </div>
+  </div>
   <br>
   <br>
     <div class="row">

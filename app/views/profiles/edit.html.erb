@@ -1,5 +1,5 @@
 <div class="container profiles">
-  <%= simple_form_for(@profile, :html => { :multipart => true, :class => "form-horizontal well"}) do |f| %>
+  <div class="text-white-bg">
     <div class="row">
       <div class="span12">
         <%= render 'shared/error_messages' %>
@@ -9,14 +9,14 @@
     </div>
     <div class="row">
       <div class="span12 text-right">
-        <%= link_to(profiles_path) do %>
-          <span class="icon icon-arrow-left"></span> SpeakerinnenListe |
-          <%= link_to(t(:show, scope: "profiles.edit"), profile_path) %>
-        <% end %>
+        <%= link_to(t(:home, scope: "profiles.edit"), profiles_path) %> |
+        <%= link_to(t(:show, scope: "profiles.edit"), profile_path) %>
       </div>
     </div>
-    <br>
-    <br>
+  </div>
+  <br>
+  <br>
+  <%= simple_form_for(@profile, :html => { :multipart => true, :class => "form-horizontal well"}) do |f| %>
     <%= render partial: "shared/profile_formfields",
                  locals: { form_type: :update_profile, f: f, profile: @profile } %>
   <% end %>
