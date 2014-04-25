@@ -22,7 +22,7 @@ gem 'jquery-ui-rails'
 gem 'acts-as-taggable-on', github: 'rubymonsters/acts-as-taggable-on'
 gem 'auto_html', github: 'dejan/auto_html'
 gem 'mandrill-api'
-gem 'simple_form'
+gem 'simple_form', '~> 2.0.0.rc'
 gem 'globalize', '~> 3.1.0'
 
 group :development do
