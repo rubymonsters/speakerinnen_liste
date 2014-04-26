@@ -98,6 +98,8 @@ en:
       update: "Update your profile"
       copyright_photo: "Please make sure you use .jpg, .jpeg or .png and that you have all copyrights for this photo."
     profile:
+      firstname: 'Firstname:'
+      lastname: 'Lastname:'
       topics: "My topics:"
       languages: "My languages:"
       talks: "Previous Talks:"
@@ -108,15 +110,13 @@ en:
       city: "My city:"
       twitter: "My Twitter handle:"
       show: "Show"
-      edit: "Edit"
+      edit: "Edit Profile"
       destroy: "Delete"
       sure: "Are you sure?"
       link: "Be sure to add 'http://'"
       email: "Email:"
     medialinks:
-      edit: "Manage your media links"
-      medialink_description: "Here you can add Medialinks:"
-
+      edit: "Edit Medialinks"
     edit:
       show: "Show Profile"
       home: "Show all Speakerinnnen*"
@@ -194,3 +194,10 @@ en:
     edit: "Edit Medialink"
     new: "Add Medialink"
     index: "References"
+    # Translation
+    medialink_description: "Here you can add Medialinks:"
+    url: "URL:"
+    title: "Title:"
+    description: "Description:"
+    edit_link: " edit"
+    delete_link: " delete"
