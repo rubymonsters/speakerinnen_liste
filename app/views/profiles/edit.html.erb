@@ -16,7 +16,7 @@
   </div>
   <br>
   <br>
-  <%= simple_form_for(@profile, :html => { :multipart => true, :class => "form-horizontal well"}) do |f| %>
+  <%= simple_form_for(@profile, html: { multipart: true, class: "form-horizontal well"}) do |f| %>
     <%= render partial: "shared/profile_formfields",
                  locals: { form_type: :update_profile, f: f, profile: @profile } %>
   <% end %>
