@@ -152,7 +152,7 @@ de:
       updated: "Profil wurde erfolgreich geändert."
       destroyed: "Profil wurde erfolgreich gelöscht."
       no_permission: "Du hast nicht die Rechte, das Profil zu bearbeiten"
-    medialinks:
+    medialink:
       created: "Medialink wurde erfolgreich erstellt."
       updated: "Medialink wurde erfolgreich geändert."
       destroyed: "Medialink wurde erfolgreich gelöscht."
@@ -174,6 +174,10 @@ de:
         twitter: "Twitter"
         picture: "Bild"
         translation: "<strong>Hier kannst Du Dein Hauptthema und Deine Bio auf Deutsch und Englisch eintragen:</strong>"
+      medialink:
+        url: "URL:"
+        title: "Überschrift:"
+        description: "Beschreibung:"
   devise:
     registrations:
       edit:
@@ -193,5 +197,8 @@ de:
       new:
         login: "Anmelden"
   medialinks:
-    edit:
-      add: "Neuer Medialink"
+    edit: "Bearbeite Medialink"
+    new: "Medialink hinzufügen"
+    index: "Referenzen"
+
+

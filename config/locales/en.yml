@@ -115,6 +115,8 @@ en:
       email: "Email:"
     medialinks:
       edit: "Manage your media links"
+      medialink_description: "Here you can add Medialinks:"
+
     edit:
       show: "Show Profile"
       home: "Show all Speakerinnnen*"
@@ -145,7 +147,7 @@ en:
       updated: 'Profile was successfully updated.'
       destroyed: 'Profile was successfully deleted.'
       no_permission: "You don’t have permission to edit the profile"
-    medialinks:
+    medialink:
       created: 'Medialink was successfully created.'
       updated: 'Medialink was successfully updated.'
       destroyed: 'Medialink was successfully deleted.'
@@ -166,6 +168,10 @@ en:
         twitter: "Twitter"
         picture: "Picture"
         translation: "<strong>You can fill in your maintopic and your bio both in German and English:</strong>"
+      medialink:
+        url: "URL:"
+        title: "Title:"
+        description: "Description:"
   devise:
     registrations:
       edit:
@@ -185,5 +191,6 @@ en:
       new:
         login: "Log in"
   medialinks:
-    edit:
-      add: "Add Medialink"
+    edit: "Edit Medialink"
+    new: "Add Medialink"
+    index: "References"
