@@ -30,7 +30,6 @@
           <%= text_field_tag(:q, nil, class: "", id: "search-field", placeholder: t(:search_text, scope: "pages.home.search")) %>
           <%= button_tag((t(:search, scope: "pages.home.search")), class: "btn btn-large ") %>
         <% end %>
-        <br>
         <%= link_to t(:categories, scope: "pages.home.speakers"), "#categories_anker"   %>
         <br>
         <%= link_to t(:speaker_index, scope: "pages.home.speakers"), profiles_path %>
