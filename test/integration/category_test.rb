@@ -29,7 +29,7 @@ class TagTest < ActionController::IntegrationTest
     assert_equal tag_fruehling.categories.first.name, "Jahreszeiten"
     assert_equal Category.all.count, 1
     visit '/'
-    assert page.has_css?('div.categories')
+    assert page.has_css?('ul.categories')
     assert page.has_content?('Jahreszeiten')
 
 
