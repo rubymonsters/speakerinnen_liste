@@ -55,10 +55,8 @@ class Profile < ActiveRecord::Base
       super
     end
   end
-
-  def self.is_published
-    where(published: true)
-  end
+  
+  scope :is_published, where(published: true)
 
   def self.no_admin
     where(:admin => false)

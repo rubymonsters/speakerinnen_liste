@@ -18,7 +18,7 @@ class ProfilesController < ApplicationController
     @category = Category.find_by_name(params[:category])
     @tags     = @category.tags
     if @tags.any?
-      @tag_names = @tags.map(&:name)
+      @tag_names = @tags.pluck(:name)
       @profiles = profiles_for_scope(@tag_names)
     else
       @profiles = profiles_for_index
