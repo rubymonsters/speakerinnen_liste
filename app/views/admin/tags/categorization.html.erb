@@ -29,7 +29,7 @@
             </td>
             <% @categories.each do |category| %>
               <td>
-                <% if tag.categories.map(&:id).include?(category.id) %>
+                <% if tag.categories.pluck(:id).include?(category.id) %>
                   <%= link_to category.name, remove_category_admin_tag_path(tag, category_id: category.id, page: params[:page], q: params[:q], uncategorized: params[:uncategorized]),
                             method: :post,
                             class: "active"  %>
