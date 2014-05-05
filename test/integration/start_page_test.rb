@@ -2,17 +2,17 @@ require 'test_helper'
 
 class StartPageTest < ActionDispatch::IntegrationTest
   fixtures :profiles
+  fixtures :categories
 
   test "start page is shown" do
     visit '/'
 
     assert page.has_css?('div.photo-bar#speakerin-photo', minimum: 1)
-    # assert page.has_css?('div.badge', count: 1), "just one badge"
+    assert page.has_css?('div.curie-badge', count: 1), "just one badge"
     assert page.has_content?('Anmelden')
     assert page.has_content?('Als Speakerin registrieren')
-    # assert page.has_css?('li.category')
+    assert page.has_css?('ul li.category', minimum: 2)
     assert page.has_content?('Alle Speakerinnen* anschauen')
-
     assert page.has_content?('Kontakt')
     assert page.has_content?('Impressum')
   end

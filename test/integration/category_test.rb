@@ -13,11 +13,9 @@ class TagTest < ActionController::IntegrationTest
     @inge.topic_list = "fruehling", "sommer"
     @inge.published = true
     @inge.save
-
   end
 
   test "test category with correct tags" do
-
     category_jahreszeiten = Category.new(name: "Jahreszeiten")
     category_jahreszeiten.save!
     tag_fruehling = ActsAsTaggableOn::Tag.find_by_name("fruehling")
@@ -27,12 +25,11 @@ class TagTest < ActionController::IntegrationTest
     tag_sommer.categories << category_jahreszeiten
     assert_equal ActsAsTaggableOn::Tag.count, 2
     assert_equal tag_fruehling.categories.first.name, "Jahreszeiten"
-    assert_equal Category.all.count, 1
+    # because of the fixtures there are 3 categories
+    assert_equal Category.all.count, 3
     visit '/'
     assert page.has_css?('ul.categories')
     assert page.has_content?('Jahreszeiten')
-
-
   end
 
 end
