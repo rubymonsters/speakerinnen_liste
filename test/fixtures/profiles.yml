@@ -19,6 +19,14 @@ two:
   twitter: MyString
   talks: Repuclica
 
+unpublished:
+  firstname: Anon
+  lastname: lastname
+  email: anon@mail.de
+  languages: Deutsch
+  city: Hintertupfingen
+  talks:
+
 jane:
   firstname: Jane
   lastname: Admin

@@ -13,6 +13,11 @@ class TagTest < ActionController::IntegrationTest
     @inge.topic_list = "fruehling", " ", "sommer"
     @inge.published = true
     @inge.save
+
+    @anon = profiles(:unpublished)
+    @anon.confirmed_at = Time.now
+    @anon.topic_list = "winter"
+    @anon.save
   end
 
   test "show tagging" do
@@ -31,6 +36,7 @@ class TagTest < ActionController::IntegrationTest
     visit '/profiles'
     # save_and_open_page
     assert page.has_content?('sommer')
+    assert page.has_content?('winter')
     within ".topics-cloud" do
       click_link('sommer')
     end
