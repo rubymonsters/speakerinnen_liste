@@ -55,12 +55,10 @@ class Profile < ActiveRecord::Base
       super
     end
   end
-  
+
   scope :is_published, where(published: true)
 
-  def self.no_admin
-    where(:admin => false)
-  end
+  scope :no_admin, where(admin: false)
 
   def fullname
     "#{firstname} #{lastname}".strip
