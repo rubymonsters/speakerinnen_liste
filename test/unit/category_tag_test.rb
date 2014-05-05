@@ -4,7 +4,7 @@ class CategoryTagTest < ActiveSupport::TestCase
   test "create a CategoryTag" do
     category = Category.new(name: "Jahreszeiten")
     category.save
-    assert_equal category.id, 1
+    assert_equal Category.all.count, 3
     profiles(:one).topic_list.add("Juni")
     profiles(:one).save!
     tag = ActsAsTaggableOn::Tag.find_by_name("juni")
