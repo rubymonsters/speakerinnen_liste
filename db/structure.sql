@@ -463,7 +463,7 @@ CREATE UNIQUE INDEX unique_schema_migrations ON schema_migrations USING btree (v
 -- Name: _RETURN; Type: RULE; Schema: public; Owner: -
 --
 
-CREATE RULE "_RETURN" AS ON SELECT TO searches DO INSTEAD SELECT profiles.id AS profile_id, array_to_string(ARRAY[profiles.firstname, profiles.lastname, profiles.languages, profiles.city, (string_agg(DISTINCT medialinks.title, ' '::text))::character varying, (string_agg(DISTINCT medialinks.description, ' '::text))::character varying, (string_agg(DISTINCT profile_translations.bio, ' '::text))::character varying, (string_agg(DISTINCT (profile_translations.main_topic)::text, ' '::text))::character varying, (string_agg(DISTINCT (tags.name)::text, ' '::text))::character varying], ' '::text) AS search_field FROM ((((profiles LEFT JOIN medialinks ON ((medialinks.profile_id = profiles.id))) LEFT JOIN profile_translations ON ((profile_translations.profile_id = profiles.id))) LEFT JOIN taggings ON ((taggings.taggable_id = profiles.id))) LEFT JOIN tags ON ((tags.id = taggings.tag_id))) GROUP BY profiles.id;
+CREATE RULE "_RETURN" AS ON SELECT TO searches DO INSTEAD SELECT profiles.id AS profile_id, array_to_string(ARRAY[profiles.firstname, profiles.lastname, profiles.languages, profiles.city, (string_agg(DISTINCT medialinks.title, ' '::text))::character varying, (string_agg(DISTINCT medialinks.description, ' '::text))::character varying, (string_agg(DISTINCT profile_translations.bio, ' '::text))::character varying, (string_agg(DISTINCT (profile_translations.main_topic)::text, ' '::text))::character varying, (string_agg(DISTINCT (tags.name)::text, ' '::text))::character varying], ' '::text) AS search_field FROM ((((profiles LEFT JOIN medialinks ON ((medialinks.profile_id = profiles.id))) LEFT JOIN profile_translations ON ((profile_translations.profile_id = profiles.id))) LEFT JOIN taggings ON ((taggings.taggable_id = profiles.id))) LEFT JOIN tags ON ((tags.id = taggings.tag_id))) WHERE (profiles.published = true) GROUP BY profiles.id;
 
 
 --
@@ -519,3 +519,5 @@ INSERT INTO schema_migrations (version) VALUES ('20140323150343');
 INSERT INTO schema_migrations (version) VALUES ('20140330183449');
 
 INSERT INTO schema_migrations (version) VALUES ('20140330185248');
+
+INSERT INTO schema_migrations (version) VALUES ('20140505155338');
