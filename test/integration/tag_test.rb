@@ -14,7 +14,7 @@ class TagTest < ActionController::IntegrationTest
     @inge.published = true
     @inge.save
 
-    @anon = profiles(:unpublished)
+    @anon = profiles(:three)
     @anon.confirmed_at = Time.now
     @anon.topic_list = "winter", "fruehling"
     @anon.save
@@ -23,11 +23,11 @@ class TagTest < ActionController::IntegrationTest
   test "show tagging" do
     visit '/profiles'
     click_link('Anmelden')
-    fill_in('profile[email]', :with => 'horst@mail.de')
-    fill_in('profile[password]', :with => 'Testpassword')
+    fill_in('profile[email]', with: 'horst@mail.de')
+    fill_in('profile[password]', with: 'Testpassword')
     click_button "Anmelden"
 
-    visit profile_path(@horst, :locale => "de")
+    visit profile_path(@horst, locale: "de")
     click_link('Profil bearbeiten')
     assert_equal find_field('profile[topic_list]').value, 'fruehling'
   end
@@ -40,7 +40,7 @@ class TagTest < ActionController::IntegrationTest
     within ".topics-cloud" do
       click_link('sommer')
     end
-    assert page.has_css?('div.name', :count => 1)
+    assert page.has_css?('div.name', count: 1)
   end
 
   test "show Fruehling tag" do
@@ -49,6 +49,6 @@ class TagTest < ActionController::IntegrationTest
     within ".topics-cloud" do
       click_link('fruehling')
     end
-    assert page.has_css?('div.name', :count => 2)
+    assert page.has_css?('div.name', count: 2)
   end
 end

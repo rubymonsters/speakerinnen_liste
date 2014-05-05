@@ -1,4 +1,4 @@
-require 'test_helper' 
+require 'test_helper'
 
 class LoginTest < ActionController::IntegrationTest
   def setup
@@ -12,8 +12,8 @@ class LoginTest < ActionController::IntegrationTest
     assert page.has_content?('Anmelden')
     click_link('Anmelden')
     #assert page.has_content?('profile_email')
-    fill_in('profile[email]', :with => 'horst@mail.de')
-    fill_in('profile[password]', :with => 'Testpassword')
+    fill_in('profile[email]', with: 'horst@mail.de')
+    fill_in('profile[password]', with: 'Testpassword')
     click_button "Anmelden"
     # opens the site where you are in the test right now
     # save_and_open_page
@@ -29,9 +29,9 @@ class LoginTest < ActionController::IntegrationTest
     assert page.has_content?('Anmelden')
     click_link('Anmelden')
     #assert page.has_content?('profile_email')
-    fill_in('profile[email]', :with => 'horst@mail.de')
-    fill_in('profile[password]', :with => 'wrongpassword')
-    click_button "Anmelden" 
+    fill_in('profile[email]', with: 'horst@mail.de')
+    fill_in('profile[password]', with: 'wrongpassword')
+    click_button "Anmelden"
     # opens the site where you are in the test right now
     # save_and_open_page
     assert page.has_content?('Ungültige Anmeldedaten.')
