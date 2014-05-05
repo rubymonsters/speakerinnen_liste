@@ -16,7 +16,7 @@ class TagTest < ActionController::IntegrationTest
 
     @anon = profiles(:unpublished)
     @anon.confirmed_at = Time.now
-    @anon.topic_list = "winter"
+    @anon.topic_list = "winter", "fruehling"
     @anon.save
   end
 
@@ -32,11 +32,11 @@ class TagTest < ActionController::IntegrationTest
     assert_equal find_field('profile[topic_list]').value, 'fruehling'
   end
 
-  test "show Sommer tag" do
+  test "show only tags from published Profile" do
     visit '/profiles'
     # save_and_open_page
     assert page.has_content?('sommer')
-    assert page.has_content?('winter')
+    assert page.has_no_content?('winter')
     within ".topics-cloud" do
       click_link('sommer')
     end
