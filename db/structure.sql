@@ -90,6 +90,39 @@ ALTER SEQUENCE categories_tags_id_seq OWNED BY categories_tags.id;
 
 
 --
+-- Name: category_translations; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE category_translations (
+    id integer NOT NULL,
+    category_id integer,
+    locale character varying(255) NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    name character varying(255)
+);
+
+
+--
+-- Name: category_translations_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE category_translations_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: category_translations_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE category_translations_id_seq OWNED BY category_translations.id;
+
+
+--
 -- Name: medialinks; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -316,6 +349,13 @@ ALTER TABLE ONLY categories_tags ALTER COLUMN id SET DEFAULT nextval('categories
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY category_translations ALTER COLUMN id SET DEFAULT nextval('category_translations_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY medialinks ALTER COLUMN id SET DEFAULT nextval('medialinks_id_seq'::regclass);
 
 
@@ -364,6 +404,14 @@ ALTER TABLE ONLY categories_tags
 
 
 --
+-- Name: category_translations_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY category_translations
+    ADD CONSTRAINT category_translations_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: medialinks_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -401,6 +449,20 @@ ALTER TABLE ONLY taggings
 
 ALTER TABLE ONLY tags
     ADD CONSTRAINT tags_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: index_category_translations_on_category_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_category_translations_on_category_id ON category_translations USING btree (category_id);
+
+
+--
+-- Name: index_category_translations_on_locale; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_category_translations_on_locale ON category_translations USING btree (locale);
 
 
 --
@@ -521,3 +583,5 @@ INSERT INTO schema_migrations (version) VALUES ('20140330183449');
 INSERT INTO schema_migrations (version) VALUES ('20140330185248');
 
 INSERT INTO schema_migrations (version) VALUES ('20140505155338');
+
+INSERT INTO schema_migrations (version) VALUES ('20140506200134');
