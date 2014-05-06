@@ -8,7 +8,7 @@ class Admin::CategoriesController < Admin::BaseController
   end
 
   def index
-    @categories = Category.all
+    @categories = Category.order(:name).all
   end
 
   def create
