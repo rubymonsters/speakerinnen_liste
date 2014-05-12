@@ -15,7 +15,7 @@
         <table class="table table-bordered table-hovered table-condensed">
           <tr>
             <th>Name der Kategorie</th>
-            <th>Englischer Name der Kategorie </th>
+            <th>Englischer Name der Kategorie</th>
             <th></th>
           </tr>
 
@@ -23,14 +23,14 @@
             <tr>
             <% Globalize.with_locale(:de) do %>
               <td>
-                <%= category.translation.name %>
+                <%= category.name %>
                 <%= link_to '<i class="icon-pencil"></i>'.html_safe,
                     edit_admin_category_path(category.id) %>
               </td>
             <% end %>
             <% Globalize.with_locale(:en) do %>
               <td>
-                <%= category.translation.name %>
+                <%= category.name %>
                 <%= link_to '<i class="icon-pencil"></i>'.html_safe,
                     edit_admin_category_path(category.id) %>
               </td>

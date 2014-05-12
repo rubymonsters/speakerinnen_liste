@@ -15,7 +15,7 @@ class ProfilesController < ApplicationController
   end
 
   def category
-    @category = Category.find_by_name(params[:category])
+    @category = Category.find(params[:category_id])
     @tags     = @category.tags
     if @tags.any?
       @tag_names = @tags.pluck(:name)
