@@ -15,29 +15,29 @@
         <table class="table table-bordered table-hovered table-condensed">
           <tr>
             <th>Name der Kategorie</th>
-            <th>Englische Name der Kategorie </th>
+            <th>Englischer Name der Kategorie </th>
             <th></th>
           </tr>
 
-          <% @categories.each do |categorie| %>
+          <% @categories.each do |category| %>
             <tr>
             <% Globalize.with_locale(:de) do %>
               <td>
-                <%= categorie.translation.name %>
+                <%= category.translation.name %>
                 <%= link_to '<i class="icon-pencil"></i>'.html_safe,
-                    edit_admin_category_path(categorie.id) %>
+                    edit_admin_category_path(category.id) %>
               </td>
             <% end %>
             <% Globalize.with_locale(:en) do %>
               <td>
-                <%= categorie.translation.name %>
+                <%= category.translation.name %>
                 <%= link_to '<i class="icon-pencil"></i>'.html_safe,
-                    edit_admin_category_path(categorie.id) %>
+                    edit_admin_category_path(category.id) %>
               </td>
             <% end %>
               <td>
-                <%= link_to 'delete', admin_category_path(categorie.id), :method => :delete,
-                  :confirm => "Do you want to delete the categorie #{categorie.name}?" %>
+                <%= link_to 'delete', admin_category_path(category.id), :method => :delete,
+                  :confirm => "Do you want to delete the category #{category.name}?" %>
               </td>
             </tr>
           <% end %>
