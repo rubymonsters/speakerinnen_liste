@@ -4,7 +4,7 @@ class MedialinksController < ApplicationController
   before_filter :ensure_own_medialinks
 
   def index
-    @medialinks = @profile.medialinks.order(:created_at)
+    @medialinks = @profile.medialinks.order(:position)
   end
 
   def new
@@ -43,6 +43,13 @@ class MedialinksController < ApplicationController
       flash[:notice] = (I18n.t("flash.medialink.error"))
       render action: "new"
     end
+  end
+
+  def sort
+    params[:medialink].each_with_index do |id, index|
+      Medialink.update_all({position: index+1}, {id: id})
+    end
+    render nothing: true
   end
 
   protected

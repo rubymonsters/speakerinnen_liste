@@ -133,7 +133,8 @@ CREATE TABLE medialinks (
     title text,
     description text,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    "position" integer
 );
 
 
@@ -585,3 +586,5 @@ INSERT INTO schema_migrations (version) VALUES ('20140330185248');
 INSERT INTO schema_migrations (version) VALUES ('20140505155338');
 
 INSERT INTO schema_migrations (version) VALUES ('20140506200134');
+
+INSERT INTO schema_migrations (version) VALUES ('20140602180400');

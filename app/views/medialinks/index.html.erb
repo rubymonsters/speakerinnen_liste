@@ -33,29 +33,23 @@
     </div>
     <div class="row">
       <div class="span12">
-        <table class="table table-striped table-hovered">
-          <tr>
-            <th><%= t(:url, scope: "medialinks") %></th>
-            <th><%= t(:title, scope: "medialinks") %></th>
-            <th><%= t(:description, scope: "medialinks") %></th>
-            <th></th>
-            <th></th>
-          </tr>
-          <% @medialinks.each do |medialink| %>
-            <tr>
-              <td><%= link_to medialink.url, medialink.url %></td>
-              <td><%= medialink.title %></td>
-              <td><%= medialink.description %></td>
-              <td><%= link_to '<i class="icon-pencil"></i>'.html_safe+ t(:edit_link, scope: "medialinks"), edit_profile_medialink_path(@profile.id, medialink.id) %></td>
-              <td>
-                <%= link_to '<i class="icon-remove"></i>'.html_safe+ t(:delete_link, scope: "medialinks"),
-                            profile_medialink_path(@profile.id, medialink.id),
-                            confirm: 'Are you sure?',
-                            method: :delete %>
-              </td>
-            </tr>
-          <% end %>
-        </table>
+        <h5><%= t(:media, scope: "profiles.profile") %></h5>
+        <div id="messages"></div>
+          <ul id="medialinks_list" data-update-url="<%= sort_profile_medialinks_url %>">
+            <% @profile.medialinks.each do |medialink| %>
+              <%= content_tag_for :li, medialink do %>
+                <h5>
+                  <span class="medialink"><%= medialink.title %>
+                </h5>
+                  <%= medialink.url_html %>
+                  <%= medialink.description %>
+                  <%= link_to '<i class="icon-pencil"></i>'.html_safe+ t(:edit_link, scope: "medialinks"), edit_profile_medialink_path(@profile.id, medialink.id) %>
+                  <%= link_to '<i class="icon-remove"></i>'.html_safe+ t(:delete_link, scope: "medialinks"), profile_medialink_path(@profile.id, medialink.id),
+                    confirm: 'Are you sure?',
+                    method: :delete %>
+              <% end %>
+            <% end %>
+          </ul>
         <br />
       </div>
       <hr/>

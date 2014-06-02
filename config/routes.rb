@@ -48,6 +48,10 @@ SpeakerinnenListe::Application.routes.draw do
       resources :medialinks
       get  'contact' => 'contact#new',    :as => 'contact', :on => :member
       post 'contact' => 'contact#create', :as => 'contact', :on => :member
+
+      resources :medialinks do
+       collection { post :sort }
+      end
     end
 
     devise_scope :profile do
