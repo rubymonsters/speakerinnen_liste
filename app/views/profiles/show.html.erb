@@ -72,31 +72,29 @@
   </div>
 
   <div class="row">
-    <div class="info-profiles-bio">
-      <div class="span6 info-profiles-text text-profile">
-        <h5> <%= t ".bio" %></h5>
-        <span><%= simple_format(@profile.bio) %></span>
-      </div>
-
-      <div class="span6 pull-right info-profiles-media text-profile">
-
-        <% if @profile.medialinks.any? %>
-          <h5><%= t ".media" %></h5>
-          <ul>
-            <% @profile.medialinks.each do |medialink| %>
-            <li>
-              <h5>
-                <span class="medialink"><%= medialink.title %>
-              </h5>
-              <%= medialink.url_html %>
-              <%= medialink.description %>
-            </li>
-            <hr>
-            <% end %>
-          </ul>
-        <% end %>
-      </div>
+    <%#<div class="info-profiles-bio">%>
+    <div class="span6 text-profile bottom">
+      <h5> <%= t ".bio" %></h5>
+      <span><%= simple_format(@profile.bio) %></span>
     </div>
+
+    <div class="span6 pull-right text-profile bottom">
+
+      <% if @profile.medialinks.any? %>
+        <h5><%= t ".media" %></h5>
+        <ul>
+          <% @profile.medialinks.each do |medialink| %>
+          <li>
+            <p class="medialink"><%= medialink.title %></p>
+            <%= medialink.url_html %>
+            <%= medialink.description %>
+          </li>
+          <hr>
+          <% end %>
+        </ul>
+      <% end %>
+    </div>
+    <%#</div>%>
   </div>
 </div>
 

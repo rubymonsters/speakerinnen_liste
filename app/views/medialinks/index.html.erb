@@ -21,37 +21,45 @@
   </div>
   <br>
   <br>
-    <div class="row">
-      <div class="span2">
-        <%= link_to '<i class="icon-plus icon-white"></i> Hinzufügen'.html_safe,
-                  new_profile_medialink_path(@profile), class: "btn btn-info" %>
-        <br>
-        <br>
-      </div>
-      <div class="span10">
-      </div>
+  <div class="row">
+    <div class="span2">
+      <%= link_to '<i class="icon-plus icon-white"></i> Hinzufügen'.html_safe,
+                new_profile_medialink_path(@profile), class: "btn btn-info" %>
+      <br>
+      <br>
     </div>
-    <div class="row">
-      <div class="span12">
-        <h5><%= t(:media, scope: "profiles.profile") %></h5>
-        <div id="messages"></div>
-          <ul id="medialinks_list" data-update-url="<%= sort_profile_medialinks_url %>">
-            <% @profile.medialinks.each do |medialink| %>
-              <%= content_tag_for :li, medialink do %>
-                <h5>
-                  <span class="medialink"><%= medialink.title %>
-                </h5>
-                  <%= medialink.url_html %>
-                  <%= medialink.description %>
-                  <%= link_to '<i class="icon-pencil"></i>'.html_safe+ t(:edit_link, scope: "medialinks"), edit_profile_medialink_path(@profile.id, medialink.id) %>
-                  <%= link_to '<i class="icon-remove"></i>'.html_safe+ t(:delete_link, scope: "medialinks"), profile_medialink_path(@profile.id, medialink.id),
+    <div class="span10">
+    </div>
+  </div>
+  <div class="row last">
+    <div class="span8">
+      <h5><%= t(:media, scope: "profiles.profile") %></h5>
+      <div id="messages"></div>
+        <ul id="medialinks_list text-profile" data-update-url="<%= sort_profile_medialinks_url %>">
+          <% @profile.medialinks.each do |medialink| %>
+            <%= content_tag_for :li, medialink do %>
+              <h5>
+                <%= medialink.title %>
+              </h5>
+              <%= medialink.url_html %>
+              <%= medialink.description %>
+              <div class="edit-buttons">
+                <%= link_to '<i class="icon-pencil"></i>'.html_safe+ t(:edit_link, scope: "medialinks"), edit_profile_medialink_path(@profile.id, medialink.id) %>
+                <%= link_to '<i class="icon-remove"></i>'.html_safe+ t(:delete_link, scope: "medialinks"), profile_medialink_path(@profile.id, medialink.id),
                     confirm: 'Are you sure?',
                     method: :delete %>
-              <% end %>
+              </div>
             <% end %>
-          </ul>
-        <br />
-      </div>
-      <hr/>
+          <% end %>
+        </ul>
+      <br />
+    </div>
+    <div class="span4">
+    </div>
   </div>
+  <div class="text-white-bg">
+    <div class="row">
+      <div class="span12">
+      </div>
+    </div>
 </div>
