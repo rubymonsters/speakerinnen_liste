@@ -1,0 +1,68 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require jquery.ui.all
+ *= require tag-it/jquery.tagit
+ *= require_tree .
+ *= require_self
+ */
+
+@import 'settings';
+
+
+.alert {
+  margin-top: 100px;
+  background-color: $alert-pink;
+  color: white;
+  padding: 1em 0;
+  text-align: center;
+  text-shadow: none;
+}
+
+.notice {
+  margin-top: 100px;
+  background-color: $notice-yellow;
+  padding: 1em 0;
+  text-align: center;
+}
+
+/* TODO delete if not used any more */
+#alert {
+  margin-top: 100px;
+  background-color: $alert-pink;
+  color: white;
+  padding: 1em 0;
+  text-align: center;
+}
+
+#notice {
+  margin-top: 100px;
+  background-color: $notice-yellow;
+  padding: 1em 0;
+  text-align: center;
+}
+
+#signup .form-horizontal .well {
+  background-color: #ffffff;
+}
+
+.sort-arrows th .current {
+  padding-right: 12px;
+  background-repeat: no-repeat;
+  background-position: right center;
+}
+
+.sort-arrows th .asc {
+  background-image: url(/assets/up_arrow.gif);
+}
+
+.sort-arrows th .desc {
+  background-image: url(/assets/down_arrow.gif);
+}
