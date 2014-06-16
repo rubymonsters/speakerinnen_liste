@@ -204,3 +204,4 @@ en:
     edit_link: " edit"
     delete_link: " delete"
     language: "en"
+    tooltip: "You can change the sort order of the references per drag&drop."

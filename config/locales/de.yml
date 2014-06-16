@@ -208,3 +208,4 @@ de:
     edit_link: " bearbeiten"
     delete_link: " löschen"
     language: "de"
+    tooltip: "Du kannst die Reihenfolge der Referenzen per Drag&Drop ändern."

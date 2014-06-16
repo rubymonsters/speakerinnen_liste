@@ -8,3 +8,6 @@ jQuery ->
         else
           $("#messages").text('References sort order saved!')
       )
+
+jQuery ->
+  $("ul").tooltip()
