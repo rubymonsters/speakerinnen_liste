@@ -91,7 +91,7 @@ de:
       notice: "Yay! Deine E-Mail wurde gesendet."
       error: "Bitte fülle alle Felder aus, damit die Speakerin alle Informationen bekommt, die sie benötigt."
   profiles:
-    tag: 
+    tag:
       topics: "Themen"
     form:
       not_saved: "Dieses Profil konnte nicht gespeichert werden:"
@@ -207,4 +207,4 @@ de:
     description: "Beschreibung:"
     edit_link: " bearbeiten"
     delete_link: " löschen"
-
+    language: "de"

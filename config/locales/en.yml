@@ -91,7 +91,7 @@ en:
       notice: "Yay! Your message was sent."
       error: "Please fill out all the fields so that the speaker can have all the details she needs."
   profiles:
-    tag: 
+    tag:
       topics: "Topics"
     form:
       not_saved: "This profile could not be saved: "
@@ -203,3 +203,4 @@ en:
     description: "Description:"
     edit_link: " edit"
     delete_link: " delete"
+    language: "en"

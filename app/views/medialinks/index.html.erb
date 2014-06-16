@@ -35,7 +35,7 @@
     <div class="span8">
       <h5><%= t(:media, scope: "profiles.profile") %></h5>
       <div id="messages"></div>
-        <ul id="medialinks_list" data-update-url="<%= sort_profile_medialinks_url %>">
+        <ul id="medialinks_list" data-update-url="<%= sort_profile_medialinks_url%>" class="<%= t(:language, scope: "medialinks")%>" >
           <% @profile.medialinks.each do |medialink| %>
             <%= content_tag_for :li, medialink do %>
               <h5>
