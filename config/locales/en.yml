@@ -206,3 +206,10 @@ en:
     delete_link: " delete"
     language: "en"
     tooltip: "You can change the sort order of the references per drag&drop."
+  search:
+    empty: "You searched for <strong> %{searchparams} </strong> but unfortunately we didn't find anything."
+    success: "You searched for <strong> %{searchparams} </strong> and we found"
+    result: {
+      one: "1 result! Yeah!",
+      other: "%{count} results! Yeah!"
+    }

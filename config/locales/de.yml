@@ -210,3 +210,10 @@ de:
     delete_link: " löschen"
     language: "de"
     tooltip: "Du kannst die Reihenfolge der Referenzen per Drag&Drop ändern."
+  search:
+    empty: "Du hast nach <strong> %{searchparams} </strong> gesucht, leider haben wir nix gefunden :("
+    success: "Du hast nach <strong> %{searchparams} </strong> gesucht und wir haben tatsächlich"
+    result: {
+      one: "1 Speakerin gefunden!",
+      other: "%{count} Speakerinnen gefunden! Yeah!"
+    }

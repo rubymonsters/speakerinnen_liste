@@ -3,11 +3,12 @@
     <div class="span12">
       <% if @results.size == 0 %>
         <p class="alert">
-          You searched for <strong>"<%= params[:q] %>"</strong> but unfortunately we didn't find anything.
+          <%= t(:empty, scope: "search", searchparams: params[:q]).html_safe%>
         </p>
       <% else %>
         <p class="notice">
-          You searched for <strong><%= params[:q] %></strong> and we found <%= pluralize(@results.total_count, "result") %>. Yeah!
+          <%= t(:success, scope: "search", searchparams: params[:q], count: @results.total_count).html_safe %>
+          <%= t(:result, scope: "search", count: @results.total_count)%>
         </p>
       <% end %>
     </div>
