@@ -10,4 +10,4 @@ jQuery ->
       )
 
 jQuery ->
-  $("ul").tooltip()
+  $("#medialinks_list li").tooltip()
