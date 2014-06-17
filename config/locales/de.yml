@@ -120,7 +120,7 @@ de:
     medialinks:
       edit: "Medialinks bearbeiten"
     edit:
-      show: "Profil anzeigen"
+      show: "Eigens Profil anzeigen"
       home: "Alle Speakerinnen* anzeigen"
       back: "Zurück"
     index:
@@ -202,6 +202,7 @@ de:
     YouTube-Clips können direkt abgespielt werden, alle anderen URLs erscheinen als klickbare Links.
     Es können auch Audio-Dateien oder Texte verlinkt werden!
     <br>"
+    help: "(Du kannst die Reihenfolge der Vorträge mit Drag&Drop verschieben.)"
     url: "URL:"
     title: "Überschrift:"
     description: "Beschreibung:"

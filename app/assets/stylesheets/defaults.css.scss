@@ -10,6 +10,7 @@ body {
   font-size: 100%;
   line-height: normal;
   background-color: whitesmoke;
+  padding-top: 70px;
 }
 
 
@@ -88,6 +89,11 @@ audio:not([controls]) {
 }
 
 .normal{
+  font-family:"proxima-nova-alt","Helvetica Neue",Helvetica,Arial,Verdana,sans-serif;
+}
+
+.help{
+  font-size: 0.9em;
   font-family:"proxima-nova-alt","Helvetica Neue",Helvetica,Arial,Verdana,sans-serif;
 }
 

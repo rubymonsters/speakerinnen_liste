@@ -1,16 +1,19 @@
 <div class="container profiles">
-  <div class="row">
-    <div class="span8">
-    <br>
-      <h1><%= @profile.fullname %></h1>
-    <br>
+  <div class="text-white-bg">
+    <div class="row">
+      <div class="span12">
+        <br>
+        <h1><%= @profile.fullname %></h1>
+      </div>
     </div>
-    <div class="span4 text-right">
-      <%= link_to(profiles_path) do %>
-        <span class="icon icon-arrow-left"></span> SpeakerinnenListe
-      <% end %>
+    <div class="row">
+      <div class="span12 text-right">
+        <%= link_to(t(:home, scope: "profiles.edit"), profiles_path) %>
+      </div>
     </div>
   </div>
+  <br>
+  <br>
   <div class="row">
     <div class="span4">
       <% if @profile.picture.present? %>

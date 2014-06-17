@@ -32,9 +32,13 @@
     </div>
   </div>
   <div class="row last">
-    <div class="span8">
+    <div class="span12">
       <h5><%= t(:media, scope: "profiles.profile") %></h5>
-      <br>
+      <div class="row">
+        <div class="span12">
+          <p class="help"><%= t(:help, scope: "medialinks").html_safe %></p>
+        </div>
+      </div>
       <div id="messages"></div>
         <ul id="medialinks_list" data-update-url="<%= sort_profile_medialinks_url%>" class="<%= t(:language, scope: "medialinks")%>" data-placement="right" data-toggle="tooltip" data-original-title="<%= t(:tooltip, scope: "medialinks") %>">
           <% @profile.medialinks.each do |medialink| %>
@@ -52,13 +56,13 @@
               </div>
             <% end %>
           <% end %>
-        </ul>
+        </ulspan10>
       <br />
     </div>
     <div class="span4">
     </div>
   </div>
-  <div class="text-white-bg" style="margin-top: 180px;">
+  <div class="text-white-bg">
     <div class="row">
       <div class="span12">
       </div>

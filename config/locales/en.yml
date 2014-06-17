@@ -120,8 +120,8 @@ en:
     medialinks:
       edit: "Edit Medialinks"
     edit:
-      show: "Show Profile"
-      home: "Show all Speakerinnnen*"
+      show: "Show own Profile"
+      home: "Show all Speakerinnen*"
       back: "Back"
     index:
       title: "Speakerinnen*"
@@ -198,6 +198,7 @@ en:
     index: "References"
     # Translation
     medialink_description: "Here you can add Medialinks:"
+    help: "(You can change the sort order of the references per drag&drop.)"
     url: "URL:"
     title: "Title:"
     description: "Description:"
