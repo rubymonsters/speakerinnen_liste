@@ -1,14 +1,20 @@
 /*color*/
+$bg-light-grey: whitesmoke;
+$text-bg-transp-white: rgba(255, 255, 255, 0.7);
 
-
-$background-middle-grey: whitesmoke;
-$text-background-bright-grey: rgba(255, 255, 255, 0.7);
 $text-dark-grey: #333333;
 $text-middle-grey: #5E5E5E;
+
 $link-brighter-grey: #5E5E5E;
 $link-darker-grey: #7B7B7B;
 $background-link-dark-grey: #3c3c3a;
 
+$button-blue: #49AFCD;
 
 $alert-pink: #B4035D;
 $notice-yellow: #E8CD30;
+
+
+/*fonts*/
+$serif: 'Merriweather', Georgia, serif;
+$sans-serif: "OpenSans", "Helvetica Neue", Helvetica, sans-serif;
