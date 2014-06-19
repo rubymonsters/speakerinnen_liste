@@ -1,5 +1,7 @@
+@import 'settings';
+
 #start-page {
-  font-family:'Merriweather',Georgia,serif;
+  font-family: $serif;
   padding: 0;
   margin-top: -25px;
   }
@@ -18,7 +20,7 @@
   }
 
 #start-page h4 {
-  font-weight:  normal;
+  font-weight: normal;
   border-top: 1px solid #ccc;
   border-bottom: 1px solid #ccc;
   padding: 20px 0;
@@ -28,16 +30,16 @@
   }
 
 #curie-photo {
-  background-image:url(<%=asset_path "curie.jpg"%>);
+  background-image: url("curie.jpg");
   min-height: 600px;
   }
 
 #speakerin-photo {
-  background-image:url(<%=asset_path "maren_buehne.jpg"%>);
+  background-image: url("maren_buehne.jpg");
   }
 
 #coaching-photo {
-  background-image:url(<%=asset_path "coaching.jpg"%>);
+  background-image: url("coaching.jpg");
   }
 
 /* --------------------- Photo Bar --------------*/
@@ -55,7 +57,7 @@
   display:inline-block;
   background-color:rgba(255, 255, 255, 0.7);
   padding:12px 12px 20px 12px;
-  margin-top: -20px;
+  margin-top: -25px;
   color:#3c3c3a;
 }
 
