@@ -1,5 +1,7 @@
+@import 'settings';
+
 .pages {
-  font-family: 'Merriweather',Georgia;
+  font-family: $serif;
   background-color: white;
   line-height: 1.8em;
 }
@@ -19,7 +21,6 @@
   -webkit-margin-after: 0.67em;
   -webkit-margin-start: 0px;
   -webkit-margin-end: 0px;
-  font-family: 'Merriweather',Georgia,serif;
   line-height: 1.8em;
   font-weight: 300;
 }

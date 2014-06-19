@@ -1,3 +1,8 @@
+@import 'settings';
+
+.profiles {
+  font-family: $serif;
+}
 .profiles .photo {
   height: 250px;
   width: 250px;
@@ -33,26 +38,24 @@
   -webkit-margin-after: 0.67em;
   -webkit-margin-start: 0px;
   -webkit-margin-end: 0px;
-  font-family: 'Merriweather',Georgia,serif;
+  font-family: $sans-serif;
   line-height: 1.8em;
 }
 
 .profiles h1 {
   line-height: 1;
   font-weight: 300;
-  font-family: 'Merriweather',Georgia,serif;
 }
 
 .profiles h2 {
   font-weight: 300;
-  font-family: 'Merriweather',Georgia,serif;
 }
 
 .profiles h5 {
   font-size: 1.3em;
   padding: 0;
   margin-bottom: 0.5em;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: $sans-serif;
   font-weight: 300;
   line-height: 1;
 }
@@ -60,7 +63,6 @@
 .profiles span {
   font-weight: 100;
   font-size: 1.1em;
-  font-family: 'Merriweather',Georgia;
   color: #5e5e5e;
 }
 
@@ -90,7 +92,7 @@
 
 .main-topic {
   margin-top: 10px;
-  font-family: 'Merriweather',Georgia;
+  font-family: $sans-serif;
   font-size: 1.3em;
   font-weight: 300;
   color: #5e5e5e;
@@ -124,6 +126,7 @@
 
 .topics-cloud {
   min-height: 200px;
+  font-family: $sans-serif;
 }
 
 .topics-cloud a{
@@ -207,4 +210,3 @@
   filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'1 0 0 0 0, 0 1 0 0 0, 0 0 1 0 0, 0 0 0 1 0\'/></filter></svg>#grayscale");
   filter: grayscale(00%);
 }
-

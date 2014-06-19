@@ -1,5 +1,7 @@
 .simple_form {
   $indent: 120px;
+@import 'settings';
+
   label {
     float: left;
     width: $indent - 20px;
@@ -50,7 +52,7 @@
     font-style: italic;
   }
   .help-inline {
-    font-family:"proxima-nova-alt","Helvetica Neue",Helvetica,Arial,Verdana,sans-serif;
+    font-family: $sans-serif;
   }
 }
 
@@ -76,7 +78,6 @@
   -webkit-margin-after: 0.67em;
   -webkit-margin-start: 0px;
   -webkit-margin-end: 0px;
-  font-family: 'Merriweather',Georgia,serif;
   line-height: 1.8em;
 }
 
