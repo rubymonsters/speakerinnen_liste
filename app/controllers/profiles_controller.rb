@@ -38,19 +38,6 @@ class ProfilesController < ApplicationController
     @profile = Profile.new
   end
 
-# 	def create
-# require 'pry' ; binding.pry
-#     @profile = Profile.new(params[:profile])
-#     if @profile.valid?
-#       @profile.save!
-#       sign_in @profile
-#       redirect_to edit_profile_path(@profile)
-#     else
-#       flash.now.alert = @profile.errors.full_messages
-#       render action: "new"
-#     end
-# 	end
-
   # should reuse the devise view
   def edit
     @profile = Profile.find(params[:id])
