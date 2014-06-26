@@ -72,7 +72,13 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.6.3)
+    css_parser (1.2.6)
+      addressable
+      rdoc
     database_cleaner (1.2.0)
+    deadweight (0.2.2)
+      css_parser (~> 1.2.6)
+      nokogiri
     devise (3.1.1)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)
@@ -248,6 +254,7 @@ DEPENDENCIES
   carrierwave
   coffee-rails (~> 3.2.1)
   database_cleaner (~> 1.2.0)
+  deadweight
   devise
   factory_girl_rails (= 4.1.0)
   faker (= 1.0.1)

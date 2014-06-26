@@ -5,21 +5,19 @@
     </div>
     <script>
       $(window).scroll(function() {
-         if ($(this).scrollTop() > 100) {
-           $(".curie-badge").stop().animate({ opacity: 0 }, 50);
-         } else {
-           $(".curie-badge").stop().animate({ opacity: 1 }, 50);
-
-         }
-         //stops badge from covering other links
-         if ($(this).scrollTop() > 700) {
-           $(".curie-badge").hide();
-         } else {
-           $(".curie-badge").show();
-         }
+        if ($(this).scrollTop() > 100) {
+          $(".curie-badge").stop().animate({ opacity: 0 }, 50);
+        } else {
+          $(".curie-badge").stop().animate({ opacity: 1 }, 50);
+        }
+        //stops badge from covering other links
+        if ($(this).scrollTop() > 700) {
+         $(".curie-badge").hide();
+        } else {
+         $(".curie-badge").show();
+        }
       });
     </script>
-
     <div class="container">
       <h1 class="text-white-bg"><%= t(:heading, scope: "pages.home.search") %></h1>
       <br/>
@@ -28,9 +26,9 @@
       <h2 class="text-white-bg">
         <%= form_tag(search_path, method: "get", class:"well") do %>
           <%= text_field_tag(:q, nil, class: "", id: "search-field", placeholder: t(:search_text, scope: "pages.home.search")) %>
-          <%= button_tag((t(:search, scope: "pages.home.search")), class: "btn btn-large ") %>
+          <%= button_tag((t(:search, scope: "pages.home.search")), class: "btn btn-large") %>
         <% end %>
-        <%= link_to t(:categories, scope: "pages.home.speakers"), "#categories_anker"   %>
+        <%= link_to t(:categories, scope: "pages.home.speakers"), "#categories_anker" %>
         <br>
         <%= link_to t(:speaker_index, scope: "pages.home.speakers"), profiles_path %>
         <br>
