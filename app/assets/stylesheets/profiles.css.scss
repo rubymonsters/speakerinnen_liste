@@ -1,8 +1,8 @@
 @import 'settings';
 
 .profiles {
-  font-family: $serif;
 }
+
 .profiles .photo {
   height: 250px;
   width: 250px;
@@ -44,11 +44,12 @@
 
 .profiles h1 {
   line-height: 1;
-  font-weight: 300;
+  font-weight: 400;
+  padding: 30px 0 0 0;
 }
 
 .profiles h2 {
-  font-weight: 300;
+  font-weight: 400;
 }
 
 .profiles h5 {
@@ -56,12 +57,12 @@
   padding: 0;
   margin-bottom: 0.5em;
   font-family: $sans-serif;
-  font-weight: 300;
+  font-weight: 400;
   line-height: 1;
 }
 
 .profiles span {
-  font-weight: 100;
+  font-weight: 400;
   font-size: 1.1em;
   color: #5e5e5e;
 }
@@ -88,21 +89,17 @@
   font-weight: bold;
 }
 
-
-
 .main-topic {
   margin-top: 10px;
-  font-family: $sans-serif;
   font-size: 1.3em;
-  font-weight: 300;
-  color: #5e5e5e;
-
+  font-weight: 400;
 }
 
 .buttons-modals {
   width: 100%;
   margin-bottom: 0.5em;
 }
+
 .profile-delete-pic {
   margin: 0 0 2em 13em;
 }
@@ -151,16 +148,14 @@
   width: 160px;
 }
 
-
 /*speaker*/
 
-
 .speaker {
-  width:150px;
-  height:300px;
-  float:left;
-  margin:0px 5px;
-  font-size:90%;
+  width: 150px;
+  height: 400px;
+  float: left;
+  margin: 0px 5px;
+  font-size: 90%;
 }
 
 .speaker .name {
@@ -185,7 +180,6 @@
   font-size:11px;
   display:inline-block;
 }
-
 
 .speaker img {
   -webkit-transition: 1s;

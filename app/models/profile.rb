@@ -1,16 +1,16 @@
 class Profile < ActiveRecord::Base
   include AutoHtml
 
-  translates :bio, :main_topic, :fallbacks_for_empty_translations => true
+  translates :bio, :main_topic, fallbacks_for_empty_translations: true
   accepts_nested_attributes_for :translations
 
   auto_html_for :media_url do
     html_escape
     image
-    youtube :width => 400, :height => 250
-    vimeo :width => 400, :height => 250
+    youtube width: 400, height: 250
+    vimeo width: 400, height: 250
     simple_format
-    link :target => "_blank", :rel => "nofollow"
+    link target: "_blank", rel: "nofollow"
   end
 
   devise :database_authenticatable, :registerable, :omniauthable,
@@ -29,7 +29,7 @@ class Profile < ActiveRecord::Base
 
   has_many :medialinks
 
-  before_save(:on => [:create, :update]) do
+  before_save(on: [:create, :update]) do
     self.twitter.gsub!(/^@|https:|http:|:|\/\/|www.|twitter.com\//, '') if twitter
   end
 

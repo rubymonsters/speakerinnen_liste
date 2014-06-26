@@ -1,9 +1,7 @@
 @import 'settings';
 
 .pages {
-  font-family: $serif;
-  background-color: white;
-  line-height: 1.8em;
+  background-color: $bg-light-grey;
 }
 
 .imprint {
@@ -15,14 +13,10 @@
   }
 
 .pages h1 {
-  padding-top: 30px;
-  font-size: 4.0em;
   -webkit-margin-before: 0.67em;
   -webkit-margin-after: 0.67em;
   -webkit-margin-start: 0px;
   -webkit-margin-end: 0px;
-  line-height: 1.8em;
-  font-weight: 300;
+  line-height: 1.3em;
+  font-weight: 400;
 }
-
-

@@ -9,10 +9,10 @@ class Medialink < ActiveRecord::Base
   auto_html_for :url do
     html_escape
     image
-    youtube :width => 400, :height => 250
-    vimeo :width => 400, :height => 250
+    youtube width: 400, height: 250
+    vimeo width: 400, height: 250
     simple_format
-    link :target => "_blank", :rel => "nofollow"
+    link target: "_blank", rel: "nofollow"
   end
 
 

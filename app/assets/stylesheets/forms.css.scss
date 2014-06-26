@@ -1,12 +1,14 @@
+@import 'settings';
+
 .simple_form {
   $indent: 120px;
-@import 'settings';
 
   label {
     float: left;
     width: $indent - 20px;
     text-align: right;
     margin: 2px 10px;
+    font-family: $sans-serif;
     &.radio, &.checkbox {
       float: none;
       margin: 0;

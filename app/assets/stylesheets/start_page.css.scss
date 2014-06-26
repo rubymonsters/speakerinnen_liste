@@ -7,14 +7,14 @@
   }
 
 #start-page h1 {
-  font-weight:normal;
+  font-weight: normal;
   font-size: 3em;
-  line-height: 1.3em;
-  margin:40px 0 20px 0;
+  margin: 70px 0 20px 0;
+  line-height: 1.4em;
   }
 
 #start-page h2 {
-  font-weight: lighter;
+  font-weight: normal;
   font-size: 1.4em;
   line-height: 1.6em;
   }
@@ -26,7 +26,7 @@
   padding: 20px 0;
   margin-bottom: 50px;
   font-size: 1.4em;
-  line-height: 1.6em;
+  line-height: 1.8em;
   }
 
 #curie-photo {
@@ -57,7 +57,6 @@
   display:inline-block;
   background-color:rgba(255, 255, 255, 0.7);
   padding:12px 12px 20px 12px;
-  margin-top: -25px;
   color:#3c3c3a;
 }
 
@@ -77,7 +76,6 @@
 
 .text-bar {
   background-color:#fff;
-  line-height: 1.8em;
   z-index:99999;
   padding-bottom: 50px;
   }
@@ -87,33 +85,6 @@
   background-color:#3c3c3a;
   padding: 0px 4px;
 }
-
-/*
-.none-photo-bg .italic {
-  display:inline-block;
-  margin-bottom:6px;
-}
-
-.white-bg .home blockquote {
-  border-top:1px solid #aaa;
-  border-bottom:1px solid #aaa;
-  text-align: center;
-  border-left: none;
-  font-size:1.4em;
-  margin:6em 0 2em 0;
-  padding:22px 0px;
-}
-
-.white-bg {
-  font-family: 'Merriweather',Georgia,serif;
-  line-height:1.8em;
-}
-
-.white-bg .large {
-  font-size:300%;
-}
-
-*/
 
 
   /* --------------Category---------------- */
@@ -139,43 +110,13 @@
 
 .copyright {
   text-align: right;
+  font-size: 0.8em;
   margin-right: 10px;
-  font-size: 12px
 }
-
 
 .gray-bg *{
   color: #222;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /*curies badge*/
 
@@ -197,6 +138,3 @@
   -moz-transform: translate(-25px, 20px) rotate(0deg) scale(1.3);
   -webkit-transform: translate(-25px, 20px) rotate(0deg) scale(1.3);
 }
-
-
-

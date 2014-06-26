@@ -1,14 +1,18 @@
+@import 'settings';
+
 /*header*/
 
 header {
-  padding:20px 15px 0 15px;
-  width:100%;
-  position:fixed;
-  top:0px;
-  right: 0; left: 0;
-  font-weight:200;
-  z-index:10;
+  padding: 20px 15px 0 15px;
+  width: 100%;
+  position: fixed;
+  top: 0px;
+  right: 0;
+  left: 0;
+  font-weight: 400;
+  z-index: 10;
   color: #3c3c3a;
+  font-family: $sans-serif;
 }
 
 @media only screen and (min-width: 1024px) {
@@ -18,7 +22,7 @@ header {
     margin-left: -13%;
     margin-top: -0.3%;
     display:inline-block;
-    background:url(<%=asset_path "logo8.png"%>) no-repeat center center;
+    background: url("logo8.png") no-repeat center center;
     z-index: 1000;
     text-indent: -9999px;
     transition: all 0.2s ease-in-out 0s;
