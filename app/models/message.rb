@@ -3,10 +3,10 @@ class Message
   include ActiveModel::Conversion
   extend ActiveModel::Naming
 
-  attr_accessor :name, :email, :subject, :body
+  attr_accessor :name, :email, :subject, :body, HONEYPOT_EMAIL_ATTR_NAME
 
-  validates :name, :email, :subject, :body, :presence => true
-  validates :email, :format => { :with => %r{.+@.+\..+} }, :allow_blank => false	
+  validates :name, :email, :subject, :body, presence: true
+  validates :email, format: { with: %r{.+@.+\..+} }, allow_blank: false
 
   def initialize(attributes = {})
     attributes.each do |name, value|
