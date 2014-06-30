@@ -67,7 +67,7 @@ SpeakerinnenListe::Application.configure do
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
 
-  config.action_mailer.default_url_options = { :host => 'speakerinnen.org'}
+  config.action_mailer.default_url_options = { host: 'speakerinnen.org'}
 
   config.action_mailer.delivery_method = :smtp
 
@@ -75,7 +75,7 @@ SpeakerinnenListe::Application.configure do
 
   config.action_mailer.raise_delivery_errors = false
 
-  config.action_mailer.default :charset => "utf-8"
+  config.action_mailer.default charset: "utf-8"
 
   # config.action_mailer.smtp_settings = {
   #   # These are configured on Heroku with `heroku config:set`, see
@@ -92,11 +92,11 @@ SpeakerinnenListe::Application.configure do
   # }
 
   config.action_mailer.smtp_settings = {
-    :port =>           '587',
-    :address =>        'smtp.mandrillapp.com',
-    :user_name =>      ENV['MANDRILL_USERNAME'],
-    :password =>       ENV['MANDRILL_APIKEY'],
-    :domain =>         'heroku.com',
-    :authentication => :plain
+    port:           '587',
+    address:        'smtp.mandrillapp.com',
+    user_name:      ENV['MANDRILL_USERNAME'],
+    password:       ENV['MANDRILL_APIKEY'],
+    domain:         'heroku.com',
+    authentication: :plain
   }
 end

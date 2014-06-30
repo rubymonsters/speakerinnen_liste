@@ -1,5 +1,5 @@
 class ContactController < ApplicationController
-  before_filter :reject_spam_bots
+  before_filter :reject_spam_bots, only: [:create]
 
   def new
     @message = Message.new
