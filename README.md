@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/rubymonsters/speakerinnen_liste.png)](https://travis-ci.org/rubymonsters/speakerinnen_liste)
+[![Build Status](https://travis-ci.org/rubymonsters/speakerinnen_liste.png)](https://travis-ci.org/rubymonsters/speakerinnen_liste) [![Code Climate](https://codeclimate.com/github/rubymonsters/speakerinnen_liste.png)](https://codeclimate.com/github/rubymonsters/speakerinnen_liste)
 
 speakerinnen_liste is a searchable web directory designed specifically for female conference speakers. 'Speakerinnen' are encouraged to sign up and provide professional information, including their area of expertise, any previous conferences they've presented at, contact details, etc.
 
