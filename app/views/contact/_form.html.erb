@@ -2,7 +2,8 @@
   <%= f.label :name, t(".name") %>
   <%= f.text_field :name, placeholder: t(".name_placeholder"), style: "width: 100%; height: 40px" %>
 
-  <%= hidden_field_tag 'message[email]' %>
+  <%= f.label 'message[email]', t(".email"), id: 'message_email' %>
+  <%= f.text_field :email %>
 
   <%= f.label HONEYPOT_EMAIL_ATTR_NAME, t(".email") %>
   <%= f.text_field HONEYPOT_EMAIL_ATTR_NAME,  style: "width: 100%; height: 40px" %>
