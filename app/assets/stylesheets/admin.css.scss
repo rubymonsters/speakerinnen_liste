@@ -1,9 +1,10 @@
+@import 'settings';
 // Place all the styles related to the admin controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-header#top.admin {
- background-color: #FFFFCC;
+header#admin {
+ background-color: $notice-yellow;
 }
 
 .admin-tags-categorization {
