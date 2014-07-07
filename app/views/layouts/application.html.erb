@@ -2,51 +2,18 @@
 <html>
   <head>
     <title><%= t ".title" %></title>
-    <%= stylesheet_link_tag    "application",  :media => "all" %>
+    <%= stylesheet_link_tag    "application",  media: "all" %>
     <%= javascript_include_tag 'application' %>
     <%= csrf_meta_tags %>
     <%= favicon_link_tag 'favicon.ico' %>
   </head>
   <body>
-    <%= admin_header_class = 'admin' if controller_path =~ /admin\// %>
-    <header class="top-header" class="<%= admin_header_class %>">
-      <div class="row pull-right">
-        <div class="span6 header-link">
-          <%= link_to(t(:home, scope: "layouts.application"), root_path, id: "logo")%>
-        </div>
-        <div class="span4">
-          <% if profile_signed_in? %>
-            <%= link_to(t(:my_profile, scope: "layouts.application"), profile_path(current_profile))%> |
-            <%= link_to(t(:account, scope: "layouts.application"), edit_profile_registration_path) %> |
-            <%= link_to(t(:logout, scope: "layouts.application"), destroy_profile_session_path, method: :delete) %>
-          <% else %>
-            <%= link_to(t(:signup, scope: "layouts.application"), sign_up_path) %>
-            |
-            <%= link_to(t(:login, scope: "layouts.application"), new_profile_session_path) %>
-          <% end %>
-          <% if admin?(current_profile) %>
-          |||
-          <%= link_to "Admin", admin_root_path, {style: "color: #B4035D"} %>
-          <% end %>
-        </div>
-        <div class="span2">
-          <%= link_to_unless I18n.locale == :en, "ENG", locale: :en %> |
-          <%= link_to_unless I18n.locale == :de, "DEU", locale: :de %>
-        </div>
-      </div>
-    </header>
 
-    <div style="clear:both"></div>
-
-    <% if notice %>
-      <p class="notice"><%= notice %></p>
-    <% end %>
-
-    <% if alert %>
-      <p class="alert"><%= Array(alert).join("<br>").html_safe %></p>
-    <% end %>
-
-    <%= yield %>
+    <%= render "layouts/header" %>
+    <div id="start-page">
+      <%= yield %>
+      <%= render "layouts/footer" if render_footer? %>
+    </div>
 
   </body>
 </html>

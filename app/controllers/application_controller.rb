@@ -9,6 +9,12 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def render_footer?
+    false
+  end
+
+  helper_method(:render_footer?)
+
   private
 
   def set_locale
@@ -19,5 +25,5 @@ class ApplicationController < ActionController::Base
     options = super
     options.update(:locale => I18n.locale)
     options
-  end 
+  end
 end

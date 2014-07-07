@@ -2,7 +2,7 @@ SpeakerinnenListe::Application.routes.draw do
 
   # route post to /tags/merge to here
   namespace :admin do
-    resources :tags, :except => [:new, :create] do
+    resources :tags, except: [:new, :create] do
       collection do
         get 'categorization'
       end
@@ -23,7 +23,7 @@ SpeakerinnenListe::Application.routes.draw do
     root to: 'dashboard#index'
   end
 
-  scope "(:locale)", :locale => /en|de/ do
+  scope "(:locale)", locale: /en|de/ do
 
     devise_for :profiles, controllers: {omniauth_callbacks: "omniauth_callbacks"}
 
@@ -31,8 +31,8 @@ SpeakerinnenListe::Application.routes.draw do
 
     match 'search' => 'search#search'
 
-    get  'contact' => 'contact#new',    :as => 'contact'
-    post 'contact' => 'contact#create', :as => 'contact'
+    get  'contact' => 'contact#new',    as: 'contact'
+    post 'contact' => 'contact#create', as: 'contact'
 
     match 'impressum' => 'pages#impressum'
     match 'about' => 'pages#about'
@@ -44,10 +44,10 @@ SpeakerinnenListe::Application.routes.draw do
 
     get 'categories/:category_id', to: 'profiles#category', as: :category
 
-    resources :profiles, :except => [:new, :create] do
+    resources :profiles, except: [:new, :create] do
       resources :medialinks
-      get  'contact' => 'contact#new',    :as => 'contact', :on => :member
-      post 'contact' => 'contact#create', :as => 'contact', :on => :member
+      get  'contact' => 'contact#new',    as: 'contact', on: :member
+      post 'contact' => 'contact#create', as: 'contact', on: :member
 
       resources :medialinks do
        collection { post :sort }
@@ -59,9 +59,9 @@ SpeakerinnenListe::Application.routes.draw do
     end
 
     #get 'sign_up' => 'profiles#new'
-    constraints(:host => /^(speakerinnen-liste.herokuapp.com|speakerinnen.org)$/) do
-      root :to => redirect("http://www.speakerinnen.org")
-      # match '/*path', :to => redirect {|params| "http://www.example.com/#{params[:path]}"}
+    constraints(host: /^(speakerinnen-liste.herokuapp.com|speakerinnen.org)$/) do
+      root to: redirect("http://www.speakerinnen.org")
+      # match '/*path', to: redirect {|params| "http://www.example.com/#{params[:path]}"}
     end
   end
 end
