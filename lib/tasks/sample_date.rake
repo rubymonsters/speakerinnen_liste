@@ -1,6 +1,8 @@
 namespace :db do
   desc "Fill database with sample data"
   task populate: :environment do
+    sample_image = File.open(File.join(Rails.root, 'app','assets','images','avatar.jpg'))
+
     Profile.create!(firstname: "Example Firstname",
                     lastname: "Example Lastname",
                     email: "example@speakerinnen.org",
@@ -11,8 +13,8 @@ namespace :db do
                     topic_list: "Comics",
                     languages: "English, German",
                     main_topic: "Republica",
-                    picture: File.open(Dir.glob(File.join(Rails.root, 'app/assets/images', '*')).sample),
-                    twitter: "example",
+                    picture: sample_image,
+                    twitter: "example"
                    )
 
     admin = Profile.where(email: "example@speakerinnen.org").first
@@ -33,7 +35,6 @@ namespace :db do
       languages     = all_languages.sample(rand(3)+1).join(", ")
       all_talks = ["29C3", "Republica", "DEF CON", "Rails Camp", "EuRuKo2013", "Ruby User Group"]
       talks = all_talks.sample(rand(4)). join(", ")
-      sample_image = File.open(Dir.glob(File.join(Rails.root, 'app/assets/images', '*')).sample)
       twitter = Faker::Name.first_name
       Profile.create!(firstname: firstname,
                       lastname: lastname,
