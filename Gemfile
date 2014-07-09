@@ -37,7 +37,10 @@ group :development do
 end
 
 group :development, :test do
+  gem 'rspec-rails', '2.14.1'
   gem 'capybara', '~> 2.0.2'
+  gem 'cucumber-rails', '1.4.0', :require => false
+  gem 'pry'
 end
 
 group :test do
