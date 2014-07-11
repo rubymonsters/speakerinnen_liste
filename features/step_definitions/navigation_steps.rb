@@ -13,6 +13,9 @@
 ############
 # 1) Given #
 ############
+Given /^you are on the start page$/ do
+  visit root_path
+end
 
 ###########
 # 2) When #
@@ -24,11 +27,19 @@ end
 ###########
 # 3) Then #
 ###########
-Then /^you see (the|no) admin link$/ do |visibility|
-  if visibility == 'the'
-    expect(page).to have_link('Admin',admin_root_path)
+Then /^you see (a|no) link labeled as: (.+)$/ do |visibility,label|
+  if (visibility == 'a')
+    expect(page).to have_link(label)
   else
-    expect(page).to have_no_link('Admin',admin_root_path)
+    expect(page).to have_no_link(label)
+  end
+end
+
+Then /^you see (a|no) button labeled as: (.+)$/ do |visibility,label|
+  if (visibility == 'a')
+    expect(page).to have_button(label)
+  else
+    expect(page).to have_no_button(label)
   end
 end
 
