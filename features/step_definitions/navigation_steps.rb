@@ -17,11 +17,20 @@ Given /^you are on the start page$/ do
   visit root_path
 end
 
+Given /^you view the admin dashboard in (German|English)$/ do |language|
+  steps %Q{
+    Given you are signed in as admin
+    And you view the page in #{language}
+    And you click on: Admin
+  }
+end
+
+
 ###########
 # 2) When #
 ###########
-When /^you click on the admin link$/ do
-  click_on 'Admin'
+When /^you click on: (.+)$/ do |label|
+  click_on label
 end
 
 ###########
@@ -43,8 +52,8 @@ Then /^you see (a|no) button labeled as: (.+)$/ do |visibility,label|
   end
 end
 
-Then /^you are able to see the admin dashboard$/ do
-  expect(page).to have_content('Admin::Dashboard')
+Then /^you are able to see: (.+)$/ do |label|
+  expect(page).to have_content(label)
 end
 
 Then /^you are able to access the admin actions in (English|German)$/ do |language|
@@ -57,3 +66,19 @@ Then /^you are able to access the admin actions in (English|German)$/ do |langua
     expect(page).to have_link(link, links_array[index])
   end
 end
+
+Then /^you see a table with columns: (.+)(,.+)*$/ do |match|
+  columns_with_leading_spaces = match[0].split
+  columns = []
+  columns_with_leading_spaces.each do |column|
+    columns << column.strip
+  end
+  
+  columns.each do |column|
+    page.all('th', :text => column)
+  end
+end
+
+
+
+
