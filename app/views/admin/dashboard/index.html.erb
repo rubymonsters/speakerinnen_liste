@@ -2,13 +2,13 @@
   <h1 class="title-profiles">Admin::Dashboard</h1>
   <ul class="nav">
     <li>
-      <%= link_to "Bearbeite Kategorien", admin_categories_path %>
+      <%= link_to(t(:edit_categories, scope: "admin.dashboard"), admin_categories_path)%>
     </li>
     <li>
-      <%= link_to "Bearbeite Tags", categorization_admin_tags_path %>
+      <%= link_to(t(:edit_tags, scope: "admin.dashboard"), categorization_admin_tags_path)%>
     </li>
     <li>
-      <%= link_to "Bearbeite Profile", admin_profiles_path %>
+      <%= link_to(t(:edit_profiles, scope: "admin.dashboard"), admin_profiles_path)%>
     </li>
   </ul>
 </div>

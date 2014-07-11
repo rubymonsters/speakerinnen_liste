@@ -9,6 +9,10 @@ de:
         edit: "Bearbeiten"
         back: "Zurück"
         destroy: "Löschen"
+    dashboard:
+      edit_categories: "Bearbeite Kategorien"
+      edit_tags: "Bearbeite Tags"
+      edit_profiles: "Bearbeite Profile"
   pages:
     home:
       search:
