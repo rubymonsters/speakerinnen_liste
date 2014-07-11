@@ -9,6 +9,11 @@ describe "navigation" do
   subject { page }
 
   before do
+    @links_array = [categorization_admin_tags_path, admin_categories_path, admin_profiles_path]
+    @lang_links_map = {
+      'en' => ['Edit Categories','Edit Tags','Edit Profiles'],
+      'de' => ['Bearbeite Kategorien', 'Bearbeite Tags', 'Bearbeite Profile']
+    }
   end
 
   ['en','de'].each do |language|
@@ -37,9 +42,11 @@ describe "navigation" do
         before { click_on 'Admin' }
         #find(:xpath, "//a[contains(@href,'#{admin_root_path}')]").click
         it { should have_content('Admin::Dashboard') }
-        it { should have_link('Bearbeite Kategorien', categorization_admin_tags_path) }
-        it { should have_link('Bearbeite Tags', admin_categories_path) }
-        it { should have_link('Bearbeite Profile', admin_profiles_path) }
+        it "should have localized links" do
+          @lang_links_map[language].each_with_index do |link, index|
+            expect(page).to have_link(link, @links_array[index])
+          end
+        end
       end
       #When you go to the start page
       #Then you see the admin link
