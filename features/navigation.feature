@@ -1,12 +1,28 @@
 Feature: Navigation
 
-Scenario: signed in as admin
-Given you are signed in as admin
-When you go to the start page
-Then you see the admin link
-And you are able to access the admin actions
+Scenario Outline: signed in as <role>
+Given you are signed in as <role>
+When you view the page in <language>
+Then you see <target>
 
-Scenario: signed in as normal user
-Given you are signed in as normal user
-When you go to the start page
-Then you can't see the admin link
+# languages are implemented in localization_steps.rb
+Examples:
+| language | role  | target         |
+| English  | admin | the admin link |
+| German   | admin | the admin link |
+| English  | user  | no admin link  |
+| German   | user  | no admin link  |
+
+
+Scenario Outline: viewing the admin dashboard
+Given you are signed in as admin
+And you view the page in <language>
+When you click on the admin link
+Then you are able to see the admin dashboard
+And you are able to access the admin actions in <language>
+
+# languages are implemented in localization_steps.rb
+Examples:
+| language |
+| English  |
+| German   |
