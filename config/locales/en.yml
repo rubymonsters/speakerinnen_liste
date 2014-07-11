@@ -1,5 +1,6 @@
 en:
   general:
+    add: "Add"
     close: "Close"
   admin:
     profiles:
@@ -13,6 +14,10 @@ en:
       edit_categories: "Edit Categories"
       edit_tags: "Edit Tags"
       edit_profiles: "Edit Profiles"
+      categories:
+        categories: "Categories"
+        category_language_de: "German"
+        category_language_en: "English"
   pages:
     home:
       search:

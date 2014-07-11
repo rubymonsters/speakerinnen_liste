@@ -18,7 +18,7 @@ Scenario Outline: viewing the admin dashboard
 Given you are signed in as admin
 And you view the page in <language>
 When you click on: Admin
-Then you are able to see: Admin::Dashboard
+Then you are able to see: Administration
 And you are able to access the admin actions in <language>
 
 # languages are implemented in localization_steps.rb
@@ -32,12 +32,12 @@ Examples:
 Scenario Outline: viewing edit categories in admin area
 Given you view the admin dashboard in <language>
 When you click on: <edit>
-Then you are able to see: Admin::Dashboard::<area>
-And you see a button labeled as: <button>
+Then you are able to see: Administration::<area>
+And you see a link labeled as: <link>
 And you see a table with columns: <germanName>, <englishName>
 
 # languages are implemented in localization_steps.rb
  Examples:
-| language | button     | germanName | englishName | edit                 | area       |
+| language | link       | germanName | englishName | edit                 | area       |
 | English  | Add        | German     | English     | Edit Categories      | Categories |
 | German   | Hinzufügen | Deutsch    | Englisch    | Bearbeite Kategorien | Kategorien |

@@ -1,9 +1,9 @@
 <div class="container profiles">
-  <h1 class="title-profiles">Admin interface für Kategorien:</h1>
+  <h1 class="title-profiles">Administration::<%= t(:categories, scope: "admin.dashboard.categories")%><categories</h1>
   <div class="row">
     <div class="span2">
-      <%= link_to '<i class="icon-plus icon-white"></i> Hinzufügen'.html_safe,
-                new_admin_category_path(@category), class: "btn btn-info" %>
+      <%= link_to ('<i class="icon-plus icon-white"></i>'+t(:add, scope: "general")).html_safe, 
+      new_admin_category_path(@category), class: "btn btn-info" %>
       <br>
       <br>
     </div>
@@ -12,10 +12,10 @@
   </div>
     <div class="row">
       <div class="span12">
-        <table class="table table-bordered table-hovered table-condensed">
+        <table id="category-table" class="table table-bordered table-hovered table-condensed">
           <tr>
-            <th>Name der Kategorie</th>
-            <th>Englischer Name der Kategorie</th>
+             <th><%= t(:category_language_de, scope: "admin.dashboard.categories")%></th>
+            <th><%= t(:category_language_en, scope: "admin.dashboard.categories")%></th>
             <th></th>
           </tr>
 

@@ -1,5 +1,6 @@
 de:
   general:
+    add: "Hinzufügen"
     close: "Schließen"
   admin:
     profiles:
@@ -13,6 +14,10 @@ de:
       edit_categories: "Bearbeite Kategorien"
       edit_tags: "Bearbeite Tags"
       edit_profiles: "Bearbeite Profile"
+      categories:
+        categories: "Kategorien"
+        category_language_de: "Deutsch"
+        category_language_en: "Englisch"
   pages:
     home:
       search:

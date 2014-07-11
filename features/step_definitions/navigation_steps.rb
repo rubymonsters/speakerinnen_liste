@@ -44,12 +44,13 @@ Then /^you see (a|no) link labeled as: (.+)$/ do |visibility,label|
   end
 end
 
+
 Then /^you see (a|no) button labeled as: (.+)$/ do |visibility,label|
   if (visibility == 'a')
     expect(page).to have_button(label)
   else
     expect(page).to have_no_button(label)
-  end
+  end 
 end
 
 Then /^you are able to see: (.+)$/ do |label|
@@ -67,7 +68,7 @@ Then /^you are able to access the admin actions in (English|German)$/ do |langua
   end
 end
 
-Then /^you see a table with columns: (.+)(,.+)*$/ do |match|
+Then /^you see a table with columns: ((.+)(,.+)*)$/ do |match, unused, unused2|
   columns_with_leading_spaces = match[0].split
   columns = []
   columns_with_leading_spaces.each do |column|
