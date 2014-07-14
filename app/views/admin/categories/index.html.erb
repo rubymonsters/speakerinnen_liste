@@ -1,8 +1,8 @@
 <div class="container profiles">
-  <h1 class="title-profiles">Administration::<%= t(:categories, scope: "admin.dashboard.categories")%><categories</h1>
+  <h1 class="title-profiles">Administration::<%= t(:categories, scope: "admin.dashboard.categories")%></h1>
   <div class="row">
     <div class="span2">
-      <%= link_to ('<i class="icon-plus icon-white"></i>'+t(:add, scope: "general")).html_safe, 
+      <%= link_to ('<i class="icon-plus icon-white"></i>'+t(:add, scope: "general")).html_safe,
       new_admin_category_path(@category), class: "btn btn-info" %>
       <br>
       <br>
