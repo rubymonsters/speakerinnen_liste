@@ -16,7 +16,7 @@ en:
         categories: "Categories"
         category_language_de: "German"
         category_language_en: "English"
-        add_action: "Add Category"
+        category_name: "Category name"
       profiles:
         profiles: "Profiles"
         created_at: "Created at"

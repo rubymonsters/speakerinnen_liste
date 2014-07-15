@@ -45,12 +45,13 @@ Scenario Outline: view add category in admin area
 Given you view the admin area <area> in <language>
 When you click on: <add>
 Then you are able to see: Administration::<area>::<add>
-And you see a button labeled as: <add_submit>
+And you are able to see: <label>
+And you see a button labeled as: <add>
 
 Examples:
-| language | area       | add        | add_submit |
-| English  | Categories | Add        | Create     |
-| German   | Kategorien | Hinzufügen | Erstellen  |
+| language | area       | add        | label              |
+| English  | Categories | Add        | Category name      |
+| German   | Kategorien | Hinzufügen | Name der Kategorie |
 
 Scenario Outline: viewing edit profiles in admin area
 Given there is a user profile registered and published with the email address: user1@example.com
