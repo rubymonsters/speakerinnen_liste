@@ -13,3 +13,4 @@ module SignInHelper
 end
 
 World(SignInHelper)
+World(FactoryGirl::Syntax::Methods)
