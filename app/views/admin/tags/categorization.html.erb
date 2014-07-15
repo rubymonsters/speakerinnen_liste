@@ -1,21 +1,20 @@
 <div class="container profiles">
-  <h1 class="title-profiles">Admin interface für Tags:</h1>
+  <h1 class="title-profiles">Administration::<%= t(:tags, scope: "admin.dashboard.tags")%></h1>
   <div class="row">
     <div class="span4">
       <%= form_tag(categorization_admin_tags_path, method: :get, class: 'form-inline') do %>
-        <%= label_tag 'Suche nach einem bestimmtem Tag' %>
+        <%= t(:tags_search, scope: "admin.dashboard.tags") %>
         <%= text_field_tag 'q', params[:q], class: 'input-medium search-query' %>
         <br>
-        <br>
         <%= check_box_tag 'uncategorized', params[:uncategorized], params[:uncategorized] %>
-        <%= label_tag 'uncategorized', 'Alle Tags ohne Kategorien anzeigen', class: 'checkbox inline' %><br>
+        <%= label_tag 'uncategorized', t(:tags_filter_option, scope: "admin.dashboard.tags"), class: 'checkbox inline' %><br>
         <br>
-        <%= submit_tag 'Filter', class: "btn" %>
+        <%= submit_tag (t(:filter, scope:"general")), class: "btn" %>
       <% end %>
     <br>
     </div>
     <div class="span8 text-center">
-      <strong><%= "Die Anzahl der Tags ist #{@tags.total_count}." %></strong>
+      <strong><%= t(:tags_count, scope: "admin.dashboard.tags") + "#{@tags.total_count}" + "."%></strong>
       <%= paginate @tags %>
     </div>
   </div>

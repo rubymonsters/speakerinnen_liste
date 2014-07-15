@@ -5,6 +5,7 @@ en:
     edit: "Edit"
     back: "Back"
     delete: "Delete"
+    filter: "Filter"
   admin:
     dashboard:
       edit_categories: "Edit Categories"
@@ -26,6 +27,11 @@ en:
         edit:
           show: "Show profile"
           show_all: "List all profiles"
+      tags:
+        tags: "Tags"
+        tags_search: "Search for tag"
+        tags_count: "The number of tags is "
+        tags_filter_option: "Show all tags without category"
   pages:
     home:
       search:

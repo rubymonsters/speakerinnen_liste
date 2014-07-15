@@ -5,6 +5,7 @@ de:
     edit: "Bearbeiten"
     back: "Zurück"
     delete: "Löschen"
+    filter: "Filtern"
   admin:
     dashboard:
       edit_categories: "Bearbeite Kategorien"
@@ -26,6 +27,11 @@ de:
         edit:
           show: "Zeige Profil"
           show_all: "Liste aller Profile"
+      tags:
+        tags: "Tags"
+        tags_search: "Suche nach einem bestimmtem Tag"
+        tags_count: "Die Anzahl der Tags ist "
+        tags_filter_option: "Alle Tags ohne Kategorien anzeigen"
   pages:
     home:
       search:

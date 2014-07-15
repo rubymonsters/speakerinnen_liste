@@ -28,7 +28,6 @@ Examples:
 | German   |
 
 
-
 Scenario Outline: viewing edit categories in admin area
 Given you view the admin dashboard in <language>
 When you click on: <edit>
@@ -73,3 +72,17 @@ And you see a form with labels: <first_name>, <last_name>, <city>, <picture>, <b
 | language | area     | area_action       | edit_link  | update_button            | show_button  | show_all_button     | first_name | last_name | city  | picture | bio       | topic           | topics_as_tags        |
 | English  | Profiles | Edit Profiles     | Edit       | Update your profile      | Show profile | List all profiles   | First name | Last name | City  | Picture | Your bio  | Your main topic | Your topics as tags   |
 | German   | Profile  | Bearbeite Profile | Bearbeiten | Aktualisiere dein Profil | Zeige Profil | Liste aller Profile | Vorname    | Nachname  | Stadt | Bild    | Deine Bio | Dein Hauptthema | Deine Themen als Tags |
+
+Scenario Outline: viewing edit tags in admin area
+Given you view the admin dashboard in <language>
+When you click on: <edit>
+Then you are able to see: Administration::Tags
+And you are able to see: <filterTags>
+And you are able to see: <noOfSearchResults>
+And you see a button labeled as: <filter>
+
+# languages are implemented in localization_steps.rb
+ Examples:
+| language | edit           | filterTags                      | noOfSearchResults       | filter  |
+| English  | Edit Tags      | Search for tag                  | The number of tags is   | Filter  |
+| German   | Bearbeite Tags | Suche nach einem bestimmtem Tag | Die Anzahl der Tags ist | Filtern |
