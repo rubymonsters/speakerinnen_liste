@@ -2,14 +2,10 @@ en:
   general:
     add: "Add"
     close: "Close"
+    edit: "Edit"
+    back: "Back"
+    delete: "Delete"
   admin:
-    profiles:
-      index:
-        show: "Show the Profile"
-        show_all: "Show all Speakerinnen"
-        edit: "Edit"
-        back: "Back"
-        destroy: "Destroy"
     dashboard:
       edit_categories: "Edit Categories"
       edit_tags: "Edit Tags"
@@ -18,6 +14,18 @@ en:
         categories: "Categories"
         category_language_de: "German"
         category_language_en: "English"
+      profiles:
+        profiles: "Profiles"
+        created_at: "Created at"
+        visibility: "Visibility"
+        public: "public"
+        invisible: "invisible"
+        roles: "Roles"
+        comment: "Comment"
+        add_comment: "Add comment"
+        edit:
+          show: "Show profile"
+          show_all: "List all profiles"
   pages:
     home:
       search:
@@ -110,8 +118,8 @@ en:
       update: "Update your profile"
       copyright_photo: "Please make sure you use .jpg, .jpeg or .png and that you have all copyrights for this photo."
     profile:
-      firstname: 'Firstname:'
-      lastname: 'Lastname:'
+      firstname: 'First name:'
+      lastname: 'Last name:'
       topics: "My topics:"
       languages: "My languages:"
       talks: "Previous Talks:"
@@ -167,12 +175,12 @@ en:
   activerecord:
     attributes:
       profile:
-        firstname: "First Name"
-        lastname: "Last Name"
-        bio: "Bio in %{language}<br>
+        firstname: "First name"
+        lastname: "Last name"
+        bio: "Your bio in %{language}<br>
         <small>(Here you can add a short or long bio of yourself. Please also add specific expertise and topics you feel comfortable speaking about. This will help organizers of events to understand whether you might be the person they're looking for)</small>"
-        topic_list: "Your Topics as Tags<br><small>(Please have a look first, if your topic already exists)</small>"
-        main_topic: "Your Maintopic in %{language}<br><small>(Please choose one topic as your favorite topic and enter it again. It will be visible along with your name and picture at the speaker overview site)</small>"
+        topic_list: "Your topics as tags<br><small>(Please have a look first, if your topic already exists)</small>"
+        main_topic: "Your main topic in %{language}<br><small>(Please choose one topic as your favorite topic and enter it again. It will be visible along with your name and picture at the speaker overview site)</small>"
         tag_list: "Existing Topics"
         talks: "Talks"
         languages: "Languages<br><small>(Please add programming languages in 'Topics', not here)</small>"

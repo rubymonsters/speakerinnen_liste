@@ -25,6 +25,12 @@ Given /^you view the admin dashboard in (German|English)$/ do |language|
   }
 end
 
+Given /^you view the admin area (.*) in (German|English)$/ do |area, language|
+  steps %Q{
+    Given you view the admin dashboard in #{language}
+    And you click on: #{area}
+  }
+end
 
 ###########
 # 2) When #
@@ -50,36 +56,47 @@ Then /^you see (a|no) button labeled as: (.+)$/ do |visibility,label|
     expect(page).to have_button(label)
   else
     expect(page).to have_no_button(label)
-  end 
+  end
 end
 
 Then /^you are able to see: (.+)$/ do |label|
   expect(page).to have_content(label)
 end
 
+LANG_LINKS_MAP = {
+  'English' => ['Edit Categories','Edit Tags','Edit Profiles'],
+  'German' => ['Bearbeite Kategorien', 'Bearbeite Tags', 'Bearbeite Profile']
+}
+
 Then /^you are able to access the admin actions in (English|German)$/ do |language|
   links_array = [categorization_admin_tags_path, admin_categories_path, admin_profiles_path]
-  lang_links_map = {
-    'English' => ['Edit Categories','Edit Tags','Edit Profiles'],
-    'German' => ['Bearbeite Kategorien', 'Bearbeite Tags', 'Bearbeite Profile']
-  }
-  lang_links_map[language].each_with_index do |link, index|
+  LANG_LINKS_MAP[language].each_with_index do |link, index|
     expect(page).to have_link(link, links_array[index])
   end
 end
 
-Then /^you see a table with columns: ((.+)(,.+)*)$/ do |match, unused, unused2|
-  columns_with_leading_spaces = match[0].split
-  columns = []
-  columns_with_leading_spaces.each do |column|
-    columns << column.strip
+def comma_separated_string_to_array(string)
+  strings_with_leading_spaces = string.split(',')
+  array = []
+  strings_with_leading_spaces.each do |item|
+    array << item.strip
   end
-  
+
+  return array
+end
+
+Then /^you see a table with columns: ((.+)(,.+)*)$/ do |match, unused, unused2|
+  columns = comma_separated_string_to_array(match)
+  #binding.pry
   columns.each do |column|
-    page.all('th', :text => column)
+    expect(page).to have_xpath('//table/thead/tr/th[contains(text(), "'+column+'")] | //table/thead/tr/th/a[contains(text(), "'+column+'")]')
   end
 end
 
+Then /^you see a form with labels: ((.+)(,.+)*)$/ do |match, unused, unused2|
+  labels = comma_separated_string_to_array(match)
 
-
-
+  labels.each do |label|
+    expect(page).to have_xpath('//form//label[contains(text(), "'+label+'")]')
+  end
+end
