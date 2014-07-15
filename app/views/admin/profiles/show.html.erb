@@ -1,5 +1,5 @@
 <div class="container profiles">
-  <h1 class="title-profiles">Admin::Profiles#show</h1>
+  <h1 class="title-profiles">Admin::<%= t(:profiles, scope: "admin.dashboard.profiles")%>::show</h1>
   <div class="row">
     <div class="span12 text-right">
       <%= link_to(t(:edit, scope: "admin.profiles.index"), edit_admin_profile_path(@profile), class:"btn btn-danger btn-small") %>

@@ -68,10 +68,11 @@ LANG_LINKS_MAP = {
   'German' => ['Bearbeite Kategorien', 'Bearbeite Tags', 'Bearbeite Profile']
 }
 
-Then /^you are able to access the admin actions in (English|German)$/ do |language|
-  links_array = [categorization_admin_tags_path, admin_categories_path, admin_profiles_path]
-  LANG_LINKS_MAP[language].each_with_index do |link, index|
-    expect(page).to have_link(link, links_array[index])
+Then /^you see admin action links: ((.+)(,.+)*)$/ do |match,unused,unused2|
+  LINKS_ARRAY = [categorization_admin_tags_path, admin_categories_path, admin_profiles_path]
+  links = comma_separated_string_to_array(match)
+  links.each_with_index do |link, index|
+    expect(page).to have_link(link, LINKS_ARRAY[index])
   end
 end
 
