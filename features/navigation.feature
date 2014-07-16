@@ -86,3 +86,33 @@ And you see a button labeled as: <filter>
 | language | edit           | filterTags                      | noOfSearchResults       | filter  |
 | English  | Edit Tags      | Search for tag                  | The number of tags is   | Filter  |
 | German   | Bearbeite Tags | Suche nach einem bestimmtem Tag | Die Anzahl der Tags ist | Filtern |
+
+Scenario Outline: page has header
+Given you <are_or_are_not> signed in as <role>
+When you view the page in <language>
+Then you see the speakerinnen logo
+And you see links labeled as: <links>
+
+# languages are implemented in localization_steps.rb
+Examples:
+| language | are_or_are_not | role  | links                                             | 
+| English  | are not        | user  | Register as a speaker, Log in, DEU                |
+| English  | are            | user  | My profile, Account, Log out, DEU                 |
+| English  | are            | admin | My profile, Account, Log out, Admin, DEU          |
+| German   | are not        | user  | Als Speakerin registrieren, Anmelden, ENG         |
+| German   | are            | user  | Mein Profil, Benutzerkonto, Ausloggen, ENG        |
+| German   | are            | admin | Mein Profil, Benutzerkonto, Ausloggen, Admin, ENG |
+
+Scenario Outline: viewing the start page
+Given you are on the start page
+When you view the page in <language>
+Then you view the header <links> in <language>
+And you are able to see sections: <titles>
+And you see images labeled as: curie-photo, coaching-photo, speakerin-photo
+And you see links labeled as: <links>
+
+# languages are implemented in localization_steps.rb
+Examples:
+| language | titles                                                                                                                                                                                               |  links                                |
+| English  | Organizers, find your speakers; Our Newest Speakers; We believe in collaboration — not competition; Our Categories; Do you have something interesting to say?; Speakerinnen*; Contact                |  Log in, Register as a speaker        |
+| German   | Mehr Frauen auf die Bühnen!; Unsere neuesten Speakerinnen*; Wir glauben an Kollaboration - nicht an Wettbewerb.; Unsere Kategorien; Hast Du etwas Interessantes zu erzählen?; Speakerinnen*; Kontakt |  Anmelden, Als Speakerin registrieren |

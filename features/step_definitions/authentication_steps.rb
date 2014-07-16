@@ -15,9 +15,13 @@
 # 1) Given #
 ############
 
-Given /^you are signed in as (user|admin)$/ do |role|
-  @user = (role == 'admin') ? FactoryGirl.create(:admin) : FactoryGirl.create(:user)
-  sign_in @user
+Given /^you (are|are not) signed in as (user|admin)$/ do |signIn,role|
+  if signIn == 'are'
+    @user = (role == 'admin') ? FactoryGirl.create(:admin) : FactoryGirl.create(:user)
+    sign_in @user
+  else
+    visit root_path
+  end
 end
 
 ###########

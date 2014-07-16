@@ -42,6 +42,15 @@ end
 ###########
 # 3) Then #
 ###########
+
+
+Then /^you view the header (.*) in (German|English)$/ do |links, language|
+  steps %Q{
+    When you view the page in #{language}
+    And you see links labeled as: #{links}
+  }
+end
+
 Then /^you see (a|no) link labeled as: (.+)$/ do |visibility,label|
   if (visibility == 'a')
     expect(page).to have_link(label)
@@ -50,6 +59,9 @@ Then /^you see (a|no) link labeled as: (.+)$/ do |visibility,label|
   end
 end
 
+Then /^you see the speakerinnen logo$/ do
+  expect(page).to have_xpath('//*[@id="logo"]')
+end
 
 Then /^you see (a|no) button labeled as: (.+)$/ do |visibility,label|
   if (visibility == 'a')
@@ -75,8 +87,8 @@ Then /^you are able to access the admin actions in (English|German)$/ do |langua
   end
 end
 
-def comma_separated_string_to_array(string)
-  strings_with_leading_spaces = string.split(',')
+def comma_separated_string_to_array(string, separator=',')
+  strings_with_leading_spaces = string.split(separator)
   array = []
   strings_with_leading_spaces.each do |item|
     array << item.strip
@@ -87,7 +99,6 @@ end
 
 Then /^you see a table with columns: ((.+)(,.+)*)$/ do |match, unused, unused2|
   columns = comma_separated_string_to_array(match)
-  #binding.pry
   columns.each do |column|
     expect(page).to have_xpath('//table/thead/tr/th[contains(text(), "'+column+'")] | //table/thead/tr/th/a[contains(text(), "'+column+'")]')
   end
@@ -98,5 +109,29 @@ Then /^you see a form with labels: ((.+)(,.+)*)$/ do |match, unused, unused2|
 
   labels.each do |label|
     expect(page).to have_xpath('//form//label[contains(text(), "'+label+'")]')
+  end
+end
+
+Then /^you are able to see sections: ((.+)(,.+)*)$/ do |match, unused, unused2|
+  labels = comma_separated_string_to_array(match, ';')
+  titles =  page.all(:xpath, '//div/h1')
+
+  labels.each_with_index do |label, index|
+    assert_equal(label, titles[index].text)
+  end
+end
+
+Then /^you see images labeled as: ((.+)(,.+)*)$/ do |match, unused, unused2|
+  labels = comma_separated_string_to_array(match)
+
+  labels.each do |label|
+    expect(page).to have_xpath('//*[@id="'+label+'"]')
+  end
+end
+
+Then /^you see links labeled as: ((.+)(,.+)*)$/ do |match, unused, unused2|
+  links = comma_separated_string_to_array(match)
+  links.each do |link|
+    expect(page).to have_link(link)
   end
 end
