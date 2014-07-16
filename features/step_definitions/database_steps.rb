@@ -27,6 +27,11 @@ Given /^there is (a|an) (user|admin) profile registered and (published|invisible
   user.save!
 end
 
+Given /^there is a category with the name: (.+)$/ do |name|
+  category = FactoryGirl.create(:category, name: name)
+  category.save!
+end
+
 ###########
 # 2) When #
 ###########

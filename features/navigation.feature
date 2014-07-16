@@ -27,19 +27,35 @@ Examples:
 | English  | Categories, Tags, Profiles |
 | German   | Kategorien, Tags, Profile  |
 
-
 Scenario Outline: viewing edit categories in admin area
-Given you view the admin dashboard in <language>
+Given there is a category with the name: abc
+And you view the admin dashboard in <language>
 When you click on: <area>
 Then you are able to see: Administration::<area>
 And you see a link labeled as: <link>
+And you see a link labeled as: <link2>
+And you see a link labeled as: <link3>
 And you see a table with columns: <germanName>, <englishName>
 
 # languages are implemented in localization_steps.rb
  Examples:
-| language | link       | germanName | englishName | area       |
-| English  | Add        | German     | English     | Categories |
-| German   | Hinzufügen | Deutsch    | Englisch    | Kategorien |
+| language | link       | germanName | englishName | area       | link2      | link3   |
+| English  | Add        | German     | English     | Categories | Edit       | Delete  |
+| German   | Hinzufügen | Deutsch    | Englisch    | Kategorien | Bearbeiten | Löschen |
+
+Scenario Outline: viewing edit certain category in admin area
+Given there is a category with the name: abc
+And you view the admin area <area> in <language>
+When you click on: <edit>
+Then you are able to see: Administration::<area>::<edit>
+And you see a button labeled as: <update_button>
+And you are able to see: <current>
+And you are able to see: <new>
+
+Examples:
+| language | area       | edit       | update_button | current         | new        |
+| English  | Categories | Edit       | Ok            | Current name    | New name   |
+| German   | Kategorien | Bearbeiten | Ok            | Bisheriger Name | Neuer Name |
 
 Scenario Outline: view add category in admin area
 Given you view the admin area <area> in <language>

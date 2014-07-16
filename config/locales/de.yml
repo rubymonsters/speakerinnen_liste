@@ -7,6 +7,9 @@ de:
     delete: "Löschen"
     filter: "Filtern"
     create: "Erstellen"
+    ok: "Ok"
+    current_name: "Bisheriger Name"
+    new_name: "Neuer Name"
   admin:
     dashboard:
       edit_categories: "Bearbeite Kategorien"

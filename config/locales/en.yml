@@ -7,6 +7,9 @@ en:
     delete: "Delete"
     filter: "Filter"
     create: "Create"
+    ok: "Ok"
+    current_name: "Current name"
+    new_name: "New name"
   admin:
     dashboard:
       edit_categories: "Edit Categories"

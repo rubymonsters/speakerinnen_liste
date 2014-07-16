@@ -63,10 +63,10 @@ Then /^you are able to see: (.+)$/ do |label|
   expect(page).to have_content(label)
 end
 
-LANG_LINKS_MAP = {
-  'English' => ['Edit Categories','Edit Tags','Edit Profiles'],
-  'German' => ['Bearbeite Kategorien', 'Bearbeite Tags', 'Bearbeite Profile']
-}
+#LANG_LINKS_MAP = {
+#  'English' => ['Edit Categories','Edit Tags','Edit Profiles'],
+  #'German' => ['Bearbeite Kategorien', 'Bearbeite Tags', 'Bearbeite Profile']
+#}
 
 Then /^you see admin action links: ((.+)(,.+)*)$/ do |match,unused,unused2|
   LINKS_ARRAY = [categorization_admin_tags_path, admin_categories_path, admin_profiles_path]
