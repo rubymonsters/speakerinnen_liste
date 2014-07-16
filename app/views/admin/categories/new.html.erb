@@ -1,21 +1,20 @@
 <div class="container profiles">
   <div class="row">
     <div class="span12">
-      <h1 class="title-profiles">Admin::Neue Kategorie</h1>
-      <p>Du erstellst gerade eine neue Kategorie.</p>
+      <h1 class="title-profiles">Administration::<%= t(:categories, scope: "admin.dashboard.categories")%>::<%= t(:add, scope: "general")%></h1>
     </div>
   </div>
   <div class="row">
     <div class="span6">
       <%= form_for [:admin, @category], html: {class: 'form-vertical'} do |f| %>
       <div class="control-group">
-        <%= f.label :name, {class:"control-label"} %>
+        <%= t(:category_name, scope: "admin.dashboard.categories") %>
         <div class="controls">
           <%= f.text_field :name, class: "input-xxlarge" %>
         </div>
       </div>
       <div class="controls">
-        <%= f.submit "Kategorie erstellen", class:"btn btn-info" %>
+        <%= f.submit t(:add, scope: "general"), class:"btn btn-info" %>
       </div>
       <% end %>
     </div>

@@ -3,7 +3,7 @@
   <div class="row">
     <div class="span2">
       <%= link_to ('<i class="icon-plus icon-white"></i>'+t(:add, scope: "general")).html_safe,
-      new_admin_category_path(@category), class: "btn btn-info" %>
+      new_admin_category_path, class: "btn btn-info" %>
       <br>
       <br>
     </div>
@@ -25,19 +25,17 @@
             <% Globalize.with_locale(:de) do %>
               <td>
                 <%= category.name %>
-                <%= link_to '<i class="icon-pencil"></i>'.html_safe,
-                    edit_admin_category_path(category.id) %>
               </td>
             <% end %>
             <% Globalize.with_locale(:en) do %>
               <td>
                 <%= category.name %>
-                <%= link_to '<i class="icon-pencil"></i>'.html_safe,
-                    edit_admin_category_path(category.id) %>
               </td>
             <% end %>
               <td>
-                <%= link_to 'delete', admin_category_path(category.id), :method => :delete,
+                <%= link_to t(:edit, scope: "general"),
+                    edit_admin_category_path(category.id) %>
+                <%= link_to t(:delete, scope: "general"), admin_category_path(category.id), :method => :delete,
                   :confirm => "Do you want to delete the category #{category.name}?" %>
               </td>
             </tr>

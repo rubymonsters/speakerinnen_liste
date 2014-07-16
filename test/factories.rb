@@ -12,4 +12,8 @@ FactoryGirl.define do
       admin true
     end
   end
+
+  factory :category do
+    name "Factory Category"
+  end
 end

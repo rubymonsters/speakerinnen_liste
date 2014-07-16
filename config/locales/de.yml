@@ -6,6 +6,10 @@ de:
     back: "Zurück"
     delete: "Löschen"
     filter: "Filtern"
+    create: "Erstellen"
+    ok: "Ok"
+    current_name: "Bisheriger Name"
+    new_name: "Neuer Name"
   admin:
     dashboard:
       edit_categories: "Bearbeite Kategorien"
@@ -15,6 +19,7 @@ de:
         categories: "Kategorien"
         category_language_de: "Deutsch"
         category_language_en: "Englisch"
+        category_name: "Name der Kategorie"
       profiles:
         profiles: "Profile"
         created_at: "Erstellt am"
