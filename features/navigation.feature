@@ -144,3 +144,16 @@ Examples:
 | language | titles                                                                                                                                                                                               |  links                                |
 | English  | Organizers, find your speakers; Our Newest Speakers; We believe in collaboration — not competition; Our Categories; Do you have something interesting to say?; Speakerinnen*; Contact                |  Log in, Register as a speaker        |
 | German   | Mehr Frauen auf die Bühnen!; Unsere neuesten Speakerinnen*; Wir glauben an Kollaboration - nicht an Wettbewerb.; Unsere Kategorien; Hast Du etwas Interessantes zu erzählen?; Speakerinnen*; Kontakt |  Anmelden, Als Speakerin registrieren |
+
+Scenario Outline: view contact page
+Given you are on the start page
+And you view the page in <language>
+When you click on: <contact_email>
+Then you see a button labeled as: <send>
+And you are able to see: <heading>
+And you see a form with labels: <labels>
+
+Examples:
+| language | contact_email | send   | heading | labels                                                    |
+| English  | Email         | Send   | Contact | Your name, Your email address, Subject, Your message      |
+| German   | E-Mail        | Senden | Kontakt | Dein Name, Deine E-Mail-Adresse, Betreff, Deine Nachricht |
