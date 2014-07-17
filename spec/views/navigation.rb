@@ -11,8 +11,8 @@ describe "navigation" do
   before do
     @links_array = [categorization_admin_tags_path, admin_categories_path, admin_profiles_path]
     @lang_links_map = {
-      'en' => ['Edit Categories','Edit Tags','Edit Profiles'],
-      'de' => ['Bearbeite Kategorien', 'Bearbeite Tags', 'Bearbeite Profile']
+      'en' => ['Categories','Tags','Profiles'],
+      'de' => ['Kategorien', 'Tags', 'Profile']
     }
   end
 
@@ -41,7 +41,7 @@ describe "navigation" do
         #binding.pry
         before { click_on 'Admin' }
         #find(:xpath, "//a[contains(@href,'#{admin_root_path}')]").click
-        it { should have_content('Admin::Dashboard') }
+        it { should have_content('Administration') }
         it "should have localized links" do
           @lang_links_map[language].each_with_index do |link, index|
             expect(page).to have_link(link, @links_array[index])
