@@ -75,12 +75,9 @@ Then /^you are able to see: (.+)$/ do |label|
   expect(page).to have_content(label)
 end
 
-#LANG_LINKS_MAP = {
-#  'English' => ['Edit Categories','Edit Tags','Edit Profiles'],
-  #'German' => ['Bearbeite Kategorien', 'Bearbeite Tags', 'Bearbeite Profile']
-#}
-
 Then /^you see admin action links: ((.+)(,.+)*)$/ do |match,unused,unused2|
+  # LINKS_ARRAY must be inside a step definition because otherwise the _paths 
+  # do not get resolved by the rails routing mechanism
   LINKS_ARRAY = [categorization_admin_tags_path, admin_categories_path, admin_profiles_path]
   links = comma_separated_string_to_array(match)
   links.each_with_index do |link, index|
