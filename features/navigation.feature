@@ -157,3 +157,25 @@ Examples:
 | language | contact_email | send   | heading | labels                                                    |
 | English  | Email         | Send   | Contact | Your name, Your email address, Subject, Your message      |
 | German   | E-Mail        | Senden | Kontakt | Dein Name, Deine E-Mail-Adresse, Betreff, Deine Nachricht |
+
+#TODO test "angemeldet bleiben"-Cookie, Anmelden via Twitter
+Scenario Outline: login test
+Given there is a user registered with the email address: <email> authenticating with password: <password>
+And you are on the login page
+And you view the page in German
+When you fill in the form with: <submitted_email>, <submitted_password>
+And you click on button: Anmelden
+Then you see <result_type>: <result>
+
+Examples:
+| email         | submitted_email | password      | submitted_password | result                          | result_type    |
+| ltest@exp.com | ltest@exp.com   | rightpassword | rightpassword      | #empty                          | notices        |
+| ltest@exp.com | ltest@exp.com   | rightpassword | wrongpassword      | Ungültige Anmeldedaten.         | alert messages |
+| ltest@exp.com | ltest@exp.com   | rightpassword |                    | Ungültige E-Mail oder Passwort. | alert messages |
+| ltest@exp.com | false@exp.com   | rightpassword | rightpassword      | Ungültige E-Mail oder Passwort. | alert messages |
+| ltest@exp.com | ltest@exp       | rightpassword | rightpassword      | Ungültige E-Mail oder Passwort. | alert messages |
+| ltest@exp.com |                 | rightpassword | rightpassword      | Ungültige Anmeldedaten.         | alert messages |
+| ltest@exp.com |                 | rightpassword |                    | Ungültige Anmeldedaten.         | alert messages |
+#TODO write jasmine tests for cases covered by javascript beforeSend function:
+#| ltest@exp.com | ltest           | rightpassword | rightpassword      | Please include an '@' in the email address. |
+#| ltest@exp.com | ltest@          | rightpassword | rightpassword      | Please add a part following '@'.            |

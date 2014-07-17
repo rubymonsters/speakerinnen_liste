@@ -14,6 +14,9 @@
 # 1) Given #
 ############
 
+Given /^there is a user registered with the email address: (.+) authenticating with password: (.+)$/ do |email,password|
+  user = FactoryGirl.create(:user, email: email, password: password, password_confirmation: password)  
+end
 Given /^there is (a|an) (user|admin) profile registered and (published|invisible) with the email address: (.+)$/ do |article, role, visibility, email|
   user = FactoryGirl.create(:user, email: email)
   if (role == 'admin')

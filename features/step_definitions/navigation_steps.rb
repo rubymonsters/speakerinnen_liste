@@ -13,8 +13,12 @@
 ############
 # 1) Given #
 ############
-Given /^you are on the start page$/ do
-  visit root_path
+Given /^you are on the (.+)$/ do |page|
+  path = case page
+    when 'start page' then root_path
+    when 'login page' then new_profile_session_path
+  end
+  visit path
 end
 
 Given /^you view the admin dashboard in (German|English)$/ do |language|
@@ -35,8 +39,12 @@ end
 ###########
 # 2) When #
 ###########
-When /^you click on: (.+)$/ do |label|
-  click_on label
+When /^you click on(.*): (.+)$/ do |type, label|
+  case type.strip
+    when 'button' then click_button label
+    when 'link' then click_link label
+    else click_on label
+  end
 end
 
 ###########
@@ -76,7 +84,7 @@ Then /^you are able to see: (.+)$/ do |label|
 end
 
 Then /^you see admin action links: ((.+)(,.+)*)$/ do |match,unused,unused2|
-  # LINKS_ARRAY must be inside a step definition because otherwise the _paths 
+  # LINKS_ARRAY must be inside a step definition because otherwise the _paths
   # do not get resolved by the rails routing mechanism
   LINKS_ARRAY = [categorization_admin_tags_path, admin_categories_path, admin_profiles_path]
   links = comma_separated_string_to_array(match)
@@ -85,26 +93,40 @@ Then /^you see admin action links: ((.+)(,.+)*)$/ do |match,unused,unused2|
   end
 end
 
-def comma_separated_string_to_array(string, separator=',')
+def comma_separated_string_to_array(string, separator=',', empty_string_marker='#empty')
   strings_with_leading_spaces = string.split(separator)
   array = []
   strings_with_leading_spaces.each do |item|
+    if item == empty_string_marker
+      item = ''
+    end
     array << item.strip
   end
 
   return array
 end
 
-Then /^you see (a table with columns|a form with labels|images): ((.+)(,.+)*)$/ do |type, match, unused, unused2|
+Then /^you see (a table with columns|a form with labels|images|alert messages|notices): ((.+)(,.+)*)$/ do |type, match, unused, unused2|
   items = comma_separated_string_to_array(match)
   xpath = case type
     when 'a table with columns' then '//table/thead/tr/th[contains(text(), ":match")] | //table/thead/tr/th/a[contains(text(), ":match")]'
     when 'a form with labels' then '//form//label[contains(text(), ":match")]'
     when 'images' then '//*[@id=":match"]'
+    when 'alert messages' then '//p[@class="alert" and contains(text(), ":match")]'
+    when 'notices' then '//p[@class="notice" and contains(text(), ":match")]'
   end
 
   items.each do |item|
     expect(page).to have_xpath(xpath.gsub(':match', item))
+  end
+end
+
+Then /^you fill in the form with: ((.+)(,.+)*)$/ do |match, unused, unused2|
+  input_fields = page.all(:xpath, '//form//input[@type != "submit" and @type != "checkbox" and @type != "hidden"]')
+  items = comma_separated_string_to_array(match)
+
+  input_fields.each_with_index do |input_field,index|
+    input_field.set(items[index])
   end
 end
 
