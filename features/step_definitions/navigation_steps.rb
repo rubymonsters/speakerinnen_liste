@@ -98,18 +98,16 @@ def comma_separated_string_to_array(string, separator=',')
   return array
 end
 
-Then /^you see a table with columns: ((.+)(,.+)*)$/ do |match, unused, unused2|
-  columns = comma_separated_string_to_array(match)
-  columns.each do |column|
-    expect(page).to have_xpath('//table/thead/tr/th[contains(text(), "'+column+'")] | //table/thead/tr/th/a[contains(text(), "'+column+'")]')
+Then /^you see (a table with columns|a form with labels|images): ((.+)(,.+)*)$/ do |type, match, unused, unused2|
+  items = comma_separated_string_to_array(match)
+  xpath = case type
+    when 'a table with columns' then '//table/thead/tr/th[contains(text(), ":match")] | //table/thead/tr/th/a[contains(text(), ":match")]'
+    when 'a form with labels' then '//form//label[contains(text(), ":match")]'
+    when 'images' then '//*[@id=":match"]'
   end
-end
 
-Then /^you see a form with labels: ((.+)(,.+)*)$/ do |match, unused, unused2|
-  labels = comma_separated_string_to_array(match)
-
-  labels.each do |label|
-    expect(page).to have_xpath('//form//label[contains(text(), "'+label+'")]')
+  items.each do |item|
+    expect(page).to have_xpath(xpath.gsub(':match', item))
   end
 end
 
@@ -119,14 +117,6 @@ Then /^you are able to see sections: ((.+)(,.+)*)$/ do |match, unused, unused2|
 
   labels.each_with_index do |label, index|
     assert_equal(label, titles[index].text)
-  end
-end
-
-Then /^you see images labeled as: ((.+)(,.+)*)$/ do |match, unused, unused2|
-  labels = comma_separated_string_to_array(match)
-
-  labels.each do |label|
-    expect(page).to have_xpath('//*[@id="'+label+'"]')
   end
 end
 
