@@ -1,13 +1,13 @@
 <div class="container profiles">
   <div class="row">
     <div class="span12">
-      <h1 class="title-profiles">Admin::Profiles#edit</h1>
+      <h1 class="title-profiles">Administration::<%= t(:profiles, scope: "admin.dashboard.profiles")%>::<%= t(:edit, scope: "general")%></h1>
     </div>
   </div>
   <div class="row">
     <div class="span12 text-right">
-      <%= link_to(t(:show, scope: "admin.profiles.index"), admin_profile_path(@profile), class:"btn btn-small") %>
-      <%= link_to(t(:show_all, scope: "admin.profiles.index"), admin_profiles_path, class:"btn btn-small") %>
+      <%= link_to(t(:show, scope: "admin.dashboard.profiles.edit"), admin_profile_path(@profile), class:"btn btn-small") %>
+      <%= link_to(t(:show_all, scope: "admin.dashboard.profiles.edit"), admin_profiles_path, class:"btn btn-small") %>
     </div>
   </div>
 

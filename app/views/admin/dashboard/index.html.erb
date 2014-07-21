@@ -1,14 +1,14 @@
 <div class="container profiles">
-  <h1 class="title-profiles">Admin::Dashboard</h1>
+  <h1 class="title-profiles">Administration</h1>
   <ul class="nav">
     <li>
-      <%= link_to "Bearbeite Kategorien", admin_categories_path %>
+      <%= link_to(t(:categories, scope: "admin.dashboard.categories"), admin_categories_path)%>
     </li>
     <li>
-      <%= link_to "Bearbeite Tags", categorization_admin_tags_path %>
+      <%= link_to(t(:tags, scope: "admin.dashboard.tags"), categorization_admin_tags_path)%>
     </li>
     <li>
-      <%= link_to "Bearbeite Profile", admin_profiles_path %>
+      <%= link_to(t(:profiles, scope: "admin.dashboard.profiles"), admin_profiles_path)%>
     </li>
   </ul>
 </div>

@@ -1,0 +1,3 @@
+Cucumber duplicates some RSpec Helpers (defined in spec/support/*_helper.rb)
+in support/world.rb. Please synchronize them by hand if you change to them.
+Cucumber also uses the FactoryGirl factories defined in test/factories.rb.

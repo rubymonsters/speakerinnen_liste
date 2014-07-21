@@ -1,10 +1,23 @@
 FactoryGirl.define do
-  factory :user do
+  factory :user, class: Profile do
     firstname "Factory"
     lastname "Girl"
     email "FactoryGirl@test.de"
-    password "foobar"
-    password_confirmation "foobar"
+    password "123foobar"
+    password_confirmation "123foobar"
     bio "MyText"
+    confirmed_at Time.now
+
+    factory :admin do
+      admin true
+    end
+
+    factory :published do
+      published true
+    end
+  end
+
+  factory :category do
+    name "Factory Category"
   end
 end

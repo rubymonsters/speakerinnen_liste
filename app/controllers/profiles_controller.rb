@@ -4,7 +4,7 @@ class ProfilesController < ApplicationController
   include ActsAsTaggableOn::TagsHelper
 
 
-  before_filter :require_permision, :only=> [:edit, :destroy, :update]
+  before_filter :require_permission, :only=> [:edit, :destroy, :update]
 
   def index
     if params[:topic]
@@ -60,7 +60,7 @@ class ProfilesController < ApplicationController
     redirect_to profiles_url, notice: (I18n.t("flash.profiles.destroyed"))
   end
 
-  def require_permision
+  def require_permission
     profile = Profile.find(params[:id])
     unless can_edit_profile?(current_profile, profile)
       redirect_to profiles_url, notice: (I18n.t("flash.profiles.no_permission"))

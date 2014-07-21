@@ -1,5 +1,9 @@
 <div class="container profiles">
-  <h1 class="title-profiles">Admin interface für Profile</h1>
+  <h1 class="title-profiles">Administration::<%= t(:profiles, scope: "admin.dashboard.profiles")%></h1>
+  <div class="row">
+    <%= Profile.all.size %> Speakerinnen.
+    <%= Profile.all.select {|profile| profile.published?}.size %> <%= t(:public, scope: "admin.dashboard.profiles") %>.
+  </div>
   <div class="row">
     <div class="span12 text-center">
       <%= paginate @profiles %>
@@ -9,26 +13,24 @@
     <thead>
       <tr>
         <th>
-          <%= Profile.all.size %>
           <%= sortable "lastname", "Speakerinnen" %>
         </th>
         <th>
-          <%= sortable "created_at", "Erstellt am:"%>
+          <%= sortable "created_at", t(:created_at, scope: "admin.dashboard.profiles") %>
         </th>
         <th>
-          MedLi
-        </th>
-        <th>
+          Media Links
         </th>
         <th>
         </th>
         <th>
-          <%= Profile.all.select {|profile| profile.published?}.size %>
-          <%= sortable "published", "Published" %>
         </th>
         <th>
+          <%= sortable "published", t(:visibility, scope: "admin.dashboard.profiles") %>
         </th>
-        <th>Kommentar:
+        <th><%= t(:roles, scope: "admin.dashboard.profiles") %>
+        </th>
+        <th><%= t(:comment, scope: "admin.dashboard.profiles") %>
         </th>
       </tr>
     </thead>
@@ -45,19 +47,19 @@
           <%= link_to(profile.medialinks.size, admin_profile_medialinks_path(profile)) %>
         </td>
         <td>
-          <%= link_to t('.edit'), edit_admin_profile_path(profile) %>
+          <%= link_to t(:edit, scope: "general"), edit_admin_profile_path(profile) %>
         </td>
         <td>
-          <%= link_to t('.destroy'), admin_profile_path(profile), confirm: 'Are you sure?', method: :delete %>
+          <%= link_to t(:delete, scope: "general"), admin_profile_path(profile), confirm: 'Are you sure?', method: :delete %>
         </td>
         <td>
           <% if profile.published %>
             <%= form_for profile,{ url: unpublish_admin_profile_path(profile.id), method: "post" } do |f| %>
-            <%= f.submit "Unpublish", class: "btn btn-small btn-warning" %>
+            <%= f.submit t(:public, scope: "admin.dashboard.profiles"), class: "btn btn-small btn-warning" %>
             <% end %>
           <% else %>
             <%= form_for profile,{ url: publish_admin_profile_path(profile.id), method: "post" } do |f| %>
-              <%= f.submit "Publish", class: "btn btn-small btn-danger" %>
+              <%= f.submit t(:invisible, scope: "admin.dashboard.profiles"), class: "btn btn-small btn-danger" %>
             <% end %>
           <% end %>
         </td>
@@ -67,7 +69,7 @@
         <td>
           <%= form_for profile,{ url: admin_comment_admin_profile_path(profile.id), method: "post" } do |f| %>
             <%= f.text_field "admin_comment" %>
-            <%= f.submit "Kommentar hinzufügen" %>
+            <%= f.submit t(:add_comment, scope: "admin.dashboard.profiles"), class: "btn btn-small btn-info" %>
           <% end  %>
         </td>
       </tr>

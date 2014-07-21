@@ -22,4 +22,20 @@ header#admin {
   }
 }
 
+#category-table tbody {
+  font-size: 0.8em;
+}
 
+.add-category {
+  text-align: center;
+  .add-category-form {
+    text-align: left;
+  }
+}
+
+.add-category-form {
+  display: inline-block;
+  .control-label{
+  padding-right: 0.2em;
+  }
+}
