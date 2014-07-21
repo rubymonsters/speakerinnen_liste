@@ -41,6 +41,7 @@ group :development, :test do
   gem 'capybara', '~> 2.0.2'
   gem 'cucumber-rails', '1.4.0', :require => false
   gem 'pry'
+  gem 'selenium-webdriver', "2.38.0"
 end
 
 group :test do

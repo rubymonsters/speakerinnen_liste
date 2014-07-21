@@ -11,6 +11,10 @@ FactoryGirl.define do
     factory :admin do
       admin true
     end
+
+    factory :published do
+      published true
+    end
   end
 
   factory :category do
