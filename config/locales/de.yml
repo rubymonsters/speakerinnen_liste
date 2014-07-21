@@ -1,14 +1,42 @@
 de:
   general:
+    add: "Hinzufügen"
     close: "Schließen"
+    edit: "Bearbeiten"
+    back: "Zurück"
+    delete: "Löschen"
+    filter: "Filtern"
+    create: "Erstellen"
+    ok: "Ok"
+    current_name: "Bisheriger Name"
+    new_name: "Neuer Name"
   admin:
-    profiles:
-      index:
-        show: "Zeige das Profil"
-        show_all: "Zeige alle Speakerinnen*"
-        edit: "Bearbeiten"
-        back: "Zurück"
-        destroy: "Löschen"
+    dashboard:
+      edit_categories: "Bearbeite Kategorien"
+      edit_tags: "Bearbeite Tags"
+      edit_profiles: "Bearbeite Profile"
+      categories:
+        categories: "Kategorien"
+        category_language_de: "Deutsch"
+        category_language_en: "Englisch"
+        category_name: "Name der Kategorie"
+      profiles:
+        profiles: "Profile"
+        created_at: "Erstellt am"
+        visibility: "Sichtbarkeit"
+        public: "öffentlich"
+        invisible: "unsichtbar"
+        roles: "Rollen"
+        comment: "Kommentar"
+        add_comment: "Kommentar hinzufügen"
+        edit:
+          show: "Zeige Profil"
+          show_all: "Liste aller Profile"
+      tags:
+        tags: "Tags"
+        tags_search: "Suche nach einem bestimmtem Tag"
+        tags_count: "Die Anzahl der Tags ist "
+        tags_filter_option: "Alle Tags ohne Kategorien anzeigen"
   pages:
     home:
       search:
@@ -86,7 +114,8 @@ de:
       name_placeholder: ""
       medialink_placeholder: "Bitte nur 21 Zeichen eingeben"
       email: "Deine E-Mail-Adresse"
-      subject: "Deine Betreffzeile"
+      subject: "Betreff"
+      send: "Senden"
       body: "Deine Nachricht"
       body_placeholder: "Bitte gib ein paar Details zu Deiner Anfrage: Wo, wann, was und andere relevante Informationen."
       notice: "Yay! Deine E-Mail wurde gesendet."
@@ -98,7 +127,7 @@ de:
       not_saved: "Dieses Profil konnte nicht gespeichert werden:"
       profile_from: "Profil von"
       delete_picture: "Lösche das Foto"
-      update: "Aktualisiere Dein Profil"
+      update: "Aktualisiere dein Profil"
       copyright_photo: "Bitte nutze .jpg, .jpeg oder .png und achte darauf, daß Du die Rechte zu diesem Foto besitzt!"
     profile:
       firstname: 'Vorname:'

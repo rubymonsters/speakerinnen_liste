@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
-
+ruby '2.1.2'
+#ruby-gemset=speakerinnen_rails_3
 gem 'rails', '3.2.16'
 gem 'bootstrap-sass', '~> 2.3.0'
 gem 'normalize-rails'
@@ -36,7 +37,11 @@ group :development do
 end
 
 group :development, :test do
+  gem 'rspec-rails', '2.14.1'
   gem 'capybara', '~> 2.0.2'
+  gem 'cucumber-rails', '1.4.0', :require => false
+  gem 'pry'
+  gem 'selenium-webdriver', "2.38.0"
 end
 
 group :test do

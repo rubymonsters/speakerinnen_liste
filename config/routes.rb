@@ -1,29 +1,29 @@
 SpeakerinnenListe::Application.routes.draw do
 
-  # route post to /tags/merge to here
-  namespace :admin do
-    resources :tags, except: [:new, :create] do
-      collection do
-        get 'categorization'
-      end
-      member do
-        post "set_category"
-        post "remove_category"
-      end
-    end
-    resources :categories
-    resources :profiles do
-      resources :medialinks
-      member do
-        post "publish"
-        post "unpublish"
-        post "admin_comment"
-      end
-    end
-    root to: 'dashboard#index'
-  end
-
   scope "(:locale)", locale: /en|de/ do
+
+    # route post to /tags/merge to here
+    namespace :admin do
+      resources :tags, except: [:new, :create] do
+        collection do
+          get 'categorization'
+        end
+        member do
+          post "set_category"
+          post "remove_category"
+        end
+      end
+      resources :categories
+      resources :profiles do
+        resources :medialinks
+        member do
+          post "publish"
+          post "unpublish"
+          post "admin_comment"
+        end
+      end
+      root to: 'dashboard#index'
+    end
 
     devise_for :profiles, controllers: {omniauth_callbacks: "omniauth_callbacks"}
 

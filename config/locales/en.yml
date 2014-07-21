@@ -1,14 +1,42 @@
 en:
   general:
+    add: "Add"
     close: "Close"
+    edit: "Edit"
+    back: "Back"
+    delete: "Delete"
+    filter: "Filter"
+    create: "Create"
+    ok: "Ok"
+    current_name: "Current name"
+    new_name: "New name"
   admin:
-    profiles:
-      index:
-        show: "Show the Profile"
-        show_all: "Show all Speakerinnen"
-        edit: "Edit"
-        back: "Back"
-        destroy: "Destroy"
+    dashboard:
+      edit_categories: "Edit Categories"
+      edit_tags: "Edit Tags"
+      edit_profiles: "Edit Profiles"
+      categories:
+        categories: "Categories"
+        category_language_de: "German"
+        category_language_en: "English"
+        category_name: "Category name"
+      profiles:
+        profiles: "Profiles"
+        created_at: "Created at"
+        visibility: "Visibility"
+        public: "public"
+        invisible: "invisible"
+        roles: "Roles"
+        comment: "Comment"
+        add_comment: "Add comment"
+        edit:
+          show: "Show profile"
+          show_all: "List all profiles"
+      tags:
+        tags: "Tags"
+        tags_search: "Search for tag"
+        tags_count: "The number of tags is "
+        tags_filter_option: "Show all tags without category"
   pages:
     home:
       search:
@@ -82,12 +110,13 @@ en:
       login: "Log in"
   contact:
     form:
-      name: "Your Name"
+      name: "Your name"
       name_placeholder: ""
-      email: "Your Email Address"
+      email: "Your email address"
       medialink_placeholder: "Please fill in only 21 characters"
-      subject: "Your Email Subject"
-      body: "Your Message"
+      subject: "Subject"
+      send: "Send"      
+      body: "Your message"
       body_placeholder: "Please give a few details about your request: where, when, what, and other relevant information."
       notice: "Yay! Your message was sent."
       error: "Please fill out all the fields so that the speaker can have all the details she needs."
@@ -101,8 +130,8 @@ en:
       update: "Update your profile"
       copyright_photo: "Please make sure you use .jpg, .jpeg or .png and that you have all copyrights for this photo."
     profile:
-      firstname: 'Firstname:'
-      lastname: 'Lastname:'
+      firstname: 'First name:'
+      lastname: 'Last name:'
       topics: "My topics:"
       languages: "My languages:"
       talks: "Previous Talks:"
@@ -158,12 +187,12 @@ en:
   activerecord:
     attributes:
       profile:
-        firstname: "First Name"
-        lastname: "Last Name"
-        bio: "Bio in %{language}<br>
+        firstname: "First name"
+        lastname: "Last name"
+        bio: "Your bio in %{language}<br>
         <small>(Here you can add a short or long bio of yourself. Please also add specific expertise and topics you feel comfortable speaking about. This will help organizers of events to understand whether you might be the person they're looking for)</small>"
-        topic_list: "Your Topics as Tags<br><small>(Please have a look first, if your topic already exists)</small>"
-        main_topic: "Your Maintopic in %{language}<br><small>(Please choose one topic as your favorite topic and enter it again. It will be visible along with your name and picture at the speaker overview site)</small>"
+        topic_list: "Your topics as tags<br><small>(Please have a look first, if your topic already exists)</small>"
+        main_topic: "Your main topic in %{language}<br><small>(Please choose one topic as your favorite topic and enter it again. It will be visible along with your name and picture at the speaker overview site)</small>"
         tag_list: "Existing Topics"
         talks: "Talks"
         languages: "Languages<br><small>(Please add programming languages in 'Topics', not here)</small>"
