@@ -40,17 +40,24 @@ end
 # 2) When #
 ###########
 When /^you click on(.*): (.+)$/ do |type, label|
-  case type.strip
-    when 'button' then click_button label
-    when 'link' then click_link label
-    else click_on label
+  if label.include?('in list line')
+    parts = label.split('in list line')
+    xpath = '//tr[*//*[contains(text(), ":match1")]]//*[contains(text(), ":match2")]'
+    xpath.gsub!(':match1',parts[1].strip).gsub!(':match2',parts[0].strip)
+    element = page.all(:xpath,xpath).first
+    element.click
+  else
+    case type.strip
+      when 'button' then click_button label
+      when 'link' then click_link label
+      else click_on label
+    end
   end
 end
 
 ###########
 # 3) Then #
 ###########
-
 
 Then /^you view the header (.*) in (German|English)$/ do |links, language|
   steps %Q{
