@@ -47,7 +47,7 @@ GEM
     arel (3.0.3)
     atomic (1.1.14)
     bcrypt-ruby (3.1.2)
-    bootstrap-sass (2.3.2.2)
+    bootstrap-sass (3.2.0.0)
       sass (~> 3.2)
     bootswatch-rails (0.5.0)
       railties (>= 3.1)
@@ -282,7 +282,7 @@ PLATFORMS
 DEPENDENCIES
   acts-as-taggable-on!
   auto_html!
-  bootstrap-sass (~> 2.3.0)
+  bootstrap-sass (= 3.2.0)
   bootswatch-rails
   capybara (~> 2.0.2)
   carrierwave

@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 ruby '2.1.2'
 #ruby-gemset=speakerinnen_rails_3
 gem 'rails', '3.2.16'
-gem 'bootstrap-sass', '~> 2.3.0'
+gem 'bootstrap-sass', '3.2.0'
 gem 'normalize-rails'
 gem 'bootswatch-rails'
 gem 'faker', '1.0.1'
