@@ -3,16 +3,15 @@
 /*header*/
 
 header {
-  padding: 20px 15px 0 15px;
-  width: 100%;
   position: fixed;
   top: 0px;
   right: 0;
   left: 0;
-  font-weight: 400;
+  /*font-weight: 400;*/
   z-index: 10;
-  color: #3c3c3a;
+  /*color: #3c3c3a; */
   font-family: $sans-serif;
+  line-height: 67px;
 }
 
 @media only screen and (min-width: 1024px) {
