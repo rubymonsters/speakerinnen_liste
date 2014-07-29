@@ -1,66 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<div class="center-block">
-  <div class="the-badge">
-    <div class="center-block badge-rope-height">
-      <div class="badge-rope-left badge-rope-height">
-      </div>
-      <div class="badge-rope-right badge-rope-height">
-      </div>
-    </div>
-    <div class="center-block badge-connector-height">
-      <div class="badge-connector badge-connector-height">
-        <div class="center-block circle-container-big">
-          <div class="circle-big circle-light-metallic">
-            <div class="circle-medium inner-circle circle-light">
-            </div>
-          </div>
-        </div>
-        <div class="center-block circle-container-medium">
-          <div class="circle-medium circle-dark-metallic">
-            <div class="circle-small inner-circle circle-dark">
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="badge-canvas">
-      <div class="center-block perforation-height">
-        <div class="badge-perforation">
-        </div>
-      </div>
-      <div class="center-block">
-        <%= image_tag("logo8.png", id:"logo8") %>
-      </div>
-      <div class="login-form">
-      <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => { :class => "simple-form form-vertical form"}) do |f| %>
-          <%= f.email_field :email, :autofocus => true, class:"form-control", placeholder: t(:email, scope: "devise.registrations") %>
-          <%= f.password_field :password, class:"form-control", placeholder: t(:password, scope: "devise.registrations") %>
-          <% if devise_mapping.rememberable? %>
-            <span>
-              <%= f.check_box :remember_me , id:"optionsCheckbox", class:"remember", label: t(:remember, scope: "devise.registrations") %> <%= t(:remember, scope: "devise.registrations") %>
-            </span>
-          <% end %>
-          <%= f.submit(t(".login"), class:"btn btn-primary")%>
-          <% if devise_mapping.omniauthable? %>
-            <% resource_class.omniauth_providers.each do |provider| %>
-            <%= link_to t(:signin_via, scope: "devise.registrations"), omniauth_authorize_path(resource_name, provider), class:'btn btn-primary' %>
-            <% end %>
-          <% end %>
-
-          <% if devise_mapping.recoverable? && controller_name != 'passwords' %>
-            <%= link_to t(:forgot_password, scope: "devise.registrations"), new_password_path(resource_name), class:"forgot-p" %>
-          <% end %>
-
-        <div class="confirmation">
-          <% if devise_mapping.confirmable? && controller_name != 'confirmations' %>
-            <%= link_to t(:no_confirmation, scope: "devise.registrations"), new_confirmation_path(resource_name) %>
-          <% end %>
-          <% if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks' %>
-            <%= link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name) %>
-          <% end %>
-        </div>
-        <% end %>
-      </div>
-    </div>
-  </div>
-</div>
+<% @target_url = session_path(resource_name)
+   @signup = false
+   %>
+<%= render 'devise/shared/auth', locals: {
+    signup: @signup,
+    resource: @resource,
+    resource_name: @resource_name,
+    target_url: @target_url
+    } %>

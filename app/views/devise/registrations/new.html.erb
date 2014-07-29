@@ -1,59 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<div class="center-block">
-  <div class="the-badge">
-    <div class="center-block badge-rope-height">
-      <div class="badge-rope-left badge-rope-height">
-      </div>
-      <div class="badge-rope-right badge-rope-height">
-      </div>
-    </div>
-    <div class="center-block badge-connector-height">
-      <div class="badge-connector badge-connector-height">
-        <div class="center-block circle-container-big">
-          <div class="circle-big circle-light-metallic">
-            <div class="circle-medium inner-circle circle-light">
-            </div>
-          </div>
-        </div>
-        <div class="center-block circle-container-medium">
-          <div class="circle-medium circle-dark-metallic">
-            <div class="circle-small inner-circle circle-dark">
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="badge-canvas">
-      <div class="center-block perforation-height">
-        <div class="badge-perforation">
-        </div>
-      </div>
-      <div class="center-block">
-        <%= image_tag("logo8.png", id:"logo8") %>
-      </div>
-      <div class="login-form">
-        <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :class => "form-vertical form"}) do |f| %>
-        <% if f.object.password_required? == false %>
-        <div>
-          <%= t(:explanation_email, scope: "devise.registrations") %>
-        </div>
-        <%= f.input :email, placeholder: t(:email, scope: "devise.registrations"), autofocus: true, label: false %>
-        <% else %>
-        <%= f.input :email, placeholder: t(:email, scope: "devise.registrations"), autofocus: true, label: false, input_html: { class: 'form-control' } %>
-        <%= f.input :password, placeholder: t(:password, scope: "devise.registrations"), label: false, input_html: { class: 'form-control' } %>
-        <%= f.input :password_confirmation, placeholder: t(:confirmation, scope: "devise.registrations"), label: false, input_html: { class: 'form-control' } %>
-        <% end %>
-        <%= f.submit t(:signup, scope: "devise.registrations"), class:'btn btn-primary' %>
-        <% if devise_mapping.omniauthable? %>
-        <% Profile.omniauth_providers.each do |provider| %>
-        <%= link_to t(:signup_via, scope: "devise.registrations"), omniauth_authorize_path(:profile, provider), class: 'btn btn-primary' %>
-        <% end %>
-        <% end %>
-        <% if devise_mapping.confirmable? && controller_name != 'confirmations' %>
-        <%= link_to t(:no_confirmation, scope: "devise.registrations"), new_confirmation_path(:profile) %>
-        <% end %>
-        <% end %>
-      </div>
-    </div>
-  </div>
-</div>
+<% @target_url = registration_path(resource_name)
+   @signup = true
+   %>
+<%= render 'devise/shared/auth', locals: {
+    signup: @signup,
+    resource: @resource,
+    resource_name: @resource_name,
+    target_url: @target_url
+    } %>

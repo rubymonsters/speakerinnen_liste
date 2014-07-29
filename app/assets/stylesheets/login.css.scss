@@ -7,11 +7,13 @@
 }
 
 .the-badge {
-	margin-top: 50px;
 	display: inline-block;
-	padding: 20px;
+	padding-top: 22px;
 	position: relative;
 	text-align: center;
+	min-width: 250px;
+	width: 30%;
+	max-width: 300px;
 }
 
 .center-block {
@@ -139,7 +141,6 @@
 
 .badge-canvas {
 	top: -36px;
-	min-width: 300px;
 	background: #eee;
 	text-align: center;
 	position: relative;
@@ -183,13 +184,25 @@
 
 .login-form {
 	padding: 20px;
-  * {
+	*:not(label) {
 		display: block;
 		text-align: center;
 		width: 100%;
 	}
-	input[type="email"],input[type="password"],input[type="text"],span {
+	input[type="email"],input[type="password"],input[type="text"] {
 		text-align: left;
+	}
+
+	input[type="checkbox"] {
+		width: 20px;
+	}
+
+	input[type="checkbox"], label {
+		display: inline-block;
+	}
+
+	a {
+		line-height: normal;
 	}
 }
 
@@ -197,7 +210,7 @@
 	margin: 0;
 }
 
-#badge .control-group .input-xlarge, input[type="password"], input[type="email"] {
+/*#badge .control-group .input-xlarge, input[type="password"], input[type="email"] {
 	width: 284px;
 	height: 43px;
 	padding: 0 12px;
@@ -205,7 +218,7 @@
 	line-height: 1;
 	margin-bottom: 0;
 	font-family: $sans-serif;
-}
+}*/
 
 .control-group {
 	margin-bottom: 7px;

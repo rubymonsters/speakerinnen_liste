@@ -10,6 +10,7 @@ de:
     ok: "Ok"
     current_name: "Bisheriger Name"
     new_name: "Neuer Name"
+    or: "oder"
   admin:
     dashboard:
       edit_categories: "Bearbeite Kategorien"
@@ -220,7 +221,7 @@ de:
         password: "Passwort"
     sessions:
       new:
-        login: "Anmelden"
+        signin: "Anmelden"
   medialinks:
     edit: "Bearbeite Medialink"
     new: "Medialink hinzufügen"

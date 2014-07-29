@@ -10,6 +10,7 @@ en:
     ok: "Ok"
     current_name: "Current name"
     new_name: "New name"
+    or: "or"
   admin:
     dashboard:
       edit_categories: "Edit Categories"
@@ -115,7 +116,7 @@ en:
       email: "Your email address"
       medialink_placeholder: "Please fill in only 21 characters"
       subject: "Subject"
-      send: "Send"      
+      send: "Send"
       body: "Your message"
       body_placeholder: "Please give a few details about your request: where, when, what, and other relevant information."
       notice: "Yay! Your message was sent."
@@ -221,7 +222,7 @@ en:
         password: "Password"
     sessions:
       new:
-        login: "Log in"
+        signin: "Log in"
   medialinks:
     edit: "Edit Medialink"
     new: "Add Medialink"
