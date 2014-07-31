@@ -14,7 +14,8 @@ $button-blue: #49AFCD;
 $alert-pink: #B4035D;
 $notice-yellow: #E8CD30;
 
-$box-shadow: rgba(50,50,50,0.75);
+$box-shadow-dark-gray: rgba(50,50,50,0.75);
+$box-shadow-black: rgba(0,0,0,0.75);
 
 $bwb-gradient: 45deg,
       rgb(33,33,33),
@@ -32,3 +33,43 @@ $bwb-gradient-dark: 135deg,
 /*fonts*/
 $serif: 'Merriweather', Georgia, serif;
 $sans-serif: "OpenSans", "Helvetica Neue", Helvetica, sans-serif;
+
+/* mixins */
+@mixin lin-gradient($gradient) {
+  background: -webkit-linear-gradient($gradient);
+  background:    -moz-linear-gradient($gradient);
+  background:     -ms-linear-gradient($gradient);
+  background:      -o-linear-gradient($gradient);
+  background:         linear-gradient($gradient);
+}
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+          border-radius: $radius;
+}
+
+@mixin box-shadow($horizontal_offset,$vertical_offset,$blur,$spread,$color) {
+  -webkit-box-shadow: $horizontal_offset $vertical_offset $blur $spread $color;
+     -moz-box-shadow: $horizontal_offset $vertical_offset $blur $spread $color;
+          box-shadow: $horizontal_offset $vertical_offset $blur $spread $color;
+}
+
+@mixin inset-box-shadow($horizontal_offset,$vertical_offset,$blur,$spread,$color) {
+  -webkit-box-shadow: inset $horizontal_offset $vertical_offset $blur $spread $color;
+     -moz-box-shadow: inset $horizontal_offset $vertical_offset $blur $spread $color;
+          box-shadow: inset $horizontal_offset $vertical_offset $blur $spread $color;
+}
+
+@mixin circle-container($height, $margin-top) {
+  height: $height;
+  margin-top: $margin-top;
+}
+
+@mixin circle-item($item-radius) {
+  width: $item-radius;
+  height: $item-radius;
+
+  @include border-radius(120px);
+  @include inset-box-shadow(0px,0px,2px,1px,$box-shadow-black);
+}

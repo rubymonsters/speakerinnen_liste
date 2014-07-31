@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<div class="center-block">
+<div class="center-block text-center">
   <div class="the-badge">
-    <div class="center-block badge-rope-height">
+    <div class="center-block text-center image-only-container">
       <div class="badge-rope-left badge-rope-height">
       </div>
       <div class="badge-rope-right badge-rope-height">
       </div>
     </div>
-    <div class="center-block badge-connector-height">
+    <div class="center-block text-center image-only-container">
       <div class="badge-connector badge-connector-height">
-        <div class="center-block circle-container-big">
+        <div class="center-block text-center circle-container-big">
           <div class="circle-big circle-light-metallic">
             <div class="circle-medium inner-circle circle-light">
             </div>
           </div>
         </div>
-        <div class="center-block circle-container-medium">
+        <div class="center-block text-center circle-container-medium">
           <div class="circle-medium circle-dark-metallic">
             <div class="circle-small inner-circle circle-dark">
             </div>
@@ -23,12 +23,12 @@
         </div>
       </div>
     </div>
-    <div class="badge-canvas center-block">
-      <div class="center-block perforation-height">
+    <div class="badge-canvas center-block text-center">
+      <div class="center-block text-center image-only-container">
         <div class="badge-perforation">
         </div>
       </div>
-      <div class="center-block">
+      <div class="center-block text-center">
         <%= image_tag("logo8.png", id:"logo8") %>
       </div>
       <div class="login-form">
@@ -47,7 +47,7 @@
             <% end %>
           <% end %>
           <% if !@signup && devise_mapping.rememberable? %>
-            <div class="controls center-block">
+            <div class="controls center-block text-center">
               <%= f.check_box :remember_me, class:"remember"%>
               <%= f.label :remember_me, t(:remember, scope: "devise.registrations") %>
             </div>
@@ -68,7 +68,7 @@
             <%= link_to t(:forgot_password, scope: "devise.registrations"), new_password_path(resource_name), class:"forgot-p" %>
           <% end %>
 
-          <div class="confirmation">
+          <div class="smaller-text">
             <% if devise_mapping.confirmable? && controller_name != 'confirmations' %>
               <%= link_to t(:no_confirmation, scope: "devise.registrations"), new_confirmation_path(:profile) %>
             <% end %>
