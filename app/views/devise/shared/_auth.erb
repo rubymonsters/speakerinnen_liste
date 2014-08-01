@@ -47,7 +47,7 @@
             <% end %>
           <% end %>
           <% if !@signup && devise_mapping.rememberable? %>
-            <div class="controls center-block text-center">
+            <div class="control-group center-block text-center">
               <%= f.check_box :remember_me, class:"remember"%>
               <%= f.label :remember_me, t(:remember, scope: "devise.registrations") %>
             </div>
@@ -55,7 +55,7 @@
 
           <% button = @signup ? 'signup' : 'signin' %>
 
-          <%= f.submit t(button, scope: "devise.registrations"), class:'btn btn-primary' %>
+          <%= f.submit t(button, scope: "devise.registrations"), class:'control-group btn btn-primary' %>
 
           <% if devise_mapping.omniauthable? %>
             <% Profile.omniauth_providers.each do |provider| %>
