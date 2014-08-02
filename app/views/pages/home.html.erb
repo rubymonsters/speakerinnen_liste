@@ -124,36 +124,34 @@
       Copyright by Tilman Vogler
     </div>
     <div class="full-width-container">
-      <div class="full-width-row">
+      <div class="full-width-row about-grid">
         <h1>Speakerinnen*</h1>
         <div class="row">
-          <div class="col-md-4 col-sm-4 col-xs-12">
+          <div class="col-md-4 col-sm-4 col-xs-12 about-grid-col">
             <h4><%= link_to t(:about_title, scope:"pages.home.footer"), about_path %></h4>
             <span class="italic"><%= t(:about, scope:"pages.home.footer").html_safe %>
                <%= link_to t(:more, scope: "pages.home.footer").html_safe, about_path %>
             </span>
           </div>
 
-          <div class="col-md-4 col-sm-4 col-xs-12">
+          <div class="col-md-4 col-sm-4 col-xs-12 about-grid-col">
             <h4><%= link_to t(:faq, scope: "pages.home.footer"), faq_path %></h4>
             <span class="italic"><%= t(:faq_short, scope:"pages.home.footer").html_safe %>
               <%= link_to t(:more, scope: "pages.home.footer").html_safe, faq_path %>
             </span>
           </div>
 
-          <div class="col-md-4 col-sm-4 col-xs-12">
+          <div class="col-md-4 col-sm-4 col-xs-12 about-grid-col">
             <h4><%= link_to t(:press, scope:"pages.home.footer"), press_path %></h4>
             <span class="italic">
-              <span class="italic">
-        <strong>Aargauer Zeitung, 26. März: Frauen vor! Meinungsmacher müssen nicht immer Männer sein</strong><br>
-        "Nun gibt es in mehreren Ländern Initiativen, um auch Frauen stärker als Meinungsmacherinnen und Fachpersonen zu etablieren."</br>
-        <strong>20 minuten, 21. März: Mehr Frauen in Talkshows – dank Internetportal</strong><br>
-        "Das ist eine gute Idee, ein solches Portal braucht die Schweiz auch», sagt Regula Zweifel, Vizepräsidentin des Bunds Schweizerischer Frauenorganisationen Allicance F."<br>
+              <strong>Aargauer Zeitung, 26. März: Frauen vor! Meinungsmacher müssen nicht immer Männer sein</strong><br>
+              "Nun gibt es in mehreren Ländern Initiativen, um auch Frauen stärker als Meinungsmacherinnen und Fachpersonen zu etablieren."</br>
+              <strong>20 minuten, 21. März: Mehr Frauen in Talkshows – dank Internetportal</strong><br>
+              "Das ist eine gute Idee, ein solches Portal braucht die Schweiz auch», sagt Regula Zweifel, Vizepräsidentin des Bunds Schweizerischer Frauenorganisationen Allicance F."<br>
               <%= link_to t(:more, scope: "pages.home.footer").html_safe, press_path %>
             </span>
           </div>
         </div>
-        <div class="clearfix"></div>
       </div>
     </div>
   </div>

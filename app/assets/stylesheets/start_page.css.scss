@@ -1,39 +1,55 @@
 @import 'settings';
 
-.start-page {
+.footer, .start-page {
+  font-weight: normal;
   font-family: $serif;
+
+  h1 {
+    margin: 70px 0 20px 0;
+    line-height: 1.4em;
+
+    font-size: 3em;
+  }
+
+  h4 {
+    padding: 20px 0;
+    margin-bottom: 50px;
+    line-height: 1.8em;
+
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+
+  }
+}
+
+.start-page {
   padding: 0;
   margin-top: -25px;
+
+  h2 {
+    line-height: 1.6em;
+
+    font-size: 1.4em;
   }
 
-.start-page h1, .footer h1 {
-  font-weight: normal;
-  font-size: 3em;
-  margin: 70px 0 20px 0;
-  line-height: 1.4em;
+  h4 {
+    font-size: 1.4em;
   }
-
-.start-page h2 {
-  font-weight: normal;
-  font-size: 1.4em;
-  line-height: 1.6em;
-  }
-
-.start-page h4, .footer h4 {
-  font-weight: normal;
-  border-top: 1px solid #ccc;
-  border-bottom: 1px solid #ccc;
-  padding: 20px 0;
-  margin-bottom: 50px;
-  line-height: 1.8em;
 }
 
-.start-page h4 {
-  font-size: 1.4em;
-}
-
-.footer h4 {
+.footer {
+  h4 {
     font-size: 1.2em;
+  }
+}
+
+$space-between-cols-in-col-xs-mode: 50px;
+
+.about-grid {
+ margin-bottom: -$space-between-cols-in-col-xs-mode;
+ .about-grid-col {
+   margin-bottom: $space-between-cols-in-col-xs-mode;
+ }
 }
 
 #curie-photo {
