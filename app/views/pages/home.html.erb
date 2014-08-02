@@ -89,8 +89,9 @@
       <h1><%= t(".description")%></h1>
       <h4><%= t(".description_text") %></h4>
       <div class="row">
-        <% @categories.each_slice(5) do |sliced_categories| %>
-          <div class="span6">
+        <% half_the_categories = (@categories.length/2).ceil %>
+        <% @categories.each_slice(half_the_categories) do |sliced_categories| %>
+          <div class="col-md-6 col-sm-6 col-xs-12">
             <ul class="categories">
               <% sliced_categories.each do |category| %>
                 <li class="category"><%= category_link category %></li>
