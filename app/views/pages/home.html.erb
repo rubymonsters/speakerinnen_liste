@@ -1,5 +1,5 @@
 <div class="start-page">
-  <section class="photo-bar" id="curie-photo" >
+  <section class="photo-bar nested-links-hover" id="curie-photo" >
     <div class="curie-badge">
       <%= image_tag("badge2-bw.png", alt: "curie-badge") %>
     </div>
@@ -44,7 +44,7 @@
         <h1><%= t(:new_speaker_heading, scope: "pages.home.speakers") %></h1>
         <h4>
           <%= t(:speaker_text, scope: "pages.home.speakers") %>
-          <%= link_to t(:speaker_index, scope: "pages.home.speakers"), profiles_path, id: "find-more", class: 'inverted-colors' %>
+          <%= link_to t(:speaker_index, scope: "pages.home.speakers"), profiles_path, id: "find-more", class: 'nested-link-hover' %>
         </h4>
         <div class="row">
           <% @profiles.each_with_index do |profile,index| %>
@@ -64,7 +64,7 @@
     </div>
   </div>
 
-  <div class="photo-bar" id="coaching-photo">
+  <div class="photo-bar nested-links-hover" id="coaching-photo">
     <div class="full-width-container">
       <div class="full-width-row">
         <h1 class="text-white-bg">
@@ -81,7 +81,7 @@
   <!-- Anker für Kategorien -->
   <a id="categories_anker"></a>
 
-  <div class="text-bar">
+  <div class="text-bar nested-links-hover">
     <div class="copyright">
       Copyright by Ute Mayer
     </div>
@@ -105,7 +105,7 @@
     </div>
   </div>
 
-  <div class="photo-bar" id="speakerin-photo">
+  <div class="photo-bar nested-links-hover" id="speakerin-photo">
     <div class="full-width-container">
       <div class="full-width-row">
         <h1 class="text-white-bg">
@@ -119,7 +119,7 @@
     </div>
   </div>
 
-  <div class="text-bar">
+  <div class="text-bar nested-links-hover">
     <div class="copyright">
       Copyright by Tilman Vogler
     </div>

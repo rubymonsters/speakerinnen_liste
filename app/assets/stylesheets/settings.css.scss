@@ -8,7 +8,7 @@ $text-middle-grey: #5E5E5E;
 $link-brighter-grey: #5E5E5E;
 $link-darker-grey: #7B7B7B;
 $background-link-dark-grey: #3c3c3a;
-
+$footer-text: #222;
 $button-blue: #49AFCD;
 
 $alert-pink: #B4035D;
@@ -16,6 +16,7 @@ $notice-yellow: #E8CD30;
 
 $box-shadow-dark-gray: rgba(50,50,50,0.75);
 $box-shadow-black: rgba(0,0,0,0.75);
+$bar-shadow-black: rgba(0,0,0,0.5);
 
 $bwb-gradient: 45deg,
       rgb(33,33,33),
@@ -59,6 +60,33 @@ $sans-serif: "OpenSans", "Helvetica Neue", Helvetica, sans-serif;
   -webkit-box-shadow: inset $horizontal_offset $vertical_offset $blur $spread $color;
      -moz-box-shadow: inset $horizontal_offset $vertical_offset $blur $spread $color;
           box-shadow: inset $horizontal_offset $vertical_offset $blur $spread $color;
+}
+
+@mixin transition($property,$duration,$timing_function) {
+  -webkit-transition: $property $duration $timing_function;
+     -moz-transition: $property $duration $timing_function;
+          transition: $property $duration $timing_function;
+}
+@mixin rotate($angle) {
+  -webkit-transform: rotate($angle);
+     -moz-transform: rotate($angle);
+          transform: rotate($angle);
+}
+
+@mixin rotate-scale-translate-xy($angle,$zoom,$x,$y) {
+  -webkit-transform: translate($x, $y) rotate($angle) scale($zoom);
+     -moz-transform: translate($x, $y) rotate($angle) scale($zoom);
+          transform: translate($x, $y) rotate($angle) scale($zoom);
+}
+
+@mixin hover-invert-text-and-background-color($color,$bgcolor) {
+  color:$color;
+  background-color:$bgcolor;
+
+  &:hover {
+      color: $bgcolor;
+      background-color:$color;
+  }
 }
 
 @mixin circle-container($height, $margin-top) {

@@ -1,20 +1,21 @@
-<div class="gray-bg">
-  <div class="full-width-container">
-    <div class="full-width-row footer">
-      <h1><%= t(:contact, scope: "pages.home.footer") %></h1>
-      <div class="row">
-        <div class="col-md-12 col-sm-12 col-xs-12">
-          <h4><span class="italic"><%= t(:address, scope: "pages.home.footer").html_safe %> |
-              <%= link_to t(:contact_link, scope: "pages.home.footer"), contact_path %> |
-              <%= t(:github, scope: "pages.home.footer").html_safe %> |
-              <%= link_to t(:title, scope: "pages.imprint"), impressum_path %> |
-              <%= t(:devblog, scope: "pages.home.footer").html_safe %></span></h4>
-        </div>
+<div class="full-width-container footer">
+  <div class="full-width-row">
+    <h1><%= t(:contact, scope: "pages.home.footer") %></h1>
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <h4>
+          <span class="italic"><%= t(:address, scope: "pages.home.footer").html_safe %> |
+            <%= link_to t(:contact_link, scope: "pages.home.footer"), contact_path %> |
+            <%= t(:github, scope: "pages.home.footer").html_safe %> |
+            <%= link_to t(:title, scope: "pages.imprint"), impressum_path %> |
+            <%= t(:devblog, scope: "pages.home.footer").html_safe %>
+          </span>
+        </h4>
       </div>
-      <div class="row">
-        <div class="col-md-12 col-sm-12 col-xs-12">
-          <%= t(:women, scope: "pages.home.footer").html_safe %>
-        </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <%= t(:women, scope: "pages.home.footer").html_safe %>
       </div>
     </div>
   </div>
