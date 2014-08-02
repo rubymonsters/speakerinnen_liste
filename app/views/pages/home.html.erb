@@ -1,158 +1,160 @@
-<section class="photo-bar" id="curie-photo" >
-  <div class="curie-badge">
-    <%= image_tag("badge2-bw.png", alt: "curie-badge") %>
-  </div>
-  <script>
-    $(window).scroll(function() {
-      if ($(this).scrollTop() > 100) {
-        $(".curie-badge").stop().animate({ opacity: 0 }, 50);
-      } else {
-        $(".curie-badge").stop().animate({ opacity: 1 }, 50);
-      }
-      //stops badge from covering other links
-      if ($(this).scrollTop() > 700) {
-       $(".curie-badge").hide();
-      } else {
-       $(".curie-badge").show();
-      }
-    });
-  </script>
-  <div class="full-width-container">
-    <div class="full-width-row">
-      <h1 class="text-white-bg"><%= t(:heading, scope: "pages.home.search") %></h1>
-      <br/>
-      <h2 class="text-white-bg"><%= t(:tagline, scope: "pages.home.search") %></h2>
-      <br/>
-      <h2 class="text-white-bg">
-        <%= form_tag(search_path, method: "get", class:"form-inline") do %>
-          <%= text_field_tag(:q, nil, class: "form-control", id: "search-field", placeholder: t(:search_text, scope: "pages.home.search")) %>
-          <%= button_tag((t(:search, scope: "pages.home.search")), class: "btn btn-default btn-lg") %>
-        <% end %>
-        <%= link_to t(:categories, scope: "pages.home.speakers"), "#categories_anker" %>
-        <br>
-        <%= link_to t(:speaker_index, scope: "pages.home.speakers"), profiles_path %>
-        <br>
-      </h2>
+<div class="start-page">
+  <section class="photo-bar" id="curie-photo" >
+    <div class="curie-badge">
+      <%= image_tag("badge2-bw.png", alt: "curie-badge") %>
     </div>
-  </div>
-</section>
+    <script>
+      $(window).scroll(function() {
+        if ($(this).scrollTop() > 100) {
+          $(".curie-badge").stop().animate({ opacity: 0 }, 50);
+        } else {
+          $(".curie-badge").stop().animate({ opacity: 1 }, 50);
+        }
+        //stops badge from covering other links
+        if ($(this).scrollTop() > 700) {
+         $(".curie-badge").hide();
+        } else {
+         $(".curie-badge").show();
+        }
+      });
+    </script>
+    <div class="full-width-container">
+      <div class="full-width-row">
+        <h1 class="text-white-bg"><%= t(:heading, scope: "pages.home.search") %></h1>
+        <br/>
+        <h2 class="text-white-bg"><%= t(:tagline, scope: "pages.home.search") %></h2>
+        <br/>
+        <h2 class="text-white-bg">
+          <%= form_tag(search_path, method: "get", class:"form-inline") do %>
+            <%= text_field_tag(:q, nil, class: "form-control", id: "search-field", placeholder: t(:search_text, scope: "pages.home.search")) %>
+            <%= button_tag((t(:search, scope: "pages.home.search")), class: "btn btn-default btn-lg") %>
+          <% end %>
+          <%= link_to t(:categories, scope: "pages.home.speakers"), "#categories_anker" %>
+          <br>
+          <%= link_to t(:speaker_index, scope: "pages.home.speakers"), profiles_path %>
+          <br>
+        </h2>
+      </div>
+    </div>
+  </section>
 
-<div class="photo-grid-bar">
-  <div class="full-width-container">
-    <div class="full-width-row">
-      <h1><%= t(:new_speaker_heading, scope: "pages.home.speakers") %></h1>
-      <h4>
-        <%= t(:speaker_text, scope: "pages.home.speakers") %>
-        <%= link_to t(:speaker_index, scope: "pages.home.speakers"), profiles_path, id: "find-more", class: 'inverted-colors' %>
-      </h4>
-      <div class="row">
-        <% @profiles.each_with_index do |profile,index| %>
-          <%= render partial: "profiles/profile", object: profile %>
-          <% if (index+1) % 2 == 0 %>
-            <div class="clearfix visible-xs-block"></div>
+  <div class="photo-grid-bar">
+    <div class="full-width-container">
+      <div class="full-width-row">
+        <h1><%= t(:new_speaker_heading, scope: "pages.home.speakers") %></h1>
+        <h4>
+          <%= t(:speaker_text, scope: "pages.home.speakers") %>
+          <%= link_to t(:speaker_index, scope: "pages.home.speakers"), profiles_path, id: "find-more", class: 'inverted-colors' %>
+        </h4>
+        <div class="row">
+          <% @profiles.each_with_index do |profile,index| %>
+            <%= render partial: "profiles/profile", object: profile %>
+            <% if (index+1) % 2 == 0 %>
+              <div class="clearfix visible-xs-block"></div>
+            <% end %>
+            <% if (index+1) % 3 == 0 %>
+              <div class="clearfix visible-sm-block"></div>
+            <% end %>
+            <% if (index+1) % 4 == 0 %>
+              <div class="clearfix visible-md-block"></div>
+            <% end %>
           <% end %>
-          <% if (index+1) % 3 == 0 %>
-            <div class="clearfix visible-sm-block"></div>
-          <% end %>
-          <% if (index+1) % 4 == 0 %>
-            <div class="clearfix visible-md-block"></div>
-          <% end %>
-        <% end %>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-<div class="photo-bar" id="coaching-photo">
-  <div class="full-width-container">
-    <div class="full-width-row">
-      <h1 class="text-white-bg">
-        <%= t(:quote, scope: "pages.home") %>
-      </h1>
-      <br>
-      <h2 class="text-white-bg">
-        <%= t(:quote_text, scope: "pages.home").html_safe %>
-      </h2>
+  <div class="photo-bar" id="coaching-photo">
+    <div class="full-width-container">
+      <div class="full-width-row">
+        <h1 class="text-white-bg">
+          <%= t(:quote, scope: "pages.home") %>
+        </h1>
+        <br>
+        <h2 class="text-white-bg">
+          <%= t(:quote_text, scope: "pages.home").html_safe %>
+        </h2>
+      </div>
     </div>
   </div>
-</div>
 
-<!-- Anker für Kategorien -->
-<a id="categories_anker"></a>
+  <!-- Anker für Kategorien -->
+  <a id="categories_anker"></a>
 
-<div class="text-bar">
-  <div class="copyright">
-    Copyright by Ute Mayer
+  <div class="text-bar">
+    <div class="copyright">
+      Copyright by Ute Mayer
+    </div>
+    <div class="full-width-container">
+      <div class="full-width-row">
+        <h1><%= t(".description")%></h1>
+        <h4><%= t(".description_text") %></h4>
+        <div class="row">
+          <% half_the_categories = (@categories.length/2).ceil %>
+          <% @categories.each_slice(half_the_categories) do |sliced_categories| %>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <ul class="categories">
+                <% sliced_categories.each do |category| %>
+                  <li class="category"><%= category_link category %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="full-width-container">
-    <div class="full-width-row">
-      <h1><%= t(".description")%></h1>
-      <h4><%= t(".description_text") %></h4>
-      <div class="row">
-        <% half_the_categories = (@categories.length/2).ceil %>
-        <% @categories.each_slice(half_the_categories) do |sliced_categories| %>
-          <div class="col-md-6 col-sm-6 col-xs-12">
-            <ul class="categories">
-              <% sliced_categories.each do |category| %>
-                <li class="category"><%= category_link category %></li>
-              <% end %>
-            </ul>
+
+  <div class="photo-bar" id="speakerin-photo">
+    <div class="full-width-container">
+      <div class="full-width-row">
+        <h1 class="text-white-bg">
+          <%= t(:speaker_shoutout, scope: "pages.home").html_safe %>
+        </h1>
+        <br>
+        <h2 class="text-white-bg">
+          <%= link_to(t(:speaker_text, scope: "pages.home").html_safe, new_profile_registration_path) %>
+        </h2>
+      </div>
+    </div>
+  </div>
+
+  <div class="text-bar">
+    <div class="copyright">
+      Copyright by Tilman Vogler
+    </div>
+    <div class="full-width-container">
+      <div class="full-width-row">
+        <h1>Speakerinnen*</h1>
+        <div class="row">
+          <div class="col-md-4 col-sm-4 col-xs-12">
+            <h4><%= link_to t(:about_title, scope:"pages.home.footer"), about_path %></h4>
+            <span class="italic"><%= t(:about, scope:"pages.home.footer").html_safe %>
+               <%= link_to t(:more, scope: "pages.home.footer").html_safe, about_path %>
+            </span>
           </div>
-        <% end %>
-      </div>
-    </div>
-  </div>
-</div>
 
-<div class="photo-bar" id="speakerin-photo">
-  <div class="full-width-container">
-    <div class="full-width-row">
-      <h1 class="text-white-bg">
-        <%= t(:speaker_shoutout, scope: "pages.home").html_safe %>
-      </h1>
-      <br>
-      <h2 class="text-white-bg">
-        <%= link_to(t(:speaker_text, scope: "pages.home").html_safe, new_profile_registration_path) %>
-      </h2>
-    </div>
-  </div>
-</div>
+          <div class="col-md-4 col-sm-4 col-xs-12">
+            <h4><%= link_to t(:faq, scope: "pages.home.footer"), faq_path %></h4>
+            <span class="italic"><%= t(:faq_short, scope:"pages.home.footer").html_safe %>
+              <%= link_to t(:more, scope: "pages.home.footer").html_safe, faq_path %>
+            </span>
+          </div>
 
-<div class="text-bar">
-  <div class="copyright">
-    Copyright by Tilman Vogler
-  </div>
-  <div class="full-width-container">
-    <div class="full-width-row">
-      <h1>Speakerinnen*</h1>
-      <div class="row">
-        <div class="col-md-4 col-sm-4 col-xs-12">
-          <h4><%= link_to t(:about_title, scope:"pages.home.footer"), about_path %></h4>
-          <span class="italic"><%= t(:about, scope:"pages.home.footer").html_safe %>
-             <%= link_to t(:more, scope: "pages.home.footer").html_safe, about_path %>
-          </span>
-        </div>
-
-        <div class="col-md-4 col-sm-4 col-xs-12">
-          <h4><%= link_to t(:faq, scope: "pages.home.footer"), faq_path %></h4>
-          <span class="italic"><%= t(:faq_short, scope:"pages.home.footer").html_safe %>
-            <%= link_to t(:more, scope: "pages.home.footer").html_safe, faq_path %>
-          </span>
-        </div>
-
-        <div class="col-md-4 col-sm-4 col-xs-12">
-          <h4><%= link_to t(:press, scope:"pages.home.footer"), press_path %></h4>
-          <span class="italic">
+          <div class="col-md-4 col-sm-4 col-xs-12">
+            <h4><%= link_to t(:press, scope:"pages.home.footer"), press_path %></h4>
             <span class="italic">
-      <strong>Aargauer Zeitung, 26. März: Frauen vor! Meinungsmacher müssen nicht immer Männer sein</strong><br>
-      "Nun gibt es in mehreren Ländern Initiativen, um auch Frauen stärker als Meinungsmacherinnen und Fachpersonen zu etablieren."</br>
-      <strong>20 minuten, 21. März: Mehr Frauen in Talkshows – dank Internetportal</strong><br>
-      "Das ist eine gute Idee, ein solches Portal braucht die Schweiz auch», sagt Regula Zweifel, Vizepräsidentin des Bunds Schweizerischer Frauenorganisationen Allicance F."<br>
-            <%= link_to t(:more, scope: "pages.home.footer").html_safe, press_path %>
-          </span>
+              <span class="italic">
+        <strong>Aargauer Zeitung, 26. März: Frauen vor! Meinungsmacher müssen nicht immer Männer sein</strong><br>
+        "Nun gibt es in mehreren Ländern Initiativen, um auch Frauen stärker als Meinungsmacherinnen und Fachpersonen zu etablieren."</br>
+        <strong>20 minuten, 21. März: Mehr Frauen in Talkshows – dank Internetportal</strong><br>
+        "Das ist eine gute Idee, ein solches Portal braucht die Schweiz auch», sagt Regula Zweifel, Vizepräsidentin des Bunds Schweizerischer Frauenorganisationen Allicance F."<br>
+              <%= link_to t(:more, scope: "pages.home.footer").html_safe, press_path %>
+            </span>
+          </div>
         </div>
+        <div class="clearfix"></div>
       </div>
-      <div class="clearfix"></div>
     </div>
   </div>
 </div>

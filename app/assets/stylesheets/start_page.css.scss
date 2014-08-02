@@ -1,33 +1,40 @@
 @import 'settings';
 
-#start-page {
+.start-page {
   font-family: $serif;
   padding: 0;
   margin-top: -25px;
   }
 
-#start-page h1 {
+.start-page h1, .footer h1 {
   font-weight: normal;
   font-size: 3em;
   margin: 70px 0 20px 0;
   line-height: 1.4em;
   }
 
-#start-page h2 {
+.start-page h2 {
   font-weight: normal;
   font-size: 1.4em;
   line-height: 1.6em;
   }
 
-#start-page h4 {
+.start-page h4, .footer h4 {
   font-weight: normal;
   border-top: 1px solid #ccc;
   border-bottom: 1px solid #ccc;
   padding: 20px 0;
   margin-bottom: 50px;
-  font-size: 1.4em;
   line-height: 1.8em;
-  }
+}
+
+.start-page h4 {
+  font-size: 1.4em;
+}
+
+.footer h4 {
+    font-size: 1.2em;
+}
 
 #curie-photo {
   background-image: url("curie.jpg");
