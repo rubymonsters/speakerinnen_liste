@@ -1,5 +1,17 @@
 @import "bootstrap";
 
+/* thumbnail hack while system may still contain too small
+   images (TODO min-width and min-height for pic upload
+   and remove this hack again)   
+ */
+.thumbnail > img, .thumbnail a > img {
+  width: 100%;
+}
+
+/* custom speakerinnen thumbnail styling */
+.thumbnail {
+  border: 0;
+}
 
 /* forms */
 

@@ -1,23 +1,19 @@
-<div class="span3">
-  <div class="speaker">
-    <div>
-      <%= link_to(image_tag(profile.picture.profiles_list.url || "avatar.jpg" ), profile) %>
-    </div>
-
-    <div class="name">
-      <%= link_to profile.fullname, profile %>
-    </div>
-    <div class="desc">
-      <%= profile.main_topic_or_first_topic.truncate(30) if profile.main_topic_or_first_topic  %>
-    </div>
-
-    <div class="contact-info">
-      <% if profile.twitter.present? %>
-        <div class="header_small">
-          <%= t ".twitter" %>
-        </div>
+<?xml version="1.0" encoding="UTF-8"?>
+<div class="speaker col-md-3 col-sm-4 col-xs-6">
+  <div class="thumbnail">
+    <%= link_to(image_tag(profile.picture.profiles_list.url || "avatar.jpg" ), profile) %>
+    <div class="caption">
+      <div>
+        <%= link_to profile.fullname, profile %>
+      </div>
+      <div>
+        <%= profile.main_topic_or_first_topic.truncate(30) if profile.main_topic_or_first_topic  %>
+      </div>
+      <div>
+        <% if profile.twitter.present? %>
         <%=link_to "@" + profile.twitter_name_formatted, profile.twitter_link_formatted, target: '_blank' %>
-      <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

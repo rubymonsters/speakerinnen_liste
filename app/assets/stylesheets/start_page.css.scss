@@ -74,13 +74,13 @@
 
 /*+++++++++++++ Text Bar ++++++++++++++++*/
 
-.text-bar {
+.text-bar, .photo-grid-bar {
   background-color:#fff;
   z-index:99999;
   padding-bottom: 50px;
   }
 
-.text-bar a:hover {
+.text-bar a:hover, a.inverted-colors:hover {
   color: whitesmoke;
   background-color:#3c3c3a;
   padding: 0px 4px;
