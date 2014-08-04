@@ -29,6 +29,11 @@
   line-height: 1.8em;
   }
 
+.start-page-images {
+  background-position: center center;
+  background-size: cover; 
+  }
+
 #curie-photo {
   background-image: url("curie.jpg");
   min-height: 600px;
@@ -120,17 +125,24 @@
 
 /*curies badge*/
 
-.curie-badge img {
-  position: fixed;
-  z-index: 1;
-  left: 68%;
-  top:60%;
-  width: 8%;
-  transition: all .3s ease-in-out;
-  -webkit-transition: all .3s ease-in-out;
-  transform: rotate(-10deg);
-  -moz-transform: rotate(-10deg);
-  -webkit-transform: rotate(-10deg);
+.curie-badge {
+  
+  display: none;
+  @media (min-width: 800px) and (min-height: 600px) {
+    display: block;
+  }
+  img {
+    position: fixed;
+    z-index: 1;
+    left: 68%;
+    top:60%;
+    width: 8%;
+    transition: all .3s ease-in-out;
+    -webkit-transition: all .3s ease-in-out;
+    transform: rotate(-10deg);
+    -moz-transform: rotate(-10deg);
+    -webkit-transform: rotate(-10deg);
+  } 
 }
 
 .curie-badge img:hover {
