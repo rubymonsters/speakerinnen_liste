@@ -124,6 +124,7 @@ de:
   profiles:
     tag:
       topics: "Themen:"
+      topics_filter: "Themenfilter"
     form:
       not_saved: "Dieses Profil konnte nicht gespeichert werden:"
       profile_from: "Profil von"

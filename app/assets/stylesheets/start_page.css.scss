@@ -1,50 +1,8 @@
 @import 'settings';
 
-.footer, .start-page {
-  font-weight: normal;
-  font-family: $serif;
-
-  h1 {
-    margin: 70px 0 20px 0;
-    line-height: 1.4em;
-
-    font-size: 3em;
-  }
-
-  h4 {
-    padding: 20px 0;
-    margin-bottom: 50px;
-    line-height: 1.8em;
-
-    border-top: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
-
-  }
-}
-
 .start-page {
   padding: 0;
   margin-top: -25px;
-
-  h2 {
-    line-height: 1.6em;
-
-    font-size: 1.4em;
-  }
-
-  h4 {
-    font-size: 1.4em;
-  }
-}
-
-.footer {
-  a {
-    color: $footer-text;
-  }
-
-  h4 {
-    font-size: 1.2em;
-  }
 }
 
 $space-between-cols-in-col-xs-mode: 50px;
@@ -55,29 +13,22 @@ $space-between-cols-in-col-xs-mode: 50px;
  .about-grid-col {
    margin-bottom: $space-between-cols-in-col-xs-mode;
 
-   h4 a {
+    .bordered-text-block a {
         @include hover-invert-text-and-background-color($background-link-dark-grey,#fff);
    }
  }
 }
 
-#curie-photo {
-  min-height: 600px;
-
-  background-image: url("curie.jpg");
+/* --- bordered text blocks in bars --- */
+.photo-bar, .photo-grid-bar, .text-bar {
+  .bordered-text-block {
+    padding: 20px 4px;
+    margin: 30px 0;
   }
-
-#speakerin-photo {
-  background-image: url("maren_buehne.jpg");
-  }
-
-#coaching-photo {
-  background-image: url("coaching.jpg");
-  }
-
-/* --------------------- Photo Bar --------------*/
+}
+/* --------------------- Photo Bars --------------*/
 .photo-bar {
-  padding:80px 0px;
+  padding:12% 0;
 
   background-attachment:fixed;
   -webkit-background-size:cover;
@@ -88,38 +39,18 @@ $space-between-cols-in-col-xs-mode: 50px;
   @include inset-box-shadow(0px,0px,20px,0px,$bar-shadow-black);
 }
 
-.text-white-bg {
+.text-block-on-photo {
   display:inline-block;
-  padding:12px 12px 20px 12px;
+  padding:12px;
+
+  font-size: 1.4em;
 
   background-color:$text-bg-transp-white;
   color:$background-link-dark-grey;
-}
 
-.nested-links-hover a, a.nested-link-hover {
-  padding: 0px 4px;
-
-  @include hover-invert-text-and-background-color($background-link-dark-grey,$bg-light-grey);
-}
-
-/*+++++++++++++ Text Bar ++++++++++++++++*/
-
-.text-bar, .photo-grid-bar {
-  padding-bottom: 50px;
-  position:relative;
-  z-index:2;
-
-  background-color:#fff;
+  .sibling-vmargin-md {
+    display: block;
   }
-
-  /* --------------Category---------------- */
-.categories li {
-  list-style-type: none;
-  }
-
-.category a {
-  line-height: 2em;
-  font-size: 1.9em;
 }
 
 .copyright {
@@ -127,6 +58,41 @@ $space-between-cols-in-col-xs-mode: 50px;
 
   text-align: right;
   font-size: 0.8em;
+}
+
+#curie-photo {
+  min-height: 600px;
+
+  background-image: url("curie.jpg");
+}
+
+#speakerin-photo {
+  background-image: url("maren_buehne.jpg");
+}
+
+#coaching-photo {
+  background-image: url("coaching.jpg");
+}
+
+
+/*+++++++++++++ Text Bar ++++++++++++++++*/
+
+.text-bar, .photo-grid-bar {
+  padding: 50px 0px;
+  position:relative;
+  z-index:2;
+
+  background-color:#fff;
+}
+
+  /* --------------Category---------------- */
+.categories li {
+  list-style-type: none;
+}
+
+.category a {
+  line-height: 2em;
+  font-size: 1.9em;
 }
 
 /*curies badge*/

@@ -126,32 +126,36 @@
   font-size: 18px;
 }
 
+
 .topics-cloud {
-  min-height: 200px;
-  font-family: $sans-serif;
-}
+  a {
+    padding: 0px 4px;
 
-.topics-cloud a{
-  background-color: #fff;
-  padding: 0px 4px;
-}
-
-.topics-cloud a:hover {
-  -webkit-transition: all .2s ease-in-out;
-  -moz-transition: all .2s ease-in-out;
-  -o-transition: all .2s ease-in-out;
-  background-color: #3C3C3A;
-  color: whitesmoke;
+    background-color: #fff;
+    &:hover {
+      @include transition(all,.2s,ease-in-out);
+      background-color: $background-link-dark-grey;
+      color: $bg-light-grey;
+    }
   }
 
-.topics-cloud .topic-filter {
-  float: right;
+   .topic-filter {
+      padding-bottom: 10px;
+
+      * {
+        display: inline-block;
+      }
+      .btn {
+        line-height: 10px;
+        padding: 3px;
+      }
+
+      .form-control {
+        width: 80%;
+      }
+   }
 }
 
-.topics-cloud #quick-filter {
-  height: 32px;
-  width: 160px;
-}
 
 /*speaker*/
 

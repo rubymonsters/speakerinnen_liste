@@ -1,0 +1,18 @@
+@import 'settings';
+
+/*footer*/
+
+.footer {
+  padding-bottom: 50px;
+}
+
+.footer-links {
+  margin-bottom: 50px;
+  line-height: 1.8em;
+
+  font-style: italic;
+
+  a {
+    color: $footer-text;
+  }
+}

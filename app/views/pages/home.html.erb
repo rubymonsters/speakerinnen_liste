@@ -20,32 +20,41 @@
     </script>
     <div class="full-width-container">
       <div class="full-width-row">
-        <h1 class="text-white-bg"><%= t(:heading, scope: "pages.home.search") %></h1>
-        <br/>
-        <h2 class="text-white-bg"><%= t(:tagline, scope: "pages.home.search") %></h2>
-        <br/>
-        <h2 class="text-white-bg">
-          <%= form_tag(search_path, method: "get", class:"form-inline") do %>
+        <div class="sibling-vmargin-xl">
+          <div class="text-block-on-photo">
+            <h1><%= t(:heading, scope: "pages.home.search") %></h1>
+          </div>
+        </div>
+
+        <div class="sibling-vmargin-xl">
+          <div class="text-block-on-photo"><%= t(:tagline, scope: "pages.home.search") %></div>
+        </div>
+
+        <div class="sibling-vmargin-xl"><div class="text-block-on-photo">
+          <%= form_tag(search_path, method: "get", class:"form-inline sibling-vmargin-md") do %>
             <%= text_field_tag(:q, nil, class: "form-control", id: "search-field", placeholder: t(:search_text, scope: "pages.home.search")) %>
             <%= button_tag((t(:search, scope: "pages.home.search")), class: "btn btn-default btn-lg") %>
           <% end %>
-          <%= link_to t(:categories, scope: "pages.home.speakers"), "#categories_anker" %>
-          <br>
-          <%= link_to t(:speaker_index, scope: "pages.home.speakers"), profiles_path %>
-          <br>
-        </h2>
+          <div class="sibling-vmargin-md">
+            <%= link_to t(:categories, scope: "pages.home.speakers"), "#categories_anker" %>
+          </div>
+          <div class="sibling-vmargin-md">
+            <%= link_to t(:speaker_index, scope: "pages.home.speakers"), profiles_path %>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
 
-  <div class="photo-grid-bar">
+  <section class="photo-grid-bar">
     <div class="full-width-container">
       <div class="full-width-row">
         <h1><%= t(:new_speaker_heading, scope: "pages.home.speakers") %></h1>
-        <h4>
+        <div class="bordered-text-block">
           <%= t(:speaker_text, scope: "pages.home.speakers") %>
           <%= link_to t(:speaker_index, scope: "pages.home.speakers"), profiles_path, id: "find-more", class: 'nested-link-hover' %>
-        </h4>
+        </div>
         <div class="row">
           <% @profiles.each_with_index do |profile,index| %>
             <%= render partial: "profiles/profile", object: profile %>
@@ -62,33 +71,32 @@
         </div>
       </div>
     </div>
-  </div>
+  </section>
 
-  <div class="photo-bar nested-links-hover" id="coaching-photo">
+  <section class="photo-bar nested-links-hover" id="coaching-photo">
     <div class="full-width-container">
       <div class="full-width-row">
-        <h1 class="text-white-bg">
-          <%= t(:quote, scope: "pages.home") %>
-        </h1>
-        <br>
-        <h2 class="text-white-bg">
-          <%= t(:quote_text, scope: "pages.home").html_safe %>
-        </h2>
+        <div class="text-block-on-photo sibling-vmargin-xl">
+          <h2><%= t(:quote, scope: "pages.home") %></h2>
+        </div>
+        <div class="sibling-vmargin-xl">
+          <div class="text-block-on-photo"><%= t(:quote_text, scope: "pages.home").html_safe %></div>
+        </div>
       </div>
     </div>
-  </div>
+  </section>
 
   <!-- Anker für Kategorien -->
   <a id="categories_anker"></a>
 
-  <div class="text-bar nested-links-hover">
+  <section class="text-bar nested-links-hover">
     <div class="copyright">
       Copyright by Ute Mayer
     </div>
     <div class="full-width-container">
       <div class="full-width-row">
         <h1><%= t(".description")%></h1>
-        <h4><%= t(".description_text") %></h4>
+        <div class="bordered-text-block"><%= t(".description_text") %></div>
         <div class="row">
           <% half_the_categories = (@categories.length/2).ceil %>
           <% @categories.each_slice(half_the_categories) do |sliced_categories| %>
@@ -103,23 +111,24 @@
         </div>
       </div>
     </div>
-  </div>
+  </section>
 
-  <div class="photo-bar nested-links-hover" id="speakerin-photo">
+  <section class="photo-bar nested-links-hover" id="speakerin-photo">
     <div class="full-width-container">
       <div class="full-width-row">
-        <h1 class="text-white-bg">
-          <%= t(:speaker_shoutout, scope: "pages.home").html_safe %>
-        </h1>
-        <br>
-        <h2 class="text-white-bg">
-          <%= link_to(t(:speaker_text, scope: "pages.home").html_safe, new_profile_registration_path) %>
-        </h2>
+        <div class="text-block-on-photo sibling-vmargin-xl">
+          <h2><%= t(:speaker_shoutout, scope: "pages.home").html_safe %></h2>
+        </div>
+        <div class="sibling-vmargin-xl">
+          <div class="text-block-on-photo ">
+              <%= link_to(t(:speaker_text, scope: "pages.home").html_safe, new_profile_registration_path) %>
+          </div>
+      </div>
       </div>
     </div>
-  </div>
+  </section>
 
-  <div class="text-bar nested-links-hover">
+  <section class="text-bar nested-links-hover">
     <div class="copyright">
       Copyright by Tilman Vogler
     </div>
@@ -128,21 +137,21 @@
         <h1>Speakerinnen*</h1>
         <div class="row">
           <div class="col-md-4 col-sm-4 col-xs-12 about-grid-col">
-            <h4><%= link_to t(:about_title, scope:"pages.home.footer"), about_path %></h4>
+            <div class="bordered-text-block"><%= link_to t(:about_title, scope:"pages.home.footer"), about_path %></div>
             <span class="italic"><%= t(:about, scope:"pages.home.footer").html_safe %>
                <%= link_to t(:more, scope: "pages.home.footer").html_safe, about_path %>
             </span>
           </div>
 
           <div class="col-md-4 col-sm-4 col-xs-12 about-grid-col">
-            <h4><%= link_to t(:faq, scope: "pages.home.footer"), faq_path %></h4>
+            <div class="bordered-text-block"><%= link_to t(:faq, scope: "pages.home.footer"), faq_path %></div>
             <span class="italic"><%= t(:faq_short, scope:"pages.home.footer").html_safe %>
               <%= link_to t(:more, scope: "pages.home.footer").html_safe, faq_path %>
             </span>
           </div>
 
           <div class="col-md-4 col-sm-4 col-xs-12 about-grid-col">
-            <h4><%= link_to t(:press, scope:"pages.home.footer"), press_path %></h4>
+            <div class="bordered-text-block"><%= link_to t(:press, scope:"pages.home.footer"), press_path %></div>
             <span class="italic">
               <strong>Aargauer Zeitung, 26. März: Frauen vor! Meinungsmacher müssen nicht immer Männer sein</strong><br>
               "Nun gibt es in mehreren Ländern Initiativen, um auch Frauen stärker als Meinungsmacherinnen und Fachpersonen zu etablieren."</br>
@@ -154,5 +163,5 @@
         </div>
       </div>
     </div>
-  </div>
+  </section>
 </div>

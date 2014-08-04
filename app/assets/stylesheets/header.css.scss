@@ -1,6 +1,6 @@
 @import 'settings';
 
-/*header*/
+/* --- header container --- */
 
 header {
   position: fixed;
@@ -9,20 +9,25 @@ header {
   left: 0;
   z-index: 10;
   font-family: $sans-serif;
-  /*line-height: 67px;*/
-
 }
 
+.top-header {
+  background-color: #fff;
+  height: 67px;
+  @include inset-box-shadow(0,0,10px,0,#999099);
+
+  .row {
+    height: 100%;
+  }
+}
+
+/* --- logo --- */
 a#logo {
   font-weight: bold;
-}
-
-a#logo:hover {
-  opacity: 0.7;
-  -webkit-transition: all .2s ease-in-out;
-  -moz-transition: all .2s ease-in-out;
-  -o-transition: all .2s ease-in-out;
-  transition: all 0.2s ease-in-out 0s;
+  &:hover {
+    opacity: 0.7;
+    @include transition(all,.2s,ease-in-out);
+  }
 }
 
 @media only screen and (min-width: 620px) {
@@ -38,19 +43,7 @@ a#logo:hover {
   }
 }
 
-.top-header {
-  background-color: #fff;
-  height: 67px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
-  -moz-box-shadow:inset 0px 1px 11px #999099;
-  -webkit-box-shadow:inset 0px 1px 11px #999099;
-  box-shadow:inset 0px 1px 11px #999099;
-
-  .row {
-    height: 100%;
-  }
-}
-
+/* --- valignment of navigation --- */
 .valign-middle-container {
   display: table;
   height: 100%;

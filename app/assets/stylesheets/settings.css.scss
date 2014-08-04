@@ -65,6 +65,7 @@ $sans-serif: "OpenSans", "Helvetica Neue", Helvetica, sans-serif;
 @mixin transition($property,$duration,$timing_function) {
   -webkit-transition: $property $duration $timing_function;
      -moz-transition: $property $duration $timing_function;
+       -o-transition: $property $duration $timing_function;
           transition: $property $duration $timing_function;
 }
 @mixin rotate($angle) {
