@@ -6,6 +6,7 @@ describe ProfilesController do
   describe "test index action" do
     let!(:user) { FactoryGirl.create(:published) }
     let!(:user2) { FactoryGirl.create(:user, email: "test@anders.com") }
+    let!(:user3) { FactoryGirl.create(:published, email: "test@nochanders.com") }
     
     before do
       get :index
@@ -17,12 +18,12 @@ describe ProfilesController do
       expect(response).to render_template("index")
     end
 
-    it "should display profiles" do
-      expect(assigns(:profiles)).to eq([user])
+    it "should display published profiles" do
+      expect(assigns(:profiles).sort).to eq([user, user3].sort)
     end
 
     it "should not include unpublished profiles" do
-      expect(assigns(:profiles)).not_to include(user2) 
+      expect(assigns(:profiles)).not_to include(user2)
     end
   end
 end
