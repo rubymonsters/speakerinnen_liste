@@ -91,6 +91,7 @@ en:
       title: "Press about us"
     imprint:
       title: "Legal Details"
+      privac¥: "We are using Piwik data analytics to collect anonymized data that will help us to improve the usability of our website."
   layouts:
     application:
       title: "Speakerinnen-List"
