@@ -49,7 +49,7 @@
 
 /* --------------------- Photo Bar --------------*/
 .photo-bar {
-  background-attachment:fixed;
+ /*background-attachment:fixed;*/
   -webkit-background-size:cover;
   -moz-background-size:cover;
   -o-background-size:cover;
@@ -127,10 +127,6 @@
 
 .curie-badge {
   
-  display: none;
-  @media (min-width: 800px) and (min-height: 600px) {
-    display: block;
-  }
   img {
     position: fixed;
     z-index: 1;

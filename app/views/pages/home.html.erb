@@ -2,18 +2,25 @@
   <div class="curie-badge">
     <%= image_tag("badge2-bw.png", alt: "curie-badge") %>
   </div>
-  <script>
+  <script> 
+    
+    if ($(window).width() <= 980){
+      $(".curie-badge").hide();
+    }
     $(window).scroll(function() {
-      if ($(this).scrollTop() > 100) {
-        $(".curie-badge").stop().animate({ opacity: 0 }, 50);
-      } else {
-        $(".curie-badge").stop().animate({ opacity: 1 }, 50);
-      }
-      //stops badge from covering other links
-      if ($(this).scrollTop() > 700) {
-       $(".curie-badge").hide();
-      } else {
-       $(".curie-badge").show();
+      if ($(window).width() > 980){
+        if ($(this).scrollTop() > 100) {
+          $(".curie-badge").stop().animate({ opacity: 0 }, 50);
+        } else {
+          $(".curie-badge").stop().animate({ opacity: 1 }, 50);
+        }
+        //stops badge from covering other links
+        if ($(this).scrollTop() > 700) {
+         $(".curie-badge").hide();
+        } else {
+         $(".curie-badge").show();
+        }  
+
       }
     });
   </script>
