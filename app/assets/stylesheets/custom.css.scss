@@ -1,8 +1,9 @@
 @import "bootstrap";
+@import 'settings';
 
 /* thumbnail hack while system may still contain too small
    images (TODO min-width and min-height for pic upload
-   and remove this hack again)   
+   and remove this hack again)
  */
 .thumbnail > img, .thumbnail a > img {
   width: 100%;
@@ -38,4 +39,29 @@
 
 .last  {
   margin-bottom: 180px;
+}
+
+/* custom speakerinnen paginator styling*/
+.pagination.custom-pagination {
+  li {
+    span, a {
+    color: $text-dark-grey;
+    background-color: $bg-paginator;
+    border-color: $table-border-color;
+    }
+  }
+
+  .active {
+    a, span {
+      color: $bg-paginator;
+      background-color: $background-link-dark-grey;
+      border-color: $table-border-color;
+
+      &:hover, &:focus {
+        color: $text-middle-grey;
+        background-color: $background-link-dark-grey;
+        border-color: $table-border-color;
+      }
+    }
+  }
 }
