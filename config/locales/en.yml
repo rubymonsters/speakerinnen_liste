@@ -125,6 +125,7 @@ en:
     tag:
       topics: "Topics:"
       topics_filter: "Topics filter"
+      reset_filter: "Clear"
     form:
       not_saved: "This profile could not be saved: "
       profile_from: "Profile of"

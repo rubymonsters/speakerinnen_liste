@@ -1,9 +1,7 @@
 <div class='topics-cloud'>
   <div class="topic-filter">
     <input type="text" value="" placeholder="<%= t(:topics_filter, scope: "profiles.tag") %>" id="quick-filter" class="form-control" />
-    <button class="btn btn-info" id="reset-quick-filter" title="Reset">
-      <span class="glyphicon glyphicon-remove"></span>
-    </button>
+    <button class="btn btn-info" id="reset-quick-filter" title="<%= t(:reset_filter, scope: "profiles.tag") %>"><%= t(:reset_filter, scope: "profiles.tag") %></button>
   </div>
 
   <script type="text/javascript" charset="utf-8">

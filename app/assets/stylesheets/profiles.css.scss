@@ -1,6 +1,26 @@
 @import 'settings';
 
 .profiles {
+  .bordered-text-block {
+    padding-top: 30px;
+  }
+
+  .description {
+    padding: 4% 4% 4% 0;
+  }
+  .search-form {
+    padding-bottom: 2%;
+    width: 100%;
+    .form-control {
+      width: 70%;
+    }
+    .btn {
+      width: 22%;
+      padding-left: 0.5%;
+      padding-right: 0.5%;
+      float:right;
+    }
+  }
 }
 
 .profiles .photo {
@@ -146,12 +166,14 @@
         display: inline-block;
       }
       .btn {
-        line-height: 10px;
-        padding: 3px;
+        padding-left: 0.5%;
+        padding-right: 0.5%;
+        float: right;
+        width: 22%;
       }
 
       .form-control {
-        width: 80%;
+        width: 70%;
       }
    }
 }
