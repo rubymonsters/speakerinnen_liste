@@ -98,8 +98,11 @@
         <h1><%= t(".description")%></h1>
         <div class="bordered-text-block"><%= t(".description_text") %></div>
         <div class="row">
-          <% half_the_categories = (@categories.length/2).ceil %>
-          <% @categories.each_slice(half_the_categories) do |sliced_categories| %>
+          <%
+            half_the_categories = (@categories.length/2).ceil
+            if (half_the_categories > 0)
+              @categories.each_slice(half_the_categories) do |sliced_categories|
+          %>
             <div class="col-md-6 col-sm-6 col-xs-12">
               <ul class="categories">
                 <% sliced_categories.each do |category| %>
@@ -107,7 +110,10 @@
                 <% end %>
               </ul>
             </div>
-          <% end %>
+          <%
+              end
+            end
+           %>
         </div>
       </div>
     </div>
