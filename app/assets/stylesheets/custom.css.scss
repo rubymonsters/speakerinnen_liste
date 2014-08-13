@@ -48,6 +48,11 @@
     color: $text-dark-grey;
     background-color: $bg-paginator;
     border-color: $table-border-color;
+      &:hover, &:focus {
+        color: $text-middle-grey;
+        background-color: $bg-light-grey;
+        border-color: $table-border-color;
+      }
     }
   }
 
