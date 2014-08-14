@@ -138,6 +138,18 @@ en:
         option3: "send us an email with a link to networks and communities that deal with specific topics"
         option4: |
           build with us! If you're good at web design or programming, help us  complete the ongoing issues. There's a list <a href="https://github.com/rubymonsters/speakerinnen_liste/issues/216" target="_blank">here.</a>
+    faq:
+      title: "FAQ"
+      question1: "Why is there no speaker for the topic I am looking for?"
+      answer1: "Possibly, nobody has created a tag for this topic yet. As soon as a speaker names this topic as one of her tags, this topic becomes visible as a tag within the topic range."
+      question2: "Can anybody join in?"
+      answer2: "Yes."
+      question3: "Why has my profile not been activated yet?"
+      answer3: "One of two reasons may apply. If your profile has just been created, it might take a bit since we're not online 24/7. We might have thought that your profile is a draft version because we might have had the impression that there is too little information so far. In case you mean to have it activtated as is, please drop us a line: speakerinnen@lists.riseup.net"
+      question4: "How do I use the search function?"
+      answer4: "You can search the fields, the speakers filled in their profiles: name - language - city - references - topics - biography - title. You can search for combinations with AND an OR, e.g. energy berlin. If you use multiple words together they will be used as AND operator by default. "
+      question5: "How can I donate any money?"
+      answer5: "Thank you for such a nice and cooperative idea. A donations button will be projected in due course."
     press:
       title: "Press about us"
     imprint:

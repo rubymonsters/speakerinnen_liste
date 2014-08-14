@@ -121,6 +121,18 @@ de:
         option3: "schickt eine Mail mit einem Hinweis an Netzwerke und Communities, die sich mit spezifischen Themen beschäftigen"
         option4: |
           baut mit! Wenn ihr euch mit Webdesign oder Programmierung auskennt, helft uns bei der Umsetzung der offenen Wünsche. Eine Liste gibt es <a href="https://github.com/rubymonsters/speakerinnen_liste/issues/216" target="_blank">hier.</a>
+    faq:
+      title: "FAQ"
+      question1: "Warum gibt es Thema XYZ noch nicht?"
+      answer1: "Weil es noch niemand angelegt hat. Alle Themen, die in der Speakerinnen-Liste zu sehen sind, wurden von mindestens einer Speakerin in ihrem Profil als 'Tags' eingegeben. Daraus entstehen automatisch auf der Seite die für alle sichtbaren Themen."
+      question2: "Können sich alle einfach eintragen?"
+      answer2: "Ja."
+      question3: "Warum ist mein Profil noch nicht freigeschaltet?"
+      answer3: "Wir sind nicht ständig online: wenn das Profil gerade erst fertig eingetragen wurde, kann es einen Moment dauern. Falls es aber sehr wenig Informationen im Profil stehen, dachten wir möglicherweise, dass es noch nicht fertig ist. Wenn du möchtest, dass es trotzdem freigeschaltet wird, dann schreib uns eine Mail an speakerinnen@lists.riseup.net."
+      question4: "Wonach kann ich suchen?"
+      answer4: "Name - Sprachen - Stadt - Referenzen - Themen - Biografie - Titel. Mit AND und OR-Verknüpfungen kannst du auch Kombinationen suchen, z.B. Energie Berlin. Wenn du mehrere Begriffe hintereinander eingibst, werden sie automatisch als AND-Verknüpfung erkannt. Groß- und Kleinschreibung spielt keine Rolle."
+      question5: "Wie kann ich Euch Geld spenden?"
+      answer5: "Aktuell ist das nicht möglich, aber freuen uns sehr über die Bereitschaft! Und versuchen, bald eine Option zum Spenden einzurichten."
     press:
       title: "Presse über uns"
     imprint:
