@@ -43,14 +43,22 @@ class Admin::TagsController < Admin::BaseController
 
   def categorization
     if params[:q] && params[:uncategorized]
+    #binding.pry
         @tags       = ActsAsTaggableOn::Tag
                       .where("tags.name ILIKE ?", "%" + params[:q] + "%")
                       .includes(:categories).where('categories.id IS NULL')
                       .order('tags.name ASC')
                       .page(params[:page])
                       .per(20)
-    elsif params[:q]
-        @tags       = ActsAsTaggableOn::Tag.where("name ILIKE ?", "%" + params[:q] + "%")
+    if params[:q]
+        @tags       = ActsAsTaggableOn::Tag
+                      .where("tags.name ILIKE ?", "%" + params[:q] + "%")
+                      .order('tags.name ASC')
+                      .page(params[:page])
+                      .per(20)
+    elsif params[:category_id]
+        @tags       = ActsAsTaggableOn::Tag
+                      .includes(:categories).where('categories.id = ?', params[:category_id])
                       .order('tags.name ASC')
                       .page(params[:page])
                       .per(20)
