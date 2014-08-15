@@ -7,7 +7,7 @@ gem 'normalize-rails'
 gem 'bootswatch-rails'
 gem 'faker', '1.0.1'
 
-gem 'deadweight', :require => 'deadweight/hijack/rails'
+gem 'deadweight', require: 'deadweight/hijack/rails'
 
 # Bundle edge Rails instead:
 # gem 'rails', git: 'git://github.com/rails/rails.git'
@@ -20,11 +20,11 @@ gem 'omniauth-twitter'
 gem 'carrierwave'
 gem 'fog', '~> 1.3'
 gem 'mini_magick', '~> 3.5.0'
-gem 'textacular', '~> 3.0', :require => 'textacular/rails'
+gem 'textacular', '~> 3.0', require: 'textacular/rails'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
-gem 'acts-as-taggable-on', :github => 'rubymonsters/acts-as-taggable-on'
-gem 'auto_html', :github => 'dejan/auto_html'
+gem 'acts-as-taggable-on', github: 'rubymonsters/acts-as-taggable-on'
+gem 'auto_html', github: 'dejan/auto_html'
 gem 'mandrill-api'
 gem 'simple_form', '~> 2.0.0.rc'
 gem 'globalize', '~> 3.1.0'
@@ -39,7 +39,7 @@ end
 group :development, :test do
   gem 'rspec-rails', '2.14.1'
   gem 'capybara', '~> 2.0.2'
-  gem 'cucumber-rails', '1.4.0', :require => false
+  gem 'cucumber-rails', '1.4.0', require: false
   gem 'pry'
   gem 'selenium-webdriver', "2.38.0"
 end
