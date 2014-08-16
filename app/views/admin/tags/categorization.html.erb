@@ -2,15 +2,18 @@
   <h1 class="title-profiles">Administration::<%= t(:tags, scope: "admin.dashboard.tags")%></h1>
   <%= form_tag(categorization_admin_tags_path, method: :get, class: 'form-inline') do %>
     <div class="row">
-      <div class="span12">
+      <div class="span6">
+        <hr>
+        <%= check_box_tag 'uncategorized', params[:uncategorized], params[:uncategorized] %>
+        <%= label_tag 'uncategorized', t(:tags_filter_option, scope: "admin.dashboard.tags"), class: 'checkbox inline font16' %>
+      </div>
+      <div class="span6">
+        <hr>
         <%= t(:tags_search, scope: "admin.dashboard.tags") %>
         <%= text_field_tag 'q', params[:q], class: 'input-medium search-query' %>
-        <br>
-        <%= check_box_tag 'uncategorized', params[:uncategorized], params[:uncategorized] %>
-        <%= label_tag 'uncategorized', t(:tags_filter_option, scope: "admin.dashboard.tags"), class: 'checkbox inline' %><br>
-        <br>
       </div>
     </div>
+    <br>
     <div class="row">
       <div class="span12">
         <%= "Kategorien:" %>
@@ -35,18 +38,19 @@
       <div class="span12">
         <%= label_tag "category_id_", class: 'radio' do %>
           <%= radio_button_tag( "category_id", '', params[:category_id].blank? ) %>
-          Mir doch egal!
+          <%= t(:tags_filter_default, scope: "admin.dashboard.tags") %>
         <% end %>
         <br>
       <%= submit_tag (t(:filter, scope:"general")), class: "btn btn-primary" %>
+      <hr>
       </div>
     <% end %>
     </div>
     <div class="span12 text-center">
       <% if @tags_all %>
-        <strong><%= @tags.total_count.to_s + " von " + @tags_all.count.to_s + " Tags."%></strong>
+        <strong><%= t(:tags_here_are, scope: "admin.dashboard.tags") + @tags.total_count.to_s + t(:tags_of, scope: "admin.dashboard.tags") + @tags_all.count.to_s + " tags."%></strong>
       <% else %>
-        <strong><%= @tags.total_count.to_s + " Tags."%></strong>
+        <strong><%= t(:tags_count, scope: "admin.dashboard.tags") + @tags.total_count.to_s + "."%></strong>
       <% end %>
       <%= paginate @tags %>
     </div>

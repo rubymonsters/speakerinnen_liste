@@ -34,9 +34,12 @@ en:
           show_all: "List all profiles"
       tags:
         tags: "Tags"
+        tags_of: " out of "
+        tags_here_are: "Here are "
         tags_search: "Search for tag"
-        tags_count: "The number of tags is "
+        tags_count: "The number of all tags is "
         tags_filter_option: "Show all tags without category"
+        tags_filter_default: "Show all categories"
   pages:
     home:
       search:
@@ -115,7 +118,7 @@ en:
       email: "Your email address"
       medialink_placeholder: "Please fill in only 21 characters"
       subject: "Subject"
-      send: "Send"      
+      send: "Send"
       body: "Your message"
       body_placeholder: "Please give a few details about your request: where, when, what, and other relevant information."
       notice: "Yay! Your message was sent."
