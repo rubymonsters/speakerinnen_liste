@@ -43,7 +43,11 @@
     <% end %>
     </div>
     <div class="span12 text-center">
-      <strong><%= t(:tags_count, scope: "admin.dashboard.tags") + "#{@tags.total_count}" + "."%></strong>
+      <% if @tags_all %>
+        <strong><%= @tags.total_count.to_s + " von " + @tags_all.count.to_s + " Tags."%></strong>
+      <% else %>
+        <strong><%= @tags.total_count.to_s + " Tags."%></strong>
+      <% end %>
       <%= paginate @tags %>
     </div>
   </div>
@@ -68,7 +72,7 @@
               </td>
             <% end %>
               <td>
-                | <%= link_to '<i class="icon-trash"></i>'.html_safe, admin_tag_path(tag.id), :method => :delete,
+                <%= link_to '<i class="icon-trash"></i>'.html_safe, admin_tag_path(tag.id), :method => :delete,
                   :confirm => "Do you want to delete the tag #{tag.name}?" %>
               </td>
           </tr>
