@@ -19,6 +19,11 @@
           <br>
         <% end %>
         <br>
+          <%= label_tag "category_id_", class: 'radio' do %>
+            <%= radio_button_tag( "category_id", '', params[:category_id].blank? ) %>
+            Mir doch egal!
+          <% end %>
+          <br>
         <%= submit_tag (t(:filter, scope:"general")), class: "btn btn-primary" %>
       <% end %>
     <br>
