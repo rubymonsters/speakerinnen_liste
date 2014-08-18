@@ -31,6 +31,7 @@ class ProfilesController < ApplicationController
   def show
     @profile = Profile.find(params[:id])
     @message = Message.new
+    @medialinks = @profile.medialinks.order(:position)
   end
 
   # action, view, routes should be deleted
