@@ -111,9 +111,9 @@ And you see a button labeled as: <filter>
 
 # languages are implemented in localization_steps.rb
  Examples:
-| language | area | filterTags                      | noOfSearchResults       | filter  |
-| English  | Tags | Search for tag                  | The number of tags is   | Filter  |
-| German   | Tags | Suche nach einem bestimmtem Tag | Die Anzahl der Tags ist | Filtern |
+| language | area | filterTags                      | noOfSearchResults           | filter  |
+| English  | Tags | Search for tag                  | The number of all tags is   | Filter  |
+| German   | Tags | Suche nach einem bestimmtem tag | Die Anzahl aller tags ist   | Filtern |
 
 Scenario Outline: page has header
 Given you <are_or_are_not> signed in as <role>
