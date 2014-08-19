@@ -32,6 +32,7 @@ class ProfilesController < ApplicationController
     @profile = Profile.find(params[:id])
     @message = Message.new
     @medialinks = @profile.medialinks.order(:position)
+    render status: 404 unless @profile.published?
   end
 
   # action, view, routes should be deleted
