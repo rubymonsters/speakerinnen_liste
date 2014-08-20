@@ -30,7 +30,7 @@ $space-between-cols-in-col-xs-mode: 50px;
 .photo-bar {
   padding:12% 0;
 
-  background-attachment:fixed;
+  /*background-attachment:fixed;*/
   -webkit-background-size:cover;
      -moz-background-size:cover;
        -o-background-size:cover;
@@ -59,6 +59,11 @@ $space-between-cols-in-col-xs-mode: 50px;
   text-align: right;
   font-size: 0.8em;
 }
+
+.start-page-images {
+  background-position: center center;
+  background-size: cover;
+  }
 
 #curie-photo {
   min-height: 600px;

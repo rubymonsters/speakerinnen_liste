@@ -1,23 +1,30 @@
 <div class="start-page">
-  <section class="photo-bar nested-links-hover" id="curie-photo" >
+  <section class="photo-bar nested-links-hover start-page-images" id="curie-photo" >
     <div class="curie-badge">
       <%= image_tag("badge2-bw.png", alt: "curie-badge") %>
     </div>
     <script>
-      $(window).scroll(function() {
-        if ($(this).scrollTop() > 100) {
-          $(".curie-badge").stop().animate({ opacity: 0 }, 50);
-        } else {
-          $(".curie-badge").stop().animate({ opacity: 1 }, 50);
+        if ($(window).width() <= 980 && $(window).height() <= 1500){
+          $(".curie-badge").hide();
         }
-        //stops badge from covering other links
-        if ($(this).scrollTop() > 700) {
-         $(".curie-badge").hide();
-        } else {
-         $(".curie-badge").show();
-        }
-      });
-    </script>
+        $(window).scroll(function() {
+          if ($(window).width() > 980 || $(window).height() <= 700){
+            if ($(this).scrollTop() > 100) {
+              $(".curie-badge").stop().animate({ opacity: 0 }, 50);
+            } else {
+              $(".curie-badge").stop().animate({ opacity: 1 }, 50);
+            }
+            //stops badge from covering other links
+            // if ($(this).scrollTop() > 700) {
+            //  $(".curie-badge").hide();
+            // } else {
+            //  $(".curie-badge").show();
+            // }
+          } else {
+            $(".curie-badge").hide();
+          }
+        });
+      </script>
     <div class="full-width-container">
       <div class="full-width-row">
         <div class="sibling-vmargin-xl">
@@ -73,7 +80,7 @@
     </div>
   </section>
 
-  <section class="photo-bar nested-links-hover" id="coaching-photo">
+  <section class="photo-bar nested-links-hover start-page-images" id="coaching-photo">
     <div class="full-width-container">
       <div class="full-width-row">
         <div class="text-block-on-photo sibling-vmargin-xl">
@@ -119,7 +126,7 @@
     </div>
   </section>
 
-  <section class="photo-bar nested-links-hover" id="speakerin-photo">
+  <section class="photo-bar nested-links-hover start-page-images" id="speakerin-photo">
     <div class="full-width-container">
       <div class="full-width-row">
         <div class="text-block-on-photo sibling-vmargin-xl">

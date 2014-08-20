@@ -1,20 +1,57 @@
 <div class="container profiles">
   <h1 class="title-profiles">Administration::<%= t(:tags, scope: "admin.dashboard.tags")%></h1>
-  <div class="row">
-    <div class="span4">
-      <%= form_tag(categorization_admin_tags_path, method: :get, class: 'form-inline') do %>
+  <%= form_tag(categorization_admin_tags_path, method: :get, class: 'form-inline') do %>
+    <div class="row">
+      <div class="span6">
+        <hr>
+        <%= check_box_tag 'uncategorized', params[:uncategorized], params[:uncategorized] %>
+        <%= label_tag 'uncategorized', t(:tags_filter_option, scope: "admin.dashboard.tags"), class: 'checkbox inline font16' %>
+      </div>
+      <div class="span6">
+        <hr>
         <%= t(:tags_search, scope: "admin.dashboard.tags") %>
         <%= text_field_tag 'q', params[:q], class: 'input-medium search-query' %>
-        <br>
-        <%= check_box_tag 'uncategorized', params[:uncategorized], params[:uncategorized] %>
-        <%= label_tag 'uncategorized', t(:tags_filter_option, scope: "admin.dashboard.tags"), class: 'checkbox inline' %><br>
-        <br>
-        <%= submit_tag (t(:filter, scope:"general")), class: "btn" %>
-      <% end %>
-    <br>
+      </div>
     </div>
-    <div class="span8 text-center">
-      <strong><%= t(:tags_count, scope: "admin.dashboard.tags") + "#{@tags.total_count}" + "."%></strong>
+    <br>
+    <div class="row">
+      <div class="span12">
+        <%= "Kategorien:" %>
+      </div>
+    </div>
+    <div class="row">
+      <% @categories.in_groups_of(3, false) do |row_categories| %>
+        <div class="span3">
+        <% row_categories.each do |category| %>
+          <%= label_tag "category_id_#{category.id}", class: 'radio' do %>
+            <%= radio_button_tag( "category_id", category.id, params[:category_id] == category.id.to_s ) %>
+            <%= category.name %>
+            <br>
+          <% end %>
+          <br>
+        <% end %>
+        </div>
+      <% end %>
+      </div>
+      <br>
+    <div class="row">
+      <div class="span12">
+        <%= label_tag "category_id_", class: 'radio' do %>
+          <%= radio_button_tag( "category_id", '', params[:category_id].blank? ) %>
+          <%= t(:tags_filter_default, scope: "admin.dashboard.tags") %>
+        <% end %>
+        <br>
+      <%= submit_tag (t(:filter, scope:"general")), class: "btn btn-primary" %>
+      <hr>
+      </div>
+    <% end %>
+    </div>
+    <div class="span12 text-center">
+      <% if @tags_all %>
+        <strong><%= t(:tags_here_are, scope: "admin.dashboard.tags") + @tags.total_count.to_s + t(:tags_of, scope: "admin.dashboard.tags") + @tags_all.count.to_s + " tags."%></strong>
+      <% else %>
+        <strong><%= t(:tags_count, scope: "admin.dashboard.tags") + @tags.total_count.to_s + "."%></strong>
+      <% end %>
       <%= paginate @tags %>
     </div>
   </div>
@@ -39,7 +76,7 @@
               </td>
             <% end %>
               <td>
-                | <%= link_to '<i class="icon-trash"></i>'.html_safe, admin_tag_path(tag.id), :method => :delete,
+                <%= link_to '<i class="icon-trash"></i>'.html_safe, admin_tag_path(tag.id), :method => :delete,
                   :confirm => "Do you want to delete the tag #{tag.name}?" %>
               </td>
           </tr>

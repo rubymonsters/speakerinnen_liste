@@ -42,26 +42,37 @@ class Admin::TagsController < Admin::BaseController
   end
 
   def categorization
-    if params[:q] && params[:uncategorized]
+    if (params[:category_id]).present?
+        @tags       = ActsAsTaggableOn::Tag
+                      .includes(:categories).where('categories.id = ?', params[:category_id])
+                      .order('tags.name ASC')
+                      .page(params[:page])
+                      .per(20)
+        @tags_all   = ActsAsTaggableOn::Tag.all
+    elsif (params[:q]).present? && (params[:uncategorized]).present?
         @tags       = ActsAsTaggableOn::Tag
                       .where("tags.name ILIKE ?", "%" + params[:q] + "%")
                       .includes(:categories).where('categories.id IS NULL')
                       .order('tags.name ASC')
                       .page(params[:page])
                       .per(20)
-    elsif params[:q]
-        @tags       = ActsAsTaggableOn::Tag.where("name ILIKE ?", "%" + params[:q] + "%")
+        @tags_all   = ActsAsTaggableOn::Tag.all
+    elsif (params[:q]).present?
+        @tags       = ActsAsTaggableOn::Tag
+                      .where("tags.name ILIKE ?", "%" + params[:q] + "%")
                       .order('tags.name ASC')
                       .page(params[:page])
                       .per(20)
-    elsif params[:uncategorized]
+        @tags_all   = ActsAsTaggableOn::Tag.all
+    elsif (params[:uncategorized]).present?
         @tags       = ActsAsTaggableOn::Tag
                       .includes(:categories).where('categories.id IS NULL')
                       .order('tags.name ASC')
                       .page(params[:page])
                       .per(20)
+        @tags_all   = ActsAsTaggableOn::Tag.all
     else
-      @tags       = ActsAsTaggableOn::Tag.order('name ASC').page(params[:page]).per(20)
+        @tags       = ActsAsTaggableOn::Tag.order('name ASC').page(params[:page]).per(20)
     end
     @categories = Category.all
   end

@@ -35,9 +35,12 @@ de:
           show_all: "Liste aller Profile"
       tags:
         tags: "Tags"
-        tags_search: "Suche nach einem bestimmtem Tag"
-        tags_count: "Die Anzahl der Tags ist "
-        tags_filter_option: "Alle Tags ohne Kategorien anzeigen"
+        tags_of: " von "
+        tags_here_are: "Du siehst "
+        tags_search: "Suche nach einem bestimmtem tag:"
+        tags_count: "Die Anzahl aller tags ist "
+        tags_filter_option: "Alle tags ohne Kategorien anzeigen"
+        tags_filter_default: "Alle Kategorien auswählen"
   pages:
     home:
       search:
@@ -50,7 +53,7 @@ de:
       speaker_shoutout: "Hast Du etwas Interessantes zu erzählen?"
       speaker_text: "Registriere Dich auf der SpeakerinnenListe!"
       speakers:
-        new_speaker_heading: "Unsere neuesten Speakerinnen*"
+        new_speaker_heading: "Unsere Speakerinnen*"
         speaker_text: "Keine Ausreden mehr für Panels ohne Frauen!"
         speaker_index: "Alle Speakerinnen* anschauen >>"
         categories: "Kategorien und Themen >>"
@@ -137,6 +140,7 @@ de:
       title: "Presse über uns"
     imprint:
       title: "Impressum"
+      privacy: "Wir setzen Piwik ein, um anonymisierte Daten von AnwenderInnen zu erheben. Diese Daten helfen uns die Gebrauchstauglichkeit der Webseite zu verbessern."
   layouts:
     application:
       title: "Speakerinnen*-Liste"
@@ -198,7 +202,7 @@ de:
     medialinks:
       edit: "Medialinks bearbeiten"
     edit:
-      show: "Eigens Profil anzeigen"
+      show: "Eigenes Profil anzeigen"
       home: "Alle Speakerinnen* anzeigen"
       back: "Zurück"
     index:

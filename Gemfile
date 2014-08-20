@@ -15,7 +15,7 @@ gem 'deadweight', require: 'deadweight/hijack/rails'
 gem 'kaminari'
 
 gem 'pg'
-gem 'devise'
+gem 'devise', '~> 3.1.1'
 gem 'omniauth-twitter'
 gem 'carrierwave'
 gem 'fog', '~> 1.3'
@@ -28,6 +28,7 @@ gem 'auto_html', github: 'dejan/auto_html'
 gem 'mandrill-api'
 gem 'simple_form', '~> 2.0.0.rc'
 gem 'globalize', '~> 3.1.0'
+gem 'rack-piwik', '~> 0.3.0', require: 'rack/piwik'
 
 group :development do
   gem 'letter_opener'
@@ -39,7 +40,7 @@ end
 group :development, :test do
   gem 'rspec-rails', '2.14.1'
   gem 'capybara', '~> 2.0.2'
-  gem 'cucumber-rails', '1.4.0', :require => false
+  gem 'cucumber-rails', '1.4.0', require: false
   gem 'pry'
   gem 'selenium-webdriver', "2.38.0"
 end

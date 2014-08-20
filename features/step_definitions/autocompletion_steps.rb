@@ -18,7 +18,7 @@
 # 2) When #
 ###########
 
-When /^you start typing "(.+)" in autocomplete field$/ do |input|
+When /^you start typing (.+) in autocomplete field$/ do |input|
   #scenarios which use this step definition have to be tagged with @javascript
   field = page.all(:xpath, '//ul[contains(@class,"tagit")]//li[contains(@class,"tagit-new")]/input[contains(@class,"ui-autocomplete-input")]').first
   field.set(input)
