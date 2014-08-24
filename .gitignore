@@ -15,7 +15,6 @@
 /tmp
 
 # Ignore the public directory
-/public
 /config/database.yml
 # /db/structure.sql
 
