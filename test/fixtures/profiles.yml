@@ -9,6 +9,7 @@ one:
   city: Berlin
   twitter: MyString
   talks: CCC
+  published: true
 
 two:
   firstname: Inge

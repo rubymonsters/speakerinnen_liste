@@ -14,9 +14,14 @@ class ProfilesControllerTest < ActionController::TestCase
     assert_not_nil assigns(:profiles)
   end
 
-  test "should show profile" do
+  test "should show published profile" do
     get :show, id: @profile.id
     assert_response :success
+  end
+
+  test "should not show unpublished profile" do
+    get :show, id: @profile2.id
+    assert_response :redirect
   end
 
   # edit
