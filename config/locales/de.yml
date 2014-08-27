@@ -180,12 +180,13 @@ de:
       created: "Profil wurde erfolgreich erstellt."
       updated: "Profil wurde erfolgreich geändert."
       destroyed: "Profil wurde erfolgreich gelöscht."
-      no_permission: "Du hast nicht die Rechte, das Profil zu bearbeiten"
+      no_permission: "Du hast nicht die Rechte, das Profil zu bearbeiten."
+      show_no_permission: "Du hast nicht die Rechte, das Profil anzuschauen."
     medialink:
       created: "Medialink wurde erfolgreich erstellt."
       updated: "Medialink wurde erfolgreich geändert."
       destroyed: "Medialink wurde erfolgreich gelöscht."
-      no_permission: "Du hast nicht die Rechte, den Medialink zu bearbeiten"
+      no_permission: "Du hast nicht die Rechte, den Medialink zu bearbeiten."
   activerecord:
     attributes:
       profile:

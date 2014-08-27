@@ -4,7 +4,7 @@ class ProfilesController < ApplicationController
   include ActsAsTaggableOn::TagsHelper
 
 
-  before_filter :require_permission, :only=> [:edit, :destroy, :update]
+  before_filter :require_permission, only: [:edit, :destroy, :update]
 
   def index
     if params[:topic]
@@ -32,7 +32,11 @@ class ProfilesController < ApplicationController
     @profile = Profile.find(params[:id])
     @message = Message.new
     @medialinks = @profile.medialinks.order(:position)
-    render status: 404 unless @profile.published?
+
+    if !@profile.published?
+      redirect_to profiles_url, notice: (I18n.t("flash.profiles.show_no_permission")) unless current_profile && (!current_profile.admin? || current_profile.id != params[:id])
+    end
+
   end
 
   # action, view, routes should be deleted

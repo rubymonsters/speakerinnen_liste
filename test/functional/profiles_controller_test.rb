@@ -37,13 +37,13 @@ class ProfilesControllerTest < ActionController::TestCase
 
     get :edit, id: @profile2.id
     assert_response :redirect
-    assert_equal 'Du hast nicht die Rechte, das Profil zu bearbeiten', flash[:notice]
+    assert_equal 'Du hast nicht die Rechte, das Profil zu bearbeiten.', flash[:notice]
   end
 
   test "should not be able edit profile if user is not signed in" do
     get :edit, id: @profile2.id
     assert_response :redirect
-    assert_equal 'Du hast nicht die Rechte, das Profil zu bearbeiten', flash[:notice]
+    assert_equal 'Du hast nicht die Rechte, das Profil zu bearbeiten.', flash[:notice]
   end
 
   test "should get edit if user signed in as admin" do
