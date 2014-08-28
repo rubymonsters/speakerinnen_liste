@@ -30,11 +30,13 @@ class ProfilesController < ApplicationController
 
   def show
     @profile = Profile.find(params[:id])
-    @message = Message.new
-    @medialinks = @profile.medialinks.order(:position)
+    if @profile.published? or can_edit_profile?(current_profile, @profile)
 
-    if !@profile.published?
-      redirect_to profiles_url, notice: (I18n.t("flash.profiles.show_no_permission")) unless current_profile && (!current_profile.admin? || current_profile.id != params[:id])
+      @message = Message.new
+      @medialinks = @profile.medialinks.order(:position)
+
+    else
+      redirect_to profiles_url, notice: (I18n.t("flash.profiles.show_no_permission"))
     end
 
   end
