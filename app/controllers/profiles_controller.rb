@@ -30,6 +30,7 @@ class ProfilesController < ApplicationController
 
   def show
     @profile = Profile.find(params[:id])
+
     if @profile.published? or can_edit_profile?(current_profile, @profile)
 
       @message = Message.new

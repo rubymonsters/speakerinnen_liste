@@ -143,7 +143,6 @@ class ProfilesControllerTest < ActionController::TestCase
   # test "twitter @ symbol correcty removed" do
   #   input_hash={:twitter => "@nickname", :email => "me@me.com"}
   #   expected_hash={:twitter => "nickname", :email => "me@me.com"}
-
   #   assert_equal expected_hash, ProfilesController.clean_twitter(input_hash)
   # end
 end

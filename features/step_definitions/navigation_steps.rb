@@ -152,3 +152,12 @@ Then /^you see links labeled as: ((.+)(,.+)*)$/ do |match, unused, unused2|
     expect(page).to have_link(link)
   end
 end
+
+When(/^you visit a unpublished profile$/) do
+  visit ('/profile/1')
+end
+
+
+
+
+
