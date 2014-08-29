@@ -27,7 +27,7 @@
           <tr>
             <td>
               <%= link_to tag.name, edit_admin_tag_path(tag.id, page: params[:page]) %>
-              <%= tag.count %>
+              <%= tag_usage(tag) %>
             </td>
             <% @categories.each do |category| %>
               <td>

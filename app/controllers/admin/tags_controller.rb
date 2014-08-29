@@ -1,4 +1,5 @@
 class Admin::TagsController < Admin::BaseController
+  helper_method :tag_usage
   def index
     @tags       = ActsAsTaggableOn::Tag.all.sort_by {|tag| tag.name.downcase}
     @categories = Category.all
@@ -16,7 +17,7 @@ class Admin::TagsController < Admin::BaseController
     elsif @tag.update_attributes(params[:tag])
       redirect_to categorization_admin_tags_path(page: params[:page]), notice: ("'#{@tag.name}' was updated.")
     else
-      render action: "edit"
+      render action: 'edit'
     end
   end
 
@@ -51,7 +52,7 @@ class Admin::TagsController < Admin::BaseController
         @tags_all   = ActsAsTaggableOn::Tag.all
     elsif (params[:q]).present? && (params[:uncategorized]).present?
         @tags       = ActsAsTaggableOn::Tag
-                      .where("tags.name ILIKE ?", "%" + params[:q] + "%")
+                      .where('tags.name ILIKE ?', '%' + params[:q] + '%')
                       .includes(:categories).where('categories.id IS NULL')
                       .order('tags.name ASC')
                       .page(params[:page])
@@ -59,7 +60,7 @@ class Admin::TagsController < Admin::BaseController
         @tags_all   = ActsAsTaggableOn::Tag.all
     elsif (params[:q]).present?
         @tags       = ActsAsTaggableOn::Tag
-                      .where("tags.name ILIKE ?", "%" + params[:q] + "%")
+                      .where('tags.name ILIKE ?', '%' + params[:q] + '%')
                       .order('tags.name ASC')
                       .page(params[:page])
                       .per(20)
@@ -75,5 +76,10 @@ class Admin::TagsController < Admin::BaseController
         @tags       = ActsAsTaggableOn::Tag.order('name ASC').page(params[:page]).per(20)
     end
     @categories = Category.all
+  end
+
+  def tag_usage(current_tag)
+    tag = Profile.tag_counts_on(:topics).find(current_tag.id)
+    tag.count
   end
 end
