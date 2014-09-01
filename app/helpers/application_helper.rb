@@ -20,5 +20,4 @@ module ApplicationHelper
         yield tag, classes[index.nan? ? 0 : index.round]
       end
     end
-
 end

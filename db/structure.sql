@@ -309,7 +309,8 @@ ALTER SEQUENCE taggings_id_seq OWNED BY taggings.id;
 
 CREATE TABLE tags (
     id integer NOT NULL,
-    name character varying(255)
+    name character varying(255),
+    taggings_count integer DEFAULT 0
 );
 
 
@@ -502,17 +503,24 @@ CREATE UNIQUE INDEX index_profiles_on_reset_password_token ON profiles USING btr
 
 
 --
--- Name: index_taggings_on_tag_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX index_taggings_on_tag_id ON taggings USING btree (tag_id);
-
-
---
 -- Name: index_taggings_on_taggable_id_and_taggable_type_and_context; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_taggings_on_taggable_id_and_taggable_type_and_context ON taggings USING btree (taggable_id, taggable_type, context);
+
+
+--
+-- Name: index_tags_on_name; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_tags_on_name ON tags USING btree (name);
+
+
+--
+-- Name: taggings_idx; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX taggings_idx ON taggings USING btree (tag_id, taggable_id, taggable_type, context, tagger_id, tagger_type);
 
 
 --
@@ -588,3 +596,9 @@ INSERT INTO schema_migrations (version) VALUES ('20140505155338');
 INSERT INTO schema_migrations (version) VALUES ('20140506200134');
 
 INSERT INTO schema_migrations (version) VALUES ('20140602180400');
+
+INSERT INTO schema_migrations (version) VALUES ('20140901194313');
+
+INSERT INTO schema_migrations (version) VALUES ('20140901194314');
+
+INSERT INTO schema_migrations (version) VALUES ('20140901194315');
