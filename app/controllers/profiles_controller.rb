@@ -6,6 +6,8 @@ class ProfilesController < ApplicationController
 
   before_filter :require_permission, :only=> [:edit, :destroy, :update]
 
+  # new and destroy actions are performed by devise gem
+
   def index
     if params[:topic]
       @profiles = profiles_for_scope(params[:topic])
@@ -14,6 +16,13 @@ class ProfilesController < ApplicationController
     end
   end
 
+=begin 
+  profiles are displayed by a chosen category
+  or
+  all profiles are displayed if 
+  no profiles with tags in this category exist 
+  or if tags are not assigned to this category
+=end
   def category
     @category = Category.find(params[:category_id])
     @tags     = @category.tags
@@ -24,18 +33,13 @@ class ProfilesController < ApplicationController
       @tags = @tags.select { |t| @published_tags.include?(t.to_s) }
     else
       @profiles = profiles_for_index
-      redirect_to profiles_url, notice: ("No Tag for that Category found!")
+      redirect_to profiles_url, notice: (I18n.t("flash.profiles.category"))
     end
   end
 
   def show
     @profile = Profile.find(params[:id])
     @message = Message.new
-  end
-
-  # action, view, routes should be deleted
-  def new
-    @profile = Profile.new
   end
 
   # should reuse the devise view
@@ -48,16 +52,10 @@ class ProfilesController < ApplicationController
     @profile = Profile.find(params[:id])
     if @profile.update_attributes(params[:profile])
       redirect_to @profile, notice: (I18n.t("flash.profiles.updated"))
-    else current_profile
+    else
       build_missing_translations(@profile)
       render action: "edit"
     end
-  end
-
-  def destroy
-    @profile = Profile.find(params[:id])
-    @profile.destroy
-    redirect_to profiles_url, notice: (I18n.t("flash.profiles.destroyed"))
   end
 
   def require_permission

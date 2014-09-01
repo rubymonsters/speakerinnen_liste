@@ -20,7 +20,7 @@ describe "navigation" do
     context "signed in as normal user" do
       let(:user) { FactoryGirl.create(:user) }
       before do
-        sign_in user, language
+        sign_in_with_language user, language
       end
       it_should_behave_like "successful sign in"
       it { should have_no_link('Admin',admin_root_path) }
@@ -32,13 +32,12 @@ describe "navigation" do
     context "signed in as admin" do
       let(:user) { FactoryGirl.create(:admin) }
       before do
-        sign_in user, language
+        sign_in_with_language user, language
       end
       it_should_behave_like "successful sign in"
       it { should have_link('Admin',admin_root_path) }
 
       describe "access admin actions" do
-        #binding.pry
         before { click_on 'Admin' }
         #find(:xpath, "//a[contains(@href,'#{admin_root_path}')]").click
         it { should have_content('Administration') }
