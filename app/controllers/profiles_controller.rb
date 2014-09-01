@@ -12,6 +12,7 @@ class ProfilesController < ApplicationController
     else
       @profiles = profiles_for_index
     end
+    @tags = ActsAsTaggableOn::Tag.most_used(100)
   end
 
   def category
