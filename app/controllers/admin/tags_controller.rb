@@ -1,5 +1,5 @@
 class Admin::TagsController < Admin::BaseController
-  helper_method :tag_usage
+
   def index
     @tags       = ActsAsTaggableOn::Tag.all.sort_by {|tag| tag.name.downcase}
     @categories = Category.all
@@ -78,8 +78,4 @@ class Admin::TagsController < Admin::BaseController
     @categories = Category.all
   end
 
-  def tag_usage(current_tag)
-    tag = Profile.tag_counts_on(:topics).find(current_tag.id)
-    tag.count
-  end
 end
