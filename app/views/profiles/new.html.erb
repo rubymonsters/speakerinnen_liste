@@ -1,20 +1,21 @@
-<div id="container">
-  <div id="badge-log">
-    <div id="badge-inner">
+<div id='container'>
+  <div id='badge-log'>
+    <div id='badge-inner'>
 
-      <div id="logo">
-        <%= image_tag("logo8.png", id:"logo8") %>
+      <div id='logo'>
+        <%= image_tag('logo8.png', id: 'logo8') %>
       </div>
 
-      <div id="login">
+      <div id='login'>
         <%= form_for(Profile.new) do |f| %>
           <div class="control-group">
             <div class="controls">
-              <%= f.email_field :email, :autofocus => true, inner_html { class:"form-control" }, placeholder: "Email" %>
+              <%= f.email_field :email, autofocus: true, inner_html { class:"form-control" }, placeholder: "Email" %>
             </div>
           </div>
 
           <% if f.object.password_required? %>
+
             <div class="control-group">
               <div class="controls">
                 <%= f.password_field :password, class:"form-control", placeholder: t(:password, scope: "devise.registrations.new") %>
@@ -31,10 +32,11 @@
               <%= f.submit("Sign up", class: "btn btn-primary")%>
             </div>
 
-            <div class="control-group">
+            <div class='control-group'>
               <%- if devise_mapping.omniauthable? %>
                 <%- Profile.omniauth_providers.each do |provider| %>
-                  <%= link_to "Or sign up with #{provider.to_s.titleize}", omniauth_authorize_path(:profile, provider), class: 'btn' %>
+                  <%= link_to 'Or sign up with #{provider.to_s.titleize}',
+                  omniauth_authorize_path(:profile, provider), class: 'btn' %>
                 <% end -%>
              <% end -%>
             </div>
@@ -44,7 +46,7 @@
     </div>
   </div>
 
-  <div class="span5 offset1">
+  <div class='span5 offset1'>
     <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
       <%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(:profile) %><br />
     <% end -%>

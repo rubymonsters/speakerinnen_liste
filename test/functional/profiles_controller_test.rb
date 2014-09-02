@@ -14,9 +14,14 @@ class ProfilesControllerTest < ActionController::TestCase
     assert_not_nil assigns(:profiles)
   end
 
-  test "should show profile" do
+  test "should show published profile" do
     get :show, id: @profile.id
     assert_response :success
+  end
+
+  test "should not show unpublished profile" do
+    get :show, id: @profile2.id
+    assert_response :redirect
   end
 
   # edit
@@ -37,13 +42,13 @@ class ProfilesControllerTest < ActionController::TestCase
 
     get :edit, id: @profile2.id
     assert_response :redirect
-    assert_equal 'Du hast nicht die Rechte, das Profil zu bearbeiten', flash[:notice]
+    assert_equal 'Du hast nicht die Rechte, das Profil zu bearbeiten.', flash[:notice]
   end
 
   test "should not be able edit profile if user is not signed in" do
     get :edit, id: @profile2.id
     assert_response :redirect
-    assert_equal 'Du hast nicht die Rechte, das Profil zu bearbeiten', flash[:notice]
+    assert_equal 'Du hast nicht die Rechte, das Profil zu bearbeiten.', flash[:notice]
   end
 
   test "should get edit if user signed in as admin" do
@@ -138,7 +143,6 @@ class ProfilesControllerTest < ActionController::TestCase
   # test "twitter @ symbol correcty removed" do
   #   input_hash={:twitter => "@nickname", :email => "me@me.com"}
   #   expected_hash={:twitter => "nickname", :email => "me@me.com"}
-
   #   assert_equal expected_hash, ProfilesController.clean_twitter(input_hash)
   # end
 end
