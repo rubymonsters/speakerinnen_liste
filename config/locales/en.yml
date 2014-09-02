@@ -177,6 +177,9 @@ en:
       login: "Log in"
   contact:
     form:
+      title: "Contact"
+      recipient: "Email to %{recipient}"
+      default_recipient: "Team Speakerinnen"
       name: "Your name"
       name_placeholder: ""
       email: "Your email address"

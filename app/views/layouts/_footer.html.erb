@@ -5,7 +5,9 @@
       <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="footer-links bordered-text-block">
             <%= t(:address, scope: "pages.home.footer").html_safe %> |
-            <%= link_to t(:contact_link, scope: "pages.home.footer"), contact_path %> |
+            <a data-toggle="modal" href="#contact">
+              <%= t(:contact_link, scope: "pages.home.footer") %>
+            </a> |
             <%= t(:github, scope: "pages.home.footer").html_safe %> |
             <%= link_to t(:title, scope: "pages.imprint"), impressum_path %> |
             <%= t(:devblog, scope: "pages.home.footer").html_safe %>
@@ -19,3 +21,5 @@
     </div>
   </div>
 </div>
+
+<%= render partial: 'contact/modalform', locals: { url: contact_path(locale: I18n.locale), recipient: t(:default_recipient, scope: "contact.form") } %>

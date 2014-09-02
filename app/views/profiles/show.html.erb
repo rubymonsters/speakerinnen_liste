@@ -54,7 +54,7 @@
     <div class="span3">
       <a data-toggle="modal" href="#contact" class="btn  btn-large buttons-modals">
         <span class="icon icon-envelope"></span>
-        <%= t(:contact, scope: "profiles.profile") %>
+        <%= t(:title, scope: "contact.form") %>
       </a>
 
       <% if current_profile == @profile %>
@@ -100,22 +100,4 @@
   </div>
 </div>
 
-<!-- This is the contact form -->
-<div class="modal fade" id="contact">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h5 class="modal-title"><%= "#{t(".contact")} #{@profile.fullname}:"%></h5>
-      </div>
-      <div class="modal-body">
-        <div class="span6">
-          <%= render partial: 'contact/form', locals: {url: contact_profile_path(@profile)} %>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><%= t(:close, scope: "general") %></button>
-      </div>
-    </div>
-  </div>
-</div>
+<%= render partial: 'contact/modalform', locals: {url: contact_profile_path(@profile), recipient: @profile.fullname} %>

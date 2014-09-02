@@ -13,5 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui
+//= require bootstrap/modal
 //= require tag-it/tag-it
 //= require_tree .

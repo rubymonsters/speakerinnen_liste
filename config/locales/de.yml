@@ -160,6 +160,9 @@ de:
       login: "Anmelden"
   contact:
     form:
+      title: "Kontakt"
+      recipient: "E-Mail an %{recipient}"
+      default_recipient: "Team Speakerinnen"
       name: "Dein Name"
       name_placeholder: ""
       medialink_placeholder: "Bitte nur 21 Zeichen eingeben"
