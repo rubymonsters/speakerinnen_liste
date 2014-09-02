@@ -1,6 +1,6 @@
 module SignInHelper
 	# default locale of the site is 'de', so we set the same default here
-	def sign_in(user,language='de')
+	def sign_in_with_language(user,language='de')
 			visit new_profile_session_path
 			lang_map = { 'de' => 'DEU', 'en' => 'ENG' }
 			if page.has_link?(lang_map[language])
