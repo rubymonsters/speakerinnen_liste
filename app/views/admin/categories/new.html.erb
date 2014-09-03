@@ -1,24 +1,20 @@
-<div class="container profiles">
-  <div class="row">
-    <div class="span12">
-      <h1 class="title-profiles">Administration::<%= t(:categories, scope: "admin.dashboard.categories")%>::<%= t(:add, scope: "general")%></h1>
-    </div>
-  </div>
-  <div class="row">
-    <div class="span6">
-      <%= form_for [:admin, @category], html: {class: 'form-vertical'} do |f| %>
+<div class="full-width-container">
+  <div class="full-width-row administration">
+
+      <div class="breadcrumb-navigation">Administration::<%= t(:categories, scope: "admin.dashboard.categories")%>::<%= t(:add, scope: "general")%></div>
+      <%= form_for [:admin, @category], html: {class: 'form-vertical form'} do |f| %>
       <div class="control-group">
         <%= t(:category_name, scope: "admin.dashboard.categories") %>
         <div class="controls">
-          <%= f.text_field :name, class: "input-xxlarge" %>
+          <%= f.text_field :name, class: "form-control" %>
         </div>
       </div>
-      <div class="controls">
-        <%= f.submit t(:add, scope: "general"), class:"btn btn-info" %>
+      <div class="control-group">
+        <div class="controls">
+          <%= f.submit t(:add, scope: "general"), class:"btn btn-primary" %>
+        </div>
       </div>
       <% end %>
-    </div>
-    <div class="span6">
-    </div>
+
   </div>
 </div>
