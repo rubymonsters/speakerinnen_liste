@@ -39,7 +39,7 @@ en:
         tags_here_are: "Here are "
         tags_search: "Search for tag"
         tags_count: "The number of all tags is "
-        tags_filter_option: "Show all tags without category"
+        tags_filter_option: "All tags without category"
         tags_filter_default: "Show all categories"
   pages:
     home:
