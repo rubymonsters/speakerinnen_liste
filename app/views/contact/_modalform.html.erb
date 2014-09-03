@@ -1,0 +1,32 @@
+<!-- This is the contact form -->
+<div class="modal fade" id="contact" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content contact-form">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h5 class="modal-title"><%= t(:title, scope: 'contact.form') %></h5>
+      </div>
+      <% @message = Message.new unless @message %>
+      <%= form_for @message, url: url, html: {id: "no_id", class: "form-vertical form"} do |f| %>
+      <div class="modal-body">
+          <h3 class="form-title"><%= t(:recipient, scope: 'contact.form').gsub!('%{recipient}',recipient) %></h3>
+            <%= f.label :name, t(:name, scope: 'contact.form') %>
+            <%= f.text_field :name, placeholder: t(:name_placeholder, scope: 'contact.form'), class: 'form-control' %>
+
+            <%= f.label :email, t(:email, scope: 'contact.form'), id: 'message_email' %>
+            <%= f.text_field :email, class: 'form-control' %>
+
+            <%= f.label HONEYPOT_EMAIL_ATTR_NAME, t(:email, scope: 'contact.form') %>
+            <%= f.text_field HONEYPOT_EMAIL_ATTR_NAME, class: 'form-control' %>
+
+            <%= f.label :subject, t(:subject, scope: 'contact.form') %>
+            <%= f.text_field :subject, class: 'form-control' %>
+
+            <%= f.label :body, t(:body, scope: 'contact.form') %>
+            <%= f.text_area :body, class: 'form-control', placeholder: t(:body_placeholder, scope: 'contact.form') %>
+            <%= f.submit t(:send, scope: 'contact.form'), class:"btn btn-large btn-primary"%>
+      </div>    
+      <% end %>
+    </div>
+  </div>
+</div>
