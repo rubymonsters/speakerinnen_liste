@@ -44,20 +44,18 @@ class Admin::TagsController < Admin::BaseController
 
   def categorization
     relation = ActsAsTaggableOn::Tag.order('tags.name ASC').page(params[:page]).per(20)
+    @tags_count = ActsAsTaggableOn::Tag.count
     if (params[:category_id]).present?
       @tags       = relation.includes(:categories).where('categories.id = ?', params[:category_id])
-      @tags_count = ActsAsTaggableOn::Tag.count
     elsif (params[:q]).present? && (params[:uncategorized]).present?
       @tags       = relation.where('tags.name ILIKE ?', '%' + params[:q] + '%').includes(:categories).where('categories.id IS NULL')
-      @tags_count = ActsAsTaggableOn::Tag.count
     elsif (params[:q]).present?
       @tags       = relation.where('tags.name ILIKE ?', '%' + params[:q] + '%')
-      @tags_count = ActsAsTaggableOn::Tag.count
     elsif (params[:uncategorized]).present?
       @tags       = relation.includes(:categories).where('categories.id IS NULL')
-      @tags_count = ActsAsTaggableOn::Tag.count
     else
       @tags = relation
+      @tags_count = nil
     end
     @categories = Category.all
   end
