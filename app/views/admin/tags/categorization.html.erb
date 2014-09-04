@@ -7,13 +7,13 @@
 
   <div class='row'>
     <div class='span12 text-center'>
-      <% if @tags_all %>
+      <% if @tags_count %>
         <strong>
-          <%= t(:tags_here_are, scope: 'admin.dashboard.tags') + @tags.total_count.to_s + t(:tags_of, scope: 'admin.dashboard.tags') + @tags_all.count.to_s + ' tags.'%>
+          <%= t(:tags_here_are, scope: 'admin.dashboard.tags') + @tags.total_count.to_s + t(:tags_of, scope: 'admin.dashboard.tags') + @tags_count.to_s + ' tags.' %>
         </strong>
       <% else %>
         <strong>
-          <%= t(:tags_count, scope: 'admin.dashboard.tags') + @tags.total_count.to_s + '.'%>
+          <%= t(:tags_count, scope: 'admin.dashboard.tags') + @tags.total_count.to_s + '.' %>
         </strong>
       <% end %>
       <%= paginate @tags %>

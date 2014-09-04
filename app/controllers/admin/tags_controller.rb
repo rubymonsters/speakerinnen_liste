@@ -49,7 +49,7 @@ class Admin::TagsController < Admin::BaseController
                       .order('tags.name ASC')
                       .page(params[:page])
                       .per(20)
-        @tags_all   = ActsAsTaggableOn::Tag.all
+        @tags_count = ActsAsTaggableOn::Tag.count
     elsif (params[:q]).present? && (params[:uncategorized]).present?
         @tags       = ActsAsTaggableOn::Tag
                       .where('tags.name ILIKE ?', '%' + params[:q] + '%')
@@ -57,21 +57,21 @@ class Admin::TagsController < Admin::BaseController
                       .order('tags.name ASC')
                       .page(params[:page])
                       .per(20)
-        @tags_all   = ActsAsTaggableOn::Tag.all
+        @tags_count = ActsAsTaggableOn::Tag.count
     elsif (params[:q]).present?
         @tags       = ActsAsTaggableOn::Tag
                       .where('tags.name ILIKE ?', '%' + params[:q] + '%')
                       .order('tags.name ASC')
                       .page(params[:page])
                       .per(20)
-        @tags_all   = ActsAsTaggableOn::Tag.all
+        @tags_count = ActsAsTaggableOn::Tag.count
     elsif (params[:uncategorized]).present?
         @tags       = ActsAsTaggableOn::Tag
                       .includes(:categories).where('categories.id IS NULL')
                       .order('tags.name ASC')
                       .page(params[:page])
                       .per(20)
-        @tags_all   = ActsAsTaggableOn::Tag.all
+        @tags_count = ActsAsTaggableOn::Tag.count
     else
         @tags       = ActsAsTaggableOn::Tag.order('name ASC').page(params[:page]).per(20)
     end
