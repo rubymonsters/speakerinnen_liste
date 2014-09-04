@@ -43,37 +43,21 @@ class Admin::TagsController < Admin::BaseController
   end
 
   def categorization
+    relation = ActsAsTaggableOn::Tag.order('tags.name ASC').page(params[:page]).per(20)
     if (params[:category_id]).present?
-        @tags       = ActsAsTaggableOn::Tag
-                      .includes(:categories).where('categories.id = ?', params[:category_id])
-                      .order('tags.name ASC')
-                      .page(params[:page])
-                      .per(20)
-        @tags_count = ActsAsTaggableOn::Tag.count
+      @tags       = relation.includes(:categories).where('categories.id = ?', params[:category_id])
+      @tags_count = ActsAsTaggableOn::Tag.count
     elsif (params[:q]).present? && (params[:uncategorized]).present?
-        @tags       = ActsAsTaggableOn::Tag
-                      .where('tags.name ILIKE ?', '%' + params[:q] + '%')
-                      .includes(:categories).where('categories.id IS NULL')
-                      .order('tags.name ASC')
-                      .page(params[:page])
-                      .per(20)
-        @tags_count = ActsAsTaggableOn::Tag.count
+      @tags       = relation.where('tags.name ILIKE ?', '%' + params[:q] + '%').includes(:categories).where('categories.id IS NULL')
+      @tags_count = ActsAsTaggableOn::Tag.count
     elsif (params[:q]).present?
-        @tags       = ActsAsTaggableOn::Tag
-                      .where('tags.name ILIKE ?', '%' + params[:q] + '%')
-                      .order('tags.name ASC')
-                      .page(params[:page])
-                      .per(20)
-        @tags_count = ActsAsTaggableOn::Tag.count
+      @tags       = relation.where('tags.name ILIKE ?', '%' + params[:q] + '%')
+      @tags_count = ActsAsTaggableOn::Tag.count
     elsif (params[:uncategorized]).present?
-        @tags       = ActsAsTaggableOn::Tag
-                      .includes(:categories).where('categories.id IS NULL')
-                      .order('tags.name ASC')
-                      .page(params[:page])
-                      .per(20)
-        @tags_count = ActsAsTaggableOn::Tag.count
+      @tags       = relation.includes(:categories).where('categories.id IS NULL')
+      @tags_count = ActsAsTaggableOn::Tag.count
     else
-        @tags       = ActsAsTaggableOn::Tag.order('name ASC').page(params[:page]).per(20)
+      @tags = relation
     end
     @categories = Category.all
   end
