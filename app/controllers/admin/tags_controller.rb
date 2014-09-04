@@ -1,4 +1,5 @@
 class Admin::TagsController < Admin::BaseController
+  before_filter :find_tag_and_category, :only => [:remove_category, :set_category]
 
   def index
     @tags       = ActsAsTaggableOn::Tag.all.sort_by {|tag| tag.name.downcase}
@@ -25,19 +26,14 @@ class Admin::TagsController < Admin::BaseController
     @tag = ActsAsTaggableOn::Tag.find(params[:id])
     @tag.destroy
     redirect_to categorization_admin_tags_path, notice: ("'#{@tag.name}' was destroyed.")
-
   end
 
   def remove_category
-    @tag      = ActsAsTaggableOn::Tag.find(params[:id])
-    @category = Category.find(params[:category_id])
     @tag.categories.delete @category
     redirect_to categorization_admin_tags_path(page: params[:page], q: params[:q], uncategorized: params[:uncategorized]), alert: ("The tag '#{@tag.name}' is deleted from the category '#{@category.name}'.")
   end
 
   def set_category
-    @tag      = ActsAsTaggableOn::Tag.find(params[:id])
-    @category = Category.find(params[:category_id])
     @tag.categories << @category
     redirect_to categorization_admin_tags_path(page: params[:page], q: params[:q], uncategorized: params[:uncategorized]), notice: ("Just added the tag '#{@tag.name}' to the category '#{@category.name}'.")
   end
@@ -76,6 +72,13 @@ class Admin::TagsController < Admin::BaseController
         @tags       = ActsAsTaggableOn::Tag.order('name ASC').page(params[:page]).per(20)
     end
     @categories = Category.all
+  end
+
+  private
+
+  def find_tag_and_category
+    @tag      = ActsAsTaggableOn::Tag.find(params[:id])
+    @category = Category.find(params[:category_id])
   end
 
 end
