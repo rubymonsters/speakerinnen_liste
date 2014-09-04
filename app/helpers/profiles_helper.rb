@@ -12,4 +12,8 @@ module ProfilesHelper
     link_to topic.name, topic_path(topic.name.gsub("/", "%2F")), options
   end
 
+  def valuelabel(value)
+    return '<label class="valuelabel">'+value+'</label>'
+  end
+
 end
