@@ -1,12 +1,25 @@
+<%
+=begin
+  This partial assumes @profile is not nil and mode is set to either :edit or :show.
+  This partial is used for unified show views and edit views of profiles.
+=end
+%>
+<% edit_permission = (current_profile == @profile) %>
 <div class="full-width-container speakerin">
   <div class="full-width-row">
     <div class="backlink"><%= link_to(t(:link_to_all, scope: "profiles"), profiles_path) %></div>
 
-    <% if current_profile == @profile && mode == :edit %>
-      <div class="main-action">
-        <a href="#blank" class="tiny"><%= t(:reset, scope: "profiles.speakerin") %></a>
-        <a href="#blank" class="btn btn-primary"><%= t(:save, scope: "profiles.speakerin") %></a>
-      </div>
+    <% if edit_permission %>
+      <% if mode == :edit %>
+        <div class="main-action">
+          <a href="<%= profile_path(@profile) %>" class="tiny"><%= t(:reset, scope: "profiles.speakerin") %></a>
+          <%= fields[:button_save].html_safe %>
+        </div>
+      <% else %>
+        <div class="main-action">
+          <a href="<%= edit_profile_path(@profile) %>" class="btn btn-warning"><%= t(:edit, scope: "profiles.speakerin") %></a>
+        </div>
+      <% end %>
     <% end %>
 
     <div class="profile-box">
@@ -14,7 +27,7 @@
 
       <div class="row">
         <div class="col-md-7 col-sm-12 col-xs-12">
-          <% if current_profile == @profile && mode == :edit %>
+          <% if edit_permission && mode == :edit %>
             <div class="group">
               <label><%= t(:firstname, scope: "profiles.speakerin") %></label>
               <%= fields[:firstname].html_safe %>
@@ -67,6 +80,9 @@
             <% else %>
               <%= image_tag("avatar.jpg", alt: "avatar", class: "photo") %>
             <% end %>
+            <% if edit_permission && mode == :edit %>
+                <%= fields[:picture].html_safe %>
+            <% end %>
           </div>
         </div>
       </div>
@@ -74,7 +90,23 @@
 
     <div class="profile-box">
       <h2>Speakerinnen-Bio</h2>
-      <div class="content"><%= simple_format(@profile.bio) %></div>
+      <% if edit_permission && mode == :edit %>
+        <div class="row">
+          <% fields[:translatable_fields].each do |locale_sym, translation| %>
+            <div class="col-md-6 col-sm-12 col-xs-12">
+              <div class='control-group'>
+                <%= translation[:bio][:hidden_field].html_safe %>
+                <%= translation[:bio][:label].html_safe %>
+                <div class='controls'>
+                  <%= translation[:bio][:input_field].html_safe %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      <% else %>
+        <div class="content"><%= simple_format(@profile.bio) %></div>
+      <% end %>
     </div>
 
     <div class="profile-box">
@@ -120,11 +152,17 @@
     </div>
     <% end %>
 
-    <% if current_profile == @profile && mode == :edit %>
-      <div class="main-action">
-        <a href="#blank" class="btn btn-primary"><%= t(:save, scope: "profiles.speakerin") %></a>
-        <a href="#blank" class="tiny"><%= t(:reset, scope: "profiles.speakerin") %></a>
+    <% if current_profile == @profile %>
+      <% if mode == :edit %>
+        <div class="main-action">
+          <%= fields[:button_save].html_safe %>
+          <a href="<%= profile_path(@profile) %>" class="tiny"><%= t(:reset, scope: "profiles.speakerin") %></a>
       </div>
+      <% else %>
+        <div class="main-action">
+          <a href="<%= edit_profile_path(@profile) %>" class="btn btn-warning"><%= t(:edit, scope: "profiles.speakerin") %></a>
+        </div>
+      <% end %>
     <% end %>
 
   </div>

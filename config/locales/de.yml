@@ -11,6 +11,9 @@ de:
     current_name: "Bisheriger Name"
     new_name: "Neuer Name"
     or: "oder"
+  languages:
+    de: "Deutsch"
+    en: "Englisch"
   admin:
     dashboard:
       edit_categories: "Bearbeite Kategorien"
@@ -191,6 +194,7 @@ de:
       topics: "Themen"
       more_topics: "Weitere Themen"
       medialinks: "Medialinks"
+      edit: "Profil bearbeiten"
       save: "Alle Änderungen speichern"
       reset: "Änderungen verwerfen"
     tag:

@@ -1,15 +1,19 @@
 <%= render partial: 'profiles/speakerin',
-               locals: { mode: :show,
-                 fields: {
-                     main_topic: valuelabel(@profile.main_topic_or_first_topic),
-                     topics_main_topic: valuelabel(@profile.main_topic_or_first_topic),
-                     city: valuelabel(@profile.city),
-                     twitter: valuelabel(@profile.twitter),
-                     website: valuelabel(@profile.website),
-                     email: valuelabel(@profile.email),
-                     languages: valuelabel(@profile.languages),
-                     firstname: valuelabel(@profile.firstname),
-                     lastname: valuelabel(@profile.lastname)
-                 } } %>
+     locals: {
+       mode: :show,
+
+       fields: {
+         main_topic: valuelabel(@profile.main_topic_or_first_topic),
+         topics_main_topic: valuelabel(@profile.main_topic_or_first_topic),
+         city: valuelabel(@profile.city),
+         twitter: valuelabel(@profile.twitter),
+         website: valuelabel(@profile.website),
+         email: valuelabel(@profile.email),
+         languages: valuelabel(@profile.languages),
+         firstname: valuelabel(@profile.firstname),
+         lastname: valuelabel(@profile.lastname)
+       }
+      }
+%>
 
 <%= render partial: 'contact/modalform', locals: {url: contact_profile_path(@profile), recipient: @profile.fullname} %>

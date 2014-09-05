@@ -11,6 +11,9 @@ en:
     current_name: "Current name"
     new_name: "New name"
     or: "or"
+  languages:
+    de: "German"
+    en: "English"
   admin:
     dashboard:
       edit_categories: "Edit Categories"
@@ -208,6 +211,7 @@ en:
       topics: "Topics"
       more_topics: "More topics"
       medialinks: "Media links"
+      edit: "Edit profile"
       save: "Save all changes"
       reset: "Cancel"
     tag:
