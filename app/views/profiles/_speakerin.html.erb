@@ -22,7 +22,7 @@
       <% end %>
     <% end %>
 
-    <div class="profile-box">
+    <div class="profile-box about">
       <h1 class="text-center"><%= @profile.fullname %></h1>
 
       <div class="row">
@@ -113,46 +113,87 @@
       <h2><%= t(:topics, scope: "profiles.speakerin") %></h2>
       <div class="block-content">
         <h3><%= t(:main_topic, scope: "profiles.speakerin") %></h3>
-        <%= fields[:topics_main_topic].html_safe %>
-        <%
-          add_comma = false
-          other_topics = ''
-          @profile.topic_list.each do |topic|
-            if topic != @profile.main_topic_or_first_topic
-              if add_comma
-                other_topics = other_topics + ' ,'
-              end
-              other_topics = other_topics + topic
-              add_comma = true
-            end
-          end
-        %>
-        <% if other_topics.length > 0 %>
-          <h3><%= t(:more_topics, scope: "profiles.speakerin") %></h3>
-          <p>
-            <%= other_topics %>
-          </p>
-        <% end %>
       </div>
+        <% if edit_permission && mode == :edit %>
+          <div class="row">
+            <% fields[:translatable_fields].each do |locale_sym, translation| %>
+              <div class="col-md-6 col-sm-12 col-xs-12">
+                <div class='control-group'>
+                  <%= translation[:main_topic][:hidden_field].html_safe %>
+                  <%= translation[:main_topic][:label].html_safe %>
+                  <div class='controls'>
+                    <%= translation[:main_topic][:input_field].html_safe %>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        <% else %>
+          <div class="content">
+            <%= fields[:topics_main_topic].html_safe %>
+          </div>
+        <% end %>
+
+
+        <% if edit_permission && mode == :edit %>
+          <div class="block-content">
+            <h3><%= t(:more_topics, scope: "profiles.speakerin") %></h3>
+            <%= fields[:topic_list].html_safe %>
+            <%#Used by "tag-it" for autocompletion%>
+            <ul class="hidden" id="availableTags">
+              <% ActsAsTaggableOn::Tag.uniq.pluck(:name).each do |tag_name| %>
+                <li><%= tag_name %></li>
+              <% end %>
+            </ul>
+          </div>
+
+        <% else %>
+          <%
+            add_comma = false
+            other_topics = ''
+            @profile.topic_list.each do |topic|
+              if topic != @profile.main_topic_or_first_topic
+                if add_comma
+                  other_topics = other_topics + ', '
+                end
+                other_topics = other_topics + topic
+                add_comma = true
+              end
+            end
+          %>
+          <% if other_topics.length > 0 %>
+            <div class="block-content">
+              <h3><%= t(:more_topics, scope: "profiles.speakerin") %></h3>
+              <p>
+                <%= other_topics %>
+              </p>
+            </div>
+          <% end %>
+        <% end %>
     </div>
 
-    <% if @profile.medialinks.any? %>
-    <div class="profile-box">
-      <h2><%= t(:medialinks, scope: "profiles.speakerin") %></h2>
-        <ul>
-          <% @medialinks.each do |medialink| %>
-          <li>
-            <p class="medialink"><%= medialink.title %></p>
-            <%= medialink.url_html %>
-            <%= medialink.description %>
-          </li>
-          <hr>
-          <% end %>
-        </ul>
-    </div>
+    <% if edit_permission && mode == :edit %>
+      <div class="profile-box">
+        <h2><%= t(:medialinks, scope: "profiles.speakerin") %></h2>
+        
+      </div>
+    <% elsif @profile.medialinks.any? %>
+      <div class="profile-box">
+        <h2><%= t(:medialinks, scope: "profiles.speakerin") %></h2>
+          <ul>
+            <% @medialinks.each do |medialink| %>
+            <li>
+              <p class="medialink"><%= medialink.title %></p>
+              <%= medialink.url_html %>
+              <%= medialink.description %>
+            </li>
+            <hr>
+            <% end %>
+          </ul>
+      </div>
     <% end %>
 
-    <% if current_profile == @profile %>
+    <% if edit_permission %>
       <% if mode == :edit %>
         <div class="main-action">
           <%= fields[:button_save].html_safe %>

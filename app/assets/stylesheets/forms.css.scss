@@ -83,7 +83,7 @@
   line-height: 1.8em;
 }
 
-.well input[type="text"], textarea, .well .input-xlarge, ul.tagit {
+.well input[type="text"], textarea, .well .input-xlarge {
   height: 43px;
   padding: 0 14px;
   width: 250px;
@@ -92,10 +92,6 @@
 
 .well textarea {
   height: 300px;
-}
-
-ul.tagit {
-  height: 86px;
 }
 
 .well .input-xlarge  {

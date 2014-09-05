@@ -29,6 +29,13 @@ $profile-box-padding: 5px;
     }
   }
 
+  .profile-box.about {
+    input, .valuelabel {
+      min-width: 74%;
+      width: 74%;
+    }
+  }
+
   .profile-box {
     @include border-radius(8px);
     @include box-shadow(0px,0,5px,1px,$box-shadow-light-gray);
@@ -55,7 +62,7 @@ $profile-box-padding: 5px;
       padding: $profile-box-padding;
     }
 
-    label {
+    span, label {
       width: 24%;
       font-weight: normal;
       font-size: 0.8em;
@@ -63,13 +70,18 @@ $profile-box-padding: 5px;
       text-align: right;
     }
 
+    .valuelabel {
+      width: 100%;
+    }
+
+    input {
+      padding: 0 2px;
+    }
+
     input, .valuelabel {
-      min-width: 74%;
-      width: 74%;
       font-size: 1em;
       text-align: left;
-      display: inline-block;
-      padding: 0 2px;
+      display: inline-block;      
       height: auto;
     }
 
@@ -89,8 +101,12 @@ $profile-box-padding: 5px;
       }
     }
 
+    .tagit {
+      height: 130px;
+    }
+
     .block-content {
-      * {
+      .row, h3, p {
         display: block;
         margin: 5px 0;
         padding: 0;

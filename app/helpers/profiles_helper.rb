@@ -13,7 +13,7 @@ module ProfilesHelper
   end
 
   def valuelabel(value)
-    return '<label class="valuelabel">'+value+'</label>'
+    return '<span class="valuelabel">'+value+'</span>'
   end
 
 end
