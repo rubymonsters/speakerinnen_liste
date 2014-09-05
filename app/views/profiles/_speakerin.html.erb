@@ -173,15 +173,36 @@
     </div>
 
     <% if edit_permission && mode == :edit %>
-      <div class="profile-box">
+      <div class="profile-box medialinks">
         <h2><%= t(:medialinks, scope: "profiles.speakerin") %></h2>
-        
+        <% @profile.medialinks.each do |medialink| %>
+          <%= form_for [@profile, medialink], html: {class: 'form'} do |ajaxform| %>
+            <div class="content">
+              <div class="group link-group">
+                <label><%= t(:url, scope: "profiles.speakerin.link") %></label>
+                <%= ajaxform.text_field :url, as: :string, class: 'form-control' %>
+                <%= ajaxform.button t(:delete, scope: "profiles.speakerin.link"), class: 'btn btn-default' %>
+              </div>
+              <div class="group link-group">
+                <label><%= t(:title, scope: "profiles.speakerin.link") %></label>
+                <%= ajaxform.text_field :title, as: :string, class: 'form-control' %>
+              </div>
+              <div class="group link-group">
+                <label><%= t(:description, scope: "profiles.speakerin.link") %></label>
+                <%= ajaxform.text_area :description, rows: 3, class: 'form-control' %>
+              </div>
+            </div>
+            <div class="options">
+              <%= ajaxform.button t(:add, scope: "profiles.speakerin.link"), class: 'btn btn-info' %>
+            </div>
+          <% end %>
+        <% end %>
       </div>
     <% elsif @profile.medialinks.any? %>
       <div class="profile-box">
         <h2><%= t(:medialinks, scope: "profiles.speakerin") %></h2>
           <ul>
-            <% @medialinks.each do |medialink| %>
+            <% @profile.medialinks.each do |medialink| %>
             <li>
               <p class="medialink"><%= medialink.title %></p>
               <%= medialink.url_html %>

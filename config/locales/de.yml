@@ -194,6 +194,12 @@ de:
       topics: "Themen"
       more_topics: "Weitere Themen"
       medialinks: "Medialinks"
+      link:
+        add: "Medialink hinzufügen"
+        delete: "löschen"
+        title: "Titel"
+        url: "Url"
+        description: "Beschreibung"
       edit: "Profil bearbeiten"
       save: "Alle Änderungen speichern"
       reset: "Änderungen verwerfen"

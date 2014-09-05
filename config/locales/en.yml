@@ -211,6 +211,12 @@ en:
       topics: "Topics"
       more_topics: "More topics"
       medialinks: "Media links"
+      link:
+        add: "Add media link"
+        delete: "delete"
+        title: "Title"
+        url: "Url"
+        description: "Description"
       edit: "Edit profile"
       save: "Save all changes"
       reset: "Cancel"
