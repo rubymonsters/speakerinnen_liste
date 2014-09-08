@@ -1,32 +1,33 @@
-<div class="container profiles">
-  <h1>
-    <%= t(:title, scope: "profiles.index") %>
-  </h1>
-  <div class="row">
-    <div class="span6">
+<div class="full-width-container profiles">
+  <div class="full-width-row">
+    <h1>
+      <%= t(:title, scope: "profiles.index") %>
+    </h1>
+    <div class="description">
       <span class="italic">
         <%= t(:text, scope: "profiles.index").html_safe %>
       </span>
     </div>
-    <div class='span6' style="vertical-align:bottom">
-      <%= form_tag(search_path, :method => "get", :class =>"well") do %>
-        <%= text_field_tag(:q, nil, :class => "", :id => "search-field", :placeholder => t(:search_text, scope: "pages.home.search")) %>
-        <%= button_tag((t(:search, scope: "pages.home.search")), :class => "btn btn-large ") %>
-      <% end %>
+
+    <div class="bordered-text-block">
+      <div style="display:block;">
+        <%= form_tag(search_path, :method => "get", :class =>"form-inline search-form") do %>
+          <%= text_field_tag(:q, nil, :class => "form-control input-lg", :id => "search-field", :placeholder => t(:search_text, scope: "pages.home.search")) %>
+          <%= button_tag((t(:search, scope: "pages.home.search")), :class => "btn btn-lg btn-primary ") %>
+        <% end %>
+      </div>
+      <div class="row">
+        <%= render partial: "profile", collection: @profiles %>
+      </div>
     </div>
   </div>
-  <hr>
-  <br>
-  <div class='row'>
-    <%= render partial: "profile", collection: @profiles %>
-  </div>
-  <div class="row">
-    <div class="span12 text-center">
+  <div class="full-width-row">
+    <div class=" text-center">
       <%= paginate @profiles %>
     </div>
   </div>
-  <div class='row'>
+  <div class="full-width-row">
     <%= render partial: "tag" %>
   </div>
+
 </div>
-<br>

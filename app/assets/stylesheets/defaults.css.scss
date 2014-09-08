@@ -7,7 +7,7 @@ html  {
 
 body {
   margin:0;
-  font-size: 1em;
+  font-size: 16px;
   line-height: 1.8em;
   background-color: whitesmoke;
   padding-top: 70px;
@@ -16,7 +16,41 @@ body {
 
 
   /*basics*/
+.sibling-vmargin-sm + .sibling-vmargin-sm {
+  margin-top: 5px;
+  display: block;
+}
 
+.sibling-vmargin-md + .sibling-vmargin-md {
+  margin-top: 10px;
+  display: block;
+}
+
+.sibling-vmargin-l + .sibling-vmargin-l {
+  margin-top: 15px;
+  display: block;
+}
+
+.sibling-vmargin-xl + .sibling-vmargin-xl {
+  margin-top: 20px;
+  display: block;
+}
+
+.bordered-text-block {
+  display: inline-block;
+  width: 100%;
+  padding: 10px 2px;
+  margin: 2px 0;
+
+  border-top:1px solid #ccc;
+  border-bottom:1px solid #ccc;
+
+  font-size:1.25em;
+}
+
+.mandatory {
+  font-weight: bolder;
+}
 
 ::-moz-selection {
   background:#ecd10c;
@@ -34,18 +68,10 @@ body {
   display:inline-block;
   border-bottom:10px double rgba(255, 255, 255, 0.4);
 }
-/* Fließtext */
 
+/* text highlighting */
 .italic {
   font-style: italic;
-  a {
-    background-color: whitesmoke;
-    padding: 0px 4px;
-  }
-  a:hover {
-    background: #d8d8d8;
-    padding: 0px 4px;
-  }
 }
 
 .help{
@@ -61,7 +87,6 @@ hr {
   margin:1em 0;
   padding:0;
 }
-
 
 /*links*/
 
@@ -85,42 +110,37 @@ a:active {
   color:#3c3c3a;
 }
 
-/*h-tags*/
+.nested-links-hover a, a.nested-link-hover {
+  padding: 0px 4px;
 
+  @include hover-invert-text-and-background-color($background-link-dark-grey,$bg-light-grey);
+}
+
+/*h-tags*/
 h1 {
-  font-size: 4.0em;
-  margin: 10px 0px;
+  font-size: 3.0em;
+  line-height: 1.6em;
 }
 
 h2 {
-  font-size: 3.0em;
-  padding: 12px 0px;
-  margin: 12px 0px;
-}
-
-.form-title {
-  padding: 5px 0px 5px;
-  margin: 0;
+  font-size: 2.5em;
+  line-height: 1.4em;
 }
 
 h3 {
   font-size: 2.0em;
-  border-top: 1px solid #ccc;
-  margin: 15px 0px;
-  padding: 12px 0px 4px 0px;
+  line-height: 1.2em;
 }
 
 h4 {
   font-size: 1.4em;
-  border-top: 1px solid #ccc;
-  border-bottom: 1px solid #ccc;
-  padding: 12px 0px;
-  margin: 0px 0px 12px 0px;
 }
 
 h5 {
   font-size:1.25em;
 }
+
+
 
 /*+++++++++++++++++++++++++++++*/
 
@@ -210,7 +230,6 @@ article .content img{margin:0 auto 15px auto;}
 article .content .disciplines{margin:0 auto;}
 .dots{position:absolute;width:100%;height:100%;z-index:1;top:0px;background-color:rgba(0, 0, 0, 0.4);}
 .no-rgba article{text-shadow:1px 1px 5px #000000;}
-.about header{position:absolute;z-index:100;}
 
 
 
@@ -236,34 +255,6 @@ p.overview{font-size:200%;line-height:1.6em;}
 .navbar-form .btn {
 display: inline-block;
 margin-bottom: 0;
-}
-
-/*clearfix*/
-
-.clear {
-  clear:both;
-  display:block;
-  overflow:hidden;
-  visibility:hidden;
-  height:0;}
-
-.clearfix:before,.clearfix:after {
-  content:'.';
-  display:block;
-  overflow:hidden;
-  visibility:hidden;
-  font-size:0;
-  line-height:0;
-  width:0;
-  height:0;
-}
-
-.clearfix:after {
-  clear:both;
-}
-
-.clearfix {
-  zoom:1;
 }
 
 /* Important Fixes - Pay no attention */

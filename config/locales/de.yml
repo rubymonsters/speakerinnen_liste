@@ -10,6 +10,10 @@ de:
     ok: "Ok"
     current_name: "Bisheriger Name"
     new_name: "Neuer Name"
+    or: "oder"
+  languages:
+    de: "Deutsch"
+    en: "Englisch"
   admin:
     dashboard:
       edit_categories: "Bearbeite Kategorien"
@@ -36,9 +40,9 @@ de:
         tags: "Tags"
         tags_of: " von "
         tags_here_are: "Du siehst "
-        tags_search: "Suche nach einem bestimmtem tag:"
+        tags_search: "Suche nach einem bestimmtem Tag:"
         tags_count: "Die Anzahl aller tags ist "
-        tags_filter_option: "Alle tags ohne Kategorien anzeigen"
+        tags_filter_option: "Alle Tags ohne Kategorien"
         tags_filter_default: "Alle Kategorien auswählen"
   pages:
     home:
@@ -62,7 +66,6 @@ de:
       quote: "Wir glauben an Kollaboration - nicht an Wettbewerb."
       quote_text: "So ermutigen wir unsere Speakerinnen* und Event-Organisatoren, sich gegenseitig zu unterstützen."
       footer:
-        about_title: "Über Speakerinnen*-Liste"
         about: |
                 Die Speakerinnen-Liste hat das Ziel, die Sichtbarkeit von Frauen* bei Konferenzen, Panels, Talkshows und überall da zu erhöhen, wo öffentlich gesprochen wird.<br>
                 Hier können Veranstalter_innen Expertinnen* finden, die kompetent über ihre Themen sprechen können und wollen.<br>
@@ -90,6 +93,52 @@ de:
         women: "* Mit Frauen* meinen wir alle, die sich selbst als Frau verstehen."
     about:
       title: "Über uns"
+      objective:
+        title: "Ziel"
+        intro: |
+          Viele Menschen stört, dass Männer viel häufiger als Experten zu Konferenzen eingeladen oder von den Medien befragt werden. Biologisch gibt es dafür keinen Grund: Männer sind nicht klüger als Frauen.
+          Wer Organisator_innen auf die Diskrepanz hinweist, bekommt oft die Reaktion, dass keine geeignete Frau zu finden war. Wir sind davon überzeugt, dass es viel mehr kompetente Frauen gibt, als auf den Bühnen sprechen.
+          Mädchen brauchen weibliche Vorbilder, Frauen brauchen die Gewissheit, dass eine andere - ihre - Sicht auf ein Thema genauso relevant ist. Veranstaltungen brauchen mehr Diversität.
+        text: |
+          Ziel der Speakerinnen-Liste ist es, die Sichtbarkeit von Frauen überall da zu steigern, wo öffentlich gesprochen wird. Mit Hilfe der Speakerinnen-Liste wird es für Veranstalterinnen und Veranstalter leichter, Expertinnen für ihre Events zu finden.
+          Gleichzeitig lädt sie Frauen* aktiv dazu ein, häufiger und öffentlich über ihre Themen zu sprechen.
+      who:
+        title: "Wer steckt dahinter"
+        dev: "Technik & Programmierung"
+        pr: "Kommunikation & Administration"
+      background:
+        title: "Hintergrund"
+        intro: |
+          Die Speakerinnen-Liste ist die Idee vieler Frauen und wurde technisch von 8 Frauen mit der Unterstützung von 4 Coaches als Lernprojekt der Rubymonsters,
+          einer Lerngruppe der Rails Girls Berlin, gebaut.
+        initiative:
+          title: "Railsgirls / Rubymonsters"
+          text: |
+            Die <a href="http://www.railsgirlsberlin.de" target="_blank">Rails Girls</a> sind eine internationale Non-Profit-Gruppe, die Frauen motiviert, sich mit dem Programmieren zu beschäftigen. Das Ganze über wunderbare Workshops, Lerngruppen, Stipendien und eine angenehme Lern-Community. Die <a href="http://twitter.com/rubymonsters" target="_blank">Rubymonsters</a> sind eine Lerngruppe, die aus einem Workshop der Rails Girls hervorgegangen ist.
+          history: |
+            Die Idee zu einer Datenbank entstand in vielen Gesprächen, online und offline, über die Dominanz von Männern auf Bühnen. Dafür gibt es verschiedene Gründe und nicht für alle davon ist die Speakerinnen-Liste ein Lösung. Aber sie ist ein Schritt dahin, den Veranstaltern und Veranstalterinnen die Suche zu erleichtern, die an einem ausgeglichenen Gender-Verhältnis bei ihren Events interessiert sind.
+          motivation: |
+            Außerdem wollen wir Frauen* dabei unterstützen, die richtige Bühne zu finden. Das wird hoffentlich einfacher, wenn am Beispiel vieler anderer Frauen* zu sehen ist, dass ganz unterschiedliche Erfahrungen gefragt sein können.
+      support:
+        title: "Unterstützen"
+        intro: "Es gibt viele Möglichkeiten, das Projekt Speakerinnen-Liste zu unterstützen:"
+        option1: "erzählt anderen Frauen davon"
+        option2: "legt selbst ein Profil an"
+        option3: "schickt eine Mail mit einem Hinweis an Netzwerke und Communities, die sich mit spezifischen Themen beschäftigen"
+        option4: |
+          baut mit! Wenn ihr euch mit Webdesign oder Programmierung auskennt, helft uns bei der Umsetzung der offenen Wünsche. Eine Liste gibt es <a href="https://github.com/rubymonsters/speakerinnen_liste/issues/216" target="_blank">hier.</a>
+    faq:
+      title: "FAQ"
+      question1: "Warum gibt es Thema XYZ noch nicht?"
+      answer1: "Weil es noch niemand angelegt hat. Alle Themen, die in der Speakerinnen-Liste zu sehen sind, wurden von mindestens einer Speakerin in ihrem Profil als 'Tags' eingegeben. Daraus entstehen automatisch auf der Seite die für alle sichtbaren Themen."
+      question2: "Können sich alle einfach eintragen?"
+      answer2: "Ja."
+      question3: "Warum ist mein Profil noch nicht freigeschaltet?"
+      answer3: "Wir sind nicht ständig online: wenn das Profil gerade erst fertig eingetragen wurde, kann es einen Moment dauern. Falls es aber sehr wenig Informationen im Profil stehen, dachten wir möglicherweise, dass es noch nicht fertig ist. Wenn du möchtest, dass es trotzdem freigeschaltet wird, dann schreib uns eine Mail an speakerinnen@lists.riseup.net."
+      question4: "Wonach kann ich suchen?"
+      answer4: "Name - Sprachen - Stadt - Referenzen - Themen - Biografie - Titel. Mit AND und OR-Verknüpfungen kannst du auch Kombinationen suchen, z.B. Energie Berlin. Wenn du mehrere Begriffe hintereinander eingibst, werden sie automatisch als AND-Verknüpfung erkannt. Groß- und Kleinschreibung spielt keine Rolle."
+      question5: "Wie kann ich Euch Geld spenden?"
+      answer5: "Aktuell ist das nicht möglich, aber freuen uns sehr über die Bereitschaft! Und versuchen, bald eine Option zum Spenden einzurichten."
     press:
       title: "Presse über uns"
     imprint:
@@ -114,6 +163,9 @@ de:
       login: "Anmelden"
   contact:
     form:
+      title: "Kontakt"
+      recipient: "E-Mail an %{recipient}"
+      default_recipient: "Team Speakerinnen"
       name: "Dein Name"
       name_placeholder: ""
       medialink_placeholder: "Bitte nur 21 Zeichen eingeben"
@@ -125,8 +177,36 @@ de:
       notice: "Yay! Deine E-Mail wurde gesendet."
       error: "Bitte fülle alle Felder aus, damit die Speakerin alle Informationen bekommt, die sie benötigt."
   profiles:
+    link_to_all: "Alle Speakerinnen"
+    speakerin:
+      firstname: "Vorname"
+      lastname: "Nachname"
+      main_topic: "Hauptthema"
+      languages: "Sprachen"
+      city_region: "Stadt/Region"
+      twitter: "Twitter"
+      website: "Webseite"
+      private_details: "Deine Accountdetails (versteckt)"
+      contact: "%{recipient} kontaktieren"
+      email: "Email"
+      password: "Passwort"
+      password_confirmation: "Passwortwiederholung"
+      topics: "Themen"
+      more_topics: "Weitere Themen"
+      medialinks: "Medialinks"
+      link:
+        add: "Medialink hinzufügen"
+        delete: "löschen"
+        title: "Titel"
+        url: "Url"
+        description: "Beschreibung"
+      edit: "Profil bearbeiten"
+      save: "Alle Änderungen speichern"
+      reset: "Änderungen verwerfen"
     tag:
       topics: "Themen:"
+      topics_filter: "Themenfilter"
+      reset_filter: "Zurücksetzen"
     form:
       not_saved: "Dieses Profil konnte nicht gespeichert werden:"
       profile_from: "Profil von"
@@ -180,6 +260,7 @@ de:
       created: "Profil wurde erfolgreich erstellt."
       updated: "Profil wurde erfolgreich geändert."
       destroyed: "Profil wurde erfolgreich gelöscht."
+      failed: "Profiländerungen konnten nicht gespeichert werden."
       no_permission: "Du hast nicht die Rechte, das Profil zu bearbeiten."
       show_no_permission: "Du hast nicht die Rechte, das Profil anzuschauen."
     medialink:
@@ -225,7 +306,7 @@ de:
         password: "Passwort"
     sessions:
       new:
-        login: "Anmelden"
+        signin: "Anmelden"
   medialinks:
     edit: "Bearbeite Medialink"
     new: "Medialink hinzufügen"

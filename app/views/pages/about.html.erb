@@ -1,0 +1,61 @@
+<div class="pages static-page">
+  <div class="full-width-container">
+    <div class="full-width-row">
+        <h1><%= t(:title, scope: "pages.about") %></h1>
+        <h3><%= t(:title, scope: "pages.about.objective") %></h3>
+        <p><%= t(:intro, scope: "pages.about.objective").html_safe %></p>
+        <p><%= t(:text, scope: "pages.about.objective").html_safe %></p>
+
+        <h3><%= t(:title, scope: "pages.about.who") %></h3>
+        <p><%= t(:dev, scope: "pages.about.who") %>
+          <ul>
+            <li>
+              <a href="https://twitter.com/_tyranja_" target="_blank">Anja</a>
+            </li>
+            <li>
+              <a href="https://twitter.com/chatulli" target="_blank">Edna</a>
+            </li>
+            <li>
+              <a href="https://twitter.com/zaziemo" target="_blank">Maren</a>
+            </li>
+            <li>
+              <a href="https://twitter.com/thesaheba" target="_blank">Sarah</a>
+            </li>
+          </ul>
+          <%= t(:pr, scope: "pages.about.who") %>
+          <ul>
+            <li>
+              <a href="https://twitter.com/annalist" target="_blank">Anne</a>
+            </li>
+          </ul>
+        </p>
+
+        <h3><%= t(:title, scope: "pages.about.background") %></h3>
+        <p><%= t(:intro, scope: "pages.about.background") %></p>
+        <div class="insertion">
+          <h4 class="italic"><%= t(:title, scope: "pages.about.background.initiative") %></h4>
+          <p class="italic"><%= t(:text, scope: "pages.about.background.initiative").html_safe %></p>
+        </div>
+        <p><%= t(:history, scope: "pages.about.background.initiative") %></p>
+        <p><%= t(:motivation, scope: "pages.about.background.initiative") %></p>
+
+        <h3><%= t(:title, scope: "pages.about.support") %></h3>
+        <p><%= t(:intro, scope: "pages.about.support").html_safe %>
+          <ul>
+            <li>
+              <%= t(:option1, scope: "pages.about.support").html_safe %>
+            </li>
+            <li>
+              <%= t(:option2, scope: "pages.about.support").html_safe %>
+            </li>
+            <li>
+              <%= t(:option3, scope: "pages.about.support").html_safe %>
+            </li>
+            <li>
+              <%= t(:option4, scope: "pages.about.support").html_safe %>
+            </li>
+          </ul>
+        </p>
+    </div>
+  </div>
+</div>

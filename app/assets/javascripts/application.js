@@ -13,5 +13,17 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui
+//= require bootstrap/modal
 //= require tag-it/tag-it
 //= require_tree .
+addMandatoryMarkers = function() {
+  var mandatoryElements = $('.mandatory');
+  for (var i = 0; i < mandatoryElements.length; i++) {
+      mandatoryElements[i].innerText = mandatoryElements[i].innerText+'*';
+  }
+
+};
+
+$(function() {
+  addMandatoryMarkers();
+});

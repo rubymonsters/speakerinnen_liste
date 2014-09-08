@@ -1,17 +1,22 @@
-<div class="container profiles add-category">
-    <h1 class="title-profiles">Administration::<%= t(:categories, scope: "admin.dashboard.categories")%>::<%= t(:edit, scope: "general")%></h1>
-  <div class="add-category-form">
-    <%= form_for [:admin, @category], html: {class: 'form-horizontal'} do |f| %>
-        <div class="row">
-            <%= f.label 'current_name', t(:current_name, scope: "general"), class:"control-label" %>
+<div class="full-width-container">
+  <div class="full-width-row administration">
+
+    <div class="breadcrumb-navigation">Administration::<%= t(:categories, scope: "admin.dashboard.categories")%>::<%= t(:edit, scope: "general")%></div>
+    <div class="add-category-form">
+      <%= form_for [:admin, @category], html: {class: 'form-horizontal'} do |f| %>
+        <div class="control-group">
+            <%= f.label 'current_name', t(:current_name, scope: "general"), class:"control-label" %><br />
             <%= @category.name %>
           </div>
-          <div class="row">
+          <div class="control-group">
             <%= f.label 'new_name', t(:new_name, scope: "general"), class:"control-label" %>
-            <%= f.text_field :name %>
+            <%= f.text_field :name, class: 'form-control' %>
           </div>
-        <div class="row">
-          <%= f.submit t(:ok, scope: "general"), class:"btn btn-info span5" %>
+        <div class="control-group">
+          <%= f.submit t(:ok, scope: "general"), class:"btn btn-primary" %>
         </div>
-    <% end %>
+      <% end %>
+    </div>
+
+  </div>
 </div>

@@ -1,97 +1,161 @@
 @import 'settings';
 
-* {
-	margin: 0;
+.the-badge, .badge-rope-left, .badge-rope-right,
+.badge-connector, .badge-canvas {
+	display: inline-block;
+	position: relative;
+}
+
+.the-badge {
+	min-width: 250px;
+	    width: 30%;
+	max-width: 300px;
+	padding-top: 22px;
+
+	text-align: center;
+}
+
+.image-only-container {
+	line-height: 0;
+}
+
+.badge-rope-left {
+	z-index: 0;
+	width: 18px;
+	height: 50px;
+
+	background: url("rope-short-left.png") 0 0 no-repeat;
+}
+
+.badge-rope-right {
+	z-index: 2;
+	width: 40px;
+	height: 50px;
+
+	background: url("rope-short-right.png") 0 0 no-repeat;
+}
+
+.badge-connector {
+	margin-top: -23px;
+	background: rgba(255,255,255,0.8);
+	text-align: center;
+	min-width: 52px;
+	height: 100px;
+	z-index: 1;
+
+    -webkit-border-top-left-radius: 5px;
+      	-moz-border-radius-topleft: 5px;
+            border-top-left-radius: 5px;
+	 -webkit-border-top-right-radius: 5px;
+	     -moz-border-radius-topright: 5px;
+	         border-top-right-radius: 5px;
+
+	@include box-shadow(0px,-1px,3px,2px,$box-shadow-black);
+
+}
+
+.inner-circle {
+	margin: 4px;
+}
+
+.circle-container-big {
+	@include circle-container(25px,10px);
+}
+.circle-container-medium {
+	@include circle-container(20px,15px);
+}
+.circle-container-small {
+	@include circle-container(15px,5px);
+}
+
+.circle-big, .circle-medium, .circle-small {
+	display: inline-block;
+}
+
+.circle-big {
+	@include circle-item(30px);
+}
+
+.circle-medium {
+	@include circle-item(22px);
+}
+.circle-small {
+	@include circle-item(14px);
+}
+
+.circle-light {
+	background: $bg-light-grey;
+}
+
+.circle-dark {
+	background: #333;
+}
+
+.circle-light-metallic {
+	background: #fff;
+	@include lin-gradient($bwb-gradient);
+}
+
+.circle-dark-metallic {
+	background: #333;
+	@include lin-gradient($bwb-gradient-dark);
+}
+
+.badge-canvas {
+	margin-top: -12px;
 	padding: 0;
-	border: 0;
+
+	@include border-radius(14px);
+	background: #eee;
+	text-align: center;
+	@include box-shadow(0px,2px,10px,2px,$box-shadow-black);
 }
 
-#badge-log {
-	width: 334px;
-	height: 586px;
-	margin: 0 auto 0 auto;
-	background: url("badge.png") 0 0 no-repeat;
-	position: relative;
-	z-index: 99999;
+.badge-perforation {
+	display: inline-block;
+	min-width: 70px;
+	min-height: 12px;
+	margin: 4px 0;
+
+	@include border-radius(14px);
+	background: $bg-light-grey;
+	@include inset-box-shadow(0px,8px,10px,0px,$box-shadow-dark-gray);
 }
 
-#badge-inner {
-	width: 320px;
-	height: 400px;
-	position: absolute;
-	top: 174px;
-	left: 7px;
-}
-
-#badge-inner p {
-	position: absolute;
-	left: 7%;
-  bottom: -4px;
-  z-index: 5555;
-  color: black;
-}
-
-#badge-inner .forgot-p {
-  position: absolute;
-  left: 25%;
-  bottom: -120px;
-  z-index: 5555;
-  color: black;
+.smaller-text {
   font-size: 0.8em;
 }
 
-.confirmation {
-  color: black;
-  font-size: 0.8em;
-  text-align: center;
-}
+.login-form {
+	padding: 20px;
 
-#badge-inner .remember {
-  position: absolute;
-  bottom: 11px;
-  z-index: 5555;
-  color: black;
-}
-
-#login {
-  position: absolute;
-  bottom: 40px;
-  left: 20px;
-  right: 20px;
-}
-
-#badge form {
-	margin: 0;
-}
-
-#badge .control-group .input-xlarge, input[type="password"], input[type="email"] {
-	width: 284px;
-	height: 43px;
-	padding: 0 12px;
-	font-size: 16px;
-	line-height: 1;
-	margin-bottom: 0;
 	font-family: $sans-serif;
+
+	*:not(label) {
+		display: block;
+		text-align: center;
+		width: 100%;
+	}
+
+	input[type="email"],input[type="password"],input[type="text"] {
+		text-align: left;
+	}
+
+	input[type="checkbox"] {
+		width: 20px;
+	}
+
+	input[type="checkbox"], label {
+		display: inline-block;
+		font-weight: normal;
+	}
+
+	a {
+		line-height: normal;
+	}
 }
 
-.control-group {
-	margin-bottom: 7px;
-	position: relative;
-}
-
-.control-group:last-child {
-	margin-bottom: 0;
-}
-
-.control-group .btn {
-	width: 100%;
-	height: 40px;
-	font-weight: bold;
-}
-
-.btn a {
-	color: #000;
-	font-weight: bold;
-	font-weight: 3em;
-	padding-top: 10px;
+/* + = css sibling selector :) */
+.control-group + .control-group {
+	margin-top: 7px;
 }

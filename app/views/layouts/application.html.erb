@@ -11,10 +11,8 @@
   <body>
 
     <%= render "layouts/header" %>
-    <div id="start-page">
-      <%= yield %>
-      <%= render "layouts/footer" if render_footer? %>
-    </div>
+    <%= yield %>
+    <%= render "layouts/footer" if render_footer? %>
 
   </body>
 </html>

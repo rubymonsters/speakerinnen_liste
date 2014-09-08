@@ -24,3 +24,39 @@ $(document).ready(function() {
   });
   $('#profile_topic_list').tagit({availableTags: topics});
 });
+
+$(function() {
+  $('.add-empty-medialink-form').click(function() {
+    var copy = $('.empty-medialink-form').clone(true);
+    (function (copy) {
+      copy.removeClass('hidden empty-medialink-form');
+      copy.addClass('new-item');
+      copy.addClass('ui-sortable-handle');
+      copy.on('click', '.btn-delete', function() {
+        copy.remove();
+      });
+      copy.find('input,textarea').removeAttr('disabled');
+      $('.all-links').append(copy);
+    })(copy);
+  });
+
+  $('.all-links').on('click', '.existing-item .btn-delete', function () {
+    var button = $(this);
+    var parent = button.parent().parent();
+    var id = parent.find('[name="medialinks[][id]"]').val();
+    var profileId = $('[name="profile.id"]').val();
+    $.ajax({
+      'url': '/profiles/'+profileId+'/medialinks/'+id+'.json',
+      'method': 'delete'
+    }).success(function() {
+      parent.remove();
+    }).error(function () {
+      console.log("failed to remove medialink by id: "+id);
+    });
+  });
+
+  $(function() {
+    $( ".ui-sortable" ).sortable();
+    $( ".ui-sortable" ).disableSelection();
+  });
+});

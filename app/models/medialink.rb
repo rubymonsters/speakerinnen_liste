@@ -1,10 +1,10 @@
 class Medialink < ActiveRecord::Base
   include AutoHtml
 
-  attr_accessible :url, :title, :description
+  attr_accessible :url, :title, :description, :position
   belongs_to :profile
 
-  validates :title,:url, presence: true
+  validates :title, :url, presence: true
 
   auto_html_for :url do
     html_escape

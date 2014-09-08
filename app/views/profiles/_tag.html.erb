@@ -1,46 +1,47 @@
-<div class='span12 topics-cloud'>
-  <h3>
-    <%= t(:topics, scope: "profiles.tag") %>
-    <span class="topic-filter">
-      <input type="text" value="" placeholder="Quick Filter" id="quick-filter" class="search-query" />
-      <button class="btn" id="reset-quick-filter" title="Reset"><i class="icon-remove"></i></button>
-    </span>
+<div class='topics-cloud'>
+  <div class="topic-filter">
+    <input type="text" value="" placeholder="<%= t(:topics_filter, scope: "profiles.tag") %>" id="quick-filter" class="form-control" />
+    <button class="btn btn-info" id="reset-quick-filter" title="<%= t(:reset_filter, scope: "profiles.tag") %>"><%= t(:reset_filter, scope: "profiles.tag") %></button>
+  </div>
 
-    <script type="text/javascript" charset="utf-8">
+  <script type="text/javascript" charset="utf-8">
 
-      // empty the input-field & show all topics
-      $("#reset-quick-filter").on("click", function() {
-        $("#quick-filter").val('');
+    // empty the input-field & show all topics
+    $("#reset-quick-filter").on("click", function() {
+      $("#quick-filter").val('');
+      $(".s, .m, .l").css('display', 'inline');
+    });
+
+    // show matching & hide others
+    $("#quick-filter").on('input', function(){
+      var searchString       = $(this).val().toLowerCase();
+
+      if (searchString.length > 1) {
+        $(".s, .m, .l").each(function(index) {
+          if ( $(this).text().toLowerCase().indexOf(searchString) >= 0 ) {
+            $(this).css('display', 'inline');
+          } else {
+            $(this).css('display', 'none');
+          }
+        });
+      } else {
+        // show all
         $(".s, .m, .l").css('display', 'inline');
-      });
+      };
 
-      // show matching & hide others
-      $("#quick-filter").on('input', function(){
-        var searchString       = $(this).val().toLowerCase();
+    });
+  </script>
 
-        if (searchString.length > 1) {
-          $(".s, .m, .l").each(function(index) {
-            if ( $(this).text().toLowerCase().indexOf(searchString) >= 0 ) {
-              $(this).css('display', 'inline');
-            } else {
-              $(this).css('display', 'none');
-            }
-          });
-        } else {
-          // show all
-          $(".s, .m, .l").css('display', 'inline');
-        };
-
-      });
-    </script>
-  </h3>
-  <% if params[:category_id] %>
-    <% custom_tag_cloud @tags.sort { |x,y| x.name <=> y.name }, %w[s m l] do |topic, css_class| %>
-      <%= topic_link topic, class: css_class %>
+  <div class="taglist">
+    <% if params[:category_id] %>
+      <% custom_tag_cloud @tags.sort { |x,y| x.name <=> y.name }, %w[s m l] do |topic, css_class| %>
+        <%= topic_link topic, class: css_class %>
+      <% end %>
+    <% else %>
+      <% tag_cloud @tags.sort { |x, y| x.name <=> y.name }, %w[s m l] do |topic, css_class| %>
+        <%= topic_link topic, class: css_class %>
+      <% end %>
     <% end %>
-  <% else %>
-    <% tag_cloud @tags.sort { |x, y| x.name <=> y.name }, %w[s m l] do |topic, css_class| %>
-      <%= topic_link topic, class: css_class %>
-    <% end %>
-  <% end %>
+  </div>
+
 </div>

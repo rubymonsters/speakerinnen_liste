@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<div class="center-block text-center">
+  <div class="the-badge">
+    <div class="center-block text-center image-only-container">
+      <div class="badge-rope-left badge-rope-height">
+      </div>
+      <div class="badge-rope-right badge-rope-height">
+      </div>
+    </div>
+    <div class="center-block text-center image-only-container">
+      <div class="badge-connector badge-connector-height">
+        <div class="center-block text-center circle-container-big">
+          <div class="circle-big circle-light-metallic">
+            <div class="circle-medium inner-circle circle-light">
+            </div>
+          </div>
+        </div>
+        <div class="center-block text-center circle-container-medium">
+          <div class="circle-medium circle-dark-metallic">
+            <div class="circle-small inner-circle circle-dark">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="badge-canvas center-block text-center">
+      <div class="center-block text-center image-only-container">
+        <div class="badge-perforation">
+        </div>
+      </div>
+      <div class="center-block text-center">
+        <%= image_tag("logo8.png", id:"logo8") %>
+      </div>
+      <div class="login-form">
+        <%= simple_form_for(resource, :as => resource_name, :url => @target_url, :html => { :class => "form-vertical form"}) do |f| %>
+
+          <% if @signup && f.object.password_required? == false %>
+            <div>
+              <%= t(:explanation_email, scope: "devise.registrations") %>
+            </div>
+            <%= f.input :email, placeholder: t(:email, scope: "devise.registrations"), autofocus: true, label: false, input_html: { class: 'form-control' } %>
+          <% else %>
+            <%= f.input :email, placeholder: t(:email, scope: "devise.registrations"), autofocus: true, label: false, input_html: { class: 'form-control' } %>
+            <%= f.input :password, placeholder: t(:password, scope: "devise.registrations"), label: false, input_html: { class: 'form-control' } %>
+            <% if @signup %>
+              <%= f.input :password_confirmation, placeholder: t(:confirmation, scope: "devise.registrations"), label: false, input_html: { class: 'form-control' } %>
+            <% end %>
+          <% end %>
+          <% if !@signup && devise_mapping.rememberable? %>
+            <div class="control-group center-block text-center">
+              <%= f.check_box :remember_me, class:"remember"%>
+              <%= f.label :remember_me, t(:remember, scope: "devise.registrations") %>
+            </div>
+          <% end %>
+
+          <% button = @signup ? 'signup' : 'signin' %>
+
+          <%= f.submit t(button, scope: "devise.registrations"), class:'control-group btn btn-primary' %>
+
+          <% if devise_mapping.omniauthable? %>
+            <% Profile.omniauth_providers.each do |provider| %>
+              <span><%= t(:or, scope: "general") %></span>
+              <%= link_to t(button+'_via', scope: "devise.registrations"), omniauth_authorize_path(:profile, provider), class: 'btn btn-primary' %>
+            <% end %>
+          <% end %>
+
+          <% if !@signup && devise_mapping.recoverable? && controller_name != 'passwords' %>
+            <%= link_to t(:forgot_password, scope: "devise.registrations"), new_password_path(resource_name), class:"forgot-p" %>
+          <% end %>
+
+          <div class="smaller-text">
+            <% if devise_mapping.confirmable? && controller_name != 'confirmations' %>
+              <%= link_to t(:no_confirmation, scope: "devise.registrations"), new_confirmation_path(:profile) %>
+            <% end %>
+            <% if !@signup && devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks' %>
+              <%= link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name) %>
+            <% end %>
+          </div>
+
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

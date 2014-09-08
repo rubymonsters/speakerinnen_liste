@@ -1,53 +1,32 @@
-<%= form_tag(categorization_admin_tags_path, method: :get, class: 'form-inline') do %>
-  <div class='row'>
+<%= form_tag(categorization_admin_tags_path, method: :get, class: 'form form-vertical tag-filter') do %>
 
-    <div class='span6'>
-      <hr>
+  <div class="filter">
       <%= check_box_tag 'uncategorized', params[:uncategorized], params[:uncategorized] %>
       <%= label_tag 'uncategorized', t(:tags_filter_option, scope: 'admin.dashboard.tags'),
-      class: 'checkbox inline font16' %>
-    </div>
-
-    <div class='span6'>
+      class: 'checkbox-and-label' %>
       <hr>
       <%= t(:tags_search, scope: 'admin.dashboard.tags') %>
-      <%= text_field_tag 'q', params[:q], class: 'input-medium search-query' %>
-    </div>
-
-  </div>
-  <br>
-
-  <div class='row'>
-    <div class='span12'>
-      <%= 'Kategorien:' %>
-    </div>
+      <%= text_field_tag 'q', params[:q], class: 'form-control search-query' %>
   </div>
 
-  <div class='row'>
-    <% @categories.in_groups_of(3, false) do |row_categories| %>
-      <div class='span3'>
-        <% row_categories.each do |category| %>
+  <div class="filter">
+      <%= 'Filter:' %>
+      <% @categories.each do |category| %>
+        <div class="category-option">
           <%= label_tag 'category_id_#{category.id}', class: 'radio' do %>
             <%= radio_button_tag( 'category_id', category.id, params[:category_id] == category.id.to_s ) %>
             <%= category.name %>
-            <br>
           <% end %>
-          <br>
+        </div>
+      <% end %>
+      <div class="category-option">
+        <%= label_tag 'category_id_', class: 'radio' do %>
+          <%= radio_button_tag( 'category_id', '', params[:category_id].blank? ) %>
+          <%= t(:tags_filter_default, scope: 'admin.dashboard.tags') %>
         <% end %>
       </div>
-    <% end %>
   </div>
-  <br>
 
-  <div class='row'>
-    <div class='span12'>
-      <%= label_tag 'category_id_', class: 'radio' do %>
-        <%= radio_button_tag( 'category_id', '', params[:category_id].blank? ) %>
-        <%= t(:tags_filter_default, scope: 'admin.dashboard.tags') %>
-      <% end %>
-      <br>
-      <%= submit_tag (t(:filter, scope:'general')), class: 'btn btn-primary' %>
-      <hr>
-    </div>
-  </div>
+  <%= submit_tag (t(:filter, scope:'general')), class: 'btn btn-primary' %>
+
 <% end %>

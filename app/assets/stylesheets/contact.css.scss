@@ -5,3 +5,40 @@
 #message_email {
   display: none;
 }
+
+.contact-form {
+	position: fixed;
+	left: 10;
+	top: 10;
+	bottom: 10;
+	right: 10;
+
+	.modal-header {
+		padding: 8px 15px;
+
+		button {
+			font-size: 2.5em;
+		}
+	}
+
+	.modal-body {
+			max-height: none;
+
+			:first-child {
+				margin-top: 0;
+			}
+			textarea {
+				height: 140px;
+			}
+
+			.btn {
+				width: 100%;
+				margin-top: 10px;
+			}
+	}
+
+	label {
+		margin-bottom: 0;
+		margin-top: 7px;
+	}
+}

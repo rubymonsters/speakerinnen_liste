@@ -4,8 +4,8 @@
   $indent: 120px;
 
   label {
-    float: left;
-    width: $indent - 20px;
+  /* float: left;
+    width: $indent - 20px;*/
     text-align: right;
     margin: 2px 10px;
     font-family: $sans-serif;
@@ -33,7 +33,7 @@
   input.radio_buttons, input.check_boxes {
     margin-right: 5px;
   }
-  .btn {
+  span, .btn {
     margin-bottom: 10px;
   }
   .alert-error {
@@ -83,7 +83,7 @@
   line-height: 1.8em;
 }
 
-.well input[type="text"], textarea, .well .input-xlarge, ul.tagit {
+.well input[type="text"], textarea, .well .input-xlarge {
   height: 43px;
   padding: 0 14px;
   width: 250px;
@@ -92,10 +92,6 @@
 
 .well textarea {
   height: 300px;
-}
-
-ul.tagit {
-  height: 86px;
 }
 
 .well .input-xlarge  {

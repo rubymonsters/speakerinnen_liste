@@ -1,152 +1,117 @@
 @import 'settings';
 
-#start-page {
-  font-family: $serif;
+.start-page {
   padding: 0;
   margin-top: -25px;
-  }
+}
 
-#start-page h1 {
-  font-weight: normal;
-  font-size: 3em;
-  margin: 70px 0 20px 0;
-  line-height: 1.4em;
-  }
+$space-between-cols-in-col-xs-mode: 50px;
 
-#start-page h2 {
-  font-weight: normal;
+.about-grid {
+ margin-bottom: -$space-between-cols-in-col-xs-mode;
+
+ .about-grid-col {
+   margin-bottom: $space-between-cols-in-col-xs-mode;
+
+    .bordered-text-block a {
+        @include hover-invert-text-and-background-color($background-link-dark-grey,#fff);
+   }
+ }
+}
+
+/* --- bordered text blocks in bars --- */
+.photo-bar, .photo-grid-bar, .text-bar {
+  .bordered-text-block {
+    padding: 20px 4px;
+    margin: 30px 0;
+  }
+}
+/* --------------------- Photo Bars --------------*/
+.photo-bar {
+  padding:12% 0;
+
+  /*background-attachment:fixed;*/
+  -webkit-background-size:cover;
+     -moz-background-size:cover;
+       -o-background-size:cover;
+          background-size:cover;
+
+  @include inset-box-shadow(0px,0px,20px,0px,$bar-shadow-black);
+}
+
+.text-block-on-photo {
+  display:inline-block;
+  padding:12px;
+
   font-size: 1.4em;
-  line-height: 1.6em;
-  }
 
-#start-page h4 {
-  font-weight: normal;
-  border-top: 1px solid #ccc;
-  border-bottom: 1px solid #ccc;
-  padding: 20px 0;
-  margin-bottom: 50px;
-  font-size: 1.4em;
-  line-height: 1.8em;
+  background-color:$text-bg-transp-white;
+  color:$background-link-dark-grey;
+
+  .sibling-vmargin-md {
+    display: block;
   }
+}
+
+.copyright {
+  margin-right: 10px;
+
+  text-align: right;
+  font-size: 0.8em;
+}
 
 .start-page-images {
   background-position: center center;
-  background-size: cover; 
+  background-size: cover;
   }
 
 #curie-photo {
-  background-image: url("curie.jpg");
   min-height: 600px;
-  }
+
+  background-image: url("curie.jpg");
+}
 
 #speakerin-photo {
   background-image: url("maren_buehne.jpg");
-  }
+}
 
 #coaching-photo {
   background-image: url("coaching.jpg");
-  }
-
-/* --------------------- Photo Bar --------------*/
-.photo-bar {
- /*background-attachment:fixed;*/
-  -webkit-background-size:cover;
-  -moz-background-size:cover;
-  -o-background-size:cover;
-  background-size:cover;
-  box-shadow:inset 0px 0px 20px rgba(0, 0, 0, 0.5);
-  padding:80px 0px;
-  }
-
-.text-white-bg {
-  display:inline-block;
-  background-color:rgba(255, 255, 255, 0.7);
-  padding:12px 12px 20px 12px;
-  color:#3c3c3a;
 }
 
-.text-white-bg a {
-  color:#3c3c3a;
-  padding: 0px 4px;
-  background-color:whitesmoke;
-}
-
-.text-white-bg a:hover {
-  color: whitesmoke;
-  background-color:#3c3c3a;
-  padding: 0px 4px;
-}
 
 /*+++++++++++++ Text Bar ++++++++++++++++*/
 
-.text-bar {
+.text-bar, .photo-grid-bar {
+  padding: 50px 0px;
+  position:relative;
+  z-index:2;
+
   background-color:#fff;
-  z-index:99999;
-  padding-bottom: 50px;
-  }
-
-.text-bar a:hover {
-  color: whitesmoke;
-  background-color:#3c3c3a;
-  padding: 0px 4px;
 }
-
 
   /* --------------Category---------------- */
 .categories li {
   list-style-type: none;
-  }
+}
 
 .category a {
+  line-height: 2em;
   font-size: 1.9em;
-  background-color: whitesmoke;
-  padding: 3px 6px;
-  line-height:2em;
-  }
-
-.category a:hover {
-  -webkit-transition: all .2s ease-in-out;
-  -moz-transition: all .2s ease-in-out;
-  -o-transition: all .2s ease-in-out;
-  color: whitesmoke;
-  font-size: 1.95em;
-  padding: 3px 6px;
-}
-
-.copyright {
-  text-align: right;
-  font-size: 0.8em;
-  margin-right: 10px;
-}
-
-.gray-bg *{
-  color: #222;
 }
 
 /*curies badge*/
 
-.curie-badge {
-  
-/*  display: none;
-  @media (min-width: 980px) and (min-height: 60em) {
-    display: block;
-  }*/
-  img {
-    position: fixed;
-    z-index: 1;
-    left: 68%;
-    top:60%;
-    width: 8%;
-    transition: all .3s ease-in-out;
-    -webkit-transition: all .3s ease-in-out;
-    transform: rotate(-10deg);
-    -moz-transform: rotate(-10deg);
-    -webkit-transform: rotate(-10deg);
-  } 
+.curie-badge img {
+  position: fixed;
+  z-index: 1;
+  left: 68%;
+  top:60%;
+  width: 8%;
+  @include transition(all,.3s,ease-in-out);
+  @include rotate(-10deg);
 }
 
 .curie-badge img:hover {
-  transform:  translate(-25px, 20px) rotate(0deg) scale(1.3);
-  -moz-transform: translate(-25px, 20px) rotate(0deg) scale(1.3);
-  -webkit-transform: translate(-25px, 20px) rotate(0deg) scale(1.3);
+  @include rotate-scale-translate-xy(0deg,1.3,-25px,20px);
 }

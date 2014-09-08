@@ -1,121 +1,19 @@
-<div class="container profiles">
-  <div class="text-white-bg">
-    <div class="row">
-      <div class="span12">
-        <br>
-        <h1><%= @profile.fullname %></h1>
-      </div>
-    </div>
-    <div class="row">
-      <div class="span12 text-right">
-        <%= link_to(t(:home, scope: "profiles.edit"), profiles_path) %>
-      </div>
-    </div>
-  </div>
-  <br>
-  <br>
-  <div class="row">
-    <div class="span4">
-      <% if @profile.picture.present? %>
-        <%= image_tag(@profile.picture.profile.url , class: "photo") %>
-      <% else %>
-        <%= image_tag("avatar.jpg", alt: "avatar", class: "photo") %>
-      <% end %>
-      <div class="main-topic"><%= @profile.main_topic_or_first_topic %></div>
-    </div>
+<%= render partial: 'profiles/speakerin',
+     locals: {
+       mode: :show,
 
-    <div class="span5 text-profile">
-      <% if @profile.twitter.present? %>
-        <h5><%= t(:twitter, scope: "profiles.profile") %></h5>
-        <span><%=link_to "@" + @profile.twitter_name_formatted, @profile.twitter_link_formatted, target: '_blank' %></span>
-        <hr>
-      <% end %>
+       fields: {
+         main_topic: valuelabel(@profile.main_topic_or_first_topic),
+         topics_main_topic: valuelabel(@profile.main_topic_or_first_topic),
+         city: valuelabel(@profile.city),
+         twitter: valuelabel(@profile.twitter),
+         website: valuelabel(@profile.website),
+         email: valuelabel(@profile.email),
+         languages: valuelabel(@profile.languages),
+         firstname: valuelabel(@profile.firstname),
+         lastname: valuelabel(@profile.lastname)
+       }
+      }
+%>
 
-      <% if @profile.website.present? %>
-        <h5><%= t(:website, scope: "profiles.profile") %></h5>
-        <span><%=link_to @profile.website, @profile.website_with_protocol, target: '_blank' %></span>
-        <hr>
-      <% end %>
-
-      <h5><%= t(:topics, scope: "profiles.profile") %></h5>
-      <span class='topics-cloud'><%= raw @profile.topic_list.map { |t| link_to t, topic_path(t) }.join(' ') %></span>
-      <hr>
-      <h5><%= t(:languages, scope: "profiles.profile") %></h5>
-      <span><%= @profile.languages %></span>
-      <hr>
-
-      <% if @profile.city.present? %>
-        <h5><%= t(:city, scope: "profiles.profile") %></h5>
-        <span><%= @profile.city %></span>
-        <hr>
-      <% end %>
-
-    </div>
-    <div class="span3">
-      <a data-toggle="modal" href="#contact" class="btn  btn-large buttons-modals">
-        <span class="icon icon-envelope"></span>
-        <%= t(:contact, scope: "profiles.profile") %>
-      </a>
-
-      <% if current_profile == @profile %>
-        <%= link_to(edit_profile_path(@profile)) do %>
-          <div class="btn  btn-large buttons-modals btn-info">
-            <span class="icon icon-edit icon-white"></span>
-            <%= t(:edit, scope: "profiles.profile") %>
-          </div>
-        <% end %>
-        <%= link_to(profile_medialinks_path(@profile)) do %>
-          <div class="btn  btn-large buttons-modals btn-info">
-            <span class="icon icon-edit icon-white"></span>
-            <%= t(:edit, scope: "profiles.medialinks") %>
-          </div>
-        <% end %>
-      <% end %>
-    </div>
-  </div>
-
-  <div class="row">
-    <%#<div class="info-profiles-bio">%>
-    <div class="span6 text-profile bottom">
-      <h5> <%= t ".bio" %></h5>
-      <span><%= simple_format(@profile.bio) %></span>
-    </div>
-
-    <div class="span6 pull-right text-profile bottom">
-
-      <% if @profile.medialinks.any? %>
-        <h5><%= t ".media" %></h5>
-        <ul>
-          <% @medialinks.each do |medialink| %>
-          <li>
-            <p class="medialink"><%= medialink.title %></p>
-            <%= medialink.url_html %>
-            <%= medialink.description %>
-          </li>
-          <hr>
-          <% end %>
-        </ul>
-      <% end %>
-    </div>
-  </div>
-</div>
-
-<!-- This is the contact form -->
-<div class="modal fade" id="contact">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h5 class="modal-title"><%= "#{t(".contact")} #{@profile.fullname}:"%></h5>
-      </div>
-      <div class="modal-body">
-        <div class="span6">
-          <%= render partial: 'contact/form', locals: {url: contact_profile_path(@profile)} %>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><%= t(:close, scope: "general") %></button>
-      </div>
-    </div>
-  </div>
-</div>
+<%= render partial: 'contact/modalform', locals: {url: contact_profile_path(@profile), recipient: @profile.fullname} %>

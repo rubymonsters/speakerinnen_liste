@@ -1,18 +1,12 @@
-<div class="container profiles">
-  <h1 class="title-profiles">Administration::<%= t(:categories, scope: "admin.dashboard.categories")%></h1>
-  <div class="row">
-    <div class="span2">
-      <%= link_to ('<i class="icon-plus icon-white"></i>'+t(:add, scope: "general")).html_safe,
-      new_admin_category_path, class: "btn btn-info" %>
-      <br>
-      <br>
-    </div>
-    <div class="span10">
-    </div>
-  </div>
-    <div class="row">
-      <div class="span12">
-        <table id="category-table" class="table table-bordered table-hovered table-condensed">
+<div class="full-width-container">
+    <div class="full-width-row administration">
+
+        <div class="breadcrumb-navigation">Administration::<%= t(:categories, scope: "admin.dashboard.categories")%></div>
+
+        <%= link_to ('<i class="icon-plus icon-white"></i>'+t(:add, scope: "general")).html_safe,
+        new_admin_category_path, class: "btn btn-primary" %>
+
+        <table class="table table-bordered table-hovered table-condensed">
           <thead>
           <tr>
              <th><%= t(:category_language_de, scope: "admin.dashboard.categories")%></th>
@@ -41,8 +35,6 @@
             </tr>
           <% end %>
         </table>
-        <br />
-      </div>
-      <hr/>
+
   </div>
 </div>

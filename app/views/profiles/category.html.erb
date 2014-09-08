@@ -1,9 +1,9 @@
-<div class="container profiles">
-  <h1>
+<div class="full-width-container category-page">
+  <div class="full-width-row">
+  <h2>
     <%= @category.name %>
-  </h1>
-  <br>
-  <div class='row'>
+  </h2>
+  <div class='bordered-text-block'>
     <%= render partial: "tag" %>
   </div>
   <h3>
@@ -13,9 +13,9 @@
     <%= render partial: "profile", collection: @profiles %>
   </div>
   <div class="row">
-    <div class="span12 text-center">
+    <div class="col-md-12 col-sm-12 col-xs-12 text-center">
       <%= paginate @profiles %>
     </div>
   </div>
 </div>
-<br>
+</div>

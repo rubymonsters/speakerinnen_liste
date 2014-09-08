@@ -1,22 +1,25 @@
-<div class="gray-bg">
-  <div class="container">
+<div class="full-width-container footer">
+  <div class="full-width-row">
     <h1><%= t(:contact, scope: "pages.home.footer") %></h1>
     <div class="row">
-      <div class="span12">
-        <h4><span class="italic"><%= t(:address, scope: "pages.home.footer").html_safe %> |
-            <%= link_to t(:contact_link, scope: "pages.home.footer"), contact_path %> |
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="footer-links bordered-text-block">
+            <%= t(:address, scope: "pages.home.footer").html_safe %> |
+            <a data-toggle="modal" href="#contact">
+              <%= t(:contact_link, scope: "pages.home.footer") %>
+            </a> |
             <%= t(:github, scope: "pages.home.footer").html_safe %> |
             <%= link_to t(:title, scope: "pages.imprint"), impressum_path %> |
-            <%= t(:devblog, scope: "pages.home.footer").html_safe %></span></h4>
+            <%= t(:devblog, scope: "pages.home.footer").html_safe %>
+          </div>
       </div>
     </div>
-    <div class="clearfix"></div>
     <div class="row">
-      <div class="span12">
+      <div class="col-md-12 col-sm-12 col-xs-12">
         <%= t(:women, scope: "pages.home.footer").html_safe %>
       </div>
     </div>
-    <br>
-    <br>
   </div>
 </div>
+
+<%= render partial: 'contact/modalform', locals: { url: contact_path(locale: I18n.locale), recipient: t(:default_recipient, scope: "contact.form") } %>

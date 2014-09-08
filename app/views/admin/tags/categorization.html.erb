@@ -1,12 +1,10 @@
-<div class='container profiles'>
-  <h1 class='title-profiles'>Administration::<%= t(:tags, scope: 'admin.dashboard.tags')%></h1>
+<div class="full-width-container">
+  <div class="full-width-row administration">
 
+    <div class="breadcrumb-navigation">Administration::<%= t(:tags, scope: 'admin.dashboard.tags')%></div>
 
-  <%= render partial: 'filter' %>
-
-
-  <div class='row'>
-    <div class='span12 text-center'>
+    <%= render partial: 'filter' %>
+    <div class="text-center">
       <% if @tags_count %>
         <strong>
           <%= t(:tags_here_are, scope: 'admin.dashboard.tags') + @tags.total_count.to_s + t(:tags_of, scope: 'admin.dashboard.tags') + @tags_count.to_s + ' tags.' %>
@@ -16,21 +14,21 @@
           <%= t(:tags_count, scope: 'admin.dashboard.tags') + @tags.total_count.to_s + '.' %>
         </strong>
       <% end %>
+    </div>
+
+    <div class="text-center">
       <%= paginate @tags %>
     </div>
-  </div>
 
-  <div class='row'>
-    <div class='span12'>
-      <table class='admin-tags-categorization table'>
+    <table class='admin-tags-categorization table'>
         <% @tags.each do |tag| %>
           <tr>
             <td>
               <%= link_to tag.name, edit_admin_tag_path(tag.id, page: params[:page]) %>
-              <%= tag.taggings_count %>
+              (<%= tag.taggings_count %>)
             </td>
-            <% @categories.each do |category| %>
-              <td>
+            <td>
+              <% @categories.each do |category| %>
                 <% if tag.categories.pluck(:id).include?(category.id) %>
                   <%= link_to category.name, remove_category_admin_tag_path(tag,
                   category_id: category.id, page: params[:page], q: params[:q],
@@ -40,22 +38,18 @@
                   category_id: category.id, page: params[:page], q: params[:q],
                   uncategorized: params[:uncategorized]), method: :post %>
                 <% end %>
-              </td>
-            <% end %>
-              <td>
-                <%= link_to "<i class='icon-trash'></i>".html_safe, admin_tag_path(tag.id),
-                method: :delete, confirm: 'Do you want to delete the tag #{tag.name}?' %>
-              </td>
+              <% end %>
+            </td>
+            <td>
+              <%= link_to "<i class='glyphicon glyphicon-trash'></i>".html_safe, admin_tag_path(tag.id),
+              method: :delete, confirm: "Do you want to delete the tag #{tag.name}?" %>
+            </td>
           </tr>
         <% end %>
       </table>
-    </div>
-  </div>
 
-  <div class='row'>
-    <div class='span12 text-center'>
+    <div class="text-center">
       <%= paginate @tags %>
     </div>
-  </div>
 
 </div>

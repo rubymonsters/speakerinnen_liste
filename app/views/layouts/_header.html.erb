@@ -1,37 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <% admin_header_class = 'admin' if controller_path =~ /admin\// %>
-<header class="top-header" id="<%=admin_header_class %>">
-  <div class="row pull-right">
-    <div class="span6 header-link">
-      <%= link_to(t(:home, scope: "layouts.application"), root_path, id: "logo")%>
+<header class="top-header container-fluid" id="<%=admin_header_class %>">
+  <div class="row">
+    <div class="col-md-3 col-sm-3 col-xs-2 valign-middle-container">
+      <div class="valign-middle-row">
+        <div class="valign-middle-cell">
+          <%= link_to(t(:home, scope: "layouts.application"), root_path, id: "logo")%>
+        </div>
+      </div>
     </div>
-    <div class="span4">
-      <% if profile_signed_in? %>
-        <%= link_to(t(:my_profile, scope: "layouts.application"), profile_path(current_profile))%> |
-        <%= link_to(t(:account, scope: "layouts.application"), edit_profile_registration_path) %> |
-        <%= link_to(t(:logout, scope: "layouts.application"), destroy_profile_session_path, method: :delete) %>
-      <% else %>
-        <%= link_to(t(:signup, scope: "layouts.application"), sign_up_path) %>
-        |
-        <%= link_to(t(:login, scope: "layouts.application"), new_profile_session_path) %>
-      <% end %>
-      <% if admin?(current_profile) %>
-      |||
-      <%= link_to "Admin", admin_root_path, {style: "color: #B4035D"} %>
-      <% end %>
+    <div class="col-md-6 col-sm-6 col-xs-7 text-right valign-middle-container">
+      <div class="valign-middle-row">
+        <div class="valign-middle-cell">
+          <% if profile_signed_in? %>
+          <%= link_to(t(:my_profile, scope: "layouts.application"), profile_path(current_profile))%>
+          <span> | </span>
+          <%= link_to(t(:account, scope: "layouts.application"), edit_profile_registration_path) %>
+          <span> | </span>
+          <%= link_to(t(:logout, scope: "layouts.application"), destroy_profile_session_path, method: :delete) %>
+          <% else %>
+          <%= link_to(t(:signup, scope: "layouts.application"), sign_up_path) %>
+          <span> | </span>
+          <%= link_to(t(:login, scope: "layouts.application"), new_profile_session_path) %>
+          <% end %>
+          <% if admin?(current_profile) %>
+          <span> ||| </span>
+          <%= link_to "Admin", admin_root_path, {style: "color: #B4035D"} %>
+          <% end %>
+        </div>
+      </div>
     </div>
-    <div class="span2">
-      <%= link_to_unless I18n.locale == :en, "ENG", locale: :en %> |
-      <%= link_to_unless I18n.locale == :de, "DEU", locale: :de %>
+    <div class="col-md-3 col-sm-3 col-xs-3 text-right valign-middle-container">
+      <div class="valign-middle-row">
+        <div class="valign-middle-cell">
+          <%= link_to_unless I18n.locale == :en, "ENG", locale: :en %>
+          <span> | </span>
+          <%= link_to_unless I18n.locale == :de, "DEU", locale: :de %>
+        </div>
+      </div>
     </div>
   </div>
 </header>
-
-<div style="clear:both"></div>
-
+<div style="clear:both">
+</div>
 <% if notice %>
-  <p class="notice"><%= notice %></p>
+<p class="notice">
+  <%= notice %>
+</p>
 <% end %>
-
 <% if alert %>
-  <p class="alert"><%= Array(alert).join("<br>").html_safe %></p>
+<p class="alert">
+  <%= Array(alert).join("<br>").html_safe %>
+</p>
 <% end %>

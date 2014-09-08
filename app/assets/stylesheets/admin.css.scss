@@ -3,6 +3,45 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.breadcrumb-navigation {
+  font-size: 2em;
+  font-style: bolder;
+  padding: 20px 0 10px;
+}
+
+.administration {
+  table {
+    margin-top: 10px;
+  }
+
+  .filter {
+    width: 47%;
+    display: inline-block;
+  }
+  .checkbox-and-label {
+    display: inline;
+  }
+
+  .filter + .filter {
+    margin-left: 5%;
+  }
+  .tag-filter {
+    margin: 20px 0;
+
+    .btn {
+      width: 100%;
+      display: block;
+    }
+  }
+  .category-option {
+    margin-left: 30px;
+  }
+}
+
+.control-group + .control-group {
+  margin-top: 7px;
+}
+
 header#admin {
  background-color: $notice-yellow;
 }
@@ -20,23 +59,5 @@ header#admin {
   .active {
     color: white;
     background-color: silver;
-  }
-}
-
-#category-table tbody {
-  font-size: 0.8em;
-}
-
-.add-category {
-  text-align: center;
-  .add-category-form {
-    text-align: left;
-  }
-}
-
-.add-category-form {
-  display: inline-block;
-  .control-label{
-  padding-right: 0.2em;
   }
 }

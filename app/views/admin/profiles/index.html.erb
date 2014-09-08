@@ -1,13 +1,10 @@
-<div class="container profiles">
-  <h1 class="title-profiles">Administration::<%= t(:profiles, scope: "admin.dashboard.profiles")%></h1>
-  <div class="row">
+<div class="full-width-container administration">
+  <div class="full-width-row">
+    <div class="breadcrumb-navigation">Administration::<%= t(:profiles, scope: "admin.dashboard.profiles")%></div>
     <%= Profile.all.size %> Speakerinnen.
     <%= Profile.all.select {|profile| profile.published?}.size %> <%= t(:public, scope: "admin.dashboard.profiles") %>.
-  </div>
-  <div class="row">
-    <div class="span12 text-center">
+  <div class="text-center">
       <%= paginate @profiles %>
-    </div>
   </div>
   <table class="table table-striped sort-arrows">
     <thead>
@@ -50,7 +47,7 @@
           <%= link_to t(:edit, scope: "general"), edit_admin_profile_path(profile) %>
         </td>
         <td>
-          <%= link_to t(:delete, scope: "general"), admin_profile_path(profile), confirm: 'Are you sure?', method: :delete %>
+          <%= link_to t(:delete, scope: "general"), admin_profile_path(profile), confirm: "Do you really want to delete: #{name_or_email(profile)}?", method: :delete %>
         </td>
         <td>
           <% if profile.published %>
@@ -67,18 +64,22 @@
           <%= "Admin" if profile.admin %>
         </td>
         <td>
-          <%= form_for profile,{ url: admin_comment_admin_profile_path(profile.id), method: "post" } do |f| %>
-            <%= f.text_field "admin_comment" %>
-            <%= f.submit t(:add_comment, scope: "admin.dashboard.profiles"), class: "btn btn-small btn-info" %>
+          <%= form_for profile,{ url: admin_comment_admin_profile_path(profile.id), method: "post", class: "form form-vertical" } do |f| %>
+            <div class="control-group">
+              <%= f.text_field "admin_comment", class: "form-control" %>
+            </div>
+            <div class="control-group">
+              <%= f.submit t(:add_comment, scope: "admin.dashboard.profiles"), class: "btn btn-small btn-info" %>
+            </div>
           <% end  %>
         </td>
       </tr>
   <% end %>
     </tbody>
   </table>
-  <div class="row">
-    <div class="span12 text-center">
+  <div class="text-center">
       <%= paginate @profiles %>
-    </div>
   </div>
+</div>
+
 </div>

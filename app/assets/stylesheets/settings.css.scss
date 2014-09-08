@@ -1,19 +1,113 @@
-/*color*/
+/* color */
 $bg-light-grey: whitesmoke;
+$bg-paginator: #fff;
+$bg-profile-box: #fff;
+$border-profile-box: rgb(200,200,200);
+$border-medialink-box: rgb(215,215,215);
 $text-bg-transp-white: rgba(255, 255, 255, 0.7);
 
 $text-dark-grey: #333333;
 $text-middle-grey: #5E5E5E;
+$text-light-grey: whitesmoke;
 
 $link-brighter-grey: #5E5E5E;
 $link-darker-grey: #7B7B7B;
 $background-link-dark-grey: #3c3c3a;
-
+$footer-text: #222;
 $button-blue: #49AFCD;
 
 $alert-pink: #B4035D;
 $notice-yellow: #E8CD30;
+$emphasize-alert: #F2BFDC;
 
-/*fonts*/
+$box-shadow-dark-gray: rgba(50,50,50,0.75);
+$box-shadow-light-gray: rgba(150,150,150,0.75);
+$box-shadow-black: rgba(0,0,0,0.75);
+$bar-shadow-black: rgba(0,0,0,0.5);
+
+$table-border-color: rgb(221,221,221);
+
+$bwb-gradient: 45deg,
+      rgb(33,33,33),
+      rgb(255, 255, 255),
+      rgb(33,33,33)
+;
+
+$bwb-gradient-dark: 135deg,
+      rgb(255, 255, 255),
+      rgb(33,33,33),
+      rgb(33,33,33),
+      rgb(255, 255, 255)
+;
+
+/* fonts */
 $serif: 'Merriweather', Georgia, serif;
 $sans-serif: "OpenSans", "Helvetica Neue", Helvetica, sans-serif;
+
+/* mixins */
+@mixin lin-gradient($gradient) {
+  background: -webkit-linear-gradient($gradient);
+  background:    -moz-linear-gradient($gradient);
+  background:     -ms-linear-gradient($gradient);
+  background:      -o-linear-gradient($gradient);
+  background:         linear-gradient($gradient);
+}
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+          border-radius: $radius;
+}
+
+@mixin box-shadow($horizontal_offset,$vertical_offset,$blur,$spread,$color) {
+  -webkit-box-shadow: $horizontal_offset $vertical_offset $blur $spread $color;
+     -moz-box-shadow: $horizontal_offset $vertical_offset $blur $spread $color;
+          box-shadow: $horizontal_offset $vertical_offset $blur $spread $color;
+}
+
+@mixin inset-box-shadow($horizontal_offset,$vertical_offset,$blur,$spread,$color) {
+  -webkit-box-shadow: inset $horizontal_offset $vertical_offset $blur $spread $color;
+     -moz-box-shadow: inset $horizontal_offset $vertical_offset $blur $spread $color;
+          box-shadow: inset $horizontal_offset $vertical_offset $blur $spread $color;
+}
+
+@mixin transition($property,$duration,$timing_function) {
+  -webkit-transition: $property $duration $timing_function;
+     -moz-transition: $property $duration $timing_function;
+       -o-transition: $property $duration $timing_function;
+          transition: $property $duration $timing_function;
+}
+@mixin rotate($angle) {
+  -webkit-transform: rotate($angle);
+     -moz-transform: rotate($angle);
+          transform: rotate($angle);
+}
+
+@mixin rotate-scale-translate-xy($angle,$zoom,$x,$y) {
+  -webkit-transform: translate($x, $y) rotate($angle) scale($zoom);
+     -moz-transform: translate($x, $y) rotate($angle) scale($zoom);
+          transform: translate($x, $y) rotate($angle) scale($zoom);
+}
+
+@mixin hover-invert-text-and-background-color($color,$bgcolor) {
+  color:$color;
+  background-color:$bgcolor;
+
+  &:hover {
+      color: $bgcolor;
+      background-color:$color;
+  }
+}
+
+@mixin circle-container($height, $margin-top) {
+  height: $height;
+  margin-top: $margin-top;
+}
+
+@mixin circle-item($item-radius) {
+  width: $item-radius;
+  height: $item-radius;
+
+  @include border-radius(120px);
+  @include inset-box-shadow(0px,0px,2px,1px,$box-shadow-black);
+}

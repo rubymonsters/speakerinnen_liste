@@ -8,29 +8,28 @@
 
       <div id='login'>
         <%= form_for(Profile.new) do |f| %>
-          <div class='control-group'>
-            <div class='controls'>
-              <%= f.email_field :email, autofocus: true, class:'input-xlarge', placeholder: 'Email' %>
+          <div class="control-group">
+            <div class="controls">
+              <%= f.email_field :email, autofocus: true, inner_html { class:"form-control" }, placeholder: "Email" %>
             </div>
           </div>
 
           <% if f.object.password_required? %>
-            <div class='control-group'>
-              <div class='controls'>
-                <%= f.password_field :password, class:'input-xlarge',
-                placeholder: t(:password, scope: 'devise.registrations.new') %>
+
+            <div class="control-group">
+              <div class="controls">
+                <%= f.password_field :password, class:"form-control", placeholder: t(:password, scope: "devise.registrations.new") %>
               </div>
             </div>
 
-            <div class='control-group'>
-              <div class='controls'>
-                <%= f.password_field :password_confirmation, class:'input-xlarge',
-                placeholder: 'Password Confirmation' %>
+            <div class="control-group">
+              <div class="controls">
+                <%= f.password_field :password_confirmation, class:"form-control", placeholder: "Password Confirmation" %>
               </div>
             </div>
 
-            <div class='control-group'>
-              <%= f.submit('Sign up', class: 'btn')%>
+            <div class="control-group">
+              <%= f.submit("Sign up", class: "btn btn-primary")%>
             </div>
 
             <div class='control-group'>

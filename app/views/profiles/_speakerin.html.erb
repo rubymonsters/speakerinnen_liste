@@ -1,0 +1,256 @@
+<%
+=begin
+  This partial assumes @profile is not nil and mode is set to either :edit or :show.
+  This partial is used for unified show views and edit views of profiles.
+=end
+%>
+<% edit_permission = (current_profile == @profile) %>
+<div class="full-width-container speakerin">
+  <div class="full-width-row">
+    <div class="backlink"><%= link_to(t(:link_to_all, scope: "profiles"), profiles_path) %></div>
+
+    <% if edit_permission %>
+      <% if mode == :edit %>
+        <div class="main-action">
+          <a href="<%= profile_path(@profile) %>" class="tiny"><%= t(:reset, scope: "profiles.speakerin") %></a>
+          <%= fields[:button_save].html_safe %>
+        </div>
+      <% else %>
+        <div class="main-action">
+          <a href="<%= edit_profile_path(@profile) %>" class="btn btn-warning"><%= t(:edit, scope: "profiles.speakerin") %></a>
+        </div>
+      <% end %>
+    <% end %>
+
+    <div class="profile-box about">
+      <h1 class="text-center"><%= @profile.fullname %></h1>
+
+      <div class="row">
+        <div class="col-md-7 col-sm-12 col-xs-12">
+          <% if edit_permission && mode == :edit %>
+            <div class="group">
+              <label class="mandatory"><%= t(:firstname, scope: "profiles.speakerin") %></label>
+              <%= fields[:firstname].html_safe %>
+            </div>
+            <div class="group">
+              <label><%= t(:lastname, scope: "profiles.speakerin") %></label>
+              <%= fields[:lastname].html_safe %>
+            </div>
+          <% else %>
+            <div class="group">
+              <label><%= t(:main_topic, scope: "profiles.speakerin") %></label>
+              <%= fields[:main_topic].html_safe %>
+            </div>
+          <% end %>
+
+          <div class="group">
+            <label><%= t(:languages, scope: "profiles.speakerin") %></label>
+            <%= fields[:languages].html_safe %>
+          </div>
+          <div class="group">
+            <label><%= t(:city_region, scope: "profiles.speakerin") %></label>
+            <%= fields[:city].html_safe %>
+          </div>
+          <div class="group">
+            <label><%= t(:twitter, scope: "profiles.speakerin") %></label>
+            <%= fields[:twitter].html_safe %>
+          </div>
+          <div class="group">
+            <label><%= t(:website, scope: "profiles.speakerin") %></label>
+            <%= fields[:website].html_safe %>
+          </div>
+
+          <% if current_profile != @profile %>
+            <a data-toggle="modal" href="#contact" class="btn btn-default btn-large buttons-modals aligned-to-infos">
+              <span class="glyphicon glyphicon-envelope"></span>
+              <%= t(:contact, scope: "profiles.speakerin").gsub!('%{recipient}', @profile.fullname) %>
+            </a>
+          <% else %>
+            <h2><%= t(:private_details, scope: "profiles.speakerin") %></h2>
+            <div class="group">
+              <label class="mandatory"><%= t(:email, scope: "profiles.speakerin") %></label>
+              <%= fields[:email].html_safe %>
+            </div>
+          <% end %>
+        </div>
+        <div class="col-md-5 col-sm-12 col-xs-12">
+          <div class="group text-center">
+            <% if @profile.picture.present? %>
+              <%= image_tag(@profile.picture.profile.url , class: "photo") %>
+            <% else %>
+              <%= image_tag("avatar.jpg", alt: "avatar", class: "photo") %>
+            <% end %>
+            <% if edit_permission && mode == :edit %>
+                <%= fields[:picture].html_safe %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="profile-box">
+      <h2>Speakerinnen-Bio</h2>
+      <% if edit_permission && mode == :edit %>
+        <div class="row">
+          <% fields[:translatable_fields].each do |locale_sym, translation| %>
+            <div class="col-md-6 col-sm-12 col-xs-12">
+              <div class='control-group'>
+                <%= translation[:bio][:hidden_field].html_safe %>
+                <%= translation[:bio][:label].html_safe %>
+                <div class='controls'>
+                  <%= translation[:bio][:input_field].html_safe %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      <% else %>
+        <div class="content"><%= simple_format(@profile.bio) %></div>
+      <% end %>
+    </div>
+
+    <div class="profile-box">
+      <h2><%= t(:topics, scope: "profiles.speakerin") %></h2>
+      <div class="block-content">
+        <h3><%= t(:main_topic, scope: "profiles.speakerin") %></h3>
+      </div>
+        <% if edit_permission && mode == :edit %>
+          <div class="row">
+            <% fields[:translatable_fields].each do |locale_sym, translation| %>
+              <div class="col-md-6 col-sm-12 col-xs-12">
+                <div class='control-group'>
+                  <%= translation[:main_topic][:hidden_field].html_safe %>
+                  <%= translation[:main_topic][:label].html_safe %>
+                  <div class='controls'>
+                    <%= translation[:main_topic][:input_field].html_safe %>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        <% else %>
+          <div class="content">
+            <%= fields[:topics_main_topic].html_safe %>
+          </div>
+        <% end %>
+
+
+        <% if edit_permission && mode == :edit %>
+          <div class="block-content">
+            <h3><%= t(:more_topics, scope: "profiles.speakerin") %></h3>
+            <%= fields[:topic_list].html_safe %>
+            <%#Used by "tag-it" for autocompletion%>
+            <ul class="hidden" id="availableTags">
+              <% ActsAsTaggableOn::Tag.uniq.pluck(:name).each do |tag_name| %>
+                <li><%= tag_name %></li>
+              <% end %>
+            </ul>
+          </div>
+
+        <% else %>
+          <%
+            add_comma = false
+            other_topics = ''
+            @profile.topic_list.each do |topic|
+              if topic != @profile.main_topic_or_first_topic
+                if add_comma
+                  other_topics = other_topics + ', '
+                end
+                other_topics = other_topics + topic
+                add_comma = true
+              end
+            end
+          %>
+          <% if other_topics.length > 0 %>
+            <div class="block-content">
+              <h3><%= t(:more_topics, scope: "profiles.speakerin") %></h3>
+              <p>
+                <%= other_topics %>
+              </p>
+            </div>
+          <% end %>
+        <% end %>
+    </div>
+
+    <% if edit_permission && mode == :edit %>
+      <div class="profile-box medialinks">
+        <h2><%= t(:medialinks, scope: "profiles.speakerin") %></h2>
+        <input id="profile_id" name="profile.id" type="hidden" value="<%= @profile.id %>">
+        <ul class="all-links ui-sortable">
+          <% @profile.medialinks.each do |medialink| %>
+            <li class="content existing-item ui-sortable-handle">
+              <% if medialink.id %>
+                <input id="medialink_id" name="medialinks[][id]" type="hidden" value="<%= medialink.id %>">
+              <% end %>
+              <div class="group link-group">
+                <label class="mandatory"><%= t(:url, scope: "profiles.speakerin.link") %></label>
+                <input class="form-control<%= mark_input_quality(medialink, :url) %>" id="medialink_url"
+                      name="medialinks[][url]" size="30" type="text" value="<%= medialink.url %>">
+                <button class="btn btn-default btn-delete" name="button" type="button"><%= t(:delete, scope: "profiles.speakerin.link") %></button>
+              </div>
+              <div class="group link-group">
+                <label class="mandatory"><%= t(:title, scope: "profiles.speakerin.link") %></label>
+                <input as="string" class="form-control<%= mark_input_quality(medialink, :title) %>" id="medialink_title"
+                name="medialinks[][title]" size="30" type="text" value="<%= medialink.title %>">
+              </div>
+              <div class="group link-group">
+                <label><%= t(:description, scope: "profiles.speakerin.link") %></label>
+                <textarea class="form-control<%= mark_input_quality(medialink, :description) %>" cols="40" id="medialink_description"
+                name="medialinks[][description]" rows="3"><%= medialink.description %></textarea>
+              </div>
+            </li>
+          <% end %>
+        </ul>
+        <div class="options">
+            <button class="btn btn-info add-empty-medialink-form" name="button" type="button"><%= t(:add, scope: "profiles.speakerin.link") %></button>
+        </div>
+        <div class="content hidden empty-medialink-form">
+          <div class="group link-group">
+            <label class="mandatory"><%= t(:url, scope: "profiles.speakerin.link") %></label>
+            <input class="form-control" id="medialink_url"
+                  name="medialinks[][url]" size="30" type="text" value="" disabled>
+            <button class="btn btn-default btn-delete" name="button" type="button"><%= t(:delete, scope: "profiles.speakerin.link") %></button>
+          </div>
+          <div class="group link-group">
+            <label class="mandatory"><%= t(:title, scope: "profiles.speakerin.link") %></label>
+            <input as="string" class="form-control" id="medialink_title"
+            name="medialinks[][title]" size="30" type="text" value="" disabled>
+          </div>
+          <div class="group link-group">
+            <label><%= t(:description, scope: "profiles.speakerin.link") %></label>
+            <textarea class="form-control" cols="40" id="medialink_description"
+            name="medialinks[][description]" rows="3" disabled></textarea>
+          </div>
+        </div>
+      </div>
+
+    <% elsif @profile.medialinks.any? %>
+      <div class="profile-box">
+        <h2><%= t(:medialinks, scope: "profiles.speakerin") %></h2>
+          <ul ="show-medialinks">
+            <% @profile.medialinks.each do |medialink| %>
+            <li>
+              <p class="medialink"><%= medialink.title %></p>
+              <p><%= medialink.url_html %></p>
+              <p><%= medialink.description %></p>
+            </li>
+            <% end %>
+          </ul>
+      </div>
+    <% end %>
+
+    <% if edit_permission %>
+      <% if mode == :edit %>
+        <div class="main-action">
+          <%= fields[:button_save].html_safe %>
+          <a href="<%= profile_path(@profile) %>" class="tiny"><%= t(:reset, scope: "profiles.speakerin") %></a>
+      </div>
+      <% else %>
+        <div class="main-action">
+          <a href="<%= edit_profile_path(@profile) %>" class="btn btn-warning"><%= t(:edit, scope: "profiles.speakerin") %></a>
+        </div>
+      <% end %>
+    <% end %>
+
+  </div>
+</div>

@@ -10,6 +10,10 @@ en:
     ok: "Ok"
     current_name: "Current name"
     new_name: "New name"
+    or: "or"
+  languages:
+    de: "German"
+    en: "English"
   admin:
     dashboard:
       edit_categories: "Edit Categories"
@@ -38,7 +42,7 @@ en:
         tags_here_are: "Here are "
         tags_search: "Search for tag"
         tags_count: "The number of all tags is "
-        tags_filter_option: "Show all tags without category"
+        tags_filter_option: "All tags without category"
         tags_filter_default: "Show all categories"
   pages:
     home:
@@ -62,7 +66,6 @@ en:
       quote: "We believe in collaboration — not competition"
       quote_text: "So we encourage our speakers and event organizers to support each other and help speakers to improve their performance."
       footer:
-        about_title: "About Speakerinnen*-List"
         about: |
               The Speakerinnen* List aims to increase the visibility and participation of women at (but not limited to) conferences, panels and talk shows.<br>
               Organizers and hosts can find experts, who gladly (and competently) share their knowledge. <br>
@@ -90,6 +93,69 @@ en:
         women: "* When we say women* we mean everyone who defines herself as a woman."
     about:
       title: "About us"
+      objective:
+        title: "Objective"
+        intro: |
+          People are often frustrated by the fact that it's usually men who are interviewed by
+          the media or asked to present at conferences and not women. There isn't a
+          biological explanation for this. Men are not cleverer than women. Anyone who points
+           out this discrepancy is usually told that there wasn't a suitable woman available.
+           We are convinced  that there are a lot more competent women around than just those who
+           speak in public. Girls need female role models, women need the assurance that another
+           view on the topic, ie theirs, is equally relevant. Events need more diversity.
+        text: |
+          The main aim of the Speakerinnen-List to increase the visibility of women in
+          the field of public speaking. With the help of our list it will be easier for
+          organisers to find female experts to speak at their events. We also want to
+          actively invite women* to speak more often and in public about their area of expertise.
+      who:
+        title: "Who we are"
+        dev: "Technology & Programming"
+        pr: "Communication & Administration"
+      background:
+        title: "Background"
+        intro: |
+          The Speakerinnen-List was created by 8 women with the support of 4
+          coaches as part of Rails Girls Berlin learning project.
+        initiative:
+          title: "Railsgirls / Rubymonsters"
+          text: |
+            <a href="http://www.railsgirlsberlin.de" target="_blank">Rails Girls</a> is an
+            international non-profit organisation that motivates women to learn computer
+            programming. They facilitate this through interesting workshops, study groups,
+            grants and by creating a positive  learning community. The
+            <a href="http://twitter.com/rubymonsters" target="_blank">Rubymonsters</a>
+            are a study group which emerged during one of the Rails Girls Berlin workshops.
+          history: |
+            The idea of having a database of female speakers originated during numerous
+            discussions both online and offline about the dominance of men in the public domain.
+            There are lots of reasons for this and the Speakerinnen-List isn't a solution for
+            all of them. But it is a step towards making it easier for organisers to achieve a
+            balanced male to female ratio at their events.
+          motivation: |
+            In addition we want to support women* in finding the right platform. We hope they
+            will be encouraged by the experiences of other women and see that they too have a
+            contribution to  make.
+      support:
+        title: "Support us"
+        intro: "There are lots of ways in which you can support the Speakerinnen-List project:"
+        option1: "tell other women* about it"
+        option2: "create your own profile"
+        option3: "send us an email with a link to networks and communities that deal with specific topics"
+        option4: |
+          build with us! If you're good at web design or programming, help us  complete the ongoing issues. There's a list <a href="https://github.com/rubymonsters/speakerinnen_liste/issues/216" target="_blank">here.</a>
+    faq:
+      title: "FAQ"
+      question1: "Why is there no speaker for the topic I am looking for?"
+      answer1: "Possibly, nobody has created a tag for this topic yet. As soon as a speaker names this topic as one of her tags, this topic becomes visible as a tag within the topic range."
+      question2: "Can anybody join in?"
+      answer2: "Yes."
+      question3: "Why has my profile not been activated yet?"
+      answer3: "One of two reasons may apply. If your profile has just been created, it might take a bit since we're not online 24/7. We might have thought that your profile is a draft version because we might have had the impression that there is too little information so far. In case you mean to have it activtated as is, please drop us a line: speakerinnen@lists.riseup.net"
+      question4: "How do I use the search function?"
+      answer4: "You can search the fields, the speakers filled in their profiles: name - language - city - references - topics - biography - title. You can search for combinations with AND an OR, e.g. energy berlin. If you use multiple words together they will be used as AND operator by default. "
+      question5: "How can I donate any money?"
+      answer5: "Thank you for such a nice and cooperative idea. A donations button will be projected in due course."
     press:
       title: "Press about us"
     imprint:
@@ -114,6 +180,9 @@ en:
       login: "Log in"
   contact:
     form:
+      title: "Contact"
+      recipient: "Email to %{recipient}"
+      default_recipient: "Team Speakerinnen"
       name: "Your name"
       name_placeholder: ""
       email: "Your email address"
@@ -125,8 +194,36 @@ en:
       notice: "Yay! Your message was sent."
       error: "Please fill out all the fields so that the speaker can have all the details she needs."
   profiles:
+    link_to_all: "All Speakerinnen"
+    speakerin:
+      firstname: "Firstname"
+      lastname: "Lastname"
+      main_topic: "Main topic"
+      languages: "Languages"
+      city_region: "City/Region"
+      twitter: "Twitter"
+      website: "Website"
+      contact: "contact %{recipient}"
+      private_details: "Your account details (hidden)"
+      email: "Email"
+      password: "Password"
+      password_confirmation: "Password confirmation"
+      topics: "Topics"
+      more_topics: "More topics"
+      medialinks: "Media links"
+      link:
+        add: "Add media link"
+        delete: "delete"
+        title: "Title"
+        url: "Url"
+        description: "Description"
+      edit: "Edit profile"
+      save: "Save all changes"
+      reset: "Cancel"
     tag:
       topics: "Topics:"
+      topics_filter: "Topics filter"
+      reset_filter: "Clear"
     form:
       not_saved: "This profile could not be saved: "
       profile_from: "Profile of"
@@ -182,6 +279,7 @@ en:
       created: 'Profile was successfully created.'
       updated: 'Profile was successfully updated.'
       destroyed: 'Profile was successfully deleted.'
+      failed: "Profile changes could not be saved."
       no_permission: "You don’t have permission to edit the profile."
       show_no_permission: "You don’t have permission to see the profile."
     medialink:
@@ -226,7 +324,7 @@ en:
         password: "Password"
     sessions:
       new:
-        login: "Log in"
+        signin: "Log in"
   medialinks:
     edit: "Edit Medialink"
     new: "Add Medialink"

@@ -1,5 +1,33 @@
 @import "bootstrap";
+@import 'settings';
 
+/* thumbnail hack while system may still contain too small
+   images (TODO min-width and min-height for pic upload
+   and remove this hack again)
+ */
+.thumbnail > img, .thumbnail a > img {
+  width: 100%;
+}
+
+/* custom speakerinnen thumbnail styling */
+.thumbnail {
+  border: 0;
+}
+
+.speaker {
+  @media (max-width: 767px) {
+    height: 340px;
+  }
+  @media (min-width: 768px) and (max-width: 1199px) {
+    height: 380px;
+  }
+  @media (min-width: 1200px) and (max-width: 1799px) {
+    height: 420px;
+  }
+  @media (min-width: 1800px) {
+    height: 460px;
+  }
+}
 
 /* forms */
 
@@ -12,8 +40,7 @@
 }
 
 .field_with_errors {
-  @extend .control-group;
-  @extend .error;
+  @extend .has-error;
 }
 
 .hidden {
@@ -28,6 +55,32 @@
   margin-bottom: 180px;
 }
 
-.font16 {
-  font-size: 16px;
+/* custom speakerinnen paginator styling*/
+.pagination.custom-pagination {
+  li {
+    span, a {
+    color: $text-dark-grey;
+    background-color: $bg-paginator;
+    border-color: $table-border-color;
+      &:hover, &:focus {
+        color: $text-middle-grey;
+        background-color: $bg-light-grey;
+        border-color: $table-border-color;
+      }
+    }
+  }
+
+  .active {
+    a, span {
+      color: $bg-paginator;
+      background-color: $background-link-dark-grey;
+      border-color: $table-border-color;
+
+      &:hover, &:focus {
+        color: $text-middle-grey;
+        background-color: $background-link-dark-grey;
+        border-color: $table-border-color;
+      }
+    }
+  }
 }

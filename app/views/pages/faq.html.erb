@@ -1,0 +1,11 @@
+<div class="pages static-page">
+  <div class="full-width-container">
+    <div class="full-width-row">
+        <h1><%= t(:title, scope: 'pages.faq') %></h3>
+        <% 5.times do |i| %>
+          <h4><%= t('pages.faq.question'+(i+1).to_s) %></h4>
+          <p><%= t('pages.faq.answer'+(i+1).to_s) %></p>
+        <% end %>
+    </div>
+  </div>
+</div>

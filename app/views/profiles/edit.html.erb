@@ -1,23 +1,52 @@
-<div class="container profiles">
-  <div class="text-white-bg">
-    <div class="row">
-      <div class="span12">
-        <%= render 'shared/error_messages' %>
-        <br>
-        <h1><%= t(:update, scope: "profiles.form")%></h1>
-      </div>
-    </div>
-    <div class="row">
-      <div class="span12 text-right">
-        <%= link_to(t(:home, scope: "profiles.edit"), profiles_path) %> |
-        <%= link_to(t(:show, scope: "profiles.edit"), profile_path) %>
-      </div>
-    </div>
-  </div>
-  <br>
-  <br>
-  <%= simple_form_for(@profile, html: { multipart: true, class: "form-horizontal well"}) do |f| %>
-    <%= render partial: "shared/profile_formfields",
-                 locals: { form_type: :update_profile, f: f, profile: @profile } %>
-  <% end %>
-</div>
+<%= form_for(@profile, html: { multipart: true, class: "form"}) do |f| %>
+<%
+    translated_items = {:bio => :text_area, :main_topic => :text_field }
+    mandatory_translated_items = { :main_topic => true}
+
+    # a translatable item can be accessed as translatable_fields[locale][item][field]
+    # where field can be :hidden_field, :label and :input_field
+    translatable_fields = {}
+
+
+    f.fields_for(:translations, @profile.translations.sort_by(&:locale)) do |translation|
+      locale_sym = translation.object.locale
+      translatable_fields[locale_sym] = {}
+
+      translated_items.each do |item, input_field_type|
+        css_class = 'valuelabel'+(mandatory_translated_items[item] ? ' mandatory' : '')
+        translatable_fields[locale_sym][item] = {
+            hidden_field: translation.hidden_field(:locale),
+            label: translation.label(item, t(locale_sym, scope: "languages"), class: css_class)
+
+        }
+        if input_field_type == :text_area
+          translatable_fields[locale_sym][item][:input_field] = translation.text_area(item, rows: 15, class: 'form-control')
+        elsif
+          translatable_fields[locale_sym][item][:input_field] = translation.text_field(item, class: 'form-control')
+        end
+      end
+
+    end
+  %>
+  <%= render partial: "profiles/speakerin",
+       locals: {
+         mode: :edit,
+
+         fields: {
+           main_topic:         valuelabel(@profile.main_topic_or_first_topic),
+           topics_main_topic:  f.text_field(:main_topic, class: 'form-control', value: @profile.main_topic_or_first_topic),
+           city:               f.text_field(:city,       class: 'form-control', value: @profile.city),
+           twitter:            f.text_field(:twitter,    class: 'form-control', value: @profile.twitter),
+           website:            f.text_field(:website,    class: 'form-control', value: @profile.website),
+           email:              f.text_field(:email,      class: 'form-control', value: @profile.email),
+           languages:          f.text_field(:languages,   class: 'form-control', value: @profile.languages),
+           firstname:          f.text_field(:firstname,  class: 'form-control', value: @profile.firstname),
+           lastname:           f.text_field(:lastname,   class: 'form-control', value: @profile.lastname),
+           picture:            f.file_field(:picture,    class:"btn btn-default"),
+           topic_list:         f.text_field(:topic_list, class: "form-control"),
+           button_save:        f.submit(t(:save, scope: "profiles.speakerin"), class:"btn btn-primary"),
+           translatable_fields: translatable_fields
+         }
+       }
+%>
+<% end %>
