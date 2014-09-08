@@ -260,6 +260,7 @@ de:
       created: "Profil wurde erfolgreich erstellt."
       updated: "Profil wurde erfolgreich geändert."
       destroyed: "Profil wurde erfolgreich gelöscht."
+      failed: "Profiländerungen konnten nicht gespeichert werden."
       no_permission: "Du hast nicht die Rechte, das Profil zu bearbeiten."
       show_no_permission: "Du hast nicht die Rechte, das Profil anzuschauen."
     medialink:

@@ -16,4 +16,7 @@ module ProfilesHelper
     return '<span class="valuelabel">'+value+'</span>'
   end
 
+  def mark_input_quality(model, symbol)
+    return (model.errors[symbol] && model.errors[symbol].length > 0) ? ' incorrect-input' : ''
+  end
 end

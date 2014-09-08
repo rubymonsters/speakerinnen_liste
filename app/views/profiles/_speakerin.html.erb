@@ -29,7 +29,7 @@
         <div class="col-md-7 col-sm-12 col-xs-12">
           <% if edit_permission && mode == :edit %>
             <div class="group">
-              <label><%= t(:firstname, scope: "profiles.speakerin") %></label>
+              <label class="mandatory"><%= t(:firstname, scope: "profiles.speakerin") %></label>
               <%= fields[:firstname].html_safe %>
             </div>
             <div class="group">
@@ -68,7 +68,7 @@
           <% else %>
             <h2><%= t(:private_details, scope: "profiles.speakerin") %></h2>
             <div class="group">
-              <label><%= t(:email, scope: "profiles.speakerin") %></label>
+              <label class="mandatory"><%= t(:email, scope: "profiles.speakerin") %></label>
               <%= fields[:email].html_safe %>
             </div>
           <% end %>
@@ -175,40 +175,65 @@
     <% if edit_permission && mode == :edit %>
       <div class="profile-box medialinks">
         <h2><%= t(:medialinks, scope: "profiles.speakerin") %></h2>
-        <% @profile.medialinks.each do |medialink| %>
-          <%= form_for [@profile, medialink], html: {class: 'form'} do |ajaxform| %>
-            <div class="content">
+        <input id="profile_id" name="profile.id" type="hidden" value="<%= @profile.id %>">
+        <ul class="all-links ui-sortable">
+          <% @profile.medialinks.each do |medialink| %>
+            <li class="content existing-item ui-sortable-handle">
+              <% if medialink.id %>
+                <input id="medialink_id" name="medialinks[][id]" type="hidden" value="<%= medialink.id %>">
+              <% end %>
               <div class="group link-group">
-                <label><%= t(:url, scope: "profiles.speakerin.link") %></label>
-                <%= ajaxform.text_field :url, as: :string, class: 'form-control' %>
-                <%= ajaxform.button t(:delete, scope: "profiles.speakerin.link"), class: 'btn btn-default' %>
+                <label class="mandatory"><%= t(:url, scope: "profiles.speakerin.link") %></label>
+                <input class="form-control<%= mark_input_quality(medialink, :url) %>" id="medialink_url"
+                      name="medialinks[][url]" size="30" type="text" value="<%= medialink.url %>">
+                <button class="btn btn-default btn-delete" name="button" type="button"><%= t(:delete, scope: "profiles.speakerin.link") %></button>
               </div>
               <div class="group link-group">
-                <label><%= t(:title, scope: "profiles.speakerin.link") %></label>
-                <%= ajaxform.text_field :title, as: :string, class: 'form-control' %>
+                <label class="mandatory"><%= t(:title, scope: "profiles.speakerin.link") %></label>
+                <input as="string" class="form-control<%= mark_input_quality(medialink, :title) %>" id="medialink_title"
+                name="medialinks[][title]" size="30" type="text" value="<%= medialink.title %>">
               </div>
               <div class="group link-group">
                 <label><%= t(:description, scope: "profiles.speakerin.link") %></label>
-                <%= ajaxform.text_area :description, rows: 3, class: 'form-control' %>
+                <textarea class="form-control<%= mark_input_quality(medialink, :description) %>" cols="40" id="medialink_description"
+                name="medialinks[][description]" rows="3"><%= medialink.description %></textarea>
               </div>
-            </div>
-            <div class="options">
-              <%= ajaxform.button t(:add, scope: "profiles.speakerin.link"), class: 'btn btn-info' %>
-            </div>
+            </li>
           <% end %>
-        <% end %>
+        </ul>
+        <div class="options">
+            <button class="btn btn-info add-empty-medialink-form" name="button" type="button"><%= t(:add, scope: "profiles.speakerin.link") %></button>
+        </div>
+        <div class="content hidden empty-medialink-form">
+          <div class="group link-group">
+            <label class="mandatory"><%= t(:url, scope: "profiles.speakerin.link") %></label>
+            <input class="form-control" id="medialink_url"
+                  name="medialinks[][url]" size="30" type="text" value="" disabled>
+            <button class="btn btn-default btn-delete" name="button" type="button"><%= t(:delete, scope: "profiles.speakerin.link") %></button>
+          </div>
+          <div class="group link-group">
+            <label class="mandatory"><%= t(:title, scope: "profiles.speakerin.link") %></label>
+            <input as="string" class="form-control" id="medialink_title"
+            name="medialinks[][title]" size="30" type="text" value="" disabled>
+          </div>
+          <div class="group link-group">
+            <label><%= t(:description, scope: "profiles.speakerin.link") %></label>
+            <textarea class="form-control" cols="40" id="medialink_description"
+            name="medialinks[][description]" rows="3" disabled></textarea>
+          </div>
+        </div>
       </div>
+
     <% elsif @profile.medialinks.any? %>
       <div class="profile-box">
         <h2><%= t(:medialinks, scope: "profiles.speakerin") %></h2>
-          <ul>
+          <ul ="show-medialinks">
             <% @profile.medialinks.each do |medialink| %>
             <li>
               <p class="medialink"><%= medialink.title %></p>
-              <%= medialink.url_html %>
-              <%= medialink.description %>
+              <p><%= medialink.url_html %></p>
+              <p><%= medialink.description %></p>
             </li>
-            <hr>
             <% end %>
           </ul>
       </div>

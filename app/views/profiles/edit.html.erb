@@ -1,6 +1,7 @@
 <%= form_for(@profile, html: { multipart: true, class: "form"}) do |f| %>
 <%
     translated_items = {:bio => :text_area, :main_topic => :text_field }
+    mandatory_translated_items = { :main_topic => true}
 
     # a translatable item can be accessed as translatable_fields[locale][item][field]
     # where field can be :hidden_field, :label and :input_field
@@ -12,9 +13,10 @@
       translatable_fields[locale_sym] = {}
 
       translated_items.each do |item, input_field_type|
+        css_class = 'valuelabel'+(mandatory_translated_items[item] ? ' mandatory' : '')
         translatable_fields[locale_sym][item] = {
             hidden_field: translation.hidden_field(:locale),
-            label: translation.label(item, t(locale_sym, scope: "languages"), class: 'valuelabel')
+            label: translation.label(item, t(locale_sym, scope: "languages"), class: css_class)
 
         }
         if input_field_type == :text_area

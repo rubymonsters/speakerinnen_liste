@@ -279,6 +279,7 @@ en:
       created: 'Profile was successfully created.'
       updated: 'Profile was successfully updated.'
       destroyed: 'Profile was successfully deleted.'
+      failed: "Profile changes could not be saved."
       no_permission: "You don’t have permission to edit the profile."
       show_no_permission: "You don’t have permission to see the profile."
     medialink:

@@ -61,6 +61,26 @@ $profile-box-padding: 5px;
     padding: $profile-box-padding 0 0 0;
     margin-bottom: 20px;
 
+    .incorrect-input {
+      background-color: $emphasize-alert;
+    }
+
+    ul {
+      padding: 5px;
+      li {
+        list-style-type: none;
+
+        p {
+          margin-bottom: 0;
+        }
+      }
+
+      li + li {
+        border-top: 1px $box-shadow-light-gray dotted;
+        margin-top: 3px;
+      }
+    }
+
     h1 {
       font-size: 1.75em;
     }
@@ -90,7 +110,12 @@ $profile-box-padding: 5px;
       font-size: 0.8em;
       padding-right: 5px;
       text-align: right;
+      &.mandatory {
+          font-weight: bolder;
+      }
     }
+
+
 
     .valuelabel {
       width: 100%;
