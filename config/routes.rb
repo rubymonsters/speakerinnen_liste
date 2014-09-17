@@ -25,7 +25,10 @@ SpeakerinnenListe::Application.routes.draw do
       root to: 'dashboard#index'
     end
 
-    devise_for :profiles, controllers: {omniauth_callbacks: "omniauth_callbacks"}
+    devise_for :profiles, controllers: {
+      omniauth_callbacks: "omniauth_callbacks",
+      registrations: :registrations 
+    }
 
     get 'topics/:topic', to: 'profiles#index', as: :topic
 
@@ -58,10 +61,8 @@ SpeakerinnenListe::Application.routes.draw do
       get 'sign_up' => 'devise/registrations#new'
     end
 
-    #get 'sign_up' => 'profiles#new'
     constraints(host: /^(speakerinnen-liste.herokuapp.com|speakerinnen.org)$/) do
       root to: redirect("http://www.speakerinnen.org")
-      # match '/*path', to: redirect {|params| "http://www.example.com/#{params[:path]}"}
     end
   end
 end

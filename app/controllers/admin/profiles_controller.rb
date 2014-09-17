@@ -1,13 +1,8 @@
 class Admin::ProfilesController < Admin::BaseController
   helper_method :sort_column, :sort_direction
+
   def index
     @profiles = Profile.order(sort_column + " " + sort_direction).order("created_at DESC").page(params[:page]).per(100)
-  end
-
-  def new
-  end
-
-  def create
   end
 
   def show
@@ -52,7 +47,7 @@ class Admin::ProfilesController < Admin::BaseController
   def admin_comment
     @profile = Profile.find(params[:id])
     if @profile.update_attributes(params[:profile])
-      redirect_to admin_profiles_path(@profile), notice: (I18n.t("flash.profiles.updated"))
+      redirect_to admin_profiles_path, notice: (I18n.t("flash.profiles.updated"))
     else
       render :index
     end

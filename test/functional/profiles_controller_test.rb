@@ -96,50 +96,6 @@ class ProfilesControllerTest < ActionController::TestCase
     assert_equal 'Profil wurde erfolgreich geändert.', flash[:notice]
   end
 
-  # destroy
-
-  test "should destroy own profile if user is signed" do
-    horst = profiles(:one)
-    horst.confirm!
-    sign_in(horst)
-
-    assert_difference('Profile.count', -1) do
-      delete :destroy, id: @profile.id
-    end
-    assert_redirected_to profiles_path
-    assert_equal 'Profil wurde erfolgreich gelöscht.', flash[:notice]
-  end
-
-  test "should not be able to destroy different profile" do
-    horst = profiles(:one)
-    horst.confirm!
-    sign_in(horst)
-
-    assert_difference('Profile.count', 0) do
-      delete :destroy, id: @profile2.id
-    end
-    assert_redirected_to profiles_path
-  end
-
-  test "should not destroy profile if user is not sign in" do
-    assert_difference('Profile.count', 0) do
-      delete :destroy, id: @profile.id
-    end
-    assert_redirected_to profiles_path
-  end
-
-  test "should destroy profile if user signed in as admin" do
-    jane = profiles(:jane)
-    jane.confirm!
-    sign_in(jane)
-
-    assert_difference('Profile.count', -1) do
-      delete :destroy, id: @profile.id
-    end
-    assert_redirected_to profiles_path
-    assert_equal 'Profil wurde erfolgreich gelöscht.', flash[:notice]
-  end
-
   # test "twitter @ symbol correcty removed" do
   #   input_hash={:twitter => "@nickname", :email => "me@me.com"}
   #   expected_hash={:twitter => "nickname", :email => "me@me.com"}

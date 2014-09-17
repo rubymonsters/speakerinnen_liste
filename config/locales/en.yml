@@ -180,6 +180,7 @@ en:
   flash:
     profiles:
       created: 'Profile was successfully created.'
+      category: 'No Tag for that Category found. Please try the search.'
       updated: 'Profile was successfully updated.'
       destroyed: 'Profile was successfully deleted.'
       no_permission: "You don’t have permission to edit the profile."
