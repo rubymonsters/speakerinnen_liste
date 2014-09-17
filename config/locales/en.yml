@@ -34,9 +34,12 @@ en:
           show_all: "List all profiles"
       tags:
         tags: "Tags"
+        tags_of: " out of "
+        tags_here_are: "Here are "
         tags_search: "Search for tag"
-        tags_count: "The number of tags is "
+        tags_count: "The number of all tags is "
         tags_filter_option: "Show all tags without category"
+        tags_filter_default: "Show all categories"
   pages:
     home:
       search:
@@ -49,7 +52,7 @@ en:
       speaker_shoutout: "Do you have something interesting to say?"
       speaker_text: "Get on the Speakerinnen* List: "
       speakers:
-        new_speaker_heading: "Our Newest Speakers"
+        new_speaker_heading: "Our Speakers"
         speaker_text: "No more excuses for panels without women!"
         speaker_index: "Browse all speakers >>"
         categories: "Categories and Topics >>"
@@ -91,6 +94,7 @@ en:
       title: "Press about us"
     imprint:
       title: "Legal Details"
+      privac¥: "We are using Piwik data analytics to collect anonymized data that will help us to improve the usability of our website."
   layouts:
     application:
       title: "Speakerinnen-List"
@@ -115,7 +119,7 @@ en:
       email: "Your email address"
       medialink_placeholder: "Please fill in only 21 characters"
       subject: "Subject"
-      send: "Send"      
+      send: "Send"
       body: "Your message"
       body_placeholder: "Please give a few details about your request: where, when, what, and other relevant information."
       notice: "Yay! Your message was sent."
@@ -179,7 +183,8 @@ en:
       category: 'No Tag for that Category found. Please try the search.'
       updated: 'Profile was successfully updated.'
       destroyed: 'Profile was successfully deleted.'
-      no_permission: "You don’t have permission to edit the profile"
+      no_permission: "You don’t have permission to edit the profile."
+      show_no_permission: "You don’t have permission to see the profile."
     medialink:
       created: 'Medialink was successfully created.'
       updated: 'Medialink was successfully updated.'

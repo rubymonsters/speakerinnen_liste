@@ -23,7 +23,7 @@ describe "navigation" do
         sign_in_with_language user, language
       end
       it_should_behave_like "successful sign in"
-      it { should have_no_link('Admin',admin_root_path) }
+      it { should have_no_link('Admin', admin_root_path) }
 
       #When you go to the start page
       #You can't see the admin link
@@ -35,7 +35,7 @@ describe "navigation" do
         sign_in_with_language user, language
       end
       it_should_behave_like "successful sign in"
-      it { should have_link('Admin',admin_root_path) }
+      it { should have_link('Admin', admin_root_path) }
 
       describe "access admin actions" do
         before { click_on 'Admin' }

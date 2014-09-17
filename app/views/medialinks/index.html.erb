@@ -37,7 +37,7 @@
       <p class="help"><%= t(:help, scope: "medialinks").html_safe %></p>
       <div id="messages"></div>
       <ul id="medialinks_list" data-update-url="<%= sort_profile_medialinks_url%>" class="<%= t(:language, scope: "medialinks")%>">
-        <% @profile.medialinks.each do |medialink| %>
+        <% @medialinks.each do |medialink| %>
           <%= content_tag_for(:li, medialink, nil, {'data-placement' => 'top', 'data-toggle' => 'tooltip', 'data-original-title' => t(:tooltip, scope: 'medialinks')}) do %>
             <h5>
               <%= medialink.title %>

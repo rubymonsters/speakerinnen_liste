@@ -1,56 +1,61 @@
-<div class="container profiles">
-  <h1 class="title-profiles">Administration::<%= t(:tags, scope: "admin.dashboard.tags")%></h1>
-  <div class="row">
-    <div class="span4">
-      <%= form_tag(categorization_admin_tags_path, method: :get, class: 'form-inline') do %>
-        <%= t(:tags_search, scope: "admin.dashboard.tags") %>
-        <%= text_field_tag 'q', params[:q], class: 'input-medium search-query' %>
-        <br>
-        <%= check_box_tag 'uncategorized', params[:uncategorized], params[:uncategorized] %>
-        <%= label_tag 'uncategorized', t(:tags_filter_option, scope: "admin.dashboard.tags"), class: 'checkbox inline' %><br>
-        <br>
-        <%= submit_tag (t(:filter, scope:"general")), class: "btn" %>
+<div class='container profiles'>
+  <h1 class='title-profiles'>Administration::<%= t(:tags, scope: 'admin.dashboard.tags')%></h1>
+
+
+  <%= render partial: 'filter' %>
+
+
+  <div class='row'>
+    <div class='span12 text-center'>
+      <% if @tags_count %>
+        <strong>
+          <%= t(:tags_here_are, scope: 'admin.dashboard.tags') + @tags.total_count.to_s + t(:tags_of, scope: 'admin.dashboard.tags') + @tags_count.to_s + ' tags.' %>
+        </strong>
+      <% else %>
+        <strong>
+          <%= t(:tags_count, scope: 'admin.dashboard.tags') + @tags.total_count.to_s + '.' %>
+        </strong>
       <% end %>
-    <br>
-    </div>
-    <div class="span8 text-center">
-      <strong><%= t(:tags_count, scope: "admin.dashboard.tags") + "#{@tags.total_count}" + "."%></strong>
       <%= paginate @tags %>
     </div>
   </div>
-  <div class="row">
-    <div class="span12">
-      <table class="admin-tags-categorization table">
+
+  <div class='row'>
+    <div class='span12'>
+      <table class='admin-tags-categorization table'>
         <% @tags.each do |tag| %>
           <tr>
             <td>
               <%= link_to tag.name, edit_admin_tag_path(tag.id, page: params[:page]) %>
+              <%= tag.taggings_count %>
             </td>
             <% @categories.each do |category| %>
               <td>
                 <% if tag.categories.pluck(:id).include?(category.id) %>
-                  <%= link_to category.name, remove_category_admin_tag_path(tag, category_id: category.id, page: params[:page], q: params[:q], uncategorized: params[:uncategorized]),
-                            method: :post,
-                            class: "active"  %>
+                  <%= link_to category.name, remove_category_admin_tag_path(tag,
+                  category_id: category.id, page: params[:page], q: params[:q],
+                  uncategorized: params[:uncategorized]), method: :post, class: 'active'  %>
                 <% else %>
-                  <%= link_to category.name, set_category_admin_tag_path(tag, category_id: category.id, page: params[:page], q: params[:q], uncategorized: params[:uncategorized]),
-                            method: :post %>
+                  <%= link_to category.name, set_category_admin_tag_path(tag,
+                  category_id: category.id, page: params[:page], q: params[:q],
+                  uncategorized: params[:uncategorized]), method: :post %>
                 <% end %>
               </td>
             <% end %>
               <td>
-                | <%= link_to '<i class="icon-trash"></i>'.html_safe, admin_tag_path(tag.id), :method => :delete,
-                  :confirm => "Do you want to delete the tag #{tag.name}?" %>
+                <%= link_to "<i class='icon-trash'></i>".html_safe, admin_tag_path(tag.id),
+                method: :delete, confirm: 'Do you want to delete the tag #{tag.name}?' %>
               </td>
           </tr>
         <% end %>
       </table>
     </div>
   </div>
-  <div class="row">
-    <div class="span12 text-center">
+
+  <div class='row'>
+    <div class='span12 text-center'>
       <%= paginate @tags %>
     </div>
   </div>
-</div>
 
+</div>

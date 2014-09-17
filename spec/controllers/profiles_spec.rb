@@ -62,22 +62,53 @@ describe ProfilesController do
 
   describe "show action" do
     
-    before { get :show, id: user.id }
-
-    it "should display show page" do
-      expect(response).to be_success
-      expect(response.response_code).to eq(200)
-      expect(response).to render_template("show")
-    end
-
-    it "should display page of specific user" do
-      expect(assigns(:profile)).to eq(user)
+    shared_examples_for "successful show action" do
+      it { expect(response).to be_success }
+      it { expect(response).to render_template("show") }
+      it { expect(assigns(:message)).to be_kind_of(Message) }
     end
     
-    it "should have message object" do
-       expect(assigns(:message)).to be_kind_of(Message)
+    context "show published profile of specific user" do
+      before { get :show, id: user.id }
+      it_should_behave_like "successful show action"
+      it { expect(assigns(:profile)).to eq(user) }
     end
-   end
+
+    context "show published profiles of specific user to another signed in user" do
+      before { sign_in user_dance; get :show, id: user.id }
+      it_should_behave_like "successful show action"
+      it { expect(assigns(:profile)).to eq(user) }
+    end
+
+    context "show published profile of specific user to admin" do
+      before { sign_in admin; get :show, id: user.id }
+      it_should_behave_like "successful show action"
+      it { expect(assigns(:profile)).to eq(user) }
+    end
+
+    context "show unpublished profile for user's own profile" do
+      before { sign_in unpublished_user; get :show, id: unpublished_user.id }
+      it_should_behave_like "successful show action"
+      it { expect(assigns(:profile)).to eq(unpublished_user) }
+    end
+
+    context "show unpublished profile of specific user to admin" do
+      before { sign_in admin; get :show, id: unpublished_user.id }
+      it_should_behave_like "successful show action"
+      it { expect(assigns(:profile)).to eq(unpublished_user) }
+    end
+    
+    context "don't show unpublished profiles to unauthorized users" do
+      before { get :show, id: unpublished_user.id }
+      it { expect(response).to redirect_to("/de/profiles") }
+    end
+
+    context "don't show unpublished profiles to unauthorized signed in users" do
+      before { sign_in user_dance; get :show, id: unpublished_user.id }
+      it { expect(response).to redirect_to("/de/profiles") }
+    end
+  end
+
 
   describe "edit action" do
     # uses Devise::TestHelpers methods, otherwise authenticate error
@@ -106,6 +137,7 @@ describe ProfilesController do
     end
   end
 
+
   describe "update action" do
 
     context "user should not be able to update profile without sign_in" do
@@ -132,28 +164,3 @@ describe ProfilesController do
   end
 
 end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

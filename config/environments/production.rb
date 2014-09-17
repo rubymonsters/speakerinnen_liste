@@ -99,4 +99,8 @@ SpeakerinnenListe::Application.configure do
     domain:         'heroku.com',
     authentication: :plain
   }
+
+  # piwik data collection and analytics
+  config.gem 'rack-piwik', :lib => 'rack/piwik'
+  config.middleware.use Rack::Piwik, :piwik_url => 'speaki.hadar.uberspace.de/piwik', :piwik_id => '1', :disable_cookies => false
 end

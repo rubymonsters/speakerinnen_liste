@@ -4,7 +4,7 @@ class ProfilesController < ApplicationController
   include ActsAsTaggableOn::TagsHelper
 
 
-  before_filter :require_permission, :only=> [:edit, :destroy, :update]
+  before_filter :require_permission, only: [:edit, :destroy, :update]
 
   # new and destroy actions are performed by devise gem
 
@@ -14,6 +14,7 @@ class ProfilesController < ApplicationController
     else
       @profiles = profiles_for_index
     end
+    @tags = ActsAsTaggableOn::Tag.most_used(100)
   end
 
 =begin 
@@ -39,7 +40,16 @@ class ProfilesController < ApplicationController
 
   def show
     @profile = Profile.find(params[:id])
-    @message = Message.new
+
+    if @profile.published? or can_edit_profile?(current_profile, @profile)
+
+      @message = Message.new
+      @medialinks = @profile.medialinks.order(:position)
+
+    else
+      redirect_to profiles_url, notice: (I18n.t("flash.profiles.show_no_permission"))
+    end
+
   end
 
   # should reuse the devise view

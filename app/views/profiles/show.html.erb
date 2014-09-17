@@ -86,7 +86,7 @@
       <% if @profile.medialinks.any? %>
         <h5><%= t ".media" %></h5>
         <ul>
-          <% @profile.medialinks.each do |medialink| %>
+          <% @medialinks.each do |medialink| %>
           <li>
             <p class="medialink"><%= medialink.title %></p>
             <%= medialink.url_html %>

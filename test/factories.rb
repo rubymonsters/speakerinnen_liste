@@ -15,6 +15,10 @@ FactoryGirl.define do
     factory :published do
       published true
     end
+
+    factory :unpublished do
+      published false
+    end
   end
 
   factory :category do
