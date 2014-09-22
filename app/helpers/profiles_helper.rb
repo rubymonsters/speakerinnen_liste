@@ -13,7 +13,7 @@ module ProfilesHelper
   end
 
   def valuelabel(value)
-    return '<span class="valuelabel">'+value+'</span>'
+    return '<span class="valuelabel">'+value.to_s+'</span>'
   end
 
   def mark_input_quality(model, symbol)
