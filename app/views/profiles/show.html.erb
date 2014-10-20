@@ -81,14 +81,14 @@
       <span><%= simple_format(@profile.bio) %></span>
     </div>
 
-    <div class="span6 pull-right text-profile bottom">
+    <div class="span6 medialinks pull-right text-profile bottom">
 
       <% if @profile.medialinks.any? %>
         <h5><%= t ".media" %></h5>
         <ul>
           <% @medialinks.each do |medialink| %>
           <li>
-            <p class="medialink"><%= medialink.title %></p>
+            <%= medialink.title %>
             <%= medialink.url_html %>
             <%= medialink.description %>
           </li>
