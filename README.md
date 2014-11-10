@@ -13,3 +13,5 @@ If you want to contribute, you can get an overview over the open issues. We are 
 https://github.com/rubymonsters/speakerinnen_liste/issues/216
 
 For your database.yml please copy config/database_example.yml 
+
+Workflow: To work on an issue please open a feature branch derived from the master branch. When you have made your changes and tested them, please send us a pull request. 
