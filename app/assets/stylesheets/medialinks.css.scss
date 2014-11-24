@@ -3,6 +3,13 @@
 .medialink {
 }
 
+.medialinks a{
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 ul#medialinks_list {
   padding: 0;
   margin: 0;
