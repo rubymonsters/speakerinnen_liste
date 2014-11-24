@@ -66,3 +66,5 @@ end
 
 # Use unicorn as the app server
 gem 'unicorn'
+
+gem 'rollbar', '~> 1.2.6'
