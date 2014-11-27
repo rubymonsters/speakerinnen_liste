@@ -4,7 +4,7 @@ class TagTest < ActionController::IntegrationTest
   def setup
     @horst = profiles(:one)
     @horst.confirmed_at = Time.now
-    @horst.topic_list = 'fruehling'
+    @horst.topic_list = 'fruehling', 'kein herbst'
     @horst.published = true
     @horst.save
 
@@ -29,21 +29,8 @@ class TagTest < ActionController::IntegrationTest
 
     visit profile_path(@horst, locale: "de")
     click_link('Profil bearbeiten')
-    assert_equal find_field('profile[topic_list]').value, 'fruehling'
+    assert_equal find_field('profile[topic_list]').value, 'kein herbst, fruehling'
   end
-
-  #we comment this test out because it would be too performance consuming to either add the selection 
-  #of only tags from published profiles in the profiles controller or too time consuming to adapt the test cases  
-  # test "show only tags from published Profile" do
-  #   visit '/profiles'
-  #   # save_and_open_page
-  #   assert page.has_content?('sommer')
-  #   assert page.has_no_content?('winter')
-  #   within ".topics-cloud" do
-  #     click_link('sommer')
-  #   end
-  #   assert page.has_css?('div.name', count: 1)
-  # end
 
   test "show Fruehling tag" do
     visit '/profiles'
@@ -52,5 +39,16 @@ class TagTest < ActionController::IntegrationTest
       click_link('fruehling')
     end
     assert page.has_css?('div.name', count: 2)
+    # save_and_open_page
+  end
+
+  test "tag with blank works" do
+    visit '/profiles'
+    assert page.has_content?('kein herbst')
+    within ".topics-cloud" do
+      click_link('kein herbst')
+    end
+    assert page.has_css?('div.name', count: 1)
+  # save_and_open_page
   end
 end
