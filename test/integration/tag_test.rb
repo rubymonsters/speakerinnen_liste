@@ -2,21 +2,21 @@ require 'test_helper'
 
 class TagTest < ActionController::IntegrationTest
   def setup
-    @horst = profiles(:one)
+    @horst              = profiles(:one)
     @horst.confirmed_at = Time.now
-    @horst.topic_list = 'fruehling', 'kein herbst'
-    @horst.published = true
+    @horst.topic_list   = 'fruehling', 'kein herbst'
+    @horst.published    = true
     @horst.save
 
-    @inge = profiles(:two)
+    @inge              = profiles(:two)
     @inge.confirmed_at = Time.now
-    @inge.topic_list = 'fruehling', ' ', 'sommer'
-    @inge.published = true
+    @inge.topic_list   = 'fruehling', ' ', 'sommer'
+    @inge.published    = true
     @inge.save
 
-    @anon = profiles(:three)
+    @anon              = profiles(:three)
     @anon.confirmed_at = Time.now
-    @anon.topic_list = 'winter', 'fruehling'
+    @anon.topic_list   = 'winter', 'fruehling'
     @anon.save
   end
 

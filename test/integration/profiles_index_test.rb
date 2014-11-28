@@ -2,17 +2,17 @@ require 'test_helper'
 
 class ProfilesTest < ActionController::IntegrationTest
   def setup
-    @horst = profiles(:one)
+    @horst              = profiles(:one)
     @horst.confirmed_at = Time.now
-    @horst.published = true
+    @horst.published    = true
     @horst.save
 
-    @inge = profiles(:two)
+    @inge              = profiles(:two)
     @inge.confirmed_at = Time.now
-    @inge.published = true
+    @inge.published    = true
     @inge.save
 
-    @anon = profiles(:three)
+    @anon              = profiles(:three)
     @anon.confirmed_at = Time.now
     @anon.save
   end

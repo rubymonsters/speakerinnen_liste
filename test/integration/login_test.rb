@@ -2,7 +2,7 @@ require 'test_helper'
 
 class LoginTest < ActionController::IntegrationTest
   def setup
-    horst = profiles(:one)
+    horst              = profiles(:one)
     horst.confirmed_at = Time.now
     horst.save
   end

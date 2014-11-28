@@ -11,15 +11,15 @@ class JavascriptTest < ActionDispatch::IntegrationTest
   setup do
     Capybara.current_driver = Capybara.javascript_driver # :selenium by default
     DatabaseCleaner.start
-    @inge = profiles(:two)
+    @inge              = profiles(:two)
     @inge.confirmed_at = Time.now
-    @inge.topic_list = "Fruehling"
-    @inge.published = true
+    @inge.topic_list   = "Fruehling"
+    @inge.published    = true
     @inge.save
 
-    @horst = profiles(:one)
+    @horst              = profiles(:one)
     @horst.confirmed_at = Time.now
-    @horst.published = true
+    @horst.published    = true
     @horst.save
   end
 

@@ -2,16 +2,16 @@ require 'test_helper'
 
 class UserProfileCorrectlyDisplayedTest < ActionDispatch::IntegrationTest
   def setup
-    @horst = profiles(:one)
+    @horst              = profiles(:one)
     @horst.confirmed_at = Time.now
-    @horst.topic_list = "fruehling"
-    @horst.published = true
+    @horst.topic_list   = "fruehling"
+    @horst.published    = true
     @horst.save
 
-    @inge = profiles(:two)
+    @inge              = profiles(:two)
     @inge.confirmed_at = Time.now
-    @inge.topic_list = "fruehling", " ", "sommer"
-    @inge.published = true
+    @inge.topic_list   = "fruehling", " ", "sommer"
+    @inge.published    = true
     @inge.save
   end
 

@@ -2,14 +2,14 @@ require 'test_helper'
 
 class SearchForUserTest < ActionController::IntegrationTest
   def setup
-    @carla = profiles(:one)
+    @carla              = profiles(:one)
     @carla.confirmed_at = Time.now
-    @carla.email = "carla@railsgirls.com"
-    @carla.firstname = "Carla"
-    @carla.lastname = "Drago"
-    @carla.bio = "weather, programming, sleeping, shopping, veggiemite and photos"      
-    @carla.twitter = "tweeter"
-    @carla.published = true
+    @carla.email        = "carla@railsgirls.com"
+    @carla.firstname    = "Carla"
+    @carla.lastname     = "Drago"
+    @carla.bio          = "weather, programming, sleeping, shopping, veggiemite and photos"
+    @carla.twitter      = "tweeter"
+    @carla.published    = true
     @carla.save!
   end
 

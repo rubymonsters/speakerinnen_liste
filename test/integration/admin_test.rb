@@ -3,7 +3,7 @@ require 'test_helper'
 class AdminTest < ActionController::IntegrationTest
 
   def setup
-    @jane = profiles(:jane)
+    @jane              = profiles(:jane)
     @jane.confirmed_at = Time.now
     @jane.save
   end
