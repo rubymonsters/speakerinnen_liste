@@ -5,6 +5,7 @@ speakerinnen.org is a searchable web directory designed specifically for female 
 The aim of the app is to provide a way for conference and event organizers to find and contact appropriate female speakers. (But obviously there are many different contexts in which it can be used...)
 
 ==================
+[![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/rubymonsters/speakerinnen_liste?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 Do you want to contribute?
 
