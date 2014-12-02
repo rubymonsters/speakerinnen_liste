@@ -28,7 +28,6 @@ gem 'auto_html', github: 'dejan/auto_html'
 gem 'mandrill-api'
 gem 'simple_form', '~> 2.0.0.rc'
 gem 'globalize', '~> 3.1.0'
-gem 'rack-piwik', '~> 0.3.0', require: 'rack/piwik'
 
 group :development do
   gem 'letter_opener'
@@ -68,3 +67,5 @@ end
 gem 'unicorn'
 
 gem 'rollbar', '~> 1.2.6'
+gem 'rack-piwik', '~> 0.3.0', require: 'rack/piwik'
+gem 'newrelic_rpm'
