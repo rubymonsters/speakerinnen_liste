@@ -1,6 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
+  id: 1
   firstname: Horst
   lastname: lastname
   email: horst@mail.de
@@ -12,6 +13,7 @@ one:
   published: true
 
 two:
+  id: 2
   firstname: Inge
   lastname: lastname
   email: inge@mail.de
@@ -21,6 +23,7 @@ two:
   talks: Repuclica
 
 three:
+  id: 3
   firstname: Anon
   lastname: lastname
   email: anon@mail.de
@@ -29,6 +32,7 @@ three:
   talks:
 
 jane:
+  id: 4
   firstname: Jane
   lastname: Admin
   email: jane_admin@server.org
