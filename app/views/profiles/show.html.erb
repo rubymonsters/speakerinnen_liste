@@ -1,90 +1,91 @@
-<div class="container profiles">
-  <div class="text-white-bg">
-    <div class="row">
-      <div class="span12">
+<div class='container profiles'>
+  <div class='text-white-bg'>
+    <div class='row'>
+      <div class='span12'>
         <br>
         <h1><%= @profile.fullname %></h1>
       </div>
     </div>
-    <div class="row">
-      <div class="span12 text-right">
-        <%= link_to(t(:home, scope: "profiles.edit"), profiles_path) %>
+    <div class='row'>
+      <div class='span12 text-right'>
+        <%= link_to(t(:home, scope: 'profiles.edit'), profiles_path) %>
       </div>
     </div>
   </div>
   <br>
   <br>
-  <div class="row">
-    <div class="span4">
+  <div class='row'>
+    <div class='span4'>
       <% if @profile.picture.present? %>
-        <%= image_tag(@profile.picture.profile.url , class: "photo") %>
+        <%= image_tag(@profile.picture.profile.url , class: 'photo') %>
       <% else %>
-        <%= image_tag("avatar.jpg", alt: "avatar", class: "photo") %>
+        <%= image_tag('avatar.jpg', alt: 'avatar', class: 'photo') %>
       <% end %>
-      <div class="main-topic"><%= @profile.main_topic_or_first_topic %></div>
+      <div class='main-topic'><%= @profile.main_topic_or_first_topic %></div>
     </div>
 
-    <div class="span5 text-profile">
+    <div class='span5 text-profile'>
       <% if @profile.twitter.present? %>
-        <h5><%= t(:twitter, scope: "profiles.profile") %></h5>
-        <span><%=link_to "@" + @profile.twitter_name_formatted, @profile.twitter_link_formatted, target: '_blank' %></span>
+        <h5><%= t(:twitter, scope: 'profiles.profile') %></h5>
+        <span><%=link_to '@' + @profile.twitter_name_formatted, @profile.twitter_link_formatted, target: '_blank' %></span>
         <hr>
       <% end %>
 
       <% if @profile.website.present? %>
-        <h5><%= t(:website, scope: "profiles.profile") %></h5>
+        <h5><%= t(:website, scope: 'profiles.profile') %></h5>
         <span><%=link_to @profile.website, @profile.website_with_protocol, target: '_blank' %></span>
         <hr>
       <% end %>
 
-      <h5><%= t(:topics, scope: "profiles.profile") %></h5>
-      <span class='topics-cloud'><%= raw @profile.topic_list.map { |t| link_to t, topic_path(t) }.join(' ') %></span>
+      <h5><%= t(:topics, scope: 'profiles.profile') %></h5>
+      <span class='topics-cloud'><%= raw @profile.topic_list.map { |topic| topic_link(topic) }.join(' ') %></span>
       <hr>
-      <h5><%= t(:languages, scope: "profiles.profile") %></h5>
+
+      <h5><%= t(:languages, scope: 'profiles.profile') %></h5>
       <span><%= @profile.languages %></span>
       <hr>
 
       <% if @profile.city.present? %>
-        <h5><%= t(:city, scope: "profiles.profile") %></h5>
+        <h5><%= t(:city, scope: 'profiles.profile') %></h5>
         <span><%= @profile.city %></span>
         <hr>
       <% end %>
 
     </div>
-    <div class="span3">
-      <a data-toggle="modal" href="#contact" class="btn  btn-large buttons-modals">
-        <span class="icon icon-envelope"></span>
-        <%= t(:contact, scope: "profiles.profile") %>
+    <div class='span3'>
+      <a data-toggle='modal' href='#contact' class='btn  btn-large buttons-modals'>
+        <span class='icon icon-envelope'></span>
+        <%= t(:contact, scope: 'profiles.profile') %>
       </a>
 
       <% if current_profile == @profile %>
         <%= link_to(edit_profile_path(@profile)) do %>
-          <div class="btn  btn-large buttons-modals btn-info">
-            <span class="icon icon-edit icon-white"></span>
-            <%= t(:edit, scope: "profiles.profile") %>
+          <div class='btn  btn-large buttons-modals btn-info'>
+            <span class='icon icon-edit icon-white'></span>
+            <%= t(:edit, scope: 'profiles.profile') %>
           </div>
         <% end %>
         <%= link_to(profile_medialinks_path(@profile)) do %>
-          <div class="btn  btn-large buttons-modals btn-info">
-            <span class="icon icon-edit icon-white"></span>
-            <%= t(:edit, scope: "profiles.medialinks") %>
+          <div class='btn  btn-large buttons-modals btn-info'>
+            <span class='icon icon-edit icon-white'></span>
+            <%= t(:edit, scope: 'profiles.medialinks') %>
           </div>
         <% end %>
       <% end %>
     </div>
   </div>
 
-  <div class="row">
-    <%#<div class="info-profiles-bio">%>
-    <div class="span6 text-profile bottom">
-      <h5> <%= t ".bio" %></h5>
+  <div class='row'>
+    <%#<div class='info-profiles-bio'>%>
+    <div class='span6 text-profile bottom'>
+      <h5> <%= t '.bio' %></h5>
       <span><%= simple_format(@profile.bio) %></span>
     </div>
 
-    <div class="span6 medialinks pull-right text-profile bottom">
+    <div class='span6 medialinks pull-right text-profile bottom'>
 
       <% if @profile.medialinks.any? %>
-        <h5><%= t ".media" %></h5>
+        <h5><%= t '.media' %></h5>
         <ul>
           <% @medialinks.each do |medialink| %>
           <li>
@@ -101,20 +102,20 @@
 </div>
 
 <!-- This is the contact form -->
-<div class="modal fade" id="contact">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h5 class="modal-title"><%= "#{t(".contact")} #{@profile.fullname}:"%></h5>
+<div class='modal fade' id='contact'>
+  <div class='modal-dialog'>
+    <div class='modal-content'>
+      <div class='modal-header'>
+        <button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
+        <h5 class='modal-title'><%= "#{t('.contact')} #{@profile.fullname}:"%></h5>
       </div>
-      <div class="modal-body">
-        <div class="span6">
+      <div class='modal-body'>
+        <div class='span6'>
           <%= render partial: 'contact/form', locals: {url: contact_profile_path(@profile)} %>
         </div>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><%= t(:close, scope: "general") %></button>
+      <div class='modal-footer'>
+        <button type='button' class='close' data-dismiss='modal' aria-hidden='true'><%= t(:close, scope: 'general') %></button>
       </div>
     </div>
   </div>

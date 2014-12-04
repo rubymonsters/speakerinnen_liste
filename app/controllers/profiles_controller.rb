@@ -19,12 +19,12 @@ class ProfilesController < ApplicationController
     @category = Category.find(params[:category_id])
     @tags     = @category.tags
     if @tags.any?
-      @tag_names = @tags.pluck(:name)
-      @profiles = profiles_for_scope(@tag_names)
+      @tag_names      = @tags.pluck(:name)
+      @profiles       = profiles_for_scope(@tag_names)
       @published_tags = @profiles.map { |p| p.topics.pluck(:name) }.flatten.uniq
-      @tags = @tags.select { |t| @published_tags.include?(t.to_s) }
+      @tags           = @tags.select { |t| @published_tags.include?(t.to_s) }
     else
-      @profiles = profiles_for_index
+      @profiles       = profiles_for_index
       redirect_to profiles_url, notice: ("No Tag for that Category found!")
     end
   end
