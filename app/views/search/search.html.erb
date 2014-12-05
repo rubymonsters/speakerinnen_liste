@@ -1,25 +1,19 @@
-<div class="container profiles">
-  <div class="row">
-    <div class="span12">
-      <% if @results.size == 0 %>
-        <p class="alert">
-          <%= t(:empty, scope: "search", searchparams: params[:q]).html_safe%>
-        </p>
-      <% else %>
-        <p class="notice">
-          <%= t(:success, scope: "search", searchparams: params[:q], count: @results.total_count).html_safe %>
-          <%= t(:result, scope: "search", count: @results.total_count)%>
-        </p>
-      <% end %>
+<div class='container profiles'>
+  <div class='row'>
+    <div class='span12'>
+      <p class='notice'>
+        <%= t(:success, scope: 'search', searchparams: params[:q], count: @results.total_count).html_safe %>
+        <%= t(:result, scope: 'search', count: @results.total_count)%>
+      </p>
     </div>
   </div>
-  <div class="row">
-    <%= render :partial => "/profiles/profile", :collection => @results.map(&:profile) %>
+  <div class='row'>
+    <%= render :partial => '/profiles/profile', :collection => @results.map(&:profile) %>
   </div>
-  <div class="row">
-    <div class="span12 text-center">
+  <div class='row'>
+    <div class='span12 text-center'>
       <%= paginate @results %>
     </div>
   </div>
 </div>
-<%= render partial: "layouts/footer" %>
+<%= render partial: 'layouts/footer' %>
