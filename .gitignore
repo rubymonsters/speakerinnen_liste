@@ -27,3 +27,6 @@
 
 # Ignore database files
 *.dump
+
+.ruby-version
+.ruby-gemset
