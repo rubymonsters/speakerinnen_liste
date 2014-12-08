@@ -20,6 +20,8 @@
           <%= link_to "Admin", admin_root_path, class: "page-header__link" %>
           <% end %>
   
+          <%= link_to_unless I18n.locale == :en, "EN", locale: :en %> |
+          <%= link_to_unless I18n.locale == :de, "DE", locale: :de %>
 </header>
 <div style="clear:both">
 </div>

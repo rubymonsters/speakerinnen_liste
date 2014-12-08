@@ -1,3 +1,9 @@
 html {
 	font-family: $sans-serif;
+	color: $font-color;
+}
+
+a {
+	color: $link-color;
+	text-decoration: none;
 }
