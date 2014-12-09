@@ -43,8 +43,9 @@
               </td>
             <% end %>
               <td>
-                <%= link_to "<i class='icon-trash'></i>".html_safe, admin_tag_path(tag.id),
-                method: :delete, confirm: 'Do you want to delete the tag #{tag.name}?' %>
+               <%= link_to admin_tag_path(tag.id), method: :delete, data: { confirm: 'Are you sure?',toggle: 'tooltip', placement: 'left' }, class: 'btn btn-default', title: 'Delete' do %>
+                  <span class='glyphicon glyphicon-trash'></span>
+                <% end %>
               </td>
           </tr>
         <% end %>
