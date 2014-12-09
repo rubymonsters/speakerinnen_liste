@@ -232,7 +232,7 @@ en:
     new: "Add Medialink"
     index: "References"
     # Translation
-    medialink_description: "Here you can add examples of your previous talks, panel discussions, TV shows or similar talking situations. 
+    medialink_description: "Here you can add examples of your previous talks, panel discussions, TV shows or similar talking situations.
 It would be best not to have too many but also not too few. Add diverse examples so that event organizers can get a picture of your work as a speaker.
 Links to Youtube videos will be shown as embedded videos. Other links will be clickable. You can also list audio files and texts."
     help: "(You can change the sort order of the references per drag&drop.)"
