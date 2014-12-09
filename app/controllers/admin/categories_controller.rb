@@ -1,10 +1,11 @@
 class Admin::CategoriesController < Admin::BaseController
+  before_action :set_category, only: [:show, :edit, :update, :destroy]
+
   def new
     @category = Category.new
   end
 
   def show
-    @category = Category.find(params[:id])
   end
 
   def index
@@ -12,30 +13,38 @@ class Admin::CategoriesController < Admin::BaseController
   end
 
   def create
-    @category = Category.new(params[:category])
+    @category = Category.new(category_params)
     if @category.save
       redirect_to admin_categories_path
     else
-      render action: "new"
+      render action: 'new'
     end
   end
 
   def edit
-    @category = Category.find(params[:id])
   end
 
   def update
-    @category = Category.find(params[:id])
     if @category.update_attributes(params[:category])
       redirect_to admin_categories_path
     else
-      render action: "edit"
+      render action: 'edit'
     end
   end
 
   def destroy
-    @category = Category.find(params[:id])
     @category.destroy
     redirect_to admin_categories_path, notice: ("You deleted '#{@category.name}'.")
   end
+
+ private
+  # Use callbacks to share common setup or constraints between actions.
+  def set_category
+    @category = Category.find(params[:id])
+  end
+
+  def category_params
+    params.require(:category).permit(:name, :tag_list)
+  end
+
 end
