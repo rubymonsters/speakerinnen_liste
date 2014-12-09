@@ -1,7 +1,6 @@
-#require 'rails_helper'
 require 'spec_helper'
 
-describe ProfilesController do
+describe ProfilesController, type: :controller do
 
   describe "test index action" do
     let!(:user) { FactoryGirl.create(:published) }
