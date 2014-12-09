@@ -135,7 +135,7 @@ Feature: Navigation
     Given you are on the start page
     When you view the page in <language>
     Then you view the header <links> in <language>
-    And you are able to see sections: <titles>
+    #And you are able to see sections: <titles>
     And you see images: curie-photo, coaching-photo, speakerin-photo
     And you see links labeled as: <links>
 
