@@ -1,8 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.1.2'
-#ruby-gemset=speakerinnen_rails_3
-gem 'rails', '3.2.16'
-gem 'bootstrap-sass', '~> 2.3.0'
+gem 'rails', '4.2.0.rc2'
+
 gem 'normalize-rails'
 gem 'bootswatch-rails'
 gem 'faker', '1.0.1'
@@ -26,19 +25,17 @@ gem 'jquery-ui-rails'
 gem 'acts-as-taggable-on', '~> 3.4.1'
 gem 'auto_html', github: 'dejan/auto_html'
 gem 'mandrill-api'
-gem 'simple_form', '~> 2.0.0.rc'
-gem 'globalize', '~> 3.1.0'
+gem 'simple_form', '~> 3.0.2'
+gem 'globalize', '~> 4.0.2'
 
 group :development do
   gem 'letter_opener'
   gem 'quiet_assets' # mutes asset pipeline log messages
-  gem 'puma' # better ruby webserver no error messages: 'Could not determine content-length of response body.'
-  # start with: rails s Puma
 end
 
 group :development, :test do
-  gem 'rspec-rails', '2.14.1'
-  gem 'capybara', '~> 2.0.2'
+  gem 'rspec-rails', '3.1.0'
+  gem 'capybara', '~> 2.4.1'
   gem 'cucumber-rails', '1.4.0', require: false
   gem 'pry'
   gem 'selenium-webdriver', "2.38.0"
@@ -46,22 +43,17 @@ end
 
 group :test do
   gem 'factory_girl_rails', '4.1.0'
-  gem 'poltergeist'
+  gem 'poltergeist', '1.5.1'
   gem 'database_cleaner', '~> 1.2.0'
 end
 
+gem 'sass-rails',   '~> 4.0.3'
+gem 'bootstrap-sass', '~> 3.2.0'
+gem 'coffee-rails', '~> 4.0.1'
 
-# Gems used only for assets and not required
-# in production environments by default.
-group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
+gem 'uglifier', '>= 1.0.3'
 
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer', platforms: :ruby
-
-  gem 'uglifier', '>= 1.0.3'
-end
+gem 'autoprefixer-rails'
 
 # Use unicorn as the app server
 gem 'unicorn'
@@ -69,3 +61,5 @@ gem 'unicorn'
 gem 'rollbar', '~> 1.2.6'
 gem 'rack-piwik', '~> 0.3.0', require: 'rack/piwik'
 gem 'newrelic_rpm'
+
+gem 'rails_12factor', group: :production
