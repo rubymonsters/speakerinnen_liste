@@ -42,34 +42,39 @@
   <div class='span12 control-group-one pull-left'>
 
     <%= f.fields_for :translations, @profile.translations.sort_by(&:locale) do |translation| %>
+
+      <% if translation.object.locale == :de %>
+        <%= t(:translation, scope: "activerecord.attributes.profile").html_safe %>
+      <% end %>
+
+      <br>
+
       <div class='control-group'>
         <%= translation.hidden_field :locale %>
-        <% if translation.object.locale == :de %>
-          <%= t(:translation, scope: 'activerecord.attributes.profile').html_safe %>
-        <% end %>
-        <br>
+
         <%= translation.label :main_topic, t(:main_topic,
-          scope: 'activerecord.attributes.profile',
+          scope: "activerecord.attributes.profile",
           language:  @profile.language(translation)).html_safe,
-          class: 'control-label' %>
-        <div>
-          <%= translation.text_field :main_topic, class: 'text_field__wholepage' %>
-        </div>
+          class: 'text_field__wholepage' %>
+
+        <%= translation.text_field :main_topic, class: 'text_field__wholepage' %>
       </div>
+
       <div class='control-group'>
         <%= translation.hidden_field :locale %>
+
         <%= translation.label :bio, t(:bio,
-          scope: 'activerecord.attributes.profile',
+          scope: "activerecord.attributes.profile",
           language: @profile.language(translation)).html_safe,
-          class: 'control-label' %>
-        <div class='controls'>
-          <%= translation.text_area :bio, rows: 15, class: 'text_field__wholepage' %>
-        </div>
+          class: 'text_field__wholepage' %>
+
+        <%= translation.text_area :bio, rows: 15, class: 'text_field__wholepage' %>
         <hr>
       </div>
+
     <% end %>
 
-    <%= f.button :submit, t(:update, scope: 'profiles.form'), class:'btn btn-info' %>
+    <%= f.button :submit, t(:update, scope: 'profiles.form'), class:'btn btn-info pull-right' %>
   </div>
 </div>
 
