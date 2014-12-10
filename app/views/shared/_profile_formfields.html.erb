@@ -2,7 +2,7 @@
   <div class='span6 control-group-one pull-left'>
     <%= f.input :firstname %>
     <%= f.input :lastname %>
-    <%= f.input :languages %>
+    <%= f.input :languages, label: t(:languages, scope: 'activerecord.attributes.profile').html_safe %>
     <%= f.input :city %>
     <%= f.input :twitter, placeholder: '@' %>
     <%= f.input :website, placeholder: 'http://' %>
@@ -29,7 +29,7 @@
 
   </div>
   <div class='span6'>
-    <%= f.input :topic_list %>
+    <%= f.input :topic_list, label: t(:topic_list, scope: 'activerecord.attributes.profile').html_safe  %>
     <%#Used by 'tag-it' for autocompletion%>
     <ul class='hidden' id='availableTags'>
       <% ActsAsTaggableOn::Tag.uniq.pluck(:name).each do |tag_name| %>
