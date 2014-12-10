@@ -79,10 +79,27 @@ class ProfilesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def profile_params
-      params.require(:profile).permit(:email, :password, :password_confirmation,
-      :remember_me, :bio, :city, :email, :firstname, :languages, :lastname, :picture,
-      :twitter, :remove_picture, :talks, :website, :content, :name, :topic_list,
-      :media_url, :medialinks, :main_topic, :translations_attributes, :admin_comment)
+      params.require(:profile).permit(
+        :email,
+        :password,
+        :password_confirmation,
+        :remember_me,
+        :city,
+        :firstname,
+        :languages,
+        :lastname,
+        :picture,
+        :twitter,
+        :remove_picture,
+        :talks,
+        :website,
+        :content,
+        :name,
+        :topic_list,
+        :media_url,
+        :medialinks,
+        :admin_comment,
+        translations_attributes: [ :bio, :main_topic, :locale])
     end
 
     def build_missing_translations(object)

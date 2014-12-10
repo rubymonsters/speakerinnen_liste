@@ -1,37 +1,37 @@
-<div class="row">
-  <div class="span6 control-group-one pull-left">
+<div class='row'>
+  <div class='span6 control-group-one pull-left'>
     <%= f.input :firstname %>
     <%= f.input :lastname %>
     <%= f.input :languages %>
     <%= f.input :city %>
-    <%= f.input :twitter, placeholder: "@" %>
-    <%= f.input :website, placeholder: "http://" %>
+    <%= f.input :twitter, placeholder: '@' %>
+    <%= f.input :website, placeholder: 'http://' %>
 
-    <div class="control-group">
-      <%= f.label :picture, class:"control-label" %>
-      <div class="controls">
+    <div class='control-group'>
+      <%= f.label :picture, class:'control-label' %>
+      <div class='controls'>
         <%= image_tag(@profile.picture_url, :width => 100) if @profile.picture.present? %>
         <%= f.file_field :picture %>
-        <div class="hint">
-          <%= t(:copyright_photo, scope: "profiles.form") %>
+        <div class='hint'>
+          <%= t(:copyright_photo, scope: 'profiles.form') %>
         </div>
       </div>
     </div>
 
-    <div class="profile-delete-pic">
+    <div class='profile-delete-pic'>
       <div>
         <%= f.check_box :remove_picture %>
-        <%= t(:delete_picture, scope: "profiles.form") %>
+        <%= t(:delete_picture, scope: 'profiles.form') %>
       </div>
     </div>
 
     <%= f.input :email %>
 
   </div>
-  <div class="span6">
+  <div class='span6'>
     <%= f.input :topic_list %>
-    <%#Used by "tag-it" for autocompletion%>
-    <ul class="hidden" id="availableTags">
+    <%#Used by 'tag-it' for autocompletion%>
+    <ul class='hidden' id='availableTags'>
       <% ActsAsTaggableOn::Tag.uniq.pluck(:name).each do |tag_name| %>
         <li><%= tag_name %></li>
       <% end %>
@@ -41,17 +41,23 @@
       <div class='control-group string optional'>
         <%= translation.hidden_field :locale %>
         <% if translation.object.locale == :de %>
-          <%= t(:translation, scope: "activerecord.attributes.profile").html_safe %>
+          <%= t(:translation, scope: 'activerecord.attributes.profile').html_safe %>
         <% end %>
         <br>
-        <%= translation.label :main_topic, t(:main_topic, scope: "activerecord.attributes.profile", language:  @profile.language(translation)).html_safe, class: 'string optional control-label' %>
+        <%= translation.label :main_topic, t(:main_topic,
+          scope: 'activerecord.attributes.profile',
+          language:  @profile.language(translation)).html_safe,
+          class: 'string optional control-label' %>
         <div class='controls'>
           <%= translation.text_field :main_topic, class: 'string optional' %>
         </div>
       </div>
       <div class='control-group string optional'>
         <%= translation.hidden_field :locale %>
-        <%= translation.label :bio, t(:bio, scope: "activerecord.attributes.profile", language: @profile.language(translation)).html_safe, class: 'string optional control-label' %>
+        <%= translation.label :bio, t(:bio,
+          scope: 'activerecord.attributes.profile',
+          language: @profile.language(translation)).html_safe,
+          class: 'string optional control-label' %>
         <div class='controls'>
           <%= translation.text_area :bio, rows: 15, class: 'string optional' %>
         </div>
@@ -59,7 +65,7 @@
       </div>
     <% end %>
 
-    <%= f.button :submit, t(:update, scope: "profiles.form"), class:"btn btn-info" %>
+    <%= f.button :submit, t(:update, scope: 'profiles.form'), class:'btn btn-info' %>
   </div>
 </div>
 
