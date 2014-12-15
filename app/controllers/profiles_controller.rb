@@ -99,11 +99,11 @@ class ProfilesController < ApplicationController
         :media_url,
         :medialinks,
         :admin_comment,
-        translations_attributes: [ :bio, :main_topic, :locale])
+        translations_attributes: [:id, :bio, :main_topic, :locale])
     end
 
     def build_missing_translations(object)
-      I18n.available_locales.each do |locale|
+      I18n.available_locales.each do |locale| 
         unless object.translated_locales.include?(locale)
           object.translations.build(locale: locale)
         end
