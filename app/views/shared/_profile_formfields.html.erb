@@ -43,17 +43,16 @@
 
     <%= f.fields_for :translations, @profile.translations.sort_by(&:locale) do |translation| %>
 
-      <% if translation.object.locale == :de %>
-        <%= t(:translation, scope: "activerecord.attributes.profile").html_safe %>
-      <% end %>
+      <%= t(:translation, scope: 'activerecord.attributes.profile').html_safe %>
 
+      <br>
       <br>
 
       <div class='control-group'>
         <%= translation.hidden_field :locale %>
 
         <%= translation.label :main_topic, t(:main_topic,
-          scope: "activerecord.attributes.profile",
+          scope: 'activerecord.attributes.profile',
           language:  @profile.language(translation)).html_safe,
           class: 'text_field__wholepage' %>
 
@@ -64,7 +63,7 @@
         <%= translation.hidden_field :locale %>
 
         <%= translation.label :bio, t(:bio,
-          scope: "activerecord.attributes.profile",
+          scope: 'activerecord.attributes.profile',
           language: @profile.language(translation)).html_safe,
           class: 'text_field__wholepage' %>
 

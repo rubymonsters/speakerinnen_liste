@@ -103,7 +103,7 @@ class ProfilesController < ApplicationController
     end
 
     def build_missing_translations(object)
-      I18n.available_locales.each do |locale| 
+      I18n.available_locales.each do |locale|
         unless object.translated_locales.include?(locale)
           object.translations.build(locale: locale)
         end

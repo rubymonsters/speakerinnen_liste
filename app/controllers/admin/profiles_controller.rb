@@ -83,7 +83,7 @@ class Admin::ProfilesController < Admin::BaseController
         :media_url,
         :medialinks,
         :admin_comment,
-        translations_attributes: [ :bio, :main_topic, :locale])
+        translations_attributes: [:id, :bio, :main_topic, :locale])
     end
 
     def sort_column
