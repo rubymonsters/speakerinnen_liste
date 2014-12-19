@@ -32,4 +32,6 @@ SpeakerinnenListe::Application.configure do
 
  #config.action_mailer.delivery_method = :letter_opener
   config.action_mailer.delivery_method = :file
+
+  config.action_controller.action_on_unpermitted_parameters = :raise
 end
