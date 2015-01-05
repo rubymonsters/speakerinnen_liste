@@ -1,7 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<a href=''></a>
 <% admin_header_class = 'admin' if controller_path =~ /admin\// %>
 <header>
+  <%= link_to(root_path, id: 'page-header__home-link') do %>
+    <%= t(:home, scope: "layouts.application") %>
+    <%= image_tag("logo8.png", alt: "logo", id: 'page-header__home-img') %>
+  <% end %>
+
   <% if profile_signed_in? %>
     <%= link_to(t(:my_profile, scope: 'layouts.application'), profile_path(current_profile), class: 'page-header__link')%>
     |
@@ -18,8 +22,10 @@
     <%= link_to 'Admin', admin_root_path, class: 'page-header__link' %>
   <% end %>
 
-  <%= link_to_unless I18n.locale == :en, 'EN', locale: :en %> |
-  <%= link_to_unless I18n.locale == :de, 'DE', locale: :de %>
+  <span>
+    <%= link_to_unless I18n.locale == :en, 'EN', {locale: :en}, class: 'page-header__link'  %> |
+    <%= link_to_unless I18n.locale == :de, 'DE', {locale: :de}, class: 'page-header__link'  %>
+  </span>
 </header>
 
 <% if notice %>

@@ -8,6 +8,29 @@ a {
 	text-decoration: none;
 }
 
-header {
+#page-header__home-link {
+  position: absolute;
+  top: $header-margin-top;
+  left: 10px;
+}
+
+#page-header__home-img {
+  background: $body-bg-color;
+  position: absolute;
+  top: -$header-margin-top;
+  left: 0;
+  padding-left: 20px;
+}
+
+header{
   text-align: right;
+  line-height: 70px;
+}
+
+.page-header__link {
+}
+
+header span {
+  margin-left: 20px;
+  margin-right: 20px;
 }
