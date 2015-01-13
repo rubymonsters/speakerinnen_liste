@@ -72,17 +72,22 @@ describe ProfilesController, type: :controller do
 
     it "doesn't create extra translations" do
       controller.build_missing_translations(maren)
-      profile_params = { :translations_attributes =>
-        {'0'=>{'locale'=>'de',
-              'main_topic'=>'Soziale Medien',
-              'bio'=>'Dingsbums',
-              'id'=>'12'},
-              '1'=>{'locale'=>'de',
-              'main_topic'=>'Medien und so',
-              'bio'=>'Dingsbums',
-              'id'=>'95'}
+      profile_params = {
+        translations_attributes:
+          {'0' =>
+            {'locale'      => 'de',
+            'main_topic'   => 'Soziale Medien',
+            'bio'          => 'Dingsbums',
+            'id'           => '12'
+            },
+            '1' =>
+              {'locale'    => 'de',
+              'main_topic' => 'Medien und so',
+              'bio'        => 'Dingsbums',
+              'id'         => '95'
+              }
+          }
         }
-      }
       patch :update, {id: maren.id}.merge(profile: profile_params)
       expect(profile)
     end
