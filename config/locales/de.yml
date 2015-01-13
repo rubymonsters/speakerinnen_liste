@@ -23,6 +23,7 @@ de:
       profiles:
         profiles: "Profile"
         created_at: "Erstellt am"
+        updated_at: "Zuletzt gespeichert"
         visibility: "Sichtbarkeit"
         public: "öffentlich"
         invisible: "unsichtbar"

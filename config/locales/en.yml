@@ -23,6 +23,7 @@ en:
       profiles:
         profiles: "Profiles"
         created_at: "Created at"
+        updated_at: "Updated at"
         visibility: "Visibility"
         public: "public"
         invisible: "invisible"

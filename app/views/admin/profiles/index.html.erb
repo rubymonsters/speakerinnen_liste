@@ -19,6 +19,9 @@
           <%= sortable "created_at", t(:created_at, scope: "admin.dashboard.profiles") %>
         </th>
         <th>
+          <%= sortable "updated_at", t(:updated_at, scope: "admin.dashboard.profiles") %>
+        </th>
+        <th>
           Media Links
         </th>
         <th>
@@ -42,6 +45,9 @@
         </td>
         <td>
           <%= profile.created_at.strftime('%d.%m.%Y um %H:%M Uhr') %>
+        </td>
+        <td>
+          <%= profile.updated_at.strftime('%d.%m.%Y um %H:%M Uhr') %>
         </td>
         <td>
           <%= link_to(profile.medialinks.size, admin_profile_medialinks_path(profile)) %>
