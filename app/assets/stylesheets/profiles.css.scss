@@ -205,6 +205,7 @@
 
 }
 
+
 .speaker img:hover{
   -webkit-filter: grayscale(0%);
   -moz-filter: grayscale(0%);
@@ -212,4 +213,9 @@
   -o-filter: grayscale(0%);
   filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'1 0 0 0 0, 0 1 0 0 0, 0 0 1 0 0, 0 0 0 1 0\'/></filter></svg>#grayscale");
   filter: grayscale(00%);
+}
+
+.speaker .image a:hover{
+  padding: 0px;
+  color: #fff;
 }
