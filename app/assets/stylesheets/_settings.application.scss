@@ -1,4 +1,25 @@
 /*fonts*/
+@font-face {
+  font-family: 'OpenSans';
+  src: url('OpenSans/OpenSans-Regular-webfont.eot');
+  src: url('OpenSans/OpenSans-Regular-webfont.eot?#iefix') format('embedded-opentype'),
+  url('OpenSans/OpenSans-Regular-webfont.woff') format('woff'),
+  url('OpenSans/OpenSans-Regular-webfont.ttf') format('truetype'),
+  url('OpenSans/OpenSans-Regular-webfont.svg#open_sansregular') format('svg');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'OpenSans';
+  src: url('OpenSans/OpenSans-Bold-webfont.eot');
+  src: url('OpenSans/OpenSans-Bold-webfont.eot?#iefix') format('embedded-opentype'),
+  url('OpenSans/OpenSans-Bold-webfont.woff') format('woff'),
+  url('OpenSans/OpenSans-Bold-webfont.ttf') format('truetype'),
+  url('OpenSans/OpenSans-Bold-webfont.svg#open_sansbold') format('svg');
+  font-weight: 700;
+  font-style: normal;
+}
+
 $serif: 'Merriweather', Georgia, serif;
 $sans-serif: "OpenSans", "Helvetica Neue", Helvetica, sans-serif;
 

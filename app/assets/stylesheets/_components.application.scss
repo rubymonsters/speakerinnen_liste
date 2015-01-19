@@ -12,25 +12,29 @@ a {
   position: absolute;
   top: $header-margin-top;
   left: 10px;
+  text-indent: 99999px;
 }
 
 #page-header__home-img {
-  background: $body-bg-color;
   position: absolute;
   top: -$header-margin-top;
   left: 0;
   padding-left: 20px;
 }
 
-header{
+header {
   text-align: right;
   line-height: 70px;
+  box-shadow: 0 1px 11px #999099 inset;
 }
 
-.page-header__link {
+#start-teaser {
+  background: image-url('curie.jpg') no-repeat;
 }
 
-header span {
-  margin-left: 20px;
-  margin-right: 20px;
+.photo-bar {
+  background-size: cover;
+  background-position: center center;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5) inset;
+  min-height: 600px;
 }
