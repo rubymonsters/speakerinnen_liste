@@ -71,25 +71,28 @@ describe ProfilesController, type: :controller do
     end
 
     it "doesn't create extra translations" do
-      controller.build_missing_translations(maren)
+      de_factory_translation = maren.translations.find_by!('locale' => 'de')
+      en_translation = maren.translations.create!('locale' => 'en', 'main_topic' => 'Soc')
+
       profile_params = {
         translations_attributes:
           {'0' =>
             {'locale'      => 'de',
             'main_topic'   => 'Soziale Medien',
             'bio'          => 'Dingsbums',
-            'id'           => '12'
+            'id'           => de_factory_translation.id
             },
-            '1' =>
-              {'locale'    => 'de',
-              'main_topic' => 'Medien und so',
-              'bio'        => 'Dingsbums',
-              'id'         => '95'
-              }
+          '1' =>
+            {'locale'    => 'en',
+            'main_topic' => 'Social Media',
+            'bio'        => 'English Bio',
+            'id'         => en_translation.id
+            }
           }
         }
       patch :update, {id: maren.id}.merge(profile: profile_params)
-      expect(profile)
+
+      expect(maren.reload.translations.size).to eq(2)
     end
   end
 end
