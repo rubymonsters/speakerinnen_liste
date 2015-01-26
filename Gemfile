@@ -29,6 +29,8 @@ gem 'mandrill-api'
 gem 'simple_form', '~> 2.0.0.rc'
 gem 'globalize', '~> 3.1.0'
 
+gem 'rails_12factor', group: :production
+
 group :development do
   gem 'letter_opener'
   gem 'quiet_assets' # mutes asset pipeline log messages
