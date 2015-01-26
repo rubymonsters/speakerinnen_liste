@@ -250,3 +250,5 @@ Links to Youtube videos will be shown as embedded videos. Other links will be cl
       one: "1 result! Yeah!",
       other: "%{count} results! Yeah!"
     }
+  error_messages:
+    picture_too_big: " is too big. You cannot upload a file greater than 1MB."

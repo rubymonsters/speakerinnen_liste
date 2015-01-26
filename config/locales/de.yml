@@ -252,3 +252,5 @@ de:
       one: "1 Speakerin gefunden!",
       other: "%{count} Speakerinnen gefunden! Yeah!"
     }
+  error_messages:
+    picture_too_big: " ist zu groß. Bitte nicht größer als 1 MB"

@@ -1,5 +1,6 @@
 class Profile < ActiveRecord::Base
   include AutoHtml
+  include HasPicture
 
   translates :bio, :main_topic, fallbacks_for_empty_translations: true
   accepts_nested_attributes_for :translations
@@ -15,8 +16,6 @@ class Profile < ActiveRecord::Base
 
   devise :database_authenticatable, :registerable, :omniauthable,
     :recoverable, :rememberable, :trackable, :validatable, :confirmable
-
-  mount_uploader :picture, PictureUploader
 
   acts_as_taggable_on :topics
 
