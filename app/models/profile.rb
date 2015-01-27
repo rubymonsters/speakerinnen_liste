@@ -1,5 +1,6 @@
 class Profile < ActiveRecord::Base
   include AutoHtml
+  include HasPicture
 
   translates :bio, :main_topic, fallbacks_for_empty_translations: true
   accepts_nested_attributes_for :translations
@@ -10,20 +11,11 @@ class Profile < ActiveRecord::Base
     youtube width: 400, height: 250
     vimeo width: 400, height: 250
     simple_format
-    link target: "_blank", rel: "nofollow"
+    link target: '_blank', rel: 'nofollow'
   end
 
   devise :database_authenticatable, :registerable, :omniauthable,
     :recoverable, :rememberable, :trackable, :validatable, :confirmable
-
-  mount_uploader :picture, PictureUploader
-
-  # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me
-  attr_accessible :bio, :city, :email, :firstname, :languages, :lastname, :picture, :twitter, :remove_picture, :talks, :website
-  attr_accessible :content, :name, :topic_list, :media_url, :medialinks, :main_topic
-  attr_accessible :translations_attributes
-  attr_accessible :admin_comment
 
   acts_as_taggable_on :topics
 
@@ -38,7 +30,7 @@ class Profile < ActiveRecord::Base
   end
 
   def self.from_omniauth(auth)
-    where(auth.slice(:provider, :uid)).first_or_create do |profile|
+    where(provider: auth.provider, uid: auth.uid).first_or_create do |profile|
       profile.provider = auth.provider
       profile.uid = auth.uid
       profile.twitter = auth.info.nickname
@@ -46,8 +38,8 @@ class Profile < ActiveRecord::Base
   end
 
   def self.new_with_session(params, session)
-    if session["devise.user_attributes"]
-      new(session["devise.user_attributes"], without_protection: true) do |profile|
+    if session['devise.user_attributes']
+      new(session['devise.user_attributes'], without_protection: true) do |profile|
         profile.attributes = params
         profile.valid?
       end
@@ -56,9 +48,9 @@ class Profile < ActiveRecord::Base
     end
   end
 
-  scope :is_published, where(published: true)
+  scope :is_published, -> { where(published: true) }
 
-  scope :no_admin, where(admin: false)
+  scope :no_admin, -> { where(admin: false) }
 
   def fullname
     "#{firstname} #{lastname}".strip
@@ -70,13 +62,13 @@ class Profile < ActiveRecord::Base
 
   def language(translation)
     if translation.object.locale == :en && I18n.locale == :de
-      "Englisch"
+      'Englisch'
     elsif translation.object.locale == :en && I18n.locale == :en
-      "English"
+      'English'
     elsif translation.object.locale == :de && I18n.locale == :en
-      "German"
+      'German'
     else
-      "Deutsch"
+      'Deutsch'
     end
   end
 
@@ -93,11 +85,11 @@ class Profile < ActiveRecord::Base
   end
 
   def twitter_link_formatted
-    "http://twitter.com/"  + twitter.gsub(/^@|https:|http:|:|\/\/|www.|twitter.com\//, '')
+    'http://twitter.com/'  + twitter.gsub(/^@|https:|http:|:|\/\/|www.|twitter.com\//, '')
   end
 
   def self.random
-    order("RANDOM()")
+    order('RANDOM()')
   end
 
   def password_required?

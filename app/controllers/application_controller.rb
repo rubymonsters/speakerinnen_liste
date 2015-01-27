@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
   def authenticate_admin!
     unless current_profile && current_profile.admin?
-      redirect_to profiles_url, notice: (I18n.t("flash.profiles.no_permission"))
+      redirect_to profiles_url, notice: (I18n.t('flash.profiles.no_permission'))
     end
   end
 

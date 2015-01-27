@@ -3,6 +3,7 @@
 --
 
 SET statement_timeout = 0;
+SET lock_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SET check_function_bodies = false;
@@ -35,8 +36,8 @@ SET default_with_oids = false;
 CREATE TABLE categories (
     id integer NOT NULL,
     name character varying(255),
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
 );
 
 
@@ -95,10 +96,10 @@ ALTER SEQUENCE categories_tags_id_seq OWNED BY categories_tags.id;
 
 CREATE TABLE category_translations (
     id integer NOT NULL,
-    category_id integer,
+    category_id integer NOT NULL,
     locale character varying(255) NOT NULL,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
     name character varying(255)
 );
 
@@ -132,8 +133,8 @@ CREATE TABLE medialinks (
     url text,
     title text,
     description text,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
     "position" integer
 );
 
@@ -163,10 +164,10 @@ ALTER SEQUENCE medialinks_id_seq OWNED BY medialinks.id;
 
 CREATE TABLE profile_translations (
     id integer NOT NULL,
-    profile_id integer,
+    profile_id integer NOT NULL,
     locale character varying(255) NOT NULL,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
     main_topic character varying(255),
     bio text
 );
@@ -204,8 +205,8 @@ CREATE TABLE profiles (
     city character varying(255),
     twitter character varying(255),
     picture character varying(255),
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
     encrypted_password character varying(255) DEFAULT ''::character varying NOT NULL,
     reset_password_token character varying(255),
     reset_password_sent_at timestamp without time zone,
@@ -534,7 +535,16 @@ CREATE UNIQUE INDEX unique_schema_migrations ON schema_migrations USING btree (v
 -- Name: _RETURN; Type: RULE; Schema: public; Owner: -
 --
 
-CREATE RULE "_RETURN" AS ON SELECT TO searches DO INSTEAD SELECT profiles.id AS profile_id, array_to_string(ARRAY[profiles.firstname, profiles.lastname, profiles.languages, profiles.city, (string_agg(DISTINCT medialinks.title, ' '::text))::character varying, (string_agg(DISTINCT medialinks.description, ' '::text))::character varying, (string_agg(DISTINCT profile_translations.bio, ' '::text))::character varying, (string_agg(DISTINCT (profile_translations.main_topic)::text, ' '::text))::character varying, (string_agg(DISTINCT (tags.name)::text, ' '::text))::character varying], ' '::text) AS search_field FROM ((((profiles LEFT JOIN medialinks ON ((medialinks.profile_id = profiles.id))) LEFT JOIN profile_translations ON ((profile_translations.profile_id = profiles.id))) LEFT JOIN taggings ON ((taggings.taggable_id = profiles.id))) LEFT JOIN tags ON ((tags.id = taggings.tag_id))) WHERE (profiles.published = true) GROUP BY profiles.id;
+CREATE RULE "_RETURN" AS
+    ON SELECT TO searches DO INSTEAD  SELECT profiles.id AS profile_id,
+    array_to_string(ARRAY[profiles.firstname, profiles.lastname, profiles.languages, profiles.city, (string_agg(DISTINCT medialinks.title, ' '::text))::character varying, (string_agg(DISTINCT medialinks.description, ' '::text))::character varying, (string_agg(DISTINCT profile_translations.bio, ' '::text))::character varying, (string_agg(DISTINCT (profile_translations.main_topic)::text, ' '::text))::character varying, (string_agg(DISTINCT (tags.name)::text, ' '::text))::character varying], ' '::text) AS search_field
+   FROM ((((profiles
+     LEFT JOIN medialinks ON ((medialinks.profile_id = profiles.id)))
+     LEFT JOIN profile_translations ON ((profile_translations.profile_id = profiles.id)))
+     LEFT JOIN taggings ON ((taggings.taggable_id = profiles.id)))
+     LEFT JOIN tags ON ((tags.id = taggings.tag_id)))
+  WHERE (profiles.published = true)
+  GROUP BY profiles.id;
 
 
 --
@@ -602,3 +612,4 @@ INSERT INTO schema_migrations (version) VALUES ('20140901194313');
 INSERT INTO schema_migrations (version) VALUES ('20140901194314');
 
 INSERT INTO schema_migrations (version) VALUES ('20140901194315');
+

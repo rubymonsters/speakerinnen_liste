@@ -31,20 +31,20 @@
 
 .start-page-images {
   background-position: center center;
-  background-size: cover; 
+  background-size: cover;
   }
 
 #curie-photo {
-  background-image: url("curie.jpg");
+  background-image: image-url("curie.jpg");
   min-height: 600px;
   }
 
 #speakerin-photo {
-  background-image: url("maren_buehne.jpg");
+  background-image: image-url("maren_buehne.jpg");
   }
 
 #coaching-photo {
-  background-image: url("coaching.jpg");
+  background-image: image-url("coaching.jpg");
   }
 
 /* --------------------- Photo Bar --------------*/

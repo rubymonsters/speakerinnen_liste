@@ -9,7 +9,7 @@ class CategoryTagTest < ActiveSupport::TestCase
     profiles(:one).save!
     tag = ActsAsTaggableOn::Tag.find_by_name("juni")
     tag.save
-    assert_equal tag.id, 1
+    assert_equal tag.name, "juni"
     tag.categories << category
     assert_equal tag.categories.first.name, "Jahreszeiten"
     assert_equal category.tags.first.name, "juni"

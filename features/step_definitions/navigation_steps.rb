@@ -48,9 +48,9 @@ When /^you click on(.*): (.+)$/ do |type, label|
     element.click
   else
     case type.strip
-      when 'button' then click_button label
-      when 'link' then click_link label
-      else click_on label
+      when 'button' then click_button(label, match: :first)
+      when 'link' then click_link(label, match: :first)
+      else click_on(label, match: :first)
     end
   end
 end

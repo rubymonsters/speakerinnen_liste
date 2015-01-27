@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class SearchForUserTest < ActionController::IntegrationTest
+class SearchForUserTest < ActionDispatch::IntegrationTest
   def setup
     @carla              = profiles(:one)
     @carla.confirmed_at = Time.now

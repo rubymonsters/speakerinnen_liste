@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class AdminTest < ActionController::IntegrationTest
+class AdminTest < ActionDispatch::IntegrationTest
 
   def setup
     @jane              = profiles(:jane)
