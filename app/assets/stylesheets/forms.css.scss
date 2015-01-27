@@ -3,6 +3,10 @@
 .simple_form {
   $indent: 120px;
 
+  .text_field__wholepage {
+    width: 350px !important;
+  }
+
   label {
     float: left;
     width: $indent - 20px;
@@ -125,3 +129,4 @@ ul.tagit {
 	text-align: center;
   padding: 2em;
 }
+

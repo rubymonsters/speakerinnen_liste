@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class ProfilesTest < ActionController::IntegrationTest
+class ProfilesTest < ActionDispatch::IntegrationTest
   def setup
     @horst              = profiles(:one)
     @horst.confirmed_at = Time.now

@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class SignUpTest < ActionController::IntegrationTest
+class SignUpTest < ActionDispatch::IntegrationTest
 
   test "sign up with email sends out confirmation link" do
     visit '/en'

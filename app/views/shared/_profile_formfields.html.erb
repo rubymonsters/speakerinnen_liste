@@ -1,65 +1,80 @@
-<div class="row">
-  <div class="span6 control-group-one pull-left">
-    <%= f.input :firstname %>
-    <%= f.input :lastname %>
-    <%= f.input :languages %>
-    <%= f.input :city %>
-    <%= f.input :twitter, placeholder: "@" %>
-    <%= f.input :website, placeholder: "http://" %>
-
-    <div class="control-group">
-      <%= f.label :picture, class:"control-label" %>
-      <div class="controls">
+<div class='row'>
+  <div class='span6 control-group-one pull-left'>
+    <div class='control-group'>
+      <%= f.label :picture, class:'control-label' %>
+      <div class='controls'>
         <%= image_tag(@profile.picture_url, :width => 100) if @profile.picture.present? %>
         <%= f.file_field :picture %>
-        <div class="hint">
-          <%= t(:copyright_photo, scope: "profiles.form") %>
+        <div class='hint'>
+          <%= t(:copyright_photo, scope: 'profiles.form') %>
+          <%= t(:size_photo, scope: 'profiles.form') %>
         </div>
       </div>
     </div>
-
-    <div class="profile-delete-pic">
-      <div>
+    <div class='profile-delete-pic'>
         <%= f.check_box :remove_picture %>
-        <%= t(:delete_picture, scope: "profiles.form") %>
-      </div>
+        <%= t(:delete_picture, scope: 'profiles.form') %>
     </div>
 
-    <%= f.input :email %>
-
-  </div>
-  <div class="span6">
-    <%= f.input :topic_list %>
-    <%#Used by "tag-it" for autocompletion%>
-    <ul class="hidden" id="availableTags">
+    <%= f.input :topic_list, label: t(:topic_list, scope: 'activerecord.attributes.profile').html_safe  %>
+    <%#Used by 'tag-it' for autocompletion%>
+    <ul class='hidden' id='availableTags'>
       <% ActsAsTaggableOn::Tag.uniq.pluck(:name).each do |tag_name| %>
         <li><%= tag_name %></li>
       <% end %>
     </ul>
+  </div>
+
+  <div class='span6'>
+    <%= f.input :firstname %>
+    <%= f.input :lastname %>
+    <%= f.input :email %>
+    <%= f.input :twitter, placeholder: '@' %>
+    <%= f.input :city %>
+    <%= f.input :languages, label: t(:languages, scope: 'activerecord.attributes.profile').html_safe %>
+    <%= f.input :website, placeholder: 'http://' %>
+  </div>
+</div>
+<br>
+<br>
+<hr>
+<br>
+<div class='row'>
+  <div class='span12 control-group-one pull-left'>
 
     <%= f.fields_for :translations, @profile.translations.sort_by(&:locale) do |translation| %>
-      <div class='control-group string optional'>
+
+      <%= t(:translation, scope: 'activerecord.attributes.profile').html_safe %>
+
+      <br>
+      <br>
+
+      <div class='control-group'>
         <%= translation.hidden_field :locale %>
-        <% if translation.object.locale == :de %>
-          <%= t(:translation, scope: "activerecord.attributes.profile").html_safe %>
-        <% end %>
-        <br>
-        <%= translation.label :main_topic, t(:main_topic, scope: "activerecord.attributes.profile", language:  @profile.language(translation)).html_safe, class: 'string optional control-label' %>
-        <div class='controls'>
-          <%= translation.text_field :main_topic, class: 'string optional' %>
-        </div>
+
+        <%= translation.label :main_topic, t(:main_topic,
+          scope: 'activerecord.attributes.profile',
+          language:  @profile.language(translation)).html_safe,
+          class: 'text_field__wholepage' %>
+
+        <%= translation.text_field :main_topic, class: 'text_field__wholepage' %>
       </div>
-      <div class='control-group string optional'>
+
+      <div class='control-group'>
         <%= translation.hidden_field :locale %>
-        <%= translation.label :bio, t(:bio, scope: "activerecord.attributes.profile", language: @profile.language(translation)).html_safe, class: 'string optional control-label' %>
-        <div class='controls'>
-          <%= translation.text_area :bio, rows: 15, class: 'string optional' %>
-        </div>
+
+        <%= translation.label :bio, t(:bio,
+          scope: 'activerecord.attributes.profile',
+          language: @profile.language(translation)).html_safe,
+          class: 'text_field__wholepage' %>
+
+        <%= translation.text_area :bio, rows: 15, class: 'text_field__wholepage' %>
         <hr>
       </div>
+
     <% end %>
 
-    <%= f.button :submit, t(:update, scope: "profiles.form"), class:"btn btn-info" %>
+    <%= f.button :submit, t(:update, scope: 'profiles.form'), class:'btn btn-info pull-right' %>
   </div>
 </div>
 

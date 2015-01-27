@@ -10,24 +10,29 @@ class ContactController < ApplicationController
       @profile = Profile.find(params[:id])
     end
 
-    @message = Message.new(params[:message])
+    @message = Message.new(message_params)
 
     if @message.valid?
       NotificationsMailer.new_message(@message, @profile && @profile.email).deliver
-      redirect_to(root_path, notice: t(:notice, scope: "contact.form"))
+      redirect_to(root_path, notice: t(:notice, scope: 'contact.form'))
     else
-      flash.now.alert = t(:error, scope: "contact.form")
+      flash.now.alert = t(:error, scope: 'contact.form')
       render :new
     end
   end
 
-private
-  def reject_spam_bots
-    if params[:message][:email].present?
-      render text: "ok"
-    else
-      params[:message][:email] = params[:message][HONEYPOT_EMAIL_ATTR_NAME]
+  private
+
+    def message_params
+      params.require(:message).permit(:name, :email, :subject, :body, HONEYPOT_EMAIL_ATTR_NAME)
     end
 
-  end
+    def reject_spam_bots
+      if params[:message][:email].present?
+        render text: 'ok'
+      else
+        params[:message][:email] = params[:message][HONEYPOT_EMAIL_ATTR_NAME]
+      end
+
+    end
 end

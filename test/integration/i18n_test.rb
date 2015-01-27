@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class InternationalisationTest < ActionController::IntegrationTest
+class InternationalisationTest < ActionDispatch::IntegrationTest
 
   test "locale de works" do
     visit '/'
