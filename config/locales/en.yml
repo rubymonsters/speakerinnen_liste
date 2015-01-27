@@ -133,6 +133,7 @@ en:
       delete_picture: "Delete photo"
       update: "Update your profile"
       copyright_photo: "Please make sure you use .jpg, .jpeg or .png and that you have all copyrights for this photo."
+      size_photo: "The size of your photo should be smaller than 1MB."
     profile:
       firstname: 'First name:'
       lastname: 'Last name:'

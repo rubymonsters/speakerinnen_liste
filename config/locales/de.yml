@@ -133,6 +133,7 @@ de:
       delete_picture: "Lösche das Foto"
       update: "Aktualisiere dein Profil"
       copyright_photo: "Bitte nutze .jpg, .jpeg oder .png und achte darauf, daß Du die Rechte zu diesem Foto besitzt!"
+      size_photo: "Die Größe des Fotos sollte kleiner als 1MB sein."
     profile:
       firstname: 'Vorname:'
       lastname: 'Nachname:'
