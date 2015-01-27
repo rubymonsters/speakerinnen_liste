@@ -28,6 +28,8 @@ gem 'mandrill-api'
 gem 'simple_form', '~> 3.0.2'
 gem 'globalize', '~> 4.0.2'
 
+gem 'rails_12factor', group: :production
+
 group :development do
   gem 'letter_opener'
   gem 'quiet_assets' # mutes asset pipeline log messages
@@ -61,5 +63,3 @@ gem 'unicorn'
 gem 'rollbar', '~> 1.2.6'
 gem 'rack-piwik', '~> 0.3.0', require: 'rack/piwik'
 gem 'newrelic_rpm'
-
-gem 'rails_12factor', group: :production
