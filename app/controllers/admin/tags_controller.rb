@@ -1,5 +1,6 @@
 class Admin::TagsController < Admin::BaseController
   before_filter :find_tag_and_category, :only => [:remove_category, :set_category]
+  before_action :set_tag, only: [:edit, :update, :destroy, :find_tag_and_category]
 
   def index
     @tags       = ActsAsTaggableOn::Tag.all.sort_by {|tag| tag.name.downcase}
@@ -7,15 +8,13 @@ class Admin::TagsController < Admin::BaseController
   end
 
   def edit
-    @tag = ActsAsTaggableOn::Tag.find(params[:id])
   end
 
   def update
-    @tag = ActsAsTaggableOn::Tag.find(params[:id])
     if existing_tag = ActsAsTaggableOn::Tag.where(name: params[:tag][:name]).first
       existing_tag.merge(@tag)
       redirect_to categorization_admin_tags_path(page: params[:page]), notice: ("'#{@tag.name}' was merged with the tag '#{existing_tag.name}'.")
-    elsif @tag.update_attributes(params[:tag])
+    elsif @tag.update_attributes(tag_params)
       redirect_to categorization_admin_tags_path(page: params[:page]), notice: ("'#{@tag.name}' was updated.")
     else
       render action: 'edit'
@@ -23,7 +22,6 @@ class Admin::TagsController < Admin::BaseController
   end
 
   def destroy
-    @tag = ActsAsTaggableOn::Tag.find(params[:id])
     @tag.destroy
     redirect_to categorization_admin_tags_path, notice: ("'#{@tag.name}' was destroyed.")
   end
@@ -60,8 +58,15 @@ class Admin::TagsController < Admin::BaseController
   private
 
   def find_tag_and_category
-    @tag      = ActsAsTaggableOn::Tag.find(params[:id])
     @category = Category.find(params[:category_id])
+  end
+
+  def set_tag
+    @tag      = ActsAsTaggableOn::Tag.find(params[:id])
+  end
+
+  def tag_params
+    params.require(:tag).permit(:id, :tag, :name)
   end
 
 end
