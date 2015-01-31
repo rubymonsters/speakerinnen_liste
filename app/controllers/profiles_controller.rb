@@ -128,10 +128,10 @@ class ProfilesController < ApplicationController
               .per(24)
     end
 
-  def api_authentication_required
-    authenticate_or_request_with_http_basic do |name, token|
-      api_token = ApiToken.find_by(name: name)
-      api_token.token.present? && api_token.token == token
+    def api_authentication_required
+      authenticate_or_request_with_http_basic do |name, token|
+        api_token = ApiToken.find_by(name: name)
+        api_token.token.present? && api_token.token == token
+      end
     end
-  end
 end
