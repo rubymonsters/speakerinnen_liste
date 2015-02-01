@@ -63,8 +63,8 @@ class ProfileTest < ActiveSupport::TestCase
   test "should convert profile attributes to json" do
     horst = profiles(:one)
     horst.id = 1
-    horst.created_at = Time.parse('2014-12-06 15:04:13')
-    horst.updated_at = Time.parse('2014-12-06 15:04:20')
+    horst.created_at = Time.zone.parse('2014-12-06 15:04:13')
+    horst.updated_at = Time.zone.parse('2014-12-06 15:04:20')
     horst.medialinks = [ medialinks(:one) ]
 
     I18n.locale = :en
@@ -85,8 +85,8 @@ class ProfileTest < ActiveSupport::TestCase
       'languages'  => 'Deutsch',
       'city'       => 'Berlin',
       'twitter'    => 'MyString',
-      'created_at' => '2014-12-06T14:04:13.000Z',
-      'updated_at' => '2014-12-06T14:04:20.000Z',
+      'created_at' => '2014-12-06T15:04:13.000Z',
+      'updated_at' => '2014-12-06T15:04:20.000Z',
       'website'    => nil,
       'medialinks' => [{'url' => 'MyString', 'title' => 'MyString', 'description' => nil, 'position' => nil}],
       'topics'     => [],
