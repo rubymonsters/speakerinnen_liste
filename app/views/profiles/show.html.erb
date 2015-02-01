@@ -16,11 +16,7 @@
   <br>
   <div class='row'>
     <div class='span4'>
-      <% if @profile.picture.present? %>
-        <%= image_tag(@profile.picture.profile.url , class: 'photo') %>
-      <% else %>
-        <%= image_tag('avatar.jpg', alt: 'avatar', class: 'photo') %>
-      <% end %>
+      <%= profile_picture_link(@profile) %>
       <div class='main-topic'><%= @profile.main_topic_or_first_topic %></div>
     </div>
 

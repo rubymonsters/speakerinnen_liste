@@ -103,4 +103,25 @@ class Profile < ActiveRecord::Base
       super
     end
   end
+
+  def as_json(options = {})
+    attributes.slice(
+      'id',
+      'firstname',
+      'lastname',
+      'languages',
+      'city',
+      'twitter',
+      'created_at',
+      'updated_at',
+      'website'
+    ).merge(
+      'medialinks' => medialinks,
+      'topics' => topics.map(&:name),
+      'picture' => picture,
+      'bio' => bio_translations,
+      'main_topic' => main_topic_translations
+    )
+  end
+
 end
