@@ -15,11 +15,6 @@ class ProfilesController < ApplicationController
       @profiles = profiles_for_index
     end
     @tags = ActsAsTaggableOn::Tag.most_used(100)
-
-    respond_to do |format|
-      format.html
-      format.json { render json: @profiles }
-    end
   end
 
   def category
@@ -40,10 +35,14 @@ class ProfilesController < ApplicationController
     if @profile.published? or can_edit_profile?(current_profile, @profile)
       @message = Message.new
       @medialinks = @profile.medialinks.order(:position)
+
+      respond_to do |format|
+        format.html
+        format.json { render json: @profile }
+      end
     else
       redirect_to profiles_url, notice: (I18n.t('flash.profiles.show_no_permission'))
     end
-
   end
 
   # action, view, routes should be deleted
