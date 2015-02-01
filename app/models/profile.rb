@@ -109,14 +109,13 @@ class Profile < ActiveRecord::Base
       'id',
       'firstname',
       'lastname',
-      'email',
       'languages',
       'city',
       'twitter',
       'created_at',
       'updated_at',
       'website'
-      ).merge(
+    ).merge(
       'medialinks' => medialinks,
       'topics' => topics.map(&:name),
       'picture' => picture,

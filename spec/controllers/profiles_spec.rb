@@ -65,7 +65,7 @@ describe ProfilesController, type: :controller do
       it 'should respond to json request' do
         http_login("horst", "123")
         get :show, id: profile1.id, format: "json"
-        expect(response.body).to include('{"id":' + profile1.id.to_s + ',"firstname":"Factory","lastname":"Girl","email":"test@anders.com"')
+        expect(response.body).to include('{"id":' + profile1.id.to_s + ',"firstname":"Factory","lastname":"Girl"')
       end
 
       it 'should deny json requests without a login' do

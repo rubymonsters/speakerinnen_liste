@@ -81,7 +81,6 @@ class ProfileTest < ActiveSupport::TestCase
       'id'         => 1,
       'firstname'  => 'Horst',
       'lastname'   => 'lastname',
-      'email'      => 'horst@mail.de',
       'languages'  => 'Deutsch',
       'city'       => 'Berlin',
       'twitter'    => 'MyString',
