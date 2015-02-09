@@ -75,8 +75,8 @@ Feature: Navigation
     And you view the admin dashboard in <language>
     When you click on: <area>
     Then you are able to see: Administration::<area>
-    And you see a button labeled as: <link>
-    And you see a button labeled as: <link2>
+    And you see a link labeled as: <link>
+    And you see a link labeled as: <link2>
     And you see a table with columns: <person>, <created_at>, <media_links>, <visibility>, <roles>, <comment>
     And you see a button labeled as: <link3>
 
