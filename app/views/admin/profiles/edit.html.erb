@@ -11,7 +11,7 @@
       <% if @profile.published %>
         <%= link_to(t(:public, scope: "admin.dashboard.profiles"), unpublish_admin_profile_path(@profile.id), method: :post, class:"btn btn-small btn-warning") %>
       <% else %>
-        <%= link_to(t(:invisible, scope: "admin.dashboard.profiles"), publish_admin_profile_path(@profile.id), method: :post, class:"btn btn-small btn-danger") %>
+        <%= link_to(t(:invisible, scope: "admin.dashboard.profiles"), publish_admin_profile_path(@profile.id), method: :post, class:"btn btn-small btn-danger", title: "Eine Bestätigungsmail wird verschickt.") %>
       <% end %>
     </div>
   </div>
