@@ -8,6 +8,15 @@
     <div class="span12 text-right">
       <%= link_to(t(:show, scope: "admin.dashboard.profiles.edit"), admin_profile_path(@profile), class:"btn btn-small") %>
       <%= link_to(t(:show_all, scope: "admin.dashboard.profiles.edit"), admin_profiles_path, class:"btn btn-small") %>
+      <% if @profile.published %>
+        <%= form_for @profile,{ url: unpublish_admin_profile_path(@profile.id), method: "post" } do |f| %>
+        <%= f.submit t(:public, scope: "admin.dashboard.profiles"), class: "btn btn-small btn-warning" %>
+        <% end %>
+      <% else %>
+        <%= form_for @profile,{ url: publish_admin_profile_path(@profile.id), method: "post" } do |f| %>
+          <%= f.submit t(:invisible, scope: "admin.dashboard.profiles"), class: "btn btn-small btn-danger" %>
+        <% end %>
+      <% end %>
     </div>
   </div>
 
