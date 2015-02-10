@@ -58,6 +58,7 @@ class Admin::TagsController < Admin::BaseController
   private
 
   def find_tag_and_category
+    set_tag
     @category = Category.find(params[:category_id])
   end
 
