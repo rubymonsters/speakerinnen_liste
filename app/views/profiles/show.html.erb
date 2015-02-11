@@ -85,9 +85,9 @@
         <ul>
           <% @medialinks.each do |medialink| %>
           <li>
-            <%= medialink.title %>
+            <b><%= medialink.title %></b>
             <%= medialink.url_html %>
-            <%= medialink.description %>
+            <p class="italic"><%= medialink.description %></p>
           </li>
           <hr>
           <% end %>
