@@ -68,19 +68,21 @@
     </div>
   </div>
 
-  <div class='row'>
-    <%#<div class='info-profiles-bio'>%>
-    <div class='span9 bio text-profile margin-top'>
-      <h5><%= t '.bio' %></h5>
-      <span class="indent"><%= simple_format(@profile.bio) %></span>
+  <% if @profile.bio %>
+    <div class='row'>
+      <%#<div class='info-profiles-bio'>%>
+      <div class='span9 bio text-profile margin-top'>
+        <h5><%= t '.bio' %></h5>
+        <span class="indent"><%= simple_format(@profile.bio) %></span>
+      </div>
     </div>
-  </div>
+  <% end %>
 
-  <div class='row'>
-    <div class='span9 medialinks text-profile margin-bottom margin-top'>
-
-      <% if @profile.medialinks.any? %>
+  <% if @profile.medialinks.any? %>
+    <div class='row'>
+      <div class='span9 medialinks text-profile margin-bottom margin-top'>
         <h5><%= t '.media' %></h5>
+
         <ul>
           <% @medialinks.each do |medialink| %>
           <li>
@@ -91,9 +93,10 @@
           <hr>
           <% end %>
         </ul>
-      <% end %>
+
+      </div>
     </div>
-  </div>
+  <% end %>
 </div>
 
 <!-- This is the contact form -->
