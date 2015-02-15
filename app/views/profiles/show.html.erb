@@ -1,18 +1,15 @@
 <div class='container profiles'>
-  <div class='text-white-bg'>
-    <div class='row'>
-      <div class='span12'>
-        <br>
-        <h1><%= @profile.fullname %></h1>
-      </div>
-    </div>
-    <div class='row'>
-      <div class='span12 text-right'>
-        <%= link_to(t(:home, scope: 'profiles.edit'), profiles_path) %>
-      </div>
+  <div class='row'>
+    <div class='span12 text-white-bg'>
+      <br>
+      <h1><%= @profile.fullname %></h1>
     </div>
   </div>
-  <br>
+  <div class='row'>
+    <div class='span12 text-right'>
+      <%= link_to(t(:home, scope: 'profiles.edit'), profiles_path) %>
+    </div>
+  </div>
   <br>
   <div class='row'>
     <div class='span4 photo'>
@@ -73,12 +70,14 @@
 
   <div class='row'>
     <%#<div class='info-profiles-bio'>%>
-    <div class='span6 text-profile bottom'>
-      <h5> <%= t '.bio' %></h5>
-      <span><%= simple_format(@profile.bio) %></span>
+    <div class='span9 bio text-profile margin-top'>
+      <h5><%= t '.bio' %></h5>
+      <span class="indent"><%= simple_format(@profile.bio) %></span>
     </div>
+  </div>
 
-    <div class='span6 medialinks pull-right text-profile bottom'>
+  <div class='row'>
+    <div class='span9 medialinks text-profile margin-bottom margin-top'>
 
       <% if @profile.medialinks.any? %>
         <h5><%= t '.media' %></h5>

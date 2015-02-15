@@ -78,11 +78,18 @@
   color:#3c3c3a;
   list-style-type: none;
   line-height: 1.5em;
+  }
+
+.indent p {
+  padding-left: 35px;
 }
 
-.bottom {
-    margin-top: 30px;
-    margin-bottom: 30px;
+.margin-top {
+  margin-top: 30px;
+}
+
+.margin-bottom {
+  margin-bottom: 30px;
 }
 
 .text-profile ul{
