@@ -1,5 +1,6 @@
 require 'spec_helper'
 
+<<<<<<< HEAD
 describe 'profile search' do
   let!(:profile) { FactoryGirl.create(:published, firstname: 'Horstine', lastname: 'Schmidt', city: 'Berlin', twitter: 'Apfel') }
   let!(:profile_language_de) { ProfileLanguage.create!(profile: profile, iso_639_1: 'de') }
@@ -69,4 +70,15 @@ describe 'profile search' do
 
   end
 
+=======
+describe 'search for profile' do
+  let!(:profile) { FactoryGirl.create(:published, firstname: 'Horstine') }
+
+  it 'displays profiles that are a partial match' do
+    visit root_path
+    fill_in 'search-field', with: 'Horstin'
+    click_button 'Suche'
+    expect(page).to have_content('Horstine')
+  end
+>>>>>>> add tests and a first search
 end
