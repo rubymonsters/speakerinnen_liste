@@ -1,39 +1,19 @@
-<section class="content--bg-grey">
-
-  <p class="notice">
-    <%= t(:success, scope: 'search', searchparams: params[:q], count: @results.total_count).html_safe %>
-    <%= t(:result, scope: 'search', count: @results.total_count)%>
-  </p>
-
-  <div class="layout-wrapper">
-
-    <h1>
-      <%= t(:title, scope: 'profiles.index') %>
-    </h1>
-
-    <p>
-      <%= t(:text, scope: 'profiles.index').html_safe %>
-    </p>
-
-    <%= form_tag(search_path, method: 'get', class:'font-size-24 bb pv mv') do %>
-      <%= text_field_tag(:q, nil, class: '', id: '', placeholder: t(:search_text, scope: 'pages.home.search')) %>
-      <%= button_tag((t(:search, scope: 'pages.home.search')), class: 'btn btn--small') %>
-    <% end %>
-
-    <div class="layout mb+">
-
-      <% if @results.size == 1 %>
-        <%= render partial: 'profiles/profile', object: @results.map(&:profile)[0], locals: { is_first: true } %>-->
-      <% else %>
-        <%= render partial: 'profiles/profile', object: @results.map(&:profile)[0], locals: { is_first: true } %>
-        <%= render partial: 'profiles/profile', collection: @results.map(&:profile)[1..-2] %>
-        <%= render partial: 'profiles/profile', object: @results.map(&:profile)[-1], locals: { is_last: true } %>
-      <% end %>
-
+<div class='container profiles'>
+  <div class='row'>
+    <div class='span12'>
+      <p class='notice'>
+        <%= t(:success, scope: 'search', searchparams: params[:q], count: @results.total_count).html_safe %>
+        <%= t(:result, scope: 'search', count: @results.total_count)%>
+      </p>
     </div>
-
-    <%= paginate @results %>
-
-    <%= render partial: 'layouts/footer' %>
   </div>
-</section>
+  <div class='row'>
+    <%= render :partial => '/profiles/profile', :collection => @results %>
+  </div>
+  <div class='row'>
+    <div class='span12 text-center'>
+      <%= paginate @results %>
+    </div>
+  </div>
+</div>
+<%= render partial: 'layouts/footer' %>
