@@ -8,7 +8,7 @@
     </p>
 
     <%= form_tag(profiles_search_path, method: 'get', class:'font-size-24 bb pv mv') do %>
-      <%= text_field_tag(:q, nil, class: '', id: '', placeholder: t(:search_text, scope: 'pages.home.search')) %>
+      <%= text_field_tag(:q, nil, class: '', id: 'search-field', placeholder: t(:search_text, scope: 'pages.home.search')) %>
       <%= button_tag((t(:search, scope: 'pages.home.search')), class: 'btn btn--small input-btn') %>
     <% end %>
 
