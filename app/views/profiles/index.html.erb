@@ -7,7 +7,14 @@
       <%= t(:text, scope: 'profiles.index').html_safe %>
     </p>
 
+<<<<<<< HEAD
     <%= render partial: 'shared/profile_search' %>
+=======
+    <%= form_tag(profiles_search_path, method: 'get', class:'font-size-24 bb pv mv') do %>
+      <%= text_field_tag(:q, nil, class: '', id: '', placeholder: t(:search_text, scope: 'pages.home.search')) %>
+      <%= button_tag((t(:search, scope: 'pages.home.search')), class: 'btn btn--small input-btn') %>
+    <% end %>
+>>>>>>> add tests and a first search
 
     <div class="layout mb+">
       <% if @profiles.any? %>
