@@ -10,7 +10,7 @@ class InternationalisationTest < ActionDispatch::IntegrationTest
 
   test "locale en works" do
     visit '/'
-    click_link('ENG')
+    click_link('EN')
     assert page.has_content?('Log in'), 'in Application.html.erb translation does not work'
     assert page.has_content?('Search'), 'in yield Translation does not work'
   end
