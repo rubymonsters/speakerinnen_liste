@@ -3,6 +3,10 @@ ruby '2.1.2'
 gem 'rails', '4.1.5'
 
 gem 'normalize-rails'
+
+#gem 'bootstrap-sass', '~> 2.3.0'
+#gem 'normalize-rails'
+
 gem 'bootswatch-rails'
 gem 'faker', '1.0.1'
 
