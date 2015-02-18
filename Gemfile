@@ -3,10 +3,6 @@ ruby '2.1.2'
 gem 'rails', '4.1.5'
 
 gem 'normalize-rails'
-
-#gem 'bootstrap-sass', '~> 2.3.0'
-#gem 'normalize-rails'
-
 gem 'bootswatch-rails'
 gem 'faker', '1.0.1'
 
@@ -34,8 +30,6 @@ gem 'globalize', '~> 4.0.2'
 
 gem 'rails_12factor', group: :production
 
-gem 'sass-rails', '~> 5.0.1'
-
 group :development do
   gem 'letter_opener'
   gem 'quiet_assets' # mutes asset pipeline log messages
@@ -60,14 +54,7 @@ gem 'bootstrap-sass', '2.3.0'
 gem 'coffee-rails', '~> 4.0.1'
 
 gem 'uglifier', '>= 1.0.3'
-# Gems used only for assets and not required
-# in production environments by default.
-group :assets do
-  gem 'coffee-rails', '~> 3.2.1'
-end
 
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer', platforms: :ruby
 gem 'autoprefixer-rails'
 
 # Use unicorn as the app server
@@ -76,3 +63,4 @@ gem 'unicorn'
 gem 'rollbar', '~> 1.2.6'
 gem 'rack-piwik', '~> 0.3.0', require: 'rack/piwik'
 gem 'newrelic_rpm'
+
