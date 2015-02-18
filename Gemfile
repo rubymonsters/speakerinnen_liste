@@ -34,6 +34,8 @@ gem 'globalize', '~> 4.0.2'
 
 gem 'rails_12factor', group: :production
 
+gem 'sass-rails', '~> 5.0.1'
+
 group :development do
   gem 'letter_opener'
   gem 'quiet_assets' # mutes asset pipeline log messages
@@ -61,7 +63,6 @@ gem 'uglifier', '>= 1.0.3'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails',   '~> 4.0.5'
   gem 'coffee-rails', '~> 3.2.1'
 end
 
