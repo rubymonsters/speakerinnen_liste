@@ -132,5 +132,13 @@ class ProfilesController < ApplicationController
         api_token = ApiToken.find_by(name: name)
         api_token.token.present? && api_token.token == token
       end
+      #authenticate_or_request_with_http_basic do |name, token|
+        #api_token = ApiToken.find_by(name: name)
+        #if api_token.present?
+          #api_token.token == token
+        #else
+          #render :status => 403
+        #end
+      #end
     end
 end
