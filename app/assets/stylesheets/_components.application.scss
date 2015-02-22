@@ -29,13 +29,12 @@ header {
 }
 
 #start-teaser {
-  background: image-url('curie.jpg') no-repeat;
+  background: image-url('curie.jpg') no-repeat center center fixed;
+  background-size: cover;
 }
 
 /* TODO:  picture whole element */
 .photo-bar {
-  background-size: cover;
-  background-position: center center;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.5) inset;
   min-height: 600px;
 }
