@@ -24,9 +24,10 @@
 
 @import 'inuit/base.page';
 
+@import 'inuit/objects.layout';
+
 @import 'components.application';
 
 @import 'inuit/trumps.spacing';
 
-$inuit-use-fractions:    true;
 @import 'inuit/trumps.widths';

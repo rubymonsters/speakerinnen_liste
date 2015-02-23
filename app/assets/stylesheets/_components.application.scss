@@ -1,9 +1,10 @@
 html {
-	font-family: $sans-serif;
+	font-family: $serif;
 	color: $font-color;
 }
 
 a {
+	font-family: $sans-serif;
 	color: $link-color;
 	text-decoration: none;
 }
@@ -24,17 +25,57 @@ a {
 
 header {
   text-align: right;
-  line-height: 70px;
+  line-height: $header-height;
   box-shadow: 0 1px 11px #999099 inset;
+  width: 100%;
+  background: $body-bg-color;
+  position: fixed;
+  top: 0;
 }
 
 #start-teaser {
-  background: image-url('curie.jpg') no-repeat center center fixed;
+  margin-top: $header-height;
+  background: image-url('curie.jpg') no-repeat center center;
   background-size: cover;
 }
 
 /* TODO:  picture whole element */
 .photo-bar {
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.5) inset;
-  min-height: 600px;
+  min-height: 696px;
+}
+
+.layout-wrapper {
+  width: $layout-width;
+  margin: 0 auto;
+  padding: 70px 0;
+}
+
+.page-headline {
+  font-weight: normal;
+  font-size: 48px;
+  padding: 12px;
+  background: $transparent-color;
+  display: inline-block;
+}
+
+.page-tagline {
+  font-weight: normal;
+  font-size: 24px;
+  padding: 12px;
+  background: $transparent-color;
+  display: inline-block;
+}
+
+.page-box {
+  font-size: 22px;
+  padding: 12px;
+  background: $transparent-color;
+  display: inline-block;
+}
+
+.page-overlay-link {
+  font-size: 22px;
+  padding: 12px;
+  background: $transparent-color;
 }

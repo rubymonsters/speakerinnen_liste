@@ -24,12 +24,22 @@ $serif: 'Merriweather', Georgia, serif;
 $sans-serif: "OpenSans", "Helvetica Neue", Helvetica, sans-serif;
 
 /*font-color*/
-$font-color: #333;
+$font-color: #3C3C3A;
 
 /*link-color*/
 $link-color: #7B7B7B;
 
 /*background-color*/
 $body-bg-color: #FFF;
+$transparent-color: rgba( $body-bg-color, .6 );
 
 $header-margin-top: 10px;
+$header-height: 70px;
+
+$inuit-use-fractions: true;
+
+$inuit-enable-margins: true;
+
+$layout-width: 940px;
+
+

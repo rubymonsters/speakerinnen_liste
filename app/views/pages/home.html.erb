@@ -1,20 +1,40 @@
 <section id='start-teaser' class='photo-bar'>
+  <div class="layout-wrapper">
+    <h1 class="page-headline"><%= t(:heading, scope: 'pages.home.search') %></h1>
+    <p class="page-tagline"><%= t(:tagline, scope: 'pages.home.search') %></p>
 
-  <%= t(:heading, scope: 'pages.home.search') %>
-  <%= t(:tagline, scope: 'pages.home.search') %>
+    <div class="page-box">
+      <%= form_tag(search_path, method: 'get', class:'page-box') do %>
+        <%= text_field_tag(:q, nil, class: '', id: '', placeholder: t(:search_text, scope: 'pages.home.search')) %>
+        <%= button_tag((t(:search, scope: 'pages.home.search')), class: '') %>
+      <% end %>
 
-  <%= form_tag(search_path, method: 'get', class:'') do %>
-    <%= text_field_tag(:q, nil, class: '', id: '', placeholder: t(:search_text, scope: 'pages.home.search')) %>
-    <%= button_tag((t(:search, scope: 'pages.home.search')), class: '') %>
-  <% end %>
-  <%= link_to t(:categories, scope: 'pages.home.speakers'), '#categories_anker' %>
-  <%= link_to t(:speaker_index, scope: 'pages.home.speakers'), profiles_path %>
-</section>
-<div class="grid">
-  <div class="grid__item 1/2">
-    TEST 1
+      <p class="page-overlay-link"><%= link_to t(:categories, scope: 'pages.home.speakers'), '#categories_anker' %></p>
+      <p class="page-overlay-link"><%= link_to t(:speaker_index, scope: 'pages.home.speakers'), profiles_path %></p>
+    </div>
   </div>
-  <div class="grid__item 1/2">
+</section>
+<div class="layout m">
+  <div class="layout__item">
+    TEST 1
+  </div><!--
+  --><div class="layout__item 1/2">
+    TEST 2
+  </div>
+</div>
+<div class="layout m">
+  <div class="layout__item">
+    TEST 1
+  </div><!--
+  --><div class="layout__item 1/2">
+    TEST 2
+  </div>
+</div>
+<div class="layout m">
+  <div class="layout__item">
+    TEST 1
+  </div><!--
+  --><div class="layout__item 1/2">
     TEST 2
   </div>
 </div>

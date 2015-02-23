@@ -1,0 +1,310 @@
+
+/*------------------------------------*\
+    #LAYOUT
+\*------------------------------------*/
+
+/**
+ * The inuitcss layout system uses `box-sizing: border-box;` and
+ * `display: inline-block;` to create an extremely powerful, flexible
+ * alternative to the traditional grid system. Combine the layout items with
+ * the widths found in `trumps.widths`.
+ */
+
+// Predefine the variables below in order to alter and enable specific features.
+$inuit-layout-namespace:        $inuit-namespace !default;
+
+$inuit-layout-gutter:           $inuit-base-spacing-unit !default;
+$inuit-layout-gutter--tiny:       quarter($inuit-layout-gutter) !default;
+$inuit-layout-gutter--small:        halve($inuit-layout-gutter) !default;
+$inuit-layout-gutter--large:       double($inuit-layout-gutter) !default;
+$inuit-layout-gutter--huge:     quadruple($inuit-layout-gutter) !default;
+
+$inuit-enable-layout--tiny:     false !default;
+$inuit-enable-layout--small:    false !default;
+$inuit-enable-layout--large:    false !default;
+$inuit-enable-layout--huge:     false !default;
+$inuit-enable-layout--flush:    false !default;
+$inuit-enable-layout--rev:      false !default;
+$inuit-enable-layout--middle:   false !default;
+$inuit-enable-layout--bottom:   false !default;
+$inuit-enable-layout--right:    false !default;
+$inuit-enable-layout--center:   false !default;
+$inuit-enable-layout--auto:     false !default;
+
+
+
+
+
+// Here we set a variable assuming that `box-sizing: border-box;` is not set
+// globally. If it has been previously been defined, the following variable will
+// be overriden and will be set to `true`.
+$inuit-global-border-box: false !default;
+
+
+
+
+
+/**
+ * Begin a layout group.
+ */
+.#{$inuit-layout-namespace}layout,
+%#{$inuit-layout-namespace}layout {
+    list-style: none;
+    margin:  0;
+    padding: 0;
+    margin-left: -$inuit-layout-gutter;
+}
+
+    /**
+     * 1. Cause columns to stack side-by-side.
+     * 2. Space columns apart.
+     * 3. Align columns to the tops of each other.
+     * 4. Full-width unless told to behave otherwise.
+     * 5. Required to combine fluid widths and fixed gutters.
+     */
+    .#{$inuit-layout-namespace}layout__item,
+    %#{$inuit-layout-namespace}layout__item {
+        display: inline-block; /* [1] */
+        padding-left: $inuit-layout-gutter; /* [2] */
+        vertical-align: top; /* [3] */
+        width: 100%; /* [4] */
+
+        @if $inuit-global-border-box == false {
+            -webkit-box-sizing: border-box; /* [5] */
+               -moz-box-sizing: border-box; /* [5] */
+                    box-sizing: border-box; /* [5] */
+        }
+
+    }
+
+
+
+
+
+@if ($inuit-enable-layout--tiny == true) {
+
+    /**
+     * Layouts with tiny gutters.
+     */
+
+    .#{$inuit-layout-namespace}layout--tiny,
+    %#{$inuit-layout-namespace}layout--tiny {
+        margin-left: -($inuit-layout-gutter--tiny);
+
+        > .#{$inuit-layout-namespace}layout__item,
+        > %#{$inuit-layout-namespace}layout__item {
+            padding-left: $inuit-layout-gutter--tiny;
+        }
+
+    }
+
+}
+
+@if ($inuit-enable-layout--small == true) {
+
+    /**
+     * Layouts with small gutters.
+     */
+
+    .#{$inuit-layout-namespace}layout--small,
+    %#{$inuit-layout-namespace}layout--small {
+        margin-left: -($inuit-layout-gutter--small);
+
+        > .#{$inuit-layout-namespace}layout__item,
+        > %#{$inuit-layout-namespace}layout__item {
+            padding-left: $inuit-layout-gutter--small;
+        }
+
+    }
+
+}
+
+@if ($inuit-enable-layout--large == true) {
+
+    /**
+     * Layouts with large gutters.
+     */
+
+    .#{$inuit-layout-namespace}layout--large,
+    %#{$inuit-layout-namespace}layout--large {
+        margin-left: -($inuit-layout-gutter--large);
+
+        > .#{$inuit-layout-namespace}layout__item,
+        > %#{$inuit-layout-namespace}layout__item {
+            padding-left: $inuit-layout-gutter--large;
+        }
+
+    }
+
+}
+
+@if ($inuit-enable-layout--huge == true) {
+
+    /**
+     * Layouts with huge gutters.
+     */
+
+    .#{$inuit-layout-namespace}layout--huge,
+    %#{$inuit-layout-namespace}layout--huge {
+        margin-left: -($inuit-layout-gutter--huge);
+
+        > .#{$inuit-layout-namespace}layout__item,
+        > %#{$inuit-layout-namespace}layout__item {
+            padding-left: $inuit-layout-gutter--huge;
+        }
+
+    }
+
+}
+
+
+
+
+
+@if ($inuit-enable-layout--flush == true) {
+
+    /**
+     * Layouts with no gutters.
+     */
+
+    .#{$inuit-layout-namespace}layout--flush,
+    %#{$inuit-layout-namespace}layout--flush {
+        margin-left: 0;
+
+        > .#{$inuit-layout-namespace}layout__item,
+        > %#{$inuit-layout-namespace}layout__item {
+            padding-left: 0;
+        }
+
+    }
+
+}
+
+
+
+
+
+@if ($inuit-enable-layout--rev == true) {
+
+    /**
+     * Reversed rendered order of layout items, e.g. items 1, 2, 3, 4 in your
+     * markup will display in order 4, 3, 2, 1 on your page.
+     */
+
+    .#{$inuit-layout-namespace}layout--rev,
+    %#{$inuit-layout-namespace}layout--rev {
+        direction: rtl;
+        text-align: left;
+
+        > .#{$inuit-layout-namespace}layout__item,
+        > %#{$inuit-layout-namespace}layout__item {
+            direction: ltr;
+            text-align: left;
+        }
+
+    }
+
+}
+
+
+
+
+
+@if ($inuit-enable-layout--middle == true) {
+
+    /**
+     * Align layout items to the vertical centers of each other.
+     */
+
+    .#{$inuit-layout-namespace}layout--middle,
+    %#{$inuit-layout-namespace}layout--middle {
+
+        > .#{$inuit-layout-namespace}layout__item,
+        > %#{$inuit-layout-namespace}layout__item {
+            vertical-align: middle;
+        }
+
+    }
+
+}
+
+@if ($inuit-enable-layout--bottom == true) {
+
+    /**
+     * Align layout items to the vertical bottoms of each other.
+     */
+
+    .#{$inuit-layout-namespace}layout--bottom,
+    %#{$inuit-layout-namespace}layout--bottom {
+
+        > .#{$inuit-layout-namespace}layout__item,
+        > %#{$inuit-layout-namespace}layout__item {
+            vertical-align: bottom;
+        }
+
+    }
+
+}
+
+
+
+
+
+@if ($inuit-enable-layout--right == true) {
+
+    /**
+     * Make the layout items fill up from the right hand side.
+     */
+
+    .#{$inuit-layout-namespace}layout--right,
+    %#{$inuit-layout-namespace}layout--right {
+        text-align: right;
+
+        > .#{$inuit-layout-namespace}layout__item,
+        > %#{$inuit-layout-namespace}layout__item {
+            text-align: left;
+        }
+
+    }
+
+}
+
+@if ($inuit-enable-layout--center == true) {
+
+    /**
+     * Make the layout items fill up from the center outward.
+     */
+
+    .#{$inuit-layout-namespace}layout--center,
+    %#{$inuit-layout-namespace}layout--center {
+        text-align: center;
+
+        > .#{$inuit-layout-namespace}layout__item,
+        > %#{$inuit-layout-namespace}layout__item {
+            text-align: left;
+        }
+
+    }
+
+}
+
+
+
+
+
+@if ($inuit-enable-layout--auto == true) {
+
+    /**
+     * Cause layout items to take up a non-explicit amount of width.
+     */
+    .#{$inuit-layout-namespace}layout--auto,
+    %#{$inuit-layout-namespace}layout--auto {
+
+        > .#{$inuit-layout-namespace}layout__item,
+        > %#{$inuit-layout-namespace}layout__item {
+            width: auto;
+        }
+
+    }
+
+}
