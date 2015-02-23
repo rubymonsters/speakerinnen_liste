@@ -2,7 +2,6 @@ class ProfilesSearch
 
   def initialize(query)
     @quick = query[:quick]
-    @query = query
   end
 
   def results
