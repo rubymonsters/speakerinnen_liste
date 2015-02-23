@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <section id="startpage__start-teaser" class="startpage__photo-bar">
   <div class="layout-wrapper">
     <h1 class="bg--white"><%= t(:heading, scope: 'pages.home.search') %></h1>
@@ -17,49 +16,6 @@
       </div>
     <% end %>
 
-=======
-<section class="photo-bar start-page-images" id="curie-photo" >
-  <div class="curie-badge">
-    <%= image_tag("badge2-bw.png", alt: "curie-badge") %>
-  </div>
-  <script>
-    if ($(window).width() <= 980 && $(window).height() <= 1500){
-      $(".curie-badge").hide();
-    }
-    $(window).scroll(function() {
-      if ($(window).width() > 980 || $(window).height() <= 700){
-        if ($(this).scrollTop() > 100) {
-          $(".curie-badge").stop().animate({ opacity: 0 }, 50);
-        } else {
-          $(".curie-badge").stop().animate({ opacity: 1 }, 50);
-        }
-        //stops badge from covering other links
-        // if ($(this).scrollTop() > 700) {
-        //  $(".curie-badge").hide();
-        // } else {
-        //  $(".curie-badge").show();
-        // }
-      } else {
-        $(".curie-badge").hide();
-      }
-    });
-  </script>
-  <div class="container">
-    <h1 class="text-white-bg"><%= t(:heading, scope: "pages.home.search") %></h1>
-    <br/>
-    <h2 class="text-white-bg"><%= t(:tagline, scope: "pages.home.search") %></h2>
-    <br/>
-    <h2 class="text-white-bg">
-      <%= link_to t(:categories, scope: "pages.home.speakers"), "#categories_anker" %>
-      <br>
-      <%= link_to t(:speaker_index, scope: "pages.home.speakers"), profiles_path %>
-      <br>
-      <%= form_tag(profiles_search_path, method: "get", class:"well") do %>
-        <%= text_field_tag(:q, nil, id: "search-field", placeholder: t(:search_text, scope: "pages.home.search")) %>
-        <%= button_tag((t(:search, scope: "pages.home.search")), class: "btn btn-large") %>
-      <% end %>
-    </h2>
->>>>>>> add tests and a first search
   </div>
 </section>
 
