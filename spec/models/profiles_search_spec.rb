@@ -79,7 +79,6 @@ describe ProfilesSearch, type: :model do
       end
 
       it 'returns any profile that matches one of the given topics'
-
     end
   end
 end

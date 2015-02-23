@@ -50,4 +50,3 @@ class ProfilesSearch
   end
 
 end
-
