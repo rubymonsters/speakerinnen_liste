@@ -39,7 +39,6 @@ header {
   background-size: cover;
 }
 
-/* TODO:  picture whole element */
 .photo-bar {
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.5) inset;
   min-height: 696px;
@@ -48,23 +47,19 @@ header {
 .layout-wrapper {
   width: $layout-width;
   margin: 0 auto;
-  padding: 70px 0;
+  padding-top: quadruple($inuit-base-spacing-unit);
 }
 
-.page-headline {
+h1 {
   font-weight: normal;
-  font-size: 48px;
-  padding: 12px;
   background: $transparent-color;
+  padding: $inuit-base-spacing-unit halve($inuit-base-spacing-unit);
   display: inline-block;
+  margin: 0 0 $inuit-base-spacing-unit;
 }
 
-.page-tagline {
-  font-weight: normal;
-  font-size: 24px;
-  padding: 12px;
-  background: $transparent-color;
-  display: inline-block;
+.alpha--halve {
+ font-size: halve($inuit-heading-size-1);
 }
 
 .page-box {
