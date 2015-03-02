@@ -67,5 +67,5 @@ describe 'profile search' do
       expect(page).to have_content('Horstine')
     end
   end
-
 end
+
