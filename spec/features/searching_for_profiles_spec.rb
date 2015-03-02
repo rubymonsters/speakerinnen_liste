@@ -66,4 +66,6 @@ describe 'profile search' do
       expect(page).to have_content('Ada')
     end
   end
+
 end
+
