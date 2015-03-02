@@ -15,6 +15,8 @@ class ProfilesSearch
     detailed_search_result
   end
 
+  private
+
   def quick_search_result
     return Profile.none if @quick.blank?
     Profile
