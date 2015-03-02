@@ -117,4 +117,5 @@ describe 'search for profile' do
     click_button 'Suche'
     expect(page).to have_content('Horstine')
   end
+
 end
