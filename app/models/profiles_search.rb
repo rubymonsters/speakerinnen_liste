@@ -8,6 +8,7 @@ class ProfilesSearch
     search_result.is_published
   end
 
+#only search in public profiles
   private
 
   def search_result

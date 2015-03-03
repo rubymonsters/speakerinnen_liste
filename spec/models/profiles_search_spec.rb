@@ -1,5 +1,6 @@
 describe ProfilesSearch, type: :model do
-  let!(:profile) { FactoryGirl.create(:published, firstname: 'Gertrud', lastname: 'Mueller', twitter: 'Apfel', city: 'Berlin') }
+  let!(:profile) { FactoryGirl.create(:published, firstname: 'Gertrud', lastname: 'Mueller', twitter: 'Apfel', city: 'Berlin', languages: 'Englisch') }
+  let!(:profile1) { FactoryGirl.create(:published, firstname: 'Claudia', email: 'claudia@test.de', city: 'Paris', languages: 'Polnisch', twitter: 'Birne') }
 
   let!(:profile_language_de) { ProfileLanguage.create!(profile: profile, iso_639_1: 'de') }
   let!(:profile_language_en) { ProfileLanguage.create!(profile: profile, iso_639_1: 'en') }
