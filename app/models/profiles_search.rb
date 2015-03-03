@@ -10,6 +10,7 @@ class ProfilesSearch
     detailed_search_result
   end
 
+#only search in public profiles
   private
 
   def quick_search_result
@@ -21,8 +22,15 @@ class ProfilesSearch
   end
 
   def detailed_search_result
+    p "city: #{@query[:city]}"
+    p "languages: #{@query[:languages]}"
+    p "name: #{@query[:name]}"
+    p "twitter: #{@query[:twitter]}"
     Profile
       .where('city ILIKE :city', city: "%#{@query[:city]}%")
+      .where('languages ILIKE :languages', languages: "%#{@query[:languages]}%")
+      .where('firstname ILIKE :name OR lastname ILIKE :name', name: "%#{@query[:name]}%")
+      .where('twitter ILIKE :twitter', twitter: "%#{@query[:twitter]}%")
   end
 
   def sql_string
