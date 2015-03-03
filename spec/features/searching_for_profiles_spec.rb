@@ -65,6 +65,34 @@ describe 'profile search' do
       end
       expect(page).to have_content('Ada')
     end
+
+    it 'displays profiles partial match for languages' do
+      visit profiles_path
+      within '#detailed-search' do
+        fill_in 'Sprache', with: 'Deut'
+        click_button 'Suche'
+      end
+      expect(page).to have_content('Horstine')
+    end
+
+    it 'displays profiles partial match for name' do
+      visit profiles_path
+      within '#detailed-search' do
+        fill_in 'Name', with: 'Schmidt'
+        click_button 'Suche'
+      end
+      expect(page).to have_content('Horstine')
+    end
+
+    it 'displays profiles partial match for twitter' do
+      visit profiles_path
+      within '#detailed-search' do
+        fill_in 'Twitter', with: 'Apfe'
+        click_button 'Suche'
+      end
+      expect(page).to have_content('Horstine')
+    end
+
   end
 
 end

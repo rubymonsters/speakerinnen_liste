@@ -7,15 +7,7 @@
       <%= t(:text, scope: 'profiles.index').html_safe %>
     </p>
 
-<<<<<<< HEAD
     <%= render partial: 'shared/profile_search' %>
-=======
-    <%= form_tag(profiles_search_path, method: 'get', class:'font-size-24 bb pv mv') do %>
-      <%= text_field_tag(:q, nil, class: '', id: '', placeholder: t(:search_text, scope: 'pages.home.search')) %>
-      <%= button_tag((t(:search, scope: 'pages.home.search')), class: 'btn btn--small input-btn') %>
-    <% end %>
->>>>>>> add tests and a first search
-
     <div class="layout mb+">
       <% if @profiles.any? %>
         <%= render partial: 'profiles/profile', object: @profiles[0], locals: { is_first: true } %>
@@ -29,14 +21,37 @@
         </div>
       <% end %>
 
-      <%= form_tag(profiles_search_path, :method => "get", :class =>"well form-horizontal", id: "detailed-search") do %>
+      <%= form_tag(profiles_search_path, method: "get", class:"well form-horizontal", id: "detailed-search") do %>
+
         <div class="control-group">
           <%= label_tag('search[city]', "Stadt", class: "control-label") %>
           <div class="controls">
             <%= text_field_tag('search[city]') %>
           </div>
         </div>
-        <%= button_tag((t(:search, scope: "pages.home.search")), :class => "btn btn-large ") %>
+
+        <div class="control-group">
+          <%= label_tag('search[languages]', "Sprache", class: "control-label") %>
+          <div class="controls">
+            <%= text_field_tag('search[languages]') %>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <%= label_tag('search[name]', "Name", class: "control-label") %>
+          <div class="controls">
+            <%= text_field_tag('search[name]') %>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <%= label_tag('search[twitter]', "Twitter", class: "control-label") %>
+          <div class="controls">
+            <%= text_field_tag('search[twitter]') %>
+          </div>
+        </div>
+
+        <%= button_tag((t(:search, scope: "pages.home.search")), class: "btn btn-large ") %>
       <% end %>
 
     </div>
