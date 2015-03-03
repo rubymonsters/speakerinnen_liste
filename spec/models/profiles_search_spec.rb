@@ -1,7 +1,8 @@
 require 'spec_helper'
 
 describe ProfilesSearch, type: :model do
-  let!(:profile) { FactoryGirl.create(:published, firstname: 'Gertrud', lastname: 'Mueller', twitter: 'Apfel', city: 'Berlin') }
+  let!(:profile) { FactoryGirl.create(:published, firstname: 'Gertrud', lastname: 'Mueller', twitter: 'Apfel', city: 'Berlin', languages: 'Englisch') }
+  let!(:profile1) { FactoryGirl.create(:published, firstname: 'Claudia', email: 'claudia@test.de', city: 'Paris', languages: 'Polnisch', twitter: 'Birne') }
 
   let!(:profile_language_de) { ProfileLanguage.create!(profile: profile, iso_639_1: 'de') }
   let!(:profile_language_en) { ProfileLanguage.create!(profile: profile, iso_639_1: 'en') }
@@ -40,13 +41,21 @@ describe ProfilesSearch, type: :model do
       end
     end
 
+<<<<<<< HEAD
     context 'when doing a detailed search' do
+=======
+    context 'detailed search' do
+>>>>>>> add twitter, name, languages in detailed search'
       it 'does return profiles that match the given city search string' do
         expect(ProfilesSearch.new({city: 'Berli'}).results).to eq [profile]
       end
 
       it 'does return profiles that match the given language search string' do
+<<<<<<< HEAD
         expect(ProfilesSearch.new({languages: 'en'}).results).to eq [profile]
+=======
+        expect(ProfilesSearch.new({languages: 'Engl'}).results).to eq [profile]
+>>>>>>> add twitter, name, languages in detailed search'
       end
 
       it 'does return profiles that match the given name search string' do
@@ -56,6 +65,7 @@ describe ProfilesSearch, type: :model do
       it 'does return profiles that match the given twitter search string' do
         expect(ProfilesSearch.new({twitter: 'Apf'}).results).to eq [profile]
       end
+<<<<<<< HEAD
 
       it 'does return profiles that match the given topic search string' do
         profile.topic_list.add("obst")
@@ -70,6 +80,8 @@ describe ProfilesSearch, type: :model do
 
       it 'returns any profile that matches one of the given topics'
 
+=======
+>>>>>>> add twitter, name, languages in detailed search'
     end
   end
 end

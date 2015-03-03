@@ -8,7 +8,7 @@
     </p>
 
     <%= form_tag(profiles_search_path, method: 'get', class:'font-size-24 bb pv mv') do %>
-      <%= text_field_tag(:q, nil, class: '', id: 'search-field', placeholder: t(:search_text, scope: 'pages.home.search')) %>
+      <%= text_field_tag('search[quick]', nil, id: 'search-field', placeholder: t(:search_text, scope: 'pages.home.search')) %>
       <%= button_tag((t(:search, scope: 'pages.home.search')), class: 'btn btn--small input-btn') %>
     <% end %>
 
@@ -55,9 +55,23 @@
         </div>
 
         <div class="control-group">
-          <%= label_tag('search[languages]', t(:language, scope: "profiles.index"), class: "control-label") %>
+          <%= label_tag('search[languages]', "Sprache", class: "control-label") %>
           <div class="controls">
-            <%= language_select %>
+            <%= text_field_tag('search[languages]') %>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <%= label_tag('search[name]', "Name", class: "control-label") %>
+          <div class="controls">
+            <%= text_field_tag('search[name]') %>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <%= label_tag('search[twitter]', "Twitter", class: "control-label") %>
+          <div class="controls">
+            <%= text_field_tag('search[twitter]') %>
           </div>
         </div>
 
