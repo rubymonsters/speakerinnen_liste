@@ -51,9 +51,23 @@
         </div>
 
         <div class="control-group">
-          <%= label_tag('search[languages]', t(:language, scope: "profiles.index"), class: "control-label") %>
+          <%= label_tag('search[languages]', "Sprache", class: "control-label") %>
           <div class="controls">
-            <%= language_select %>
+            <%= text_field_tag('search[languages]') %>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <%= label_tag('search[name]', "Name", class: "control-label") %>
+          <div class="controls">
+            <%= text_field_tag('search[name]') %>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <%= label_tag('search[twitter]', "Twitter", class: "control-label") %>
+          <div class="controls">
+            <%= text_field_tag('search[twitter]') %>
           </div>
         </div>
 

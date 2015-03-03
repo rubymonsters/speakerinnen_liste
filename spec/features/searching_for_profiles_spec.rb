@@ -79,6 +79,7 @@ describe 'profile search' do
     end
 
     it 'displays profiles partial match for name' do
+      visit profiles_path
       within '#detailed-search' do
         fill_in 'Name', with: 'Schmidt'
         click_button 'Suche'
