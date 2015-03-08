@@ -30,7 +30,6 @@ class ProfilesSearch
       .where('city ILIKE :city', city: "%#{@query[:city]}%")
       .where('firstname ILIKE :name OR lastname ILIKE :name', name: "%#{@query[:name]}%")
       .where('twitter ILIKE :twitter', twitter: "%#{@query[:twitter]}%")
-
     if @query[:languages].present?
       result = result
         .joins(:profile_languages).where('profile_languages.iso_639_1' => @query[:languages])
