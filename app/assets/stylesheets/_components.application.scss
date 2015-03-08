@@ -39,6 +39,18 @@ header {
   background-size: cover;
 }
 
+#coaching-photo {
+  margin-top: $header-height;
+  background: image-url('coaching.png') no-repeat center center;
+  background-size: cover;
+}
+
+#speakerin-photo {
+  margin-top: $header-height;
+  background: image-url('maren_buehne.jpg') no-repeat center center;
+  background-size: cover;
+}
+
 .photo-bar {
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.5) inset;
   min-height: 696px;
@@ -53,13 +65,16 @@ header {
 h1 {
   font-weight: normal;
   background: $transparent-color;
-  padding: $inuit-base-spacing-unit halve($inuit-base-spacing-unit);
+  /*padding: $inuit-base-spacing-unit halve($inuit-base-spacing-unit);*/
+  padding: halve($inuit-base-spacing-unit) $inuit-base-spacing-unit;
+  line-height: 60px;
   display: inline-block;
   margin: 0 0 $inuit-base-spacing-unit;
 }
 
 .alpha--halve {
  font-size: halve($inuit-heading-size-1);
+  line-height: 40px;
 }
 
 .page-box {
