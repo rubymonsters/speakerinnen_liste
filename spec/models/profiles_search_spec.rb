@@ -46,6 +46,14 @@ describe ProfilesSearch, type: :model do
       it 'does return profiles that match the given twitter search string' do
         expect(ProfilesSearch.new({twitter: 'Apf'}).results).to eq [profile]
       end
+
+      it 'does return profiles that match the given topic search string' do
+        profile.topic_list.add("obst")
+        profile.save!
+        #p profile.topics
+
+        expect(ProfilesSearch.new({topics: 'obst'}).results).to eq [profile]
+      end
     end
   end
 end

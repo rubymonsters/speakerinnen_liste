@@ -50,6 +50,19 @@ describe 'profile search' do
       expect(page).to have_content('Horstine')
     end
 
+    it 'displays profiles partial match for topic' do
+      profile.topic_list.add("obst")
+      profile.save!
+      #p profile.topics
+
+      visit profiles_path
+      within '#detailed-search' do
+        fill_in 'Themen', with: 'Obst'
+        click_button 'Suche'
+      end
+      expect(page).to have_content('Horstine')
+    end
+
   end
 
 end

@@ -26,21 +26,6 @@
       <% end %>
 
       <%= form_tag(profiles_search_path, method: "get", class:"well form-horizontal", id: "detailed-search") do %>
-
-        <div class="control-group">
-          <%= label_tag('search[city]', "Stadt", class: "control-label") %>
-          <div class="controls">
-            <%= text_field_tag('search[city]') %>
-          </div>
-        </div>
-
-        <div class="control-group">
-          <%= label_tag('search[languages]', "Sprache", class: "control-label") %>
-          <div class="controls">
-            <%= text_field_tag('search[languages]') %>
-          </div>
-        </div>
-
         <div class="control-group">
           <%= label_tag('search[name]', "Name", class: "control-label") %>
           <div class="controls">
@@ -55,6 +40,26 @@
           </div>
         </div>
 
+        <div class="control-group">
+          <%= label_tag('search[topics]', "Themen", class: "control-label") %>
+          <div class="controls">
+            <%= text_field_tag('search[topics]') %>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <%= label_tag('search[city]', "Stadt", class: "control-label") %>
+          <div class="controls">
+            <%= text_field_tag('search[city]') %>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <%= label_tag('search[languages]', "Sprache", class: "control-label") %>
+          <div class="controls">
+            <%= text_field_tag('search[languages]') %>
+          </div>
+        </div>
         <%= button_tag((t(:search, scope: "pages.home.search")), class: "btn btn-large ") %>
       <% end %>
 
