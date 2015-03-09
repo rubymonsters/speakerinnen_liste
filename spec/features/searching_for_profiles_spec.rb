@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe 'profile search' do
   let!(:profile) { FactoryGirl.create(:published, firstname: 'Horstine', lastname: 'Schmidt', city: 'Berlin', languages: 'Deutsch', twitter: 'Apfel') }
-  let!(:profile1) { FactoryGirl.create(:published, firstname: 'Claudia', email: 'claudia@test.de', city: 'Warschau', languages: 'Polnisch', twitter: 'Birne' ) }
+  let!(:profile_not_matched) { FactoryGirl.create(:published, firstname: 'Claudia', email: 'claudia@test.de', city: 'Warschau', languages: 'Polnisch', twitter: 'Birne' ) }
 
   describe 'quick search' do
     it 'displays profiles that are a partial match' do
@@ -53,7 +53,6 @@ describe 'profile search' do
     it 'displays profiles partial match for topic' do
       profile.topic_list.add("obst")
       profile.save!
-      #p profile.topics
 
       visit profiles_path
       within '#detailed-search' do

@@ -2,9 +2,12 @@ require 'spec_helper'
 
 describe ProfilesSearch, type: :model do
   let!(:profile) { FactoryGirl.create(:published, firstname: 'Gertrud', lastname: 'Mueller', twitter: 'Apfel', city: 'Berlin', languages: 'Englisch') }
-  let!(:profile1) { FactoryGirl.create(:published, firstname: 'Claudia', email: 'claudia@test.de', city: 'Paris', languages: 'Polnisch', twitter: 'Birne') }
+  let!(:profile_not_matched) { FactoryGirl.create(:published, firstname: 'Claudia', email: 'claudia@test.de', city: 'Paris', languages: 'Polnisch', twitter: 'Birne') }
 
   describe 'results' do
+
+    it 'does not return unpublished profiles'
+
     context 'quick search' do
       it 'does not return profiles that do not match the given search string' do
         expect(ProfilesSearch.new(quick: 'Horstin').results).to be_empty
@@ -30,7 +33,7 @@ describe ProfilesSearch, type: :model do
       end
     end
 
-    context 'detailed search' do
+    context 'when doing a detailed search' do
       it 'does return profiles that match the given city search string' do
         expect(ProfilesSearch.new({city: 'Berli'}).results).to eq [profile]
       end
@@ -50,10 +53,14 @@ describe ProfilesSearch, type: :model do
       it 'does return profiles that match the given topic search string' do
         profile.topic_list.add("obst")
         profile.save!
-        #p profile.topics
 
         expect(ProfilesSearch.new({topics: 'obst'}).results).to eq [profile]
       end
+
+      it 'returns any profile that matches one of the given languages'
+
+      it 'returns any profile that matches one of the given topics'
+
     end
   end
 end
