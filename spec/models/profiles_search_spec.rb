@@ -3,10 +3,13 @@ require 'spec_helper'
 describe ProfilesSearch, type: :model do
   let!(:profile) { FactoryGirl.create(:published, firstname: 'Gertrud', lastname: 'Mueller', twitter: 'Apfel', city: 'Berlin', languages: 'Englisch') }
   let!(:profile_not_matched) { FactoryGirl.create(:published, firstname: 'Claudia', email: 'claudia@test.de', city: 'Paris', languages: 'Polnisch', twitter: 'Birne') }
+  let!(:profile_not_published) { FactoryGirl.create(:unpublished, firstname: 'Fred') }
 
   describe 'results' do
 
-    it 'does not return unpublished profiles'
+    it 'does not return unpublished profiles' do
+      expect(ProfilesSearch.new(quick: 'Fred').results).to be_empty
+    end
 
     context 'quick search' do
       it 'does not return profiles that do not match the given search string' do

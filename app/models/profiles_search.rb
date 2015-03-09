@@ -6,12 +6,15 @@ class ProfilesSearch
   end
 
   def results
+    search_result.is_published
+  end
+
+  private
+
+  def search_result
     return quick_search_result if @quick
     detailed_search_result
   end
-
-#only search in public profiles
-  private
 
   def quick_search_result
     return Profile.none if @quick.blank?
