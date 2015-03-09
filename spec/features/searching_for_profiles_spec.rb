@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe 'profile search' do
-  let!(:profile) { FactoryGirl.create(:published, firstname: 'Horstine', lastname: 'Schmidt', city: 'Berlin', twitter: 'Apfel') }
+  et!(:profile) { FactoryGirl.create(:published, firstname: 'Horstine', lastname: 'Schmidt', city: 'Berlin', twitter: 'Apfel') }
   let!(:profile_language_de) { ProfileLanguage.create!(profile: profile, iso_639_1: 'de') }
   let!(:profile_language_es) { ProfileLanguage.create!(profile: profile, iso_639_1: 'es') }
 
