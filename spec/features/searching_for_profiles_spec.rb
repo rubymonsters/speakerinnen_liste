@@ -96,7 +96,6 @@ describe 'profile search' do
     it 'displays profiles partial match for topic' do
       profile.topic_list.add("obst")
       profile.save!
-      #p profile.topics
 
       visit profiles_path
       within '#detailed-search' do
