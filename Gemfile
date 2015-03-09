@@ -29,7 +29,9 @@ gem 'acts-as-taggable-on', '~> 3.4.1'
 gem 'auto_html', github: 'dejan/auto_html'
 gem 'mandrill-api'
 gem 'simple_form', '~> 3.0.2'
+
 gem 'globalize', '~> 4.0.2'
+gem 'language_list'
 
 gem 'font-awesome-rails', '~> 4.3.0.0'
 
