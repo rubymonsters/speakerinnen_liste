@@ -5,7 +5,7 @@ describe 'profile search' do
   let!(:profile_language_de) { ProfileLanguage.create!(profile: profile, iso_639_1: 'de') }
   let!(:profile_language_es) { ProfileLanguage.create!(profile: profile, iso_639_1: 'es') }
 
-  let!(:profile_not_matched) { FactoryGirl.create(:published, firstname: 'Claudia', email: 'claudia@test.de', city: 'Warschau', twitter: 'Birne' ) }
+  let!(:profile_not_matched) { FactoryGirl.create(:published, firstname: 'Claudia', email: 'claudia@test.de', city: 'Warschau', languages: 'Polnisch', twitter: 'Birne' ) }
 
   describe 'quick search' do
     it 'displays profiles that are a partial match' do
@@ -40,7 +40,6 @@ describe 'profile search' do
     end
 
     it 'displays profiles partial match for name' do
-      visit profiles_path
       within '#detailed-search' do
         fill_in 'Name', with: 'Schmidt'
         click_button 'Suche'
