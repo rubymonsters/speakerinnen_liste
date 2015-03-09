@@ -59,6 +59,9 @@ describe 'profile search' do
       profile.save!
 
       visit profiles_path
+    end
+
+    it 'displays profiles partial match for city' do
       within '#detailed-search' do
         fill_in I18n.t(:topics, scope: 'profiles.index'), with: 'Algorithm'
         click_button I18n.t(:search, scope: 'pages.home.search')
@@ -66,17 +69,15 @@ describe 'profile search' do
       expect(page).to have_content('Ada')
     end
 
-    it 'displays profiles partial match for languages' do
-      visit profiles_path
+    it 'displays profiles that match any of the selected languages' do
       within '#detailed-search' do
-        fill_in 'Sprache', with: 'Deut'
+        select 'Französisch'
         click_button 'Suche'
       end
       expect(page).to have_content('Horstine')
     end
 
     it 'displays profiles partial match for name' do
-      visit profiles_path
       within '#detailed-search' do
         fill_in 'Name', with: 'Schmidt'
         click_button 'Suche'
@@ -85,7 +86,6 @@ describe 'profile search' do
     end
 
     it 'displays profiles partial match for twitter' do
-      visit profiles_path
       within '#detailed-search' do
         fill_in 'Twitter', with: 'Apfe'
         click_button 'Suche'
@@ -108,4 +108,3 @@ describe 'profile search' do
   end
 
 end
-
