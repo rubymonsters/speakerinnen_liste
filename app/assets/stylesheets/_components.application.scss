@@ -35,19 +35,17 @@ header {
 
 #start-teaser {
   margin-top: $header-height;
-  background: image-url('curie.jpg') no-repeat center center;
+  background: image-url('start-teaser.jpg') no-repeat center center;
   background-size: cover;
 }
 
-#coaching-photo {
-  margin-top: $header-height;
-  background: image-url('coaching.png') no-repeat center center;
+#teaser-bg-01 {
+  background: image-url('teaser-bg-01.png') no-repeat center center;
   background-size: cover;
 }
 
-#speakerin-photo {
-  margin-top: $header-height;
-  background: image-url('maren_buehne.jpg') no-repeat center center;
+#teaser-bg-02 {
+  background: image-url('teaser-bg-02.jpg') no-repeat center center;
   background-size: cover;
 }
 
@@ -65,7 +63,6 @@ header {
 h1 {
   font-weight: normal;
   background: $transparent-color;
-  /*padding: $inuit-base-spacing-unit halve($inuit-base-spacing-unit);*/
   padding: halve($inuit-base-spacing-unit) $inuit-base-spacing-unit;
   line-height: 60px;
   display: inline-block;
@@ -73,8 +70,17 @@ h1 {
 }
 
 .alpha--halve {
- font-size: halve($inuit-heading-size-1);
+  font-size: halve($inuit-heading-size-1);
   line-height: 40px;
+}
+
+.display--block {
+  display: block;
+}
+
+.bv {
+  border-top: 1px solid #CCC;
+  border-bottom: 1px solid #CCC;
 }
 
 .page-box {

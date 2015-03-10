@@ -15,11 +15,11 @@
   </div>
 </section>
 
-<section class="nophoto-bar">
+<section>
   <div class="layout-wrapper">
     <h1><%= t(:new_speaker_heading, scope: "pages.home.speakers") %></h1>
-    <h1 class="alpha--halve">
-      <%= t(:speaker_text, scope: "pages.home.speakers") %>
+    <h1 class="alpha--halve bv ph0 mh display--block">
+      <%= t(:speaker_text, scope: "pages.home.speakers") %><BR>
       <%= link_to t(:speaker_index, scope: "pages.home.speakers"), profiles_path %>
     </h1>
 
@@ -50,7 +50,7 @@
   </div>
 </section>
 
-<section id='coaching-photo' class='photo-bar'>
+<section id='teaser-bg-01' class='photo-bar'>
   <div class="layout-wrapper">
     <h1><%= t(:quote, scope: "pages.home") %></h1>
     <h1 class="alpha--halve"><%= t(:quote_text, scope: "pages.home") %></h1>
@@ -60,21 +60,21 @@
 <!-- Anker für Kategorien -->
 <a id="categories_anker"></a>
 
-<section class="nophoto-bar">
+<section>
   <div class="layout-wrapper">
     <h1><%= t(:description, scope: "pages.home") %></h1>
     <h1 class="alpha--halve"><%= t(:description_text, scope: "pages.home") %></h1>
   </div>
 </section>
 
-<section id='speakerin-photo' class='photo-bar'>
+<section id='teaser-bg-02' class='photo-bar'>
   <div class="layout-wrapper">
     <h1><%= t(:speaker_shoutout, scope: "pages.home").html_safe %></h1>
     <h1 class="alpha--halve"><%=link_to(t(:speaker_text, scope: "pages.home").html_safe, new_profile_registration_path) %></h1>
   </div>
 </section>
 
-<section class="nophoto-bar">
+<section>
   <div class="layout-wrapper">
     <h1>Speakerinnen*</h1>
 
