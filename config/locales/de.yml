@@ -182,6 +182,11 @@ de:
     index:
       title: "Speakerinnen*"
       text: "Schön, dass Du hier bist. Auf dieser Seite findest Du Frauen* für deine Konferenz oder Veranstaltung: als Rednerin, Panel- oder Workshopmoderatorin. Du kannst entweder durch die Profile blättern, einen Einstieg über die meist verwendeten Themen finden (s.u.), oder gezielt suchen. Viel Spaß und Erfolg dabei!"
+      name: "Name"
+      twitter: "Twitter"
+      topics: "Themen"
+      city: "Stadt"
+      language: "Sprache"
     new:
       new_profile: "Neues Profil"
       back: "Zurück"

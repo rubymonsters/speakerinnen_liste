@@ -182,6 +182,11 @@ en:
     index:
       title: "Speakerinnen"
       text: "Welcome! Here you can find women* for your conference or your event: speakers, panel hosts, or workshop hosts. Browse individual profiles, filter via the most listed topics (see below), or use the search function for a specific search. Enjoy!"
+      name: "Name"
+      twitter: "Twitter"
+      topics: "Topics"
+      city: "City"
+      language: "Language"
       search1: "You searched for"
       search2: "and you have found"
       search3: "profiles."
