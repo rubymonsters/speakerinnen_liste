@@ -46,35 +46,15 @@
         <div class="control-group">
           <%= label_tag('search[city]',t(:city, scope: "profiles.index"), class: "control-label") %>
           <div class="controls">
-            <%= text_field_tag('search[name]') %>
-          </div>
-        </div>
-
-        <div class="control-group">
-          <%= label_tag('search[twitter]', "Twitter", class: "control-label") %>
-          <div class="controls">
-            <%= text_field_tag('search[twitter]') %>
-          </div>
-        </div>
-
-        <div class="control-group">
-          <%= label_tag('search[topics]', "Themen", class: "control-label") %>
-          <div class="controls">
-            <%= text_field_tag('search[topics]') %>
-          </div>
-        </div>
-
-        <div class="control-group">
-          <%= label_tag('search[city]', "Stadt", class: "control-label") %>
-          <div class="controls">
             <%= text_field_tag('search[city]') %>
           </div>
         </div>
 
         <div class="control-group">
-          <%= label_tag('search[languages]', "Sprache", class: "control-label") %>
+          <%= label_tag('search[languages]', t(:language, scope: "profiles.index"), class: "control-label") %>
           <div class="controls">
-            <%= text_field_tag('search[languages]') %>
+            <%= select_tag 'Language', options_from_collection_for_select(LanguageList::COMMON_LANGUAGES, 'iso_639_1', 'name') %>
+            <%# text_field_tag('search[languages]') %>
           </div>
         </div>
         <%= button_tag((t(:search, scope: "pages.home.search")), class: "btn btn-large ") %>
