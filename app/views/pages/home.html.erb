@@ -84,25 +84,34 @@
 
 <section>
   <div class="layout-wrapper">
-    <h1>Speakerinnen*</h1>
-
-    <h4><%= link_to t(:about_title, scope: 'pages.home.footer'), about_path %></h4>
-    <span><%= t(:about, scope: 'pages.home.footer').html_safe %>
-      <%= link_to t(:more, scope: 'pages.home.footer').html_safe, about_path %>
-    </span>
-
-    <h4><%= link_to t(:faq, scope: 'pages.home.footer'), faq_path %></h4>
-    <span><%= t(:faq_short, scope: 'pages.home.footer').html_safe %>
-      <%= link_to t(:more, scope: 'pages.home.footer').html_safe, faq_path %>
-    </span>
-
-    <h4><%= link_to t(:press, scope: 'pages.home.footer'), press_path %></h4>
-    <span>
-      <strong>Aargauer Zeitung, 26. März: Frauen vor! Meinungsmacher müssen nicht immer Männer sein</strong><br>
-      "Nun gibt es in mehreren Ländern Initiativen, um auch Frauen stärker als Meinungsmacherinnen und Fachpersonen zu etablieren."</br>
-      <strong>20 minuten, 21. März: Mehr Frauen in Talkshows – dank Internetportal</strong><br>
-      "Das ist eine gute Idee, ein solches Portal braucht die Schweiz auch», sagt Regula Zweifel, Vizepräsidentin des Bunds Schweizerischer Frauenorganisationen Allicance F."<br>
-      <%= link_to t(:more, scope: 'pages.home.footer').html_safe, press_path %>
-    </span>
+    <h1 class="display--block">Speakerinnen*</h1>
+    <div class="layout__item 1/3">
+      <h1 class="alpha--halve bv ph0 mh display--block">
+        <%= link_to t(:about_title, scope: 'pages.home.footer'), about_path %>
+      </h1>
+      <span><%= t(:about, scope: 'pages.home.footer').html_safe %>
+        <%= link_to t(:more, scope: 'pages.home.footer').html_safe, about_path %>
+      </span>
+    </div>
+    <div class="layout__item 1/3">
+      <h1 class="alpha--halve bv ph0 mh display--block">
+        <%= link_to t(:faq, scope: 'pages.home.footer'), faq_path %>
+      </h1>
+      <span><%= t(:faq_short, scope: 'pages.home.footer').html_safe %>
+        <%= link_to t(:more, scope: 'pages.home.footer').html_safe, faq_path %>
+      </span>
+    </div>
+    <div class="layout__item 1/3">
+      <h1 class="alpha--halve bv ph0 mh display--block">
+      <%= link_to t(:press, scope: 'pages.home.footer'), press_path %>
+      </h1>
+      <span>
+        <strong>Aargauer Zeitung, 26. März: Frauen vor! Meinungsmacher müssen nicht immer Männer sein</strong><br>
+        "Nun gibt es in mehreren Ländern Initiativen, um auch Frauen stärker als Meinungsmacherinnen und Fachpersonen zu etablieren."</br>
+        <strong>20 minuten, 21. März: Mehr Frauen in Talkshows – dank Internetportal</strong><br>
+        "Das ist eine gute Idee, ein solches Portal braucht die Schweiz auch», sagt Regula Zweifel, Vizepräsidentin des Bunds Schweizerischer Frauenorganisationen Allicance F."<br>
+        <%= link_to t(:more, scope: 'pages.home.footer').html_safe, press_path %>
+      </span>
+    </div>
   </div>
 </section>
