@@ -53,8 +53,7 @@
         <div class="control-group">
           <%= label_tag('search[languages]', t(:language, scope: "profiles.index"), class: "control-label") %>
           <div class="controls">
-            <%= select_tag 'Language', options_from_collection_for_select(LanguageList::COMMON_LANGUAGES, 'iso_639_1', 'name') %>
-            <%# text_field_tag('search[languages]') %>
+            <%= language_select %>
           </div>
         </div>
         <%= button_tag((t(:search, scope: "pages.home.search")), class: "btn btn-large ") %>
