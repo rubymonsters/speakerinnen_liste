@@ -20,6 +20,7 @@ class Profile < ActiveRecord::Base
   acts_as_taggable_on :topics
 
   has_many :medialinks
+  has_many :profile_languages
 
   before_save(on: [:create, :update]) do
     twitter.gsub!(%r{^@|https:|http:|:|//|www.|twitter.com/}, '') if twitter

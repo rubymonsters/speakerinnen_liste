@@ -1,8 +1,12 @@
 require 'spec_helper'
 
 describe ProfilesSearch, type: :model do
-  let!(:profile) { FactoryGirl.create(:published, firstname: 'Gertrud', lastname: 'Mueller', twitter: 'Apfel', city: 'Berlin', languages: 'Englisch') }
-  let!(:profile_not_matched) { FactoryGirl.create(:published, firstname: 'Claudia', email: 'claudia@test.de', city: 'Paris', languages: 'Polnisch', twitter: 'Birne') }
+  let!(:profile) { FactoryGirl.create(:published, firstname: 'Gertrud', lastname: 'Mueller', twitter: 'Apfel', city: 'Berlin') }
+
+  let!(:profile_language_de) { ProfileLanguage.create!(profile: profile, iso_639_1: 'de') }
+  let!(:profile_language_en) { ProfileLanguage.create!(profile: profile, iso_639_1: 'en') }
+
+  let!(:profile_not_matched) { FactoryGirl.create(:published, firstname: 'Claudia', email: 'claudia@test.de', city: 'Paris', twitter: 'Birne') }
   let!(:profile_not_published) { FactoryGirl.create(:unpublished, firstname: 'Fred') }
 
   describe 'results' do
@@ -42,7 +46,7 @@ describe ProfilesSearch, type: :model do
       end
 
       it 'does return profiles that match the given language search string' do
-        expect(ProfilesSearch.new({languages: 'Engl'}).results).to eq [profile]
+        expect(ProfilesSearch.new({languages: 'en'}).results).to eq [profile]
       end
 
       it 'does return profiles that match the given name search string' do
