@@ -3,7 +3,7 @@ describe 'profile search' do
   let!(:profile_language_de) { ProfileLanguage.create!(profile: profile, iso_639_1: 'de') }
   let!(:profile_language_es) { ProfileLanguage.create!(profile: profile, iso_639_1: 'es') }
 
-  let!(:profile_not_matched) { FactoryGirl.create(:published, firstname: 'Claudia', email: 'claudia@test.de', city: 'Warschau', languages: 'Polnisch', twitter: 'Birne' ) }
+  let!(:profile_not_matched) { FactoryGirl.create(:published, firstname: 'Claudia', email: 'claudia@test.de', city: 'Warschau', twitter: 'Birne' ) }
 
   describe 'quick search' do
 
