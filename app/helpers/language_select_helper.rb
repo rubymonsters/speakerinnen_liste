@@ -7,7 +7,7 @@ module LanguageSelectHelper
         'iso_639_1',
         ->(language) { language_name(language) }
       ),
-      include_blank: true,
+     include_blank: true,
       multiple: true
     )
   end
