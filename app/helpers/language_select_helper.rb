@@ -3,7 +3,7 @@ module LanguageSelectHelper
     select_tag(
       "search[languages]",
       options_from_collection_for_select(
-        LanguageList::COMMON_LANGUAGES.sort_by { |language| language_name(language) },
+         SelectableLanguages.to_a.sort_by { |language| language_name(language) },
         'iso_639_1',
         ->(language) { language_name(language) }
       ),
