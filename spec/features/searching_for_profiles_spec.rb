@@ -33,6 +33,7 @@ describe 'profile search' do
     it 'displays profiles that match any of the selected languages' do
       within '#detailed-search' do
         select 'Spanisch'
+        select 'Deutsch'
         click_button 'Suche'
       end
       expect(page).to have_content('Horstine')

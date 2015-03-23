@@ -64,7 +64,9 @@ describe ProfilesSearch, type: :model do
         expect(ProfilesSearch.new({topics: 'obst'}).results).to eq [profile]
       end
 
-      it 'returns any profile that matches one of the given languages'
+      it 'returns any profile that matches one of the given languages' do
+        expect(ProfilesSearch.new({languages: ['en', 'ar']}).results).to eq [profile]
+      end
 
       it 'returns any profile that matches one of the given topics'
 
