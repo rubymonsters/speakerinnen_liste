@@ -83,7 +83,7 @@ describe ProfilesController, type: :controller do
     end
 
     it "doesn't create extra translations" do
-      de_factory_translation = maren.translations.find_by!('locale' => 'de')
+      de_factory_translation = maren.translations.find_by('locale' => 'de')
       en_translation = maren.translations.create!('locale' => 'en', 'main_topic' => 'Soc')
 
       profile_params = {
