@@ -102,14 +102,18 @@ h1 {
   background: $transparent-color;
 }
 
-.page-footer--links a{
+.page-footer--links {
   margin: halve($inuit-base-spacing-unit) 0;
   padding: 0 4px;
   color: #3C3C3A;
 }
 
-.page-footer--links a:hover {
+.page-footer--links:hover {
   color: #3C3C3A;
   background-color: #D8D8D8;
   padding: 0 4px;
+}
+
+footer {
+
 }
