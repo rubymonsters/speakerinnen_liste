@@ -80,8 +80,8 @@ de:
         links_text: "Hier gibt es Links zu ähnlichen Projekten:"
         contact: "Kontakt"
         contact_link: "E-Mail"
-        address: "<a href='http://twitter.com/speakerinnen', target='_blank'>Twitter</a>"
-        github: "<a href='http://github.com/rubymonsters/speakerinnen_liste', target='_blank'>GitHub</a>"
+        address: "<a href='http://twitter.com/speakerinnen', target='_blank', class='page-footer--link'>Twitter</a>"
+        github: "<a href='http://github.com/rubymonsters/speakerinnen_liste', target='_blank', class='page-footer--link'>GitHub</a>"
         devblog: "<a href='http://speakerinnen.wordpress.com/', taget='_blank'>Entwicklerinnen-Blog</a>"
         faq_short: |
             <strong>Warum gibt es Thema XYZ noch nicht?</strong><br>

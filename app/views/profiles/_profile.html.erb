@@ -1,17 +1,10 @@
-<%= p first_in_collection %>
-<% if @profiles.first %>
-  <div class="layout__item 1/4">
-<% else %>
---><div class="layout__item 1/4">
-<% end %>
+<%= p profile.inspect %>
+
+<div class="layout__item 1/4">
     <%= profile_picture_link(profile) %>
     <%= link_to profile.fullname, profile %>
     <%= profile.main_topic_or_first_topic.truncate(30) if profile.main_topic_or_first_topic  %>
     <% if profile.twitter.present? %>
       <%= t ".twitter" %> <%=link_to "@" + profile.twitter_name_formatted, profile.twitter_link_formatted, target: '_blank' %>
     <% end %>
-  <% if @profiles.last %>
-  </div>
-  <% else %>
-  </div><!--
-  <% end %>
+</div>

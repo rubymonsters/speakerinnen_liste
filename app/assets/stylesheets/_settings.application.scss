@@ -20,29 +20,35 @@
   font-style: normal;
 }
 
+/*font*/
 $serif: 'Merriweather', Georgia, serif;
 $sans-serif: "OpenSans", "Helvetica Neue", Helvetica, sans-serif;
 
-/*font*/
 $font-color: #3C3C3A;
 
 $inuit-heading-size-1:  48px;
 
+
 /*link-color*/
 $link-color: #7B7B7B;
+
 
 /*background-color*/
 $body-bg-color: #FFF;
 $transparent-color: rgba( $body-bg-color, .6 );
+$body-bg-color-grey: whitesmoke;
 
+
+/*layout settings */
 $header-margin-top: 10px;
 $header-height: 70px;
-
-$inuit-use-fractions: true;
-
-$inuit-enable-margins: true;
-$inuit-enable-paddings--none: true;
 
 $layout-width: 940px;
 
 
+/*inuit true */
+$inuit-use-fractions: true;
+
+$inuit-enable-margins: true;
+$inuit-enable-paddings--none: true;
+$inuit-enable-paddings: true;
