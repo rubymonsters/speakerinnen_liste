@@ -9,13 +9,4 @@ class PagesController < ApplicationController
     true
   end
 
-  private
-
-  def first_in_collection
-    @profiles.first?
-  end
-
-  def last_in_collection
-    @profiles.last?
-  end
 end

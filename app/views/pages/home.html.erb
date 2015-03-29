@@ -15,15 +15,15 @@
   </div>
 </section>
 
-<section>
-  <div class="layout-wrapper">
-    <h1><%= t(:new_speaker_heading, scope: 'pages.home.speakers') %></h1>
-    <h1 class="alpha--halve bv ph0 mh display--block">
-      <%= t(:speaker_text, scope: 'pages.home.speakers') %><BR>
-      <%= link_to t(:speaker_index, scope: 'pages.home.speakers'), profiles_path %>
-    </h1>
-    <%= render partial: "profiles/profile", collection: @profiles %>
-  </div>
+<section class="layout-wrapper">
+  <h1><%= t(:new_speaker_heading, scope: 'pages.home.speakers') %></h1>
+  <h1 class="alpha--halve bv ph0 mh display--block">
+    <%= t(:speaker_text, scope: 'pages.home.speakers') %><BR>
+    <%= link_to t(:speaker_index, scope: 'pages.home.speakers'), profiles_path %>
+  </h1>
+  <%= render partial: "profiles/profile", object: @profiles[0], locals: { is_first: true } %>
+  <%= render partial: "profiles/profile", collection: @profiles[1..-2] %>
+  <%= render partial: "profiles/profile", object: @profiles[-1], locals: { is_last: true } %>
 </section>
 
 <section id="teaser-bg-01" class="photo-bar">
@@ -36,19 +36,17 @@
 <!-- Anker für Kategorien -->
 <a id="categories_anker"></a>
 
-<section>
-  <div class="layout-wrapper">
-    <h1><%= t(:description, scope: 'pages.home') %></h1>
-    <h1 class="alpha--halve bv ph0 mh display--block">
-      <%= t(:description_text, scope: 'pages.home') %>
-    </h1>
+<section class="layout-wrapper">
+  <h1><%= t(:description, scope: 'pages.home') %></h1>
+  <h1 class="alpha--halve bv ph0 mh display--block">
+    <%= t(:description_text, scope: 'pages.home') %>
+  </h1>
 
-    <% @categories.each_slice(5) do |sliced_categories| %>
-      <% sliced_categories.each do |category| %>
-        <%= category_link category %>
-      <% end %>
+  <% @categories.each_slice(5) do |sliced_categories| %>
+    <% sliced_categories.each do |category| %>
+      <%= category_link category %>
     <% end %>
-  </div>
+  <% end %>
 </section>
 
 <section id="teaser-bg-02" class="photo-bar">
