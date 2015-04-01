@@ -48,10 +48,10 @@
     <% else %>
       --><div class="layout__item 1/2">
     <% end %>
-      <ul>
+      <ul class="page-categories__list__no-bullets">
         <% sliced_categories.each do |category| %>
           <li>
-            <%= category_link category %>
+            <%= category_link category, class:"page-categories__list__links" %>
           </li>
         <% end %>
       </ul>

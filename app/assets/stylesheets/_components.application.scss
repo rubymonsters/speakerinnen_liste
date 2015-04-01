@@ -84,6 +84,22 @@ h1 {
   display: block;
 }
 
+.page-categories__list__no-bullets {
+  list-style-type: none;
+}
+
+.page-categories__list__links {
+  font-size: 1.9em;
+  background-color: whitesmoke;
+  padding: 3px 6px;
+  line-height:2em;
+}
+
+.page-categories__list__links:hover {
+  color: #F5F5F5;
+  background-color: #3c3c3A;
+}
+
 .bv {
   border-top: 1px solid #CCC;
   border-bottom: 1px solid #CCC;
