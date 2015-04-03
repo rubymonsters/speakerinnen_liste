@@ -44,7 +44,7 @@ class Admin::CategoriesController < Admin::BaseController
   end
 
   def category_params
-    params.require(:category).permit(:name, :tag_list)
+    params.require(:category).permit(:name, :tag_list => [])
   end
 
 end

@@ -12,7 +12,19 @@ ActsAsTaggableOn::Tag.class_eval do
 
   def merge(wrong_tag)
     # update all taggings on any of these tags to now point to the tag that we keep
-    ActsAsTaggableOn::Tagging.where(tag_id: wrong_tag.id).update_all(tag_id: self.id)
-    wrong_tag.destroy
+    #
+    # wrong_tag.profiles
+    # iterieren remove wrong tag
+    # add self tag
+    #
+    #
+    #ActsAsTaggableOn::Tagging.where(tag_id: wrong_tag.id).count
+    #ActsAsTaggableOn::Tagging.where(tag_id: wrong_tag.id).update_all(tag_id: self.id)
+    #p self.taggings_count
+    #self.taggings_count += 1
+    #self.save!
+    #p 'im controller: taggings_count'
+    #p self.taggings_count
+    #wrong_tag.destroy
   end
 end
