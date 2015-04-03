@@ -17,6 +17,12 @@ ActsAsTaggableOn::Tag.class_eval do
     # iterieren remove wrong tag
     # add self tag
     #
+    Profile.tagged_with(wrong_tag).each do |profile|
+      profile.topic_list.remove(wrong_tag.name)
+      profile.topic_list.add(self)
+      profile.save
+      profile.reload
+    end
     #
     #ActsAsTaggableOn::Tagging.where(tag_id: wrong_tag.id).count
     #ActsAsTaggableOn::Tagging.where(tag_id: wrong_tag.id).update_all(tag_id: self.id)
