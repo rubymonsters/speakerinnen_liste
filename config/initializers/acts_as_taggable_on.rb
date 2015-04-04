@@ -14,7 +14,7 @@ ActsAsTaggableOn::Tag.class_eval do
     # update all taggings on any of these wrong tags to now point to the correct tag that we keep
     Profile.tagged_with(wrong_tag).each do |profile|
       profile.topic_list.remove(wrong_tag.name)
-      profile.topic_list.add(self)
+      profile.topic_list.add(self.name)
       profile.save
       profile.reload
     end
