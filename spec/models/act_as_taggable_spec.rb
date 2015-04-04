@@ -6,60 +6,34 @@ describe 'tags', type: :model do
   let!(:inge) { FactoryGirl.create(:published, firstname: 'Inge', email: 'inge@test.de') }
 
   before :each do
-    gertrud.topic_list.add('obst')
+    gertrud.topic_list.add('media')
     gertrud.save!
 
-    claudia.topic_list.add('#obst')
+    claudia.topic_list.add('#media')
     claudia.save!
 
-    inge.topic_list.add('#obst')
+    inge.topic_list.add('#media')
     inge.save!
   end
 
-  it 'merging two tags keeps the taggings' do
-    gertrud = Profile.where(firstname: 'Gertrud').first
-    claudia = Profile.where(firstname: 'Claudia').first
-    inge    = Profile.where(firstname: 'inge').first
+  context 'merging two tags adds the tags_count of the tags model we keep' do
 
-    ActsAsTaggableOn::Tagging.all.each do | tagging |
-      puts "tag id: #{tagging.tag_id} taggable id: #{tagging.taggable_id}"
-    end
+    it 'and so the tag itself stays after one of the profiles deletes that tag' do
+      expect(ActsAsTaggableOn::Tag.count).to eq 2
+      expect(ActsAsTaggableOn::Tagging.count).to eq 3
 
-    p "obst thinks: " +  ActsAsTaggableOn::Tag.where(name: 'obst').first.taggings_count.to_s
-    p "#obst thinks: " + ActsAsTaggableOn::Tag.where(name: '#obst').first.taggings_count.to_s
-    p "---"
-    p "merging"
-    p "---"
+      correct_tag = ActsAsTaggableOn::Tag.where(name: 'media').first
+      wrong_tag   = ActsAsTaggableOn::Tag.where(name: '#media').first
+      correct_tag.merge(wrong_tag)
 
-    expect(ActsAsTaggableOn::Tag.count).to eq 2
-    expect(ActsAsTaggableOn::Tagging.count).to eq 3
+      expect(ActsAsTaggableOn::Tag.count).to eq 1
+      expect(ActsAsTaggableOn::Tagging.count).to eq 3
 
-    correct_tag = ActsAsTaggableOn::Tag.where(name: 'obst').first
-    wrong_tag   = ActsAsTaggableOn::Tag.where(name: '#obst').first
-    correct_tag.merge(wrong_tag)
+      gertrud.topic_list.remove('media')
+      gertrud.save!
 
-    ActsAsTaggableOn::Tagging.all.each do | tagging |
-      puts "tag id: #{tagging.tag_id} taggable id: #{tagging.taggable_id}"
-    end
-
-    p " After merging obst thinks: " +  ActsAsTaggableOn::Tag.where(name: 'obst').first.taggings_count.to_s
-
-    expect(ActsAsTaggableOn::Tag.count).to eq 1
-    expect(ActsAsTaggableOn::Tagging.count).to eq 3
-
-    gertrud.topic_list.remove('obst')
-    gertrud.save!
-
-    p "---"
-    p "delete gertruds topic"
-    p "---"
-    p " After deleting obst thinks: " +  ActsAsTaggableOn::Tag.where(name: 'obst').first.taggings_count.to_s
-
-    expect(ActsAsTaggableOn::Tag.count).to eq 1
-    expect(ActsAsTaggableOn::Tagging.count).to eq 2
-
-    ActsAsTaggableOn::Tagging.all.each do | tagging |
-      puts "tag id: #{tagging.tag_id} taggable id: #{tagging.taggable_id}"
+      expect(ActsAsTaggableOn::Tag.count).to eq 1
+      expect(ActsAsTaggableOn::Tagging.count).to eq 2
     end
   end
 end
