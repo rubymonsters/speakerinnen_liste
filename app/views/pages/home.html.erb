@@ -27,7 +27,7 @@
   <%= render partial: "profiles/profile", object: @profiles[-1], locals: { is_last: true } %>
 </section>
 
-<section id="teaser-bg-01" class="photo-bar">
+<section id="teaser-bg-01" class="photo-bar mt++">
   <div class="layout-wrapper">
     <h1><%= t(:quote, scope: 'pages.home') %></h1>
     <h1 class="alpha--halve"><%= t(:quote_text, scope: 'pages.home') %></h1>
@@ -46,7 +46,7 @@
   <%= render partial: "shared/categories", object: @categories %>
 </section>
 
-<section id="teaser-bg-02" class="photo-bar">
+<section id="teaser-bg-02" class="photo-bar mt++">
   <div class="layout-wrapper">
     <h1><%= t(:speaker_shoutout, scope: 'pages.home').html_safe %></h1>
     <h1 class="alpha--halve"><%=link_to(t(:speaker_text, scope: 'pages.home').html_safe, new_profile_registration_path) %></h1>
