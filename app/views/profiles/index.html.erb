@@ -17,9 +17,11 @@
   </div>
   <hr>
   <br>
-  <div class='row'>
-    <%= render partial: "profile", collection: @profiles %>
-  </div>
+  <section class="layout-wrapper">
+    <%= render partial: "profiles/profile", object: @profiles[0], locals: { is_first: true } %>
+    <%= render partial: "profiles/profile", collection: @profiles[1..-2] %>
+    <%= render partial: "profiles/profile", object: @profiles[-1], locals: { is_last: true } %>
+  </section>
   <div class="row">
     <div class="span12 text-center">
       <%= paginate @profiles %>
