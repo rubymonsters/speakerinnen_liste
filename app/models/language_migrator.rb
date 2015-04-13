@@ -29,5 +29,4 @@ class LanguageMigrator
     match_hash.merge!({ de: /^D\,/, fr: /^F\,|Francais/, es: /Español/ })
     match_hash[iso_code]
   end
-
 end
