@@ -17,7 +17,6 @@ describe 'navigation', broken: false do
   %w(en de).each do |language|
     context 'signed in as normal user' do
       let(:profile) { FactoryGirl.create(:profile) }
-
       before do
         sign_in profile, language
       end
@@ -32,7 +31,6 @@ describe 'navigation', broken: false do
 
     context 'signed in as admin' do
       let(:profile) { FactoryGirl.create(:admin) }
-
       before do
         sign_in profile, language
       end
