@@ -13,7 +13,7 @@ class LanguageMigrator
       #end
 
       I18n.t('iso_639_1').each do |iso_code, language|
-        if profile.languages.match(/#{language}|#{iso_code}[\,\s\$]/i)
+        if profile.languages.match(/#{language}|#{iso_code}[\,,\s]/i)
           ProfileLanguage.create!(profile: profile, iso_639_1: iso_code)
         end
       end
