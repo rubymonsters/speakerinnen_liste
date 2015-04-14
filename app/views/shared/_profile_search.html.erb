@@ -1,0 +1,46 @@
+ <%= form_tag(profiles_search_path, method: "get", class:"font-size-24 bb pv mv") do %>
+
+  <%= text_field_tag('search[quick]', nil, id: "search-field", placeholder: t(:search_text, scope: "pages.home.search")) %>
+  <%= button_tag((t(:search, scope: "pages.home.search")), class: "btn btn--small input-btn") %>
+
+<% end %>
+
+<%= form_tag(profiles_search_path, method: "get", class:"well form-horizontal", id: "detailed-search") do %>
+
+  <div class="control-group">
+    <%= label_tag('search[name]',t(:name, scope: "profiles.index"), class: "control-label") %>
+    <div class="controls">
+      <%= text_field_tag('search[name]') %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= label_tag('search[twitter]',t(:twitter, scope: "profiles.index"), class: "control-label") %>
+    <div class="controls">
+      <%= text_field_tag('search[twitter]') %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= label_tag('search[topics]',t(:topics, scope: "profiles.index"), class: "control-label") %>
+    <div class="controls">
+      <%= text_field_tag('search[topics]') %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= label_tag('search[city]',t(:city, scope: "profiles.index"), class: "control-label") %>
+    <div class="controls">
+      <%= text_field_tag('search[city]') %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= label_tag('search[languages]', t(:language, scope: "profiles.index"), class: "control-label") %>
+    <div class="controls">
+      <%= language_select %>
+    </div>
+  </div>
+  <%= button_tag((t(:search, scope: "pages.home.search")), class: "btn btn-large ") %>
+
+<% end %>
