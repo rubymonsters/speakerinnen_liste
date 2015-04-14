@@ -5,7 +5,7 @@ describe ProfilesController, type: :controller do
 
   describe 'test index action' do
     let!(:profile) { FactoryGirl.create(:published) }
-    let!(:profile2) { FactoryGirl.create(:user, email: 'test@anders.com') }
+    let!(:profile2) { FactoryGirl.create(:profile, email: 'test@anders.com') }
 
     before do
       get :index

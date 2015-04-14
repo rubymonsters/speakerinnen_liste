@@ -61,6 +61,21 @@
     font-family: $sans-serif;
   }
 }
+.admin_profile__search {
+  margin: 30px 0 70px;
+}
+
+.admin_profile__search input[type="text"]{
+  height: 40px;
+  padding: 0 14px;
+  width: 250px;
+  margin-bottom: 0px;
+}
+
+
+.admin_profile__search input[type="submit"].btn {
+	height: 40px;
+}
 
 .well {
   border: none;

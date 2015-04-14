@@ -4,7 +4,11 @@ class Admin::ProfilesController < Admin::BaseController
   before_action :set_profile, only: [:show, :edit, :update, :destroy, :publish, :unpublish, :admin_comment]
 
   def index
-    @profiles = Profile.order(sort_column + ' ' + sort_direction).order('created_at DESC').page(params[:page]).per(100)
+    if params[:search]
+      @profiles = Profile.search(params[:search]).order("created_at DESC").page(params[:page]).per(100)
+    else
+      @profiles = Profile.order(sort_column + ' ' + sort_direction).order('created_at DESC').page(params[:page]).per(100)
+    end
   end
 
   def new
