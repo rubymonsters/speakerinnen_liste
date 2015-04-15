@@ -76,15 +76,15 @@ describe ProfilesController, type: :controller do
   end
 
   describe 'edit profile' do
-    let!(:maren) { FactoryGirl.create(:published) }
+    let!(:profile) { FactoryGirl.create(:published) }
 
     before do
-      sign_in maren
+      sign_in profile
     end
 
     it "doesn't create extra translations" do
-      de_factory_translation = maren.translations.find_by('locale' => 'de')
-      en_translation = maren.translations.create!('locale' => 'en', 'main_topic' => 'Soc')
+      de_factory_translation = profile.translations.find_by('locale' => 'de')
+      en_translation = profile.translations.create!('locale' => 'en', 'main_topic' => 'Soc')
 
       profile_params = {
         translations_attributes:
@@ -102,9 +102,9 @@ describe ProfilesController, type: :controller do
             }
           }
         }
-      patch :update, {id: maren.id}.merge(profile: profile_params)
+      patch :update, {id: profile.id}.merge(profile: profile_params)
 
-      expect(maren.reload.translations.size).to eq(2)
+      expect(profile.reload.translations.size).to eq(2)
     end
   end
 end
