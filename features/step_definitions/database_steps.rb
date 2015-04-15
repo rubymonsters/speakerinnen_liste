@@ -15,10 +15,10 @@
 ############
 
 Given /^there is a user registered with the email address: (.+) authenticating with password: (.+)$/ do |email,password|
-  user = FactoryGirl.create(:user, email: email, password: password, password_confirmation: password)
+  user = FactoryGirl.create(:profile, email: email, password: password, password_confirmation: password)
 end
 Given /^there is (a|an) (user|admin) profile registered and (published|invisible) with the email address: (.+)$/ do |article, role, visibility, email|
-  user = FactoryGirl.create(:user, email: email)
+  user = FactoryGirl.create(:profile, email: email)
   if (role == 'admin')
     user.admin = true
   end
@@ -36,7 +36,7 @@ Given /^there is a category with the name: (.+)$/ do |name|
 end
 
 Given /^there are tags: ((.+)(,.+)*)$/ do |match, unused, unused2|
-  user = FactoryGirl.create(:user, email: "factoryTagProvider@test.de", firstname: "Tag", lastname: "Provider")
+  user = FactoryGirl.create(:profile, email: "factoryTagProvider@test.de", firstname: "Tag", lastname: "Provider")
   items = comma_separated_string_to_array(match)
   #items.each do |item|
     user.topic_list.add(items)
