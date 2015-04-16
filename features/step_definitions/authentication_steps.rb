@@ -17,7 +17,7 @@
 
 Given /^you (are|are not) signed in as (user|admin)$/ do |signIn,role|
   if signIn == 'are'
-    @user = (role == 'admin') ? FactoryGirl.create(:admin) : FactoryGirl.create(:user)
+    @user = (role == 'admin') ? FactoryGirl.create(:admin) : FactoryGirl.create(:profile)
     sign_in @user
   else
     visit root_path
