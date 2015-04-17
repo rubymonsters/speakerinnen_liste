@@ -2,6 +2,7 @@ class ProfilesSearch
 
   def initialize(query)
     @quick = query[:quick]
+    @query = query
   end
 
   def results
@@ -14,8 +15,6 @@ class ProfilesSearch
     return quick_search_result if @quick
     detailed_search_result
   end
-
-  private
 
   def quick_search_result
     return Profile.none if @quick.blank?
@@ -55,3 +54,4 @@ class ProfilesSearch
   end
 
 end
+
