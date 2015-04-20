@@ -112,10 +112,11 @@ h1 {
   display: inline-block;
 }
 
-.page-overlay-link {
+.page__overlay-link {
   font-size: 22px;
-  padding: 12px;
   background: $transparent-color;
+  padding: 0 4px;
+  margin: 6px;
 }
 
 .page-footer--header {
@@ -133,11 +134,21 @@ footer#main-page__footer {
 .btn {
   font-family: $sans-serif;
   font-size: 16px;
-  margin-top: -3px;
 }
 
 input {
   border-radius: 6px;
   border: 1px solid #ccc;
   line-height: 32px;
+  font-family: $sans-serif;
+  font-size: 16px;
+  padding-left: quarter($inuit-base-spacing-unit);
+}
+
+.bg--light {
+  background: #F5F5F5;
+}
+
+.border-radius {
+  border-radius: 6px;
 }
