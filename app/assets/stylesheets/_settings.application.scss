@@ -39,6 +39,15 @@ $transparent-color: rgba( $body-bg-color, .6 );
 $body-bg-color-grey: whitesmoke;
 
 
+/*buttons*/
+$inuit-btn-background: whitesmoke;
+$inuit-btn-color: #000;
+$inuit-enable-btn--small: true;
+$inuit-btn-radius: 6px;
+$inuit-btn-border-color: #ccc;
+
+/*background-color:whitesmoke;background-image:-webkit-gradient(linear, 0 0, 0 100%, from(#fff), to(#e6e6e6));background-image:-webkit-linear-gradient(top, #fff, #e6e6e6);background-image:linear-gradient(to bottom, #fff, #e6e6e6);background-repeat:repeat-x;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFFFF', endColorstr='#FFE6E6E6', GradientType=0);*/
+
 /*layout settings */
 $header-margin-top: 10px;
 $header-height: 70px;
@@ -53,3 +62,4 @@ $inuit-enable-margins: true;
 $inuit-enable-paddings--none: true;
 $inuit-enable-paddings: true;
 $inuit-enable-margins--huge: true;
+
