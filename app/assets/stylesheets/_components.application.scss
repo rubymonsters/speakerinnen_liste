@@ -9,14 +9,56 @@ a {
 	text-decoration: none;
 }
 
-#page-header__home-link {
+.sans-serif{
+	font-family: $sans-serif;
+}
+
+h1 {
+  font-weight: normal;
+  background: $transparent-white;
+  padding: halve($inuit-base-spacing-unit) $inuit-base-spacing-unit;
+  line-height: 60px;
+  display: inline-block;
+  margin: 0 0 $inuit-base-spacing-unit;
+}
+
+.display--block {
+  display: block;
+}
+
+.btn {
+  font-family: $sans-serif;
+  font-size: 16px;
+  color: $link-color;
+}
+
+input {
+  border-radius: $border-radius;
+  border: 1px solid $light-grey;
+  line-height: 32px;
+  font-family: $sans-serif;
+  font-size: 16px;
+  padding-left: quarter($inuit-base-spacing-unit);
+}
+
+.bg--light {
+  background: $white-smoke;
+}
+
+.border-radius {
+  border-radius: $border-radius;
+}
+
+
+/* header */
+#header__home-link {
   position: absolute;
   top: $header-margin-top;
   left: 10px;
   text-indent: 99999px;
 }
 
-#page-header__home-img {
+#header__logo {
   position: absolute;
   top: -$header-margin-top;
   left: 0;
@@ -33,40 +75,35 @@ header {
   top: 0;
 }
 
-#start-teaser {
-  margin-top: $header-height;
-  background: image-url('start-teaser.jpg') no-repeat center center;
-  background-size: cover;
-}
 
-#teaser-bg-01 {
-  background: image-url('teaser-bg-01.png') no-repeat center center;
-  background-size: cover;
-}
-
-#teaser-bg-02 {
-  background: image-url('teaser-bg-02.jpg') no-repeat center center;
-  background-size: cover;
-}
-
-.photo-bar {
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5) inset;
-  min-height: 696px;
-}
-
+/* layout */
 .layout-wrapper {
   width: $layout-width;
   margin: 0 auto;
   padding-top: quadruple($inuit-base-spacing-unit);
 }
 
-h1 {
-  font-weight: normal;
-  background: $transparent-color;
-  padding: halve($inuit-base-spacing-unit) $inuit-base-spacing-unit;
-  line-height: 60px;
-  display: inline-block;
-  margin: 0 0 $inuit-base-spacing-unit;
+
+/* startpage */
+#startpage__start-teaser {
+  margin-top: $header-height;
+  background: image-url('start-teaser.jpg') no-repeat center center;
+  background-size: cover;
+}
+
+#startpage__teaser-bg-01 {
+  background: image-url('teaser-bg-01.png') no-repeat center center;
+  background-size: cover;
+}
+
+#startpage__teaser-bg-02 {
+  background: image-url('teaser-bg-02.jpg') no-repeat center center;
+  background-size: cover;
+}
+
+.startpage__photo-bar {
+  box-shadow: 0 0 20px $transparent-black inset;
+  min-height: 696px;
 }
 
 .alpha--halve {
@@ -75,80 +112,61 @@ h1 {
 }
 
 .alpha--halve a:hover {
-  color: #F5F5F5;
-  background-color: #3c3c3A;
+  color: $link-color-hover;
+  background-color: $link-bg-color-hover;
   padding: 0 4px;
 }
 
-.display--block {
-  display: block;
+.bv {
+  border-top: 1px solid $light-grey;
+  border-bottom: 1px solid $light-grey;
 }
 
-.page-categories__list__no-bullets {
+.startpage-categories__list--no-bullets {
   list-style-type: none;
 }
 
-.page-categories__list__links {
+.startpage-categories__list-links {
   font-size: 1.9em;
-  background-color: whitesmoke;
+  background-color: $link-bg-color;
   padding: 3px 6px;
-  line-height:2em;
+  line-height: 2em;
 }
 
-.page-categories__list__links:hover {
-  color: #F5F5F5;
-  background-color: #3c3c3A;
-}
-
-.bv {
-  border-top: 1px solid #CCC;
-  border-bottom: 1px solid #CCC;
+.startpage-categories__list-links:hover {
+  color: $link-color-hover;
+  background-color: $link-bg-color-hover;
 }
 
 .page-box {
   font-size: 22px;
   padding: 12px;
-  background: $transparent-color;
+  background-color: $transparent-white;
   display: inline-block;
 }
 
-.page__overlay-link {
+.page__overlay-links {
   font-size: 22px;
-  background: $transparent-color;
+  background-color: $link-bg-color;
   padding: 0 4px;
   margin: 6px;
 }
 
-.page-footer--header {
+.page__overlay-links:hover {
+  color: $link-color-hover;
+  background-color: $link-bg-color-hover;
+}
+
+
+/* footer */
+.footer__head {
   background: none;
 }
 
-.page-footer--link {
+.footer__link {
   padding: 0 4px;
 }
 
-footer#main-page__footer {
+footer#main-page-footer {
   background: $body-bg-color-grey;
-}
-
-.btn {
-  font-family: $sans-serif;
-  font-size: 16px;
-}
-
-input {
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  line-height: 32px;
-  font-family: $sans-serif;
-  font-size: 16px;
-  padding-left: quarter($inuit-base-spacing-unit);
-}
-
-.bg--light {
-  background: #F5F5F5;
-}
-
-.border-radius {
-  border-radius: 6px;
 }

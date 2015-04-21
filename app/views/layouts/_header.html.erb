@@ -2,9 +2,9 @@
 <% admin_header_class = 'admin' if controller_path =~ /admin\// %>
 <header>
   <%# TODO: hidden <h1>Speakerinnen</h1>%>
-  <%= link_to(root_path, id: 'page-header__home-link') do %>
+  <%= link_to(root_path, id: 'header__home-link') do %>
     <%= t(:home, scope: "layouts.application") %>
-    <%= image_tag("logo8.png", alt: "logo", id: 'page-header__home-img') %>
+    <%= image_tag("logo8.png", alt: "logo", id: 'header__logo') %>
   <% end %>
 
   <% if profile_signed_in? %>
@@ -23,7 +23,7 @@
     <%= link_to 'Admin', admin_root_path %>
   <% end %>
 
-  <span class="mh">
+  <span class="mh sans-serif">
     <%= link_to_unless I18n.locale == :en, 'EN', {locale: :en} %> |
     <%= link_to_unless I18n.locale == :de, 'DE', {locale: :de} %>
   </span>

@@ -1,11 +1,11 @@
-<footer id="main-page__footer" class="pb">
+<footer id="main-page-footer" class="pb">
   <div class="layout-wrapper">
-    <h1 class="page-footer--header"><%= t(:contact, scope: 'pages.home.footer') %></h1>
+    <h1 class="footer__head"><%= t(:contact, scope: 'pages.home.footer') %></h1>
     <nav class="alpha--halve ph0 bv mh">
       <%= t(:address, scope: 'pages.home.footer') .html_safe %> |
-      <%= link_to t(:contact_link, scope: 'pages.home.footer'), contact_path, class:"page-footer--link" %> |
+      <%= link_to t(:contact_link, scope: 'pages.home.footer'), contact_path, class:"footer__link" %> |
       <%= t(:github, scope: 'pages.home.footer').html_safe %> |
-      <%= link_to t(:title, scope: 'pages.imprint'), impressum_path, class:"page-footer--link" %>
+      <%= link_to t(:title, scope: 'pages.imprint'), impressum_path, class:"footer__link" %>
     </nav>
     <p class="mv">
       <%= t(:women, scope: 'pages.home.footer').html_safe %>

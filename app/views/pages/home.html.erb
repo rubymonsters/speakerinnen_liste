@@ -1,4 +1,4 @@
-<section id="start-teaser" class="photo-bar">
+<section id="startpage__start-teaser" class="startpage__photo-bar">
   <div class="layout-wrapper">
     <h1><%= t(:heading, scope: 'pages.home.search') %></h1>
     <h1 class="alpha--halve"><%= t(:tagline, scope: 'pages.home.search') %></h1>
@@ -8,10 +8,10 @@
           <%= text_field_tag(:q, nil, class: "", id: "", placeholder: t(:search_text, scope: 'pages.home.search')) %>
           <%= button_tag((t(:search, scope: 'pages.home.search')), class: "btn btn--small") %>
         </div>
-        <p class="page__overlay-link mt mh0">
+        <p class="page__overlay-links mt mh0">
           <%= link_to t(:categories, scope: 'pages.home.speakers'), '#categories_anker' %>
         </p>
-        <p class="page__overlay-link mh0">
+        <p class="page__overlay-links mh0">
           <%= link_to t(:speaker_index, scope: 'pages.home.speakers'), profiles_path %>
         </p>
       <% end %>
@@ -30,7 +30,7 @@
   <%= render partial: "profiles/profile", object: @profiles[-1], locals: { is_last: true } %>
 </section>
 
-<section id="teaser-bg-01" class="photo-bar mt++">
+<section id="startpage__teaser-bg-01" class="startpage__photo-bar mt++">
   <div class="layout-wrapper">
     <h1><%= t(:quote, scope: 'pages.home') %></h1>
     <h1 class="alpha--halve"><%= t(:quote_text, scope: 'pages.home') %></h1>
@@ -49,7 +49,7 @@
   <%= render partial: "shared/categories", object: @categories %>
 </section>
 
-<section id="teaser-bg-02" class="photo-bar mt++">
+<section id="startpage__teaser-bg-02" class="startpage__photo-bar mt++">
   <div class="layout-wrapper">
     <h1><%= t(:speaker_shoutout, scope: 'pages.home').html_safe %></h1>
     <h1 class="alpha--halve"><%=link_to(t(:speaker_text, scope: 'pages.home').html_safe, new_profile_registration_path) %></h1>
