@@ -74,6 +74,7 @@ en:
               <a href='http://railsgirlsberlin.de', target='_blank'>Rails Girls</a> is an international not-for-profit group that aims to get women into programming
               with workshops, scholarships, and a safe learning community.
         press: "Media Coverage"
+        blog: "Our blog"
         faq: "FAQs"
         links: "Links"
         links_text: "Here you find links to similar projects:"

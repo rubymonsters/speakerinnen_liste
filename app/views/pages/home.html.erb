@@ -2,7 +2,7 @@
   <div class="curie-badge">
     <%= image_tag("badge2-bw.png", alt: "curie-badge") %>
   </div>
-  <script> 
+  <script>
     if ($(window).width() <= 980 && $(window).height() <= 1500){
       $(".curie-badge").hide();
     }
@@ -127,13 +127,12 @@
       </div>
 
       <div class="span4">
-        <h4><%= link_to t(:press, scope:"pages.home.footer"), press_path %></h4>
+        <h4><%= link_to t(:blog, scope:"pages.home.footer"), 'http://blog.speakerinnen.org/' %></h4>
         <span class="italic">
           <span class="italic">
-    <strong>Aargauer Zeitung, 26. März: Frauen vor! Meinungsmacher müssen nicht immer Männer sein</strong><br>
-    "Nun gibt es in mehreren Ländern Initiativen, um auch Frauen stärker als Meinungsmacherinnen und Fachpersonen zu etablieren."</br>
-    <strong>20 minuten, 21. März: Mehr Frauen in Talkshows – dank Internetportal</strong><br>
-    "Das ist eine gute Idee, ein solches Portal braucht die Schweiz auch», sagt Regula Zweifel, Vizepräsidentin des Bunds Schweizerischer Frauenorganisationen Allicance F."<br>
+    <strong></strong><br>
+    </br>
+    <strong></strong><br>
           <%= link_to t(:more, scope: "pages.home.footer").html_safe, press_path %>
         </span>
       </div>
