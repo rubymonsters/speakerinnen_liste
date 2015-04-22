@@ -83,10 +83,12 @@ header {
   padding-top: quadruple($inuit-base-spacing-unit);
 }
 
+#content {
+  margin-top: $header-height;
+}
 
 /* startpage */
 #startpage__start-teaser {
-  margin-top: $header-height;
   background: image-url('start-teaser.jpg') no-repeat center center;
   background-size: cover;
 }
