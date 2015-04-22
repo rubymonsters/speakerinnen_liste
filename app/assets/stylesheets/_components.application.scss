@@ -9,6 +9,10 @@ a {
 	text-decoration: none;
 }
 
+a:hover {
+	color: $font-color;
+}
+
 .sans-serif{
 	font-family: $sans-serif;
 }
@@ -56,6 +60,7 @@ input {
   top: $header-margin-top;
   left: 10px;
   text-indent: 99999px;
+  width: 200px;
 }
 
 #header__logo {
