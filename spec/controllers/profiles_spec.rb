@@ -32,24 +32,24 @@ describe ProfilesController, type: :controller do
     let!(:admin) { FactoryGirl.create(:admin, email: 'admin@anders.com') }
 
     describe 'of unpublished profile' do
-      it 'is not permited for unauthorized not signed in profile' do
+      it 'is not permitted for unauthorized not signed in profile' do
         get :show, id: profile.id
         expect(response).to redirect_to('/de/profiles')
       end
 
-      it 'is not permited for unauthorized signed in profile' do
+      it 'is not permitted for unauthorized signed in profile' do
         sign_in profile1
         get :show, id: profile.id
         expect(response).to redirect_to('/de/profiles')
       end
 
-      it 'is permited for own profile' do
+      it 'is permitted for own profile' do
         sign_in profile
         get :show, id: profile.id
         expect(response).to render_template(:show)
       end
 
-      it 'is permited for admin' do
+      it 'is permitted for admin' do
         sign_in admin
         get :show, id: profile.id
         expect(response).to render_template(:show)
