@@ -8,33 +8,6 @@ class ProfilesControllerTest < ActionController::TestCase
     @profile2 = profiles(:two)
   end
 
-  test "should get index" do
-    get :index
-    assert_response :success
-    assert_not_nil assigns(:profiles)
-  end
-
-  test "should show published profile" do
-    get :show, id: @profile.id
-    assert_response :success
-  end
-
-  test "should not show unpublished profile" do
-    get :show, id: @profile2.id
-    assert_response :redirect
-  end
-
-  # edit
-
-  test "should edit own profile" do
-    horst = profiles(:one)
-    horst.confirm!
-    sign_in(horst)
-
-    get :edit, id: @profile.id
-    assert_response :success
-  end
-
   test "should not be able edit different profile" do
     horst = profiles(:one)
     horst.confirm!
@@ -140,9 +113,4 @@ class ProfilesControllerTest < ActionController::TestCase
     assert_equal 'Profil wurde erfolgreich gelöscht.', flash[:notice]
   end
 
-  # test "twitter @ symbol correcty removed" do
-  #   input_hash={:twitter => "@nickname", :email => "me@me.com"}
-  #   expected_hash={:twitter => "nickname", :email => "me@me.com"}
-  #   assert_equal expected_hash, ProfilesController.clean_twitter(input_hash)
-  # end
 end
