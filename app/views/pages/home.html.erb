@@ -3,18 +3,19 @@
     <h1 class="bg--white"><%= t(:heading, scope: 'pages.home.search') %></h1>
     <h1 class="alpha--halve bg--white"><%= t(:tagline, scope: 'pages.home.search') %></h1>
 
-      <%= form_tag(search_path, method: 'get', class:"page-box") do %>
-        <div class="bg--light pv pl border-radius">
-          <%= text_field_tag(:q, nil, class: "", id: "", placeholder: t(:search_text, scope: 'pages.home.search')) %>
-          <%= button_tag((t(:search, scope: 'pages.home.search')), class: "btn btn--small") %>
-        </div>
-        <p class="page__overlay-links mt mh0">
-          <%= link_to t(:categories, scope: 'pages.home.speakers'), '#categories_anker' %>
-        </p>
-        <p class="page__overlay-links mh0">
-          <%= link_to t(:speaker_index, scope: 'pages.home.speakers'), profiles_path %>
-        </p>
-      <% end %>
+    <%= form_tag(search_path, method: 'get', class:"page-box") do %>
+      <div class="bg--light pv pl border-radius">
+        <%= text_field_tag(:q, nil, class: "", id: "", placeholder: t(:search_text, scope: 'pages.home.search')) %>
+        <%= button_tag((t(:search, scope: 'pages.home.search')), class: "btn btn--small") %>
+      </div>
+      <div class="page__overlay-links mh0 mt">
+        <%= link_to t(:categories, scope: 'pages.home.speakers'), '#categories_anker' %>
+      </div>
+      <div class="page__overlay-links mh0">
+        <%= link_to t(:speaker_index, scope: 'pages.home.speakers'), profiles_path %>
+      </div>
+    <% end %>
+
   </div>
 </section>
 

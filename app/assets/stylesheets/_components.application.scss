@@ -128,6 +128,24 @@ header {
   padding: 0 4px;
 }
 
+.page-box {
+  font-size: halve($inuit-heading-size-1);
+  padding: 12px;
+  background-color: $transparent-white;
+  display: inline-block;
+}
+
+.page__overlay-links a {
+  margin: 4px;
+  padding: 0 4px;
+  color: $link-color;
+  background-color: $link-bg-color;
+}
+.page__overlay-links a:hover {
+  color: $link-color-hover;
+  background-color: $link-bg-color-hover;
+}
+
 .bv {
   border-top: 1px solid $light-grey;
   border-bottom: 1px solid $light-grey;
@@ -153,24 +171,6 @@ header {
   background-color: $link-bg-color-hover;
 }
 
-.page-box {
-  font-size: 22px;
-  padding: 12px;
-  background-color: $transparent-white;
-  display: inline-block;
-}
-
-.page__overlay-links {
-  font-size: 22px;
-  background-color: $link-bg-color;
-  padding: 0 4px;
-  margin: 6px;
-}
-
-.page__overlay-links a:hover {
-  color: $link-color-hover;
-  background-color: $link-bg-color-hover;
-}
 
 /* page */
 
