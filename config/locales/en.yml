@@ -127,7 +127,7 @@ en:
       error: "Please fill out all the fields so that the speaker can have all the details she needs."
   profiles:
     tag:
-      topics: "Topics:"
+      topics: "Topics"
     form:
       not_saved: "This profile could not be saved: "
       profile_from: "Profile of"

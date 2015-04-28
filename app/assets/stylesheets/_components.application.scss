@@ -17,13 +17,16 @@ a:hover {
 	font-family: $sans-serif;
 }
 
-h1 {
+h1{
   font-weight: normal;
-  background: $transparent-white;
-  padding: halve($inuit-base-spacing-unit) $inuit-base-spacing-unit;
   line-height: 60px;
   display: inline-block;
   margin: 0 0 $inuit-base-spacing-unit;
+}
+
+.bg--white {
+  background: $transparent-white;
+  padding: halve($inuit-base-spacing-unit) $inuit-base-spacing-unit;
 }
 
 .display--block {
@@ -34,6 +37,7 @@ h1 {
   font-family: $sans-serif;
   font-size: $inuit-base-font-size;
   color: $link-color;
+  margin-top: -2px;
 }
 
 input {
@@ -159,9 +163,54 @@ header {
   margin: 6px;
 }
 
-.page__overlay-links:hover {
+.page__overlay-links a:hover {
   color: $link-color-hover;
   background-color: $link-bg-color-hover;
+}
+
+/* page */
+
+.pages__background--grey {
+  background: $body-bg-color-grey;
+}
+
+/*classes for topicscloud*/
+.s {
+  font-size: 12px;
+}
+
+.m {
+  font-size: 16px;
+}
+
+.l {
+  font-size: 18px;
+}
+
+.topics-cloud {
+  min-height: 200px;
+}
+
+.topics-cloud a{
+  background-color: #fff;
+  padding: 0px 4px;
+}
+
+.topics-cloud a:hover {
+  -webkit-transition: all .2s ease-in-out;
+  -moz-transition: all .2s ease-in-out;
+  -o-transition: all .2s ease-in-out;
+  background-color: #3C3C3A;
+  color: whitesmoke;
+  }
+
+.topics-cloud .topic-filter {
+  float: right;
+}
+
+.topics-cloud #quick-filter {
+  height: 32px;
+  width: 160px;
 }
 
 

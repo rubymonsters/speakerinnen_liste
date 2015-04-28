@@ -1,35 +1,25 @@
-<div class="container profiles">
-  <h1>
-    <%= t(:title, scope: "profiles.index") %>
-  </h1>
-  <div class="row">
-    <div class="span6">
-      <span class="italic">
-        <%= t(:text, scope: "profiles.index").html_safe %>
-      </span>
-    </div>
-    <div class='span6' style="vertical-align:bottom">
-      <%= form_tag(search_path, :method => "get", :class =>"well") do %>
-        <%= text_field_tag(:q, nil, :class => "", :id => "search-field", :placeholder => t(:search_text, scope: "pages.home.search")) %>
-        <%= button_tag((t(:search, scope: "pages.home.search")), :class => "btn btn-large ") %>
-      <% end %>
-    </div>
-  </div>
-  <hr>
-  <br>
-  <section class="layout-wrapper">
+<section class="pages__background--grey">
+  <div class="layout-wrapper">
+    <h1>
+      <%= t(:title, scope: "profiles.index") %>
+    </h1>
+    <p>
+      <%= t(:text, scope: "profiles.index").html_safe %>
+    </p>
+
+    <%= form_tag(search_path, method: "get", class:"bb pv mv") do %>
+      <%= text_field_tag(:q, nil, class: "", id: "", placeholder: t(:search_text, scope: 'pages.home.search')) %>
+      <%= button_tag((t(:search, scope: 'pages.home.search')), class: "btn btn--small") %>
+    <% end %>
+
     <%= render partial: "profiles/profile", object: @profiles[0], locals: { is_first: true } %>
     <%= render partial: "profiles/profile", collection: @profiles[1..-2] %>
     <%= render partial: "profiles/profile", object: @profiles[-1], locals: { is_last: true } %>
-  </section>
-  <div class="row">
-    <div class="span12 text-center">
-      <%= paginate @profiles %>
-    </div>
-  </div>
-  <div class='row'>
+
+    <%= paginate @profiles %>
+
     <%= render partial: "tag" %>
+
+    <%= render partial: "layouts/footer" %>
   </div>
-</div>
-<%= render partial: "layouts/footer" %>
-<br>
+</section>
