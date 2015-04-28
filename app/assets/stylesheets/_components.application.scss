@@ -133,6 +133,10 @@ header {
   border-bottom: 1px solid $light-grey;
 }
 
+.bb {
+  border-bottom: 1px solid $light-grey;
+}
+
 .startpage-categories__list--no-bullets {
   list-style-type: none;
 }
@@ -225,4 +229,53 @@ header {
 
 footer#main-page-footer {
   background: $body-bg-color-grey;
+}
+
+
+/* paginate */
+
+.pagination {
+  text-align: center;
+}
+
+.pagination ul {
+    display: inline-block;
+    margin-left: 0px;
+    margin-bottom: 0px;
+    border-radius: 4px;
+    }
+
+.pagination ul > li {
+    display: inline;
+}
+
+.pagination ul > li:first-child > a, .pagination ul > li:first-child > span {
+    border-left-width: 1px;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+
+.pagination ul > li > a, .pagination ul > li > span {
+    float: left;
+    padding: 4px 12px;
+    line-height: 20px;
+    text-decoration: none;
+    border-width: 1px 1px 1px 0px;
+    border-style: solid;
+    border-color: #DDD;
+    -moz-border-top-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    border-image: none;
+}
+
+.pagination ul > .active > a, .pagination ul > .active > span {
+    color: $link-color;
+    cursor: default;
+}
+
+.pagination ul > li > a:hover, .pagination ul > li > a:focus, .pagination ul > .active > a, .pagination ul > .active > span {
+    background-color: $link-bg-color-hover;
+    color: $link-color-hover;
 }
