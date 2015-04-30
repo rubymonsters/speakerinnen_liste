@@ -58,7 +58,7 @@ $inuit-heading-size-1: 48px;
 
 
 /* border */
-$border-radius: 6px;
+$border-radius: 0;
 
 
 /* buttons */
@@ -84,5 +84,6 @@ $inuit-enable-paddings--none: true;
 $inuit-enable-paddings: true;
 $inuit-enable-margins--huge: true;
 $inuit-enable-margins--none: true;
+$inuit-enable-margins--small: true;
 
 $inuit-enable-btn--small: true;
