@@ -11,8 +11,13 @@ ActsAsTaggableOn::Tag.class_eval do
   #attr_accessible :name
 
   def merge(wrong_tag)
-    # update all taggings on any of these tags to now point to the tag that we keep
-    ActsAsTaggableOn::Tagging.where(tag_id: wrong_tag.id).update_all(tag_id: self.id)
-    wrong_tag.destroy
+    # update all taggings on any of these wrong tags to now point to the correct tag that we keep
+    Profile.tagged_with(wrong_tag).each do |profile|
+      profile.topic_list.remove(wrong_tag.name)
+      profile.topic_list.add(self.name)
+      profile.save
+      profile.reload
+    end
   end
+
 end

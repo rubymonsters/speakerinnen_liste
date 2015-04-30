@@ -5,7 +5,7 @@ describe ProfilesController, type: :controller do
 
   describe 'test index action' do
     let!(:profile) { FactoryGirl.create(:published) }
-    let!(:profile2) { FactoryGirl.create(:user, email: 'test@anders.com') }
+    let!(:profile2) { FactoryGirl.create(:profile, email: 'test@anders.com') }
 
     before do
       get :index
@@ -32,24 +32,24 @@ describe ProfilesController, type: :controller do
     let!(:admin) { FactoryGirl.create(:admin, email: 'admin@anders.com') }
 
     describe 'of unpublished profile' do
-      it 'is not permited for unauthorized not signed in profile' do
+      it 'is not permitted for unauthorized not signed in profile' do
         get :show, id: profile.id
         expect(response).to redirect_to('/de/profiles')
       end
 
-      it 'is not permited for unauthorized signed in profile' do
+      it 'is not permitted for unauthorized signed in profile' do
         sign_in profile1
         get :show, id: profile.id
         expect(response).to redirect_to('/de/profiles')
       end
 
-      it 'is permited for own profile' do
+      it 'is permitted for own profile' do
         sign_in profile
         get :show, id: profile.id
         expect(response).to render_template(:show)
       end
 
-      it 'is permited for admin' do
+      it 'is permitted for admin' do
         sign_in admin
         get :show, id: profile.id
         expect(response).to render_template(:show)
@@ -76,15 +76,15 @@ describe ProfilesController, type: :controller do
   end
 
   describe 'edit profile' do
-    let!(:maren) { FactoryGirl.create(:published) }
+    let!(:profile) { FactoryGirl.create(:published) }
 
     before do
-      sign_in maren
+      sign_in profile
     end
 
     it "doesn't create extra translations" do
-      de_factory_translation = maren.translations.find_by!('locale' => 'de')
-      en_translation = maren.translations.create!('locale' => 'en', 'main_topic' => 'Soc')
+      de_factory_translation = profile.translations.find_by('locale' => 'de')
+      en_translation = profile.translations.create!('locale' => 'en', 'main_topic' => 'Soc')
 
       profile_params = {
         translations_attributes:
@@ -102,9 +102,9 @@ describe ProfilesController, type: :controller do
             }
           }
         }
-      patch :update, {id: maren.id}.merge(profile: profile_params)
+      patch :update, {id: profile.id}.merge(profile: profile_params)
 
-      expect(maren.reload.translations.size).to eq(2)
+      expect(profile.reload.translations.size).to eq(2)
     end
   end
 end

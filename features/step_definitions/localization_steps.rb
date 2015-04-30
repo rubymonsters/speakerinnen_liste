@@ -16,8 +16,8 @@
 
 Given /^you view the page in (English|German)$/ do |language|
   lang_short_map = {
-    'English' => 'ENG',
-    'German' => 'DEU',
+    'English' => 'EN',
+    'German' => 'DE',
   }
   if page.has_link?(lang_short_map[language])
     click_on lang_short_map[language]

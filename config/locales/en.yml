@@ -74,6 +74,7 @@ en:
               <a href='http://railsgirlsberlin.de', target='_blank'>Rails Girls</a> is an international not-for-profit group that aims to get women into programming
               with workshops, scholarships, and a safe learning community.
         press: "Media Coverage"
+        blog: "Our blog"
         faq: "FAQs"
         links: "Links"
         links_text: "Here you find links to similar projects:"
@@ -140,21 +141,21 @@ en:
       lastname: 'Last name:'
       topics: "My topics:"
       languages: "My languages:"
-      talks: "Previous Talks:"
+      talks: "Previous talks:"
       media: "Examples of previous talks:"
-      bio: "My Bio:"
+      bio: "My bio:"
       contact: "Contact"
-      website: "My Website/Blog:"
+      website: "My website/Blog:"
       city: "My city:"
-      twitter: "My Twitter handle:"
+      twitter: "My twitter handle:"
       show: "Show"
-      edit: "Edit Profile"
+      edit: "Edit profile"
       destroy: "Delete"
       sure: "Are you sure?"
       link: "Be sure to add 'http://'"
       email: "Email:"
     medialinks:
-      edit: "Edit Medialinks"
+      edit: "Edit medialinks"
     edit:
       show: "Show own Profile"
       home: "Show all Speakerinnen* >>"
@@ -171,9 +172,9 @@ en:
     show:
       topics: "My topics:"
       languages: "My languages:"
-      talks: "Previous Talks:"
+      talks: "Previous talks:"
       media: "Examples of previous talks:"
-      bio: "My Bio: "
+      bio: "My bio: "
       email: "Email: "
       twitter: "Twitter:"
       contact: "Email to"

@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :user, class: Profile do
+  factory :profile do
     firstname "Factory"
     lastname "Girl"
     email "FactoryGirl@test.de"

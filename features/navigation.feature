@@ -123,13 +123,13 @@ Feature: Navigation
 
 # languages are implemented in localization_steps.rb
     Examples:
-    | language | are_or_are_not | role  | links                                             |
-    | English  | are not        | user  | Register as a speaker, Log in, DEU                |
-    | English  | are            | user  | My profile, Account, Log out, DEU                 |
-    | English  | are            | admin | My profile, Account, Log out, Admin, DEU          |
-    | German   | are not        | user  | Als Speakerin registrieren, Anmelden, ENG         |
-    | German   | are            | user  | Mein Profil, Benutzerkonto, Ausloggen, ENG        |
-    | German   | are            | admin | Mein Profil, Benutzerkonto, Ausloggen, Admin, ENG |
+    | language | are_or_are_not | role  | links                                            |
+    | English  | are not        | user  | Register as a speaker, Log in, DE                |
+    | English  | are            | user  | My profile, Account, Log out, DE                 |
+    | English  | are            | admin | My profile, Account, Log out, Admin, DE          |
+    | German   | are not        | user  | Als Speakerin registrieren, Anmelden, EN         |
+    | German   | are            | user  | Mein Profil, Benutzerkonto, Ausloggen, EN        |
+    | German   | are            | admin | Mein Profil, Benutzerkonto, Ausloggen, Admin, EN |
 
   Scenario Outline: viewing the start page
     Given you are on the start page

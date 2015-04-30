@@ -18,9 +18,9 @@ describe "navigation" do
 
   ['en','de'].each do |language|
     context "signed in as normal user" do
-      let(:user) { FactoryGirl.create(:user) }
+      let(:profile) { FactoryGirl.create(:profile) }
       before do
-        sign_in user, language
+        sign_in profile, language
       end
       it_should_behave_like "successful sign in"
       it { should have_no_link('Admin', admin_root_path) }
@@ -30,9 +30,9 @@ describe "navigation" do
     end
 
     context "signed in as admin" do
-      let(:user) { FactoryGirl.create(:admin) }
+      let(:profile) { FactoryGirl.create(:admin) }
       before do
-        sign_in user, language
+        sign_in profile, language
       end
       it_should_behave_like "successful sign in"
       it { should have_link('Admin', admin_root_path) }
