@@ -3,7 +3,7 @@ class LanguageMigrator
   def self.create_profile_languages(profiles)
     [:en, :de].each do |locale|
       I18n.locale = locale
-      Array(profiles.joins(:profile_languages)).each do |profile|
+      Array(profiles).each do |profile|
         I18n.t('iso_639_1').each do |iso_code, language|
           if !language_exists?(profile, iso_code) && language_matches?(profile, language, iso_code)
             ProfileLanguage.create!(profile: profile, iso_639_1: iso_code)
