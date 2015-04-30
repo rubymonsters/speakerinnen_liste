@@ -46,8 +46,11 @@ h2{
 .btn {
   font-family: $sans-serif;
   font-size: $inuit-base-font-size;
-  color: $link-color;
+  color: white;
   margin-top: -2px;
+  background: #52B3D9;
+  box-shadow: 0px 3px 0px #288eb6;
+  border: 0;
 }
 
 input {
