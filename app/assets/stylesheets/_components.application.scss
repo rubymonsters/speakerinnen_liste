@@ -17,6 +17,10 @@ a:hover {
 	font-family: $sans-serif;
 }
 
+.font-size-24 {
+  font-size: 24px;
+}
+
 h1{
   font-weight: normal;
   line-height: 60px;
@@ -47,7 +51,6 @@ h2{
   font-family: $sans-serif;
   font-size: $inuit-base-font-size;
   color: white;
-  margin-top: -2px;
   background: #52B3D9;
   box-shadow: 0px 3px 0px #288eb6;
   border: 0;
