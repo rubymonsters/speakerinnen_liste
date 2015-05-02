@@ -32,6 +32,9 @@ $white: #FFF;
 $transparent-white: rgba( $white, .6 );
 $transparent-black: rgba( $black, .5 );
 
+$dark-blue: #288EB6;
+$blue: #52B3D9;
+
 
 /* font */
 $serif: 'Merriweather', Georgia, serif;
@@ -78,6 +81,7 @@ $layout-width: 940px;
 
 /* inuit true */
 $inuit-use-fractions: true;
+$inuit-enable-layout--right: true;
 
 $inuit-enable-margins: true;
 $inuit-enable-paddings--none: true;
@@ -87,3 +91,4 @@ $inuit-enable-margins--none: true;
 $inuit-enable-margins--small: true;
 
 $inuit-enable-btn--small: true;
+$inuit-enable-btn--full: true;
