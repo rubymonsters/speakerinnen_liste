@@ -2,7 +2,7 @@
     <%= t(:topics, scope: "profiles.tag") %>
   </h1>
 
-  <%= form_tag(search_path, method: "get", class:"topic-filter pv mv") do %>
+  <%= form_tag(search_path, method: "get", class:"topic-filter pv mv font-size-24") do %>
     <%= text_field_tag(:q, nil, class: "search-query", id: "quick-filter", placeholder: "Quick Filter") %>
     <%= button_tag("Reset", class: "btn btn--small", id: "reset-quick-filter") %>
   <% end %>

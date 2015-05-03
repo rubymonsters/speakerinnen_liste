@@ -1,21 +1,21 @@
-<div class="container profiles">
-  <h1>
-    <%= @category.name %>
-  </h1>
-  <br>
-  <div class='row'>
+<section class="content--bg-grey">
+  <div class="layout-wrapper">
+    <h2 class="bb gamma pb">
+      <%= t(:category, scope: "profiles") %>
+      <%= link_to @category.name, root_path(anchor: "categories_anker"), class: 'content__link--bg' %>
+    </h2>
+
     <%= render partial: "tag" %>
-  </div>
-  <h3>
-    Speakerinnen*:
-  </h3>
-  <div class='row'>
-    <%= render partial: "profile", collection: @profiles %>
-  </div>
-  <div class="row">
-    <div class="span12 text-center">
-      <%= paginate @profiles %>
-    </div>
-  </div>
-</div>
-<%= render partial: "layouts/footer" %>
+
+  <h1 class="pv">
+    Speakerinnen*
+  </h1>
+
+  <%= render partial: "profiles/profile", object: @profiles[0], locals: { is_first: true } %>
+  <%= render partial: "profiles/profile", collection: @profiles[1..-2] %>
+  <%= render partial: "profiles/profile", object: @profiles[-1], locals: { is_last: true } %>
+
+  <%= paginate @profiles %>
+
+  <%= render partial: "layouts/footer" %>
+</section>
