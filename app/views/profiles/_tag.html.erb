@@ -1,4 +1,4 @@
-  <h1>
+  <h1 class="bt pt">
     <%= t(:topics, scope: "profiles.tag") %>
   </h1>
 
@@ -35,7 +35,7 @@
     });
   </script>
 
-<div class='topics-cloud pb bb'>
+<div class='topics-cloud pb'>
   <% if params[:category_id] %>
     <% custom_tag_cloud @tags.sort { |x,y| x.name <=> y.name }, %w[s m l] do |topic, css_class| %>
       <%= topic_link topic, class: css_class %>

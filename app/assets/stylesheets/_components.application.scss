@@ -142,6 +142,9 @@ header {
   border-bottom: 1px solid $light-grey;
 }
 
+.bt {
+  border-top: 1px solid $light-grey;
+}
 
 /* startpage */
 #startpage__start-teaser {
@@ -265,9 +268,6 @@ header {
 
 
 /* footer */
-.footer__head {
-  background: none;
-}
 
 .footer__link {
   padding: 0 4px;

@@ -12,9 +12,11 @@
       <%= button_tag((t(:search, scope: 'pages.home.search')), class: "btn btn--small") %>
     <% end %>
 
-    <%= render partial: "profiles/profile", object: @profiles[0], locals: { is_first: true } %>
-    <%= render partial: "profiles/profile", collection: @profiles[1..-2] %>
-    <%= render partial: "profiles/profile", object: @profiles[-1], locals: { is_last: true } %>
+    <div class="layout mb+">
+      <%= render partial: "profiles/profile", object: @profiles[0], locals: { is_first: true } %>
+      <%= render partial: "profiles/profile", collection: @profiles[1..-2] %>
+      <%= render partial: "profiles/profile", object: @profiles[-1], locals: { is_last: true } %>
+    </div>
 
     <%= paginate @profiles %>
 
