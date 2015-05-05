@@ -52,7 +52,7 @@ en:
       signin_via: "Or sign in with Twitter"
       no_confirmation: "Didn't receive confirmation instructions?"
       forgot_password: "Forgot your password?"
-      remeber: "Remeber me"
+      remember: "Remeber me"
       send_instructions: "Send me reset password instructions"
     sessions:
       signed_in: "Login successfully."

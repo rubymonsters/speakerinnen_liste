@@ -1,0 +1,233 @@
+/* color */
+
+$bwb-gradient: 45deg,
+      rgb(33,33,33),
+      rgb(255, 255, 255),
+      rgb(33,33,33)
+;
+
+$bwb-gradient-dark: 135deg,
+      rgb(255, 255, 255),
+      rgb(33,33,33),
+      rgb(33,33,33),
+      rgb(255, 255, 255)
+;
+/* mixins */
+@mixin lin-gradient($gradient) {
+  background: -webkit-linear-gradient($gradient);
+  background:    -moz-linear-gradient($gradient);
+  background:     -ms-linear-gradient($gradient);
+  background:      -o-linear-gradient($gradient);
+  background:         linear-gradient($gradient);
+}
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+          border-radius: $radius;
+}
+
+@mixin box-shadow($horizontal_offset,$vertical_offset,$blur,$spread,$color) {
+  -webkit-box-shadow: $horizontal_offset $vertical_offset $blur $spread $color;
+     -moz-box-shadow: $horizontal_offset $vertical_offset $blur $spread $color;
+          box-shadow: $horizontal_offset $vertical_offset $blur $spread $color;
+}
+
+@mixin inset-box-shadow($horizontal_offset,$vertical_offset,$blur,$spread,$color) {
+  -webkit-box-shadow: inset $horizontal_offset $vertical_offset $blur $spread $color;
+     -moz-box-shadow: inset $horizontal_offset $vertical_offset $blur $spread $color;
+          box-shadow: inset $horizontal_offset $vertical_offset $blur $spread $color;
+}
+
+@mixin transition($property,$duration,$timing_function) {
+  -webkit-transition: $property $duration $timing_function;
+     -moz-transition: $property $duration $timing_function;
+       -o-transition: $property $duration $timing_function;
+          transition: $property $duration $timing_function;
+}
+@mixin rotate($angle) {
+  -webkit-transform: rotate($angle);
+     -moz-transform: rotate($angle);
+          transform: rotate($angle);
+}
+
+@mixin rotate-scale-translate-xy($angle,$zoom,$x,$y) {
+  -webkit-transform: translate($x, $y) rotate($angle) scale($zoom);
+     -moz-transform: translate($x, $y) rotate($angle) scale($zoom);
+          transform: translate($x, $y) rotate($angle) scale($zoom);
+}
+
+@mixin hover-invert-text-and-background-color($color,$bgcolor) {
+  color:$color;
+  background-color:$bgcolor;
+
+  &:hover {
+      color: $bgcolor;
+      background-color:$color;
+  }
+}
+
+@mixin circle-container($height, $margin-top) {
+  height: $height;
+  margin-top: $margin-top;
+}
+
+@mixin circle-item($item-radius) {
+  width: $item-radius;
+  height: $item-radius;
+
+  @include border-radius(120px);
+  @include inset-box-shadow(0px,0px,2px,1px,$box-shadow-black);
+}
+
+
+.the-badge, .badge-rope-left, .badge-rope-right,
+.badge-connector, .badge-canvas {
+	display: inline-block;
+	position: relative;
+}
+
+.the-badge {
+	min-width: 250px;
+	    width: 30%;
+	max-width: 300px;
+
+	text-align: center;
+}
+
+.image-only-container {
+	line-height: 0;
+}
+
+.badge-rope-left {
+	z-index: 0;
+	width: 18px;
+	height: 50px;
+
+	background: image-url("rope-short-left.png") 0 0 no-repeat;
+}
+
+.badge-rope-right {
+	z-index: 2;
+	width: 40px;
+	height: 50px;
+
+	background: image-url("rope-short-right.png") 0 0 no-repeat;
+}
+
+.badge-connector {
+	margin-top: -23px;
+	background: rgba(255,255,255,0.8);
+	text-align: center;
+	min-width: 52px;
+	height: 100px;
+	z-index: 1;
+
+    -webkit-border-top-left-radius: 5px;
+      	-moz-border-radius-topleft: 5px;
+            border-top-left-radius: 5px;
+	 -webkit-border-top-right-radius: 5px;
+	     -moz-border-radius-topright: 5px;
+	         border-top-right-radius: 5px;
+
+  @include box-shadow(0px,-1px,3px,2px,$box-shadow-black);
+
+}
+
+.inner-circle {
+	margin: 4px;
+}
+
+.circle-container-big {
+	@include circle-container(25px,10px);
+}
+.circle-container-medium {
+	@include circle-container(20px,15px);
+}
+.circle-container-small {
+	@include circle-container(15px,5px);
+}
+
+.circle-big, .circle-medium, .circle-small {
+	display: inline-block;
+}
+
+.circle-big {
+	@include circle-item(30px);
+}
+
+.circle-medium {
+	@include circle-item(22px);
+}
+.circle-small {
+	@include circle-item(14px);
+}
+
+.circle-light {
+	background: $white-smoke;
+}
+
+.circle-dark {
+	background: #333;
+}
+
+.circle-light-metallic {
+	background: #fff;
+	@include lin-gradient($bwb-gradient);
+}
+
+.circle-dark-metallic {
+	background: #333;
+	@include lin-gradient($bwb-gradient-dark);
+}
+
+.badge-canvas {
+	margin-top: -12px;
+	padding: 0;
+
+	@include border-radius(14px);
+	background: #eee;
+	text-align: center;
+	@include box-shadow(0px,2px,10px,2px,$box-shadow-black);
+}
+
+.badge-perforation {
+	display: inline-block;
+	min-width: 70px;
+	min-height: 12px;
+	margin: 4px 0;
+
+	@include border-radius(14px);
+	background: $white-smoke;
+	@include inset-box-shadow(0px,8px,10px,0px,$grey);
+}
+
+.smaller-text {
+  font-size: 0.8em;
+}
+
+.login-form {
+
+	*:not(label) {
+		display: block;
+		text-align: center;
+		width: 100%;
+	}
+
+	input[type="email"],input[type="password"],input[type="text"] {
+		text-align: left;
+	}
+
+	input[type="checkbox"] {
+		width: 20px;
+	}
+
+	input[type="checkbox"], label {
+		display: inline-block;
+		font-weight: normal;
+	}
+
+	a {
+		line-height: normal;
+	}
+}

@@ -1,12 +1,14 @@
-<div class="container">
-  <div style="margin-top:50px">
-    <h2>Resend confirmation instructions</h2>
-    <%= simple_form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post, :class => 'form-vertical' }) do |f| %>
+<div class="layout-wrapper p+">
 
-      <%= f.input :email, :label => false, placeholder: "Email", :autofocus => true %>
-      <%= f.submit "Resend confirmation instructions", class: 'btn btn-info' %>
-    <% end %>
-    <br />
-    <%= render "devise/shared/links" %>
-  </div>
+  <h2>Resend confirmation instructions</h2>
+
+  <%= simple_form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post, class: '' }) do |f| %>
+
+    <%= f.input :email, label: false, placeholder: "Email", autofocus: true %>
+    <%= f.submit "Resend confirmation instructions", class: 'btn btn--small mt' %>
+
+  <% end %>
+
+  <%= render "devise/shared/links" %>
+
 </div>

@@ -230,6 +230,7 @@ de:
     sessions:
       new:
         login: "Anmelden"
+        signin: "Anmelden"
   medialinks:
     edit: "Bearbeite Medialink"
     new: "Medialink hinzufügen"

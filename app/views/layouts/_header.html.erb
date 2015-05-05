@@ -12,7 +12,7 @@
     |
     <%= link_to(t(:account, scope: 'layouts.application'), edit_profile_registration_path) %>
     |
-    <%= link_to(t(:logout, scope: 'layouts.application'), destroy_profile_session_path) %>
+    <%= link_to(t(:logout, scope: 'layouts.application'), destroy_profile_session_path, method: :delete) %>
   <% else %>
     <%= link_to(t(:signup, scope: 'layouts.application'), sign_up_path) %>
     |

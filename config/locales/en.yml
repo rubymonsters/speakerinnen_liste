@@ -231,6 +231,7 @@ en:
     sessions:
       new:
         login: "Log in"
+        signin: "Sign in"
   medialinks:
     edit: "Edit Medialink"
     new: "Add Medialink"
