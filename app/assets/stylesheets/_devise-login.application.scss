@@ -89,9 +89,7 @@ $bwb-gradient-dark: 135deg,
 
 .the-badge {
 	min-width: 250px;
-	    width: 30%;
-	max-width: 300px;
-
+	max-width: 350px;
 	text-align: center;
 }
 
@@ -103,7 +101,6 @@ $bwb-gradient-dark: 135deg,
 	z-index: 0;
 	width: 18px;
 	height: 50px;
-
 	background: image-url("rope-short-left.png") 0 0 no-repeat;
 }
 
@@ -111,7 +108,6 @@ $bwb-gradient-dark: 135deg,
 	z-index: 2;
 	width: 40px;
 	height: 50px;
-
 	background: image-url("rope-short-right.png") 0 0 no-repeat;
 }
 
