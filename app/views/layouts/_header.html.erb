@@ -28,14 +28,3 @@
     <%= link_to_unless I18n.locale == :de, 'DE', {locale: :de} %>
   </span>
 </header>
-
-<% if notice %>
-  <p class='notice'>
-    <%= notice %>
-  </p>
-<% end %>
-<% if alert %>
-  <p class='alert'>
-    <%= Array(alert).join('<br>').html_safe %>
-  </p>
-<% end %>
