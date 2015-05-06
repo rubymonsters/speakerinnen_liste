@@ -1,42 +1,76 @@
-<section class="content--bg-grey">
-  <div class="layout-wrapper">
+<div class="container profiles">
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put,class: "form-horizontal well" }) do |f| %>
 
-    <h1>
-      <%= t(:account_from, scope: "devise.registrations.edit" ) + @profile.firstname %>
-    </h1>
+    <div class="row">
+      <div class="span8">
+        <%= devise_error_messages! %>
+        <h1>
+          <%= t ".account_from" %> <%= @profile.firstname %>
+        </h1>
+        <br>
+        <div class="control-group">
+          <%= f.label :email, class:"control-label" %>
+          <div class="controls">
+            <%= f.email_field :email, autofocus: true, class:"input-xlarge" %>
+          </div>
+        </div>
 
-    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :post, class: "sans-serif" }) do |f| %>
-      <%= devise_error_messages! %>
+        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+          <div><%= t ".confirmation" %><%= resource.unconfirmed_email %>
+          </div>
+        <% end %>
 
-      <%= f.input :email, autofocus: true, input_html: { class: 'mb'} %>
+        <% if f.object.encrypted_password.present? %>
 
+          <div class="controll-group">
+            <%= f.label :old_password, class:"control-label" %>
+            <div class="controls">
+              <%= f.password_field :current_password, class:"input-xlarge" %>
+              <p class="help-block"><%= t ".password_needed" %></p>
+              <br>
+            </div>
+          </div>
 
-      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-        <%= t(:confirmation, scope: "devise.registrations.edit" ) %><%= resource.unconfirmed_email %>
-      <% end %>
-
-      <% if f.object.encrypted_password.present? %>
-
-        <%= f.input :current_password, placeholder: t(:password_current, scope: "devise.registrations.edit") %>
-        <p class="smaller-text mb">
-          <%= t(:password_needed, scope: "devise.registrations.edit") %>
-        </p>
-
-        <%= f.input :password, autocomplete: "off", class:"", placeholder: t(:new_password, scope: "devise.passwords"),label: t(:new_password, scope: "devise.passwords") %>
-        <p class="smaller-text mb">
-          <%= t(:password_blank, scope: "devise.registrations.edit") %>
-        </p>
-
-        <%= f.input :password_confirmation, placeholder: t(:password_confirmation, scope: "devise.passwords"), label: false, input_html: { class: 'mb'}  %>
-
-        <%= f.submit t(:update, scope: "devise.registrations.edit"), class:"btn btn--small" %>
-      <% end %>
-
-      <h2 class="mt pt bt"><%= t(:delete_account, scope: "devise.registrations.edit") %></h2>
-      <%= t(:unhappy, scope: "devise.registrations.edit") %>
-    <% end %>
-
-    <%= button_to t(:delete, scope: "devise.registrations.edit"), registration_path(resource_name), data: { confirm: t(:sure, scope: "devise.registrations.edit") }, method: :delete, class:"btn btn--danger btn--small mt" %>
-
-  </div>
-</section>
+          <div class="controll-group">
+            <%= f.label :new_password, class:"control-label" %>
+            <div class="controls">
+              <%= f.password_field :password, autocomplete: "off", class:"input-xlarge" %>
+              <p class="help-block"><%= t ".password_blank" %></p>
+              <br/>
+            </div>
+          </div>
+      </div>
+      <div class="span4">
+      </div>
+    </div>
+    <div class="row">
+      <div class="span6">
+        <div class="controll-group">
+          <%= f.label :password_confirmation, class:"control-label" %>
+          <div class="controls">
+            <%= f.password_field :password_confirmation, class:"input-xlarge" %>
+          </div>
+        </div>
+      </div>
+      <div class="span5">
+        <%= f.submit(t(".update"), class:"btn btn-warning btn-large") %>
+      </div>
+        <% end %>
+</div>
+<br>
+<hr>
+<div class="row">
+<div class="span8">
+  <h2><%= t ".delete_account" %></h2>
+    <%= t ".unhappy" %>
+</div>
+<div class="span3">
+<br>
+<br>
+<br>
+<% end %>
+  <%= button_to(t(".delete"), registration_path(resource_name), data: { confirm: t(".sure") }, method: :delete, class:"btn btn-danger btn-large") %>
+</div>
+</div>
+</div>
+</div>
