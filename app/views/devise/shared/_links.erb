@@ -17,7 +17,7 @@
 
 <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
   <li>
-    <%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name) %>
+    <%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name), class: 'mt' %>
   </li>
 <% end -%>
 
@@ -30,7 +30,7 @@
 <%- if devise_mapping.omniauthable? %>
   <%- resource_class.omniauth_providers.each do |provider| %>
   <li>
-    <%= link_to "Sign in with #{provider.to_s.titleize}", omniauth_authorize_path(resource_name, provider) %>
+    <%= link_to "Sign in with #{provider.to_s.titleize}", omniauth_authorize_path(resource_name, provider), class: 'mt' %>
   </li>
   <% end -%>
 <% end -%>

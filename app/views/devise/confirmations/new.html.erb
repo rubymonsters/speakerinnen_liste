@@ -32,12 +32,12 @@
       </div>
 
       <div class="p- sans-serif login-form">
-        <h4>Resend confirmation instructions</h4>
+        <h4><%= t(:resend_instructions_title, scope: "devise.registrations") %></h4>
 
         <%= simple_form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post, class: '' }) do |f| %>
 
           <%= f.input :email, label: false, placeholder: "Email", autofocus: true %>
-          <%= f.submit "Resend confirmation instructions", class: 'btn btn--small mt' %>
+          <%= f.submit t(:resend_instructions, scope: "devise.registrations"), class: 'btn btn--small mt' %>
 
         <% end %>
 

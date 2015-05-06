@@ -55,6 +55,8 @@ en:
       forgot_password: "Forgot your password?"
       remember: "Remember me"
       send_instructions: "Send me reset password instructions"
+      resend_instructions_title: "Resend confirmation instructions"
+      resend_instructions: "Send instructions"
     sessions:
       signed_in: "Login successfully."
       signed_out: "Logout successfully."

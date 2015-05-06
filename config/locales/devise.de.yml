@@ -53,6 +53,8 @@ de:
       forgot_password: "Passwort vergessen?"
       remember: "Angemeldet bleiben"
       send_instructions: "Schicke mir eine E-Mail"
+      resend_instructions_title: "Schicke mir nochmal die Bestätigungsmail"
+      resend_instructions: "Bestätigungsmail schicken"
     sessions:
       signed_in: 'Erfolgreich angemeldet.'
       signed_out: 'Erfolgreich abgemeldet.'
