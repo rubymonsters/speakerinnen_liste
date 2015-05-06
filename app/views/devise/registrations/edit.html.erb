@@ -5,7 +5,7 @@
       <%= t(:account_from, scope: "devise.registrations.edit" ) + @profile.firstname %>
     </h1>
 
-    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: "sans-serif" }) do |f| %>
+    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :post, class: "sans-serif" }) do |f| %>
       <%= devise_error_messages! %>
 
       <%= f.input :email, autofocus: true, input_html: { class: 'mb'} %>
