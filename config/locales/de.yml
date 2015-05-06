@@ -215,9 +215,10 @@ de:
   devise:
     registrations:
       edit:
-        account_from: "Account von"
+        account_from: "Account von "
         password_needed: '(wir brauchen dein jetziges Passwort um es ändern zu können)'
         password_blank: "(leer lassen wenn das Passwort nicht geändert werden soll)"
+        password_current: "Aktuelles Passwort"
         update: "Aktualisiere Account"
         delete_account: "Lösche meinen Account"
         unhappy: "Unglücklich?"

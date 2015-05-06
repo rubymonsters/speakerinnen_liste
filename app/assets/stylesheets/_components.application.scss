@@ -18,9 +18,12 @@ a:hover {
 }
 
 .font-size-24 {
-  font-size: 24px;
+  font-size: $inuit-base-spacing-unit;
 }
 
+.smaller-text {
+  font-size: halve($inuit-base-spacing-unit);
+}
 
 .text-center {
   text-align: center;
@@ -69,6 +72,16 @@ h2{
   color: white;
   background: $dark-blue;
   box-shadow: 0px 3px 0px $blue;
+}
+
+.btn--danger {
+  background: $red;
+  box-shadow: 0px 3px 0px $dark-red;
+}
+
+.btn--danger:active, .btn--danger:hover{
+  background: $dark-red;
+  box-shadow: 0px 3px 0px $red;
 }
 
 .notice {

@@ -198,10 +198,6 @@ $bwb-gradient-dark: 135deg,
 	@include inset-box-shadow(0px,8px,10px,0px,$grey);
 }
 
-.smaller-text {
-  font-size: 0.8em;
-}
-
 .login-form {
 
 	*:not(label) {
