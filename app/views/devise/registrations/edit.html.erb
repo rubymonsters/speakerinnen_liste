@@ -16,7 +16,7 @@
 
       <% if f.object.encrypted_password.present? %>
 
-        <%= f.input :current_password, placeholder: t(:password_current, scope: "devise.registrations.edit") %>
+        <%= f.input :current_password, placeholder: t(:password_current, scope: "devise.registrations.edit"), label: t(:password_current, scope: "devise.registrations.edit") %>
         <p class="smaller-text mb">
           <%= t(:password_needed, scope: "devise.registrations.edit") %>
         </p>
