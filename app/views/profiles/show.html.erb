@@ -64,42 +64,44 @@
 
     --><div class="layout__item 1/6">
 
-        <a data-toggle='modal' href='#contact' class='btn btn--small'>
+        <a data-toggle='modal' href='#contact' class='btn btn--small btn--full'>
           <i class="fa fa-envelope-o"></i>&nbsp;
           <%= t(:contact, scope: 'profiles.profile') %>
         </a>
 
         <% if current_profile == @profile %>
           <%= link_to(edit_profile_path(@profile)) do %>
-            <div class='btn buttons-modals btn--small'>
+            <div class='btn buttons-modals btn--small btn--full mt-'>
               <i class="fa fa-pencil"></i>
               <%= t(:edit, scope: 'profiles.profile') %>
             </div>
           <% end %>
+
           <%= link_to(profile_medialinks_path(@profile)) do %>
-            <div class='btn buttons-modals btn--small '>
+            <div class='btn buttons-modals btn--small btn--full mt-'>
               <i class="fa fa-pencil"></i>
               <%= t(:edit, scope: 'profiles.medialinks') %>
             </div>
           <% end %>
         <% end %>
+
     </div>
   </div>
 
-  <div class="layout-wrapper layout pt">
-    <div class="layout__item 5/6 bg--white">
-      <% if @profile.bio %>
+  <% if @profile.bio %>
+    <div class="layout-wrapper layout pt">
+      <div class="layout__item 5/6 bg--white">
         <h2 class="delta sans-serif mb-">
           <%= t(:bio, scope: 'profiles.profile') %>
         </h2>
         <%= simple_format(@profile.bio) %>
-      <% end %>
+      </div>
     </div>
-  </div>
+  <% end %>
 
-  <div class="layout-wrapper layout pt">
-    <div class="layout__item 5/6 bg--white">
-      <% if @profile.medialinks.any? %>
+  <% if @profile.medialinks.any? %>
+    <div class="layout-wrapper layout pt">
+      <div class="layout__item 5/6 bg--white">
         <h2 class="delta sans-serif mb-">
           <%= t(:media, scope: 'profiles.profile') %>
         </h2>
@@ -114,9 +116,9 @@
           <% end %>
         </ul>
 
-      <% end %>
+      </div>
     </div>
-  </div>
+  <% end %>
 
   <div class="layout-wrapper layout layout--right">
     <div class="layout__item 1/3">
