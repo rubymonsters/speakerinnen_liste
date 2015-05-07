@@ -1,4 +1,4 @@
-<div class="text-center">
+<div class="text--center">
   <div class="the-badge">
     <div class="image-only-container">
       <div class="badge-rope-left badge-rope-height">
@@ -22,12 +22,12 @@
         </div>
       </div>
     </div>
-    <div class="badge-canvas text-center">
+    <div class="badge-canvas text--center">
       <div class="image-only-container">
         <div class="badge-perforation">
         </div>
       </div>
-      <div class="text-center">
+      <div class="text--center">
         <%= image_tag('logo_header.png') %>
       </div>
 
@@ -67,7 +67,7 @@
             <%= link_to t(:forgot_password, scope: "devise.registrations"), new_password_path(resource_name), class:"mb-" %>
           <% end %>
 
-          <div class="smaller-text">
+          <div class="font-size--small">
             <% if devise_mapping.confirmable? && controller_name != 'confirmations' %>
               <%= link_to t(:no_confirmation, scope: "devise.registrations"), new_confirmation_path(:profile) %>
             <% end %>

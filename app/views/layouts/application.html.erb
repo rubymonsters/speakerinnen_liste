@@ -18,12 +18,12 @@
     <%= render 'layouts/header' %>
     <div id="content">
       <% if notice %>
-        <div class='notice p sans-serif text-center'>
+        <div class='notice p sans-serif text--center'>
           <%= notice %>
         </div>
       <% end %>
       <% if alert %>
-        <div class='alert p sans-serif text-center'>
+        <div class='alert p sans-serif text--center'>
           <%= Array(alert).join('<br>').html_safe %>
         </div>
       <% end %>

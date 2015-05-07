@@ -17,12 +17,12 @@
       <% if f.object.encrypted_password.present? %>
 
         <%= f.input :current_password, placeholder: t(:password_current, scope: "devise.registrations.edit"), label: t(:password_current, scope: "devise.registrations.edit") %>
-        <p class="smaller-text mb">
+        <p class="font-size--small mb">
           <%= t(:password_needed, scope: "devise.registrations.edit") %>
         </p>
 
         <%= f.input :password, autocomplete: "off", class:"", placeholder: t(:new_password, scope: "devise.passwords"),label: t(:new_password, scope: "devise.passwords") %>
-        <p class="smaller-text mb">
+        <p class="font-size--small mb">
           <%= t(:password_blank, scope: "devise.registrations.edit") %>
         </p>
 

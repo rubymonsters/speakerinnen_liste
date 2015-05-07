@@ -26,7 +26,7 @@
       <%= image_tag(@profile.picture_url, width: 100) if @profile.picture.present? %>
       <%= f.file_field :picture %>
 
-      <p class='smaller-text'>
+      <p class='font-size--small'>
         <%= t(:copyright_photo, scope: 'profiles.form') %>
         <%= t(:size_photo, scope: 'profiles.form') %>
       </p>
