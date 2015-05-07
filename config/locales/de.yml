@@ -197,13 +197,13 @@ de:
         firstname: "Vorname"
         lastname: "Nachname"
         bio: 'Deine Bio auf %{language}<br>
-              <small>(Hier ist Platz für eine kurze oder auch längere Bio. Außerdem sollten hier Fachkenntnisse und mögliche Vortragsthemen genauer beschrieben werden. Das hilft Veranstalterinnen und Veranstaltern herauszufinden, ob Ihr die Richtigen für ihr Event sein könntet)</small>'
-        topic_list: "Deine Themen als Tags<br><small>(Bitte schaue zuerst, ob Dein Thema schon vorhanden ist)</small>"
-        main_topic: "Dein Hauptthema<br>auf %{language}<small>
-        <br>(Trage Dein Hauptthema hier nochmal ein. Dieses Thema wird mit Deinem Namen und Bild auf der Speakerinnen-Übersichtsseite zu sehen sein)</small>"
+              <small>Hier ist Platz für eine kurze oder auch längere Bio. Außerdem sollten hier Fachkenntnisse und mögliche Vortragsthemen genauer beschrieben werden. Das hilft Veranstalterinnen und Veranstaltern herauszufinden, ob Ihr die Richtigen für ihr Event sein könntet.</small>'
+        topic_list: "Deine Themen als Tags<br><small>Bitte schaue zuerst, ob Dein Thema schon vorhanden ist.</small>"
+        main_topic: "Dein Hauptthema auf %{language}<small>
+        <br>Trage Dein wichtigstes Thema hier nochmal ein. Dieses Thema wird mit Deinem Namen und Bild auf der Speakerinnen-Übersichtsseite zu sehen sein.</small>"
         tag_list: "schon vorhandene Tags"
         talks: "Vortragsthemen"
-        languages: "Sprachen<br><small>(Programmiersprachen bitte bei Themen angeben, nicht hier)</small>"
+        languages: "Sprachen<br><small>Programmiersprachen bitte bei Themen angeben, nicht hier.</small>"
         city: "Stadt"
         twitter: "Twitter"
         picture: "Bild"

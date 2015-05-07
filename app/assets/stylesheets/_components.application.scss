@@ -98,7 +98,11 @@ h2{
   color: $red;
 }
 
-input {
+.hidden {
+  display: none;
+}
+
+textarea, input {
   border-radius: $border-radius;
   border: 1px solid $light-grey;
   line-height: 32px;
@@ -107,10 +111,32 @@ input {
   padding-left: quarter($inuit-base-spacing-unit);
 }
 
+.input--width {
+  width: 400px;
+}
+
 .border-radius {
   border-radius: $border-radius;
 }
 
+.bv {
+  border-top: 1px solid $light-grey;
+  border-bottom: 1px solid $light-grey;
+}
+
+.bb {
+  border-bottom: 1px solid $light-grey;
+}
+
+.bt {
+  border-top: 1px solid $light-grey;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid $light-grey;
+
+}
 
 /* header */
 #header__home-link {
@@ -165,18 +191,6 @@ header {
   background-color: $link-bg-color-hover;
 }
 
-.bv {
-  border-top: 1px solid $light-grey;
-  border-bottom: 1px solid $light-grey;
-}
-
-.bb {
-  border-bottom: 1px solid $light-grey;
-}
-
-.bt {
-  border-top: 1px solid $light-grey;
-}
 
 /* startpage */
 #startpage__start-teaser {
