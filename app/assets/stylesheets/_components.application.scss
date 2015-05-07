@@ -375,3 +375,21 @@ footer#main-page-footer {
     background-color: $link-bg-color-hover;
     color: $link-color-hover;
 }
+
+
+/* medialinks */
+
+
+ul#medialinks_list {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+
+  li {
+    margin: 0 3px 10px 3px;
+    padding: 0.8em;
+    background-color: white;
+    cursor: move;
+
+  }
+}
