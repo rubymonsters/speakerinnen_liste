@@ -23,8 +23,10 @@
     <div class="layout mb+">
 
       <%= render partial: "profiles/profile", object: @results.map(&:profile)[0], locals: { is_first: true } %>
-      <%= render partial: "profiles/profile", collection: @results.map(&:profile)[1..-2] %>
-      <%= render partial: "profiles/profile", object: @results.map(&:profile)[-1], locals: { is_last: true } %>
+      <% if @results.size > 1 %>
+        <%= render partial: "profiles/profile", collection: @results.map(&:profile)[1..-2] %>
+        <%= render partial: "profiles/profile", object: @results.map(&:profile)[-1], locals: { is_last: true } %>
+      <% end %>
 
     </div>
 
