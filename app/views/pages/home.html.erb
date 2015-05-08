@@ -5,7 +5,7 @@
 
     <%= form_tag(search_path, method: 'get', class:"page-box") do %>
       <div class="box__bg--light pv pl border-radius">
-        <%= text_field_tag(:q, nil, class: "", id: "", placeholder: t(:search_text, scope: 'pages.home.search')) %>
+        <%= text_field_tag(:q, nil, class: "", id: "profile__search", placeholder: t(:search_text, scope: 'pages.home.search')) %>
         <%= button_tag((t(:search, scope: 'pages.home.search')), class: "btn btn--small") %>
       </div>
       <div class="mh0 mt">
