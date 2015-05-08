@@ -39,4 +39,5 @@ RSpec.configure do |config|
   config.include Capybara::DSL
   config.include Devise::TestHelpers, type: :controller
 
+  config.filter_run_excluding broken: true
 end
