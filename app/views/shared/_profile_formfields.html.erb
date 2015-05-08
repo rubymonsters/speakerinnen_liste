@@ -1,79 +1,75 @@
-<section class="content--bg-grey">
-  <div class="layout-wrapper layout">
-    <div class="layout__item 3/6 bg--white">
+<div class="layout mt">
+  <div class="layout__item 3/6 bg--white">
 
-      <%= f.input :firstname, input_html: { class: "mb" } %>
-      <%= f.input :lastname, input_html: { class: "mb" } %>
-      <%= f.input :email, input_html: { class: "mb" } %>
-      <%= f.input :twitter, placeholder: '@', input_html: { class: "mb" } %>
-      <%= f.input :city, input_html: { class: "mb" } %>
-      <%= f.input :languages, label: t(:languages, scope: 'activerecord.attributes.profile').html_safe, input_html: { class: "mb" } %>
-      <%= f.input :website, placeholder: 'http://', input_html: { class: "mb" } %>
-      <%= f.input :topic_list, label: t(:topic_list, scope: 'activerecord.attributes.profile').html_safe, input_html: { class: "mb" } %>
+    <%= f.input :firstname, input_html: { class: "mb" } %>
+    <%= f.input :lastname, input_html: { class: "mb" } %>
+    <%= f.input :email, input_html: { class: "mb" } %>
+    <%= f.input :twitter, placeholder: '@', input_html: { class: "mb" } %>
+    <%= f.input :city, input_html: { class: "mb" } %>
+    <%= f.input :languages, label: t(:languages, scope: 'activerecord.attributes.profile').html_safe, input_html: { class: "mb" } %>
+    <%= f.input :website, placeholder: 'http://', input_html: { class: "mb" } %>
+    <%= f.input :topic_list, label: t(:topic_list, scope: 'activerecord.attributes.profile').html_safe, input_html: { class: "mb" } %>
 
-      <ul class='hidden' id='availableTags'>
-        <% ActsAsTaggableOn::Tag.uniq.pluck(:name).each do |tag_name| %>
-          <li><%= tag_name %></li>
-        <% end %>
-      </ul>
+    <ul class='hidden' id='availableTags'>
+      <% ActsAsTaggableOn::Tag.uniq.pluck(:name).each do |tag_name| %>
+        <li><%= tag_name %></li>
+      <% end %>
+    </ul>
 
-    </div><!--
+  </div><!--
 
-    --><div class="layout__item 3/6">
+  --><div class="layout__item 3/6">
 
-      <%= f.label :picture %>
+    <%= f.label :picture %>
 
-      <%= image_tag(@profile.picture_url, width: 100) if @profile.picture.present? %>
-      <%= f.file_field :picture %>
+    <%= image_tag(@profile.picture_url, width: 100) if @profile.picture.present? %>
+    <%= f.file_field :picture %>
 
-      <p class='font-size--small'>
-        <%= t(:copyright_photo, scope: 'profiles.form') %>
-        <%= t(:size_photo, scope: 'profiles.form') %>
+    <p class='font-size--small'>
+      <%= t(:copyright_photo, scope: 'profiles.form') %>
+      <%= t(:size_photo, scope: 'profiles.form') %>
+    </p>
+
+    <%= f.check_box :remove_picture %>
+    <%= t(:delete_picture, scope: 'profiles.form') %>
+
+  </div>
+</div>
+
+<div class="layout pt">
+  <div class=" layout__item 1/1 bg--white">
+
+    <h5>
+      <%= t(:translation, scope: 'activerecord.attributes.profile').html_safe %>
+    </h5>
+
+    <%= f.fields_for :translations, @profile.translations.sort_by(&:locale) do |translation| %>
+
+      <%= translation.hidden_field :locale %>
+
+      <p>
+        <%= translation.label :main_topic, t(:main_topic,
+          scope: 'activerecord.attributes.profile',
+          language:  @profile.language(translation)).html_safe,
+          class: '' %>
       </p>
 
-      <%= f.check_box :remove_picture %>
-      <%= t(:delete_picture, scope: 'profiles.form') %>
+      <%= translation.text_field :main_topic, class: 'input--width' %>
 
+      <%= translation.hidden_field :locale %>
 
-    </div>
+      <p>
+        <%= translation.label :bio, t(:bio,
+          scope: 'activerecord.attributes.profile',
+          language: @profile.language(translation)).html_safe,
+          class: '' %>
+      </p>
+
+      <%= translation.text_area :bio, rows: 10, class: 'input--width' %>
+      <hr>
+    <% end %>
+
+    <%= f.button :submit, t(:update, scope: 'profiles.form'), class:'btn btn--small mt mb++' %>
+
   </div>
-
-  <div class="layout-wrapper layout pt">
-    <div class="bg--white">
-
-      <h5>
-        <%= t(:translation, scope: 'activerecord.attributes.profile').html_safe %>
-      </h5>
-
-      <%= f.fields_for :translations, @profile.translations.sort_by(&:locale) do |translation| %>
-
-        <%= translation.hidden_field :locale %>
-
-        <p>
-          <%= translation.label :main_topic, t(:main_topic,
-            scope: 'activerecord.attributes.profile',
-            language:  @profile.language(translation)).html_safe,
-            class: 'sans-serif' %>
-        </p>
-
-        <%= translation.text_field :main_topic, class: 'input--width' %>
-
-        <%= translation.hidden_field :locale %>
-
-        <p>
-          <%= translation.label :bio, t(:bio,
-            scope: 'activerecord.attributes.profile',
-            language: @profile.language(translation)).html_safe,
-            class: 'sans-serif' %>
-        </p>
-
-        <%= translation.text_area :bio, rows: 10, class: 'input--width' %>
-        <hr>
-      <% end %>
-
-      <%= f.button :submit, t(:update, scope: 'profiles.form'), class:'btn btn--small mt mb++' %>
-
-    </div>
-  </div>
-</section>
-
+</div>
