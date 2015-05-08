@@ -18,7 +18,7 @@ describe "navigation" do
 
   ['en','de'].each do |language|
     context "signed in as normal user" do
-      let(:profile) { FactoryGirl.create(:profile) }
+      let!(:profile) { FactoryGirl.create(:profile) }
       before do
         sign_in profile, language
       end

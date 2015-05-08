@@ -54,8 +54,7 @@
 
           <% button = @signup ? 'signup' : 'signin' %>
 
-          <%= f.submit t(button, scope: "devise.registrations"), class:'btn btn--small mb' %>
-
+          <%= f.submit t(:signin, scope: "devise.sessions.new"), class:'btn btn--small mb' %>
 
           <% if devise_mapping.omniauthable? %>
             <% Profile.omniauth_providers.each do |provider| %>
