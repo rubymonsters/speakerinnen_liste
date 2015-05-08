@@ -243,14 +243,14 @@ de:
     YouTube-Clips können direkt abgespielt werden, alle anderen URLs erscheinen als klickbare Links.
     Es können auch Audio-Dateien oder Texte verlinkt werden!
     <br>"
-    help: "(Du kannst die Reihenfolge der Vorträge mit Drag&Drop verschieben.)"
+    help: "Du kannst die Reihenfolge der Vorträge mit Drag&Drop verschieben."
     url: "URL:"
     title: "Überschrift:"
     description: "Beschreibung:"
     edit_link: " bearbeiten"
     delete_link: " löschen"
     language: "de"
-    tooltip: "Du kannst die Reihenfolge der Referenzen per Drag&Drop ändern."
+    tooltip: "Verschiebe die Reihenfolge mit Drag&Drop."
   search:
     empty: "Du hast nach <strong> %{searchparams} </strong> gesucht, leider haben wir nix gefunden :("
     success: "Du hast nach <strong> %{searchparams} </strong> gesucht und wir haben tatsächlich"
