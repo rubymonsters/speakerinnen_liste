@@ -91,11 +91,17 @@ h2{
 .notice {
   background: $blue;
   color: white;
+  font-family: $sans-serif;
+  padding: $inuit-base-spacing-unit;
+  text-align: center;
 }
 
 .alert {
   background: $red;
   color: white;
+  font-family: $sans-serif;
+  padding: $inuit-base-spacing-unit;
+  text-align: center;
 }
 
 .help-inline {
