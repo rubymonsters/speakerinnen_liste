@@ -92,7 +92,7 @@
     <% if @profile.bio %>
       <div class="layout pt">
         <div class="layout__item 5/6 bg--white">
-          <h2 class="delta sans-serif mb-">
+          <h2 class="delta sans-serif pb">
             <%= t(:bio, scope: 'profiles.profile') %>
           </h2>
           <%= simple_format(@profile.bio) %>
@@ -103,7 +103,7 @@
     <% if @profile.medialinks.any? %>
       <div class="layout pt">
         <div class="layout__item 5/6 bg--white mb+">
-          <h2 class="delta sans-serif mb-">
+          <h2 class="delta sans-serif pb">
             <%= t(:media, scope: 'profiles.profile') %>
           </h2>
 

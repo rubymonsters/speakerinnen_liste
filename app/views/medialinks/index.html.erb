@@ -38,9 +38,9 @@
 
         <p class="help"><%= t(:help, scope: "medialinks").html_safe %></p>
 
-        <div id="messages"></div>
+        <p id="medialinks__list--sort-message"></p>
 
-        <ul id="medialinks_list" data-update-url="<%= sort_profile_medialinks_url%>" class="<%= t(:language, scope: "medialinks")%>">
+        <ul id="medialinks__list" data-update-url="<%= sort_profile_medialinks_url%>" class="<%= t(:language, scope: "medialinks")%>">
           <% @medialinks.each do |medialink| %>
             <%= content_tag_for(:li, medialink, nil, {'title' => t(:tooltip, scope: 'medialinks')}) do %>
               <b>

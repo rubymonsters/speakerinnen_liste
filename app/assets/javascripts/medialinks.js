@@ -1,13 +1,13 @@
 jQuery(function() {
-  return $('#medialinks_list').sortable({
+  return $('#medialinks__list').sortable({
     axis: 'y',
     update: function() {
       return $.post($(this).data('update-url'), $(this).sortable('serialize'), (function(_this) {
         return function() {
           if ($(_this).hasClass('de')) {
-            return $("#messages").text('Die Reihenfolge wurde gespeichert!');
+            return $("#medialinks__list--sort-message").text('Die Reihenfolge wurde gespeichert!');
           } else {
-            return $("#messages").text('References sort order saved!');
+            return $("#medialinks__list--sort-message").text('References sort order saved!');
           }
         };
       })(this));
@@ -16,7 +16,7 @@ jQuery(function() {
 });
 
 $(function() {
-    $( "#medialinks_list li" ).tooltip({
+    $( "#medialinks__list li" ).tooltip({
       position: {
         my: "center bottom-20",
         at: "center top",

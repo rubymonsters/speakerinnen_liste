@@ -380,7 +380,7 @@ footer#main-page-footer {
 /* medialinks */
 
 
-ul#medialinks_list {
+ul#medialinks__list {
   padding: 0;
   margin: 0;
   list-style-type: none;
@@ -396,8 +396,12 @@ ul#medialinks_list {
   }
 }
 
+#medialinks__list--sort-message {
+  color: $blue;
+}
+
 .ui-tooltip, .arrow:after {
-  background: black;
+  background:rgba(0,0,0,0.6);
 }
 .ui-tooltip {
   padding: 10px 20px;
