@@ -17,6 +17,7 @@ de:
       edit_profiles: "Bearbeite Profile"
       categories:
         categories: "Kategorien"
+        explanation: "Um eine Kategorie auf Englisch und Deutsch anzulegen, füge zuerst die Kategorie in einer Sprache hinzu, wechsle in die andere Sprache und übersetzte den Kategorienamen mithilfe von dem >Bearbeiten< Button."
         category_language_de: "Deutsch"
         category_language_en: "Englisch"
         category_name: "Name der Kategorie"

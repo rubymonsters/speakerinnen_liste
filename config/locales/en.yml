@@ -17,6 +17,7 @@ en:
       edit_profiles: "Edit Profiles"
       categories:
         categories: "Categories"
+        explanation: "To add a category in english and german, first you have to add the name of the category, then change the scope of your language and translate that category name with the >edit< button."
         category_language_de: "German"
         category_language_en: "English"
         category_name: "Category name"

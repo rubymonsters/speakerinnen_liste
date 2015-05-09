@@ -1,48 +1,45 @@
-<div class="container profiles">
-  <h1 class="title-profiles">Administration::<%= t(:categories, scope: "admin.dashboard.categories")%></h1>
-  <div class="row">
-    <div class="span2">
-      <%= link_to ('<i class="icon-plus icon-white"></i>'+t(:add, scope: "general")).html_safe,
-      new_admin_category_path, class: "btn btn-info" %>
-      <br>
-      <br>
-    </div>
-    <div class="span10">
-    </div>
+<section class="content--bg-white">
+  <div class="layout-wrapper">
+
+    <h1>Administration::<%= t(:categories, scope: "admin.dashboard.categories")%></h1>
+
+    <p><%= t(:explanation, scope: "admin.dashboard.categories") %></p>
+
+    <%= link_to ('<i class="fa fa-plus-circle">&nbsp;</i>' + t(:add, scope: "general")).html_safe,
+    new_admin_category_path, class: "btn btn--small" %>
+
+    <table class="table table--compact mv+">
+      <thead class>
+        <tr>
+          <th><%= t(:category_language_de, scope: "admin.dashboard.categories")%></th>
+          <th><%= t(:category_language_en, scope: "admin.dashboard.categories")%></th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <% @categories.each do |category| %>
+        <tr>
+        <% Globalize.with_locale(:de) do %>
+          <td>
+            <%= category.name %>
+          </td>
+        <% end %>
+        <% Globalize.with_locale(:en) do %>
+          <td>
+            <%= category.name %>
+          </td>
+        <% end %>
+          <td>
+            <%= link_to ('<i class="fa fa-pencil">&nbsp;</i>' + t(:edit, scope: "general")).html_safe,
+                edit_admin_category_path(category.id) %>
+          </td>
+          <td>
+            <%= link_to ('<i class="fa fa-trash-o">&nbsp;</i>' + t(:delete, scope: "general")).html_safe, admin_category_path(category.id), :method => :delete,
+              :confirm => "Do you want to delete the category #{category.name}?" %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
   </div>
-    <div class="row">
-      <div class="span12">
-        <table id="category-table" class="table table-bordered table-hovered table-condensed">
-          <thead>
-          <tr>
-             <th><%= t(:category_language_de, scope: "admin.dashboard.categories")%></th>
-            <th><%= t(:category_language_en, scope: "admin.dashboard.categories")%></th>
-            <th></th>
-          </tr>
-          </thead>
-          <% @categories.each do |category| %>
-            <tr>
-            <% Globalize.with_locale(:de) do %>
-              <td>
-                <%= category.name %>
-              </td>
-            <% end %>
-            <% Globalize.with_locale(:en) do %>
-              <td>
-                <%= category.name %>
-              </td>
-            <% end %>
-              <td>
-                <%= link_to t(:edit, scope: "general"),
-                    edit_admin_category_path(category.id) %>
-                <%= link_to t(:delete, scope: "general"), admin_category_path(category.id), :method => :delete,
-                  :confirm => "Do you want to delete the category #{category.name}?" %>
-              </td>
-            </tr>
-          <% end %>
-        </table>
-        <br />
-      </div>
-      <hr/>
-  </div>
-</div>
+</section>
