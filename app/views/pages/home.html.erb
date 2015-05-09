@@ -25,10 +25,11 @@
     <%= t(:speaker_text, scope: 'pages.home.speakers') %><BR>
     <%= link_to t(:speaker_index, scope: 'pages.home.speakers'), profiles_path, class: 'content__link--bg' %>
   </h1>
-
-  <%= render partial: "profiles/profile", object: @profiles[0], locals: { is_first: true } %>
-  <%= render partial: "profiles/profile", collection: @profiles[1..-2] %>
-  <%= render partial: "profiles/profile", object: @profiles[-1], locals: { is_last: true } %>
+  <% if @profiles.any? %>
+      <%= render partial: "profiles/profile", object: @profiles[0], locals: { is_first: true } %>
+      <%= render partial: "profiles/profile", collection: @profiles[1..-2] %>
+      <%= render partial: "profiles/profile", object: @profiles[-1], locals: { is_last: true } %>
+  <% end %>
 </section>
 
 <section id="startpage__teaser-bg-01" class="startpage__photo-bar mt++">

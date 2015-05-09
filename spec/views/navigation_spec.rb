@@ -5,7 +5,7 @@ shared_examples_for "successful sign in" do
   it { should have_link(I18n.t("layouts.application.logout"),destroy_profile_session_path) }
 end
 
-describe "navigation", :broken => true do
+describe "navigation", :broken => false do
   subject { page }
 
   before do
