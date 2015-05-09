@@ -1,6 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<% admin_header_class = 'admin' if controller_path =~ /admin\// %>
-<header>
+<header id=<%= 'admin__header--color' if controller_path =~ /admin\// %> >
   <%# TODO: hidden <h1>Speakerinnen</h1>%>
   <%= link_to(root_path, id: 'header__home-link') do %>
     <%= t(:home, scope: "layouts.application") %>
