@@ -7,13 +7,12 @@ de:
     delete: "Löschen"
     filter: "Filtern"
     create: "Erstellen"
+    save: "Speichern"
     ok: "Ok"
-    current_name: "Bisheriger Name"
-    new_name: "Neuer Name"
   admin:
     dashboard:
       edit_categories: "Bearbeite Kategorien"
-      edit_tags: "Bearbeite Tags"
+      edit_tags: "Bearbeite Tag"
       edit_profiles: "Bearbeite Profile"
       categories:
         categories: "Kategorien"
@@ -36,11 +35,13 @@ de:
           show_all: "Liste aller Profile"
       tags:
         tags: "Tags"
+        current_tagname: "Bisheriger Name"
+        new_tagname: "Trage den neuen Tag Namen ein: "
         tags_of: " von "
         tags_here_are: "Du siehst "
-        tags_search: "Suche nach einem bestimmtem tag:"
-        tags_count: "Die Anzahl aller tags ist "
-        tags_filter_option: "Alle tags ohne Kategorien anzeigen"
+        tags_search: "Suche nach einem bestimmtem Tag:"
+        tags_count: "Die Anzahl aller Tags ist "
+        tags_filter_option: "Alle Tags ohne Kategorien anzeigen"
         tags_filter_default: "Alle Kategorien auswählen"
   pages:
     home:

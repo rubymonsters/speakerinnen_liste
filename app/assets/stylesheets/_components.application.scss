@@ -33,6 +33,10 @@ a:hover {
   text-align: right;
 }
 
+.vertical-top {
+  vertical-align: top;
+}
+
 #admin__header--color {
   background: #ffcc00;
 }
@@ -452,4 +456,10 @@ ul#medialinks__list {
 .arrow.top:after {
   bottom: -20px;
   top: auto;
+}
+
+.category--assigned_to_tag {
+  color: white;
+  background-color: $grey;
+  padding: 0 1px;
 }

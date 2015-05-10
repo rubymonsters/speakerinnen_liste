@@ -7,9 +7,8 @@ en:
     delete: "Delete"
     filter: "Filter"
     create: "Create"
+    save: "Save"
     ok: "Ok"
-    current_name: "Current name"
-    new_name: "New name"
   admin:
     dashboard:
       edit_categories: "Edit Categories"
@@ -36,6 +35,8 @@ en:
           show_all: "List all profiles"
       tags:
         tags: "Tags"
+        current_tagname: "Current name"
+        new_tagname: "Enter new tag name: "
         tags_of: " out of "
         tags_here_are: "Here are "
         tags_search: "Search for tag"

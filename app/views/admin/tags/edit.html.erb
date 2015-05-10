@@ -1,8 +1,15 @@
-<div class="container profiles">
-  <h1>Edit tag "<%= @tag.name %>":</h1>
-  <%= form_tag(admin_tag_path(@tag.id, page: params[:page]), :method => "put") do %>
-    <%= label_tag("tag_name", "Enter the new Name:") %>
-    <%= text_field(:tag, :name, value: @tag.name) %>
-    <%= submit_tag("Update") %>
-  <% end %>
-</div>
+<section class="content--bg-white">
+  <div class="layout-wrapper">
+
+    <h1>Administration::<%= t(:tags, scope: "admin.dashboard.tags")%>::<%= t(:edit, scope: "general")%></h1>
+
+    <p><%= t(:current_tagname, scope: "admin.dashboard.tags") %>:&nbsp;<b><%= @tag.name %><b></p>
+
+    <%= form_tag(admin_tag_path(@tag.id, page: params[:page]), method: "put") do %>
+      <%= label_tag("tag_name", t(:new_tagname, scope: "admin.dashboard.tags")) %>
+      <%= text_field(:tag, :name, value: @tag.name) %>
+      <%= submit_tag t(:save, scope: "general"), class: "btn btn--small" %>
+    <% end %>
+
+  </div>
+</section>

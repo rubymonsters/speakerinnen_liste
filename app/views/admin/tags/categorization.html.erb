@@ -1,62 +1,48 @@
-<div class='container profiles'>
-  <h1 class='title-profiles'>Administration::<%= t(:tags, scope: 'admin.dashboard.tags')%></h1>
+<section class="content--bg-white">
+  <div class="layout-wrapper">
 
+    <h1>Administration::<%= t(:tags, scope: 'admin.dashboard.tags')%></h1>
 
-  <%= render partial: 'filter' %>
+    <%= render partial: 'filter' %>
 
-
-  <div class='row'>
-    <div class='span12 text--center'>
+    <strong>
       <% if @tags_count %>
-        <strong>
           <%= t(:tags_here_are, scope: 'admin.dashboard.tags') + @tags.total_count.to_s + t(:tags_of, scope: 'admin.dashboard.tags') + @tags_count.to_s + ' tags.' %>
-        </strong>
       <% else %>
-        <strong>
           <%= t(:tags_count, scope: 'admin.dashboard.tags') + @tags.total_count.to_s + '.' %>
-        </strong>
       <% end %>
-      <%= paginate @tags %>
-    </div>
-  </div>
+    </strong>
 
-  <div class='row'>
-    <div class='span12'>
-      <table class='admin-tags-categorization table'>
-        <% @tags.each do |tag| %>
-          <tr>
+    <%= paginate @tags %>
+
+    <table class='table table--compact table--rows mv+'>
+      <% @tags.each do |tag| %>
+        <tr class="vertical-top">
+          <td>
+            <b><%= link_to tag.name, edit_admin_tag_path(tag.id, page: params[:page]), data: { toggle: 'tooltip', placement: 'left' }, title: 'Edit' %></b>
+            <%= tag.taggings_count %>
+          </td>
+          <% @categories.each do |category| %>
             <td>
-              <%= link_to tag.name, edit_admin_tag_path(tag.id, page: params[:page]) %>
-              <%= tag.taggings_count %>
+              <% if tag.categories.pluck(:id).include?(category.id) %>
+                <%= link_to category.name, remove_category_admin_tag_path(tag,
+                category_id: category.id, page: params[:page], q: params[:q],
+                uncategorized: params[:uncategorized]), method: :post, class: 'category--assigned_to_tag'  %>
+              <% else %>
+                <%= link_to category.name, set_category_admin_tag_path(tag,
+                category_id: category.id, page: params[:page], q: params[:q],
+                uncategorized: params[:uncategorized]), method: :post %>
+              <% end %>
             </td>
-            <% @categories.each do |category| %>
-              <td>
-                <% if tag.categories.pluck(:id).include?(category.id) %>
-                  <%= link_to category.name, remove_category_admin_tag_path(tag,
-                  category_id: category.id, page: params[:page], q: params[:q],
-                  uncategorized: params[:uncategorized]), method: :post, class: 'active'  %>
-                <% else %>
-                  <%= link_to category.name, set_category_admin_tag_path(tag,
-                  category_id: category.id, page: params[:page], q: params[:q],
-                  uncategorized: params[:uncategorized]), method: :post %>
-                <% end %>
-              </td>
-            <% end %>
-              <td>
-               <%= link_to admin_tag_path(tag.id), method: :delete, data: { confirm: 'Are you sure?',toggle: 'tooltip', placement: 'left' }, class: 'btn btn-default', title: 'Delete' do %>
-                  Delete
-                <% end %>
-              </td>
-          </tr>
-        <% end %>
-      </table>
-    </div>
-  </div>
+          <% end %>
+            <td>
+             <%= link_to ('<i class="fa fa-trash-o">&nbsp;</i>').html_safe, admin_tag_path(tag.id), method: :delete, data: { confirm: 'Are you sure?',toggle: 'tooltip', placement: 'left' }, class: 'btn btn--small', title: 'Delete'%>
+            </td>
+        </tr>
+      <% end %>
+    </table>
 
-  <div class='row'>
-    <div class='span12 text--center'>
-      <%= paginate @tags %>
-    </div>
-  </div>
+    <%= paginate @tags %>
 
-</div>
+  </div>
+</section>
