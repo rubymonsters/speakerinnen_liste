@@ -1,16 +1,20 @@
 <% if local_assigns[:is_first] %>
-  <div class="layout__item 1/4">
+  <div class="layout__item 1/4 mb">
+    <div>
 <% else %>
---><div class="layout__item 1/4">
+--><div class="layout__item 1/4 mb">
+    <div class="ml">
 <% end %>
     <%= profile_picture_link(profile) %>
     <%= link_to profile.fullname, profile %>
-    <%= profile.main_topic_or_first_topic.truncate(30) if profile.main_topic_or_first_topic  %>
+    <%= profile.main_topic_or_first_topic.truncate(30) if profile.main_topic_or_first_topic %>
     <% if profile.twitter.present? %>
       <%= t ".twitter" %> <%=link_to "@" + profile.twitter_name_formatted, profile.twitter_link_formatted, target: '_blank' %>
     <% end %>
 <% if local_assigns[:is_last] %>
+    </div>
   </div>
 <% else  %>
+    </div>
   </div><!--
 <% end %>
