@@ -5,7 +5,7 @@
 
     <%= render partial: 'filter' %>
 
-    <strong>
+    <strong class="mt">
       <% if @tags_count %>
           <%= t(:tags_here_are, scope: 'admin.dashboard.tags') + @tags.total_count.to_s + t(:tags_of, scope: 'admin.dashboard.tags') + @tags_count.to_s + ' tags.' %>
       <% else %>
