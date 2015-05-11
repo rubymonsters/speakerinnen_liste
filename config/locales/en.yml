@@ -20,6 +20,8 @@ en:
         category_language_de: "German"
         category_language_en: "English"
         category_name: "Category name"
+        current_name: "Current category name: "
+        new_name: "Enter new category name: "
       profiles:
         profiles: "Profiles"
         created_at: "Created at"
@@ -35,7 +37,7 @@ en:
           show_all: "List all profiles"
       tags:
         tags: "Tags"
-        current_tagname: "Current name"
+        current_tagname: "Current tag name: "
         new_tagname: "Enter new tag name: "
         tags_of: " out of "
         tags_here_are: "Here are "

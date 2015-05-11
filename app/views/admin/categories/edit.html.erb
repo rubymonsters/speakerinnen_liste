@@ -5,9 +5,9 @@
 
     <%= simple_form_for [:admin, @category], html: {class: ''} do |f| %>
 
-      <p><%= t(:current_name, scope: "general") %>:&nbsp;<b><%= @category.name %><b></p>
+      <p><%= t(:current_name, scope: "admin.dashboard.categories") %><b><%= @category.name %></b></p>
 
-      <%= f.input :name, label: t(:new_name, scope: "general"), input_html: { class: "mv" }, required: false %>
+      <%= f.input :name, label: t(:new_name, scope: "admin.dashboard.categories"), input_html: { class: "mv" }, required: false %>
 
       <%= f.submit t(:save, scope: "general"), class:"btn btn--small" %>
     <% end %>

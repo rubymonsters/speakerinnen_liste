@@ -20,6 +20,8 @@ de:
         category_language_de: "Deutsch"
         category_language_en: "Englisch"
         category_name: "Name der Kategorie"
+        current_name: "Bisheriger Name der Kategorie:"
+        new_name: "Trage den neuen Namen der Kategorie ein: "
       profiles:
         profiles: "Profile"
         created_at: "Erstellt am"
@@ -35,8 +37,8 @@ de:
           show_all: "Liste aller Profile"
       tags:
         tags: "Tags"
-        current_tagname: "Bisheriger Name"
-        new_tagname: "Trage den neuen Tag Namen ein: "
+        current_tagname: "Bisheriger Name des Tags:"
+        new_tagname: "Trage den neuen Namen des Tags ein: "
         tags_of: " von "
         tags_here_are: "Du siehst "
         tags_search: "Suche nach einem bestimmtem Tag:"

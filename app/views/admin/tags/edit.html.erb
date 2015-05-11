@@ -3,10 +3,11 @@
 
     <h1>Administration::<%= t(:tags, scope: "admin.dashboard.tags")%>::<%= t(:edit, scope: "general")%></h1>
 
-    <p><%= t(:current_tagname, scope: "admin.dashboard.tags") %>:&nbsp;<b><%= @tag.name %><b></p>
+    <p><%= t(:current_tagname, scope: "admin.dashboard.tags") %><b><%= @tag.name %></b></p>
+
+    <p><%= t(:new_tagname, scope: "admin.dashboard.tags")%></p>
 
     <%= form_tag(admin_tag_path(@tag.id, page: params[:page]), method: "put") do %>
-      <%= label_tag("tag_name", t(:new_tagname, scope: "admin.dashboard.tags")) %>
       <%= text_field(:tag, :name, value: @tag.name) %>
       <%= submit_tag t(:save, scope: "general"), class: "btn btn--small" %>
     <% end %>

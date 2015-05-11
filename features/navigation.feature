@@ -53,9 +53,9 @@ Feature: Navigation
     And you are able to see: <new>
 
     Examples:
-    | language | area       | edit       | update_button | current         | new        |
-    | English  | Categories | Edit       | Ok            | Current name    | New name   |
-    | German   | Kategorien | Bearbeiten | Ok            | Bisheriger Name | Neuer Name |
+    | language | area       | edit       | update_button | current                        | new                                      |
+    | English  | Categories | Edit       | Save          | Current category name:         | Enter new category name:                 |
+    | German   | Kategorien | Bearbeiten | Speichern     | Bisheriger Name der Kategorie: | Trage den neuen Namen der Kategorie ein: |
 
   Scenario Outline: view add category in admin area
     Given you view the admin area <area> in <language>
@@ -113,7 +113,7 @@ Feature: Navigation
      Examples:
     | language | area | filterTags                      | noOfSearchResults           | filter  |
     | English  | Tags | Search for tag                  | The number of all tags is   | Filter  |
-    | German   | Tags | Suche nach einem bestimmtem tag | Die Anzahl aller tags ist   | Filtern |
+    | German   | Tags | Suche nach einem bestimmtem Tag | Die Anzahl aller Tags ist   | Filtern |
 
   Scenario Outline: page has header
     Given you <are_or_are_not> signed in as <role>
