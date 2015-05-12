@@ -24,9 +24,9 @@ de:
         new_name: "Trage den neuen Namen der Kategorie ein: "
       profiles:
         profiles: "Profile"
-        created_at: "Erstellt am"
-        updated_at: "Zuletzt gespeichert"
-        visibility: "Sichtbarkeit"
+        created_at: "Erstellt"
+        updated_at: "Editiert"
+        visibility: "Veröffentlicht"
         public: "öffentlich"
         invisible: "unsichtbar"
         roles: "Rollen"

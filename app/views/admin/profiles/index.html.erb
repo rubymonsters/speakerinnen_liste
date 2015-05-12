@@ -1,52 +1,45 @@
-<div class="container profiles">
-  <h1 class="title-profiles">Administration::<%= t(:profiles, scope: "admin.dashboard.profiles")%></h1>
-  <div class="row">
-    <div class="span12">
-      <%= Profile.all.size %> Speakerinnen.
-      <%= Profile.all.select {|profile| profile.published?}.size %> <%= t(:public, scope: "admin.dashboard.profiles") %>.
-    </div>
-  </div>
+<section class="content--bg-white">
+  <div class="layout-wrapper">
 
-  <div class="row">
-    <div class="span12">
-      <%= form_tag(admin_profiles_path, method: 'get', class: "admin_profile__search") do %>
-        <%= text_field_tag :search, params[:search], placeholder: "Suche nach Namen" %>
-        <%= submit_tag 'Suche', class: "btn btn-info" %>
-      <% end %>
-    </div>
-  </div>
+  <h1>Administration::<%= t(:profiles, scope: "admin.dashboard.profiles")%></h1>
 
-  <div class="row">
-    <div class="span12 text--center">
-      <%= paginate @profiles %>
-    </div>
-  </div>
-  <table class="table table-striped sort-arrows">
-    <thead>
+  <%= Profile.all.size %> Speakerinnen.
+  <%= Profile.all.select {|profile| profile.published?}.size %> <%= t(:public, scope: "admin.dashboard.profiles") %>.
+
+  <%= form_tag(admin_profiles_path, method: 'get', class: "font-size-24") do %>
+
+    <%= text_field_tag :search, params[:search], placeholder: "Suche nach Namen" %>
+    <%= submit_tag 'Suche', class: "btn btn--small" %>
+  <% end %>
+
+  <%= paginate @profiles %>
+
+  <table class="table table--rows">
+    <thead class="bg--lightgrey">
       <tr>
-        <th>
+        <td>
           <%= sortable "lastname", "Speakerinnen" %>
-        </th>
-        <th>
+        </td>
+        <td>
           <%= sortable "created_at", t(:created_at, scope: "admin.dashboard.profiles") %>
-        </th>
-        <th>
+        </td>
+        <td>
           <%= sortable "updated_at", t(:updated_at, scope: "admin.dashboard.profiles") %>
-        </th>
-        <th>
+        </td>
+        <td>
           Media Links
-        </th>
-        <th>
-        </th>
-        <th>
-        </th>
-        <th>
+        </td>
+        <td>
+        </td>
+        <td>
+        </td>
+        <td>
           <%= sortable "published", t(:visibility, scope: "admin.dashboard.profiles") %>
-        </th>
-        <th><%= t(:roles, scope: "admin.dashboard.profiles") %>
-        </th>
-        <th><%= t(:comment, scope: "admin.dashboard.profiles") %>
-        </th>
+        </td>
+        <td><%= t(:roles, scope: "admin.dashboard.profiles") %>
+        </td>
+        <td><%= t(:comment, scope: "admin.dashboard.profiles") %>
+        </td>
       </tr>
     </thead>
     <tbody>
@@ -65,16 +58,16 @@
           <%= link_to(profile.medialinks.size, admin_profile_medialinks_path(profile)) %>
         </td>
         <td>
-          <%= link_to t(:edit, scope: "general"), edit_admin_profile_path(profile) %>
+          <%= link_to ('<i class="fa fa-pencil">&nbsp;</i>').html_safe, edit_admin_profile_path(profile) %>
         </td>
         <td>
-          <%= link_to t(:delete, scope: "general"), admin_profile_path(profile), confirm: 'Are you sure?', method: :delete %>
+          <%= link_to ('<i class="fa fa-trash-o">&nbsp;</i>').html_safe, admin_profile_path(profile), confirm: 'Are you sure?', method: :delete %>
         </td>
         <td>
           <% if profile.published %>
-            <%= link_to(t(:public, scope: "admin.dashboard.profiles"), unpublish_admin_profile_path(profile.id), method: :post, class:"btn btn-small btn-warning") %>
+            <%= link_to(t(:public, scope: "admin.dashboard.profiles"), unpublish_admin_profile_path(profile.id), method: :post, class:"btn btn--small") %>
           <% else %>
-            <%= link_to(t(:invisible, scope: "admin.dashboard.profiles"), publish_admin_profile_path(profile.id), method: :post, class:"btn btn-small btn-danger", title: "Eine Bestätigungsmail wird verschickt.") %>
+            <%= link_to(t(:invisible, scope: "admin.dashboard.profiles"), publish_admin_profile_path(profile.id), method: :post, class:"btn btn--small btn--danger", title: "Eine Bestätigungsmail wird verschickt.") %>
           <% end %>
         </td>
         <td>
@@ -83,16 +76,15 @@
         <td>
           <%= form_for profile,{ url: admin_comment_admin_profile_path(profile.id), method: "post" } do |f| %>
             <%= f.text_field "admin_comment" %>
-            <%= f.submit t(:add_comment, scope: "admin.dashboard.profiles"), class: "btn btn-small btn-info" %>
+            <%= f.submit t(:add_comment, scope: "admin.dashboard.profiles"), class: "btn btn--small" %>
           <% end  %>
         </td>
       </tr>
   <% end %>
     </tbody>
   </table>
-  <div class="row">
-    <div class="span12 text--center">
-      <%= paginate @profiles %>
-    </div>
+
+  <%= paginate @profiles %>
+
   </div>
-</div>
+</section>
