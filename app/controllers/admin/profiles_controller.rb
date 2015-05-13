@@ -21,6 +21,7 @@ class Admin::ProfilesController < Admin::BaseController
   end
 
   def edit
+    build_missing_translations(@profile)
   end
 
   def update
@@ -96,6 +97,14 @@ class Admin::ProfilesController < Admin::BaseController
 
     def sort_direction
       %w[asc desc].include?(params[:direction]) ? params[:direction] : 'desc'
+    end
+
+    def build_missing_translations(object)
+      I18n.available_locales.each do |locale|
+        unless object.translated_locales.include?(locale)
+          object.translations.build(locale: locale)
+        end
+      end
     end
 
 end
