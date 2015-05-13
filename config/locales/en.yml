@@ -32,6 +32,7 @@ en:
         roles: "Roles"
         comment: "Comment"
         add_comment: "Add comment"
+        profile_status: "The Profile is "
         edit:
           show: "Show profile"
           show_all: "List all profiles"
