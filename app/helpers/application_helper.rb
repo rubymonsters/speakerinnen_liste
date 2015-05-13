@@ -12,7 +12,7 @@ module ApplicationHelper
     tooltip = case column
       when "lastname" then "Nach dem Nachnamen sortieren"
       when "created_at" then "Nach dem Erstellungsdatum sortieren"
-      when "updated_at" then "Nach dem Editierungsdatum sortieren"
+      when "updated_at" then "Nach dem letzten Speicherdatum sortieren"
       when "published" then "Nach Sichtbarkeit sortieren"
     end
     direction = column == sort_column && sort_direction == "desc" ? "asc" : "desc"

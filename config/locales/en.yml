@@ -24,8 +24,8 @@ en:
         new_name: "Enter new category name: "
       profiles:
         profiles: "Profiles"
-        created_at: "Created at"
-        updated_at: "Updated at"
+        created_at: "Created"
+        updated_at: "Updated"
         visibility: "Visibility"
         public: "public"
         invisible: "invisible"

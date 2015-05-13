@@ -82,9 +82,9 @@ Feature: Navigation
 
 # languages are implemented in localization_steps.rb
     Examples:
-    | language | area     | link       | link2      | link3                | person       | created_at  | media_links | visibility   | roles  | comment   |
-    | English  | Profiles | public     | invisible  | Add comment          | Speakerinnen | Created at  | Media Links | Visibility   | Roles  | Comment   |
-    | German   | Profile  | öffentlich | unsichtbar | Kommentar hinzufügen | Speakerinnen | Erstellt am | Media Links | Sichtbarkeit | Rollen | Kommentar |
+    | language | area     | link       | link2      | link3                | person       | created_at | media_links | visibility     | roles  | comment   |
+    | English  | Profiles | public     | invisible  | Add comment          | Speakerinnen | Created    | Media Links | Visibility     | Roles  | Comment   |
+    | German   | Profile  | öffentlich | unsichtbar | Kommentar hinzufügen | Speakerinnen | Erstellt   | Media Links | Veröffentlicht | Rollen | Kommentar |
 
   Scenario Outline: viewing edit certain profile in admin area
     Given you view the admin area <area> in <language>
