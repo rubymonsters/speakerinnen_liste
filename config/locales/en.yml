@@ -242,6 +242,7 @@ en:
   medialinks:
     edit: "Edit Medialink"
     new: "Add Medialink"
+    delete: "Delete Medialink"
     index: "References"
     # Translation
     medialink_description: "Here you can add examples of your previous talks, panel discussions, TV shows or similar talking situations.

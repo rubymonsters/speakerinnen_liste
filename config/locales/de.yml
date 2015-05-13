@@ -47,6 +47,10 @@ de:
         tags_count: "Die Anzahl aller Tags ist "
         tags_filter_option: "Alle Tags ohne Kategorien anzeigen"
         tags_filter_default: "Alle Kategorien auswählen"
+      medialink:
+        url: "URL:"
+        title: "Überschrift:"
+        description: "Beschreibung:"
   pages:
     home:
       search:
@@ -241,6 +245,7 @@ de:
   medialinks:
     edit: "Bearbeite Medialink"
     new: "Medialink hinzufügen"
+    delete: "Medialink löschen"
     index: "Referenzen"
     medialink_description: "Hier ist Platz für Beispiele von bereits gehaltenen Vorträgen, Podiumsdiskussionen, Fernsehauftritten uvm.<br>
     Am besten nicht zu viele - aber auch nicht zu wenige - möglichst verschiedene Referenzen:
