@@ -31,10 +31,10 @@
     <tbody>
     <% @profiles.each do |profile|  %>
       <tr>
-        <td><%= link_to name_or_email(profile), admin_profile_path(profile) %></td>
+        <td><%= link_to name_or_email(profile), admin_profile_path(profile), html_options = { title: t(:show, scope: "admin.dashboard.profiles.edit") } %></td>
         <td><%= profile.created_at.strftime('%d.%m.%Y um %H:%M Uhr') %></td>
         <td><%= profile.updated_at.strftime('%d.%m.%Y um %H:%M Uhr') %></td>
-        <td><%= link_to(profile.medialinks.size, admin_profile_medialinks_path(profile)) %></td>
+        <td><%= link_to profile.medialinks.size, admin_profile_medialinks_path(profile), html_options = { title: t(:edit, scope: "medialinks") } %></td>
         <td><%= link_to ('<i class="fa fa-pencil">&nbsp;</i>').html_safe, edit_admin_profile_path(profile), html_options = { title: t(:edit, scope: "general") } %></td>
         <td><%= link_to ('<i class="fa fa-trash-o">&nbsp;</i>').html_safe, admin_profile_path(profile), confirm: 'Are you sure?', method: :delete %></td>
         <td><% if profile.published %>
