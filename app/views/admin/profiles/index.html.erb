@@ -17,62 +17,33 @@
   <table class="table table--rows">
     <thead class="bg--lightgrey">
       <tr>
-        <td>
-          <%= sortable "lastname", "Speakerinnen" %>
-        </td>
-        <td>
-          <%= sortable "created_at", t(:created_at, scope: "admin.dashboard.profiles") %>
-        </td>
-        <td>
-          <%= sortable "updated_at", t(:updated_at, scope: "admin.dashboard.profiles") %>
-        </td>
-        <td>
-          Media Links
-        </td>
-        <td>
-        </td>
-        <td>
-        </td>
-        <td>
-          <%= sortable "published", t(:visibility, scope: "admin.dashboard.profiles") %>
-        </td>
-        <td><%= t(:roles, scope: "admin.dashboard.profiles") %>
-        </td>
-        <td><%= t(:comment, scope: "admin.dashboard.profiles") %>
-        </td>
+        <td><%= sortable "lastname", "Speakerinnen" %></td>
+        <td><%= sortable "created_at", t(:created_at, scope: "admin.dashboard.profiles") %></td>
+        <td><%= sortable "updated_at", t(:updated_at, scope: "admin.dashboard.profiles") %></td>
+        <td>Media Links</td>
+        <td></td>
+        <td></td>
+        <td><%= sortable "published", t(:visibility, scope: "admin.dashboard.profiles") %></td>
+        <td><%= t(:roles, scope: "admin.dashboard.profiles") %></td>
+        <td><%= t(:comment, scope: "admin.dashboard.profiles") %></td>
       </tr>
     </thead>
     <tbody>
     <% @profiles.each do |profile|  %>
       <tr>
-        <td>
-          <%= link_to name_or_email(profile), admin_profile_path(profile) %>
-        </td>
-        <td>
-          <%= profile.created_at.strftime('%d.%m.%Y um %H:%M Uhr') %>
-        </td>
-        <td>
-          <%= profile.updated_at.strftime('%d.%m.%Y um %H:%M Uhr') %>
-        </td>
-        <td>
-          <%= link_to(profile.medialinks.size, admin_profile_medialinks_path(profile)) %>
-        </td>
-        <td>
-          <%= link_to ('<i class="fa fa-pencil">&nbsp;</i>').html_safe, edit_admin_profile_path(profile) %>
-        </td>
-        <td>
-          <%= link_to ('<i class="fa fa-trash-o">&nbsp;</i>').html_safe, admin_profile_path(profile), confirm: 'Are you sure?', method: :delete %>
-        </td>
-        <td>
-          <% if profile.published %>
+        <td><%= link_to name_or_email(profile), admin_profile_path(profile) %></td>
+        <td><%= profile.created_at.strftime('%d.%m.%Y um %H:%M Uhr') %></td>
+        <td><%= profile.updated_at.strftime('%d.%m.%Y um %H:%M Uhr') %></td>
+        <td><%= link_to(profile.medialinks.size, admin_profile_medialinks_path(profile)) %></td>
+        <td><%= link_to ('<i class="fa fa-pencil">&nbsp;</i>').html_safe, edit_admin_profile_path(profile), html_options = { title: t(:edit, scope: "general") } %></td>
+        <td><%= link_to ('<i class="fa fa-trash-o">&nbsp;</i>').html_safe, admin_profile_path(profile), confirm: 'Are you sure?', method: :delete %></td>
+        <td><% if profile.published %>
             <%= link_to(t(:public, scope: "admin.dashboard.profiles"), unpublish_admin_profile_path(profile.id), method: :post, class:"btn btn--small") %>
           <% else %>
             <%= link_to(t(:invisible, scope: "admin.dashboard.profiles"), publish_admin_profile_path(profile.id), method: :post, class:"btn btn--small btn--danger", title: "Eine Bestätigungsmail wird verschickt.") %>
           <% end %>
         </td>
-        <td>
-          <%= "Admin" if profile.admin %>
-        </td>
+        <td><%= "Admin" if profile.admin %></td>
         <td>
           <%= form_for profile,{ url: admin_comment_admin_profile_path(profile.id), method: "post" } do |f| %>
             <%= f.text_field "admin_comment" %>
