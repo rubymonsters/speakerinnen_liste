@@ -14,7 +14,7 @@
       <div class="layout__item 2/6">
 
           <%= profile_picture_link(@profile) %>
-          <p class="mt0"><%= @profile.main_topic_or_first_topic %></p>
+          <p class="mt0"><%= @profile.main_topic_or_first_topic.truncate(30) %></p>
 
       </div><!--
 
