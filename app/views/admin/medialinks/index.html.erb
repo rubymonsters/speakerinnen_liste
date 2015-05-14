@@ -7,8 +7,8 @@
 
       --><div class="layout__item 1/3 text--right">
 
-        <%= link_to(t(:show, scope: "admin.dashboard.profiles.edit"), admin_profile_path(@profile), class:"btn btn--small") %>
-        <%= link_to(t(:show_all, scope: "admin.dashboard.profiles.edit"), admin_profiles_path, class:"btn btn--small") %><br>
+        <%= link_to t(:show, scope: "admin.dashboard.profiles.edit"), admin_profile_path(@profile), class:"btn btn--small" %>
+        <%= link_to t(:show_all, scope: "admin.dashboard.profiles.edit"), admin_profiles_path, class:"btn btn--small" %><br>
 
         <%= link_to t(:new, scope: "medialinks"),
                   new_admin_profile_medialink_path(@profile), class: "btn btn--small btn--danger mv" %>
@@ -18,9 +18,9 @@
 
     <div class="layout mb+">
       <div class="layout__item 1/1">
-        <p>
-          <%= t(:profile_status, scope: "admin.dashboard.profiles") %>: <strong><%= @profile.fullname %></strong>
-        </p>
+        <h2 class="delta sans-serif mb- bb pb text--color-red">
+          <%= t(:name_of_profile, scope: "admin.dashboard.profiles") %> <strong><%= @profile.fullname %></strong>
+        </h2>
 
         <table class="table table--rows">
           <thead class="bg--lightgrey">

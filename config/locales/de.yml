@@ -29,11 +29,14 @@ de:
         updated_at: "Editiert"
         visibility: "Veröffentlicht"
         public: "öffentlich"
+        make_public: "veröffentliche"
         invisible: "unsichtbar"
+        make_invisible: "Mache unsichtbar"
         roles: "Rollen"
         comment: "Kommentar"
         add_comment: "Kommentar hinzufügen"
         profile_status: "Das Profil ist "
+        name_of_profile: "Der Name der Speakerin ist "
         edit:
           show: "Zeige Profil"
           show_all: "Liste aller Profile"
@@ -51,6 +54,7 @@ de:
         url: "URL:"
         title: "Überschrift:"
         description: "Beschreibung:"
+        new_medialink_for: "Du erstellst gerade einen neuen Medialink für "
   pages:
     home:
       search:
@@ -245,6 +249,7 @@ de:
   medialinks:
     edit: "Bearbeite Medialink"
     new: "Medialink hinzufügen"
+    show: "Medialinks anzeigen"
     delete: "Medialink löschen"
     index: "Referenzen"
     medialink_description: "Hier ist Platz für Beispiele von bereits gehaltenen Vorträgen, Podiumsdiskussionen, Fernsehauftritten uvm.<br>
