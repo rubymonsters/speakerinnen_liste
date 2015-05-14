@@ -8,6 +8,7 @@ de:
     filter: "Filtern"
     create: "Erstellen"
     save: "Speichern"
+    search: "Suche"
     ok: "Ok"
   admin:
     dashboard:
@@ -37,6 +38,7 @@ de:
         add_comment: "Kommentar hinzufügen"
         profile_status: "Das Profil ist "
         name_of_profile: "Der Name der Speakerin ist "
+        search_for_name: "Suche nach dem Namen"
         edit:
           show: "Zeige Profil"
           show_all: "Liste aller Profile"
