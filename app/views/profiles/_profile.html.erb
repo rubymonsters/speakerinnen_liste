@@ -9,7 +9,7 @@
     <%= link_to profile.fullname, profile %>
     <%= profile.main_topic_or_first_topic.truncate(30) if profile.main_topic_or_first_topic %>
     <% if profile.twitter.present? %>
-      <%= t ".twitter" %> <%=link_to "@" + profile.twitter_name_formatted, profile.twitter_link_formatted, target: '_blank' %>
+      <%= t '.twitter' %> <%= link_to "@" + profile.twitter_name_formatted, profile.twitter_link_formatted, target: '_blank' %>
     <% end %>
 <% if local_assigns[:is_last] %>
     </div>
