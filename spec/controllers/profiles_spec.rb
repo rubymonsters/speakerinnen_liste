@@ -2,7 +2,6 @@ require 'spec_helper'
 include AuthHelper
 
 describe ProfilesController, type: :controller do
-
   describe 'test index action' do
     let!(:profile) { FactoryGirl.create(:published) }
     let!(:profile2) { FactoryGirl.create(:profile, email: 'test@anders.com') }
