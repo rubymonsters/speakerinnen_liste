@@ -6,6 +6,9 @@ members on their own website. The association has to make sure, that the member 
 her profile hosted on speakerinnen.org on the association's website.
 If you are interested in an API access for your association please send us an email: speakerinnen@lists.riseup.net
 
+## Actions
+It is only possible to send a GET request. Posting, updating and deleting isn't possible via the api.
+
 ## Structure of API request:
 for one profile
 https://speakerinnen.org/api/v1/profiles/40.json
