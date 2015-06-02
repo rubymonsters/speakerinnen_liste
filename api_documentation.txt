@@ -32,7 +32,10 @@ https://speakerinnen.org/api/v1/profiles.json?ids[]=1&ids[]=2&ids[]=63
   'description': description of this talk given by the speaker,
   'position': position of this talk given by the speaker's
 'topics': topics the speaker wants to talk about
-**'picture' => picture, > do we have to transfer picture URL?
+'picture': picture URL
+  'original': original size
+  'profile_small': smaller size
+  'profile_smallest': smallest size
 'bio':
   'de': biography of the speaker in german
   'en': biography of the speaker in english
