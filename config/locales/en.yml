@@ -155,7 +155,7 @@ en:
       link: "Be sure to add 'http://'"
       email: "Email:"
     medialinks:
-      edit: "Edit medialinks"
+      edit: "Edit references"
     edit:
       show: "Show own Profile"
       home: "Show all Speakerinnen*"
@@ -231,8 +231,8 @@ en:
       new:
         login: "Log in"
   medialinks:
-    edit: "Edit Medialink"
-    new: "Add Medialink"
+    edit: "Edit Reference"
+    new: "Add Reference"
     index: "References"
     # Translation
     medialink_description: "Here you can add examples of your previous talks, panel discussions, TV shows or similar talking situations.
