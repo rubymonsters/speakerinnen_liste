@@ -1,0 +1,41 @@
+## API usage
+The API is a closed api. You need a password to get access to the api. You are responsible for
+hiding the key in your code.
+Who can get API access? Currently the API is only built for associations who want to list their
+members on their own website. The association has to make sure, that the member agrees to display
+her profile hosted on speakerinnen.org on the association's website.
+If you are interested in an API access for your association please send us an email: speakerinnen@lists.riseup.net
+
+## Structure of API request:
+for one profile
+https://speakerinnen.org/api/v1/profiles/40.json
+
+for many profiles
+https://speakerinnen.org/api/v1/profiles.json?ids[]=1&ids[]=2&ids[]=63
+
+## Information transfered by the API:
+'id': ID = unique identifier of the speaker or profile, also selector for API request
+'firstname': #firstname of the speaker
+'lastname': #lastname of the speaker
+'languages': #languages the speaker speaks
+'city': #city the speaker lives in
+'twitter': #twitter handle
+'created_at': #date where profile was created
+'updated_at': #date where profile was lastly updated
+'website': #speaker's website
+'medialinks': #references of previous talks by the speaker
+  'url': URL of a previous talk,
+  'title': title of this previous talk,
+  'description': description of this talk given by the speaker,
+  'position': position of this talk given by the speaker's
+'topics': topics the speaker wants to talk about
+**'picture' => picture, > do we have to transfer picture URL?
+'bio':
+  'de': biography of the speaker in german
+  'en': biography of the speaker in english
+'main_topic':
+  'de': main topic of the speaker in german
+  'en': main topic of the speaker in english
+
+
+
