@@ -65,10 +65,10 @@
 
       --><div class="layout__item 1/6">
 
-          <a data-toggle='modal' href='#contact' class='btn btn--small btn--full'>
+          <label class="btn btn--small btn--full" for="modal-1">
             <i class="fa fa-envelope-o"></i>&nbsp;
             <%= t(:contact, scope: 'profiles.profile') %>
-          </a>
+          </label>
 
           <% if current_profile == @profile %>
             <%= link_to(edit_profile_path(@profile)) do %>
@@ -130,22 +130,14 @@
   </div>
 </section>
 
-<!-- This is the contact form -->
-<div class='modal fade' id='contact'>
-  <div class='modal-dialog'>
-    <div class='modal-content'>
-      <div class='modal-header'>
-        <button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
-        <h5 class='modal-title'><%= "#{t('.contact')} #{@profile.fullname}:"%></h5>
-      </div>
-      <div class='modal-body'>
-        <div class='span6'>
-          <%= render partial: 'contact/form', locals: {url: contact_profile_path(@profile)} %>
-        </div>
-      </div>
-      <div class='modal-footer'>
-        <button type='button' class='close' data-dismiss='modal' aria-hidden='true'><%= t(:close, scope: 'general') %></button>
-      </div>
-    </div>
+<!-- Modal -->
+
+<input class="modal-state" id="modal-1" type="checkbox" />
+<div class="modal">
+  <label class="modal__bg" for="modal-1"></label>
+  <div class="modal__inner">
+    <label class="modal__close" for="modal-1"></label>
+      <h2 class="bb"><%= "#{t('.contact')} #{@profile.fullname}:"%></h2>
+      <%= render partial: 'contact/form', locals: {url: contact_profile_path(@profile)} %>
   </div>
 </div>
