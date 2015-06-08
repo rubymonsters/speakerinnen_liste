@@ -150,13 +150,12 @@ Feature: Navigation
     And you view the page in <language>
     When you click on: <contact_email>
     Then you see a button labeled as: <send>
-    And you are able to see: <heading>
     And you see a form with labels: <labels>
 
     Examples:
-    | language | contact_email | send   | heading | labels                                                    |
-    | English  | Email         | Send   | Contact | Your name, Your email address, Subject, Your message      |
-    | German   | E-Mail        | Senden | Kontakt | Dein Name, Deine E-Mail-Adresse, Betreff, Deine Nachricht |
+    | language | contact_email | send   | labels                                                    |
+    | English  | Email         | Send   | Your name, Your email address, Subject, Your message      |
+    | German   | E-Mail        | Senden | Dein Name, Deine E-Mail-Adresse, Betreff, Deine Nachricht |
 
 #TODO test "angemeldet bleiben"-Cookie, Anmelden via Twitter
   Scenario Outline: login test
