@@ -7,6 +7,7 @@ class NotificationsMailer < ActionMailer::Base
     mail_parameters = {:subject => "[Speakerinnen-Liste] #{message.subject}"}
     if to
       mail_parameters[:to] = to
+      mail_parameters[:reply_to] = @message.email
       mail_parameters[:cc] = @message.email
     end
     mail(mail_parameters)
