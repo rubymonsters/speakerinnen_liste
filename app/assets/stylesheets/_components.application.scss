@@ -293,7 +293,7 @@ header {
   width: 100%;
 }
 
-.photo--grey:hover{
+.photo--grey:hover {
   -webkit-filter: grayscale(0%);
   -moz-filter: grayscale(0%);
   -ms-filter: grayscale(0%);
@@ -302,6 +302,18 @@ header {
   filter: grayscale(00%);
 }
 
+.profile-box h5 {
+  font-weight: normal;
+  margin: 0;
+  color: $font-color;
+}
+
+.profile-box p {
+  font-weight: normal;
+  font-family: $sans-serif;
+  margin: 0;
+  color: $font-color;
+}
 
 /*classes for topicscloud*/
 .s {
