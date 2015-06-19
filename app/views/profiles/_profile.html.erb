@@ -1,9 +1,7 @@
 <% if local_assigns[:is_first] %>
   <div class="layout__item 1/4 mb profile-box">
-    <div class="ml">
 <% else %>
 --><div class="layout__item 1/4 mb profile-box">
-    <div class="ml">
 <% end %>
     <%= profile_picture_link(profile) %>
     <h5><%= link_to profile.fullname, profile %></h5>
@@ -12,9 +10,7 @@
       <p><%= "Twitter: " %> <%= link_to "@" + profile.twitter_name_formatted, profile.twitter_link_formatted, target: '_blank' %></p>
     <% end %>
 <% if local_assigns[:is_last] %>
-    </div>
   </div>
 <% else %>
-    </div>
   </div><!--
 <% end %>
