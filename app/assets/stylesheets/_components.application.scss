@@ -277,6 +277,9 @@ header {
   background-color: $link-bg-color-hover;
 }
 
+#profile__search {
+  width: 264px;
+}
 
 /* page */
 
@@ -358,6 +361,10 @@ header {
   width: 160px;
 }
 
+.input-btn {
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
 
 /* footer */
 
