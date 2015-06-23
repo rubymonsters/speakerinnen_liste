@@ -30,9 +30,11 @@
 
 
 @import 'inuit/settings.defaults';
+@import 'inuit/settings.responsive';
 @import 'settings.application';
 
 @import 'inuit/tools.functions';
+@import 'inuit/tools.responsive';
 @import 'inuit/tools.mixins';
 
 @import 'inuit/generic.box-sizing';
@@ -50,7 +52,10 @@
 
 @import 'inuit/trumps.spacing';
 @import 'inuit/trumps.widths';
+@import 'inuit/trumps.widths-responsive';
 @import 'inuit/trumps.headings';
 
 @import 'font-awesome';
 @import 'modal';
+
+
