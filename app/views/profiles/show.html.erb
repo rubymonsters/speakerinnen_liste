@@ -73,14 +73,12 @@
           <% if current_profile == @profile %>
             <%= link_to(edit_profile_path(@profile)) do %>
               <div class='btn buttons-modals btn--small btn--full mt-'>
-                <i class="fa fa-pencil"></i>
                 <%= t(:edit, scope: 'profiles.profile') %>
               </div>
             <% end %>
 
             <%= link_to(profile_medialinks_path(@profile)) do %>
               <div class='btn buttons-modals btn--small btn--full mt-'>
-                <i class="fa fa-pencil"></i>
                 <%= t(:edit, scope: 'profiles.medialinks') %>
               </div>
             <% end %>
