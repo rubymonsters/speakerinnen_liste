@@ -3,7 +3,7 @@ class Medialink < ActiveRecord::Base
 
   belongs_to :profile
 
-  validates :title,:url, presence: true
+  validates :title, :url, presence: true
 
   auto_html_for :url do
     html_escape
@@ -14,13 +14,12 @@ class Medialink < ActiveRecord::Base
     link target: '_blank', rel: 'nofollow', class: 'content__link--bg'
   end
 
-  def as_json(options = {})
+  def as_json
     attributes.slice(
-    'url',
-    'title',
-    'description',
-    'position'
+      'url',
+      'title',
+      'description',
+      'position'
     )
   end
-
 end

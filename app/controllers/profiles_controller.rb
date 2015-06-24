@@ -6,7 +6,6 @@ class ProfilesController < ApplicationController
   before_action :set_profile, only: [:show, :edit, :update, :destroy, :require_permission]
 
   before_filter :require_permission, only: [:edit, :destroy, :update]
-  before_filter :api_authentication_required, if: ->(controller){ controller.request.format.json? }
 
   def index
     if params[:topic]
@@ -35,11 +34,6 @@ class ProfilesController < ApplicationController
     if @profile.published? or can_edit_profile?(current_profile, @profile)
       @message = Message.new
       @medialinks = @profile.medialinks.order(:position)
-
-      respond_to do |format|
-        format.html
-        format.json { render json: @profile }
-      end
     else
       redirect_to profiles_url, notice: (I18n.t('flash.profiles.show_no_permission'))
     end
@@ -125,20 +119,5 @@ class ProfilesController < ApplicationController
               .order('created_at DESC')
               .page(params[:page])
               .per(24)
-    end
-
-    def api_authentication_required
-      authenticate_or_request_with_http_basic do |name, token|
-        api_token = ApiToken.find_by(name: name)
-        api_token.token.present? && api_token.token == token
-      end
-      #authenticate_or_request_with_http_basic do |name, token|
-        #api_token = ApiToken.find_by(name: name)
-        #if api_token.present?
-          #api_token.token == token
-        #else
-          #render :status => 403
-        #end
-      #end
     end
 end

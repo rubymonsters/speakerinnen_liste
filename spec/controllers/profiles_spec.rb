@@ -2,7 +2,6 @@ require 'spec_helper'
 include AuthHelper
 
 describe ProfilesController, type: :controller do
-
   describe 'test index action' do
     let!(:profile) { FactoryGirl.create(:published) }
     let!(:profile2) { FactoryGirl.create(:profile, email: 'test@anders.com') }
@@ -60,17 +59,6 @@ describe ProfilesController, type: :controller do
       it 'should be seen by all profiles' do
         get :show, id: profile1.id
         expect(response).to render_template(:show)
-      end
-
-      it 'should respond to json request' do
-        http_login("horst", "123")
-        get :show, id: profile1.id, format: "json"
-        expect(response.body).to include('{"id":' + profile1.id.to_s + ',"firstname":"Factory","lastname":"Girl"')
-      end
-
-      it 'should deny json requests without a login' do
-        get :show, id: profile1.id, format: "json"
-        expect(response.status).to eq(401)
       end
     end
   end
