@@ -61,13 +61,13 @@ en:
     home:
       search:
         heading: "Organizers, find your speakers"
-        tagline: "Find female speakers & moderators for your conference"
+        tagline: "Find women speakers & moderators for your conference"
         search_text: ""
         search: "Search"
       description: "Our Categories"
       description_text: "We feel strongly about a balanced representation of men and women* on stage. We encourage women* to become more visible in their profession and field of expertise."
       speaker_shoutout: "Do you have something interesting to say?"
-      speaker_text: "Get on the Speakerinnen* List >>"
+      speaker_text: "Get on the Speakerinnen list >>"
       speakers:
         new_speaker_heading: "Our Speakers"
         speaker_text: "No more excuses for panels without women*!"
@@ -75,13 +75,13 @@ en:
         categories: "Categories and Topics >>"
       mission_statement:
         heading: "Our Vision"
-        content: "<p>We believe that female speakers should be easier to find for event organizers.</p><p>We believe that event organizers should have the best speakers at their events, regardless of the speakers’ gender identification.</p><p>We believe in collaboration and not competition, so we encourage our speakers and event organizers to support each other and help speakers speak better.</p>"
+        content: "<p>We believe that women speakers should be easier to find for event organizers.</p><p>We believe that event organizers should have the best speakers at their events, regardless of the speakers’ gender identification.</p><p>We believe in collaboration and not competition, so we encourage our speakers and event organizers to support each other and help speakers speak better.</p>"
       quote: "We believe in collaboration — not competition"
       quote_text: "So we encourage our speakers and event organizers to support each other and help speakers to improve their performance."
       footer:
         about_title: "About us"
         about: |
-              The Speakerinnen* List aims to increase the visibility and participation of women* at (but not limited to) conferences, panels and talk shows.<br>
+              Speakerinnen.org aims to increase the visibility and participation of women* at (but not limited to) conferences, panels and talk shows.<br>
               Organizers and hosts can find experts, who gladly (and competently) share their knowledge. <br>
               women* can register in our database with the topics they are interested in covering, and can add references to their abilities.
         more: ">> more"
@@ -115,9 +115,9 @@ en:
       privac¥: "We are using Piwik data analytics to collect anonymized data that will help us to improve the usability of our website."
   layouts:
     application:
-      title: "Speakerinnen-List"
+      title: "speakerinnen.org"
       home: "Home"
-      list: "Speakerinnen*"
+      list: "Speakerinnen"
       contact: "Contact"
       impressum: "Legal Details"
       search: "Search"
@@ -143,7 +143,7 @@ en:
       notice: "Yay! Your message was sent."
       error: "Please fill out all the fields so that the speaker can have all the details she needs."
   profiles:
-    category: "All topics and Speakerinnen* for the Category: "
+    category: "All topics and Speakerinnen for the Category: "
     tag:
       topics: "Topics"
     form:
@@ -175,10 +175,10 @@ en:
       edit: "Edit references"
     edit:
       show: "Show own Profile >>"
-      home: "Show all Speakerinnen* >>"
+      home: "Show all Speakerinnen >>"
       back: "Back"
     index:
-      title: "Speakerinnen*"
+      title: "Speakerinnen"
       text: "Welcome! Here you can find women* for your conference or your event: speakers, panel hosts, or workshop hosts. Browse individual profiles, filter via the most listed topics (see below), or use the search function for a specific search. Enjoy!"
       search1: "You searched for"
       search2: "and you have found"
