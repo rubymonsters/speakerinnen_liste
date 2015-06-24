@@ -16,16 +16,22 @@ For your database.yml please copy config/database_example.yml
 
 For testing locally you have to create some profiles manually. It is important to confirm these profiles.
 Normally that works via email. Locally you do that via the console:
->> rails c
->> p = Profile.find(<your-profile-id>)
->> p.confirmed_at = DateTime.now
->> p.save
+
+```Ruby
+rails c
+user = Profile.find(<your-profile-id>)
+user.confirmed_at = DateTime.now
+user.save
+```
 
 If you build or test some admin features you have to create an admin user. You also can assign the status via the console:
->> rails c
->> p = Profile.find(<your-profile-id>)
->> p.admin = true
->> p.published = true
->> p.save
+
+```Ruby
+rails c
+user = Profile.find(<your-profile-id>)
+user.admin = true
+user.published = true
+user.save
+```
 
 General Workflow: To work on an issue please open a feature branch derived from the master branch. When you have made your changes and tested them, please send us a pull request.
