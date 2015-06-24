@@ -65,12 +65,12 @@ en:
         search_text: ""
         search: "Search"
       description: "Our Categories"
-      description_text: "We feel strongly about a balanced representation of men and women on stage. We encourage women to become more visible in their profession and field of expertise."
+      description_text: "We feel strongly about a balanced representation of men and women* on stage. We encourage women* to become more visible in their profession and field of expertise."
       speaker_shoutout: "Do you have something interesting to say?"
       speaker_text: "Get on the Speakerinnen* List >>"
       speakers:
         new_speaker_heading: "Our Speakers"
-        speaker_text: "No more excuses for panels without women!"
+        speaker_text: "No more excuses for panels without women*!"
         speaker_index: "Browse all speakers >>"
         categories: "Categories and Topics >>"
       mission_statement:
@@ -81,13 +81,13 @@ en:
       footer:
         about_title: "About us"
         about: |
-              The Speakerinnen* List aims to increase the visibility and participation of women at (but not limited to) conferences, panels and talk shows.<br>
+              The Speakerinnen* List aims to increase the visibility and participation of women* at (but not limited to) conferences, panels and talk shows.<br>
               Organizers and hosts can find experts, who gladly (and competently) share their knowledge. <br>
-              Women can register in our database with the topics they are interested in covering, and can add references to their abilities.
+              women* can register in our database with the topics they are interested in covering, and can add references to their abilities.
         more: ">> more"
         railsgirls: |
-              8 women supported by 4 coaches coded this web application as a Rails Girls Berlin learning project.<br><br>
-              <a href='http://railsgirlsberlin.de', target='_blank'>Rails Girls</a> is an international not-for-profit group that aims to get women into programming
+              8 women* supported by 4 coaches coded this web application as a Rails Girls Berlin learning project.<br><br>
+              <a href='http://railsgirlsberlin.de', target='_blank'>Rails Girls</a> is an international not-for-profit group that aims to get women* into programming
               with workshops, scholarships, and a safe learning community.
         press: "Media Coverage"
         blog: "Our blog"
