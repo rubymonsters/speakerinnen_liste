@@ -17,10 +17,10 @@ class SearchForUserTest < ActionDispatch::IntegrationTest
   test "search for and find a user" do
 
     visit('/en')
-    fill_in('search-field', :with => 'weather')
+    fill_in('profile__search', with: 'weather')
     click_button('Search')
     click_link(@carla.fullname)
 
-    assert_equal current_path, profile_path(@carla, {:locale=>"en"})
+    assert_equal current_path, profile_path(@carla, {locale:"en"})
   end
 end

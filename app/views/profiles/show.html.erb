@@ -1,120 +1,141 @@
-<div class='container profiles'>
-  <div class='row'>
-    <div class='span12 text-white-bg'>
-      <br>
-      <h1><%= @profile.fullname %></h1>
-    </div>
-  </div>
-  <div class='row'>
-    <div class='span12 text-right'>
-      <%= link_to(t(:home, scope: 'profiles.edit'), profiles_path) %>
-    </div>
-  </div>
-  <br>
-  <div class='row'>
-    <div class='span4 photo'>
-      <%= profile_picture_link(@profile) %>
-      <div class='main-topic'><%= @profile.main_topic_or_first_topic %></div>
-    </div>
+<section class="content--bg-grey">
+  <div class="layout-wrapper">
+    <div class="layout">
+      <div class="layout__item 2/3">
+        <h1><%= @profile.fullname %></h1>
+      </div><!--
 
-    <div class='span5 text-profile'>
-      <% if @profile.twitter.present? %>
-        <h5><%= t(:twitter, scope: 'profiles.profile') %></h5>
-        <span><%=link_to '@' + @profile.twitter_name_formatted, @profile.twitter_link_formatted, target: '_blank' %></span>
-        <hr>
-      <% end %>
-
-      <% if @profile.website.present? %>
-        <h5><%= t(:website, scope: 'profiles.profile') %></h5>
-        <span><%=link_to @profile.website, @profile.website_with_protocol, target: '_blank' %></span>
-        <hr>
-      <% end %>
-
-      <h5><%= t(:topics, scope: 'profiles.profile') %></h5>
-      <span class='topics-cloud'><%= raw @profile.topic_list.map { |topic| topic_link(topic) }.join(' ') %></span>
-      <hr>
-
-      <h5><%= t(:languages, scope: 'profiles.profile') %></h5>
-      <span><%= @profile.languages %></span>
-      <hr>
-
-      <% if @profile.city.present? %>
-        <h5><%= t(:city, scope: 'profiles.profile') %></h5>
-        <span><%= @profile.city %></span>
-        <hr>
-      <% end %>
-
-    </div>
-    <div class='span3'>
-      <a data-toggle='modal' href='#contact' class='btn  btn-large buttons-modals'>
-        <span class='icon icon-envelope'></span>
-        <%= t(:contact, scope: 'profiles.profile') %>
-      </a>
-
-      <% if current_profile == @profile %>
-        <%= link_to(edit_profile_path(@profile)) do %>
-          <div class='btn  btn-large buttons-modals btn-info'>
-            <span class='icon icon-edit icon-white'></span>
-            <%= t(:edit, scope: 'profiles.profile') %>
-          </div>
-        <% end %>
-        <%= link_to(profile_medialinks_path(@profile)) do %>
-          <div class='btn  btn-large buttons-modals btn-info'>
-            <span class='icon icon-edit icon-white'></span>
-            <%= t(:edit, scope: 'profiles.medialinks') %>
-          </div>
-        <% end %>
-      <% end %>
-    </div>
-  </div>
-
-  <% if @profile.bio %>
-    <div class='row'>
-      <%#<div class='info-profiles-bio'>%>
-      <div class='span9 bio text-profile margin-top'>
-        <h5><%= t '.bio' %></h5>
-        <span class="indent"><%= simple_format(@profile.bio) %></span>
+      --><div class="layout__item 1/3 text--right">
+        <%= link_to(t(:home, scope: 'profiles.edit'), profiles_path, class: 'content__link--bg') %>
       </div>
     </div>
-  <% end %>
 
-  <% if @profile.medialinks.any? %>
-    <div class='row'>
-      <div class='span9 medialinks text-profile margin-bottom margin-top'>
-        <h5><%= t '.media' %></h5>
+    <div class="layout">
+      <div class="layout__item 2/6 pl0 pr">
 
-        <ul>
-          <% @medialinks.each do |medialink| %>
-          <li>
-            <b><%= medialink.title %></b>
-            <%= medialink.url_html %>
-            <p class="italic"><%= medialink.description %></p>
-          </li>
-          <hr>
+          <%= profile_picture_link(@profile) %>
+          <p class="mt0"><%= @profile.main_topic_or_first_topic.truncate(30) if @profile.main_topic_or_first_topic %></p>
+
+      </div><!--
+
+      --><div class="layout__item 3/6 bg--white">
+          <% if @profile.twitter.present? %>
+            <h2 class="delta sans-serif mb-">
+              <%= t(:twitter, scope: 'profiles.profile') %>
+            </h2>
+            <p class="bb pb">
+              <%=link_to '@' + @profile.twitter_name_formatted, @profile.twitter_link_formatted,
+              target: '_blank', class: 'content__link--bg' %>
+            </p>
           <% end %>
-        </ul>
+
+          <% if @profile.website.present? %>
+            <h2 class="delta sans-serif mb-">
+              <%= t(:website, scope: 'profiles.profile') %>
+            </h2>
+            <p class="bb pb">
+              <%= link_to @profile.website, @profile.website_with_protocol,
+              target: '_blank', class: 'content__link--bg' %>
+            </p>
+          <% end %>
+
+          <h2 class="delta sans-serif mb-">
+            <%= t(:topics, scope: 'profiles.profile') %>
+          </h2>
+          <p class="bb pb">
+            <%= raw @profile.topic_list.map { |topic| topic_link(topic,class: 'content__link--bg') }.join(' ') %>
+          </p>
+
+          <h2 class="delta sans-serif mb-">
+            <%= t(:languages, scope: 'profiles.profile') %>
+          </h2>
+          <p class="bb pb">
+            <%= @profile.languages %>
+          </p>
+
+          <% if @profile.city.present? %>
+            <h2 class="delta sans-serif mb-">
+              <%= t(:city, scope: 'profiles.profile') %>
+            </h2>
+            <p class="bb pb">
+              <%= @profile.city %></span>
+            </p>
+          <% end %>
+        </div><!--
+
+      --><div class="layout__item 1/6">
+
+          <label class="btn btn--small btn--full" for="modal-1">
+            <i class="fa fa-envelope-o"></i>&nbsp;
+            <%= t(:contact, scope: 'profiles.profile') %>
+          </label>
+
+          <% if current_profile == @profile %>
+            <%= link_to(edit_profile_path(@profile)) do %>
+              <div class='btn buttons-modals btn--small btn--full mt-'>
+                <%= t(:edit, scope: 'profiles.profile') %>
+              </div>
+            <% end %>
+
+            <%= link_to(profile_medialinks_path(@profile)) do %>
+              <div class='btn buttons-modals btn--small btn--full mt-'>
+                <%= t(:edit, scope: 'profiles.medialinks') %>
+              </div>
+            <% end %>
+          <% end %>
 
       </div>
     </div>
-  <% end %>
-</div>
 
-<!-- This is the contact form -->
-<div class='modal fade' id='contact'>
-  <div class='modal-dialog'>
-    <div class='modal-content'>
-      <div class='modal-header'>
-        <button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
-        <h5 class='modal-title'><%= "#{t('.contact')} #{@profile.fullname}:"%></h5>
-      </div>
-      <div class='modal-body'>
-        <div class='span6'>
-          <%= render partial: 'contact/form', locals: {url: contact_profile_path(@profile)} %>
+    <% if @profile.bio %>
+      <div class="layout pt">
+        <div class="layout__item 5/6 bg--white">
+          <h2 class="delta sans-serif pb">
+            <%= t(:bio, scope: 'profiles.profile') %>
+          </h2>
+          <%= simple_format(@profile.bio) %>
         </div>
       </div>
-      <div class='modal-footer'>
-        <button type='button' class='close' data-dismiss='modal' aria-hidden='true'><%= t(:close, scope: 'general') %></button>
+    <% end %>
+
+    <% if @profile.medialinks.any? %>
+      <div class="layout pt">
+        <div class="layout__item 5/6 bg--white mb+">
+          <h2 class="delta sans-serif pb">
+            <%= t(:media, scope: 'profiles.profile') %>
+          </h2>
+
+          <ul class="pl0">
+            <% @medialinks.each do |medialink| %>
+            <li class="list--style-none pb mb+ bb">
+              <b><%= medialink.title %></b>
+              <%= medialink.url_html %>
+              <%= medialink.description %>
+            </li>
+            <% end %>
+          </ul>
+
+        </div>
+      </div>
+    <% end %>
+
+    <div class="layout layout--right">
+      <div class="layout__item 1/3">
+        <%= link_to(t(:home, scope: 'profiles.edit'), profiles_path, class: 'content__link--bg') %>
       </div>
     </div>
+
+  </div>
+</section>
+
+<!-- Modal -->
+
+<input class="modal-state" id="modal-1" type="checkbox" />
+<div class="modal">
+  <label class="modal__bg" for="modal-1"></label>
+  <div class="modal__inner">
+    <label class="modal__close" for="modal-1"></label>
+      <h2 class="bb"><%= "#{t('.contact')} #{@profile.fullname}:"%></h2>
+      <%= render partial: 'contact/form', locals: {url: contact_profile_path(@profile)} %>
   </div>
 </div>

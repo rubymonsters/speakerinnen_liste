@@ -1,36 +1,22 @@
-<div class="container profiles">
-  <div class="row">
-    <div class="span12">
-      <h1 class="title-profiles">Admin::Neuer Medialink</h1>
-      <p>Du erstellst gerade einen neuen Medialink für <strong><%= @profile.fullname %></strong>
-    </div>
+<section class="content--bg-white mb+">
+  <div class="layout-wrapper">
+    <%= render 'shared/error_messages' %>
+
+    <h1>Admin::Medialink::New</h1>
+
+    <%= link_to t(:show, scope: 'admin.dashboard.profiles.edit'), admin_profile_path(@profile), class:'btn btn--small' %>
+    <%= link_to t(:show, scope: 'medialinks'), admin_profile_medialinks_path(@profile), class:'btn btn--small', title: t(:edit, scope: 'medialinks') %>
+
+    <h2 class="delta sans-serif mb- bt pv mt text--color-blue">
+      <%= t(:new_medialink_for, scope: 'admin.dashboard.medialink') %> <strong><%= @profile.fullname %></strong>
+    </h2>
+
+    <%= simple_form_for [:admin, @profile, @medialink], html: {class: ''} do |f| %>
+      <%= f.input :url, as: :string, input_html: { class: 'mb input--width' }  %>
+      <%= f.input :title, as: :string, input_html: { class: 'mb input--width' }  %>
+      <%= f.input :description, as: :text, input_html: { rows: 10, class: 'mb input--width' }  %>
+      <%= f.submit class: 'btn btn--small' %>
+    <% end %>
+
   </div>
-  <div class="row">
-    <div class="span6">
-      <%= form_for [:admin, @profile, @medialink], html: {class: 'form-horizontal'} do |f| %>
-      <div class="control-group">
-        <%= f.label :url, {class:"control-label"} %>
-        <div class="controls">
-          <%= f.text_field :url, class: "input-xxlarge" %>
-        </div>
-      </div>
-      <!-- TODO translation -->
-      <div class="control-group">
-        <%= f.label :title, {class:"control-label"} %>
-        <div class="controls">
-          <%= f.text_field :title, class: "input-xxlarge" %>
-        </div>
-      </div>
-      <div class="control-group">
-        <%= f.label :description, {class:"control-label"} %>
-        <div class="controls">
-          <%= f.text_area :description, class:"input-xlarge", rows: 10 %>
-        </div>
-      </div>
-      <div class="controls span3">
-        <%= f.submit class:"btn btn-info" %>
-      </div>
-      <% end %>
-    </div>
-  </div>
-</div>
+</section>

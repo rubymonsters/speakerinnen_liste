@@ -1,0 +1,108 @@
+/*fonts*/
+@font-face {
+  font-family: 'OpenSans';
+  src: font_url('OpenSans/OpenSans-Regular-webfont.eot');
+  src: font_url('OpenSans/OpenSans-Regular-webfont.eot?#iefix') format('embedded-opentype'),
+  font_url('OpenSans/OpenSans-Regular-webfont.woff') format('woff'),
+  font_url('OpenSans/OpenSans-Regular-webfont.ttf') format('truetype'),
+  font_url('OpenSans/OpenSans-Regular-webfont.svg#open_sansregular') format('svg');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'OpenSans';
+  src: font_url('OpenSans/OpenSans-Bold-webfont.eot');
+  src: font_url('OpenSans/OpenSans-Bold-webfont.eot?#iefix') format('embedded-opentype'),
+  font_url('OpenSans/OpenSans-Bold-webfont.woff') format('woff'),
+  font_url('OpenSans/OpenSans-Bold-webfont.ttf') format('truetype'),
+  font_url('OpenSans/OpenSans-Bold-webfont.svg#open_sansbold') format('svg');
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* color variables */
+$black: #000;
+$dark-grey: #3C3C3A;
+$grey: #7B7B7B;
+$light-grey: #CCC;
+
+$white-smoke: #F5F5F5;
+$white: #FFF;
+
+$transparent-white: rgba( $white, .6 );
+$transparent-black: rgba( $black, .5 );
+
+$dark-blue: #288EB6;
+$blue: #52B3D9;
+
+$dark-red: #b62848;
+$red: #d95270;
+
+
+/* colors for login sign */
+$box-shadow-black: rgba(0,0,0,0.75);
+
+/* font */
+$serif: 'Merriweather', Georgia, serif;
+$sans-serif: "OpenSans", "Helvetica Neue", Helvetica, sans-serif;
+
+$font-color: $dark-grey;
+
+
+/* link-color */
+$link-color: $grey;
+$link-color-hover: $white-smoke;
+
+$link-bg-color: $white-smoke;
+$link-bg-color-hover: $dark-grey;
+
+
+/* background-color */
+$body-bg-color: $white;
+$body-bg-color-grey: $white-smoke;
+
+
+/* header */
+$inuit-heading-size-1: 48px;
+
+
+/* border */
+$border-radius: 0;
+
+
+/* buttons */
+$inuit-btn-background: $white-smoke;
+$inuit-btn-color: $black;
+$inuit-btn-radius: $border-radius;
+$inuit-btn-border-color: $light-grey;
+
+/*background-color:whitesmoke;background-image:-webkit-gradient(linear, 0 0, 0 100%, from(#fff), to(#e6e6e6));background-image:-webkit-linear-gradient(top, #fff, #e6e6e6);background-image:linear-gradient(to bottom, #fff, #e6e6e6);background-repeat:repeat-x;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFFFF', endColorstr='#FFE6E6E6', GradientType=0);*/
+
+/* layout settings */
+$header-margin-top: 10px;
+$header-height: 70px;
+
+$layout-width: 940px;
+
+
+/* inuit true */
+$inuit-use-fractions: true;
+$inuit-enable-layout--right: true;
+
+$inuit-enable-paddings: true;
+$inuit-enable-paddings--none: true;
+$inuit-enable-paddings--small: true;
+$inuit-enable-paddings--large: true;
+
+$inuit-enable-margins: true;
+$inuit-enable-margins--huge: true;
+$inuit-enable-margins--none: true;
+$inuit-enable-margins--small: true;
+$inuit-enable-margins--large: true;
+
+$inuit-enable-btn--small: true;
+$inuit-enable-btn--full: true;
+
+
+$inuit-enable-table--compact: true;
+$inuit-enable-table--rows: true;

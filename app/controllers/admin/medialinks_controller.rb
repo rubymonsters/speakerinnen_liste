@@ -5,7 +5,7 @@ class Admin::MedialinksController < Admin::BaseController
   before_action :set_medialink, only: [:edit, :update, :destroy]
 
   def index
-    @medialinks = @profile.medialinks.order(:created_at)
+    @medialinks = @profile.medialinks.order(:position)
   end
 
   def new
@@ -41,6 +41,13 @@ class Admin::MedialinksController < Admin::BaseController
       flash[:notice] = (I18n.t('flash.medialink.error'))
       render action: 'new'
     end
+  end
+
+  def sort
+    params[:medialink].each_with_index do |id, index|
+      Medialink.where(id: id).update_all(position: index+1)
+    end
+    render nothing: true
   end
 
   protected

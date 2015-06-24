@@ -30,7 +30,6 @@ class CategoryIntegrationTest < ActionDispatch::IntegrationTest
     # because of the fixtures there are 3 categories
     assert_equal Category.all.count, 3
     visit '/'
-    assert page.has_css?('ul.categories')
     assert page.has_content?('Jahreszeiten')
   end
 

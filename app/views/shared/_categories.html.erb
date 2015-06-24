@@ -1,0 +1,19 @@
+<% @categories.each_slice(5).with_index do |sliced_categories, index| %>
+  <% if index==0 %>
+    <div class="layout__item 1/2">
+  <% else %>
+    --><div class="layout__item 1/2">
+  <% end %>
+    <ul class="startpage-categories__list--no-bullets ph0">
+      <% sliced_categories.each do |category| %>
+        <li>
+          <%= category_link category, class:"startpage-categories__list-links" %>
+        </li>
+      <% end %>
+    </ul>
+  <% if index==9 %>
+    </div>
+  <% else %>
+    </div><!--
+  <% end %>
+<% end %>-->

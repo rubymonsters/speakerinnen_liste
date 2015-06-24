@@ -1,54 +1,53 @@
-<div class="container profiles">
-  <div class="row">
-    <div class="span12" >
-      <h1 class="title-profiles">Admin interface für Medialinks</h1>für die Speakerin: <strong><%= @profile.fullname %></strong>
+<section class="content--bg-white">
+  <div class="layout-wrapper">
+    <div class="layout">
+      <div class="layout__item 2/3">
+        <h1>Admin::Medialinks</h1>
+      </div><!--
+
+      --><div class="layout__item 1/3 text--right">
+
+        <%= link_to t(:show, scope: 'admin.dashboard.profiles.edit'), admin_profile_path(@profile), class:'btn btn--small' %>
+        <%= link_to t(:show_all, scope: 'admin.dashboard.profiles.edit'), admin_profiles_path, class:'btn btn--small' %><br>
+
+        <%= link_to t(:new, scope: 'medialinks'),
+                  new_admin_profile_medialink_path(@profile), class: 'btn btn--small btn--danger mv' %>
+
+      </div>
     </div>
+
+    <div class="layout mb+">
+      <div class="layout__item 1/1">
+        <h2 class="delta sans-serif mb- bb pb text--color-blue">
+          <%= t(:name_of_profile, scope: 'admin.dashboard.profiles') %> <strong><%= @profile.fullname %></strong>.
+        </h2>
+
+        <p class="help"><%= t(:help, scope: 'medialinks').html_safe %></p>
+
+        <p id="medialinks__list--sort-message"></p>
+
+        <ul id="medialinks__list" data-update-url="<%= sort_admin_profile_medialinks_url%>" class="<%= t(:language, scope: 'medialinks')%>">
+          <% @medialinks.each do |medialink| %>
+            <%= content_tag_for(:li, medialink, nil, {'title' => t(:tooltip, scope: 'medialinks')}) do %>
+              <b>
+                <%= medialink.title %>
+              </b>
+              <%= medialink.url_html %>
+              <%= medialink.description %>
+
+              <hr>
+
+              <%= link_to '<i class="fa fa-pencil"></i>'.html_safe + t(:edit_link, scope: 'medialinks'), edit_admin_profile_medialink_path(@profile, medialink) %>
+              <%= link_to '<i class="fa fa-minus-circle"></i>'.html_safe + t(:delete_link, scope: 'medialinks'), admin_profile_medialink_path(@profile, medialink),
+                method: :delete, data: { confirm: 'Are you sure?'}, title: t(:delete, scope: 'medialinks') %>
+            <% end %>
+          <% end %>
+        </ul>
+
+      </div>
+    </div>
+
   </div>
-  <div class="row">
-    <div class="span12 text-right" >
-      <%= link_to(t(:show, scope: "admin.profiles.index"), admin_profile_path(@profile), class:"btn btn-small") %>
-      <%= link_to(t(:show_all, scope: "admin.profiles.index"), admin_profiles_path, class:"btn btn-small") %>
-    </div>
-  </div>
-  <div class="row">
-    <div class="span2">
-      <%= link_to '<i class="icon-plus icon-white"></i> Hinzufügen'.html_safe,
-                new_admin_profile_medialink_path(@profile), class: "btn btn-info" %>
-      <br>
-      <br>
-    </div>
-    <div class="span10">
-    </div>
-  </div>
-  <div class="row">
-    <div class="span12">
-      <table class="table table-striped table-hovered">
-        <tr>
-    <!-- # TODO translation -->
-          <th>Link</th>
-          <th>Title</th>
-          <th>Description</th>
-          <th></th>
-          <th></th>
-        </tr>
-        <% @medialinks.each do |medialink| %>
-          <tr>
-            <td><%= link_to medialink.url, medialink.url %></td>
-            <td><%= medialink.title %></td>
-            <td><%= medialink.description %></td>
-            <td><%= link_to '<i class="icon-pencil"></i> edit'.html_safe,
-                            edit_admin_profile_medialink_path(@profile, medialink) %></td>
-            <td>
-              <%= link_to '<i class="icon-remove"></i> delete'.html_safe,
-                          admin_profile_medialink_path(@profile, medialink),
-                          confirm: 'Are you sure?',
-                          method: :delete %>
-            </td>
-          </tr>
-        <% end %>
-      </table>
-      <br />
-    </div>
-    <hr/>
-  </div>
-</div>
+</section>
+
+

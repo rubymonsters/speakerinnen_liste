@@ -15,7 +15,9 @@ SpeakerinnenListe::Application.routes.draw do
       end
       resources :categories
       resources :profiles do
-        resources :medialinks
+        resources :medialinks do
+          collection { post :sort }
+        end
         member do
           post 'publish'
           post 'unpublish'

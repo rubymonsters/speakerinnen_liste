@@ -53,9 +53,9 @@ Feature: Navigation
     And you are able to see: <new>
 
     Examples:
-    | language | area       | edit       | update_button | current         | new        |
-    | English  | Categories | Edit       | Ok            | Current name    | New name   |
-    | German   | Kategorien | Bearbeiten | Ok            | Bisheriger Name | Neuer Name |
+    | language | area       | edit       | update_button | current                        | new                                      |
+    | English  | Categories | Edit       | Save          | Current category name:         | Enter new category name:                 |
+    | German   | Kategorien | Bearbeiten | Speichern     | Bisheriger Name der Kategorie: | Trage den neuen Namen der Kategorie ein: |
 
   Scenario Outline: view add category in admin area
     Given you view the admin area <area> in <language>
@@ -82,9 +82,9 @@ Feature: Navigation
 
 # languages are implemented in localization_steps.rb
     Examples:
-    | language | area     | link       | link2      | link3                | person       | created_at  | media_links | visibility   | roles  | comment   |
-    | English  | Profiles | public     | invisible  | Add comment          | Speakerinnen | Created at  | Media Links | Visibility   | Roles  | Comment   |
-    | German   | Profile  | öffentlich | unsichtbar | Kommentar hinzufügen | Speakerinnen | Erstellt am | Media Links | Sichtbarkeit | Rollen | Kommentar |
+    | language | area     | link       | link2      | link3                | person       | created_at | media_links | visibility     | roles  | comment   |
+    | English  | Profiles | public     | invisible  | Add comment          | Speakerinnen | Created    | Media Links | Visibility     | Roles  | Comment   |
+    | German   | Profile  | öffentlich | unsichtbar | Kommentar hinzufügen | Speakerinnen | Erstellt   | Media Links | Veröffentlicht | Rollen | Kommentar |
 
   Scenario Outline: viewing edit certain profile in admin area
     Given you view the admin area <area> in <language>
@@ -113,7 +113,7 @@ Feature: Navigation
      Examples:
     | language | area | filterTags                      | noOfSearchResults           | filter  |
     | English  | Tags | Search for tag                  | The number of all tags is   | Filter  |
-    | German   | Tags | Suche nach einem bestimmtem tag | Die Anzahl aller tags ist   | Filtern |
+    | German   | Tags | Suche nach einem bestimmtem Tag | Die Anzahl aller Tags ist   | Filtern |
 
   Scenario Outline: page has header
     Given you <are_or_are_not> signed in as <role>
@@ -136,7 +136,7 @@ Feature: Navigation
     When you view the page in <language>
     Then you view the header <links> in <language>
     #And you are able to see sections: <titles>
-    And you see images: curie-photo, coaching-photo, speakerin-photo
+    And you see images: startpage__start-teaser, startpage__teaser-bg-01, startpage__teaser-bg-02
     And you see links labeled as: <links>
 
 # languages are implemented in localization_steps.rb
@@ -150,13 +150,12 @@ Feature: Navigation
     And you view the page in <language>
     When you click on: <contact_email>
     Then you see a button labeled as: <send>
-    And you are able to see: <heading>
     And you see a form with labels: <labels>
 
     Examples:
-    | language | contact_email | send   | heading | labels                                                    |
-    | English  | Email         | Send   | Contact | Your name, Your email address, Subject, Your message      |
-    | German   | E-Mail        | Senden | Kontakt | Dein Name, Deine E-Mail-Adresse, Betreff, Deine Nachricht |
+    | language | contact_email | send   | labels                                                    |
+    | English  | Email         | Send   | Your name, Your email address, Subject, Your message      |
+    | German   | E-Mail        | Senden | Dein Name, Deine E-Mail-Adresse, Betreff, Deine Nachricht |
 
 #TODO test "angemeldet bleiben"-Cookie, Anmelden via Twitter
   Scenario Outline: login test
