@@ -45,18 +45,31 @@ h1{
   font-weight: normal;
   line-height: 60px;
   margin: 0 0 $inuit-base-spacing-unit;
+
+    @include media-query(palm) {
+      font-size: 36px;
+    }
 }
 
 h2{
   font-weight: normal;
   line-height: 60px;
   margin: 0 0 $inuit-base-spacing-unit;
+
+    @include media-query(palm) {
+      font-size: 21px;
+
+    }
 }
 
 .bg--white {
   display: inline-block;
   background: $transparent-white;
   padding: halve($inuit-base-spacing-unit) $inuit-base-spacing-unit;
+
+  @include media-query(palm) {
+    background: none;
+  }
 }
 
 .box__bg--light {
@@ -232,6 +245,10 @@ header {
 #startpage__start-teaser {
   background: image-url('start-teaser.jpg') no-repeat center center;
   background-size: cover;
+
+    @include media-query(palm) {
+      background: #f5f5f5;
+    }
 }
 
 #startpage__teaser-bg-01 {
