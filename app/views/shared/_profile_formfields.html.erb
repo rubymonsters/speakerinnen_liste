@@ -21,9 +21,12 @@
   --><div class="layout__item 3/6">
 
     <%= f.label :picture %>
-
-    <%= image_tag(@profile.picture_url, width: 100) if @profile.picture.present? %>
-    <%= f.file_field :picture %>
+    <p>
+      <%= image_tag(@profile.picture_url, width: 100) if @profile.picture.present? %>
+    </p>
+    <p>
+      <%= f.file_field :picture %>
+    </p>
 
     <p class='font-size--small'>
       <%= t(:copyright_photo, scope: 'profiles.form') %>

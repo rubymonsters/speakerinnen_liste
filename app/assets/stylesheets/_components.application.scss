@@ -89,12 +89,10 @@ h2{
 
 .btn--danger {
   background: $red;
-  box-shadow: 0px 3px 0px $dark-red;
 }
 
 .btn--danger:active, .btn--danger:hover{
   background: $dark-red;
-  box-shadow: 0px 3px 0px $red;
 }
 
 .notice {
@@ -496,4 +494,12 @@ ul#medialinks__list {
   color: white;
   background-color: $grey;
   padding: 0 1px;
+}
+
+/* profile edit */
+
+input[type=file] {
+  font-size: 14px;
+  line-height: 1em;
+  border: none;
 }
