@@ -56,7 +56,7 @@ de:
         url: "URL:"
         title: "Überschrift:"
         description: "Beschreibung:"
-        new_medialink_for: "Du erstellst gerade einen neuen Medialink für "
+        new_medialink_for: "Du erstellst gerade eine neue Referenz für "
   pages:
     home:
       search:
@@ -203,10 +203,10 @@ de:
       no_permission: "Du hast nicht die Rechte, das Profil zu bearbeiten."
       show_no_permission: "Du hast nicht die Rechte, das Profil anzuschauen."
     medialink:
-      created: "Medialink wurde erfolgreich erstellt."
-      updated: "Medialink wurde erfolgreich geändert."
-      destroyed: "Medialink wurde erfolgreich gelöscht."
-      no_permission: "Du hast nicht die Rechte, den Medialink zu bearbeiten."
+      created: "Referenz wurde erfolgreich erstellt."
+      updated: "Referenz wurde erfolgreich geändert."
+      destroyed: "Referenz wurde erfolgreich gelöscht."
+      no_permission: "Du hast nicht die Rechte, die Referenz zu bearbeiten."
   activerecord:
     attributes:
       profile:
@@ -249,10 +249,10 @@ de:
         login: "Anmelden"
         signin: "Anmelden"
   medialinks:
-    edit: "Bearbeite Medialink"
-    new: "Medialink hinzufügen"
-    show: "Medialinks anzeigen"
-    delete: "Medialink löschen"
+    edit: "Bearbeite Referenz"
+    new: "Referenz hinzufügen"
+    show: "Referenzen anzeigen"
+    delete: "Referenz löschen"
     index: "Referenzen"
     medialink_description: "Hier ist Platz für Beispiele von bereits gehaltenen Vorträgen, Podiumsdiskussionen, Fernsehauftritten uvm.<br>
     Am besten nicht zu viele - aber auch nicht zu wenige - möglichst verschiedene Referenzen:

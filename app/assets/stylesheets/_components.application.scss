@@ -428,6 +428,9 @@ footer#main-page-footer {
 
 /* medialinks */
 
+.simple_form abbr[title] {
+  border-bottom: none;
+}
 
 ul#medialinks__list {
   padding: 0;
