@@ -189,6 +189,11 @@ hr {
   left: 10px;
   text-indent: 99999px;
   width: 200px;
+
+  @media only screen and ( max-width: 40em ) /* 640 */{
+    text-indent: 0;
+  }
+
 }
 
 #header__logo {
@@ -196,6 +201,10 @@ hr {
   top: -$header-margin-top;
   left: 0;
   padding-left: 20px;
+
+  @media only screen and ( max-width: 40em ) /* 640 */{
+    display: none;
+  }
 }
 
 header {

@@ -1,29 +1,37 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <header id=<%= 'admin__header--color' if controller_path =~ /admin\// %> >
   <%# TODO: hidden <h1>Speakerinnen</h1>%>
-  <%= link_to(root_path, id: 'header__home-link') do %>
-    <%= t(:home, scope: "layouts.application") %>
-    <%= image_tag("logo_header.png", alt: "logo", id: 'header__logo') %>
-  <% end %>
+  <div class="layout">
+    <div class="layout__item 1/4 palm-1/1">
+      <%= link_to(root_path, id: 'header__home-link') do %>
+        <%= t(:home, scope: "layouts.application") %>
+        <%= image_tag("logo_header.png", alt: "logo", id: 'header__logo') %>
+      <% end %>
+    </div><!--
 
-  <% if profile_signed_in? %>
-    <%= link_to(t(:my_profile, scope: 'layouts.application'), profile_path(current_profile))%>
-    |
-    <%= link_to(t(:account, scope: 'layouts.application'), edit_profile_registration_path) %>
-    |
-    <%= link_to(t(:logout, scope: 'layouts.application'), destroy_profile_session_path, method: :delete) %>
-  <% else %>
-    <%= link_to(t(:signup, scope: 'layouts.application'), sign_up_path) %>
-    |
-    <%= link_to(t(:login, scope: 'layouts.application'), new_profile_session_path) %>
-  <% end %>
-  <% if admin?(current_profile) %>
-    |||
-    <%= link_to 'Admin', admin_root_path %>
-  <% end %>
+    --><div class="layout__item 2/4 palm-1/1">
+      <% if profile_signed_in? %>
+        <%= link_to(t(:my_profile, scope: 'layouts.application'), profile_path(current_profile))%>
+        |
+        <%= link_to(t(:account, scope: 'layouts.application'), edit_profile_registration_path) %>
+        |
+        <%= link_to(t(:logout, scope: 'layouts.application'), destroy_profile_session_path, method: :delete) %>
+      <% else %>
+        <%= link_to(t(:signup, scope: 'layouts.application'), sign_up_path) %>
+        |
+        <%= link_to(t(:login, scope: 'layouts.application'), new_profile_session_path) %>
+      <% end %>
+      <% if admin?(current_profile) %>
+        |||
+        <%= link_to 'Admin', admin_root_path %>
+      <% end %>
+    </div><!--
 
-  <span class="mh sans-serif">
-    <%= link_to_unless I18n.locale == :en, 'EN', {locale: :en} %> |
-    <%= link_to_unless I18n.locale == :de, 'DE', {locale: :de} %>
-  </span>
+    --><div class="layout__item 1/4 palm-1/1">
+      <span class="mh sans-serif">
+        <%= link_to_unless I18n.locale == :en, 'EN', {locale: :en} %> |
+        <%= link_to_unless I18n.locale == :de, 'DE', {locale: :de} %>
+      </span>
+    </div>
+  </div>
 </header>
