@@ -26,15 +26,35 @@ This pushes your new branch called `newdesign` to your GitHub repository.
 
 ## Integrating your working code to master
 
-1. `git fetch origin`
-2. `git checkout origin/newdesign`  
-Check the code on the branch.
-3. `git checkout master`  
-Move to `master` branch.
-4. `git merge origin/newdesign`  
-You merge the `newdesign` branch into to `master` branch.
-5. `git commit`
-6. `git push`
+When you have made your changes and tested them, please send us a pull request.
+
+Do you want to contribute?
+
+If you want to contribute, you can get an overview over the open issues. We are happy to answer your questions if you consider to help. All the issues have a link to their specification. If you want to work on an issue feel free to assign yourself.
+
+## Before you start working
+
+For your database.yml please copy config/database_example.yml
+
+For testing locally you have to create some profiles manually. It is important to confirm these profiles.
+Normally that works via email. Locally you do that via the console:
+
+```Ruby
+rails c
+user = Profile.find(<your-profile-id>)
+user.confirmed_at = DateTime.now
+user.save
+```
+
+If you build or test some admin features you have to create an admin user. You also can assign the status via the console:
+
+```Ruby
+rails c
+user = Profile.find(<your-profile-id>)
+user.admin = true
+user.published = true
+user.save
+```
 
 ## Git(Hub) Help
 
