@@ -62,14 +62,14 @@ h2{
     }
 }
 
+ul {
+  list-style-type: none;
+}
+
 .bg--white {
   display: inline-block;
   background: $transparent-white;
   padding: halve($inuit-base-spacing-unit) $inuit-base-spacing-unit;
-
-  @include media-query(palm) {
-    background: none;
-  }
 }
 
 .box__bg--light {
@@ -180,20 +180,6 @@ hr {
 
 }
 
-/* header */
-#header__home-link {
-  position: absolute;
-  top: $header-margin-top;
-  left: 10px;
-  text-indent: 99999px;
-  width: 200px;
-
-  @media only screen and ( max-width: 40em ) /* 640 */{
-    text-indent: 0;
-  }
-
-}
-
 #header__logo {
   position: absolute;
   top: -$header-margin-top;
@@ -214,6 +200,38 @@ header {
   position: fixed;
   top: 0;
   z-index: 99;
+}
+
+#nav__lap-and-up {
+  @include media-query(palm) {
+    display: none;
+  }
+}
+
+#nav__palm {
+  text-align: left;
+  @include media-query(lap-and-up) {
+    display: none;
+  }
+}
+
+
+#nav__palm-menu-trigger {
+  cursor: pointer;
+  display: inline;
+}
+
+#nav__palm-menu {
+}
+
+.nav__palm-menu-link {
+  display: block;
+  border: 1px solid $grey;
+  background: $link-bg-color;
+  text-align: left;
+  padding-left: 10px;
+  line-height: double($inuit-base-spacing-unit);
+
 }
 
 
@@ -252,10 +270,6 @@ header {
 #startpage__start-teaser {
   background: image-url('start-teaser.jpg') no-repeat center center;
   background-size: cover;
-
-    @include media-query(palm) {
-      background: #f5f5f5;
-    }
 }
 
 #startpage__teaser-bg-01 {
@@ -285,9 +299,6 @@ header {
   display: inline-block;
 }
 
-.startpage-categories__list--no-bullets {
-  list-style-type: none;
-}
 
 .startpage-categories__list-links {
   font-size: 1.9em;
