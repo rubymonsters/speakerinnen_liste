@@ -221,9 +221,6 @@ header {
 }
 
 #nav__palm-menu {
-  @include media-query(lap-and-up) {
-    display: none;
-  }
 }
 
 .nav__palm-menu-link {
@@ -231,17 +228,13 @@ header {
   color: $link-color;
   background-color: $link-bg-color;
   text-align: left;
-  padding: 0 14px;
+  padding-left: $inuit-base-spacing-unit;
   line-height: double($inuit-base-spacing-unit);
 }
 
 .nav__palm-menu-link:hover {
-  display: block;
   color: $link-color-hover;
   background-color: $link-bg-color-hover;
-  text-align: left;
-  padding: 0 14px;
-  line-height: double($inuit-base-spacing-unit);
 }
 
 
