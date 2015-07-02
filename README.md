@@ -12,4 +12,4 @@ If you want to contribute, you can get an overview over the open issues. We are 
 
 https://github.com/rubymonsters/speakerinnen_liste/issues/216
 
-Find further details in CONTRIBUTING.md <3
+Find further details in: https://github.com/rubymonsters/speakerinnen_liste/blob/master/CONTRIBUTING.md
