@@ -1,37 +1,64 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<header id=<%= 'admin__header--color' if controller_path =~ /admin\// %> >
+<header id=<%= 'admin__header--color' if controller_path =~ /admin\// %>>
   <%# TODO: hidden <h1>Speakerinnen</h1>%>
-  <div class="layout">
-    <div class="layout__item 1/4 palm-1/1">
-      <%= link_to(root_path, id: 'header__home-link') do %>
-        <%= t(:home, scope: "layouts.application") %>
-        <%= image_tag("logo_header.png", alt: "logo", id: 'header__logo') %>
-      <% end %>
-    </div><!--
 
-    --><div class="layout__item 2/4 palm-1/1">
-      <% if profile_signed_in? %>
-        <%= link_to(t(:my_profile, scope: 'layouts.application'), profile_path(current_profile))%>
-        |
-        <%= link_to(t(:account, scope: 'layouts.application'), edit_profile_registration_path) %>
-        |
-        <%= link_to(t(:logout, scope: 'layouts.application'), destroy_profile_session_path, method: :delete) %>
-      <% else %>
-        <%= link_to(t(:signup, scope: 'layouts.application'), sign_up_path) %>
-        |
-        <%= link_to(t(:login, scope: 'layouts.application'), new_profile_session_path) %>
-      <% end %>
-      <% if admin?(current_profile) %>
-        |||
-        <%= link_to 'Admin', admin_root_path %>
-      <% end %>
-    </div><!--
+  <span id="nav__lap-and-up">
+    <%= link_to(root_path, id: 'header__home-link') do %>
+      <%# t(:home, scope: "layouts.application") %>
+      <%= image_tag("logo_header.png", alt: "logo", id: 'header__logo') %>
+    <% end %>
+    <% if profile_signed_in? %>
+      <%= link_to(t(:my_profile, scope: 'layouts.application'), profile_path(current_profile))%>
+      |
+      <%= link_to(t(:account, scope: 'layouts.application'), edit_profile_registration_path) %>
+      |
+      <%= link_to(t(:logout, scope: 'layouts.application'), destroy_profile_session_path, method: :delete) %>
+    <% else %>
+      <%= link_to(t(:signup, scope: 'layouts.application'), sign_up_path) %>
+      |
+      <%= link_to(t(:login, scope: 'layouts.application'), new_profile_session_path) %>
+    <% end %>
+    <% if admin?(current_profile) %>
+      |||
+      <%= link_to 'Admin', admin_root_path %>
+    <% end %>
+  </span>
 
-    --><div class="layout__item 1/4 palm-1/1">
-      <span class="mh sans-serif">
-        <%= link_to_unless I18n.locale == :en, 'EN', {locale: :en} %> |
-        <%= link_to_unless I18n.locale == :de, 'DE', {locale: :de} %>
-      </span>
-    </div>
+  <span id="nav__palm">
+    <h5 id="nav__palm-menu-trigger" class="sans-serif">
+      Menu
+    </h5>
+  </span>
+
+  <span class="mh sans-serif">
+    <%= link_to_unless I18n.locale == :en, 'EN', {locale: :en} %> |
+    <%= link_to_unless I18n.locale == :de, 'DE', {locale: :de} %>
+  </span>
+
+  <div id="nav__palm-menu" style="display: none">
+    <ul class="pl0 m0">
+    <% if profile_signed_in? %>
+      <li><%= link_to(t(:my_profile, scope: 'layouts.application'), profile_path(current_profile), class: "nav__palm-menu-link")%></li>
+      <li><%= link_to(t(:account, scope: 'layouts.application'), edit_profile_registration_path, class: "nav__palm-menu-link") %></li>
+      <li><%= link_to(t(:logout, scope: 'layouts.application'), destroy_profile_session_path, method: :delete, class: "nav__palm-menu-link") %></li>
+    <% else %>
+      <li><%= link_to(t(:signup, scope: 'layouts.application'), sign_up_path, class: "nav__palm-menu-link") %></li>
+      <li><%= link_to(t(:login, scope: 'layouts.application'), new_profile_session_path, class: "nav__palm-menu-link") %></li>
+    <% end %>
+    <% if admin?(current_profile) %>
+      <li><%= link_to 'Admin', admin_root_path, class: "nav__palm-menu-link" %></li>
+    <% end %>
+      <li><%= link_to t(:contact, scope: 'pages.home.footer'), contact_path, class: "nav__palm-menu-link" %></li>
+      <li><%= link_to t(:home, scope: 'layouts.application'), root_path, class: "nav__palm-menu-link" %></li>
+    <ul>
   </div>
+
 </header>
+
+<script>
+$( "#nav__palm-menu-trigger" ).click(function() {
+  $( "#nav__palm-menu" ).toggle( 250, function() {
+    // Animation complete.
+  });
+});
+</script>
