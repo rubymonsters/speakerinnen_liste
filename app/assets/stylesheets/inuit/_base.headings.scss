@@ -1,0 +1,40 @@
+
+/*------------------------------------*\
+    #HEADINGS
+\*------------------------------------*/
+
+/**
+ * Headings 1–6.
+ */
+
+// Predefine the variables below in order to alter and enable specific features.
+$inuit-heading-size-1:  36px !default;
+$inuit-heading-size-2:  30px !default;
+$inuit-heading-size-3:  24px !default;
+$inuit-heading-size-4:  20px !default;
+$inuit-heading-size-5:  16px !default;
+$inuit-heading-size-6:  14px !default;
+
+h1 {
+    @include inuit-font-size($inuit-heading-size-1);
+}
+
+h2 {
+    @include inuit-font-size($inuit-heading-size-2);
+}
+
+h3 {
+    @include inuit-font-size($inuit-heading-size-3);
+}
+
+h4 {
+    @include inuit-font-size($inuit-heading-size-4);
+}
+
+h5 {
+    @include inuit-font-size($inuit-heading-size-5);
+}
+
+h6 {
+    @include inuit-font-size($inuit-heading-size-6);
+}

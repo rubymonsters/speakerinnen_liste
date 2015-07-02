@@ -7,40 +7,56 @@ de:
     delete: "Löschen"
     filter: "Filtern"
     create: "Erstellen"
+    save: "Speichern"
+    search: "Suche"
     ok: "Ok"
-    current_name: "Bisheriger Name"
-    new_name: "Neuer Name"
   admin:
     dashboard:
       edit_categories: "Bearbeite Kategorien"
-      edit_tags: "Bearbeite Tags"
+      edit_tags: "Bearbeite Tag"
       edit_profiles: "Bearbeite Profile"
+      edit_profile: "Bearbeite Profil"
       categories:
         categories: "Kategorien"
+        explanation: "Um eine Kategorie auf Englisch und Deutsch anzulegen, füge zuerst die Kategorie in einer Sprache hinzu, wechsle in die andere Sprache und übersetzte den Kategorienamen mithilfe von dem >Bearbeiten< Button."
         category_language_de: "Deutsch"
         category_language_en: "Englisch"
         category_name: "Name der Kategorie"
+        current_name: "Bisheriger Name der Kategorie:"
+        new_name: "Trage den neuen Namen der Kategorie ein: "
       profiles:
         profiles: "Profile"
-        created_at: "Erstellt am"
-        updated_at: "Zuletzt gespeichert"
-        visibility: "Sichtbarkeit"
+        created_at: "Erstellt"
+        updated_at: "Editiert"
+        visibility: "Veröffentlicht"
         public: "öffentlich"
+        make_public: "veröffentliche"
         invisible: "unsichtbar"
+        make_invisible: "Mache unsichtbar"
         roles: "Rollen"
         comment: "Kommentar"
         add_comment: "Kommentar hinzufügen"
+        profile_status: "Das Profil ist "
+        name_of_profile: "Der Name der Speakerin ist "
+        search_for_name: "Suche nach dem Namen"
         edit:
           show: "Zeige Profil"
           show_all: "Liste aller Profile"
       tags:
         tags: "Tags"
+        current_tagname: "Bisheriger Name des Tags:"
+        new_tagname: "Trage den neuen Namen des Tags ein: "
         tags_of: " von "
         tags_here_are: "Du siehst "
-        tags_search: "Suche nach einem bestimmtem tag:"
-        tags_count: "Die Anzahl aller tags ist "
-        tags_filter_option: "Alle tags ohne Kategorien anzeigen"
+        tags_search: "Suche nach einem bestimmtem Tag:"
+        tags_count: "Die Anzahl aller Tags ist "
+        tags_filter_option: "Alle Tags ohne Kategorien anzeigen"
         tags_filter_default: "Alle Kategorien auswählen"
+      medialink:
+        url: "URL:"
+        title: "Überschrift:"
+        description: "Beschreibung:"
+        new_medialink_for: "Du erstellst gerade eine neue Referenz für "
   pages:
     home:
       search:
@@ -51,7 +67,7 @@ de:
       description: "Unsere Kategorien"
       description_text: "Uns ist die Verteilung der Männer und Frauen auf Konferenzbühnen wichtig. Wir ermutigen Frauen, in ihrem professionellen Umfeld sichtbarer zu werden."
       speaker_shoutout: "Hast Du etwas Interessantes zu erzählen?"
-      speaker_text: "Registriere Dich auf der SpeakerinnenListe!"
+      speaker_text: "Registriere Dich auf der SpeakerinnenListe >>"
       speakers:
         new_speaker_heading: "Unsere Speakerinnen*"
         speaker_text: "Keine Ausreden mehr für Panels ohne Frauen!"
@@ -63,7 +79,7 @@ de:
       quote: "Wir glauben an Kollaboration - nicht an Wettbewerb."
       quote_text: "So ermutigen wir unsere Speakerinnen* und Event-Organisatoren, sich gegenseitig zu unterstützen."
       footer:
-        about_title: "Über Speakerinnen*-Liste"
+        about_title: "Über uns"
         about: |
                 Die Speakerinnen-Liste hat das Ziel, die Sichtbarkeit von Frauen* bei Konferenzen, Panels, Talkshows und überall da zu erhöhen, wo öffentlich gesprochen wird.<br>
                 Hier können Veranstalter_innen Expertinnen* finden, die kompetent über ihre Themen sprechen können und wollen.<br>
@@ -81,8 +97,8 @@ de:
         links_text: "Hier gibt es Links zu ähnlichen Projekten:"
         contact: "Kontakt"
         contact_link: "E-Mail"
-        address: "<a href='http://twitter.com/speakerinnen', target='_blank'>Twitter</a>"
-        github: "<a href='http://github.com/rubymonsters/speakerinnen_liste', target='_blank'>GitHub</a>"
+        address: "<a href='http://twitter.com/speakerinnen', target='_blank', class='footer__link'>Twitter</a>"
+        github: "<a href='http://github.com/rubymonsters/speakerinnen_liste', target='_blank', class='footer__link'>GitHub</a>"
         devblog: "<a href='http://speakerinnen.wordpress.com/', taget='_blank'>Entwicklerinnen-Blog</a>"
         faq_short: |
             <strong>Warum gibt es Thema XYZ noch nicht?</strong><br>
@@ -127,8 +143,9 @@ de:
       notice: "Yay! Deine E-Mail wurde gesendet."
       error: "Bitte fülle alle Felder aus, damit die Speakerin alle Informationen bekommt, die sie benötigt."
   profiles:
+    category: "Alle Themen und Speakerinnen* zur Kategorie: "
     tag:
-      topics: "Themen:"
+      topics: "Themen"
     form:
       not_saved: "Dieses Profil konnte nicht gespeichert werden:"
       profile_from: "Profil von"
@@ -157,8 +174,8 @@ de:
     medialinks:
       edit: "Referenzen bearbeiten"
     edit:
-      show: "Eigenes Profil anzeigen"
-      home: "Alle Speakerinnen* anzeigen"
+      show: "Eigenes Profil anzeigen >>"
+      home: "Alle Speakerinnen* anzeigen >>"
       back: "Zurück"
     index:
       title: "Speakerinnen*"
@@ -186,23 +203,23 @@ de:
       no_permission: "Du hast nicht die Rechte, das Profil zu bearbeiten."
       show_no_permission: "Du hast nicht die Rechte, das Profil anzuschauen."
     medialink:
-      created: "Medialink wurde erfolgreich erstellt."
-      updated: "Medialink wurde erfolgreich geändert."
-      destroyed: "Medialink wurde erfolgreich gelöscht."
-      no_permission: "Du hast nicht die Rechte, den Medialink zu bearbeiten."
+      created: "Referenz wurde erfolgreich erstellt."
+      updated: "Referenz wurde erfolgreich geändert."
+      destroyed: "Referenz wurde erfolgreich gelöscht."
+      no_permission: "Du hast nicht die Rechte, die Referenz zu bearbeiten."
   activerecord:
     attributes:
       profile:
         firstname: "Vorname"
         lastname: "Nachname"
         bio: 'Deine Bio auf %{language}<br>
-              <small>(Hier ist Platz für eine kurze oder auch längere Bio. Außerdem sollten hier Fachkenntnisse und mögliche Vortragsthemen genauer beschrieben werden. Das hilft Veranstalterinnen und Veranstaltern herauszufinden, ob Ihr die Richtigen für ihr Event sein könntet)</small>'
-        topic_list: "Deine Themen als Tags<br><small>(Bitte schaue zuerst, ob Dein Thema schon vorhanden ist)</small>"
-        main_topic: "Dein Hauptthema<br>auf %{language}<small>
-        <br>(Trage Dein Hauptthema hier nochmal ein. Dieses Thema wird mit Deinem Namen und Bild auf der Speakerinnen-Übersichtsseite zu sehen sein)</small>"
+              <small>Hier ist Platz für eine kurze oder auch längere Bio. Außerdem sollten hier Fachkenntnisse und mögliche Vortragsthemen genauer beschrieben werden. Das hilft Veranstalterinnen und Veranstaltern herauszufinden, ob Ihr die Richtigen für ihr Event sein könntet.</small>'
+        topic_list: "Deine Themen als Tags<br><small>Bitte schaue zuerst, ob Dein Thema schon vorhanden ist.</small>"
+        main_topic: "Dein Hauptthema auf %{language} (Mehr als 30 Zeichen werden nicht angezeigt)<small>
+        <br>Trage Dein wichtigstes Thema hier nochmal ein. Dieses Thema wird mit Deinem Namen und Bild auf der Speakerinnen-Übersichtsseite zu sehen sein.</small>"
         tag_list: "schon vorhandene Tags"
         talks: "Vortragsthemen"
-        languages: "Sprachen<br><small>(Programmiersprachen bitte bei Themen angeben, nicht hier)</small>"
+        languages: "Sprachen<br><small>Programmiersprachen bitte bei Themen angeben, nicht hier.</small>"
         city: "Stadt"
         twitter: "Twitter"
         picture: "Bild"
@@ -214,9 +231,10 @@ de:
   devise:
     registrations:
       edit:
-        account_from: "Account von"
-        password_needed: '(wir brauchen dein jetziges Passwort um es ändern zu können)'
-        password_blank: "(leer lassen wenn das Passwort nicht geändert werden soll)"
+        account_from: "Account von "
+        password_needed: 'Wir brauchen dein jetziges Passwort, um es ändern zu können.'
+        password_blank: "Bitte leer lassen, wenn das Passwort nicht geändert werden soll."
+        password_current: "Aktuelles Passwort"
         update: "Aktualisiere Account"
         delete_account: "Lösche meinen Account"
         unhappy: "Unglücklich?"
@@ -229,9 +247,12 @@ de:
     sessions:
       new:
         login: "Anmelden"
+        signin: "Anmelden"
   medialinks:
-    edit: "Bearbeite Medialink"
-    new: "Medialink hinzufügen"
+    edit: "Bearbeite Referenz"
+    new: "Referenz hinzufügen"
+    show: "Referenzen anzeigen"
+    delete: "Referenz löschen"
     index: "Referenzen"
     medialink_description: "Hier ist Platz für Beispiele von bereits gehaltenen Vorträgen, Podiumsdiskussionen, Fernsehauftritten uvm.<br>
     Am besten nicht zu viele - aber auch nicht zu wenige - möglichst verschiedene Referenzen:
@@ -240,14 +261,14 @@ de:
     YouTube-Clips können direkt abgespielt werden, alle anderen URLs erscheinen als klickbare Links.
     Es können auch Audio-Dateien oder Texte verlinkt werden!
     <br>"
-    help: "(Du kannst die Reihenfolge der Vorträge mit Drag&Drop verschieben.)"
+    help: "Du kannst die Reihenfolge der Vorträge mit Drag&Drop verschieben."
     url: "URL:"
     title: "Überschrift:"
     description: "Beschreibung:"
     edit_link: " bearbeiten"
     delete_link: " löschen"
     language: "de"
-    tooltip: "Du kannst die Reihenfolge der Referenzen per Drag&Drop ändern."
+    tooltip: "Verschiebe die Reihenfolge mit Drag&Drop."
   search:
     empty: "Du hast nach <strong> %{searchparams} </strong> gesucht, leider haben wir nix gefunden :("
     success: "Du hast nach <strong> %{searchparams} </strong> gesucht und wir haben tatsächlich"

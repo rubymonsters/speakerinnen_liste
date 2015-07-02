@@ -39,4 +39,9 @@ RSpec.configure do |config|
   config.include Capybara::DSL
   config.include Devise::TestHelpers, type: :controller
 
+  config.filter_run_excluding broken: true
+
+  config.before do
+    I18n.locale = :de
+  end
 end

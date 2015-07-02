@@ -16,8 +16,20 @@
   </head>
   <body>
     <%= render 'layouts/header' %>
-    <div id='start-page'>
+    <div id="content">
+      <% if notice %>
+        <div class='notice'>
+          <%= notice %>
+        </div>
+      <% end %>
+      <% if alert %>
+        <div class='alert'>
+          <%= Array(alert).join('<br>').html_safe %>
+        </div>
+      <% end %>
+
       <%= yield %>
+
       <%= render 'layouts/footer' if render_footer? %>
     </div>
   </body>

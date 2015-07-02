@@ -1,20 +1,17 @@
-<div class="pages">
-  <div class="container">
-    <div class="row">
-      <div class="span8 imprint">
-        <h1><%= t(:title, scope: "pages.imprint") %></h1>
-        Travis Foundation<br>
-        c/o Travis CI GmbH<br>
-        Rigaer Straße 8<br>
-        10247 Berlin, Germany<br>
-        <a href= 'http://foundation.travis-ci.org' target="_blank"> http://foundation.travis-ci.org </a><br>
-        Email: speakerinnen@lists.riseup.net<br>
-        Tel: +49 170 4549954
-        <br><br><br><br>
-        <%= t(:privacy, scope: "pages.imprint") %>
-        <iframe style="border: 0; height: 200px; width: 600px;" src="https://speaki.hadar.uberspace.de/piwik/index.php?module=CoreAdminHome&action=optOut&language=<%= I18n.locale %>">
-        </iframe>
-      </div>
-    </div>
+<section class="content--bg-grey">
+  <div class="layout-wrapper">
+    <h1 class="bb"><%= t(:title, scope: "pages.imprint") %></h1>
+    Travis Foundation<br>
+    c/o Travis CI GmbH<br>
+    Rigaer Straße 8<br>
+    10247 Berlin, Germany<br>
+    <a href= 'http://foundation.travis-ci.org' target="_blank"> http://foundation.travis-ci.org </a><br>
+    Email: speakerinnen@lists.riseup.net<br>
+    Tel: +49 170 4549954
+    <p class="bt pv mv+">
+      <%= t(:privacy, scope: "pages.imprint") %>
+    </p>
+    <iframe style="border: 0; height: 200px; width: 600px;" src="https://speaki.hadar.uberspace.de/piwik/index.php?module=CoreAdminHome&action=optOut&language=<%= I18n.locale %>">
+    </iframe>
   </div>
-</div>
+</section>

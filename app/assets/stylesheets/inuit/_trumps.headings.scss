@@ -1,0 +1,45 @@
+/*------------------------------------*\
+    #HEADINGS
+\*------------------------------------*/
+
+/**
+ * Headings 1–6’s corresponding Greek-alphabet abstract classes for double-
+ * stranded heading hierarchy: csswizardry.com/2012/02/pragmatic-practical-font-sizing-in-css
+ *
+ * Use these helper classes to cause other elements to adopt the styling of the
+ * respective heading, e.g.:
+ *
+   <h2 class="alpha">Lorem ipsum</h2>
+ *
+ */
+
+.#{$inuit-namespace}alpha,
+%#{$inuit-namespace}alpha {
+    @include inuit-font-size($inuit-heading-size-1);
+}
+
+.#{$inuit-namespace}beta,
+%#{$inuit-namespace}beta {
+    @include inuit-font-size($inuit-heading-size-2);
+}
+
+.#{$inuit-namespace}gamma,
+%#{$inuit-namespace}gamma {
+    @include inuit-font-size($inuit-heading-size-3);
+}
+
+.#{$inuit-namespace}delta,
+%#{$inuit-namespace}delta {
+    @include inuit-font-size($inuit-heading-size-4);
+}
+
+.#{$inuit-namespace}epsilon,
+%#{$inuit-namespace}epsilon {
+    @include inuit-font-size($inuit-heading-size-5);
+}
+
+.#{$inuit-namespace}zeta,
+%#{$inuit-namespace}zeta {
+    @include inuit-font-size($inuit-heading-size-6);
+}
+

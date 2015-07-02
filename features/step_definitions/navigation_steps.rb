@@ -75,7 +75,7 @@ Then /^you see (a|no) link labeled as: (.+)$/ do |visibility,label|
 end
 
 Then /^you see the speakerinnen logo$/ do
-  expect(page).to have_xpath('//*[@id="logo"]')
+  expect(page).to have_xpath('//*[@id="header__logo"]')
 end
 
 Then /^you see (a|no) button labeled as: (.+)$/ do |visibility,label|
@@ -116,11 +116,11 @@ end
 Then /^you see (a table with columns|a form with labels|images|alert messages|notices): ((.+)(,.+)*)$/ do |type, match, unused, unused2|
   items = comma_separated_string_to_array(match)
   xpath = case type
-    when 'a table with columns' then '//table/thead/tr/th[contains(text(), ":match")] | //table/thead/tr/th/a[contains(text(), ":match")]'
+    when 'a table with columns' then '//table/thead/tr/th[contains(text(), ":match")] | //table/thead/tr/th/a[contains(text(), ":match")] | //table/thead/tr/td[contains(text(), ":match")] | //table/thead/tr/td/a[contains(text(), ":match")]'
     when 'a form with labels' then '//form//label[contains(text(), ":match")]'
     when 'images' then '//*[@id=":match"]'
-    when 'alert messages' then '//p[@class="alert" and contains(text(), ":match")]'
-    when 'notices' then '//p[@class="notice" and contains(text(), ":match")]'
+    when 'alert messages' then '//div[@class="alert" and contains(text(), ":match")]'
+    when 'notices' then '//div[@class="notice" and contains(text(), ":match")]'
   end
 
   items.each do |item|

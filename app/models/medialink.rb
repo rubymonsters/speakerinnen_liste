@@ -11,7 +11,7 @@ class Medialink < ActiveRecord::Base
     youtube width: 400, height: 250
     vimeo width: 400, height: 250
     simple_format
-    link target: '_blank', rel: 'nofollow'
+    link target: '_blank', rel: 'nofollow', class: 'content__link--bg'
   end
 
   def as_json

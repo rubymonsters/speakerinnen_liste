@@ -1,20 +1,28 @@
-<div class="container profiles">
-  <div class="row">
-    <div class="span12">
-      <h1 class="title-profiles">Administration::<%= t(:profiles, scope: "admin.dashboard.profiles")%>::<%= t(:edit, scope: "general")%></h1>
-    </div>
-  </div>
-  <div class="row">
-    <div class="span12 text-right">
-      <%= link_to(t(:show, scope: "admin.dashboard.profiles.edit"), admin_profile_path(@profile), class:"btn btn-small") %>
-      <%= link_to(t(:show_all, scope: "admin.dashboard.profiles.edit"), admin_profiles_path, class:"btn btn-small") %>
-      <% if @profile.published %>
-        <%= link_to(t(:public, scope: "admin.dashboard.profiles"), unpublish_admin_profile_path(@profile.id), method: :post, class:"btn btn-small btn-warning") %>
-      <% else %>
-        <%= link_to(t(:invisible, scope: "admin.dashboard.profiles"), publish_admin_profile_path(@profile.id), method: :post, class:"btn btn-small btn-danger", title: "Eine Bestätigungsmail wird verschickt.") %>
-      <% end %>
-    </div>
-  </div>
+<section class="content--bg-white">
+  <div class="layout-wrapper">
+    <%= render 'shared/error_messages' %>
 
-  <%= render 'form' %>
-</div>
+    <h1>Administration::<%= t(:profiles, scope: 'admin.dashboard.profiles')%>::<%= t(:edit, scope: 'general')%></h1>
+
+    <%= link_to t(:show, scope: 'admin.dashboard.profiles.edit'), admin_profile_path(@profile), class:'btn btn--small' %>
+    <%= link_to t(:show_all, scope: 'admin.dashboard.profiles.edit'), admin_profiles_path, class:'btn btn--small' %>
+    <%= link_to t(:edit, scope: 'medialinks'), admin_profile_medialinks_path(@profile), class:'btn btn--danger btn--small', title: t(:edit, scope: 'medialinks') %>
+    <% if @profile.published %>
+      <%= link_to t(:make_invisible, scope: 'admin.dashboard.profiles'), unpublish_admin_profile_path(@profile.id), method: :post, class:'btn btn--small btn--danger mv', title: 'Hier kannst Du das Profile wieder unsichtbar machen.' %>
+    <% else %>
+      <%= link_to t(:make_public, scope: 'admin.dashboard.profiles'), publish_admin_profile_path(@profile.id), method: :post, class:'btn btn--small btn--danger mv', title: 'Eine Bestätigungsmail wird verschickt.' %>
+    <% end %>
+
+    <h2 class="delta sans-serif mb- bt pt text--color-blue">
+      <%= t(:name_of_profile, scope: 'admin.dashboard.profiles') %> <strong><%= @profile.fullname %></strong>
+      .&nbsp;
+      <%= t(:profile_status, scope: 'admin.dashboard.profiles') + t(:public, scope: 'admin.dashboard.profiles') + '.' if @profile.published? %>
+    </h2>
+    <%= simple_form_for @profile, url: admin_profile_path(@profile),
+                           html: { multipart: true, class: ''} do |f| %>
+
+      <%= render partial: 'shared/profile_formfields',
+                   locals: { form_type: :update_profile, f: f, profile: @profile } %>
+    <% end %>
+  </div>
+</section>

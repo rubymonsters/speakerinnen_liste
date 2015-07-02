@@ -1,24 +1,14 @@
-<div class="container profiles">
-  <div class="row">
-    <div class="span12">
-      <h1 class="title-profiles">Administration::<%= t(:categories, scope: "admin.dashboard.categories")%>::<%= t(:add, scope: "general")%></h1>
-    </div>
+<section class="content--bg-white">
+  <div class="layout-wrapper">
+
+    <h1>Administration::<%= t(:categories, scope: "admin.dashboard.categories")%>::<%= t(:add, scope: "general")%></h1>
+
+    <%= simple_form_for [:admin, @category], html: {class: ''} do |f| %>
+      <%= t(:category_name, scope: "admin.dashboard.categories") %>
+
+      <%= f.input :name, input_html: { class: "mv" }, label: false %>
+
+      <%= f.submit t(:add, scope: "general"), class:"btn btn--small" %>
+    <% end %>
   </div>
-  <div class="row">
-    <div class="span6">
-      <%= form_for [:admin, @category], html: {class: 'form-vertical'} do |f| %>
-      <div class="control-group">
-        <%= t(:category_name, scope: "admin.dashboard.categories") %>
-        <div class="controls">
-          <%= f.text_field :name, class: "input-xxlarge" %>
-        </div>
-      </div>
-      <div class="controls">
-        <%= f.submit t(:add, scope: "general"), class:"btn btn-info" %>
-      </div>
-      <% end %>
-    </div>
-    <div class="span6">
-    </div>
-  </div>
-</div>
+</section>

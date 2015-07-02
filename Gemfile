@@ -28,6 +28,8 @@ gem 'mandrill-api'
 gem 'simple_form', '~> 3.0.2'
 gem 'globalize', '~> 4.0.2'
 
+gem 'font-awesome-rails', '~> 4.3.0.0'
+
 gem 'rails_12factor', group: :production
 
 group :development do
@@ -63,3 +65,4 @@ gem 'unicorn'
 gem 'rollbar', '~> 1.2.6'
 gem 'rack-piwik', '~> 0.3.0', require: 'rack/piwik'
 gem 'newrelic_rpm'
+

@@ -1,0 +1,208 @@
+
+/*------------------------------------*\
+    #WIDTHS
+\*------------------------------------*/
+
+/**
+ * A series of width helper classes that you can use to size things like grid
+ * systems. Classes can take a fraction-like format (e.g. `.2/3`) or a spoken-
+ * word format (e.g. `two-thirds`). Toggle formats by overriding the
+ * `$inuit-use-fractions` variable defined below.
+ */
+
+// Predefine the variables below in order to alter and enable specific features.
+$inuit-widths-namespace: $inuit-namespace !default;
+$inuit-use-fractions:    true !default;
+
+@if $inuit-use-fractions == true {
+
+    /**
+     * Whole.
+     */
+    [class~="#{$inuit-widths-namespace}1/1"]       { width: 100% !important; }
+
+    /**
+     * Halves.
+     */
+    [class~="#{$inuit-widths-namespace}1/2"],
+    [class~="#{$inuit-widths-namespace}2/4"],
+    [class~="#{$inuit-widths-namespace}3/6"],
+    [class~="#{$inuit-widths-namespace}4/8"],
+    [class~="#{$inuit-widths-namespace}5/10"],
+    [class~="#{$inuit-widths-namespace}6/12"]      { width: 50% !important; }
+
+    /**
+     * Thirds.
+     */
+    [class~="#{$inuit-widths-namespace}1/3"],
+    [class~="#{$inuit-widths-namespace}2/6"],
+    [class~="#{$inuit-widths-namespace}3/9"],
+    [class~="#{$inuit-widths-namespace}4/12"]      { width: 33.3333333% !important; }
+    [class~="#{$inuit-widths-namespace}2/3"],
+    [class~="#{$inuit-widths-namespace}4/6"],
+    [class~="#{$inuit-widths-namespace}6/9"],
+    [class~="#{$inuit-widths-namespace}8/12"]      { width: 66.6666666% !important; }
+
+    /**
+     * Quarters.
+     */
+    [class~="#{$inuit-widths-namespace}1/4"],
+    [class~="#{$inuit-widths-namespace}2/8"],
+    [class~="#{$inuit-widths-namespace}3/12"]      { width: 25% !important; }
+    [class~="#{$inuit-widths-namespace}3/4"],
+    [class~="#{$inuit-widths-namespace}6/8"],
+    [class~="#{$inuit-widths-namespace}9/12"]      { width: 75% !important; }
+
+    /**
+     * Fifths.
+     */
+    [class~="#{$inuit-widths-namespace}1/5"],
+    [class~="#{$inuit-widths-namespace}2/10"]      { width: 20% !important; }
+    [class~="#{$inuit-widths-namespace}2/5"],
+    [class~="#{$inuit-widths-namespace}4/10"]      { width: 40% !important; }
+    [class~="#{$inuit-widths-namespace}3/5"],
+    [class~="#{$inuit-widths-namespace}6/10"]      { width: 60% !important; }
+    [class~="#{$inuit-widths-namespace}4/5"],
+    [class~="#{$inuit-widths-namespace}8/10"]      { width: 80% !important; }
+
+    /**
+     * Sixths.
+     */
+    [class~="#{$inuit-widths-namespace}1/6"],
+    [class~="#{$inuit-widths-namespace}2/12"]      { width: 16.6666666% !important; }
+    [class~="#{$inuit-widths-namespace}5/6"],
+    [class~="#{$inuit-widths-namespace}10/12"]     { width: 83.3333333% !important; }
+    /**
+     * Eighths.
+     */
+    [class~="#{$inuit-widths-namespace}1/8"]       { width: 12.5% !important; }
+    [class~="#{$inuit-widths-namespace}3/8"]       { width: 37.5% !important; }
+    [class~="#{$inuit-widths-namespace}5/8"]       { width: 62.5% !important; }
+    [class~="#{$inuit-widths-namespace}7/8"]       { width: 87.5% !important; }
+
+    /**
+     * Ninths.
+     */
+    [class~="#{$inuit-widths-namespace}1/9"]       { width: 11.1111111% !important; }
+    [class~="#{$inuit-widths-namespace}2/9"]       { width: 22.2222222% !important; }
+    [class~="#{$inuit-widths-namespace}4/9"]       { width: 44.4444444% !important; }
+    [class~="#{$inuit-widths-namespace}5/9"]       { width: 55.5555555% !important; }
+    [class~="#{$inuit-widths-namespace}7/9"]       { width: 77.7777777% !important; }
+    [class~="#{$inuit-widths-namespace}8/9"]       { width: 88.8888888% !important; }
+
+    /**
+     * Tenths.
+     */
+    [class~="#{$inuit-widths-namespace}1/10"]      { width: 10% !important; }
+    [class~="#{$inuit-widths-namespace}3/10"]      { width: 30% !important; }
+    [class~="#{$inuit-widths-namespace}7/10"]      { width: 70% !important; }
+    [class~="#{$inuit-widths-namespace}9/10"]      { width: 90% !important; }
+
+    /**
+     * Twelfths.
+     */
+    [class~="#{$inuit-widths-namespace}1/12"]      { width:  8.3333333% !important; }
+    [class~="#{$inuit-widths-namespace}5/12"]      { width: 41.6666666% !important; }
+    [class~="#{$inuit-widths-namespace}7/12"]      { width: 58.3333333% !important; }
+    [class~="#{$inuit-widths-namespace}11/12"]     { width: 91.6666666% !important; }
+
+} // Close fractions @if.
+
+
+
+
+
+@else {
+
+    /**
+     * Whole.
+     */
+    .#{$inuit-widths-namespace}one-whole           { width: 100% !important; }
+
+    /**
+     * Halves.
+     */
+    .#{$inuit-widths-namespace}one-half,
+    .#{$inuit-widths-namespace}two-quarters,
+    .#{$inuit-widths-namespace}three-sixths,
+    .#{$inuit-widths-namespace}four-eighths,
+    .#{$inuit-widths-namespace}five-tenths,
+    .#{$inuit-widths-namespace}six-twelfths        { width: 50% !important; }
+
+    /**
+     * Thirds.
+     */
+    .#{$inuit-widths-namespace}one-third,
+    .#{$inuit-widths-namespace}two-sixths,
+    .#{$inuit-widths-namespace}three-ninths,
+    .#{$inuit-widths-namespace}four-twelfths       { width: 33.3333333% !important; }
+    .#{$inuit-widths-namespace}two-thirds,
+    .#{$inuit-widths-namespace}four-sixths,
+    .#{$inuit-widths-namespace}six-ninths,
+    .#{$inuit-widths-namespace}eight-twelfths      { width: 66.6666666% !important; }
+
+    /**
+     * Quarters.
+     */
+    .#{$inuit-widths-namespace}one-quarter,
+    .#{$inuit-widths-namespace}two-eighths,
+    .#{$inuit-widths-namespace}three-twelfths      { width: 25% !important; }
+    .#{$inuit-widths-namespace}three-quarters,
+    .#{$inuit-widths-namespace}six-eighths,
+    .#{$inuit-widths-namespace}nine-twelfths       { width: 75% !important; }
+
+    /**
+     * Fifths.
+     */
+    .#{$inuit-widths-namespace}one-fifth,
+    .#{$inuit-widths-namespace}two-tenths          { width: 20% !important; }
+    .#{$inuit-widths-namespace}two-fifths,
+    .#{$inuit-widths-namespace}four-tenths         { width: 40% !important; }
+    .#{$inuit-widths-namespace}three-fifths,
+    .#{$inuit-widths-namespace}six-tenths          { width: 60% !important; }
+    .#{$inuit-widths-namespace}four-fifths,
+    .#{$inuit-widths-namespace}eight-tenths        { width: 80% !important; }
+
+    /**
+     * Sixths.
+     */
+    .#{$inuit-widths-namespace}one-sixth,
+    .#{$inuit-widths-namespace}two-twelfths        { width: 16.6666666% !important; }
+    .#{$inuit-widths-namespace}five-sixths,
+    .#{$inuit-widths-namespace}ten-twelfths        { width: 83.3333333% !important; }
+
+    /**
+     * Eighths.
+     */
+    .#{$inuit-widths-namespace}one-eighth          { width: 12.5% !important; }
+    .#{$inuit-widths-namespace}three-eighths       { width: 37.5% !important; }
+    .#{$inuit-widths-namespace}five-eighths        { width: 62.5% !important; }
+    .#{$inuit-widths-namespace}seven-eighths       { width: 87.5% !important; }
+
+    /**
+     * Ninths.
+     */
+    .#{$inuit-widths-namespace}one-ninth           { width: 11.1111111% !important; }
+    .#{$inuit-widths-namespace}two-ninths          { width: 22.2222222% !important; }
+    .#{$inuit-widths-namespace}four-ninths         { width: 44.4444444% !important; }
+    .#{$inuit-widths-namespace}five-ninths         { width: 55.5555555% !important; }
+    .#{$inuit-widths-namespace}seven-ninths        { width: 77.7777777% !important; }
+    .#{$inuit-widths-namespace}eight-ninths        { width: 88.8888888% !important; }
+
+    /**
+     * Tenths.
+     */
+    .#{$inuit-widths-namespace}one-tenth           { width: 10% !important; }
+    .#{$inuit-widths-namespace}three-tenths        { width: 30% !important; }
+    .#{$inuit-widths-namespace}seven-tenths        { width: 70% !important; }
+    .#{$inuit-widths-namespace}nine-tenths         { width: 90% !important; }
+
+    /**
+     * Twelfths.
+     */
+    .#{$inuit-widths-namespace}one-twelfth         { width:  8.3333333% !important; }
+    .#{$inuit-widths-namespace}five-twelfths       { width: 41.6666666% !important; }
+    .#{$inuit-widths-namespace}seven-twelfths      { width: 58.3333333% !important; }
+    .#{$inuit-widths-namespace}eleven-twelfths     { width: 91.6666666% !important; }
+
+} // Close fractions @if.

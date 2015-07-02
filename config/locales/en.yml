@@ -7,71 +7,87 @@ en:
     delete: "Delete"
     filter: "Filter"
     create: "Create"
+    save: "Save"
+    search: "Search"
     ok: "Ok"
-    current_name: "Current name"
-    new_name: "New name"
   admin:
     dashboard:
       edit_categories: "Edit Categories"
       edit_tags: "Edit Tags"
       edit_profiles: "Edit Profiles"
+      edit_profile: "Edit Profile"
       categories:
         categories: "Categories"
+        explanation: "To add a category in english and german, first you have to add the name of the category, then change the scope of your language and translate that category name with the >edit< button."
         category_language_de: "German"
         category_language_en: "English"
         category_name: "Category name"
+        current_name: "Current category name: "
+        new_name: "Enter new category name: "
       profiles:
         profiles: "Profiles"
-        created_at: "Created at"
-        updated_at: "Updated at"
+        created_at: "Created"
+        updated_at: "Updated"
         visibility: "Visibility"
         public: "public"
+        make_public: "Make public"
         invisible: "invisible"
+        make_invisible: "Make invisible"
         roles: "Roles"
         comment: "Comment"
         add_comment: "Add comment"
+        profile_status: "The Profile is "
+        name_of_profile: "The Name of the Speakerin is "
+        search_for_name: "Search for name"
         edit:
           show: "Show profile"
           show_all: "List all profiles"
       tags:
         tags: "Tags"
+        current_tagname: "Current tag name: "
+        new_tagname: "Enter new tag name: "
         tags_of: " out of "
         tags_here_are: "Here are "
         tags_search: "Search for tag"
         tags_count: "The number of all tags is "
         tags_filter_option: "Show all tags without category"
         tags_filter_default: "Show all categories"
+      medialink:
+        url: "URL:"
+        title: "Title:"
+        description: "Description:"
+        new_medialink_for: "You are about to add a new reference for "
   pages:
     home:
       search:
         heading: "Organizers, find your speakers"
-        tagline: "Find female speakers & moderators for your conference"
+        tagline: "Find women speakers & moderators for your conference"
         search_text: ""
         search: "Search"
       description: "Our Categories"
-      description_text: "We feel strongly about a balanced representation of men and women on stage. We encourage women to become more visible in their profession and field of expertise."
+      description_text: "We feel strongly about a balanced representation of men and women* on stage. We encourage women* to become more visible in their profession and field of expertise."
       speaker_shoutout: "Do you have something interesting to say?"
-      speaker_text: "Get on the Speakerinnen* List: "
+      speaker_text: "Get on the Speakerinnen list >>"
       speakers:
         new_speaker_heading: "Our Speakers"
-        speaker_text: "No more excuses for panels without women!"
+        speaker_text: "No more excuses for panels without women*!"
         speaker_index: "Browse all speakers >>"
         categories: "Categories and Topics >>"
       mission_statement:
         heading: "Our Vision"
-        content: "<p>We believe that female speakers should be easier to find for event organizers.</p><p>We believe that event organizers should have the best speakers at their events, regardless of the speakers’ gender identification.</p><p>We believe in collaboration and not competition, so we encourage our speakers and event organizers to support each other and help speakers speak better.</p>"
+        content: "<p>We believe that women speakers should be easier to find for event organizers.</p><p>We believe that event organizers should have the best speakers at their events, regardless of the speakers’ gender identification.</p><p>We believe in collaboration and not competition, so we encourage our speakers and event organizers to support each other and help speakers speak better.</p>"
       quote: "We believe in collaboration — not competition"
       quote_text: "So we encourage our speakers and event organizers to support each other and help speakers to improve their performance."
       footer:
-        about_title: "About Speakerinnen*-List"
+        about_title: "About us"
         about: |
-              The Speakerinnen* List aims to increase the visibility and participation of women at (but not limited to) conferences, panels and talk shows.<br>
+              Speakerinnen.org aims to increase the visibility and participation of women* at (but not limited to) conferences, panels and talk shows.<br>
               Organizers and hosts can find experts, who gladly (and competently) share their knowledge. <br>
-              Women can register in our database with the topics they are interested in covering, and can add references to their abilities.
+              women* can register in our database with the topics they are interested in covering, and can add references to their abilities.
         more: ">> more"
         railsgirls: |
-              8 women supported by 4 coaches coded this web application as a Rails Girls Berlin learning project.<br><br>
-              <a href='http://railsgirlsberlin.de', target='_blank'>Rails Girls</a> is an international not-for-profit group that aims to get women into programming
+              8 women* supported by 4 coaches coded this web application as a Rails Girls Berlin learning project.<br><br>
+              <a href='http://railsgirlsberlin.de', target='_blank'>Rails Girls</a> is an international not-for-profit group that aims to get women* into programming
               with workshops, scholarships, and a safe learning community.
         press: "Media Coverage"
         blog: "Our blog"
@@ -83,7 +99,7 @@ en:
         contact_link: "Email"
         address: "<a href='http://twitter.com/speakerinnen'>Twitter</a>"
         github: '<a href="http://github.com/rubymonsters/speakerinnen_liste">GitHub</a>'
-        devblog: "<a href='http://speakerinnen.wordpress.com/', taget='_blank'>Developer Blog</a>"
+        devblog: "<a href='http://speakerinnen.wordpress.com/', target='_blank'>Developer Blog</a>"
         faq_short: |
                 <strong>Why is there no speaker for the topic I am looking for?</strong><br>
                 Possibly, nobody has created a tag for this topic yet. As soon as a speaker names this topic as one of her tags, this topic becomes visible as a tag within the topic range.<br>
@@ -99,9 +115,9 @@ en:
       privac¥: "We are using Piwik data analytics to collect anonymized data that will help us to improve the usability of our website."
   layouts:
     application:
-      title: "Speakerinnen-List"
+      title: "speakerinnen.org"
       home: "Home"
-      list: "Speakerinnen*"
+      list: "Speakerinnen"
       contact: "Contact"
       impressum: "Legal Details"
       search: "Search"
@@ -127,8 +143,9 @@ en:
       notice: "Yay! Your message was sent."
       error: "Please fill out all the fields so that the speaker can have all the details she needs."
   profiles:
+    category: "All topics and Speakerinnen for the Category: "
     tag:
-      topics: "Topics:"
+      topics: "Topics"
     form:
       not_saved: "This profile could not be saved: "
       profile_from: "Profile of"
@@ -157,11 +174,11 @@ en:
     medialinks:
       edit: "Edit references"
     edit:
-      show: "Show own Profile"
-      home: "Show all Speakerinnen*"
+      show: "Show own Profile >>"
+      home: "Show all Speakerinnen >>"
       back: "Back"
     index:
-      title: "Speakerinnen*"
+      title: "Speakerinnen"
       text: "Welcome! Here you can find women* for your conference or your event: speakers, panel hosts, or workshop hosts. Browse individual profiles, filter via the most listed topics (see below), or use the search function for a specific search. Enjoy!"
       search1: "You searched for"
       search2: "and you have found"
@@ -188,10 +205,10 @@ en:
       no_permission: "You don’t have permission to edit the profile."
       show_no_permission: "You don’t have permission to see the profile."
     medialink:
-      created: 'Medialink was successfully created.'
-      updated: 'Medialink was successfully updated.'
-      destroyed: 'Medialink was successfully deleted.'
-      no_permission: "You don’t have permission to edit the medialink."
+      created: 'Reference was successfully created.'
+      updated: 'Reference was successfully updated.'
+      destroyed: 'Reference was successfully deleted.'
+      no_permission: "You don’t have permission to edit the reference."
   activerecord:
     attributes:
       profile:
@@ -199,11 +216,11 @@ en:
         lastname: "Last name"
         bio: "Your bio in %{language}<br>
         <small>(Here you can add a short or long bio of yourself. Please also add specific expertise and topics you feel comfortable speaking about. This will help organizers of events to understand whether you might be the person they're looking for)</small>"
-        topic_list: "Your topics as tags<br><small>(Please have a look first, if your topic already exists)</small>"
-        main_topic: "Your main topic in %{language}<br><small>(Please choose one topic as your favorite topic and enter it again. It will be visible along with your name and picture at the speaker overview site)</small>"
+        topic_list: "Your topics as tags<br><small>Please have a look first, if your topic already exists</small>"
+        main_topic: "Your main topic in %{language} (More than 30 characters are not shown)<br><small>Please choose one topic as your favorite topic and enter it again. It will be visible along with your name and picture at the speaker overview site</small>"
         tag_list: "Existing Topics"
         talks: "Talks"
-        languages: "Languages<br><small>(Please add programming languages in 'Topics', not here)</small>"
+        languages: "Languages<br><small>Please add programming languages in 'Topics', not here</small>"
         city: "City"
         twitter: "Twitter"
         picture: "Picture"
@@ -215,9 +232,10 @@ en:
   devise:
     registrations:
       edit:
-        account_from: "Account of"
-        password_needed: "(we need your current password in order to change it)"
-        password_blank: "(leave blank if you do not want to change the password)"
+        account_from: "Account of "
+        password_needed: "We need your current password in order to change it."
+        password_blank: "Leave blank if you do not want to change the password."
+        password_current: "Current password"
         update: "Update Account"
         delete_account: "Delete my Account"
         unhappy: "Unhappy?"
@@ -230,22 +248,25 @@ en:
     sessions:
       new:
         login: "Log in"
+        signin: "Sign in"
   medialinks:
     edit: "Edit Reference"
     new: "Add Reference"
+    delete: "Delete Reference"
     index: "References"
+    show: "Show References"
     # Translation
     medialink_description: "Here you can add examples of your previous talks, panel discussions, TV shows or similar talking situations.
 It would be best not to have too many but also not too few. Add diverse examples so that event organizers can get a picture of your work as a speaker.
 Links to Youtube videos will be shown as embedded videos. Other links will be clickable. You can also list audio files and texts."
-    help: "(You can change the sort order of the references per drag&drop.)"
+    help: "You can change the sort order of the references per drag&drop."
     url: "URL:"
     title: "Title:"
     description: "Description:"
     edit_link: " edit"
     delete_link: " delete"
     language: "en"
-    tooltip: "You can change the sort order of the references per drag&drop."
+    tooltip: "Change the sort order per drag&drop."
   search:
     empty: "You searched for <strong> %{searchparams} </strong> but unfortunately we didn't find anything."
     success: "You searched for <strong> %{searchparams} </strong> and we found"

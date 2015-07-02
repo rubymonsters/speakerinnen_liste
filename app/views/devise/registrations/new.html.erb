@@ -1,39 +1,9 @@
-<div id="container">
-  <div id="badge-log">
-    <div id="badge-inner">
-
-      <div id="logo">
-        <%= image_tag("logo8.png", id:"logo8") %>
-      </div>
-
-      <div id="login">
-        <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :class => "form-vertical"}) do |f| %>
-          <% if f.object.password_required? == false %>
-          <div>
-            <%= t(:explanation_email, scope: "devise.registrations") %>
-          </div>
-          <br>
-            <%= f.input :email, placeholder: t(:email, scope: "devise.registrations"), :autofocus => true, label: false %>
-          <% else %>
-            <%= f.input :email, placeholder: t(:email, scope: "devise.registrations"), :autofocus => true, label: false %>
-            <%= f.input :password, placeholder: t(:password, scope: "devise.registrations"), label: false %>
-            <%= f.input :password_confirmation, placeholder: t(:confirmation, scope: "devise.registrations"), label: false %>
-            <br>
-            <% if devise_mapping.omniauthable? %>
-              <% Profile.omniauth_providers.each do |provider| %>
-                <%= link_to t(:signup_via, scope: "devise.registrations"), omniauth_authorize_path(:profile, provider), class: 'btn' %>
-              <% end %>
-            <% end %>
-            <br>
-            <br>
-            <% if devise_mapping.confirmable? && controller_name != 'confirmations' %>
-              <%= link_to t(:no_confirmation, scope: "devise.registrations"), new_confirmation_path(:profile) %><br />
-            <% end %>
-          <% end %>
-          <%= f.submit t(:signup, scope: "devise.registrations"), class:'btn btn-info' %>
-        <% end %>
-      </div>
-
-    </div>
-  </div>
-</div>
+<% @target_url = registration_path(resource_name)
+   @signup = true
+   %>
+<%= render 'devise/shared/auth', locals: {
+    signup: @signup,
+    resource: @resource,
+    resource_name: @resource_name,
+    target_url: @target_url
+    } %>

@@ -2,7 +2,7 @@ de:
   devise:
     confirmations:
       confirmed: 'Vielen Dank für Deine Registrierung. Bitte logge Dich ein.'
-      send_instructions: 'Du erhälst in wenigen Minuten eine E-Mail, mit der Du Ihre Registrierung bestätigen kannst.'
+      send_instructions: 'Du erhälst in wenigen Minuten eine E-Mail, mit der Du Deine Registrierung bestätigen kannst.'
       send_paranoid_instructions: 'Falls Deine E-Mail-Adresse in unserer Datenbank existiert erhälst Du in wenigen Minuten eine E-Mail mit der die Du Deine Registrierung bestätigen kannst.'
     failure:
       already_authenticated: 'Du bist bereits angemeldet.'
@@ -40,18 +40,21 @@ de:
       signed_up_but_inactive: 'Du hast Dich erfolgreich registriert. Wir konnten Dich noch nicht anmelden, da Dein Account inaktiv ist.'
       signed_up_but_locked: 'Du hast Dich erfolgreich registriert. Wir konnten Dich noch nicht anmelden, da Dein Account gesperrt ist.'
       signed_up_but_unconfirmed: 'Du hast dich erfolgreich registriert. Wir konnten Dich noch nicht anmelden, da Dein Account noch nicht bestätigt ist. Du erhälst in Kürze eine E-Mail mit der Anleitung, wie Du Deinen Account freischalten kannst.'
-      update_needs_confirmation: "Deine Daten wurden aktualisiert, aber Du musst Deine neue E-Mail-Adresse bestätigen. Du erhälst in wenigen Minuten eine E-Mail, mit der Du die Änderung Ihrer E-Mail-Adresse abschließen kannst."
+      update_needs_confirmation: "Deine Daten wurden aktualisiert, aber Du musst Deine neue E-Mail-Adresse bestätigen. Du erhälst in wenigen Minuten eine E-Mail, mit der Du die Änderung Deiner E-Mail-Adresse abschließen kannst."
       updated: 'Deine Daten wurden aktualisiert.'
       email: "E-Mail"
       password: "Mindestens 8 Zeichen"
       confirmation: "Bestätige Dein Passwort"
       signup: "Registrieren"
-      signup_via: "Oder registriere Dich über Twitter"
-      signin_via: "Oder logge Dich über Twitter ein"
+      signin: "Anmelden"
+      signup_via: "Über Twitter registrieren"
+      signin_via: "Über Twitter anmelden"
       no_confirmation: "Keine Bestätigungsmail erhalten?"
       forgot_password: "Passwort vergessen?"
       remember: "Angemeldet bleiben"
       send_instructions: "Schicke mir eine E-Mail"
+      resend_instructions_title: "Schicke mir nochmal die Bestätigungsmail"
+      resend_instructions: "Bestätigungsmail schicken"
     sessions:
       signed_in: 'Erfolgreich angemeldet.'
       signed_out: 'Erfolgreich abgemeldet.'
