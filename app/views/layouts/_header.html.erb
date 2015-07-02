@@ -38,18 +38,18 @@
   <div id="nav__palm-menu" style="display: none">
     <ul class="pl0 m0">
     <% if profile_signed_in? %>
-      <li><%= link_to(t(:my_profile, scope: 'layouts.application'), profile_path(current_profile), class: "nav__palm-menu-link")%></li>
-      <li><%= link_to(t(:account, scope: 'layouts.application'), edit_profile_registration_path, class: "nav__palm-menu-link") %></li>
-      <li><%= link_to(t(:logout, scope: 'layouts.application'), destroy_profile_session_path, method: :delete, class: "nav__palm-menu-link") %></li>
+      <li><%= link_to(t(:my_profile, scope: 'layouts.application'), profile_path(current_profile), class: "nav__palm-menu-link bb")%></li>
+      <li><%= link_to(t(:account, scope: 'layouts.application'), edit_profile_registration_path, class: "nav__palm-menu-link bb") %></li>
+      <li><%= link_to(t(:logout, scope: 'layouts.application'), destroy_profile_session_path, method: :delete, class: "nav__palm-menu-link bb") %></li>
     <% else %>
-      <li><%= link_to(t(:signup, scope: 'layouts.application'), sign_up_path, class: "nav__palm-menu-link") %></li>
-      <li><%= link_to(t(:login, scope: 'layouts.application'), new_profile_session_path, class: "nav__palm-menu-link") %></li>
+      <li><%= link_to(t(:signup, scope: 'layouts.application'), sign_up_path, class: "nav__palm-menu-link bb") %></li>
+      <li><%= link_to(t(:login, scope: 'layouts.application'), new_profile_session_path, class: "nav__palm-menu-link bb") %></li>
     <% end %>
     <% if admin?(current_profile) %>
-      <li><%= link_to 'Admin', admin_root_path, class: "nav__palm-menu-link" %></li>
+      <li><%= link_to 'Admin', admin_root_path, class: "nav__palm-menu-link bb" %></li>
     <% end %>
-      <li><%= link_to t(:contact, scope: 'pages.home.footer'), contact_path, class: "nav__palm-menu-link" %></li>
-      <li><%= link_to t(:home, scope: 'layouts.application'), root_path, class: "nav__palm-menu-link" %></li>
+      <li><%= link_to t(:contact, scope: 'pages.home.footer'), contact_path, class: "nav__palm-menu-link bb" %></li>
+      <li><%= link_to t(:home, scope: 'layouts.application'), root_path, class: "nav__palm-menu-link bb" %></li>
     <ul>
   </div>
 
