@@ -117,6 +117,7 @@ de:
     application:
       title: "Speakerinnen*-Liste"
       home: "Home"
+      menu: "Menü"
       list: "Speakerinnen*"
       contact: "Kontakt"
       impressum: "Impressum"

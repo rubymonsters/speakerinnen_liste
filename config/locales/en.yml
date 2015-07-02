@@ -117,6 +117,7 @@ en:
     application:
       title: "speakerinnen.org"
       home: "Home"
+      menu: "Menu"
       list: "Speakerinnen"
       contact: "Contact"
       impressum: "Legal Details"
