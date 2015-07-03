@@ -20,7 +20,7 @@ Given /^you view the page in (English|German)$/ do |language|
     'German' => 'DE',
   }
   if page.has_link?(lang_short_map[language])
-    click_on lang_short_map[language]
+    click_on(lang_short_map[language], match: :first)
   end
 end
 
