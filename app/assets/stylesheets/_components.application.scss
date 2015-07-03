@@ -62,10 +62,6 @@ h2{
     }
 }
 
-ul {
-  list-style-type: none;
-}
-
 .bg--white {
   display: inline-block;
   background: $transparent-white;
@@ -242,7 +238,7 @@ header {
 .layout-wrapper {
   max-width: $layout-width;
   margin: 0 auto;
-  padding-top: quadruple($inuit-base-spacing-unit);
+  padding: quadruple($inuit-base-spacing-unit) halve($inuit-base-spacing-unit) 0;
 }
 
 #content {
