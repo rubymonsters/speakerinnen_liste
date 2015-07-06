@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui
 //= require jquery-ui/sortable
 //= require jquery-ui/tooltip
 //= require tag-it/tag-it
