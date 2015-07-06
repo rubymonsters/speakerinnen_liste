@@ -4,7 +4,7 @@ module SignInHelper
 			visit new_profile_session_path
 			lang_map = { 'de' => 'DE', 'en' => 'EN' }
 			if page.has_link?(lang_map[language])
-				click_on lang_map[language]
+				click_on(lang_map[language], match: :first)
 			end
 			fill_in "profile[email]", with: profile.email
 			fill_in "profile[password]", with: profile.password
