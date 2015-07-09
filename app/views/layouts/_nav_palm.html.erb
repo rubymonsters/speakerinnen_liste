@@ -4,6 +4,9 @@
     <%= t(:menu, scope: 'layouts.application') %>
   </h5>
 
+  <span class="ml+">
+    <%= link_to '<i class="fa fa-home"></i>'.html_safe, root_path %>
+  </span>
   <span class="mh sans-serif">
     <%= link_to_unless I18n.locale == :en, 'EN', {locale: :en} %> |
     <%= link_to_unless I18n.locale == :de, 'DE', {locale: :de} %>
@@ -23,10 +26,7 @@
       <li><%= link_to 'Admin', admin_root_path, class: "nav__palm-menu-link bb" %></li>
     <% end %>
       <li><%= link_to t(:contact, scope: 'pages.home.footer'), contact_path, class: "nav__palm-menu-link bb" %></li>
-      <li><%= link_to t(:home, scope: 'layouts.application'), root_path, class: "nav__palm-menu-link bb" %></li>
     <ul>
   </div>
 
 </div>
-
-
