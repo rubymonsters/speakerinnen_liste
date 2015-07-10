@@ -130,7 +130,7 @@ de:
       account: "Benutzerkonto"
       logout: "Ausloggen"
       signup: "Als Speakerin registrieren"
-      login: "Anmelden"
+      login: "Einloggen"
   contact:
     form:
       name: "Dein Name"
@@ -247,8 +247,8 @@ de:
         password: "Passwort"
     sessions:
       new:
-        login: "Anmelden"
-        signin: "Anmelden"
+        login: "Einloggen"
+        signin: "Einloggen"
   medialinks:
     edit: "Bearbeite Referenz"
     new: "Referenz hinzufügen"

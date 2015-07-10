@@ -26,6 +26,7 @@
     <% if admin?(current_profile) %>
       <li><%= link_to 'Admin', admin_root_path, class: "nav__palm-menu-link bb" %></li>
     <% end %>
+      <li><%= link_to "Speakerinnen Blog", "https://blog.speakerinnen.org/", class: "nav__palm-menu-link bb" %></li>
       <li><%= link_to t(:contact, scope: 'pages.home.footer'), contact_path, class: "nav__palm-menu-link bb" %></li>
     <ul>
   </div>
