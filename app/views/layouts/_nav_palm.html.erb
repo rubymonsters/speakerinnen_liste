@@ -1,12 +1,13 @@
 <div id="nav__palm">
 
+  <span class="ml+">
+    <%= link_to '<i class="fa fa-home"></i>'.html_safe, root_path %>
+  </span>
+
   <h5 id="nav__palm-menu-trigger" class="sans-serif pl">
     <%= t(:menu, scope: 'layouts.application') %>
   </h5>
 
-  <span class="ml+">
-    <%= link_to '<i class="fa fa-home"></i>'.html_safe, root_path %>
-  </span>
   <span class="mh sans-serif">
     <%= link_to_unless I18n.locale == :en, 'EN', {locale: :en} %> |
     <%= link_to_unless I18n.locale == :de, 'DE', {locale: :de} %>

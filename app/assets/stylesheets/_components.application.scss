@@ -7,10 +7,10 @@ a {
 	font-family: $sans-serif;
 	color: $link-color;
 	text-decoration: none;
-}
 
-a:hover {
-	color: $font-color;
+  &:hover {
+    color: $font-color;
+  }
 }
 
 .sans-serif{
@@ -210,10 +210,15 @@ header {
   }
 }
 
-
 #nav__palm-menu-trigger {
   cursor: pointer;
   display: inline;
+	color: $link-color;
+	text-decoration: none;
+
+  &:hover {
+    color: $font-color;
+  }
 }
 
 #nav__palm-menu {
@@ -226,13 +231,12 @@ header {
   text-align: left;
   padding-left: $inuit-base-spacing-unit;
   line-height: double($inuit-base-spacing-unit);
-}
 
-.nav__palm-menu-link:hover {
-  color: $link-color-hover;
-  background-color: $link-bg-color-hover;
+  &:hover {
+    color: $link-color-hover;
+    background-color: $link-bg-color-hover;
+  }
 }
-
 
 /* layout */
 .layout-wrapper {
@@ -257,11 +261,11 @@ header {
   padding: 0 4px;
   color: $link-color;
   background-color: $link-bg-color;
-}
 
-.content__link--bg:hover {
-  color: $link-color-hover;
-  background-color: $link-bg-color-hover;
+  &:hover {
+    color: $link-color-hover;
+    background-color: $link-bg-color-hover;
+  }
 }
 
 
@@ -304,11 +308,11 @@ header {
   background-color: $link-bg-color;
   padding: 3px 6px;
   line-height: 2em;
-}
 
-.startpage-categories__list-links:hover {
-  color: $link-color-hover;
-  background-color: $link-bg-color-hover;
+  &:hover {
+    color: $link-color-hover;
+    background-color: $link-bg-color-hover;
+  }
 }
 
 #profile__search {
