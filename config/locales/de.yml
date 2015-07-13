@@ -247,8 +247,8 @@ de:
         password: "Passwort"
     sessions:
       new:
-        login: "Einloggen"
-        signin: "Einloggen"
+        login: "Anmelden"
+        signin: "Anmelden"
   medialinks:
     edit: "Bearbeite Referenz"
     new: "Referenz hinzufügen"

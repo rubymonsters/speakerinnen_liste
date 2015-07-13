@@ -31,7 +31,7 @@ class JavascriptTest < ActionDispatch::IntegrationTest
     skip "This uses tag-it now, haven't figured out yet how to test that."
 
     visit '/profiles'
-    click_link('Anmelden')
+    click_link('Einloggen')
     fill_in('profile[email]', :with => 'horst@mail.de')
     fill_in('profile[password]', :with => 'Testpassword')
     click_button "Anmelden"

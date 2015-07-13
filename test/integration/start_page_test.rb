@@ -11,7 +11,7 @@ class StartPageTest < ActionDispatch::IntegrationTest
 
     #assert page.has_css?('div.photo-bar#speakerin-photo', minimum: 1)
     #assert page.has_css?('div.curie-badge', count: 1), "just one badge"
-    assert page.has_content?('Anmelden')
+    assert page.has_content?('Einloggen')
     assert page.has_content?('Als Speakerin registrieren')
     #assert page.has_css?('ul li.category', minimum: 2)
     assert page.has_content?('Alle Speakerinnen* anschauen')

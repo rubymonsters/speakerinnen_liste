@@ -9,8 +9,8 @@ class LoginTest < ActionDispatch::IntegrationTest
 
   test "login works with password" do
     visit '/'
-    assert page.has_content?('Anmelden')
-    click_link('Anmelden')
+    assert page.has_content?('Einloggen')
+    click_link('Einloggen')
     #assert page.has_content?('profile_email')
     fill_in('profile[email]', with: 'horst@mail.de')
     fill_in('profile[password]', with: 'Testpassword')
@@ -26,8 +26,8 @@ class LoginTest < ActionDispatch::IntegrationTest
     # Capybara.current_driver = Capybara.javascript_driver
 
     visit '/'
-    assert page.has_content?('Anmelden')
-    click_link('Anmelden')
+    assert page.has_content?('Einloggen')
+    click_link('Einloggen')
     #assert page.has_content?('profile_email')
     fill_in('profile[email]', with: 'horst@mail.de')
     fill_in('profile[password]', with: 'wrongpassword')

@@ -22,7 +22,7 @@ class TagIntegrationTest < ActionDispatch::IntegrationTest
 
   test 'show tagging' do
     visit '/profiles'
-    click_link('Anmelden')
+    click_link('Einloggen')
     fill_in('profile[email]', with: 'horst@mail.de')
     fill_in('profile[password]', with: 'Testpassword')
     click_button 'Anmelden'

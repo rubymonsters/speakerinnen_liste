@@ -8,5 +8,5 @@ Feature: Localization
 
     Examples:
     | language | login_link | search_button |
-    | German   | Anmelden   | Suche         |
+    | German   | Einloggen  | Suche         |
     | English  | Log in     | Search        |

@@ -127,7 +127,7 @@ Feature: Navigation
     | English  | are not        | user  | Register as a speaker, Log in, DE                |
     | English  | are            | user  | My profile, Account, Log out, DE                 |
     | English  | are            | admin | My profile, Account, Log out, Admin, DE          |
-    | German   | are not        | user  | Als Speakerin registrieren, Anmelden, EN         |
+    | German   | are not        | user  | Als Speakerin registrieren, Einloggen, EN        |
     | German   | are            | user  | Mein Profil, Benutzerkonto, Ausloggen, EN        |
     | German   | are            | admin | Mein Profil, Benutzerkonto, Ausloggen, Admin, EN |
 
@@ -143,7 +143,7 @@ Feature: Navigation
     Examples:
     | language | titles                                                                                                                                                                                               |  links                                |
     | English  | Organizers, find your speakers; Our Speakers; We believe in collaboration — not competition; Our Categories; Do you have something interesting to say?; Speakerinnen*; Contact                |  Log in, Register as a speaker        |
-    | German   | Mehr Frauen auf die Bühnen!; Unsere Speakerinnen*; Wir glauben an Kollaboration - nicht an Wettbewerb.; Unsere Kategorien; Hast Du etwas Interessantes zu erzählen?; Speakerinnen*; Kontakt |  Anmelden, Als Speakerin registrieren |
+    | German   | Mehr Frauen auf die Bühnen!; Unsere Speakerinnen*; Wir glauben an Kollaboration - nicht an Wettbewerb.; Unsere Kategorien; Hast Du etwas Interessantes zu erzählen?; Speakerinnen*; Kontakt |  Einloggen, Als Speakerin registrieren |
 
   Scenario Outline: view contact page
     Given you are on the start page

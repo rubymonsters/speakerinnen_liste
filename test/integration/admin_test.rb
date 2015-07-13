@@ -10,8 +10,8 @@ class AdminTest < ActionDispatch::IntegrationTest
 
   test "visit admin page with right credentials" do
     visit '/'
-    assert page.has_content?('Anmelden')
-    click_link('Anmelden')
+    assert page.has_content?('Einloggen')
+    click_link('Einloggen')
     assert page.has_content?('Passwort vergessen?')
     fill_in('profile[email]', with: 'jane_admin@server.org')
     fill_in('profile[password]', with: 'Testpassword')
@@ -23,7 +23,7 @@ class AdminTest < ActionDispatch::IntegrationTest
 
   test "see on admin profile page the correct table" do
     visit '/'
-    click_link('Anmelden')
+    click_link('Einloggen')
     fill_in('profile[email]', with: 'jane_admin@server.org')
     fill_in('profile[password]', with: 'Testpassword')
     click_button "Anmelden"
