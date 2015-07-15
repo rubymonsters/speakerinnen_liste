@@ -85,7 +85,7 @@
     <p>
       <% @blog_posts.each do |blogpost| %>
         <strong><%= blogpost.title %></strong><br>
-        <%= blogpost.body.truncate(150, separator: ' ') %>
+        <%= strip_tags(blogpost.body).truncate(150, separator: ' ') %>
         <%= link_to t(:more, scope: 'pages.home.footer').html_safe, blogpost.url, class: 'content__link--bg' %>
         <br>
         <br>
