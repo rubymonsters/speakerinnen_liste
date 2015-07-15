@@ -83,9 +83,13 @@
       <%= link_to t(:blog, scope:"pages.home.footer"), 'http://blog.speakerinnen.org/', class: 'content__link--bg'%>
     </h1>
     <p>
-      <strong>28% Frauen in Talkshows</strong><BR>
-      Die 'Meinungsmaschine' hat Frauen in Politik-Talkshows seit Januar 2014 gezählt: 28%. <br>
-      <%= link_to t(:more, scope: 'pages.home.footer').html_safe, press_path, class: 'content__link--bg' %>
+      <% @blog_posts.each do |blogpost| %>
+        <strong><%= blogpost.title %></strong><br>
+        <%= blogpost.body.truncate(150, separator: ' ') %>
+        <%= link_to t(:more, scope: 'pages.home.footer').html_safe, blogpost.url, class: 'content__link--bg' %>
+        <br>
+        <br>
+      <% end %>
     </p>
   </div>
 </section>
