@@ -224,6 +224,9 @@ header {
 #nav__palm-menu {
 }
 
+#nav__lap-and-up {
+}
+
 .nav__palm-menu-link {
   display: block;
   color: $link-color;
@@ -239,19 +242,9 @@ header {
 }
 
 .nav__lap_and_up-menu-link {
-  display: block;
-  width: 300px;
-  color: $link-color;
-  background-color: $link-bg-color;
-  text-align: left;
-  padding-left: $inuit-base-spacing-unit;
-  line-height: double($inuit-base-spacing-unit);
-
-  &:hover {
-    color: $link-color-hover;
-    background-color: $link-bg-color-hover;
-  }
+  line-height: $inuit-base-spacing-unit;
 }
+
 /* layout */
 .layout-wrapper {
   max-width: $layout-width;
