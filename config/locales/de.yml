@@ -133,6 +133,7 @@ de:
       login: "Einloggen"
   contact:
     form:
+      title: "Schreib uns eine Mail:"
       name: "Dein Name"
       name_placeholder: ""
       medialink_placeholder: "Bitte nur 21 Zeichen eingeben"

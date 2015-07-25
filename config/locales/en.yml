@@ -133,6 +133,7 @@ en:
       login: "Log in"
   contact:
     form:
+      title: "Send us a mail:"
       name: "Your name"
       name_placeholder: ""
       email: "Your email address"
