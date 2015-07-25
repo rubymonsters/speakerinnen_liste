@@ -25,7 +25,10 @@
       <li><%= link_to 'Admin', admin_root_path, class: "nav__palm-menu-link bb" %></li>
     <% end %>
       <li><%= link_to "Speakerinnen Blog", "https://blog.speakerinnen.org/", class: "nav__palm-menu-link bb" %></li>
-      <li><%= link_to t(:contact, scope: 'pages.home.footer'), contact_path, class: "nav__palm-menu-link bb" %></li>
+      <li><%= link_to "Fiftypercent", "https://50prozent.speakerinnen.org/", target: '_blank', class: "nav__palm-menu-link bb" %></li>
+    <li><%= link_to t(:contact, scope: 'pages.home.footer'), contact_path, class: "nav__palm-menu-link bb" %></li>
+    <li><%= link_to t(:about_title, scope: 'pages.home.footer'), about_path, class: "nav__palm-menu-link bb" %></li>
+    <li><%= link_to t(:faq, scope: 'pages.home.footer'), faq_path, class: "nav__palm-menu-link bb" %></li>
     <ul>
   </div>
 
