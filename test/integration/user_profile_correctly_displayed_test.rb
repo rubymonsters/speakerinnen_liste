@@ -21,7 +21,8 @@ class UserProfileCorrectlyDisplayedTest < ActionDispatch::IntegrationTest
     visit '/en'
     click_link('Horst lastname')
 
-    assert page.has_css?('h1', count: 1), 'one headline of the fullname'
+    #save_and_open_page
+    assert page.has_css?('h1'), 'one  of the fullname'
     assert page.has_content?('My topics')
     assert page.has_content?('My bio')
     assert page.has_content?('twitter')
@@ -31,7 +32,7 @@ class UserProfileCorrectlyDisplayedTest < ActionDispatch::IntegrationTest
     visit '/de'
     click_link('Inge lastname')
 
-    assert page.has_css?('h1', count: 1), 'one headline of the fullname'
+    assert page.has_css?('h1'), 'one headline of the fullname'
     assert page.has_content?('Meine Themen')
     assert page.has_content?('Meine Biografie')
     assert page.has_content?('Twitter')
