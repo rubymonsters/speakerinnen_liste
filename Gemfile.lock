@@ -271,6 +271,7 @@ GEM
       multi_json (~> 1.0)
       websocket-driver (>= 0.2.0)
     polyglot (0.3.5)
+    power_assert (0.2.2)
     pry (0.10.1)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -351,6 +352,8 @@ GEM
       activesupport (>= 3.0)
       sprockets (>= 2.8, < 4.0)
     subexec (0.2.3)
+    test-unit (3.0.8)
+      power_assert
     textacular (3.2.1)
       activerecord (>= 3.0, < 5.0)
     thor (0.19.1)
@@ -404,6 +407,7 @@ DEPENDENCIES
   letter_opener
   mandrill-api
   mini_magick (~> 3.5.0)
+  minitest
   newrelic_rpm
   normalize-rails
   omniauth-twitter
@@ -419,6 +423,7 @@ DEPENDENCIES
   sass-rails (~> 4.0.3)
   selenium-webdriver (= 2.38.0)
   simple_form (~> 3.0.2)
+  test-unit
   textacular (~> 3.0)
   uglifier (>= 1.0.3)
   unicorn

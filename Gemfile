@@ -43,6 +43,8 @@ group :development, :test do
   gem 'cucumber-rails', '1.4.0', require: false
   gem 'pry'
   gem 'selenium-webdriver', "2.38.0"
+  gem 'minitest'
+  gem 'test-unit'
 end
 
 group :test do
