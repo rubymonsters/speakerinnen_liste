@@ -33,13 +33,13 @@ describe ProfilesController, type: :controller do
     describe 'of unpublished profile' do
       it 'is not permitted for unauthorized not signed in profile' do
         get :show, id: profile.id
-        expect(response).to redirect_to('/de/profiles')
+        expect(response).to redirect_to("/#{I18n.locale}/profiles")
       end
 
       it 'is not permitted for unauthorized signed in profile' do
         sign_in profile1
         get :show, id: profile.id
-        expect(response).to redirect_to('/de/profiles')
+        expect(response).to redirect_to("/#{I18n.locale}/profiles")
       end
 
       it 'is permitted for own profile' do
@@ -76,21 +76,23 @@ describe ProfilesController, type: :controller do
 
       profile_params = {
         translations_attributes:
-          {'0' =>
-            {'locale'      => 'de',
-            'main_topic'   => 'Soziale Medien',
-            'bio'          => 'Dingsbums',
-            'id'           => de_factory_translation.id
+          { '0':
+            {
+              'locale':      'de',
+              'main_topic':   'Soziale Medien',
+              'bio':          'Dingsbums',
+              'id':           de_factory_translation.id
             },
-          '1' =>
-            {'locale'    => 'en',
-            'main_topic' => 'Social Media',
-            'bio'        => 'English Bio',
-            'id'         => en_translation.id
+          '1':
+            {
+              'locale':    'en',
+              'main_topic': 'Social Media',
+              'bio':        'English Bio',
+              'id':         en_translation.id
             }
-          }
-        }
-      patch :update, {id: profile.id}.merge(profile: profile_params)
+            }
+      }
+      patch :update, { id: profile.id }.merge(profile: profile_params)
 
       expect(profile.reload.translations.size).to eq(2)
     end
