@@ -290,7 +290,8 @@ CREATE TABLE profiles (
     media_url character varying(255),
     published boolean DEFAULT false,
     website character varying(255),
-    admin_comment text
+    admin_comment text,
+    slug character varying(255)
 );
 
 
@@ -330,6 +331,8 @@ CREATE TABLE searches (
     profile_id integer,
     search_field text
 );
+
+ALTER TABLE ONLY searches REPLICA IDENTITY NOTHING;
 
 
 --
@@ -597,6 +600,13 @@ CREATE UNIQUE INDEX index_profiles_on_reset_password_token ON profiles USING btr
 
 
 --
+-- Name: index_profiles_on_slug; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_profiles_on_slug ON profiles USING btree (slug);
+
+
+--
 -- Name: index_taggings_on_taggable_id_and_taggable_type_and_context; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -707,6 +717,8 @@ INSERT INTO schema_migrations (version) VALUES ('20140901194314');
 INSERT INTO schema_migrations (version) VALUES ('20140901194315');
 
 INSERT INTO schema_migrations (version) VALUES ('20150131194544');
+
+INSERT INTO schema_migrations (version) VALUES ('20150406145350');
 
 INSERT INTO schema_migrations (version) VALUES ('20150715095533');
 

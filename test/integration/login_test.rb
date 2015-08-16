@@ -7,31 +7,31 @@ class LoginTest < ActionDispatch::IntegrationTest
     horst.save
   end
 
-  test "login works with password" do
-    visit '/'
+  test 'login works with password' do
+    visit '/de'
     assert page.has_content?('Einloggen')
     click_link('Einloggen')
-    #assert page.has_content?('profile_email')
+    # assert page.has_content?('profile_email')
     fill_in('profile[email]', with: 'horst@mail.de')
     fill_in('profile[password]', with: 'Testpassword')
-    click_button "Anmelden"
+    click_button 'Anmelden'
     # opens the site where you are in the test right now
     # save_and_open_page
 
     assert page.has_content?('Erfolgreich angemeldet.')
   end
 
-  test "login works not with wrong password" do
+  test 'login works not with wrong password' do
     # follows the test but doesnt work with confirmed profile
     # Capybara.current_driver = Capybara.javascript_driver
 
-    visit '/'
+    visit '/de'
     assert page.has_content?('Einloggen')
     click_link('Einloggen')
-    #assert page.has_content?('profile_email')
+    # assert page.has_content?('profile_email')
     fill_in('profile[email]', with: 'horst@mail.de')
     fill_in('profile[password]', with: 'wrongpassword')
-    click_button "Anmelden"
+    click_button 'Anmelden'
     # opens the site where you are in the test right now
     # save_and_open_page
     assert page.has_content?('Ungültige Anmeldedaten.')
