@@ -46,7 +46,7 @@ group :development, :test do
 end
 
 group :test do
-  gem 'factory_girl_rails', '4.1.0'
+  gem 'factory_girl_rails', '4.1.0', :require => false
   gem 'poltergeist', '1.5.1'
   gem 'database_cleaner', '~> 1.2.0'
 end

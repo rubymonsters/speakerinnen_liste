@@ -47,7 +47,7 @@
             <td>
               <%= form_for profile,{ url: admin_comment_admin_profile_path(profile.id), method: 'post' } do |f| %>
                 <%= f.text_field 'admin_comment' %>
-                <%= f.submit t(:add_comment, scope: 'admin.dashboard.profiles'), class: 'btn btn--small' %>
+                <%= submit_tag t(:add_comment, scope: 'admin.dashboard.profiles'), class: 'btn btn--small' %>
               <% end  %>
             </td>
           </tr>

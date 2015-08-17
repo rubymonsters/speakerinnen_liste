@@ -1,6 +1,10 @@
 <% @target_url = session_path(resource_name)
    @signup = false
    %>
+
+   <button name="click"> Admin</button>
+  
+   <button name="signup">Sign in</button>
 <%= render 'devise/shared/auth', locals: {
     signup: @signup,
     resource: @resource,

@@ -66,8 +66,8 @@ ALTER SEQUENCE api_tokens_id_seq OWNED BY api_tokens.id;
 CREATE TABLE categories (
     id integer NOT NULL,
     name character varying(255),
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
 );
 
 
@@ -126,10 +126,10 @@ ALTER SEQUENCE categories_tags_id_seq OWNED BY categories_tags.id;
 
 CREATE TABLE category_translations (
     id integer NOT NULL,
-    category_id integer,
+    category_id integer NOT NULL,
     locale character varying(255) NOT NULL,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
     name character varying(255)
 );
 
@@ -163,8 +163,8 @@ CREATE TABLE medialinks (
     url text,
     title text,
     description text,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
     "position" integer
 );
 
@@ -194,10 +194,10 @@ ALTER SEQUENCE medialinks_id_seq OWNED BY medialinks.id;
 
 CREATE TABLE profile_translations (
     id integer NOT NULL,
-    profile_id integer,
+    profile_id integer NOT NULL,
     locale character varying(255) NOT NULL,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
     main_topic character varying(255),
     bio text
 );
@@ -235,8 +235,8 @@ CREATE TABLE profiles (
     city character varying(255),
     twitter character varying(255),
     picture character varying(255),
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
     encrypted_password character varying(255) DEFAULT ''::character varying NOT NULL,
     reset_password_token character varying(255),
     reset_password_sent_at timestamp without time zone,
