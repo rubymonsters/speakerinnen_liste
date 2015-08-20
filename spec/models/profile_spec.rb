@@ -1,13 +1,13 @@
 require 'spec_helper'
 
-describe 'Profile' do
+describe 'profile' do
 	it "has a valid factory" do
-	expect(FactoryGirl.build(:Profile)).to be_valid
-
+	expect(FactoryGirl.create(:profile)).to be_valid
 end
 	it "is invalid without a firstname" do
-	profile = FactoryGirl.create(:profile, firstname: nil)
-	expect(profile.errors[:firstname].size).to eq(0)
+	profile = FactoryGirl.build(:profile, firstname: nil)
+	#expect(profile.errors[:firstname].size).to eq(0)
+	expect(profile).not_to be_valid
 end
 	it "is invalid without a lastname" do
 	profile = FactoryGirl.build(:profile, lastname: nil)
@@ -17,9 +17,18 @@ end
 	profile = FactoryGirl.build(:profile, email: nil)
 	expect(profile.errors[:email].size).to eq(0)
 end
-	it "returns a profile's full name as a string" do
-	Profile = FactoryGirl.build(:Profile,
-	firstname: "Jane", lastname: "Doe")
-	expect(profile.name).to eq "Jane Doe"
+	it "invalid without a password" do
+		profile = FactoryGirl.build(:profile, password: nil)
+		expect(profile.errors[:password].size).to eq(0)
+end
+	it "returns a profile fullname as a string" do
+	profile = FactoryGirl.build(:profile, fullname: "{firstname}, lastname")
+	expect(profile.fullname).to eq "firstname lastname"
 end
 end
+
+
+
+
+
+
