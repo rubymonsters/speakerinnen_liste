@@ -18,13 +18,13 @@ class ApplicationController < ActionController::Base
   private
 
   def set_locale
-    desired_locale = request.headers['HTTP_ACCEPT_LANGUAGE'].to_s[0..1] == "de" ? "de" : "en"
+    desired_locale = request.headers['HTTP_ACCEPT_LANGUAGE'].to_s[0..1] == 'de' ? 'de' : 'en'
     I18n.locale = params[:locale] || desired_locale
   end
 
   def default_url_options
     options = super
-    options.update(:locale => I18n.locale)
+    options.update(locale: I18n.locale)
     options
   end
 end
