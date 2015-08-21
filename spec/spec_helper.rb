@@ -42,6 +42,8 @@ RSpec.configure do |config|
   config.include Rails.application.routes.url_helpers
   config.include Capybara::DSL
   config.include Devise::TestHelpers, type: :controller
+  config.extend ControllerMacros, :type => :controller
+end
 
   config.filter_run_excluding broken: true
 
@@ -49,3 +51,6 @@ RSpec.configure do |config|
     I18n.locale = :de
   end
 end
+
+
+

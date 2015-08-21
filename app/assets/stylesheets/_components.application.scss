@@ -210,7 +210,7 @@ header {
   }
 }
 
-#nav__palm-menu-trigger {
+#nav__palm-menu-trigger, #nav__lap_and_up-menu-trigger {
   cursor: pointer;
   display: inline;
 	color: $link-color;
@@ -222,6 +222,9 @@ header {
 }
 
 #nav__palm-menu {
+}
+
+#nav__lap-and-up {
 }
 
 .nav__palm-menu-link {
@@ -236,6 +239,10 @@ header {
     color: $link-color-hover;
     background-color: $link-bg-color-hover;
   }
+}
+
+.nav__lap_and_up-menu-link {
+  line-height: $inuit-base-spacing-unit;
 }
 
 /* layout */

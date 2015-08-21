@@ -13,10 +13,16 @@
     <% end %>
 
     <div class="layout mb+">
-      <%= render partial: 'profiles/profile', object: @profiles[0], locals: { is_first: true } %>
-      <% if @profiles.size > 1 %>
-        <%= render partial: 'profiles/profile', collection: @profiles[1..-2] %>
-        <%= render partial: 'profiles/profile', object: @profiles[-1], locals: { is_last: true } %>
+      <% if @profiles.any? %>
+        <%= render partial: 'profiles/profile', object: @profiles[0], locals: { is_first: true } %>
+        <% if @profiles.size > 1 %>
+          <%= render partial: 'profiles/profile', collection: @profiles[1..-2] %>
+          <%= render partial: 'profiles/profile', object: @profiles[-1], locals: { is_last: true } %>
+        <% end %>
+      <% else %>
+        <div class="layout__item 1/1 mb">
+          <%= t(:no_profile, scope: 'search') %>
+        </div>
       <% end %>
     </div>
 

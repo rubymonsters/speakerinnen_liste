@@ -17,7 +17,7 @@ gem 'pg'
 gem 'devise', '~> 3.1.1'
 gem 'omniauth-twitter'
 gem 'carrierwave'
-gem 'fog', '~> 1.3'
+gem 'fog', '~> 1.32.0'
 gem 'mini_magick', '~> 3.5.0'
 gem 'textacular', '~> 3.0', require: 'textacular/rails'
 gem 'jquery-rails'
@@ -53,7 +53,12 @@ group :development, :test do
   gem 'cucumber-rails', '1.4.0', require: false
   gem 'pry'
   gem 'selenium-webdriver', "2.38.0"
+<<<<<<< HEAD
   gem 'launchy'
+=======
+  gem 'minitest'
+  gem 'test-unit'
+>>>>>>> f69452c2a78bc0c1c32cdeee2340ce8f5fea1d22
 end
 
 group :test do
