@@ -53,12 +53,12 @@ group :development, :test do
   gem 'cucumber-rails', '1.4.0', require: false
   gem 'pry'
   gem 'selenium-webdriver', "2.38.0"
-<<<<<<< HEAD
+
   gem 'launchy'
-=======
+
   gem 'minitest'
   gem 'test-unit'
->>>>>>> f69452c2a78bc0c1c32cdeee2340ce8f5fea1d22
+
 end
 
 group :test do
