@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe 'profile', type: :model do
+
 context "when user is no admin" do
 let(:profile) { FactoryGirl.create(:profile) }
  
@@ -18,7 +19,7 @@ it 'is invalid without firstname' do
    expect(profile.errors[:firstname].size).to eq(0)
  end
 
- it 'returns a profile fullname as a string' do
+it 'returns a profile fullname as a string' do
     expect(profile.fullname).to eq "Factory Girl"
    end
 end

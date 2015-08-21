@@ -47,6 +47,15 @@ group :development, :test do
   gem 'cucumber-rails', '1.4.0', require: false
   gem 'pry'
   gem 'selenium-webdriver', "2.38.0"
+<<<<<<< HEAD
+=======
+
+  gem 'launchy'
+
+  gem 'minitest'
+  gem 'test-unit'
+
+>>>>>>> changes in profile_spec.rb
 end
 
 group :test do
