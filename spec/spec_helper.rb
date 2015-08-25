@@ -49,8 +49,3 @@ RSpec.configure do |config|
     I18n.locale = :de
   end
 end
-
-
-
-
-

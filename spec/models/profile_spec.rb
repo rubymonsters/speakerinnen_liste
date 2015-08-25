@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Profile do
 
   before do
-  @profile = Profile.new( firstname: "Factory",lastname: "Girl", email: "FactoryGirl@test.de",
+  @profile = Profile.new( firstname: "Factory", lastname: "Girl", email: "FactoryGirl@test.de",
                    password: "123foobar", password_confirmation: "123foobar")
   end
 
@@ -17,16 +17,18 @@ describe Profile do
 
   it { should be_valid }
 
-context 'when firstname is not present' do
-    before { @profile.firstname = '' }
-    it { should_not be_valid }
-end
+ it 'should be_invalid without firstname' do
+   # before { @profile.firstname = :nill }       
+    #expect(@profile.errors[:firstname].size).to eq(0)
+    expect(@profile).to be_invalid 
 
-
-context 'when lastname is not present' do
-	 before { @profile.firstname = " " }
-    it { should_not be_valid }
   end
+it 'should be_invalid without lastname' do
+	 #before { @profile.firstname = :nill } 
+  # expect (@profile.errors[:lastname].size).to eq(0)
+   expect(@profile).to be_invalid
+  end
+
    
 
  context 'when email is not present' do
@@ -49,25 +51,4 @@ describe "admin? is true when an admin user" do
 	admin = FactoryGirl.create(:admin)
     profile.admin = true
     it {should_be_valid}
-   
-  end
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
+    end
