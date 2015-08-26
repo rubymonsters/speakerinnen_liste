@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Profile do
+describe 'Profile' do
 
   before do
   @profile = Profile.new( firstname: "Factory", lastname: "Girl", email: "FactoryGirl@test.de",
@@ -43,12 +43,17 @@ it 'should be_invalid without lastname' do
       profile_with_same_email.email = @profile.email.upcase
       profile_with_same_email.save
    	  it { should_not be_valid }
- 		 end
-	end
+ 	end
+     context "accepts a correctly-formatted email address" do
+        FactoryGirl.build(:profile, email: 'correct@gmail.com').should be_valid
+end
+    context "rejects an incorrectly-formatted email address" do
+       FactoryGirl.build(:profile, email: 'correct@gmail').should_not be_valid
+  end
+end
 end
 
-describe "admin? is true when an admin user" do
-	admin = FactoryGirl.create(:admin)
-    profile.admin = true
-    it {should_be_valid}
-    end
+
+
+
+
