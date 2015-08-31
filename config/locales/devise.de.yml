@@ -21,6 +21,8 @@ de:
         subject: 'Anleitung, um Dein Passwort zurückzusetzen'
       unlock_instructions:
         subject: 'Anleitung, um Deinen Account freizuschalten'
+      published:
+        subject: "Dein Profil auf Speakerinnen.org wurde jetzt freigeschaltet."
     omniauth_callbacks:
       success: 'Du hast Dich erfolgreich mit Deinem %{kind}-Account angemeldet.'
       failure: 'Du konntest nicht mit Deinem %{kind}-Account angemeldet werden, weil "%{reason}".'
