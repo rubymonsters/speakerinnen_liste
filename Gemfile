@@ -39,12 +39,6 @@ group :development do
   gem 'guard-bundler'
   gem 'guard-rails'
   gem 'guard-rspec'
-  gem 'rails_layout'
-  gem 'rb-fchange', :require=>false
-  gem 'rb-fsevent', :require=>false
-  gem 'rb-inotify', :require=>false
-  gem 'spring-commands-rspec'
-  
 end
 
 group :development, :test do
@@ -53,12 +47,6 @@ group :development, :test do
   gem 'cucumber-rails', '1.4.0', require: false
   gem 'pry'
   gem 'selenium-webdriver', "2.38.0"
-
-  gem 'launchy'
-
-  gem 'minitest'
-  gem 'test-unit'
-
 end
 
 group :test do

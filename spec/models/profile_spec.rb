@@ -1,53 +1,45 @@
  require 'spec_helper'
 
-describe 'Profile' do
+ describe Profile do
+ let!(:profile) { FactoryGirl.build(:profile) }
+ let!(:admin) { FactoryGirl.create(:admin) } 
+ 
+ it "has a valid factory" do
+   expect(FactoryGirl.build(:profile)).to be_valid
+   end
+  
+ it 'is invalid without firstname' do
+   profile = FactoryGirl.build(:profile, firstname: nil)
+    profile.valid?
+   expect(profile.errors[:firstname].size).to eq(0)
+ end
 
-  before do
-  @profile = Profile.new( firstname: "Factory", lastname: "Girl", email: "FactoryGirl@test.de",
-                   password: "123foobar", password_confirmation: "123foobar")
+ it 'returns a profile fullname as a string' do
+    expect(profile.fullname).to eq "Factory Girl"
+   end
+  
+ it 'is invalid without email' do
+    profile = FactoryGirl.build(:profile, email: nil)
+    expect(profile.errors[:email].size).to eq(0)
+   end
+it 'should test if user is admim' do
+
+ end
+
+ it 'should test if user is non admin' do
   end
 
-  subject { @profile }
-
-  it { should respond_to(:firstname) }
-  it { should respond_to(:lastname) }
-  it { should respond_to(:email) }
-  it { should respond_to(:password) }
-  it { should respond_to(:password_confirmation) }
-
-  it { should be_valid }
+ it "by default isn't admin" do
+  
   end
-end
 
-#  it 'should be_invalid without firstname' do
-#    # before { @profile.firstname = :nill }       
-#     #expect(@profile.errors[:firstname].size).to eq(0)
-#     expect(@profile).to be_invalid 
+ it 'should ensure user can sign in using twitter' do
+ end  
 
-#   end
-# it 'should be_invalid without lastname' do
-# 	 #before { @profile.firstname = :nill } 
-#   # expect (@profile.errors[:lastname].size).to eq(0)
-#    expect(@profile).to be_invalid
-#   end
+ it 'should make sure the twitter symbol is correct' do
+  end
+ end
 
-# context 'when email is not present' do
-#     before { @profile.email = " " }
-#     it { should_not be_valid }
-#   end
-   
-# context "when email address is already taken" do
-#     before do
-#       profile_with_same_email = @profile.dup
-#       profile_with_same_email.email = @profile.email.upcase
-#       profile_with_same_email.save
-#    	  it { should_not be_valid }
-#  	end
-#      context "accepts a correctly-formatted email address" do
-#         FactoryGirl.build(:profile, email: 'correct@gmail.com').should be_valid
-# end
-#     context "rejects an incorrectly-formatted email address" do
-#        FactoryGirl.build(:profile, email: 'correct@gmail').should_not be_valid
-#   end
-# end
-# end
+# it "should create a new instance given valid attributes" do
+    
+#    end

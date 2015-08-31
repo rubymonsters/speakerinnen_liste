@@ -8,4 +8,4 @@ describe "Profile pages" do
     let(:user) { FactoryGirl.create(:user) }
   end
 end
-    
+
