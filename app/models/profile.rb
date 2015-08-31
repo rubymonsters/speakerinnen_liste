@@ -56,6 +56,10 @@ class Profile < ActiveRecord::Base
     "#{firstname} #{lastname}".strip
   end
 
+  def name_or_email
+    fullname.present? ? fullname : email
+  end
+
   def main_topic_or_first_topic
     main_topic.present? ? main_topic : topic_list.first
   end
