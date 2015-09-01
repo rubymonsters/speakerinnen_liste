@@ -42,7 +42,7 @@ class ProfilesControllerTest < ActionController::TestCase
 
     put :update, locale: 'de', id: @profile.id, profile: { bio: @profile2.bio }
     assert_redirected_to profile_path(assigns(:profile))
-    assert_equal 'Profil wurde erfolgreich geändert.', flash[:notice]
+    assert_equal "#{@profile.name_or_email} wurde erfolgreich geändert.", flash[:notice]
   end
 
   test 'should not be able to update different profile' do
@@ -66,7 +66,7 @@ class ProfilesControllerTest < ActionController::TestCase
 
     put :update, locale: 'de', id: @profile.id, profile: { bio: @profile2.bio }
     assert_redirected_to profile_path(assigns(:profile))
-    assert_equal 'Profil wurde erfolgreich geändert.', flash[:notice]
+    assert_equal "#{@profile.name_or_email} wurde erfolgreich geändert.", flash[:notice]
   end
 
   # destroy
@@ -80,7 +80,7 @@ class ProfilesControllerTest < ActionController::TestCase
       delete :destroy, locale: 'de', id: @profile.id
     end
     assert_redirected_to profiles_path
-    assert_equal 'Profil wurde erfolgreich gelöscht.', flash[:notice]
+    assert_equal "#{@profile.name_or_email} wurde erfolgreich gelöscht.", flash[:notice]
   end
 
   test 'should not be able to destroy different profile' do
@@ -110,6 +110,6 @@ class ProfilesControllerTest < ActionController::TestCase
       delete :destroy, locale: 'de', id: @profile.id
     end
     assert_redirected_to profiles_path
-    assert_equal 'Profil wurde erfolgreich gelöscht.', flash[:notice]
+    assert_equal "#{@profile.name_or_email} wurde erfolgreich gelöscht.", flash[:notice]
   end
 end

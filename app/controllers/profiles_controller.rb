@@ -51,7 +51,7 @@ class ProfilesController < ApplicationController
 
   def update
     if @profile.update_attributes(profile_params)
-      redirect_to @profile, notice: (I18n.t('flash.profiles.updated'))
+      redirect_to @profile, notice: (I18n.t('flash.profiles.updated', profile_name: @profile.name_or_email))
     else current_profile
       build_missing_translations(@profile)
       render action: 'edit'
@@ -60,7 +60,7 @@ class ProfilesController < ApplicationController
 
   def destroy
     @profile.destroy
-    redirect_to profiles_url, notice: (I18n.t('flash.profiles.destroyed'))
+    redirect_to profiles_url, notice: (I18n.t('flash.profiles.destroyed', profile_name: @profile.name_or_email))
   end
 
   def require_permission
