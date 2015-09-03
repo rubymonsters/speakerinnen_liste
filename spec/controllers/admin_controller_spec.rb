@@ -31,7 +31,6 @@ describe "Profile" do
 		expect(page).to have_content profile2.firstname
 		first(:link, 'Edit').click
 		expect(page).to have_content('Administration::Profiles::Edit')
-		
 	end
 	
 	it 'should allow admin to publish profiles' do

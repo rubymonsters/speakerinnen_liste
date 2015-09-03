@@ -1,14 +1,18 @@
- require 'spec_helper'
+require 'spec_helper'
 
- describe Profile do
- let!(:profile) { FactoryGirl.build(:profile) }
- let!(:admin) { FactoryGirl.create(:admin) } 
+describe 'profile', type: :model do
+context "when user is no admin" do
+let(:profile) { FactoryGirl.create(:profile) }
  
  it "has a valid factory" do
    expect(FactoryGirl.build(:profile)).to be_valid
    end
   
- it 'is invalid without firstname' do
+it "by default isn't admin" do
+  expect(profile.admin).to be(false)
+  end
+
+it 'is invalid without firstname' do
    profile = FactoryGirl.build(:profile, firstname: nil)
     profile.valid?
    expect(profile.errors[:firstname].size).to eq(0)
@@ -17,29 +21,24 @@
  it 'returns a profile fullname as a string' do
     expect(profile.fullname).to eq "Factory Girl"
    end
-  
- it 'is invalid without email' do
+end
+context "when user is admin" do
+  let(:admin) { FactoryGirl.create(:admin) }
+    end
+
+context 'invalid emails' do
+  let(:profile) { FactoryGirl.create(:profile) }
+
+it 'is invalid without email' do
     profile = FactoryGirl.build(:profile, email: nil)
     expect(profile.errors[:email].size).to eq(0)
-   end
-it 'should test if user is admim' do
-
- end
-
- it 'should test if user is non admin' do
   end
 
- it "by default isn't admin" do
-  
+it "is invalid when email address is already taken" do
+Profile = Profile.new(firstname: 'Jane', lastname: 'Tester',email: 'FactoryGirl@test.de')
+expect(profile.errors[:email].size).to eq(0)
+    end
   end
+end
 
- it 'should ensure user can sign in using twitter' do
- end  
-
- it 'should make sure the twitter symbol is correct' do
-  end
- end
-
-# it "should create a new instance given valid attributes" do
-    
-#    end
+#work in progress

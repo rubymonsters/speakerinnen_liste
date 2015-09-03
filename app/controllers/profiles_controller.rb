@@ -7,14 +7,14 @@ class ProfilesController < ApplicationController
 
   before_filter :require_permission, only: [:edit, :destroy, :update]
 
-  def index
-    if params[:topic]
-      @profiles = profiles_for_scope(params[:topic])
-    else
-      @profiles = profiles_for_index
-    end
-    @tags = ActsAsTaggableOn::Tag.most_used(100)
-  end
+   def index
+     if params[:topic]
+       @profiles = profiles_for_scope(params[:topic])
+     else
+       @profiles = profiles_for_index
+     end
+     @tags = ActsAsTaggableOn::Tag.most_used(100)
+   end
 
   def category
     @category = Category.find(params[:category_id])

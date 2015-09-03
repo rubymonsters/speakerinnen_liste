@@ -1,8 +1,8 @@
 require 'spec_helper'
 describe "edit_profiles" do
+let!(:profile) { FactoryGirl.create(:admin) }
 context "signed in as admin" do
- let(:profile) { FactoryGirl.create(:admin) }
-   before do
+ before do
     sign_in profile, language
 	 	end
 	end
