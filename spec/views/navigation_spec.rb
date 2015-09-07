@@ -4,8 +4,10 @@ shared_examples_for "successful sign in" do
   it { should have_content(I18n.t("devise.sessions.signed_in")) }
   it { should have_link(I18n.t("layouts.application.logout"),destroy_profile_session_path) }
 end
+
 describe "navigation", :broken => false do
   subject { page }
+  
   before do
     @links_array = [categorization_admin_tags_path, admin_categories_path, admin_profiles_path]
       @lang_links_map = {
@@ -14,6 +16,7 @@ describe "navigation", :broken => false do
           'de' => ['Kategorien', 'Tags', 'Profile']
 }
 end
+
 ['en','de'].each do |language|
 
 context "signed in as normal user" do
