@@ -202,8 +202,8 @@ en:
   flash:
     profiles:
       created: 'Profile was successfully created.'
-      updated: 'Profile was successfully updated.'
-      destroyed: 'Profile was successfully deleted.'
+      updated: '%{profile_name} was successfully updated.'
+      destroyed: '%{profile_name} was successfully deleted.'
       no_permission: "You don’t have permission to edit the profile."
       show_no_permission: "You don’t have permission to see the profile."
     medialink:

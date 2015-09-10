@@ -31,7 +31,7 @@
       <tbody>
         <% @profiles.each do |profile|  %>
           <tr>
-            <td><%= link_to name_or_email(profile), admin_profile_path(profile), html_options = { title: t(:show, scope: 'admin.dashboard.profiles.edit') } %></td>
+            <td><%= link_to profile.name_or_email, admin_profile_path(profile), html_options = { title: t(:show, scope: 'admin.dashboard.profiles.edit') } %></td>
             <td><%= profile.created_at.strftime('%d.%m.%Y um %H:%M Uhr') %></td>
             <td><%= profile.updated_at.strftime('%d.%m.%Y um %H:%M Uhr') %></td>
             <td><%= link_to profile.medialinks.size, admin_profile_medialinks_path(profile), html_options = { title: t(:show, scope: 'medialinks') } %></td>
@@ -47,7 +47,7 @@
             <td>
               <%= form_for profile,{ url: admin_comment_admin_profile_path(profile.id), method: 'post' } do |f| %>
                 <%= f.text_field 'admin_comment' %>
-                <%= submit_tag t(:add_comment, scope: 'admin.dashboard.profiles'), class: 'btn btn--small' %>
+                <%= f.submit t(:add_comment, scope: 'admin.dashboard.profiles'), class: 'btn btn--small' %>
               <% end  %>
             </td>
           </tr>

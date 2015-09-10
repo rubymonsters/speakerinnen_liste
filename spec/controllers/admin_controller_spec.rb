@@ -1,5 +1,5 @@
 require 'spec_helper'
-include SignInHelper																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																						
+include SignInHelper
 
 describe "Profile" do
 	before (:each) do
@@ -8,7 +8,7 @@ describe "Profile" do
 					:email     => "test2@user.com",
 					:password  => "test2user2",
 					:admin	   => true,
-					:confirmed_at => Time.now 
+					:confirmed_at => Time.now
 				}
 	end
 	it 'should make sure the user is an admin' do
@@ -20,7 +20,7 @@ describe "Profile" do
 		@user = Profile.create!(@attrib.merge(:admin => ""))
 		expect(@user.admin).to be_falsey
 	end
-	
+
 	it 'should allow that the admin can edit all Profiles' do
 		@user = Profile.create!(@attrib)
 		profile2 = FactoryGirl.create(:profile, email: 'me1@email.com')
@@ -32,7 +32,7 @@ describe "Profile" do
 		first(:link, 'Edit').click
 		expect(page).to have_content('Administration::Profiles::Edit')
 	end
-	
+
 	it 'should allow admin to publish profiles' do
 		@user = Profile.create!(@attrib)
 		profile2 = FactoryGirl.create(:profile, email: 'me1@email.com')
@@ -45,7 +45,7 @@ describe "Profile" do
 		first(:link, 'invisible').click
 		expect(page).to have_content 'public'
 	end
-	
+
 	it 'should allow admin to comment on a profile' do
 		@user = Profile.create!(@attrib)
 		profile2 = FactoryGirl.create(:profile, email: 'me1@email.com')
@@ -56,7 +56,7 @@ describe "Profile" do
 		expect(page).to have_content  "Administration::Profiles"
 		expect(page).to have_button  "Add comment"
 	end
-	
+
 	it 'should allow admin to view all profiles' do
 		@user = Profile.create!(@attrib)
 		sign_in @user

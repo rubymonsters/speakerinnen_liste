@@ -200,8 +200,8 @@ de:
   flash:
     profiles:
       created: "Profil wurde erfolgreich erstellt."
-      updated: "Profil wurde erfolgreich geändert."
-      destroyed: "Profil wurde erfolgreich gelöscht."
+      updated: '%{profile_name} wurde erfolgreich geändert.'
+      destroyed: '%{profile_name} wurde erfolgreich gelöscht.'
       no_permission: "Du hast nicht die Rechte, das Profil zu bearbeiten."
       show_no_permission: "Du hast nicht die Rechte, das Profil anzuschauen."
     medialink:

@@ -4,12 +4,12 @@ class Admin::ProfilesController < Admin::BaseController
   before_action :set_profile, only: [:show, :edit, :update, :destroy, :publish, :unpublish, :admin_comment]
 
   def index
-     if params[:search]
-       @profiles = Profile.search(params[:search]).order("created_at DESC").page(params[:page]).per(100)
-     else
-       @profiles = Profile.order(sort_column + ' ' + sort_direction).order('created_at DESC').page(params[:page]).per(100)
-     end
+   if params[:search]
+     @profiles = Profile.search(params[:search]).order("created_at DESC").page(params[:page]).per(100)
+   else
+     @profiles = Profile.order(sort_column + ' ' + sort_direction).order('created_at DESC').page(params[:page]).per(100)
    end
+  end
 
   def new
   end
@@ -27,7 +27,7 @@ class Admin::ProfilesController < Admin::BaseController
 
   def update
     if @profile.update_attributes(profile_params)
-      redirect_to admin_profile_path(@profile), notice: (I18n.t('flash.profiles.updated'))
+      redirect_to admin_profile_path(@profile), notice: (I18n.t('flash.profiles.updated', profile_name: @profile.name_or_email))
     else
       render :edit
     end
@@ -35,7 +35,7 @@ class Admin::ProfilesController < Admin::BaseController
 
   def destroy
     @profile.destroy
-    redirect_to admin_profiles_path, notice: (I18n.t('flash.profiles.destroyed'))
+    redirect_to admin_profiles_path, notice: (I18n.t('flash.profiles.destroyed', profile_name: @profile.name_or_email))
   end
 
   def publish

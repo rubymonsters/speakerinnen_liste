@@ -34,10 +34,10 @@ If you want to contribute, you can get an overview over the open issues. We are 
 
 ## Before you start working
 
-For your database.yml please copy config/database_example.yml
+1. For your database.yml please copy config/database_example.yml
 
-For testing locally you have to create some profiles manually. It is important to confirm these profiles.
-Normally that works via email. Locally you do that via the console:
+2. For developing locally you have to create some profiles manually. It is important to confirm these profiles.
+Normally that works via email. Locally we bypass that confirmation process via the console:
 
 ```Ruby
 rails c
@@ -46,13 +46,21 @@ user.confirmed_at = DateTime.now
 user.save
 ```
 
-If you build or test some admin features you have to create an admin user. You also can assign the status via the console:
+Notice: The profile will ony be displayed if it is published. To publish a profile without using the admin interface you have to set is as published via the console:
+
+```Ruby
+rails c
+user = Profile.find(<your-profile-id>)
+user.published = true
+user.save
+```
+
+3. If you build or test some admin features you have to create an admin user. You also can assign the status via the console:
 
 ```Ruby
 rails c
 user = Profile.find(<your-profile-id>)
 user.admin = true
-user.published = true
 user.save
 ```
 

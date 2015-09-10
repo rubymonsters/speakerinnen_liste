@@ -7,11 +7,11 @@ end
 
 describe "navigation", :broken => false do
   subject { page }
-  
+
   before do
     @links_array = [categorization_admin_tags_path, admin_categories_path, admin_profiles_path]
       @lang_links_map = {
-          
+
           'en' => ['Categories','Tags','Profiles'],
           'de' => ['Kategorien', 'Tags', 'Profile']
 }
