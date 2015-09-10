@@ -47,15 +47,6 @@ group :development, :test do
   gem 'cucumber-rails', '1.4.0', require: false
   gem 'pry'
   gem 'selenium-webdriver', "2.38.0"
-<<<<<<< HEAD
-=======
-
-  gem 'launchy'
-
-  gem 'minitest'
-  gem 'test-unit'
-
->>>>>>> changes in profile_spec.rb
 end
 
 group :test do
@@ -78,4 +69,3 @@ gem 'unicorn'
 gem 'rollbar', '~> 1.2.6'
 gem 'rack-piwik', '~> 0.3.0', require: 'rack/piwik'
 gem 'newrelic_rpm'
-
