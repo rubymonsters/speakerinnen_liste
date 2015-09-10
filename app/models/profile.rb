@@ -133,4 +133,3 @@ class Profile < ActiveRecord::Base
     where('firstname ILIKE :query OR lastname ILIKE :query OR twitter ILIKE :query', query: "%#{query}%")
   end
 end
-
