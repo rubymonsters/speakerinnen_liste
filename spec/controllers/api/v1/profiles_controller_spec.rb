@@ -2,11 +2,11 @@ require 'spec_helper'
 include AuthHelper
 
 describe Api::V1::ProfilesController, type: :controller do
-  let!(:profile1) { FactoryGirl.create(:published) }
+  let(:profile1) { FactoryGirl.create(:published) }
 
   describe 'test index action' do
-    let!(:profile2) { FactoryGirl.create(:published, email: 'Maria@example.com') }
-    let!(:unpublished_profile) { FactoryGirl.create(:profile, email: 'Peter@example.com') }
+    let(:profile2) { FactoryGirl.create(:published, email: 'Maria@example.com') }
+    let(:unpublished_profile) { FactoryGirl.create(:profile, email: 'Peter@example.com') }
 
     before do
       http_login("horst", "123")

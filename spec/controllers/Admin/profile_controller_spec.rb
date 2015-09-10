@@ -3,7 +3,7 @@ include AuthHelper
 
 describe Admin::ProfilesController, type: :controller do
 describe 'test index action' do
- let(:admin) { FactoryGirl.create(:admin) } 
+ let(:admin) { FactoryGirl.create(:admin) }
    before do
    	sign_in admin
      get :index
@@ -15,5 +15,5 @@ describe 'test index action' do
     end
     end
 end
- 
- 
+
+
