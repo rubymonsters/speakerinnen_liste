@@ -18,12 +18,11 @@ en:
       edit_profile: "Edit Profile"
       categories:
         categories: "Categories"
-        explanation: "To add a category in english and german, first you have to add the name of the category, then change the scope of your language and translate that category name with the >edit< button."
         category_language_de: "German"
         category_language_en: "English"
         category_name: "Category name"
         current_name: "Current category name: "
-        new_name: "Enter new category name: "
+        new_name: "Enter new category name in %{language}: "
       profiles:
         profiles: "Profiles"
         created_at: "Created"
@@ -211,6 +210,10 @@ en:
       updated: 'Reference was successfully updated.'
       destroyed: 'Reference was successfully deleted.'
       no_permission: "You don’t have permission to edit the reference."
+    categories:
+      created: '%{category_name} was successfully created.'
+      updated: '%{category_name} was successfully updated.'
+      destroyed: '%{category_name} was successfully deleted.'
   activerecord:
     attributes:
       profile:
