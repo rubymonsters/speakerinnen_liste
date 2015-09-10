@@ -18,8 +18,9 @@ de:
       edit_profile: "Bearbeite Profil"
       categories:
         categories: "Kategorien"
-        category_language_de: "Deutsch"
-        category_language_en: "Englisch"
+        category_language_de: "Deutsch:"
+        category_language_en: "Englisch:"
+        amount_of_tags: "Anzahl der Tags:"
         category_name: "Name der Kategorie"
         current_name: "Bisheriger Name der Kategorie:"
         new_name: "Trage den neuen Namen der Kategorie in %{language} ein: "
