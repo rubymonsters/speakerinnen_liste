@@ -69,4 +69,3 @@ gem 'unicorn'
 gem 'rollbar', '~> 1.2.6'
 gem 'rack-piwik', '~> 0.3.0', require: 'rack/piwik'
 gem 'newrelic_rpm'
-

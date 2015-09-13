@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe 'tags', type: :model do
   let!(:gertrud) { FactoryGirl.create(:published, firstname: 'Gertrud', lastname: 'Mueller') }
   let!(:claudia) { FactoryGirl.create(:published, firstname: 'Claudia', email: 'claudia@test.de') }
