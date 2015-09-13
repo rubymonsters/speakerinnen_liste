@@ -3,13 +3,23 @@
 
     <h1>Administration::<%= t(:categories, scope: "admin.dashboard.categories")%>::<%= t(:edit, scope: "general")%></h1>
 
-    <%= simple_form_for [:admin, @category], html: {class: ''} do |f| %>
+    <%= simple_form_for [:admin, @category] do |f| %>
+      <%= f.fields_for :translations, @category.translations.sort_by(&:locale) do |translation| %>
 
-      <p><%= t(:current_name, scope: "admin.dashboard.categories") %><b><%= @category.name %></b></p>
+        <%= translation.hidden_field :locale %>
 
-      <%= f.input :name, label: t(:new_name, scope: "admin.dashboard.categories"), input_html: { class: "mv" }, required: false %>
+        <p>
+          <%= translation.label :category, t(:new_name,
+            scope: 'admin.dashboard.categories',
+            language:  @category.language(translation)).html_safe %>
+        </p>
 
-      <%= f.submit t(:save, scope: "general"), class:"btn btn--small" %>
+        <%= translation.text_field :name, class: 'input--width-100' %>
+
+      <% end %>
+
+      <%= f.button :submit, t(:save, scope: 'general'), class:'btn btn--small mt mb++' %>
+
     <% end %>
 
   </div>
