@@ -61,11 +61,12 @@ Feature: Navigation
     Given you view the admin area <area> in <language>
     When you click on: <add>
     Then you are able to see: Administration::<area>::<add>
-    And you are able to see: <label>
+    And you are able to see: <label1>
+    And you are able to see: <label2>
     And you see a button labeled as: <add>
 
     Examples:
-    | language | area       | add        | label                                               | label                                                |
+    | language | area       | add        | label1                                              | label2                                               |
     | English  | Categories | Add        | Enter new category name in German:                  | Enter new category name in English:                  |
     | German   | Kategorien | Hinzufügen | Trage den neuen Namen der Kategorie in Deutsch ein: | Trage den neuen Namen der Kategorie in Englisch ein: |
 
