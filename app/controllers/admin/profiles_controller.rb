@@ -43,18 +43,18 @@ class Admin::ProfilesController < Admin::BaseController
     @profile.save(validate: false)
     # Tells the AdminMailer to send publish mail to the speakerin
     AdminMailer.profile_published(@profile).deliver
-    redirect_to admin_profiles_path, notice: (I18n.t('flash.profiles.updated'))
+    redirect_to admin_profiles_path, notice: (I18n.t('flash.profiles.updated', profile_name: @profile.name_or_email))
   end
 
   def unpublish
     @profile.published = false
     @profile.save(validate: false)
-    redirect_to admin_profiles_path, notice: (I18n.t('flash.profiles.updated'))
+    redirect_to admin_profiles_path, notice: (I18n.t('flash.profiles.updated', profile_name: @profile.name_or_email))
   end
 
   def admin_comment
     if @profile.update_attributes(profile_params)
-      redirect_to admin_profiles_path, notice: (I18n.t('flash.profiles.updated'))
+      redirect_to admin_profiles_path, notice: (I18n.t('flash.profiles.updated', profile_name: @profile.name_or_email))
     else
       render :index
     end
