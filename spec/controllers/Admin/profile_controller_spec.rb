@@ -1,7 +1,6 @@
 require 'spec_helper'
 include AuthHelper
 
-
 describe Admin::ProfilesController, type: :controller do
   let!(:admin) { Profile.create!(FactoryGirl.attributes_for(:admin, {email: "sam@mail.com"})) }
   let!(:admin_medialink) { FactoryGirl.create(:medialink, {profile_id: admin.id}) }
@@ -131,7 +130,7 @@ describe Admin::ProfilesController, type: :controller do
       describe "when invalid params are supplied" do
         before { put :update, { id: non_admin.id, :profile => { email: " " } } }
 
-        it "should return a 422 status response" do
+        it "should return a 200 status response" do
           expect(response.status).to eq 200
         end
 
@@ -174,7 +173,7 @@ describe Admin::ProfilesController, type: :controller do
         expect { Profile.find(non_admin.id) }.to raise_exception(ActiveRecord::RecordNotFound)
       end
 
-      it "should return 204 response status" do
+      it "should return 302 response status" do
         delete :destroy, {:id => non_admin.id }
         expect(response.status).to eq 302
       end      
@@ -222,7 +221,7 @@ describe Admin::ProfilesController, type: :controller do
         post :publish, { id: @unpublished.id }
       end
 
-      it "should return 403 status response" do
+      it "should return 302 status response" do
         expect(response.status).to eq 302
       end
 
