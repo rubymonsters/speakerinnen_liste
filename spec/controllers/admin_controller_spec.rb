@@ -1,4 +1,3 @@
-require 'spec_helper'
 include SignInHelper
 
 describe "Profile" do

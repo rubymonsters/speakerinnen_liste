@@ -1,4 +1,3 @@
-require 'spec_helper'
 include AuthHelper
 
 describe ProfilesController, type: :controller do
@@ -78,17 +77,17 @@ describe ProfilesController, type: :controller do
         translations_attributes:
           { '0':
             {
-              'locale':      'de',
+              'locale':       'de',
               'main_topic':   'Soziale Medien',
               'bio':          'Dingsbums',
               'id':           de_factory_translation.id
             },
           '1':
             {
-              'locale':    'en',
-              'main_topic': 'Social Media',
-              'bio':        'English Bio',
-              'id':         en_translation.id
+              'locale':       'en',
+              'main_topic':   'Social Media',
+              'bio':          'English Bio',
+              'id':           en_translation.id
             }
             }
       }

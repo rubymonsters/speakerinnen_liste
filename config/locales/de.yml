@@ -18,12 +18,12 @@ de:
       edit_profile: "Bearbeite Profil"
       categories:
         categories: "Kategorien"
-        explanation: "Um eine Kategorie auf Englisch und Deutsch anzulegen, füge zuerst die Kategorie in einer Sprache hinzu, wechsle in die andere Sprache und übersetzte den Kategorienamen mithilfe von dem >Bearbeiten< Button."
-        category_language_de: "Deutsch"
-        category_language_en: "Englisch"
+        category_language_de: "Deutsch:"
+        category_language_en: "Englisch:"
+        amount_of_tags: "Anzahl der Tags:"
         category_name: "Name der Kategorie"
         current_name: "Bisheriger Name der Kategorie:"
-        new_name: "Trage den neuen Namen der Kategorie ein: "
+        new_name: "Trage den neuen Namen der Kategorie in %{language} ein: "
       profiles:
         profiles: "Profile"
         created_at: "Erstellt"
@@ -209,6 +209,10 @@ de:
       updated: "Referenz wurde erfolgreich geändert."
       destroyed: "Referenz wurde erfolgreich gelöscht."
       no_permission: "Du hast nicht die Rechte, die Referenz zu bearbeiten."
+    categories:
+      created: '%{category_name} wurde erfolgreich erstellt.'
+      updated: '%{category_name} wurde erfolgreich geändert.'
+      destroyed: '%{category_name} wurde erfolgreich gelöscht.'
   activerecord:
     attributes:
       profile:

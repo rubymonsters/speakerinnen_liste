@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe 'profile', type: :model do
   describe '.profile_search' do
     let!(:inge) { FactoryGirl.create(:profile, firstname: 'Inge') }

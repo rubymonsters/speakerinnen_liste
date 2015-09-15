@@ -64,6 +64,7 @@ class Profile < ActiveRecord::Base
     main_topic.present? ? main_topic : topic_list.first
   end
 
+  # to have the correct language variable for the yml file
   def language(translation)
     if translation.object.locale == :en && I18n.locale == :de
       'Englisch'

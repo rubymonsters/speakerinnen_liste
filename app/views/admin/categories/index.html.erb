@@ -3,16 +3,15 @@
 
     <h1>Administration::<%= t(:categories, scope: "admin.dashboard.categories")%></h1>
 
-    <p><%= t(:explanation, scope: "admin.dashboard.categories") %></p>
-
     <%= link_to ('<i class="fa fa-plus-circle">&nbsp;</i>' + t(:add, scope: "general")).html_safe,
     new_admin_category_path, class: "btn btn--small" %>
 
     <table class="table table--compact mv+">
-      <thead class>
+      <thead class="text--left">
         <tr>
           <th><%= t(:category_language_de, scope: "admin.dashboard.categories")%></th>
           <th><%= t(:category_language_en, scope: "admin.dashboard.categories")%></th>
+          <th><%= t(:amount_of_tags, scope: "admin.dashboard.categories")%></th>
           <th></th>
           <th></th>
         </tr>
@@ -30,6 +29,9 @@
             <%= category.name %>
           </td>
         <% end %>
+          <td>
+            <%= category.tags.count %>
+          </td>
           <td>
             <%= link_to ('<i class="fa fa-pencil">&nbsp;</i>' + t(:edit, scope: "general")).html_safe,
                 edit_admin_category_path(category.id) %>

@@ -53,21 +53,22 @@ Feature: Navigation
     And you are able to see: <new>
 
     Examples:
-    | language | area       | edit       | update_button | current                        | new                                      |
-    | English  | Categories | Edit       | Save          | Current category name:         | Enter new category name:                 |
-    | German   | Kategorien | Bearbeiten | Speichern     | Bisheriger Name der Kategorie: | Trage den neuen Namen der Kategorie ein: |
+    | language | area       | edit       | update_button | current                                             | new                                                  |
+    | English  | Categories | Edit       | Save          | Enter new category name in German:                  | Enter new category name in English:                  |
+    | German   | Kategorien | Bearbeiten | Speichern     | Trage den neuen Namen der Kategorie in Deutsch ein: | Trage den neuen Namen der Kategorie in Englisch ein: |
 
   Scenario Outline: view add category in admin area
     Given you view the admin area <area> in <language>
     When you click on: <add>
     Then you are able to see: Administration::<area>::<add>
-    And you are able to see: <label>
+    And you are able to see: <label1>
+    And you are able to see: <label2>
     And you see a button labeled as: <add>
 
     Examples:
-    | language | area       | add        | label              |
-    | English  | Categories | Add        | Category name      |
-    | German   | Kategorien | Hinzufügen | Name der Kategorie |
+    | language | area       | add        | label1                                              | label2                                               |
+    | English  | Categories | Add        | Enter new category name in German:                  | Enter new category name in English:                  |
+    | German   | Kategorien | Hinzufügen | Trage den neuen Namen der Kategorie in Deutsch ein: | Trage den neuen Namen der Kategorie in Englisch ein: |
 
   Scenario Outline: viewing edit profiles in admin area
     Given there is a user profile registered and published with the email address: user1@example.com

@@ -1,4 +1,3 @@
-require 'spec_helper'
 include AuthHelper
 
 describe Api::V1::ProfilesController, type: :controller do

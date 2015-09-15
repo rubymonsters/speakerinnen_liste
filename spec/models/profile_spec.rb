@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe 'profile', type: :model do
 let(:profile) { FactoryGirl.create(:profile) }
  
@@ -12,7 +10,7 @@ describe 'profile settings' do
     expect(profile.admin).to be(false)
   end
 
-   it 'returns a profile fullname as a string' do
+  it 'returns a profile fullname as a string' do
     expect(profile.fullname).to eq "Factory Girl"
   end
 
