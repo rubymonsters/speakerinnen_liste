@@ -9,6 +9,17 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def after_sign_in_path_for(resource)
+    request.env['omniauth.origin'] ||  profile_url(resource) || root_path
+    #edit_profile_url(resource)
+    #sign_in_url = new_profile_session_url
+    #if request.referer == sign_in_url
+      #super
+    #else
+      #edit_profile_url(resource) || request.referer || root_path
+    #end
+  end
+
   def render_footer?
     false
   end
