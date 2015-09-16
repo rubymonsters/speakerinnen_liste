@@ -32,8 +32,8 @@ $white: #FFF;
 $transparent-white: rgba( $white, .6 );
 $transparent-black: rgba( $black, .5 );
 
-$dark-blue: #288EB6;
-$blue: #52B3D9;
+$blue: #00978b;
+$dark-blue: darken($blue, 10%);
 
 $dark-red: #b62848;
 $red: #d95270;
