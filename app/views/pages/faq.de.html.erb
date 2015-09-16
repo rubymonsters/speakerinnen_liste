@@ -2,6 +2,7 @@
   <div class="layout-wrapper">
     <h1 class="bb">FAQ/How-to</h1>
 
+    <%= link_to 'How-to >>', '#howto_anker', class: 'content__link--bg' %>
     <h3 class="pt">Warum gibt es Thema XYZ noch nicht?</h3>
     <p>
     Weil es noch niemand angelegt hat. Alle Themen, die in der Speakerinnen-Liste zu sehen sind, wurden von mindestens einer Speakerin in ihrem Profil als 'Tags' eingegeben. Daraus entstehen automatisch auf der Seite die für alle sichtbaren Themen.
@@ -25,12 +26,16 @@
     <br> Mit AND und OR-Verknüpfungen kannst du auch Kombinationen suchen, z.B. Energie Berlin. Wenn du mehrere Begriffe hintereinander eingibst, werden sie automatisch als AND-Verknüpfung erkannt. Groß- und Kleinschreibung spielt keine Rolle.
     </p>
 
+    <!-- Anker für Howto -->
+    <a id="howto_anker"></a>
+
     <h3 class="pt">Wie kann ich Euch Geld spenden?</h3>
     <p class="pb mb++ bb">Aktuell ist das nicht möglich, aber freuen uns sehr über die Bereitschaft! Und versuchen, bald eine Option zum Spenden einzurichten.
     </p>
+
     <h1 class="mb0">How-to</h1>
     <p class="bb">
-      How to become a Speakerin: Guide für ein aussagekräftiges Profil
+      ... become a Speakerin: Guide für ein aussagekräftiges Profil
     </p>
     <h3 class="pt">
       Intro: General information.
@@ -43,9 +48,9 @@ Wir freuen uns auf euch bei Speakerinnen.org!
     <h3 class="pt">
 Vier Schritte für ein aussagekräftiges Speakerinnen-Profil
     </h3>
-    <b>
+    <h4 class="pt">
 Schritt 1: Als Speakerin registrieren
-    </b>
+    </h4>
     <p>
     <%= image_tag('faq_login_de.png', class:'faq-image--float') %>
 Rechts oben auf der Seite findest du den Button „Als Speakerin registrieren“ – draufklicken und schon geht es los! Zuerst musst du deine E-Mail-Adresse eingeben, dann ein Passwort deiner Wahl. Dieses bitte wiederholen. Dann auf „Registrieren“ klicken.<br>
@@ -55,9 +60,9 @@ Du erhältst nun eine E-Mail an die angegebene Adresse. Hier findest du den Link
     <p>
 Alternatively you can register using an existing twitter account. In case you prefer this option, follow the link "Über Twitter registrieren", which takes you to the according authorization screen. After confirming your intention to log in with twitter, you find yourself back on Speakerinnen.org. At this point, You still need to provide a valid email address and confirm it. It works just as described in the previous paragraph.
     </p>
-    <b>
-Step 02: Profil ausfüllen
-    </b>
+    <h4 class="pt">
+Schritt 02: Profil ausfüllen
+    </h4>
     <p>
 Du landest du auf der Begrüßungsseite der Speakerinnen. Um dein Profil zu bearbeiten, klicke rechts oben auf „Mein Profil“.<br>
     <%= image_tag('faq_edit_profile_de.png', class:'faq-image--float') %>
@@ -79,9 +84,9 @@ Abschließend einfach auf „Aktualisiere dein Profil“ klicken und schon siehs
     <p>
 Bei Bedarf kannst du dein Profil jederzeit nachträglich bearbeiten.
     </p>
-    <b>
+    <h4 class="pt">
 Schritt 3: Referenzen angeben
-    </b>
+    </h4>
     <p>
     <%= image_tag('faq_add_profile_references_de.png', class:'faq-image--float') %>
 Um Referenzen einzutragen, klicke bitte rechts auf den Button „Referenzen bearbeiten“. Es öffnet sich die Überblicksseite deiner Referenzen.
@@ -89,9 +94,9 @@ Klicke dann auf den Link „Referenz hinzufügen“ und gib’ nun eine URL, wo 
 Willst du dir dein fertiges Profil anschauen, gehe einfach auf den Link „Eigenes Profil anzeigen“ und schon siehst du, wie dein fertiges Profil nach der Freischaltung aussehen wird.
     <%= image_tag('faq_edit_profile_references_de.png', class:'faq-image--float') %>
     </p>
-    <b>
+    <h4 class="pt">
 Schritt 4: Freischaltung
-    </b>
+    </h4>
     <p>
 Das Speakerinnen-Team erhält eine Benachrichtigung bei jeder neuen Anmeldung. Wir werden dein Profil – wenn es vollständig ist – so schnell wie möglich freischalten. Solltest du Rückfragen haben oder dich wundern, warum dein Profil noch nicht sichtbar ist, wende dich jederzeit an Christiane vom Speakerinnen-Team unter post@wortspektrum.de!<br>
 Sobald dein Profil für alle sichtbar ist, erhältst du eine automatische E-Mail, die dir sagt: Dein Profil wurde jetzt freigeschaltet!
