@@ -66,6 +66,15 @@ h2{
     }
 }
 
+.faq-image--float {
+  margin-left: 10px;
+  margin-bottom: 10px;
+  float: right;
+  width: 400px;
+  height: auto;
+  border: $border;
+}
+
 .bg--white {
   display: inline-block;
   background: $transparent-white;
