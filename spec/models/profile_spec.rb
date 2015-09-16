@@ -1,18 +1,18 @@
-describe Profile, type: :model do
-  let(:profile) { FactoryGirl.create(:profile) }
+describe 'profile', type: :model do
+let(:profile) { FactoryGirl.create(:profile) }
+ 
+describe 'profile settings' do
+  it "has a valid factory" do
+   expect(FactoryGirl.build(:profile)).to be_valid
+   end
+  
+  it "by default isn't admin" do
+    expect(profile.admin).to be(false)
+  end
 
-  describe 'profile settings' do
-    it "has a valid factory" do
-      expect(profile).to be_valid
-    end
-
-    it "by default isn't admin" do
-      expect(profile.admin).to be(false)
-    end
-
-    it 'returns a profile fullname as a string' do
-      expect(profile.fullname).to eq "Factory Girl"
-    end
+  it 'returns a profile fullname as a string' do
+    expect(profile.fullname).to eq "Factory Girl"
+  end
 
     # check again: these tests seem to be false positive
     # it 'is invalid without email' do
