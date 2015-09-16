@@ -1,4 +1,3 @@
-require 'spec_helper'
 include AuthHelper
 
 describe Admin::ProfilesController, type: :controller do
