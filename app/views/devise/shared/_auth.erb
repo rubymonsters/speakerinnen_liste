@@ -56,7 +56,8 @@
 
           <%= f.submit t(button, scope: "devise.registrations"), class:'btn btn--small mb' %>
 
-          <% if devise_mapping.omniauthable? %>
+          <%# Show the "login via twitter"" button only when not redirected from twitter" %>
+          <% if devise_mapping.omniauthable? && session["devise.user_attributes"].blank? %>
             <% Profile.omniauth_providers.each do |provider| %>
               <%= link_to t(button+'_via', scope: "devise.registrations"), omniauth_authorize_path(:profile, provider), class: 'btn btn--small mb' %>
             <% end %>
