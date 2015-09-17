@@ -25,6 +25,10 @@ describe "navigation", :broken => false do
 
       it_should_behave_like "successful sign in"
       it { should have_no_link('Admin', admin_root_path) }
+      it 'should lead to the show view of the profile' do
+        expect(page).to have_content(profile.fullname)
+        expect(page).to have_link(I18n.t("edit", scope: "profiles.profile"), edit_profile_path(language,profile.id) )
+      end
     end
 
 
