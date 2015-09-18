@@ -171,21 +171,21 @@ textarea, input {
 }
 
 .bv {
-  border-top: 1px solid $light-grey;
-  border-bottom: 1px solid $light-grey;
+  border-top: $border;
+  border-bottom: $border;
 }
 
 .bb {
-  border-bottom: 1px solid $light-grey;
+  border-bottom: $border;
 }
 
 .bt {
-  border-top: 1px solid $light-grey;
+  border-top: $border;
 }
 
 hr {
   border: none;
-  border-top: 1px solid $light-grey;
+  border-top: $border;
 
 }
 
@@ -343,7 +343,7 @@ header {
 
 
 .photo--grey {
-  border: 1px solid $light-grey;
+  border: $border;
   -webkit-transition: 1s;
   -moz-transition: 1s;
   -ms-transition: 1s;
@@ -500,7 +500,7 @@ ul#medialinks__list {
     padding: 0.8em;
     background-color: white;
     cursor: move;
-    border: 1px solid $light-grey;
+    border: $border;
     border-left: 24px solid $light-grey;
 
   }
