@@ -66,13 +66,21 @@ h2{
     }
 }
 
-.faq-image--float {
+.faq__image--float {
   margin-left: 10px;
   margin-bottom: 10px;
   float: right;
+  border: $border;
+}
+
+.faq__image--small {
+  width: 300px;
+  height: auto;
+}
+
+.faq__image--medium {
   width: 400px;
   height: auto;
-  border: $border;
 }
 
 .bg--white {

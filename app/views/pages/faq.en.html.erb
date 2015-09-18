@@ -1,7 +1,7 @@
 <section class="content--bg-grey">
   <div class="layout-wrapper">
     <h1 class="bb">FAQ/How-to</h1>
-    <%= link_to 'How-to >>', '#howto_anker', class: 'content__link--bg' %>
+    <%= link_to '>> How-to >> Guidelines on building a user profile and become a Speakerin', '#howto_anker', class: 'content__link--bg' %>
 
     <h3 class="pt">Why is there no speaker for the topic I am looking for?</h3>
     <p>Possibly, nobody has created a tag for this topic yet. As soon as a speaker names this topic as one of her tags, this topic becomes visible as a tag within the topic range.
@@ -48,40 +48,40 @@ There are four steps between you and your profile on Speakerinnen.org
 Step 01: Registration
     </h4>
     <p>
-    <%= image_tag('faq_login_en.png', class:'faq-image--float') %>
-At the right upper corner of the website you find a button that reads "Register as a speaker" (yes it's waiting for you to click it). At first we ask you to enter a valid email address and password of choice. The latter you will have to enter twice. Press "Register" and off you go.<br>
+    <%= image_tag('faq_login_en.png', class:'faq__image--float faq__image--small') %>
+At the right upper corner of the website you find a button that reads "Register as a speaker" (yes it's waiting for you to click it). At first we ask you to enter a valid email address and password of choice. The latter you will have to enter twice. Press "Register" and off you go.
+    </p>
+    <p>
 Only a short moment later, you find an email in your inbox with the following confirmation link "Confirm my account". After you click it, we redirect you back to Speakerinnen.org. Now you area already able to sign in with your email and password.
     </p>
     <p>
-Alternatively you can register using an existing twitter account. In case you prefer this option, follow the link "Or Sign up with Twitter", which takes you to the according authorization screen. After confirming your intention to log in with twitter, you find yourself back on Speakerinnen.org. At this point, you still need to provide a valid email address and confirm it. It works just as described in the previous paragraph.
+Alternatively you can register using an existing twitter account. In case you prefer this option, follow the link "Or Sign up with Twitter", which takes you to the according authorization screen. After confirming your intention to log in with twitter, you find yourself back on Speakerinnen.org.<br>
+At this point, you still need to provide a valid email address and confirm it. It works just as described in the previous paragraph.
     </p>
     <h4 class="pt">
 Step 02: Profile
     </h4>
     <p>
+    <%= image_tag('faq_edit_profile_en.png', class:'faq__image--float faq__image--medium') %>
 After you have signed in, you are redirected to your profile. Clicking on "Edit profile" lets you edit your name, twitter handle, location and email address.<br> Furthermore, this is where you can provide a link to your homepage, plus indicate which languages you speak.
-    <%= image_tag('faq_edit_profile_en.png', class:'faq-image--float') %>
     </p>
     <p>
-When entering multiple languages into the form make sure to separate them by comma or hyphen. Attention: No programming languages allowed here, save them for later.
+When entering multiple languages into the form make sure to separate them by comma or hyphen.<b>Attention: No programming languages allowed here, save them for later.</b>
     </p>
     <p>
 Uploading a profile picture works best by clicking „Datei auswählen“, just below the section titled "Picture".
 jpg, jpeg or png are all supported formats, as long as you keep the size of the image under 1 MB. Please make sure you own the copyright for the image you intend to upload.
-You may have noticed that all images are displayed in black and white. Snap. When the mouse pointer moves over a picture, it reveals its true colors. Please consider this effect when choosing your own portrait.
-    </p>
-    <p>
-In order to change a profile picture, you need to delete the current image first. Click on "Edit profile" and check the box next to "Delete photo". You need to confirm your action and save the current work space by clicking on "Update your profile". Follow the steps mentioned earlier to upload a new picture.
+<b>You may have noticed that all images are displayed in black and white. Snap. When the mouse pointer moves over a picture, it reveals its true colors. Please consider this effect when choosing your own portrait.</b>
     </p>
     <p>
 Next up: Tags. With tags we mean references of topics that you are familiar with or interests you would like to share. This could be anything from journalism to bio technology to network policy. Start by finding out which tags already exist. The easiest way to do this is to type the first letters of a word into our search mask and wait for auto-complete magic to kick in. If the suggested term matches what you had in mind, simply click on it and thus add it to your selection. Browsing through existing profiles will also give you a good overview and inspiration for your own tags.
     </p>
     <p>
-Now it is time to pick your main expertise. There can only be one, therefore keep it crisp, keep it comprehensible. Good examples are "social media", "sustainable agriculture" and "human resources" amongst others. This main tag is the one that appears under your profile picture when scrolling through the list of Speakerinnen. Note that space is limited to 30 characters only. No exceptions.
+Now it is time to pick your main expertise. There can only be one, therefore keep it crisp, keep it comprehensible. Good examples are "social media", "sustainable agriculture" and "human resources" amongst others. This main tag is the one that appears under your profile picture when scrolling through the list of Speakerinnen.<b> Note that space is limited to 30 characters only. No exceptions.</b>
     </p>
     <p>
-    <%= image_tag('faq_edit_profile_bio_en.png', class:'faq-image--float') %>
-Moving on to the part of the website that will contain your biography. Filling out this field is mandatory, we are not able to activate your account if you leave it empty. You have the option to provide your biography in two languages (there is an additional input box), however, that is entirely up to you.<br>
+    <%= image_tag('faq_edit_profile_bio_en.png', class:'faq__image--float faq__image--medium') %>
+Moving on to the part of the website that will contain your biography.<b> Filling out this field is mandatory, we are not able to activate your account if you leave it empty.</b> You have the option to provide your biography in two languages (there is an additional input box), however, that is entirely up to you.<br>
 The second version of your biography is displayed when switching to the English/German version of Speakerinnen.org. The according link can be found at the top right corner of the page.
     </p>
     <p>
@@ -91,11 +91,10 @@ Again, please remember to save your input by clicking on „Update your profile�
 Step 03: References
     </h4>
     <p>
-    <%= image_tag('faq_add_profile_references_en.png', class:'faq-image--float') %>
+    <%= image_tag('faq_add_profile_references_en.png', class:'faq__image--float faq__image--medium') %>
 References are collected and displayed on a subpage of Speakerinnen.org. On the right handside of the website you find a button „Edit references“, which takes you to a page with an overview of all your references. "Add reference" opens a form where you can add another link to the list, choose a title and describe it with a few lines. Again, remember to save your input, in this case "Add reference" does the trick. The new link is now available under the section "Examples of previous talks" in your profile. You can alter the order of your references by drag and drop, simply move them up or down.
     </p>
     <p>
-    <%= image_tag('faq_edit_profile_references_en.png', class:'faq-image--float') %>
 Well done, you have completed your part. It is now upon us to activate your account. Until then, you can find the prospective setup with all contents by visiting "Show own Profile". That is exactly how your user profile is going to look.
     </p>
     <h4 class="pt">
