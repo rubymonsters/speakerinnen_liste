@@ -1,9 +1,13 @@
 <section class="content--bg-grey">
-  <div class="layout-wrapper">
-    <h1>
-      <%= t(:title, scope: "contact.form") %>
-    </h1>
+  <% unless @profile.present? %>
+    <div class="layout-wrapper">
+      <h1>
+        <%= t(:title, scope: "contact.form") %>
+      </h1>
+    <% end %>
 
+    <h1>
+    </h1>
     <%= simple_form_for @message, url: url, html: {id: ""} do |f| %>
       <%= f.input :name, as: :string, required: false, label: t(".name"), input_html: { class: 'mb modal__input--width' }  %>
       <%= f.input :email, label: t(".email"), wrapper_html: { id: 'message_email' }   %>
