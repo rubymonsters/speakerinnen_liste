@@ -69,6 +69,10 @@ class ProfilesController < ApplicationController
     end
   end
 
+  def render_footer?
+    true
+  end
+
   private
 
     # Use callbacks to share common setup or constraints between actions.
