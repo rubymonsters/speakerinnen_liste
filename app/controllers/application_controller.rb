@@ -9,6 +9,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def after_sign_in_path_for(resource)
+    profile_url(resource) || root_path
+  end
+
   def render_footer?
     false
   end
