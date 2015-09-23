@@ -1,8 +1,12 @@
 <section class="content--bg-grey">
-  <div class="layout-wrapper">
-    <h1>
-      <%= t(:title, scope: "contact.form") %>
-    </h1>
+  <% if @profile.blank? %>
+    <div class="layout-wrapper">
+      <h1>
+        <%= t(:title, scope: "contact.form") %>
+      </h1>
+  <% else %>
+    <div>
+  <% end %>
 
     <%= simple_form_for @message, url: url, html: {id: ""} do |f| %>
       <%= f.input :name, as: :string, required: false, label: t(".name"), input_html: { class: 'mb modal__input--width' }  %>

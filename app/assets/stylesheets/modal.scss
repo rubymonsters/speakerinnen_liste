@@ -35,17 +35,21 @@
   top: 0;
 }
 
+.modal__input--width {
+  width: 400px;
+}
+
 .modal__inner {
   transition: top .25s ease;
   position: absolute;
-  top: -20%;
+  top: 70px;
   right: 0;
   bottom: 0;
   left: 0;
-  width: 50%;
+  max-width: 500px;
   margin: auto;
   overflow: auto;
-  background: #fff;
+  background: $body-bg-color-grey;
   border-radius: $border-radius;
   padding: 10px 20px;
   height: 70%;
@@ -85,9 +89,13 @@
 
 @media screen and (max-width: 768px) {
 
+  .modal__input--width {
+    width: 100%;
+  }
+
   .modal__inner {
-    width: 90%;
-    height: 90%;
+    width: 80%;
+    height: 80%;
     box-sizing: border-box;
   }
 }

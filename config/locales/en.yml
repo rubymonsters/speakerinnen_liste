@@ -134,11 +134,11 @@ en:
   contact:
     form:
       title: "Send us a mail:"
-      name: "Your name"
+      name: "Your name*"
       name_placeholder: ""
-      email: "Your email address"
+      email: "Your email address*"
       medialink_placeholder: "Please fill in only 21 characters"
-      subject: "Subject"
+      subject: "Subject of the mail"
       send: "Send"
       body: "Your message"
       body_placeholder: "Please give a few details about your request: where, when, what, and other relevant information."
