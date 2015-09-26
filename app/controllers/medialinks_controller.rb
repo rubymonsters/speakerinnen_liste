@@ -54,7 +54,7 @@ class MedialinksController < ApplicationController
   protected
 
   def fetch_profile_from_params
-    @profile = Profile.find(params[:profile_id])
+    @profile = Profile.friendly.find(params[:profile_id])
   end
 
   def ensure_own_medialinks

@@ -53,7 +53,7 @@ class Admin::MedialinksController < Admin::BaseController
   protected
 
   def fetch_profile_from_params
-    @profile = Profile.find(params[:profile_id])
+    @profile = Profile.friendly.find(params[:profile_id])
   end
 
   private

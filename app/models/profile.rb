@@ -2,6 +2,9 @@ class Profile < ActiveRecord::Base
   include AutoHtml
   include HasPicture
 
+  extend FriendlyId
+  friendly_id :slug_candidates, use: :slugged
+
   translates :bio, :main_topic, fallbacks_for_empty_translations: true
   accepts_nested_attributes_for :translations
 
@@ -59,7 +62,7 @@ class Profile < ActiveRecord::Base
   def name_or_email
     fullname.present? ? fullname : email
   end
-  
+
   def main_topic_or_first_topic
     main_topic.present? ? main_topic : topic_list.first
   end
@@ -107,6 +110,14 @@ class Profile < ActiveRecord::Base
     else
       super
     end
+  end
+
+  def slug_candidates
+    [[:firstname, :lastname], [:firstname, :lastname, :random_part]]
+  end
+
+  def random_part
+    Random.rand(1..(1<<20)).to_s(16)
   end
 
   def as_json(options = {})
