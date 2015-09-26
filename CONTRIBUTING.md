@@ -34,36 +34,57 @@ If you want to contribute, you can get an overview over the open issues. We are 
 
 ## Before you start working
 
-1. For your database.yml please copy config/database_example.yml
-
-2. For developing locally you have to create some profiles manually. It is important to confirm these profiles.
-Normally that works via email. Locally we bypass that confirmation process via the console:
-
-```Ruby
-rails c
-user = Profile.find(<your-profile-id>)
-user.confirmed_at = DateTime.now
-user.save
-```
-
-Notice: The profile will ony be displayed if it is published. To publish a profile without using the admin interface you have to set is as published via the console:
-
-```Ruby
-rails c
-user = Profile.find(<your-profile-id>)
-user.published = true
-user.save
-```
-
-3. If you build or test some admin features you have to create an admin user. You also can assign the status via the console:
-
-```Ruby
+<ol>
+<li>For your database.yml please copy config/database_example.yml (Example below in Mac OS X or Linux):
+<p><code>
+cp config/database_example.yml config/database.yml
+</code></p>
+</li>
+<li>Install PostgreSQL (it depends on your OS):
+<p>http://www.postgresql.org/download/</p>
+</li>
+<li>Create a PostgreSQL user with the same name as your username:
+<p>https://www.digitalocean.com/community/tutorials/how-to-use-roles-and-manage-grant-permissions-in-postgresql-on-a-vps--2</p>
+</li>
+<li>Install Bundler (if you don't have it already):
+<p><code>
+gem install bundler
+</code></p>
+</li>
+<li>Install gems:
+<p><code>
+bundle install
+</code></p>
+</li>
+<li>Create the database:
+<p><code>
+bundle exec rake db:create
+</code></p>
+</li>
+<li>Run the database migrations:
+<p><code>
+bundle exec rake db:migrate
+</code></p>
+</li>
+<li>Run the database seeds:
+<p><code>
+bundle exec rake db:seed
+</code></p>
+</li>
+<li>Run the app:
+<p><code>
+bundle exec rails s
+</code></p>
+</li>
+<li>If you build or test some admin features you have to create an admin user. You also can assign the status via the console:
+<p><code>
 rails c
 user = Profile.find(<your-profile-id>)
 user.admin = true
 user.save
-```
-
+</code></p>
+</li>
+</ol>
 ## Git(Hub) Help
 
 If you have any questions about Git or GitHub, [GitHub
