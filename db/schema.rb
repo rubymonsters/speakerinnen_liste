@@ -76,11 +76,13 @@ ActiveRecord::Schema.define(:version => 20140330185248) do
     t.boolean  "published",              :default => false
     t.string   "website"
     t.text     "admin_comment"
+    t.string   "slug"
   end
 
   add_index "profiles", ["confirmation_token"], :name => "index_profiles_on_confirmation_token", :unique => true
   add_index "profiles", ["email"], :name => "index_profiles_on_email", :unique => true
   add_index "profiles", ["reset_password_token"], :name => "index_profiles_on_reset_password_token", :unique => true
+  add_index "profiles", ["slug"], name: "index_projects_on_slug", unique: true
 
   create_table "taggings", :force => true do |t|
     t.integer  "tag_id"

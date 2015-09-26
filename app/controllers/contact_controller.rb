@@ -7,7 +7,7 @@ class ContactController < ApplicationController
 
   def create
     if params[:id]
-      @profile = Profile.find(params[:id])
+      @profile = Profile.friendly.find(params[:id])
     end
 
     @message = Message.new(message_params)
