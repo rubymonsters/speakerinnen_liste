@@ -44,9 +44,9 @@ end
 group :development, :test do
   gem 'rspec-rails', '3.1.0'
   gem 'capybara', '~> 2.4.1'
-  gem 'cucumber-rails', '1.4.0', require: false
   gem 'pry'
   gem 'selenium-webdriver', "2.38.0"
+  gem 'byebug'
 end
 
 group :test do

@@ -60,7 +60,7 @@ en:
       resend_instructions_title: "Resend confirmation instructions"
       resend_instructions: "Send instructions"
     sessions:
-      signed_in: "Login successfully."
+      signed_in: "Logged in successfully."
       signed_out: "Logout successfully."
     unlocks:
       send_instructions: "You will receive an email with instructions about how to unlock your account in a few minutes."
