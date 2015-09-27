@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
-ruby '2.2.1'
-gem 'rails', '4.1.5'
+ruby '2.2.3'
+gem 'rails', '4.1.13'
 
 gem 'normalize-rails'
 gem 'bootswatch-rails'
@@ -46,7 +46,7 @@ group :development, :test do
   gem 'capybara', '~> 2.4.1'
   gem 'cucumber-rails', '1.4.0', require: false
   gem 'pry'
-  gem 'selenium-webdriver', "2.38.0"
+  gem 'selenium-webdriver', '2.38.0'
 end
 
 group :test do
