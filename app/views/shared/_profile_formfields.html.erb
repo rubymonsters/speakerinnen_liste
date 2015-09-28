@@ -6,7 +6,6 @@
 
     <ul class='hidden' id='availableTags'>
       <% ActsAsTaggableOn::Tag.uniq.pluck(:name).each do |tag_name| %>
-        <li><%= tag_name %></li>
       <% end %>
     </ul>
 

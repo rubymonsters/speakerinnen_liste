@@ -89,7 +89,6 @@ class ProfilesController < ApplicationController
       :remember_me,
       :city,
       :firstname,
-      :languages,
       :lastname,
       :picture,
       :twitter,
@@ -103,6 +102,7 @@ class ProfilesController < ApplicationController
       :medialinks,
       :admin_comment,
       translations_attributes: [:id, :bio, :main_topic, :locale])
+        .merge(iso_langages: params[:profile][:iso_languages])
   end
 
   def build_missing_translations(object)
