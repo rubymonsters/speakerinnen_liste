@@ -2,6 +2,9 @@ source 'https://rubygems.org'
 ruby '2.2.1'
 gem 'rails', '4.1.5'
 
+# Needed for Javascript Runtime
+gem 'therubyracer'
+
 gem 'normalize-rails'
 gem 'bootswatch-rails'
 gem 'faker', '1.0.1'
