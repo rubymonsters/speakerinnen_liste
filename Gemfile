@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
-ruby '2.2.1'
-gem 'rails', '4.1.5'
+ruby '2.2.3'
+gem 'rails', '4.1.13'
 
 # Needed for Javascript Runtime
 gem 'therubyracer'
@@ -48,8 +48,8 @@ group :development, :test do
   gem 'rspec-rails', '3.1.0'
   gem 'capybara', '~> 2.4.1'
   gem 'pry'
-  gem 'selenium-webdriver', "2.38.0"
   gem 'byebug'
+  gem 'selenium-webdriver', '2.38.0'
 end
 
 group :test do
