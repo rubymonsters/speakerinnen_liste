@@ -29,7 +29,10 @@ class TagIntegrationTest < ActionDispatch::IntegrationTest
 
     visit profile_path(@horst, locale: 'de')
     click_link('Profil bearbeiten')
-    assert_equal find_field('profile[topic_list]').value, 'kein herbst, fruehling'
+
+    topic_list = find_field('profile[topic_list]').value
+    assert_includes topic_list, 'kein herbst'
+    assert_includes topic_list, 'fruehling'
   end
 
   test 'show Fruehling tag' do
