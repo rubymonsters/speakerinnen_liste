@@ -1,7 +1,7 @@
 module LanguageSelectHelper
-  def language_select
+  def language_select(name)
     select_tag(
-      "search[languages]",
+      name,
       options_from_collection_for_select(
          SelectableLanguages.to_a.sort_by { |language| language_name(language) },
         'iso_639_1',

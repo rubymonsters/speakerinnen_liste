@@ -190,6 +190,42 @@ ALTER SEQUENCE category_translations_id_seq OWNED BY category_translations.id;
 -- Name: medialinks; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
+CREATE TABLE medialink_translations (
+    id integer NOT NULL,
+    medialink_id integer NOT NULL,
+    locale character varying(255) NOT NULL,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    url text,
+    title text,
+    description text
+);
+
+
+--
+-- Name: medialink_translations_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE medialink_translations_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: medialink_translations_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE medialink_translations_id_seq OWNED BY medialink_translations.id;
+
+
+--
+-- Name: medialinks; Type: TABLE; Schema: public; Owner: -; Tablespace:
+>>>>>>> add a new language method for the view
+--
+
 CREATE TABLE medialinks (
     id integer NOT NULL,
     profile_id integer,
@@ -471,6 +507,13 @@ ALTER TABLE ONLY category_translations ALTER COLUMN id SET DEFAULT nextval('cate
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY medialink_translations ALTER COLUMN id SET DEFAULT nextval('medialink_translations_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY medialinks ALTER COLUMN id SET DEFAULT nextval('medialinks_id_seq'::regclass);
 
 
@@ -553,6 +596,15 @@ ALTER TABLE ONLY category_translations
 -- Name: medialinks_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
+ALTER TABLE ONLY medialink_translations
+    ADD CONSTRAINT medialink_translations_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: medialinks_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
+>>>>>>> add a new language method for the view
+--
+
 ALTER TABLE ONLY medialinks
     ADD CONSTRAINT medialinks_pkey PRIMARY KEY (id);
 
@@ -609,6 +661,20 @@ CREATE INDEX index_category_translations_on_category_id ON category_translations
 --
 
 CREATE INDEX index_category_translations_on_locale ON category_translations USING btree (locale);
+
+
+--
+-- Name: index_medialink_translations_on_locale; Type: INDEX; Schema: public; Owner: -; Tablespace:
+--
+
+CREATE INDEX index_medialink_translations_on_locale ON medialink_translations USING btree (locale);
+
+
+--
+-- Name: index_medialink_translations_on_medialink_id; Type: INDEX; Schema: public; Owner: -; Tablespace:
+--
+
+CREATE INDEX index_medialink_translations_on_medialink_id ON medialink_translations USING btree (medialink_id);
 
 
 --
@@ -782,4 +848,3 @@ INSERT INTO schema_migrations (version) VALUES ('20150131194544');
 INSERT INTO schema_migrations (version) VALUES ('20150406145350');
 
 INSERT INTO schema_migrations (version) VALUES ('20150715095533');
-INSERT INTO schema_migrations (version) VALUES ('20150309173805');
