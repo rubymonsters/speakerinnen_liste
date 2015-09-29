@@ -101,8 +101,8 @@ class ProfilesController < ApplicationController
       :media_url,
       :medialinks,
       :admin_comment,
+      :iso_languages=>[],
       translations_attributes: [:id, :bio, :main_topic, :locale])
-        .merge(iso_langages: params[:profile][:iso_languages])
   end
 
   def build_missing_translations(object)
