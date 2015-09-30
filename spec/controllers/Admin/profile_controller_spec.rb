@@ -1,16 +1,16 @@
 include AuthHelper
 
 describe Admin::ProfilesController, type: :controller do
-  let!(:admin) { Profile.create!(FactoryGirl.attributes_for(:admin, {email: 'sam@mail.com'})) }
-  let!(:admin_medialink) { FactoryGirl.create(:medialink, {profile_id: admin.id}) }
-  let!(:non_admin) { Profile.create!(FactoryGirl.attributes_for(:published, {email: 'ral@mail.com'})) }
-  let!(:non_admin_medialink) { FactoryGirl.create(:medialink, {profile_id: non_admin.id}) }
+  let!(:admin) { Profile.create!(FactoryGirl.attributes_for(:admin, { email: 'sam@mail.com' })) }
+  let!(:admin_medialink) { FactoryGirl.create(:medialink, { profile_id: admin.id }) }
+  let!(:non_admin) { Profile.create!(FactoryGirl.attributes_for(:published, { email: 'ral@mail.com' })) }
+  let!(:non_admin_medialink) { FactoryGirl.create(:medialink, { profile_id: non_admin.id }) }
 
   describe 'GET index' do
     before(:each) do
       sign_in admin
-      @profile = Profile.create!(FactoryGirl.attributes_for(:admin, {email: 'ev@mail.com', firstname: 'Awe'}))
-      @profile1 = Profile.create!(FactoryGirl.attributes_for(:admin, {email: 'ev1@mail.com', firstname: 'NotInc'}))
+      @profile = Profile.create!(FactoryGirl.attributes_for(:admin, { email: 'ev@mail.com', firstname: 'Awe' }))
+      @profile1 = Profile.create!(FactoryGirl.attributes_for(:admin, { email: 'ev1@mail.com', firstname: 'NotInc' }))
     end
 
     describe 'when search param is provided' do
@@ -163,17 +163,17 @@ describe Admin::ProfilesController, type: :controller do
 
       it 'should destroy requested profile' do
         expect {
-          delete :destroy, {:id => non_admin.id }
+          delete :destroy, { :id => non_admin.id }
         }.to change(Profile, :count).by(-1)
       end
 
       it 'should not find the destroyed user' do
-        delete :destroy, {:id => non_admin.id }
+        delete :destroy, { :id => non_admin.id }
         expect { Profile.find(non_admin.id) }.to raise_exception(ActiveRecord::RecordNotFound)
       end
 
       it 'should return 302 response status' do
-        delete :destroy, {:id => non_admin.id }
+        delete :destroy, { :id => non_admin.id }
         expect(response.status).to eq 302
       end
     end
@@ -181,7 +181,7 @@ describe Admin::ProfilesController, type: :controller do
     context 'When user is a non-admin' do
       before(:each) do
         sign_in non_admin
-        delete :destroy, {:id => admin.id }
+        delete :destroy, { :id => admin.id }
       end
 
       specify{ expect(response.status).to eq 302 }
