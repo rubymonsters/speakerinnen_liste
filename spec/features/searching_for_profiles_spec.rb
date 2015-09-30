@@ -71,39 +71,39 @@ describe 'profile search' do
 
     it 'displays profiles that match any of the selected languages' do
       within '#detailed-search' do
-        select 'Spanisch'
-        select 'Deutsch'
-        click_button 'Suche'
+        select LanguageList::LanguageInfo.find('es').name
+        select LanguageList::LanguageInfo.find('de').name
+        click_button I18n.t(:search, scope: 'pages.home.search')
       end
-      expect(page).to have_content('Horstine')
+      expect(page).to have_content('Ada')
     end
 
     it 'displays profiles partial match for name' do
       within '#detailed-search' do
-        fill_in 'Name', with: 'Schmidt'
-        click_button 'Suche'
+        fill_in I18n.t(:name, scope: 'profiles.index'), with: 'Love'
+        click_button I18n.t(:search, scope: 'pages.home.search')
       end
-      expect(page).to have_content('Horstine')
+      expect(page).to have_content('Ada')
     end
 
     it 'displays profiles partial match for twitter' do
       within '#detailed-search' do
-        fill_in 'Twitter', with: 'Apfe'
-        click_button 'Suche'
+        fill_in 'Twitter', with: 'Adal'
+        click_button I18n.t(:search, scope: 'pages.home.search')
       end
-      expect(page).to have_content('Horstine')
+      expect(page).to have_content('Ada')
     end
 
     it 'displays profiles partial match for topic' do
-      profile.topic_list.add("obst")
+      profile.topic_list.add('Algorithm')
       profile.save!
 
       visit profiles_path
       within '#detailed-search' do
-        fill_in 'Themen', with: 'Obst'
-        click_button 'Suche'
+        fill_in I18n.t(:topics, scope: 'profiles.index'), with: 'Algorithm'
+        click_button I18n.t(:search, scope: 'pages.home.search')
       end
-      expect(page).to have_content('Horstine')
+      expect(page).to have_content('Ada')
     end
   end
 end
