@@ -1,4 +1,5 @@
 require 'active_support/concern'
+
 module HasPicture
   extend ActiveSupport::Concern
 
@@ -8,9 +9,8 @@ module HasPicture
   end
 
   def file_size
-    if picture.size.to_f/(1000*1000) > 1
-      errors.add(:picture, I18n.t('error_messages.picture_too_big'))
-    end
-  end
+    return unless picture.size.to_f / (1000 * 1000) > 1
 
+    errors.add(:picture, I18n.t('error_messages.picture_too_big'))
+  end
 end

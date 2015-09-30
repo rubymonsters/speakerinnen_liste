@@ -17,7 +17,7 @@ class PictureUploader < CarrierWave::Uploader::Base
     %w(jpg jpeg gif png)
   end
 
-  def as_json(options = {})
+  def as_json(_options = {})
     {
       'original' => url,
       'profile_small' => profile.url,

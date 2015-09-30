@@ -3,7 +3,7 @@ class Api::V1::ProfilesController < ApplicationController
   respond_to :json
 
   def index
-    respond_with Profile.is_published.where(id: params.fetch(:ids)) #we use fetch because it raises an exception instead of returning nil
+    respond_with Profile.is_published.where(id: params.fetch(:ids)) # we use fetch because it raises an exception instead of returning nil
   end
 
   def show

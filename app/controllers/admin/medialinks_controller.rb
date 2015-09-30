@@ -1,5 +1,4 @@
 class Admin::MedialinksController < Admin::BaseController
-
   before_filter :fetch_profile_from_params
 
   before_action :set_medialink, only: [:edit, :update, :destroy]
@@ -17,7 +16,7 @@ class Admin::MedialinksController < Admin::BaseController
 
   def update
     if @medialink.update_attributes(medialink_params)
-      # TODO translation flash
+      # TODO: translation flash
       redirect_to admin_profile_medialinks_path(@profile), notice: (I18n.t('flash.medialink.updated'))
     else
       render action: 'edit'
@@ -26,18 +25,18 @@ class Admin::MedialinksController < Admin::BaseController
 
   def destroy
     @medialink.destroy
-      # TODO translation flash
+    # TODO: translation flash
     redirect_to admin_profile_medialinks_path(@profile), notice: (I18n.t('flash.medialink.destroyed'))
   end
 
   def create
     @medialink = @profile.medialinks.build(medialink_params)
     if @medialink.save
-      # TODO translation flash
+      # TODO: translation flash
       flash[:notice] = (I18n.t('flash.medialink.created'))
       redirect_to admin_profile_medialinks_path(@profile)
     else
-      # TODO translation flash
+      # TODO: translation flash
       flash[:notice] = (I18n.t('flash.medialink.error'))
       render action: 'new'
     end
@@ -45,7 +44,7 @@ class Admin::MedialinksController < Admin::BaseController
 
   def sort
     params[:medialink].each_with_index do |id, index|
-      Medialink.where(id: id).update_all(position: index+1)
+      Medialink.where(id: id).update_all(position: index + 1)
     end
     render nothing: true
   end
@@ -57,13 +56,14 @@ class Admin::MedialinksController < Admin::BaseController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_medialink
-      @medialink = @profile.medialinks.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def medialink_params
-      params.require(:medialink).permit(:url, :title, :description, :position)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_medialink
+    @medialink = @profile.medialinks.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def medialink_params
+    params.require(:medialink).permit(:url, :title, :description, :position)
+  end
 end

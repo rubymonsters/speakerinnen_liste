@@ -1,5 +1,4 @@
 class MedialinksController < ApplicationController
-
   before_filter :fetch_profile_from_params
   before_filter :ensure_own_medialinks
 
@@ -18,7 +17,7 @@ class MedialinksController < ApplicationController
 
   def update
     if @medialink.update_attributes(medialink_params)
-      # TODO translation flash
+      # TODO: translation flash
       redirect_to profile_medialinks_path(@profile), notice: (I18n.t('flash.medialink.updated'))
     else
       render action: 'edit'
@@ -27,18 +26,18 @@ class MedialinksController < ApplicationController
 
   def destroy
     @medialink.destroy
-      # TODO translation flash
+    # TODO: translation flash
     redirect_to profile_medialinks_path(@profile), notice: (I18n.t('flash.medialink.destroyed'))
   end
 
   def create
     @medialink = @profile.medialinks.build(medialink_params)
     if @medialink.save
-      # TODO translation flash
+      # TODO: translation flash
       flash[:notice] = (I18n.t('flash.medialink.created'))
       redirect_to profile_medialinks_path(@profile)
     else
-      # TODO translation flash
+      # TODO: translation flash
       flash[:notice] = (I18n.t('flash.medialink.error'))
       render action: 'new'
     end
@@ -46,7 +45,7 @@ class MedialinksController < ApplicationController
 
   def sort
     params[:medialink].each_with_index do |id, index|
-      Medialink.where(id: id).update_all(position: index+1)
+      Medialink.where(id: id).update_all(position: index + 1)
     end
     render nothing: true
   end
@@ -74,5 +73,4 @@ class MedialinksController < ApplicationController
   def medialink_params
     params.require(:medialink).permit(:url, :title, :description, :position)
   end
-
 end

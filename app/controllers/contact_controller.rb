@@ -6,9 +6,7 @@ class ContactController < ApplicationController
   end
 
   def create
-    if params[:id]
-      @profile = Profile.find(params[:id])
-    end
+    @profile = Profile.find(params[:id]) if params[:id]
 
     @message = Message.new(message_params)
 
@@ -23,16 +21,15 @@ class ContactController < ApplicationController
 
   private
 
-    def message_params
-      params.require(:message).permit(:name, :email, :subject, :body, HONEYPOT_EMAIL_ATTR_NAME)
-    end
+  def message_params
+    params.require(:message).permit(:name, :email, :subject, :body, HONEYPOT_EMAIL_ATTR_NAME)
+  end
 
-    def reject_spam_bots
-      if params[:message][:email].present?
-        render text: 'ok'
-      else
-        params[:message][:email] = params[:message][HONEYPOT_EMAIL_ATTR_NAME]
-      end
-
+  def reject_spam_bots
+    if params[:message][:email].present?
+      render text: 'ok'
+    else
+      params[:message][:email] = params[:message][HONEYPOT_EMAIL_ATTR_NAME]
     end
+  end
 end
