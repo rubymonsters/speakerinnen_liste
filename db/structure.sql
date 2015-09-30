@@ -30,7 +30,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: api_tokens; Type: TABLE; Schema: public; Owner: -; Tablespace:
+-- Name: api_tokens; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE api_tokens (
@@ -60,7 +60,7 @@ ALTER SEQUENCE api_tokens_id_seq OWNED BY api_tokens.id;
 
 
 --
--- Name: blog_posts; Type: TABLE; Schema: public; Owner: -; Tablespace:
+-- Name: blog_posts; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE blog_posts (
@@ -93,7 +93,7 @@ ALTER SEQUENCE blog_posts_id_seq OWNED BY blog_posts.id;
 
 
 --
--- Name: categories; Type: TABLE; Schema: public; Owner: -; Tablespace:
+-- Name: categories; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE categories (
@@ -124,7 +124,7 @@ ALTER SEQUENCE categories_id_seq OWNED BY categories.id;
 
 
 --
--- Name: categories_tags; Type: TABLE; Schema: public; Owner: -; Tablespace:
+-- Name: categories_tags; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE categories_tags (
@@ -154,7 +154,7 @@ ALTER SEQUENCE categories_tags_id_seq OWNED BY categories_tags.id;
 
 
 --
--- Name: category_translations; Type: TABLE; Schema: public; Owner: -; Tablespace:
+-- Name: category_translations; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE category_translations (
@@ -187,7 +187,7 @@ ALTER SEQUENCE category_translations_id_seq OWNED BY category_translations.id;
 
 
 --
--- Name: medialinks; Type: TABLE; Schema: public; Owner: -; Tablespace:
+-- Name: medialink_translations; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE medialink_translations (
@@ -222,8 +222,7 @@ ALTER SEQUENCE medialink_translations_id_seq OWNED BY medialink_translations.id;
 
 
 --
--- Name: medialinks; Type: TABLE; Schema: public; Owner: -; Tablespace:
->>>>>>> add a new language method for the view
+-- Name: medialinks; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE medialinks (
@@ -258,7 +257,7 @@ ALTER SEQUENCE medialinks_id_seq OWNED BY medialinks.id;
 
 
 --
--- Name: profile_languages; Type: TABLE; Schema: public; Owner: -; Tablespace:
+-- Name: profile_languages; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE profile_languages (
@@ -290,7 +289,7 @@ ALTER SEQUENCE profile_languages_id_seq OWNED BY profile_languages.id;
 
 
 --
--- Name: profile_translations; Type: TABLE; Schema: public; Owner: -; Tablespace:
+-- Name: profile_translations; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE profile_translations (
@@ -324,7 +323,7 @@ ALTER SEQUENCE profile_translations_id_seq OWNED BY profile_translations.id;
 
 
 --
--- Name: profiles; Type: TABLE; Schema: public; Owner: -; Tablespace:
+-- Name: profiles; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE profiles (
@@ -358,8 +357,7 @@ CREATE TABLE profiles (
     media_url character varying(255),
     published boolean DEFAULT false,
     website character varying(255),
-    admin_comment text,
-    slug character varying(255)
+    admin_comment text
 );
 
 
@@ -383,7 +381,7 @@ ALTER SEQUENCE profiles_id_seq OWNED BY profiles.id;
 
 
 --
--- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -; Tablespace:
+-- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE schema_migrations (
@@ -392,7 +390,7 @@ CREATE TABLE schema_migrations (
 
 
 --
--- Name: searches; Type: TABLE; Schema: public; Owner: -; Tablespace:
+-- Name: searches; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE searches (
@@ -400,11 +398,9 @@ CREATE TABLE searches (
     search_field text
 );
 
-ALTER TABLE ONLY searches REPLICA IDENTITY NOTHING;
-
 
 --
--- Name: taggings; Type: TABLE; Schema: public; Owner: -; Tablespace:
+-- Name: taggings; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE taggings (
@@ -439,7 +435,7 @@ ALTER SEQUENCE taggings_id_seq OWNED BY taggings.id;
 
 
 --
--- Name: tags; Type: TABLE; Schema: public; Owner: -; Tablespace:
+-- Name: tags; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE tags (
@@ -553,7 +549,7 @@ ALTER TABLE ONLY tags ALTER COLUMN id SET DEFAULT nextval('tags_id_seq'::regclas
 
 
 --
--- Name: api_tokens_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
+-- Name: api_tokens_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY api_tokens
@@ -561,7 +557,7 @@ ALTER TABLE ONLY api_tokens
 
 
 --
--- Name: blog_posts_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
+-- Name: blog_posts_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY blog_posts
@@ -569,7 +565,7 @@ ALTER TABLE ONLY blog_posts
 
 
 --
--- Name: categories_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
+-- Name: categories_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY categories
@@ -577,7 +573,7 @@ ALTER TABLE ONLY categories
 
 
 --
--- Name: category_tags_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
+-- Name: category_tags_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY categories_tags
@@ -585,7 +581,7 @@ ALTER TABLE ONLY categories_tags
 
 
 --
--- Name: category_translations_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
+-- Name: category_translations_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY category_translations
@@ -593,7 +589,7 @@ ALTER TABLE ONLY category_translations
 
 
 --
--- Name: medialinks_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
+-- Name: medialink_translations_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY medialink_translations
@@ -601,8 +597,7 @@ ALTER TABLE ONLY medialink_translations
 
 
 --
--- Name: medialinks_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
->>>>>>> add a new language method for the view
+-- Name: medialinks_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY medialinks
@@ -610,7 +605,7 @@ ALTER TABLE ONLY medialinks
 
 
 --
--- Name: profile_languages_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
+-- Name: profile_languages_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY profile_languages
@@ -618,7 +613,7 @@ ALTER TABLE ONLY profile_languages
 
 
 --
--- Name: profile_translations_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
+-- Name: profile_translations_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY profile_translations
@@ -626,7 +621,7 @@ ALTER TABLE ONLY profile_translations
 
 
 --
--- Name: profiles_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
+-- Name: profiles_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY profiles
@@ -634,7 +629,7 @@ ALTER TABLE ONLY profiles
 
 
 --
--- Name: taggings_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
+-- Name: taggings_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY taggings
@@ -642,7 +637,7 @@ ALTER TABLE ONLY taggings
 
 
 --
--- Name: tags_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
+-- Name: tags_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY tags
@@ -650,112 +645,105 @@ ALTER TABLE ONLY tags
 
 
 --
--- Name: index_category_translations_on_category_id; Type: INDEX; Schema: public; Owner: -; Tablespace:
+-- Name: index_category_translations_on_category_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_category_translations_on_category_id ON category_translations USING btree (category_id);
 
 
 --
--- Name: index_category_translations_on_locale; Type: INDEX; Schema: public; Owner: -; Tablespace:
+-- Name: index_category_translations_on_locale; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_category_translations_on_locale ON category_translations USING btree (locale);
 
 
 --
--- Name: index_medialink_translations_on_locale; Type: INDEX; Schema: public; Owner: -; Tablespace:
+-- Name: index_medialink_translations_on_locale; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_medialink_translations_on_locale ON medialink_translations USING btree (locale);
 
 
 --
--- Name: index_medialink_translations_on_medialink_id; Type: INDEX; Schema: public; Owner: -; Tablespace:
+-- Name: index_medialink_translations_on_medialink_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_medialink_translations_on_medialink_id ON medialink_translations USING btree (medialink_id);
 
 
 --
--- Name: index_profile_languages_on_iso_639_1; Type: INDEX; Schema: public; Owner: -; Tablespace:
+-- Name: index_profile_languages_on_iso_639_1; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_profile_languages_on_iso_639_1 ON profile_languages USING btree (iso_639_1);
 
 
 --
--- Name: index_profile_languages_on_profile_id; Type: INDEX; Schema: public; Owner: -; Tablespace:
+-- Name: index_profile_languages_on_profile_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_profile_languages_on_profile_id ON profile_languages USING btree (profile_id);
 
 
 --
--- Name: index_profile_translations_on_locale; Type: INDEX; Schema: public; Owner: -; Tablespace:
+-- Name: index_profile_translations_on_locale; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_profile_translations_on_locale ON profile_translations USING btree (locale);
 
 
 --
--- Name: index_profile_translations_on_profile_id; Type: INDEX; Schema: public; Owner: -; Tablespace:
+-- Name: index_profile_translations_on_profile_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_profile_translations_on_profile_id ON profile_translations USING btree (profile_id);
 
 
 --
--- Name: index_profiles_on_confirmation_token; Type: INDEX; Schema: public; Owner: -; Tablespace:
+-- Name: index_profiles_on_confirmation_token; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE UNIQUE INDEX index_profiles_on_confirmation_token ON profiles USING btree (confirmation_token);
 
 
 --
--- Name: index_profiles_on_email; Type: INDEX; Schema: public; Owner: -; Tablespace:
+-- Name: index_profiles_on_email; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE UNIQUE INDEX index_profiles_on_email ON profiles USING btree (email);
 
 
 --
--- Name: index_profiles_on_reset_password_token; Type: INDEX; Schema: public; Owner: -; Tablespace:
+-- Name: index_profiles_on_reset_password_token; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE UNIQUE INDEX index_profiles_on_reset_password_token ON profiles USING btree (reset_password_token);
 
 
 --
--- Name: index_profiles_on_slug; Type: INDEX; Schema: public; Owner: -; Tablespace:
---
-
-CREATE INDEX index_profiles_on_slug ON profiles USING btree (slug);
-
-
---
--- Name: index_taggings_on_taggable_id_and_taggable_type_and_context; Type: INDEX; Schema: public; Owner: -; Tablespace:
+-- Name: index_taggings_on_taggable_id_and_taggable_type_and_context; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_taggings_on_taggable_id_and_taggable_type_and_context ON taggings USING btree (taggable_id, taggable_type, context);
 
 
 --
--- Name: index_tags_on_name; Type: INDEX; Schema: public; Owner: -; Tablespace:
+-- Name: index_tags_on_name; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE UNIQUE INDEX index_tags_on_name ON tags USING btree (name);
 
 
 --
--- Name: taggings_idx; Type: INDEX; Schema: public; Owner: -; Tablespace:
+-- Name: taggings_idx; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE UNIQUE INDEX taggings_idx ON taggings USING btree (tag_id, taggable_id, taggable_type, context, tagger_id, tagger_type);
 
 
 --
--- Name: unique_schema_migrations; Type: INDEX; Schema: public; Owner: -; Tablespace:
+-- Name: unique_schema_migrations; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE UNIQUE INDEX unique_schema_migrations ON schema_migrations USING btree (version);
@@ -845,6 +833,9 @@ INSERT INTO schema_migrations (version) VALUES ('20140901194315');
 
 INSERT INTO schema_migrations (version) VALUES ('20150131194544');
 
-INSERT INTO schema_migrations (version) VALUES ('20150406145350');
+INSERT INTO schema_migrations (version) VALUES ('20150309173805');
 
 INSERT INTO schema_migrations (version) VALUES ('20150715095533');
+
+INSERT INTO schema_migrations (version) VALUES ('20150914104949');
+
