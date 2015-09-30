@@ -1,5 +1,4 @@
 RSpec.feature 'Navigation', type: :feature do
-
   context 'logged in' do
     before do
       sign_in user

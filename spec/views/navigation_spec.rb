@@ -15,7 +15,6 @@ describe 'navigation', broken: false do
   end
 
   ['en','de'].each do |language|
-
     context 'signed in as normal user' do
       let(:profile) { FactoryGirl.create(:profile) }
 
@@ -30,7 +29,6 @@ describe 'navigation', broken: false do
         expect(page).to have_link(I18n.t('edit', scope: 'profiles.profile'), edit_profile_path(language,profile.id) )
       end
     end
-
 
     context 'signed in as admin' do
       let(:profile) { FactoryGirl.create(:admin) }
@@ -55,5 +53,4 @@ describe 'navigation', broken: false do
       end
     end
   end
-
 end

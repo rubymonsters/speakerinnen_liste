@@ -13,9 +13,7 @@ class SearchForUserTest < ActionDispatch::IntegrationTest
     @carla.save!
   end
 
-
   test 'search for and find a user' do
-
     visit('/en')
     fill_in('profile__search', with: 'weather')
     click_button('Search')

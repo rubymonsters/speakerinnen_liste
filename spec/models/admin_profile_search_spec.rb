@@ -5,6 +5,5 @@ describe 'profile', type: :model do
     it 'searches for all profiles by firstname and lastname' do
       expect(Profile.search('inge').count).to eq 1
     end
-
   end
 end
