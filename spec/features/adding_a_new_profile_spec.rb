@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe 'profile adding' do
   it 'allows to create a profile with languages' do
     visit root_path
@@ -27,8 +25,5 @@ describe 'profile adding' do
 
     expect(page).to have_content('Arabisch')
     expect(page).to have_content('Afrikaans')
-
-
-    save_and_open_page
   end
 end

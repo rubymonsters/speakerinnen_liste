@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe ProfilesSearch, type: :model do
   let!(:profile) { FactoryGirl.create(:published, firstname: 'Gertrud', lastname: 'Mueller', twitter: 'Apfel', city: 'Berlin') }
 

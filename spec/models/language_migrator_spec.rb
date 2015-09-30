@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe LanguageMigrator, type: :model do
   describe '.create_profile_languages' do
 
