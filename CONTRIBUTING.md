@@ -16,12 +16,12 @@ If you have other ideas feel free to open an own issue!
 1. [Fork](https://help.github.com/articles/fork-a-repo) the main repository.
    This is your own copy of the `speakerinnen_liste` project to work in.
 2. Clone your repository to your local machine.
-3. `git checkout -b newdesign`  
+3. `git checkout -b newdesign`
 This creates a new branch, called `newdesign` in our example, in your local
 repository.
 4. Make your changes.
 5. `git commit`
-6. `git push origin newdesign:newdesign`  
+6. `git push origin newdesign:newdesign`
 This pushes your new branch called `newdesign` to your GitHub repository.
 
 ## Integrating your working code to master
