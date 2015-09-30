@@ -1,6 +1,6 @@
 shared_examples_for 'successful sign in' do
   it { should have_content(I18n.t('devise.sessions.signed_in')) }
-  it { should have_link(I18n.t('layouts.application.logout'),destroy_profile_session_path) }
+  it { should have_link(I18n.t('layouts.application.logout'), destroy_profile_session_path) }
 end
 
 describe 'navigation', broken: false do
@@ -9,12 +9,12 @@ describe 'navigation', broken: false do
   before do
     @links_array = [categorization_admin_tags_path, admin_categories_path, admin_profiles_path]
     @lang_links_map = {
-          'en' => ['Categories','Tags','Profiles'],
+          'en' => ['Categories', 'Tags', 'Profiles'],
           'de' => ['Kategorien', 'Tags', 'Profile']
     }
   end
 
-  ['en','de'].each do |language|
+  ['en', 'de'].each do |language|
     context 'signed in as normal user' do
       let(:profile) { FactoryGirl.create(:profile) }
 
@@ -26,7 +26,7 @@ describe 'navigation', broken: false do
       it { should have_no_link('Admin', admin_root_path) }
       it 'should lead to the show view of the profile' do
         expect(page).to have_content(profile.fullname)
-        expect(page).to have_link(I18n.t('edit', scope: 'profiles.profile'), edit_profile_path(language,profile.id) )
+        expect(page).to have_link(I18n.t('edit', scope: 'profiles.profile'), edit_profile_path(language, profile.id) )
       end
     end
 

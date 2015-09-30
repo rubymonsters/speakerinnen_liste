@@ -25,7 +25,7 @@ class TagTest < ActiveSupport::TestCase
     profiles(:one).save!
     profiles(:two).topic_list.add('Sommer')
     profiles(:two).save!
-    assert_equal ActsAsTaggableOn::Tag.count,3
+    assert_equal ActsAsTaggableOn::Tag.count, 3
     old_tag = ActsAsTaggableOn::Tag.find_by_name('somer')
     new_tag = ActsAsTaggableOn::Tag.find_by_name('sommer')
     assert_equal old_tag.name, 'somer'
