@@ -48,7 +48,7 @@ class ProfileTest < ActiveSupport::TestCase
   end
 
   test 'that profile is properly built from twitter omniauth' do
-    h       = Hashie::Mash.new({ :provider => 'twitter', :uid => 'uid', :info => { :nickname => 'nickname', :name => 'Maren' } })
+    h       = Hashie::Mash.new(:provider => 'twitter', :uid => 'uid', :info => { :nickname => 'nickname', :name => 'Maren' })
     profile = Profile.from_omniauth(h)
     assert_equal profile.uid, 'uid'
     assert_equal profile.twitter, 'nickname'
@@ -77,7 +77,7 @@ class ProfileTest < ActiveSupport::TestCase
 
     parsed_json      = JSON.parse(horst.to_json)
 
-    assert_equal parsed_json, {
+    assert_equal parsed_json,
       'id'         => 1,
       'firstname'  => 'Horst',
       'lastname'   => 'lastname',
@@ -92,6 +92,5 @@ class ProfileTest < ActiveSupport::TestCase
       'picture'    => { 'original' => nil, 'profile_small' => nil, 'profile_smallest' => nil },
       'bio'        => { 'en' => 'english bio', 'de' => 'deutsche bio' },
       'main_topic' => { 'en' => 'english main topic', 'de' => 'deutsches Hauptthema' }
-    }
   end
 end
