@@ -27,9 +27,9 @@ class ProfileTest < ActiveSupport::TestCase
 
   test 'does not validate profile without email' do
     testprofile = Profile.new(
-      :firstname => 'Testfirstname',
-      :lastname  => 'Testlastname',
-      :bio       => 'Testbio'
+      firstname: 'Testfirstname',
+      lastname:  'Testlastname',
+      bio:       'Testbio'
     )
     testprofile.valid?
 
@@ -37,7 +37,7 @@ class ProfileTest < ActiveSupport::TestCase
   end
 
   test 'does not validate profile with already taken email' do
-    testprofile = Profile.new(:email => 'horst@mail.de')
+    testprofile = Profile.new(email: 'horst@mail.de')
     testprofile.valid?
     assert !testprofile.valid?, 'Does not validate Profile with already taken email'
   end
@@ -48,14 +48,14 @@ class ProfileTest < ActiveSupport::TestCase
   end
 
   test 'that profile is properly built from twitter omniauth' do
-    h       = Hashie::Mash.new(:provider => 'twitter', :uid => 'uid', :info => { :nickname => 'nickname', :name => 'Maren' })
+    h       = Hashie::Mash.new(provider: 'twitter', uid: 'uid', info: { nickname: 'nickname', name: 'Maren' })
     profile = Profile.from_omniauth(h)
     assert_equal profile.uid, 'uid'
     assert_equal profile.twitter, 'nickname'
   end
 
   test 'twitter @ symbol correcty removed' do
-    testprofile      = Profile.new(:twitter => '@tweeter', :email => 'me@me.com')
+    testprofile      = Profile.new(twitter: '@tweeter', email: 'me@me.com')
     expected_twitter = 'tweeter'
     assert expected_twitter, testprofile.twitter
   end

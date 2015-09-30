@@ -32,11 +32,11 @@ class JavascriptTest < ActionDispatch::IntegrationTest
 
     visit '/profiles'
     click_link('Einloggen')
-    fill_in('profile[email]', :with => 'horst@mail.de')
-    fill_in('profile[password]', :with => 'Testpassword')
+    fill_in('profile[email]', with: 'horst@mail.de')
+    fill_in('profile[password]', with: 'Testpassword')
     click_button 'Anmelden'
 
-    visit profile_path(@horst, :locale => 'en')
+    visit profile_path(@horst, locale: 'en')
     click_link('Edit')
     fill_in('Fr').click
     assert_equal find_field('profile[topic_list]').value, 'Fruehling'

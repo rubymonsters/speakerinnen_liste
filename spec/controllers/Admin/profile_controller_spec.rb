@@ -110,7 +110,7 @@ describe Admin::ProfilesController, type: :controller do
       end
 
       describe 'when valid params are supplied' do
-        before { put :update, id: non_admin.id, :profile => { firstname: 'samuel' } }
+        before { put :update, id: non_admin.id, profile: { firstname: 'samuel' } }
 
         it 'should return a 302 status response' do
           expect(response.status).to eq 302
@@ -127,7 +127,7 @@ describe Admin::ProfilesController, type: :controller do
       end
 
       describe 'when invalid params are supplied' do
-        before { put :update, id: non_admin.id, :profile => { email: ' ' } }
+        before { put :update, id: non_admin.id, profile: { email: ' ' } }
 
         it 'should return a 200 status response' do
           expect(response.status).to eq 200
@@ -147,7 +147,7 @@ describe Admin::ProfilesController, type: :controller do
     context 'when user is not admin' do
       before(:each) do
         sign_in non_admin
-        put :update, id: admin.id, :profile => { firstname: 'samuel' }
+        put :update, id: admin.id, profile: { firstname: 'samuel' }
       end
 
       specify{ expect(response.status).to eq 302 }
@@ -163,17 +163,17 @@ describe Admin::ProfilesController, type: :controller do
 
       it 'should destroy requested profile' do
         expect {
-          delete :destroy, :id => non_admin.id
+          delete :destroy, id: non_admin.id
         }.to change(Profile, :count).by(-1)
       end
 
       it 'should not find the destroyed user' do
-        delete :destroy, :id => non_admin.id
+        delete :destroy, id: non_admin.id
         expect { Profile.find(non_admin.id) }.to raise_exception(ActiveRecord::RecordNotFound)
       end
 
       it 'should return 302 response status' do
-        delete :destroy, :id => non_admin.id
+        delete :destroy, id: non_admin.id
         expect(response.status).to eq 302
       end
     end
@@ -181,7 +181,7 @@ describe Admin::ProfilesController, type: :controller do
     context 'When user is a non-admin' do
       before(:each) do
         sign_in non_admin
-        delete :destroy, :id => admin.id
+        delete :destroy, id: admin.id
       end
 
       specify{ expect(response.status).to eq 302 }
