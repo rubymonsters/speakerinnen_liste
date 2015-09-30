@@ -118,7 +118,7 @@ RSpec.feature 'Navigation', type: :feature do
         expect(page).to have_css('form label', text: 'Email')
         expect(page).to have_css('form label', text: 'Twitter')
         expect(page).to have_css('form label', text: 'City')
-        expect(page).to have_css('form label', text: 'Languages')
+        expect(page).to have_css('form label', text: 'Language')
         expect(page).to have_css('form label', text: 'Website')
         expect(page).to have_css('form label', text: 'Your topics as tags')
         expect(page).to have_css('form label', text: 'Picture')
