@@ -54,8 +54,8 @@ describe Admin::ProfilesController, type: :controller do
         get :show, { id: non_admin.id }, format: :json
       end
 
-      specify{ expect(response.status).to eq 200 }
-      specify{ expect(response).to render_template(:show) }
+      specify { expect(response.status).to eq 200 }
+      specify { expect(response).to render_template(:show) }
 
       it 'gets the requested profile' do
         expect(assigns(:profile)).to eq(non_admin)
@@ -72,9 +72,9 @@ describe Admin::ProfilesController, type: :controller do
         get :show, id: admin.id
       end
 
-      specify{ expect(response.status).to eq 302 }
-      specify{ expect(response).to_not render_template(:show) }
-      specify{ expect(response).to redirect_to("/#{I18n.locale}/profiles") }
+      specify { expect(response.status).to eq 302 }
+      specify { expect(response).to_not render_template(:show) }
+      specify { expect(response).to redirect_to("/#{I18n.locale}/profiles") }
     end
   end
 
@@ -85,9 +85,9 @@ describe Admin::ProfilesController, type: :controller do
         get :edit, { id: non_admin.id }, format: :json
       end
 
-      specify{ expect(response.status).to eq 200 }
-      specify{ expect(response).to render_template(:edit) }
-      specify{ expect(assigns(:profile)).to eq(non_admin) }
+      specify { expect(response.status).to eq 200 }
+      specify { expect(response).to render_template(:edit) }
+      specify { expect(assigns(:profile)).to eq(non_admin) }
     end
 
     context 'when user is not admin' do
@@ -96,9 +96,9 @@ describe Admin::ProfilesController, type: :controller do
         get :edit, id: admin.id
       end
 
-      specify{ expect(response.status).to eq 302 }
-      specify{ expect(response).to_not render_template(:edit) }
-      specify{ expect(response).to redirect_to("/#{I18n.locale}/profiles") }
+      specify { expect(response.status).to eq 302 }
+      specify { expect(response).to_not render_template(:edit) }
+      specify { expect(response).to redirect_to("/#{I18n.locale}/profiles") }
     end
   end
 
@@ -150,8 +150,8 @@ describe Admin::ProfilesController, type: :controller do
         put :update, id: admin.id, profile: { firstname: 'samuel' }
       end
 
-      specify{ expect(response.status).to eq 302 }
-      specify{ expect(response).to redirect_to("/#{I18n.locale}/profiles") }
+      specify { expect(response.status).to eq 302 }
+      specify { expect(response).to redirect_to("/#{I18n.locale}/profiles") }
     end
   end
 
@@ -184,7 +184,7 @@ describe Admin::ProfilesController, type: :controller do
         delete :destroy, id: admin.id
       end
 
-      specify{ expect(response.status).to eq 302 }
+      specify { expect(response.status).to eq 302 }
       it 'should not destroy the requested Profile' do
         expect(Profile.where(id: admin.id).count).to eq 1
       end
