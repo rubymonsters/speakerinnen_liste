@@ -11,7 +11,7 @@ describe Admin::ProfilesController, type: :controller do
       sign_in admin
       @profile = Profile.create!(FactoryGirl.attributes_for(:admin, {email: "ev@mail.com", firstname: "Awe"}))
       @profile1 = Profile.create!(FactoryGirl.attributes_for(:admin, {email: "ev1@mail.com", firstname: "NotInc"}))
-    end                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+    end
 
     describe "when search param is provided" do
       before { get :index, { search: "Awe" } }
@@ -20,7 +20,7 @@ describe Admin::ProfilesController, type: :controller do
         expect(response.status).to eq 200
       end
 
-      it "should redirect to the admin profiles page" do 
+      it "should redirect to the admin profiles page" do
         expect(response).to render_template(:index)
       end
 
@@ -36,7 +36,7 @@ describe Admin::ProfilesController, type: :controller do
         expect(response.status).to eq 200
       end
 
-      it "should redirect to the admin profiles page" do 
+      it "should redirect to the admin profiles page" do
         expect(response).to render_template(:index)
       end
 
@@ -153,7 +153,7 @@ describe Admin::ProfilesController, type: :controller do
       specify{ expect(response.status).to eq 302 }
       specify{ expect(response).to redirect_to("/#{I18n.locale}/profiles") }
     end
-  end 
+  end
 
   describe 'DELETE destroy' do
     context "When user is an admin" do
@@ -162,7 +162,7 @@ describe Admin::ProfilesController, type: :controller do
       end
 
       it "should destroy requested profile" do
-        expect { 
+        expect {
           delete :destroy, {:id => non_admin.id }
         }.to change(Profile, :count).by(-1)
       end
@@ -175,7 +175,7 @@ describe Admin::ProfilesController, type: :controller do
       it "should return 302 response status" do
         delete :destroy, {:id => non_admin.id }
         expect(response.status).to eq 302
-      end      
+      end
     end
 
     context "When user is a non-admin" do
@@ -236,14 +236,14 @@ describe Admin::ProfilesController, type: :controller do
   end
 
   describe 'POST unpublished' do
-    before { @published = FactoryGirl.create(:published, { email: "dory@newmail.com" }) } 
+    before { @published = FactoryGirl.create(:published, { email: "dory@newmail.com" }) }
 
     context "When user is admin" do
       before(:each) do
         sign_in admin
         post :unpublish, { id: @published.id }
       end
-     
+
       it "should return 302 status response" do
         expect(response.status).to eq 302
       end
@@ -277,4 +277,4 @@ describe Admin::ProfilesController, type: :controller do
       end
     end
   end
-end 
+end

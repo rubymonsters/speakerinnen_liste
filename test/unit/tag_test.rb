@@ -31,10 +31,6 @@ class TagTest < ActiveSupport::TestCase
     assert_equal old_tag.name, "somer"
     assert_equal new_tag.name, "sommer"
     assert_equal ActsAsTaggableOn::Tagging.count, 3
-
-    #new_tag.merge(old_tag)
-    #assert_equal profiles(:one).topic_list, ["sommer", "herbst"]
-    #assert_equal profiles(:two).topic_list, ["sommer"]
   end
 
 end

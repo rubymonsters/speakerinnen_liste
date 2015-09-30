@@ -6,7 +6,7 @@ class SearchIntegrationTest < ActiveSupport::TestCase
       @carla.confirmed_at = Time.now
       @carla.email = "carla@railsgirls.com"
       @carla.password = "PeterandPaul"
-      @carla.translation.bio = "Carla is very interested in weather, programming, sleeping, shopping, veggiemite and photos."      
+      @carla.translation.bio = "Carla is very interested in weather, programming, sleeping, shopping, veggiemite and photos."
       @carla.topic_list = "fruehling", "schnapsi"
       @carla.published = true
       @carla.save!
@@ -23,19 +23,16 @@ class SearchIntegrationTest < ActiveSupport::TestCase
   end
 
   test "correctly integrated postgres fulltext search" do
-    
     results = Search.basic_search('WEATHER')
     assert_equal [@carla], results.map(&:profile)
   end
 
   test "search should only search specified columns" do
-    
     results = Search.basic_search("schnapsi")
     assert_equal [@carla], results.map(&:profile)
   end
 
   test "search is across topics" do
-    
     @carla.topic_list.add("summer")
     @carla.save!
     results = Search.basic_search("summer")

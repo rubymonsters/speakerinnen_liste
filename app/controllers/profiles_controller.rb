@@ -75,53 +75,53 @@ class ProfilesController < ApplicationController
 
   private
 
-    # Use callbacks to share common setup or constraints between actions.
-    def set_profile
-      @profile = Profile.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_profile
+    @profile = Profile.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def profile_params
-      params.require(:profile).permit(
-        :email,
-        :password,
-        :password_confirmation,
-        :remember_me,
-        :city,
-        :firstname,
-        :languages,
-        :lastname,
-        :picture,
-        :twitter,
-        :remove_picture,
-        :talks,
-        :website,
-        :content,
-        :name,
-        :topic_list,
-        :media_url,
-        :medialinks,
-        :admin_comment,
-        translations_attributes: [:id, :bio, :main_topic, :locale])
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def profile_params
+    params.require(:profile).permit(
+      :email,
+      :password,
+      :password_confirmation,
+      :remember_me,
+      :city,
+      :firstname,
+      :languages,
+      :lastname,
+      :picture,
+      :twitter,
+      :remove_picture,
+      :talks,
+      :website,
+      :content,
+      :name,
+      :topic_list,
+      :media_url,
+      :medialinks,
+      :admin_comment,
+      translations_attributes: [:id, :bio, :main_topic, :locale])
+  end
 
-    def build_missing_translations(object)
-      I18n.available_locales.each do |locale|
-        unless object.translated_locales.include?(locale)
-          object.translations.build(locale: locale)
-        end
+  def build_missing_translations(object)
+    I18n.available_locales.each do |locale|
+      unless object.translated_locales.include?(locale)
+        object.translations.build(locale: locale)
       end
     end
+  end
 
-    def profiles_for_index
-      Profile.is_published.order('created_at DESC').page(params[:page]).per(24)
-    end
+  def profiles_for_index
+    Profile.is_published.order('created_at DESC').page(params[:page]).per(24)
+  end
 
-    def profiles_for_scope(tag_names)
-      Profile.is_published
-              .tagged_with(tag_names, any: true)
-              .order('created_at DESC')
-              .page(params[:page])
-              .per(24)
-    end
+  def profiles_for_scope(tag_names)
+    Profile.is_published
+            .tagged_with(tag_names, any: true)
+            .order('created_at DESC')
+            .page(params[:page])
+            .per(24)
+  end
 end
