@@ -8,7 +8,7 @@ describe Api::V1::ProfilesController, type: :controller do
     let(:unpublished_profile) { FactoryGirl.create(:profile, email: 'Peter@example.com') }
 
     before do
-      http_login("horst", "123")
+      http_login('horst', '123')
     end
 
     it 'should return many profiles for json request' do
@@ -28,19 +28,19 @@ describe Api::V1::ProfilesController, type: :controller do
     it 'should not show unpublished profiles' do
       get :index, ids: [unpublished_profile.id], format: :json
 
-      expect(response.body).to eq "[]"
+      expect(response.body).to eq '[]'
     end
   end
 
   describe 'show action' do
     it 'should respond to json request for one profile' do
-      http_login("horst", "123")
-      get :show, id: profile1.id, format: "json"
+      http_login('horst', '123')
+      get :show, id: profile1.id, format: 'json'
       expect(response.body).to include('{"id":' + profile1.id.to_s + ',"firstname":"Factory","lastname":"Girl"')
     end
 
     it 'should deny json requests without a login' do
-      get :show, id: profile1.id, format: "json"
+      get :show, id: profile1.id, format: 'json'
       expect(response.status).to eq(401)
     end
   end

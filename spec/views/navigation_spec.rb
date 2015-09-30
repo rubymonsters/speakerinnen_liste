@@ -1,9 +1,9 @@
-shared_examples_for "successful sign in" do
-  it { should have_content(I18n.t("devise.sessions.signed_in")) }
-  it { should have_link(I18n.t("layouts.application.logout"),destroy_profile_session_path) }
+shared_examples_for 'successful sign in' do
+  it { should have_content(I18n.t('devise.sessions.signed_in')) }
+  it { should have_link(I18n.t('layouts.application.logout'),destroy_profile_session_path) }
 end
 
-describe "navigation", :broken => false do
+describe 'navigation', :broken => false do
   subject { page }
 
   before do
@@ -16,38 +16,38 @@ describe "navigation", :broken => false do
 
   ['en','de'].each do |language|
 
-    context "signed in as normal user" do
+    context 'signed in as normal user' do
       let(:profile) { FactoryGirl.create(:profile) }
 
       before do
         sign_in profile, language
       end
 
-      it_should_behave_like "successful sign in"
+      it_should_behave_like 'successful sign in'
       it { should have_no_link('Admin', admin_root_path) }
       it 'should lead to the show view of the profile' do
         expect(page).to have_content(profile.fullname)
-        expect(page).to have_link(I18n.t("edit", scope: "profiles.profile"), edit_profile_path(language,profile.id) )
+        expect(page).to have_link(I18n.t('edit', scope: 'profiles.profile'), edit_profile_path(language,profile.id) )
       end
     end
 
 
-    context "signed in as admin" do
+    context 'signed in as admin' do
       let(:profile) { FactoryGirl.create(:admin) }
 
       before do
         sign_in profile, language
       end
 
-      it_should_behave_like "successful sign in"
+      it_should_behave_like 'successful sign in'
       it { should have_link('Admin', admin_root_path) }
 
-      describe "access admin actions" do
+      describe 'access admin actions' do
         before { click_on 'Admin' }
 
         it { should have_content('Administration') }
 
-        it "should have localized links" do
+        it 'should have localized links' do
           @lang_links_map[language].each_with_index do |link, index|
             expect(page).to have_link(link, @links_array[index])
           end

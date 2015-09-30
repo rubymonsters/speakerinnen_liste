@@ -4,20 +4,20 @@ class UserProfileCorrectlyDisplayedTest < ActionDispatch::IntegrationTest
   def setup
     @horst              = profiles(:one)
     @horst.confirmed_at = Time.now
-    @horst.topic_list   = "fruehling"
-    @horst.bio          = "Bio von Horst"
+    @horst.topic_list   = 'fruehling'
+    @horst.bio          = 'Bio von Horst'
     @horst.published    = true
     @horst.save
 
     @inge              = profiles(:two)
     @inge.confirmed_at = Time.now
-    @inge.topic_list   = "fruehling", " ", "sommer"
-    @inge.bio          = "Bio von Inge"
+    @inge.topic_list   = 'fruehling', ' ', 'sommer'
+    @inge.bio          = 'Bio von Inge'
     @inge.published    = true
     @inge.save
   end
 
-  test "user profile is correctly displayed" do
+  test 'user profile is correctly displayed' do
     visit '/en'
     click_link('Horst lastname')
 
@@ -27,7 +27,7 @@ class UserProfileCorrectlyDisplayedTest < ActionDispatch::IntegrationTest
     assert page.has_content?('twitter')
   end
 
-  test "user profile is correctly displayed in german" do
+  test 'user profile is correctly displayed in german' do
     visit '/de'
     click_link('Inge lastname')
 
