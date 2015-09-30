@@ -32,5 +32,4 @@ class CategoryIntegrationTest < ActionDispatch::IntegrationTest
     visit '/'
     assert page.has_content?('Jahreszeiten')
   end
-
 end

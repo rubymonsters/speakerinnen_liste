@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class CategoryTest < ActiveSupport::TestCase
-
   test 'create and delete Category' do
     category = Category.new(name: 'Jahreszeiten')
     category.save
@@ -9,5 +8,4 @@ class CategoryTest < ActiveSupport::TestCase
     category.destroy
     assert_equal Category.all.count, 2, 'delete a category'
   end
-
 end

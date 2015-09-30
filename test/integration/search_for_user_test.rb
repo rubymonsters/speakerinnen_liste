@@ -19,6 +19,6 @@ class SearchForUserTest < ActionDispatch::IntegrationTest
     click_button('Search')
     click_link(@carla.fullname)
 
-    assert_equal current_path, profile_path(@carla, locale:'en')
+    assert_equal current_path, profile_path(@carla, locale: 'en')
   end
 end

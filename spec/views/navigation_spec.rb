@@ -9,12 +9,12 @@ describe 'navigation', broken: false do
   before do
     @links_array = [categorization_admin_tags_path, admin_categories_path, admin_profiles_path]
     @lang_links_map = {
-          'en' => ['Categories', 'Tags', 'Profiles'],
-          'de' => ['Kategorien', 'Tags', 'Profile']
+      'en' => %w(Categories Tags Profiles),
+      'de' => %w(Kategorien Tags Profile)
     }
   end
 
-  ['en', 'de'].each do |language|
+  %w(en de).each do |language|
     context 'signed in as normal user' do
       let(:profile) { FactoryGirl.create(:profile) }
 

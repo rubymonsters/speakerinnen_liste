@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class SignUpTest < ActionDispatch::IntegrationTest
-
   test 'sign up with email sends out confirmation link' do
     visit '/en'
     assert page.has_content?('Register')

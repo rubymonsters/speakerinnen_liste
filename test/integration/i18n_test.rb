@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class InternationalisationTest < ActionDispatch::IntegrationTest
-
   test 'locale de works' do
     visit '/de'
     assert page.has_content?('Einloggen'), 'in Application.html.erb translation does not work'

@@ -162,9 +162,9 @@ describe Admin::ProfilesController, type: :controller do
       end
 
       it 'should destroy requested profile' do
-        expect {
+        expect do
           delete :destroy, id: non_admin.id
-        }.to change(Profile, :count).by(-1)
+        end.to change(Profile, :count).by(-1)
       end
 
       it 'should not find the destroyed user' do
@@ -201,7 +201,7 @@ describe Admin::ProfilesController, type: :controller do
       end
 
       it 'should return 302 status response' do
-         expect(response.status).to eq 302
+        expect(response.status).to eq 302
       end
 
       it 'should change Profile status to published' do
@@ -253,7 +253,7 @@ describe Admin::ProfilesController, type: :controller do
         expect(@published.published).to be false
       end
       it 'should redirect_to admin profiles page' do
-         expect(response).to redirect_to("/#{I18n.locale}/admin/profiles")
+        expect(response).to redirect_to("/#{I18n.locale}/admin/profiles")
       end
     end
 

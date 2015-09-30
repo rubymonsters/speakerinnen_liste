@@ -14,9 +14,9 @@ describe 'tags', type: :model do
     inge.save!
   end
 
-# our actsastaggable method "merging tags" did not work because we did not
-# increase the build in counter cache for taggings in the tag model
-# when counter cache reached zero the remaining tag was accidently deleted
+  # our actsastaggable method "merging tags" did not work because we did not
+  # increase the build in counter cache for taggings in the tag model
+  # when counter cache reached zero the remaining tag was accidently deleted
   it 'merging two tags works' do
     expect(ActsAsTaggableOn::Tag.count).to eq 2
     expect(ActsAsTaggableOn::Tagging.count).to eq 3

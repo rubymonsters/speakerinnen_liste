@@ -128,7 +128,6 @@ RSpec.feature 'Navigation', type: :feature do
         expect(page).to have_css('form label', text: 'Your bio in English')
       end
 
-
       scenario 'viewing edit tags in admin area' do
         visit admin_root_path
 

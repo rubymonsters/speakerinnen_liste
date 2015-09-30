@@ -18,11 +18,11 @@ class ProfileTest < ActiveSupport::TestCase
     profile       = Profile.new
     profile.admin = false
     profile.save
-    assert (not profile.admin?), 'returns false for non-admin'
+    assert(!profile.admin?, 'returns false for non-admin')
   end
 
   test 'admin? is false by default' do
-    assert (not Profile.new.admin?), 'default setting for admin is false'
+    assert(!Profile.new.admin?, 'default setting for admin is false')
   end
 
   test 'does not validate profile without email' do
@@ -65,7 +65,7 @@ class ProfileTest < ActiveSupport::TestCase
     horst.id = 1
     horst.created_at = Time.zone.parse('2014-12-06 15:04:13')
     horst.updated_at = Time.zone.parse('2014-12-06 15:04:20')
-    horst.medialinks = [ medialinks(:one) ]
+    horst.medialinks = [medialinks(:one)]
 
     I18n.locale = :en
     horst.bio        = 'english bio'
@@ -77,7 +77,8 @@ class ProfileTest < ActiveSupport::TestCase
 
     parsed_json      = JSON.parse(horst.to_json)
 
-    assert_equal parsed_json,
+    assert_equal(
+      parsed_json,
       'id'         => 1,
       'firstname'  => 'Horst',
       'lastname'   => 'lastname',
@@ -92,5 +93,6 @@ class ProfileTest < ActiveSupport::TestCase
       'picture'    => { 'original' => nil, 'profile_small' => nil, 'profile_smallest' => nil },
       'bio'        => { 'en' => 'english bio', 'de' => 'deutsche bio' },
       'main_topic' => { 'en' => 'english main topic', 'de' => 'deutsches Hauptthema' }
+    )
   end
 end
