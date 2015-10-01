@@ -15,14 +15,14 @@ class Profile < ActiveRecord::Base
   end
 
   devise :database_authenticatable, :registerable, :omniauthable,
-    :recoverable, :rememberable, :trackable, :validatable, :confirmable
+         :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
   acts_as_taggable_on :topics
 
   has_many :medialinks
 
   before_save(on: [:create, :update]) do
-    self.twitter.gsub!(/^@|https:|http:|:|\/\/|www.|twitter.com\//, '') if twitter
+    twitter.gsub!(%r{^@|https:|http:|:|//|www.|twitter.com/}, '') if twitter
   end
 
   def after_confirmation
@@ -59,7 +59,7 @@ class Profile < ActiveRecord::Base
   def name_or_email
     fullname.present? ? fullname : email
   end
-  
+
   def main_topic_or_first_topic
     main_topic.present? ? main_topic : topic_list.first
   end
@@ -78,19 +78,19 @@ class Profile < ActiveRecord::Base
   end
 
   def website_with_protocol
-    if website =~ /^https?:\/\//
+    if website =~ %r{^https?://}
       return website
     else
-      return 'http://'+ website
+      return 'http://' + website
     end
   end
 
   def twitter_name_formatted
-    twitter.gsub(/^@|https:|http:|:|\/\/|www.|twitter.com\//, '')
+    twitter.gsub(%r{^@|https:|http:|:|//|www.|twitter.com/}, '')
   end
 
   def twitter_link_formatted
-    'http://twitter.com/'  + twitter.gsub(/^@|https:|http:|:|\/\/|www.|twitter.com\//, '')
+    'http://twitter.com/' + twitter.gsub(%r{^@|https:|http:|:|//|www.|twitter.com/}, '')
   end
 
   def self.random
@@ -109,7 +109,7 @@ class Profile < ActiveRecord::Base
     end
   end
 
-  def as_json(options = {})
+  def as_json(_options = {})
     attributes.slice(
       'id',
       'firstname',
@@ -129,7 +129,7 @@ class Profile < ActiveRecord::Base
     )
   end
 
-  #for simple admin search
+  # for simple admin search
   def self.search(query)
     where('firstname ILIKE :query OR lastname ILIKE :query OR twitter ILIKE :query', query: "%#{query}%")
   end

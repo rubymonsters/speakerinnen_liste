@@ -1,9 +1,9 @@
 class Admin::TagsController < Admin::BaseController
-  before_filter :find_tag_and_category, :only => [:remove_category, :set_category]
+  before_filter :find_tag_and_category, only: [:remove_category, :set_category]
   before_action :set_tag, only: [:edit, :update, :destroy, :find_tag_and_category]
 
   def index
-    @tags       = ActsAsTaggableOn::Tag.all.sort_by {|tag| tag.name.downcase}
+    @tags       = ActsAsTaggableOn::Tag.all.sort_by { |tag| tag.name.downcase }
     @categories = Category.all
   end
 
@@ -69,5 +69,4 @@ class Admin::TagsController < Admin::BaseController
   def tag_params
     params.require(:tag).permit(:id, :tag, :name)
   end
-
 end

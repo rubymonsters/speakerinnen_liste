@@ -1,5 +1,4 @@
 RSpec.feature 'Navigation', type: :feature do
-
   context 'logged in' do
     before do
       sign_in user
@@ -128,7 +127,6 @@ RSpec.feature 'Navigation', type: :feature do
         expect(page).to have_css('form label', text: 'Your main topic in English')
         expect(page).to have_css('form label', text: 'Your bio in English')
       end
-
 
       scenario 'viewing edit tags in admin area' do
         visit admin_root_path

@@ -1,11 +1,11 @@
 FactoryGirl.define do
   factory :profile do
-    firstname "Factory"
-    lastname "Girl"
-    email "FactoryGirl@test.de"
-    password "123foobar"
-    password_confirmation "123foobar"
-    bio "MyText"
+    firstname 'Factory'
+    lastname 'Girl'
+    email 'FactoryGirl@test.de'
+    password '123foobar'
+    password_confirmation '123foobar'
+    bio 'MyText'
     confirmed_at Time.now
 
     factory :admin do
@@ -22,12 +22,12 @@ FactoryGirl.define do
   end
 
   factory :category do
-    name "Factory Category"
+    name 'Factory Category'
   end
   factory :medialink do
     profile_id 1
-    url "http://www.somesite.com/profile"
-    title "thisTitle"
-    description "lorep ipsum..."
+    url 'http://www.somesite.com/profile'
+    title 'thisTitle'
+    description 'lorep ipsum...'
   end
 end

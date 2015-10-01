@@ -13,7 +13,7 @@ class JavascriptTest < ActionDispatch::IntegrationTest
     DatabaseCleaner.start
     @inge              = profiles(:two)
     @inge.confirmed_at = Time.now
-    @inge.topic_list   = "Fruehling"
+    @inge.topic_list   = 'Fruehling'
     @inge.published    = true
     @inge.save
 
@@ -32,11 +32,11 @@ class JavascriptTest < ActionDispatch::IntegrationTest
 
     visit '/profiles'
     click_link('Einloggen')
-    fill_in('profile[email]', :with => 'horst@mail.de')
-    fill_in('profile[password]', :with => 'Testpassword')
-    click_button "Anmelden"
+    fill_in('profile[email]', with: 'horst@mail.de')
+    fill_in('profile[password]', with: 'Testpassword')
+    click_button 'Anmelden'
 
-    visit profile_path(@horst, :locale => "en")
+    visit profile_path(@horst, locale: 'en')
     click_link('Edit')
     fill_in('Fr').click
     assert_equal find_field('profile[topic_list]').value, 'Fruehling'

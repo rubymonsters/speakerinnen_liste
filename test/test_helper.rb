@@ -1,4 +1,4 @@
-ENV["RAILS_ENV"] = "test"
+ENV['RAILS_ENV'] = 'test'
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
 require 'capybara/rails'
@@ -24,7 +24,7 @@ end
 
 class ActionController::TestCase
   include Devise::TestHelpers
-  # These helpers are not going to work for integration tests driven by Capybara or Webrat. 
-  # They are meant to be used with functional tests only. Instead, fill in the form or explicitly 
+  # These helpers are not going to work for integration tests driven by Capybara or Webrat.
+  # They are meant to be used with functional tests only. Instead, fill in the form or explicitly
   # set the user in session;
 end

@@ -39,23 +39,21 @@ class Admin::CategoriesController < Admin::BaseController
     redirect_to admin_categories_path, notice: (I18n.t('flash.categories.destroyed', category_name: @category.name))
   end
 
- private
+  private
+
   # Use callbacks to share common setup or constraints between actions.
   def set_category
     @category = Category.find(params[:id])
   end
 
   def category_params
-    # TODO change :tag_list to topic_list
+    # TODO: change :tag_list to topic_list
     params.require(:category).permit(:name, :tag_list, translations_attributes: [:id, :name, :locale])
   end
 
   def build_missing_translations(object)
     I18n.available_locales.each do |locale|
-      unless object.translated_locales.include?(locale)
-        object.translations.build(locale: locale)
-      end
+      object.translations.build(locale: locale) unless object.translated_locales.include?(locale)
     end
   end
-
 end

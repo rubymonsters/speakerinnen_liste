@@ -4,11 +4,11 @@ class Admin::ProfilesController < Admin::BaseController
   before_action :set_profile, only: [:show, :edit, :update, :destroy, :publish, :unpublish, :admin_comment]
 
   def index
-   if params[:search]
-     @profiles = Profile.search(params[:search]).order("created_at DESC").page(params[:page]).per(100)
-   else
-     @profiles = Profile.order(sort_column + ' ' + sort_direction).order('created_at DESC').page(params[:page]).per(100)
-   end
+    if params[:search]
+      @profiles = Profile.search(params[:search]).order('created_at DESC').page(params[:page]).per(100)
+    else
+      @profiles = Profile.order(sort_column + ' ' + sort_direction).order('created_at DESC').page(params[:page]).per(100)
+    end
   end
 
   def new
@@ -62,50 +62,47 @@ class Admin::ProfilesController < Admin::BaseController
 
   private
 
-    # Use callbacks to share common setup or constraints between actions.
-    def set_profile
-      @profile = Profile.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_profile
+    @profile = Profile.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def profile_params
-      params.require(:profile).permit(
-        :email,
-        :password,
-        :password_confirmation,
-        :remember_me,
-        :city,
-        :firstname,
-        :languages,
-        :lastname,
-        :picture,
-        :twitter,
-        :remove_picture,
-        :talks,
-        :website,
-        :content,
-        :name,
-        :topic_list,
-        :media_url,
-        :medialinks,
-        :admin_comment,
-        translations_attributes: [:id, :bio, :main_topic, :locale])
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def profile_params
+    params.require(:profile).permit(
+      :email,
+      :password,
+      :password_confirmation,
+      :remember_me,
+      :city,
+      :firstname,
+      :languages,
+      :lastname,
+      :picture,
+      :twitter,
+      :remove_picture,
+      :talks,
+      :website,
+      :content,
+      :name,
+      :topic_list,
+      :media_url,
+      :medialinks,
+      :admin_comment,
+      translations_attributes: [:id, :bio, :main_topic, :locale])
+  end
 
-    def sort_column
-      Profile.column_names.include?(params[:sort]) ? params[:sort] : 'created_at'
-    end
+  def sort_column
+    Profile.column_names.include?(params[:sort]) ? params[:sort] : 'created_at'
+  end
 
-    def sort_direction
-      %w[asc desc].include?(params[:direction]) ? params[:direction] : 'desc'
-    end
+  def sort_direction
+    %w(asc desc).include?(params[:direction]) ? params[:direction] : 'desc'
+  end
 
-    def build_missing_translations(object)
-      I18n.available_locales.each do |locale|
-        unless object.translated_locales.include?(locale)
-          object.translations.build(locale: locale)
-        end
-      end
+  def build_missing_translations(object)
+    I18n.available_locales.each do |locale|
+      object.translations.build(locale: locale) unless object.translated_locales.include?(locale)
     end
-
+  end
 end

@@ -50,6 +50,7 @@ group :development, :test do
   gem 'pry'
   gem 'byebug'
   gem 'selenium-webdriver', '2.38.0'
+  gem 'rubocop'
 end
 
 group :test do

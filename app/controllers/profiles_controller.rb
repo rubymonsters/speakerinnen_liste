@@ -8,12 +8,12 @@ class ProfilesController < ApplicationController
   before_filter :require_permission, only: [:edit, :destroy, :update]
 
   def index
-   if params[:topic]
-     @profiles = profiles_for_scope(params[:topic])
-   else
-     @profiles = profiles_for_index
-   end
-   @tags = ActsAsTaggableOn::Tag.most_used(100)
+    if params[:topic]
+      @profiles = profiles_for_scope(params[:topic])
+    else
+      @profiles = profiles_for_index
+    end
+    @tags = ActsAsTaggableOn::Tag.most_used(100)
   end
 
   def category
@@ -31,7 +31,7 @@ class ProfilesController < ApplicationController
   end
 
   def show
-    if @profile.published? or can_edit_profile?(current_profile, @profile)
+    if @profile.published? || can_edit_profile?(current_profile, @profile)
       @message = Message.new
       @medialinks = @profile.medialinks.order(:position)
     else
@@ -64,9 +64,9 @@ class ProfilesController < ApplicationController
   end
 
   def require_permission
-    unless can_edit_profile?(current_profile, @profile)
-      redirect_to profiles_url, notice: (I18n.t('flash.profiles.no_permission'))
-    end
+    return if can_edit_profile?(current_profile, @profile)
+
+    redirect_to profiles_url, notice: (I18n.t('flash.profiles.no_permission'))
   end
 
   def render_footer?
@@ -75,53 +75,51 @@ class ProfilesController < ApplicationController
 
   private
 
-    # Use callbacks to share common setup or constraints between actions.
-    def set_profile
-      @profile = Profile.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_profile
+    @profile = Profile.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def profile_params
-      params.require(:profile).permit(
-        :email,
-        :password,
-        :password_confirmation,
-        :remember_me,
-        :city,
-        :firstname,
-        :languages,
-        :lastname,
-        :picture,
-        :twitter,
-        :remove_picture,
-        :talks,
-        :website,
-        :content,
-        :name,
-        :topic_list,
-        :media_url,
-        :medialinks,
-        :admin_comment,
-        translations_attributes: [:id, :bio, :main_topic, :locale])
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def profile_params
+    params.require(:profile).permit(
+      :email,
+      :password,
+      :password_confirmation,
+      :remember_me,
+      :city,
+      :firstname,
+      :languages,
+      :lastname,
+      :picture,
+      :twitter,
+      :remove_picture,
+      :talks,
+      :website,
+      :content,
+      :name,
+      :topic_list,
+      :media_url,
+      :medialinks,
+      :admin_comment,
+      translations_attributes: [:id, :bio, :main_topic, :locale])
+  end
 
-    def build_missing_translations(object)
-      I18n.available_locales.each do |locale|
-        unless object.translated_locales.include?(locale)
-          object.translations.build(locale: locale)
-        end
-      end
+  def build_missing_translations(object)
+    I18n.available_locales.each do |locale|
+      object.translations.build(locale: locale) unless object.translated_locales.include?(locale)
     end
+  end
 
-    def profiles_for_index
-      Profile.is_published.order('created_at DESC').page(params[:page]).per(24)
-    end
+  def profiles_for_index
+    Profile.is_published.order('created_at DESC').page(params[:page]).per(24)
+  end
 
-    def profiles_for_scope(tag_names)
-      Profile.is_published
-              .tagged_with(tag_names, any: true)
-              .order('created_at DESC')
-              .page(params[:page])
-              .per(24)
-    end
+  def profiles_for_scope(tag_names)
+    Profile.is_published
+      .tagged_with(tag_names, any: true)
+      .order('created_at DESC')
+      .page(params[:page])
+      .per(24)
+  end
 end

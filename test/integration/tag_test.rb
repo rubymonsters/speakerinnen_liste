@@ -41,11 +41,6 @@ class TagIntegrationTest < ActionDispatch::IntegrationTest
     within '.topics-cloud' do
       click_link('fruehling')
     end
-
-#comment out because the css styling changed
-
-    #assert page.has_css?('div.name', count: 2)
-    # save_and_open_page
   end
 
   test 'tag with blank works' do
@@ -54,8 +49,6 @@ class TagIntegrationTest < ActionDispatch::IntegrationTest
     within '.topics-cloud' do
       click_link('kein herbst')
     end
-    #assert page.has_css?('div.name', count: 1)
-  # save_and_open_page
   end
 
   test 'tags with slash use %2F for the link generating in profiles show' do
@@ -66,11 +59,9 @@ class TagIntegrationTest < ActionDispatch::IntegrationTest
     within '.topics-cloud' do
       click_link('kein/winter')
     end
-    #assert page.has_css?('div.name', count: 1)
 
     visit '/profiles/1'
     assert page.has_content?('kein/winter')
     click_link('kein/winter')
-    #assert page.has_css?('div.name', count: 1)
   end
 end
