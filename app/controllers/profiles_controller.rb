@@ -52,7 +52,7 @@ class ProfilesController < ApplicationController
   def update
     if @profile.update_attributes(profile_params)
       redirect_to @profile, notice: (I18n.t('flash.profiles.updated', profile_name: @profile.name_or_email))
-    else current_profile
+    elsif current_profile
       build_missing_translations(@profile)
       render action: 'edit'
     end
