@@ -1,9 +1,9 @@
 describe 'profile', type: :model do
   describe '.profile_search' do
-    let!(:inge) { FactoryGirl.create(:profile, firstname: 'Inge') }
+    let!(:ada) { FactoryGirl.create(:profile, firstname: 'Ada') }
 
     it 'searches for all profiles by firstname and lastname' do
-      expect(Profile.search('inge').count).to eq 1
+      expect(Profile.search('ada').count).to eq 1
     end
   end
 end

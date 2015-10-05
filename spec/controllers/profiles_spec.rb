@@ -3,7 +3,7 @@ include AuthHelper
 describe ProfilesController, type: :controller do
   describe 'test index action' do
     let!(:profile) { FactoryGirl.create(:published) }
-    let!(:profile2) { FactoryGirl.create(:profile, email: 'test@anders.com') }
+    let!(:profile2) { FactoryGirl.create(:profile) }
 
     before do
       get :index
@@ -15,7 +15,7 @@ describe ProfilesController, type: :controller do
       expect(response).to render_template('index')
     end
 
-    it 'should display profiles' do
+    it 'should display published profiles' do
       expect(assigns(:profiles)).to eq([profile])
     end
 
@@ -26,8 +26,8 @@ describe ProfilesController, type: :controller do
 
   describe 'show profile' do
     let!(:profile) { FactoryGirl.create(:unpublished) }
-    let!(:profile1) { FactoryGirl.create(:published, email: 'test@anders.com') }
-    let!(:admin) { FactoryGirl.create(:admin, email: 'admin@anders.com') }
+    let!(:profile1) { FactoryGirl.create(:published) }
+    let!(:admin) { FactoryGirl.create(:admin) }
 
     describe 'of unpublished profile' do
       it 'is not permitted for unauthorized not signed in profile' do

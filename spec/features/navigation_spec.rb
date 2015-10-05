@@ -79,8 +79,8 @@ RSpec.feature 'Navigation', type: :feature do
 
       context 'two profiles' do
         before do
-          FactoryGirl.create(:profile, email: 'user1@example.com', published: true)
-          FactoryGirl.create(:admin, email: 'adm@example.com', published: false)
+          FactoryGirl.create(:profile, published: true)
+          FactoryGirl.create(:admin, published: false)
         end
 
         scenario 'viewing edit profiles in admin area' do

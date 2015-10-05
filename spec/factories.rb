@@ -2,7 +2,9 @@ FactoryGirl.define do
   factory :profile do
     firstname 'Factory'
     lastname 'Girl'
-    email 'FactoryGirl@test.de'
+    sequence :email do |n|
+      "person#{n}@example.com"
+    end
     password '123foobar'
     password_confirmation '123foobar'
     bio 'MyText'

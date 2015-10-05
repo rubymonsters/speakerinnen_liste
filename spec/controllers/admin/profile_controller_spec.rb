@@ -1,16 +1,16 @@
 include AuthHelper
 
 describe Admin::ProfilesController, type: :controller do
-  let!(:admin) { Profile.create!(FactoryGirl.attributes_for(:admin, email: 'sam@mail.com')) }
+  let!(:admin) { Profile.create!(FactoryGirl.attributes_for(:admin)) }
   let!(:admin_medialink) { FactoryGirl.create(:medialink, profile_id: admin.id) }
-  let!(:non_admin) { Profile.create!(FactoryGirl.attributes_for(:published, email: 'ral@mail.com')) }
+  let!(:non_admin) { Profile.create!(FactoryGirl.attributes_for(:published)) }
   let!(:non_admin_medialink) { FactoryGirl.create(:medialink, profile_id: non_admin.id) }
 
   describe 'GET index' do
     before(:each) do
       sign_in admin
-      @profile = Profile.create!(FactoryGirl.attributes_for(:admin, email: 'ev@mail.com', firstname: 'Awe'))
-      @profile1 = Profile.create!(FactoryGirl.attributes_for(:admin, email: 'ev1@mail.com', firstname: 'NotInc'))
+      @profile = Profile.create!(FactoryGirl.attributes_for(:admin, firstname: 'Awe'))
+      @profile1 = Profile.create!(FactoryGirl.attributes_for(:admin, firstname: 'NotInc'))
     end
 
     describe 'when search param is provided' do
@@ -87,7 +87,10 @@ describe Admin::ProfilesController, type: :controller do
 
       specify { expect(response.status).to eq 200 }
       specify { expect(response).to render_template(:edit) }
-      specify { expect(assigns(:profile)).to eq(non_admin) }
+
+      it 'should edit the correct profile' do
+        expect(assigns(:profile)).to eq(non_admin)
+      end
     end
 
     context 'when user is not admin' do
@@ -192,7 +195,7 @@ describe Admin::ProfilesController, type: :controller do
   end
 
   describe 'POST published' do
-    before { @unpublished = FactoryGirl.create(:unpublished, email: 'doris@newmail.com') }
+    before { @unpublished = FactoryGirl.create(:unpublished) }
 
     context 'When user is admin' do
       before(:each) do
@@ -236,7 +239,7 @@ describe Admin::ProfilesController, type: :controller do
   end
 
   describe 'POST unpublished' do
-    before { @published = FactoryGirl.create(:published, email: 'dory@newmail.com') }
+    before { @published = FactoryGirl.create(:published) }
 
     context 'When user is admin' do
       before(:each) do

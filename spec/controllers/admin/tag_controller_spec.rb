@@ -1,7 +1,7 @@
 include AuthHelper
 
 describe Admin::TagsController, type: :controller do
-  let!(:admin) { Profile.create!(FactoryGirl.attributes_for(:admin, email: 'admin@mail.de')) }
+  let!(:admin) { Profile.create!(FactoryGirl.attributes_for(:admin)) }
   let!(:non_admin) { Profile.create!(FactoryGirl.attributes_for(:published, topic_list: ['non_admin_topic1','non_admin_topic2'])) }
 
   describe 'GET categorization' do

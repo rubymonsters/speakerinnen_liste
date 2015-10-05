@@ -1,17 +1,17 @@
 describe 'tags', type: :model do
-  let!(:gertrud) { FactoryGirl.create(:published, firstname: 'Gertrud', lastname: 'Mueller') }
-  let!(:claudia) { FactoryGirl.create(:published, firstname: 'Claudia', email: 'claudia@test.de') }
-  let!(:inge) { FactoryGirl.create(:published, firstname: 'Inge', email: 'inge@test.de') }
+  let!(:ada) { FactoryGirl.create(:published, firstname: 'Ada') }
+  let!(:marie) { FactoryGirl.create(:published, firstname: 'Marie') }
+  let!(:grace) { FactoryGirl.create(:published, firstname: 'Grace') }
 
   before :each do
-    gertrud.topic_list.add('media')
-    gertrud.save!
+    ada.topic_list.add('media')
+    ada.save!
 
-    claudia.topic_list.add('#media')
-    claudia.save!
+    marie.topic_list.add('#media')
+    marie.save!
 
-    inge.topic_list.add('#media')
-    inge.save!
+    grace.topic_list.add('#media')
+    grace.save!
   end
 
   # our actsastaggable method "merging tags" did not work because we did not
@@ -28,8 +28,8 @@ describe 'tags', type: :model do
     expect(ActsAsTaggableOn::Tag.count).to eq 1
     expect(ActsAsTaggableOn::Tagging.count).to eq 3
 
-    gertrud.topic_list.remove('media')
-    gertrud.save!
+    ada.topic_list.remove('media')
+    ada.save!
 
     expect(ActsAsTaggableOn::Tag.count).to eq 1
     expect(ActsAsTaggableOn::Tagging.count).to eq 2

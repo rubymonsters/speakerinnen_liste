@@ -16,8 +16,8 @@ describe 'profile', type: :model do
   end
 
   describe '#name_or_email' do
-    context 'user has no name information' do
-      let(:profile_no_name) { FactoryGirl.create(:profile, firstname: nil, lastname: nil) }
+    context 'user has no name information only email adress' do
+      let(:profile_no_name) { FactoryGirl.create(:profile, firstname: nil, lastname: nil, email: 'factorygirl@test.de') }
 
       it 'return the email adress' do
         expect(profile_no_name.name_or_email).to eq 'factorygirl@test.de'
