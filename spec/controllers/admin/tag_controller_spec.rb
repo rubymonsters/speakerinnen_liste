@@ -4,19 +4,37 @@ describe Admin::TagsController, type: :controller do
   let!(:admin) { Profile.create!(FactoryGirl.attributes_for(:admin)) }
   let!(:non_admin) { Profile.create!(FactoryGirl.attributes_for(:published, topic_list: ['non_admin_topic1','non_admin_topic2'])) }
 
+
+  before do
+    sign_in admin
+  end
+
   describe 'GET categorization' do
-    before(:each) do
-      sign_in admin
-      get :categorization
+    context 'without any selection' do
+      before do
+        get :categorization
+      end
+
+      it 'should contain all tags' do
+        expect(response).to render_template(:categorization)
+        expect(response.status).to eq 200
+        expect(assigns(:tags)).to eq(
+          [ActsAsTaggableOn::Tag.find_by(name: non_admin.topic_list[0]),
+          ActsAsTaggableOn::Tag.find_by(name: non_admin.topic_list[1])]
+          )
+      end
     end
 
-    it 'should contain all tags' do
-      expect(response).to render_template(:categorization)
-      expect(response.status).to eq 200
-      expect(assigns(:tags)).to eq(
-        [ActsAsTaggableOn::Tag.find_by(name: non_admin.topic_list[0]),
-        ActsAsTaggableOn::Tag.find_by(name: non_admin.topic_list[1])]
-        )
+    context 'select a category' do
+      before do
+        @categories = Category.new(name: 'Science')
+        @tag = ActsAsTaggableOn::Tag.find_by(name: non_admin.topic[0])
+        binding.pry
+
+        @tag.categories << @category
+        binding.pry
+        get :categorization
+      end
     end
   end
 
