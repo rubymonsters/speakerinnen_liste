@@ -155,7 +155,7 @@ describe Admin::TagsController, type: :controller do
 
         specify { expect(response).to redirect_to("/#{I18n.locale}/admin/tags/categorization") }
         it 'deletes the wrong topic and adds a new tagging' do
-          expect(ActsAsTaggableOn::Tag.find_by(name: 'algebra')).to nil
+          expect(ActsAsTaggableOn::Tag.find_by(name: 'algebra')).to be nil
           expect(ActsAsTaggableOn::Tag.find_by(name: 'radioactive')).to be_truthy
           expect(ActsAsTaggableOn::Tagging.count).to be 5
           expect(ActsAsTaggableOn::Tag.count).to be 4
