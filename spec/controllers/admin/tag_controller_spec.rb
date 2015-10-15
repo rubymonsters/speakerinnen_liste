@@ -155,7 +155,7 @@ describe Admin::TagsController, type: :controller do
 
         specify { expect(response).to redirect_to("/#{I18n.locale}/admin/tags/categorization") }
         it 'deletes the wrong topic and adds a new tagging' do
-          expect(ActsAsTaggableOn::Tag.find_by(name: 'algebra')).to be nil
+          expect(ActsAsTaggableOn::Tag.find_by(name: 'algebra')).to be_nil
           expect(ActsAsTaggableOn::Tag.find_by(name: 'radioactive')).to be_truthy
           expect(ActsAsTaggableOn::Tagging.count).to be 5
           expect(ActsAsTaggableOn::Tag.count).to be 4
@@ -208,46 +208,3 @@ describe Admin::TagsController, type: :controller do
     end
   end
 end
-
-  #describe 'PUT update' do
-    #context 'when user is admin' do
-      #before(:each) do
-        #sign_in admin
-        #@old_mail = non_admin.email
-      #end
-
-      #describe 'when valid params are supplied' do
-        #before { put :update, id: non_admin.id, profile: { firstname: 'samuel' } }
-
-        #it 'should return a 302 status response' do
-          #expect(response.status).to eq 302
-        #end
-
-        #it 'should update the requested Profile' do
-          #non_admin.reload
-          #expect(non_admin.firstname).to eq 'samuel'
-        #end
-
-        #it 'should redirect to the updated profile' do
-          #expect(response).to redirect_to("/#{I18n.locale}/admin/profiles/#{non_admin.id}")
-        #end
-      #end
-
-      #describe 'when invalid params are supplied' do
-        #before { put :update, id: non_admin.id, profile: { email: ' ' } }
-
-        #it 'should return a 200 status response' do
-          #expect(response.status).to eq 200
-        #end
-
-        #it 'should not update the requested Profile' do
-          #non_admin.reload
-          #expect(non_admin.email).to eq @old_mail
-        #end
-
-        #it 'should render the edit template' do
-          #expect(response).to render_template(:edit)
-        #end
-      #end
-    #end
-

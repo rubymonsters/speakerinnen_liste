@@ -24,7 +24,7 @@ FactoryGirl.define do
   end
 
   factory :category do
-    name 'Factory Category'
+    name 'Factory Category DE'
   end
 
   factory :medialink do
