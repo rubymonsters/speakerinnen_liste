@@ -82,7 +82,7 @@ describe Admin::CategoriesController, type: :controller do
   end
 
   context 'translations' do
-    it "doesn't create extra translations" do
+    before(:each) do
       de_factory_translation = category.translations.find_by('locale' => 'de')
       en_translation = category.translations.create!('locale' => 'en')
 
@@ -103,8 +103,20 @@ describe Admin::CategoriesController, type: :controller do
             }
       }
       patch :update, { id: category.id }.merge(category: category_params)
+    end
 
+    it "doesn't create extra translations" do
       expect(category.reload.translations.size).to eq(2)
+    end
+
+    it "show the correct translation when 'I18n.locale :de'" do
+      I18n.locale = 'de'
+      expect(assigns(:category).name).to eq 'Wissenschaft'
+    end
+
+    it "show the correct translation when 'I18n.locale :en'" do
+      I18n.locale = 'en'
+      expect(assigns(:category).name).to eq 'Science'
     end
   end
 end
