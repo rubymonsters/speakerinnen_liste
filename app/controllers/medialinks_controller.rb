@@ -17,7 +17,6 @@ class MedialinksController < ApplicationController
 
   def update
     if @medialink.update_attributes(medialink_params)
-      # TODO: translation flash
       redirect_to profile_medialinks_path(@profile), notice: (I18n.t('flash.medialink.updated'))
     else
       render action: 'edit'
@@ -26,18 +25,15 @@ class MedialinksController < ApplicationController
 
   def destroy
     @medialink.destroy
-    # TODO: translation flash
     redirect_to profile_medialinks_path(@profile), notice: (I18n.t('flash.medialink.destroyed'))
   end
 
   def create
     @medialink = @profile.medialinks.build(medialink_params)
     if @medialink.save
-      # TODO: translation flash
       flash[:notice] = (I18n.t('flash.medialink.created'))
       redirect_to profile_medialinks_path(@profile)
     else
-      # TODO: translation flash
       flash[:notice] = (I18n.t('flash.medialink.error'))
       render action: 'new'
     end
