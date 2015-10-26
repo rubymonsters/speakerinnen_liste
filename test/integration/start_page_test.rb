@@ -10,7 +10,7 @@ class StartPageTest < ActionDispatch::IntegrationTest
     assert page.has_content?('Einloggen')
     assert page.has_content?('Als Speakerin registrieren')
     assert page.has_content?('Alle Speakerinnen* anschauen')
-    assert page.has_content?('Kontakt')
+    assert page.has_content?('Twitter')
     assert page.has_content?('Impressum')
   end
 
@@ -19,7 +19,7 @@ class StartPageTest < ActionDispatch::IntegrationTest
 
     assert page.has_content?('Log in')
     assert page.has_content?('Register as a speaker')
-    assert page.has_content?('Contact')
+    assert page.has_content?('Twitter')
     assert page.has_content?('Legal Details')
   end
 end
