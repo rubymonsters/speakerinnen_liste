@@ -22,6 +22,12 @@ class Admin::ProfilesController < Admin::BaseController
   end
 
   def edit
+    language_count = @profile.profile_languages.size
+    if language_count > 3
+      @profile.profile_languages.build
+    else
+      (4 - language_count).times { @profile.profile_languages.build }
+    end
     build_missing_translations(@profile)
   end
 
@@ -76,7 +82,6 @@ class Admin::ProfilesController < Admin::BaseController
       :remember_me,
       :city,
       :firstname,
-      :languages,
       :lastname,
       :picture,
       :twitter,
@@ -89,6 +94,7 @@ class Admin::ProfilesController < Admin::BaseController
       :media_url,
       :medialinks,
       :admin_comment,
+      profile_languages_attributes: [:id, :iso_639_1],
       translations_attributes: [:id, :bio, :main_topic, :locale])
   end
 

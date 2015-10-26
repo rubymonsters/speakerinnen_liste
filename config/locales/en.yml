@@ -283,8 +283,8 @@ Links to Youtube videos will be shown as embedded videos. Other links will be cl
     empty: "You searched for <strong> %{searchparams} </strong> but unfortunately we didn't find anything."
     success: "You searched for <strong> %{searchparams} </strong> and we found"
     result: {
-      one: "1 result! Yeah!",
-      other: "%{count} results! Yeah!"
+      one: " a speakerinn! Yeah!",
+      other: " %{count} speakerinnen! Yeah!"
     }
   error_messages:
     picture_too_big: " is too big. You cannot upload a file greater than 1MB."

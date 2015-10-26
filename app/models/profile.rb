@@ -2,8 +2,12 @@ class Profile < ActiveRecord::Base
   include AutoHtml
   include HasPicture
 
+  has_many :medialinks
+  has_many :profile_languages
+
   translates :bio, :main_topic, fallbacks_for_empty_translations: true
   accepts_nested_attributes_for :translations
+  accepts_nested_attributes_for :profile_languages, reject_if: proc { |attributes| attributes['iso_639_1'].blank? }
 
   auto_html_for :media_url do
     html_escape
@@ -18,9 +22,6 @@ class Profile < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
   acts_as_taggable_on :topics
-
-  has_many :medialinks
-  has_many :profile_languages
 
   before_save(on: [:create, :update]) do
     twitter.gsub!(%r{^@|https:|http:|:|//|www.|twitter.com/}, '') if twitter
@@ -115,7 +116,6 @@ class Profile < ActiveRecord::Base
       'id',
       'firstname',
       'lastname',
-      'languages',
       'city',
       'twitter',
       'created_at',

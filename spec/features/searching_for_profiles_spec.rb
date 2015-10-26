@@ -1,9 +1,10 @@
 describe 'profile search' do
   let!(:profile) { FactoryGirl.create(:published, firstname: 'Ada', lastname: 'Lovelace', city: 'London', twitter: 'Adalove') }
+
   let!(:profile_language_de) { ProfileLanguage.create!(profile: profile, iso_639_1: 'de') }
   let!(:profile_language_es) { ProfileLanguage.create!(profile: profile, iso_639_1: 'es') }
 
-  let!(:profile_not_matched) { FactoryGirl.create(:published, firstname: 'Claudia', email: 'claudia@test.de', city: 'Warschau', twitter: 'Birne' ) }
+  let!(:profile_not_matched) { FactoryGirl.create(:published, firstname: 'Angela', city: 'New York', twitter: '@adavis' ) }
 
   describe 'quick search' do
 
@@ -100,7 +101,7 @@ describe 'profile search' do
 
       visit profiles_path
       within '#detailed-search' do
-        fill_in I18n.t(:topics, scope: 'profiles.index'), with: 'Algorithm'
+        fill_in I18n.t(:topics, scope: 'profiles.index'), with: 'Algo'
         click_button I18n.t(:search, scope: 'pages.home.search')
       end
       expect(page).to have_content('Ada')
@@ -119,4 +120,3 @@ describe 'search for profile' do
   end
 
 end
-

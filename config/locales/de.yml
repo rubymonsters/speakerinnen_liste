@@ -285,8 +285,8 @@ de:
     empty: "Du hast nach <strong> %{searchparams} </strong> gesucht, leider haben wir nix gefunden :("
     success: "Du hast nach <strong> %{searchparams} </strong> gesucht und wir haben tatsächlich"
     result: {
-      one: "1 Speakerin gefunden!",
-      other: "%{count} Speakerinnen gefunden! Yeah!"
+      one: " eine Speakerin gefunden!",
+      other: " %{count} Speakerinnen gefunden! Yeah!"
     }
   error_messages:
     picture_too_big: " ist zu groß. Bitte nicht größer als 1 MB"

@@ -49,7 +49,9 @@
             <%= t(:languages, scope: 'profiles.profile') %>
           </h2>
           <p class="bb pb">
-            <%= @profile.languages %>
+            <%= @profile.profile_languages.map do |profile_language| %>
+              <%= t(profile_language.iso_639_1, scope: 'iso_639_1').capitalize %>
+            <% end.join('  ') %>
           </p>
 
           <% if @profile.city.present? %>

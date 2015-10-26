@@ -41,15 +41,19 @@ class ProfilesController < ApplicationController
 
   # action, view, routes should be deleted
   def new
-    @profile = Profile.new
+    #@profile = Profile.new
+    #build_missing_translations(@profile)
+    # 4.times { @profile.profile_languages.build }
   end
 
   # should reuse the devise view
   def edit
+    @profile.profile_languages.build
     build_missing_translations(@profile)
   end
 
   def update
+    binding.pry
     if @profile.update_attributes(profile_params)
       redirect_to @profile, notice: (I18n.t('flash.profiles.updated', profile_name: @profile.name_or_email))
     elsif current_profile
@@ -101,7 +105,7 @@ class ProfilesController < ApplicationController
       :media_url,
       :medialinks,
       :admin_comment,
-      :iso_languages=>[],
+      profile_languages_attributes: [:id, :iso_639_1],
       translations_attributes: [:id, :bio, :main_topic, :locale])
   end
 
