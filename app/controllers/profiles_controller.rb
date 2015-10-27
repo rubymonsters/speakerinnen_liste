@@ -70,7 +70,7 @@ class ProfilesController < ApplicationController
   end
 
   def render_footer?
-    true
+    false
   end
 
   private
