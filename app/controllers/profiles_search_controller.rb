@@ -13,7 +13,6 @@ class ProfilesSearchController < ApplicationController
     if params[:search].include? :quick
       search_params = params[:search][:quick]
     else
-    binding.pry
       search_params = params[:search][:name] + " " + params[:search][:city] + " " + params[:search][:twitter] + " " + params[:search][:topics] + " " +  @selected_languages.to_s
     end
 
