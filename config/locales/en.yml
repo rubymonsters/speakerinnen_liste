@@ -283,7 +283,7 @@ Links to Youtube videos will be shown as embedded videos. Other links will be cl
     empty: "You searched for <strong> %{searchparams} </strong> but unfortunately we didn't find anything."
     success: "You searched for <strong> %{searchparams} </strong> and we found"
     result: {
-      one: " a speakerinn! Yeah!",
+      one: " a speakerin! Yeah!",
       other: " %{count} speakerinnen! Yeah!"
     }
   error_messages:
