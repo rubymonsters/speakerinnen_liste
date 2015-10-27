@@ -2,10 +2,11 @@ class ProfilesSearchController < ApplicationController
   def show
     @profiles = ProfilesSearch.new(params[:search]).results.page(params[:page]).per(16)
 
+# todo: add params search languages
     if params[:search].include? :quick
       search_params = params[:search][:quick]
     else
-      search_params = params[:search][:name] + " " + params[:search][:city] + " " + params[:search][:twitter] + " " + params[:search][:topics] + " " + params[:search][:languages]
+      search_params = params[:search][:name] + " " + params[:search][:city] + " " + params[:search][:twitter] + " " + params[:search][:topics]
     end
 
     if @profiles.any?
