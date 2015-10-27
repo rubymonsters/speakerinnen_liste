@@ -53,7 +53,6 @@ class ProfilesController < ApplicationController
   end
 
   def update
-    binding.pry
     if @profile.update_attributes(profile_params)
       redirect_to @profile, notice: (I18n.t('flash.profiles.updated', profile_name: @profile.name_or_email))
     elsif current_profile
