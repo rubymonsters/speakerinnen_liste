@@ -2,9 +2,9 @@ require 'test_helper'
 
 class LoginTest < ActionDispatch::IntegrationTest
   def setup
-    horst              = profiles(:one)
-    horst.confirmed_at = Time.now
-    horst.save
+    ada              = profiles(:one)
+    ada.confirmed_at = Time.now
+    ada.save
   end
 
   test 'login works with password' do
@@ -12,7 +12,7 @@ class LoginTest < ActionDispatch::IntegrationTest
     assert page.has_content?('Einloggen')
     click_link('Einloggen')
 
-    fill_in('profile[email]', with: 'horst@mail.de')
+    fill_in('profile[email]', with: 'ada@mail.de')
     fill_in('profile[password]', with: 'Testpassword')
     click_button 'Anmelden'
 
@@ -24,7 +24,7 @@ class LoginTest < ActionDispatch::IntegrationTest
     assert page.has_content?('Einloggen')
     click_link('Einloggen')
 
-    fill_in('profile[email]', with: 'horst@mail.de')
+    fill_in('profile[email]', with: 'ada@mail.de')
     fill_in('profile[password]', with: 'wrongpassword')
     click_button 'Anmelden'
 

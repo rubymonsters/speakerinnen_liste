@@ -1,12 +1,12 @@
 one:
   id: 1
-  firstname: Horst
-  lastname: lastname
-  email: horst@mail.de
+  firstname: Ada
+  lastname: Lovelace
+  email: ada@mail.de
   encrypted_password: <%= Profile.new.send(:password_digest, 'Testpassword') %>
   languages: Deutsch
-  city: Berlin
-  twitter: MyString
+  city: New York
+  twitter: alove
   talks: CCC
   published: true
 

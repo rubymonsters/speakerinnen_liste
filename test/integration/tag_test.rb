@@ -2,11 +2,11 @@ require 'test_helper'
 
 class TagIntegrationTest < ActionDispatch::IntegrationTest
   def setup
-    @horst              = profiles(:one)
-    @horst.confirmed_at = Time.now
-    @horst.topic_list   = 'fruehling', 'kein herbst'
-    @horst.published    = true
-    @horst.save
+    @ada              = profiles(:one)
+    @ada.confirmed_at = Time.now
+    @ada.topic_list   = 'fruehling', 'kein herbst'
+    @ada.published    = true
+    @ada.save
 
     @inge              = profiles(:two)
     @inge.confirmed_at = Time.now
@@ -23,11 +23,11 @@ class TagIntegrationTest < ActionDispatch::IntegrationTest
   test 'show tagging' do
     visit 'de/profiles'
     click_link('Einloggen')
-    fill_in('profile[email]', with: 'horst@mail.de')
+    fill_in('profile[email]', with: 'ada@mail.de')
     fill_in('profile[password]', with: 'Testpassword')
     click_button 'Anmelden'
 
-    visit profile_path(@horst, locale: 'de')
+    visit profile_path(@ada, locale: 'de')
     click_link('Profil bearbeiten')
 
     topic_list = find_field('profile[topic_list]').value
@@ -52,8 +52,8 @@ class TagIntegrationTest < ActionDispatch::IntegrationTest
   end
 
   test 'tags with slash use %2F for the link generating in profiles show' do
-    @horst.topic_list << 'kein/winter'
-    @horst.save
+    @ada.topic_list << 'kein/winter'
+    @ada.save
     visit '/profiles'
     assert page.has_content?('kein/winter')
     within '.topics-cloud' do
