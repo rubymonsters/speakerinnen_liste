@@ -280,6 +280,7 @@ Links to Youtube videos will be shown as embedded videos. Other links will be cl
     tooltip: "Change the sort order per drag&drop."
   search:
     no_profile: "There are no profiles!"
+    any: "Any"
     empty: "You searched for <strong> %{searchparams} </strong> but unfortunately we didn't find anything."
     success: "You searched for <strong> %{searchparams} </strong> and we found"
     result: {

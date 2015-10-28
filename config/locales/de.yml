@@ -281,6 +281,7 @@ de:
     language: "de"
     tooltip: "Verschiebe die Reihenfolge mit Drag&Drop."
   search:
+    any: "Alle"
     no_profile: "Es sind keine Profile vorhanden."
     empty: "Du hast nach <strong> %{searchparams} </strong> gesucht, leider haben wir nix gefunden :("
     success: "Du hast nach <strong> %{searchparams} </strong> gesucht und wir haben tatsächlich"
