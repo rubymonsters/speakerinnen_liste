@@ -91,6 +91,7 @@ class ProfilesController < ApplicationController
       :password_confirmation,
       :remember_me,
       :city,
+      :languages,
       :firstname,
       :lastname,
       :picture,
@@ -104,7 +105,6 @@ class ProfilesController < ApplicationController
       :media_url,
       :medialinks,
       :admin_comment,
-      profile_languages_attributes: [:id, :iso_639_1],
       translations_attributes: [:id, :bio, :main_topic, :locale])
   end
 

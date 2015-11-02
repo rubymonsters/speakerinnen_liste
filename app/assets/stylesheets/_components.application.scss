@@ -3,7 +3,7 @@ html {
 	color: $font-color;
 }
 
-a {
+a, .link{
 	font-family: $sans-serif;
 	color: $link-color;
 	text-decoration: none;
@@ -227,7 +227,7 @@ header {
   }
 }
 
-#nav__palm-menu-trigger, #nav__lap_and_up-menu-trigger {
+#nav__palm-menu-trigger, #nav__lap_and_up-menu-trigger, #detailed-search-trigger {
   cursor: pointer;
   display: inline;
 	color: $link-color;

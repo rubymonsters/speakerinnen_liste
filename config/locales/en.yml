@@ -9,6 +9,7 @@ en:
     create: "Create"
     save: "Save"
     search: "Search"
+    advanced_search: "Advanced search >>"
     ok: "Ok"
   admin:
     dashboard:
@@ -187,9 +188,6 @@ en:
       topics: "Topics"
       city: "City"
       language: "Language"
-      search1: "You searched for"
-      search2: "and you have found"
-      search3: "profiles."
     new:
       new_profile: "New Profile"
       back: "Back"
@@ -281,8 +279,8 @@ Links to Youtube videos will be shown as embedded videos. Other links will be cl
   search:
     no_profile: "There are no profiles!"
     any: "Any"
-    empty: "You searched for <strong> %{searchparams} </strong> but unfortunately we didn't find anything."
-    success: "You searched for <strong> %{searchparams} </strong> and we found"
+    empty: "We didn't find anything."
+    success: "We found"
     result: {
       one: " a speakerin! Yeah!",
       other: " %{count} speakerinnen! Yeah!"

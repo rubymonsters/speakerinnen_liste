@@ -1,47 +1,64 @@
- <%= form_tag(profiles_search_path, method: "get", class:"font-size-24 bb pv mv") do %>
+ <%# debug params %>
+ <%# debug params[:controller] %>
 
-  <%= text_field_tag('search[quick]', nil, id: "search-field", placeholder: t(:search_text, scope: "pages.home.search")) %>
+ <%= special_class = params[:controller] == 'profiles' ? ' hidden' : ' ' %>
+
+ <%= @search_params = params[:search] ||= {} %>
+ <%= form_tag(profiles_search_path, method: "get", class:"font-size-24 pv mv") do %>
+
+  <%= text_field_tag('search[quick]', @search_params[:quick], id: "search-field", placeholder: t(:search_text, scope: "pages.home.search")) %>
   <%= button_tag((t(:search, scope: "pages.home.search")), class: "btn btn--small input-btn") %>
 
 <% end %>
 
-<%= form_tag(profiles_search_path, method: "get", class:"well form-horizontal", id: "detailed-search") do %>
+<p id="detailed-search-trigger" class="link mv+ pb+">
+  <%= t(:advanced_search, scope: 'general') %>
+</p>
+<%= form_tag(profiles_search_path, method: "get", class:"pv #{special_class}", id: "detailed-search") do %>
 
   <div class="control-group">
     <%= label_tag('search[name]',t(:name, scope: "profiles.index"), class: "control-label") %>
     <div class="controls">
-      <%= text_field_tag('search[name]') %>
+      <%= text_field_tag('search[name]', @search_params[:name] )%>
     </div>
   </div>
 
   <div class="control-group">
     <%= label_tag('search[twitter]',t(:twitter, scope: "profiles.index"), class: "control-label") %>
     <div class="controls">
-      <%= text_field_tag('search[twitter]') %>
+      <%= text_field_tag('search[twitter]', @search_params[:twitter]) %>
     </div>
   </div>
 
   <div class="control-group">
     <%= label_tag('search[topics]',t(:topics, scope: "profiles.index"), class: "control-label") %>
     <div class="controls">
-      <%= text_field_tag('search[topics]') %>
+      <%= text_field_tag('search[topics]', @search_params[:topics]) %>
     </div>
   </div>
 
   <div class="control-group">
     <%= label_tag('search[city]',t(:city, scope: "profiles.index"), class: "control-label") %>
     <div class="controls">
-      <%= text_field_tag('search[city]') %>
+      <%= text_field_tag('search[city]', @search_params[:city]) %>
     </div>
   </div>
 
-  <div class="control-group">
+  <div class="control-group pb">
     <%= label_tag('search[languages]', t(:language, scope: "profiles.index"), class: "control-label") %>
     <div class="controls">
-      <%= select_tag('search[language]', options_from_collection_for_select(SearchLanguages.collection_for_dropdown(I18n.locale), 'first', 'last' ), prompt: t(:any, scope: 'search')) %>
+      <%= select_tag('search[languages]', options_from_collection_for_select(SearchLanguages.collection_for_dropdown(I18n.locale), 'first', 'last', selected: @search_params[:languages]), prompt: t(:any, scope: 'search')) %>
     </div>
   </div>
 
   <%= button_tag((t(:search, scope: "pages.home.search")), class: "btn btn-large ") %>
 
 <% end %>
+
+<script>
+$( "#detailed-search-trigger" ).click(function() {
+  $( "#detailed-search" ).toggle( 250, function() {
+    // Animation complete.
+  });
+});
+</script>

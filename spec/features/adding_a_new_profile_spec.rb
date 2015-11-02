@@ -19,9 +19,9 @@ describe 'profile adding' do
     fill_in I18n.t(:lastname, scope: 'activerecord.attributes.profile'), with: 'Lovelace'
     fill_in I18n.t(:twitter, scope: 'activerecord.attributes.profile'), with: '@Lovelace'
     fill_in I18n.t(:city, scope: 'activerecord.attributes.profile'), with: 'London'
-    select LanguageList::LanguageInfo.find('af').name, match: :first
+    fill_in I18n.t(:languages, scope: 'activerecord.attributes.profile'), with: 'Spanish'
     click_button I18n.t(:update, scope: 'profiles.form')
 
-    expect(page).to have_content('Afrikaans')
+    expect(page).to have_content('Spanish')
   end
 end

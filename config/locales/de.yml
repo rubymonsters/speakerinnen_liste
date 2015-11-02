@@ -9,6 +9,7 @@ de:
     create: "Erstellen"
     save: "Speichern"
     search: "Suche"
+    advanced_search: "Erweiterte Suche >>"
     ok: "Ok"
   admin:
     dashboard:
@@ -283,8 +284,8 @@ de:
   search:
     any: "Alle"
     no_profile: "Es sind keine Profile vorhanden."
-    empty: "Du hast nach <strong> %{searchparams} </strong> gesucht, leider haben wir nix gefunden :("
-    success: "Du hast nach <strong> %{searchparams} </strong> gesucht und wir haben tatsächlich"
+    empty: "Wir haben leider nix gefunden :("
+    success: "Wir haben"
     result: {
       one: " eine Speakerin gefunden!",
       other: " %{count} Speakerinnen gefunden! Yeah!"

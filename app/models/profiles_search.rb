@@ -34,14 +34,14 @@ class ProfilesSearch
         .joins(:profile_languages).where('profile_languages.iso_639_1' => @query[:languages])
     end
 
-    if @query[:language].present?
+    if @query[:languages].present? # && @query[:languages] =~ /[abc]{2}/
       result = result
         .where('languages ILIKE :iso_start OR
                 languages ILIKE :iso OR
                 languages ILIKE :en_name OR
                 languages ILIKE :de_name OR
                 languages ILIKE :own_name',
-                SearchLanguages.search_strings(@query[:language]))
+                SearchLanguages.search_strings(@query[:languages]))
     end
     # to get the search for tags working, we had to add that if statement
     if @query[:topics].present?

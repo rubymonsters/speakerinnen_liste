@@ -1,8 +1,5 @@
 describe 'profile search' do
-  let!(:profile) { FactoryGirl.create(:published, firstname: 'Ada', lastname: 'Lovelace', city: 'London', twitter: 'Adalove') }
-
-  let!(:profile_language_de) { ProfileLanguage.create!(profile: profile, iso_639_1: 'de') }
-  let!(:profile_language_es) { ProfileLanguage.create!(profile: profile, iso_639_1: 'es') }
+  let!(:profile) { FactoryGirl.create(:published, firstname: 'Ada', lastname: 'Lovelace', city: 'London', twitter: 'Adalove', languages: "Spanish, English") }
 
   let!(:profile_not_matched) { FactoryGirl.create(:published, firstname: 'Angela', city: 'New York', twitter: '@adavis' ) }
 
@@ -32,9 +29,10 @@ describe 'profile search' do
 
     it 'displays profiles that match any of the selected languages' do
       within '#detailed-search' do
-        select LanguageList::LanguageInfo.find('es').name
-        select LanguageList::LanguageInfo.find('de').name
+        select 'Spanish', :from => 'Language'
+        #select I18n.t(:languages, scope: 'profiles.index'), match: 'Spanish'
         click_button I18n.t(:search, scope: 'pages.home.search')
+      save_and_open_page
       end
       expect(page).to have_content('Ada')
     end

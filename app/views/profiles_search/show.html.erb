@@ -9,7 +9,7 @@
 
     <%= render partial: 'shared/profile_search' %>
 
-    <div class="layout mb+">
+    <div class="layout mb+ pt">
       <% if @profiles.any? %>
         <%= render partial: 'profiles/profile', object: @profiles[0], locals: { is_first: true } %>
         <% if @profiles.size > 1 %>
@@ -25,7 +25,7 @@
 
     <%= paginate @profiles %>
 
-    <%# render partial: 'profiles/tag' %>
+    <%= render partial: 'profiles/tag' %>
 
     <%= render partial: 'layouts/footer' %>
 
