@@ -55,8 +55,13 @@ describe ProfilesController, type: :controller do
     end
 
     describe 'of published profile' do
-      it 'should be seen by all profiles' do
+      it 'should be seen by all profiles by id' do
         get :show, id: profile1.id
+        expect(response).to render_template(:show)
+      end
+
+      it 'should be seen by all profiles by slug' do
+        get :show, id: profile1.slug
         expect(response).to render_template(:show)
       end
     end
