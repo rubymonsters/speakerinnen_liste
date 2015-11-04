@@ -89,6 +89,10 @@ h2{
   padding: halve($inuit-base-spacing-unit) $inuit-base-spacing-unit;
 }
 
+.search__background--white {
+  background: $transparent-white;
+}
+
 .box__bg--light {
   background: $white-smoke;
 }
@@ -96,6 +100,7 @@ h2{
 .bg--lightgrey {
   background: $light-grey;
 }
+
 .display--block {
   display: block;
 }

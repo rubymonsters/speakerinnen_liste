@@ -53,10 +53,10 @@ describe ProfilesSearch, type: :model do
         expect(ProfilesSearch.new(quick: 'algorithm').results).to eq [profile]
       end
 
-      it 'does return all profiles if only quick is given and empty' do
-        binding.pry
-        expect(ProfilesSearch.new(quick: '').results.size).to eq Profile.published.all.size
+      it 'does return nothing if only quick is given and empty' do
+        expect(ProfilesSearch.new(quick: '').results).to be_empty
       end
+
     end
 
     context 'when doing a detailed search' do
