@@ -9,7 +9,8 @@ de:
     create: "Erstellen"
     save: "Speichern"
     search: "Suche"
-    advanced_search: "Erweiterte Suche >>"
+    detailed_search: "Erweiterte Suche >>"
+    quick_search: "Einfache Suche >>"
     ok: "Ok"
   admin:
     dashboard:
