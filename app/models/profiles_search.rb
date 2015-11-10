@@ -25,6 +25,7 @@ class ProfilesSearch
   end
 
   def detailed_search_result
+    return Profile.none if @query.values.all? &:blank?
     result = Profile
       .where('city ILIKE :city', city: "%#{@query[:city]}%")
       .where('firstname ILIKE :name OR lastname ILIKE :name', name: "%#{@query[:name]}%")

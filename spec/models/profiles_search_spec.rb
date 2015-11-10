@@ -1,10 +1,7 @@
 describe ProfilesSearch, type: :model do
-  let!(:profile) { FactoryGirl.create(:published, firstname: 'Ada', lastname: 'Lovelace', twitter: 'alovelace', city: 'London') }
+  let!(:profile) { FactoryGirl.create(:published, firstname: 'Ada', lastname: 'Lovelace', twitter: 'alovelace', city: 'London', languages: 'English') }
 # have to add city and twitter because the search needs them for params, at least as empty strings
   let!(:profile2) { FactoryGirl.create(:published, firstname: 'Marie', lastname: 'Curie', twitter: 'madamecurie', city: 'Paris') }
-
-  let!(:profile_language_de) { ProfileLanguage.create!(profile: profile, iso_639_1: 'de') }
-  let!(:profile_language_en) { ProfileLanguage.create!(profile: profile, iso_639_1: 'en') }
 
   let!(:profile_not_matched) { FactoryGirl.create(:published, firstname: 'Angela', lastname: 'Davis') }
   let!(:profile_not_published) { FactoryGirl.create(:unpublished, firstname: 'Fred') }
@@ -81,10 +78,6 @@ describe ProfilesSearch, type: :model do
         profile.save!
 
         expect(ProfilesSearch.new({topics: 'algorithm'}).results).to eq [profile]
-      end
-
-      it 'returns any profile that matches one of the given languages' do
-        expect(ProfilesSearch.new({languages: ['en', 'ar']}).results).to eq [profile]
       end
 
       it 'returns any profile that matches one of the given topics' do
