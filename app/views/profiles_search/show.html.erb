@@ -9,6 +9,18 @@
 
     <%= render partial: 'shared/profile_search' %>
 
+    <% if @profiles.any? %>
+      <p class="text--color-blue font-size-24 text--center">
+        <%= t(:success, scope: 'search' ).html_safe +
+            t(:result, scope: 'search', count: @profiles.total_count).html_safe %><br>
+        <%= t(:profiles, link: link_to(t(:all_profiles, scope: 'search'), profiles_path), scope: 'search').html_safe %>
+      </p>
+    <% else %>
+      <p class="text--color-blue">
+        <%= t(:no_profile, link: link_to(t(:all_profiles, scope: 'search'), profiles_path), scope: 'search').html_safe %>
+      </p>
+    <% end %>
+
     <div class="layout mb+ pt">
       <% if @profiles.any? %>
         <%= render partial: 'profiles/profile', object: @profiles[0], locals: { is_first: true } %>
@@ -16,10 +28,6 @@
           <%= render partial: 'profiles/profile', collection: @profiles[1..-2] %>
           <%= render partial: 'profiles/profile', object: @profiles[-1], locals: { is_last: true } %>
         <% end %>
-      <% else %>
-        <div class="layout__item 1/1 mb">
-          <%= t(:no_profile, link: link_to(t(:all_profiles, scope: 'search'), profiles_path), scope: 'search').html_safe %>
-        </div>
       <% end %>
     </div>
 

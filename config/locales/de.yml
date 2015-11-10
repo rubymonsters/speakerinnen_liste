@@ -285,12 +285,13 @@ de:
   search:
     any: "Alle"
     no_profile: "Es sind keine Profile vorhanden. Hier kommst Du wieder zu allen Profilen %{link} >>"
-    all_profiles: "alle Profile >>"
+    profiles: "%{link}"
+    all_profiles: "Zurück zu allen Profilen >>"
     empty: "Wir haben leider nix gefunden :("
     success: "Wir haben"
     result: {
       one: " eine Speakerin gefunden!",
-      other: " %{count} Speakerinnen gefunden! Yeah!"
+      other: " %{count} Speakerinnen gefunden! Yeah! "
     }
   error_messages:
     picture_too_big: " ist zu groß. Bitte nicht größer als 1 MB"
