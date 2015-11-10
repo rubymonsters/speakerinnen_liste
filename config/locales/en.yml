@@ -277,7 +277,8 @@ Links to Youtube videos will be shown as embedded videos. Other links will be cl
     language: "en"
     tooltip: "Change the sort order per drag&drop."
   search:
-    no_profile: "There are no profiles!"
+    no_profile: "There are no profiles! Here is the link to %{link}"
+    all_profiles: "all profiles >>"
     any: "Any"
     empty: "We didn't find anything."
     success: "We found"
