@@ -39,16 +39,8 @@ class ProfilesController < ApplicationController
     end
   end
 
-  # action, view, routes should be deleted
-  def new
-    #@profile = Profile.new
-    #build_missing_translations(@profile)
-    # 4.times { @profile.profile_languages.build }
-  end
-
   # should reuse the devise view
   def edit
-    @profile.profile_languages.build
     build_missing_translations(@profile)
   end
 

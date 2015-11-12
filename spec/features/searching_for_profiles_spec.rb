@@ -32,7 +32,6 @@ describe 'profile search' do
         select 'Spanish', :from => 'Language'
         #select I18n.t(:languages, scope: 'profiles.index'), match: 'Spanish'
         click_button I18n.t(:search, scope: 'pages.home.search')
-      save_and_open_page
       end
       expect(page).to have_content('Ada')
     end

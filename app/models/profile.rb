@@ -3,11 +3,9 @@ class Profile < ActiveRecord::Base
   include HasPicture
 
   has_many :medialinks
-  has_many :profile_languages
 
   translates :bio, :main_topic, fallbacks_for_empty_translations: true
   accepts_nested_attributes_for :translations
-  accepts_nested_attributes_for :profile_languages, reject_if: proc { |attributes| attributes['iso_639_1'].blank? }
 
   auto_html_for :media_url do
     html_escape
