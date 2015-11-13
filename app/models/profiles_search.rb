@@ -30,10 +30,6 @@ class ProfilesSearch
       .where('city ILIKE :city', city: "%#{@query[:city]}%")
       .where('firstname ILIKE :name OR lastname ILIKE :name', name: "%#{@query[:name]}%")
       .where('twitter ILIKE :twitter', twitter: "%#{@query[:twitter]}%")
-    if @query[:languages].present?
-      result = result
-        .joins(:profile_languages).where('profile_languages.iso_639_1' => @query[:languages])
-    end
 
     if @query[:languages].present? # && @query[:languages] =~ /[abc]{2}/
       result = result
@@ -44,6 +40,7 @@ class ProfilesSearch
                 languages ILIKE :own_name',
                 SearchLanguages.search_strings(@query[:languages]))
     end
+    #
     # to get the search for tags working, we had to add that if statement
     if @query[:topics].present?
       result = result
@@ -59,4 +56,3 @@ class ProfilesSearch
   end
 
 end
-

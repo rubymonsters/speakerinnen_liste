@@ -1,11 +1,18 @@
-    <%= label_tag('profile[iso_languages]', t(:language, scope: "profiles.index"), class: "mb input--width-100") %>
-    <%= language_select('profile[iso_languages]') %>
-    <%# f.input :languages, label: t(:languages, scope: 'activerecord.attributes.profile').html_safe, input_html: { class: "mb input--width-100" } %>
+<div class="layout mt">
+  <div class="layout__item 3/6 bg--white">
+
+    <%= f.input :firstname, input_html: { class: "mb input--width-100" } %>
+    <%= f.input :lastname, input_html: { class: "mb input--width-100" } %>
+    <%= f.input :email, input_html: { class: "mb input--width-100" } %>
+    <%= f.input :twitter, placeholder: '@', input_html: { class: "mb input--width-100" } %>
+    <%= f.input :city, input_html: { class: "mb input--width-100" } %>
+    <%= f.input :languages, input_html: { class: "mb input--width-100" } %>
     <%= f.input :website, placeholder: 'http://', input_html: { class: "mb input--width-100" } %>
     <%= f.input :topic_list, label: t(:topic_list, scope: 'activerecord.attributes.profile').html_safe, input_html: { class: "mb input--width-100" } %>
 
     <ul class='hidden' id='availableTags'>
       <% ActsAsTaggableOn::Tag.uniq.pluck(:name).each do |tag_name| %>
+        <li><%= tag_name %></li>
       <% end %>
     </ul>
 

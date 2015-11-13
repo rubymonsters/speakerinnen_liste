@@ -75,6 +75,7 @@ class Admin::ProfilesController < Admin::BaseController
       :password_confirmation,
       :remember_me,
       :city,
+      :languages,
       :firstname,
       :lastname,
       :picture,
@@ -88,7 +89,6 @@ class Admin::ProfilesController < Admin::BaseController
       :media_url,
       :medialinks,
       :admin_comment,
-      profile_languages_attributes: [:id, :iso_639_1],
       translations_attributes: [:id, :bio, :main_topic, :locale])
   end
 

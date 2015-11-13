@@ -6,23 +6,6 @@ describe ProfilesSearch, type: :model do
   let!(:profile_not_matched) { FactoryGirl.create(:published, firstname: 'Angela', lastname: 'Davis') }
   let!(:profile_not_published) { FactoryGirl.create(:unpublished, firstname: 'Fred') }
 
-  let!(:profile_language_de) { ProfileLanguage.create!(profile: profile, iso_639_1: 'de') }
-  let!(:profile_language_en) { ProfileLanguage.create!(profile: profile, iso_639_1: 'en') }
-
-  let!(:profile_not_matched) { FactoryGirl.create(:published, firstname: 'Claudia', email: 'claudia@test.de', city: 'Paris', twitter: 'Birne') }
-  let!(:profile_not_published) { FactoryGirl.create(:unpublished, firstname: 'Fred') }
-
-  let!(:profile_language_de) { ProfileLanguage.create!(profile: profile, iso_639_1: 'de') }
-  let!(:profile_language_en) { ProfileLanguage.create!(profile: profile, iso_639_1: 'en') }
-
-  let!(:profile_not_matched) { FactoryGirl.create(:published, firstname: 'Claudia', email: 'claudia@test.de', city: 'Paris', twitter: 'Birne') }
-  let!(:profile_not_published) { FactoryGirl.create(:unpublished, firstname: 'Fred') }
-
-  let!(:profile_language_de) { ProfileLanguage.create!(profile: profile, iso_639_1: 'de') }
-  let!(:profile_language_en) { ProfileLanguage.create!(profile: profile, iso_639_1: 'en') }
-
-  let!(:profile_not_matched) { FactoryGirl.create(:published, firstname: 'Claudia', email: 'claudia@test.de', city: 'Paris', twitter: 'Birne') }
-  let!(:profile_not_published) { FactoryGirl.create(:unpublished, firstname: 'Fred') }
 
   describe 'results' do
 
@@ -86,35 +69,11 @@ describe ProfilesSearch, type: :model do
         profile2.topic_list.add('algorithm')
         profile2.save!
 
-  describe 'results' do
-    context 'quick search' do
-      it 'does not return profiles that do not match the given search string' do
-        expect(ProfilesSearch.new(quick: 'Horstin').results).to be_empty
+        expect(ProfilesSearch.new({topics: 'algorithm'}).results.count).to eq 2
       end
 
-      it 'does return profiles that match the lastname' do
-        expect(ProfilesSearch.new(quick: 'Muell').results).to eq [profile]
-      end
-
-      it 'does return profiles that match the twittername' do
-        expect(ProfilesSearch.new(quick: 'apfel').results).to eq [profile]
-      end
-
-      it 'does return profiles that match the topic' do
-        profile.topic_list.add("obst")
-        profile.save!
-
-        expect(ProfilesSearch.new(quick: 'obst').results).to eq [profile]
-      end
-
-      it 'does return nothing if only quick is given and empty' do
-        expect(ProfilesSearch.new(quick: '').results).to be_empty
-      end
-    end
-
-    context 'detailed search' do
-      it 'does return profiles that match the given search string' do
-        expect(ProfilesSearch.new({city: 'Berli'}).results).to eq [profile]
+      it 'does return nothing if detailed search is empty' do
+        expect(ProfilesSearch.new({topics: '', twitter: '', name: '', city: '', languages: ''}).results).to be_empty
       end
     end
   end
