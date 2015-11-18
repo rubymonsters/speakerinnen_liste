@@ -1,1 +1,12 @@
-<%= render partial: 'form', locals: { url: '' } %>
+<section class="content--bg-grey">
+  <div class="layout-wrapper">
+    <div class="layout">
+      <div class="layout__item 3/3 palm-1/1">
+        <% if @profile.present? %>
+        <h2 class="bb"><%= "#{t(:contact, scope: 'profiles.show' )} #{@profile.fullname}:"%></h2>
+        <% end %>
+        <%= render partial: 'form', locals: { url: '' } %>
+      </div>
+    </div>
+  </div>
+</section>

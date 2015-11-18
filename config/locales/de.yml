@@ -144,6 +144,7 @@ de:
       body_placeholder: "Bitte gib ein paar Details zu Deiner Anfrage: Wo, wann, was und andere relevante Informationen."
       notice: "Yay! Deine E-Mail wurde gesendet."
       error: "Bitte fülle alle Felder aus, damit die Speakerin alle Informationen bekommt, die sie benötigt."
+      error_email_for_us: "Bitte fülle alle Felder aus."
   profiles:
     category: "Alle Themen und Speakerinnen* zur Kategorie: "
     tag:

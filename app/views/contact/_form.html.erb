@@ -1,11 +1,8 @@
 <section class="content--bg-grey">
   <% if @profile.blank? %>
-    <div class="layout-wrapper">
       <h1>
         <%= t(:title, scope: "contact.form") %>
       </h1>
-  <% else %>
-    <div>
   <% end %>
 
     <%= simple_form_for @message, url: url, html: {id: ""} do |f| %>
