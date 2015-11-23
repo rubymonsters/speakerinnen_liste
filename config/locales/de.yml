@@ -285,9 +285,9 @@ de:
     tooltip: "Verschiebe die Reihenfolge mit Drag&Drop."
   search:
     any: "Alle"
-    no_profile: "Es sind keine Profile vorhanden. Hier kommst Du wieder zu allen Profilen %{link} >>"
+    no_profile: "Es sind keine Profile vorhanden. Hier kommst du wieder %{link} "
     profiles: "%{link}"
-    all_profiles: "Zurück zu allen Profilen >>"
+    all_profiles: "zurück zu allen Profilen >>"
     empty: "Wir haben leider nix gefunden :("
     success: "Wir haben"
     result: {

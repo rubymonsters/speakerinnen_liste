@@ -281,7 +281,7 @@ Links to Youtube videos will be shown as embedded videos. Other links will be cl
   search:
     no_profile: "There are no profiles! Here is the link to %{link}"
     profiles: "%{link}"
-    all_profiles: "Back to all profiles >>"
+    all_profiles: "back to all profiles >>"
     any: "Any"
     empty: "We didn't find anything."
     success: "We found"
