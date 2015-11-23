@@ -4,15 +4,15 @@
 
 <% search_params = params[:search] ||= {} %>
 
-<% detailed_search_params_present = search_params[:city].present? || search_params[:name].present? || search_params[:twitter].present? || search_params[:languages].present? %>
+<% detailed_search_params_present = search_params[:city].present? || search_params[:name].present? || search_params[:twitter].present? || search_params[:languages].present? || search_params[:detailed_search_link_from_startpage].present? %>
 
 <% hidden_class_detailed_search = params[:controller] == 'profiles' || params[:search][:quick] || !detailed_search_params_present ? 'hidden' : 'visible' %>
 <% hidden_class_quick_search = params[:controller] == 'profiles_search' && detailed_search_params_present ? 'hidden' : 'visible' %>
 
 <div id="quick-search" class="<%= hidden_class_quick_search %>" >
-  <%= form_tag(profiles_search_path, method: 'get', class:'font-size-24 pv') do %>
+  <%= form_tag(profiles_search_path, method: 'get', class:'pv') do %>
 
-    <%= text_field_tag('search[quick]', search_params[:quick], id: 'search-field' , placeholder: t(:search_text, scope: 'pages.home.search')) %>
+    <%= text_field_tag('search[quick]', search_params[:quick], class: 'profile__search' , placeholder: t(:search_text, scope: 'pages.home.search')) %>
     <%= button_tag((t(:search, scope: 'pages.home.search')), class: 'btn btn--small input-btn') %>
 
   <% end %>

@@ -9,16 +9,18 @@
 
     <%= render partial: 'shared/profile_search' %>
 
-    <% if @profiles.any? %>
-      <p class="text--color-blue font-size-24 text--center">
-        <%= t(:success, scope: 'search' ).html_safe +
-            t(:result, scope: 'search', count: @profiles.total_count).html_safe %><br>
-        <%= t(:profiles, link: link_to(t(:all_profiles, scope: 'search'), profiles_path), scope: 'search').html_safe %>
-      </p>
-    <% else %>
-      <p class="text--color-blue">
-        <%= t(:no_profile, link: link_to(t(:all_profiles, scope: 'search'), profiles_path), scope: 'search').html_safe %>
-      </p>
+    <% if params[:search][:detailed_search_link_from_startpage].nil? %>
+      <% if @profiles.any? %>
+        <p class="text--color-blue font-size-24 text--center">
+          <%= t(:success, scope: 'search' ).html_safe +
+              t(:result, scope: 'search', count: @profiles.total_count).html_safe %><br>
+          <%= t(:profiles, link: link_to(t(:all_profiles, scope: 'search'), profiles_path), scope: 'search').html_safe %>
+        </p>
+      <% else %>
+        <p class="text--color-blue font-size-24 text--center">
+          <%= t(:no_profile, link: link_to(t(:all_profiles, scope: 'search'), profiles_path), scope: 'search').html_safe %>
+        </p>
+      <% end %>
     <% end %>
 
     <div class="layout mb+ pt">

@@ -323,7 +323,6 @@ header {
 }
 
 .page-box {
-  font-size: halve($inuit-heading-size-1);
   padding: 12px;
   background-color: $transparent-white;
   display: inline-block;
@@ -342,7 +341,7 @@ header {
   }
 }
 
-#profile__search {
+.profile__search {
   width: 264px;
 }
 
