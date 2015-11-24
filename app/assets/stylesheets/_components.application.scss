@@ -3,10 +3,11 @@ html {
 	color: $font-color;
 }
 
-a {
+a, .link{
 	font-family: $sans-serif;
 	color: $link-color;
 	text-decoration: none;
+  cursor: pointer;
 
   &:hover {
     color: $font-color;
@@ -96,6 +97,7 @@ h2{
 .bg--lightgrey {
   background: $light-grey;
 }
+
 .display--block {
   display: block;
 }
@@ -227,7 +229,7 @@ header {
   }
 }
 
-#nav__palm-menu-trigger, #nav__lap_and_up-menu-trigger {
+#nav__palm-menu-trigger, #nav__lap_and_up-menu-trigger, #detailed-search-trigger {
   cursor: pointer;
   display: inline;
 	color: $link-color;
@@ -321,7 +323,6 @@ header {
 }
 
 .page-box {
-  font-size: halve($inuit-heading-size-1);
   padding: 12px;
   background-color: $transparent-white;
   display: inline-block;
@@ -340,7 +341,7 @@ header {
   }
 }
 
-#profile__search {
+.profile__search {
   width: 264px;
 }
 

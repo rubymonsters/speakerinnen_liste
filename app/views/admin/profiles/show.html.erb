@@ -70,12 +70,14 @@
             <%= raw @profile.topic_list.map { |topic| topic_link(topic,class: 'content__link--bg') }.join(' ') %>
           </p>
 
-          <h2 class="delta sans-serif mb-">
-            <%= t(:languages, scope: 'profiles.profile') %>
-          </h2>
-          <p class="bb pb">
-            <%= @profile.languages %>
-          </p>
+          <% if @profile.languages.present? %>
+            <h2 class="delta sans-serif mb-">
+              <%= t(:languages, scope: 'profiles.profile') %>
+            </h2>
+            <p class="bb pb">
+                <%= @profile.languages %></span>
+            </p>
+          <% end %>
 
           <% if @profile.city.present? %>
             <h2 class="delta sans-serif mb-">

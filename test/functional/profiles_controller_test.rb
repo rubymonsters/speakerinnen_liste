@@ -9,9 +9,9 @@ class ProfilesControllerTest < ActionController::TestCase
   end
 
   test 'should not be able edit different profile' do
-    horst = profiles(:one)
-    horst.confirm!
-    sign_in(horst)
+    ada = profiles(:one)
+    ada.confirm!
+    sign_in(ada)
 
     get :edit, locale: 'de', id: @profile2.id
     assert_response :redirect
@@ -36,9 +36,9 @@ class ProfilesControllerTest < ActionController::TestCase
   # update
 
   test 'should update own profile' do
-    horst = profiles(:one)
-    horst.confirm!
-    sign_in(horst)
+    ada = profiles(:one)
+    ada.confirm!
+    sign_in(ada)
 
     put :update, locale: 'de', id: @profile.id, profile: { bio: @profile2.bio }
     assert_redirected_to profile_path(assigns(:profile))
@@ -46,9 +46,9 @@ class ProfilesControllerTest < ActionController::TestCase
   end
 
   test 'should not be able to update different profile' do
-    horst = profiles(:one)
-    horst.confirm!
-    sign_in(horst)
+    ada = profiles(:one)
+    ada.confirm!
+    sign_in(ada)
 
     put :update, id: @profile2.id, profile: { bio: @profile.bio }
     assert_redirected_to profiles_path
@@ -72,9 +72,9 @@ class ProfilesControllerTest < ActionController::TestCase
   # destroy
 
   test 'should destroy own profile if user is signed' do
-    horst = profiles(:one)
-    horst.confirm!
-    sign_in(horst)
+    ada = profiles(:one)
+    ada.confirm!
+    sign_in(ada)
 
     assert_difference('Profile.count', -1) do
       delete :destroy, locale: 'de', id: @profile.id
@@ -84,9 +84,9 @@ class ProfilesControllerTest < ActionController::TestCase
   end
 
   test 'should not be able to destroy different profile' do
-    horst = profiles(:one)
-    horst.confirm!
-    sign_in(horst)
+    ada = profiles(:one)
+    ada.confirm!
+    sign_in(ada)
 
     assert_difference('Profile.count', 0) do
       delete :destroy, id: @profile2.id

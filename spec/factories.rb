@@ -1,13 +1,13 @@
 FactoryGirl.define do
   factory :profile do
-    firstname 'Factory'
-    lastname 'Girl'
+    firstname "Factory"
+    lastname "Girl"
     sequence :email do |n|
       "person#{n}@example.com"
     end
-    password '123foobar'
-    password_confirmation '123foobar'
-    bio 'MyText'
+    password "123foobar"
+    password_confirmation "123foobar"
+    bio "MyText"
     confirmed_at Time.now
 
     factory :admin do

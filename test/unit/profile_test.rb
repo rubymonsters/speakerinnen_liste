@@ -4,7 +4,7 @@ class ProfileTest < ActiveSupport::TestCase
   fixtures :profiles
 
   test 'firstname is there' do
-    assert_equal profiles(:one).firstname, 'Horst', 'Firstname is there'
+    assert_equal profiles(:one).firstname, 'Ada', 'Firstname is there'
   end
 
   test 'admin? is true when an admin user' do
@@ -37,14 +37,14 @@ class ProfileTest < ActiveSupport::TestCase
   end
 
   test 'does not validate profile with already taken email' do
-    testprofile = Profile.new(email: 'horst@mail.de')
+    testprofile = Profile.new(email: 'ada@mail.de')
     testprofile.valid?
     assert !testprofile.valid?, 'Does not validate Profile with already taken email'
   end
 
   test 'fullname is firstname plus lastname' do
     assert_equal profiles(:one).fullname, profiles(:one).firstname + ' ' + profiles(:one).lastname, 'Fullname is there'
-    assert_equal profiles(:one).fullname, 'Horst lastname', 'Fullname is there'
+    assert_equal profiles(:one).fullname, 'Ada Lovelace', 'Fullname is there'
   end
 
   test 'that profile is properly built from twitter omniauth' do
@@ -80,11 +80,11 @@ class ProfileTest < ActiveSupport::TestCase
     assert_equal(
       parsed_json,
       'id'         => 1,
-      'firstname'  => 'Horst',
-      'lastname'   => 'lastname',
-      'languages'  => 'Deutsch',
-      'city'       => 'Berlin',
-      'twitter'    => 'MyString',
+      'firstname'  => 'Ada',
+      'lastname'   => 'Lovelace',
+      #'languages'  => 'Deutsch',
+      'city'       => 'New York',
+      'twitter'    => 'alove',
       'created_at' => '2014-12-06T15:04:13.000Z',
       'updated_at' => '2014-12-06T15:04:20.000Z',
       'website'    => nil,

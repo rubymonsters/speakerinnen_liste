@@ -39,11 +39,6 @@ class ProfilesController < ApplicationController
     end
   end
 
-  # action, view, routes should be deleted
-  def new
-    @profile = Profile.new
-  end
-
   # should reuse the devise view
   def edit
     build_missing_translations(@profile)
@@ -88,8 +83,8 @@ class ProfilesController < ApplicationController
       :password_confirmation,
       :remember_me,
       :city,
-      :firstname,
       :languages,
+      :firstname,
       :lastname,
       :picture,
       :twitter,

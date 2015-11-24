@@ -9,6 +9,8 @@ en:
     create: "Create"
     save: "Save"
     search: "Search"
+    detailed_search: "Detailed search >>"
+    quick_search: "Quick search >>"
     ok: "Ok"
   admin:
     dashboard:
@@ -183,9 +185,11 @@ en:
     index:
       title: "Speakerinnen"
       text: "Welcome! Here you can find women* for your conference or your event: speakers, panel hosts, or workshop hosts. Browse individual profiles, filter via the most listed topics (see below), or use the search function for a specific search. Enjoy!"
-      search1: "You searched for"
-      search2: "and you have found"
-      search3: "profiles."
+      name: "Name"
+      twitter: "Twitter"
+      topics: "Topics"
+      city: "City"
+      language: "Language"
     new:
       new_profile: "New Profile"
       back: "Back"
@@ -275,12 +279,15 @@ Links to Youtube videos will be shown as embedded videos. Other links will be cl
     language: "en"
     tooltip: "Change the sort order per drag&drop."
   search:
-    no_profile: "There are no profiles!"
-    empty: "You searched for <strong> %{searchparams} </strong> but unfortunately we didn't find anything."
-    success: "You searched for <strong> %{searchparams} </strong> and we found"
+    no_profile: "There are no profiles! Here is the link to %{link}"
+    profiles: "%{link}"
+    all_profiles: "back to all profiles >>"
+    any: "Any"
+    empty: "We didn't find anything."
+    success: "We found"
     result: {
-      one: "1 result! Yeah!",
-      other: "%{count} results! Yeah!"
+      one: " a speakerin! Yeah!",
+      other: " %{count} speakerinnen! Yeah! "
     }
   error_messages:
     picture_too_big: " is too big. You cannot upload a file greater than 1MB."

@@ -9,6 +9,8 @@ de:
     create: "Erstellen"
     save: "Speichern"
     search: "Suche"
+    detailed_search: "Erweiterte Suche >>"
+    quick_search: "Einfache Suche >>"
     ok: "Ok"
   admin:
     dashboard:
@@ -183,6 +185,11 @@ de:
     index:
       title: "Speakerinnen*"
       text: "Schön, dass Du hier bist. Auf dieser Seite findest Du Frauen* für deine Konferenz oder Veranstaltung: als Rednerin, Panel- oder Workshopmoderatorin. Du kannst entweder durch die Profile blättern, einen Einstieg über die meist verwendeten Themen finden (s.u.), oder gezielt suchen. Viel Spaß und Erfolg dabei!"
+      name: "Name"
+      twitter: "Twitter"
+      topics: "Themen"
+      city: "Stadt"
+      language: "Sprache"
     new:
       new_profile: "Neues Profil"
       back: "Zurück"
@@ -277,12 +284,15 @@ de:
     language: "de"
     tooltip: "Verschiebe die Reihenfolge mit Drag&Drop."
   search:
-    no_profile: "Es sind keine Profile vorhanden."
-    empty: "Du hast nach <strong> %{searchparams} </strong> gesucht, leider haben wir nix gefunden :("
-    success: "Du hast nach <strong> %{searchparams} </strong> gesucht und wir haben tatsächlich"
+    any: "Alle"
+    no_profile: "Es sind keine Profile vorhanden. Hier kommst du wieder %{link} "
+    profiles: "%{link}"
+    all_profiles: "zurück zu allen Profilen >>"
+    empty: "Wir haben leider nix gefunden :("
+    success: "Wir haben"
     result: {
-      one: "1 Speakerin gefunden!",
-      other: "%{count} Speakerinnen gefunden! Yeah!"
+      one: " eine Speakerin gefunden!",
+      other: " %{count} Speakerinnen gefunden! Yeah! "
     }
   error_messages:
     picture_too_big: " ist zu groß. Bitte nicht größer als 1 MB"
