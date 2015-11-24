@@ -6,7 +6,7 @@
     <p>
       <%= t(:text, scope: 'profiles.index').html_safe %>
     </p>
-
+    <a id="search_results_anchor"></a>
     <%= render partial: 'shared/profile_search' %>
 
     <% if params[:search][:detailed_search_link_from_startpage].nil? %>
