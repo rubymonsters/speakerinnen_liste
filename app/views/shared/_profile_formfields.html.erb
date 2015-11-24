@@ -6,7 +6,7 @@
     <%= f.input :email, input_html: { class: "mb input--width-100" } %>
     <%= f.input :twitter, placeholder: '@', input_html: { class: "mb input--width-100" } %>
     <%= f.input :city, input_html: { class: "mb input--width-100" } %>
-    <%= f.input :languages, input_html: { class: "mb input--width-100" } %>
+    <%= f.input :languages, label: t(:languages, scope: 'activerecord.attributes.profile').html_safe, input_html: { class: "mb input--width-100" } %>
     <%= f.input :website, placeholder: 'http://', input_html: { class: "mb input--width-100" } %>
     <%= f.input :topic_list, label: t(:topic_list, scope: 'activerecord.attributes.profile').html_safe, input_html: { class: "mb input--width-100" } %>
 

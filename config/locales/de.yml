@@ -233,7 +233,7 @@ de:
         <br>Trage Dein wichtigstes Thema hier nochmal ein. Dieses Thema wird mit Deinem Namen und Bild auf der Speakerinnen-Übersichtsseite zu sehen sein.</small>"
         tag_list: "schon vorhandene Tags"
         talks: "Vortragsthemen"
-        languages: "Sprachen<br><small>Programmiersprachen bitte bei Themen angeben, nicht hier.</small>"
+        languages: 'Sprachen<br><small>Programmiersprachen bitte bei Themen angeben, nicht hier.</small>'
         city: "Stadt"
         twitter: "Twitter"
         picture: "Bild"
