@@ -15,7 +15,7 @@ class SearchForUserTest < ActionDispatch::IntegrationTest
 
   test 'search for and find a user' do
     visit('/en')
-    fill_in('profile__search', with: 'Carla')
+    fill_in('search_quick', with: 'Carla')
     click_button('Search')
     click_link(@carla.fullname)
 
