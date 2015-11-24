@@ -7,7 +7,7 @@ describe 'profile search' do
 
     it 'displays profiles that are a partial match' do
       visit root_path
-      fill_in 'profile__search', with: 'Ada'
+      fill_in 'search_quick', with: 'Ada'
       click_button I18n.t(:search, scope: 'pages.home.search')
       expect(page).to have_content('Ada')
     end
