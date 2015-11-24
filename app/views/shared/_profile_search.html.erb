@@ -26,7 +26,7 @@
   <p id="quick-search-trigger" class="link">
     <%= t(:quick_search, scope: 'general').html_safe %>
   </p>
-  <%= form_tag(profiles_search_path, method: 'get', class:'pv') do %>
+  <%= form_tag('/profiles_search#search_results_anchor', method: 'get', class:'pv') do %>
 
     <div class="layout layout__item 1/3 palm-1/1">
 
@@ -72,7 +72,7 @@
       </div>
     </div>
 
-    <%= button_tag((t(:search, scope: 'pages.home.search')), class: 'btn btn-small') %>
+    <%= button_tag((t(:search, scope: 'pages.home.search')), class: 'btn btn--small') %>
 
   <% end %>
 

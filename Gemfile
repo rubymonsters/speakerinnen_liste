@@ -57,7 +57,7 @@ end
 
 group :test do
   gem 'factory_girl_rails', '4.1.0'
-  gem 'poltergeist', '1.5.1'
+  gem 'poltergeist', '1.8.0'
   gem 'database_cleaner', '~> 1.2.0'
 end
 
