@@ -25,8 +25,10 @@
 
     <div class="layout mb+ pt">
       <% if @profiles.any? %>
-        <%= render partial: 'profiles/profile', object: @profiles[0], locals: { is_first: true } %>
-        <% if @profiles.size > 1 %>
+        <% if @profiles.size == 1 %>
+          <%= render partial: 'profiles/profile', object: @profiles[0], locals: { just_one: true } %>
+        <% else %>
+          <%= render partial: 'profiles/profile', object: @profiles[0], locals: { is_first: true } %>
           <%= render partial: 'profiles/profile', collection: @profiles[1..-2] %>
           <%= render partial: 'profiles/profile', object: @profiles[-1], locals: { is_last: true } %>
         <% end %>

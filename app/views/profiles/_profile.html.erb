@@ -1,15 +1,17 @@
-<% if local_assigns[:is_first] %>
+<% if local_assigns[:is_first] || local_assigns[:just_one] %>
   <div class="layout__item 1/4 lap-1/2 palm-1/1 mb profile-box">
 <% else %>
 --><div class="layout__item 1/4 lap-1/2 palm-1/1 mb profile-box">
 <% end %>
-    <%= profile_picture_link(profile) %>
-    <h5><%= link_to profile.fullname, profile %></h5>
-    <p><%= profile.main_topic_or_first_topic.truncate(30) if profile.main_topic_or_first_topic %></p>
-    <% if profile.twitter.present? %>
-      <p><%= "Twitter: " %> <%= link_to "@" + profile.twitter_name_formatted, profile.twitter_link_formatted, target: '_blank' %></p>
-    <% end %>
-<% if local_assigns[:is_last] %>
+
+<%= profile_picture_link(profile) %>
+<h5><%= link_to profile.fullname, profile %></h5>
+<p><%= profile.main_topic_or_first_topic.truncate(30) if profile.main_topic_or_first_topic %></p>
+<% if profile.twitter.present? %>
+  <p><%= "Twitter: " %> <%= link_to "@" + profile.twitter_name_formatted, profile.twitter_link_formatted, target: '_blank' %></p>
+<% end %>
+
+<% if local_assigns[:is_last] || local_assigns[:just_one] %>
   </div>
 <% else %>
   </div><!--

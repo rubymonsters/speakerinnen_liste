@@ -8,17 +8,21 @@
     </p>
 
     <%= render partial: 'shared/profile_search' %>
+
     <div class="layout mb+">
+
       <% if @profiles.any? %>
-        <%= render partial: 'profiles/profile', object: @profiles[0], locals: { is_first: true } %>
-        <% if @profiles.size > 1 %>
+        <% if @profiles.size == 1 %>
+          <%= render partial: 'profiles/profile', object: @profiles[0], locals: { just_one: true } %>
+        <% else %>
+          <%= render partial: 'profiles/profile', object: @profiles[0], locals: { is_first: true } %>
           <%= render partial: 'profiles/profile', collection: @profiles[1..-2] %>
           <%= render partial: 'profiles/profile', object: @profiles[-1], locals: { is_last: true } %>
         <% end %>
       <% else %>
-        <div class="layout__item 1/1 mb">
-          <%= t(:no_profile, scope: 'search') %>
-        </div>
+        <p class="text--color-blue font-size-24 text--center">
+          <%= t(:no_profile, link: link_to(t(:all_profiles, scope: 'search'), profiles_path), scope: 'search').html_safe %>
+        </p>
       <% end %>
     </div>
 
