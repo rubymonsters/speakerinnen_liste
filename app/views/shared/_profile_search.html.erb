@@ -9,6 +9,8 @@
 <% hidden_class_detailed_search = params[:controller] == 'profiles' || params[:search][:quick] || !detailed_search_params_present ? 'hidden' : 'visible' %>
 <% hidden_class_quick_search = params[:controller] == 'profiles_search' && detailed_search_params_present ? 'hidden' : 'visible' %>
 
+<hr class="mv">
+
 <div id="quick-search" class="<%= hidden_class_quick_search %>" >
   <%= form_tag(profiles_search_path, method: 'get', class:'pv') do %>
 
