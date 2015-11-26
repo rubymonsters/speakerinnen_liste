@@ -1,30 +1,33 @@
 <section class="content--bg-grey">
   <div class="layout-wrapper">
-    <h2 class="gamma pb">
-      <%= t(:category, scope: "profiles") %>
-      <%= link_to @category.name, root_path(anchor: "categories_anker"), class: 'content__link--bg' %>
-    </h2>
-
-    <%= render partial: "tag" %>
-
-    <h1 class="pv">
-      Speakerinnen*
+    <h1>
+      <%= t(:title, scope: 'profiles.index') %>
     </h1>
 
-    <% if @profiles.any? %>
-      <%= render partial: "profiles/profile", object: @profiles[0], locals: { is_first: true } %>
-      <% if @profiles.size > 1 %>
-        <%= render partial: "profiles/profile", collection: @profiles[1..-2] %>
-        <%= render partial: "profiles/profile", object: @profiles[-1], locals: { is_last: true } %>
+    <%= render partial: 'shared/profile_search' %>
+
+    <a id="profiles_anchor"></a>
+    <div class="layout mb+">
+      <% if @profiles.any? %>
+        <p class="text--color-blue font-size-24 text--center">
+          <%= t(:category, scope: 'profiles', category_name: @category.name, profiles_count: @profiles.total_count, topics_count: @tags.size).html_safe %>
+          <%# link_to @category.name, root_path(anchor: "categories_anker"), class: 'content__link--bg' %>
+        </p>
+        <% if @profiles.size == 1 %>
+          <%= render partial: 'profiles/profile', object: @profiles[0], locals: { just_one: true } %>
+        <% else %>
+          <%= render partial: 'profiles/profile', object: @profiles[0], locals: { is_first: true } %>
+          <%= render partial: 'profiles/profile', collection: @profiles[1..-2] %>
+          <%= render partial: 'profiles/profile', object: @profiles[-1], locals: { is_last: true } %>
+        <% end %>
       <% end %>
-    <% else %>
-        <div class="layout__item 1/1 mb">
-          <%= t(:no_profile, scope: 'search') %>
-        </div>
-    <% end %>
+    </div>
+    <a id="topics_anchor"></a>
 
     <%= paginate @profiles %>
 
-    <%= render partial: "layouts/footer" %>
+    <%= render partial: 'tag' %>
+
+    <%= render partial: 'layouts/footer' %>
   </div>
 </section>
