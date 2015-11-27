@@ -3,13 +3,16 @@
     <h1>
       <%= t(:title, scope: 'profiles.index') %>
     </h1>
+    <p>
+      <%= t(:text, scope: 'profiles.index').html_safe %>
+    </p>
 
     <%= render partial: 'shared/profile_search' %>
 
     <a id="profiles_anchor"></a>
     <div class="layout mb+">
       <% if @profiles.any? %>
-        <p class="text--color-blue font-size-24 text--center">
+        <p class="text--color-blue font-size-24 text--center layout__item 1/1">
           <%= t(:category, scope: 'profiles', category_name: @category.name, profiles_count: @profiles.total_count, topics_count: @tags.size).html_safe %>
           <%# link_to @category.name, root_path(anchor: "categories_anker"), class: 'content__link--bg' %>
         </p>
