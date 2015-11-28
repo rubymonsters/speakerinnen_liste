@@ -98,14 +98,16 @@
       --><div class="layout__item 1/6">
       </div>
     </div>
-    <% binding.pry %>
   <% I18n.available_locales.each do |available_locale| %>
     <% Globalize.with_locale(available_locale) do %>
         <% if @profile.main_topic %>
           <div class="layout pt">
+              <h2>
+                <%= I18n.name_for_locale(available_locale)  %>
+              </h2>
             <div class="layout__item 5/6 bg--white">
               <h2 class="delta sans-serif pb">
-                <%= t(:main_topic_title, scope: 'activerecord.attributes.profile') + " auf #{available_locale}" %>
+                <%= t(:main_topic_title, scope: 'activerecord.attributes.profile') + ":" %>
               </h2>
               <%= @profile.main_topic %>
             </div>

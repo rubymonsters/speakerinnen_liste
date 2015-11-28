@@ -1,4 +1,7 @@
 en:
+  i18n:
+    language:
+      name: "English"
   general:
     add: "Add"
     close: "Close"
