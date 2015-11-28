@@ -7,7 +7,8 @@
 
       --><div class="layout__item 2/3 text--right">
         <%= link_to(t(:edit_profile, scope: "admin.dashboard"), edit_admin_profile_path(@profile), class:"btn btn--danger btn--small") %>
-        <%= link_to(t(:edit, scope: "medialinks"), admin_profile_medialinks_path(@profile), class:"btn btn--danger btn--small") %><br>
+        <%= link_to(t(:edit, scope: "medialinks"), admin_profile_medialinks_path(@profile), class:"btn btn--danger btn--small") %>
+        <br>
         <%= link_to(t(:show_all, scope: "admin.dashboard.profiles.edit"), admin_profiles_path, class:"btn btn--small mv") %>
       </div>
     </div>
@@ -24,6 +25,11 @@
 
             <h2 class="delta sans-serif mb- bb pb text--color-blue">
               <%= t(:profile_status, scope: "admin.dashboard.profiles") + t(:public, scope: "admin.dashboard.profiles") if @profile.published? %>
+        <% if @profile.published %>
+          <%= link_to t(:make_invisible, scope: 'admin.dashboard.profiles'), unpublish_admin_profile_path(@profile.id), method: :post, class:'btn btn--small btn--danger ml', title: 'Hier kannst Du das Profile wieder unsichtbar machen.' %>
+        <% else %>
+          <%= link_to t(:make_public, scope: 'admin.dashboard.profiles'), publish_admin_profile_path(@profile.id), method: :post, class:'btn btn--small btn--danger ml', title: 'Eine Bestätigungsmail wird verschickt.' %>
+        <% end %>
             </h2>
           <% if @profile.firstname.present? %>
             <h2 class="delta sans-serif mb-">
