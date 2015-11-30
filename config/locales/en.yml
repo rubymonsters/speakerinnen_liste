@@ -232,10 +232,10 @@ en:
         firstname: "First name"
         lastname: "Last name"
         bio: "Your bio in %{language}<br>
-        <small>(Here you can add a short or long bio of yourself. Please also add specific expertise and topics you feel comfortable speaking about. This will help organizers of events to understand whether you might be the person they're looking for)</small>"
+        <small>Here you can add a short or long bio of yourself. Please also add specific expertise and topics you feel comfortable speaking about. This will help organizers of events to understand whether you might be the person they're looking for.</small>"
         topic_list: "Your topics as tags<br><small>Please have a look first, if your topic already exists</small>"
         main_topic_title: "Main topic"
-        main_topic: "Your main topic in %{language} (More than 30 characters are not shown)<br><small>Please choose one topic as your favorite topic and enter it again. It will be visible along with your name and picture at the speaker overview site</small>"
+        main_topic: "Your main topic in %{language} (More than 30 characters are not shown)<br><small>Please choose one topic as your favorite topic and enter it again. It will be visible along with your name and picture at the speaker overview site.</small>"
         tag_list: "Existing Topics"
         talks: "Talks"
         languages: "Languages<br><small>Please add programming languages in 'Topics', not here</small>"
