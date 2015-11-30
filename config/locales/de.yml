@@ -2,6 +2,8 @@ de:
   i18n:
     language:
       name: "Deutsch"
+      en: "Englisch"
+      de: "Deutsch"
   general:
     add: "Hinzufügen"
     close: "Schließen"

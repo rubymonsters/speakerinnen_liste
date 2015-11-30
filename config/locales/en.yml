@@ -2,6 +2,8 @@ en:
   i18n:
     language:
       name: "English"
+      en: "English"
+      de: "German"
   general:
     add: "Add"
     close: "Close"

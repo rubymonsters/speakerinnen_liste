@@ -53,7 +53,7 @@
       <p>
         <%= translation.label :main_topic, t(:main_topic,
           scope: 'activerecord.attributes.profile',
-          language:  @profile.language(translation)).html_safe,
+          language:  t(translation.object.locale, scope: 'i18n.language')).html_safe,
           class: '' %>
       </p>
 
@@ -64,7 +64,7 @@
       <p>
         <%= translation.label :bio, t(:bio,
           scope: 'activerecord.attributes.profile',
-          language: @profile.language(translation)).html_safe,
+          language:  t(translation.object.locale, scope: 'i18n.language')).html_safe,
           class: '' %>
       </p>
 
