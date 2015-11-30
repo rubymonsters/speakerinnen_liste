@@ -12,7 +12,7 @@
         <p>
         <%= translation.label :category, t(:new_name,
           scope: 'admin.dashboard.categories',
-          language:  @category.language(translation)).html_safe %>
+          language:  t(translation.object.locale, scope: 'i18n.language')).html_safe %>
         </p>
 
         <%= translation.text_field :name, class: 'input--width-100' %>

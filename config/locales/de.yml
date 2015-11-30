@@ -1,4 +1,9 @@
 de:
+  i18n:
+    language:
+      name: "Deutsch"
+      en: "Englisch"
+      de: "Deutsch"
   general:
     add: "Hinzufügen"
     close: "Schließen"
@@ -230,6 +235,7 @@ de:
         bio: 'Deine Bio auf %{language}<br>
               <small>Hier ist Platz für eine kurze oder auch längere Bio. Außerdem sollten hier Fachkenntnisse und mögliche Vortragsthemen genauer beschrieben werden. Das hilft Veranstalterinnen und Veranstaltern herauszufinden, ob Ihr die Richtigen für ihr Event sein könntet.</small>'
         topic_list: "Deine Themen als Tags<br><small>Bitte schaue zuerst, ob Dein Thema schon vorhanden ist.</small>"
+        main_topic_title: "Hauptthema"
         main_topic: "Dein Hauptthema auf %{language} (Mehr als 30 Zeichen werden nicht angezeigt)<small>
         <br>Trage Dein wichtigstes Thema hier nochmal ein. Dieses Thema wird mit Deinem Namen und Bild auf der Speakerinnen-Übersichtsseite zu sehen sein.</small>"
         tag_list: "schon vorhandene Tags"

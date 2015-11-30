@@ -64,19 +64,6 @@ class Profile < ActiveRecord::Base
     main_topic.present? ? main_topic : topic_list.first
   end
 
-  # to have the correct language variable for the yml file
-  def language(translation)
-    if translation.object.locale == :en && I18n.locale == :de
-      'Englisch'
-    elsif translation.object.locale == :en && I18n.locale == :en
-      'English'
-    elsif translation.object.locale == :de && I18n.locale == :en
-      'German'
-    else
-      'Deutsch'
-    end
-  end
-
   def website_with_protocol
     if website =~ %r{^https?://}
       return website

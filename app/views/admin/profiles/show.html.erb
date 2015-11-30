@@ -2,12 +2,13 @@
   <div class="layout-wrapper">
     <div class="layout">
       <div class="layout__item 1/3">
-        <h1>Admin::<%= t(:profiles, scope: "admin.dashboard.profiles")%>::show</h1>
+        <h1>Admin::<%= t(:profiles, scope: 'admin.dashboard.profiles')%>::show</h1>
       </div><!--
 
       --><div class="layout__item 2/3 text--right">
         <%= link_to(t(:edit_profile, scope: "admin.dashboard"), edit_admin_profile_path(@profile), class:"btn btn--danger btn--small") %>
-        <%= link_to(t(:edit, scope: "medialinks"), admin_profile_medialinks_path(@profile), class:"btn btn--danger btn--small") %><br>
+        <%= link_to(t(:edit, scope: "medialinks"), admin_profile_medialinks_path(@profile), class:"btn btn--danger btn--small") %>
+        <br>
         <%= link_to(t(:show_all, scope: "admin.dashboard.profiles.edit"), admin_profiles_path, class:"btn btn--small mv") %>
       </div>
     </div>
@@ -23,7 +24,13 @@
       --><div class="layout__item 3/6 bg--white">
 
             <h2 class="delta sans-serif mb- bb pb text--color-blue">
-              <%= t(:profile_status, scope: "admin.dashboard.profiles") + t(:public, scope: "admin.dashboard.profiles") if @profile.published? %>
+              <% if @profile.published %>
+                <%= t(:profile_status, scope: "admin.dashboard.profiles") + t(:public, scope: "admin.dashboard.profiles") %>
+                <%= link_to t(:make_invisible, scope: 'admin.dashboard.profiles'), unpublish_admin_profile_path(@profile.id), method: :post, class:'btn btn--small btn--danger ml', title: 'Hier kannst Du das Profile wieder unsichtbar machen.' %>
+              <% else %>
+                <%= t(:profile_status, scope: "admin.dashboard.profiles") + t(:invisible, scope: "admin.dashboard.profiles") %>
+                <%= link_to t(:make_public, scope: 'admin.dashboard.profiles'), publish_admin_profile_path(@profile.id), method: :post, class:'btn btn--small btn--danger ml', title: 'Eine Bestätigungsmail wird verschickt.' %>
+              <% end %>
             </h2>
           <% if @profile.firstname.present? %>
             <h2 class="delta sans-serif mb-">
@@ -92,16 +99,33 @@
       --><div class="layout__item 1/6">
       </div>
     </div>
+  <% I18n.available_locales.each do |available_locale| %>
+    <% Globalize.with_locale(available_locale) do %>
+        <h2>
+          <%= t(available_locale, scope: 'i18n.language') %>
+        </h2>
+        <% if @profile.main_topic %>
+          <div class="layout pt">
+            <div class="layout__item 5/6 bg--white">
+              <h2 class="delta sans-serif pb">
+                <%= t(:main_topic_title, scope: 'activerecord.attributes.profile') + ":" %>
+              </h2>
+              <%= @profile.main_topic %>
+            </div>
+          </div>
+        <% end %>
 
-    <% if @profile.bio %>
-      <div class="layout pt">
-        <div class="layout__item 5/6 bg--white">
-          <h2 class="delta sans-serif pb">
-            <%= t(:bio, scope: 'profiles.profile') %>
-          </h2>
-          <%= simple_format(@profile.bio) %>
-        </div>
-      </div>
+        <% if @profile.bio %>
+          <div class="layout pt">
+            <div class="layout__item 5/6 bg--white">
+              <h2 class="delta sans-serif pb">
+                <%= t(:bio, scope: 'profiles.profile') %>
+              </h2>
+              <%= simple_format(@profile.bio) %>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
     <% end %>
 
     <% if @profile.medialinks.any? %>
@@ -113,11 +137,11 @@
 
           <ul class="pl0">
             <% @medialinks.each do |medialink| %>
-            <li class="list--style-none pb mb+ bb">
-              <b><%= medialink.title %></b>
-              <%= medialink.url_html %>
-              <%= medialink.description %>
-            </li>
+              <li class="list--style-none pb mb+ bb">
+                <b><%= medialink.title %></b>
+                <%= medialink.url_html %>
+                <%= medialink.description %>
+              </li>
             <% end %>
           </ul>
 
