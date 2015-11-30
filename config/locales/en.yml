@@ -155,7 +155,7 @@ en:
   profiles:
     category: "In the category <b>%{category_name}</b> we found %{profiles_count} speakerinnen and <a href='#topics_anchor'>%{topics_count} topics</a>."
     tag:
-      topics: "Topics"
+      topics: "Most Popular Topics"
       topics_with_category: "in category %{category_name}"
     form:
       not_saved: "This profile could not be saved: "
