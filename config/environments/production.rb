@@ -93,7 +93,7 @@ SpeakerinnenListe::Application.configure do
 
 # piwik data collection and analytics
   config.gem 'rack-piwik', lib: 'rack/piwik'
-  config.middleware.use Rack::Piwik, piwik_url: 'speaki.hadar.uberspace.de/piwik', piwik_id: '1', disable_cookies: false
+  config.middleware.use Rack::Piwik, piwik_url: 'tyranja.cassiopeia.uberspace.de/piwik/', piwik_id: '1', disable_cookies: false
 
   # Disable automatic flushing of the log to improve performance.
   # config.autoflush_log = false
