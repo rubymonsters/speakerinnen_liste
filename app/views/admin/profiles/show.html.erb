@@ -99,11 +99,15 @@
       --><div class="layout__item 1/6">
       </div>
     </div>
-  <% I18n.available_locales.each do |available_locale| %>
-    <% Globalize.with_locale(available_locale) do %>
+
+    <% I18n.available_locales.each do |available_locale| %>
+      <% Globalize.with_locale(available_locale) do %>
+        <% if @profile.main_topic || @profile.bio %>
         <h2>
           <%= t(available_locale, scope: 'i18n.language') %>
         </h2>
+        <% end %>
+
         <% if @profile.main_topic %>
           <div class="layout pt">
             <div class="layout__item 5/6 bg--white">
@@ -129,7 +133,7 @@
     <% end %>
 
     <% if @profile.medialinks.any? %>
-      <div class="layout pt">
+      <div class="layout pt+">
         <div class="layout__item 5/6 bg--white mb+">
           <h2 class="delta sans-serif pb">
             <%= t(:media, scope: 'profiles.profile') %>
@@ -144,7 +148,6 @@
               </li>
             <% end %>
           </ul>
-
         </div>
       </div>
     <% end %>
