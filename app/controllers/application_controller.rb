@@ -21,6 +21,12 @@ class ApplicationController < ActionController::Base
 
   private
 
+  def build_missing_translations(object)
+    I18n.available_locales.each do |locale|
+      object.translations.build(locale: locale) unless object.translated_locales.include?(locale)
+    end
+  end
+
   def set_locale
     desired_locale = request.headers['HTTP_ACCEPT_LANGUAGE'].to_s[0..1] == 'de' ? 'de' : 'en'
     I18n.locale = params[:locale] || desired_locale

@@ -100,12 +100,6 @@ class ProfilesController < ApplicationController
       translations_attributes: [:id, :bio, :main_topic, :locale])
   end
 
-  def build_missing_translations(object)
-    I18n.available_locales.each do |locale|
-      object.translations.build(locale: locale) unless object.translated_locales.include?(locale)
-    end
-  end
-
   def profiles_for_index
     Profile.is_published.order('created_at DESC').page(params[:page]).per(24)
   end

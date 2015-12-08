@@ -100,9 +100,4 @@ class Admin::ProfilesController < Admin::BaseController
     %w(asc desc).include?(params[:direction]) ? params[:direction] : 'desc'
   end
 
-  def build_missing_translations(object)
-    I18n.available_locales.each do |locale|
-      object.translations.build(locale: locale) unless object.translated_locales.include?(locale)
-    end
-  end
 end

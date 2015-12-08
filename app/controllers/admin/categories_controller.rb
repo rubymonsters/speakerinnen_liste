@@ -49,9 +49,4 @@ class Admin::CategoriesController < Admin::BaseController
     params.require(:category).permit(:name, translations_attributes: [:id, :name, :locale])
   end
 
-  def build_missing_translations(object)
-    I18n.available_locales.each do |locale|
-      object.translations.build(locale: locale) unless object.translated_locales.include?(locale)
-    end
-  end
 end
