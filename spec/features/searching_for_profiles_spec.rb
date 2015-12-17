@@ -31,6 +31,20 @@ describe 'profile search' do
     end
   end
 
+  describe 'search in admin area' do
+    before do
+      sign_in admin
+    end
+    let(:admin) { FactoryGirl.create(:admin) }
+
+    it 'finds the correct profile' do
+      visit admin_profiles_path
+      fill_in 'search', with: 'Ada'
+      click_button I18n.t(:search, scope: 'pages.home.search')
+      expect(page).to have_content('Ada')
+    end
+  end
+
   describe 'detailed search' do
 
     before do
