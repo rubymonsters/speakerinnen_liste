@@ -23,7 +23,11 @@ class ProfilesSearch
     Profile
       .includes(taggings: :tag)
       .references(:tag)
-      .where("firstname ILIKE ANY ( array[?] ) OR lastname ILIKE ANY ( array[?] ) OR twitter ILIKE ANY ( array[?] ) OR tags.name ILIKE ANY ( array[?] )", @quick_array, @quick_array, @quick_array, @quick_array)
+      .where("firstname ILIKE ANY ( array[?] )
+              OR lastname ILIKE ANY ( array[?] )
+              OR twitter ILIKE ANY ( array[?] )
+              OR tags.name ILIKE ANY ( array[?] )",
+              @quick_array, @quick_array, @quick_array, @quick_array)
   end
 
   def detailed_search_result
@@ -52,10 +56,5 @@ class ProfilesSearch
     end
     result.uniq
   end
-
-  def sql_string
-    "firstname ILIKE ANY ( array[:query] ) OR lastname ILIKE ANY ( array[:query] ) OR twitter ILIKE ANY ( array[:query] ) OR tags.name ILIKE ANY ( array[:query] )"
-  end
-
 
 end
