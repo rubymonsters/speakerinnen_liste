@@ -34,8 +34,7 @@ class ContactController < ApplicationController
   end
 
   def reject_spam_bots
-    if params[:message][:email].present?
-      #TODO how do we get to that point
+    if params[:message][:email].present? && params[:message][:email] != params[:message][HONEYPOT_EMAIL_ATTR_NAME]
       render text: 'ok'
     else
       params[:message][:email] = params[:message][HONEYPOT_EMAIL_ATTR_NAME]
