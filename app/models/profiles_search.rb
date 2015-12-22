@@ -18,16 +18,15 @@ class ProfilesSearch
 
   def quick_search_result
     return Profile.none if @quick.blank?
-    @quick= @quick.split(' ')
-    @quick_array = @quick.map {|val| "%#{val}%" }
+    @quick_split = @quick.split(' ')
+    @quick_array = @quick_split.map {|val| "%#{val}%" }
     Profile
       .includes(taggings: :tag)
       .references(:tag)
-      .where("firstname ILIKE ANY ( array[?] )
-              OR lastname ILIKE ANY ( array[?] )
+      .where("firstname || ' ' || lastname ILIKE ?
               OR twitter ILIKE ANY ( array[?] )
               OR tags.name ILIKE ANY ( array[?] )",
-              @quick_array, @quick_array, @quick_array, @quick_array)
+              "%" + @quick + "%",  @quick_array, @quick_array)
   end
 
   def detailed_search_result
