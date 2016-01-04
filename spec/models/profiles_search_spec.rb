@@ -1,7 +1,7 @@
 describe ProfilesSearch, type: :model do
   let!(:profile) { FactoryGirl.create(:published, firstname: 'Ada', lastname: 'Lovelace', twitter: 'alovelace', city: 'London', languages: 'English') }
   # have to add city and twitter because the search needs them for params, at least as empty strings
-  let!(:profile2) { FactoryGirl.create(:published, firstname: 'Marie', lastname: 'Curie', twitter: 'madamecurie', city: 'Paris') }
+  let!(:profile2) { FactoryGirl.create(:published, firstname: 'Marie', lastname: 'Curie', twitter: 'marieecurie', city: 'Paris') }
 
   let!(:profile_not_matched) { FactoryGirl.create(:published, firstname: 'Angela', lastname: 'Davis') }
   let!(:profile_not_published) { FactoryGirl.create(:unpublished, firstname: 'Fred') }
@@ -16,8 +16,16 @@ describe ProfilesSearch, type: :model do
         expect(ProfilesSearch.new(quick: 'Rosie').results).to be_empty
       end
 
+      it 'does return profiles that match the firstname' do
+        expect(ProfilesSearch.new(quick: 'Ada').results).to eq [profile]
+      end
+
       it 'does return profiles that match the lastname' do
         expect(ProfilesSearch.new(quick: 'Love').results).to eq [profile]
+      end
+
+      it 'does return profiles that match the firstname and the lastname' do
+        expect(ProfilesSearch.new(quick: 'Ada Lovelace').results).to eq [profile]
       end
 
       it 'does return profiles that match the twittername' do
