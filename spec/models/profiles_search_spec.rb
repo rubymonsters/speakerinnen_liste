@@ -53,8 +53,16 @@ describe ProfilesSearch, type: :model do
         expect(ProfilesSearch.new(languages: 'en').results).to eq [profile]
       end
 
-      it 'does return profiles that match the given name search string' do
+      it 'does return profiles that match the given firstname search string' do
         expect(ProfilesSearch.new(name: 'Ada').results).to eq [profile]
+      end
+
+      it 'does return profiles that match the given firstname search string' do
+        expect(ProfilesSearch.new(name: 'Lovelace').results).to eq [profile]
+      end
+
+      it 'does return profiles that match the given firstname and lastname search string' do
+        expect(ProfilesSearch.new(name: 'Ada Lovelace').results).to eq [profile]
       end
 
       it 'does return profiles that match the given twitter search string' do
