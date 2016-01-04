@@ -57,7 +57,7 @@ describe ProfilesSearch, type: :model do
         expect(ProfilesSearch.new(name: 'Ada').results).to eq [profile]
       end
 
-      it 'does return profiles that match the given firstname search string' do
+      it 'does return profiles that match the given lastname search string' do
         expect(ProfilesSearch.new(name: 'Lovelace').results).to eq [profile]
       end
 
