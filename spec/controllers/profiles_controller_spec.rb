@@ -70,8 +70,8 @@ describe ProfilesController, type: :controller do
     end
 
     it "doesn't create extra translations" do
-      de_factory_translation = profile.translations.find_by('locale' => 'de')
-      en_translation = profile.translations.create!('locale' => 'en', 'main_topic' => 'Soc')
+      de_translation = profile.translations.create!('locale' => 'de', 'main_topic' => 'Hauptthema')
+      en_translation = profile.translations.create!('locale' => 'en', 'main_topic' => 'Main topic')
 
       profile_params = {
         translations_attributes:
@@ -79,8 +79,8 @@ describe ProfilesController, type: :controller do
             {
               'locale':       'de',
               'main_topic':   'Soziale Medien',
-              'bio':          'Dingsbums',
-              'id':           de_factory_translation.id
+              'bio':          'Deutsche Biografie',
+              'id':           de_translation.id
             },
           '1':
             {

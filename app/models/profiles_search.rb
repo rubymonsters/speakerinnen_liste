@@ -1,5 +1,4 @@
 class ProfilesSearch
-
   def initialize(query)
     @quick = query[:quick]
     @query = query
@@ -18,17 +17,22 @@ class ProfilesSearch
 
   def quick_search_result
     return Profile.none if @quick.blank?
+    @quick_split = @quick.split(' ')
+    @quick_array = @quick_split.map { |val| "%#{val}%" }
     Profile
       .includes(taggings: :tag)
       .references(:tag)
-      .where(sql_string, query: "%#{@quick}%")
+      .where("firstname || ' ' || lastname ILIKE ?
+              OR twitter ILIKE ANY ( array[?] )
+              OR tags.name ILIKE ANY ( array[?] )",
+              "%" + @quick + "%", @quick_array, @quick_array)
   end
 
   def detailed_search_result
     return Profile.none if @query.values.all? &:blank?
     result = Profile
       .where('city ILIKE :city', city: "%#{@query[:city]}%")
-      .where('firstname ILIKE :name OR lastname ILIKE :name', name: "%#{@query[:name]}%")
+      .where("firstname || ' ' || lastname ILIKE :name", name: "%#{@query[:name]}%")
       .where('twitter ILIKE :twitter', twitter: "%#{@query[:twitter]}%")
 
     if @query[:languages].present? # && @query[:languages] =~ /[abc]{2}/
@@ -49,10 +53,6 @@ class ProfilesSearch
         .where('tags.name ILIKE :topics', topics: "%#{@query[:topics]}%")
     end
     result.uniq
-  end
-
-  def sql_string
-    'firstname ILIKE :query OR lastname ILIKE :query OR twitter ILIKE :query OR tags.name ILIKE :query'
   end
 
 end

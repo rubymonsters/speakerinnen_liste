@@ -1,5 +1,7 @@
 describe 'profile search' do
-  let!(:profile) { FactoryGirl.create(:published, firstname: 'Ada', lastname: 'Lovelace', city: 'London', twitter: 'Adalove', languages: "Spanish, English") }
+  let!(:profile) { FactoryGirl.create(:published, firstname: 'Ada', lastname: 'Lovelace', city: 'London', twitter: 'Adalove', languages: 'Spanish, English') }
+  let!(:profile1) { FactoryGirl.create(:published, firstname: 'Marie', lastname: 'Curie', city: 'Paris', twitter: 'mcurie', languages: 'Polish, French') }
+  let!(:profile2) { FactoryGirl.create(:published, firstname: 'Christiane', lastname: 'Nüsslein-Volhard', city: 'Heidelberg', languages: 'German') }
 
   let!(:profile_not_matched) { FactoryGirl.create(:published, firstname: 'Angela', city: 'New York', twitter: '@adavis' ) }
 
@@ -8,6 +10,36 @@ describe 'profile search' do
     it 'displays profiles that are a partial match' do
       visit root_path
       fill_in 'search_quick', with: 'Ada'
+      click_button I18n.t(:search, scope: 'pages.home.search')
+      expect(page).to have_content('Ada')
+    end
+
+    it 'displays profiles that are a partial match with more than one search input' do
+      visit root_path
+      fill_in 'search_quick', with: 'Ada Curie'
+      click_button I18n.t(:search, scope: 'pages.home.search')
+      #save_and_open_page
+      expect(page).to have_content('Ada')
+      expect(page).to have_content('Curie')
+    end
+
+    it 'displays profiles that are a partial match wit UTF-8 characters' do
+      visit root_path
+      fill_in 'search_quick', with: 'Nüsslein'
+      click_button I18n.t(:search, scope: 'pages.home.search')
+      expect(page).to have_content('Christiane')
+    end
+  end
+
+  describe 'search in admin area' do
+    before do
+      sign_in admin
+    end
+    let(:admin) { FactoryGirl.create(:admin) }
+
+    it 'finds the correct profile' do
+      visit admin_profiles_path
+      fill_in 'search', with: 'Ada'
       click_button I18n.t(:search, scope: 'pages.home.search')
       expect(page).to have_content('Ada')
     end

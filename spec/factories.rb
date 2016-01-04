@@ -7,7 +7,6 @@ FactoryGirl.define do
     end
     password "123foobar"
     password_confirmation "123foobar"
-    bio "MyText"
     confirmed_at Time.now
 
     factory :admin do
