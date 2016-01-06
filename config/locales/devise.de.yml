@@ -2,8 +2,8 @@ de:
   devise:
     confirmations:
       confirmed: 'Vielen Dank für Deine Registrierung. Bitte logge Dich ein.'
-      send_instructions: 'Du erhälst in wenigen Minuten eine E-Mail, mit der Du Deine Registrierung bestätigen kannst.'
-      send_paranoid_instructions: 'Falls Deine E-Mail-Adresse in unserer Datenbank existiert erhälst Du in wenigen Minuten eine E-Mail mit der die Du Deine Registrierung bestätigen kannst.'
+      send_instructions: 'Du erhältst in wenigen Minuten eine E-Mail, mit der Du Deine Registrierung bestätigen kannst.'
+      send_paranoid_instructions: 'Falls Deine E-Mail-Adresse in unserer Datenbank existiert erhältst Du in wenigen Minuten eine E-Mail mit der die Du Deine Registrierung bestätigen kannst.'
     failure:
       already_authenticated: 'Du bist bereits angemeldet.'
       inactive: 'Dein Account ist nicht aktiv.'
@@ -28,8 +28,8 @@ de:
       failure: 'Du konntest nicht mit Deinem %{kind}-Account angemeldet werden, weil "%{reason}".'
     passwords:
       no_token: "Du kannst diese Seite nur von dem Link aus einer E-Mail zum Passwort-Zurücksetzen aufrufen. Wenn Du einen solchen Link aufgerufen hast, stelle bitte sicher, dass Du die vollständige Adresse aufrufst."
-      send_instructions: 'Du erhälst in wenigen Minuten eine E-Mail mit der Anleitung, wie Du Dein Passwort zurücksetzen kannst.'
-      send_paranoid_instructions: "Falls Deine E-Mail-Adresse in unserer Datenbank existiert erhälst Du in wenigen Minuten eine E-Mail mit der Anleitung, wie Du Dein Passwort zurücksetzen kannst."
+      send_instructions: 'Du erhältst in wenigen Minuten eine E-Mail mit der Anleitung, wie Du Dein Passwort zurücksetzen kannst.'
+      send_paranoid_instructions: "Falls Deine E-Mail-Adresse in unserer Datenbank existiert erhältst Du in wenigen Minuten eine E-Mail mit der Anleitung, wie Du Dein Passwort zurücksetzen kannst."
       updated: 'Dein Passwort wurde geändert. Du bist jetzt angemeldet.'
       updated_not_active: 'Dein Passwort wurde geändert.'
       new_password: "Neues Passwort"
@@ -41,8 +41,8 @@ de:
       signed_up: 'Du hast dich erfolgreich registriert.'
       signed_up_but_inactive: 'Du hast Dich erfolgreich registriert. Wir konnten Dich noch nicht anmelden, da Dein Account inaktiv ist.'
       signed_up_but_locked: 'Du hast Dich erfolgreich registriert. Wir konnten Dich noch nicht anmelden, da Dein Account gesperrt ist.'
-      signed_up_but_unconfirmed: 'Du hast dich erfolgreich registriert. Wir konnten Dich noch nicht anmelden, da Dein Account noch nicht bestätigt ist. Du erhälst in Kürze eine E-Mail mit der Anleitung, wie Du Deinen Account freischalten kannst.'
-      update_needs_confirmation: "Deine Daten wurden aktualisiert, aber Du musst Deine neue E-Mail-Adresse bestätigen. Du erhälst in wenigen Minuten eine E-Mail, mit der Du die Änderung Deiner E-Mail-Adresse abschließen kannst."
+      signed_up_but_unconfirmed: 'Du hast dich erfolgreich registriert. Wir konnten Dich noch nicht anmelden, da Dein Account noch nicht bestätigt ist. Du erhältst in Kürze eine E-Mail mit der Anleitung, wie Du Deinen Account freischalten kannst.'
+      update_needs_confirmation: "Deine Daten wurden aktualisiert, aber Du musst Deine neue E-Mail-Adresse bestätigen. Du erhältst in wenigen Minuten eine E-Mail, mit der Du die Änderung Deiner E-Mail-Adresse abschließen kannst."
       updated: 'Deine Daten wurden aktualisiert.'
       email: "E-Mail"
       password: "Mindestens 8 Zeichen"
@@ -61,8 +61,8 @@ de:
       signed_in: 'Erfolgreich angemeldet.'
       signed_out: 'Erfolgreich abgemeldet.'
     unlocks:
-      send_instructions: 'Du erhälst in wenigen Minuten eine E-Mail mit der Anleitung, wie Du Deinen Account entsperren kannst.'
-      send_paranoid_instructions: "Falls Deine E-Mail-Adresse in unserer Datenbank existiert, erhälst Du in wenigen Minuten eine E-Mail mit der Anleitung, wie Du Deinen Account entsperren kannst."
+      send_instructions: 'Du erhältst in wenigen Minuten eine E-Mail mit der Anleitung, wie Du Deinen Account entsperren kannst.'
+      send_paranoid_instructions: "Falls Deine E-Mail-Adresse in unserer Datenbank existiert, erhältst Du in wenigen Minuten eine E-Mail mit der Anleitung, wie Du Deinen Account entsperren kannst."
       unlocked: 'Dein Account wurde entsperrt. Du bist jetzt angemeldet.'
   errors:
     messages:
