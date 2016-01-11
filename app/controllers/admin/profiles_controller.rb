@@ -35,7 +35,11 @@ class Admin::ProfilesController < Admin::BaseController
 
   def destroy
     @profile.destroy
-    redirect_to admin_profiles_path, notice: (I18n.t('flash.profiles.destroyed', profile_name: @profile.name_or_email))
+
+     respond_to do |format|
+      format.html { redirect_to admin_profiles_path, notice: (I18n.t('flash.profiles.destroyed', profile_name: @profile.name_or_email)) }
+      format.js   { render layout: false }
+    end
   end
 
   def publish

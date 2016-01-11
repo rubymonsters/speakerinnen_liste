@@ -36,7 +36,7 @@
             <td><%= profile.updated_at.strftime('%d.%m.%Y um %H:%M Uhr') %></td>
             <td><%= link_to profile.medialinks.size, admin_profile_medialinks_path(profile), html_options = { title: t(:show, scope: 'medialinks') } %></td>
             <td><%= link_to '<i class="fa fa-pencil">&nbsp;</i>'.html_safe, edit_admin_profile_path(profile), html_options = { title: t(:edit, scope: 'general') } %></td>
-            <td><%= link_to '<i class="fa fa-trash-o">&nbsp;</i>'.html_safe, admin_profile_path(profile), method: :delete, data: { confirm: 'Are you sure?' }, title: t(:delete, scope: 'general') %></td>
+            <td><%= link_to '<i class="fa fa-trash-o">&nbsp;</i>'.html_safe, admin_profile_path(profile), method: :delete, data: { confirm: 'Are you sure?' }, remote: true, class: 'delete_profile', title: t(:delete, scope: 'general') %></td>
             <td><% if profile.published %>
                 <%= link_to t(:public, scope: 'admin.dashboard.profiles'), unpublish_admin_profile_path(profile.id), method: :post, class:'btn btn--small' %>
               <% else %>

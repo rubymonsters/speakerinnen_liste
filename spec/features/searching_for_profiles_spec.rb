@@ -39,7 +39,7 @@ describe 'profile search' do
 
     it 'finds the correct profile' do
       visit admin_profiles_path
-      fill_in 'search', with: 'Ada'
+      fill_in 'search', with: 'Ada Lovelace'
       click_button I18n.t(:search, scope: 'pages.home.search')
       expect(page).to have_content('Ada')
     end
