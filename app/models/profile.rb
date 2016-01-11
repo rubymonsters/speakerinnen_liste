@@ -117,6 +117,6 @@ class Profile < ActiveRecord::Base
 
   # for simple admin search
   def self.search(query)
-    where('firstname ILIKE :query OR lastname ILIKE :query OR twitter ILIKE :query', query: "%#{query}%")
+    where("firstname || ' ' || lastname ILIKE :query OR twitter ILIKE :query", query: "%#{query}%")
   end
 end
