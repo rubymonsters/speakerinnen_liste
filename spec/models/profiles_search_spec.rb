@@ -24,9 +24,19 @@ describe ProfilesSearch, type: :model do
         expect(ProfilesSearch.new(quick: 'Love').results).to eq [profile]
       end
 
+      # should work if elasticsearch is implemented
+      # it 'should be possible to use wildcard *'
+      #   expect(ProfilesSearch.new(quick: 'Ada Lovela*e').results).to eq [profile]
+      # end
+
       it 'does return profiles that match the firstname and the lastname' do
         expect(ProfilesSearch.new(quick: 'Ada Lovelace').results).to eq [profile]
       end
+
+      # should work if elasticsearch is implemented
+      # it 'does return profiles that match firstname and lastname using the AND operator'
+      #   expect(ProfilesSearch.new(quick: 'Ada AND Lovelace').results).to eq [profile]
+      # end
 
       it 'does return profiles that match the twittername' do
         expect(ProfilesSearch.new(quick: 'Lovelace').results).to eq [profile]
@@ -38,6 +48,23 @@ describe ProfilesSearch, type: :model do
 
         expect(ProfilesSearch.new(quick: 'algorithm').results).to eq [profile]
       end
+
+      # should work if elasticsearch is implemented
+      # it 'does return profiles that match multiple topics' do
+      #   profile.topic_list.add('algorithm', 'ruby')
+      #   profile.save!
+
+      #   expect(ProfilesSearch.new(quick: 'algorithm AND ruby').results).to eq [profile]
+      # end
+
+      # it 'does return profiles that match either one or another topic by the OR operator' do
+      #   profile.topic_list.add('algorithm', 'ruby')
+      #   profile.save!
+      #   profile2.topic_list.add('maths', 'rails')
+      #   profile2.save!
+
+      #   expect(ProfilesSearch.new(quick: 'rails OR ruby').results).to eq [profile, profile2]
+      # end
 
       it 'does return nothing if only quick is given and empty' do
         expect(ProfilesSearch.new(quick: '').results).to be_empty
@@ -65,29 +92,32 @@ describe ProfilesSearch, type: :model do
         expect(ProfilesSearch.new(name: 'Ada Lovelace').results).to eq [profile]
       end
 
-      it 'does return profiles that match the given twitter search string' do
-        expect(ProfilesSearch.new(twitter: 'Love').results).to eq [profile]
-      end
+      # should work if elasticsearch is implemented
+      # it 'does return profiles that match firstname and lastname using the AND operator'
+      #   expect(ProfilesSearch.new(quick: 'Ada AND Lovelace').results).to eq [profile]
+      # end
 
-      it 'does return profiles that match the given topic search string' do
-        profile.topic_list.add('algorithm')
-        profile.save!
+      # should work if elasticsearch is implemented
+      # it 'does return profiles that match multiple topics' do
+      #   profile.topic_list.add('algorithm', 'ruby')
+      #   profile.save!
 
-        expect(ProfilesSearch.new(topics: 'algorithm').results).to eq [profile]
-      end
+      #   expect(ProfilesSearch.new(quick: 'algorithm AND ruby').results).to eq [profile]
+      # end
 
-      it 'returns any profile that matches one of the given topics' do
-        profile.topic_list.add('algorithm', 'mathematic')
-        profile.save!
-        profile2.topic_list.add('algorithm')
-        profile2.save!
+      # it 'does return profiles that match either one or another topic by the OR operator' do
+      #   profile.topic_list.add('algorithm', 'ruby')
+      #   profile.save!
+      #   profile2.topic_list.add('maths', 'rails')
+      #   profile2.save!
 
-        expect(ProfilesSearch.new(topics: 'algorithm').results.count).to eq 2
-      end
+      #   expect(ProfilesSearch.new(quick: 'rails OR ruby').results).to eq [profile, profile2]
+      # end
 
-      it 'does return nothing if detailed search is empty' do
-        expect(ProfilesSearch.new(topics: '', twitter: '', name: '', city: '', languages: '').results).to be_empty
-      end
+      # should work if elasticsearch is implemented
+      # it 'should be possible to use wildcard *'
+      #   expect(ProfilesSearch.new(quick: 'Ada Lovela*e').results).to eq [profile]
+      # end
     end
   end
 end
