@@ -23,6 +23,8 @@ class Profile < ActiveRecord::Base
 
   before_save(on: [:create, :update]) do
     twitter.gsub!(%r{^@|https:|http:|:|//|www.|twitter.com/}, '') if twitter
+    firstname.strip! if firstname
+    lastname.strip! if lastname
   end
 
   def after_confirmation

@@ -40,5 +40,14 @@ describe 'profile', type: :model do
         expect(profile.name_or_email).to eq 'Factory Girl'
       end
     end
+
+    context 'delete trailing white space' do
+      let(:profile) { FactoryGirl.create(:profile, firstname: 'Ada ', lastname: 'Lovelace ', email: 'factorygirl@test.de') }
+
+      it 'in firstname and lastname' do
+        expect(profile.firstname).to eq 'Ada'
+        expect(profile.lastname).to eq 'Lovelace'
+      end
+    end
   end
 end
