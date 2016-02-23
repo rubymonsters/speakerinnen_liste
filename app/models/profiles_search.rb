@@ -5,7 +5,7 @@ class ProfilesSearch
   end
 
   def results
-    search_result.is_published
+    search_result.is_published.uniq
   end
 
   private
@@ -52,7 +52,7 @@ class ProfilesSearch
         .references(:tag)
         .where('tags.name ILIKE :topics', topics: "%#{@query[:topics]}%")
     end
-    result.uniq
+    result
   end
 
 end
