@@ -4,6 +4,7 @@ class NotificationsMailer < ActionMailer::Base
 
   def new_message(message, to)
     @message = message
+    @url = 'https://www.speakerinnen.org/faq#donate_anker'
     mail_parameters = { subject: "[Speakerinnen-Liste] #{message.subject}" }
     if to
       mail_parameters[:to] = to
