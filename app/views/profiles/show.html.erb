@@ -111,7 +111,7 @@
             <li class="list--style-none pb mb+ bb">
               <b><%= medialink.title %></b>
               <%= medialink.url_html %>
-              <%= medialink.description %>
+              <%= simple_format(medialink.description) %>
             </li>
             <% end %>
           </ul>
