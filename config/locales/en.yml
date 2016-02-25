@@ -247,6 +247,7 @@ en:
         url: "URL:"
         title: "Title:"
         description: "Description:"
+        description: "Description:<small> ( You can use simple HTML tags to format the text. For example: < i >< /i >< b >< /b >< br >)</small>"
   devise:
     registrations:
       edit:

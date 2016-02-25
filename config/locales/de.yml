@@ -248,7 +248,7 @@ de:
       medialink:
         url: "URL:"
         title: "Überschrift:"
-        description: "Beschreibung:"
+        description: "Beschreibung:<small> ( Du kannst einfache HTML Tags nutzen, um den Text zu formatieren. Zum Beispiel: < i >< /i >< b >< /b >< br >)</small>"
   devise:
     registrations:
       edit:
