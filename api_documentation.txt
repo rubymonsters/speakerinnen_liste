@@ -4,7 +4,7 @@ hiding the key in your code.
 Who can get API access? Currently the API is only built for associations who want to list their
 members on their own website. The association has to make sure, that the member agrees to display
 her profile hosted on speakerinnen.org on the association's website.
-If you are interested in an API access for your association please send us an email: speakerinnen@lists.riseup.net
+If you are interested in an API access for your association please send us an email: team@speakerinnen.org
 
 ## Actions
 It is only possible to send a GET request. Posting, updating and deleting isn't possible via the api.
