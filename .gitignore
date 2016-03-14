@@ -30,3 +30,4 @@
 
 .ruby-version
 .ruby-gemset
+.env
