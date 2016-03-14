@@ -1,5 +1,5 @@
 class AdminMailer < ActionMailer::Base
-  default from: 'speakerInnen@gmail.com'
+  default from: 'team@speakerinnen.org'
 
   def new_profile_confirmed(profile)
     @profile = profile
