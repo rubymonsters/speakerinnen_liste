@@ -256,9 +256,6 @@ GEM
     lumberjack (1.0.9)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
-    mandrill-api (1.0.53)
-      excon (>= 0.16.0, < 1.0)
-      json (>= 1.7.7, < 2.0)
     method_source (0.8.2)
     mime-types (2.6.2)
     mini_magick (3.5.0)
@@ -296,6 +293,12 @@ GEM
       cliver (~> 0.3.1)
       multi_json (~> 1.0)
       websocket-driver (>= 0.2.0)
+    postmark (1.7.1)
+      json
+      rake
+    postmark-rails (0.12.0)
+      actionmailer (>= 3.0.0)
+      postmark (~> 1.7.0)
     powerpack (0.1.1)
     pry (0.10.1)
       coderay (~> 1.1.0)
@@ -449,13 +452,13 @@ DEPENDENCIES
   kaminari
   language_list
   letter_opener
-  mandrill-api
   mini_magick (~> 3.5.0)
   newrelic_rpm
   normalize-rails
   omniauth-twitter
   pg
   poltergeist (= 1.8.0)
+  postmark-rails (>= 0.10.0)
   pry
   quiet_assets
   rack-piwik (~> 0.3.0)
@@ -473,4 +476,4 @@ DEPENDENCIES
   unicorn
 
 BUNDLED WITH
-   1.10.6
+   1.11.2
