@@ -27,7 +27,7 @@ gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'acts-as-taggable-on', '~> 3.4.1'
 gem 'auto_html', github: 'dejan/auto_html'
-gem 'mandrill-api'
+gem 'postmark-rails', '>= 0.10.0'
 gem 'simple_form', '~> 3.0.2'
 
 gem 'globalize', '~> 4.0.2'

@@ -74,7 +74,7 @@ SpeakerinnenListe::Application.configure do
 
   config.action_mailer.default_url_options = { host: 'speakerinnen.org'}
 
-  config.action_mailer.delivery_method = :smtp
+  #config.action_mailer.delivery_method = :smtp
 
   config.action_mailer.perform_deliveries = true
 
@@ -82,14 +82,14 @@ SpeakerinnenListe::Application.configure do
 
   config.action_mailer.default charset: "utf-8"
 
-  config.action_mailer.smtp_settings = {
-   port: '587',
-   address: 'smtp.mandrillapp.com',
-   user_name: ENV['MANDRILL_USERNAME'],
-   password: ENV['MANDRILL_APIKEY'],
-   domain: 'heroku.com',
-   authentication: :plain
-   }
+  #config.action_mailer.smtp_settings = {
+   #port: '587',
+   #address: 'smtp.mandrillapp.com',
+   #user_name: ENV['MANDRILL_USERNAME'],
+   #password: ENV['MANDRILL_APIKEY'],
+   #domain: 'heroku.com',
+   #authentication: :plain
+   #}
 
 # piwik data collection and analytics
   config.gem 'rack-piwik', lib: 'rack/piwik'
