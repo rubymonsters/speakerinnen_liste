@@ -71,14 +71,16 @@ SpeakerinnenListe::Application.configure do
 
   config.action_mailer.default_url_options = { :host => 'staging-speakerinnen-liste.herokuapp.com'}
 
-  config.action_mailer.delivery_method = :smtp
-
   config.action_mailer.perform_deliveries = true
 
   config.action_mailer.raise_delivery_errors = false
 
   config.action_mailer.default :charset => "utf-8"
 
+  config.action_mailer.delivery_method = :postmark
+  config.action_mailer.postmark_settings = { :api_token => ENV['POSTMARK_API_TOKEN'] }
+
+  #config.action_mailer.delivery_method = :smtp
   # config.action_mailer.smtp_settings = {
   #   # These are configured on Heroku with `heroku config:set`, see
   #   # https://devcenter.heroku.com/articles/config-vars
@@ -93,12 +95,12 @@ SpeakerinnenListe::Application.configure do
   #   enable_starttls_auto: true,
   # }
 
-  config.action_mailer.smtp_settings = {
-    :port =>           '587',
-    :address =>        'smtp.mandrillapp.com',
-    :user_name =>      ENV['MANDRILL_USERNAME'],
-    :password =>       ENV['MANDRILL_APIKEY'],
-    :domain =>         'heroku.com',
-    :authentication => :plain
+  #config.action_mailer.smtp_settings = {
+    #:port =>           '587',
+    #:address =>        'smtp.mandrillapp.com',
+    #:user_name =>      ENV['MANDRILL_USERNAME'],
+    #:password =>       ENV['MANDRILL_APIKEY'],
+    #:domain =>         'heroku.com',
+    #:authentication => :plain
   }
 end
