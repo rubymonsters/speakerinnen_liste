@@ -74,17 +74,17 @@ SpeakerinnenListe::Application.configure do
 
   config.action_mailer.default_url_options = { host: 'speakerinnen.org'}
 
-  #config.action_mailer.delivery_method = :smtp
-
-  config.action_mailer.delivery_method = :postmark
-  config.action_mailer.postmark_settings = { :api_token => POSTMARK_API_TOKEN }
-
   config.action_mailer.perform_deliveries = true
 
   config.action_mailer.raise_delivery_errors = false
 
   config.action_mailer.default charset: "utf-8"
 
+  config.action_mailer.delivery_method = :postmark
+  config.action_mailer.postmark_settings = { :api_token => ENV['POSTMARK_API_TOKEN'] }
+
+  #config.action_mailer.delivery_method = :smtp
+  #
   #config.action_mailer.smtp_settings = {
    #port: '587',
    #address: 'smtp.mandrillapp.com',
