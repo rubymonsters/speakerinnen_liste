@@ -102,5 +102,5 @@ SpeakerinnenListe::Application.configure do
     #:password =>       ENV['MANDRILL_APIKEY'],
     #:domain =>         'heroku.com',
     #:authentication => :plain
-  }
+  #}
 end
