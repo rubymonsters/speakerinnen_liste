@@ -80,7 +80,6 @@ SpeakerinnenListe::Application.configure do
   #config.action_mailer.delivery_method = :postmark
   #config.action_mailer.postmark_settings = { :api_token => ENV['POSTMARK_API_TOKEN'] }
 
-  config.action_mailer.delivery_method = :smtp
   # config.action_mailer.smtp_settings = {
   #   # These are configured on Heroku with `heroku config:set`, see
   #   # https://devcenter.heroku.com/articles/config-vars
@@ -94,6 +93,8 @@ SpeakerinnenListe::Application.configure do
   #   authentication: "plain",
   #   enable_starttls_auto: true,
   # }
+
+  config.action_mailer.delivery_method = :smtp
 
   config.action_mailer.smtp_settings = {
     :address => ENV['POSTMARK_SMTP_SERVER'],

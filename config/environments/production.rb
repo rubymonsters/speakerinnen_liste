@@ -83,16 +83,16 @@ SpeakerinnenListe::Application.configure do
   config.action_mailer.delivery_method = :postmark
   config.action_mailer.postmark_settings = { :api_token => ENV['POSTMARK_API_TOKEN'] }
 
-  #config.action_mailer.delivery_method = :smtp
-  #
-  #config.action_mailer.smtp_settings = {
-   #port: '587',
-   #address: 'smtp.mandrillapp.com',
-   #user_name: ENV['MANDRILL_USERNAME'],
-   #password: ENV['MANDRILL_APIKEY'],
-   #domain: 'heroku.com',
-   #authentication: :plain
-   #}
+  config.action_mailer.delivery_method = :smtp
+
+  config.action_mailer.smtp_settings = {
+    :address => ENV['POSTMARK_SMTP_SERVER'],
+    :port => '25', # or 2525
+    :domain => 'staging-speakerinnen-liste.heroku.com',
+    :user_name => ENV['POSTMARK_API_TOKEN'],
+    :password => ENV['POSTMARK_API_TOKEN'],
+    :authentication => :plain
+  }
 
 # piwik data collection and analytics
   config.gem 'rack-piwik', lib: 'rack/piwik'
