@@ -66,8 +66,6 @@ gem 'coffee-rails', '~> 4.0.1'
 
 gem 'uglifier', '>= 1.0.3'
 
-gem 'autoprefixer-rails'
-
 # Use unicorn as the app server
 gem 'unicorn'
 
