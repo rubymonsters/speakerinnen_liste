@@ -50,10 +50,6 @@ GEM
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
       rack (>= 0.9.0)
-    bootstrap-sass (2.3.0.0)
-      sass (~> 3.2)
-    bootswatch-rails (3.3.5)
-      railties (>= 3.1)
     builder (3.2.2)
     byebug (6.0.2)
     capybara (2.4.4)
@@ -425,8 +421,6 @@ DEPENDENCIES
   acts-as-taggable-on (~> 3.4.1)
   auto_html!
   better_errors
-  bootstrap-sass (= 2.3.0)
-  bootswatch-rails
   byebug
   capybara (~> 2.4.1)
   carrierwave

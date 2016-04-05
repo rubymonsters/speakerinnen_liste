@@ -6,7 +6,6 @@ gem 'rails', '4.1.13'
 gem 'therubyracer'
 
 gem 'normalize-rails'
-gem 'bootswatch-rails'
 gem 'faker', '1.0.1'
 
 gem 'deadweight', require: 'deadweight/hijack/rails'
@@ -61,7 +60,6 @@ group :test do
 end
 
 gem 'sass-rails',   '~> 4.0.3'
-gem 'bootstrap-sass', '2.3.0'
 gem 'coffee-rails', '~> 4.0.1'
 
 gem 'uglifier', '>= 1.0.3'
