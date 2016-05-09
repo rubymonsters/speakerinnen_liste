@@ -74,12 +74,8 @@ class Profile < ActiveRecord::Base
   def slug_candidate
     [
       :fullname,
-      [:fullname, :random_number]
+      [:fullname, :id]
     ]
-  end
-
-  def random_number
-    Random.rand(1..20).to_s
   end
 
   def should_generate_new_friendly_id?
