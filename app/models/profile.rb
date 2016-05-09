@@ -7,6 +7,9 @@ class Profile < ActiveRecord::Base
   translates :bio, :main_topic, fallbacks_for_empty_translations: true
   accepts_nested_attributes_for :translations
 
+  extend FriendlyId
+  friendly_id :slug_candidate, use: :slugged
+
   auto_html_for :media_url do
     html_escape
     image
@@ -64,6 +67,23 @@ class Profile < ActiveRecord::Base
 
   def main_topic_or_first_topic
     main_topic.present? ? main_topic : topic_list.first
+  end
+
+ # Try building a slug based on the following fields in
+  # increasing order of specificity.
+  def slug_candidate
+    [
+      :fullname,
+      [:fullname, :random_number]
+    ]
+  end
+
+  def random_number
+    Random.rand(1..(1<<20)).to_s(16)
+  end
+
+  def should_generate_new_friendly_id?
+   slug.blank? || firstname_changed? || lastname_changed?
   end
 
   def website_with_protocol
