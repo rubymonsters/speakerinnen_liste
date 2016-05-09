@@ -113,7 +113,7 @@ describe Admin::ProfilesController, type: :controller do
       end
 
       describe 'when valid params are supplied' do
-        before { put :update, id: non_admin.id, profile: { firstname: 'samuel' } }
+        before { put :update, id: non_admin.id, profile: { firstname: 'marie', lastname: 'curie' } }
 
         it 'should return a 302 status response' do
           expect(response.status).to eq 302
@@ -121,11 +121,11 @@ describe Admin::ProfilesController, type: :controller do
 
         it 'should update the requested Profile' do
           non_admin.reload
-          expect(non_admin.firstname).to eq 'samuel'
+          expect(non_admin.firstname).to eq 'marie'
         end
 
         it 'should redirect to the updated profile' do
-          expect(response).to redirect_to("/#{I18n.locale}/admin/profiles/#{non_admin.id}")
+          expect(response).to redirect_to("/#{I18n.locale}/admin/profiles/marie-curie")
         end
       end
 
@@ -150,7 +150,7 @@ describe Admin::ProfilesController, type: :controller do
     context 'when user is not admin' do
       before(:each) do
         sign_in non_admin
-        put :update, id: admin.id, profile: { firstname: 'samuel' }
+        put :update, id: admin.id, profile: { firstname: 'marie' }
       end
 
       specify { expect(response.status).to eq 302 }

@@ -33,6 +33,8 @@ gem 'globalize', '~> 4.0.2'
 
 gem 'font-awesome-rails', '~> 4.3.0.0'
 
+gem "friendly_id", "~> 5.0.1"
+
 gem 'rails_12factor', group: :production
 
 group :development do

@@ -198,6 +198,8 @@ GEM
     font-awesome-rails (4.3.0.0)
       railties (>= 3.2, < 5.0)
     formatador (0.2.5)
+    friendly_id (5.0.5)
+      activerecord (>= 4.0.0)
     globalize (4.0.3)
       activemodel (>= 4.0.0, < 5)
       activerecord (>= 4.0.0, < 5)
@@ -432,6 +434,7 @@ DEPENDENCIES
   faker (= 1.0.1)
   fog (~> 1.32.0)
   font-awesome-rails (~> 4.3.0.0)
+  friendly_id (~> 5.0.1)
   globalize (~> 4.0.2)
   guard-bundler
   guard-rails

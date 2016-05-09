@@ -2,12 +2,12 @@ class ContactController < ApplicationController
   before_filter :reject_spam_bots, only: [:create]
 
   def new
-    @profile = Profile.find(params[:id]) if params[:id]
+    @profile = Profile.friendly.find(params[:id]) if params[:id]
     @message = Message.new
   end
 
   def create
-    @profile = Profile.find(params[:id]) if params[:id]
+    @profile = Profile.friendly.find(params[:id]) if params[:id]
     @message = Message.new(message_params)
 
     if @message.valid?
