@@ -79,7 +79,7 @@ class Profile < ActiveRecord::Base
   end
 
   def random_number
-    Random.rand(1..(1<<20)).to_s(16)
+    Random.rand(1..20).to_s
   end
 
   def should_generate_new_friendly_id?
