@@ -12,14 +12,14 @@ describe 'adds slug when creating a profile' do
       expect(page.status_code).to be(200)
     end
 
-    describe 'changing the firstname slug' do
+    describe 'changing the firstname' do
       before do
-        user.firstname = "Ama"
+        user.firstname = "Adam"
         user.save!
       end
 
       it 'changes the slug' do
-        visit "/profiles/ama-lovelace"
+        visit "/profiles/adam-lovelace"
         expect(page.status_code).to be(200)
       end
     end
