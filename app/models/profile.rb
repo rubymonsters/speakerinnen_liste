@@ -72,10 +72,10 @@ class Profile < ActiveRecord::Base
  # Try building a slug based on the following fields in
   # increasing order of specificity.
   def slug_candidate
+    #[:full_name, :id] - you can do this only onUpdate (when :id already set) When you are creating a new record in your DB table this will not work!
     [
       :fullname,
-      [:fullname, :id],
-      :id
+      [:fullname, :id]
     ]
   end
 
