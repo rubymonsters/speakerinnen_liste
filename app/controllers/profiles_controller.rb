@@ -96,6 +96,7 @@ class ProfilesController < ApplicationController
       :topic_list,
       :media_url,
       :medialinks,
+      :slug,
       :admin_comment,
       translations_attributes: [:id, :bio, :main_topic, :locale])
   end
