@@ -74,7 +74,8 @@ class Profile < ActiveRecord::Base
   def slug_candidate
     [
       :fullname,
-      [:fullname, :id]
+      [:fullname, :id],
+      :id
     ]
   end
 
