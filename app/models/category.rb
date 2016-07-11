@@ -6,7 +6,7 @@ class Category < ActiveRecord::Base
   accepts_nested_attributes_for :translations
 
   def self.sorted_categories
-    categories_without_sonstige = order('name').where("name <> 'Sonstiges'")
+    categories_without_sonstige = where("name <> 'Sonstiges'").sort_by(&:name)
     category_sonstige           = where(name: 'Sonstiges')
 
     categories_without_sonstige + category_sonstige
