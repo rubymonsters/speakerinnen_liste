@@ -5,4 +5,11 @@ class Category < ActiveRecord::Base
   translates :name, fallbacks_for_empty_translations: true
   accepts_nested_attributes_for :translations
 
+  def self.sorted_categories
+    categories_without_sonstige = order('name').where("name <> 'Sonstiges'")
+    category_sonstige           = where(name: 'Sonstiges')
+
+    categories_without_sonstige + category_sonstige
+  end
+
 end
