@@ -4,6 +4,7 @@ en:
       name: "English"
       en: "English"
       de: "German"
+      pt-br: "Português"
   general:
     add: "Add"
     close: "Close"
