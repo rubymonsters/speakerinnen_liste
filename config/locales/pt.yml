@@ -243,8 +243,7 @@ pt:
       profile:
         firstname: "Primeiro nome"
         lastname: "Último nome"
-        bio: "Sua biografia %{language}<br>
-        <small> Aqui você pode adcionar uma pequena ou uma grande biografia sobre você. Por favor adcione tópicos especifícos de suas habilidades, na qual você se sente confortavel para palestrar. Isso irá ajudar os organizadores do eventos a entenderem se você é a pessoa que eles estão procurando.</small>"
+        bio: "Sua biografia %{language}<br><small> Aqui você pode adcionar uma pequena ou uma grande biografia sobre você. Por favor adcione tópicos especifícos de suas habilidades, na qual você se sente confortavel para palestrar. Isso irá ajudar os organizadores do eventos a entenderem se você é a pessoa que eles estão procurando.</small>"
         topic_list: "Suas tags<br><small>Por favor olhe primeiro se o tópico que deseja colocar já existe.</small>"
         main_topic_title: "Tópico principal"
         main_topic: "Seu tópico principal em %{language} (Mais do que 30 caracteres não será visto)<br><small>Por favor escolha um tópico como o seu favorito e entre novamente. Isso será visível junto com seu nome e sua foto na visão geral das palestrantes.</small>"
@@ -254,12 +253,11 @@ pt:
         city: "Cidades"
         twitter: "Twitter"
         picture: "Foto"
-        translation: "<strong>You can fill in your maintopic and your bio both in German and English Você pode preencher seu tópico principal e sua biografia em Alemão e Inglês ou com Português:</strong>"
+        translation: "<strong>Você pode preencher seu tópico principal e sua biografia em Alemão e Inglês ou com Português:</strong>"
       medialink:
         url: "URL:"
         title: "Título:"
-        description: "Descrição:"
-        description: "Descrição:<small> ( You can use simple HTML tags to format the text. For example: < i >< /i >< b >< /b >< br >)</small>"
+        description: "Descrição:<small> ( Você pode formatar o texto usando tags HTML. Por exemplo: < i >< /i >< b >< /b >< br >)</small>"
   devise:
     registrations:
       edit:
@@ -287,9 +285,8 @@ pt:
     index: "Referências"
     show: "Show Referências"
     # Translation
-    medialink_description: "Here you can add examples of your previous talks, panel discussions, TV shows or similar talking situations.
-It would be best not to have too many but also not too few. Add diverse examples so that event organizers can get a picture of your work as a speaker.
-Links to Youtube videos will be shown as embedded videos. Other links will be clickable. You can also list audio files and texts."
+    medialink_description: "Aqui você pode adcionar exemplo de suas palestras antreiores, mesas de discussões, entrevistas ou algo parecido.
+Vai ser melhor se não tiver muitos, porém não deixa com poucos veja com equilíbrio. Adcione alguns exemplos onde organizadores de eventos possam ver você como palestrante. Links para o youtube serão visto como embedded videos. Outros links serão serão clicaveis. Você também pode adcionar audios e textos."
     help: "Você pode mudar a ordem das referências arrastando e soltando."
     url: "URL:"
     title: "Título:"
