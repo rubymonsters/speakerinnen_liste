@@ -7,7 +7,7 @@ pt:
         display_entries:
           one: Mostrando <b>%{count}</b> %{entry_name}
           other: Mostrando <b>todas %{count}</b> %{entry_name}
-          zero: No %{entry_name} found
+          zero: Não %{entry_name} encontrado
   views:
     pagination:
       first: '&laquo; Primeiro'

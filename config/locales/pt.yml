@@ -27,7 +27,7 @@ pt:
         categories: "Categorias"
         category_language_de: "Alemão:"
         category_language_en: "Inglês:"
-        amount_of_tags: "Amount of tags:"
+        amount_of_tags: "Quantidade de tags:"
         category_name: "Nome categoria"
         current_name: "Nome da categoria atual: "
         new_name: "Digite o novo nome da categoria %{language}: "
@@ -51,9 +51,9 @@ pt:
           show_all: "Listar todas os perfis"
       tags:
         tags: "Tags"
-        current_tagname: "Current tag name: "
+        current_tagname: "nome da tag atual: "
         new_tagname: "Digite uma nova tag: "
-        tags_of: " out of "
+        tags_of: " fora de "
         tags_here_are: "Aqui estão "
         tags_search: "Pesquisar por tagas"
         tags_count: "O número de todas as tags é "
@@ -72,7 +72,7 @@ pt:
         search_text: "nome, twitter ou tag"
         search: "Pesquisar"
       description: "Nossas categorias"
-      description_text: "Nós sentimos fortemente sobre uma representação equilibrada de homens e mulheres* no palco. Nós encorajamos as mulheres* tornar-se mais visível na sua profissão e área de especialização."
+      description_text: "Nós queremos muito uma representação equilibrada entre homens e mulheres* no palco. Nós encorajamos as mulheres* tornar-se mais visível na sua profissão e área de especialização."
       speaker_shoutout: "Você tem algo interessante para dizer?"
       speaker_text: "Entrar na lista Speakerinnen* >>"
       speakers:
@@ -82,20 +82,18 @@ pt:
         categories: "Categorias e tópicos >>"
       mission_statement:
         heading: "Nossa visão"
-        content: "<p>We believe that women speakers should be easier to find for event organizers.</p><p>We believe that event organizers should have the best speakers at their events, regardless of the speakers’ gender identification.</p><p>We believe in collaboration and not competition, so we encourage our speakers and event organizers to support each other and help speakers speak better.</p>"
-      quote: "We believe in collaboration — not competition"
-      quote_text: "So we encourage our speakers and event organizers to support each other and help speakers to improve their performance."
+        content: "<p>Nós acreditamos que deveria ser mais fácil encontrar mulheres palestrantes, pelos organizadores de eventos.</p><p>Acreditamos que os organizadores do evento deve ter os melhores oradores em seus eventos, independentemente da identificação de gênero desses palestrantes.</p><p>Acreditamos na colaboração e não a competição, por isso, incentivamos nossas oradoras e organizadores de evento para apoiar uns aos outros e ajuda-las a falar melhor.</p>"
+      quote: "Acreditamos em colaboração - não competição"
+      quote_text: "Então, nós encorajamos as nossas oradoras e organizadores de evento à apoiar uns aos outros e ajudá-las à melhorar seu desempenho."
       footer:
         about_title: "Sobre nós"
         about: |
-              Speakerinnen.org aims to increase the visibility and participation of women* at (but not limited to) conferences, panels and talk shows.<br>
-              Organizers and hosts can find experts, who gladly (and competently) share their knowledge. <br>
-              women* can register in our database with the topics they are interested in covering, and can add references to their abilities.
+              Speakerinnen.org visa aumentar a visibilidade e participação das mulheres* nos (mas não se limitando a apenas isso) conferências, painéis e debates.<br>
+              Organizadores e anfitriões podem encontrar especialistas, que de bom grado (e competência) compartilham seus conhecimentos.<br>Mulheres * podem registar-se na nossa base de dados com os temas que estão interessadas em falar, e podem adicionar referências as suas habilidades.
         more: ">> mais"
         railsgirls: |
-              8 women* supported by 4 coaches coded this web application as a Rails Girls Berlin learning project.<br><br>
-              <a href='http://railsgirlsberlin.de', target='_blank'>Rails Girls</a> is an international not-for-profit group that aims to get women* into programming
-              with workshops, scholarships, and a safe learning community.
+              8 mulheres* com ajuda de  4 mentores criaram essa aplicação como parte do Rails Girls Berlin um projeto de aprendizado.<br><br>
+              <a href='http://railsgirlsberlin.de', target='_blank'>Rails Girls</a> é um grupo internacional que visa colocar mais mulheres na programação com oficinas, bolsas de estudos e uma comunidade segura de aprendizagem.
         press: "Cobertura da média"
         blog: "Nosso blog"
         faq: "FAQs"
@@ -108,10 +106,10 @@ pt:
         github: "<a href='http://github.com/rubymonsters/speakerinnen_liste' target='_blank', class='content__link--bg'>GitHub</a>"
         devblog: "<a href='http://speakerinnen.wordpress.com/', target='_blank, class='content__link--bg'>Developer Blog</a>"
         faq_short: |
-                <strong>Why is there no speaker for the topic I am looking for?</strong><br>
-                Possibly, nobody has created a tag for this topic yet. As soon as a speaker names this topic as one of her tags, this topic becomes visible as a tag within the topic range.<br>
-                <br><strong>Can anybody join in?</strong><br>
-                Yes.
+                <strong>Por que não há palestrantes para o tópico que eu estou procurando?</strong><br>
+                Possivelmente, por enquanto ninguém criou uma tag para esse tópico. As soon as a speaker names this topic as one of her tags, este tópico se torna visível como uma etiqueta dentro da faixa tópico.<br>
+                <br><strong>Qualquer um pode participar?</strong><br>
+                Sim.
         press_short: |
             <strong>Rauf auf die Podien: Weibliche Redner sind immer noch selten</strong><br>
             <a href="http://www.sueddeutsche.de/news/karriere/arbeit-rauf-auf-die-podien-weibliche-redner-sind-immer-noch-selten-dpa.urn-newsml-dpa-com-20090101-160302-99-61792">Süddeutsche Zeitung</a>
@@ -124,7 +122,7 @@ pt:
             <br><br>
             <strong>1000 Profile bei speakerinnen.org</strong><br>
             <a href="http://www.fillmore.at/innovation/1000-profile-bei-speakerinnen-org-wir-wunschen-uns-speakerinnen-aus-allen-bereichen/">Filmore.at</a>
-        women: "* When we say women* we mean everyone who defines herself as a woman."
+        women: "* Quando dizemos mulheres* queremos dizer todas as pessoas que se definem como uma mulher."
     about:
       title: "Sobre nós"
     press:
@@ -140,7 +138,7 @@ pt:
       list: "Speakerinnen*"
       contact: "Contato"
       impressum: "Detalhes legais"
-      search: "Pesuisar"
+      search: "Pesquisar"
       faq: "FAQ"
       about: "Sobre"
       press: "Pressione"
@@ -202,7 +200,7 @@ pt:
       back: "Voltar"
     index:
       title: "Speakerinnen*"
-      text: "Bem vindos! Aqui vocês podem encontar mulheres* para suas conferências ou eventos: Palestrantes, panel hosts, Oficinas. Navegue por perfis, Filtre por tópicos mais listados(veja abaixo), ou user a pesquisa para procurar por algo espécifico. Aproveite!"
+      text: "Bem vindos! Aqui vocês podem encontar mulheres* para suas conferências ou eventos: Palestrantes, Oficinas, Mesas de discussões. Navegue por perfis, Filtre pelos tópicos mais listados(veja abaixo), ou use a pesquisa para procurar por algo espécifico. Aproveite!"
       name: "Nome"
       twitter: "Twitter"
       topics: "Tópicos"
@@ -224,27 +222,27 @@ pt:
       edit: "Editar"
   flash:
     profiles:
-      created: 'Profile was successfully created.'
-      updated: '%{profile_name} was successfully updated.'
-      destroyed: '%{profile_name} was successfully deleted.'
-      no_permission: "You don’t have permission to edit the profile."
-      show_no_permission: "You don’t have permission to see the profile."
+      created: 'O perfil foi criado com sucesso.'
+      updated: '%{profile_name} foi atualizado com sucesso.'
+      destroyed: '%{profile_name} foi deletado com sucesso.'
+      no_permission: "Você não tem permissão para editar o perfil."
+      show_no_permission: "Você não tem permissão para ver o perfil."
     medialink:
-      created: 'Reference was successfully created.'
-      updated: 'Reference was successfully updated.'
-      destroyed: 'Reference was successfully deleted.'
-      no_permission: "You don’t have permission to edit the reference."
+      created: 'A referência foi criada com sucesso.'
+      updated: A referência foi atualizada com sucesso.'
+      destroyed: 'A referência foi deletada com sucesso.'
+      no_permission: "Você não tem permissão para editar a referência."
     categories:
-      created: '%{category_name} was successfully created.'
-      updated: '%{category_name} was successfully updated.'
-      destroyed: '%{category_name} was successfully deleted.'
+      created: '%{category_name} Criado com sucesso.'
+      updated: '%{category_name} Atualizado com sucesso.'
+      destroyed: '%{category_name} Deletado com sucesso.'
   activerecord:
     attributes:
       profile:
         firstname: "Primeiro nome"
         lastname: "Último nome"
-        bio: "Sua biografia %{language}<br><small> Aqui você pode adcionar uma pequena ou uma grande biografia sobre você. Por favor adcione tópicos especifícos de suas habilidades, na qual você se sente confortavel para palestrar. Isso irá ajudar os organizadores do eventos a entenderem se você é a pessoa que eles estão procurando.</small>"
-        topic_list: "Suas tags<br><small>Por favor olhe primeiro se o tópico que deseja colocar já existe.</small>"
+        bio: "Sua biografia %{language}<br><small> Aqui você pode adcionar uma biografia pequena ou grande sobre você. Por favor adcione tópicos especifícos de suas habilidades, na qual você se sente confortavel para palestrar. Isso irá ajudar os organizadores do eventos a entenderem se você é a pessoa que eles estão procurando.</small>"
+        topic_list: "Suas tags<br><small> Por favor olhe primeiro se o tópico que deseja colocar já existe.</small>"
         main_topic_title: "Tópico principal"
         main_topic: "Seu tópico principal em %{language} (Mais do que 30 caracteres não será visto)<br><small>Por favor escolha um tópico como o seu favorito e entre novamente. Isso será visível junto com seu nome e sua foto na visão geral das palestrantes.</small>"
         tag_list: "Tópicos existentes"
