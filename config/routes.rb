@@ -1,6 +1,6 @@
 SpeakerinnenListe::Application.routes.draw do
 
-  scope '(:locale)', locale: /en|de/ do
+  scope '(:locale)', locale: /en|de|pt/ do
 
     namespace :admin do
       resources :tags, except: [:new, :create] do

@@ -1,0 +1,17 @@
+pt:
+  helpers:
+    page_entries_info:
+      more_pages:
+        display_entries: Mostrando %{entry_name} <b>%{first}&nbsp;-&nbsp;%{last}</b> de <b>%{total}</b> no total
+      one_page:
+        display_entries:
+          one: Mostrando <b>%{count}</b> %{entry_name}
+          other: Mostrando <b>todas %{count}</b> %{entry_name}
+          zero: Não %{entry_name} encontrado
+  views:
+    pagination:
+      first: '&laquo; Primeiro'
+      last: Último &raquo;
+      next: Próximo &rsaquo;
+      previous: '&lsaquo; Prev'
+      truncate: '&hellip;'
