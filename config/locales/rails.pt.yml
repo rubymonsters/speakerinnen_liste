@@ -4,8 +4,8 @@ pt:
       messages:
         record_invalid: 'A validação falhou: %{errors}'
         restrict_dependent_destroy:
-          has_one: Não é possível excluir o registro pois existe um %{record} dependente
-          has_many: Não é possível excluir o registro pois existem %{record} dependentes
+          has_one: Não é possível excluir o registro, pois existe um %{record} dependente
+          has_many: Não é possível excluir o registro, pois existem %{record} dependentes
   date:
     abbr_day_names:
     - Dom
