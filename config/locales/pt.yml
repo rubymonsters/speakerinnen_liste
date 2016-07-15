@@ -5,7 +5,7 @@ pt:
       en: "Inglês"
       de: "Alemão"
   general:
-    add: "Adcionar"
+    add: "Adicionar"
     close: "Fechar"
     edit: "Editar"
     back: "Voltar"
@@ -28,7 +28,7 @@ pt:
         category_language_de: "Alemão:"
         category_language_en: "Inglês:"
         amount_of_tags: "Quantidade de tags:"
-        category_name: "Nome categoria"
+        category_name: "Nome da categoria"
         current_name: "Nome da categoria atual: "
         new_name: "Digite o novo nome da categoria %{language}: "
       profiles:
@@ -38,26 +38,26 @@ pt:
         visibility: "Visibilidade"
         public: "Público"
         make_public: "Tornar público"
-        invisible: "invisível"
+        invisible: "Invisível"
         make_invisible: "Tornar invisível"
         roles: "Funções"
-        comment: "Commentar"
-        add_comment: "Adcionar comentário"
+        comment: "Comentar"
+        add_comment: "Adicionar comentário"
         profile_status: "O perfil é "
-        name_of_profile: "O Nome da palestrante é "
+        name_of_profile: "O nome da palestrante é "
         search_for_name: "Pesquisar por nome"
         edit:
           show: "Mostrar perfil"
-          show_all: "Listar todas os perfis"
+          show_all: "Listar todos os perfis"
       tags:
         tags: "Tags"
         current_tagname: "nome da tag atual: "
         new_tagname: "Digite uma nova tag: "
         tags_of: " fora de "
         tags_here_are: "Aqui estão "
-        tags_search: "Pesquisar por tagas"
+        tags_search: "Pesquisar por tags"
         tags_count: "O número de todas as tags é "
-        tags_filter_option: "Mostrar todas as tagas sem categorias"
+        tags_filter_option: "Mostrar todas as tags sem categorias"
         tags_filter_default: "Mostrar todas as categorias"
       medialink:
         url: "URL:"
@@ -67,12 +67,12 @@ pt:
   pages:
     home:
       search:
-        heading: "Organizadores, Encontre suas palestrantes"
+        heading: "Organizadores, Encontrem suas palestrantes"
         tagline: "Encontrar mulheres palestrantes e moderadoras para a sua conferência"
-        search_text: "nome, twitter ou tag"
+        search_text: "nome, Twitter ou tag"
         search: "Pesquisar"
       description: "Nossas categorias"
-      description_text: "Nós queremos muito uma representação equilibrada entre homens e mulheres* no palco. Nós encorajamos as mulheres* tornar-se mais visível na sua profissão e área de especialização."
+      description_text: "Nós queremos muito uma representação equilibrada entre homens e mulheres* no palco. Nós encorajamos as mulheres* tornarem-se mais visíveis na sua profissão e área de especialização."
       speaker_shoutout: "Você tem algo interessante para dizer?"
       speaker_text: "Entrar na lista Speakerinnen* >>"
       speakers:
@@ -82,32 +82,32 @@ pt:
         categories: "Categorias e tópicos >>"
       mission_statement:
         heading: "Nossa visão"
-        content: "<p>Nós acreditamos que deveria ser mais fácil encontrar mulheres palestrantes, pelos organizadores de eventos.</p><p>Acreditamos que os organizadores do evento deve ter os melhores oradores em seus eventos, independentemente da identificação de gênero desses palestrantes.</p><p>Acreditamos na colaboração e não a competição, por isso, incentivamos nossas oradoras e organizadores de evento para apoiar uns aos outros e ajuda-las a falar melhor.</p>"
+        content: "<p>Nós acreditamos que deveria ser mais fácil encontrar mulheres palestrantes, pelos organizadores de eventos.</p><p>Acreditamos que os organizadores devem ter os melhores oradores em seus eventos, independentemente da identificação de gênero desses palestrantes.</p><p>Acreditamos na colaboração e não na competição, por isso, incentivamos nossas oradoras e organizadores de evento para apoiar uns aos outros e ajudá-las a falarem melhor.</p>"
       quote: "Acreditamos em colaboração - não competição"
-      quote_text: "Então, nós encorajamos as nossas oradoras e organizadores de evento à apoiar uns aos outros e ajudá-las à melhorar seu desempenho."
+      quote_text: "Então, nós encorajamos as nossas oradoras e organizadores de evento a apoiar uns aos outros e ajudá-las a melhorarem seu desempenho."
       footer:
         about_title: "Sobre nós"
         about: |
-              Speakerinnen.org visa aumentar a visibilidade e participação das mulheres* nos (mas não se limitando a apenas isso) conferências, painéis e debates.<br>
-              Organizadores e anfitriões podem encontrar especialistas, que de bom grado (e competência) compartilham seus conhecimentos.<br>Mulheres * podem registar-se na nossa base de dados com os temas que estão interessadas em falar, e podem adicionar referências as suas habilidades.
+              Speakerinnen.org visa aumentar a visibilidade e participação das mulheres* nas (mas não se limitando a apenas isso) conferências, painéis e debates.<br>
+              Organizadores e anfitriões podem encontrar especialistas, que de bom grado (e competência) compartilham seus conhecimentos.<br>Mulheres* podem registar-se na nossa base de dados com os temas que estão interessadas em falar, e podem adicionar referências as suas habilidades.
         more: ">> mais"
         railsgirls: |
-              8 mulheres* com ajuda de  4 mentores criaram essa aplicação como parte do Rails Girls Berlin um projeto de aprendizado.<br><br>
-              <a href='http://railsgirlsberlin.de', target='_blank'>Rails Girls</a> é um grupo internacional que visa colocar mais mulheres na programação com oficinas, bolsas de estudos e uma comunidade segura de aprendizagem.
+              8 mulheres* com ajuda de  4 mentores criaram essa aplicação como parte do Rails Girls Berlin, um projeto de aprendizado.<br><br>
+              <a href='http://railsgirlsberlin.de', target='_blank'>Rails Girls</a> é um grupo internacional que visa colocar mais mulheres na programação através de oficinas, bolsas de estudos e uma comunidade segura de aprendizagem.
         press: "Cobertura da média"
         blog: "Nosso blog"
-        faq: "FAQs"
+        faq: "Perguntas Frequentes"
         links: "Links"
-        links_text: "Aqui você encontra links para projeto parecidos:"
+        links_text: "Aqui você encontra links para projetos similares:"
         more: ">> mais"
         contact: "Contato"
-        contact_link: "Email"
+        contact_link: "E-mail"
         address: "<a href='http://twitter.com/speakerinnen', target='_blank', class='content__link--bg'>Twitter</a>"
         github: "<a href='http://github.com/rubymonsters/speakerinnen_liste' target='_blank', class='content__link--bg'>GitHub</a>"
-        devblog: "<a href='http://speakerinnen.wordpress.com/', target='_blank, class='content__link--bg'>Developer Blog</a>"
+        devblog: "<a href='http://speakerinnen.wordpress.com/', target='_blank, class='content__link--bg'>Blog dos Desenvolvedores</a>"
         faq_short: |
                 <strong>Por que não há palestrantes para o tópico que eu estou procurando?</strong><br>
-                Possivelmente, por enquanto ninguém criou uma tag para esse tópico. As soon as a speaker names this topic as one of her tags, este tópico se torna visível como uma etiqueta dentro da faixa tópico.<br>
+                Possivelmente, por enquanto ninguém criou uma tag para esse tópico. Assim que uma palestrante cadastrar um tópico, este se tornará visível como uma etiqueta dentro da faixa tópico.<br>
                 <br><strong>Qualquer um pode participar?</strong><br>
                 Sim.
         press_short: |
@@ -120,13 +120,13 @@ pt:
             <strong>Die Hälfte der Macht den Speakerinnen</strong><br>
             <a href="http://newthinking.de/2016/03/02/die-halfte-der-macht-den-speakerinnen/">Newthinking Blog</a>
             <br><br>
-            <strong>1000 Profile bei speakerinnen.org</strong><br>
+            <strong>1000 perfis cadastrados em speakerinnen.org</strong><br>
             <a href="http://www.fillmore.at/innovation/1000-profile-bei-speakerinnen-org-wir-wunschen-uns-speakerinnen-aus-allen-bereichen/">Filmore.at</a>
         women: "* Quando dizemos mulheres* queremos dizer todas as pessoas que se definem como uma mulher."
     about:
       title: "Sobre nós"
     press:
-      title: "Press about us"
+      title: "Imprensa"
     imprint:
       title: "Detalhes legais"
       privac¥: "Estamos usando análise de dados Piwik para recolher dados anónimos que vai nos ajudar a melhorar a usabilidade do nosso site."
@@ -141,25 +141,25 @@ pt:
       search: "Pesquisar"
       faq: "FAQ"
       about: "Sobre"
-      press: "Pressione"
-      logged_as: "Logado como"
+      press: "Imprensa"
+      logged_as: "Login efetuado como"
       my_profile: "Meu perfil"
       account: "Conta"
       logout: "Sair"
       signup: "Registre-se como palestrante"
-      login: "Logar"
+      login: "Efetuar login"
   contact:
     form:
-      title: "Nos envie um email:"
+      title: "Nos envie um e-mail:"
       name: "Seu nome*"
       name_placeholder: ""
-      email: "Seu endereço de email*"
+      email: "Seu endereço de e-mail*"
       medialink_placeholder: "Por favor preencha com apenas 21 caracteres"
       subject: "Assunto"
       send: "Enviar"
       body: "Sua mensagem"
-      body_placeholder: "Por favor, nos der alguns detalhes sobre o seu pedido: Onde, quando, o quê e outras informações relevantes."
-      notice: "Yay! Sua mensagem foi enviaada."
+      body_placeholder: "Por favor, informe alguns detalhes sobre o seu pedido: Onde, quando, o quê e outras informações relevantes."
+      notice: "Uhuu! Sua mensagem foi enviada."
       error: "Por favor, preencha todos os campos para que a palestrante possa ter todos os detalhes que ela precisa."
       error_email_for_us: "Por favor preencha todos os campos"
   profiles:
@@ -190,8 +190,8 @@ pt:
       edit: "Editar Perfil"
       destroy: "Deletar"
       sure: "Você tem certeza?"
-      link: "Tenha certeza de adcionar 'http://'"
-      email: "Email:"
+      link: "Tenha certeza que quer adicionar 'http://'"
+      email: "E-mail:"
     medialinks:
       edit: "Editar referências"
     edit:
@@ -200,12 +200,12 @@ pt:
       back: "Voltar"
     index:
       title: "Speakerinnen*"
-      text: "Bem vindos! Aqui vocês podem encontar mulheres* para suas conferências ou eventos: Palestrantes, Oficinas, Mesas de discussões. Navegue por perfis, Filtre pelos tópicos mais listados(veja abaixo), ou use a pesquisa para procurar por algo espécifico. Aproveite!"
+      text: "Bem-vindos! Aqui vocês podem encontrar mulheres* para suas conferências ou eventos: Palestras, Oficinas, Mesas de discussões. Navegue por perfis, Filtre pelos tópicos mais listados(veja abaixo) ou use a pesquisa para procurar por algo específico. Aproveite!"
       name: "Nome"
       twitter: "Twitter"
       topics: "Tópicos"
       city: "Cidade"
-      language: "Linguagem"
+      language: "Idioma"
     new:
       new_profile: "Novo Perfil"
       back: "Voltar"
@@ -215,9 +215,9 @@ pt:
       talks: "Palestras anteriores:"
       media: "Exemplos de palestras anteriores:"
       bio: "Minha Biografia: "
-      email: "Email: "
+      email: "E-mail: "
       twitter: "Twitter:"
-      contact: "Enviar email"
+      contact: "Enviar e-mail"
       back: "Voltar"
       edit: "Editar"
   flash:
@@ -241,21 +241,21 @@ pt:
       profile:
         firstname: "Primeiro nome"
         lastname: "Último nome"
-        bio: "Sua biografia %{language}<br><small> Aqui você pode adcionar uma biografia pequena ou grande sobre você. Por favor adcione tópicos especifícos de suas habilidades, na qual você se sente confortavel para palestrar. Isso irá ajudar os organizadores do eventos a entenderem se você é a pessoa que eles estão procurando.</small>"
+        bio: "Sua biografia %{language}<br><small> Aqui você pode adicionar uma biografia pequena ou grande sobre você. Por favor adicione tópicos especifícos de suas habilidades, na qual você se sente confortável para palestrar. Isso irá ajudar os organizadores de eventos a entenderem se você é a pessoa que eles estão procurando.</small>"
         topic_list: "Suas tags<br><small> Por favor olhe primeiro se o tópico que deseja colocar já existe.</small>"
         main_topic_title: "Tópico principal"
         main_topic: "Seu tópico principal em %{language} (Mais do que 30 caracteres não será visto)<br><small>Por favor escolha um tópico como o seu favorito e entre novamente. Isso será visível junto com seu nome e sua foto na visão geral das palestrantes.</small>"
         tag_list: "Tópicos existentes"
         talks: "Palestras"
-        languages: "Linguagens<br><small>Por favor adicionar linguagens de programçaõ em 'Tópicos'. Não aqui</small>"
+        languages: "Idiomas<br><small>Por favor adicionar linguagens de programção em 'Tópicos'. Não aqui.</small>"
         city: "Cidades"
         twitter: "Twitter"
         picture: "Foto"
-        translation: "<strong>Você pode preencher seu tópico principal e sua biografia em Alemão e Inglês ou com Português:</strong>"
+        translation: "<strong>Você pode preencher seu tópico principal e sua biografia em Alemão, Inglês ou em Português:</strong>"
       medialink:
         url: "URL:"
         title: "Título:"
-        description: "Descrição:<small> ( Você pode formatar o texto usando tags HTML. Por exemplo: < i >< /i >< b >< /b >< br >)</small>"
+        description: "Descrição:<small> (Você pode formatar o texto usando tags HTML. Por exemplo: < i >< /i >< b >< /b >< br >)</small>"
   devise:
     registrations:
       edit:
@@ -265,7 +265,7 @@ pt:
         password_current: "Senha atual"
         update: "Atualizar Conta"
         delete_account: "Deletar minha Conta"
-        unhappy: "Infeliz?"
+        unhappy: "Descontente?"
         delete: "Deletar"
         sure: "Você tem certeza?"
         confirmation: "Esperando pela confirmação: "
@@ -274,17 +274,17 @@ pt:
         password: "Senhas"
     sessions:
       new:
-        login: "Logar-se"
-        signin: "Registra-se"
+        login: "Fazer login"
+        signin: "Registrar-se"
   medialinks:
     edit: "Editar Referências"
     new: "Adicionar Referências"
     delete: "Deletar Referências"
     index: "Referências"
-    show: "Show Referências"
+    show: "Mostrar Referências"
     # Translation
-    medialink_description: "Aqui você pode adcionar exemplo de suas palestras antreiores, mesas de discussões, entrevistas ou algo parecido.
-Vai ser melhor se não tiver muitos, porém não deixa com poucos veja com equilíbrio. Adcione alguns exemplos onde organizadores de eventos possam ver você como palestrante. Links para o youtube serão visto como embedded videos. Outros links serão serão clicaveis. Você também pode adcionar audios e textos."
+    medialink_description: "Aqui você pode adicionar exemplo de suas palestras antreiores, mesas de discussões, entrevistas ou algo parecido.
+Vai ser melhor se não tiver muitos, porém não deixe com poucas informações. Adicione alguns exemplos onde organizadores de eventos possam ver você como palestrante. Links para o YouTube serão visto como vídeos incorporados. Outros links serão clicáveis. Você também pode adicionar áudios e textos."
     help: "Você pode mudar a ordem das referências arrastando e soltando."
     url: "URL:"
     title: "Título:"
@@ -294,8 +294,8 @@ Vai ser melhor se não tiver muitos, porém não deixa com poucos veja com equil
     language: "en"
     tooltip: "Mude a ordem arrastando e soltando."
   search:
-    any: "Any"
-    no_profile: "Não existe perfis! Aqui está o link %{link}"
+    any: "Qualquer"
+    no_profile: "Não existe perfil! Aqui está o link %{link}"
     profiles_topics: "Você pesquisou pelo tópico: <b>%{topics_name}</b> e encontrou %{profiles_count} speakerinnen."
     profiles: "%{link}"
     all_profiles: "Voltar para todos os perfis >>"
