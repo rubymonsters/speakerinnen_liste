@@ -3,7 +3,7 @@
 pt:
   devise:
     confirmations:
-      confirmed: "Sua conta foi confirmada com sucesso, Logar-se."
+      confirmed: "Sua conta foi confirmada com sucesso. Faça o login na sua conta."
       send_instructions: "Você receberá um e-mail com instruções sobre como confirmar a sua conta em poucos minutos."
       send_paranoid_instructions: "Se o seu endereço de e-mail existe no nosso banco de dados, você receberá um e-mail com instruções sobre como confirmar a sua conta em poucos minutos."
     failure:
@@ -12,9 +12,9 @@ pt:
       invalid: "Senha ou email inválido"
       invalid_token: "Token de autenticação inválido."
       locked: "Sua conta está bloqueada."
-      not_found_in_database: "Email ou senha inválida"
+      not_found_in_database: "E-mail ou senha inválida"
       timeout: "Sua sessão expirou, por favor entre novamente para continuar."
-      unauthenticated: "Você precisa de entrar ou se registrar antes de continuar."
+      unauthenticated: "Você precisa entrar na sua conta ou se registrar antes de continuar."
       unconfirmed: "Você tem que confirmar sua senha antes de continuar."
     mailer:
       confirmation_instructions:
@@ -24,27 +24,27 @@ pt:
       unlock_instructions:
         subject: "Desbloquear Instruções"
       published:
-        subject: "Você agora está publicada no  site Speakerinnen"
+        subject: "Você agora está cadastrada no site Speakerinnen.org"
     omniauth_callbacks:
-      failure: "Não foi possível autenticar-la de %{kind} porque \"%{reason}\"."
+      failure: "Não foi possível autenticar de %{kind} porque \"%{reason}\"."
       success: "Com êxito autenticado %{kind} conta."
     passwords:
-      no_token: "Você não pode acessar essa página sem chegar a partir de um e-mail de redefinição de senha. Se você vem de um e-mail de redefinição de senha, por favor, certifique-se de que você usou o URL completo fornecido."
+      no_token: "Você não pode acessar essa página sem chegar a partir de um e-mail de redefinição de senha. Se você recebeu um e-mail de redefinição de senha, por favor, certifique-se de que você usou a URL completa fornecida."
       send_instructions: "Você receberá um e-mail com instruções sobre como redefinir sua senha em poucos minutos."
       send_paranoid_instructions: "Se o seu endereço de e-mail existe no nosso banco de dados, você receberá um link de recuperação de senha no seu endereço de e-mail em poucos minutos."
       updated: "Sua senha foi mudada com sucesso. Você está logada agora."
-      updated_not_active: "Sua senha foi mudada com sucesso."
+      updated_not_active: "Sua senha foi alterada com sucesso."
       new_password: "Nova senha"
       password_confirmation: "Confirmar nova senha"
       edit_password: "Mudar senha"
     registrations:
-      explanation_email: "Nós precisamos de seu email para os organizadores poderem entrar em contato."
+      explanation_email: "Nós precisamos de seu e-mail para os organizadores poderem entrar em contato."
       destroyed: "Tchau! A sua conta foi cancelada com sucesso. Esperamos te ver novamente em breve."
-      signed_up: "Bem vinda! Você se inscreveu com êxito."
-      signed_up_but_inactive: "Você se inscreveu com êxito. No entanto, não foi possível assinar você porque a sua conta ainda não está ativada."
-      signed_up_but_locked: "Você se inscreveu com êxito. No entanto, não foi possível assinar você porque sua conta está bloqueada."
+      signed_up: "Bem-vinda! Você se cadastrou com sucesso."
+      signed_up_but_inactive: "Você se cadastrou com sucesso. No entanto, não foi possível fazer o login na sua conta porque você ainda não confirmou seu e-mail."
+      signed_up_but_locked: "Você se cadastrou com sucesso. No entanto, não foi possível fazer o login porque sua conta está bloqueada."
       signed_up_but_unconfirmed: "Uma mensagem com um link de confirmação foi enviado para seu endereço de e-mail. Por favor, abra o link para ativar sua conta."
-      update_needs_confirmation: "Você atualizou sua conta com êxito, mas precisamos confirmar seu novo endereço de e-mail. Por favor, verifique seu e-mail e clique no link de confirmação para finalizar confirmar o seu novo endereço de e-mail."
+      update_needs_confirmation: "Você atualizou sua conta com êxito, mas precisamos confirmar seu novo endereço de e-mail. Por favor, verifique seu e-mail e clique no link de confirmação para finalizar a alteração do seu novo endereço de e-mail."
       updated: "Você atualizou sua conta com sucesso."
       email: "E-Mail"
       password: "Ao menos 8 caracteres"
@@ -60,19 +60,19 @@ pt:
       resend_instructions_title: "Reenviar instruções de confirmação"
       resend_instructions: "Enviar instruções"
     sessions:
-      signed_in: "Logado com sucesso."
-      signed_out: "Deslogado com sucesso."
+      signed_in: "Login efetuado com sucesso."
+      signed_out: "Você saiu da sua conta."
     unlocks:
       send_instructions: "Você receberá um e-mail com instruções sobre como desbloquear a sua conta em poucos minutos."
       send_paranoid_instructions: "Se a sua conta existe, você receberá um e-mail com instruções sobre como desbloqueá-lo em poucos minutos."
-      unlocked: "A sua conta foi desbloqueado com sucesso. Faça login para continuar."
+      unlocked: "A sua conta foi desbloqueada com sucesso. Faça login para continuar."
   errors:
     messages:
-      already_confirmed: "Já foi confirmada, por favor tente fazer login."
-      confirmation_period_expired: "precisa ser confirmado em %{period}, por favor faça uma nova requisição"
-      expired: "Expirado, porfavor faça uma nova requisição."
+      already_confirmed: "Sua conta já foi confirmada, por favor tente fazer login."
+      confirmation_period_expired: "precisa ser confirmado em %{period}, por favor faça uma nova solicitação"
+      expired: "Expirado, por favor faça uma nova solicitação."
       not_found: "Não encontrado"
       not_locked: "Não foi bloqueado"
       not_saved:
-        one: "1 erro proibiu de isso ser criado:d"
+        one: "1 erro proibiu isso ser criado:d"
         other: "%{count} errors proibiram isso de ser salvo:"
