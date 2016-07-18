@@ -56,7 +56,7 @@ pt:
         tags_of: " fora de "
         tags_here_are: "Aqui estão "
         tags_search: "Pesquisar por tags"
-        tags_count: "O número de todas as tags é "
+        tags_count: "O quantidade de todas as tags é "
         tags_filter_option: "Mostrar todas as tags sem categorias"
         tags_filter_default: "Mostrar todas as categorias"
       medialink:
@@ -67,7 +67,7 @@ pt:
   pages:
     home:
       search:
-        heading: "Organizadores, Encontrem suas palestrantes"
+        heading: "Organizadores, encontrem suas palestrantes"
         tagline: "Encontrar mulheres palestrantes e moderadoras para a sua conferência"
         search_text: "nome, Twitter ou tag"
         search: "Pesquisar"
@@ -94,7 +94,7 @@ pt:
         railsgirls: |
               8 mulheres* com ajuda de  4 mentores criaram essa aplicação como parte do Rails Girls Berlin, um projeto de aprendizado.<br><br>
               <a href='http://railsgirlsberlin.de', target='_blank'>Rails Girls</a> é um grupo internacional que visa colocar mais mulheres na programação através de oficinas, bolsas de estudos e uma comunidade segura de aprendizagem.
-        press: "Cobertura da média"
+        press: "Cobertura da imprensa"
         blog: "Nosso blog"
         faq: "Perguntas Frequentes"
         links: "Links"
@@ -126,10 +126,10 @@ pt:
     about:
       title: "Sobre nós"
     press:
-      title: "Imprensa"
+      title: "Opinião da imprensa"
     imprint:
       title: "Detalhes legais"
-      privac¥: "Estamos usando análise de dados Piwik para recolher dados anónimos que vai nos ajudar a melhorar a usabilidade do nosso site."
+      privac¥: "Estamos usando análise de dados Piwik para recolher dados anônimos que vai nos ajudar a melhorar a usabilidade do nosso site."
   layouts:
     application:
       title: "speakerinnen.org"
@@ -175,9 +175,9 @@ pt:
       copyright_photo: "Por favor tenha certeza de usar .jpg, .jpeg ou .png e de ter os direitos sobre essa foto."
       size_photo: "Sua foto deve ter no máximo 1MB."
     profile:
-      firstname: 'Primeiro nome:'
-      lastname: 'Último nome:'
-      topics: "Meu tópicos:"
+      firstname: 'Nome:'
+      lastname: 'Sobrenome:'
+      topics: "Meus tópicos:"
       languages: "Idiomas que falo:"
       talks: "Palestras anteriores:"
       media: "Exemplos de palestras anteriores:"
@@ -239,15 +239,15 @@ pt:
   activerecord:
     attributes:
       profile:
-        firstname: "Primeiro nome"
-        lastname: "Último nome"
+        firstname: "Nome"
+        lastname: "Sobrenome"
         bio: "Sua biografia %{language}<br><small> Aqui você pode adicionar uma biografia pequena ou grande sobre você. Por favor adicione tópicos especifícos de suas habilidades, na qual você se sente confortável para palestrar. Isso irá ajudar os organizadores de eventos a entenderem se você é a pessoa que eles estão procurando.</small>"
         topic_list: "Suas tags<br><small> Por favor olhe primeiro se o tópico que deseja colocar já existe.</small>"
         main_topic_title: "Tópico principal"
         main_topic: "Seu tópico principal em %{language} (Mais do que 30 caracteres não será visto)<br><small>Por favor escolha um tópico como o seu favorito e entre novamente. Isso será visível junto com seu nome e sua foto na visão geral das palestrantes.</small>"
         tag_list: "Tópicos existentes"
         talks: "Palestras"
-        languages: "Idiomas<br><small>Por favor adicionar linguagens de programção em 'Tópicos'. Não aqui.</small>"
+        languages: "Idiomas<br><small>Por favor adicionar linguagens de programação em 'Tópicos'. Não aqui.</small>"
         city: "Cidades"
         twitter: "Twitter"
         picture: "Foto"
