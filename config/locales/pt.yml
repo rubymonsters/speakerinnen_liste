@@ -56,7 +56,7 @@ pt:
         tags_of: " fora de "
         tags_here_are: "Aqui estão "
         tags_search: "Pesquisar por tags"
-        tags_count: "O quantidade de todas as tags é "
+        tags_count: "A quantidade de todas as tags é "
         tags_filter_option: "Mostrar todas as tags sem categorias"
         tags_filter_default: "Mostrar todas as categorias"
       medialink:
