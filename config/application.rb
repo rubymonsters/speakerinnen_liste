@@ -26,7 +26,7 @@ module SpeakerinnenListe
 
 # globlalize fallback
     config.i18n.fallbacks = {'de' => 'en', 'en' => 'de'}
-    config.i18n.available_locales = [:en, :de]
+    config.i18n.available_locales = [:en, :de, :pt]
 
     config.i18n.enforce_available_locales = true
     # or if one of your gem compete for pre-loading, use

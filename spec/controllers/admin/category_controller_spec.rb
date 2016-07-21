@@ -13,14 +13,14 @@ describe Admin::CategoriesController, type: :controller do
 
     specify { expect(response).to render_template(:new) }
     it 'builds translation' do
-      expect(assigns(:category).translations.size).to eq 2
+      expect(assigns(:category).translations.size).to eq 3
     end
   end
 
   describe 'POST create' do
     before(:each) do
       @old_categories = Category.count
-      post :create, 'category'=>{'translations_attributes'=>{'0'=>{'locale'=>'de', 'name'=>'Wissenschaft'}, '1'=>{'locale'=>'en', 'name'=>'Science'}}}
+      post :create, 'category'=>{'translations_attributes'=>{'0'=>{'locale'=>'de', 'name'=>'Wissenschaft'}, '1'=>{'locale'=>'en', 'name'=>'Science'}, '2' => {'locale'=>'pt', 'name'=>'Ciência'}}}
     end
 
     specify { expect(response).to redirect_to("/#{I18n.locale}/admin/categories") }
@@ -52,7 +52,7 @@ describe Admin::CategoriesController, type: :controller do
     end
 
     it 'builds translation' do
-      expect(assigns(:category).translations.size).to eq 2
+      expect(assigns(:category).translations.size).to eq 3
     end
   end
 
@@ -85,6 +85,7 @@ describe Admin::CategoriesController, type: :controller do
     before(:each) do
       de_factory_translation = category.translations.find_by('locale' => 'de')
       en_translation = category.translations.create!('locale' => 'en')
+      pt_translation = category.translations.create!('locale' => 'pt')
 
       category_params = {
         translations_attributes:
@@ -99,6 +100,12 @@ describe Admin::CategoriesController, type: :controller do
               'locale':       'en',
               'name':         'Science',
               'id':           en_translation.id
+            },
+          '2':
+            {
+              'locale':       'pt',
+              'name':         'Ciência',
+              'id':           pt_translation.id
             }
             }
       }
@@ -106,7 +113,7 @@ describe Admin::CategoriesController, type: :controller do
     end
 
     it "doesn't create extra translations" do
-      expect(category.reload.translations.size).to eq(2)
+      expect(category.reload.translations.size).to eq(3)
     end
 
     it "show the correct translation when 'I18n.locale :de'" do
@@ -117,6 +124,11 @@ describe Admin::CategoriesController, type: :controller do
     it "show the correct translation when 'I18n.locale :en'" do
       I18n.locale = 'en'
       expect(assigns(:category).name).to eq 'Science'
+    end
+
+    it "show the correct translation when 'I18n.locale :pt'" do
+      I18n.locale = 'pt'
+      expect(assigns(:category).name).to eq 'Ciência'
     end
   end
 end
