@@ -23,36 +23,28 @@ class ProfilesSearch
       .includes(taggings: :tag)
       .references(:tag)
       .where("firstname || ' ' || lastname ILIKE ?
-              OR twitter ILIKE ANY ( array[?] )
-              OR tags.name ILIKE ANY ( array[?] )",
-              "%" + @quick + "%", @quick_array, @quick_array)
+             OR twitter ILIKE ANY ( array[?] )
+             OR tags.name ILIKE ANY ( array[?] )",
+             '%' + @quick + '%', @quick_array, @quick_array)
   end
 
   def detailed_search_result
     return Profile.none if @query.values.all? &:blank?
-    result = Profile
-      .where('city ILIKE :city', city: "%#{@query[:city]}%")
-      .where("firstname || ' ' || lastname ILIKE :name", name: "%#{@query[:name]}%")
-      .where('twitter ILIKE :twitter', twitter: "%#{@query[:twitter]}%")
+    result = Profile.where('city ILIKE :city', city: "%#{@query[:city]}%").where("firstname || ' ' || lastname ILIKE :name", name: "%#{@query[:name]}%").where('twitter ILIKE :twitter', twitter: "%#{@query[:twitter]}%")
 
     if @query[:languages].present? # && @query[:languages] =~ /[abc]{2}/
-      result = result
-        .where('languages ILIKE :iso_start OR
-                languages ILIKE :iso OR
-                languages ILIKE :en_name OR
-                languages ILIKE :de_name OR
-                languages ILIKE :own_name',
-                SearchLanguages.search_strings(@query[:languages]))
+      result = result.where('languages ILIKE :iso_start OR
+                            languages ILIKE :iso OR
+                            languages ILIKE :en_name OR
+                            languages ILIKE :de_name OR
+                            languages ILIKE :own_name',
+                            SearchLanguages.search_strings(@query[:languages]))
     end
     #
     # to get the search for tags working, we had to add that if statement
     if @query[:topics].present?
-      result = result
-        .includes(taggings: :tag)
-        .references(:tag)
-        .where('tags.name ILIKE :topics', topics: "%#{@query[:topics]}%")
+      result = result.includes(taggings: :tag).references(:tag).where('tags.name ILIKE :topics', topics: "%#{@query[:topics]}%")
     end
     result
   end
-
 end

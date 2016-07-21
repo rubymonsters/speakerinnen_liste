@@ -8,9 +8,9 @@ Style/AlignHash:
   Enabled: false
 
 Metrics/LineLength:
-  Max: 100
+  Max: 170
 Metrics/MethodLength:
-  Max: 5
+  Max: 15
 Metrics/ParameterLists:
   Max: 4
 

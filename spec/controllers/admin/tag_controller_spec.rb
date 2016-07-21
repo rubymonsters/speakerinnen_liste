@@ -2,8 +2,8 @@ include AuthHelper
 
 describe Admin::TagsController, type: :controller do
   let!(:admin) { Profile.create!(FactoryGirl.attributes_for(:admin)) }
-  let!(:ada) { Profile.create!(FactoryGirl.attributes_for(:published, topic_list: ['algebra','algorithm','computer'])) }
-  let!(:marie) { Profile.create!(FactoryGirl.attributes_for(:published, topic_list: ['radioactive','x-ray'])) }
+  let!(:ada) { Profile.create!(FactoryGirl.attributes_for(:published, topic_list: %w('algebra' 'algorithm' 'computer'))) }
+  let!(:marie) { Profile.create!(FactoryGirl.attributes_for(:published, topic_list: ['radioactive', 'x-ray'])) }
 
   before(:each) do
     sign_in admin
@@ -21,11 +21,10 @@ describe Admin::TagsController, type: :controller do
       it 'should contain all tags' do
         expect(assigns(:tags)).to eq(
           [ActsAsTaggableOn::Tag.find_by(name: ada.topic_list[0]),
-          ActsAsTaggableOn::Tag.find_by(name: ada.topic_list[1]),
-          ActsAsTaggableOn::Tag.find_by(name: ada.topic_list[2]),
-          ActsAsTaggableOn::Tag.find_by(name: marie.topic_list[0]),
-          ActsAsTaggableOn::Tag.find_by(name: marie.topic_list[1])]
-          )
+           ActsAsTaggableOn::Tag.find_by(name: ada.topic_list[1]),
+           ActsAsTaggableOn::Tag.find_by(name: ada.topic_list[2]),
+           ActsAsTaggableOn::Tag.find_by(name: marie.topic_list[0]),
+           ActsAsTaggableOn::Tag.find_by(name: marie.topic_list[1])])
       end
     end
 
@@ -45,8 +44,7 @@ describe Admin::TagsController, type: :controller do
       it 'find only the topic associated with the category' do
         expect(assigns(:tags)).to eq(
           [ActsAsTaggableOn::Tag.find_by(name: ada.topic_list[0]),
-          ActsAsTaggableOn::Tag.find_by(name: marie.topic_list[1])]
-          )
+           ActsAsTaggableOn::Tag.find_by(name: marie.topic_list[1])])
       end
 
       it 'find not the topics that is not associated with the category' do
@@ -66,8 +64,7 @@ describe Admin::TagsController, type: :controller do
       it 'find the correct topic' do
         expect(assigns(:tags)).to eq(
           [ActsAsTaggableOn::Tag.find_by(name: 'algebra'),
-          ActsAsTaggableOn::Tag.find_by(name: 'algorithm')
-          ])
+           ActsAsTaggableOn::Tag.find_by(name: 'algorithm')])
       end
     end
 
@@ -77,7 +74,7 @@ describe Admin::TagsController, type: :controller do
         category.save!
         ada_tag = ActsAsTaggableOn::Tag.find_by(name: ada.topic_list[0])
         ada_tag.categories << category
-        get :categorization, { q: 'alg', uncategorized: true }
+        get :categorization, q: 'alg', uncategorized: true
       end
 
       specify { expect(response).to render_template(:categorization) }
@@ -106,15 +103,13 @@ describe Admin::TagsController, type: :controller do
           ActsAsTaggableOn::Tag.find_by(name: ada.topic_list[1]),
           ActsAsTaggableOn::Tag.find_by(name: ada.topic_list[2]),
           ActsAsTaggableOn::Tag.find_by(name: marie.topic_list[0]),
-          ActsAsTaggableOn::Tag.find_by(name: marie.topic_list[1])
-          ])
+          ActsAsTaggableOn::Tag.find_by(name: marie.topic_list[1])])
       end
 
       it 'does not categorized topics' do
         expect(assigns(:tags)).to_not eq([ActsAsTaggableOn::Tag.find_by(name: ada.topic_list[0])])
       end
     end
-
   end
 
   describe 'GET edit' do
@@ -127,12 +122,10 @@ describe Admin::TagsController, type: :controller do
     it 'renders the edit view' do
       expect(assigns(:tag)).to eq(ActsAsTaggableOn::Tag.find_by(name: ada.topic_list[0]))
     end
-
   end
 
   describe 'PUT update' do
     context 'rename the topic' do
-
       before(:each) do
         @wrong_topic = ActsAsTaggableOn::Tag.find_by(name: ada.topic_list[0])
       end
@@ -164,7 +157,6 @@ describe Admin::TagsController, type: :controller do
     end
   end
 
-
   describe 'POST' do
     before(:each) do
       @tag = ActsAsTaggableOn::Tag.find_by_name('algorithm')
@@ -178,7 +170,7 @@ describe Admin::TagsController, type: :controller do
 
       specify { expect(response).to redirect_to("/#{I18n.locale}/admin/tags/categorization") }
       it 'category gets assigned to a topic' do
-        expect(assigns(:tag).categories.first.name).to eq "Science"
+        expect(assigns(:tag).categories.first.name).to eq 'Science'
       end
     end
 

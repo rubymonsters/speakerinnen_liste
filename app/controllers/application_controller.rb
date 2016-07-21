@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
 
     redirect_to profiles_url, notice: (I18n.t('flash.profiles.no_permission'))
   end
-  
+
   def after_sign_in_path_for(resource)
     profile_url(resource) || root_path
   end
