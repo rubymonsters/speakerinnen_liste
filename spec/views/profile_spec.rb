@@ -1,21 +1,22 @@
 include AuthHelper
 
 describe 'profile navigation' do
-  let!(:ada) { Profile.create!(FactoryGirl.attributes_for(:published,
-                                                          firstname: 'Ada',
-                                                          lastname: 'Lovelace',
-                                                          email: 'ada@lovelace.de',
-                                                          twitter: '@alove',
-                                                          main_topic: 'first computer programm',
-                                                          bio: 'first programmer',
-                                                          city: 'London',
-                                                          languages: 'english, french',
-                                                          topic_list: 'algorithm, mathematic'
-                                                                    )) }
-  let!(:ada_medialink) { FactoryGirl.create(:medialink, profile_id: ada.id,
-                                                        title: 'Ada and the computer',
-                                                        url: 'www.adalovelace.de',
-                                                        description: 'How to programm')}
+  let!(:ada) do
+    Profile.create!(FactoryGirl.attributes_for(:published, firstname: 'Ada',
+                                                           lastname: 'Lovelace',
+                                                           email: 'ada@lovelace.de',
+                                                           twitter: '@alove',
+                                                           main_topic: 'first computer programm',
+                                                           bio: 'first programmer',
+                                                           city: 'London',
+                                                           languages: 'english, french',
+                                                           topic_list: 'algorithm, mathematic'))
+  end
+  let!(:ada_medialink) do
+    FactoryGirl.create(:medialink, profile_id: ada.id, title: 'Ada and the computer',
+                                                       url: 'www.adalovelace.de',
+                                                       description: 'How to programm')
+  end
 
   describe 'show view profile' do
     before do
