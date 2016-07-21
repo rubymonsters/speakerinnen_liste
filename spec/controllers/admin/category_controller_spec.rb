@@ -9,7 +9,7 @@ describe Admin::CategoriesController, type: :controller do
   end
 
   describe 'GET new' do
-    before(:each) {  get :new  }
+    before(:each) {  get :new }
 
     specify { expect(response).to render_template(:new) }
     it 'builds translation' do
@@ -20,7 +20,17 @@ describe Admin::CategoriesController, type: :controller do
   describe 'POST create' do
     before(:each) do
       @old_categories = Category.count
-      post :create, 'category'=>{'translations_attributes'=>{'0'=>{'locale'=>'de', 'name'=>'Wissenschaft'}, '1'=>{'locale'=>'en', 'name'=>'Science'}, '2' => {'locale'=>'pt', 'name'=>'Ciência'}}}
+      post :create, 'category' => { 'translations_attributes':
+         {
+           '0':
+            { 'locale':  'de',
+              'name':    'Wissenschaft' },
+           '1':
+            { 'locale': 'en',
+              'name':   'Science' },
+           '2':
+            { 'locale': 'pt',
+              'name':   'Ciência' } } }
     end
 
     specify { expect(response).to redirect_to("/#{I18n.locale}/admin/categories") }
@@ -58,7 +68,6 @@ describe Admin::CategoriesController, type: :controller do
 
   describe 'PUT update' do
     context 'rename the category' do
-
       before(:each) do
         put :update, id: category.id, category: { name: 'Science & Technology' }
       end

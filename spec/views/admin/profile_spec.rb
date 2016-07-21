@@ -3,32 +3,32 @@ include AuthHelper
 describe 'admin navigation' do
   let!(:admin) { Profile.create!(FactoryGirl.attributes_for(:admin)) }
   let!(:admin_medialink) { FactoryGirl.create(:medialink, profile_id: admin.id) }
-  let!(:non_admin) { Profile.create!(FactoryGirl.attributes_for(:published,
-                    firstname: 'Ada',
+  let!(:non_admin) do
+    Profile.create!(FactoryGirl.attributes_for(:published, firstname: 'Ada',
                     lastname: 'Lovelace',
                     email: 'ada@lovelace.de',
                     twitter: '@alove',
                     translations_attributes:
                       {
-                      '0':
+                        '0':
                         { 'locale':       'de',
                           'main_topic':   'erstes Computer Programm',
                           'bio':          'erste Programmiererin' },
-                      '1':
+                        '1':
                         { 'locale':       'en',
                           'main_topic':   'first computer program',
                           'bio':          'first female programer' }
-                        },
+                      },
                     city: 'London',
                     languages: 'english, french',
-                    topic_list: 'algorithm, mathematic')
-                      )
-                    }
-  let!(:non_admin_medialink) { FactoryGirl.create(:medialink,
-                                  profile_id: non_admin.id,
-                                  title: 'Ada and the computer',
+                    topic_list: 'algorithm, mathematic'))
+  end
+  let!(:non_admin_medialink) do
+    FactoryGirl.create(:medialink, profile_id: non_admin.id,
+                                   title: 'Ada and the computer',
                                    url: 'www.adalovelace.de',
-                                   description: 'How to programm')}
+                                   description: 'How to programm')
+  end
 
   describe 'in profile' do
     before do
@@ -57,6 +57,5 @@ describe 'admin navigation' do
       expect(page).to have_content('www.adalovelace.de')
       expect(page).to have_content('How to programm')
     end
-
   end
 end

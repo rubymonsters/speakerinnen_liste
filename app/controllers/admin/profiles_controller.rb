@@ -36,7 +36,7 @@ class Admin::ProfilesController < Admin::BaseController
   def destroy
     @profile.destroy
 
-     respond_to do |format|
+    respond_to do |format|
       format.html { redirect_to admin_profiles_path, notice: (I18n.t('flash.profiles.destroyed', profile_name: @profile.name_or_email)) }
       format.js   { render layout: false }
     end
@@ -103,5 +103,4 @@ class Admin::ProfilesController < Admin::BaseController
   def sort_direction
     %w(asc desc).include?(params[:direction]) ? params[:direction] : 'desc'
   end
-
 end

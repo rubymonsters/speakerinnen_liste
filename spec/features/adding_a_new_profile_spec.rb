@@ -5,14 +5,14 @@ describe 'profile adding' do
     fill_in 'E-Mail', with: 'test@test.de'
     fill_in 'profile_password', with: '12345678'
     fill_in 'profile_password_confirmation', with: '12345678'
-    click_button I18n.t(:signup, scope: "devise.registrations")
+    click_button I18n.t(:signup, scope: 'devise.registrations')
 
     Profile.last.confirm!
 
     click_link I18n.t(:login, scope: 'layouts.application')
     fill_in 'E-Mail', with: 'test@test.de'
     fill_in 'profile_password', with: '12345678'
-    click_button I18n.t(:signin, scope: "devise.registrations")
+    click_button I18n.t(:signin, scope: 'devise.registrations')
 
     click_link I18n.t(:edit, scope: 'profiles.profile')
     fill_in I18n.t(:firstname, scope: 'activerecord.attributes.profile'), with: 'Ada'
