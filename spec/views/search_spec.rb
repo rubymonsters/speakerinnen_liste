@@ -3,7 +3,7 @@ require 'capybara/poltergeist'
 Capybara.javascript_driver = :poltergeist
 
 describe 'profile search', type: :view do
-  let!(:ada) { FactoryGirl.create(:published, firstname: 'Ada', lastname: 'Lovelace', city: 'London', twitter: 'Adalove', languages: "Spanish, English") }
+  let!(:ada) { FactoryGirl.create(:published, firstname: 'Ada', lastname: 'Lovelace', city: 'London', twitter: 'Adalove', languages: 'Spanish, English') }
 
   context 'on startpage' do
     before { visit root_path }
@@ -50,7 +50,7 @@ describe 'profile search', type: :view do
       visit profiles_path
     end
 
-    describe 'click link detailed search',:js => true do
+    describe 'click link detailed search', js: true do
       before do
         find('#detailed-search-trigger').click
       end
@@ -60,10 +60,9 @@ describe 'profile search', type: :view do
       end
 
       it 'should hide quick search' do
-        skip "TODO: Does not match the correct CSS, even though the id and class are there"
+        skip 'TODO: Does not match the correct CSS, even though the id and class are there'
         expect(page).to have_css('#quick-search.hidden')
       end
     end
   end
-
 end
