@@ -69,10 +69,10 @@ class Profile < ActiveRecord::Base
     main_topic.present? ? main_topic : topic_list.first
   end
 
- # Try building a slug based on the following fields in
+  # Try building a slug based on the following fields in
   # increasing order of specificity.
   def slug_candidate
-    #[:full_name, :id] - you can do this only onUpdate (when :id already set) When you are creating a new record in your DB table this will not work!
+    # [:full_name, :id] - you can do this only onUpdate (when :id already set) When you are creating a new record in your DB table this will not work!
     [
       :fullname,
       [:fullname, :id]
@@ -80,7 +80,7 @@ class Profile < ActiveRecord::Base
   end
 
   def should_generate_new_friendly_id?
-   slug.blank? || firstname_changed? || lastname_changed?
+    slug.blank? || firstname_changed? || lastname_changed?
   end
 
   def website_with_protocol
@@ -125,13 +125,11 @@ class Profile < ActiveRecord::Base
       'created_at',
       'updated_at',
       'website'
-    ).merge(
-      'medialinks' => medialinks,
-      'topics' => topics.map(&:name),
-      'picture' => picture,
-      'bio' => bio_translations,
-      'main_topic' => main_topic_translations
-    )
+    ).merge('medialinks' => medialinks,
+            'topics' => topics.map(&:name),
+            'picture' => picture,
+            'bio' => bio_translations,
+            'main_topic' => main_topic_translations)
   end
 
   # for simple admin search

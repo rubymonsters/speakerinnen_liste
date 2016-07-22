@@ -82,7 +82,7 @@ class ProfileTest < ActiveSupport::TestCase
       'id'         => 1,
       'firstname'  => 'Ada',
       'lastname'   => 'Lovelace',
-      #'languages'  => 'Deutsch',
+      # 'languages'  => 'Deutsch',
       'city'       => 'New York',
       'twitter'    => 'alove',
       'created_at' => '2014-12-06T15:04:13.000Z',

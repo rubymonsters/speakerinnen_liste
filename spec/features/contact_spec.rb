@@ -32,7 +32,7 @@ describe 'contact profile' do
   it 'fills the contact form in two steps' do
     visit profile_path(id: user.id)
 
-    fill_in "message_" + HONEYPOT_EMAIL_ATTR_NAME, with: 'Ada@email.de'
+    fill_in 'message_' + HONEYPOT_EMAIL_ATTR_NAME, with: 'Ada@email.de'
     click_button I18n.t('.send', scope: 'contact.form')
 
     expect(page).to have_content(I18n.t(:error, scope: 'contact.form'))
@@ -45,5 +45,4 @@ describe 'contact profile' do
 
     expect(page).to have_content(I18n.t(:notice, scope: 'contact.form'))
   end
-
 end

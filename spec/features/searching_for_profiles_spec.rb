@@ -4,10 +4,9 @@ describe 'profile search' do
   let!(:profile2) { FactoryGirl.create(:published, firstname: 'Christiane', lastname: 'Nüsslein-Volhard', city: 'Heidelberg', languages: 'German') }
   let!(:profile3) { FactoryGirl.create(:published, firstname: 'Maren ', lastname: 'Meier') }
 
-  let!(:profile_not_matched) { FactoryGirl.create(:published, firstname: 'Angela', city: 'New York', twitter: '@adavis' ) }
+  let!(:profile_not_matched) { FactoryGirl.create(:published, firstname: 'Angela', city: 'New York', twitter: '@adavis') }
 
   describe 'quick search' do
-
     it 'displays profiles that are a partial match' do
       visit root_path
       fill_in 'search_quick', with: 'Ada'
@@ -19,7 +18,7 @@ describe 'profile search' do
       visit root_path
       fill_in 'search_quick', with: 'Ada Curie'
       click_button I18n.t(:search, scope: 'pages.home.search')
-      #save_and_open_page
+      # save_and_open_page
       expect(page).to have_content('Ada')
       expect(page).to have_content('Curie')
     end
@@ -39,7 +38,6 @@ describe 'profile search' do
     end
   end
 
-
   describe 'search in admin area' do
     before do
       sign_in admin
@@ -55,7 +53,6 @@ describe 'profile search' do
   end
 
   describe 'detailed search' do
-
     before do
       visit profiles_path
     end
@@ -70,8 +67,8 @@ describe 'profile search' do
 
     it 'displays profiles that match any of the selected languages' do
       within '#detailed-search' do
-        select 'Spanish', :from => 'Language'
-        #select I18n.t(:languages, scope: 'profiles.index'), match: 'Spanish'
+        select 'Spanish', from: 'Language'
+        # select I18n.t(:languages, scope: 'profiles.index'), match: 'Spanish'
         click_button I18n.t(:search, scope: 'pages.home.search')
       end
       expect(page).to have_content('Ada')
