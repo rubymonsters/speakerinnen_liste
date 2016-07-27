@@ -110,7 +110,7 @@
             <% @medialinks.each do |medialink| %>
             <li class="list--style-none pb mb+ bb">
               <b><%= medialink.title %></b>
-              <%= medialink.url_html %>
+              <%= medialink.url_html if medialink.url != 'http://' %>
               <%= simple_format(medialink.description) %>
             </li>
             <% end %>
