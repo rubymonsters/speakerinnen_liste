@@ -187,6 +187,7 @@ en:
       contact: "Contact"
       website: "My website/blog:"
       city: "My city:"
+      country: "My country"
       twitter: "My twitter handle:"
       show: "Show"
       edit: "Edit profile"
@@ -207,6 +208,7 @@ en:
       twitter: "Twitter"
       topics: "Topics"
       city: "City"
+      country: "Country"
       language: "Language"
     new:
       new_profile: "New Profile"
@@ -252,6 +254,7 @@ en:
         talks: "Talks"
         languages: "Languages<br><small>Please add programming languages in 'Topics', not here</small>"
         city: "City"
+        country: "Country"
         twitter: "Twitter"
         picture: "Picture"
         translation: "<strong>You can fill in your maintopic and your bio both in German and English:</strong>"

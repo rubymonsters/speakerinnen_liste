@@ -121,6 +121,7 @@ class Profile < ActiveRecord::Base
       'firstname',
       'lastname',
       'city',
+      'country',
       'twitter',
       'created_at',
       'updated_at',

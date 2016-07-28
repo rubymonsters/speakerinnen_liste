@@ -239,6 +239,7 @@ GEM
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
     kgio (2.9.3)
+    language_list (1.1.0)
     launchy (2.4.3)
       addressable (~> 2.3)
     letter_opener (1.4.1)
@@ -442,6 +443,7 @@ DEPENDENCIES
   jquery-rails
   jquery-ui-rails
   kaminari
+  language_list (~> 1.1)
   letter_opener
   mini_magick (~> 3.5.0)
   newrelic_rpm
@@ -466,5 +468,8 @@ DEPENDENCIES
   uglifier (>= 1.0.3)
   unicorn
 
+RUBY VERSION
+   ruby 2.2.3p173
+
 BUNDLED WITH
-   1.11.2
+   1.12.5
