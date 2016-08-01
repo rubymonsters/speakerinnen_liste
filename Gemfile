@@ -29,7 +29,7 @@ gem 'auto_html', github: 'dejan/auto_html'
 gem 'postmark-rails', '>= 0.10.0'
 gem 'simple_form', '~> 3.0.2'
 
-gem 'language_list', '~> 1.1'
+gem 'country_select'
 
 gem 'globalize', '~> 4.0.2'
 
