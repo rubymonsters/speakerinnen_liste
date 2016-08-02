@@ -9,6 +9,7 @@ describe 'profile navigation' do
                                                           main_topic: 'first computer programm',
                                                           bio: 'first programmer',
                                                           city: 'London',
+                                                          country: 'UK',
                                                           languages: 'english, french',
                                                           topic_list: 'algorithm, mathematic'
                                                                     )) }
@@ -28,6 +29,7 @@ describe 'profile navigation' do
       expect(page).to have_content('Lovelace')
       expect(page).to have_content('@alove')
       expect(page).to have_content('London')
+      expect(page).to have_content('UK')
       expect(page).to have_content('first programmer')
       expect(page).to have_content('first computer programm')
       expect(page).to have_content('algorithm')
