@@ -187,6 +187,7 @@ de:
       contact: "Kontakt"
       website: "Meine Webseite/Blog:"
       city: "Meine Stadt:"
+      country: "Meine Land"
       twitter: "Mein Twittername:"
       show: "Anzeigen"
       edit: "Profil bearbeiten"
@@ -207,6 +208,7 @@ de:
       twitter: "Twitter"
       topics: "Themen"
       city: "Stadt"
+      country: "Land"
       language: "Sprache"
     new:
       new_profile: "Neues Profil"
@@ -254,6 +256,7 @@ de:
         talks: "Vortragsthemen"
         languages: 'Sprachen<br><small>Programmiersprachen bitte bei Themen angeben, nicht hier.</small>'
         city: "Stadt"
+        country: "Land"
         twitter: "Twitter"
         picture: "Bild"
         translation: "<strong>Hier kannst Du Dein Hauptthema und Deine Bio auf Deutsch und Englisch eintragen:</strong>"
