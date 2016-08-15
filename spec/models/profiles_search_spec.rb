@@ -1,5 +1,5 @@
 describe ProfilesSearch, type: :model do
-  let!(:profile) { FactoryGirl.create(:published, firstname: 'Ada', lastname: 'Lovelace', twitter: 'alovelace', city: 'London', country: 'UK', languages: 'English') }
+  let!(:profile) { FactoryGirl.create(:published, firstname: 'Ada', lastname: 'Lovelace', twitter: 'alovelace', city: 'London', country: 'GB', languages: 'English') }
   # have to add city and twitter because the search needs them for params, at least as empty strings
   let!(:profile2) { FactoryGirl.create(:published, firstname: 'Marie', lastname: 'Curie', twitter: 'marieecurie', city: 'Paris', country: 'FR') }
 
@@ -86,7 +86,7 @@ describe ProfilesSearch, type: :model do
       end
 
       it 'does return nothing if detailed search is empty' do
-        expect(ProfilesSearch.new(topics: '', twitter: '', name: '', city: '', languages: '', country: '').results).to be_empty
+        expect(ProfilesSearch.new(topics: '', twitter: '', name: '', city: '', country: '', languages: '').results).to be_empty
       end
     end
   end

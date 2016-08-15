@@ -1,6 +1,6 @@
 describe 'profile search' do
-  let!(:profile) { FactoryGirl.create(:published, firstname: 'Ada', lastname: 'Lovelace', city: 'London', twitter: 'Adalove', languages: 'Spanish, English') }
-  let!(:profile1) { FactoryGirl.create(:published, firstname: 'Marie', lastname: 'Curie', city: 'Paris', twitter: 'mcurie', languages: 'Polish, French') }
+  let!(:profile) { FactoryGirl.create(:published, firstname: 'Ada', lastname: 'Lovelace', city: 'London', country: 'GB', twitter: 'Adalove', languages: 'Spanish, English') }
+  let!(:profile1) { FactoryGirl.create(:published, firstname: 'Marie', lastname: 'Curie', city: 'Paris', country: 'FR', twitter: 'mcurie', languages: 'Polish, French') }
   let!(:profile2) { FactoryGirl.create(:published, firstname: 'Christiane', lastname: 'Nüsslein-Volhard', city: 'Heidelberg', languages: 'German') }
   let!(:profile3) { FactoryGirl.create(:published, firstname: 'Maren ', lastname: 'Meier') }
 
@@ -63,6 +63,14 @@ describe 'profile search' do
     it 'displays profiles partial match for city' do
       within '#detailed-search' do
         fill_in I18n.t(:city, scope: 'profiles.index'), with: 'Lon'
+        click_button I18n.t(:search, scope: 'pages.home.search')
+      end
+      expect(page).to have_content('Ada')
+    end
+
+    it 'displays profiles that match of the selected country' do
+      within '#detailed-search' do
+        select 'United Kingdom', :from => 'Country'
         click_button I18n.t(:search, scope: 'pages.home.search')
       end
       expect(page).to have_content('Ada')

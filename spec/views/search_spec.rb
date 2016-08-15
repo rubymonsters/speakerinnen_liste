@@ -3,7 +3,7 @@ require 'capybara/poltergeist'
 Capybara.javascript_driver = :poltergeist
 
 describe 'profile search', type: :view do
-  let!(:ada) { FactoryGirl.create(:published, firstname: 'Ada', lastname: 'Lovelace', city: 'London', twitter: 'Adalove', languages: "Spanish, English") }
+  let!(:ada) { FactoryGirl.create(:published, firstname: 'Ada', lastname: 'Lovelace', city: 'London', country: 'GB', twitter: 'Adalove', languages: "Spanish, English") }
 
   context 'on startpage' do
     before { visit root_path }
@@ -65,5 +65,4 @@ describe 'profile search', type: :view do
       end
     end
   end
-
 end

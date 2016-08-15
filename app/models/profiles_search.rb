@@ -32,7 +32,7 @@ class ProfilesSearch
     return Profile.none if @query.values.all? &:blank?
     result = Profile
       .where('city ILIKE :city', city: "%#{@query[:city]}%")
-      .where('country ILIKE :country', country: "%#{[:country]}")
+      .where('country ILIKE :country', country: "%#{@query[:country]}%")
       .where("firstname || ' ' || lastname ILIKE :name", name: "%#{@query[:name]}%")
       .where('twitter ILIKE :twitter', twitter: "%#{@query[:twitter]}%")
 
