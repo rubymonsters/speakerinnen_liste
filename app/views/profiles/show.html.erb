@@ -42,7 +42,7 @@
             <%= t(:topics, scope: 'profiles.profile') %>
           </h2>
           <p class="bb pb">
-            <%= raw @profile.topic_list.map { |topic| topic_link(topic,class: 'content__link--bg') }.join(' ') %>
+            <%= raw @profile.topic_list.sort.map { |topic| topic_link(topic,class: 'content__link--bg') }.join(' ') %>
           </p>
 
           <% if @profile.languages.present? %>
