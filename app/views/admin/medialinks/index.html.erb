@@ -32,7 +32,7 @@
               <b>
                 <%= medialink.title %>
               </b>
-              <%= medialink.url_html %>
+              <%= medialink.url_html if medialink.url != 'http://' %>
               <%= medialink.description %>
 
               <hr>
