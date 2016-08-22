@@ -207,6 +207,7 @@ en:
       name: "Name"
       twitter: "Twitter"
       topics: "Topics"
+      topic: "Topic"
       city: "City"
       country: "Country"
       language: "Language"

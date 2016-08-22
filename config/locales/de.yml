@@ -207,6 +207,7 @@ de:
       name: "Name"
       twitter: "Twitter"
       topics: "Themen"
+      topic: "Thema"
       city: "Stadt"
       country: "Land"
       language: "Sprache"
