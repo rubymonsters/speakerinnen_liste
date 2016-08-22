@@ -70,13 +70,18 @@
       <div class="control-group">
         <%= label_tag('search[country]',t(:country, scope: 'profiles.index'), class: 'control-label') %>
         <div class="controls">
-          <%= select_tag('search[country]', options_from_collection_for_select(ISO3166::Country.countries.sort_by(&:name), 'un_locode', 'name'), prompt: t(:any, scope: 'search'), class: 'drop_down_menue--white input--width-100 mb') %>
+          <%= select_tag('search[country]',
+              options_from_collection_for_select(ISO3166::Country.countries.sort_by(&:name), 'un_locode', 'name'),
+              prompt: t(:any, scope: 'search'), class: 'drop_down_menue--white input--width-100 mb') %>
         </div>
       </div>
       <div class="control-group pb">
         <%= label_tag('search[languages]', t(:language, scope: 'profiles.index'), class: 'control-label') %>
         <div class="controls">
-          <%= select_tag('search[languages]', options_from_collection_for_select(SearchLanguages.collection_for_dropdown(I18n.locale), 'first', 'last', selected: search_params[:languages]), prompt: t(:any, scope: 'search'), class: 'drop_down_menue--white input--width-100') %>
+          <%= select_tag('search[languages]',
+              options_from_collection_for_select(SearchLanguages.collection_for_dropdown(I18n.locale),
+              'first', 'last', selected: search_params[:languages]),
+              prompt: t(:any, scope: 'search'), class: 'drop_down_menue--white input--width-100') %>
         </div>
       </div>
     </div>
