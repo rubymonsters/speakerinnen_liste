@@ -107,7 +107,7 @@ describe 'profile search' do
 
       visit profiles_path
       within '#detailed-search' do
-        fill_in I18n.t(:topics, scope: 'profiles.index'), with: 'Algo'
+        fill_in "profile_topic_list", with: 'Algo'
         click_button I18n.t(:search, scope: 'pages.home.search')
       end
       expect(page).to have_content('Ada')
