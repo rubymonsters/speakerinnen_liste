@@ -139,4 +139,9 @@ class Profile < ActiveRecord::Base
   def self.search(query)
     where("firstname || ' ' || lastname ILIKE :query OR twitter ILIKE :query", query: "%#{query}%")
   end
+
+  def country_name
+    country_name = ISO3166::Country[self.country]
+    country_name.translations[I18n.locale.to_s] || country.name
+  end
 end
