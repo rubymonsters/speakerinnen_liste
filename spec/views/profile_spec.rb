@@ -49,7 +49,6 @@ describe 'profile navigation' do
     end
 
     it 'directs after signin to the own profile page' do
-      save_and_open_page
       expect(page).to have_content('Ada')
       expect(page).to have_content('Lovelace')
       expect(page).to have_content('@alove')
