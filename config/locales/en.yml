@@ -187,7 +187,8 @@ en:
       contact: "Contact"
       website: "My website/blog:"
       city: "My city:"
-      country: "My country"
+      country: "My country:"
+      country_select: "Select your country:"
       twitter: "My twitter handle:"
       show: "Show"
       edit: "Edit profile"
@@ -210,6 +211,7 @@ en:
       topic: "Topic"
       city: "City"
       country: "Country"
+      country_search_hint: "Keep in mind that the possibilty to add a country field is new, so a lot of speakers will not have one."
       language: "Language"
     new:
       new_profile: "New Profile"

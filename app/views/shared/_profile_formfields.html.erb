@@ -6,11 +6,13 @@
     <%= f.input :email, input_html: { class: "mb input--width-100" } %>
     <%= f.input :twitter, placeholder: '@', input_html: { class: "mb input--width-100" } %>
     <%= f.input :city, input_html: { class: "mb input--width-100" } %>
-    <%= f.label :country %>
-    <%= f.country_select :country,  label: t(:country, scope: 'activerecord.attributes.profile').html_safe,  input_html: { class: "mb input--width-100" } %>
-    <%= f.input :languages, label: t(:languages, scope: 'activerecord.attributes.profile').html_safe, input_html: { class: "mb input--width-100" } %>
-    <%= f.input :website, placeholder: 'http://', input_html: { class: "mb input--width-100" } %>
-    <%= f.input :topic_list, label: t(:topic_list, scope: 'activerecord.attributes.profile').html_safe, input_html: { class: "mb input--width-100" } %>
+    <%= f.label :country, input_html: { class: "mb input--width-100" } %>
+    <%= f.country_select :country, label: t(:country, scope: 'activerecord.attributes.profile').html_safe,
+      priority_countries: ["GB", "FR", "DE"], include_blank: t(:country_select, scope: 'profiles.profile'),
+      wrapper_html: { class: "mb" } %>
+    <%= f.input :languages, label: t(:languages, scope: 'activerecord.attributes.profile').html_safe, input_html: { class: "mb input--width-100" }, wrapper_html: { class: "mt" }  %>
+    <%= f.input :website, placeholder: 'http://', input_html: { class: "input--width-100" }, wrapper_html: { class: "mb" } %>
+    <%= f.input :topic_list, label: t(:topic_list, scope: 'activerecord.attributes.profile').html_safe, input_html: { class: "input--width-100" }, wrapper_html: { class: "mb" } %>
 
     <ul class='hidden' id='availableTags'>
       <% ActsAsTaggableOn::Tag.uniq.pluck(:name).each do |tag_name| %>

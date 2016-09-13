@@ -187,7 +187,8 @@ de:
       contact: "Kontakt"
       website: "Meine Webseite/Blog:"
       city: "Meine Stadt:"
-      country: "Mein Land"
+      country: "Mein Land:"
+      country_select: "Wähle dein Land aus:"
       twitter: "Mein Twittername:"
       show: "Anzeigen"
       edit: "Profil bearbeiten"
@@ -210,6 +211,7 @@ de:
       topic: "Thema"
       city: "Stadt"
       country: "Land"
+      country_search_hint: "Denke daran, dass es die Möglichkeit ein Land anzugeben erst seit kurzem gibt und deswegen viele Speakerinnen noch kein Land eingetragen haben."
       language: "Sprache"
     new:
       new_profile: "Neues Profil"
