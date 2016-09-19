@@ -127,6 +127,20 @@ h2{
   background: $dark-red;
 }
 
+.drop_down_menue--white {
+  background-color: white;
+  border: 1px solid $light-grey
+}
+
+.ui-corner-all {
+  border-radius: 0px;
+  border: 1px solid $light-grey
+}
+
+ul.tagit {
+  margin: 0px;
+}
+
 .notice {
   background: $blue;
   color: white;

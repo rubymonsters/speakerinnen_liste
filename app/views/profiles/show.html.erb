@@ -62,6 +62,15 @@
               <%= @profile.city %></span>
             </p>
           <% end %>
+
+          <% if @profile.country.present? %>
+            <h2 class="delta sans-serif mb-">
+              <%= t(:country, scope: 'profiles.profile') %>
+            </h2>
+            <p class="bb pb">
+              <%= @profile.country_name %>
+            </p>
+          <% end %>
         </div><!--
 
       --><div class="layout__item 1/6 palm-1/1">

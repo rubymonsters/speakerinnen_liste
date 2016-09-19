@@ -187,6 +187,8 @@ de:
       contact: "Kontakt"
       website: "Meine Webseite/Blog:"
       city: "Meine Stadt:"
+      country: "Mein Land:"
+      country_select: "Wähle ein Land aus:"
       twitter: "Mein Twittername:"
       show: "Anzeigen"
       edit: "Profil bearbeiten"
@@ -206,7 +208,10 @@ de:
       name: "Name"
       twitter: "Twitter"
       topics: "Themen"
+      topic: "Thema"
       city: "Stadt"
+      country: "Land"
+      country_search_hint: "(Achtung: Viele Speakerinnen haben kein Land eingetragen.)"
       language: "Sprache"
     new:
       new_profile: "Neues Profil"
@@ -254,6 +259,7 @@ de:
         talks: "Vortragsthemen"
         languages: 'Sprachen<br><small>Programmiersprachen bitte bei Themen angeben, nicht hier.</small>'
         city: "Stadt"
+        country: "Land"
         twitter: "Twitter"
         picture: "Bild"
         translation: "<strong>Hier kannst Du Dein Hauptthema und Deine Bio auf Deutsch und Englisch eintragen:</strong>"

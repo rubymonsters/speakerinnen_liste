@@ -35,6 +35,11 @@ class ProfilesSearch
       .where("firstname || ' ' || lastname ILIKE :name", name: "%#{@query[:name]}%")
       .where('twitter ILIKE :twitter', twitter: "%#{@query[:twitter]}%")
 
+    if @query[:country].present?
+      result = result
+        .where('country ILIKE :country', country: "%#{@query[:country]}%")
+    end
+
     if @query[:languages].present? # && @query[:languages] =~ /[abc]{2}/
       result = result
         .where('languages ILIKE :iso_start OR
@@ -47,10 +52,11 @@ class ProfilesSearch
     #
     # to get the search for tags working, we had to add that if statement
     if @query[:topics].present?
+      topic_array = @query[:topics].split(',');
       result = result
         .includes(taggings: :tag)
         .references(:tag)
-        .where('tags.name ILIKE :topics', topics: "%#{@query[:topics]}%")
+        .where('tags.name ILIKE ANY ( array[?] )', topic_array)
     end
     result
   end

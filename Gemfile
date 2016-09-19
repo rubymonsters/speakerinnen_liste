@@ -29,6 +29,8 @@ gem 'auto_html', github: 'dejan/auto_html'
 gem 'postmark-rails', '>= 0.10.0'
 gem 'simple_form', '~> 3.0.2'
 
+gem 'country_select'
+
 gem 'globalize', '~> 4.0.2'
 
 gem 'font-awesome-rails', '~> 4.3.0.0'

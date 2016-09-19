@@ -9,6 +9,7 @@ describe 'profile navigation' do
                                                           main_topic: 'first computer programm',
                                                           bio: 'first programmer',
                                                           city: 'London',
+                                                          country: 'GB',
                                                           languages: 'english, french',
                                                           topic_list: 'algorithm, mathematic'
                                                                     )) }
@@ -17,7 +18,7 @@ describe 'profile navigation' do
                                                         url: 'www.adalovelace.de',
                                                         description: 'How to programm')}
 
-  describe 'show view profile' do
+  describe 'show view profile in EN' do
     before do
       sign_in ada
       click_on 'EN', match: :first
@@ -28,6 +29,31 @@ describe 'profile navigation' do
       expect(page).to have_content('Lovelace')
       expect(page).to have_content('@alove')
       expect(page).to have_content('London')
+      expect(page).to have_content('United Kingdom ')
+      expect(page).to have_content('first programmer')
+      expect(page).to have_content('first computer programm')
+      expect(page).to have_content('algorithm')
+      expect(page).to have_content('mathematic')
+      expect(page).to have_content('english')
+      expect(page).to have_content('french')
+      expect(page).to have_content('Ada and the computer')
+      expect(page).to have_content('www.adalovelace.de')
+      expect(page).to have_content('How to programm')
+    end
+  end
+  describe 'show view profile in DE' do
+    before do
+      sign_in ada
+      click_on 'EN', match: :first
+      click_on 'DE', match: :first
+    end
+
+    it 'directs after signin to the own profile page' do
+      expect(page).to have_content('Ada')
+      expect(page).to have_content('Lovelace')
+      expect(page).to have_content('@alove')
+      expect(page).to have_content('London')
+      expect(page).to have_content('Vereinigtes Königreich')
       expect(page).to have_content('first programmer')
       expect(page).to have_content('first computer programm')
       expect(page).to have_content('algorithm')

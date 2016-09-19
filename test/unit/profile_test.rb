@@ -84,6 +84,7 @@ class ProfileTest < ActiveSupport::TestCase
       'lastname'   => 'Lovelace',
       #'languages'  => 'Deutsch',
       'city'       => 'New York',
+      'country'    => nil,
       'twitter'    => 'alove',
       'created_at' => '2014-12-06T15:04:13.000Z',
       'updated_at' => '2014-12-06T15:04:20.000Z',

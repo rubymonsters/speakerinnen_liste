@@ -99,6 +99,11 @@ class Profile < ActiveRecord::Base
     'http://twitter.com/' + twitter.gsub(%r{^@|https:|http:|:|//|www.|twitter.com/}, '')
   end
 
+  def country_name
+    country_name = ISO3166::Country[self.country]
+    country_name.translations[I18n.locale.to_s] || country.name
+  end
+
   def self.random
     order('RANDOM()')
   end
@@ -121,6 +126,7 @@ class Profile < ActiveRecord::Base
       'firstname',
       'lastname',
       'city',
+      'country',
       'twitter',
       'created_at',
       'updated_at',

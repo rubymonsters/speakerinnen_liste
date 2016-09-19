@@ -83,6 +83,7 @@ class ProfilesController < ApplicationController
       :password_confirmation,
       :remember_me,
       :city,
+      :country,
       :languages,
       :firstname,
       :lastname,
