@@ -99,6 +99,11 @@ class Profile < ActiveRecord::Base
     'http://twitter.com/' + twitter.gsub(%r{^@|https:|http:|:|//|www.|twitter.com/}, '')
   end
 
+  def country_name
+    country_name = ISO3166::Country[self.country]
+    country_name.translations[I18n.locale.to_s] || country.name
+  end
+
   def self.random
     order('RANDOM()')
   end
@@ -138,10 +143,5 @@ class Profile < ActiveRecord::Base
   # for simple admin search
   def self.search(query)
     where("firstname || ' ' || lastname ILIKE :query OR twitter ILIKE :query", query: "%#{query}%")
-  end
-
-  def country_name
-    country_name = ISO3166::Country[self.country]
-    country_name.translations[I18n.locale.to_s] || country.name
   end
 end
