@@ -4,7 +4,7 @@
 
 <% search_params = params[:search] ||= {} %>
 
-<% detailed_search_params_present = search_params[:city].present? || search_params[:name].present? || search_params[:twitter].present? || search_params[:country].present? || search_params[:languages].present? || search_params[:detailed_search_link_from_startpage].present? %>
+<% detailed_search_params_present = search_params[:city].present? || search_params[:topics].present? || search_params[:name].present? || search_params[:twitter].present? || search_params[:twitter].present? || search_params[:twitter].present? || search_params[:twitter].present? || search_params[:country].present? || search_params[:languages].present? || search_params[:detailed_search_link_from_startpage].present? %>
 
 <% hidden_class_detailed_search = params[:controller] == 'profiles' || params[:search][:quick] || !detailed_search_params_present ? 'hidden' : 'visible' %>
 <% hidden_class_quick_search = params[:controller] == 'profiles_search' && detailed_search_params_present ? 'hidden' : 'visible' %>

@@ -52,10 +52,11 @@ class ProfilesSearch
     #
     # to get the search for tags working, we had to add that if statement
     if @query[:topics].present?
+      topic_array = @query[:topics].split(',');
       result = result
         .includes(taggings: :tag)
         .references(:tag)
-        .where('tags.name ILIKE :topics', topics: "%#{@query[:topics]}%")
+        .where('tags.name ILIKE ANY ( array[?] )', topic_array)
     end
     result
   end
