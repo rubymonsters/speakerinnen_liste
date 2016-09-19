@@ -211,7 +211,7 @@ de:
       topic: "Thema"
       city: "Stadt"
       country: "Land"
-      country_search_hint: "Denke daran, dass es die Möglichkeit ein Land anzugeben erst seit kurzem gibt und deswegen viele Speakerinnen noch kein Land eingetragen haben."
+      country_search_hint: "(Denke daran, dass es die Möglichkeit ein Land anzugeben erst seit kurzem gibt und deswegen viele Speakerinnen noch kein Land eingetragen haben.)"
       language: "Sprache"
     new:
       new_profile: "Neues Profil"
