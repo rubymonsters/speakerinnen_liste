@@ -79,6 +79,7 @@ class Admin::ProfilesController < Admin::BaseController
       :password_confirmation,
       :remember_me,
       :city,
+      :country,
       :languages,
       :firstname,
       :lastname,

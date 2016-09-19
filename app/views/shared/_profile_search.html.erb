@@ -4,7 +4,7 @@
 
 <% search_params = params[:search] ||= {} %>
 
-<% detailed_search_params_present = search_params[:city].present? || search_params[:name].present? || search_params[:twitter].present? || search_params[:languages].present? || search_params[:detailed_search_link_from_startpage].present? %>
+<% detailed_search_params_present = search_params[:city].present? || search_params[:name].present? || search_params[:twitter].present? || search_params[:country].present? || search_params[:languages].present? || search_params[:detailed_search_link_from_startpage].present? %>
 
 <% hidden_class_detailed_search = params[:controller] == 'profiles' || params[:search][:quick] || !detailed_search_params_present ? 'hidden' : 'visible' %>
 <% hidden_class_quick_search = params[:controller] == 'profiles_search' && detailed_search_params_present ? 'hidden' : 'visible' %>
@@ -72,22 +72,25 @@
 
       <div class="control-group">
         <%= label_tag('search[country]',t(:country, scope: 'profiles.index'), class: 'control-label') %>
+        <div class="controls">
+          <%= country_select("search", "country",
+              { priority_countries: ["DE", "FR", "GB"],
+                include_blank: t(:country_select, scope: 'profiles.profile'),
+                selected: search_params[:country]},
+              { class: 'input--width-100' }) %>
+        </div>
         <small>
           <%= t(:country_search_hint, scope: 'profiles.index') %>
         </small>
-        <div class="controls">
-          <%= select_tag('search[country]',
-              options_from_collection_for_select(ISO3166::Country.countries.sort_by(&:name), 'un_locode', 'name'),
-              prompt: t(:any, scope: 'search'), class: 'input--width-100 mb') %>
-        </div>
       </div>
-      <div class="control-group pb">
+      <div class="control-group pb pt-">
         <%= label_tag('search[languages]', t(:language, scope: 'profiles.index'), class: 'control-label') %>
         <div class="controls">
           <%= select_tag('search[languages]',
               options_from_collection_for_select(SearchLanguages.collection_for_dropdown(I18n.locale),
               'first', 'last', selected: search_params[:languages]),
-              prompt: t(:any, scope: 'search'), class: 'input--width-100') %>
+              include_blank: t(:any, scope: 'search'),
+              class: 'input--width-100') %>
         </div>
       </div>
     </div>
