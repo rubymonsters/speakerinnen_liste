@@ -201,6 +201,7 @@ en:
     edit:
       show: "Show own Profile >>"
       home: "Show all Speakerinnen* >>"
+      next: "Show next Speakerinnen >>"
       back: "Back"
     index:
       title: "Speakerinnen*"
