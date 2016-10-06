@@ -10,7 +10,7 @@ class BlogPost < ActiveRecord::Base
       BlogPost.create(title: post['title'], body: post['body'], url: post['url'])
     end
 
-    # remove old inports to make sure the db is not full of old useless stuff
+    # remove old imports to make sure the db is not full of old useless stuff
     # check if this offset thing works as we think
     BlogPost.order('created_at DESC').offset(30).all.each(&:destroy)
   end
