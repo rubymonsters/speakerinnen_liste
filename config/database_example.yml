@@ -1,0 +1,16 @@
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 25
+  host: localhost
+
+development:
+  <<: *default
+  database: YOUR-DATABASE-NAME
+  password: YOUR-DATABASE-USERNAME-PASSWORD
+
+test:
+  <<: *default
+  database: YOUR-DATABASE-NAME
+  password: YOUR-DATABASE-USERNAME-PASSWORD

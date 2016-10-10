@@ -8,7 +8,7 @@ puts "Creating some profiles..."
                             email: "jane_doe#{i}@example.com",
                             languages: "Deutsch, English, Français",
                             city: "Berlin",
-                            country: 'DE'
+                            country: 'DE',
                             twitter: "@janedoe##{i}",
                             confirmed_at: DateTime.now,
                             published: true,
