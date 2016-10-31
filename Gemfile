@@ -39,6 +39,8 @@ gem "friendly_id", "~> 5.0.1"
 
 gem 'rails_12factor', group: :production
 
+gem 'active_model_serializers', '~> 0.10.0'
+
 group :development do
   gem 'letter_opener'
   gem 'quiet_assets' # mutes asset pipeline log messages
