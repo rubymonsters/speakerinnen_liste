@@ -1,6 +1,7 @@
 class Profile < ActiveRecord::Base
   include AutoHtml
   include HasPicture
+  include ActiveModel::Serialization
 
   has_many :medialinks
 
@@ -118,26 +119,6 @@ class Profile < ActiveRecord::Base
     else
       super
     end
-  end
-
-  def as_json(_options = {})
-    attributes.slice(
-      'id',
-      'firstname',
-      'lastname',
-      'city',
-      'country',
-      'twitter',
-      'created_at',
-      'updated_at',
-      'website'
-    ).merge(
-      'medialinks' => medialinks,
-      'topics' => topics.map(&:name),
-      'picture' => picture,
-      'bio' => bio_translations,
-      'main_topic' => main_topic_translations
-    )
   end
 
   # for simple admin search
