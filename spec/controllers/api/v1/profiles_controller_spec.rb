@@ -46,7 +46,7 @@ describe Api::V1::ProfilesController, type: :controller do
     end
   end
 
-    describe 'text containing attributes' do
+  describe 'text containing attributes' do
     before do
       http_login('horst', '123')
     end

@@ -1,5 +1,5 @@
 class ProfileSerializer < ActiveModel::Serializer
-  attributes :id, :firstname, :lastname, :city, :twitter, :created_at,
+  attributes :id, :firstname, :lastname, :city, :country, :twitter, :created_at,
              :updated_at, :website, :topics, :picture, :bio, :main_topic
 
   has_many :medialinks

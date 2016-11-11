@@ -79,21 +79,18 @@ class ProfileTest < ActiveSupport::TestCase
 
     assert_equal(
       parsed_json,
-      'id'         => 1,
-      'firstname'  => 'Ada',
-      'lastname'   => 'Lovelace',
-      #'languages'  => 'Deutsch',
-      'city'       => 'New York',
-      'country'    => nil,
-      'twitter'    => 'alove',
-      'created_at' => '2014-12-06T15:04:13.000Z',
-      'updated_at' => '2014-12-06T15:04:20.000Z',
-      'website'    => nil,
-      'medialinks' => [{ 'url' => 'MyString', 'title' => 'MyString', 'description' => nil, 'position' => nil }],
-      'topics'     => [],
-      'picture'    => { 'original' => nil, 'profile_small' => nil, 'profile_smallest' => nil },
-      'bio'        => { 'en' => 'english bio', 'de' => 'deutsche bio' },
-      'main_topic' => { 'en' => 'english main topic', 'de' => 'deutsches Hauptthema' }
+      "id"=>1,
+      "firstname"=>"Ada",
+      "lastname"=>"Lovelace",
+      "city"=>"New York",
+      "country"=>nil,
+      "twitter"=>"alove",
+      "created_at"=>"2014-12-06T15:04:13.000Z", "updated_at"=>"2014-12-06T15:04:20.000Z",
+      "website"=>nil,
+      "medialinks"=>[{"url"=>"MyString", "title"=>"MyString", "description"=>nil, "position"=>nil}],
+      "topics"=>[],
+      "picture"=>{"original"=>nil, "profile_small"=>nil, "profile_smallest"=>nil},
+      "bio"=>{"en"=>"english bio", "de"=>"deutsche bio"}, "main_topic"=>{"en"=>"english main topic", "de"=>"deutsches Hauptthema"}
     )
   end
 end
