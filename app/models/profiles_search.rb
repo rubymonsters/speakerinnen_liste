@@ -36,8 +36,6 @@ class ProfilesSearch
       .where('city ILIKE :city', city: "%#{@query[:city]}%")
       .where("firstname || ' ' || lastname ILIKE :name", name: "%#{@query[:name]}%")
       .where('twitter ILIKE :twitter', twitter: "%#{@query[:twitter]}%")
-      .select('profiles.*, RANDOM()')
-      .order('Random()')
 
     if @query[:country].present?
       result = result
@@ -62,7 +60,10 @@ class ProfilesSearch
         .references(:tag)
         .where('tags.name ILIKE ANY ( array[?] )', topic_array)
     end
-    result
+
+    result = result
+      .select('profiles.*, RANDOM()')
+      .order('Random()')
   end
 
 end
