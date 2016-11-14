@@ -26,6 +26,8 @@ class ProfilesSearch
               OR twitter ILIKE ANY ( array[?] )
               OR tags.name ILIKE ANY ( array[?] )",
               "%" + @quick + "%", @quick_array, @quick_array)
+      .select('profiles.*, RANDOM()')
+      .order('Random()')
   end
 
   def detailed_search_result
@@ -34,6 +36,8 @@ class ProfilesSearch
       .where('city ILIKE :city', city: "%#{@query[:city]}%")
       .where("firstname || ' ' || lastname ILIKE :name", name: "%#{@query[:name]}%")
       .where('twitter ILIKE :twitter', twitter: "%#{@query[:twitter]}%")
+      .select('profiles.*, RANDOM()')
+      .order('Random()')
 
     if @query[:country].present?
       result = result

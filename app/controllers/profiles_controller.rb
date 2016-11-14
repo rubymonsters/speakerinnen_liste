@@ -105,7 +105,6 @@ class ProfilesController < ApplicationController
   def profiles_for_index
     Profile.is_published
       .random
-      .order('created_at DESC')
       .page(params[:page])
       .per(24)
   end
@@ -114,7 +113,6 @@ class ProfilesController < ApplicationController
     Profile.is_published
       .random
       .tagged_with(tag_names, any: true)
-      .order('created_at DESC')
       .page(params[:page])
       .per(24)
   end
