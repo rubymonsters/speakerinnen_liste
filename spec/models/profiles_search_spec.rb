@@ -82,7 +82,7 @@ describe ProfilesSearch, type: :model do
         profile2.topic_list.add('algorithm')
         profile2.save!
 
-        expect(ProfilesSearch.new(topics: 'algorithm').results.count).to eq 2
+        expect(ProfilesSearch.new(topics: 'algorithm').results).to match_array [profile, profile2]
       end
 
       it 'does return nothing if detailed search is empty' do

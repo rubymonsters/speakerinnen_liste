@@ -32,5 +32,4 @@ FactoryGirl.define do
     title 'thisTitle'
     description 'lorep ipsum...'
   end
-
 end
