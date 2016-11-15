@@ -33,4 +33,8 @@ FactoryGirl.define do
     description 'lorep ipsum...'
   end
 
+  factory :topic_list do
+    name 'topicname'
+  end
+
 end

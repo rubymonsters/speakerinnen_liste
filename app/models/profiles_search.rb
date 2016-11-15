@@ -26,8 +26,6 @@ class ProfilesSearch
               OR twitter ILIKE ANY ( array[?] )
               OR tags.name ILIKE ANY ( array[?] )",
               "%" + @quick + "%", @quick_array, @quick_array)
-      .select('profiles.*, RANDOM()')
-      .order('Random()')
   end
 
   def detailed_search_result
@@ -61,9 +59,6 @@ class ProfilesSearch
         .where('tags.name ILIKE ANY ( array[?] )', topic_array)
     end
 
-    result = result
-      .select('profiles.*, RANDOM()')
-      .order('Random()')
   end
 
 end

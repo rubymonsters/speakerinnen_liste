@@ -116,4 +116,5 @@ class ProfilesController < ApplicationController
       .page(params[:page])
       .per(24)
   end
+
 end

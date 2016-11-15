@@ -56,7 +56,6 @@ class Profile < ActiveRecord::Base
   scope :is_published, -> { where(published: true) }
 
   scope :no_admin, -> { where(admin: false) }
-  scope :to_next, ->(id) { where('id > ?', id).first || Profile.first }
 
   def fullname
     "#{firstname} #{lastname}".strip
@@ -70,9 +69,6 @@ class Profile < ActiveRecord::Base
     main_topic.present? ? main_topic : topic_list.first
   end
 
-  def next_profile
-    Profile.to_next(id)
-  end
 
  # Try building a slug based on the following fields in
   # increasing order of specificity.

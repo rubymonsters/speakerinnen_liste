@@ -3,10 +3,8 @@ class ProfilesSearchController < ApplicationController
 
   def show
     if params[:search]
-      @profiles = ProfilesSearch.new(params[:search])
-        .results
-        .page(params[:page])
-        .per(16)
+      @profiles_all = ProfilesSearch.new(params[:search]).results.shuffle
+      @profiles = Kaminari.paginate_array(@profiles_all).page(params[:page]).per(10)
     else
       redirect_to profiles_url
     end
