@@ -1,0 +1,2 @@
+module Searchable
+end
