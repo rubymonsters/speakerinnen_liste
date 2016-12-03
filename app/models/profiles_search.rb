@@ -4,18 +4,18 @@ class ProfilesSearch
     @query = query
   end
 
-  def results
+ def results
     search_result.is_published.uniq
   end
 
-  private
+ private
 
-  def search_result
+ def search_result
     return quick_search_result if @quick
     detailed_search_result
   end
 
-  def quick_search_result
+ def quick_search_result
     return Profile.none if @quick.blank?
     @quick_split = @quick.split(' ')
     @quick_array = @quick_split.map { |val| "%#{val}%" }
@@ -30,19 +30,19 @@ class ProfilesSearch
       .order('Random()')
   end
 
-  def detailed_search_result
+ def detailed_search_result
     return Profile.none if @query.values.all? &:blank?
     result = Profile
       .where('city ILIKE :city', city: "%#{@query[:city]}%")
       .where("firstname || ' ' || lastname ILIKE :name", name: "%#{@query[:name]}%")
       .where('twitter ILIKE :twitter', twitter: "%#{@query[:twitter]}%")
 
-    if @query[:country].present?
+   if @query[:country].present?
       result = result
         .where('country ILIKE :country', country: "%#{@query[:country]}%")
     end
 
-    if @query[:languages].present? # && @query[:languages] =~ /[abc]{2}/
+   if @query[:languages].present? # && @query[:languages] =~ /[abc]{2}/
       result = result
         .where('iso_languages ILIKE :iso', iso: "%#{@query[:languages]}%")
     end
@@ -56,9 +56,8 @@ class ProfilesSearch
         .where('tags.name ILIKE ANY ( array[?] )', topic_array)
     end
 
-    result = result
+   result = result
       .select('profiles.*, RANDOM()')
       .order('Random()')
   end
-
 end
