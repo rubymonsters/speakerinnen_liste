@@ -1,6 +1,7 @@
 class Profile < ActiveRecord::Base
   include AutoHtml
   include HasPicture
+  include Searchable
   include ActiveModel::Serialization
 
   has_many :medialinks
