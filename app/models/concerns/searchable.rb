@@ -8,7 +8,7 @@ module Searchable
 
   def as_indexed_json(options={})
       self.as_json(
-        only: [:firstname, :lastname, :twitter, :fullname],
+        only: [:firstname, :lastname, :twitter],
           methods: [:fullname, :topic_list, :bio, :main_topic],
         include: {
           medialinks: { only: [:title, :url] }
