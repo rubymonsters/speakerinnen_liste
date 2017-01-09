@@ -1,1 +1,3 @@
 <p>Reconfirm! English!</p>
+
+<p>To complete the change of the email adress please click the following link: <%= link_to 'Reconfirm my account', confirmation_url(@resource, :locale => I18n.locale, :confirmation_token => @token) %></p>

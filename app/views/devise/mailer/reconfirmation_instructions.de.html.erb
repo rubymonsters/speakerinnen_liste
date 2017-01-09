@@ -1,1 +1,3 @@
 <p>Reconfirm! Deutsch!</p>
+
+<%= link_to 'Bestätige die Anderung der Email Adresse.', confirmation_url(@resource, :locale => I18n.locale, :confirmation_token => @token) %></p>
