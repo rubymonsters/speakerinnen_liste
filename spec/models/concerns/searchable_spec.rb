@@ -11,35 +11,35 @@ describe Searchable do
 
   describe '#as_indexed_json creates an index that' do
     it 'contains the attribute firstname' do
-      expect(profile.as_indexed_json["firstname"]).to eq 'Ada'
+      expect(profile.as_indexed_json['firstname']).to eq 'Ada'
     end
 
     it 'contains the attribute lastname' do
-      expect(profile.as_indexed_json["lastname"]).to eq 'Lovelace'
+      expect(profile.as_indexed_json['lastname']).to eq 'Lovelace'
     end
 
     it 'contains the attribute twitter handle' do
-      expect(profile.as_indexed_json["twitter"]).to eq 'alovelace'
+      expect(profile.as_indexed_json['twitter']).to eq 'alovelace'
     end
 
     it 'contains the attribute fullname' do
-      expect(profile.as_indexed_json["fullname"]).to eq 'Ada Lovelace'
+      expect(profile.as_indexed_json['fullname']).to eq 'Ada Lovelace'
     end
 
     it 'contains the attribute topic list' do
-      expect(profile.as_indexed_json["topic_list"]).to eq ['ruby', 'algorithms']
+      expect(profile.as_indexed_json['topic_list']).to eq ['ruby', 'algorithms']
     end
 
     it 'contains the attribute bio' do
-      expect(profile.as_indexed_json["bio"]).to eq 'Amazing person'
+      expect(profile.as_indexed_json['bio']).to eq 'Amazing person'
     end
 
     it 'contains the attribute main_topic' do
-      expect(profile.as_indexed_json["main_topic"]).to eq 'life'
+      expect(profile.as_indexed_json['main_topic']).to eq 'life'
     end
 
     it 'contains the attribute medialinks' do
-      expect(profile.as_indexed_json["medialinks"][0]["title"]).to eq 'thisTitle'
+      expect(profile.as_indexed_json['medialinks'][0]['title']).to eq 'thisTitle'
     end
   end
 end
