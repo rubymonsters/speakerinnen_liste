@@ -66,6 +66,7 @@ group :test do
   gem 'factory_girl_rails', '4.1.0'
   gem 'poltergeist', '1.8.0'
   gem 'database_cleaner', '~> 1.2.0'
+  gem 'elasticsearch-extensions'
 end
 
 gem 'sass-rails',   '~> 4.0.3'
