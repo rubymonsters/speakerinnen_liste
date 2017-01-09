@@ -28,8 +28,9 @@
 
         <%= f.input :password_confirmation, placeholder: t(:password_confirmation, scope: "devise.passwords"), label: false, input_html: { class: 'mb'}  %>
 
-        <%= f.submit t(:update, scope: "devise.registrations.edit"), class:"btn btn--small" %>
       <% end %>
+
+      <%= f.submit t(:update, scope: "devise.registrations.edit"), class:"btn btn--small" %>
 
       <h2 class="mt pt bt"><%= t(:delete_account, scope: "devise.registrations.edit") %></h2>
       <%= t(:unhappy, scope: "devise.registrations.edit") %>
