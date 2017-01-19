@@ -21,7 +21,6 @@ gem 'omniauth-twitter'
 gem 'carrierwave'
 gem 'fog', '~> 1.32.0'
 gem 'mini_magick', '~> 3.5.0'
-gem 'textacular', '~> 3.0', require: 'textacular/rails'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'acts-as-taggable-on', '~> 3.4.1'
@@ -67,6 +66,7 @@ group :test do
   gem 'poltergeist', '1.8.0'
   gem 'database_cleaner', '~> 1.2.0'
   gem 'elasticsearch-extensions'
+  gem 'test_after_commit'
 end
 
 gem 'sass-rails',   '~> 4.0.3'
