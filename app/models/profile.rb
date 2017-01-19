@@ -36,6 +36,8 @@ class Profile < ActiveRecord::Base
     lastname.strip! if lastname
   end
 
+  after_save :update_or_remove_index
+
   def after_confirmation
     AdminMailer.new_profile_confirmed(self).deliver
   end
@@ -120,6 +122,10 @@ class Profile < ActiveRecord::Base
 
   def self.random
     order('RANDOM()')
+  end
+
+  def update_or_remove_index
+    if published then index_document else delete_document end rescue nil # rescue a deleted document if not indexed
   end
 
   def password_required?
