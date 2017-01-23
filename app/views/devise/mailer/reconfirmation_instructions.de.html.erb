@@ -1,3 +1,13 @@
-<p>Reconfirm! Deutsch!</p>
+<p>Hallo <%= @resource.email %>!</p>
 
+<p>Du möchtest Deine Email Adresse ändern. </p>
 <%= link_to 'Bestätige die Anderung der Email Adresse.', confirmation_url(@resource, :locale => I18n.locale, :confirmation_token => @token) %></p>
+
+
+<p>Melde dich gerne bei uns, wenn du Fragen hast! Und natürlich freuen wir uns jederzeit über dein Feedback zu Speakerinnen.org.</p>
+
+<p>Danke,<br>
+
+Anja, Anne, Christiane, Mandy und Maren<br>
+(das Speakerinnen-Team)
+</p>
