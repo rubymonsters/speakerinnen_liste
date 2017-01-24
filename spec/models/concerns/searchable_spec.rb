@@ -7,12 +7,13 @@ describe Searchable, elasticsearch: true do
                                       country: 'GB', languages: 'English',
                                       topic_list: ['ruby', 'algorithms'],
                                       bio: 'Amazing person', main_topic: 'life', email: 'info@example.com') }
-  let!(:profile_medialink) { FactoryGirl.create(:medialink, profile_id: profile.id) }
 
-  describe 'elasticsearch index creation' do
-    it 'should be indexed' do
+  describe 'elasticsearch index' do
+    it 'should be created' do
       Profile.__elasticsearch__.refresh_index!
-      expect(profile.__elasticsearch__.search('Ada').records.length).to eq(1)
+      records = Profile.search('Ada').records
+      expect(records.length).to eq(1)
+      expect(records.first.lastname).to eq('Lovelace')
     end
   end
 
@@ -46,6 +47,11 @@ describe Searchable, elasticsearch: true do
     end
 
     it 'contains the attribute medialinks' do
+      #ToDo we have to create the medialink here and reload the profile because.
+      #the medialink seems already populated. Why does that happen?
+      FactoryGirl.create(:medialink, profile_id: profile.id)
+      profile.reload
+
       expect(profile.as_indexed_json['medialinks'][0]['title']).to eq 'thisTitle'
     end
   end
