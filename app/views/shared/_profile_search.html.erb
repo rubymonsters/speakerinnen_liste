@@ -1,20 +1,9 @@
-<%# debug params %>
-<%# debug params[:controller] %>
-<%# debug params[:search][:quick] if params[:controller] == 'profiles_search' %>
-
-<% search_params = params[:search] ||= {} %>
-
-<% detailed_search_params_present = search_params[:city].present? || search_params[:topics].present? || search_params[:name].present? || search_params[:twitter].present? || search_params[:twitter].present? || search_params[:twitter].present? || search_params[:twitter].present? || search_params[:country].present? || search_params[:languages].present? || search_params[:detailed_search_link_from_startpage].present? %>
-
-<% hidden_class_detailed_search = params[:controller] == 'profiles' || params[:search][:quick] || !detailed_search_params_present ? 'hidden' : 'visible' %>
-<% hidden_class_quick_search = params[:controller] == 'profiles_search' && detailed_search_params_present ? 'hidden' : 'visible' %>
-
 <hr class="mv">
 
-<div id="quick-search" class="<%= hidden_class_quick_search %>" >
+<div id="search">
   <%= form_tag(profiles_search_path, method: 'get', class:'pv') do %>
 
-    <%= text_field_tag('search[quick]', search_params[:quick], class: 'profile__search' , placeholder: t(:search_text, scope: 'pages.home.search')) %>
+    <%= text_field_tag('search', params[:search], class: 'profile__search' , placeholder: t(:search_text, scope: 'pages.home.search')) %>
     <%= button_tag((t(:search, scope: 'pages.home.search')), class: 'btn btn--small input-btn') %>
 
   <% end %>
@@ -23,94 +12,3 @@
     <%= t(:detailed_search, scope: 'general').html_safe %>
   </p>
 </div>
-
-<div id="detailed-search" class="<%= hidden_class_detailed_search %>" >
-  <p id="quick-search-trigger" class="link">
-    <%= t(:quick_search, scope: 'general').html_safe %>
-  </p>
-  <%= form_tag('/profiles_search#search_results_anchor', method: 'get', class:'pv') do %>
-
-    <div class="layout layout__item 1/3 palm-1/1">
-
-      <div class="control-group pb+">
-        <%= label_tag('search[name]',t(:name, scope: 'profiles.index'), class: 'control-label') %>
-        <div class="controls">
-          <%= text_field_tag('search[name]', search_params[:name], class: 'input--width-100' )%>
-        </div>
-      </div>
-
-      <div class="control-group pb+">
-        <%= label_tag('search[twitter]',t(:twitter, scope: 'profiles.index'), class: 'control-label') %>
-        <div class="controls">
-          <%= text_field_tag('search[twitter]', search_params[:twitter], class: 'input--width-100') %>
-        </div>
-      </div>
-
-    </div><!--divs with the class:layout__item have display:inline-block and renders the empty space between the divs BUG
-      --><div class="layout__item 1/3 palm-1/1">
-
-      <div class="control-group pb+">
-        <%= label_tag('search[city]',t(:city, scope: 'profiles.index'), class: 'control-label') %>
-        <div class="controls">
-          <%= text_field_tag('search[city]', search_params[:city], class: 'input--width-100') %>
-        </div>
-      </div>
-
-      <div class="control-group pb+">
-        <%= label_tag('search[topics]',t(:topic, scope: 'profiles.index'), class: 'control-label') %>
-        <div class="controls">
-          <%= text_field_tag('search[topics]', search_params[:topics], class: 'input--width-100', id: "profile_topic_list") %>
-        </div>
-      </div>
-      <ul class='hidden' id='availableTags'>
-        <% ActsAsTaggableOn::Tag.uniq.pluck(:name).each do |tag_name| %>
-          <li><%= tag_name %></li>
-        <% end %>
-      </ul>
-    </div><!--divs with the class:layout__item have display:inline-block and renders the empty space between the divs BUG
-      --><div class="layout__item 1/3 palm-1/1">
-
-      <div class="control-group">
-        <%= label_tag('search[country]',t(:country, scope: 'profiles.index'), class: 'control-label') %>
-        <div class="controls">
-          <%= country_select("search", "country",
-              { priority_countries: ["DE", "FR", "GB"],
-                include_blank: t(:country_select, scope: 'profiles.profile'),
-                selected: search_params[:country]},
-              { class: 'input--width-100' }) %>
-        </div>
-        <small>
-          <%= t(:country_search_hint, scope: 'profiles.index') %>
-        </small>
-      </div>
-      <div class="control-group pb pt-">
-        <%= label_tag('search[languages]', t(:language, scope: 'profiles.index'), class: 'control-label') %>
-        <div class="controls">
-          <%= select_tag('search[languages]',
-              options_from_collection_for_select(SearchLanguages.collection_for_dropdown(I18n.locale),
-              'first', 'last', selected: search_params[:languages]),
-              include_blank: t(:any, scope: 'search'),
-              class: 'input--width-100') %>
-        </div>
-      </div>
-    </div>
-    <%= button_tag((t(:search, scope: 'pages.home.search')), class: 'btn btn--small mt') %>
-
-  <% end %>
-
-</div>
-<hr class="mv">
-
-<script>
-
-$( "#detailed-search-trigger" ).click(function() {
-  $( "#detailed-search" ).toggleClass('hidden visible');
-  $( "#quick-search" ).toggleClass('hidden visible');
-});
-
-$( "#quick-search-trigger" ).click(function() {
-  $( "#detailed-search" ).toggleClass('hidden visible');
-  $( "#quick-search" ).toggleClass('hidden visible');
-});
-
-</script>
