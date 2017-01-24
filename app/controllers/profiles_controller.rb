@@ -12,6 +12,8 @@ class ProfilesController < ApplicationController
       @profiles = profiles_for_scope(params[:topic])
     elsif params[:category_id]
       profiles_for_category
+    elsif params[:search]
+      @profiles = profiles_for_search
     else
       @profiles = profiles_for_index
     end
@@ -105,6 +107,7 @@ class ProfilesController < ApplicationController
       .per(24)
   end
 
+<<<<<<< HEAD
   def profiles_for_category
     @category = Category.find(params[:category_id])
     @tags     = @category.tags
@@ -119,4 +122,12 @@ class ProfilesController < ApplicationController
     end
   end
 
+=======
+  def profiles_for_search
+    Profile.is_published
+      .search(params[:search])
+      .records
+      .page(params[:page]).per(24)
+    end
+>>>>>>> change routing and controller action for search
 end
