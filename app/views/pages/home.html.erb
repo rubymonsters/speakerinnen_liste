@@ -5,11 +5,11 @@
 
     <%= form_tag(profiles_search_path, method: 'get', class: 'page-box') do %>
       <div class="box__bg--light pv ph- border-radius">
-        <%= text_field_tag('search[quick]', nil, class: 'profile__search', placeholder: t(:search_text, scope: 'pages.home.search')) %>
+        <%= text_field_tag('search', nil, class: 'profile__search', placeholder: t(:search_text, scope: 'pages.home.search')) %>
         <%= button_tag((t(:search, scope: 'pages.home.search')), class: "btn btn--small input-btn") %>
-        <div>
+        <!-- <div>
           <%= link_to t(:detailed_search, scope: 'general'), profiles_search_path(search: {detailed_search_link_from_startpage: true}), class: 'mh0 content__link--bg' %>
-        </div>
+         </div>-->
       </div>
       <div class="mh0 mt- font-size-24">
         <%= link_to t(:categories, scope: 'pages.home.speakers'), '#categories_anker', class: 'content__link--bg' %>
