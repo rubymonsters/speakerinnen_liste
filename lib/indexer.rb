@@ -1,4 +1,5 @@
 class Indexer
+  include Elasticsearch::Model
 
   class << self
     def perform(model)
