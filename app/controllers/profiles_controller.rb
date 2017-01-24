@@ -10,6 +10,8 @@ class ProfilesController < ApplicationController
   def index
     if params[:topic]
       @profiles = profiles_for_scope(params[:topic])
+    elsif params[:search]
+      @profiles = profiles_for_search
     else
       @profiles = profiles_for_index
     end
@@ -116,4 +118,11 @@ class ProfilesController < ApplicationController
       .page(params[:page])
       .per(24)
   end
+
+  def profiles_for_search
+    Profile.is_published
+      .search(params[:search])
+      .records
+      .page(params[:page]).per(24)
+    end
 end

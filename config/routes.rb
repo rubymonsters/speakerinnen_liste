@@ -39,7 +39,7 @@ SpeakerinnenListe::Application.routes.draw do
 
     get 'topics/:topic', to: 'profiles#index', as: :topic
 
-    get 'profiles_search' => 'profiles_search#show'
+    get 'profiles_search' => 'profiles#index'
 
     get  'contact' => 'contact#new',    as: 'contact'
     post 'contact' => 'contact#create'
