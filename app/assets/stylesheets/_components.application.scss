@@ -586,3 +586,10 @@ input[type=file] {
   line-height: 1em;
   border: none;
 }
+
+.simple_form label {
+  float: left;
+  width: 200px;
+  text-align: right;
+  margin: 2px 10px;
+}
