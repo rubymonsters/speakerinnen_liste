@@ -274,12 +274,14 @@ de:
         password_needed: 'Wir brauchen dein aktuelles Passwort, um die E-Mail Adresse oder das Passwort ändern zu können.'
         password_blank: "Bitte leer lassen, wenn das Passwort nicht geändert werden soll."
         password_current: "Aktuelles Passwort"
+        no_password: "Du kannst deine E-Mail-Adresse hier nicht ändern, weil du über Twitter eingeloggt bist und die dortige E-Mail benutzt wird."
         update: "Aktualisiere Account"
         delete_account: "Lösche meinen Account"
         unhappy: "Unglücklich?"
         delete: "Löschen"
         sure: "Sicher?"
         confirmation: "Warte auf die Bestätigung von: "
+        email: "E-Mail"
       new:
         sign_up: "Registrieren"
         password: "Passwort"
