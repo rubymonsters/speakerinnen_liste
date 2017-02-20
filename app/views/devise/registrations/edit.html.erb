@@ -20,13 +20,14 @@
           <%= t(:password_needed, scope: "devise.registrations.edit") %>
         </p>
         <%= f.input :current_password, placeholder: t(:password_current, scope: "devise.registrations.edit"), label: t(:password_current, scope: "devise.registrations.edit") %>
-        <p class="font-size--small mt">
+        <p class="text--color-red">
           <%= t(:password_blank, scope: "devise.registrations.edit") %>
         </p>
         <%= f.input :password, autocomplete: "off", class:"", placeholder: t(:new_password, scope: "devise.passwords"),label: t(:new_password, scope: "devise.passwords") %>
         <br>
         <%= f.input :password_confirmation, label: t(:password_confirmation, scope:"devise.passwords"), placeholder: t(:password_confirmation, scope: "devise.passwords"), input_html: { class: 'mb'}  %>
-
+      <% else %>
+          <%= t(:no_password, scope: "devise.registrations.edit") %>
       <% end %>
 
       <%= f.submit t(:update, scope: "devise.registrations.edit"), class:"btn btn--small" %>
