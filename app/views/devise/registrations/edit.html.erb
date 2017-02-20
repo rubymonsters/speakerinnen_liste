@@ -1,4 +1,4 @@
-<section class="content--bg-grey">
+<section class="content--bg-grey pb+">
   <div class="layout-wrapper">
 
     <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: "sans-serif" }) do |f| %>
@@ -8,28 +8,28 @@
         <%= t(:account_from, scope: "devise.registrations.edit") %> <%= @profile.firstname %>
       </h1>
 
-      <%= f.input :email, autofocus: true, input_html: { class: 'mb'} %>
+      <%= f.input :email, label: t("email"), autofocus: true, input_html: { class: 'mb'} %>
 
       <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-        <%= t(:confirmation, scope: "devise.registrations.edit" ) %><%= resource.unconfirmed_email %>
+        <b><%= t(:confirmation, scope: "devise.registrations.edit" ) %><%= resource.unconfirmed_email %></b>
       <% end %>
 
       <% if f.object.encrypted_password.present? %>
 
-        <%= f.input :current_password, placeholder: t(:password_current, scope: "devise.registrations.edit"), label: t(:password_current, scope: "devise.registrations.edit") %>
-        <p class="font-size--small mb">
+        <p class="text--color-red">
           <%= t(:password_needed, scope: "devise.registrations.edit") %>
         </p>
-
-        <%= f.input :password, autocomplete: "off", class:"", placeholder: t(:new_password, scope: "devise.passwords"),label: t(:new_password, scope: "devise.passwords") %>
-        <p class="font-size--small mb">
+        <%= f.input :current_password, placeholder: t(:password_current, scope: "devise.registrations.edit"), label: t(:password_current, scope: "devise.registrations.edit") %>
+        <p class="font-size--small mt">
           <%= t(:password_blank, scope: "devise.registrations.edit") %>
         </p>
+        <%= f.input :password, autocomplete: "off", class:"", placeholder: t(:new_password, scope: "devise.passwords"),label: t(:new_password, scope: "devise.passwords") %>
+        <br>
+        <%= f.input :password_confirmation, label: t(:password_confirmation, scope:"devise.passwords"), placeholder: t(:password_confirmation, scope: "devise.passwords"), input_html: { class: 'mb'}  %>
 
-        <%= f.input :password_confirmation, placeholder: t(:password_confirmation, scope: "devise.passwords"), label: false, input_html: { class: 'mb'}  %>
-
-        <%= f.submit t(:update, scope: "devise.registrations.edit"), class:"btn btn--small" %>
       <% end %>
+
+      <%= f.submit t(:update, scope: "devise.registrations.edit"), class:"btn btn--small" %>
 
       <h2 class="mt pt bt"><%= t(:delete_account, scope: "devise.registrations.edit") %></h2>
       <%= t(:unhappy, scope: "devise.registrations.edit") %>

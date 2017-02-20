@@ -17,6 +17,8 @@ de:
     mailer:
       confirmation_instructions:
         subject: 'Anleitung zur Bestätigung Deines Accounts'
+      reconfirmation_instructions:
+        subject: "Anleitung zur Änderung deines Accounts"
       reset_password_instructions:
         subject: 'Anleitung, um Dein Passwort zurückzusetzen'
       unlock_instructions:

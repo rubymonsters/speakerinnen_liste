@@ -15,7 +15,7 @@ Devise.setup do |config|
   config.secret_key = '9bc4fa01ac1df6f9de2ee4eccf8c06bd85ba81d36fc31a577d9ae72180fc9403af74301ba0fcb22a9fb78881cbec22d14106d348527567ef80b9f5c7253724ff'
 
   # Configure the class responsible to send e-mails.
-  # config.mailer = "Devise::Mailer"
+  config.mailer = 'ConfirmationMailer'
 
   # ==> ORM configuration
   # Load and configure the ORM. Supports :active_record (default) and

@@ -270,7 +270,7 @@ en:
     registrations:
       edit:
         account_from: "Account of "
-        password_needed: "We need your current password in order to change it."
+        password_needed: "We need your current password in order to change your password or email."
         password_blank: "Leave blank if you do not want to change the password."
         password_current: "Current password"
         update: "Update Account"
