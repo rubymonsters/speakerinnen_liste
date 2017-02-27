@@ -38,22 +38,22 @@ describe Searchable, elasticsearch: true do
       expect(profile.as_indexed_json['topic_list']).to eq ['ruby', 'algorithms']
     end
 
-    it 'contains the attribute bio' do
-      expect(profile.as_indexed_json['bio']).to eq 'Amazing person'
-    end
+    # it 'contains the attribute bio' do
+    #   expect(profile.as_indexed_json['bio']).to eq 'Amazing person'
+    # end
 
     it 'contains the attribute main_topic' do
       expect(profile.as_indexed_json['main_topic']).to eq 'life'
     end
 
-    it 'contains the attribute medialinks' do
-      #ToDo we have to create the medialink here and reload the profile because.
-      #the medialink seems already populated. Why does that happen?
-      FactoryGirl.create(:medialink, profile_id: profile.id)
-      profile.reload
+    # it 'contains the attribute medialinks' do
+    #   #ToDo we have to create the medialink here and reload the profile because.
+    #   #the medialink seems already populated. Why does that happen?
+    #   FactoryGirl.create(:medialink, profile_id: profile.id)
+    #   profile.reload
 
-      expect(profile.as_indexed_json['medialinks'][0]['title']).to eq 'thisTitle'
-    end
+    #   expect(profile.as_indexed_json['medialinks'][0]['title']).to eq 'thisTitle'
+    # end
   end
 
   describe '#search' do
