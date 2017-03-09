@@ -42,6 +42,7 @@ describe Searchable, elasticsearch: true do
       expect(profile.as_indexed_json['languages']).to eq 'English'
     end
 
+    #test must be adapted for bio_by_language method
     it 'contains the attribute bio' do
       expect(profile.as_indexed_json['bio']).to eq 'Amazing person'
     end
