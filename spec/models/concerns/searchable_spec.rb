@@ -38,9 +38,13 @@ describe Searchable, elasticsearch: true do
       expect(profile.as_indexed_json['topic_list']).to eq ['ruby', 'algorithms']
     end
 
-    # it 'contains the attribute bio' do
-    #   expect(profile.as_indexed_json['bio']).to eq 'Amazing person'
-    # end
+    it 'contains the attribute language' do
+      expect(profile.as_indexed_json['languages']).to eq 'English'
+    end
+
+    it 'contains the attribute bio' do
+      expect(profile.as_indexed_json['bio']).to eq 'Amazing person'
+    end
 
     it 'contains the attribute main_topic' do
       expect(profile.as_indexed_json['main_topic']).to eq 'life'
