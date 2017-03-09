@@ -65,6 +65,12 @@ class Profile < ActiveRecord::Base
     "#{firstname} #{lastname}".strip
   end
 
+  def bio_by_language
+    Hash[translations.map do |t|
+      [t.locale, t.bio]
+    end]
+  end
+
   def name_or_email
     fullname.present? ? fullname : email
   end
