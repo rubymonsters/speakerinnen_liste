@@ -1,3 +1,5 @@
+require './lib/indexer.rb'
+
 namespace :elasticsearch do
   namespace :import do
     CLIENT = Elasticsearch::Model.client
