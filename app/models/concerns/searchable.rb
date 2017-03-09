@@ -14,27 +14,38 @@ module Searchable
             multi_match: {
               query: query,
               fields: [
-                'firstname^3',
-                'twitter^4',
-                'topic_list^3',
+                'fullname',
+                'twitter',
+                'topic_list',
                 'main_topic',
-                'languages^2',
+                'languages',
                 'city',
                 'country',
-                'bio'
+                'bio_by_language'
               ],
               tie_breaker: 0.3,
               fuzziness: 'AUTO'
             }
-          }
+      }
+      # how to implement in gem?
+      # "aggs": {
+      #         "lang": {
+      #           "terms": {
+      #             "field": "languages"
+      #           }
+      #         },
+      #         "city": {
+      #           "terms": {
+      #             "field": "city"
+    # }
+          # }
         })
     end
-
 
     def as_indexed_json(options={})
       self.as_json(
         only: [:firstname, :lastname, :twitter, :languages, :city],
-          methods: [:fullname, :topic_list, :bio, :main_topic],
+          methods: [:fullname, :topic_list, :bio_by_language, :main_topic],
           include: {
             medialinks: { only: [:title, :description] }
           }
@@ -81,7 +92,7 @@ module Searchable
           indexes :city,       type: 'string', analyzer: 'standard' # geodaten??
           indexes :country,    type: 'string', analyzer: 'standard' # not analyzed, iso standard
           indexes :website,    type: 'string', analyzer: 'standard'
-          indexes :bio,        fields: { english: { type:  'string', analyzer: 'english' }, german: { type:  'string', analyzer: 'german'} }
+          indexes :bio_by_language, fields: { en: { type:  'string', analyzer: 'english' }, de: { type:  'string', analyzer: 'german'} }
           indexes :medialinks, type: 'nested' do
             indexes :title
             indexes :description
