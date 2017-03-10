@@ -6,8 +6,8 @@ describe Searchable, elasticsearch: true do
                                       twitter: 'alovelace', city: 'London',
                                       country: 'GB', languages: 'English',
                                       topic_list: ['ruby', 'algorithms'],
-                                      bio: 'Amazing person', main_topic: 'life', email: 'info@example.com') }
-
+                                      bio: "Das ist meine Deutsche Bio. Bla...", main_topic: 'life', email: 'info@example.com') }
+                                      # TO DO: Check bio_by_language, e.g.: bio_by_language: {:en=>"This is my English bio.", :de=>"Das ist meine Deutsche Bio. Bla..."},
   describe 'elasticsearch index' do
     it 'should be created' do
       Profile.__elasticsearch__.refresh_index!
@@ -43,8 +43,8 @@ describe Searchable, elasticsearch: true do
     end
 
     #test must be adapted for bio_by_language method
-    it 'contains the attribute bio' do
-      expect(profile.as_indexed_json['bio']).to eq 'Amazing person'
+    it 'contains the attribute bio_by_language' do
+      expect(profile.as_indexed_json['bio']).to eq 'Das ist meine Deutsche Bio. Bla...'
     end
 
     it 'contains the attribute main_topic' do
