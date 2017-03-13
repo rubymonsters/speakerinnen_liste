@@ -68,9 +68,7 @@ class Profile < ActiveRecord::Base
   end
 
   def bio_by_language
-    Hash[translations.map do |t|
-      [t.locale, t.bio]
-    end]
+    { bio: translations.map { |t| [t.locale, t.bio] }.to_h }
   end
 
   def name_or_email
