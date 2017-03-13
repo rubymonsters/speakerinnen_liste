@@ -92,6 +92,9 @@ module Searchable
         indexes :country,    type: 'string', analyzer: 'standard' # iso standard
         indexes :website,    type: 'string', analyzer: 'standard'
         # indexes :bio_by_language, type: 'string', analyzer: 'standard'
+        # indexes :bio, type: 'nested' do
+        #   indexes :de,   type: 'string', analyzer: 'standard'
+        # end
         # indexes :bio_by_language, fields: { english: { type:  'string', analyzer: 'english' }, german: { type:  'string', analyzer: 'german'} }
         indexes :medialinks, type: 'nested' do
           indexes :title
