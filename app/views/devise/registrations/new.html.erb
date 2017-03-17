@@ -1,6 +1,7 @@
 <% @target_url = registration_path(resource_name)
-   @signup = true
-   %>
+  @signup = true
+%>
+
 <%= render 'devise/shared/auth', locals: {
     signup: @signup,
     resource: @resource,

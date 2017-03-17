@@ -6,6 +6,8 @@ bundler_args: --without development production
 before_script:
 - cp config/database.yml.travis config/database.yml
 - bundle exec rake db:create db:migrate RAILS_ENV=test
+- export RECAPTCHA_SECRET_KEY=6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe
+- export RECAPTCHA_SITE_KEY=6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI
 script:
 - bundle exec rspec spec/
 - bundle exec rake test

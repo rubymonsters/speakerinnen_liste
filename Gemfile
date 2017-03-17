@@ -17,6 +17,7 @@ gem 'kaminari'
 
 gem 'pg'
 gem 'devise', '~> 3.1.1'
+gem "recaptcha", require: "recaptcha/rails"
 gem 'omniauth-twitter'
 gem 'carrierwave'
 gem 'fog', '~> 1.32.0'

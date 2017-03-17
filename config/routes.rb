@@ -34,7 +34,8 @@ SpeakerinnenListe::Application.routes.draw do
 
     devise_for :profiles, controllers: {
       omniauth_callbacks: 'omniauth_callbacks',
-      confirmations: :confirmations
+      confirmations: :confirmations,
+      registrations: :registrations
     }
 
     get 'topics/:topic', to: 'profiles#index', as: :topic
