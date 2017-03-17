@@ -68,6 +68,14 @@ class Profile < ActiveRecord::Base
     "#{firstname} #{lastname}".strip
   end
 
+  def cities
+    "#{city}".gsub(/(,|\/)/, "").split(" ")
+  end
+
+  def split_languages
+    "#{languages}".gsub(/(,|\/)/, "").split(" ")
+  end
+
   def name_or_email
     fullname.present? ? fullname : email
   end
