@@ -7,4 +7,4 @@ end
 #Recaptcha.configure do |config|
   #config.site_key = '6LeeVxkUAAAAAH_8cbwy9-IY-_BNsAvOCIrnQuyk'
   #config.secret_key = '6LeeVxkUAAAAAPFtJVg_RtwogcVzJJ2Ld6HRvAPu'
-end
+#end
