@@ -56,6 +56,8 @@ class Profile < ActiveRecord::Base
 
   scope :is_published, -> { where(published: true) }
 
+  scope :is_confirmed, -> { where.not(confirmed_at: nil) }
+
   scope :no_admin, -> { where(admin: false) }
 
   def fullname
