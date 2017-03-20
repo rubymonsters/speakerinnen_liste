@@ -8,6 +8,7 @@ class Profile < ActiveRecord::Base
 
   translates :bio, :main_topic, fallbacks_for_empty_translations: true
   accepts_nested_attributes_for :translations
+  globalize_accessors
 
   extend FriendlyId
   friendly_id :slug_candidate, use: :slugged
@@ -63,10 +64,6 @@ class Profile < ActiveRecord::Base
 
   def fullname
     "#{firstname} #{lastname}".strip
-  end
-
-  def bio_by_language
-    { bio: translations.map { |t| [t.locale, t.bio] }.to_h }
   end
 
   def name_or_email
