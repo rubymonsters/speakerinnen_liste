@@ -17,13 +17,13 @@ module Searchable
                 'fullname',
                 'twitter',
                 'topic_list',
-                'main_topic.english',
-                'main_topic.german',
+                'bio_en',
+                'bio_de',
+                'main_topic_en',
+                'main_topic_de',
                 'languages',
                 'city',
-                'country',
-                'bio_by_language'
-              ],
+                'country'              ],
               tie_breaker: 0.3,
               fuzziness: 'AUTO'
             }
@@ -45,8 +45,8 @@ module Searchable
 
     def as_indexed_json(options={})
       self.as_json(
-        only: [:firstname, :lastname, :twitter, :languages, :city, :bio],
-          methods: [:fullname, :topic_list, :bio_by_language, :main_topic],
+        only: [:firstname, :lastname, :twitter, :languages, :city, :country],
+          methods: [:fullname, :topic_list, *globalize_attribute_names],
           include: {
             medialinks: { only: [:title, :description] }
           }
@@ -81,21 +81,22 @@ module Searchable
       }
     }
 
+    ANALYZERS = { de: 'german', en: 'english' }
+
     settings super_special_settings do
       mappings dynamic: 'false' do
         indexes :fullname,   type: 'string', analyzer: 'german'
         indexes :twitter,    type: 'string', analyzer: 'twitter_analyzer'
         indexes :topic_list, type: 'string', analyzer: 'topic_list_analyzer'
-        indexes :main_topic, fields: { english: { type:  'string', analyzer: 'english' }, german: { type:  'string', analyzer: 'german'} }
+        I18n.available_locales.each do |locale|
+          [:main_topic, :bio].each do |name|
+            indexes :"#{name}_#{locale}", type: 'string', analyzer: ANALYZERS[locale]
+          end
+        end
         indexes :languages,  type: 'string', analyzer: 'standard' # array? german & english drop down!!!
         indexes :city,       type: 'string', analyzer: 'standard', 'norms': { 'enabled': false }
         indexes :country,    type: 'string', analyzer: 'standard' # iso standard
         indexes :website,    type: 'string', analyzer: 'standard'
-        # indexes :bio_by_language, type: 'string', analyzer: 'standard'
-        # indexes :bio, type: 'nested' do
-        #   indexes :de,   type: 'string', analyzer: 'standard'
-        # end
-        # indexes :bio_by_language, fields: { english: { type:  'string', analyzer: 'english' }, german: { type:  'string', analyzer: 'german'} }
         indexes :medialinks, type: 'nested' do
           indexes :title
           indexes :description
