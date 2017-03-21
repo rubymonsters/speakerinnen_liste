@@ -3,7 +3,7 @@ include AuthHelper
 describe 'admin navigation' do
   let!(:admin) { Profile.create!(FactoryGirl.attributes_for(:admin)) }
   let!(:admin_medialink) { FactoryGirl.create(:medialink, profile_id: admin.id) }
-  let!(:non_admin) { Profile.create!(FactoryGirl.attributes_for(:published,
+  let!(:ada) { Profile.create!(FactoryGirl.attributes_for(:published,
                     firstname: 'Ada',
                     lastname: 'Lovelace',
                     email: 'ada@lovelace.de',
@@ -24,8 +24,15 @@ describe 'admin navigation' do
                     topic_list: 'algorithm, mathematic')
                       )
                     }
-  let!(:non_admin_medialink) { FactoryGirl.create(:medialink,
-                                  profile_id: non_admin.id,
+
+  let!(:marie) { Profile.create!(FactoryGirl.attributes_for(:unpublished,
+                    firstname: 'Marie' )) }
+
+  let!(:rosa) { Profile.create!(FactoryGirl.attributes_for(:unconfirmed,
+                    firstname: 'Rosa' )) }
+
+  let!(:ada_medialink) { FactoryGirl.create(:medialink,
+                                  profile_id: ada.id,
                                   title: 'Ada and the computer',
                                    url: 'www.adalovelace.de',
                                    description: 'How to programm')}
@@ -56,6 +63,22 @@ describe 'admin navigation' do
       expect(page).to have_content('Ada and the computer')
       expect(page).to have_content('www.adalovelace.de')
       expect(page).to have_content('How to programm')
+    end
+
+  end
+
+  describe 'all profiles' do
+    before do
+      sign_in admin
+      click_on 'Admin'
+      click_on 'EN', match: :first
+      click_on 'Profiles'
+    end
+
+    it 'shows published and unplublished but not the unconfirmed profiles' do
+      expect(page).to have_content('Ada')
+      expect(page).to have_content('Marie')
+      expect(page).not_to have_content('Rosa')
     end
 
   end

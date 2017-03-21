@@ -20,6 +20,10 @@ FactoryGirl.define do
     factory :unpublished do
       published false
     end
+
+    factory :unconfirmed do
+      confirmed_at nil
+    end
   end
 
   factory :category do
