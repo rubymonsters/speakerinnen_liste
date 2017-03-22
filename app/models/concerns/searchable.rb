@@ -10,19 +10,20 @@ module Searchable
     def self.search(query)
       __elasticsearch__.search(
         {
+          min_score: 0.5,
           query: {
             multi_match: {
               query: query,
               fields: [
-                'fullname',
+                'fullname^1.5',
                 'twitter',
                 'topic_list',
                 'bio_en',
                 'bio_de',
                 'main_topic_en',
                 'main_topic_de',
-                'languages',
-                'city',
+                # 'split_languages',
+                'cities.standard^1.5',
                 'country'
               ],
               tie_breaker: 0.3,
@@ -32,12 +33,12 @@ module Searchable
           aggs: {
             lang: {
               terms: {
-                field: "languages"
+                field: "split_languages"
               }
             },
             city: {
               terms: {
-                field: "city"
+                field: "cities.unmod"
               }
             }
           }
@@ -62,6 +63,12 @@ module Searchable
         number_of_shards: 1,
         analysis: {
           filter: {
+            synonym_filter: {
+              type: 'synonym',
+              synonyms: [
+                "phd,dr.,dr"
+              ]
+            },
             english_stop: {
               type:       'stop',
               stopwords:  '_english_' 
@@ -91,7 +98,7 @@ module Searchable
             },
             topic_list_analyzer: {
               type: 'custom',
-              tokenizer: 'keyword', # maren: wie soll das matchen? keyword, nicht keyword? evtl booster nutzen
+              tokenizer: 'keyword',
               filter: ['lowercase']
             },
             # elisions????
@@ -100,12 +107,21 @@ module Searchable
               tokenizer: 'keyword',
               filter: ['lowercase']
             },
+            fullname_analyzer: {
+              type: 'custom',
+              tokenizer: 'standard',
+              filter: [
+                'lowercase',
+                'synonym_filter'
+              ]
+            },
             english_without_stemming: {
               tokenizer:  'standard',
               filter: [
                 'english_possessive_stemmer',
                 'lowercase',
-                'english_stop'
+                'english_stop',
+                'synonym_filter'
               ]
             },
             german_without_stemming: {
@@ -113,7 +129,8 @@ module Searchable
               filter: [
                 'lowercase',
                 'german_stop',
-                'german_normalization'
+                'german_normalization',
+                'synonym_filter'
               ]
             }
           }
@@ -125,16 +142,15 @@ module Searchable
 
     settings super_special_settings do
       mappings dynamic: 'false' do
-        indexes :fullname,   type: 'string', analyzer: 'standard'
+        indexes :fullname,   type: 'string', analyzer: 'fullname_analyzer'
         indexes :twitter,    type: 'string', analyzer: 'twitter_analyzer'
         indexes :topic_list, type: 'string', analyzer: 'topic_list_analyzer'
         I18n.available_locales.each do |locale|
           [:main_topic, :bio].each do |name|
-            indexes :"#{name}_#{locale}", type: 'string', analyzer: ANALYZERS[locale]
+            indexes :"#{name}_#{locale}", type: 'string', analyzer: "#{ANALYZERS[locale]}_without_stemming"
           end
         end
-        indexes :languages,  type: 'string', analyzer: 'standard' # array? german & english drop down!!!
-        indexes :split_languages,   type: 'string', analyzer: 'standard', 'norms': { 'enabled': false }
+        indexes :split_languages,   type: 'string', analyzer: 'standard', 'norms': { 'enabled': false } # iso standard
         indexes :cities, fields: { unmod: { type:  'string', analyzer: 'cities_analyzer' }, standard: { type:  'string', analyzer: 'standard'} }
         indexes :country,    type: 'string', analyzer: 'standard' # iso standard
         indexes :website,    type: 'string', analyzer: 'standard'
