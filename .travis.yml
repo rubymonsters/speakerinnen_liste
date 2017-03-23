@@ -3,22 +3,14 @@ language: ruby
 rvm:
 - 2.2.3
 bundler_args: --without development production
+services:
+- elasticsearch
 before_script:
 - cp config/database.yml.travis config/database.yml
 - bundle exec rake db:create db:migrate RAILS_ENV=test
 - export RECAPTCHA_SECRET_KEY=6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe
 - export RECAPTCHA_SITE_KEY=6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI
-- sleep 10
+- sleep 5 # To make sure Elasticsearch instance is ready
 script:
 - bundle exec rspec spec/
 - bundle exec rake test
-services:
-- elasticsearch
-env:
-  - ES_VERSION=2.0.0 ES_DOWNLOAD_URL=https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-${ES_VERSION}.tar.gz
-install:
-  - wget ${ES_DOWNLOAD_URL}
-  - tar -xzf elasticsearch-${ES_VERSION}.tar.gz
-  - ./elasticsearch-${ES_VERSION}/bin/elasticsearch &
-script:
-  - wget -q --waitretry=1 --retry-connrefused -T 10 -O - http://127.0.0.1:9200
