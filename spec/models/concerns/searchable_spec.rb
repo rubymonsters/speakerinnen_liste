@@ -11,9 +11,9 @@ describe Searchable, elasticsearch: true do
   describe 'elasticsearch index' do
     it 'should be created' do
       Profile.__elasticsearch__.refresh_index!
-      records = Profile.search('Ada').records
+      records = Profile.search('Lovelace').records
       expect(records.length).to eq(1)
-      expect(records.first.lastname).to eq('Lovelace')
+      expect(records.first.firstname).to eq('Ada')
     end
   end
 
