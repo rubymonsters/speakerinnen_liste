@@ -1,0 +1,1 @@
+Rails.configuration.elasticsearch_language_synonyms = File.read(Rails.root + 'config/elasticsearch_synonyms.txt').lines
