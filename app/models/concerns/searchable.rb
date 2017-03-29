@@ -22,7 +22,7 @@ module Searchable
                 'bio_de',
                 'main_topic_en',
                 'main_topic_de',
-                # 'split_languages',
+                'split_languages',
                 'cities.standard^1.5',
                 'country'
               ],
@@ -58,6 +58,13 @@ module Searchable
        )
     end
 
+
+# elisions????
+# add to cities and topic_list and main_topic
+
+# TO DO 
+# Write comments
+# pagination
     super_special_settings = {
       index: {
         number_of_shards: 1,
@@ -68,6 +75,10 @@ module Searchable
               synonyms: [
                 "phd,dr.,dr"
               ]
+            },
+            language_synonyms: {
+              type: 'synonym',
+              synonyms: Rails.configuration.elasticsearch_language_synonyms
             },
             english_stop: {
               type:       'stop',
@@ -114,6 +125,14 @@ module Searchable
                 'synonym_filter'
               ]
             },
+            language_analyzer: {
+              type: 'custom',
+              tokenizer: 'standard',
+              filter: [
+                'lowercase',
+                'language_synonyms'
+              ]
+            },
             english_without_stemming: {
               tokenizer:  'standard',
               filter: [
@@ -141,7 +160,7 @@ module Searchable
 
     settings super_special_settings do
       mappings dynamic: 'false' do
-        # indexes :fullname,   type: 'string', analyzer: 'fullname_analyzer'
+        indexes :fullname,   type: 'string', analyzer: 'fullname_analyzer'
         indexes :twitter,    type: 'string', analyzer: 'twitter_analyzer'
         indexes :topic_list, type: 'string', analyzer: 'topic_list_analyzer'
         I18n.available_locales.each do |locale|
@@ -149,7 +168,7 @@ module Searchable
             indexes :"#{name}_#{locale}", type: 'string', analyzer: "#{ANALYZERS[locale]}_without_stemming"
           end
         end
-        indexes :split_languages,   type: 'string', analyzer: 'standard', 'norms': { 'enabled': false } # iso standard
+        indexes :split_languages,   type: 'string', analyzer: 'language_analyzer', 'norms': { 'enabled': false }
         indexes :cities, fields: { unmod: { type:  'string', analyzer: 'cities_analyzer' }, standard: { type:  'string', analyzer: 'standard'} }
         indexes :country,    type: 'string', analyzer: 'standard' # iso standard
         indexes :website,    type: 'string', analyzer: 'standard'
