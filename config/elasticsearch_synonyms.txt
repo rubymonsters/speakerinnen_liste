@@ -1,0 +1,94 @@
+abkhazian, abchasisch
+afrikaans, afrikaans
+arabic, arabisch
+assamese, assamesisch
+azerbaijani, aserbeidschanisch, azərbaycan dili
+belarusian, weißrussisch
+bulgarian, bulgarisch, bulgrian
+bengali, bengali
+tibetan, tibetisch
+breton, bretonisch, brezhoneg
+bosnian, bosnisch, bosanski jezik
+catalan,valencian, katalanisch, català
+chechen, tschetschenisch, čečenský
+corsican, korsisch, corsu, lingua corsa
+czech, tschechisch, čeština, český jazyk
+church slavic, kirchenslawisch
+welsh, kymrisch, Cymraeg
+danish, dänisch, danske
+german, deutsch
+greek, griechisch
+english, englisch
+esperanto, esperanto
+spanish, spanisch, español
+estonian, estnisch, eesti, eesti keel
+basque, baskisch, euskara, euskera
+persian, persisch
+finnish, finnisch, suomi, suomen kieli
+fijian, fidschi, vosa Vakaviti
+faroese, färöisch, føroyskt
+french, französisch, français
+western frisian, friesisch, frysk
+irish, irisch, gaeilge
+gaelic, scottish gaelic, schottisch-gälisch, gàidhlig
+galician, galicisch, galego
+manx, manxs, gaelg, gailck
+hebrew, hebräisch
+hindi, hindi
+croatian, kroatisch, hrvatska, hrvatski jezik
+haitian, haitian creole, haitianisch
+hungarian, ungarisch, magyar
+armenian, armenisch
+indonesian, bahasa indonesia, indonesisch
+icelandic, isländisch, Íslenska
+italian, italienisch, italiano
+japanese, japanisch
+javanese, javanisch, basa bawa
+georgian, georgisch
+kongo, kongo-sprache, kikongo
+korean, koreanisch
+kurdish, kurdisch, kurdî
+cornish, kornisch, kernewek
+kirghiz, kirgisisch
+latin, latein, latine, lingua latina
+luxembourgish, letzeburgesch, luxemburgisch, lëtzebuergesch
+limburgan, limburger, limburgish, limburgisch, limburgs
+lingala, lingála
+lithuanian, litauisch, lietuvių kalba
+latvian, lettisch, latviešu valoda
+malagasy, malagassi-sprache, fiteny malagasy
+macedonian, makedonisch
+mongolian, mongolisch
+moldavian, moldauisch
+malay, malaiisch, bahasa melayu
+maltese, maltesisch, malti
+burmese, burmesisch, birmanisch
+norwegian norwegisch, bokmål, norsk
+nepali, nepali
+dutch, niederländisch, nederlands
+norwegian, nynorsk, norwegisch, norsk bokmål
+occitan, provençal, okzitanisch, occitan, lenga d'òc
+polish, polnisch, polskie, język polski, polszczyzna
+portuguese, portugiesisch, português
+raeto-romance, rätoromanisch, rumantsch grischun
+romanian, rumänisch, română
+russian, russisch
+sardinian, sardisch, sardu
+northern sami, nordsamisch, davvisámegiella
+slovak, slowakisch, slovenský, slovenčina, slovenský jazyk
+slovenian, slowenisch, slovenskih, slovenski jezik, slovenščina
+somali, somali, soomaaliga, af soomaali
+albanian, albanisch, shqip
+serbian, serbisch, srpski
+swedish, schwedisch, svensk, svenska
+swahili, swahili, kiswahili
+turkmen, turkmenisch, türkmen
+turkish, türkisch, türkçe
+tahitian, tahitisch, reo tahiti
+ukrainian, ukrainisch
+urdu, urdu
+uzbek, usbekisch, oʻzbek
+vietnamese, vietnamesisch, tiếng việt
+volapuk, volapük
+yiddish, jiddisch
+chinese, chinesisch, zhōngwén
