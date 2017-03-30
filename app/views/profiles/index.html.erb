@@ -9,13 +9,27 @@
 
     <%= render partial: 'shared/profile_search' %>
 
-    <div class="layout mb+">
+    <div class="layout mb+ pt">
       <% if params[:topic] %>
         <p class="text--color-blue font-size-24 text--center layout__item 1/1">
           <%= t(:profiles_topics, scope: 'search', profiles_count: @profiles.total_count, topics_name: params[:topic]).html_safe %>
         </p>
       <% end %>
 
+      <% if @profiles.any? %>
+        <p class="text--color-blue font-size-24 text--center layout__item 1/1">
+          <%= t(:success, scope: 'search' ).html_safe +
+              t(:result, scope: 'search', count: @profiles.total_count).html_safe %><br>
+          <%= t(:profiles, link: link_to(t(:all_profiles, scope: 'search'), profiles_path), scope: 'search').html_safe %>
+        </p>
+      <% else %>
+        <p class="text--color-blue font-size-24 text--center layout__item 1/1">
+          <%= t(:no_profile, link: link_to(t(:all_profiles, scope: 'search'), profiles_path), scope: 'search').html_safe %>
+        </p>
+      <% end %>
+
+
+    <div class="layout mb+ pt">
       <% if @profiles.any? %>
         <% if @profiles.size == 1 %>
           <%= render partial: 'profiles/profile', object: @profiles[0], locals: { just_one: true } %>
@@ -24,10 +38,6 @@
           <%= render partial: 'profiles/profile', collection: @profiles[1..-2] %>
           <%= render partial: 'profiles/profile', object: @profiles[-1], locals: { is_last: true } %>
         <% end %>
-      <% else %>
-        <p class="text--color-blue font-size-24 text--center">
-          <%= t(:no_profile, link: link_to(t(:all_profiles, scope: 'search'), profiles_path), scope: 'search').html_safe %>
-        </p>
       <% end %>
     </div>
 
