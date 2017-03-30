@@ -127,8 +127,8 @@ class ProfilesController < ApplicationController
   def profiles_for_search
     Profile.is_published
       .search(params[:search])
-      .records
       .page(params[:page]).per(24)
+      .records
     end
 >>>>>>> change routing and controller action for search
 end
