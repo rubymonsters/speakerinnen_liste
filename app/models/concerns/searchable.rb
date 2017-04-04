@@ -9,11 +9,61 @@ module Searchable
 
     def self.search(query)
       __elasticsearch__.search(
+        # {
+        #   # min_score: 0.5, # this makes index creation on tests fail :(
+        #   query: {
+        #     bool: {
+        #       should: [
+        #         { match: { 'fullname': {
+        #           query: query,
+        #           boost: 1.5,
+        #           fuzziness: 'AUTO'
+        #         }}},
+        #         { match: { 'twitter': query }},
+        #         { match: { 'topic_list': query }},
+        #         { match: { 'bio_en': query }},
+        #         { match: { 'bio_de': query }},
+        #         { match: { 'main_topic_en': query }},
+        #         { match: { 'main_topic_de': query }},
+        #         { match: { 'split_languages': query }},
+        #         { match: { 'cities.standard': {
+        #           query: query,
+        #           boost: 1.5,
+        #           fuzziness: 'AUTO'
+        #         }}},
+        #         { match: { 'country': query }}
+        #       ],
+        #       minimum_should_match: 1
+        #     }
+        #   },
+        #   aggs: {
+        #     lang: {
+        #       terms: {
+        #         field: "split_languages"
+        #       }
+        #     },
+        #     city: {
+        #       terms: {
+        #         field: "cities.unmod"
+        #       }
+        #     }
+        #   }
+        # })
+
+
+
+# stadt heraustrennen? allen den gleichen score dafür geben, keine kombination
+# fuzziness turned off?
+# norms disabled everywhere?
+
         {
-          # min_score: 0.5, # this makes index creation on tests fail :(
+          # minimum score depends completely on the given data and query, find out what works in your case.
+          min_score: 0.3, # this makes index creation on tests fail :(
           query: {
             multi_match: {
               query: query,
+              # term-centric approach. First analyzes the query string into individual terms, then looks for each term in any of the fields, as though they were one big field.
+              type: 'cross_fields', # i don't understand this
               fields: [
                 'fullname^1.5',
                 'twitter',
@@ -27,9 +77,28 @@ module Searchable
                 'country'
               ],
               tie_breaker: 0.3,
-              fuzziness: 'AUTO'
+              minimum_should_match: "50%"
+              # fuzziness: 'AUTO'
             }
           },
+          # for autocompletion
+          suggest: {
+            suggestion: {
+              text: query,
+              term: {
+                field: "fullname"
+              }
+            }
+          },
+          # # for autocompletion
+          # suggest: {
+          #   profiles: {
+          #     text: query,
+          #     completion: { field: "fullname_suggest"}
+          #   }
+          # },
+          # _source: ['fullname', 'firstname'],
+          # aggregation, will be used for faceted search
           aggs: {
             lang: {
               terms: {
@@ -47,7 +116,6 @@ module Searchable
 
     def as_indexed_json(options={})
       as_json(
-        # change city to cities (list)
         {
         only: [:firstname, :lastname, :twitter, :languages, :city, :country],
           methods: [:fullname, :topic_list, :cities, :split_languages, *globalize_attribute_names],
@@ -64,7 +132,6 @@ module Searchable
 
 # TO DO 
 # Write comments
-# pagination
     super_special_settings = {
       index: {
         number_of_shards: 1,
@@ -152,6 +219,15 @@ module Searchable
               ]
             }
           }
+        },
+        suggest: {
+          term: {
+            field: "fullname"
+          }
+          # type: "completion",
+          # analyzer: "simple",
+          # search_analyzer: "simple",
+          # payloads: "true"
         }
       }
     }
@@ -160,23 +236,30 @@ module Searchable
 
     settings super_special_settings do
       mappings dynamic: 'false' do
-        indexes :fullname,   type: 'string', analyzer: 'fullname_analyzer'
-        indexes :twitter,    type: 'string', analyzer: 'twitter_analyzer'
-        indexes :topic_list, type: 'string', analyzer: 'topic_list_analyzer'
+        indexes :fullname,   type: 'string', analyzer: 'fullname_analyzer',   'norms': { 'enabled': false }
+        indexes :fullname_suggest, type: 'completion'
+        # indexes :fullname,   type: 'string', analyzer: 'fullname_analyzer',   'norms': { 'enabled': false } do
+        #   indexes :suggest,  type: 'completion'
+        # end
+        indexes :twitter,    type: 'string', analyzer: 'twitter_analyzer',    'norms': { 'enabled': false }
+        indexes :topic_list, type: 'string', analyzer: 'topic_list_analyzer', 'norms': { 'enabled': false }
         I18n.available_locales.each do |locale|
           [:main_topic, :bio].each do |name|
             indexes :"#{name}_#{locale}", type: 'string', analyzer: "#{ANALYZERS[locale]}_without_stemming"
           end
         end
         indexes :split_languages,   type: 'string', analyzer: 'language_analyzer', 'norms': { 'enabled': false }
-        indexes :cities, fields: { unmod: { type:  'string', analyzer: 'cities_analyzer' }, standard: { type:  'string', analyzer: 'standard'} }
-        indexes :country,    type: 'string', analyzer: 'standard' # iso standard
-        indexes :website,    type: 'string', analyzer: 'standard'
+        indexes :cities, fields: { unmod: { type:  'string', analyzer: 'cities_analyzer', 'norms': { 'enabled': false } }, standard: { type:  'string', analyzer: 'standard', 'norms': { 'enabled': false }} }
+        indexes :country,    type: 'string', analyzer: 'standard', 'norms': { 'enabled': false }
+        indexes :website,    type: 'string', analyzer: 'standard', 'norms': { 'enabled': false }
         indexes :medialinks, type: 'nested' do
-          indexes :title
-          indexes :description
+          indexes :title, 'norms': { 'enabled': false }
+          indexes :description, 'norms': { 'enabled': false }
         end
       end
     end
   end
 end
+
+#term suggester, did you mean
+# suggester sind besser als fuzziness. 
