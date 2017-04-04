@@ -22,6 +22,10 @@
               t(:result, scope: 'search', count: @profiles.total_count).html_safe %><br>
           <%= t(:profiles, link: link_to(t(:all_profiles, scope: 'search'), profiles_path), scope: 'search').html_safe %>
         </p>
+      <% elsif @profiles.size <1 && @profiles.response.response.suggest.suggestion.present? %>
+        <p >Maybe you mean
+        <%= @profiles.response.response.suggest.suggestion.first.options.map {|e| p e.text.capitalize} %>????
+        </p>
       <% else %>
         <p class="text--color-blue font-size-24 text--center layout__item 1/1">
           <%= t(:no_profile, link: link_to(t(:all_profiles, scope: 'search'), profiles_path), scope: 'search').html_safe %>
