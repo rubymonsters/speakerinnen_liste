@@ -10,6 +10,8 @@ class ProfilesController < ApplicationController
   def index
     if params[:topic]
       @profiles = profiles_for_scope(params[:topic])
+    elsif params[:categories]
+      @profiles = profiles_for_category(params[:category_id])
     else
       @profiles = profiles_for_index
     end
@@ -113,6 +115,17 @@ class ProfilesController < ApplicationController
     Profile.is_published
       .random
       .tagged_with(tag_names, any: true)
+      .page(params[:page])
+      .per(24)
+  end
+
+  def profiles_for_category(category_name)
+    @category = Category.find(params[:category_id])
+    @tags     = @category.tags
+    @tag_names = @tags.pluck(:name)
+    Profile.is_published
+      .tagged_with(@tag_names)
+      .random
       .page(params[:page])
       .per(24)
   end
