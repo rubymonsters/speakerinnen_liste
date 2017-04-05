@@ -2,10 +2,11 @@
   <div class="layout-wrapper">
     <h1 class="bg--white"><%= t(:heading, scope: 'pages.home.search') %></h1>
     <h1 class="alpha--halve bg--white"><%= t(:tagline, scope: 'pages.home.search') %></h1>
+<ul class="nav">
 
     <%= form_tag(profiles_search_path, method: 'get', class: 'page-box') do %>
       <div class="box__bg--light pv ph- border-radius">
-        <%= text_field_tag('search', nil, class: 'profile__search', placeholder: t(:search_text, scope: 'pages.home.search')) %>
+        <%= text_field_tag('search', nil, type: 'text', name: 'q', class: 'input-search typeahead', autocomplete: 'off', placeholder: t(:search_text, scope: 'pages.home.search')) %>
         <%= button_tag((t(:search, scope: 'pages.home.search')), class: "btn btn--small input-btn") %>
         <!-- <div>
           <%= link_to t(:detailed_search, scope: 'general'), profiles_search_path(search: {detailed_search_link_from_startpage: true}), class: 'mh0 content__link--bg' %>

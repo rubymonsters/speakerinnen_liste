@@ -7,15 +7,24 @@ class ProfilesController < ApplicationController
 
   before_filter :require_permission, only: [:edit, :destroy, :update]
 
+  respond_to :json
+
   def index
-    if params[:topic]
-      @profiles = profiles_for_scope(params[:topic])
-    elsif params[:search]
-      @profiles = profiles_for_search
-    else
-      @profiles = profiles_for_index
-    end
-    @tags = ActsAsTaggableOn::Tag.most_used(100)
+    
+    puts "in index"
+    typeahead
+    # render json: typeahead
+
+    # if params[:topic]
+    #   @profiles = profiles_for_scope(params[:topic])
+    # # elsif params[:search]
+    # #   @profiles = profiles_for_search
+    # elsif params[:q]
+    #   @profiles = typeahead
+    # else
+    #   @profiles = profiles_for_index
+    # end
+    # @tags = ActsAsTaggableOn::Tag.most_used(100)
   end
 
   def category
@@ -124,5 +133,28 @@ class ProfilesController < ApplicationController
       .search(params[:search])
       .page(params[:page]).per(24)
       .records
-    end
+  end
+
+  # def fullname_suggest
+  #   {
+  #     input: fullnames.map { |f| f.fullname.downcase }
+  #   }
+  # end
+
+  # def self.typeahead(q)
+  #   self.__elasticsearch__.client.suggest(index: self.index_name, body: {
+  #     profile:{
+  #       text: q,
+  #       completion: { field: 'fullname.suggest'
+  #       }
+  #     }
+  #   })
+  # end
+
+  def typeahead
+    puts "in typeahead"
+    typeahead = Profile.typeahead(params[:q])
+    render json: typeahead['fullname_suggest'][0]['options']
+    # respond_with(typeahead['fullname_suggest'][0]['options'])
+  end
 end
