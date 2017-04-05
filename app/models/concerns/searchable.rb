@@ -7,51 +7,19 @@ module Searchable
 
     index_name [Rails.application.engine_name, Rails.env].join('_')
 
+    # def self.typeahead(q)
+    #   self.__elasticsearch__.client.suggest(index: self.index_name, body: {
+    #     fullname_suggest:{
+    #       text: q,
+    #       completion: {
+    #         field: "fullname_suggest"
+    #       }
+    #     }
+    #   })
+    # end
+
     def self.search(query)
       __elasticsearch__.search(
-        # {
-        #   # min_score: 0.5, # this makes index creation on tests fail :(
-        #   query: {
-        #     bool: {
-        #       should: [
-        #         { match: { 'fullname': {
-        #           query: query,
-        #           boost: 1.5,
-        #           fuzziness: 'AUTO'
-        #         }}},
-        #         { match: { 'twitter': query }},
-        #         { match: { 'topic_list': query }},
-        #         { match: { 'bio_en': query }},
-        #         { match: { 'bio_de': query }},
-        #         { match: { 'main_topic_en': query }},
-        #         { match: { 'main_topic_de': query }},
-        #         { match: { 'split_languages': query }},
-        #         { match: { 'cities.standard': {
-        #           query: query,
-        #           boost: 1.5,
-        #           fuzziness: 'AUTO'
-        #         }}},
-        #         { match: { 'country': query }}
-        #       ],
-        #       minimum_should_match: 1
-        #     }
-        #   },
-        #   aggs: {
-        #     lang: {
-        #       terms: {
-        #         field: "split_languages"
-        #       }
-        #     },
-        #     city: {
-        #       terms: {
-        #         field: "cities.unmod"
-        #       }
-        #     }
-        #   }
-        # })
-
-
-
 # stadt heraustrennen? allen den gleichen score dafür geben, keine kombination
 # fuzziness turned off?
 # norms disabled everywhere?
@@ -83,13 +51,22 @@ module Searchable
           },
           # for autocompletion
           suggest: {
-            suggestion: {
+            fullname_suggest: {
               text: query,
-              term: {
+              completion: {
                 field: "fullname"
               }
             }
           },
+          # # for autocompletion
+          # suggest: {
+          #   suggestion: {
+          #     text: query,
+          #     term: {
+          #       field: "fullname"
+          #     }
+          #   }
+          # },
           # # for autocompletion
           # suggest: {
           #   profiles: {
@@ -117,6 +94,7 @@ module Searchable
     def as_indexed_json(options={})
       as_json(
         {
+        fullname_suggest: { input:  fullname },
         only: [:firstname, :lastname, :twitter, :languages, :city, :country],
           methods: [:fullname, :topic_list, :cities, :split_languages, *globalize_attribute_names],
           include: {
@@ -177,17 +155,18 @@ module Searchable
             topic_list_analyzer: {
               type: 'custom',
               tokenizer: 'keyword',
-              filter: ['lowercase']
+              filter: ['asciifolding', 'lowercase']
             },
             cities_analyzer: {
               type: 'custom',
               tokenizer: 'keyword',
-              filter: ['lowercase']
+              filter: ['asciifolding', 'lowercase']
             },
             fullname_analyzer: {
               type: 'custom',
               tokenizer: 'standard',
               filter: [
+                'asciifolding',
                 'lowercase',
                 'synonym_filter'
               ]
@@ -219,11 +198,11 @@ module Searchable
               ]
             }
           }
-        },
-        suggest: {
-          term: {
-            field: "fullname"
-          }
+        # },
+        # suggest: {
+        #   term: {
+        #     field: "fullname"
+        #   }
           # type: "completion",
           # analyzer: "simple",
           # search_analyzer: "simple",
@@ -236,11 +215,12 @@ module Searchable
 
     settings super_special_settings do
       mappings dynamic: 'false' do
-        indexes :fullname,   type: 'string', analyzer: 'fullname_analyzer',   'norms': { 'enabled': false }
-        indexes :fullname_suggest, type: 'completion'
-        # indexes :fullname,   type: 'string', analyzer: 'fullname_analyzer',   'norms': { 'enabled': false } do
-        #   indexes :suggest,  type: 'completion'
-        # end
+        # indexes :fullname,   type: 'string', analyzer: 'fullname_analyzer',   'norms': { 'enabled': false }
+        # indexes :fullname_suggest, type: 'completion', analyzer: 'fullname_analyzer', payloads: false
+        # indexes :fullname_suggest, type: 'completion', index_analyzer: 'fullname_analyzer', search_analyzer: 'fullname_analyzer', payloads: false
+        indexes :fullname,   type: 'string', analyzer: 'fullname_analyzer',   'norms': { 'enabled': false } do
+          indexes :suggest,  type: 'completion'
+        end
         indexes :twitter,    type: 'string', analyzer: 'twitter_analyzer',    'norms': { 'enabled': false }
         indexes :topic_list, type: 'string', analyzer: 'topic_list_analyzer', 'norms': { 'enabled': false }
         I18n.available_locales.each do |locale|
@@ -258,6 +238,14 @@ module Searchable
         end
       end
     end
+
+    def fullname_suggest
+      {
+        # input: keywords.map { |k| k.keyword.downcase }
+        input: fullnames.map { |f| f.fullname.downcase }
+      }
+    end
+
   end
 end
 
