@@ -24,3 +24,49 @@ $(document).ready(function() {
   });
   $('#profile_topic_list').tagit({availableTags: topics});
 });
+
+$(document).ready(function(){
+
+  var engine = new Bloodhound({
+    name: 'fullname-search',
+    // remote: '/profiles_typeahead?q=mar',
+    remote: {
+      url: '/profiles_search?q=mar',
+      filter: function(response) {
+        console.log("response: ", response);
+        return response;
+      }
+    },
+    datumTokenizer: function(d) {
+      console.log("d.val: ", d.val);
+      return Bloodhound.tokenizers.whitespace(d.val);
+    },
+    queryTokenizer: Bloodhound.tokenizers.whitespace
+  });
+
+  engine.initialize();
+
+
+  $('.typeahead').typeahead(
+    {
+      minLength: 2,
+      highlight: true,
+      hint: true // If the input should display the top result hinted in the input box.
+    },
+    {
+      name: 'fullname-search',
+      displayKey: 'text',
+      // displayKey: function(names) {
+      //   console.log("these are the names !!!!!!!!!!", names);
+      //   return names;
+      // },
+      source: function(query, callback) {
+        callback([{"text":"Maren Jackwerth","score":1.0},{"text":"Maren Martschenko","score":1.0},{"text":"Maren Heltsche","score":1.0}]);
+      }
+      // source: function(query, callback) {
+      //   callback(engine);
+      // }
+      // source: engine.ttAdapter()
+    }
+  );
+});
