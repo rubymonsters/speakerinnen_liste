@@ -149,6 +149,7 @@ class Profile < ActiveRecord::Base
     end
   end
 
+<<<<<<< HEAD
   # for simple admin search
   def self.search(query)
     where("firstname || ' ' || lastname ILIKE :query OR twitter ILIKE :query", query: "%#{query}%")
@@ -174,5 +175,15 @@ class Profile < ActiveRecord::Base
   def split_languages_string
     return [] unless languages
     languages.gsub(/[^\wöäüÖÄÜçñ]/, " ").split(" ")
+
+# evtl. woanders hin
+  def self.typeahead(q)
+    self.__elasticsearch__.client.suggest(index: self.index_name, body: {
+      fullname_suggest:{
+        text: q,
+        completion: { field: 'fullname.suggest'
+        }
+      }
+    })
   end
 end
