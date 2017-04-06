@@ -155,27 +155,10 @@ class ProfilesController < ApplicationController
 =======
   end
 
-  # def fullname_suggest
-  #   {
-  #     input: fullnames.map { |f| f.fullname.downcase }
-  #   }
-  # end
-
-  # def self.typeahead(q)
-  #   self.__elasticsearch__.client.suggest(index: self.index_name, body: {
-  #     profile:{
-  #       text: q,
-  #       completion: { field: 'fullname.suggest'
-  #       }
-  #     }
-  #   })
-  # end
-
   def typeahead
     puts "in typeahead"
     typeahead = Profile.typeahead(params[:q])
-    render json: typeahead['fullname_suggest'][0]['options']
-    # respond_with(typeahead['fullname_suggest'][0]['options'])
+    respond_with(typeahead['fullname_suggest'][0]['options'])
   end
 >>>>>>> WIP - Autocompletion works only almost :(
 end
