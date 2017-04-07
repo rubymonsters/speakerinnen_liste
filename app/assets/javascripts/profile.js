@@ -32,25 +32,23 @@ $(document).ready(function(){
     datumTokenizer: Bloodhound.tokenizers.whitespace('value'),
     queryTokenizer: Bloodhound.tokenizers.whitespace,
       remote: {
-        url: '/profiles_search?q=%QUERY',
+        url: '/profiles_typeahead?q=%QUERY',
         wildcard: '%QUERY',
-        // filter: function(response) {
-        //   console.log("response: ", response);
-        //   return response;
-        // }
+        filter: function(response) {
+          console.log("response: ", response);
+          return response;
+        }
       },
   });
 
-  // $('.typeahead').typeahead(null, {
   $('.typeahead').typeahead({
     hint: true,
     highlight: true,
-    minLength: 2
+    minLength: 3
   },
   {
     name: 'fullname_suggest',
     display: 'text',
     source: fullnameSuggest
   });
-
 });

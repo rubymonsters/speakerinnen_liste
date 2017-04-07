@@ -10,7 +10,6 @@ class ProfilesController < ApplicationController
   respond_to :json
 
   def index
-<<<<<<< HEAD
     if params[:topic]
       @profiles = profiles_for_scope(params[:topic])
     elsif params[:category_id]
@@ -21,23 +20,6 @@ class ProfilesController < ApplicationController
       @profiles = profiles_for_index
     end
     @tags = ActsAsTaggableOn::Tag.most_used(100)
-=======
-    
-    puts "in index"
-    typeahead
-    # render json: typeahead
-
-    # if params[:topic]
-    #   @profiles = profiles_for_scope(params[:topic])
-    # # elsif params[:search]
-    # #   @profiles = profiles_for_search
-    # elsif params[:q]
-    #   @profiles = typeahead
-    # else
-    #   @profiles = profiles_for_index
-    # end
-    # @tags = ActsAsTaggableOn::Tag.most_used(100)
->>>>>>> WIP - Autocompletion works only almost :(
   end
 
   def show
@@ -76,6 +58,11 @@ class ProfilesController < ApplicationController
 
   def render_footer?
     false
+  end
+
+  def typeahead
+    autocomplete = Profile.typeahead(params[:q])
+    respond_with(autocomplete['fullname_suggest'][0]['options'])
   end
 
   private
@@ -128,7 +115,6 @@ class ProfilesController < ApplicationController
       .per(24)
   end
 
-<<<<<<< HEAD
   def profiles_for_category
     @category = Category.find(params[:category_id])
     @tags     = @category.tags
@@ -143,16 +129,11 @@ class ProfilesController < ApplicationController
     end
   end
 
-=======
   def profiles_for_search
     Profile.is_published
       .search(params[:search])
       .page(params[:page]).per(24)
       .records
-<<<<<<< HEAD
-    end
->>>>>>> change routing and controller action for search
-=======
   end
 
   def typeahead
@@ -160,5 +141,4 @@ class ProfilesController < ApplicationController
     typeahead = Profile.typeahead(params[:q])
     respond_with(typeahead['fullname_suggest'][0]['options'])
   end
->>>>>>> WIP - Autocompletion works only almost :(
 end
