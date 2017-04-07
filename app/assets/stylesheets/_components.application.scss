@@ -586,3 +586,32 @@ input[type=file] {
   line-height: 1em;
   border: none;
 }
+
+/* autocomplete in search */
+.twitter-typeahead {
+  font-family: $sans-serif;
+  font-size: $inuit-base-font-size;
+}
+ 
+.tt-dropdown-menu {
+  background: white;
+  width: 100%;
+  padding: 10px;
+  color: $dark-grey;
+}
+ 
+.tt-suggestion {
+  margin: 0;
+  background: $transparent-white;
+  padding: halve($inuit-base-spacing-unit) $inuit-base-spacing-unit;
+
+  p {
+    margin: 0;
+  }
+ 
+  &:hover {
+    background-color: whitesmoke;
+    color: $blue;
+    cursor: pointer;
+  }
+}

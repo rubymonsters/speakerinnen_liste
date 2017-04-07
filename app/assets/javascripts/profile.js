@@ -33,11 +33,7 @@ $(document).ready(function(){
     queryTokenizer: Bloodhound.tokenizers.whitespace,
       remote: {
         url: '/profiles_typeahead?q=%QUERY',
-        wildcard: '%QUERY',
-        filter: function(response) {
-          console.log("response: ", response);
-          return response;
-        }
+        wildcard: '%QUERY'
       },
   });
 
@@ -49,6 +45,7 @@ $(document).ready(function(){
   {
     name: 'fullname_suggest',
     display: 'text',
-    source: fullnameSuggest
+    source: fullnameSuggest,
+    limit: 10
   });
 });

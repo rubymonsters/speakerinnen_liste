@@ -24,7 +24,7 @@
         </p>
       <% elsif @profiles.size <1 && @profiles.response.response.suggest.did_you_mean.first.options.present? %>
         <p class="text--color-blue font-size-24 text--left layout__item 1/1">
-        <%= t(:did_you_mean, scope: 'search', suggestions: @profiles.response.response.suggest.did_you_mean.first.options.map {|e| p e.text.capitalize} * ", ").html_safe %>
+        <%= t(:did_you_mean, scope: 'search', suggestions: @profiles.response.response.suggest.did_you_mean.first.options.map {|sug| link_to(sug.text.capitalize, "profiles_search?&search=#{sug.text}")} * ", " ).html_safe %>
         </p>
       <% else %>
         <p class="text--color-blue font-size-24 text--center layout__item 1/1">
