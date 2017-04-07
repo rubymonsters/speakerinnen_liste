@@ -10,21 +10,14 @@ class ProfilesController < ApplicationController
   respond_to :json
 
   def index
-    
-    puts "in index"
-    typeahead
-    # render json: typeahead
-
-    # if params[:topic]
-    #   @profiles = profiles_for_scope(params[:topic])
-    # # elsif params[:search]
-    # #   @profiles = profiles_for_search
-    # elsif params[:q]
-    #   @profiles = typeahead
-    # else
-    #   @profiles = profiles_for_index
-    # end
-    # @tags = ActsAsTaggableOn::Tag.most_used(100)
+    if params[:topic]
+      @profiles = profiles_for_scope(params[:topic])
+    elsif params[:search]
+      @profiles = profiles_for_search
+    else
+      @profiles = profiles_for_index
+    end
+    @tags = ActsAsTaggableOn::Tag.most_used(100)
   end
 
   def category
@@ -77,6 +70,11 @@ class ProfilesController < ApplicationController
 
   def render_footer?
     false
+  end
+
+  def typeahead
+    autocomplete = Profile.typeahead(params[:q])
+    respond_with(autocomplete['fullname_suggest'][0]['options'])
   end
 
   private
@@ -133,11 +131,5 @@ class ProfilesController < ApplicationController
       .search(params[:search])
       .page(params[:page]).per(24)
       .records
-  end
-
-  def typeahead
-    puts "in typeahead"
-    typeahead = Profile.typeahead(params[:q])
-    respond_with(typeahead['fullname_suggest'][0]['options'])
   end
 end
