@@ -7,17 +7,6 @@ module Searchable
 
     index_name [Rails.application.engine_name, Rails.env].join('_')
 
-    # def self.typeahead(q)
-    #   self.__elasticsearch__.client.suggest(index: self.index_name, body: {
-    #     fullname_suggest:{
-    #       text: q,
-    #       completion: {
-    #         field: "fullname_suggest"
-    #       }
-    #     }
-    #   })
-    # end
-
     def self.search(query)
       __elasticsearch__.search(
 # stadt heraustrennen? allen den gleichen score dafür geben, keine kombination
@@ -49,32 +38,14 @@ module Searchable
               # fuzziness: 'AUTO'
             }
           },
-          # for autocompletion
           suggest: {
-            fullname_suggest: {
+            did_you_mean: {
               text: query,
-              completion: {
+              term: {
                 field: "fullname"
               }
             }
           },
-          # # for autocompletion
-          # suggest: {
-          #   suggestion: {
-          #     text: query,
-          #     term: {
-          #       field: "fullname"
-          #     }
-          #   }
-          # },
-          # # for autocompletion
-          # suggest: {
-          #   profiles: {
-          #     text: query,
-          #     completion: { field: "fullname_suggest"}
-          #   }
-          # },
-          # _source: ['fullname', 'firstname'],
           # aggregation, will be used for faceted search
           aggs: {
             lang: {
@@ -198,15 +169,6 @@ module Searchable
               ]
             }
           }
-        # },
-        # suggest: {
-        #   term: {
-        #     field: "fullname"
-        #   }
-          # type: "completion",
-          # analyzer: "simple",
-          # search_analyzer: "simple",
-          # payloads: "true"
         }
       }
     }
@@ -215,9 +177,6 @@ module Searchable
 
     settings super_special_settings do
       mappings dynamic: 'false' do
-        # indexes :fullname,   type: 'string', analyzer: 'fullname_analyzer',   'norms': { 'enabled': false }
-        # indexes :fullname_suggest, type: 'completion', analyzer: 'fullname_analyzer', payloads: false
-        # indexes :fullname_suggest, type: 'completion', index_analyzer: 'fullname_analyzer', search_analyzer: 'fullname_analyzer', payloads: false
         indexes :fullname,   type: 'string', analyzer: 'fullname_analyzer',   'norms': { 'enabled': false } do
           indexes :suggest,  type: 'completion'
         end
@@ -241,7 +200,6 @@ module Searchable
 
     def fullname_suggest
       {
-        # input: keywords.map { |k| k.keyword.downcase }
         input: fullnames.map { |f| f.fullname.downcase }
       }
     end
