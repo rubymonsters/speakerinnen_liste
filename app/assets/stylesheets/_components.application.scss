@@ -604,9 +604,39 @@ input[type=file] {
   border: none;
 }
 
+<<<<<<< HEAD
 .account label {
   float: left;
   width: 200px;
   text-align: right;
   margin: 2px 10px;
+=======
+/* autocomplete in search */
+.twitter-typeahead {
+  font-family: $sans-serif;
+  font-size: $inuit-base-font-size;
+}
+ 
+.tt-dropdown-menu {
+  background: white;
+  width: 100%;
+  padding: 10px;
+  color: $dark-grey;
+}
+ 
+.tt-suggestion {
+  margin: 0;
+  background: $transparent-white;
+  padding: halve($inuit-base-spacing-unit) $inuit-base-spacing-unit;
+
+  p {
+    margin: 0;
+  }
+ 
+  &:hover {
+    background-color: whitesmoke;
+    color: $blue;
+    cursor: pointer;
+  }
+>>>>>>> Changes did_you_mean to prompting a new search.
 }
