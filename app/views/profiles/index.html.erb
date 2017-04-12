@@ -15,6 +15,11 @@
           <%= t(:profiles_topics, scope: 'search', profiles_count: @profiles.total_count, topics_name: params[:topic]).html_safe %>
         </p>
       <% end %>
+      <% if params[:category_id] %>
+        <p class="text--color-blue font-size-24 text--center layout__item 1/1">
+          <%= t(:category, scope: 'profiles', category_name: @category.name, profiles_count: @profiles.total_count, topics_count: @tags.size).html_safe %>
+        </p>
+      <% end %>
 
       <% if @profiles.any? %>
         <% if @profiles.size == 1 %>
