@@ -165,7 +165,7 @@ de:
       error: "Bitte fülle alle Felder aus, damit die Speakerin alle Informationen bekommt, die sie benötigt."
       error_email_for_us: "Bitte fülle alle Felder aus."
   profiles:
-    category: "In der Kategorie <b>%{category_name}</b> haben wir %{profiles_count} Speakerinnen* und <a href='#topics_anchor'>%{topics_count} Themen </a>gefunden."
+    category: "In der Kategorie <b>%{category_name}</b> haben wir %{profiles_count} Speakerinnen* und <a href='#topics_anchor', class='link_in_text'>%{topics_count} Themen </a>gefunden."
     tag:
       topics: "Top-Themen"
       topics_with_category: "in der Kategorie %{category_name}"
@@ -204,7 +204,10 @@ de:
       back: "Zurück"
     index:
       title: "Speakerinnen*"
-      text: "Schön, dass Du hier bist. Auf dieser Seite findest Du Frauen* für deine Konferenz oder Veranstaltung: als Rednerin, Panel- oder Workshopmoderatorin. Du kannst entweder durch die Profile blättern, einen Einstieg über die meist verwendeten Themen finden (s.u.), oder gezielt suchen. Viel Spaß und Erfolg dabei!"
+      text: "Schön, dass Du hier bist. <br>
+             Auf dieser Seite findest Du Frauen* für deine Konferenz oder Veranstaltung: als Rednerin, Panel- oder Workshopmoderatorin.
+             <p>Du kannst entweder durch die Profile blättern, einen Einstieg über die meist verwendeten <a href='#topics_anchor', class='link_in_text'>Themen</a> finden, oder gezielt suchen.</p>
+             Viel Spaß und Erfolg dabei!"
       name: "Name"
       twitter: "Twitter"
       topics: "Themen"
