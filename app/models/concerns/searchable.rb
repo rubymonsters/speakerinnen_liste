@@ -10,7 +10,6 @@ module Searchable
     def self.search(query)
       __elasticsearch__.search(
 # stadt heraustrennen? allen den gleichen score dafür geben, keine kombination
-# fuzziness turned off?
 # norms disabled everywhere?
 
         {
@@ -24,7 +23,7 @@ module Searchable
               fields: [
                 'fullname^1.5',
                 'twitter',
-                'topic_list',
+                'topic_list^1.5',
                 'bio_en',
                 'bio_de',
                 'main_topic_en',
@@ -38,6 +37,7 @@ module Searchable
               # fuzziness: 'AUTO'
             }
           },
+          # completion suggester
           suggest: {
             did_you_mean: {
               text: query,
@@ -123,11 +123,6 @@ module Searchable
               filter: ['lowercase'],
               char_filter: ['strip_twitter']
             },
-            topic_list_analyzer: {
-              type: 'custom',
-              tokenizer: 'keyword',
-              filter: ['asciifolding', 'lowercase']
-            },
             cities_analyzer: {
               type: 'custom',
               tokenizer: 'keyword',
@@ -181,7 +176,7 @@ module Searchable
           indexes :suggest,  type: 'completion'
         end
         indexes :twitter,    type: 'string', analyzer: 'twitter_analyzer',    'norms': { 'enabled': false }
-        indexes :topic_list, type: 'string', analyzer: 'topic_list_analyzer', 'norms': { 'enabled': false }
+        indexes :topic_list, type: 'string', analyzer: 'standard', 'norms': { 'enabled': false }
         I18n.available_locales.each do |locale|
           [:main_topic, :bio].each do |name|
             indexes :"#{name}_#{locale}", type: 'string', analyzer: "#{ANALYZERS[locale]}_without_stemming"
@@ -206,6 +201,3 @@ module Searchable
 
   end
 end
-
-#term suggester, did you mean
-# suggester sind besser als fuzziness. 
