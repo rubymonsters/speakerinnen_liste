@@ -23,8 +23,8 @@ module Searchable
                 'topic_list^1.5',
                 'bio_en',
                 'bio_de',
-                'main_topic_en',
-                'main_topic_de',
+                'main_topic_en^2',
+                'main_topic_de^2',
                 'split_languages',
                 'cities.standard^1.5',
                 'country'
