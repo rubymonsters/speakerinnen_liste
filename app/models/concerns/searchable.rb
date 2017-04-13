@@ -33,15 +33,16 @@ module Searchable
                 'country'
               ],
               tie_breaker: 0.3,
-              minimum_should_match: "50%"
+              minimum_should_match: "51%" # der terms
               # fuzziness: 'AUTO'
             }
           },
-          # completion suggester
+          # suggester for zero matches
           suggest: {
             did_you_mean: {
               text: query,
               term: {
+                # fields: ["fullname", "topic_list", "twitter"]
                 field: "fullname"
               }
             }
@@ -65,7 +66,7 @@ module Searchable
     def as_indexed_json(options={})
       as_json(
         {
-        fullname_suggest: { input:  fullname },
+        stuff_suggest: { input:  [fullname, twitter, topic_list] },
         only: [:firstname, :lastname, :twitter, :languages, :city, :country],
           methods: [:fullname, :topic_list, :cities, :split_languages, *globalize_attribute_names],
           include: {
@@ -175,11 +176,19 @@ module Searchable
         indexes :fullname,   type: 'string', analyzer: 'fullname_analyzer',   'norms': { 'enabled': false } do
           indexes :suggest,  type: 'completion'
         end
-        indexes :twitter,    type: 'string', analyzer: 'twitter_analyzer',    'norms': { 'enabled': false }
-        indexes :topic_list, type: 'string', analyzer: 'standard', 'norms': { 'enabled': false }
+        indexes :twitter,    type: 'string', analyzer: 'twitter_analyzer',    'norms': { 'enabled': false } do
+          indexes :suggest,  type: 'completion'
+        end
+        indexes :topic_list, type: 'string', analyzer: 'standard', 'norms': { 'enabled': false } do
+          indexes :suggest,  type: 'completion'
+        end
         I18n.available_locales.each do |locale|
           [:main_topic, :bio].each do |name|
-            indexes :"#{name}_#{locale}", type: 'string', analyzer: "#{ANALYZERS[locale]}_without_stemming"
+            indexes :"#{name}_#{locale}", type: 'string', analyzer: "#{ANALYZERS[locale]}_without_stemming" do
+              if name == :main_topic
+                indexes :suggest,  type: 'completion'
+              end
+            end
           end
         end
         indexes :split_languages,   type: 'string', analyzer: 'language_analyzer', 'norms': { 'enabled': false }
@@ -193,11 +202,10 @@ module Searchable
       end
     end
 
-    def fullname_suggest
+    def stuff_suggest
       {
-        input: fullnames.map { |f| f.fullname.downcase }
+        input: stuffs.map   { |s| s.stuff.downcase }
       }
     end
-
   end
 end
