@@ -43,7 +43,7 @@ $(document).ready(function(){
     minLength: 3
   },
   {
-    name: 'stuff_suggest',
+    name: 'autocomplete',
     display: 'text',
     source: stuffSuggest,
     limit: 20

@@ -136,35 +136,4 @@ class Profile < ActiveRecord::Base
       super
     end
   end
-
-# evtl. woanders hin
-  def self.typeahead(q)
-    self.__elasticsearch__.client.suggest(index: self.index_name, body: {
-      fullname_suggest:{
-        text: q,
-        completion: { field: 'fullname.suggest'
-        }
-      },
-      twitter_suggest:{
-        text: q,
-        completion: { field: 'twitter.suggest'
-        }
-      },
-      main_topic_de_suggest:{
-        text: q,
-        completion: { field: 'main_topic_de.suggest'
-        }
-      },
-      main_topic_en_suggest:{
-        text: q,
-        completion: { field: 'main_topic_en.suggest'
-        }
-      },
-      topic_list_suggest:{
-        text: q,
-        completion: { field: 'topic_list.suggest'
-        }
-      }
-    })
-  end
 end
