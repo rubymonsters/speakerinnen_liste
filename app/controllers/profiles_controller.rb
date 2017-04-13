@@ -71,10 +71,18 @@ class ProfilesController < ApplicationController
   def render_footer?
     false
   end
-
+# change this
   def typeahead
+    suggesters = []
+    final_suggesters = []
     autocomplete = Profile.typeahead(params[:q])
-    respond_with(autocomplete['fullname_suggest'][0]['options'])
+    autocomplete.each do |s|
+      if /.*_suggest/ === s.first
+        suggesters.push(s)
+      end
+    end
+    suggesters.map {|s| final_suggesters.push(s[1].first['options'])}
+    respond_with(final_suggesters.flatten)
   end
 
   private
