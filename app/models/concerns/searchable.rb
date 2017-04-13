@@ -9,9 +9,6 @@ module Searchable
 
     def self.search(query)
       __elasticsearch__.search(
-# stadt heraustrennen? allen den gleichen score dafür geben, keine kombination
-# norms disabled everywhere?
-
         {
           # minimum score depends completely on the given data and query, find out what works in your case.
           min_score: 0.3, # this makes index creation on tests fail :(
@@ -19,7 +16,7 @@ module Searchable
             multi_match: {
               query: query,
               # term-centric approach. First analyzes the query string into individual terms, then looks for each term in any of the fields, as though they were one big field.
-              type: 'cross_fields', # i don't understand this
+              type: 'cross_fields',
               fields: [
                 'fullname^1.5',
                 'twitter',
@@ -33,17 +30,21 @@ module Searchable
                 'country'
               ],
               tie_breaker: 0.3,
-              minimum_should_match: "51%" # der terms
-              # fuzziness: 'AUTO'
+              minimum_should_match: "76%"
             }
           },
           # suggester for zero matches
           suggest: {
-            did_you_mean: {
+            did_you_mean_fullname: {
               text: query,
               term: {
-                # fields: ["fullname", "topic_list", "twitter"]
                 field: "fullname"
+              }
+            },
+            did_you_mean_main_topic_en: {
+              text: query,
+              term: {
+                field: "main_topic_en"
               }
             }
           },
@@ -66,7 +67,7 @@ module Searchable
     def as_indexed_json(options={})
       as_json(
         {
-        stuff_suggest: { input:  [fullname, twitter, topic_list] },
+        autocomplete: { input:  [fullname, twitter, topic_list] },
         only: [:firstname, :lastname, :twitter, :languages, :city, :country],
           methods: [:fullname, :topic_list, :cities, :split_languages, *globalize_attribute_names],
           include: {
@@ -76,13 +77,10 @@ module Searchable
        )
     end
 
-
-# elisions????
-# add to cities and topic_list and main_topic
-
 # TO DO 
 # Write comments
-    super_special_settings = {
+# maybe elisions for cities and topic_list and main_topic
+    elasticsearch_mappings = {
       index: {
         number_of_shards: 1,
         analysis: {
@@ -171,9 +169,12 @@ module Searchable
 
     ANALYZERS = { de: 'german', en: 'english' }
 
-    settings super_special_settings do
+    settings elasticsearch_mappings do
       mappings dynamic: 'false' do
         indexes :fullname,   type: 'string', analyzer: 'fullname_analyzer',   'norms': { 'enabled': false } do
+          indexes :suggest,  type: 'completion'
+        end
+        indexes :lastname,   type: 'string', analyzer: 'fullname_analyzer',   'norms': { 'enabled': false } do
           indexes :suggest,  type: 'completion'
         end
         indexes :twitter,    type: 'string', analyzer: 'twitter_analyzer',    'norms': { 'enabled': false } do
@@ -202,10 +203,41 @@ module Searchable
       end
     end
 
-    def stuff_suggest
+    def autocomplete
       {
-        input: stuffs.map   { |s| s.stuff.downcase }
+        input: input.map   { |i| i.input.downcase }
       }
     end
+
+    def self.typeahead(q)
+      self.__elasticsearch__.client.suggest(index: self.index_name, body: {
+        fullname_suggest:{
+          text: q,
+          completion: { field: 'fullname.suggest'
+          }
+        },
+        lastname_suggest:{
+          text: q,
+          completion: { field: 'lastname.suggest'
+          }
+        },
+        main_topic_de_suggest:{
+          text: q,
+          completion: { field: 'main_topic_de.suggest'
+          }
+        },
+        main_topic_en_suggest:{
+          text: q,
+          completion: { field: 'main_topic_en.suggest'
+          }
+        },
+        topic_list_suggest:{
+          text: q,
+          completion: { field: 'topic_list.suggest'
+          }
+        }
+      })
+    end
+
   end
 end
