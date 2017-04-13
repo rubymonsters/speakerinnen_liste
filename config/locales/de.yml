@@ -319,7 +319,8 @@ de:
     profiles_topics: "Du hast nach dem Thema: <b>%{topics_name}</b> gesucht und %{profiles_count} Speakerinnen gefunden."
     profiles: "%{link}"
     all_profiles: "zurück zu allen Profilen >>"
-    did_you_mean: "Meinst du vielleicht %{suggestions}?"
+    did_you_mean: "Meinst du vielleicht %{suggestions_fullname}?"
+    or_did_you_mean: "Oder %{suggestions_topic}?"
     empty: "Wir haben leider nix gefunden :("
     success: "Wir haben"
     result: {
