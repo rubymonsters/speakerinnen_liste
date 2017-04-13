@@ -28,7 +28,7 @@ $(document).ready(function() {
 
 
 $(document).ready(function(){
-  var fullnameSuggest = new Bloodhound({
+  var stuffSuggest = new Bloodhound({
     datumTokenizer: Bloodhound.tokenizers.whitespace('value'),
     queryTokenizer: Bloodhound.tokenizers.whitespace,
       remote: {
@@ -43,9 +43,9 @@ $(document).ready(function(){
     minLength: 3
   },
   {
-    name: 'fullname_suggest',
+    name: 'stuff_suggest',
     display: 'text',
-    source: fullnameSuggest,
-    limit: 10
+    source: stuffSuggest,
+    limit: 20
   });
 });
