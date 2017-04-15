@@ -99,18 +99,26 @@ h2{
   height: auto;
 }
 
-.bg--white {
+.box__bg--white {
   display: inline-block;
   background: $transparent-white;
   padding: halve($inuit-base-spacing-unit) $inuit-base-spacing-unit;
 }
 
-.box__bg--light {
-  background: $white-smoke;
+.bg--white {
+  background: $transparent-white;
+}
+
+.bg--grey {
+  background: $body-bg-color-grey;
 }
 
 .bg--lightgrey {
   background: $light-grey;
+}
+
+.bg--light {
+  background: $white-smoke;
 }
 
 .display--block {
@@ -305,18 +313,13 @@ header {
   margin-top: $header-height;
 }
 
-.content--bg-grey {
-  background: $body-bg-color-grey;
-}
-
 .content--bg-white {
   background: white;
 }
 
-.content__link--bg {
+.content__link {
   padding: 0 4px;
   color: $link-color;
-  background-color: $link-bg-color;
 
   &:hover {
     color: $link-color-hover;

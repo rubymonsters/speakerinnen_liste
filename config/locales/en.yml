@@ -104,9 +104,9 @@ en:
         more: ">> more"
         contact: "Contact"
         contact_link: "Email"
-        address: "<a href='http://twitter.com/speakerinnen', target='_blank', class='content__link--bg'>Twitter</a>"
-        github: "<a href='http://github.com/rubymonsters/speakerinnen_liste' target='_blank', class='content__link--bg'>GitHub</a>"
-        devblog: "<a href='http://speakerinnen.wordpress.com/', target='_blank, class='content__link--bg'>Developer Blog</a>"
+        address: "<a href='http://twitter.com/speakerinnen', target='_blank', class='content__link bg--white'>Twitter</a>"
+        github: "<a href='http://github.com/rubymonsters/speakerinnen_liste' target='_blank', class='content__link bg--white'>GitHub</a>"
+        devblog: "<a href='http://speakerinnen.wordpress.com/', target='_blank, class='content__link bg--white'>Developer Blog</a>"
         faq_short: |
                 <strong>Why is there no speaker for the topic I am looking for?</strong><br>
                 Possibly, nobody has created a tag for this topic yet. As soon as a speaker names this topic as one of her tags, this topic becomes visible as a tag within the topic range.<br>

@@ -23,9 +23,9 @@
 </section>
 
 <section class="layout-wrapper">
-  <h1 class="box__bg--white"><%= t(:new_speaker_heading, scope: 'pages.home.speakers') %></h1>
+  <h1 class="bg--white"><%= t(:new_speaker_heading, scope: 'pages.home.speakers') %></h1>
     <%= t(:speaker_text, scope: 'pages.home.speakers') %><BR>
-    <%= link_to t(:speaker_index, scope: 'pages.home.speakers'), profiles_path, class: 'content__link box__bg--grey' %>
+    <%= link_to t(:speaker_index, scope: 'pages.home.speakers'), profiles_path, class: 'content__link bg--grey' %>
   </h1>
   <% if @profiles.any? %>
       <%= render partial: "profiles/profile", object: @profiles[0], locals: { is_first: true } %>
