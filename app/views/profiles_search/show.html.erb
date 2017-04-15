@@ -14,11 +14,11 @@
         <p class="text--color-blue font-size-24 text--center layout__item 1/1">
           <%= t(:success, scope: 'search' ).html_safe +
               t(:result, scope: 'search', count: @profiles.total_count).html_safe %><br>
-          <%= t(:profiles, link: link_to(t(:all_profiles, scope: 'search'), profiles_path), scope: 'search').html_safe %>
+          <%= t(:profiles, link: link_to(t(:all_profiles, scope: 'search'), profiles_path, class:'text__link--bg'), scope: 'search').html_safe %>
         </p>
       <% else %>
         <p class="text--color-blue font-size-24 text--center layout__item 1/1">
-          <%= t(:no_profile, link: link_to(t(:all_profiles, scope: 'search'), profiles_path), scope: 'search').html_safe %>
+          <%= t(:no_profile, link: link_to(t(:all_profiles, scope: 'search'), profiles_path, class:'text__link--bg'), scope: 'search').html_safe %>
         </p>
       <% end %>
     <% end %>
