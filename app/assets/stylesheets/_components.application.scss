@@ -14,8 +14,7 @@ a, .link{
   }
 }
 
-.link_in_text {
-  //color: $blue;
+.text__link--bg {
   font-family: $serif;
   background-color: #fff;
   padding: 0px 4px;
@@ -103,6 +102,7 @@ h2{
   display: inline-block;
   background: $transparent-white;
   padding: halve($inuit-base-spacing-unit) $inuit-base-spacing-unit;
+  width: 100%;
 }
 
 .bg--white {
