@@ -17,7 +17,7 @@
          </h2>
          <p class="pb">
            <%=link_to '@' + profile.twitter_name_formatted, profile.twitter_link_formatted,
-           target: '_blank', class: 'content__link--bg' %>
+           target: '_blank', class: 'content__link bg--light' %>
          </p>
      <% end %>
 
@@ -27,7 +27,7 @@
        </h2>
        <p class="pb">
          <%= link_to profile.website, profile.website_with_protocol,
-         target: '_blank', class: 'content__link--bg' %>
+         target: '_blank', class: 'content__link bg--light' %>
        </p>
      <% end %>
 
@@ -35,7 +35,7 @@
        <%= t(:topics, scope: 'profiles.profile') %>
      </h2>
      <p class="pb">
-       <%= raw profile.topic_list.sort.map { |topic| topic_link(topic,class: 'content__link--bg') }.join(' ') %>
+       <%= raw profile.topic_list.sort.map { |topic| topic_link(topic,class: 'content__link bg--light') }.join(' ') %>
      </p>
 
      <% if profile.languages.present? %>
