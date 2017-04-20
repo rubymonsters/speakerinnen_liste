@@ -67,19 +67,19 @@ module Searchable
     def as_indexed_json(options={})
       as_json(
         {
-        autocomplete: { input:  [fullname, twitter, topic_list] },
-        only: [:firstname, :lastname, :twitter, :languages, :city, :country],
-          methods: [:fullname, :topic_list, :cities, :split_languages, *globalize_attribute_names],
-          include: {
-            medialinks: { only: [:title, :description] }
+          autocomplete: { input:  [fullname, twitter, topic_list] },
+          only: [:firstname, :lastname, :twitter, :languages, :city, :country],
+            methods: [:fullname, :topic_list, :cities, :split_languages, *globalize_attribute_names],
+            include: {
+              medialinks: { only: [:title, :description] }
           }
         }
-       )
+      )
     end
 
-# TO DO
-# Write comments
-# maybe elisions for cities and topic_list and main_topic
+    # TO DO
+    # Write comments
+    # maybe elisions for cities and topic_list and main_topic
     elasticsearch_mappings = {
       index: {
         number_of_shards: 1,
@@ -115,7 +115,7 @@ module Searchable
               replacement: ''
             }
           },
-          analyzer:{
+          analyzer: {
             twitter_analyzer: {
               type: 'custom',
               tokenizer: 'keyword',
@@ -187,12 +187,12 @@ module Searchable
           [:main_topic, :bio].each do |name|
             indexes :"#{name}_#{locale}", type: 'string', analyzer: "#{ANALYZERS[locale]}_without_stemming" do
               if name == :main_topic
-                indexes :suggest,  type: 'completion'
+                indexes :suggest, type: 'completion'
               end
             end
           end
         end
-        indexes :split_languages,   type: 'string', analyzer: 'language_analyzer', 'norms': { 'enabled': false }
+        indexes :split_languages, type: 'string', analyzer: 'language_analyzer', 'norms': { 'enabled': false }
         indexes :cities, fields: { unmod: { type:  'string', analyzer: 'cities_analyzer', 'norms': { 'enabled': false } }, standard: { type:  'string', analyzer: 'standard', 'norms': { 'enabled': false }} }
         indexes :country,    type: 'string', analyzer: 'standard', 'norms': { 'enabled': false }
         indexes :website,    type: 'string', analyzer: 'standard', 'norms': { 'enabled': false }
@@ -205,39 +205,38 @@ module Searchable
 
     def autocomplete
       {
-        input: input.map   { |i| i.input.downcase }
+        input: input.map { |i| i.input.downcase }
       }
     end
 
     def self.typeahead(q)
       self.__elasticsearch__.client.suggest(index: self.index_name, body: {
-        fullname_suggest:{
+        fullname_suggest: {
           text: q,
           completion: { field: 'fullname.suggest'
           }
         },
-        lastname_suggest:{
+        lastname_suggest: {
           text: q,
           completion: { field: 'lastname.suggest'
           }
         },
-        main_topic_de_suggest:{
+        main_topic_de_suggest: {
           text: q,
           completion: { field: 'main_topic_de.suggest'
           }
         },
-        main_topic_en_suggest:{
+        main_topic_en_suggest: {
           text: q,
           completion: { field: 'main_topic_en.suggest'
           }
         },
-        topic_list_suggest:{
+        topic_list_suggest: {
           text: q,
           completion: { field: 'topic_list.suggest'
           }
         }
       })
     end
-
   end
 end
