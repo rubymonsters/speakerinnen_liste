@@ -30,7 +30,7 @@ module Searchable
                 'country'
               ],
               tie_breaker: 0.3,
-              minimum_should_match: "76%"
+              minimum_should_match: '76%'
             }
           },
           # suggester for zero matches
@@ -38,13 +38,13 @@ module Searchable
             did_you_mean_fullname: {
               text: query,
               term: {
-                field: "fullname"
+                field: 'fullname'
               }
             },
             did_you_mean_main_topic_en: {
               text: query,
               term: {
-                field: "main_topic_en"
+                field: 'main_topic_en'
               }
             }
           },
@@ -52,12 +52,12 @@ module Searchable
           aggs: {
             lang: {
               terms: {
-                field: "split_languages"
+                field: 'split_languages'
               }
             },
             city: {
               terms: {
-                field: "cities.unmod"
+                field: 'cities.unmod'
               }
             }
           }
@@ -77,7 +77,7 @@ module Searchable
        )
     end
 
-# TO DO 
+# TO DO
 # Write comments
 # maybe elisions for cities and topic_list and main_topic
     elasticsearch_mappings = {
@@ -88,7 +88,7 @@ module Searchable
             synonym_filter: {
               type: 'synonym',
               synonyms: [
-                "phd,dr.,dr"
+                'phd,dr.,dr'
               ]
             },
             language_synonyms: {
@@ -97,7 +97,7 @@ module Searchable
             },
             english_stop: {
               type:       'stop',
-              stopwords:  '_english_' 
+              stopwords:  '_english_'
             },
             english_possessive_stemmer: {
               type:       'stemmer',
@@ -105,7 +105,7 @@ module Searchable
             },
             german_stop: {
               type:       'stop',
-              stopwords:  '_german_' 
+              stopwords:  '_german_'
             }
           },
           char_filter: {
