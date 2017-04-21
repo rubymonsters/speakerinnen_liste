@@ -234,6 +234,8 @@ GEM
     globalize (4.0.3)
       activemodel (>= 4.0.0, < 5)
       activerecord (>= 4.0.0, < 5)
+    globalize-accessors (0.1.5)
+      globalize (>= 3)
     guard (2.13.0)
       formatador (>= 0.2.4)
       listen (>= 2.7, <= 4.0)
@@ -485,6 +487,7 @@ DEPENDENCIES
   font-awesome-rails (~> 4.3.0.0)
   friendly_id (~> 5.0.1)
   globalize (~> 4.0.2)
+  globalize-accessors
   guard-bundler
   guard-rails
   guard-rspec
@@ -520,5 +523,4 @@ RUBY VERSION
    ruby 2.2.3p173
 
 BUNDLED WITH
-   1.13.7
-
+   1.14.6
