@@ -16,6 +16,11 @@ class ProfilesController < ApplicationController
       profiles_for_category
     elsif params[:search]
       @profiles = profiles_for_search
+
+      # sum of search results concerning certain attributes
+      @aggs = profiles_for_search.response.aggregations
+      @aggs_cities = @aggs[:city][:buckets]
+      @aggs_languages = @aggs[:lang][:buckets]
     else
       @profiles = profiles_for_index
     end
