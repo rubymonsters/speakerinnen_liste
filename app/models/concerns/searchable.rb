@@ -11,7 +11,7 @@ module Searchable
       __elasticsearch__.search(
         {
           # minimum score depends completely on the given data and query, find out what works in your case.
-          min_score: 0.3, # this makes index creation on tests fail :(
+          # min_score: 0.3, # this makes index creation on tests fail :(
           query: {
             multi_match: {
               query: query,
