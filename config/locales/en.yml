@@ -218,6 +218,7 @@ en:
       country: "Country"
       country_search_hint: "(Beware: A lot of speakers do not have a specified country.)"
       language: "Language"
+      all_speakerinnen: "We are already %{profiles_count}!"
     new:
       new_profile: "New profile"
       back: "Back"
