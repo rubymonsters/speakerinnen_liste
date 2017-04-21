@@ -148,10 +148,4 @@ class ProfilesController < ApplicationController
       .page(params[:page]).per(24)
       .records
   end
-
-  def typeahead
-    puts "in typeahead"
-    typeahead = Profile.typeahead(params[:q])
-    respond_with(typeahead['fullname_suggest'][0]['options'])
-  end
 end
