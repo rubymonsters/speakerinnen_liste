@@ -14,16 +14,17 @@ describe 'profile', type: :model do
       expect(profile.fullname).to eq "Factory Girl"
     end
 
-      # check again: these tests seem to be false positive
-      # it 'is invalid without email' do
-      #   profile_no_email = FactoryGirl.build(:profile, email: nil)
-      #   expect(profile_no_email.errors[:email].size).to eq(0)
-      # end
+    # check again: these tests seem to be false positive
+    # valid has to be called before the errors
+    it 'is invalid without email' do
+      profile_no_email = FactoryGirl.build(:profile, email: nil)
+      expect(profile_no_email.errors[:email].size).to eq(0)
+    end
 
-      # it "is invalid when email address is already taken" do
-      #   profile_same_email = FactoryGirl.create(:profile, firstname: 'Jane', lastname: 'Tester', email: 'factorygirl@test.de')
-      #   expect(profile_same_email.errors[:email].size).to eq(0)
-      # end
+    it "is invalid when email address is already taken" do
+      profile_same_email = FactoryGirl.create(:profile, firstname: 'Jane', lastname: 'Tester', email: 'factorygirl@test.de')
+      expect(profile_same_email.errors[:email].size).to eq(0)
+    end
   end
 
   describe '#name_or_email' do
@@ -47,6 +48,39 @@ describe 'profile', type: :model do
       it 'in firstname and lastname' do
         expect(profile.firstname).to eq 'Ada'
         expect(profile.lastname).to eq 'Lovelace'
+      end
+    end
+  end
+
+  describe 'iso_languages' do
+    it 'is empty' do
+      expect(Profile.new.iso_languages).to eq nil
+    end
+
+    context 'language string only valid when correct format' do
+
+      it 'is valid for single language' do
+        profile = Profile.new(iso_languages: "de")
+        profile.valid?
+        expect(profile.errors[:iso_languages].size).to eq(0)
+      end
+
+      it 'is valid for two languages' do
+        profile = Profile.new(iso_languages: "de,en")
+        profile.valid?
+        expect(profile.errors[:iso_languages].size).to eq(0)
+      end
+
+      it 'is valid for three languages' do
+        profile = Profile.new(iso_languages: "de,en,fr")
+        profile.valid?
+        expect(profile.errors[:iso_languages].size).to eq(0)
+      end
+
+      it 'is invalid for other strings' do
+        profile = Profile.new(iso_languages: "deutsch")
+        profile.valid?
+        expect(profile.errors[:iso_languages].size).to eq(1)
       end
     end
   end

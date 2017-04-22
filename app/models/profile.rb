@@ -25,6 +25,8 @@ class Profile < ActiveRecord::Base
 
   acts_as_taggable_on :topics
 
+  validates_format_of :iso_languages, with: /\A(\w\w)?(,\w\w)*\z/, message: "Wrong format for language string"
+
   before_save(on: [:create, :update]) do
     twitter.gsub!(%r{^@|https:|http:|:|//|www.|twitter.com/}, '') if twitter
     firstname.strip! if firstname
