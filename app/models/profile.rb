@@ -7,6 +7,7 @@ class Profile < ActiveRecord::Base
 
   serialize :iso_languages, Array
   validate :iso_languages_array_has_right_format
+  before_save :clean_iso_languages!
 
   translates :bio, :main_topic, fallbacks_for_empty_translations: true
   accepts_nested_attributes_for :translations
@@ -131,12 +132,17 @@ class Profile < ActiveRecord::Base
     where("firstname || ' ' || lastname ILIKE :query OR twitter ILIKE :query", query: "%#{query}%")
   end
 
+  def clean_iso_languages!
+    iso_languages.reject! { |r| r.empty? }
+  end
+
   # custom validations
   def iso_languages_array_has_right_format
+    clean_iso_languages!
     return if iso_languages == []
 
-    if iso_languages.map(&:class).uniq != [Symbol]
-      errors.add(:iso_languages, "must be an array of symbols")
+    if iso_languages.map(&:class).uniq != [String]
+      errors.add(:iso_languages, "must be an array of strings")
     end
     if iso_languages.map(&:size).uniq != [2]
       errors.add(:iso_languages, "each element must be two charactes")

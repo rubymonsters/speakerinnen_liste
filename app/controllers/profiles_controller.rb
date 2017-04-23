@@ -73,6 +73,7 @@ class ProfilesController < ApplicationController
       :city,
       :country,
       :languages,
+      {iso_languages: []},
       :firstname,
       :lastname,
       :picture,
