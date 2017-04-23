@@ -56,33 +56,33 @@ describe 'profile', type: :model do
 
   describe 'iso_languages' do
     it 'is empty' do
-      expect(Profile.new.iso_languages).to eq nil
+      expect(Profile.new.iso_languages).to eq []
     end
 
     context 'language string only valid when correct format' do
 
       it 'is valid for single language' do
-        profile = Profile.new(iso_languages: "de")
+        profile = Profile.new(iso_languages: [:en])
         profile.valid?
         expect(profile.errors[:iso_languages].size).to eq(0)
       end
 
       it 'is valid for two languages' do
-        profile = Profile.new(iso_languages: "de,en")
+        profile = Profile.new(iso_languages: [:en, :de])
         profile.valid?
         expect(profile.errors[:iso_languages].size).to eq(0)
       end
 
-      it 'is valid for three languages' do
-        profile = Profile.new(iso_languages: "de,en,fr")
+      it 'is invalid for languages with three letters' do
+        profile = Profile.new(iso_languages: [:en, :de, :esp])
         profile.valid?
-        expect(profile.errors[:iso_languages].size).to eq(0)
+        expect(profile.errors[:iso_languages].size).to eq(1)
       end
 
       it 'is invalid for other strings' do
-        profile = Profile.new(iso_languages: "deutsch")
+        profile = Profile.new(iso_languages: ["deutsch"])
         profile.valid?
-        expect(profile.errors[:iso_languages].size).to eq(1)
+        expect(profile.errors[:iso_languages].size).to eq(2)
       end
     end
   end

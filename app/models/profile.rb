@@ -5,6 +5,9 @@ class Profile < ActiveRecord::Base
 
   has_many :medialinks
 
+  serialize :iso_languages, Array
+  validate :iso_languages_array_has_right_format
+
   translates :bio, :main_topic, fallbacks_for_empty_translations: true
   accepts_nested_attributes_for :translations
 
@@ -24,8 +27,6 @@ class Profile < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
   acts_as_taggable_on :topics
-
-  validates_format_of :iso_languages, with: /\A(\w\w)?(,\w\w)*\z/, message: "Wrong format for language string"
 
   before_save(on: [:create, :update]) do
     twitter.gsub!(%r{^@|https:|http:|:|//|www.|twitter.com/}, '') if twitter
@@ -128,5 +129,17 @@ class Profile < ActiveRecord::Base
   # for simple admin search
   def self.search(query)
     where("firstname || ' ' || lastname ILIKE :query OR twitter ILIKE :query", query: "%#{query}%")
+  end
+
+  # custom validations
+  def iso_languages_array_has_right_format
+    return if iso_languages == []
+
+    if iso_languages.map(&:class).uniq != [Symbol]
+      errors.add(:iso_languages, "must be an array of symbols")
+    end
+    if iso_languages.map(&:size).uniq != [2]
+      errors.add(:iso_languages, "each element must be two charactes")
+    end
   end
 end
