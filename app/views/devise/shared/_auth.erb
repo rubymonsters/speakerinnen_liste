@@ -42,8 +42,10 @@
             <%= f.input :password, placeholder: t(:password, scope: "devise.registrations"), label: false, input_html: { class: 'mb-' } %>
             <% if @signup %>
               <%= f.input :password_confirmation, placeholder: t(:confirmation, scope: "devise.registrations"), label: false, input_html: { class: 'mb' } %>
-              <%= flash[:recaptcha_error] %>
-              <%= recaptcha_tags %>
+              <% if Rails.env.production? %>
+                <%= flash[:recaptcha_error] %>
+                <%= recaptcha_tags %>
+              <% end %>
             <% end %>
           <% end %>
 
