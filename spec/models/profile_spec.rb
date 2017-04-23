@@ -14,16 +14,18 @@ describe 'profile', type: :model do
       expect(profile.fullname).to eq "Factory Girl"
     end
 
-    # check again: these tests seem to be false positive
-    # valid has to be called before the errors
     it 'is invalid without email' do
       profile_no_email = FactoryGirl.build(:profile, email: nil)
-      expect(profile_no_email.errors[:email].size).to eq(0)
+      profile_no_email.valid?
+      expect(profile_no_email.errors[:email].size).to eq(1)
     end
 
     it "is invalid when email address is already taken" do
-      profile_same_email = FactoryGirl.create(:profile, firstname: 'Jane', lastname: 'Tester', email: 'factorygirl@test.de')
-      expect(profile_same_email.errors[:email].size).to eq(0)
+      first_profile_same_email = FactoryGirl.create(:profile)
+      email = first_profile_same_email.email
+      second_profile_same_email = FactoryGirl.build(:profile, email: email)
+      second_profile_same_email.valid?
+      expect(second_profile_same_email.errors[:email].size).to eq(1)
     end
   end
 
