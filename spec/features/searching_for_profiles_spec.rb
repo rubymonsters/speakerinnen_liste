@@ -1,35 +1,35 @@
-# describe 'profile search' do
-#   let!(:profile) { FactoryGirl.create(:published, firstname: 'Ada', lastname: 'Lovelace', city: 'London', country: 'GB', twitter: 'Adalove', languages: 'Spanish, English') }
-#   let!(:profile1) { FactoryGirl.create(:published, firstname: 'Marie', lastname: 'Curie', city: 'Paris', country: 'FR', twitter: 'mcurie', languages: 'Polish, French') }
-#   let!(:profile2) { FactoryGirl.create(:published, firstname: 'Christiane', lastname: 'Nüsslein-Volhard', city: 'Heidelberg', languages: 'German') }
-#   let!(:profile3) { FactoryGirl.create(:published, firstname: 'Maren ', lastname: 'Meier') }
+describe 'profile search', elasticsearch: true do
+  let!(:profile) { FactoryGirl.create(:published, firstname: 'Ada', lastname: 'Lovelace', city: 'London', country: 'GB', twitter: 'Adalove', languages: 'Spanish, English') }
+  let!(:profile1) { FactoryGirl.create(:published, firstname: 'Marie', lastname: 'Curie', city: 'Paris', country: 'FR', twitter: 'mcurie', languages: 'Polish, French') }
+  let!(:profile2) { FactoryGirl.create(:published, firstname: 'Christiane', lastname: 'König', city: 'Heidelberg', languages: 'German') }
+  let!(:profile3) { FactoryGirl.create(:published, firstname: 'Maren ', lastname: 'Meier') }
 
-#   let!(:profile_not_matched) { FactoryGirl.create(:published, firstname: 'Angela', city: 'New York', twitter: '@adavis' ) }
+  let!(:profile_not_matched) { FactoryGirl.create(:published, firstname: 'Angela', city: 'New York', twitter: '@adavis' ) }
 
-#   describe 'quick search' do
+  describe 'public search' do
 
-#     it 'displays profiles that are a partial match' do
-#       visit root_path
-#       fill_in 'search_quick', with: 'Ada'
-#       click_button I18n.t(:search, scope: 'pages.home.search')
-#       expect(page).to have_content('Ada')
-#     end
+    it 'displays profiles that are a partial match' do
+      visit root_path
+      fill_in 'search', with: 'Ada'
+      click_button I18n.t(:search, scope: 'pages.home.search')
+      expect(page).to have_content('Ada')
+    end
 
-#     it 'displays profiles that are a partial match with more than one search input' do
-#       visit root_path
-#       fill_in 'search_quick', with: 'Ada Curie'
-#       click_button I18n.t(:search, scope: 'pages.home.search')
-#       #save_and_open_page
-#       expect(page).to have_content('Ada')
-#       expect(page).to have_content('Curie')
-#     end
+    it 'displays profiles that are a partial match with more than one search input' do
+      visit root_path
+      fill_in 'search', with: 'Ada Curie'
+      click_button I18n.t(:search, scope: 'pages.home.search')
+      #save_and_open_page
+      expect(page).to have_content('Ada')
+      expect(page).to have_content('Curie')
+    end
 
-#     it 'displays profiles that are a partial match wit UTF-8 characters' do
-#       visit root_path
-#       fill_in 'search_quick', with: 'Nüsslein-Volhard'
-#       click_button I18n.t(:search, scope: 'pages.home.search')
-#       expect(page).to have_content('Christiane')
-#     end
+    it 'displays profiles that are a partial match wit UTF-8 characters' do
+      visit root_path
+      fill_in 'search', with: 'König'
+      click_button I18n.t(:search, scope: 'pages.home.search')
+      expect(page).to have_content('Christiane')
+    end
 
 #     it 'displays profiles that have an empty space' do
 #       visit root_path
@@ -113,5 +113,5 @@
 #       end
 #       expect(page).to have_content('Ada')
 #     end
-#   end
-# end
+  end
+end
