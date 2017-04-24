@@ -13,7 +13,12 @@
 
     <div class="input check_boxes optional profile_iso_languages mt">
       <label class="check_boxes optional control-label">Languages<br><small>Please add programming languages in 'Topics', not here</small></label>
-        <%= render partial: "shared/iso_languages", collection: IsoLanguage.top_list  %>
+      <%= render partial: "shared/iso_languages", collection: IsoLanguage.top_list  %>
+      <input name="profile[iso_languages][]" value="" type="hidden">
+    </div>
+    <div class="input check_boxes optional profile_iso_languages mt">
+      <%= render partial: "shared/iso_languages", collection: IsoLanguage.rest_list  %>
+      <input name="profile[iso_languages][]" value="" type="hidden">
     </div>
 
     <%# f.input :iso_languages,
