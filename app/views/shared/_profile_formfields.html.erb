@@ -10,9 +10,13 @@
     <%= f.country_select :country, label: t(:country, scope: 'activerecord.attributes.profile').html_safe,
       priority_countries: ["DE", "FR", "GB"], include_blank: t(:country_select, scope: 'profiles.profile'),
       wrapper_html: { class: "mb" } %>
-    <%= f.input :languages, label: t(:languages, scope: 'activerecord.attributes.profile').html_safe, input_html: { class: "mb input--width-100" }, wrapper_html: { class: "mt" }  %>
-    hier das partial 
-    <%= f.input :iso_languages,
+
+    <div class="input check_boxes optional profile_iso_languages mt">
+      <label class="check_boxes optional control-label">Languages<br><small>Please add programming languages in 'Topics', not here</small></label>
+        <%= render partial: "shared/iso_languages", collection: IsoLanguage.top_list  %>
+    </div>
+
+    <%# f.input :iso_languages,
                 as: :check_boxes,
                 collection: IsoLanguage.top_list,
                 label: t(:languages, scope: 'activerecord.attributes.profile').html_safe,

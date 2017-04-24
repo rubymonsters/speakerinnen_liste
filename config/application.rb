@@ -32,6 +32,8 @@ module SpeakerinnenListe
     # or if one of your gem compete for pre-loading, use
     I18n.config.enforce_available_locales = true
 
+    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}')]
+
 
     # Enable escaping HTML in JSON.
     config.active_support.escape_html_entities_in_json = true
