@@ -5,5 +5,5 @@
          name="profile[iso_languages][]"
          value="<%= iso_languages %>"
          type="checkbox" <%="checked=true" if checked %> >
-         <%= t(:"#{iso_languages}", scope: 'iso_639_1') %>
+         <%= t(:"#{iso_languages}", scope: 'iso_639_1').capitalize %>
 </label>
