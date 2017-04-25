@@ -172,7 +172,7 @@ de:
     form:
       not_saved: "Dieses Profil konnte nicht gespeichert werden:"
       profile_from: "Profil von"
-      delete_picture: "Lösche das Foto"
+      delete_picture: "Lösche mein Foto"
       update: "Aktualisiere dein Profil"
       copyright_photo: "Bitte nutze .jpg, .jpeg oder .png und achte darauf, daß Du die Rechte zu diesem Foto besitzt!"
       size_photo: "Die Größe des Fotos sollte kleiner als 1MB sein."
@@ -199,6 +199,8 @@ de:
     medialinks:
       edit: "Referenzen bearbeiten"
     edit:
+      show_more_languages: "Noch mehr Sprachen >>"
+      show_less_languages: "Weniger Sprachen >>"
       show: "Eigenes Profil anzeigen >>"
       home: "Alle Speakerinnen* anzeigen >>"
       back: "Zurück"
@@ -250,20 +252,22 @@ de:
   activerecord:
     attributes:
       profile:
-        firstname: "Vorname"
-        lastname: "Nachname"
-        bio: 'Deine Bio auf %{language}<br>
+        firstname: "Mein Vorname:"
+        lastname: "Mein Nachname:"
+        bio: 'Deine Bio auf %{language}:<br>
               <small>Hier ist Platz für eine kurze oder auch längere Bio. Außerdem sollten hier Fachkenntnisse und mögliche Vortragsthemen genauer beschrieben werden. Das hilft Veranstalterinnen und Veranstaltern herauszufinden, ob Ihr die Richtigen für ihr Event sein könntet.</small>'
-        topic_list: "Deine Themen als Tags<br><small>Bitte schaue zuerst, ob Dein Thema schon vorhanden ist.</small>"
-        main_topic_title: "Hauptthema"
-        main_topic: "Dein Hauptthema auf %{language} (Mehr als 30 Zeichen werden nicht angezeigt)<small>
-        <br>Trage Dein wichtigstes Thema hier nochmal ein. Dieses Thema wird mit Deinem Namen und Bild auf der Speakerinnen-Übersichtsseite zu sehen sein.</small>"
+        topic_list: "Meine Themen als Tags:<br><small>Bitte schaue zuerst, ob Dein Thema schon vorhanden ist.</small>"
+        main_topic_title: "Mein Hauptthema:"
+        main_topic: "Mein Hauptthema auf %{language}: (Mehr als 30 Zeichen werden nicht angezeigt)<small>
+        <br>Trage Mein wichtigstes Thema hier nochmal ein. Dieses Thema wird mit Deinem Namen und Bild auf der Speakerinnen-Übersichtsseite zu sehen sein.</small>"
         tag_list: "schon vorhandene Tags"
         talks: "Vortragsthemen"
-        languages: 'Sprachen<br><small>Programmiersprachen bitte bei Themen angeben, nicht hier.</small>'
-        city: "Stadt"
-        country: "Land"
-        twitter: "Twitter"
+        languages: "Ich spreche:"
+        city: "Die Stadt, in der ich lebe:"
+        country: "Das Land, in dem ich lebe:"
+        twitter: "Mein Twitteraccount:"
+        email: "Meine E-Mailadresse:"
+        website: "Meine Webseite:"
         picture: "Bild"
         translation: "<strong>Hier kannst Du Dein Hauptthema und Deine Bio auf Deutsch und Englisch eintragen:</strong>"
       medialink:
