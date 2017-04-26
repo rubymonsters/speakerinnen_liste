@@ -6,8 +6,15 @@ describe Searchable, elasticsearch: true do
                                       twitter: 'alovelace', city: 'London',
                                       country: 'GB', languages: 'English',
                                       topic_list: ['ruby', 'algorithms'],
-                                      bio_de: 'Das ist meine deutsche Bio.', bio_en: 'This is my english bio.',
-                                      main_topic_de: 'Das Leben', main_topic_en: 'Life', email: 'info@example.com') }
+                                      bio_de: 'Das ist meine deutsche Bio.',
+                                      bio_en: 'This is my english bio.',
+                                      main_topic_de: 'Das Leben', main_topic_en: 'Life',
+                                      email: 'info@example.com') }
+
+  let!(:profile2) { FactoryGirl.create(:published, firstname: 'Marie', lastname: 'Curie',
+                                      twitter: 'mcurie', city: 'Paris',
+                                      country: 'FR',  languages: 'Polish, French') }
+
   describe 'elasticsearch index' do
     it 'should be created' do
       Profile.__elasticsearch__.refresh_index!
@@ -29,6 +36,7 @@ describe Searchable, elasticsearch: true do
     it 'contains the attribute fullname' do
       expect(profile.as_indexed_json['fullname']).to eq 'Ada Lovelace'
     end
+
     it 'contains the attribute twitter handle' do
       expect(profile.as_indexed_json['twitter']).to eq 'alovelace'
     end
@@ -83,6 +91,18 @@ describe Searchable, elasticsearch: true do
 
     it 'should not index certain fields' do
       expect(Profile.search('info@example.com')).to be_empty
+    end
+
+    it 'shows results that are a partial match' do
+      Profile.__elasticsearch__.refresh_index!
+      expect(Profile.search('Ada').results.first.fullname).to eq('Ada Lovelace')
+    end
+
+    it 'shows results that are a partial match with more than one search input' do
+      Profile.__elasticsearch__.refresh_index!
+      # p Profile.search('Curie').results[0]
+      expect(Profile.search('Curie').results[0].fullname).to eq('Ada Lovelace')
+      # expect(Profile.search('Ada Curie').results[1].fullname).to eq('Marie Curie')
     end
   end
 end
