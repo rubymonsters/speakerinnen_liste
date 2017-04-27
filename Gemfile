@@ -1,3 +1,4 @@
+
 source 'https://rubygems.org'
 ruby '2.2.3'
 gem 'rails', '4.1.13'
@@ -42,8 +43,8 @@ gem 'rails_12factor', group: :production
 
 gem 'active_model_serializers', '~> 0.10.0'
 
-gem 'elasticsearch-rails'
-gem 'elasticsearch-model'
+gem 'elasticsearch-rails', '~> 5.0'
+gem 'elasticsearch-model', '~> 5.0'
 
 group :development do
   gem 'letter_opener'

@@ -101,20 +101,20 @@ GEM
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
     diff-lcs (1.2.5)
-    elasticsearch (1.0.15)
-      elasticsearch-api (= 1.0.15)
-      elasticsearch-transport (= 1.0.15)
-    elasticsearch-api (1.0.15)
+    elasticsearch (5.0.4)
+      elasticsearch-api (= 5.0.4)
+      elasticsearch-transport (= 5.0.4)
+    elasticsearch-api (5.0.4)
       multi_json
     elasticsearch-extensions (0.0.20)
       ansi
       ruby-prof
-    elasticsearch-model (0.1.8)
+    elasticsearch-model (5.0.0)
       activesupport (> 3)
-      elasticsearch (> 0.4)
+      elasticsearch (> 1)
       hashie
-    elasticsearch-rails (0.1.8)
-    elasticsearch-transport (1.0.15)
+    elasticsearch-rails (5.0.0)
+    elasticsearch-transport (5.0.4)
       faraday
       multi_json
     erubis (2.7.0)
@@ -127,7 +127,7 @@ GEM
       railties (>= 3.0.0)
     faker (1.0.1)
       i18n (~> 0.4)
-    faraday (0.9.2)
+    faraday (0.12.1)
       multipart-post (>= 1.2, < 3)
     ffi (1.9.10)
     fission (0.5.0)
@@ -479,8 +479,8 @@ DEPENDENCIES
   deadweight
   devise (~> 3.1.1)
   elasticsearch-extensions
-  elasticsearch-model
-  elasticsearch-rails
+  elasticsearch-model (~> 5.0)
+  elasticsearch-rails (~> 5.0)
   factory_girl_rails (= 4.1.0)
   faker (= 1.0.1)
   fog (~> 1.32.0)
