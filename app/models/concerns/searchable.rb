@@ -37,14 +37,14 @@ module Searchable
           suggest: {
             did_you_mean_fullname: {
               text: query,
-              term: {
-                field: 'fullname'
+              completion: {
+                field: 'fullname.suggest'
               }
             },
             did_you_mean_main_topic_en: {
               text: query,
-              term: {
-                field: 'main_topic_en'
+              completion: {
+                field: 'main_topic_en.suggest'
               }
             }
           },
@@ -52,7 +52,8 @@ module Searchable
           aggs: {
             lang: {
               terms: {
-                field: 'split_languages'              }
+                field: 'split_languages'
+              }
             },
             city: {
               terms: {
@@ -170,34 +171,34 @@ module Searchable
 
     settings elasticsearch_mappings do
       mappings dynamic: 'false' do
-        indexes :fullname,   type: 'string', analyzer: 'fullname_analyzer',   'norms': { 'enabled': false } do
+        indexes :fullname,   type: 'text', analyzer: 'fullname_analyzer',   'norms': false do
           indexes :suggest,  type: 'completion'
         end
-        indexes :lastname,   type: 'string', analyzer: 'fullname_analyzer',   'norms': { 'enabled': false } do
+        indexes :lastname,   type: 'text', analyzer: 'fullname_analyzer',   'norms': false do
           indexes :suggest,  type: 'completion'
         end
-        indexes :twitter,    type: 'string', analyzer: 'twitter_analyzer',    'norms': { 'enabled': false } do
+        indexes :twitter,    type: 'text', analyzer: 'twitter_analyzer',    'norms': false do
           indexes :suggest,  type: 'completion'
         end
-        indexes :topic_list, type: 'string', analyzer: 'standard', 'norms': { 'enabled': false } do
+        indexes :topic_list, type: 'text', analyzer: 'standard', 'norms': false do
           indexes :suggest,  type: 'completion'
         end
         I18n.available_locales.each do |locale|
           [:main_topic, :bio].each do |name|
-            indexes :"#{name}_#{locale}", type: 'string', analyzer: "#{ANALYZERS[locale]}_without_stemming" do
+            indexes :"#{name}_#{locale}", type: 'text', analyzer: "#{ANALYZERS[locale]}_without_stemming" do
               if name == :main_topic
                 indexes :suggest, type: 'completion'
               end
             end
           end
         end
-        indexes :split_languages, type: 'string', fielddata: true, analyzer: 'language_analyzer', 'norms': { 'enabled': false }
-        indexes :cities, fields: { unmod: { type:  'string', fielddata: true, analyzer: 'cities_analyzer', 'norms': { 'enabled': false } }, standard: { type:  'string', fielddata: true, analyzer: 'standard', 'norms': { 'enabled': false }} }
-        indexes :country,    type: 'string', analyzer: 'standard', 'norms': { 'enabled': false }
-        indexes :website,    type: 'string', analyzer: 'standard', 'norms': { 'enabled': false }
+        indexes :split_languages, type: 'text', fielddata: true, analyzer: 'language_analyzer', 'norms': false
+        indexes :cities, fields: { unmod: { type:  'text', fielddata: true, analyzer: 'cities_analyzer', 'norms': false }, standard: { type:  'keyword'} }
+        indexes :country,    type: 'text', analyzer: 'standard', 'norms': false
+        indexes :website,    type: 'text', analyzer: 'standard', 'norms': false
         indexes :medialinks, type: 'nested' do
-          indexes :title, 'norms': { 'enabled': false }
-          indexes :description, 'norms': { 'enabled': false }
+          indexes :title, 'norms': false
+          indexes :description, 'norms': false
         end
       end
     end
