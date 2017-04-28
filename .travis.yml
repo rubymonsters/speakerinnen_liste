@@ -3,11 +3,14 @@ language: ruby
 rvm:
 - 2.2.3
 bundler_args: --without development production
+services:
+- elasticsearch
 before_script:
 - cp config/database.yml.travis config/database.yml
 - bundle exec rake db:create db:migrate RAILS_ENV=test
 - export RECAPTCHA_SECRET_KEY=6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe
 - export RECAPTCHA_SITE_KEY=6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI
+- sleep 5 # To make sure Elasticsearch instance is ready
 script:
 - bundle exec rspec spec/
 - bundle exec rake test

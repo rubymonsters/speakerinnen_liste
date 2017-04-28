@@ -22,7 +22,6 @@ gem 'omniauth-twitter'
 gem 'carrierwave'
 gem 'fog', '~> 1.32.0'
 gem 'mini_magick', '~> 3.5.0'
-gem 'textacular', '~> 3.0', require: 'textacular/rails'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'acts-as-taggable-on', '~> 3.4.1'
@@ -33,6 +32,7 @@ gem 'simple_form', '~> 3.0.2'
 gem 'country_select'
 
 gem 'globalize', '~> 4.0.2'
+gem 'globalize-accessors'
 
 gem 'font-awesome-rails', '~> 4.3.0.0'
 
@@ -41,6 +41,9 @@ gem "friendly_id", "~> 5.0.1"
 gem 'rails_12factor', group: :production
 
 gem 'active_model_serializers', '~> 0.10.0'
+
+gem 'elasticsearch-rails', '~> 5.0'
+gem 'elasticsearch-model', '~> 5.0'
 
 group :development do
   gem 'letter_opener'
@@ -64,6 +67,8 @@ group :test do
   gem 'factory_girl_rails', '4.1.0'
   gem 'poltergeist', '1.8.0'
   gem 'database_cleaner', '~> 1.2.0'
+  gem 'elasticsearch-extensions', git: 'git://github.com/elasticsearch/elasticsearch-ruby.git', ref: '5.x'
+  gem 'test_after_commit'
 end
 
 gem 'sass-rails',   '~> 4.0.3'

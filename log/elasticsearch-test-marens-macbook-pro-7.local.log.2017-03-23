@@ -1,0 +1,296 @@
+[2017-03-23 11:46:22,877][DEBUG][bootstrap                ] java.class.path: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/elasticsearch-2.0.0.jar:/usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/antlr-runtime-3.5.jar:/usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/apache-log4j-extras-1.2.17.jar:/usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/asm-4.1.jar:/usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/asm-commons-4.1.jar:/usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/commons-cli-1.3.1.jar:/usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/compiler-0.8.13.jar:/usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/compress-lzf-1.0.2.jar:/usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/elasticsearch-2.0.0.jar:/usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/groovy-all-2.4.4-indy.jar:/usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/guava-18.0.jar:/usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/HdrHistogram-2.1.6.jar:/usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/hppc-0.7.1.jar:/usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/jackson-core-2.5.3.jar:/usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/jackson-dataformat-cbor-2.5.3.jar:/usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/jackson-dataformat-smile-2.5.3.jar:/usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/jackson-dataformat-yaml-2.5.3.jar:/usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/jna-4.1.0.jar:/usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/joda-convert-1.2.jar:/usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/joda-time-2.8.2.jar:/usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/jsr166e-1.1.0.jar:/usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/jts-1.13.jar:/usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/log4j-1.2.17.jar:/usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/lucene-analyzers-common-5.2.1.jar:/usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/lucene-backward-codecs-5.2.1.jar:/usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/lucene-core-5.2.1.jar:/usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/lucene-expressions-5.2.1.jar:/usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/lucene-grouping-5.2.1.jar:/usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/lucene-highlighter-5.2.1.jar:/usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/lucene-join-5.2.1.jar:/usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/lucene-memory-5.2.1.jar:/usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/lucene-misc-5.2.1.jar:/usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/lucene-queries-5.2.1.jar:/usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/lucene-queryparser-5.2.1.jar:/usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/lucene-sandbox-5.2.1.jar:/usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/lucene-spatial-5.2.1.jar:/usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/lucene-suggest-5.2.1.jar:/usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/netty-3.10.5.Final.jar:/usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/snakeyaml-1.12.jar:/usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/spatial4j-0.4.1.jar:/usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/t-digest-3.0.jar
+[2017-03-23 11:46:22,879][DEBUG][bootstrap                ] sun.boot.class.path: /Library/Java/JavaVirtualMachines/jdk1.8.0_66.jdk/Contents/Home/jre/lib/resources.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_66.jdk/Contents/Home/jre/lib/rt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_66.jdk/Contents/Home/jre/lib/sunrsasign.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_66.jdk/Contents/Home/jre/lib/jsse.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_66.jdk/Contents/Home/jre/lib/jce.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_66.jdk/Contents/Home/jre/lib/charsets.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_66.jdk/Contents/Home/jre/lib/jfr.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_66.jdk/Contents/Home/jre/classes
+[2017-03-23 11:46:22,879][DEBUG][bootstrap                ] classloader urls: [file:/usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/elasticsearch-2.0.0.jar, file:/usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/antlr-runtime-3.5.jar, file:/usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/apache-log4j-extras-1.2.17.jar, file:/usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/asm-4.1.jar, file:/usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/asm-commons-4.1.jar, file:/usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/commons-cli-1.3.1.jar, file:/usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/compiler-0.8.13.jar, file:/usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/compress-lzf-1.0.2.jar, file:/usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/elasticsearch-2.0.0.jar, file:/usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/groovy-all-2.4.4-indy.jar, file:/usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/guava-18.0.jar, file:/usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/HdrHistogram-2.1.6.jar, file:/usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/hppc-0.7.1.jar, file:/usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/jackson-core-2.5.3.jar, file:/usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/jackson-dataformat-cbor-2.5.3.jar, file:/usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/jackson-dataformat-smile-2.5.3.jar, file:/usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/jackson-dataformat-yaml-2.5.3.jar, file:/usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/jna-4.1.0.jar, file:/usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/joda-convert-1.2.jar, file:/usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/joda-time-2.8.2.jar, file:/usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/jsr166e-1.1.0.jar, file:/usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/jts-1.13.jar, file:/usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/log4j-1.2.17.jar, file:/usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/lucene-analyzers-common-5.2.1.jar, file:/usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/lucene-backward-codecs-5.2.1.jar, file:/usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/lucene-core-5.2.1.jar, file:/usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/lucene-expressions-5.2.1.jar, file:/usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/lucene-grouping-5.2.1.jar, file:/usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/lucene-highlighter-5.2.1.jar, file:/usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/lucene-join-5.2.1.jar, file:/usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/lucene-memory-5.2.1.jar, file:/usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/lucene-misc-5.2.1.jar, file:/usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/lucene-queries-5.2.1.jar, file:/usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/lucene-queryparser-5.2.1.jar, file:/usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/lucene-sandbox-5.2.1.jar, file:/usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/lucene-spatial-5.2.1.jar, file:/usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/lucene-suggest-5.2.1.jar, file:/usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/netty-3.10.5.Final.jar, file:/usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/snakeyaml-1.12.jar, file:/usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/spatial4j-0.4.1.jar, file:/usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/t-digest-3.0.jar]
+[2017-03-23 11:46:22,883][DEBUG][bootstrap                ] java.home: /Library/Java/JavaVirtualMachines/jdk1.8.0_66.jdk/Contents/Home/jre
+[2017-03-23 11:46:22,883][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/elasticsearch-2.0.0.jar
+[2017-03-23 11:46:22,908][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/antlr-runtime-3.5.jar
+[2017-03-23 11:46:22,909][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/apache-log4j-extras-1.2.17.jar
+[2017-03-23 11:46:22,911][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/asm-4.1.jar
+[2017-03-23 11:46:22,911][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/asm-commons-4.1.jar
+[2017-03-23 11:46:22,912][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/commons-cli-1.3.1.jar
+[2017-03-23 11:46:22,913][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/compiler-0.8.13.jar
+[2017-03-23 11:46:22,913][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/compress-lzf-1.0.2.jar
+[2017-03-23 11:46:22,914][DEBUG][bootstrap                ] excluding duplicate classpath element: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/elasticsearch-2.0.0.jar
+[2017-03-23 11:46:22,914][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/groovy-all-2.4.4-indy.jar
+[2017-03-23 11:46:22,924][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/guava-18.0.jar
+[2017-03-23 11:46:22,929][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/HdrHistogram-2.1.6.jar
+[2017-03-23 11:46:22,930][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/hppc-0.7.1.jar
+[2017-03-23 11:46:22,932][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/jackson-core-2.5.3.jar
+[2017-03-23 11:46:22,933][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/jackson-dataformat-cbor-2.5.3.jar
+[2017-03-23 11:46:22,934][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/jackson-dataformat-smile-2.5.3.jar
+[2017-03-23 11:46:22,934][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/jackson-dataformat-yaml-2.5.3.jar
+[2017-03-23 11:46:22,935][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/jna-4.1.0.jar
+[2017-03-23 11:46:22,936][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/joda-convert-1.2.jar
+[2017-03-23 11:46:22,936][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/joda-time-2.8.2.jar
+[2017-03-23 11:46:22,938][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/jsr166e-1.1.0.jar
+[2017-03-23 11:46:22,939][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/jts-1.13.jar
+[2017-03-23 11:46:22,941][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/log4j-1.2.17.jar
+[2017-03-23 11:46:22,942][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/lucene-analyzers-common-5.2.1.jar
+[2017-03-23 11:46:22,944][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/lucene-backward-codecs-5.2.1.jar
+[2017-03-23 11:46:22,944][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/lucene-core-5.2.1.jar
+[2017-03-23 11:46:22,947][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/lucene-expressions-5.2.1.jar
+[2017-03-23 11:46:22,948][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/lucene-grouping-5.2.1.jar
+[2017-03-23 11:46:22,948][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/lucene-highlighter-5.2.1.jar
+[2017-03-23 11:46:22,949][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/lucene-join-5.2.1.jar
+[2017-03-23 11:46:22,949][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/lucene-memory-5.2.1.jar
+[2017-03-23 11:46:22,950][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/lucene-misc-5.2.1.jar
+[2017-03-23 11:46:22,951][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/lucene-queries-5.2.1.jar
+[2017-03-23 11:46:22,951][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/lucene-queryparser-5.2.1.jar
+[2017-03-23 11:46:22,952][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/lucene-sandbox-5.2.1.jar
+[2017-03-23 11:46:22,953][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/lucene-spatial-5.2.1.jar
+[2017-03-23 11:46:22,954][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/lucene-suggest-5.2.1.jar
+[2017-03-23 11:46:22,954][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/netty-3.10.5.Final.jar
+[2017-03-23 11:46:22,957][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/snakeyaml-1.12.jar
+[2017-03-23 11:46:22,958][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/spatial4j-0.4.1.jar
+[2017-03-23 11:46:22,958][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/t-digest-3.0.jar
+[2017-03-23 11:46:23,071][INFO ][node                     ] [node-1] version[2.0.0], pid[16297], build[de54438/2015-10-22T08:09:48Z]
+[2017-03-23 11:46:23,071][INFO ][node                     ] [node-1] initializing ...
+[2017-03-23 11:46:23,071][DEBUG][node                     ] [node-1] using config [/usr/local/Cellar/elasticsearch/2.0.0_1/libexec/config], data [[/tmp/elasticsearch_test]], logs [/Users/maren/Projekte/speakerinnen_liste/log], plugins [/usr/local/Cellar/elasticsearch/2.0.0_1/libexec/plugins]
+[2017-03-23 11:46:23,083][DEBUG][bootstrap                ] java.home: /Library/Java/JavaVirtualMachines/jdk1.8.0_66.jdk/Contents/Home/jre
+[2017-03-23 11:46:23,084][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/elasticsearch-2.0.0.jar
+[2017-03-23 11:46:23,093][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/antlr-runtime-3.5.jar
+[2017-03-23 11:46:23,094][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/apache-log4j-extras-1.2.17.jar
+[2017-03-23 11:46:23,095][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/asm-4.1.jar
+[2017-03-23 11:46:23,096][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/asm-commons-4.1.jar
+[2017-03-23 11:46:23,096][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/commons-cli-1.3.1.jar
+[2017-03-23 11:46:23,096][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/compiler-0.8.13.jar
+[2017-03-23 11:46:23,097][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/compress-lzf-1.0.2.jar
+[2017-03-23 11:46:23,097][DEBUG][bootstrap                ] excluding duplicate classpath element: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/elasticsearch-2.0.0.jar
+[2017-03-23 11:46:23,098][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/groovy-all-2.4.4-indy.jar
+[2017-03-23 11:46:23,105][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/guava-18.0.jar
+[2017-03-23 11:46:23,108][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/HdrHistogram-2.1.6.jar
+[2017-03-23 11:46:23,108][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/hppc-0.7.1.jar
+[2017-03-23 11:46:23,110][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/jackson-core-2.5.3.jar
+[2017-03-23 11:46:23,111][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/jackson-dataformat-cbor-2.5.3.jar
+[2017-03-23 11:46:23,112][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/jackson-dataformat-smile-2.5.3.jar
+[2017-03-23 11:46:23,112][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/jackson-dataformat-yaml-2.5.3.jar
+[2017-03-23 11:46:23,113][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/jna-4.1.0.jar
+[2017-03-23 11:46:23,116][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/joda-convert-1.2.jar
+[2017-03-23 11:46:23,117][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/joda-time-2.8.2.jar
+[2017-03-23 11:46:23,118][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/jsr166e-1.1.0.jar
+[2017-03-23 11:46:23,118][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/jts-1.13.jar
+[2017-03-23 11:46:23,119][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/log4j-1.2.17.jar
+[2017-03-23 11:46:23,120][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/lucene-analyzers-common-5.2.1.jar
+[2017-03-23 11:46:23,122][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/lucene-backward-codecs-5.2.1.jar
+[2017-03-23 11:46:23,123][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/lucene-core-5.2.1.jar
+[2017-03-23 11:46:23,126][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/lucene-expressions-5.2.1.jar
+[2017-03-23 11:46:23,127][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/lucene-grouping-5.2.1.jar
+[2017-03-23 11:46:23,127][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/lucene-highlighter-5.2.1.jar
+[2017-03-23 11:46:23,128][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/lucene-join-5.2.1.jar
+[2017-03-23 11:46:23,128][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/lucene-memory-5.2.1.jar
+[2017-03-23 11:46:23,128][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/lucene-misc-5.2.1.jar
+[2017-03-23 11:46:23,129][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/lucene-queries-5.2.1.jar
+[2017-03-23 11:46:23,130][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/lucene-queryparser-5.2.1.jar
+[2017-03-23 11:46:23,131][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/lucene-sandbox-5.2.1.jar
+[2017-03-23 11:46:23,132][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/lucene-spatial-5.2.1.jar
+[2017-03-23 11:46:23,132][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/lucene-suggest-5.2.1.jar
+[2017-03-23 11:46:23,133][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/netty-3.10.5.Final.jar
+[2017-03-23 11:46:23,135][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/snakeyaml-1.12.jar
+[2017-03-23 11:46:23,136][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/spatial4j-0.4.1.jar
+[2017-03-23 11:46:23,137][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/t-digest-3.0.jar
+[2017-03-23 11:46:23,141][DEBUG][bootstrap                ] java.home: /Library/Java/JavaVirtualMachines/jdk1.8.0_66.jdk/Contents/Home/jre
+[2017-03-23 11:46:23,141][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/elasticsearch-2.0.0.jar
+[2017-03-23 11:46:23,151][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/antlr-runtime-3.5.jar
+[2017-03-23 11:46:23,152][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/apache-log4j-extras-1.2.17.jar
+[2017-03-23 11:46:23,161][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/asm-4.1.jar
+[2017-03-23 11:46:23,162][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/asm-commons-4.1.jar
+[2017-03-23 11:46:23,162][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/commons-cli-1.3.1.jar
+[2017-03-23 11:46:23,163][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/compiler-0.8.13.jar
+[2017-03-23 11:46:23,163][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/compress-lzf-1.0.2.jar
+[2017-03-23 11:46:23,164][DEBUG][bootstrap                ] excluding duplicate classpath element: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/elasticsearch-2.0.0.jar
+[2017-03-23 11:46:23,164][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/groovy-all-2.4.4-indy.jar
+[2017-03-23 11:46:23,170][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/guava-18.0.jar
+[2017-03-23 11:46:23,173][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/HdrHistogram-2.1.6.jar
+[2017-03-23 11:46:23,173][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/hppc-0.7.1.jar
+[2017-03-23 11:46:23,175][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/jackson-core-2.5.3.jar
+[2017-03-23 11:46:23,176][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/jackson-dataformat-cbor-2.5.3.jar
+[2017-03-23 11:46:23,177][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/jackson-dataformat-smile-2.5.3.jar
+[2017-03-23 11:46:23,177][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/jackson-dataformat-yaml-2.5.3.jar
+[2017-03-23 11:46:23,178][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/jna-4.1.0.jar
+[2017-03-23 11:46:23,179][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/joda-convert-1.2.jar
+[2017-03-23 11:46:23,179][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/joda-time-2.8.2.jar
+[2017-03-23 11:46:23,181][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/jsr166e-1.1.0.jar
+[2017-03-23 11:46:23,181][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/jts-1.13.jar
+[2017-03-23 11:46:23,182][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/log4j-1.2.17.jar
+[2017-03-23 11:46:23,183][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/lucene-analyzers-common-5.2.1.jar
+[2017-03-23 11:46:23,184][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/lucene-backward-codecs-5.2.1.jar
+[2017-03-23 11:46:23,184][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/lucene-core-5.2.1.jar
+[2017-03-23 11:46:23,186][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/lucene-expressions-5.2.1.jar
+[2017-03-23 11:46:23,186][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/lucene-grouping-5.2.1.jar
+[2017-03-23 11:46:23,187][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/lucene-highlighter-5.2.1.jar
+[2017-03-23 11:46:23,187][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/lucene-join-5.2.1.jar
+[2017-03-23 11:46:23,188][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/lucene-memory-5.2.1.jar
+[2017-03-23 11:46:23,188][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/lucene-misc-5.2.1.jar
+[2017-03-23 11:46:23,188][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/lucene-queries-5.2.1.jar
+[2017-03-23 11:46:23,189][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/lucene-queryparser-5.2.1.jar
+[2017-03-23 11:46:23,189][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/lucene-sandbox-5.2.1.jar
+[2017-03-23 11:46:23,190][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/lucene-spatial-5.2.1.jar
+[2017-03-23 11:46:23,190][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/lucene-suggest-5.2.1.jar
+[2017-03-23 11:46:23,191][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/netty-3.10.5.Final.jar
+[2017-03-23 11:46:23,192][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/snakeyaml-1.12.jar
+[2017-03-23 11:46:23,193][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/spatial4j-0.4.1.jar
+[2017-03-23 11:46:23,194][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/t-digest-3.0.jar
+[2017-03-23 11:46:23,197][DEBUG][bootstrap                ] java.home: /Library/Java/JavaVirtualMachines/jdk1.8.0_66.jdk/Contents/Home/jre
+[2017-03-23 11:46:23,198][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/elasticsearch-2.0.0.jar
+[2017-03-23 11:46:23,204][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/antlr-runtime-3.5.jar
+[2017-03-23 11:46:23,205][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/apache-log4j-extras-1.2.17.jar
+[2017-03-23 11:46:23,205][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/asm-4.1.jar
+[2017-03-23 11:46:23,206][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/asm-commons-4.1.jar
+[2017-03-23 11:46:23,206][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/commons-cli-1.3.1.jar
+[2017-03-23 11:46:23,206][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/compiler-0.8.13.jar
+[2017-03-23 11:46:23,206][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/compress-lzf-1.0.2.jar
+[2017-03-23 11:46:23,207][DEBUG][bootstrap                ] excluding duplicate classpath element: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/elasticsearch-2.0.0.jar
+[2017-03-23 11:46:23,207][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/groovy-all-2.4.4-indy.jar
+[2017-03-23 11:46:23,212][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/guava-18.0.jar
+[2017-03-23 11:46:23,214][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/HdrHistogram-2.1.6.jar
+[2017-03-23 11:46:23,214][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/hppc-0.7.1.jar
+[2017-03-23 11:46:23,215][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/jackson-core-2.5.3.jar
+[2017-03-23 11:46:23,216][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/jackson-dataformat-cbor-2.5.3.jar
+[2017-03-23 11:46:23,216][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/jackson-dataformat-smile-2.5.3.jar
+[2017-03-23 11:46:23,216][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/jackson-dataformat-yaml-2.5.3.jar
+[2017-03-23 11:46:23,217][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/jna-4.1.0.jar
+[2017-03-23 11:46:23,217][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/joda-convert-1.2.jar
+[2017-03-23 11:46:23,217][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/joda-time-2.8.2.jar
+[2017-03-23 11:46:23,219][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/jsr166e-1.1.0.jar
+[2017-03-23 11:46:23,219][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/jts-1.13.jar
+[2017-03-23 11:46:23,220][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/log4j-1.2.17.jar
+[2017-03-23 11:46:23,220][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/lucene-analyzers-common-5.2.1.jar
+[2017-03-23 11:46:23,221][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/lucene-backward-codecs-5.2.1.jar
+[2017-03-23 11:46:23,222][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/lucene-core-5.2.1.jar
+[2017-03-23 11:46:23,224][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/lucene-expressions-5.2.1.jar
+[2017-03-23 11:46:23,225][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/lucene-grouping-5.2.1.jar
+[2017-03-23 11:46:23,225][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/lucene-highlighter-5.2.1.jar
+[2017-03-23 11:46:23,225][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/lucene-join-5.2.1.jar
+[2017-03-23 11:46:23,226][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/lucene-memory-5.2.1.jar
+[2017-03-23 11:46:23,226][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/lucene-misc-5.2.1.jar
+[2017-03-23 11:46:23,226][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/lucene-queries-5.2.1.jar
+[2017-03-23 11:46:23,226][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/lucene-queryparser-5.2.1.jar
+[2017-03-23 11:46:23,227][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/lucene-sandbox-5.2.1.jar
+[2017-03-23 11:46:23,227][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/lucene-spatial-5.2.1.jar
+[2017-03-23 11:46:23,228][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/lucene-suggest-5.2.1.jar
+[2017-03-23 11:46:23,228][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/netty-3.10.5.Final.jar
+[2017-03-23 11:46:23,230][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/snakeyaml-1.12.jar
+[2017-03-23 11:46:23,230][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/spatial4j-0.4.1.jar
+[2017-03-23 11:46:23,230][DEBUG][bootstrap                ] examining jar: /usr/local/Cellar/elasticsearch/2.0.0_1/libexec/lib/t-digest-3.0.jar
+[2017-03-23 11:46:23,231][INFO ][plugins                  ] [node-1] loaded [], sites [head, kopf]
+[2017-03-23 11:46:23,328][DEBUG][env                      ] [node-1] using node location [[NodePath{path=/tmp/elasticsearch_test/elasticsearch-test-marens-macbook-pro-7.local/nodes/0, spins=null}]], local_node_id [0]
+[2017-03-23 11:46:23,331][DEBUG][env                      ] [node-1] node data locations details:
+ -> /tmp/elasticsearch_test/elasticsearch-test-marens-macbook-pro-7.local/nodes/0, free_space [254gb], usable_space [253.7gb], total_space [464.7gb], spins? [unknown], mount [/ (/dev/disk1)], type [hfs]
+[2017-03-23 11:46:23,351][DEBUG][threadpool               ] [node-1] creating thread_pool [generic], type [cached], keep_alive [30s]
+[2017-03-23 11:46:23,359][DEBUG][threadpool               ] [node-1] creating thread_pool [index], type [fixed], size [4], queue_size [200]
+[2017-03-23 11:46:23,362][DEBUG][threadpool               ] [node-1] creating thread_pool [bulk], type [fixed], size [4], queue_size [50]
+[2017-03-23 11:46:23,362][DEBUG][threadpool               ] [node-1] creating thread_pool [get], type [fixed], size [4], queue_size [1k]
+[2017-03-23 11:46:23,363][DEBUG][threadpool               ] [node-1] creating thread_pool [search], type [fixed], size [7], queue_size [1k]
+[2017-03-23 11:46:23,363][DEBUG][threadpool               ] [node-1] creating thread_pool [suggest], type [fixed], size [4], queue_size [1k]
+[2017-03-23 11:46:23,363][DEBUG][threadpool               ] [node-1] creating thread_pool [percolate], type [fixed], size [4], queue_size [1k]
+[2017-03-23 11:46:23,363][DEBUG][threadpool               ] [node-1] creating thread_pool [management], type [scaling], min [1], size [5], keep_alive [5m]
+[2017-03-23 11:46:23,364][DEBUG][threadpool               ] [node-1] creating thread_pool [listener], type [fixed], size [2], queue_size [null]
+[2017-03-23 11:46:23,364][DEBUG][threadpool               ] [node-1] creating thread_pool [flush], type [scaling], min [1], size [2], keep_alive [5m]
+[2017-03-23 11:46:23,364][DEBUG][threadpool               ] [node-1] creating thread_pool [refresh], type [scaling], min [1], size [2], keep_alive [5m]
+[2017-03-23 11:46:23,364][DEBUG][threadpool               ] [node-1] creating thread_pool [warmer], type [scaling], min [1], size [2], keep_alive [5m]
+[2017-03-23 11:46:23,364][DEBUG][threadpool               ] [node-1] creating thread_pool [snapshot], type [scaling], min [1], size [2], keep_alive [5m]
+[2017-03-23 11:46:23,364][DEBUG][threadpool               ] [node-1] creating thread_pool [optimize], type [fixed], size [1], queue_size [null]
+[2017-03-23 11:46:23,364][DEBUG][threadpool               ] [node-1] creating thread_pool [fetch_shard_started], type [scaling], min [1], size [8], keep_alive [5m]
+[2017-03-23 11:46:23,365][DEBUG][threadpool               ] [node-1] creating thread_pool [fetch_shard_store], type [scaling], min [1], size [8], keep_alive [5m]
+[2017-03-23 11:46:24,659][DEBUG][monitor.jvm              ] [node-1] enabled [true], interval [1s], gc_threshold [{default=GcThreshold{name='default', warnThreshold=10000, infoThreshold=5000, debugThreshold=2000}, young=GcThreshold{name='young', warnThreshold=1000, infoThreshold=700, debugThreshold=400}, old=GcThreshold{name='old', warnThreshold=10000, infoThreshold=5000, debugThreshold=2000}}]
+[2017-03-23 11:46:24,664][DEBUG][monitor.os               ] [node-1] Using probe [org.elasticsearch.monitor.os.OsProbe@7428de63] with refresh_interval [1s]
+[2017-03-23 11:46:24,668][DEBUG][monitor.process          ] [node-1] Using probe [org.elasticsearch.monitor.process.ProcessProbe@50a3d0f6] with refresh_interval [1s]
+[2017-03-23 11:46:24,684][DEBUG][monitor.jvm              ] [node-1] Using refresh_interval [1s]
+[2017-03-23 11:46:24,686][DEBUG][monitor.fs               ] [node-1] Using probe [org.elasticsearch.monitor.fs.FsProbe@6e0cff20] with refresh_interval [1s]
+[2017-03-23 11:46:24,703][DEBUG][common.network           ] configuration:
+
+lo0
+        inet 127.0.0.1 netmask:255.0.0.0 scope:host
+        inet6 fe80::1 prefixlen:64 scope:link
+        inet6 ::1 prefixlen:128 scope:host
+        UP MULTICAST LOOPBACK mtu:16384 index:1
+
+en0
+        inet 172.23.4.15 netmask:255.255.255.0 broadcast:172.23.4.255 scope:site
+        inet6 fe80::c6:78e3:349c:2fd3 prefixlen:64 scope:link
+        hardware 4C:32:75:89:F1:05
+        UP MULTICAST mtu:1500 index:4
+
+awdl0
+        inet6 fe80::d4a6:3dff:fe7a:a85d prefixlen:64 scope:link
+        hardware D6:A6:3D:7A:A8:5D
+        UP MULTICAST mtu:1484 index:8
+
+utun0
+        inet6 fe80::1cd5:6de3:8538:7536 prefixlen:64 scope:link
+        UP MULTICAST POINTOPOINT mtu:2000 index:10
+
+vnic0
+        inet 10.211.55.2 netmask:255.255.255.0 broadcast:10.211.55.255 scope:site
+        hardware 00:1C:42:00:00:08
+        UP MULTICAST mtu:1500 index:11
+
+vnic1
+        inet 10.37.129.2 netmask:255.255.255.0 broadcast:10.37.129.255 scope:site
+        hardware 00:1C:42:00:00:09
+        UP MULTICAST mtu:1500 index:12
+
+[2017-03-23 11:46:24,710][DEBUG][common.netty             ] using gathering [true]
+[2017-03-23 11:46:24,763][DEBUG][discovery.zen.elect      ] [node-1] using minimum_master_nodes [-1]
+[2017-03-23 11:46:24,763][DEBUG][discovery.zen.ping.unicast] [node-1] using initial hosts [127.0.0.1, [::1]], with concurrent_connects [10]
+[2017-03-23 11:46:24,772][DEBUG][discovery.zen            ] [node-1] using ping.timeout [3s], join.timeout [1m], master_election.filter_client [true], master_election.filter_data [false]
+[2017-03-23 11:46:24,773][DEBUG][discovery.zen.fd         ] [node-1] [master] uses ping_interval [1s], ping_timeout [30s], ping_retries [3]
+[2017-03-23 11:46:24,776][DEBUG][discovery.zen.fd         ] [node-1] [node  ] uses ping_interval [1s], ping_timeout [30s], ping_retries [3]
+[2017-03-23 11:46:25,173][DEBUG][script                   ] [node-1] using script cache with max_size [100], expire [null]
+[2017-03-23 11:46:25,180][DEBUG][cluster.routing.allocation.decider] [node-1] using node_concurrent_recoveries [2], node_initial_primaries_recoveries [4]
+[2017-03-23 11:46:25,247][DEBUG][cluster.routing.allocation.decider] [node-1] using [cluster.routing.allocation.allow_rebalance] with [indices_all_active]
+[2017-03-23 11:46:25,250][DEBUG][cluster.routing.allocation.decider] [node-1] using [cluster_concurrent_rebalance] with [2]
+[2017-03-23 11:46:25,254][DEBUG][gateway                  ] [node-1] using initial_shards [quorum]
+[2017-03-23 11:46:25,453][DEBUG][http.netty               ] [node-1] using max_chunk_size[8kb], max_header_size[8kb], max_initial_line_length[4kb], max_content_length[100mb], receive_predictor[512kb->512kb], pipelining[true], pipelining_max_events[10000]
+[2017-03-23 11:46:25,475][DEBUG][indices.recovery         ] [node-1] using max_bytes_per_sec[40mb], concurrent_streams [3], file_chunk_size [512kb], translog_size [512kb], translog_ops [1000], and compress [true]
+[2017-03-23 11:46:25,490][DEBUG][indices.store            ] [node-1] using indices.store.throttle.type [NONE], with index.store.throttle.max_bytes_per_sec [10gb]
+[2017-03-23 11:46:25,491][DEBUG][indices.memory           ] [node-1] using indexing buffer size [99mb], with indices.memory.min_shard_index_buffer_size [4mb], indices.memory.max_shard_index_buffer_size [512mb], indices.memory.shard_inactive_time [5m], indices.memory.interval [30s]
+[2017-03-23 11:46:25,500][DEBUG][indices.cache.query      ] [node-1] using [node] query cache with size [10%], actual_size [99mb], max filter count [1000]
+[2017-03-23 11:46:25,503][DEBUG][indices.fielddata.cache  ] [node-1] using size [-1] [-1b], expire [null]
+[2017-03-23 11:46:25,520][DEBUG][gateway                  ] [node-1] took 0s to load state
+[2017-03-23 11:46:25,526][INFO ][node                     ] [node-1] initialized
+[2017-03-23 11:46:25,526][INFO ][node                     ] [node-1] starting ...
+[2017-03-23 11:46:25,542][DEBUG][netty.channel.socket.nio.SelectorUtil] Using select timeout of 500
+[2017-03-23 11:46:25,542][DEBUG][netty.channel.socket.nio.SelectorUtil] Epoll-bug workaround enabled = false
+[2017-03-23 11:46:25,573][DEBUG][transport.netty          ] [node-1] using profile[default], worker_count[8], port[9300-9400], bind_host[null], publish_host[null], compress[false], connect_timeout[30s], connections_per_node[2/3/6/1/1], receive_predictor[512kb->512kb]
+[2017-03-23 11:46:25,582][DEBUG][transport.netty          ] [node-1] binding server bootstrap to: localhost/127.0.0.1
+[2017-03-23 11:46:25,629][DEBUG][transport.netty          ] [node-1] Bound profile [default] to address {127.0.0.1:9301}
+[2017-03-23 11:46:25,630][DEBUG][transport.netty          ] [node-1] Bound profile [default] to address {[::1]:9301}
+[2017-03-23 11:46:25,630][INFO ][transport                ] [node-1] publish_address {localhost/127.0.0.1:9301}, bound_addresses {127.0.0.1:9301}, {[::1]:9301}
+[2017-03-23 11:46:25,643][INFO ][discovery                ] [node-1] elasticsearch-test-marens-macbook-pro-7.local/NGCsIhdEShyONXQh-Cu5Iw
+[2017-03-23 11:46:25,643][DEBUG][cluster.service          ] [node-1] processing [initial_join]: execute
+[2017-03-23 11:46:25,644][DEBUG][cluster.service          ] [node-1] processing [initial_join]: took 0s no change in cluster_state
+[2017-03-23 11:46:25,752][DEBUG][transport.netty          ] [node-1] connected to node [{#zen_unicast_1#}{127.0.0.1}{127.0.0.1:9300}]
+[2017-03-23 11:46:25,759][DEBUG][transport.netty          ] [node-1] connected to node [{#zen_unicast_7#}{::1}{[::1]:9301}]
+[2017-03-23 11:46:25,761][DEBUG][transport.netty          ] [node-1] connected to node [{#zen_unicast_6#}{::1}{[::1]:9300}]
+[2017-03-23 11:46:25,781][DEBUG][discovery.zen.ping.unicast] [node-1] [1] filtering out response from {Huntara}{sFZ7QmwXRrGfWlyHdWGa7g}{127.0.0.1}{127.0.0.1:9300}, not same cluster_name [elasticsearch_maren]
+[2017-03-23 11:46:25,785][DEBUG][discovery.zen.ping.unicast] [node-1] [1] filtering out response from {Huntara}{sFZ7QmwXRrGfWlyHdWGa7g}{127.0.0.1}{127.0.0.1:9300}, not same cluster_name [elasticsearch_maren]
+[2017-03-23 11:46:27,161][DEBUG][discovery.zen.ping.unicast] [node-1] [1] filtering out response from {Huntara}{sFZ7QmwXRrGfWlyHdWGa7g}{127.0.0.1}{127.0.0.1:9300}, not same cluster_name [elasticsearch_maren]
+[2017-03-23 11:46:27,163][DEBUG][discovery.zen.ping.unicast] [node-1] [1] filtering out response from {Huntara}{sFZ7QmwXRrGfWlyHdWGa7g}{127.0.0.1}{127.0.0.1:9300}, not same cluster_name [elasticsearch_maren]
+[2017-03-23 11:46:28,671][DEBUG][discovery.zen.ping.unicast] [node-1] [1] filtering out response from {Huntara}{sFZ7QmwXRrGfWlyHdWGa7g}{127.0.0.1}{127.0.0.1:9300}, not same cluster_name [elasticsearch_maren]
+[2017-03-23 11:46:28,672][DEBUG][discovery.zen.ping.unicast] [node-1] [1] filtering out response from {Huntara}{sFZ7QmwXRrGfWlyHdWGa7g}{127.0.0.1}{127.0.0.1:9300}, not same cluster_name [elasticsearch_maren]
+[2017-03-23 11:46:28,678][DEBUG][discovery.zen            ] [node-1] filtered ping responses: (filter_client[true], filter_data[false]) {none}
+[2017-03-23 11:46:28,678][DEBUG][transport.netty          ] [node-1] disconnecting from [{#zen_unicast_1#}{127.0.0.1}{127.0.0.1:9300}] due to explicit disconnect call
+[2017-03-23 11:46:28,678][DEBUG][discovery.zen            ] [node-1] elected as master, waiting for incoming joins ([0] needed)
+[2017-03-23 11:46:28,679][DEBUG][transport.netty          ] [node-1] disconnecting from [{#zen_unicast_6#}{::1}{[::1]:9300}] due to explicit disconnect call
+[2017-03-23 11:46:28,680][DEBUG][cluster.service          ] [node-1] processing [zen-disco-join(elected_as_master, [0] joins received)]: execute
+[2017-03-23 11:46:28,680][DEBUG][transport.netty          ] [node-1] disconnecting from [{#zen_unicast_7#}{::1}{[::1]:9301}] due to explicit disconnect call
+[2017-03-23 11:46:28,687][DEBUG][cluster.service          ] [node-1] cluster state updated, version [1], source [zen-disco-join(elected_as_master, [0] joins received)]
+[2017-03-23 11:46:28,688][INFO ][cluster.service          ] [node-1] new_master {node-1}{NGCsIhdEShyONXQh-Cu5Iw}{127.0.0.1}{localhost/127.0.0.1:9301}{testattr=test, bench=true, test=true}, reason: zen-disco-join(elected_as_master, [0] joins received)
+[2017-03-23 11:46:28,688][DEBUG][cluster.service          ] [node-1] publishing cluster state version 1
+[2017-03-23 11:46:28,688][DEBUG][cluster.service          ] [node-1] set local cluster state to version 1
+[2017-03-23 11:46:28,690][DEBUG][cluster.service          ] [node-1] processing [zen-disco-join(elected_as_master, [0] joins received)]: took 10ms done applying updated cluster_state (version: 1, uuid: e16F7Y-2T9qgwG_Y2Cd71w)
+[2017-03-23 11:46:28,700][DEBUG][cluster.service          ] [node-1] processing [local-gateway-elected-state]: execute
+[2017-03-23 11:46:28,715][DEBUG][cluster.service          ] [node-1] cluster state updated, version [2], source [local-gateway-elected-state]
+[2017-03-23 11:46:28,716][DEBUG][cluster.service          ] [node-1] publishing cluster state version 2
+[2017-03-23 11:46:28,716][DEBUG][cluster.service          ] [node-1] set local cluster state to version 2
+[2017-03-23 11:46:28,726][DEBUG][http.netty               ] [node-1] Bound http to address {127.0.0.1:9250}
+[2017-03-23 11:46:28,728][DEBUG][http.netty               ] [node-1] Bound http to address {[::1]:9250}
+[2017-03-23 11:46:28,729][INFO ][http                     ] [node-1] publish_address {localhost/127.0.0.1:9250}, bound_addresses {127.0.0.1:9250}, {[::1]:9250}
+[2017-03-23 11:46:28,729][INFO ][node                     ] [node-1] started
+[2017-03-23 11:46:28,744][INFO ][gateway                  ] [node-1] recovered [0] indices into cluster_state
+[2017-03-23 11:46:28,744][DEBUG][cluster.service          ] [node-1] processing [local-gateway-elected-state]: took 43ms done applying updated cluster_state (version: 2, uuid: bJ0XBInFRni-Bp33KHyP9w)
+[2017-03-23 11:46:36,807][INFO ][node                     ] [node-1] stopping ...
+[2017-03-23 11:46:36,816][INFO ][node                     ] [node-1] stopped
+[2017-03-23 11:46:36,816][INFO ][node                     ] [node-1] closing ...
+[2017-03-23 11:46:36,819][INFO ][node                     ] [node-1] closed

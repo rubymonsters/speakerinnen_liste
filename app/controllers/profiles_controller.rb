@@ -7,11 +7,20 @@ class ProfilesController < ApplicationController
 
   before_filter :require_permission, only: [:edit, :destroy, :update]
 
+  respond_to :json
+
   def index
     if params[:topic]
       @profiles = profiles_for_scope(params[:topic])
     elsif params[:category_id]
       profiles_for_category
+    elsif params[:search]
+      @profiles = profiles_for_search
+
+      # sum of search results concerning certain attributes
+      @aggs = profiles_for_search.response.aggregations
+      @aggs_cities = @aggs[:city][:buckets]
+      @aggs_languages = @aggs[:lang][:buckets]
     else
       @profiles = profiles_for_index
     end
@@ -54,6 +63,20 @@ class ProfilesController < ApplicationController
 
   def render_footer?
     false
+  end
+
+  def typeahead
+    suggester_fields  = []
+    suggester_options = []
+    suggestions = Profile.typeahead(params[:q])
+    suggestions.each do |s|
+      if /.*_suggest/ === s.first
+        suggester_fields.push(s)
+      end
+    end
+    suggester_fields.map {|s| suggester_options.push(s[1].first['options'])}
+    suggestions_ordered = (suggester_options.flatten.sort_by { |s| s["score"] }).reverse
+    respond_with(suggestions_ordered)
   end
 
   private
@@ -119,4 +142,10 @@ class ProfilesController < ApplicationController
     end
   end
 
+  def profiles_for_search
+    Profile.is_published
+      .search(params[:search])
+      .page(params[:page]).per(24)
+      .records
+  end
 end

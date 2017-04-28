@@ -1,12 +1,14 @@
 class Profile < ActiveRecord::Base
   include AutoHtml
   include HasPicture
+  include Searchable
   include ActiveModel::Serialization
 
   has_many :medialinks
 
   translates :bio, :main_topic, fallbacks_for_empty_translations: true
   accepts_nested_attributes_for :translations
+  globalize_accessors
 
   extend FriendlyId
   friendly_id :slug_candidate, use: :slugged
@@ -30,6 +32,8 @@ class Profile < ActiveRecord::Base
     firstname.strip! if firstname
     lastname.strip! if lastname
   end
+
+  after_save :update_or_remove_index
 
   def after_confirmation
     AdminMailer.new_profile_confirmed(self).deliver
@@ -62,6 +66,14 @@ class Profile < ActiveRecord::Base
 
   def fullname
     "#{firstname} #{lastname}".strip
+  end
+
+  def cities
+    "#{city}".gsub(/(,|\/)/, "").split(" ")
+  end
+
+  def split_languages
+    "#{languages}".gsub(/(,|\/)/, "").split(" ")
   end
 
   def name_or_email
@@ -111,6 +123,10 @@ class Profile < ActiveRecord::Base
     order('RANDOM()')
   end
 
+  def update_or_remove_index
+    if published then index_document else delete_document end rescue nil # rescue a deleted document if not indexed
+  end
+
   def password_required?
     super && provider.blank?
   end
@@ -121,10 +137,5 @@ class Profile < ActiveRecord::Base
     else
       super
     end
-  end
-
-  # for simple admin search
-  def self.search(query)
-    where("firstname || ' ' || lastname ILIKE :query OR twitter ILIKE :query", query: "%#{query}%")
   end
 end

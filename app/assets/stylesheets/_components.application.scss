@@ -610,3 +610,33 @@ input[type=file] {
   text-align: right;
   margin: 2px 10px;
 }
+
+/* autocomplete in search */
+.twitter-typeahead {
+  font-family: $sans-serif;
+  font-size: $inuit-base-font-size;
+  vertical-align: middle;
+}
+
+.tt-dropdown-menu {
+  background: white;
+  width: 100%;
+  padding: 10px;
+  color: $dark-grey;
+}
+
+.tt-suggestion {
+  margin: 0;
+  background: $transparent-white;
+  padding: halve($inuit-base-spacing-unit) $inuit-base-spacing-unit;
+
+  p {
+    margin: 0;
+  }
+
+  &:hover {
+    background-color: whitesmoke;
+    color: $blue;
+    cursor: pointer;
+  }
+}

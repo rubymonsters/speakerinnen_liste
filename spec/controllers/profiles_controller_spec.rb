@@ -2,7 +2,7 @@ include AuthHelper
 
 describe ProfilesController, type: :controller do
   describe 'test index action' do
-    let!(:profile) { FactoryGirl.create(:published) }
+    let!(:profile) { FactoryGirl.create(:published, topic_list: ['ruby', 'algorithms']) }
     let!(:profile2) { FactoryGirl.create(:profile) }
 
     before do
@@ -21,6 +21,20 @@ describe ProfilesController, type: :controller do
 
     it 'should not include unpublished profiles' do
       expect(assigns(:profiles)).not_to include(profile2)
+    end
+  end
+
+  describe 'search action', elasticsearch: true do
+    it 'should display search results if search term is present' do
+      sleep 1
+      get :index, {:search => 'ruby'}
+      expect(response).to be_success
+    end
+
+    it 'should store aggregations in aggs variable' do
+      get :index, {:search => 'ruby'}
+      expect(assigns :aggs).to have_key(:city)
+      expect(assigns :aggs).to have_key(:lang)
     end
   end
 
