@@ -52,8 +52,7 @@ module Searchable
           aggs: {
             lang: {
               terms: {
-                field: 'split_languages'
-              }
+                field: 'split_languages'              }
             },
             city: {
               terms: {
@@ -192,8 +191,8 @@ module Searchable
             end
           end
         end
-        indexes :split_languages, type: 'string', analyzer: 'language_analyzer', 'norms': { 'enabled': false }
-        indexes :cities, fields: { unmod: { type:  'string', analyzer: 'cities_analyzer', 'norms': { 'enabled': false } }, standard: { type:  'string', analyzer: 'standard', 'norms': { 'enabled': false }} }
+        indexes :split_languages, type: 'string', fielddata: true, analyzer: 'language_analyzer', 'norms': { 'enabled': false }
+        indexes :cities, fields: { unmod: { type:  'string', fielddata: true, analyzer: 'cities_analyzer', 'norms': { 'enabled': false } }, standard: { type:  'string', fielddata: true, analyzer: 'standard', 'norms': { 'enabled': false }} }
         indexes :country,    type: 'string', analyzer: 'standard', 'norms': { 'enabled': false }
         indexes :website,    type: 'string', analyzer: 'standard', 'norms': { 'enabled': false }
         indexes :medialinks, type: 'nested' do
