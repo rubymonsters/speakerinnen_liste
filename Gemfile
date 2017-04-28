@@ -1,4 +1,3 @@
-
 source 'https://rubygems.org'
 ruby '2.2.3'
 gem 'rails', '4.1.13'
@@ -68,7 +67,7 @@ group :test do
   gem 'factory_girl_rails', '4.1.0'
   gem 'poltergeist', '1.8.0'
   gem 'database_cleaner', '~> 1.2.0'
-  gem 'elasticsearch-extensions'
+  gem 'elasticsearch-extensions', git: 'git://github.com/elasticsearch/elasticsearch-ruby.git', ref: '5.x'
   gem 'test_after_commit'
 end
 
