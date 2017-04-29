@@ -72,7 +72,6 @@ class ProfilesController < ApplicationController
       :remember_me,
       :city,
       :country,
-      :languages,
       {iso_languages: []},
       :firstname,
       :lastname,
