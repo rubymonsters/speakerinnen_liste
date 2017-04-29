@@ -8,7 +8,7 @@ class IsoLanguage
   end
 
   def self.top_list
-    %w{ar bn de el en es fa fr he hi it ja nl pl pt ru tr ur zh}
+    %w{de el en es fr it nl pl pt ru sv tr zh}
   end
 
   def self.rest_list
