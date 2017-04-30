@@ -44,12 +44,7 @@ class ProfilesSearch
 
     if @query[:languages].present? # && @query[:languages] =~ /[abc]{2}/
       result = result
-        .where('languages ILIKE :iso_start OR
-                languages ILIKE :iso OR
-                languages ILIKE :en_name OR
-                languages ILIKE :de_name OR
-                languages ILIKE :own_name',
-                SearchLanguages.search_strings(@query[:languages]))
+        .where('iso_languages ILIKE :iso', iso: "%#{@query[:languages]}%")
     end
     #
     # to get the search for tags working, we had to add that if statement

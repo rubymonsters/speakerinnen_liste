@@ -1,6 +1,6 @@
 class IsoLanguage
   def self.all
-    # we read the list of language-codes directly from the translation file
+    # we read the list of language-codes directly from the de translation file
     # to avoid duplication
     I18n.backend.send(:init_translations) unless I18n.backend.initialized?
     translations = I18n.backend.send(:translations)
