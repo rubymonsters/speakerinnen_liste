@@ -1,5 +1,5 @@
 describe ProfilesSearch, type: :model do
-  let!(:profile) { FactoryGirl.create(:published, firstname: 'Ada', lastname: 'Lovelace', twitter: 'alovelace', city: 'London', country: 'GB', languages: 'English') }
+  let!(:profile) { FactoryGirl.create(:published, firstname: 'Ada', lastname: 'Lovelace', twitter: 'alovelace', city: 'London', country: 'GB', iso_languages: ["en"]) }
   # have to add city and twitter because the search needs them for params, at least as empty strings
   let!(:profile2) { FactoryGirl.create(:published, firstname: 'Marie', lastname: 'Curie', twitter: 'marieecurie', city: 'Paris', country: 'FR') }
 

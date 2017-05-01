@@ -148,4 +148,9 @@ class Profile < ActiveRecord::Base
       errors.add(:iso_languages, "each element must be two charactes")
     end
   end
+
+  def split_languages_string
+    return [] unless languages
+    languages.gsub(/[^\wöäüÖÄÜ]/, " ").split(" ")
+  end
 end
