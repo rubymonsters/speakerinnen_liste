@@ -1,6 +1,6 @@
 describe 'profile search' do
-  let!(:profile) { FactoryGirl.create(:published, firstname: 'Ada', lastname: 'Lovelace', city: 'London', country: 'GB', twitter: 'Adalove', languages: 'Spanish, English') }
-  let!(:profile1) { FactoryGirl.create(:published, firstname: 'Marie', lastname: 'Curie', city: 'Paris', country: 'FR', twitter: 'mcurie', languages: 'Polish, French') }
+  let!(:profile) { FactoryGirl.create(:published, firstname: 'Ada', lastname: 'Lovelace', city: 'London', country: 'GB', twitter: 'Adalove', iso_languages: ['es', 'en']) }
+  let!(:profile1) { FactoryGirl.create(:published, firstname: 'Marie', lastname: 'Curie', city: 'Paris', country: 'FR', twitter: 'mcurie', iso_languages: ['pl', 'fr']) }
   let!(:profile2) { FactoryGirl.create(:published, firstname: 'Christiane', lastname: 'Nüsslein-Volhard', city: 'Heidelberg', languages: 'German') }
   let!(:profile3) { FactoryGirl.create(:published, firstname: 'Maren ', lastname: 'Meier') }
 
