@@ -24,9 +24,25 @@ class IsoLanguage
     else
       code_from_word(str)
     end
-
+    special_cases(str) unless code
     puts "not matched: #{str}" unless code
     code
+  end
+
+  def self.special_cases(str)
+    return "fr" if str == "Französich"
+    return "fr" if str == "Franzoesisch"
+    return "fr" if str == "Francais"
+    return "nl" if str == "Hollaendisch"
+    return "nl" if str == "Nederlands"
+    return "nn" if str == "Norsk"
+    return "it" if str == "Italenisch"
+    return "it" if str == "italien"
+    return "ru" if str == "Russich"
+    return "fa" if str == "Farsi"
+    return "de" if str == "Deutsh"
+    return "de" if str == "Deustch"
+    return "pt" if str == "Portugues"
   end
 
   def self.code_from_single_letter(str)
