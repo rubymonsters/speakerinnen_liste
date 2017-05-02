@@ -24,7 +24,7 @@ class IsoLanguage
     else
       code_from_word(str)
     end
-    special_cases(str) unless code
+    code = special_cases(str) unless code
     puts "not matched: #{str}" unless code
     code
   end

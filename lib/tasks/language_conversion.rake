@@ -15,8 +15,10 @@ task convert_languages_in_iso: :environment do
   Profile.all.each do |profile|
     languages_code_array = profile.split_languages_string.map do |str|
       IsoLanguage.from_string(str)
-    end.compact.uniq
-    p languages_code_array
+    end.compact
+    puts "existing languages:   #{profile.languages}"
+    puts "to iso_languages:     #{languages_code_array}"
+    puts "---------------------------------"
     #profile.languages = languages_code_array
     #profile.save
   end
@@ -43,22 +45,3 @@ task prints_languages_in_iso: :environment do
     end
   end
 end
-
-
-#profile.id: 3
-#existing languages:Deutsch, Englisch, Französisch (nicht konferenztauglich) to iso_languages: de
-#existing languages:Deutsch, Englisch, Französisch (nicht konferenztauglich) to iso_languages: en
-#existing languages:Deutsch, Englisch, Französisch (nicht konferenztauglich) to iso_languages: fr
-#existing languages:Deutsch, Englisch, Französisch (nicht konferenztauglich) to iso_languages: ht
-#existing languages:Deutsch, Englisch, Französisch (nicht konferenztauglich) to iso_languages: ht
-#
-#
-#profile.id: 14
-#existing languages:DE,  EN to iso_languages: de
-#existing languages:DE,  EN to iso_languages: de
-#
-#
-#profile.id: 1409
-#existing languages:English, Urdu to iso_languages: ur
-#existing languages:English, Urdu to iso_languages: en
-#existing languages:English, Urdu to iso_languages: ur
