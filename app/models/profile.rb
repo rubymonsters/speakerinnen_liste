@@ -151,6 +151,6 @@ class Profile < ActiveRecord::Base
 
   def split_languages_string
     return [] unless languages
-    languages.gsub(/[^\wöäüÖÄÜ]/, " ").split(" ")
+    languages.gsub(/[^\wöäüÖÄÜçñ]/, " ").split(" ")
   end
 end

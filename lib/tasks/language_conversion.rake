@@ -15,13 +15,16 @@ task convert_languages_in_iso: :environment do
   Profile.all.each do |profile|
     languages_code_array = profile.split_languages_string.map do |str|
       IsoLanguage.from_string(str)
-    end.compact
+    end.compact.uniq
     puts "existing languages:   #{profile.languages}"
     puts "to iso_languages:     #{languages_code_array}"
     puts "---------------------------------"
     #profile.languages = languages_code_array
     #profile.save
   end
+#one think that catched my eye:
+#existing languages:   Android, Java, Javascript, C, C++, AIDL, ANT, Gradle, Android.mk
+#to iso_languages:     ["mk"]
 
 end
 

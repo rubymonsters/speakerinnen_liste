@@ -33,6 +33,8 @@ class IsoLanguage
     return "fr" if str == "Französich"
     return "fr" if str == "Franzoesisch"
     return "fr" if str == "Francais"
+    return "fr" if str == "Français"
+    return "fr" if str == "français"
     return "nl" if str == "Hollaendisch"
     return "nl" if str == "Nederlands"
     return "nn" if str == "Norsk"
@@ -42,7 +44,16 @@ class IsoLanguage
     return "fa" if str == "Farsi"
     return "de" if str == "Deutsh"
     return "de" if str == "Deustch"
+    return "de" if str == "dt"
+    return "de" if str == "deustch"
     return "pt" if str == "Portugues"
+    return "es" if str == "espanol"
+    return "es" if str == "Español"
+    return "en" if str == "ENG"
+    return "en" if str == "engl"
+    return "sv" if str == "Svenska"
+    return "ch" if str == "CH"
+
   end
 
   def self.code_from_single_letter(str)
