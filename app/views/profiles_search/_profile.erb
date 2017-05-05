@@ -44,7 +44,7 @@
        </h2>
        <p class="pb">
           <% profile.iso_languages.each do |iso|%>
-            <%= t(:"#{iso}", scope: 'iso_639_1') %>
+            <%= t("#{iso.to_sym}", scope: 'iso_639_1') %>
           <% end %>
        </p>
      <% end %>
