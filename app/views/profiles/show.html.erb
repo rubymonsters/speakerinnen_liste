@@ -51,7 +51,11 @@
             </h2>
             <p class="bb pb">
             <% @profile.iso_languages.each do |iso|%>
-              <%= t(:"#{iso}", scope: 'iso_639_1').capitalize %>
+              <%= iso.class %>
+              <%= iso %>
+              <%= iso.to_s %>
+
+              <%#<%= t(:"#{iso}", scope: 'iso_639_1').capitalize %>%>
             <% end %>
             </p>
           <% end %>
