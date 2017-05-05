@@ -80,7 +80,7 @@ class Admin::ProfilesController < Admin::BaseController
       :remember_me,
       :city,
       :country,
-      :languages,
+      {iso_languages: []},
       :firstname,
       :lastname,
       :picture,

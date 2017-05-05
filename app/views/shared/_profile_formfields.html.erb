@@ -10,9 +10,25 @@
     <%= f.country_select :country, label: t(:country, scope: 'activerecord.attributes.profile').html_safe,
       priority_countries: ["DE", "FR", "GB"], include_blank: t(:country_select, scope: 'profiles.profile'),
       wrapper_html: { class: "mb" } %>
-    <%= f.input :languages, label: t(:languages, scope: 'activerecord.attributes.profile').html_safe, input_html: { class: "mb input--width-100" }, wrapper_html: { class: "mt" }  %>
-    <%= f.input :website, placeholder: 'http://', input_html: { class: "input--width-100" }, wrapper_html: { class: "mb" } %>
-    <%= f.input :topic_list, label: t(:topic_list, scope: 'activerecord.attributes.profile').html_safe, input_html: { class: "input--width-100" }, wrapper_html: { class: "mb" } %>
+
+    <div class="input check_boxes optional profile_iso_languages mt">
+      <label class="check_boxes optional control-label"><%= t(:languages, scope: 'activerecord.attributes.profile') %></label><br>
+      <%= render partial: "shared/iso_languages", collection: IsoLanguage.top_list, locals: { profile: profile }  %>
+      <input name="profile[iso_languages][]" value="" type="hidden">
+    </div>
+    <div>
+      <a id="expander">
+        <%= t(:show_more_languages, scope: 'profiles.edit') %>
+      </a>
+    </div>
+    <% display_value = IsoLanguage.rest_list & profile.iso_languages == [] ? "none" : "block" %>
+    <div class="input check_boxes optional profile_iso_languages mt" id="rest_languages" style="display: <%= display_value %>;">
+      <%= render partial: "shared/iso_languages", collection: IsoLanguage.rest_list  %>
+      <input name="profile[iso_languages][]" value="" type="hidden">
+    </div>
+
+    <%= f.input :website, placeholder: 'http://', input_html: { class: "input--width-100" }, wrapper_html: { class: "mv" } %>
+    <%= f.input :topic_list, label: t(:topic_list, scope: 'activerecord.attributes.profile').html_safe, input_html: { class: "input--width-100" }, wrapper_html: { class: "mv" } %>
 
     <ul class='hidden' id='availableTags'>
       <% ActsAsTaggableOn::Tag.uniq.pluck(:name).each do |tag_name| %>
@@ -83,3 +99,19 @@
 
   </div>
 </div>
+
+<script type="text/javascript" charset="utf-8">
+
+
+
+$('#expander').click(function(){
+  if ( $('#rest_languages').css('display') == 'none' ) {
+    $('#rest_languages').css('display','block');
+    $('#expander').html('<%= t(:show_less_languages, scope: 'profiles.edit')%>');
+  } else {
+    $('#rest_languages').css('display','none');
+    $('#expander').html('<%= t(:show_more_languages, scope: 'profiles.edit')%>');
+  }});
+
+
+</script>

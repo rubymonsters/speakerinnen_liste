@@ -14,16 +14,19 @@ describe 'profile', type: :model do
       expect(profile.fullname).to eq "Factory Girl"
     end
 
-      # check again: these tests seem to be false positive
-      # it 'is invalid without email' do
-      #   profile_no_email = FactoryGirl.build(:profile, email: nil)
-      #   expect(profile_no_email.errors[:email].size).to eq(0)
-      # end
+    it 'is invalid without email' do
+      profile_no_email = FactoryGirl.build(:profile, email: nil)
+      profile_no_email.valid?
+      expect(profile_no_email.errors[:email].size).to eq(1)
+    end
 
-      # it "is invalid when email address is already taken" do
-      #   profile_same_email = FactoryGirl.create(:profile, firstname: 'Jane', lastname: 'Tester', email: 'factorygirl@test.de')
-      #   expect(profile_same_email.errors[:email].size).to eq(0)
-      # end
+    it "is invalid when email address is already taken" do
+      first_profile_same_email = FactoryGirl.create(:profile)
+      email = first_profile_same_email.email
+      second_profile_same_email = FactoryGirl.build(:profile, email: email)
+      second_profile_same_email.valid?
+      expect(second_profile_same_email.errors[:email].size).to eq(1)
+    end
   end
 
   describe '#name_or_email' do
@@ -47,6 +50,54 @@ describe 'profile', type: :model do
       it 'in firstname and lastname' do
         expect(profile.firstname).to eq 'Ada'
         expect(profile.lastname).to eq 'Lovelace'
+      end
+    end
+  end
+
+  describe 'iso_languages' do
+    it 'is empty' do
+      expect(Profile.new.iso_languages).to eq []
+    end
+
+    it 'saves to iso_languages without the empty string in the array' do
+      p = FactoryGirl.build(:profile, iso_languages: ['en', 'es', ''])
+      p.save!
+      p.reload
+      expect(p.iso_languages).to eq %w(en es)
+    end
+
+    context 'language string only valid when correct format' do
+
+      it 'is valid for single language' do
+        profile = Profile.new(iso_languages: ['en'])
+        profile.valid?
+        expect(profile.errors[:iso_languages].size).to eq(0)
+      end
+
+      it 'empty strings are ignored in the validation' do
+        # we need them because of empty checkbox array handling Gotcha
+        # see: http://api.rubyonrails.org/classes/ActionView/Helpers/FormHelper.html#method-i-check_box
+        profile = Profile.new(iso_languages: ['en', ''])
+        profile.valid?
+        expect(profile.errors[:iso_languages].size).to eq(0)
+      end
+
+      it 'is valid for two languages' do
+        profile = Profile.new(iso_languages: %w(en de))
+        profile.valid?
+        expect(profile.errors[:iso_languages].size).to eq(0)
+      end
+
+      it 'is invalid for languages with three letters' do
+        profile = Profile.new(iso_languages: %w(en de espaniol))
+        profile.valid?
+        expect(profile.errors[:iso_languages].size).to eq(1)
+      end
+
+      it 'is invalid for other strings' do
+        profile = Profile.new(iso_languages: ["deutsch", :de])
+        profile.valid?
+        expect(profile.errors[:iso_languages].size).to eq(2)
       end
     end
   end
