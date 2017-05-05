@@ -65,19 +65,19 @@ class ProfilesController < ApplicationController
     false
   end
 
-  def typeahead
-    suggester_fields  = []
-    suggester_options = []
-    suggestions = Profile.typeahead(params[:q])
-    suggestions.each do |s|
-      if /.*_suggest/ === s.first
-        suggester_fields.push(s)
-      end
-    end
-    suggester_fields.map {|s| suggester_options.push(s[1].first['options'])}
-    suggestions_ordered = (suggester_options.flatten.sort_by { |s| s["score"] }).reverse
-    respond_with(suggestions_ordered)
-  end
+  # def typeahead
+  #   suggester_fields  = []
+  #   suggester_options = []
+  #   suggestions = Profile.typeahead(params[:q])
+  #   suggestions.each do |s|
+  #     if /.*_suggest/ === s.first
+  #       suggester_fields.push(s)
+  #     end
+  #   end
+  #   suggester_fields.map {|s| suggester_options.push(s[1].first['options'])}
+  #   suggestions_ordered = (suggester_options.flatten.sort_by { |s| s["score"] }).reverse
+  #   respond_with(suggestions_ordered)
+  # end
 
   private
 

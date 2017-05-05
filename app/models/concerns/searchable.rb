@@ -15,7 +15,8 @@ module Searchable
           query: {
             multi_match: {
               query: query,
-              # term-centric approach. First analyzes the query string into individual terms, then looks for each term in any of the fields, as though they were one big field.
+              # term-centric approach. First analyzes the query string into individual terms, then looks
+              # for each term in any of the fields, as though they were one big field.
               type: 'cross_fields',
               fields: [
                 'fullname^1.5',
@@ -60,6 +61,9 @@ module Searchable
                 field: 'cities.unmod'
               }
             }
+          },
+          post_filter: {
+            term: { 'cities.unmod': 'berlin' }
           }
         })
     end
@@ -220,6 +224,10 @@ module Searchable
         input: input.map { |i| i.input.downcase }
       }
     end
+
+    # def agg_filter
+    #   @agg_filter = "berlin"
+    # end
 
   #   def self.typeahead(q)
   #     self.__elasticsearch__.client.suggest(index: self.index_name, body: {
