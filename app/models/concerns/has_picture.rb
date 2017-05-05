@@ -5,7 +5,7 @@ module HasPicture
 
   included do
     mount_uploader :picture, PictureUploader
-    #validate :file_size
+    validate :file_size
   end
 
   def file_size
