@@ -34,20 +34,20 @@ module Searchable
             }
           },
           # suggester for zero matches
-          suggest: {
-            did_you_mean_fullname: {
-              text: query,
-              completion: {
-                field: 'fullname.suggest'
-              }
-            },
-            did_you_mean_main_topic_en: {
-              text: query,
-              completion: {
-                field: 'main_topic_en.suggest'
-              }
-            }
-          },
+          # suggest: {
+          #   did_you_mean_fullname: {
+          #     text: query,
+          #     completion: {
+          #       field: 'fullname.suggest'
+          #     }
+          #   },
+          #   did_you_mean_main_topic_en: {
+          #     text: query,
+          #     completion: {
+          #       field: 'main_topic_en.suggest'
+          #     }
+          #   }
+          # },
           # aggregation, will be used for faceted search
           aggs: {
             lang: {
@@ -171,24 +171,36 @@ module Searchable
 
     settings elasticsearch_mappings do
       mappings dynamic: 'false' do
-        indexes :fullname,   type: 'text', analyzer: 'fullname_analyzer',   'norms': false do
-          indexes :suggest,  type: 'completion'
-        end
-        indexes :lastname,   type: 'text', analyzer: 'fullname_analyzer',   'norms': false do
-          indexes :suggest,  type: 'completion'
-        end
-        indexes :twitter,    type: 'text', analyzer: 'twitter_analyzer',    'norms': false do
-          indexes :suggest,  type: 'completion'
-        end
-        indexes :topic_list, type: 'text', analyzer: 'standard', 'norms': false do
-          indexes :suggest,  type: 'completion'
-        end
+        indexes :fullname,   type: 'text', analyzer: 'fullname_analyzer',   'norms': false
+
+        #indexes :fullname,   type: 'text', analyzer: 'fullname_analyzer',   'norms': false do
+        #   indexes :suggest,  type: 'completion'
+        # end
+
+        indexes :lastname,   type: 'text', analyzer: 'fullname_analyzer',   'norms': false
+
+        #indexes :lastname,   type: 'text', analyzer: 'fullname_analyzer',   'norms': false do
+        #   indexes :suggest,  type: 'completion'
+        # end
+
+        indexes :twitter,    type: 'text', analyzer: 'twitter_analyzer',    'norms': false
+
+        # indexes :twitter,    type: 'text', analyzer: 'twitter_analyzer',    'norms': false do
+        #   indexes :suggest,  type: 'completion'
+        # end
+        indexes :topic_list, type: 'text', analyzer: 'standard', 'norms': false
+
+        #indexes :topic_list, type: 'text', analyzer: 'standard', 'norms': false do
+        #   indexes :suggest,  type: 'completion'
+        # end
         I18n.available_locales.each do |locale|
           [:main_topic, :bio].each do |name|
-            indexes :"#{name}_#{locale}", type: 'text', analyzer: "#{ANALYZERS[locale]}_without_stemming" do
-              if name == :main_topic
-                indexes :suggest, type: 'completion'
-              end
+            # ToDo: make analyzers work again but the field must deal with null values
+            # indexes :"#{name}_#{locale}", type: 'text', analyzer: "#{ANALYZERS[locale]}_without_stemming" do
+            indexes :"#{name}_#{locale}", type: 'keyword', null_value: 'NULL' do
+              # if name == :main_topic
+              #   indexes :suggest, type: 'completion'
+              # end
             end
           end
         end
@@ -209,34 +221,34 @@ module Searchable
       }
     end
 
-    def self.typeahead(q)
-      self.__elasticsearch__.client.suggest(index: self.index_name, body: {
-        fullname_suggest: {
-          text: q,
-          completion: { field: 'fullname.suggest'
-          }
-        },
-        lastname_suggest: {
-          text: q,
-          completion: { field: 'lastname.suggest'
-          }
-        },
-        main_topic_de_suggest: {
-          text: q,
-          completion: { field: 'main_topic_de.suggest'
-          }
-        },
-        main_topic_en_suggest: {
-          text: q,
-          completion: { field: 'main_topic_en.suggest'
-          }
-        },
-        topic_list_suggest: {
-          text: q,
-          completion: { field: 'topic_list.suggest'
-          }
-        }
-      })
-    end
+  #   def self.typeahead(q)
+  #     self.__elasticsearch__.client.suggest(index: self.index_name, body: {
+  #       fullname_suggest: {
+  #         text: q,
+  #         completion: { field: 'fullname.suggest'
+  #         }
+  #       },
+  #       lastname_suggest: {
+  #         text: q,
+  #         completion: { field: 'lastname.suggest'
+  #         }
+  #       },
+  #       main_topic_de_suggest: {
+  #         text: q,
+  #         completion: { field: 'main_topic_de.suggest'
+  #         }
+  #       },
+  #       main_topic_en_suggest: {
+  #         text: q,
+  #         completion: { field: 'main_topic_en.suggest'
+  #         }
+  #       },
+  #       topic_list_suggest: {
+  #         text: q,
+  #         completion: { field: 'topic_list.suggest'
+  #         }
+  #       }
+  #     })
+  #   end
   end
 end
