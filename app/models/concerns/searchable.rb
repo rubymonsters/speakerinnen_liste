@@ -221,6 +221,10 @@ module Searchable
       }
     end
 
+    # def agg_filter
+    #   @agg_filter = "berlin"
+    # end
+
   #   def self.typeahead(q)
   #     self.__elasticsearch__.client.suggest(index: self.index_name, body: {
   #       fullname_suggest: {
