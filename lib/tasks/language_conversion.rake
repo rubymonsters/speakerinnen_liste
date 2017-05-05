@@ -23,15 +23,6 @@ task convert_languages_in_iso: :environment do
     profile.iso_languages = languages_code_array
     profile.save!
   end
-#one thing that catched my eye:
-#3325
-#existing languages:   Android, Java, Javascript, C, C++, AIDL, ANT, Gradle, Android.mk
-#to iso_languages:     ["mk"]
-  #
-#1228
-#existing languages:   portuguese br
-#to iso_languages:     ["pt", "br"]
-#---------------------------------
 
 end
 
