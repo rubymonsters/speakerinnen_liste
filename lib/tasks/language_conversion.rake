@@ -1,5 +1,5 @@
 desc "checks for unmatched words"
-task unmatches_words: :environment do
+task unmatched_words: :environment do
 
   Profile.all.each do |profile|
     profile.split_languages_string.each do |str|
@@ -16,15 +16,22 @@ task convert_languages_in_iso: :environment do
     languages_code_array = profile.split_languages_string.map do |str|
       IsoLanguage.from_string(str)
     end.compact.uniq
+    puts "#{profile.id}"
     puts "existing languages:   #{profile.languages}"
     puts "to iso_languages:     #{languages_code_array}"
     puts "---------------------------------"
-    #profile.languages = languages_code_array
-    #profile.save
+    profile.iso_languages = languages_code_array
+    profile.save!
   end
-#one think that catched my eye:
+#one thing that catched my eye:
+#3325
 #existing languages:   Android, Java, Javascript, C, C++, AIDL, ANT, Gradle, Android.mk
 #to iso_languages:     ["mk"]
+  #
+#1228
+#existing languages:   portuguese br
+#to iso_languages:     ["pt", "br"]
+#---------------------------------
 
 end
 
