@@ -23,7 +23,7 @@ RSpec.configure do |config|
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
   # instead of true.
-  config.use_transactional_fixtures = true
+  config.use_transactional_fixtures = false
 
   # If true, the base class of anonymous controllers will be inferred
   # automatically. This will be the default behavior in future versions of
@@ -48,7 +48,7 @@ RSpec.configure do |config|
 
   # Start an in-memory cluster for Elasticsearch as needed
   config.before :all, elasticsearch: true do
-    Elasticsearch::Extensions::Test::Cluster.start(port: 9250, nodes: 1, timeout: 120, path_logs: 'log') unless Elasticsearch::Extensions::Test::Cluster.running?(on: 9250)
+    Elasticsearch::Extensions::Test::Cluster.start(port: 9250, nodes: 1, timeout: 60, path_logs: 'log') unless Elasticsearch::Extensions::Test::Cluster.running?(on: 9250)
   end
 
    # Create indexes for all elastic searchable models

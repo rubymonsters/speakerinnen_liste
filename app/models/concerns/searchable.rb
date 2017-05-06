@@ -8,6 +8,7 @@ module Searchable
     index_name [Rails.application.engine_name, Rails.env].join('_')
 
     def self.search(query)
+      puts query
       __elasticsearch__.search(
         {
           # minimum score depends completely on the given data and query, find out what works in your case.
@@ -15,7 +16,8 @@ module Searchable
           query: {
             multi_match: {
               query: query,
-              # term-centric approach. First analyzes the query string into individual terms, then looks for each term in any of the fields, as though they were one big field.
+              # term-centric approach. First analyzes the query string into individual terms, then looks
+              # for each term in any of the fields, as though they were one big field.
               type: 'cross_fields',
               fields: [
                 'fullname^1.5',
@@ -34,20 +36,20 @@ module Searchable
             }
           },
           # suggester for zero matches
-          suggest: {
-            did_you_mean_fullname: {
-              text: query,
-              term: {
-                field: 'fullname'
-              }
-            },
-            did_you_mean_main_topic_en: {
-              text: query,
-              term: {
-                field: 'main_topic_en'
-              }
-            }
-          },
+          # suggest: {
+          #   did_you_mean_fullname: {
+          #     text: query,
+          #     completion: {
+          #       field: 'fullname.suggest'
+          #     }
+          #   },
+          #   did_you_mean_main_topic_en: {
+          #     text: query,
+          #     completion: {
+          #       field: 'main_topic_en.suggest'
+          #     }
+          #   }
+          # },
           # aggregation, will be used for faceted search
           aggs: {
             lang: {
@@ -60,8 +62,17 @@ module Searchable
                 field: 'cities.unmod'
               }
             }
+          },
+          post_filter: {
+            term: agg_filter
           }
         })
+    end
+
+    def self.agg_filter
+      puts @agg_filter
+      puts "++++++"
+      { 'cities.unmod': 'berlin' }
     end
 
     def as_indexed_json(options={})
@@ -171,34 +182,46 @@ module Searchable
 
     settings elasticsearch_mappings do
       mappings dynamic: 'false' do
-        indexes :fullname,   type: 'string', analyzer: 'fullname_analyzer',   'norms': { 'enabled': false } do
-          indexes :suggest,  type: 'completion'
-        end
-        indexes :lastname,   type: 'string', analyzer: 'fullname_analyzer',   'norms': { 'enabled': false } do
-          indexes :suggest,  type: 'completion'
-        end
-        indexes :twitter,    type: 'string', analyzer: 'twitter_analyzer',    'norms': { 'enabled': false } do
-          indexes :suggest,  type: 'completion'
-        end
-        indexes :topic_list, type: 'string', analyzer: 'standard', 'norms': { 'enabled': false } do
-          indexes :suggest,  type: 'completion'
-        end
+        indexes :fullname,   type: 'text', analyzer: 'fullname_analyzer',   'norms': false
+
+        #indexes :fullname,   type: 'text', analyzer: 'fullname_analyzer',   'norms': false do
+        #   indexes :suggest,  type: 'completion'
+        # end
+
+        indexes :lastname,   type: 'text', analyzer: 'fullname_analyzer',   'norms': false
+
+        #indexes :lastname,   type: 'text', analyzer: 'fullname_analyzer',   'norms': false do
+        #   indexes :suggest,  type: 'completion'
+        # end
+
+        indexes :twitter,    type: 'text', analyzer: 'twitter_analyzer',    'norms': false
+
+        # indexes :twitter,    type: 'text', analyzer: 'twitter_analyzer',    'norms': false do
+        #   indexes :suggest,  type: 'completion'
+        # end
+        indexes :topic_list, type: 'text', analyzer: 'standard', 'norms': false
+
+        #indexes :topic_list, type: 'text', analyzer: 'standard', 'norms': false do
+        #   indexes :suggest,  type: 'completion'
+        # end
         I18n.available_locales.each do |locale|
           [:main_topic, :bio].each do |name|
-            indexes :"#{name}_#{locale}", type: 'string', analyzer: "#{ANALYZERS[locale]}_without_stemming" do
-              if name == :main_topic
-                indexes :suggest, type: 'completion'
-              end
+            # ToDo: make analyzers work again but the field must deal with null values
+            # indexes :"#{name}_#{locale}", type: 'text', analyzer: "#{ANALYZERS[locale]}_without_stemming" do
+            indexes :"#{name}_#{locale}", type: 'keyword', null_value: 'NULL' do
+              # if name == :main_topic
+              #   indexes :suggest, type: 'completion'
+              # end
             end
           end
         end
-        indexes :split_languages, type: 'string', analyzer: 'language_analyzer', 'norms': { 'enabled': false }
-        indexes :cities, fields: { unmod: { type:  'string', analyzer: 'cities_analyzer', 'norms': { 'enabled': false } }, standard: { type:  'string', analyzer: 'standard', 'norms': { 'enabled': false }} }
-        indexes :country,    type: 'string', analyzer: 'standard', 'norms': { 'enabled': false }
-        indexes :website,    type: 'string', analyzer: 'standard', 'norms': { 'enabled': false }
+        indexes :split_languages, type: 'text', fielddata: true, analyzer: 'language_analyzer', 'norms': false
+        indexes :cities, fields: { unmod: { type:  'text', fielddata: true, analyzer: 'cities_analyzer', 'norms': false }, standard: { type:  'keyword'} }
+        indexes :country,    type: 'text', analyzer: 'standard', 'norms': false
+        indexes :website,    type: 'text', analyzer: 'standard', 'norms': false
         indexes :medialinks, type: 'nested' do
-          indexes :title, 'norms': { 'enabled': false }
-          indexes :description, 'norms': { 'enabled': false }
+          indexes :title, 'norms': false
+          indexes :description, 'norms': false
         end
       end
     end
@@ -209,34 +232,34 @@ module Searchable
       }
     end
 
-    def self.typeahead(q)
-      self.__elasticsearch__.client.suggest(index: self.index_name, body: {
-        fullname_suggest: {
-          text: q,
-          completion: { field: 'fullname.suggest'
-          }
-        },
-        lastname_suggest: {
-          text: q,
-          completion: { field: 'lastname.suggest'
-          }
-        },
-        main_topic_de_suggest: {
-          text: q,
-          completion: { field: 'main_topic_de.suggest'
-          }
-        },
-        main_topic_en_suggest: {
-          text: q,
-          completion: { field: 'main_topic_en.suggest'
-          }
-        },
-        topic_list_suggest: {
-          text: q,
-          completion: { field: 'topic_list.suggest'
-          }
-        }
-      })
-    end
+  #   def self.typeahead(q)
+  #     self.__elasticsearch__.client.suggest(index: self.index_name, body: {
+  #       fullname_suggest: {
+  #         text: q,
+  #         completion: { field: 'fullname.suggest'
+  #         }
+  #       },
+  #       lastname_suggest: {
+  #         text: q,
+  #         completion: { field: 'lastname.suggest'
+  #         }
+  #       },
+  #       main_topic_de_suggest: {
+  #         text: q,
+  #         completion: { field: 'main_topic_de.suggest'
+  #         }
+  #       },
+  #       main_topic_en_suggest: {
+  #         text: q,
+  #         completion: { field: 'main_topic_en.suggest'
+  #         }
+  #       },
+  #       topic_list_suggest: {
+  #         text: q,
+  #         completion: { field: 'topic_list.suggest'
+  #         }
+  #       }
+  #     })
+  #   end
   end
 end

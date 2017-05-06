@@ -41,7 +41,7 @@ SpeakerinnenListe::Application.routes.draw do
     get 'topics/:topic', to: 'profiles#index', as: :topic
 
     get 'profiles_search' => 'profiles#index'
-    get 'profiles_typeahead' => 'profiles#typeahead'
+    # get 'profiles_typeahead' => 'profiles#typeahead'
 
     get  'contact' => 'contact#new',    as: 'contact'
     post 'contact' => 'contact#create'

@@ -16,6 +16,9 @@ class ProfilesController < ApplicationController
       profiles_for_category
     elsif params[:search]
       @profiles = profiles_for_search
+      if params[:agg_filter]
+        @agg_filter = params[:agg_filter]
+      end
 
       # sum of search results concerning certain attributes
       @aggs = profiles_for_search.response.aggregations
@@ -65,19 +68,19 @@ class ProfilesController < ApplicationController
     false
   end
 
-  def typeahead
-    suggester_fields  = []
-    suggester_options = []
-    suggestions = Profile.typeahead(params[:q])
-    suggestions.each do |s|
-      if /.*_suggest/ === s.first
-        suggester_fields.push(s)
-      end
-    end
-    suggester_fields.map {|s| suggester_options.push(s[1].first['options'])}
-    suggestions_ordered = (suggester_options.flatten.sort_by { |s| s["score"] }).reverse
-    respond_with(suggestions_ordered)
-  end
+  # def typeahead
+  #   suggester_fields  = []
+  #   suggester_options = []
+  #   suggestions = Profile.typeahead(params[:q])
+  #   suggestions.each do |s|
+  #     if /.*_suggest/ === s.first
+  #       suggester_fields.push(s)
+  #     end
+  #   end
+  #   suggester_fields.map {|s| suggester_options.push(s[1].first['options'])}
+  #   suggestions_ordered = (suggester_options.flatten.sort_by { |s| s["score"] }).reverse
+  #   respond_with(suggestions_ordered)
+  # end
 
   private
 
