@@ -42,8 +42,8 @@ gem 'rails_12factor', group: :production
 
 gem 'active_model_serializers', '~> 0.10.0'
 
-gem 'elasticsearch-rails', '~> 5.0'
-gem 'elasticsearch-model', '~> 5.0'
+gem 'elasticsearch-rails', '~> 2.0'
+gem 'elasticsearch-model', '~> 2.0'
 
 group :development do
   gem 'letter_opener'
@@ -67,7 +67,7 @@ group :test do
   gem 'factory_girl_rails', '4.1.0'
   gem 'poltergeist', '1.8.0'
   gem 'database_cleaner', '~> 1.2.0'
-  gem 'elasticsearch-extensions', git: 'git://github.com/elasticsearch/elasticsearch-ruby.git', ref: '5.x'
+  gem 'elasticsearch-extensions', git: 'git://github.com/elasticsearch/elasticsearch-ruby.git', ref: '2.x'
   gem 'test_after_commit'
 end
 
