@@ -18,6 +18,22 @@
                 t(:result, scope: 'search', count: @profiles.total_count).html_safe %><br>
             <%= t(:profiles, link: link_to(t(:all_profiles, scope: 'search'), profiles_path), scope: 'search').html_safe %>
           </p>
+          <div class="layout__item 1/2 palm-1/1">
+
+            <ul id="facets">Cities:
+              <% @aggs_cities.each do |term| %>
+                <li><a href="/?t=<%= term['key'] %>"><%= term['key'] %></a> <small class="c"><%= term['doc_count'] %></small></li>
+              <% end %>
+            </ul>
+          </div><!--
+          -->
+          <div class="layout__item 2/2 palm-1/1">
+            <ul id="facets">Languages:
+              <% @aggs_languages.each do |term| %>
+                <li><a href="/?t=<%= term['key'] %>"><%= term['key'] %></a> <small class="c"><%= term['doc_count'] %></small></li>
+              <% end %>
+            </ul>
+          </div>
 
           <%= render partial: 'profiles/profile_search', collection: @profiles, as: :profile %>
 
