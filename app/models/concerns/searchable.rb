@@ -8,6 +8,7 @@ module Searchable
     index_name [Rails.application.engine_name, Rails.env].join('_')
 
     def self.search(query)
+      puts query
       __elasticsearch__.search(
         {
           # minimum score depends completely on the given data and query, find out what works in your case.
@@ -66,6 +67,12 @@ module Searchable
             term: { 'cities.unmod': 'berlin' }
           }
         })
+    end
+
+    def self.agg_filter
+      puts @agg_filter
+      puts "++++++"
+      { 'cities.unmod': 'berlin' }
     end
 
     def as_indexed_json(options={})
@@ -225,10 +232,13 @@ module Searchable
       }
     end
 
+<<<<<<< HEAD
     # def agg_filter
     #   @agg_filter = "berlin"
     # end
 
+=======
+>>>>>>> b8cd1e138deef7a6628acd6cbd52103d861d4116
   #   def self.typeahead(q)
   #     self.__elasticsearch__.client.suggest(index: self.index_name, body: {
   #       fullname_suggest: {
