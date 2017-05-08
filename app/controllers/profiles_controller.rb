@@ -16,9 +16,6 @@ class ProfilesController < ApplicationController
       profiles_for_category
     elsif params[:search]
       @profiles = profiles_for_search
-      if params[:agg_filter]
-        @agg_filter = params[:agg_filter]
-      end
 
       # sum of search results concerning certain attributes
       @aggs = profiles_for_search.response.aggregations
@@ -147,7 +144,7 @@ class ProfilesController < ApplicationController
 
   def profiles_for_search
     Profile.is_published
-      .search(params[:search])
+      .search(params[:search],params[:filter_cities], params[:filter_lang])
       .page(params[:page]).per(24)
       .records
   end
