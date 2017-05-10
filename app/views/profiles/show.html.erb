@@ -17,12 +17,12 @@
 
       </div><!--
 
-      --><div class="layout__item 3/6 palm-1/1 box__bg--white">
+      --><div class="layout__item 3/6 palm-1/1 profile-box bg--white pt">
           <% if @profile.twitter.present? %>
             <h2 class="delta sans-serif mb-">
               <%= t(:twitter, scope: 'profiles.profile') %>
             </h2>
-            <p class="bb pb">
+            <p class="pb">
               <%=link_to '@' + @profile.twitter_name_formatted, @profile.twitter_link_formatted,
               target: '_blank', class: 'content__link bg--grey' %>
             </p>
@@ -32,7 +32,7 @@
             <h2 class="delta sans-serif mb-">
               <%= t(:website, scope: 'profiles.profile') %>
             </h2>
-            <p class="bb pb">
+            <p class="pb">
               <%= link_to @profile.website, @profile.website_with_protocol,
               target: '_blank', class: 'content__link bg--grey' %>
             </p>
@@ -41,7 +41,7 @@
           <h2 class="delta sans-serif mb-">
             <%= t(:topics, scope: 'profiles.profile') %>
           </h2>
-          <p class="bb pb">
+          <p class="pb">
             <%= raw @profile.topic_list.sort.map { |topic| topic_link(topic,class: 'content__link bg--grey') }.join(' ') %>
           </p>
 
@@ -49,7 +49,7 @@
             <h2 class="delta sans-serif mb-">
               <%= t(:languages, scope: 'profiles.profile') %>
             </h2>
-            <p class="bb pb">
+            <p class="pb">
             <% @profile.iso_languages.each do |iso|%>
               <%= t("#{iso}", scope: 'iso_639_1').capitalize %>
             <% end %>
@@ -60,7 +60,7 @@
             <h2 class="delta sans-serif mb-">
               <%= t(:city, scope: 'profiles.profile') %>
             </h2>
-            <p class="bb pb">
+            <p class="pb">
               <%= @profile.city %></span>
             </p>
           <% end %>
@@ -69,7 +69,7 @@
             <h2 class="delta sans-serif mb-">
               <%= t(:country, scope: 'profiles.profile') %>
             </h2>
-            <p class="bb pb">
+            <p class="pb">
               <%= @profile.country_name %>
             </p>
           <% end %>
