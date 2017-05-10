@@ -15,32 +15,32 @@ module Searchable
       puts "filter cities: #{@filter_cities}"
       puts "filter lang: #{@filter_lang}"
       puts "*******************"
-      __elasticsearch__.search(
-        {
+
+      query_hash = {
           # minimum score depends completely on the given data and query, find out what works in your case.
           # min_score: 0.3, # this makes index creation on tests fail :(
-          query: {
-            multi_match: {
-              query: query,
-              # term-centric approach. First analyzes the query string into individual terms, then looks
-              # for each term in any of the fields, as though they were one big field.
-              type: 'cross_fields',
-              fields: [
-                'fullname^1.5',
-                'twitter',
-                'topic_list^1.5',
-                'bio_en',
-                'bio_de',
-                'main_topic_en^2',
-                'main_topic_de^2',
-                'split_languages',
-                'cities.standard^1.5',
-                'country'
-              ],
-              tie_breaker: 0.3,
-              minimum_should_match: '76%'
-            }
-          },
+        query: {
+          multi_match: {
+            query: query,
+            # term-centric approach. First analyzes the query string into individual terms, then looks
+            # for each term in any of the fields, as though they were one big field.
+            type: 'cross_fields',
+            fields: [
+              'fullname^1.5',
+              'twitter',
+              'topic_list^1.5',
+              'bio_en',
+              'bio_de',
+              'main_topic_en^2',
+              'main_topic_de^2',
+              'split_languages',
+              'cities.standard^1.5',
+              'country'
+            ],
+            tie_breaker: 0.3,
+            minimum_should_match: '76%'
+          }
+        },
           # suggester for zero matches
           # suggest: {
           #   did_you_mean_fullname: {
@@ -57,23 +57,29 @@ module Searchable
           #   }
           # },
           # aggregation, will be used for faceted search
-          aggs: {
-            lang: {
-              terms: {
-                field: 'split_languages'
-              }
-            },
-            city: {
-              terms: {
-                field: 'cities.unmod'
-              }
+        aggs: {
+          lang: {
+            terms: {
+              field: 'split_languages'
             }
           },
-          post_filter: [
-            { term: { 'cities.unmod': @filter_cities }},
-            { term: { 'split_languages': @filter_lang }}
-          ]
-        })
+          city: {
+            terms: {
+              field: 'cities.unmod'
+            }
+          }
+        }
+      }
+      if @filter_cities
+        query_hash[:post_filter] = { "term": { "cities.unmod": @filter_cities } }
+      end
+      puts query_hash.to_yaml
+
+      __elasticsearch__.search(query_hash)
+    end
+
+    def add_filter
+      { "term": { "cities.unmod": @filter_cities } }
     end
 
     def as_indexed_json(options={})
