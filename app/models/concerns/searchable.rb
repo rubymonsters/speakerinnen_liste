@@ -59,27 +59,23 @@ module Searchable
           # aggregation, will be used for faceted search
         aggs: {
           lang: {
-            terms: {
-              field: 'split_languages'
-            }
+            terms: { field: 'split_languages' }
           },
           city: {
-            terms: {
-              field: 'cities.unmod'
-            }
+            terms: { field: 'cities.unmod' }
           }
         }
       }
       if @filter_cities
         query_hash[:post_filter] = { "term": { "cities.unmod": @filter_cities } }
       end
+
+      if @filter_lang
+        query_hash[:post_filter] = { "term": { "split_languages": @filter_lang } }
+      end
       puts query_hash.to_yaml
 
       __elasticsearch__.search(query_hash)
-    end
-
-    def add_filter
-      { "term": { "cities.unmod": @filter_cities } }
     end
 
     def as_indexed_json(options={})
