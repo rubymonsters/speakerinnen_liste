@@ -11,26 +11,45 @@ module Searchable
       __elasticsearch__.search(
         {
           # minimum score depends completely on the given data and query, find out what works in your case.
-          # min_score: 0.3, # this makes index creation on tests fail :(
+          # min_score: 0.15, # this makes index creation on tests fail :(
+          min_score: 0.14, # this makes index creation on tests fail :( 
+          # min_score: 0.001, # this makes index creation on tests fail :( 
+          explain: true,
           query: {
-            multi_match: {
-              query: query,
-              # term-centric approach. First analyzes the query string into individual terms, then looks for each term in any of the fields, as though they were one big field.
-              type: 'cross_fields',
-              fields: [
-                'fullname^1.5',
-                'twitter',
-                'topic_list^1.5',
-                'bio_en',
-                'bio_de',
-                'main_topic_en^2',
-                'main_topic_de^2',
-                'split_languages',
-                'cities.standard^1.5',
-                'country'
-              ],
-              tie_breaker: 0.3,
-              minimum_should_match: '76%'
+            bool: {
+              should: [
+                {
+                  multi_match: {
+                    query: query,
+                    # term-centric approach. First analyzes the query string into individual terms, then looks for each term in any of the fields, as though they were one big field.
+                    type: 'cross_fields',
+                    fields: [
+                      'fullname^1.7',
+                      'twitter',
+                      'split_languages',
+                      'cities.standard^1.3',
+                      'country',
+                      'topic_list^1.4',
+                      'main_topic_en^1.6',
+                      'main_topic_de^1.6'
+                    ],
+                    tie_breaker: 0.3,
+                    minimum_should_match: '76%'
+                  }
+                },
+                {
+                  multi_match: {
+                    query: query,
+                    # field-centric approach.
+                    type: 'best_fields',
+                    fields: [
+                      'bio_en^0.8',
+                      'bio_de^0.8'
+                    ],
+                    tie_breaker: 0.3,
+                  }
+                }
+              ]
             }
           },
           # suggester for zero matches
@@ -40,12 +59,12 @@ module Searchable
               term: {
                 field: 'fullname'
               }
-            },
-            did_you_mean_main_topic_en: {
-              text: query,
-              term: {
-                field: 'main_topic_en'
-              }
+            # },
+            # did_you_mean_main_topic_en: {
+            #   text: query,
+            #   term: {
+            #     field: 'main_topic_en'
+            #   }
             }
           },
           # aggregation, will be used for faceted search
@@ -226,11 +245,11 @@ module Searchable
           completion: { field: 'main_topic_de.suggest'
           }
         },
-        main_topic_en_suggest: {
-          text: q,
-          completion: { field: 'main_topic_en.suggest'
-          }
-        },
+        # main_topic_en_suggest: {
+        #   text: q,
+        #   completion: { field: 'main_topic_en.suggest'
+        #   }
+        # },
         topic_list_suggest: {
           text: q,
           completion: { field: 'topic_list.suggest'
