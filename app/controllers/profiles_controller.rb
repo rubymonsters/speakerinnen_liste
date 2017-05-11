@@ -92,6 +92,7 @@ class ProfilesController < ApplicationController
 
   def profiles_for_index
     Profile.is_published
+      .main_topic_translated_in(I18n.locale)
       .random
       .page(params[:page])
       .per(24)
