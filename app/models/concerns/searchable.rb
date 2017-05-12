@@ -71,12 +71,14 @@ module Searchable
           aggs: {
             lang: {
               terms: {
-                field: 'split_languages'
+                field: 'split_languages',
+                size: 999
               }
             },
             city: {
               terms: {
-                field: 'cities.unmod'
+                field: 'cities.unmod',
+                size: 999
               }
             }
           }
