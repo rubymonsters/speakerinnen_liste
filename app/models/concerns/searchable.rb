@@ -12,8 +12,8 @@ module Searchable
         {
           # minimum score depends completely on the given data and query, find out what works in your case.
           # min_score: 0.15, # this makes index creation on tests fail :(
-          min_score: 0.14, # this makes index creation on tests fail :( 
-          # min_score: 0.001, # this makes index creation on tests fail :( 
+          min_score: 0.14, # this makes index creation on tests fail :(
+          # min_score: 0.001, # this makes index creation on tests fail :(
           explain: true,
           query: {
             bool: {
