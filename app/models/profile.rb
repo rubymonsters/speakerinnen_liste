@@ -79,7 +79,7 @@ class Profile < ActiveRecord::Base
   end
 
   def cities
-    "#{city}".gsub(/(,|\/)/, "").split(" ")
+    "#{city}".gsub(/(,|\/|&|\*|\|| - )/, "***").split("***")
   end
 
   def split_languages
