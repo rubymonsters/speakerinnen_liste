@@ -22,7 +22,7 @@
 
             <ul id="facets">Cities:
               <% @aggs_cities.each do |term| %>
-                <li><a href="/?t=<%= term['key'] %>"><%= term['key'] %></a> <small class="c"><%= term['doc_count'] %></small></li>
+                <li><%= link_to term['key'], search: params[:search], filter_cities: term['key'] %><small class="c"><%= term['doc_count'] %></small></li>
               <% end %>
             </ul>
           </div><!--
@@ -30,7 +30,7 @@
           <div class="layout__item 2/2 palm-1/1">
             <ul id="facets">Languages:
               <% @aggs_languages.each do |term| %>
-                <li><a href="/?t=<%= term['key'] %>"><%= term['key'] %></a> <small class="c"><%= term['doc_count'] %></small></li>
+                <li><%= link_to term['key'], search: params[:search], filter_lang: term['key'] %><small class="c"><%= term['doc_count'] %></small></li>
               <% end %>
             </ul>
           </div>
