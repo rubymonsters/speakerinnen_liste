@@ -7,8 +7,15 @@ module Searchable
 
     index_name [Rails.application.engine_name, Rails.env].join('_')
 
-    def self.search(query)
-      __elasticsearch__.search(
+    def self.search(query, filter_cities, filter_lang)
+      @filter_cities = filter_cities
+      @filter_lang = filter_lang
+      puts "*******************"
+      puts "search: #{query}"
+      puts "filter cities: #{@filter_cities}"
+      puts "filter lang: #{@filter_lang}"
+      puts "*******************"
+      query_hash =
         {
           # minimum score depends completely on the given data and query, find out what works in your case.
           # min_score: 0.15, # this makes index creation on tests fail :(
@@ -82,7 +89,16 @@ module Searchable
               }
             }
           }
-        })
+        }
+        if @filter_cities
+          query_hash[:post_filter] = { 'term': { 'cities.unmod': @filter_cities }}
+        end
+
+        if @filter_lang
+          query_hash[:post_filter] = { 'term': { 'split_languages': @filter_lang }}
+        end
+        puts query_hash.to_yaml
+        __elasticsearch__.search(query_hash)
     end
 
     def as_indexed_json(options={})

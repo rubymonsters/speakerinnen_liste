@@ -145,7 +145,7 @@ class ProfilesController < ApplicationController
 
   def profiles_for_search
     Profile.is_published
-      .search(params[:search])
+      .search(params[:search], params[:filter_cities], params[:filter_lang])
       .page(params[:page]).per(24)
       .records
   end
