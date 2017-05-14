@@ -16,7 +16,7 @@ task find_all_existing_cities: :environment do
   puts sorted_counted_city_hash.select {|city, count| count > 1 }.map(&:first).join(" ")
   city_to_country_mapping =
   {
-    "DE" => %w(Germany 10119 Garmisch Frechen Lich Röthenbach hamburg Lennestadt berlin Kelkheim Trier Ahlen Bretzfeld Tölz Hürth Holzminden Gröbenzell Dorsten Hildesheim Friedrichshafen Ratingen Klosterneuburg Lachendorf Bensheim Eisenstadt Freudenberg Oldenburg Rottweil Klagenfurt Odenwald Deggendorf Coburg Westfalica Ruhrstadt Görlitz Gotha Kreuzberg Celle Euskirchen Emden Dielheim Wolfenbüttel Offenbach Plauen darmstadt Krefeld Dannenberg Schweinfurt Neustadt Remscheid Aschaffenburg Peter-Ording Lennstadt Lörrach Reutlingen Bamberg Gerolstein Oldenburg Holstein Lengenfeld Overath Cologne Wilhelmshaven Altdorf Memmingen Bottrop Limburg Giessen KelkheimTrier Koeln Bochum Wolfsburg Königstein Bayreuth Kornwestheim Mönchengladbach Wiehl Manching Ludwigsburg Bergisch Lohmar Magdeburg Halle Sinzig Gießen Aschersleben Bln Rheinberg Mainz Marburg Berlin Hamburg Ulm Rosenheim München Kaiserslautern Heilbronn Erfurt Wuppertal Nürnberg Würzburg Paderborn Ingolstadt Braunschweig Göttingen Köln Bonn Kassel Bremen Augsburg Frankfurt Regensburg Jena Osnabrück Heidelberg Mannheim Bielefeld Darmstadt Freiburg Potsdam Dresden Aachen Wiesbaden Münster Hannover Essen Bonn Dortmund Stuttgart Frankfurt Karlsruhe Frankfurt Düsseldorf Leipzig Köln  München Tübingen),
+    "DE" => %w(Leinfelden-Echterdingen Fürstenberg Munich Germany 10119 Greifswald Garmisch Frechen Lich Röthenbach hamburg Lennestadt berlin Kelkheim Trier Ahlen Bretzfeld Tölz Hürth Holzminden Gröbenzell Dorsten Hildesheim Friedrichshafen Ratingen Klosterneuburg Lachendorf Bensheim Eisenstadt Freudenberg Oldenburg Rottweil Klagenfurt Odenwald Deggendorf Coburg Westfalica Ruhrstadt Görlitz Gotha Kreuzberg Celle Euskirchen Emden Dielheim Wolfenbüttel Offenbach Plauen darmstadt Krefeld Dannenberg Schweinfurt Neustadt Remscheid Aschaffenburg Peter-Ording Lennstadt Lörrach Reutlingen Bamberg Gerolstein Oldenburg Holstein Lengenfeld Overath Cologne Wilhelmshaven Altdorf Memmingen Bottrop Limburg Giessen KelkheimTrier Koeln Bochum Wolfsburg Königstein Bayreuth Kornwestheim Mönchengladbach Wiehl Manching Ludwigsburg Bergisch Lohmar Magdeburg Halle Sinzig Gießen Aschersleben Bln Rheinberg Mainz Marburg Berlin Hamburg Ulm Rosenheim München Kaiserslautern Heilbronn Erfurt Wuppertal Nürnberg Würzburg Paderborn Ingolstadt Braunschweig Göttingen Köln Bonn Kassel Bremen Augsburg Frankfurt Regensburg Jena Osnabrück Heidelberg Mannheim Bielefeld Darmstadt Freiburg Potsdam Dresden Aachen Wiesbaden Münster Hannover Essen Bonn Dortmund Stuttgart Frankfurt Karlsruhe Frankfurt Düsseldorf Leipzig Köln  München Tübingen),
     "AT" => %w(Dornbirn Krems wien Innsbruck Völs Bisamberg Wien Graz Linz Vienna Salzburg Birkfeld Johann),
     "AU" => %w(Melbourne Brisbane Sydney Canberra),
     "IE" => %w(Galway),
@@ -26,7 +26,7 @@ task find_all_existing_cities: :environment do
     "MX" => %w(Mexico),
     "CH" => %w(Arosa Moritz Steckborn Winterthur Gallen Lenzburg Solothurn Zuerich Stans Baden Zurzach Geneva Zürich Lausanne Bern Hilterfingen Basel Luzern Zurich),
     "GB" => %w(London Leeds Glasgow Falmouth london Belfast),
-    "US" => %w(Tallahassee KCMO Paul Cleveland Denver Portland Clara Brooklyn Oakland NYC Vegas Boston Denver Francisco Angeles Seattle Chicago York Washington),
+    "US" => %w(Tallahassee California KCMO Paul Cleveland Denver Portland Clara Brooklyn Oakland NYC Vegas Boston Denver Francisco Angeles Seattle Chicago York Washington),
     "NL" => %w(Amsterdam Utrecht Groningen Rotterdam ),
     "ES" => %w(Barcelona Palmas Madrid ),
     "IN" => %w(Delhi Pune Bangalore),
@@ -34,12 +34,13 @@ task find_all_existing_cities: :environment do
     "BE" => %w(Gent),
     "CD" => %w(Kinshasa),
     "CA" => %w(Montreal),
-    "FR" => %w(Montpellier Grenoble),
+    "FR" => %w(Strasbourg Montpellier Grenoble),
+    "FI" => %w(Hailuoto),
     "SE" => %w(Stockholm),
     "BA" => %w(sarajevo),
     "TN" => %w(Tunis),
     "MY" => %w(Jaya),
-    "RU" => %w(Petersburg),
+    "RU" => %w(Petersburg Moscow),
   }
   matched_profile_counter = 0
   unmatched_cities = []
