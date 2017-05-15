@@ -640,3 +640,15 @@ input[type=file] {
     cursor: pointer;
   }
 }
+ // search view
+ul.search-aggregation {
+  list-style-type: none;
+
+  li.selected {
+    background-color: $link-color;
+    a, small {
+      color: $body-bg-color-grey;
+    }
+  }
+
+}
