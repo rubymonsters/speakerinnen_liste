@@ -64,6 +64,12 @@ class Profile < ActiveRecord::Base
 
   scope :no_admin, -> { where(admin: false) }
 
+  # only show profile where the main_topic is filled in in the current locale
+  scope :main_topic_translated_in, -> (locale) { joins("INNER JOIN profile_translations ON profile_translations.profile_id = profiles.id")
+    .where('profile_translations.locale' => locale)
+    .where.not("profile_translations.main_topic" => [nil, ''])
+  }
+
   def fullname
     "#{firstname} #{lastname}".strip
   end
