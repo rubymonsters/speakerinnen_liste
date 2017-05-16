@@ -82,10 +82,6 @@ class Profile < ActiveRecord::Base
     "#{city}".gsub(/(,|\/|&|\*|\|| - )/, "***").split("***")
   end
 
-  def split_languages
-    "#{languages}".gsub(/(,|\/)/, "").split(" ")
-  end
-
   def name_or_email
     fullname.present? ? fullname : email
   end
@@ -170,10 +166,4 @@ class Profile < ActiveRecord::Base
       errors.add(:iso_languages, "each element must be two charactes")
     end
   end
-
-  def split_languages_string
-    return [] unless languages
-    languages.gsub(/[^\wöäüÖÄÜçñ]/, " ").split(" ")
-  end
-
 end
