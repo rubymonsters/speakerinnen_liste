@@ -43,7 +43,9 @@
          <%= t(:languages, scope: 'profiles.profile') %>
        </h2>
        <p class="pb">
-         <%= profile.languages %>
+          <% profile.iso_languages.each do |iso|%>
+            <%= t("#{iso}", scope: 'iso_639_1').capitalize %>
+          <% end %>
        </p>
      <% end %>
     </div>

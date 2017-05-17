@@ -18,26 +18,30 @@
                 t(:result, scope: 'search', count: @profiles.total_count).html_safe %><br>
             <%= t(:profiles, link: link_to(t(:all_profiles, scope: 'search'), profiles_path), scope: 'search').html_safe %>
           </p>
-          <div class="layout-wrapper">
+      
+        <div class="layout-wrapper">
             <div class="layout__item 1/4 lap-1/2 palm-1/1">
-              <ul id="facet_cities" class="search-aggregation">Cities:
+              <ul id="facet_cities" class="search-aggregation">
+              <%=t(:cities_agg, scope: 'search' ).html_safe%>
                 <% @aggs_cities.each do |term| %>
                   <li class='pl- <%= 'selected' if params[:filter_cities] == term['key'] %>'>
                     <%= link_to term['key'], search: params[:search], filter_cities: term['key'] %><small class="c pl-"><%= term['doc_count'] %></small>
                   </li>
                 <% end %>
               </ul>
-            </div>
+            </div><!--
+            -->
             <div class="layout__item 1/4 lap-1/2 palm-1/1">
-              <ul id="facet_languages" class="search-aggregation">Languages:
+              <ul id="facet_languages" class="search-aggregation">
+              <%=t(:languages_agg, scope: 'search' ).html_safe%>
                 <% @aggs_languages.each do |term| %>
                 <li class='pl- <%= 'selected' if params[:filter_lang] == term['key'] %>'>
-                  <%= link_to term['key'], search: params[:search], filter_lang: term['key'] %><small class="c pl-"><%= term['doc_count'] %></small>
+                  <%= link_to t("#{term['key']}", scope: 'iso_639_1').capitalize , search: params[:search], filter_lang: term['key'] %><small class="c pl-"><%= term['doc_count'] %></small>
                 </li>
                 <% end %>
               </ul>
             </div>
-          </div>
+           </div>
 
           <%= render partial: 'profiles/profile_search', collection: @profiles, as: :profile %>
 

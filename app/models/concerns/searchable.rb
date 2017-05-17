@@ -10,11 +10,7 @@ module Searchable
     def self.search(query, filter_cities, filter_lang)
       @filter_cities = filter_cities
       @filter_lang = filter_lang
-      puts "*******************"
-      puts "search: #{query}"
-      puts "filter cities: #{@filter_cities}"
-      puts "filter lang: #{@filter_lang}"
-      puts "*******************"
+
       query_hash =
         {
           # minimum score depends completely on the given data and query, find out what works in your case.
@@ -33,7 +29,7 @@ module Searchable
                     fields: [
                       'fullname^1.7',
                       'twitter',
-                      'split_languages',
+                      'iso_languages',
                       'cities.standard^1.3',
                       'country',
                       'topic_list^1.4',
@@ -66,19 +62,19 @@ module Searchable
               term: {
                 field: 'fullname'
               }
-            # },
-            # did_you_mean_main_topic_en: {
-            #   text: query,
-            #   term: {
-            #     field: 'main_topic_en'
-            #   }
+            },
+            did_you_mean_main_topic_en: {
+              text: query,
+              term: {
+                field: 'main_topic_en'
+              }
             }
           },
-          # aggregation, will be used for faceted search
+          # aggregations for faceted search
           aggs: {
             lang: {
               terms: {
-                field: 'split_languages',
+                field: 'iso_languages',
                 size: 999
               }
             },
@@ -95,7 +91,7 @@ module Searchable
         end
 
         if @filter_lang
-          query_hash[:post_filter] = { 'term': { 'split_languages': @filter_lang }}
+          query_hash[:post_filter] = { 'term': { 'iso_languages': @filter_lang }}
         end
         puts query_hash.to_yaml
         __elasticsearch__.search(query_hash)
@@ -105,8 +101,8 @@ module Searchable
       output = as_json(
         {
           autocomplete: { input:  [fullname, twitter, topic_list] },
-          only: [:firstname, :lastname, :twitter, :languages, :city, :country],
-            methods: [:fullname, :topic_list, :cities, :split_languages, *globalize_attribute_names],
+          only: [:firstname, :lastname, :twitter, :iso_languages, :city, :country],
+            methods: [:fullname, :topic_list, :cities, *globalize_attribute_names],
             include: {
               medialinks: { only: [:title, :description] }
           }
@@ -115,9 +111,6 @@ module Searchable
       output.select{ |key, value| value.present? }
     end
 
-    # TO DO
-    # Write comments
-    # maybe elisions for cities and topic_list and main_topic
     elasticsearch_mappings = {
       index: {
         number_of_shards: 1,
@@ -128,10 +121,6 @@ module Searchable
               synonyms: [
                 'phd,dr.,dr'
               ]
-            },
-            language_synonyms: {
-              type: 'synonym',
-              synonyms: Rails.configuration.elasticsearch_language_synonyms
             },
             english_stop: {
               type:       'stop',
@@ -172,14 +161,6 @@ module Searchable
                 'asciifolding',
                 'lowercase',
                 'synonym_filter'
-              ]
-            },
-            language_analyzer: {
-              type: 'custom',
-              tokenizer: 'standard',
-              filter: [
-                'lowercase',
-                'language_synonyms'
               ]
             },
             english_without_stemming: {
@@ -230,7 +211,7 @@ module Searchable
             end
           end
         end
-        indexes :split_languages, type: 'string', analyzer: 'language_analyzer', 'norms': { 'enabled': false }
+        indexes :iso_languages,  type: 'string', analyzer: 'standard', 'norms': { 'enabled': false }
         indexes :cities, fields: { unmod: { type:  'string', analyzer: 'cities_analyzer', 'norms': { 'enabled': false } }, standard: { type:  'string', analyzer: 'standard', 'norms': { 'enabled': false }} }
         indexes :country,    type: 'string', analyzer: 'standard', 'norms': { 'enabled': false }
         indexes :website,    type: 'string', analyzer: 'standard', 'norms': { 'enabled': false }
@@ -264,11 +245,11 @@ module Searchable
           completion: { field: 'main_topic_de.suggest'
           }
         },
-        # main_topic_en_suggest: {
-        #   text: q,
-        #   completion: { field: 'main_topic_en.suggest'
-        #   }
-        # },
+        main_topic_en_suggest: {
+          text: q,
+          completion: { field: 'main_topic_en.suggest'
+          }
+        },
         topic_list_suggest: {
           text: q,
           completion: { field: 'topic_list.suggest'

@@ -332,5 +332,7 @@ de:
       one: " eine Speakerin gefunden!",
       other: " %{count} Speakerinnen gefunden! Yeah! "
     }
+    cities_agg: "Städte:"
+    languages_agg: "Sprachen:"
   error_messages:
     picture_too_big: " ist zu groß. Bitte nicht größer als 1 MB"
