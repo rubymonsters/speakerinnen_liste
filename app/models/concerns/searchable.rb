@@ -138,28 +138,31 @@ module Searchable
           char_filter: {
             strip_twitter: {
               type: 'pattern_replace',
-              pattern: '[^a-z0-9]',
+              pattern: '[^a-zA-Z0-9]',
               replacement: ''
             }
           },
           analyzer: {
             twitter_analyzer: {
               type: 'custom',
+              char_filter: ['strip_twitter'],
               tokenizer: 'keyword',
-              filter: ['lowercase'],
-              char_filter: ['strip_twitter']
+              filter: ['lowercase']
             },
             cities_analyzer: {
               type: 'custom',
               tokenizer: 'keyword',
-              filter: ['asciifolding', 'lowercase']
+              filter: [
+                'lowercase',
+                'asciifolding'
+              ]
             },
             fullname_analyzer: {
               type: 'custom',
               tokenizer: 'standard',
               filter: [
-                'asciifolding',
                 'lowercase',
+                'asciifolding',
                 'synonym_filter'
               ]
             },
@@ -212,7 +215,7 @@ module Searchable
           end
         end
         indexes :iso_languages,  type: 'string', analyzer: 'standard', 'norms': { 'enabled': false }
-        indexes :cities, fields: { unmod: { type:  'string', analyzer: 'cities_analyzer', 'norms': { 'enabled': false } }, standard: { type:  'string', analyzer: 'standard', 'norms': { 'enabled': false }} }
+        indexes :cities, fields: { unmod: { type:  'string', index: 'not_analyzed', 'norms': { 'enabled': false } }, standard: { type:  'string', analyzer: 'cities_analyzer', 'norms': { 'enabled': false }} }
         indexes :country,    type: 'string', analyzer: 'standard', 'norms': { 'enabled': false }
         indexes :website,    type: 'string', analyzer: 'standard', 'norms': { 'enabled': false }
         indexes :medialinks, type: 'nested' do
