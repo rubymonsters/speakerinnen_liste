@@ -79,7 +79,7 @@ class Profile < ActiveRecord::Base
   end
 
   def cities
-    "#{city}".gsub(/(,|\/|&|\*|\|| - )/, "***").split("***")
+    "#{city}".gsub(/(,|\/|&|\*|\|| - | or )/, "!@#$%ˆ&*").split("!@#$%ˆ&*").map {|x| x.strip}
   end
 
   def name_or_email
