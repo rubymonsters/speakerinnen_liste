@@ -154,6 +154,7 @@ module Searchable
               tokenizer: 'keyword',
               filter: [
                 'lowercase',
+                'german_normalization',
                 'asciifolding'
               ]
             },
@@ -162,6 +163,7 @@ module Searchable
               tokenizer: 'standard',
               filter: [
                 'lowercase',
+                'german_normalization',
                 'asciifolding',
                 'synonym_filter'
               ]
