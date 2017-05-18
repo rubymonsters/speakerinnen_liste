@@ -151,7 +151,7 @@ module Searchable
             },
             cities_analyzer: {
               type: 'custom',
-              tokenizer: 'keyword',
+              tokenizer: 'standard',
               filter: [
                 'lowercase',
                 'german_normalization',
