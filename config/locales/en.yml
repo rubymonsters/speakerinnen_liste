@@ -14,8 +14,7 @@ en:
     create: "Create"
     save: "Save"
     search: "Search"
-    detailed_search: "Detailed search >>"
-    quick_search: "Quick search >>"
+    admin_search: "Search"
     ok: "Ok"
   admin:
     dashboard:
@@ -45,7 +44,7 @@ en:
         add_comment: "Add comment"
         profile_status: "The Profile is "
         name_of_profile: "The Name of the Speakerin is "
-        search_for_name: "Search for name"
+        search_for_name_and_tag: "Search for name and tag"
         edit:
           show: "Show profile"
           show_all: "List all profiles"

@@ -4,8 +4,8 @@ class Admin::ProfilesController < Admin::BaseController
   before_action :set_profile, only: [:show, :edit, :update, :destroy, :publish, :unpublish, :admin_comment]
 
   def index
-    if params[:search]
-      @profiles = Profile.is_confirmed.search(params[:search]).order('created_at DESC').page(params[:page]).per(100)
+    if params[:admin_search]
+      @profiles = Profile.is_confirmed.admin_search(params[:admin_search]).records.page(params[:page]).per(100)
     else
       @profiles = Profile.is_confirmed.order(sort_column + ' ' + sort_direction).order('created_at DESC').page(params[:page]).per(100)
     end
