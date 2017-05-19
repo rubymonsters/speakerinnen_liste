@@ -10,7 +10,6 @@ before_install:
 - sudo service elasticsearch start
 - sudo service elasticsearch status
 - sleep 5
-- curl "localhost:9250/_nodes/settings?pretty=true"
 before_script:
 - cp config/database.yml.travis config/database.yml
 - bundle exec rake db:create db:migrate RAILS_ENV=test
@@ -20,3 +19,4 @@ before_script:
 script:
 - bundle exec rspec spec/
 - bundle exec rake test
+- travis_debug
