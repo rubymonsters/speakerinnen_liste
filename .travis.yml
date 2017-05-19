@@ -12,6 +12,6 @@ before_script:
 - export RECAPTCHA_SITE_KEY=6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI
 - sleep 5 # To make sure Elasticsearch instance is ready
 script:
-- curl -v http://localhost:9200/
+- curl -v http://localhost:9250/
 - bundle exec rspec spec/
 - bundle exec rake test
