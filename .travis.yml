@@ -8,7 +8,7 @@ before_install:
 - curl -O https://download.elastic.co/elasticsearch/release/org/elasticsearch/distribution/deb/elasticsearch/2.4.5/elasticsearch-2.4.5.deb
 - sudo dpkg -i --force-confnew elasticsearch-2.4.5.deb
 - sudo service elasticsearch start
-- curl -v http://localhost:9250
+- sudo service elasticsearch status
 before_script:
 - cp config/database.yml.travis config/database.yml
 - bundle exec rake db:create db:migrate RAILS_ENV=test
