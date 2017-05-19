@@ -1,10 +1,9 @@
+dist: trusty
 sudo: required
 language: ruby
 rvm:
 - 2.2.3
 bundler_args: --without development production
-services:
-- elasticsearch
 before_install:
 - curl -O https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-2.4.5.deb
 - sudo dpkg -i --force-confnew elasticsearch-2.4.5.deb
