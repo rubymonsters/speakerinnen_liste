@@ -22,5 +22,6 @@ before_script:
 
 script:
 - curl -X GET http://localhost:9200/
+- travis_debug
 - bundle exec rspec spec/
 - bundle exec rake test
