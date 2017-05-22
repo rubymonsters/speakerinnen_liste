@@ -21,7 +21,7 @@ before_script:
 - sleep 5 # To make sure Elasticsearch instance is ready
 
 script:
-- curl -X GET http://localhost:9200/
-- travis_debug
+- curl -X GET http://localhost:9250/
+# - travis_debug
 - bundle exec rspec spec/
 - bundle exec rake test
