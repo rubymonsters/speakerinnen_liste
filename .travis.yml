@@ -1,21 +1,15 @@
 sudo: required
 language: ruby
-rvm:
-- 2.2.3
+rvm: 2.2.3
 bundler_args: --without development production
 
-services:
-  - elasticsearch
-
-# env:
-#   - ES_VERSION=2.4.5 ES_DOWNLOAD_URL=https://download.elastic.co/elasticsearch/release/org/elasticsearch/distribution/tar/elasticsearch/${ES_VERSION}/elasticsearch-${ES_VERSION}.tar.gz
+ env:
+   - ES_VERSION=2.4.5 ES_DOWNLOAD_URL=https://download.elastic.co/elasticsearch/release/org/elasticsearch/distribution/tar/elasticsearch/${ES_VERSION}/elasticsearch-${ES_VERSION}.tar.gz
 
 before_install:
-  - curl -O https://download.elastic.co/elasticsearch/release/org/elasticsearch/distribution/deb/elasticsearch/2.4.5/elasticsearch-2.4.5.deb && sudo dpkg -i --force-confnew elasticsearch-2.4.5.deb | grep etc && sudo service elasticsearch restart
-  # - wget ${ES_DOWNLOAD_URL}
-  # - tar -xzf elasticsearch-${ES_VERSION}.tar.gz
-  # - ./elasticsearch-${ES_VERSION}/bin/elasticsearch &
-
+   - wget ${ES_DOWNLOAD_URL}
+   - tar -xzf elasticsearch-${ES_VERSION}.tar.gz
+ 
 before_script:
 - cp config/database.yml.travis config/database.yml
 - bundle exec rake db:create db:migrate RAILS_ENV=test
@@ -24,8 +18,7 @@ before_script:
 - sleep 10 # To make sure Elasticsearch instance is ready
 
 script:
-# - curl -X GET http://localhost:9250/
-# - wget -q --waitretry=1 --retry-connrefused -T 10 -O - http://127.0.0.1:9200
-# - travis_debug
+- curl -X GET http://localhost:9250/
+- curl -X GET http://localhost:9200/
 - bundle exec rspec spec/
 - bundle exec rake test
