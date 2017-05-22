@@ -3,7 +3,7 @@ language: ruby
 rvm: 2.2.3
 bundler_args: --without development production
 
- env:
+env:
    - ES_VERSION=2.4.5 ES_DOWNLOAD_URL=https://download.elastic.co/elasticsearch/release/org/elasticsearch/distribution/tar/elasticsearch/${ES_VERSION}/elasticsearch-${ES_VERSION}.tar.gz
 
 before_install:
