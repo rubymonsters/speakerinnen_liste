@@ -11,7 +11,7 @@ services:
 #   - ES_VERSION=2.4.5 ES_DOWNLOAD_URL=https://download.elastic.co/elasticsearch/release/org/elasticsearch/distribution/tar/elasticsearch/${ES_VERSION}/elasticsearch-${ES_VERSION}.tar.gz
 
 before_install:
-  - curl -O https://download.elastic.co/elasticsearch/release/org/elasticsearch/distribution/deb/elasticsearch/2.4.5/elasticsearch-2.4.5.deb && sudo dpkg -i --force-confnew elasticsearch-2.4.5.deb && sudo service elasticsearch restart
+  - curl -O https://download.elastic.co/elasticsearch/release/org/elasticsearch/distribution/tar/elasticsearch/2.4.5/elasticsearch-2.4.5.tar.gz && sudo dpkg -i --force-confnew elasticsearch-2.4.5.tar.gz && sudo service elasticsearch restart
   # - wget ${ES_DOWNLOAD_URL}
   # - tar -xzf elasticsearch-${ES_VERSION}.tar.gz
   # - ./elasticsearch-${ES_VERSION}/bin/elasticsearch &
