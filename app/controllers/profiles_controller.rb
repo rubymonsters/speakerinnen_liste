@@ -71,15 +71,42 @@ class ProfilesController < ApplicationController
     suggestions = Profile.typeahead(params[:q])
     suggestions.each do |s|
       if /.*_suggest/ === s.first
-        suggester_fields.push(s)
+          suggester_fields.push(s)
       end
     end
     suggester_fields.map {|s| suggester_options.push(s[1].first['options'])}
-    suggestions_ordered = (suggester_options.flatten.sort_by { |s| s["score"] }).reverse
+    suggestions_ordered = suggestions_upcase(suggester_options)
     respond_with(suggestions_ordered)
   end
 
   private
+  def suggestions_upcase(suggestions_raw)
+    sugg_upcase_complete = []
+    sugg_text = []
+    suggestions_raw.flatten.sort_by { |s| s["score"] }
+
+    sugg_upcase_complete = suggestions_raw.flatten.each do  |s|
+      s["text"] =  s["text"].split.map(&:capitalize).join(' ')
+      sugg_text.push(s["text"])
+    end
+
+    duplicates = sugg_text.select{|element| sugg_text.count(element) > 1 }
+    delete_duplicates(sugg_upcase_complete, duplicates)
+  end
+
+  def delete_duplicates(upcased_suggestions, dupli)
+    if dupli != []
+      dupli.uniq!.each do |x|
+        upcased_suggestions.find do |s|
+          if x == s["text"]
+            upcased_suggestions.delete(s)
+            dupli.delete(x)
+          end
+        end
+      end
+    end
+    return upcased_suggestions
+  end
 
   # Use callbacks to share common setup or constraints between actions.
   def set_profile
