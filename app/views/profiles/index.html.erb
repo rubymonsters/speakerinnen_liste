@@ -42,7 +42,7 @@
 
           <%= render partial: 'profiles/profile_search', collection: @profiles, as: :profile %>
 
-        <% elsif @profiles.size <1 && @profiles.response.response.suggest.did_you_mean_fullname.first.present? %>
+        <% elsif @profiles.size <1 && params[:search].present? && @profiles.response.response.suggest.did_you_mean_fullname.first.options.present? %>
           <p class="text--color-blue font-size-24 text--left layout__item 1/1">
           <%= t(:did_you_mean, scope: 'search', suggestions_fullname: @profiles.response.response.suggest.did_you_mean_fullname.first.options.map {|sug| link_to(sug.text.capitalize, "profiles_search?&search=#{sug.text}")} * ", " ).html_safe %>
           </p>
