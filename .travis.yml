@@ -8,6 +8,7 @@ before_install:
 - sudo dpkg -i --force-confnew elasticsearch-2.4.5.deb
 - sudo service elasticsearch start
 - sudo service elasticsearch status
+- ln -s /etc/elasticsearch/ /usr/share/elasticsearch/config
 - sleep 5
 before_script:
 - cp config/database.yml.travis config/database.yml
