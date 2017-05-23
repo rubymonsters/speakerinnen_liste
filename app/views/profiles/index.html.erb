@@ -19,9 +19,21 @@
             <%= t(:profiles, link: link_to(t(:all_profiles, scope: 'search'), profiles_path), scope: 'search').html_safe %>
           </p>
 
-          <div class="layout-wrapper">
+        <div class="layout-wrapper">
             <div class="layout__item 1/4 lap-1/2 palm-1/1">
-              <ul id="facet_cities" class="search-aggregation">Cities:
+              <ul id="facet_countries" class="search-aggregation">
+              <%=t(:countries_agg, scope: 'search' ).html_safe%>
+                <% @aggs_countries.each do |term| %>
+                  <li class='pl- <%= 'selected' if params[:filter_countries] == term['key'] %>'>
+                    <%= link_to term['key'], search: params[:search], filter_countries: term['key'] %><small class="c pl-"><%= term['doc_count'] %></small>
+                  </li>
+                <% end %>
+              </ul>
+            </div><!--
+            -->
+            <div class="layout__item 1/4 lap-1/2 palm-1/1">
+              <ul id="facet_cities" class="search-aggregation">
+              <%=t(:cities_agg, scope: 'search' ).html_safe%>
                 <% @aggs_cities.each do |term| %>
                   <li class='pl- <%= 'selected' if params[:filter_cities] == term['key'] %>'>
                     <%= link_to term['key'], search: params[:search], filter_cities: term['key'] %><small class="c pl-"><%= term['doc_count'] %></small>

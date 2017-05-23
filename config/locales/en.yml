@@ -328,6 +328,7 @@ Links to Youtube videos will be shown as embedded videos. Other links will be cl
       one: " a speakerin! Yeah!",
       other: " %{count} speakerinnen! Yeah! "
     }
+    countries_agg: "Countries:"
     cities_agg: "Cities:"
     languages_agg: "Languages:"
   error_messages:

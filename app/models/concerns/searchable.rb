@@ -96,15 +96,25 @@ module Searchable
                 field: 'cities.unmod',
                 size: 999
               }
+            },
+            country: {
+              terms: {
+                field: 'country',
+                size: 999
+              }
             }
           }
         }
+        if @filter_lang
+          query_hash[:post_filter] = { 'term': { 'iso_languages': @filter_lang }}
+        end
+
         if @filter_cities
           query_hash[:post_filter] = { 'term': { 'cities.unmod': @filter_cities }}
         end
 
-        if @filter_lang
-          query_hash[:post_filter] = { 'term': { 'iso_languages': @filter_lang }}
+        if @filter_country
+          query_hash[:post_filter] = { 'term': { 'country': @country }}
         end
         puts query_hash.to_yaml
         __elasticsearch__.search(query_hash)

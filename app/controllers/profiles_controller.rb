@@ -19,8 +19,9 @@ class ProfilesController < ApplicationController
 
       # sum of search results concerning certain attributes
       @aggs = profiles_for_search.response.aggregations
-      @aggs_cities = @aggs[:city][:buckets]
       @aggs_languages = @aggs[:lang][:buckets]
+      @aggs_cities = @aggs[:city][:buckets]
+      @aggs_countries = @aggs[:country][:buckets]
     else
       @profiles = profiles_for_index
     end

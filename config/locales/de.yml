@@ -331,6 +331,7 @@ de:
       one: " eine Speakerin gefunden!",
       other: " %{count} Speakerinnen gefunden! Yeah! "
     }
+    countries_agg: "Länder:"
     cities_agg: "Städte:"
     languages_agg: "Sprachen:"
   error_messages:
