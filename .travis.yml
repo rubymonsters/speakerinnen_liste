@@ -19,5 +19,7 @@ before_script:
 - sleep 10 # To make sure Elasticsearch instance is ready
 
 script:
+- ls -la
+- ls -ls elasticsearch-2.4.5/bin/
 - bundle exec rspec spec/
 - bundle exec rake test
