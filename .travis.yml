@@ -1,15 +1,16 @@
+dist: trusty
 sudo: required
 language: ruby
 rvm: 2.2.3
 bundler_args: --without development production
 
 env:
-   - ES_VERSION=2.4.5 ES_DOWNLOAD_URL=https://download.elastic.co/elasticsearch/release/org/elasticsearch/distribution/tar/elasticsearch/${ES_VERSION}/elasticsearch-${ES_VERSION}.tar.gz
+  - ES_VERSION=2.4.5 ES_DOWNLOAD_URL=https://download.elastic.co/elasticsearch/release/org/elasticsearch/distribution/tar/elasticsearch/${ES_VERSION}/elasticsearch-${ES_VERSION}.tar.gz
 
 before_install:
-   - wget ${ES_DOWNLOAD_URL}
-   - tar -xzf elasticsearch-${ES_VERSION}.tar.gz
- 
+  - wget ${ES_DOWNLOAD_URL}
+  - tar -xzf elasticsearch-${ES_VERSION}.tar.gz
+
 before_script:
 - cp config/database.yml.travis config/database.yml
 - bundle exec rake db:create db:migrate RAILS_ENV=test
@@ -18,7 +19,5 @@ before_script:
 - sleep 10 # To make sure Elasticsearch instance is ready
 
 script:
-- curl -X GET http://localhost:9250/
-- curl -X GET http://localhost:9200/
 - bundle exec rspec spec/
 - bundle exec rake test
