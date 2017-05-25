@@ -20,7 +20,8 @@ module Searchable
       __elasticsearch__.search(admin_query_hash)
     end
 
-    def self.search(query, filter_cities, filter_lang)
+    def self.search(query, filter_countries, filter_cities, filter_lang)
+      @filter_countries = filter_countries
       @filter_cities = filter_cities
       @filter_lang = filter_lang
 
@@ -113,8 +114,8 @@ module Searchable
           query_hash[:post_filter] = { 'term': { 'cities.unmod': @filter_cities }}
         end
 
-        if @filter_country
-          query_hash[:post_filter] = { 'term': { 'country': @filter_country }}
+        if @filter_countries
+          query_hash[:post_filter] = { 'term': { 'country': @filter_countries }}
         end
         puts query_hash.to_yaml
         __elasticsearch__.search(query_hash)
