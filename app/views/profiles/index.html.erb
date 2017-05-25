@@ -25,7 +25,7 @@
               <%=t(:countries_agg, scope: 'search' ).html_safe%>
                 <% @aggs_countries.each do |term| %>
                   <li class='pl- <%= 'selected' if params[:filter_countries] == term['key'] %>'>
-                    <%= link_to term['key'], search: params[:search], filter_countries: term['key'] %><small class="c pl-"><%= term['doc_count'] %></small>
+                    <%= link_to ISO3166::Country.find_country_by_alpha2("#{term['key']}"), search: params[:search], filter_countries: term['key'] %><small class="c pl-"><%= term['doc_count'] %></small>
                   </li>
                 <% end %>
               </ul>

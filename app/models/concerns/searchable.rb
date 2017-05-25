@@ -114,7 +114,7 @@ module Searchable
         end
 
         if @filter_country
-          query_hash[:post_filter] = { 'term': { 'country': @country }}
+          query_hash[:post_filter] = { 'term': { 'country': @filter_country }}
         end
         puts query_hash.to_yaml
         __elasticsearch__.search(query_hash)
