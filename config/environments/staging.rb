@@ -99,7 +99,7 @@ SpeakerinnenListe::Application.configure do
     port:                 587,
     domain:               'staging-speakerinnen-liste.heroku.com',
     user_name:            'team@speakerinnen.de',
-    password:             ENV['TEAM_MAIL_PASSWORD',
+    password:             ENV['TEAM_MAIL_PASSWORD'],
     authentication:       'plain',
     enable_starttls_auto: true  }
   #config.action_mailer.smtp_settings = {
