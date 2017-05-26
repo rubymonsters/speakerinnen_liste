@@ -10,11 +10,9 @@ class AdminMailer < ActionMailer::Base
   def profile_published(profile)
     @profile = profile
     @url = 'https://www.speakerinnen.org'
-    I18n.with_locale(@profile.locale) do
-      mail(
-        to: @profile.email,
-        subject: I18n.t('devise.mailer.published.subject')
+    mail(
+      to: @profile.email,
+      subject: I18n.t('devise.mailer.published.subject')
       )
-    end
   end
 end
