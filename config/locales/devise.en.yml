@@ -27,7 +27,8 @@ en:
         subject: "Unlock Instructions"
       published:
         subject: "Your are now published on the Speakerinnen-Website"
-        body:    "Body"
+        greeting: 'Hi %{name},'
+        content: 'You are now published'
     omniauth_callbacks:
       failure: "Could not authenticate you from %{kind} because \"%{reason}\"."
       success: "Successfully authenticated from %{kind} account."
