@@ -98,7 +98,7 @@ SpeakerinnenListe::Application.configure do
     address:              'mail.so36.net',
     port:                 587,
     domain:               'staging-speakerinnen-liste.heroku.com',
-    user_name:            'team@speakerinnen.de',
+    user_name:            'team@speakerinnen.org',
     password:             ENV['TEAM_MAIL_PASSWORD'],
     authentication:       'plain',
     enable_starttls_auto: true  }
