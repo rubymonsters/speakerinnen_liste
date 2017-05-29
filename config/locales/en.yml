@@ -248,6 +248,7 @@ en:
       created: '%{category_name} was successfully created.'
       updated: '%{category_name} was successfully updated.'
       destroyed: '%{category_name} was successfully deleted.'
+      error: "It looks like you forgot to fill something."
   activerecord:
     attributes:
       profile:

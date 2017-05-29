@@ -245,6 +245,7 @@ de:
       updated: "Referenz wurde erfolgreich geändert."
       destroyed: "Referenz wurde erfolgreich gelöscht."
       no_permission: "Du hast nicht die Rechte, die Referenz zu bearbeiten."
+      error: "Es sieht so aus, als ob Du noch was eintragen musst."
     categories:
       created: '%{category_name} wurde erfolgreich erstellt.'
       updated: '%{category_name} wurde erfolgreich geändert.'
@@ -273,7 +274,7 @@ de:
       medialink:
         url: "URL:"
         title: "Überschrift:"
-        description: "Beschreibung:<small> ( Du kannst einfache HTML Tags nutzen, um den Text zu formatieren. Zum Beispiel: < i >< /i >< b >< /b >< br >)</small>"
+        description: "Beschreibung:<br><small>Du kannst einfache HTML Tags nutzen, um den Text zu formatieren. Zum Beispiel: < i >< /i >< b >< /b > < br ></small>"
   devise:
     registrations:
       edit:

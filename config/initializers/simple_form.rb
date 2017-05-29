@@ -13,6 +13,7 @@ SimpleForm.setup do |config|
     b.use :error, wrap_with: { tag: :span, class: :error }
   end
 
+  config.label_text = proc { |label, required| "#{label}" }
   config.default_wrapper = :default
   config.boolean_style = :nested
   config.button_class = 'btn'

@@ -19,11 +19,10 @@
       <div class="layout__item 2/3 box__bg--white">
         <%= simple_form_for [@profile, @medialink], html: {class: ''} do |f| %>
 
-          <%= f.input :url, as: :string, input_html: { class: 'mb input--width-100' }  %>
-          <%= f.input :title, as: :string, input_html: { class: 'mb input--width-100' }  %>
-          <%= f.input :description, as: :text, input_html: { rows: 10, class: 'mb input--width-100' }  %>
-
-          <%= f.button :submit, t(:new, scope: 'medialinks'), class: 'btn btn--small' %>
+          <%= f.input :url, as: :string, input_html: { class: 'input--width-100' }, wrapper_html: { class: 'mt' }  %>
+          <%= f.input :title, as: :string, input_html: { class: 'input--width-100' }, wrapper_html: { class: 'mt' } %>
+          <%= f.input :description, label: t(:description, scope: 'activerecord.attributes.medialink').html_safe, as: :text, input_html: { rows: 10, class: "input--width-100" }, wrapper_html: { class: 'mt' }%>
+          <%= f.button :submit, t(:new, scope: 'medialinks'), class: 'mt btn btn--small' %>
 
         <% end %>
       </div>
