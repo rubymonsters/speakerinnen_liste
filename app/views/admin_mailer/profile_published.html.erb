@@ -4,11 +4,34 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>
-      <%= t('devise.mailer.published.greeting', name: @profile.firstname) %>
-    </h1>
-    <p>
-      <%= t('.content') %>
-    </p>
+    <b>Weiter unten ist die deutsche Übesetzung! </b>
+    =======
+
+    <p>Hello, your profile was published!</p>
+
+    <p>Good luck with
+
+   <%= link_to 'Speakerinnen.org', @url %>!</p>
+
+    <p>If you have any questions or suggestions don't hesitate to contact us, so we can improve speakerinnen.org.</p>
+
+    <p>Thanks,<br>
+
+    your team of speakerinnen.org.</p>
+
+    =======
+
+    <p>Hallo, Dein Profil wurde jetzt freigeschaltet!</p>
+
+    <p>Viel Erfolg mit der
+
+   <%= link_to 'Speakerinnen*-Liste', @url %>!</p>
+
+    <p>Schreibe uns gerne jederzeit, wenn Du Fragen oder Feedback hast, damit wir die Speakerinnen*-Liste verbessern können.</p>
+
+    <p>Danke,<br>
+
+    Dein Speakerinnen*-Team.</p>
+
   </body>
 </html>
