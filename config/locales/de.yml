@@ -256,7 +256,8 @@ de:
         firstname: "Mein Vorname:"
         lastname: "Mein Nachname:"
         bio: 'Deine Bio auf %{language}:<br>
-              <small>Hier ist Platz für eine kurze oder auch längere Bio. Außerdem sollten hier Fachkenntnisse und mögliche Vortragsthemen genauer beschrieben werden. Das hilft Veranstalterinnen und Veranstaltern herauszufinden, ob Ihr die Richtigen für ihr Event sein könntet.</small>'
+              <small>Hier ist Platz für eine kurze oder auch längere Bio. Außerdem sollten hier Fachkenntnisse und mögliche Vortragsthemen genauer beschrieben werden. Das hilft Veranstalterinnen und Veranstaltern herauszufinden, ob Ihr die Richtigen für ihr Event sein könntet.
+              <br>Du kannst einfache HTML Tags nutzen, um den Text zu formatieren. Zum Beispiel: < i >< /i >< b >< /b > < br ></small>'
         topic_list: "Meine Themen als Tags:<br><small>Bitte schaue zuerst, ob Dein Thema schon vorhanden ist.</small>"
         main_topic_title: "Mein Hauptthema:"
         main_topic: "Mein Hauptthema auf %{language}: (Mehr als 30 Zeichen werden nicht angezeigt)<small>

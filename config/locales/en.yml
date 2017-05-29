@@ -255,7 +255,9 @@ en:
         firstname: "My first name:"
         lastname: "My last name:"
         bio: "My bio in %{language}:<br>
-        <small>Here you can add a short or long bio of yourself. Please also add specific expertise and topics you feel comfortable speaking about. This will help organizers of events to understand whether you might be the person they're looking for.</small>"
+        <small>Here you can add a short or long bio of yourself. Please also add specific expertise and topics you feel comfortable speaking about. This will help organizers of events to understand whether you might be the person they're looking for.
+        <br>You can use simple HTML tags to format the text. For example: < i >< /i >< b >< /b >< br ></small>"
+
         topic_list: "My topics as tags:<br><small>Please have a look first, if your topic already exists</small>"
         main_topic_title: "My main topic"
         main_topic: "My main topic in %{language}: (More than 30 characters are not shown)<br><small>Please choose one topic as your favorite topic and enter it again. It will be visible along with your name and picture at the speaker overview site.</small>"
@@ -272,8 +274,7 @@ en:
       medialink:
         url: "URL:"
         title: "Title:"
-        description: "Description:"
-        description: "Description:<small> ( You can use simple HTML tags to format the text. For example: < i >< /i >< b >< /b >< br >)</small>"
+        description: "Description:<br><small>You can use simple HTML tags to format the text. For example: < i >< /i >< b >< /b >< br ></small>"
   devise:
     registrations:
       edit:
