@@ -47,7 +47,7 @@ RSpec.configure do |config|
   end
   # Start an in-memory cluster for Elasticsearch as needed
   config.before :all, elasticsearch: true do
-    Elasticsearch::Extensions::Test::Cluster.start(command: "elasticsearch-2.4.5/bin/elasticsearch", port: 9250, nodes: 1, timeout: 120, path_logs: 'log') unless Elasticsearch::Extensions::Test::Cluster.running?(on: 9250)
+    Elasticsearch::Extensions::Test::Cluster.start(command: "elasticsearch-2.4.5/bin/elasticsearch", port: 9250, nodes: 1, timeout: 120, path_logs: 'log')
   end
 
    # Create indexes for all elastic searchable models
@@ -71,7 +71,7 @@ RSpec.configure do |config|
 
   # Stop elasticsearch cluster after test run
   config.after :suite do
-    Elasticsearch::Extensions::Test::Cluster.stop(command: "elasticsearch-2.4.5/bin/elasticsearch", port: 9250, nodes: 1) if Elasticsearch::Extensions::Test::Cluster.running?(on: 9250)
+    Elasticsearch::Extensions::Test::Cluster.stop(port: 9250, nodes: 1) if Elasticsearch::Extensions::Test::Cluster.running?(on: 9250)
   end
 
    # Delete indexes for all elastic searchable models to ensure clean state between tests
