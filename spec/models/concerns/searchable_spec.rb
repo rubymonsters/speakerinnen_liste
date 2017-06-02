@@ -5,6 +5,7 @@ describe Searchable, elasticsearch: true do
   let!(:profile) { FactoryGirl.create(:published, firstname: 'Ada', lastname: 'Lovelace',
                                       twitter: 'alovelace', city: 'London',
                                       country: 'GB', languages: 'English',
+                                      iso_languages: ['en'],
                                       topic_list: ['ruby', 'algorithms'],
                                       bio_de: 'Das ist meine deutsche Bio.',
                                       bio_en: 'This is my english bio.',
@@ -13,17 +14,11 @@ describe Searchable, elasticsearch: true do
 
   let!(:profile2) { FactoryGirl.create(:published, firstname: 'Marie', lastname: 'Curie',
                                       twitter: 'mcurie', city: 'Paris',
-                                      country: 'FR',  languages: 'Polish, French') }
+                                      country: 'FR',  languages: 'Polish, French', iso_languages: ['pl', 'fr']) }
 
   describe 'elasticsearch index' do
     it 'should be created' do
-      Profile.__elasticsearch__.refresh_index!
-      visit('/[::1]:9250')
-      response.should be_success
-
-      # records = Profile.search('Lovelace').records
-      # expect(records.length).to eq(1)
-      # expect(records.first.firstname).to eq('Ada')
+      expect(Profile.__elasticsearch__.index_name).to eq 'speakerinnen_liste_application_test'
     end
   end
 
@@ -49,7 +44,7 @@ describe Searchable, elasticsearch: true do
     end
 
     it 'contains the attribute language' do
-      expect(profile.as_indexed_json['languages']).to eq 'English'
+      expect(profile.as_indexed_json['iso_languages']).to eq ['en']
     end
 
     it 'contains the attribute city' do
@@ -87,25 +82,25 @@ describe Searchable, elasticsearch: true do
   end
 
   describe '#search' do
-    it 'should be indexed' do
+    it 'should get search results' do
       Profile.__elasticsearch__.refresh_index!
-      expect(Profile.search('Lovelace').records.is_published.length).to eq(1)
+      response = Profile.__elasticsearch__.search('Lovelace')
+      expect(response.results.total).to eq(1)
     end
 
     it 'should not index certain fields' do
-      expect(Profile.search('info@example.com')).to be_empty
+      expect(Profile.__elasticsearch__.search('info@example.com')).to be_empty
     end
 
     it 'shows results that are a partial match' do
       Profile.__elasticsearch__.refresh_index!
-      expect(Profile.search('Ada').results.first.fullname).to eq('Ada Lovelace')
+      expect(Profile.__elasticsearch__.search('Ada').results.first.fullname).to eq('Ada Lovelace')
     end
 
     it 'shows results that are a partial match with more than one search input' do
       Profile.__elasticsearch__.refresh_index!
-      # p Profile.search('Curie').results[0]
-      expect(Profile.search('Curie').results[0].fullname).to eq('Ada Lovelace')
-      # expect(Profile.search('Ada Curie').results[1].fullname).to eq('Marie Curie')
+      expect(Profile.__elasticsearch__.search('Ada Curie').results[0].fullname).to eq('Marie Curie')
+      expect(Profile.__elasticsearch__.search('Ada Curie').results[1].fullname).to eq('Ada Lovelace')
     end
   end
 end
