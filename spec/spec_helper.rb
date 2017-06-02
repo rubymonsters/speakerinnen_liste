@@ -57,8 +57,7 @@ RSpec.configure do |config|
         begin
           model.__elasticsearch__.create_index!
           model.__elasticsearch__.refresh_index!
-          Elasticsearch::Client.new hosts: ['localhost:9200', 'localhost:9250'], retry_on_failure: true
-        # rescue => Elasticsearch::Transport::Transport::Errors::NotFound
+        rescue => Elasticsearch::Transport::Transport::Errors::NotFound
         rescue Elasticsearch::Transport::Transport::Error => e
           puts e
           # This kills "Index does not exist" errors being written to console
