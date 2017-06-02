@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe Searchable, elasticsearch: true do
-
   let!(:profile) { FactoryGirl.create(:published, firstname: 'Ada', lastname: 'Lovelace',
                                       twitter: 'alovelace', city: 'London',
                                       country: 'GB', languages: 'English',
@@ -89,6 +88,7 @@ describe Searchable, elasticsearch: true do
     end
 
     it 'should not index certain fields' do
+      Profile.__elasticsearch__.refresh_index!
       expect(Profile.__elasticsearch__.search('info@example.com')).to be_empty
     end
 

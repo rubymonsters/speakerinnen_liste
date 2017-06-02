@@ -48,6 +48,7 @@ RSpec.configure do |config|
   # Start an in-memory cluster for Elasticsearch as needed
   config.before :all, elasticsearch: true do
     Elasticsearch::Extensions::Test::Cluster.start(port: 9250, nodes: 1, timeout: 120, path_logs: 'log')
+    Elasticsearch::Client.new hosts: ['localhost:9200', 'localhost:9250'], retry_on_failure: true
   end
 
    # Create indexes for all elastic searchable models
