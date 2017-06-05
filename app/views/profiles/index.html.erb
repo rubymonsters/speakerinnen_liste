@@ -72,8 +72,7 @@
               <%=t(:languages_agg, scope: 'search' ).html_safe%>
                 <% @aggs_languages[0..14].each do |term| %>
                 <li class='pl- <%= 'selected' if params[:filter_lang] == term['key'] %>'>
-                  <%= link_to term['key'], search: params[:search], filter_lang: term['key'] %><small class="c pl-"><%= term['doc_count'] %></small>
-                </li>
+                  <%= link_to t("#{term['key']}", scope: 'iso_639_1').capitalize , search: params[:search], filter_lang: term['key'] %><small class="c pl-"><%= term['doc_count'] %></small>                </li>
                 <% end %>
                 <% if @aggs_languages.length > 15 %>
                   <li>

@@ -19,21 +19,21 @@
 #       expect(page).to have_content('Ada')
 #     end
 
-    # it 'displays profiles that are a partial match with more than one search input' do
-    #   visit root_path
-    #   fill_in 'search', with: 'Ada Curie'
-    #   click_button I18n.t(:search, scope: 'pages.home.search')
-    #   #save_and_open_page
-    #   expect(page).to have_content('Ada')
-    #   expect(page).to have_content('Curie')
-    # end
+#     it 'displays profiles that are a partial match with more than one search input' do
+#       visit root_path
+#       fill_in 'search', with: 'Ada Curie'
+#       click_button I18n.t(:search, scope: 'pages.home.search')
+#       #save_and_open_page
+#       expect(page).to have_content('Ada')
+#       expect(page).to have_content('Curie')
+#     end
 
-    # it 'displays profiles that are a partial match wit UTF-8 characters' do
-    #   visit root_path
-    #   fill_in 'search', with: 'König'
-    #   click_button I18n.t(:search, scope: 'pages.home.search')
-    #   expect(page).to have_content('Christiane')
-    # end
+#     it 'displays profiles that are a partial match wit UTF-8 characters' do
+#       visit root_path
+#       fill_in 'search', with: 'König'
+#       click_button I18n.t(:search, scope: 'pages.home.search')
+#       expect(page).to have_content('Christiane')
+#     end
 
 #     it 'displays profiles that have an empty space' do
 #       visit root_path
