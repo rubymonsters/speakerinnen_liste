@@ -15,7 +15,7 @@ before_script:
   - bundle exec rake db:create db:migrate RAILS_ENV=test
   - export RECAPTCHA_SECRET_KEY=6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe
   - export RECAPTCHA_SITE_KEY=6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI
-  - curl http://localhost:9250/_cluster/health?wait_for_status=yellow
+  - sleep 10
 script:
   - bundle exec rspec spec/
   - bundle exec rake test
