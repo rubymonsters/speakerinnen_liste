@@ -1,11 +1,8 @@
 <section class="bg--grey">
   <div class="layout-wrapper">
     <h1>
-      <%= t(:title, scope: 'profiles.index') %>
+      <%= t(:new_speaker_heading, scope: 'pages.home.speakers') %>
     </h1>
-    <!--<p>
-      <%= t(:text, scope: 'profiles.index').html_safe %>
-    </p>-->
 
     <%= render partial: 'shared/profile_search' %>
 
@@ -19,7 +16,7 @@
             <%= t(:profiles, link: link_to(t(:all_profiles, scope: 'search'), profiles_path), scope: 'search').html_safe %>
           </p>
 
-        <div class="layout-wrapper">
+        <div class="layout-wrapper pt">
             <div class="layout__item 1/4 lap-1/2 palm-1/1">
               <ul id="facet_countries" class="search-aggregation">
               <%= aggreations_title = t(:countries_agg, scope: 'search' ).html_safe%>
@@ -30,7 +27,7 @@
                 <% end %>
                 <% if @aggs_countries.length > 10 %>
                   <li>
-                      <a class="expander_countries">
+                      <a class="pl- expander_countries">
                         <%= t(:show_more, scope: 'profiles.index') %>
                       </a>
                   </li>
@@ -54,7 +51,7 @@
                 <% end %>
                 <% if @aggs_cities.length > 10 %>
                   <li>
-                      <a class="expander_cities">
+                      <a class="pl- expander_cities">
                         <%= t(:show_more, scope: 'profiles.index') %>
                       </a>
                   </li>
@@ -76,7 +73,7 @@
                 <% end %>
                 <% if @aggs_languages.length > 10 %>
                   <li>
-                      <a class="expander_languages">
+                      <a class="pl- expander_languages">
                         <%= t(:show_more, scope: 'profiles.index') %>
                       </a>
                   </li>
