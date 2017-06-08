@@ -12,8 +12,8 @@
         <% if @profiles.any? %>
           <p class="text--color-blue font-size-24 text--center layout__item 1/1">
             <%= t(:success, scope: 'search' ).html_safe +
-                t(:result, scope: 'search', count: @profiles.total_count).html_safe %><br>
-            <%= t(:profiles, link: link_to(t(:all_profiles, scope: 'search'), profiles_path), scope: 'search').html_safe %>
+                t(:result, scope: 'search', count: @profiles.total_count).html_safe +
+                t(:filter, scope: 'search').html_safe %>
           </p>
 
         <div class="layout-wrapper pt">
@@ -125,19 +125,23 @@
         <% if @profiles.any? %>
           <% if @profiles.size == 1 %>
             <%= render partial: 'profiles/profile', object: @profiles[0], locals: { just_one: true } %>
+
           <% else %>
             <%= render partial: 'profiles/profile', object: @profiles[0], locals: { is_first: true } %>
             <%= render partial: 'profiles/profile', collection: @profiles[1..-2] %>
             <%= render partial: 'profiles/profile', object: @profiles[-1], locals: { is_last: true } %>
           <% end %>
         <% end %>
-
       <% end %>
     </div>
 
     <a id="topics_anchor"></a>
 
     <%= paginate @profiles %>
+
+    <p class="text--color-blue font-size-24 text--center layout__item 1/1">
+            <%= t(:more_options, scope: 'search' ).html_safe %>
+    </p>
 
     <%= render partial: 'tag' %>
 
