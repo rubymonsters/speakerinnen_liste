@@ -109,5 +109,15 @@ describe Searchable, elasticsearch: true do
       Profile.__elasticsearch__.refresh_index!
       expect(Profile.__elasticsearch__.search('Fred').results.total).to eq(0)
     end
+
+    it 'does not return profiles that do not match the given search string' do
+      Profile.__elasticsearch__.refresh_index!
+      expect(Profile.__elasticsearch__.search('Rosie').results.total).to eq(0)
+    end
+
+    # it 'does return profiles that match the firstname' do
+    #   Profile.__elasticsearch__.refresh_index!
+    #   expect(Profile.__elasticsearch__.search('Ada').results.first.fullname).to eq('Ada Lovelace')
+    # end
   end
 end

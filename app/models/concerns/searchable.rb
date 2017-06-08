@@ -3,7 +3,6 @@ module Searchable
 
   included do
     include Elasticsearch::Model
-    include Elasticsearch::Model::Callbacks
 
     index_name [Rails.application.engine_name, Rails.env].join('_')
 
@@ -122,19 +121,17 @@ module Searchable
     end
 
     def as_indexed_json(options={})
-    scope :is_published, -> { where(published: true) }
-
-      output = as_json(
-        {
-          autocomplete: { input:  [fullname, twitter, topic_list] },
-          only: [:firstname, :lastname, :twitter, :iso_languages, :city, :country],
-            methods: [:fullname, :topic_list, :cities, *globalize_attribute_names],
-            include: {
-              medialinks: { only: [:title, :description] }
+        output = as_json(
+          {
+            autocomplete: { input:  [fullname, twitter, topic_list] },
+            only: [:firstname, :lastname, :twitter, :iso_languages, :city, :country],
+              methods: [:fullname, :topic_list, :cities, *globalize_attribute_names],
+              include: {
+                medialinks: { only: [:title, :description] }
+            }
           }
-        }
-      )
-      output.select{ |key, value| value.present? }
+        )
+        output.select{ |key, value| value.present? }
     end
 
     elasticsearch_mappings = {
