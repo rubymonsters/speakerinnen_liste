@@ -15,6 +15,8 @@ describe Searchable, elasticsearch: true do
                                       twitter: 'mcurie', city: 'Paris',
                                       country: 'FR',  languages: 'Polish, French', iso_languages: ['pl', 'fr']) }
 
+  let!(:profile_not_published) { FactoryGirl.create(:unpublished, firstname: 'Fred') }
+
   describe 'elasticsearch index' do
     it 'should be created' do
       expect(Profile.__elasticsearch__.index_name).to eq 'speakerinnen_liste_application_test'
@@ -101,6 +103,11 @@ describe Searchable, elasticsearch: true do
       Profile.__elasticsearch__.refresh_index!
       expect(Profile.__elasticsearch__.search('Ada Curie').results[0].fullname).to eq('Marie Curie')
       expect(Profile.__elasticsearch__.search('Ada Curie').results[1].fullname).to eq('Ada Lovelace')
+    end
+
+    it 'does not return unpublished profiles' do
+      Profile.__elasticsearch__.refresh_index!
+      expect(Profile.__elasticsearch__.search('Fred').results.total).to eq(0)
     end
   end
 end

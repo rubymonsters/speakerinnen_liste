@@ -122,6 +122,8 @@ module Searchable
     end
 
     def as_indexed_json(options={})
+    scope :is_published, -> { where(published: true) }
+
       output = as_json(
         {
           autocomplete: { input:  [fullname, twitter, topic_list] },
