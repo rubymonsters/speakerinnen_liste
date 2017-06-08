@@ -115,9 +115,32 @@ describe Searchable, elasticsearch: true do
       expect(Profile.__elasticsearch__.search('Rosie').results.total).to eq(0)
     end
 
-    # it 'does return profiles that match the firstname' do
-    #   Profile.__elasticsearch__.refresh_index!
-    #   expect(Profile.__elasticsearch__.search('Ada').results.first.fullname).to eq('Ada Lovelace')
-    # end
+    it 'does return profiles that match the firstname' do
+      Profile.__elasticsearch__.refresh_index!
+      expect(Profile.__elasticsearch__.search('Ada').results.first.fullname).to eq('Ada Lovelace')
+    end
+
+    it 'does return profiles that match the firstname and the lastname' do
+      Profile.__elasticsearch__.refresh_index!
+      expect(Profile.__elasticsearch__.search('Ada Lovelace').results.first.fullname).to eq('Ada Lovelace')
+    end
+
+    it 'does return profiles that match the twittername' do
+      Profile.__elasticsearch__.refresh_index!
+      expect(Profile.__elasticsearch__.search('alovelace').results.first.fullname).to eq('Ada Lovelace')
+    end
+
+    it 'does return profiles that matches the topic' do
+      profile.topic_list.add('algorithm')
+      profile.save!
+      Profile.__elasticsearch__.refresh_index!
+
+      expect(Profile.__elasticsearch__.search('algorithm').results.first.fullname).to eq('Ada Lovelace')
+    end
+
+    it 'does return nothing if search is empty' do
+      Profile.__elasticsearch__.refresh_index!
+      expect(Profile.__elasticsearch__.search('').results.total).to eq(0)
+    end
   end
 end
