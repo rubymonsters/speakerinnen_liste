@@ -42,6 +42,7 @@ describe ProfilesController, type: :controller do
       get :index, {:search => 'ruby'}
       expect(assigns :aggs).to have_key(:city)
       expect(assigns :aggs).to have_key(:lang)
+      expect(assigns :aggs).to have_key(:country)
     end
   end
 
