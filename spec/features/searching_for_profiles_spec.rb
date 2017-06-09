@@ -1,3 +1,5 @@
+require 'spec_helper'
+
 describe 'profile search' do
   let!(:profile) { FactoryGirl.create(:published, firstname: 'Ada', lastname: 'Lovelace',
                                       twitter: 'alovelace', city: 'London',
@@ -25,26 +27,13 @@ describe 'profile search' do
   let!(:profile_not_matched) { FactoryGirl.create(:published, firstname: 'Angela', city: 'New York', twitter: '@adavis' ) }
 
   describe 'public search', elasticsearch: true do
-    it 'shows button search' do
-      visit root_path
-      expect(page).to have_selector('#search')
-    end
-
-    it 'shows autofill' do
-      visit root_path
-      expect(page).to have_selector('.tt-input')
-    end
 
     it 'displays profiles that are a partial match' do
-      p profile
-      Profile.__elasticsearch__.refresh_index!
-      sleep 5
       visit root_path
-      fill_in 'search', with: 'Ada'
+      fill_in 'search', with: 'Ada Lovelace'
       click_button(I18n.t(:search, scope: 'pages.home.search'))
-      #komisch, das hier funktioniert, aber der zweite Teil nicht :(
       expect(Profile.__elasticsearch__.search('Ada').results.first.fullname).to eq('Ada Lovelace')
-      # expect(page).to have_content('Ada')
+      expect(page).to have_content('Ada')
     end
 
 #     it 'displays profiles that are a partial match with more than one search input' do
