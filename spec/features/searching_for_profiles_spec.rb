@@ -1,12 +1,30 @@
-describe 'profile search', elasticsearch: true do
-  let!(:profile) { FactoryGirl.create(:published, firstname: 'Ada', lastname: 'Lovelace', city: 'London', country: 'GB', twitter: 'Adalove', iso_languages: ['es', 'en'], languages: 'Spanish, English') }
-  let!(:profile1) { FactoryGirl.create(:published, firstname: 'Marie', lastname: 'Curie', city: 'Paris', country: 'FR', twitter: 'mcurie', iso_languages: ['pl', 'fr'], languages: 'Polish, French') }
+describe 'profile search' do
+  let!(:profile) { FactoryGirl.create(:published, firstname: 'Ada', lastname: 'Lovelace',
+                                      twitter: 'alovelace', city: 'London',
+                                      country: 'GB',
+                                      iso_languages: ['en'],
+                                      topic_list: ['computer', 'algorithms'],
+                                      bio_de: 'Ada:Das ist meine deutsche Bio.',
+                                      bio_en: 'Ada:This is my english bio.',
+                                      main_topic_de: 'Das Leben', main_topic_en: 'Life',
+                                      email: 'info@example.com') }
+
+  let!(:profile1) { FactoryGirl.create(:published, firstname: 'Maria', lastname: 'Curie',
+                                      twitter: '', city: 'Paris',
+                                      country: 'FR',
+                                      iso_languages: ['en', 'fr'],
+                                      topic_list: ['physicist', 'chemist'],
+                                      bio_de: 'Maria: Das ist meine deutsche Bio.',
+                                      bio_en: 'Maria: This is my english bio.',
+                                      main_topic_de: 'x-ray', main_topic_en: 'Röntgen',
+                                      email: 'maria@example.com') }
+#
   let!(:profile2) { FactoryGirl.create(:published, firstname: 'Christiane', lastname: 'König', city: 'Heidelberg', languages: 'German') }
   let!(:profile3) { FactoryGirl.create(:published, firstname: 'Maren ', lastname: 'Meier') }
 
   let!(:profile_not_matched) { FactoryGirl.create(:published, firstname: 'Angela', city: 'New York', twitter: '@adavis' ) }
 
-  describe 'public search' do
+  describe 'public search', elasticsearch: true do
     it 'shows button search' do
       visit root_path
       expect(page).to have_selector('#search')
