@@ -5,8 +5,7 @@
 
     <%= form_tag(profiles_path, method: 'get', class: 'page-box') do %>
       <div class="box__bg--light pv ph- border-radius">
-        <%= text_field_tag('search', nil, type: 'text', class: 'profile__search typeahead tt-input', autocomplete: 'off', placeholder: t(:search_text, scope: 'pages.home.search')) %>
-        <%= button_tag((t(:search, scope: 'pages.home.search')), class: "btn btn--small input-btn") %>
+        <%= render partial: 'shared/profile_search' %>
       </div>
     <% end %>
   </div>
