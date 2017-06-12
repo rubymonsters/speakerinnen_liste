@@ -6,19 +6,6 @@ module Searchable
 
     index_name [Rails.application.engine_name, Rails.env].join('_')
 
-    #simple admin search
-    def self.admin_search(admin_query)
-      admin_query_hash = {
-        query: {
-          multi_match: {
-            query: admin_query,
-            fields: [ 'fullname', 'topic_list' ]
-          }
-        }
-      }
-      __elasticsearch__.search(admin_query_hash)
-    end
-
     def self.search(query, filter_countries, filter_cities, filter_lang)
       @filter_countries = filter_countries
       @filter_cities = filter_cities

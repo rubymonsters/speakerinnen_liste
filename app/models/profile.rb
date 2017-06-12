@@ -145,10 +145,10 @@ class Profile < ActiveRecord::Base
     end
   end
 
-  # for simple admin search
-  # def self.search(query)
-  #   where("firstname || ' ' || lastname ILIKE :query OR twitter ILIKE :query", query: "%#{query}%")
-  # end
+   #for simple admin search
+   def self.admin_search(query)
+     where("firstname || ' ' || lastname ILIKE :query OR twitter ILIKE :query", query: "%#{query}%")
+   end
 
   def clean_iso_languages!
     iso_languages.reject! { |r| r.empty? }

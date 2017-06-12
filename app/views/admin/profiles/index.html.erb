@@ -7,9 +7,8 @@
     <%= Profile.all.select {|profile| profile.published?}.size %> <%= t(:public, scope: 'admin.dashboard.profiles') %>.
 
     <%= form_tag(admin_profiles_path, method: 'get', class: 'font-size-24') do %>
-
-      <%= text_field_tag :admin_search, params[:admin_search], placeholder: t(:search_for_name_and_tag, scope: 'admin.dashboard.profiles') %>
-      <%= submit_tag t(:admin_search, scope: 'general'), class: 'btn btn--small' %>
+      <%= text_field_tag :search, params[:search], placeholder: t(:search_for_name, scope: 'admin.dashboard.profiles') %>
+      <%= submit_tag t(:search, scope: 'general'), class: 'btn btn--small' %>
     <% end %>
 
     <%= paginate @profiles %>
