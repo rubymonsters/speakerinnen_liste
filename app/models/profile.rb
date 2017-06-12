@@ -1,6 +1,7 @@
 class Profile < ActiveRecord::Base
   include AutoHtml
   include HasPicture
+  include Searchable
   include ActiveModel::Serialization
 
   has_many :medialinks
@@ -11,6 +12,7 @@ class Profile < ActiveRecord::Base
 
   translates :bio, :main_topic, fallbacks_for_empty_translations: true
   accepts_nested_attributes_for :translations
+  globalize_accessors
 
   extend FriendlyId
   friendly_id :slug_candidate, use: :slugged
@@ -34,6 +36,8 @@ class Profile < ActiveRecord::Base
     firstname.strip! if firstname
     lastname.strip! if lastname
   end
+
+  after_save :update_or_remove_index
 
   def after_confirmation
     AdminMailer.new_profile_confirmed(self).deliver
@@ -72,6 +76,10 @@ class Profile < ActiveRecord::Base
 
   def fullname
     "#{firstname} #{lastname}".strip
+  end
+
+  def cities
+    "#{city}".gsub(/(,|\/|&|\*|\|| - | or )/, "!@#$%ˆ&*").split("!@#$%ˆ&*").map {|x| x.strip}
   end
 
   def name_or_email
@@ -121,6 +129,10 @@ class Profile < ActiveRecord::Base
     order('RANDOM()')
   end
 
+  def update_or_remove_index
+    if published then __elasticsearch__.index_document else __elasticsearch__.delete_document end rescue nil # rescue a deleted document if not indexed
+  end
+
   def password_required?
     super && provider.blank?
   end
@@ -133,10 +145,10 @@ class Profile < ActiveRecord::Base
     end
   end
 
-  # for simple admin search
-  def self.search(query)
-    where("firstname || ' ' || lastname ILIKE :query OR twitter ILIKE :query", query: "%#{query}%")
-  end
+   #for simple admin search
+   def self.admin_search(query)
+     where("firstname || ' ' || lastname ILIKE :query OR twitter ILIKE :query", query: "%#{query}%")
+   end
 
   def clean_iso_languages!
     iso_languages.reject! { |r| r.empty? }
@@ -153,10 +165,5 @@ class Profile < ActiveRecord::Base
     if iso_languages.map(&:size).uniq != [2]
       errors.add(:iso_languages, "each element must be two charactes")
     end
-  end
-
-  def split_languages_string
-    return [] unless languages
-    languages.gsub(/[^\wöäüÖÄÜçñ]/, " ").split(" ")
   end
 end

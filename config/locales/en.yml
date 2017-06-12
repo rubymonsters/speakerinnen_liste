@@ -14,8 +14,6 @@ en:
     create: "Create"
     save: "Save"
     search: "Search"
-    detailed_search: "Detailed search >>"
-    quick_search: "Quick search >>"
     ok: "Ok"
   admin:
     dashboard:
@@ -69,7 +67,7 @@ en:
       search:
         heading: "Organizers, find your speakers"
         tagline: "Find women speakers & moderators for your conference"
-        search_text: "name, twitterhandle or tag"
+        search_text: "search by anything"
         search: "Search"
       description: "Our Categories"
       description_text: "We feel strongly about a balanced representation of men and women* on stage. We encourage women* to become more visible in their profession and field of expertise."
@@ -218,6 +216,9 @@ en:
       country: "Country"
       country_search_hint: "(Beware: A lot of speakers do not have a specified country.)"
       language: "Language"
+      all_speakerinnen: "We are already %{profiles_count}!"
+      show_more: "More >>"
+      show_less: "Less >>"
     new:
       new_profile: "New profile"
       back: "Back"
@@ -315,16 +316,24 @@ Links to Youtube videos will be shown as embedded videos. Other links will be cl
     tooltip: "Change the sort order per drag&drop."
   search:
     any: "Any"
-    no_profile: "There are no profiles! <br>Here is the link %{link}"
+    no_profile: "We didn't find anything. :( <br>But here you can browse %{link}"
     profiles_topics: "You searched for the topic: <b>%{topics_name}</b> and found %{profiles_count} speakerinnen."
     profiles: "%{link}"
-    all_profiles: "back to all profiles >>"
+    all_profiles: ">> browse all profiles"
+    did_you_mean: "Did you mean %{suggestions_fullname}?"
+    or_did_you_mean: "Or %{suggestions_topic}?"
     any: "Any"
     empty: "We didn't find anything."
+    filter: "<br> Here you can filter the search results >>"
     success: "We found"
     result: {
       one: " a speakerin! Yeah!",
       other: " %{count} speakerinnen! Yeah! "
     }
+    more_options: "You didn't find any suitable speaker?"
+    adapt_search: ">> adapt your search"
+    countries_agg: "Countries:"
+    cities_agg: "Cities:"
+    languages_agg: "Languages:"
   error_messages:
     picture_too_big: " is too big. You cannot upload a file greater than 1MB."

@@ -24,3 +24,28 @@ $(document).ready(function() {
   });
   $('#profile_topic_list').tagit({availableTags: topics});
 });
+
+
+
+$(document).ready(function(){
+  var stuffSuggest = new Bloodhound({
+    datumTokenizer: Bloodhound.tokenizers.whitespace('value'),
+    queryTokenizer: Bloodhound.tokenizers.whitespace,
+      remote: {
+        url: '/profiles_typeahead?q=%QUERY',
+        wildcard: '%QUERY'
+      },
+  });
+
+  $('.typeahead').typeahead({
+    hint: true,
+    highlight: true,
+    minLength: 3
+  },
+  {
+    name: 'autocomplete',
+    display: 'text',
+    source: stuffSuggest,
+    limit: 20
+  });
+});

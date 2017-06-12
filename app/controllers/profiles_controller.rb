@@ -7,11 +7,21 @@ class ProfilesController < ApplicationController
 
   before_filter :require_permission, only: [:edit, :destroy, :update]
 
+  respond_to :json
+
   def index
     if params[:topic]
       @profiles = profiles_for_scope(params[:topic])
     elsif params[:category_id]
       profiles_for_category
+    elsif params[:search]
+      @profiles = profiles_for_search
+
+      # sum of search results concerning certain attributes
+      @aggs = profiles_for_search.response.aggregations
+      @aggs_languages = @aggs[:lang][:buckets]
+      @aggs_cities = @aggs[:city][:buckets]
+      @aggs_countries = @aggs[:country][:buckets]
     else
       @profiles = profiles_for_index
     end
@@ -56,7 +66,48 @@ class ProfilesController < ApplicationController
     false
   end
 
+  def typeahead
+    suggester_fields  = []
+    suggester_options = []
+    suggestions = Profile.typeahead(params[:q])
+    suggestions.each do |s|
+      if /.*_suggest/ === s.first
+          suggester_fields.push(s)
+      end
+    end
+    suggester_fields.map {|s| suggester_options.push(s[1].first['options'])}
+    suggestions_ordered = suggestions_upcase(suggester_options)
+    respond_with(suggestions_ordered)
+  end
+
   private
+  def suggestions_upcase(suggestions_raw)
+    sugg_upcase_complete = []
+    sugg_text = []
+    suggestions_raw.flatten.sort_by { |s| s["score"] }
+
+    sugg_upcase_complete = suggestions_raw.flatten.each do  |s|
+      s["text"] =  s["text"].split.map(&:capitalize).join(' ')
+      sugg_text.push(s["text"])
+    end
+
+    duplicates = sugg_text.select{|element| sugg_text.count(element) > 1 }
+    delete_duplicates(sugg_upcase_complete, duplicates)
+  end
+
+  def delete_duplicates(upcased_suggestions, dupli)
+    if dupli != []
+      dupli.uniq!.each do |x|
+        upcased_suggestions.find do |s|
+          if x == s["text"]
+            upcased_suggestions.delete(s)
+            dupli.delete(x)
+          end
+        end
+      end
+    end
+    return upcased_suggestions
+  end
 
   # Use callbacks to share common setup or constraints between actions.
   def set_profile
@@ -120,4 +171,10 @@ class ProfilesController < ApplicationController
     end
   end
 
+  def profiles_for_search
+    Profile.is_published
+      .search(params[:search], params[:filter_countries], params[:filter_cities], params[:filter_lang])
+      .page(params[:page]).per(24)
+      .records
+  end
 end
