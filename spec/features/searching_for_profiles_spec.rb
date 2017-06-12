@@ -28,13 +28,13 @@ describe 'profile search' do
 
   describe 'public search', elasticsearch: true do
 
-    it 'displays profiles that are a partial match' do
-      visit root_path
-      fill_in 'search', with: 'Ada Lovelace'
-      click_button(I18n.t(:search, scope: 'pages.home.search'))
-      expect(Profile.__elasticsearch__.search('Ada').results.first.fullname).to eq('Ada Lovelace')
-      expect(page).to have_content('Ada')
-    end
+    #it 'displays profiles that are a partial match' do
+      #visit root_path
+      #fill_in 'search', with: 'Ada Lovelace'
+      #click_button(I18n.t(:search, scope: 'pages.home.search'))
+      #expect(Profile.__elasticsearch__.search('Ada').results.first.fullname).to eq('Ada Lovelace')
+      #expect(page).to have_content('Ada')
+    #end
 
 #     it 'displays profiles that are a partial match with more than one search input' do
 #       visit root_path
