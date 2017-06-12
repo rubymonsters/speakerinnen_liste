@@ -10,11 +10,6 @@
       <%# if in search: %>
       <% if params[:search] %>
         <% if @profiles.any? %>
-          <p class="text--color-blue font-size-24 text--center layout__item 1/1">
-            <%= t(:success, scope: 'search' ).html_safe +
-                t(:result, scope: 'search', count: @profiles.total_count).html_safe +
-                t(:filter, scope: 'search').html_safe %>
-          </p>
 
         <div class="layout-wrapper pt">
             <div class="layout__item 1/4 lap-1/2 palm-1/1">
@@ -140,7 +135,9 @@
     <%= paginate @profiles %>
 
     <p class="text--color-blue font-size-24 text--center layout__item 1/1">
-            <%= t(:more_options, scope: 'search' ).html_safe %>
+      <%= t(:more_options, scope: 'search').html_safe %><br>
+      <%= top_link(params[:search]) %><br>
+      <%= link_to(t(:all_profiles,scope: 'search'), profiles_path).html_safe %>
     </p>
 
     <%= render partial: 'tag' %>

@@ -321,10 +321,10 @@ de:
     tooltip: "Verschiebe die Reihenfolge mit Drag&Drop."
   search:
     any: "Alle"
-    no_profile: "Wir haben leider keine passende Speakerin gefunden :( <br> Hier kannst du in %{link} blättern"
+    no_profile: "Keine passende Speakerin gefunden?"
     profiles_topics: "Du hast nach dem Thema: <b>%{topics_name}</b> gesucht und %{profiles_count} Speakerinnen gefunden."
     profiles: "%{link}"
-    all_profiles: "allen Profilen"
+    all_profiles: ">> in allen Profilen blättern"
     did_you_mean: "Meinst du vielleicht %{suggestions_fullname}?"
     or_did_you_mean: "Oder %{suggestions_topic}?"
     filter: "<br> Hier kannst du die Suchergebnisse filtern >>"
@@ -334,9 +334,8 @@ de:
       one: " eine Speakerin gefunden!",
       other: " %{count} Speakerinnen gefunden! Yeah! "
     }
-    more_options: "Keine passende Speakerin gefunden?
-    <br> >> Suche anpassen (ToDo: nach oben springen)
-    <br> >> in %{link} blättern"
+    more_options: "Keine passende Speakerin gefunden?"
+    adapt_search: ">> Suche anpassen"
     countries_agg: "Länder:"
     cities_agg: "Städte:"
     languages_agg: "Sprachen:"

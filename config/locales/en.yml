@@ -320,7 +320,7 @@ Links to Youtube videos will be shown as embedded videos. Other links will be cl
     no_profile: "We didn't find anything. :( <br>But here you can browse %{link}"
     profiles_topics: "You searched for the topic: <b>%{topics_name}</b> and found %{profiles_count} speakerinnen."
     profiles: "%{link}"
-    all_profiles: "all profiles"
+    all_profiles: ">> browse all profiles"
     did_you_mean: "Did you mean %{suggestions_fullname}?"
     or_did_you_mean: "Or %{suggestions_topic}?"
     any: "Any"
@@ -331,9 +331,8 @@ Links to Youtube videos will be shown as embedded videos. Other links will be cl
       one: " a speakerin! Yeah!",
       other: " %{count} speakerinnen! Yeah! "
     }
-    more_options: "You didn't find any suitable speaker?
-    <br> >> adapt search (ToDo: nach oben springen)
-    <br> >> browse %{link}"
+    more_options: "You didn't find any suitable speaker?"
+    adapt_search: ">> adapt your search"
     countries_agg: "Countries:"
     cities_agg: "Cities:"
     languages_agg: "Languages:"
