@@ -93,6 +93,8 @@ SpeakerinnenListe::Application.configure do
     :password => ENV['POSTMARK_API_TOKEN'],
     :authentication => :plain
   }
+# search box --> heroku elasticsearch add-on
+  Elasticsearch::Model.client = Elasticsearch::Client.new host: ENV['SEARCHBOX_URL']
 
 # piwik data collection and analytics
   config.gem 'rack-piwik', lib: 'rack/piwik'
