@@ -14,6 +14,7 @@ gem 'deadweight', require: 'deadweight/hijack/rails'
 # gem 'rails', git: 'git://github.com/rails/rails.git'
 
 gem 'kaminari'
+gem 'mime-types', [ '~> 2.6', '>= 2.6.1' ], require: 'mime/types/columnar'
 
 gem 'pg'
 gem 'devise', '~> 3.1.1'
