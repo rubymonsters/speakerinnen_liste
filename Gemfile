@@ -52,6 +52,8 @@ group :development do
   gem 'guard-bundler'
   gem 'guard-rails'
   gem 'guard-rspec'
+  gem 'derailed_benchmarks'
+  gem 'stackprof'
 end
 
 group :development, :test do
