@@ -50,9 +50,6 @@ group :development do
   gem 'letter_opener'
   gem 'quiet_assets' # mutes asset pipeline log messages
   gem 'better_errors'
-  gem 'guard-bundler'
-  gem 'guard-rails'
-  gem 'guard-rspec'
   gem 'derailed_benchmarks'
   gem 'stackprof'
 end
