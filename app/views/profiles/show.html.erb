@@ -1,23 +1,23 @@
 <section class="bg--grey pb+">
   <div class="layout-wrapper">
-    <div class="layout">
-      <div class="layout__item 2/3 palm-1/1">
+    <div class="o-layout layout">
+      <div class="o-layout__item 2/3 palm-1/1">
         <h1><%= @profile.fullname %></h1>
       </div><!--
 
-      --><div class="layout__item 1/3 palm-1/1 text--right">
+      --><div class="o-layout__item 1/3 palm-1/1 text--right">
         <%= link_to(t(:home, scope: 'profiles.edit'), profiles_path, class: 'content__link bg--white') %>
       </div>
     </div>
 
-    <div class="layout">
-      <div class="layout__item 2/6 palm-1/1 pr">
+    <div class="o-layout layout">
+      <div class="o-layout__item 2/6 palm-1/1 pr">
           <%= profile_picture_link(@profile) %>
           <p class="mt0"><%= @profile.main_topic_or_first_topic.truncate(30) if @profile.main_topic_or_first_topic %></p>
 
       </div><!--
 
-      --><div class="layout__item 3/6 palm-1/1 profile-box bg--white pt">
+      --><div class="o-layout__item 3/6 palm-1/1 profile-box bg--white pt">
           <% if @profile.twitter.present? %>
             <h2 class="delta sans-serif mb-">
               <%= t(:twitter, scope: 'profiles.profile') %>
@@ -75,7 +75,7 @@
           <% end %>
         </div><!--
 
-      --><div class="layout__item 1/6 palm-1/1">
+      --><div class="o-layout__item 1/6 palm-1/1">
 
           <label class="btn btn--small btn--full" for="modal-1">
             <i class="fa fa-envelope-o"></i>&nbsp;
@@ -100,8 +100,8 @@
     </div>
 
     <% if @profile.bio %>
-      <div class="layout pv">
-        <div class="layout__item 5/6 palm-1/1 box__bg--white">
+      <div class="o-layout layout pv">
+        <div class="o-layout__item 5/6 palm-1/1 box__bg--white">
           <h2 class="delta sans-serif pb">
             <%= t(:bio, scope: 'profiles.profile') %>
           </h2>
@@ -111,8 +111,8 @@
     <% end %>
 
     <% if @profile.medialinks.any? %>
-      <div class="layout pv">
-        <div class="layout__item 5/6 palm-1/1 box__bg--white">
+      <div class="o-layout layout pv">
+        <div class="o-layout__item 5/6 palm-1/1 box__bg--white">
           <h2 class="delta sans-serif pb">
             <%= t(:media, scope: 'profiles.profile') %>
           </h2>
