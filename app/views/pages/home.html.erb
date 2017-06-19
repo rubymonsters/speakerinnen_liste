@@ -17,7 +17,7 @@
     <%= t(:speaker_text, scope: 'pages.home.speakers') %><BR>
     <%= link_to t(:speaker_index, scope: 'pages.home.speakers'), profiles_path, class: 'content__link bg--grey' %>
   </h1>
-  <div id="profile-selection" class="o-layout">
+  <div id="profiles-selection" class="o-layout">
     <% if @profiles.any? %>
         <%= render partial: "profiles/profile", object: @profiles[0], locals: { is_first: true } %>
         <%= render partial: "profiles/profile", collection: @profiles[1..-2] %>
