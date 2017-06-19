@@ -1,7 +1,7 @@
 <section class="bg--grey pb+">
   <div class="layout-wrapper">
 
-    <div class="o-layout layout">
+    <div class="o-layout">
       <div class="o-layout__item 2/3">
 
         <h1><%= t(:new, scope: 'medialinks')%></h1>
@@ -15,7 +15,7 @@
       </div>
     </div>
 
-    <div class="o-layout layout">
+    <div class="o-layout">
       <div class="o-layout__item 2/3 box__bg--white">
         <%= simple_form_for [@profile, @medialink], html: {class: ''} do |f| %>
 

@@ -1,7 +1,7 @@
 <section class="bg--grey">
   <div class="layout-wrapper">
 
-    <div class="o-layout layout">
+    <div class="o-layout">
       <div class="o-layout__item 2/3">
 
         <h1><%= t(:index, scope: 'medialinks')%></h1>
@@ -14,7 +14,7 @@
 
       </div>
     </div>
-    <div class="o-layout layout">
+    <div class="o-layout">
       <div class="o-layout__item 2/3">
 
         <p class="pb bb"><%= t(:medialink_description, scope: 'medialinks').html_safe %></p>
@@ -22,7 +22,7 @@
       </div>
     </div>
 
-    <div class="o-layout layout pb+">
+    <div class="o-layout pb+">
       <div class="o-layout__item 1/1">
 
         <%= link_to(new_profile_medialink_path(@profile)) do %>

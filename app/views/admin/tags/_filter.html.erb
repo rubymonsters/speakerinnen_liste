@@ -1,5 +1,5 @@
 <%= form_tag(categorization_admin_tags_path, method: :get, class: '') do %>
-  <div class="o-layout layout pv bt mv">
+  <div class="o-layout pv bt mv">
     <div class="o-layout__item 1/2">
 
       <%= check_box_tag 'uncategorized', params[:uncategorized], params[:uncategorized] %>
@@ -14,7 +14,7 @@
     </div>
   </div>
   <h2><%= t(:categories, scope: 'admin.dashboard.categories') %>:&nbsp</h2>
-  <div class="o-layout layout pb">
+  <div class="o-layout pb">
 
     <% @categories.in_groups_of(3, false) do |row_categories| %>
       <div class="o-layout__item 1/4">
@@ -29,7 +29,7 @@
     <% end %>
   </div>
 
-  <div class="o-layout layout pb">
+  <div class="o-layout pb">
     <div class="o-layout__item 1/1">
       <%= label_tag 'category_id_', class: 'radio' do %>
         <%= radio_button_tag( 'category_id', '', params[:category_id].blank? ) %>
@@ -38,7 +38,7 @@
     </div>
   </div>
 
-  <div class="o-layout layout pb bb mv">
+  <div class="o-layout pb bb mv">
     <div class="o-layout__item 1/1">
       <%= submit_tag (t(:filter, scope:'general')), class: 'btn btn--small' %>
     </div>
