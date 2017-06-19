@@ -10,6 +10,9 @@ class AdminMailer < ActionMailer::Base
   def profile_published(profile)
     @profile = profile
     @url = 'https://www.speakerinnen.org'
-    mail(to: @profile.email, subject: I18n.t('devise.mailer.published.subject'))
+    mail(
+      to: @profile.email,
+      subject: I18n.t('devise.mailer.published.subject')
+      )
   end
 end
