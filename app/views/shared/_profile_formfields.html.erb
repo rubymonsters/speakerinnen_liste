@@ -1,5 +1,5 @@
-<div class="layout mt">
-  <div class="layout__item 3/6 box__bg--white">
+<div class="o-layout mt">
+  <div class="o-layout__item 3/6 box__bg--white">
 
     <%= f.input :firstname, input_html: { class: "mb input--width-100" } %>
     <%= f.input :lastname, input_html: { class: "mb input--width-100" } %>
@@ -36,9 +36,9 @@
       <% end %>
     </ul>
 
-  </div><!--
+  </div>
 
-  --><div class="layout__item 3/6">
+  <div class="o-layout__item 3/6">
 
     <%= f.label :picture %>
     <p>
@@ -59,8 +59,8 @@
   </div>
 </div>
 
-<div class="layout pt">
-  <div class=" layout__item 1/1 box__bg--white">
+<div class="o-layout pt">
+  <div class="o-layout__item 1/1 box__bg--white">
 
     <h5>
       <%= t(:translation, scope: 'activerecord.attributes.profile').html_safe %>
