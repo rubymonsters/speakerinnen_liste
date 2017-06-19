@@ -1,23 +1,23 @@
 <%= form_tag(categorization_admin_tags_path, method: :get, class: '') do %>
-  <div class="layout pv bt mv">
-    <div class="layout__item 1/2">
+  <div class="o-layout pv bt mv">
+    <div class="o-layout__item 1/2">
 
       <%= check_box_tag 'uncategorized', params[:uncategorized], params[:uncategorized] %>
       <%= label_tag 'uncategorized', t(:tags_filter_option, scope: 'admin.dashboard.tags'),
       class: '' %>
 
-    </div><!--
-    --><div class="layout__item 1/2">
+    </div>
+    <div class="o-layout__item 1/2">
 
       <%= t(:tags_search, scope: 'admin.dashboard.tags') %>
       <%= text_field_tag 'q', params[:q], class: '' %>
     </div>
   </div>
   <h2><%= t(:categories, scope: 'admin.dashboard.categories') %>:&nbsp</h2>
-  <div class="layout pb">
+  <div class="o-layout pb">
 
     <% @categories.in_groups_of(3, false) do |row_categories| %>
-      <div class="layout__item 1/4">
+      <div class="o-layout__item 1/4">
         <% row_categories.each do |category| %>
           <%= label_tag 'category_id_#{category.id}', class: 'radio' do %>
             <%= radio_button_tag( 'category_id', category.id, params[:category_id] == category.id.to_s ) %>
@@ -29,8 +29,8 @@
     <% end %>
   </div>
 
-  <div class="layout pb">
-    <div class="layout__item 1/1">
+  <div class="o-layout pb">
+    <div class="o-layout__item 1/1">
       <%= label_tag 'category_id_', class: 'radio' do %>
         <%= radio_button_tag( 'category_id', '', params[:category_id].blank? ) %>
         <%= t(:tags_filter_default, scope: 'admin.dashboard.tags') %>
@@ -38,8 +38,8 @@
     </div>
   </div>
 
-  <div class="layout pb bb mv">
-    <div class="layout__item 1/1">
+  <div class="o-layout pb bb mv">
+    <div class="o-layout__item 1/1">
       <%= submit_tag (t(:filter, scope:'general')), class: 'btn btn--small' %>
     </div>
   </div>

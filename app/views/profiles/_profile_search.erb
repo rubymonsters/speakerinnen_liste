@@ -1,16 +1,16 @@
-<div class="layout__item 1/1 lap-1/1 palm-1/1 mb profile-box">
-  <div class="layout bg--white">
+<div class="o-layout__item 1/1 lap-1/1 palm-1/1 mb profile-box">
+  <div class="o-layout bg--white">
 
-    <div class="layout__item 1/1 palm-1/1">
+    <div class="o-layout__item 1/1 palm-1/1">
       <h2><%= link_to profile.fullname, profile %></h2>
     </div>
 
-    <div class="layout__item 1/4 palm-1/1">
+    <div class="o-layout__item 1/4 palm-1/1">
       <%= profile_picture_link(profile) %>
       <p class="mt0"><%= profile.main_topic_or_first_topic if profile.main_topic_or_first_topic %></p>
-    </div><!--
+    </div>
 
- --><div class="layout__item 3/4 palm-1/1">
+    <div class="o-layout__item 3/4 palm-1/1">
      <% if profile.twitter.present? %>
          <h2 class="delta sans-serif mb-">
            <%= t(:twitter, scope: 'profiles.profile') %>
@@ -38,7 +38,7 @@
        <%= raw profile.topic_list.sort.map { |topic| topic_link(topic,class: 'content__link bg--light') }.join(' ') %>
      </p>
 
-     <% if profile.iso_languages.present? %>
+     <% if profile.languages.present? %>
        <h2 class="delta sans-serif mb-">
          <%= t(:languages, scope: 'profiles.profile') %>
        </h2>

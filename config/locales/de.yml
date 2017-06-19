@@ -14,8 +14,6 @@ de:
     create: "Erstellen"
     save: "Speichern"
     search: "Suche"
-    detailed_search: "Erweiterte Suche >>"
-    quick_search: "Einfache Suche >>"
     ok: "Ok"
   admin:
     dashboard:
@@ -45,7 +43,7 @@ de:
         add_comment: "Kommentar hinzufügen"
         profile_status: "Das Profil ist "
         name_of_profile: "Der Name der Speakerin ist "
-        search_for_name: "Suche nach dem Namen"
+        search_for_name: "Suche nach Namen"
         edit:
           show: "Zeige Profil"
           show_all: "Liste aller Profile"
@@ -69,7 +67,7 @@ de:
       search:
         heading: "Mehr Frauen auf die Bühnen!"
         tagline: "Finde Rednerinnen, Referentinnen & Moderatorinnen für Deine Konferenz"
-        search_text: "Name, Twitterhandle oder Tag"
+        search_text: "Speakerinnen* durchsuchen"
         search: "Suche"
       description: "Unsere Kategorien"
       description_text: "Uns ist die Verteilung der Männer und Frauen auf Konferenzbühnen wichtig. Wir ermutigen Frauen, in ihrem professionellen Umfeld sichtbarer zu werden."
@@ -218,6 +216,9 @@ de:
       country: "Land"
       country_search_hint: "(Achtung: Viele Speakerinnen haben kein Land eingetragen.)"
       language: "Sprache"
+      all_speakerinnen: "Wir sind schon %{profiles_count}!"
+      show_more: "Mehr >>"
+      show_less: "Weniger >>"
     new:
       new_profile: "Neues Profil"
       back: "Zurück"
@@ -245,6 +246,7 @@ de:
       updated: "Referenz wurde erfolgreich geändert."
       destroyed: "Referenz wurde erfolgreich gelöscht."
       no_permission: "Du hast nicht die Rechte, die Referenz zu bearbeiten."
+      error: "Es sieht so aus, als ob Du noch was eintragen musst."
     categories:
       created: '%{category_name} wurde erfolgreich erstellt.'
       updated: '%{category_name} wurde erfolgreich geändert.'
@@ -255,7 +257,8 @@ de:
         firstname: "Mein Vorname:"
         lastname: "Mein Nachname:"
         bio: 'Deine Bio auf %{language}:<br>
-              <small>Hier ist Platz für eine kurze oder auch längere Bio. Außerdem sollten hier Fachkenntnisse und mögliche Vortragsthemen genauer beschrieben werden. Das hilft Veranstalterinnen und Veranstaltern herauszufinden, ob Ihr die Richtigen für ihr Event sein könntet.</small>'
+              <small>Hier ist Platz für eine kurze oder auch längere Bio. Außerdem sollten hier Fachkenntnisse und mögliche Vortragsthemen genauer beschrieben werden. Das hilft Veranstalterinnen und Veranstaltern herauszufinden, ob Ihr die Richtigen für ihr Event sein könntet.
+              <br>Du kannst einfache HTML Tags nutzen, um den Text zu formatieren. Zum Beispiel: < i >< /i >< b >< /b > < br ></small>'
         topic_list: "Meine Themen als Tags:<br><small>Bitte schaue zuerst, ob Dein Thema schon vorhanden ist.</small>"
         main_topic_title: "Mein Hauptthema:"
         main_topic: "Mein Hauptthema auf %{language}: (Mehr als 30 Zeichen werden nicht angezeigt)<small>
@@ -273,7 +276,7 @@ de:
       medialink:
         url: "URL:"
         title: "Überschrift:"
-        description: "Beschreibung:<small> ( Du kannst einfache HTML Tags nutzen, um den Text zu formatieren. Zum Beispiel: < i >< /i >< b >< /b >< br >)</small>"
+        description: "Beschreibung:<br><small>Du kannst einfache HTML Tags nutzen, um den Text zu formatieren. Zum Beispiel: < i >< /i >< b >< /b > < br ></small>"
   devise:
     registrations:
       edit:
@@ -319,15 +322,23 @@ de:
     tooltip: "Verschiebe die Reihenfolge mit Drag&Drop."
   search:
     any: "Alle"
-    no_profile: "Es sind keine Profile vorhanden.<br> Hier kommst du wieder %{link} "
+    no_profile: "Keine passende Speakerin gefunden?"
     profiles_topics: "Du hast nach dem Thema: <b>%{topics_name}</b> gesucht und %{profiles_count} Speakerinnen gefunden."
     profiles: "%{link}"
-    all_profiles: "zurück zu allen Profilen >>"
-    empty: "Wir haben leider nix gefunden :("
+    all_profiles: ">> in allen Profilen blättern"
+    did_you_mean: "Meinst du vielleicht %{suggestions_fullname}?"
+    or_did_you_mean: "Oder %{suggestions_topic}?"
+    filter: "<br> Hier kannst du die Suchergebnisse filtern >>"
+    empty: "Wir haben leider keine passende Speakerin gefunden :("
     success: "Wir haben"
     result: {
       one: " eine Speakerin gefunden!",
       other: " %{count} Speakerinnen gefunden! Yeah! "
     }
+    more_options: "Keine passende Speakerin gefunden?"
+    adapt_search: ">> Suche anpassen"
+    countries_agg: "Länder:"
+    cities_agg: "Städte:"
+    languages_agg: "Sprachen:"
   error_messages:
     picture_too_big: " ist zu groß. Bitte nicht größer als 1 MB"
