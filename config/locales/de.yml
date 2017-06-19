@@ -246,6 +246,7 @@ de:
       updated: "Referenz wurde erfolgreich geändert."
       destroyed: "Referenz wurde erfolgreich gelöscht."
       no_permission: "Du hast nicht die Rechte, die Referenz zu bearbeiten."
+      error: "Es sieht so aus, als ob Du noch was eintragen musst."
     categories:
       created: '%{category_name} wurde erfolgreich erstellt.'
       updated: '%{category_name} wurde erfolgreich geändert.'
@@ -256,7 +257,8 @@ de:
         firstname: "Mein Vorname:"
         lastname: "Mein Nachname:"
         bio: 'Deine Bio auf %{language}:<br>
-              <small>Hier ist Platz für eine kurze oder auch längere Bio. Außerdem sollten hier Fachkenntnisse und mögliche Vortragsthemen genauer beschrieben werden. Das hilft Veranstalterinnen und Veranstaltern herauszufinden, ob Ihr die Richtigen für ihr Event sein könntet.</small>'
+              <small>Hier ist Platz für eine kurze oder auch längere Bio. Außerdem sollten hier Fachkenntnisse und mögliche Vortragsthemen genauer beschrieben werden. Das hilft Veranstalterinnen und Veranstaltern herauszufinden, ob Ihr die Richtigen für ihr Event sein könntet.
+              <br>Du kannst einfache HTML Tags nutzen, um den Text zu formatieren. Zum Beispiel: < i >< /i >< b >< /b > < br ></small>'
         topic_list: "Meine Themen als Tags:<br><small>Bitte schaue zuerst, ob Dein Thema schon vorhanden ist.</small>"
         main_topic_title: "Mein Hauptthema:"
         main_topic: "Mein Hauptthema auf %{language}: (Mehr als 30 Zeichen werden nicht angezeigt)<small>
@@ -274,7 +276,7 @@ de:
       medialink:
         url: "URL:"
         title: "Überschrift:"
-        description: "Beschreibung:<small> ( Du kannst einfache HTML Tags nutzen, um den Text zu formatieren. Zum Beispiel: < i >< /i >< b >< /b >< br >)</small>"
+        description: "Beschreibung:<br><small>Du kannst einfache HTML Tags nutzen, um den Text zu formatieren. Zum Beispiel: < i >< /i >< b >< /b > < br ></small>"
   devise:
     registrations:
       edit:
