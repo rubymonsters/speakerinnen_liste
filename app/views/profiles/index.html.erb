@@ -93,11 +93,6 @@
           <p class="text--color-blue font-size-24 text--left o-layout__item 1/1">
           <%= t(:did_you_mean, scope: 'search', suggestions_fullname: @profiles.response.response.suggest.did_you_mean_fullname.first.options.map {|sug| link_to(sug.text.capitalize, "profiles_search?&search=#{sug.text}")} * ", " ).html_safe %>
           </p>
-
-        <% else %>
-          <p class="text--color-blue font-size-24 text--center o-layout__item 1/1">
-            <%= t(:no_profile, link: link_to(t(:all_profiles, scope: 'search'), profiles_path), scope: 'search').html_safe %>
-          </p>
         <% end %>
 
       <%# if in topic or category or nothing: %>
