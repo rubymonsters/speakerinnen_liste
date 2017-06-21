@@ -79,3 +79,4 @@ gem 'uglifier', '>= 1.0.3'
 gem 'unicorn'
 
 gem 'rack-piwik', '~> 0.3.0', require: 'rack/piwik'
+gem 'newrelic_rpm'
