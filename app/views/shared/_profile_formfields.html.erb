@@ -1,16 +1,35 @@
 <div class="o-layout mt">
-  <div class="o-layout__item 3/6 box__bg--white">
+  <div class="o-layout__item 2/6">
 
+    <%= f.label :picture %>
+    <p>
+      <!-- ToDo: width of picture should be made responsive -->
+      <%= image_tag(@profile.picture_url, width: 200) if @profile.picture.present? %>
+    </p>
+    <p>
+      <%= f.file_field :picture %>
+    </p>
+
+    <p class='font-size--small'>
+      <%= t(:copyright_photo, scope: 'profiles.form') %>
+      <%= t(:size_photo, scope: 'profiles.form') %>
+    </p>
+
+    <%= f.check_box :remove_picture %>
+    <%= t(:delete_picture, scope: 'profiles.form') %>
+
+  </div>
+
+  <div class="o-layout__item 4/6 box__bg--white">
+    <!-- ToDo: width of input fields should be made responsive -->
     <%= f.input :firstname, input_html: { class: "mb input--width-100" } %>
     <%= f.input :lastname, input_html: { class: "mb input--width-100" } %>
     <%= f.input :email, input_html: { class: "mb input--width-100" } %>
-    <%= f.input :twitter, placeholder: '@', input_html: { class: "mb input--width-100" } %>
     <%= f.input :city, input_html: { class: "mb input--width-100" } %>
     <%= f.label :country, input_html: { class: "mb input--width-100" } %>
     <%= f.country_select :country, label: t(:country, scope: 'activerecord.attributes.profile').html_safe,
-      priority_countries: ["DE", "FR", "GB"], include_blank: t(:country_select, scope: 'profiles.profile'),
-      wrapper_html: { class: "mb" } %>
-
+        priority_countries: ["DE", "FR", "GB"], include_blank: t(:country_select, scope: 'profiles.profile'),
+        wrapper_html: { class: "mb" } %>
     <div class="input check_boxes optional profile_iso_languages mt">
       <label class="check_boxes optional control-label"><%= t(:languages, scope: 'activerecord.attributes.profile') %></label><br>
       <%= render partial: "shared/iso_languages", collection: IsoLanguage.top_list, locals: { profile: profile }  %>
@@ -26,8 +45,11 @@
       <%= render partial: "shared/iso_languages", collection: IsoLanguage.rest_list  %>
       <input name="profile[iso_languages][]" value="" type="hidden">
     </div>
+  </div>
 
-    <%= f.input :website, placeholder: 'http://', input_html: { class: "input--width-100" }, wrapper_html: { class: "mv" } %>
+  <div class="o-layout__item 1/1 box__bg--white mt">
+    <%= f.input :twitter, placeholder: '@', input_html: { class: "mb input--width-100" } %>
+    <%= f.input :website, placeholder: 'http://', input_html: { class: "mb input--width-100" }, wrapper_html: { class: "mv" } %>
     <%= f.input :topic_list, label: t(:topic_list, scope: 'activerecord.attributes.profile').html_safe, input_html: { class: "input--width-100" }, wrapper_html: { class: "mv" } %>
 
     <ul class='hidden' id='availableTags'>
@@ -36,73 +58,33 @@
       <% end %>
     </ul>
 
-  </div>
+    <h5>"Deutsche Inhalte"</h5>
 
-  <div class="o-layout__item 3/6">
+    <div id="edit-de">
+      <%= f.label :main_topic, t(:main_topic, scope: 'activerecord.attributes.profile',
+        language: t(:de, scope: 'i18n.language')).html_safe %>
+      <%= f.text_field :main_topic_de, as: :text, class: 'mb input--width-100', maxlength: '30' %>
+      <%= f.label :bio, t(:bio, scope: 'activerecord.attributes.profile',
+        language: t(:de, scope: 'i18n.language')).html_safe %>
+      <%= f.text_area :bio_de, as: :text, class: 'mb input--width-100', rows: 10 %>
+    </div>
 
-    <%= f.label :picture %>
-    <p>
-      <%= image_tag(@profile.picture_url, width: 100) if @profile.picture.present? %>
-    </p>
-    <p>
-      <%= f.file_field :picture %>
-    </p>
+    <h5>"Englische Inhalte"</h5>
 
-    <p class='font-size--small'>
-      <%= t(:copyright_photo, scope: 'profiles.form') %>
-      <%= t(:size_photo, scope: 'profiles.form') %>
-    </p>
-
-    <%= f.check_box :remove_picture %>
-    <%= t(:delete_picture, scope: 'profiles.form') %>
-
-  </div>
-</div>
-
-<div class="o-layout pt">
-  <div class="o-layout__item 1/1 box__bg--white">
-
-    <h5>
-      <%= t(:translation, scope: 'activerecord.attributes.profile').html_safe %>
-    </h5>
-
-    <%= f.fields_for :translations, @profile.translations.sort_by(&:locale) do |translation| %>
-
-      <h2>
-          <%= 'In ' + t(translation.object.locale, scope: 'i18n.language') + ':' %>
-      </h2>
-      <%= translation.hidden_field :locale %>
-
-      <p>
-        <%= translation.label :main_topic, t(:main_topic,
-          scope: 'activerecord.attributes.profile',
-          language: t(translation.object.locale, scope: 'i18n.language')).html_safe,
-          class: '' %>
-      </p>
-
-      <%= translation.text_field :main_topic, class: 'input--width-100', maxlength: '30' %>
-
-      <%= translation.hidden_field :locale %>
-
-      <p>
-        <%= translation.label :bio, t(:bio,
-          scope: 'activerecord.attributes.profile',
-          language: t(translation.object.locale, scope: 'i18n.language')).html_safe,
-          class: '' %>
-      </p>
-
-      <%= translation.text_area :bio, rows: 10, class: 'input--width input--width-100 mb' %>
-      <hr>
-    <% end %>
+    <div id="edit-en">
+      <%= f.label :main_topic, t(:main_topic, scope: 'activerecord.attributes.profile',
+        language: t(:en, scope: 'i18n.language')).html_safe %>
+      <%= f.text_field :main_topic_en, as: :text, class: 'mb input--width-100', maxlength: '30' %>
+      <%= f.label :bio, t(:bio, scope: 'activerecord.attributes.profile',
+        language: t(:en, scope: 'i18n.language')).html_safe %>
+      <%= f.text_area :bio_en, as: :text, class: 'mb input--width-100', rows: 10 %>
+    </div>
 
     <%= f.button :submit, t(:update, scope: 'profiles.form'), class:'btn btn--small mt mb++' %>
-
   </div>
 </div>
 
 <script type="text/javascript" charset="utf-8">
-
-
 
 $('#expander').click(function(){
   if ( $('#rest_languages').css('display') == 'none' ) {

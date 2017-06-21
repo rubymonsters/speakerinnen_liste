@@ -138,7 +138,16 @@ class ProfilesController < ApplicationController
       :medialinks,
       :slug,
       :admin_comment,
+      :main_topic_en,
+      :main_topic_de,
+      :bio_en,
+      :bio_de,
       translations_attributes: [:id, :bio, :main_topic, :locale])
+  end
+
+  def custom_params
+    permitted = Profile.globalize_attribute_names
+    params[:profile].permit(*permitted)
   end
 
   def profiles_for_index
