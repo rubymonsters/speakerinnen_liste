@@ -1,0 +1,38 @@
+/*------------------------------------*\
+    #TABS
+\*------------------------------------*/
+
+/**
+ * A simple abstraction for making equal-width navigation tabs.
+ */
+
+// Predefine the variables below in order to alter and enable specific features.
+$inuit-tabs-namespace: $inuit-namespace !default;
+
+/**
+ * 1. Reset any residual styles (most likely from lists).
+ * 2. Tables for layout!
+ * 3. Force all `table-cell` children to have equal widths.
+ * 4. Force the object to be the full width of its parent. Combined with [2],
+ *    this makes the object behave in a quasi-`display: block;` manner.
+ */
+.#{$inuit-tabs-namespace}tabs,
+%#{$inuit-tabs-namespace}tabs {
+    margin:  0; /* [1] */
+    padding: 0; /* [1] */
+    list-style: none; /* [1] */
+    display: table; /* [2] */
+    table-layout: fixed; /* [3] */
+    width: 100%; /* [4] */
+    text-align: center;
+}
+
+    .#{$inuit-tabs-namespace}tabs__item,
+    %#{$inuit-tabs-namespace}tabs__item {
+        display: table-cell; /* [2] */
+    }
+
+        .#{$inuit-tabs-namespace}tabs__link,
+        %#{$inuit-tabs-namespace}tabs__link {
+            display: block;
+        }
