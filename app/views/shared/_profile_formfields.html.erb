@@ -58,10 +58,13 @@
       <% end %>
     </ul>
 
-    <ul class="tabs">
-      <li class=tabs__item>
-        <h5><a href="#edit-de" class="tabs__link">Deutsch</a></h5>
+    <div>
+      <p id="show-de" class="tab-selection"><%= t(:de, scope: 'i18n.language').html_safe %></p>
+      <p id="show-en" class="tab-selection"><%= t(:en, scope: 'i18n.language').html_safe %></p>
+    </div>
 
+    <ul class="tabs">
+      <li class="tabs__item">
         <div id="edit-de">
           <%= f.label :main_topic, t(:main_topic, scope: 'activerecord.attributes.profile',
             language: t(:de, scope: 'i18n.language')).html_safe %>
@@ -73,9 +76,7 @@
       </li>
 
       <li class="tabs__item">
-        <h5><a href="#edit-en" class="tabs__link">Englisch</a></h5>
-
-        <div id="edit-en">
+        <div id="edit-en" class="hidden">
           <%= f.label :main_topic, t(:main_topic, scope: 'activerecord.attributes.profile',
             language: t(:en, scope: 'i18n.language')).html_safe %>
           <%= f.text_field :main_topic_en, as: :text, class: 'mb input--width-100', maxlength: '30' %>
@@ -100,5 +101,14 @@ $('#expander').click(function(){
     $('#expander').html('<%= t(:show_more_languages, scope: 'profiles.edit')%>');
   }});
 
+$('#show-de').click(function(){
+    $('#edit-de').css('display','block')
+    $('#edit-en').css('display','none');
+  });
+
+$('#show-en').click(function(){
+    $('#edit-en').css('display','block')
+    $('#edit-de').css('display','none');
+  });
 
 </script>

@@ -326,7 +326,6 @@ header {
   }
 }
 
-
 /* startpage */
 #startpage__start-teaser {
   background: image-url('start-teaser.jpg') no-repeat center center;
@@ -378,8 +377,6 @@ header {
 }
 
 /* page */
-
-
 .photo--grey {
   border: $border;
   -webkit-transition: 1s;
@@ -419,6 +416,17 @@ header {
   overflow: hidden;
 }
 
+/*profile edit*/
+.tab-selection {
+  display: inline-block;
+  padding: 0 4px;
+  color: $link-color;
+
+  &:hover {
+    color: $link-color-hover;
+    background-color: $link-bg-color-hover;
+  }
+}
 /*classes for topicscloud*/
 .s {
   font-size: 12px;
