@@ -47,7 +47,7 @@
     </div>
   </div>
 
-  <div class="o-layout__item 1/1 box__bg--white mt">
+  <div class="o-layout__item 1/1 box__bg bg--white mt">
     <%= f.input :twitter, placeholder: '@', input_html: { class: "mb input--width-100" } %>
     <%= f.input :website, placeholder: 'http://', input_html: { class: "mb input--width-100" }, wrapper_html: { class: "mv" } %>
     <%= f.input :topic_list, label: t(:topic_list, scope: 'activerecord.attributes.profile').html_safe, input_html: { class: "input--width-100" }, wrapper_html: { class: "mv" } %>
@@ -58,34 +58,29 @@
       <% end %>
     </ul>
 
-    <div>
-      <p id="show-de" class="tab-selection"><%= t(:de, scope: 'i18n.language').html_safe %></p>
-      <p id="show-en" class="tab-selection"><%= t(:en, scope: 'i18n.language').html_safe %></p>
+    <ul class="tabrow">
+      <li id="show-de" class="ph pv-- <%= "selected" if I18n.locale == :de %>"> <%= t(:de, scope: 'i18n.language').html_safe %></li>
+      <li id="show-en" class="ph pv-- <%= "selected" if I18n.locale == :en %>"> <%= t(:en, scope: 'i18n.language').html_safe %></li>
+    </ul>
+
+    <div id="edit-de" class="ox__bg bg--white pt+ <%= "hidden" unless I18n.locale == :de %>" >
+      <%= f.label :main_topic, t(:main_topic, scope: 'activerecord.attributes.profile',
+        language: t(:de, scope: 'i18n.language')).html_safe %>
+      <%= f.text_field :main_topic_de, as: :text, class: 'mb input--width-100', maxlength: '30' %>
+      <%= f.label :bio, t(:bio, scope: 'activerecord.attributes.profile',
+        language: t(:de, scope: 'i18n.language')).html_safe %>
+      <%= f.text_area :bio_de, as: :text, class: 'mb input--width-100', rows: 10 %>
     </div>
 
-    <ul class="tabs">
-      <li class="tabs__item">
-        <div id="edit-de">
-          <%= f.label :main_topic, t(:main_topic, scope: 'activerecord.attributes.profile',
-            language: t(:de, scope: 'i18n.language')).html_safe %>
-          <%= f.text_field :main_topic_de, as: :text, class: 'mb input--width-100', maxlength: '30' %>
-          <%= f.label :bio, t(:bio, scope: 'activerecord.attributes.profile',
-            language: t(:de, scope: 'i18n.language')).html_safe %>
-          <%= f.text_area :bio_de, as: :text, class: 'mb input--width-100', rows: 10 %>
-        </div>
-      </li>
+    <div id="edit-en" class="box__bg--white pt+ <%= "hidden" unless I18n.locale == :en %>" >
+      <%= f.label :main_topic, t(:main_topic, scope: 'activerecord.attributes.profile',
+        language: t(:en, scope: 'i18n.language')).html_safe %>
+      <%= f.text_field :main_topic_en, as: :text, class: 'mb input--width-100', maxlength: '30' %>
+      <%= f.label :bio, t(:bio, scope: 'activerecord.attributes.profile',
+        language: t(:en, scope: 'i18n.language')).html_safe %>
+      <%= f.text_area :bio_en, as: :text, class: 'mb input--width-100', rows: 10 %>
+    </div>
 
-      <li class="tabs__item">
-        <div id="edit-en" class="hidden">
-          <%= f.label :main_topic, t(:main_topic, scope: 'activerecord.attributes.profile',
-            language: t(:en, scope: 'i18n.language')).html_safe %>
-          <%= f.text_field :main_topic_en, as: :text, class: 'mb input--width-100', maxlength: '30' %>
-          <%= f.label :bio, t(:bio, scope: 'activerecord.attributes.profile',
-            language: t(:en, scope: 'i18n.language')).html_safe %>
-          <%= f.text_area :bio_en, as: :text, class: 'mb input--width-100', rows: 10 %>
-        </div>
-      </li>
-    </ul>
     <%= f.button :submit, t(:update, scope: 'profiles.form'), class:'btn btn--small mt mb++' %>
   </div>
 </div>
@@ -104,11 +99,15 @@ $('#expander').click(function(){
 $('#show-de').click(function(){
     $('#edit-de').css('display','block')
     $('#edit-en').css('display','none');
+    $('#show-de').addClass('selected');
+    $('#show-en').removeClass('selected');
   });
 
 $('#show-en').click(function(){
     $('#edit-en').css('display','block')
     $('#edit-de').css('display','none');
+    $('#show-en').addClass('selected');
+    $('#show-de').removeClass('selected');
   });
 
 </script>
