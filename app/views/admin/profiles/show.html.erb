@@ -21,7 +21,7 @@
 
       </div>
 
-      <div class="o-layout__item 3/6 box__bg--white">
+      <div class="o-layout__item 3/6 box__bg bg--white">
 
             <h2 class="delta sans-serif mb- bb pb text--color-blue">
               <% if @profile.published %>
@@ -112,7 +112,7 @@
 
         <% if @profile.main_topic %>
           <div class="o-layout pt">
-            <div class="o-layout__item 5/6 box__bg--white">
+            <div class="o-layout__item 5/6 box__bg bg--white">
               <h2 class="delta sans-serif pb">
                 <%= t(:main_topic_title, scope: 'activerecord.attributes.profile') + ":" %>
               </h2>
@@ -123,7 +123,7 @@
 
         <% if @profile.bio %>
           <div class="o-layout pt">
-            <div class="o-layout__item 5/6 box__bg--white">
+            <div class="o-layout__item 5/6 box__bg bg--white">
               <h2 class="delta sans-serif pb">
                 <%= t(:bio, scope: 'profiles.profile') %>
               </h2>
@@ -136,7 +136,7 @@
 
     <% if @profile.medialinks.any? %>
       <div class="o-layout pt+">
-        <div class="o-layout__item 5/6 box__bg--white mb+">
+        <div class="o-layout__item 5/6 box__bg bg--white mb+">
           <h2 class="delta sans-serif pb">
             <%= t(:media, scope: 'profiles.profile') %>
           </h2>
