@@ -12,7 +12,7 @@ class Profile < ActiveRecord::Base
 
   translates :bio, :main_topic, fallbacks_for_empty_translations: true
   accepts_nested_attributes_for :translations
-  globalize_accessors
+  globalize_accessors :locales => [:en, :de], :attributes => [:main_topic, :bio]
 
   extend FriendlyId
   friendly_id :slug_candidate, use: :slugged
