@@ -99,6 +99,7 @@ describe 'profile navigation' do
     it 'directs after edit profile to the edit page' do
       expect(page).to have_content('Vorname')
       expect(page).to have_content('Twitteraccount')
+      expect(page).to have_content('Mein Hauptthema auf Deutsch:')
     end
 
     it 'shows the correct tabs and the selected tab' do
@@ -109,20 +110,4 @@ describe 'profile navigation' do
       expect(page).to have_css('.hidden', text: 'Mein Hauptthema auf Englisch')
     end
   end
-
-  describe 'toggle the language tab correctly', js: true, skip: true do
-    before do
-      sign_in ada
-      click_on 'EN', match: :first
-      click_on 'DE', match: :first
-      click_on 'Profil bearbeiten'
-    end
-
-    it 'when clicking on the english tab show the german main topic' do
-      page.execute_script("$('#show_en').text('Englisch');")
-      save_and_open_page
-      expect(page).to have_css('.hidden', text: 'Mein Hauptthema auf Deutsch')
-    end
-  end
-
 end
