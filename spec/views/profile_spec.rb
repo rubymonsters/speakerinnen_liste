@@ -65,4 +65,49 @@ describe 'profile navigation' do
       expect(page).to have_content('How to programm')
     end
   end
+
+  describe 'edit view profile in EN' do
+    before do
+      sign_in ada
+      click_on 'EN', match: :first
+      click_on 'Edit profile'
+    end
+
+    it 'directs after edit profile to the edit page' do
+      expect(page).to have_content('name')
+      expect(page).to have_content('twitteraccount')
+      expect(page).to have_content('My main topic in German')
+    end
+
+    it 'shows the correct tabs and the selected tab' do
+      expect(page).to have_css('.selected', text: 'English')
+    end
+
+    it 'shows the correct main topic' do
+      expect(page).to have_css('.hidden', text: 'My main topic in German')
+    end
+  end
+
+  describe 'edit view profile in DE' do
+    before do
+      sign_in ada
+      click_on 'EN', match: :first
+      click_on 'DE', match: :first
+      click_on 'Profil bearbeiten'
+    end
+
+    it 'directs after edit profile to the edit page' do
+      expect(page).to have_content('Vorname')
+      expect(page).to have_content('Twitteraccount')
+      expect(page).to have_content('Mein Hauptthema auf Deutsch:')
+    end
+
+    it 'shows the correct tabs and the selected tab' do
+      expect(page).to have_css('.selected', text: 'Deutsch')
+    end
+
+    it 'shows the correct main topic' do
+      expect(page).to have_css('.hidden', text: 'Mein Hauptthema auf Englisch')
+    end
+  end
 end
