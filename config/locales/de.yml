@@ -102,8 +102,8 @@ de:
         links_text: "Hier gibt es Links zu ähnlichen Projekten:"
         contact: "Kontakt"
         contact_link: "E-Mail"
-        address: "<a href='http://twitter.com/speakerinnen', target='_blank', class='content__link bg--white'>Twitter</a>"
-        github: "<a href='http://github.com/rubymonsters/speakerinnen_liste', target='_blank', class='content__link bg--white'>GitHub</a>"
+        address: "<a href='http://twitter.com/speakerinnen', target='_blank', class='pv-'>Twitter</a>"
+        github: "<a href='http://github.com/rubymonsters/speakerinnen_liste', target='_blank', class='pv-'>GitHub</a>"
         devblog: "<a href='http://speakerinnen.wordpress.com/', taget='_blank', class='content__link bg--white'>Entwicklerinnen-Blog</a>"
         faq_short: |
             <strong>Warum gibt es Thema XYZ noch nicht?</strong><br>
@@ -163,7 +163,7 @@ de:
       error: "Bitte fülle alle Felder aus, damit die Speakerin alle Informationen bekommt, die sie benötigt."
       error_email_for_us: "Bitte fülle alle Felder aus."
   profiles:
-    category: "In der Kategorie <b>%{category_name}</b> haben wir %{profiles_count} Speakerinnen* und <a href='#topics_anchor', class='text__link--bg'>%{topics_count} Themen </a>gefunden."
+    category: "In der Kategorie <b>%{category_name}</b> haben wir %{profiles_count} Speakerinnen* und <a href='#topics_anchor'>%{topics_count} Themen </a>gefunden."
     tag:
       topics: "Top-Themen"
       topics_with_category: "in der Kategorie %{category_name}"

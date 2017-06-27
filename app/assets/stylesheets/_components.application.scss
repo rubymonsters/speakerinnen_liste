@@ -10,7 +10,6 @@ a, .link{
   cursor: pointer;
 
   &:hover {
-    color: $font-color;
     text-decoration: underline;
   }
 }
@@ -25,8 +24,17 @@ a, .link{
     -o-transition: all .2s ease-in-out;
     background-color: #3C3C3A;
     color: whitesmoke;
+    text-decoration: none;
 
   }
+}
+
+.button_link {
+  &:hover {
+    color: $font-color;
+    text-decoration: none;
+  }
+
 }
 
 .sans-serif{
@@ -368,6 +376,7 @@ header {
   &:hover {
     color: $link-color-hover;
     background-color: $link-bg-color-hover;
+    text-decoration: none;
   }
 }
 
@@ -437,15 +446,16 @@ header {
 .topics-cloud a{
   background-color: #fff;
   padding: 0px 4px;
+  &:hover {
+    -webkit-transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+    background-color: #3C3C3A;
+    color: whitesmoke;
+    text-decoration: none;
+  }
 }
 
-.topics-cloud a:hover {
-  -webkit-transition: all .2s ease-in-out;
-  -moz-transition: all .2s ease-in-out;
-  -o-transition: all .2s ease-in-out;
-  background-color: #3C3C3A;
-  color: whitesmoke;
-  }
 
 .topics-cloud .topic-filter {
   float: right;
