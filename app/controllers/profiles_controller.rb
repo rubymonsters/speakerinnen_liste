@@ -43,6 +43,8 @@ class ProfilesController < ApplicationController
   end
 
   def update
+    # @medialinks = @profile.medialinks.find(params[:medialinks])
+    params.except(:medialinks)
     if @profile.update_attributes(profile_params)
       redirect_to @profile, notice: (I18n.t('flash.profiles.updated', profile_name: @profile.name_or_email))
     elsif current_profile
@@ -135,14 +137,14 @@ class ProfilesController < ApplicationController
       :name,
       :topic_list,
       :media_url,
-      :medialinks,
       :slug,
       :admin_comment,
       :main_topic_en,
       :main_topic_de,
       :bio_en,
       :bio_de,
-      translations_attributes: [:id, :bio, :main_topic, :locale])
+      translations_attributes: [:id, :bio, :main_topic, :locale],
+      medialinks_attributes: [:url, :title, :description])
   end
 
   def custom_params
