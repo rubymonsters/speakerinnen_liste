@@ -32,7 +32,7 @@ class MedialinksController < ApplicationController
     @medialink = @profile.medialinks.build(medialink_params)
     if @medialink.save
       flash[:notice] = (I18n.t('flash.medialink.created'))
-      redirect_to profile_medialinks_path(@profile)
+      redirect_to edit_profile_path(@profile)
     else
       flash[:notice] = (I18n.t('flash.medialink.error'))
       render action: 'new'

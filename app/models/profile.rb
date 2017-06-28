@@ -5,7 +5,7 @@ class Profile < ActiveRecord::Base
   include ActiveModel::Serialization
 
   has_many :medialinks
-  accepts_nested_attributes_for :medialinks
+  accepts_nested_attributes_for :medialinks, allow_destroy: true
 
   serialize :iso_languages, Array
   validate :iso_languages_array_has_right_format

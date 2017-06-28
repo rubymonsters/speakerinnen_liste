@@ -81,11 +81,44 @@
       <%= f.text_area :bio_en, as: :text, class: 'mb input--width-100', rows: 10 %>
     </div>
 
-    <%= f.simple_fields_for :medialinks do |m| %>
-      <%= m.input :url, as: :string, input_html: { class: "input--width-100" }, wrapper_html: { class: 'mt' }   %>
-      <%= m.input :title, as: :string, input_html: { class: "input--width-100" }, wrapper_html: { class: 'mt' }   %>
-      <%= m.input :description, label: t(:description, scope: 'activerecord.attributes.medialink').html_safe, as: :text, input_html: { rows: 10, class: "input--width-100" }, wrapper_html: { class: 'mt' }   %>
-    <% end %>
+    <div id="medialinks">
+      <h1><%= t(:index, scope: 'medialinks')%></h1>
+      <p class="pb bb"><%= t(:medialink_description, scope: 'medialinks').html_safe %></p>
+
+      <%= link_to(new_profile_medialink_path(@profile)) do %>
+        <div class="btn btn--small mv">
+          <i class="fa fa-plus-circle"></i>
+          <%= t(:new, scope: 'medialinks') %>
+        </div>
+      <% end %>
+
+      <h2 class="pt">
+        <%= t(:media, scope: 'profiles.profile') %>
+      </h2>
+
+      <p class="help"><%= t(:help, scope: 'medialinks').html_safe %></p>
+
+      <p id="medialinks__list--sort-message"></p>
+
+        <ul id="medialinks__list" data-update-url="<%= sort_profile_medialinks_url(current_profile)%>" class="<%= t(:language, scope: 'medialinks')%>">
+          <% current_profile.medialinks.each do |medialink| %>
+            <%= content_tag_for(:li, medialink, nil, {'title' => t(:tooltip, scope: 'medialinks')}) do %>
+              <b>
+                <%= medialink.title %>
+              </b>
+              <%= medialink.url_html if medialink.url != 'http://' %>
+              <%= simple_format(medialink.description) %>
+
+              <hr>
+
+              <%= link_to '<i class="fa fa-pencil"></i>'.html_safe+ t(:edit_link, scope: 'medialinks'), edit_profile_medialink_path(@profile, medialink) %>
+              <%= link_to '<i class="fa fa-minus-circle"></i>'.html_safe+ t(:delete_link, scope: 'medialinks'), profile_medialink_path(@profile, medialink),
+                method: :delete, data: { confirm: 'Are you sure?'}, title: t(:delete, scope: "medialinks") %>
+            <% end %>
+          <% end %>
+        </ul>
+    </div>
+
 
      <%= f.button :submit, t(:update, scope: 'profiles.form'), class:'btn btn--small mt mb++' %>
   </div>

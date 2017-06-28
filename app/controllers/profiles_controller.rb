@@ -40,11 +40,11 @@ class ProfilesController < ApplicationController
   # should reuse the devise view
   def edit
     build_missing_translations(@profile)
+    @profile.medialinks.build
   end
 
   def update
-    # @medialinks = @profile.medialinks.find(params[:medialinks])
-    params.except(:medialinks)
+    @medialinks = @profile.medialinks
     if @profile.update_attributes(profile_params)
       redirect_to @profile, notice: (I18n.t('flash.profiles.updated', profile_name: @profile.name_or_email))
     elsif current_profile
@@ -144,7 +144,7 @@ class ProfilesController < ApplicationController
       :bio_en,
       :bio_de,
       translations_attributes: [:id, :bio, :main_topic, :locale],
-      medialinks_attributes: [:url, :title, :description])
+      medialinks_attributes: [:id, :url, :title, :description, :profile_id, :position])
   end
 
   def custom_params
