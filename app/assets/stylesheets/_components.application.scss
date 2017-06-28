@@ -191,9 +191,6 @@ ul.tagit {
   color: $red;
 }
 
-.text--color-blue {
-  color: $blue;
-}
 
 .hidden {
   display: none;
@@ -324,15 +321,6 @@ header {
   background: white;
 }
 
-.content__link {
-  padding: 0 4px;
-  color: $link-color;
-
-  &:hover {
-    color: $link-color-hover;
-    background-color: $link-bg-color-hover;
-  }
-}
 
 /* startpage */
 #startpage__start-teaser {
@@ -443,7 +431,7 @@ header {
   text-align: center;
 }
 
-.topics-cloud a{
+.topics-cloud a, .topics-profile a {
   background-color: #fff;
   padding: 0px 4px;
   &:hover {
@@ -465,6 +453,7 @@ header {
   height: 32px;
   width: 160px;
 }
+
 
 .input-btn {
   padding-top: 6px;
@@ -601,6 +590,12 @@ ul#medialinks__list {
   color: white;
   background-color: $grey;
   padding: 0 1px;
+}
+
+.category--assigned_to_tag {
+  &:hover {
+    text-decoration: none;
+  }
 }
 
 .error {

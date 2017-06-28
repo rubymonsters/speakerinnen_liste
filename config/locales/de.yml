@@ -104,7 +104,7 @@ de:
         contact_link: "E-Mail"
         address: "<a href='http://twitter.com/speakerinnen', target='_blank', class='pv-'>Twitter</a>"
         github: "<a href='http://github.com/rubymonsters/speakerinnen_liste', target='_blank', class='pv-'>GitHub</a>"
-        devblog: "<a href='http://speakerinnen.wordpress.com/', taget='_blank', class='content__link bg--white'>Entwicklerinnen-Blog</a>"
+        devblog: "<a href='http://speakerinnen.wordpress.com/', taget='_blank'>Entwicklerinnen-Blog</a>"
         faq_short: |
             <strong>Warum gibt es Thema XYZ noch nicht?</strong><br>
             Weil es noch niemand angelegt hat. Alle Themen, die in der Speakerinnen-Liste zu sehen sind, wurden von mindestens einer Speakerin in ihrem Profil als Tags eingegeben. Daraus entstehen automatisch auf der Seite die für alle sichtbaren Themen.<br>
