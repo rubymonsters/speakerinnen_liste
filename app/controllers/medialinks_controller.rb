@@ -5,7 +5,6 @@ class MedialinksController < ApplicationController
   before_action :set_medialink, only: [:edit, :update, :destroy]
 
   def index
-    @medialinks = @profile.medialinks.order(:position)
   end
 
   def new
