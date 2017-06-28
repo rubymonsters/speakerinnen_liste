@@ -82,7 +82,7 @@
     </div>
 
     <div id="medialinks">
-      <h1><%= t(:index, scope: 'medialinks')%></h1>
+      <h2><%= t(:index, scope: 'medialinks')%></h2>
       <p class="pb bb"><%= t(:medialink_description, scope: 'medialinks').html_safe %></p>
 
       <%= link_to(new_profile_medialink_path(@profile)) do %>
@@ -91,10 +91,6 @@
           <%= t(:new, scope: 'medialinks') %>
         </div>
       <% end %>
-
-      <h2 class="pt">
-        <%= t(:media, scope: 'profiles.profile') %>
-      </h2>
 
       <p class="help"><%= t(:help, scope: 'medialinks').html_safe %></p>
 

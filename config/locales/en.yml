@@ -194,8 +194,6 @@ en:
       sure: "Are you sure?"
       link: "Be sure to add 'http://'"
       email: "Email:"
-    medialinks:
-      edit: "Edit references"
     edit:
       show_more_languages: "Show more languages >>"
       show_less_languages: "Show less languages >>"
@@ -299,11 +297,11 @@ en:
         login: "Log in"
         signin: "Sign in"
   medialinks:
-    edit: "Edit Reference"
-    new: "Add Reference"
-    delete: "Delete Reference"
-    index: "References"
-    show: "Show References"
+    edit: "Edit Previous Talk"
+    new: "Add Previous Talk"
+    delete: "Delete previous talk"
+    index: "Previous Talks"
+    show: "Show Previous Talks"
     # Translation
     medialink_description: "Here you can add examples of your previous talks, panel discussions, TV shows or similar talking situations.
 It would be best not to have too many but also not too few. Add diverse examples so that event organizers can get a picture of your work as a speaker.
