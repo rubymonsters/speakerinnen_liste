@@ -253,23 +253,24 @@ en:
       profile:
         firstname: "My first name:"
         lastname: "My last name:"
-        bio: "My bio in %{language}:<br>
-        <small>Here you can add a short or long bio of yourself. Please also add specific expertise and topics you feel comfortable speaking about. This will help organizers of events to understand whether you might be the person they're looking for.
-        <br>You can use simple HTML tags to format the text. For example: < i >< /i >< b >< /b >< br ></small>"
-
-        topic_list: "My topics as tags:<br><small>Please have a look first, if your topic already exists</small>"
+        bio: "My bio in %{language}:"
+        bio_tooltip: "Here you can add a short or long bio of yourself. Please also add specific expertise and topics you feel comfortable speaking about. This will help organizers of events to understand whether you might be the person they're looking for.
+        <br>You can use simple HTML tags to format the text. For example: < i >< /i >< b >< /b >< br >"
+        topic_list: "My topics as tags:"
+        topic_list_tooltip: "Please have a look first, if your topic already exists."
         main_topic_title: "My main topic"
-        main_topic: "My main topic in %{language}: (More than 30 characters are not shown)<br><small>Please choose one topic as your favorite topic and enter it again. It will be visible along with your name and picture at the speaker overview site.</small>"
+        main_topic: "My main topic in %{language}:"
+        main_topic_tooltip: "Only 30 characters are shown. Please choose one topic as your favorite topic and enter it again. It will be visible along with your name and picture at the speaker overview site."
         tag_list: "Existing topics"
         talks: "My talks"
         languages: "I can talk in:"
         city: "The city, I live in:"
+        city_tooltip: "Please list multiple cities with a comma as a seperator, e.g. Berlin, New York."
         country: "The country, I live in:"
         twitter: "My twitteraccount:"
         email: "My email address:"
         website: "My website:"
         picture: "A picture of me: ( if possible in color, we show it in black and white.)"
-        translation: "<strong>You can fill in your maintopic and your bio both in German and English:</strong>"
       medialink:
         url: "URL:"
         title: "Title:"

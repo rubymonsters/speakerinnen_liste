@@ -651,6 +651,16 @@ input[type=file] {
 .tabrow:before {
   z-index: 1;
 }
+
+// .hint, .arrow:after {
+//   background:rgba(0,0,0,0.6);
+// }
+// .hint {
+//   padding: 10px 20px;
+//   color: white;
+//   font-size: halve($inuit-base-spacing-unit);
+// }
+
 /* autocomplete in search */
 .twitter-typeahead {
   font-family: $sans-serif;

@@ -254,23 +254,24 @@ de:
       profile:
         firstname: "Mein Vorname:"
         lastname: "Mein Nachname:"
-        bio: 'Deine Bio auf %{language}:<br>
-              <small>Hier ist Platz für eine kurze oder auch längere Bio. Außerdem sollten hier Fachkenntnisse und mögliche Vortragsthemen genauer beschrieben werden. Das hilft Veranstalterinnen und Veranstaltern herauszufinden, ob Ihr die Richtigen für ihr Event sein könntet.
-              <br>Du kannst einfache HTML Tags nutzen, um den Text zu formatieren. Zum Beispiel: < i >< /i >< b >< /b > < br ></small>'
-        topic_list: "Meine Themen als Tags:<br><small>Bitte schaue zuerst, ob Dein Thema schon vorhanden ist.</small>"
+        bio: 'Meine Bio auf %{language}:'
+        bio_tooltip: "Hier ist Platz für eine kurze oder auch längere Bio. Außerdem sollten hier Fachkenntnisse und mögliche Vortragsthemen genauer beschrieben werden. Das hilft Veranstalterinnen und Veranstaltern herauszufinden, ob Ihr die Richtigen für ihr Event sein könntet.
+              <br>Du kannst einfache HTML Tags nutzen, um den Text zu formatieren. Zum Beispiel: < i >< /i >< b >< /b > < br >'"
+        topic_list: "Meine Themen als Tags:"
+        topic_list_tooltip: "Bitte schaue zuerst, ob Dein Thema schon vorhanden ist."
         main_topic_title: "Mein Hauptthema:"
-        main_topic: "Mein Hauptthema auf %{language}: (Mehr als 30 Zeichen werden nicht angezeigt)<small>
-        <br>Trage Mein wichtigstes Thema hier nochmal ein. Dieses Thema wird mit Deinem Namen und Bild auf der Speakerinnen-Übersichtsseite zu sehen sein.</small>"
+        main_topic: "Mein Hauptthema auf %{language}:"
+        main_topic_tooltip: "Es werden nur 30 Zeichen angezeigt. Trage Dein wichtigstes Thema hier nochmal ein. Dieses Thema wird mit Deinem Namen und Bild auf der Speakerinnen-Übersichtsseite zu sehen sein."
         tag_list: "schon vorhandene Tags"
         talks: "Vortragsthemen"
         languages: "Ich spreche:"
         city: "Die Stadt, in der ich lebe:"
+        city_tooltip: "Bitte gib mehrere Städte mit Komma getrennt ein, z.B. Berlin, New York."
         country: "Das Land, in dem ich lebe:"
         twitter: "Mein Twitteraccount:"
         email: "Meine E-Mailadresse:"
         website: "Meine Webseite:"
         picture: "Ein Foto von mir: ( wenn möglich in Farbe, wir zeigen es in Graustufen.)"
-        translation: "<strong>Hier kannst Du Dein Hauptthema und Deine Bio auf Deutsch und Englisch eintragen:</strong>"
       medialink:
         url: "URL:"
         title: "Überschrift:"
