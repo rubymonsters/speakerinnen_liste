@@ -107,7 +107,7 @@ describe Api::V1::ProfilesController, type: :controller do
 
     it 'should contain attribute bio' do
       get :index, ids: [profile1.id], format: :json
-      expect(data[0]['main_topic']).to eq({})
+      expect(data[0]['bio']).to eq({})
     end
 
     it 'should contain attribute topics' do

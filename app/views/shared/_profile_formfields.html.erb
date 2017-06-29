@@ -26,7 +26,7 @@
     <%= f.input :firstname, input_html: { class: "mb input--width-100" } %>
     <%= f.input :lastname, input_html: { class: "mb input--width-100" } %>
     <%= f.input :email, input_html: { class: "mb input--width-100" } %>
-    <%= f.input :city, label_html: { class: "tooltip", title: t(:city_tooltip, scope: 'activerecord.attributes.profile').html_safe }, input_html: { class: "mb input--width-100" } %>
+    <%= f.input :city, label: t(:city, scope: 'activerecord.attributes.profile').html_safe, label_html: { id: "city", class: "tooltip", title: t(:city_tooltip, scope: 'activerecord.attributes.profile').html_safe }, input_html: { class: "mb input--width-100" } %>
     <%= f.label :country, input_html: { class: "mb input--width-100" } %>
     <%= f.country_select :country, label: t(:country, scope: 'activerecord.attributes.profile').html_safe,
         priority_countries: ["DE", "FR", "GB"], include_blank: t(:country_select, scope: 'profiles.profile'),

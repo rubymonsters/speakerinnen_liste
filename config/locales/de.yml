@@ -254,18 +254,18 @@ de:
       profile:
         firstname: "Mein Vorname:"
         lastname: "Mein Nachname:"
-        bio: 'Meine Bio auf %{language}:'
+        bio: "Meine Bio auf %{language}: <i class='fa fa-info-circle' aria-hidden='true'></i>"
         bio_tooltip: "Hier ist Platz für eine kurze oder auch längere Bio. Außerdem sollten hier Fachkenntnisse und mögliche Vortragsthemen genauer beschrieben werden. Das hilft Veranstalterinnen und Veranstaltern herauszufinden, ob Ihr die Richtigen für ihr Event sein könntet.
               <br>Du kannst einfache HTML Tags nutzen, um den Text zu formatieren. Zum Beispiel: < i >< /i >< b >< /b > < br >'"
-        topic_list: "Meine Themen als Tags:"
+        topic_list: "Meine Themen als Tags: <i class='fa fa-info-circle' aria-hidden='true'></i>"
         topic_list_tooltip: "Bitte schaue zuerst, ob Dein Thema schon vorhanden ist."
         main_topic_title: "Mein Hauptthema:"
-        main_topic: "Mein Hauptthema auf %{language}:"
+        main_topic: "Mein Hauptthema auf %{language}: <i class='fa fa-info-circle' aria-hidden='true'></i>"
         main_topic_tooltip: "Es werden nur 30 Zeichen angezeigt. Trage Dein wichtigstes Thema hier nochmal ein. Dieses Thema wird mit Deinem Namen und Bild auf der Speakerinnen-Übersichtsseite zu sehen sein."
         tag_list: "schon vorhandene Tags"
         talks: "Vortragsthemen"
         languages: "Ich spreche:"
-        city: "Die Stadt, in der ich lebe:"
+        city: "Die Stadt, in der ich lebe: <i class='fa fa-info-circle' aria-hidden='true'></i>"
         city_tooltip: "Bitte gib mehrere Städte mit Komma getrennt ein, z.B. Berlin, New York."
         country: "Das Land, in dem ich lebe:"
         twitter: "Mein Twitteraccount:"
