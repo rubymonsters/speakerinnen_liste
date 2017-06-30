@@ -269,7 +269,8 @@ de:
         city_tooltip: "Bitte gib mehrere Städte mit Komma getrennt ein, z.B. Berlin, New York."
         country: "Das Land, in dem ich lebe:"
         twitter: "Mein Twitteraccount:"
-        email: "Meine E-Mailadresse:"
+        email: "Meine E-Mailadresse: <i class='fa fa-info-circle' aria-hidden='true'></i>"
+        email_tooltip: "Deine E-Mailadresse wird nirgendwo veröffentlicht, sondern nur dazu genutzt, dass Interessentinnen und Interessenten Kontakt zu Dir aufnehmen können."
         website: "Meine Webseite:"
         picture: "Ein Foto von mir: ( wenn möglich in Farbe, wir zeigen es in Graustufen.)"
       medialink:
