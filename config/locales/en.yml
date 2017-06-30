@@ -269,7 +269,6 @@ en:
         country: "The country, I live in:"
         twitter: "My twitteraccount:"
         email: "My email address: <i class='fa fa-info-circle' aria-hidden='true'></i>"
-        email_tooltip: "Your email address will not be published. It is only used for getting in contact if an event organizer is interested in your profile."
         website: "My website:"
         picture: "A picture of me: ( if possible in color, we show it in black and white.)"
       medialink:
@@ -290,7 +289,8 @@ en:
         delete: "Delete"
         sure: "Are you sure?"
         confirmation: "Waiting for confirmation from: "
-        email: "Email"
+        email: "Email: <i class='fa fa-info-circle' aria-hidden='true'></i>"
+        email_tooltip: "Your email address will not be published. It is only used for getting in contact if an event organizer is interested in your profile."
       new:
         sign_up: "Register"
         password: "Password"

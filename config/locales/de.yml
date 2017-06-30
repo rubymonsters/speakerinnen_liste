@@ -270,7 +270,6 @@ de:
         country: "Das Land, in dem ich lebe:"
         twitter: "Mein Twitteraccount:"
         email: "Meine E-Mailadresse: <i class='fa fa-info-circle' aria-hidden='true'></i>"
-        email_tooltip: "Deine E-Mailadresse wird nirgendwo veröffentlicht, sondern nur dazu genutzt, dass Interessentinnen und Interessenten Kontakt zu Dir aufnehmen können."
         website: "Meine Webseite:"
         picture: "Ein Foto von mir: ( wenn möglich in Farbe, wir zeigen es in Graustufen.)"
       medialink:
@@ -291,7 +290,8 @@ de:
         delete: "Löschen"
         sure: "Sicher?"
         confirmation: "Warte auf die Bestätigung von: "
-        email: "E-Mail"
+        email: "E-Mail: <i class='fa fa-info-circle' aria-hidden='true'></i>"
+        email_tooltip: "Deine E-Mailadresse wird nirgendwo veröffentlicht, sondern nur dazu genutzt, dass Interessentinnen und Interessenten Kontakt zu Dir aufnehmen können."
       new:
         sign_up: "Registrieren"
         password: "Passwort"
