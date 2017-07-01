@@ -11,6 +11,10 @@ a, .link{
 
   &:hover {
     text-decoration: underline;
+    //background: linear-gradient($link-color, $link-color) no-repeat;
+    //background-size: 100% 1px;
+    //background-position: 0 1.15em;
+    //text-shadow: .05em 0 white, -.05em 0 white;
   }
 }
 
@@ -641,6 +645,14 @@ input[type=file] {
   z-index: 2;
   border-bottom-color: #FBFBFB;
   background: #FBFBFB;
+}
+
+.tabrow li.unselected {
+  color: $link-color;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 
