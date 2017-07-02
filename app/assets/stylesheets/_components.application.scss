@@ -435,14 +435,16 @@ header {
   text-align: center;
 }
 
+
 .topics-cloud a, .topics-profile a {
   background-color: #fff;
+  color: $dark-grey;
   padding: 0px 4px;
   &:hover {
     -webkit-transition: all .2s ease-in-out;
     -moz-transition: all .2s ease-in-out;
     -o-transition: all .2s ease-in-out;
-    background-color: #3C3C3A;
+    background-color: $dark-grey;
     color: whitesmoke;
     text-decoration: none;
   }
