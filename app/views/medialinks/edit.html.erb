@@ -16,7 +16,7 @@
 
     <div class="o-layout">
       <div class="o-layout__item 2/3 box__bg bg--white">
-      <%= simple_fields_for :medialinks do |m| %>
+      <%= simple_form_for [@profile, @medialink], html: {class: ''} do |m| %>
 
         <%= m.input :url, as: :string, input_html: { class: "input--width-100" }, wrapper_html: { class: 'mt' }   %>
         <%= m.input :title, as: :string, input_html: { class: "input--width-100" }, wrapper_html: { class: 'mt' }   %>

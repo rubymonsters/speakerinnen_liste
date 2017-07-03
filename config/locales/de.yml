@@ -240,7 +240,7 @@ de:
       no_permission: "Du hast nicht die Rechte, das Profil zu bearbeiten."
       show_no_permission: "Du hast nicht die Rechte, das Profil anzuschauen."
     medialink:
-      created: "Referenz wurde erfolgreich erstellt."
+      created: "Referenz wurde erfolgreich erstellt. <a href='#medialinks_anchor', class='text__link--bg'>Hier</a> geht es zur Liste Deiner Referenzen."
       updated: "Referenz wurde erfolgreich geändert."
       destroyed: "Referenz wurde erfolgreich gelöscht."
       no_permission: "Du hast nicht die Rechte, die Referenz zu bearbeiten."
@@ -254,9 +254,8 @@ de:
       profile:
         firstname: "Mein Vorname:"
         lastname: "Mein Nachname:"
-        bio: "Meine Bio auf %{language}: <i class='fa fa-info-circle' aria-hidden='true'></i>"
-        bio_tooltip: "Hier ist Platz für eine kurze oder auch längere Bio. Außerdem sollten hier Fachkenntnisse und mögliche Vortragsthemen genauer beschrieben werden. Das hilft Veranstalterinnen und Veranstaltern herauszufinden, ob Ihr die Richtigen für ihr Event sein könntet.
-              <br>Du kannst einfache HTML Tags nutzen, um den Text zu formatieren. Zum Beispiel: < i >< /i >< b >< /b > < br >'"
+        bio: "Meine Bio auf %{language}: <i class='fa fa-info-circle' aria-hidden='true'></i> <br><small>Du kannst einfache HTML Tags nutzen, um den Text zu formatieren. Zum Beispiel: < i >< /i >< b >< /b > < br >.</small>"
+        bio_tooltip: "Hier ist Platz für eine kurze oder auch längere Bio. Außerdem sollten hier Fachkenntnisse und mögliche Vortragsthemen genauer beschrieben werden. Das hilft Veranstalterinnen und Veranstaltern herauszufinden, ob Ihr die Richtigen für ihr Event sein könntet."
         topic_list: "Meine Themen als Tags: <i class='fa fa-info-circle' aria-hidden='true'></i>"
         topic_list_tooltip: "Bitte schaue zuerst, ob Dein Thema schon vorhanden ist."
         main_topic_title: "Mein Hauptthema:"
