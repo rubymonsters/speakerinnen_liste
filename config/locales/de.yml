@@ -240,7 +240,7 @@ de:
       no_permission: "Du hast nicht die Rechte, das Profil zu bearbeiten."
       show_no_permission: "Du hast nicht die Rechte, das Profil anzuschauen."
     medialink:
-      created: "Referenz wurde erfolgreich erstellt."
+      created: "Referenz wurde erfolgreich erstellt. <a href='#medialinks_anchor', class='text__link--bg'>Hier</a> geht es zur Liste Deiner Referenzen."
       updated: "Referenz wurde erfolgreich geändert."
       destroyed: "Referenz wurde erfolgreich gelöscht."
       no_permission: "Du hast nicht die Rechte, die Referenz zu bearbeiten."
