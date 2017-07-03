@@ -58,29 +58,6 @@
       <% end %>
     </ul>
 
-    <ul class="tabrow">
-      <li id="show-de" class="ph pv-- <%= "selected" if I18n.locale == :de %>"> <%= t(:de, scope: 'i18n.language').html_safe %></li>
-      <li id="show-en" class="ph pv-- <%= "selected" if I18n.locale == :en %>"> <%= t(:en, scope: 'i18n.language').html_safe %></li>
-    </ul>
-
-    <div id="edit-de" class="ox__bg bg--white pt+ <%= "hidden" unless I18n.locale == :de %>" >
-      <%= f.label :main_topic, t(:main_topic, scope: 'activerecord.attributes.profile',
-        language: t(:de, scope: 'i18n.language')).html_safe, id: "main_topic_de", class: "tooltip", title: t(:main_topic_tooltip, scope: 'activerecord.attributes.profile').html_safe %>
-      <%= f.text_field :main_topic_de, as: :text, class: 'mb input--width-100', maxlength: '30' %>
-      <%= f.label :bio, t(:bio, scope: 'activerecord.attributes.profile',
-        language: t(:de, scope: 'i18n.language')).html_safe, id: "bio_de", class: "tooltip", title: t(:bio_tooltip, scope: 'activerecord.attributes.profile').html_safe %>
-      <%= f.text_area :bio_de, as: :text, class: 'mb input--width-100', rows: 10 %>
-    </div>
-
-    <div id="edit-en" class="box__bg bg--white pt+ <%= "hidden" unless I18n.locale == :en %>" >
-      <%= f.label :main_topic, t(:main_topic, scope: 'activerecord.attributes.profile',
-        language: t(:en, scope: 'i18n.language')).html_safe, id: "main_topic_en", class: "tooltip", title: t(:main_topic_tooltip, scope: 'activerecord.attributes.profile').html_safe %>
-      <%= f.text_field :main_topic_en, as: :text, class: 'mb input--width-100', maxlength: '30' %>
-      <%= f.label :bio, t(:bio, scope: 'activerecord.attributes.profile',
-        language: t(:en, scope: 'i18n.language')).html_safe, id: "bio_en", class: "tooltip", title: t(:bio_tooltip, scope: 'activerecord.attributes.profile').html_safe %>
-      <%= f.text_area :bio_en, as: :text, class: 'mb input--width-100', rows: 10 %>
-    </div>
-
     <div id="medialinks">
       <h2><%= t(:index, scope: 'medialinks')%></h2>
       <p class="pb bb"><%= t(:medialink_description, scope: 'medialinks').html_safe %></p>
@@ -115,6 +92,28 @@
         </ul>
     </div>
 
+    <ul class="tabrow">
+      <li id="show-de" class="ph pv-- <%= "selected" if I18n.locale == :de %>"> <%= t(:de, scope: 'i18n.language').html_safe %></li>
+      <li id="show-en" class="ph pv-- <%= "selected" if I18n.locale == :en %>"> <%= t(:en, scope: 'i18n.language').html_safe %></li>
+    </ul>
+
+    <div id="edit-de" class="ox__bg bg--white pt+ <%= "hidden" unless I18n.locale == :de %>" >
+      <%= f.label :main_topic, t(:main_topic, scope: 'activerecord.attributes.profile',
+        language: t(:de, scope: 'i18n.language')).html_safe, id: "main_topic_de", class: "tooltip", title: t(:main_topic_tooltip, scope: 'activerecord.attributes.profile').html_safe %>
+      <%= f.text_field :main_topic_de, as: :text, class: 'mb input--width-100', maxlength: '30' %>
+      <%= f.label :bio, t(:bio, scope: 'activerecord.attributes.profile',
+        language: t(:de, scope: 'i18n.language')).html_safe, id: "bio_de", class: "tooltip", title: t(:bio_tooltip, scope: 'activerecord.attributes.profile').html_safe %>
+      <%= f.text_area :bio_de, as: :text, class: 'mb input--width-100', rows: 10 %>
+    </div>
+
+    <div id="edit-en" class="box__bg bg--white pt+ <%= "hidden" unless I18n.locale == :en %>" >
+      <%= f.label :main_topic, t(:main_topic, scope: 'activerecord.attributes.profile',
+        language: t(:en, scope: 'i18n.language')).html_safe, id: "main_topic_en", class: "tooltip", title: t(:main_topic_tooltip, scope: 'activerecord.attributes.profile').html_safe %>
+      <%= f.text_field :main_topic_en, as: :text, class: 'mb input--width-100', maxlength: '30' %>
+      <%= f.label :bio, t(:bio, scope: 'activerecord.attributes.profile',
+        language: t(:en, scope: 'i18n.language')).html_safe, id: "bio_en", class: "tooltip", title: t(:bio_tooltip, scope: 'activerecord.attributes.profile').html_safe %>
+      <%= f.text_area :bio_en, as: :text, class: 'mb input--width-100', rows: 10 %>
+    </div>
 
      <%= f.button :submit, t(:update, scope: 'profiles.form'), class:'btn btn--small mt mb++' %>
   </div>
