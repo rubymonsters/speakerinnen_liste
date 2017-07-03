@@ -111,7 +111,7 @@
         language: t(:en, scope: 'i18n.language')).html_safe, id: "main_topic_en", class: "tooltip", title: t(:main_topic_tooltip, scope: 'activerecord.attributes.profile').html_safe %>
       <%= f.text_field :main_topic_en, as: :text, class: 'mb input--width-100', maxlength: '30' %>
       <%= f.label :bio, t(:bio, scope: 'activerecord.attributes.profile',
-        language: t(:en, scope: 'i18n.language')).html_safe, id: "bio_en", class: "tooltip", title: t(:bio_tooltip, scope: 'activerecord.attributes.profile').html_safe %>
+        language: t(:en, scope: 'i18n.language')).html_safe, hint: "<br>Du kannst einfache HTML Tags nutzen, um den Text zu formatieren. Zum Beispiel: < i >< /i >< b >< /b > < br >", id: "bio_en", class: "tooltip", title: t(:bio_tooltip, scope: 'activerecord.attributes.profile').html_safe %>
       <%= f.text_area :bio_en, as: :text, class: 'mb input--width-100', rows: 10 %>
     </div>
 
