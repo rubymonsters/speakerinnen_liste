@@ -10,7 +10,11 @@ a, .link{
   cursor: pointer;
 
   &:hover {
-    color: $font-color;
+    text-decoration: underline;
+    //background: linear-gradient($link-color, $link-color) no-repeat;
+    //background-size: 100% 1px;
+    //background-position: 0 1.15em;
+    //text-shadow: .05em 0 white, -.05em 0 white;
   }
 }
 
@@ -24,8 +28,17 @@ a, .link{
     -o-transition: all .2s ease-in-out;
     background-color: #3C3C3A;
     color: whitesmoke;
+    text-decoration: none;
 
   }
+}
+
+.button_link {
+  &:hover {
+    color: $font-color;
+    text-decoration: none;
+  }
+
 }
 
 .sans-serif{
@@ -182,9 +195,6 @@ ul.tagit {
   color: $red;
 }
 
-.text--color-blue {
-  color: $blue;
-}
 
 .hidden {
   display: none;
@@ -315,15 +325,6 @@ header {
   background: white;
 }
 
-.content__link {
-  padding: 0 4px;
-  color: $link-color;
-
-  &:hover {
-    color: $link-color-hover;
-    background-color: $link-bg-color-hover;
-  }
-}
 
 /* startpage */
 #startpage__start-teaser {
@@ -359,6 +360,7 @@ header {
 
 
 .startpage-categories__list-links {
+  color: $dark-grey;
   font-size: 1.9em;
   background-color: $link-bg-color;
   padding: 3px 6px;
@@ -367,6 +369,7 @@ header {
   &:hover {
     color: $link-color-hover;
     background-color: $link-bg-color-hover;
+    text-decoration: none;
   }
 }
 
@@ -433,18 +436,21 @@ header {
   text-align: center;
 }
 
-.topics-cloud a{
+
+.topics-cloud a, .topics-profile a {
   background-color: #fff;
+  color: $dark-grey;
   padding: 0px 4px;
+  &:hover {
+    -webkit-transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+    background-color: $dark-grey;
+    color: whitesmoke;
+    text-decoration: none;
+  }
 }
 
-.topics-cloud a:hover {
-  -webkit-transition: all .2s ease-in-out;
-  -moz-transition: all .2s ease-in-out;
-  -o-transition: all .2s ease-in-out;
-  background-color: #3C3C3A;
-  color: whitesmoke;
-  }
 
 .topics-cloud .topic-filter {
   float: right;
@@ -454,6 +460,7 @@ header {
   height: 32px;
   width: 160px;
 }
+
 
 .input-btn {
   padding-top: 6px;
@@ -592,6 +599,12 @@ ul#medialinks__list {
   padding: 0 1px;
 }
 
+.category--assigned_to_tag {
+  &:hover {
+    text-decoration: none;
+  }
+}
+
 .error {
   color: red;
 }
@@ -635,6 +648,14 @@ input[type=file] {
   z-index: 2;
   border-bottom-color: #FBFBFB;
   background: #FBFBFB;
+}
+
+.tabrow li.unselected {
+  color: $link-color;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 

@@ -7,7 +7,7 @@
     <%= link_to t(:show, scope: 'admin.dashboard.profiles.edit'), admin_profile_path(@profile), class:'btn btn--small' %>
     <%= link_to t(:show, scope: 'medialinks'), admin_profile_medialinks_path(@profile), class:'btn btn--small', title: t(:edit, scope: 'medialinks') %>
 
-    <h2 class="delta sans-serif mb- bt pv mt text--color-blue">
+    <h2 class="delta sans-serif mb- bt pv mt">
       <%= t(:new_medialink_for, scope: 'admin.dashboard.medialink') %> <strong><%= @profile.fullname %></strong>
     </h2>
 
