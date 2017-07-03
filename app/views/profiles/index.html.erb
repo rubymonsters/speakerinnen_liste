@@ -10,7 +10,7 @@
       <%# if in search: %>
       <% if params[:search] %>
         <% if @profiles.any? %>
-         <p class="text--color-blue font-size-24 text--center o-layout__item 1/1">
+         <p class="font-size-24 text--center o-layout__item 1/1">
             <%= t(:success, scope: 'search' ).html_safe +
                 t(:result, scope: 'search', count: @profiles.total_count).html_safe +
                 t(:filter, scope: 'search').html_safe %>
@@ -90,7 +90,7 @@
           <%= render partial: 'profiles/profile_search', collection: @profiles, as: :profile %>
 
         <% elsif @profiles.size <1 && params[:search].present? && @profiles.response.response.suggest.did_you_mean_fullname.first.options.present? %>
-          <p class="text--color-blue font-size-24 text--left o-layout__item 1/1">
+          <p class="font-size-24 text--left o-layout__item 1/1">
           <%= t(:did_you_mean, scope: 'search', suggestions_fullname: @profiles.response.response.suggest.did_you_mean_fullname.first.options.map {|sug| link_to(sug.text.capitalize, "profiles_search?&search=#{sug.text}")} * ", " ).html_safe %>
           </p>
         <% end %>
@@ -99,16 +99,16 @@
       <% else %>
 
         <% if params[:topic] %>
-          <p class="text--color-blue font-size-24 text--center o-layout__item 1/1">
+          <p class="font-size-24 text--center o-layout__item 1/1">
             <%= t(:profiles_topics, scope: 'search', profiles_count: @profiles.total_count, topics_name: params[:topic]).html_safe %>
           </p>
 
         <% elsif params[:category_id] %>
-          <p class="text--color-blue font-size-24 text--center o-layout__item 1/1">
+          <p class="font-size-24 text--center o-layout__item 1/1">
             <%= t(:category, scope: 'profiles', category_name: @category.name, profiles_count: @profiles.total_count, topics_count: @tags.size).html_safe %>
           </p>
         <% else %>
-          <p class="text--color-blue font-size-24 text--center o-layout__item 1/1">
+          <p class="font-size-24 text--center o-layout__item 1/1">
             <%= t(:all_speakerinnen, scope: 'profiles.index', profiles_count: @profiles.total_count).html_safe %>
           </p>
 
@@ -135,7 +135,7 @@
 
     <%= paginate @profiles %>
 
-    <p class="text--color-blue font-size-24 text--center o-layout__item 1/1">
+    <p class="font-size-24 text--center o-layout__item 1/1">
       <%= t(:more_options, scope: 'search').html_safe %><br>
       <%= top_link(params[:search]) %><br>
       <%= link_to(t(:all_profiles,scope: 'search'), profiles_path).html_safe %>
