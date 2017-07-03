@@ -8,7 +8,7 @@
         <%= t(:account_from, scope: "devise.registrations.edit") %> <%= @profile.firstname %>:
       </h1>
 
-      <%= f.input :email, label: t(:email, scope: "devise.registrations.edit").html_safe, label_html: { id: "email", class: "tooltip", title: t(:email_tooltip, scope: 'devise.registrations.edit').html_safe }, autofocus: true, input_html: { class: 'mb', size: 50} %>
+      <%= f.input :email, label: t(:email, scope: "devise.registrations.edit").html_safe, label_html: { id: "devise_email", class: "tooltip", title: t(:email_tooltip, scope: 'devise.registrations.edit').html_safe }, autofocus: true, input_html: { class: 'mb', size: 50} %>
 
       <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
         <b><%= t(:confirmation, scope: "devise.registrations.edit" ) %><%= resource.unconfirmed_email %></b>
