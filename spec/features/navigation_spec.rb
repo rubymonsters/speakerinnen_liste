@@ -115,7 +115,6 @@ RSpec.feature 'Navigation', type: :feature do
 
         expect(page).to have_css('div.profile_firstname')
         expect(page).to have_css('div.profile_lastname')
-        expect(page).to have_css('div.profile_email')
         expect(page).to have_css('div.profile_twitter')
         expect(page).to have_css('div.profile_city')
         expect(page).to have_css('div.profile_iso_languages')

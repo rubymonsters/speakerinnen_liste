@@ -194,8 +194,6 @@ en:
       sure: "Are you sure?"
       link: "Be sure to add 'http://'"
       email: "Email:"
-    medialinks:
-      edit: "Edit references"
     edit:
       show_more_languages: "Show more languages >>"
       show_less_languages: "Show less languages >>"
@@ -241,9 +239,9 @@ en:
       no_permission: "You don’t have permission to edit the profile."
       show_no_permission: "You don’t have permission to see the profile."
     medialink:
-      created: 'Reference was successfully created.'
-      updated: 'Reference was successfully updated.'
-      destroyed: 'Reference was successfully deleted.'
+      created: "Your previous talk was successfully created. <a href='#medialinks_anchor', class='text__link--bg'>Here</a> you can find a list of your previous talks."
+      updated: 'Your previous talk was successfully updated.'
+      destroyed: 'Your previous talk was successfully deleted.'
       no_permission: "You don’t have permission to edit the reference."
     categories:
       created: '%{category_name} was successfully created.'
@@ -255,23 +253,23 @@ en:
       profile:
         firstname: "My first name:"
         lastname: "My last name:"
-        bio: "My bio in %{language}:<br>
-        <small>Here you can add a short or long bio of yourself. Please also add specific expertise and topics you feel comfortable speaking about. This will help organizers of events to understand whether you might be the person they're looking for.
-        <br>You can use simple HTML tags to format the text. For example: < i >< /i >< b >< /b >< br ></small>"
-
-        topic_list: "My topics as tags:<br><small>Please have a look first, if your topic already exists</small>"
+        bio: "My bio in %{language}: <i class='fa fa-info-circle' aria-hidden='true'></i><br><small><br>You can use simple HTML tags to format the text. For example: < i >< /i >< b >< /b >< br >.</small>"
+        bio_tooltip: "Here you can add a short or long bio of yourself. Please also add specific expertise and topics you feel comfortable speaking about. This will help organizers of events to understand whether you might be the person they're looking for."
+        topic_list: "My topics as tags: <i class='fa fa-info-circle' aria-hidden='true'></i>"
+        topic_list_tooltip: "Please have a look first, if your topic already exists."
         main_topic_title: "My main topic"
-        main_topic: "My main topic in %{language}: (More than 30 characters are not shown)<br><small>Please choose one topic as your favorite topic and enter it again. It will be visible along with your name and picture at the speaker overview site.</small>"
+        main_topic: "My main topic in %{language}: <i class='fa fa-info-circle' aria-hidden='true'></i>"
+        main_topic_tooltip: "Only 30 characters are shown. Please choose one topic as your favorite topic and enter it again. It will be visible along with your name and picture at the speaker overview site."
         tag_list: "Existing topics"
         talks: "My talks"
         languages: "I can talk in:"
-        city: "The city, I live in:"
+        city: "The city, I live in:  <i class='fa fa-info-circle' aria-hidden='true'></i>"
+        city_tooltip: "Please list multiple cities with a comma as a seperator, e.g. Berlin, New York."
         country: "The country, I live in:"
         twitter: "My twitteraccount:"
-        email: "My email address:"
+        email: "My email address: <i class='fa fa-info-circle' aria-hidden='true'></i>"
         website: "My website:"
         picture: "A picture of me: ( if possible in color, we show it in black and white.)"
-        translation: "<strong>You can fill in your maintopic and your bio both in German and English:</strong>"
       medialink:
         url: "URL:"
         title: "Title:"
@@ -290,7 +288,8 @@ en:
         delete: "Delete"
         sure: "Are you sure?"
         confirmation: "Waiting for confirmation from: "
-        email: "Email"
+        email: "Email: <i class='fa fa-info-circle' aria-hidden='true'></i>"
+        email_tooltip: "Your email address will not be published. It is only used for getting in contact if an event organizer is interested in your profile."
       new:
         sign_up: "Register"
         password: "Password"
@@ -299,11 +298,11 @@ en:
         login: "Log in"
         signin: "Sign in"
   medialinks:
-    edit: "Edit Reference"
-    new: "Add Reference"
-    delete: "Delete Reference"
-    index: "References"
-    show: "Show References"
+    edit: "Edit Previous Talk"
+    new: "Add Previous Talk"
+    delete: "Delete previous talk"
+    index: "Previous Talks"
+    show: "Show Previous Talks"
     # Translation
     medialink_description: "Here you can add examples of your previous talks, panel discussions, TV shows or similar talking situations.
 It would be best not to have too many but also not too few. Add diverse examples so that event organizers can get a picture of your work as a speaker.

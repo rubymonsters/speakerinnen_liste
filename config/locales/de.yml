@@ -194,8 +194,6 @@ de:
       sure: "Bist Du sicher?"
       link: "Bitte 'http://' davor schreiben."
       email: "E-Mail:"
-    medialinks:
-      edit: "Referenzen bearbeiten"
     edit:
       show_more_languages: "Noch mehr Sprachen >>"
       show_less_languages: "Weniger Sprachen >>"
@@ -242,7 +240,7 @@ de:
       no_permission: "Du hast nicht die Rechte, das Profil zu bearbeiten."
       show_no_permission: "Du hast nicht die Rechte, das Profil anzuschauen."
     medialink:
-      created: "Referenz wurde erfolgreich erstellt."
+      created: "Referenz wurde erfolgreich erstellt. <a href='#medialinks_anchor', class='text__link--bg'>Hier</a> geht es zur Liste Deiner Referenzen."
       updated: "Referenz wurde erfolgreich geändert."
       destroyed: "Referenz wurde erfolgreich gelöscht."
       no_permission: "Du hast nicht die Rechte, die Referenz zu bearbeiten."
@@ -256,23 +254,23 @@ de:
       profile:
         firstname: "Mein Vorname:"
         lastname: "Mein Nachname:"
-        bio: 'Deine Bio auf %{language}:<br>
-              <small>Hier ist Platz für eine kurze oder auch längere Bio. Außerdem sollten hier Fachkenntnisse und mögliche Vortragsthemen genauer beschrieben werden. Das hilft Veranstalterinnen und Veranstaltern herauszufinden, ob Ihr die Richtigen für ihr Event sein könntet.
-              <br>Du kannst einfache HTML Tags nutzen, um den Text zu formatieren. Zum Beispiel: < i >< /i >< b >< /b > < br ></small>'
-        topic_list: "Meine Themen als Tags:<br><small>Bitte schaue zuerst, ob Dein Thema schon vorhanden ist.</small>"
+        bio: "Meine Bio auf %{language}: <i class='fa fa-info-circle' aria-hidden='true'></i> <br><small>Du kannst einfache HTML Tags nutzen, um den Text zu formatieren. Zum Beispiel: < i >< /i >< b >< /b > < br >.</small>"
+        bio_tooltip: "Hier ist Platz für eine kurze oder auch längere Bio. Außerdem sollten hier Fachkenntnisse und mögliche Vortragsthemen genauer beschrieben werden. Das hilft Veranstalterinnen und Veranstaltern herauszufinden, ob Ihr die Richtigen für ihr Event sein könntet."
+        topic_list: "Meine Themen als Tags: <i class='fa fa-info-circle' aria-hidden='true'></i>"
+        topic_list_tooltip: "Bitte schaue zuerst, ob Dein Thema schon vorhanden ist."
         main_topic_title: "Mein Hauptthema:"
-        main_topic: "Mein Hauptthema auf %{language}: (Mehr als 30 Zeichen werden nicht angezeigt)<small>
-        <br>Trage Mein wichtigstes Thema hier nochmal ein. Dieses Thema wird mit Deinem Namen und Bild auf der Speakerinnen-Übersichtsseite zu sehen sein.</small>"
+        main_topic: "Mein Hauptthema auf %{language}: <i class='fa fa-info-circle' aria-hidden='true'></i>"
+        main_topic_tooltip: "Es werden nur 30 Zeichen angezeigt. Trage Dein wichtigstes Thema hier nochmal ein. Dieses Thema wird mit Deinem Namen und Bild auf der Speakerinnen-Übersichtsseite zu sehen sein."
         tag_list: "schon vorhandene Tags"
         talks: "Vortragsthemen"
         languages: "Ich spreche:"
-        city: "Die Stadt, in der ich lebe:"
+        city: "Die Stadt, in der ich lebe: <i class='fa fa-info-circle' aria-hidden='true'></i>"
+        city_tooltip: "Bitte gib mehrere Städte mit Komma getrennt ein, z.B. Berlin, New York."
         country: "Das Land, in dem ich lebe:"
         twitter: "Mein Twitteraccount:"
-        email: "Meine E-Mailadresse:"
+        email: "Meine E-Mailadresse: <i class='fa fa-info-circle' aria-hidden='true'></i>"
         website: "Meine Webseite:"
         picture: "Ein Foto von mir: ( wenn möglich in Farbe, wir zeigen es in Graustufen.)"
-        translation: "<strong>Hier kannst Du Dein Hauptthema und Deine Bio auf Deutsch und Englisch eintragen:</strong>"
       medialink:
         url: "URL:"
         title: "Überschrift:"
@@ -291,7 +289,8 @@ de:
         delete: "Löschen"
         sure: "Sicher?"
         confirmation: "Warte auf die Bestätigung von: "
-        email: "E-Mail"
+        email: "E-Mail: <i class='fa fa-info-circle' aria-hidden='true'></i>"
+        email_tooltip: "Deine E-Mailadresse wird nirgendwo veröffentlicht, sondern nur dazu genutzt, dass Interessentinnen und Interessenten Kontakt zu Dir aufnehmen können."
       new:
         sign_up: "Registrieren"
         password: "Passwort"
@@ -302,9 +301,9 @@ de:
   medialinks:
     edit: "Bearbeite Referenz"
     new: "Referenz hinzufügen"
-    show: "Referenzen anzeigen"
+    show: "Referenz anzeigen"
     delete: "Referenz löschen"
-    index: "Referenzen"
+    index: "Bisherige Vorträge"
     medialink_description: "Hier ist Platz für Beispiele von bereits gehaltenen Vorträgen, Podiumsdiskussionen, Fernsehauftritten uvm.<br>
     Am besten nicht zu viele - aber auch nicht zu wenige - möglichst verschiedene Referenzen:
     sie ermöglichen Veranstalter_innen, sich einen Eindruck von Dir zu machen.

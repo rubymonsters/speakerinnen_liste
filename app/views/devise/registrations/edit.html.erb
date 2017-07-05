@@ -8,7 +8,7 @@
         <%= t(:account_from, scope: "devise.registrations.edit") %> <%= @profile.firstname %>:
       </h1>
 
-      <%= f.input :email, label: t(:email, scope: "devise.registrations.edit"), autofocus: true, input_html: { class: 'mb'} %>
+      <%= f.input :email, label: t(:email, scope: "devise.registrations.edit").html_safe, label_html: { id: "devise_email", class: "tooltip", title: t(:email_tooltip, scope: 'devise.registrations.edit').html_safe }, autofocus: true, input_html: { class: 'mb', size: 50} %>
 
       <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
         <b><%= t(:confirmation, scope: "devise.registrations.edit" ) %><%= resource.unconfirmed_email %></b>
@@ -19,13 +19,13 @@
         <p class="text--color-red">
           <%= t(:password_needed, scope: "devise.registrations.edit") %>
         </p>
-        <%= f.input :current_password, placeholder: t(:password_current, scope: "devise.registrations.edit"), label: t(:password_current, scope: "devise.registrations.edit") %>
+        <%= f.input :current_password, placeholder: t(:password_current, scope: "devise.registrations.edit"), label: t(:password_current, scope: "devise.registrations.edit"), input_html: { size: 50 } %>
         <p class="text--color-red">
           <%= t(:password_blank, scope: "devise.registrations.edit") %>
         </p>
-        <%= f.input :password, autocomplete: "off", class:"", placeholder: t(:new_password, scope: "devise.passwords"),label: t(:new_password, scope: "devise.passwords") %>
+        <%= f.input :password, autocomplete: "off", class:"", placeholder: t(:new_password, scope: "devise.passwords"),label: t(:new_password, scope: "devise.passwords"), input_html: { size: 50 } %>
         <br>
-        <%= f.input :password_confirmation, label: t(:password_confirmation, scope:"devise.passwords"), placeholder: t(:password_confirmation, scope: "devise.passwords"), input_html: { class: 'mb'}  %>
+        <%= f.input :password_confirmation, label: t(:password_confirmation, scope:"devise.passwords"), placeholder: t(:password_confirmation, scope: "devise.passwords"), input_html: { class: 'mb', size: 50}  %>
 
       <% end %>
 

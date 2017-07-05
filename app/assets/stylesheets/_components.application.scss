@@ -554,7 +554,7 @@ ul#medialinks__list {
 }
 
 .ui-tooltip, .arrow:after {
-  background:rgba(0,0,0,0.6);
+  background:rgba(0,0,0,0.8);
 }
 .ui-tooltip {
   padding: 10px 20px;
@@ -672,6 +672,7 @@ input[type=file] {
 .tabrow:before {
   z-index: 1;
 }
+
 /* autocomplete in search */
 .twitter-typeahead {
   font-family: $sans-serif;
