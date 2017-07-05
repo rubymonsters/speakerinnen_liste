@@ -86,9 +86,15 @@
 
               <hr>
 
-              <%= link_to '<i class="fa fa-pencil"></i>'.html_safe+ t(:edit_link, scope: 'medialinks'), edit_profile_medialink_path(@profile, medialink) %>
+              <!-- if current user is admin provide possibility to edit-->
+              <%= link_to '<i class="fa fa-pencil"></i>'.html_safe + t(:edit_link, scope: 'medialinks'), edit_admin_profile_medialink_path(@profile, medialink) if @current_profile.admin = true %>
+              <%= link_to '<i class="fa fa-minus-circle"></i>'.html_safe + t(:delete_link, scope: 'medialinks'), admin_profile_medialink_path(@profile, medialink),
+                method: :delete, data: { confirm: 'Are you sure?'}, title: t(:delete, scope: 'medialinks') if @current_profile.admin = true %>
+
+              <!-- if non admin user -->
+              <%= link_to '<i class="fa fa-pencil"></i>'.html_safe+ t(:edit_link, scope: 'medialinks'), edit_profile_medialink_path(@profile, medialink) if @current_profile.admin = false %>
               <%= link_to '<i class="fa fa-minus-circle"></i>'.html_safe+ t(:delete_link, scope: 'medialinks'), profile_medialink_path(@profile, medialink),
-                method: :delete, data: { confirm: 'Are you sure?'}, title: t(:delete, scope: "medialinks") %>
+                method: :delete, data: { confirm: 'Are you sure?'}, title: t(:delete, scope: "medialinks") if @current_profile.admin = false %>
             <% end %>
           <% end %>
         </ul>
