@@ -1,4 +1,4 @@
-# skip until refactoring api
+# skip this test until API V2 is built
 # include AuthHelper
 
 # describe Api::V1::ProfilesController, type: :controller do
@@ -103,6 +103,7 @@
 
 #     it 'should contain attribute main_topic' do
 #       get :index, ids: [profile1.id], format: :json
+#       p data[0]['main_topic'][I18n.locale]
 #       expect(data[0]['main_topic']).to eq({})
 #     end
 
