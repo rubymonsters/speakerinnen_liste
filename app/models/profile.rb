@@ -10,7 +10,7 @@ class Profile < ActiveRecord::Base
   validate :iso_languages_array_has_right_format
   before_save :clean_iso_languages!
 
-  translates :bio, :main_topic, :twitter, fallbacks_for_empty_translations: true
+  translates :bio, :main_topic, :twitter, :city, fallbacks_for_empty_translations: true
   accepts_nested_attributes_for :translations
   globalize_accessors :locales => [:en, :de], :attributes => [:main_topic, :bio, :twitter]
 
