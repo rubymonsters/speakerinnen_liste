@@ -28,7 +28,8 @@ module Searchable
                     type: 'cross_fields',
                     fields: [
                       'fullname^1.7',
-                      'twitter',
+                      'twitter_de',
+                      'twitter_en',
                       'iso_languages',
                       'cities.standard^1.3',
                       'country',
@@ -109,8 +110,8 @@ module Searchable
     def as_indexed_json(options={})
         output = as_json(
           {
-            autocomplete: { input:  [fullname, twitter, topic_list] },
-            only: [:firstname, :lastname, :twitter, :iso_languages, :city, :country],
+            autocomplete: { input:  [fullname, twitter_de, twitter_en, topic_list] },
+            only: [:firstname, :lastname, :iso_languages, :city, :country],
               methods: [:fullname, :topic_list, :cities, *globalize_attribute_names],
               include: {
                 medialinks: { only: [:title, :description] }
@@ -210,7 +211,10 @@ module Searchable
         indexes :lastname,   type: 'string', analyzer: 'fullname_analyzer',   'norms': { 'enabled': false } do
           indexes :suggest,  type: 'completion'
         end
-        indexes :twitter,    type: 'string', analyzer: 'twitter_analyzer',    'norms': { 'enabled': false } do
+        indexes :twitter_de,    type: 'string', analyzer: 'twitter_analyzer',    'norms': { 'enabled': false } do
+          indexes :suggest,  type: 'completion'
+        end
+        indexes :twitter_en,    type: 'string', analyzer: 'twitter_analyzer',    'norms': { 'enabled': false } do
           indexes :suggest,  type: 'completion'
         end
         indexes :topic_list, type: 'string', analyzer: 'standard', 'norms': { 'enabled': false } do
