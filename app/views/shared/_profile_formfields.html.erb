@@ -75,8 +75,8 @@
 
       <p id="medialinks__list--sort-message"></p>
 
-        <ul id="medialinks__list" data-update-url="<%= sort_profile_medialinks_url(current_profile)%>" class="<%= t(:language, scope: 'medialinks')%>">
-          <% current_profile.medialinks.order(:position).each do |medialink| %>
+        <ul id="medialinks__list" data-update-url="<%= sort_profile_medialinks_url(profile)%>" class="<%= t(:language, scope: 'medialinks')%>">
+          <% @profile.medialinks.order(:position).each do |medialink| %>
             <%= content_tag_for(:li, medialink, nil, {'title' => t(:tooltip, scope: 'medialinks')}) do %>
               <b>
                 <%= medialink.title %>
@@ -86,9 +86,17 @@
 
               <hr>
 
-              <%= link_to '<i class="fa fa-pencil"></i>'.html_safe+ t(:edit_link, scope: 'medialinks'), edit_profile_medialink_path(@profile, medialink) %>
-              <%= link_to '<i class="fa fa-minus-circle"></i>'.html_safe+ t(:delete_link, scope: 'medialinks'), profile_medialink_path(@profile, medialink),
+              <!-- if current user is admin provide possibility to edit-->
+              <% if @current_profile.admin == true %>
+                <%= link_to '<i class="fa fa-pencil"></i>'.html_safe + t(:edit_link, scope: 'medialinks'), edit_admin_profile_medialink_path(@profile, medialink) %>
+                <%= link_to '<i class="fa fa-minus-circle"></i>'.html_safe + t(:delete_link, scope: 'medialinks'), admin_profile_medialink_path(@profile, medialink),
+                  method: :delete, data: { confirm: 'Are you sure?'}, title: t(:delete, scope: 'medialinks') %>
+              <% else %>
+              <!-- if non admin user -->
+                <%= link_to '<i class="fa fa-pencil"></i>'.html_safe+ t(:edit_link, scope: 'medialinks'), edit_profile_medialink_path(@profile, medialink) %>
+                <%= link_to '<i class="fa fa-minus-circle"></i>'.html_safe+ t(:delete_link, scope: 'medialinks'), profile_medialink_path(@profile, medialink),
                 method: :delete, data: { confirm: 'Are you sure?'}, title: t(:delete, scope: "medialinks") %>
+              <% end %>
             <% end %>
           <% end %>
         </ul>
