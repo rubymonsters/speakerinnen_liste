@@ -143,6 +143,8 @@ class ProfilesController < ApplicationController
       :main_topic_de,
       :bio_en,
       :bio_de,
+      :twitter_de,
+      :twitter_en,
       translations_attributes: [:id, :bio, :main_topic, :locale],
       medialinks_attributes: [:id, :url, :title, :description, :profile_id, :position])
   end

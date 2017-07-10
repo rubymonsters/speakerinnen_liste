@@ -17,7 +17,7 @@ describe 'profile adding' do
     click_link I18n.t(:edit, scope: 'profiles.profile')
     fill_in I18n.t(:firstname, scope: 'activerecord.attributes.profile'), with: 'Ada'
     fill_in I18n.t(:lastname, scope: 'activerecord.attributes.profile'), with: 'Lovelace'
-    fill_in I18n.t(:twitter, scope: 'activerecord.attributes.profile'), with: '@Lovelace'
+    find(:css, "#twitter_en").set("@Lovelace")
     find(:css, "#city").set("London")
 
     # ToDo: this only works when locale is :en which it obviously always is in the tests?
