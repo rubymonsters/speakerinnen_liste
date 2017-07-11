@@ -103,8 +103,8 @@
     </div>
 
     <ul class="tabrow">
-      <li id="show-de" class="ph pv-- <%= "selected" if I18n.locale == :de %>"> <%= t(:de, scope: 'i18n.language').html_safe %></li>
-      <li id="show-en" class="ph pv-- <%= "selected" if I18n.locale == :en %>"> <%= t(:en, scope: 'i18n.language').html_safe %></li>
+      <li id="show-de" class="ph pv-- <%= I18n.locale == :de ? "selected" : "unselected" %>"> <%= t(:de, scope: 'i18n.language').html_safe %></li>
+      <li id="show-en" class="ph pv-- <%= I18n.locale == :en ? "selected" : "unselected" %>"> <%= t(:en, scope: 'i18n.language').html_safe %></li>
     </ul>
 
     <div id="edit-de" class="ox__bg bg--white pt+ <%= "hidden" unless I18n.locale == :de %>" >
