@@ -26,7 +26,6 @@ class UserProfileCorrectlyDisplayedTest < ActionDispatch::IntegrationTest
     assert page.has_css?('h1'), 'one  of the fullname'
     assert page.has_content?('My topics')
     assert page.has_content?('My bio')
-    assert page.has_content?('twitter')
   end
 
   test 'user profile is correctly displayed in german' do
@@ -36,6 +35,5 @@ class UserProfileCorrectlyDisplayedTest < ActionDispatch::IntegrationTest
     assert page.has_css?('h1'), 'one headline of the fullname'
     assert page.has_content?('Meine Themen')
     assert page.has_content?('Meine Biografie')
-    assert page.has_content?('Twitter')
   end
 end
