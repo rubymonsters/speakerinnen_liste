@@ -44,13 +44,19 @@ class ProfilesController < ApplicationController
   end
 
   def update
-    @medialinks = @profile.medialinks
     if @profile.update_attributes(profile_params)
-      redirect_to @profile, notice: (I18n.t('flash.profiles.updated', profile_name: @profile.name_or_email))
+      if params[:new_medialink]
+        redirect_to new_profile_medialink_path(@profile)
+      elsif params[:medialink]
+        redirect_to edit_profile_medialink_path(@profile, params[:medialink])
+      else
+        redirect_to @profile, notice: (I18n.t('flash.profiles.updated', profile_name: @profile.name_or_email))
+      end
     elsif current_profile
       build_missing_translations(@profile)
       render action: 'edit'
     end
+    @medialinks = @profile.medialinks
   end
 
   def destroy

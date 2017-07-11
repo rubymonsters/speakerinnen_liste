@@ -8,7 +8,6 @@ class MedialinksController < ApplicationController
   end
 
   def new
-    @profile.update_attributes(profile_params)
     @medialink = Medialink.new(url: 'http://')
   end
 
