@@ -1,6 +1,8 @@
-describe 'profile adding' do
+describe "profile adding" do
   it 'allows to create a profile with languages' do
+    # capyara visit method set the locale to :en
     visit root_path
+
     click_link I18n.t(:signup, scope: 'layouts.application')
     fill_in 'E-Mail', with: 'test@test.de'
     fill_in 'profile_password', with: '12345678'
@@ -20,8 +22,7 @@ describe 'profile adding' do
     fill_in I18n.t(:twitter, scope: 'activerecord.attributes.profile'), with: '@Lovelace'
     find(:css, "#city").set("London")
 
-    # ToDo: this only works when locale is :en which it obviously always is in the tests?
-    select "Cuba", from: I18n.t(:country, scope: 'activerecord.attributes.profile')
+    select "United Kingdom", from: I18n.t(:country, scope: 'activerecord.attributes.profile'), match: :first
     page.check I18n.t(:es, scope: 'iso_639_1').capitalize
     find(:css, "#profile_iso_languages_es").set(true)
     click_button I18n.t(:update, scope: 'profiles.form')

@@ -273,7 +273,7 @@ en:
       medialink:
         url: "URL:"
         title: "Title:"
-        description: "Description:<br><small>You can use simple HTML tags to format the text. For example: <i>< i > italic < /i ></i> or <b>< b > bold < /b ></b>.</small>"
+        description: "Description:<br><small>You can use simple HTML tags to format the text. For example: <i>< i > italic < /i ></i> or <b> < b > bold < /b ></b>.</small>"
   devise:
     registrations:
       edit:
