@@ -1,4 +1,4 @@
-<div class="o-layout mt">
+<div id="profile_edit", class="o-layout mt">
   <div class="o-layout__item 2/6">
 
     <%= f.label :picture %>
@@ -65,7 +65,7 @@
       <p class="pb bb"><%= t(:medialink_description, scope: 'medialinks').html_safe %></p>
 
       <%= link_to(new_profile_medialink_path(@profile)) do %>
-        <div class="btn btn--small mv">
+        <div id="new_medialink", class="btn btn--small mv">
           <i class="fa fa-plus-circle"></i>
           <%= t(:new, scope: 'medialinks') %>
         </div>
@@ -158,4 +158,9 @@ $('#show-en').click(function(){
     $('#show-de').addClass('unselected');
   });
 
+  window.setInterval(function() {
+    $('#edit_profile_2').submit(); // this will trigger the form to submit and save
+  }, 5000);
+
+  // 5000 => Run the function every 5000 milliseconds
 </script>
