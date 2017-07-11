@@ -69,39 +69,4 @@ class MedialinksController < ApplicationController
     params.require(:medialink).permit(:url, :title, :description, :position)
   end
 
-  def profile_params
-    params.require(:profile).permit(
-      :email,
-      :password,
-      :password_confirmation,
-      :remember_me,
-      :city,
-      :country,
-      {iso_languages: []},
-      :firstname,
-      :lastname,
-      :picture,
-      :twitter,
-      :remove_picture,
-      :talks,
-      :website,
-      :content,
-      :name,
-      :topic_list,
-      :media_url,
-      :slug,
-      :admin_comment,
-      :main_topic_en,
-      :main_topic_de,
-      :bio_en,
-      :bio_de,
-      translations_attributes: [:id, :bio, :main_topic, :locale],
-      medialinks_attributes: [:id, :url, :title, :description, :profile_id, :position])
-  end
-
-  def custom_params
-    permitted = Profile.globalize_attribute_names
-    params[:profile].permit(*permitted)
-  end
-
 end
