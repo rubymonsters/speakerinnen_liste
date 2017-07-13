@@ -132,7 +132,6 @@ class ProfilesController < ApplicationController
       :twitter,
       :remove_picture,
       :talks,
-      :website,
       :content,
       :name,
       :topic_list,

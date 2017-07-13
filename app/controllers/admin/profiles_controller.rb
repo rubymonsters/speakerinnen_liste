@@ -87,7 +87,6 @@ class Admin::ProfilesController < Admin::BaseController
       :twitter,
       :remove_picture,
       :talks,
-      :website,
       :content,
       :name,
       :topic_list,
