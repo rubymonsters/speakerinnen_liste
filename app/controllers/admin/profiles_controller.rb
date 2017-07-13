@@ -98,6 +98,8 @@ class Admin::ProfilesController < Admin::BaseController
       :bio_en,
       :main_topic_de,
       :main_topic_en,
+      :twitter_de,
+      :twitter_en,
       translations_attributes: [:id, :bio, :main_topic, :locale])
   end
 

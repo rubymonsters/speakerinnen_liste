@@ -6,7 +6,6 @@ one:
   encrypted_password: <%= Profile.new.send(:password_digest, 'Testpassword') %>
   languages: Deutsch
   city: New York
-  twitter: alove
   talks: CCC
   published: true
 
@@ -17,7 +16,6 @@ two:
   email: inge@mail.de
   languages: Deutsch
   city: Berlin
-  twitter: MyString
   talks: Repuclica
 
 three:
@@ -37,5 +35,4 @@ jane:
   encrypted_password: <%= Profile.new.send(:password_digest, 'Testpassword') %>
   languages: MyString
   city: MyString
-  twitter: MyString
   admin: true
