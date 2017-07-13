@@ -129,7 +129,6 @@ class ProfilesController < ApplicationController
       :firstname,
       :lastname,
       :picture,
-      :twitter,
       :remove_picture,
       :talks,
       :content,
@@ -146,7 +145,7 @@ class ProfilesController < ApplicationController
       :twitter_en,
       :website_de,
       :website_en,
-      translations_attributes: [:id, :bio, :main_topic, :website, :locale],
+      translations_attributes: [:id, :bio, :main_topic, :twitter, :website, :locale],
       medialinks_attributes: [:id, :url, :title, :description, :profile_id, :position])
   end
 

@@ -84,7 +84,6 @@ class Admin::ProfilesController < Admin::BaseController
       :firstname,
       :lastname,
       :picture,
-      :twitter,
       :remove_picture,
       :talks,
       :content,
@@ -101,7 +100,7 @@ class Admin::ProfilesController < Admin::BaseController
       :twitter_en,
       :website_de,
       :website_en,
-      translations_attributes: [:id, :bio, :main_topic, :website, :locale])
+      translations_attributes: [:id, :bio, :main_topic, :twitter, :website, :locale])
   end
 
   def sort_column
