@@ -4,7 +4,10 @@ describe Admin::ProfilesController, type: :controller do
   let!(:admin) { Profile.create!(FactoryGirl.attributes_for(:admin)) }
   let!(:admin_medialink) { FactoryGirl.create(:medialink, profile_id: admin.id) }
   let!(:non_admin) { Profile.create!(FactoryGirl.attributes_for(:published)) }
-  let!(:non_admin_medialink) { FactoryGirl.create(:medialink, profile_id: non_admin.id) }
+  let!(:non_admin_medialink) { FactoryGirl.create(:medialink, profile_id: non_admin.id,
+                                                        title: 'Ada and the computer',
+                                                        url: 'www.adalovelace.de',
+                                                        description: 'How to program')}
 
   describe 'GET index' do
     before(:each) do
@@ -90,6 +93,10 @@ describe Admin::ProfilesController, type: :controller do
 
       it 'should edit the correct profile' do
         expect(assigns(:profile)).to eq(non_admin)
+      end
+
+      it 'fetches all medialinks for the requested profile' do
+        expect(assigns(:profile).medialinks).to include(non_admin_medialink)
       end
     end
 
