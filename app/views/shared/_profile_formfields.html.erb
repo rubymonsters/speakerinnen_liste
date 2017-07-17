@@ -63,12 +63,7 @@
       <h2><%= t(:index, scope: 'medialinks')%></h2>
       <p class="pb bb"><%= t(:medialink_description, scope: 'medialinks').html_safe %></p>
 
-      <%= link_to(new_profile_medialink_path(@profile)) do %>
-        <div class="btn btn--small mv">
-          <i class="fa fa-plus-circle"></i>
-          <%= t(:new, scope: 'medialinks') %>
-        </div>
-      <% end %>
+      <%= f.button :button, 'The Best Cake', type: 'submit', name: 'new_medialink', value: 'true' %>
 
       <p class="help"><%= t(:help, scope: 'medialinks').html_safe %></p>
 
@@ -92,7 +87,8 @@
                   method: :delete, data: { confirm: 'Are you sure?'}, title: t(:delete, scope: 'medialinks') %>
               <% else %>
               <!-- if non admin user -->
-                <%= link_to '<i class="fa fa-pencil"></i>'.html_safe+ t(:edit_link, scope: 'medialinks'), edit_profile_medialink_path(@profile, medialink) %>
+                <%= f.button :button, 'Edit', type: 'submit', name: 'medialink', value: medialink.id %>
+                <%# link_to '<i class="fa fa-pencil"></i>'.html_safe+ t(:edit_link, scope: 'medialinks'), edit_profile_medialink_path(@profile, medialink) %>
                 <%= link_to '<i class="fa fa-minus-circle"></i>'.html_safe+ t(:delete_link, scope: 'medialinks'), profile_medialink_path(@profile, medialink),
                 method: :delete, data: { confirm: 'Are you sure?'}, title: t(:delete, scope: "medialinks") %>
               <% end %>
