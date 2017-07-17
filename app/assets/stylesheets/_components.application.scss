@@ -113,7 +113,7 @@ h2{
 
 .box__bg {
   display: inline-block;
-  padding: halve($inuit-base-spacing-unit) $inuit-base-spacing-unit;
+  padding: $inuit-base-spacing-unit $inuit-base-spacing-unit;
 }
 
 .bg--white {
@@ -416,6 +416,10 @@ header {
   margin: 0;
   color: $font-color;
   overflow: hidden;
+}
+
+.profile-box {
+  width: 100%;
 }
 
 /*classes for topicscloud*/

@@ -87,7 +87,6 @@ ActiveRecord::Schema.define(version: 20170711112758) do
     t.datetime "updated_at", null: false
     t.string   "main_topic"
     t.text     "bio"
-    t.string   "city"
     t.string   "twitter"
   end
 
@@ -122,11 +121,11 @@ ActiveRecord::Schema.define(version: 20170711112758) do
     t.string   "uid"
     t.string   "media_url"
     t.boolean  "published",              default: false
+    t.string   "website"
     t.text     "admin_comment"
     t.string   "slug"
     t.string   "country"
     t.string   "iso_languages"
-    t.string   "website"
   end
 
   add_index "profiles", ["confirmation_token"], name: "index_profiles_on_confirmation_token", unique: true, using: :btree
