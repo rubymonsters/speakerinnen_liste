@@ -90,6 +90,11 @@
             <% end %>
           <% end %>
 
+          <%= link_to(profile_medialinks_path(@profile)) do %>
+           <div class='btn buttons-modals btn--small btn--full mt-'>
+             <%= t(:edit, scope: 'profiles.medialinks') %>
+           </div>
+          <% end %>
       </div>
     </div>
 

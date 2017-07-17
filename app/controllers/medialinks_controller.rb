@@ -5,6 +5,7 @@ class MedialinksController < ApplicationController
   before_action :set_medialink, only: [:edit, :update, :destroy]
 
   def index
+    @medialinks = @profile.medialinks.order(:position)
   end
 
   def new
@@ -16,7 +17,7 @@ class MedialinksController < ApplicationController
 
   def update
     if @medialink.update_attributes(medialink_params)
-      redirect_to edit_profile_path(@profile), notice: (I18n.t('flash.medialink.updated'))
+      redirect_to profile_medialinks_path(@profile), notice: (I18n.t('flash.medialink.updated'))
     else
       render action: 'edit'
     end
@@ -24,14 +25,14 @@ class MedialinksController < ApplicationController
 
   def destroy
     @medialink.destroy
-    redirect_to edit_profile_path(@profile), notice: (I18n.t('flash.medialink.destroyed'))
+    redirect_to profile_medialinks_path(@profile), notice: (I18n.t('flash.medialink.destroyed'))
   end
 
   def create
     @medialink = @profile.medialinks.build(medialink_params)
     if @medialink.save
       flash[:notice] = (I18n.t('flash.medialink.created').html_safe)
-      redirect_to edit_profile_path(@profile)
+      redirect_to profile_medialinks_path(@profile)
     else
       flash[:notice] = (I18n.t('flash.medialink.error'))
       render action: 'new'

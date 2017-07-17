@@ -194,6 +194,8 @@ de:
       sure: "Bist Du sicher?"
       link: "Bitte 'http://' davor schreiben."
       email: "E-Mail:"
+    medialinks:
+      edit: "Referenzen bearbeiten"
     edit:
       show_more_languages: "Noch mehr Sprachen >>"
       show_less_languages: "Weniger Sprachen >>"
