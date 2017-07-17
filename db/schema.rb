@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170713133208) do
+ActiveRecord::Schema.define(version: 20170707093704) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -88,8 +88,6 @@ ActiveRecord::Schema.define(version: 20170713133208) do
     t.string   "main_topic"
     t.text     "bio"
     t.string   "city"
-    t.string   "twitter"
-    t.string   "website"
   end
 
   add_index "profile_translations", ["locale"], name: "index_profile_translations_on_locale", using: :btree
@@ -127,6 +125,8 @@ ActiveRecord::Schema.define(version: 20170713133208) do
     t.string   "slug"
     t.string   "country"
     t.string   "iso_languages"
+    t.string   "website"
+    t.string   "twitter"
   end
 
   add_index "profiles", ["confirmation_token"], name: "index_profiles_on_confirmation_token", unique: true, using: :btree
