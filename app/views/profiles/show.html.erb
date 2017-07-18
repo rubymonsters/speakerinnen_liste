@@ -17,7 +17,7 @@
 
       </div>
 
-      <div class="o-layout__item 3/6 palm-1/1 profile-box bg--white pt">
+      <div class="o-layout__item 3/6 palm-1/1 bg--white box__bg pt">
           <% if @profile.twitter.present? %>
             <h2 class="delta sans-serif mb-">
               <%= t(:twitter, scope: 'profiles.profile') %>
@@ -73,9 +73,9 @@
               <%= @profile.country_name %>
             </p>
           <% end %>
-        </div><!--
+        </div>
 
-      --><div class="o-layout__item 1/6 palm-1/1">
+        <div class="o-layout__item 1/6 palm-1/1">
 
           <label class="btn btn--small btn--full" for="modal-1">
             <i class="fa fa-envelope-o"></i>&nbsp;
@@ -88,9 +88,14 @@
                 <%= t(:edit, scope: 'profiles.profile') %>
               </div>
             <% end %>
+            <%= link_to(profile_medialinks_path(@profile)) do %>
+               <div class='btn buttons-modals btn--small btn--full mt-'>
+                 <%= t(:edit, scope: 'profiles.medialinks') %>
+               </div>
+            <% end %>
           <% end %>
 
-      </div>
+        </div>
     </div>
 
     <% if @profile.bio %>

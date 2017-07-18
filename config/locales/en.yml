@@ -194,6 +194,8 @@ en:
       sure: "Are you sure?"
       link: "Be sure to add 'http://'"
       email: "Email:"
+    medialinks:
+      edit: "Edit references"
     edit:
       show_more_languages: "Show more languages >>"
       show_less_languages: "Show less languages >>"

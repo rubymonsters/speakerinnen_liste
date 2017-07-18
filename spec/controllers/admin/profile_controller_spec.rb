@@ -4,7 +4,10 @@ describe Admin::ProfilesController, type: :controller do
   let!(:admin) { Profile.create!(FactoryGirl.attributes_for(:admin)) }
   let!(:admin_medialink) { FactoryGirl.create(:medialink, profile_id: admin.id) }
   let!(:non_admin) { Profile.create!(FactoryGirl.attributes_for(:published)) }
-  let!(:non_admin_medialink) { FactoryGirl.create(:medialink, profile_id: non_admin.id) }
+  let!(:non_admin_medialink) { FactoryGirl.create(:medialink, profile_id: non_admin.id,
+                                                        title: 'Ada and the computer',
+                                                        url: 'www.adalovelace.de',
+                                                        description: 'How to program')}
 
   describe 'GET index' do
     before(:each) do
@@ -13,22 +16,21 @@ describe Admin::ProfilesController, type: :controller do
       @profile1 = Profile.create!(FactoryGirl.attributes_for(:admin, firstname: 'NotInc'))
     end
 
-    # describe 'when search param is provided' do
-    #   before { get :index, search: 'Awe' }
+    describe 'when search param is provided' do
+      before { get :index, search: 'Awe' }
 
-    #   it 'should return success' do
-    #     skip "ToDo: what is elasticsearch giving back?"
-    #     expect(response.status).to eq 200
-    #   end
+      it 'should return success' do
+        expect(response.status).to eq 200
+      end
 
-    #   it 'should redirect to the admin profiles page' do
-    #     expect(response).to render_template(:index)
-    #   end
+      it 'should redirect to the admin profiles page' do
+        expect(response).to render_template(:index)
+      end
 
-    #   it 'should contain queried results' do
-    #     expect(assigns(:profiles)).to_not include(@profile1)
-    #   end
-    # end
+      it 'should contain queried results' do
+        expect(assigns(:profiles)).to_not include(@profile1)
+      end
+    end
 
     describe 'when search param is not provided' do
       before { get :index }
@@ -91,6 +93,10 @@ describe Admin::ProfilesController, type: :controller do
 
       it 'should edit the correct profile' do
         expect(assigns(:profile)).to eq(non_admin)
+      end
+
+      it 'fetches all medialinks for the requested profile' do
+        expect(assigns(:profile).medialinks).to include(non_admin_medialink)
       end
     end
 

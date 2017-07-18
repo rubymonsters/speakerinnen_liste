@@ -6,6 +6,7 @@
 
     <%= link_to t(:show, scope: 'admin.dashboard.profiles.edit'), admin_profile_path(@profile), class:'btn btn--small' %>
     <%= link_to t(:show_all, scope: 'admin.dashboard.profiles.edit'), admin_profiles_path, class:'btn btn--small' %>
+    <%= link_to t(:edit, scope: 'medialinks'), admin_profile_medialinks_path(@profile), class:'btn btn--danger btn--small', title: t(:edit, scope: 'medialinks') %>
     <% if @profile.published %>
       <%= link_to t(:make_invisible, scope: 'admin.dashboard.profiles'), unpublish_admin_profile_path(@profile.id), method: :post, class:'btn btn--small btn--danger mv', title: 'Hier kannst Du das Profile wieder unsichtbar machen.' %>
     <% else %>

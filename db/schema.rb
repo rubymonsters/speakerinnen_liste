@@ -87,7 +87,6 @@ ActiveRecord::Schema.define(version: 20170713124525) do
     t.datetime "updated_at", null: false
     t.string   "main_topic"
     t.text     "bio"
-    t.string   "city"
     t.string   "twitter"
     t.string   "website"
   end

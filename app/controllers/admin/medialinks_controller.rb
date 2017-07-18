@@ -4,6 +4,7 @@ class Admin::MedialinksController < Admin::BaseController
   before_action :set_medialink, only: [:edit, :update, :destroy]
 
   def index
+    @medialinks = @profile.medialinks.order(:position)
   end
 
   def new
@@ -15,7 +16,7 @@ class Admin::MedialinksController < Admin::BaseController
 
   def update
     if @medialink.update_attributes(medialink_params)
-      redirect_to admin_profile_path(@profile), notice: (I18n.t('flash.medialink.updated'))
+      redirect_to admin_profile_medialinks_path(@profile), notice: (I18n.t('flash.medialink.updated'))
     else
       render action: 'edit'
     end
@@ -23,7 +24,7 @@ class Admin::MedialinksController < Admin::BaseController
 
   def destroy
     @medialink.destroy
-    redirect_to admin_profile_path(@profile), notice: (I18n.t('flash.medialink.destroyed'))
+    redirect_to admin_profile_medialinks_path(@profile), notice: (I18n.t('flash.medialink.destroyed'))
   end
 
   def create
