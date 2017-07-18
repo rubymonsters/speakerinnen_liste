@@ -84,7 +84,20 @@
       <%= f.text_area :bio_en, as: :text, class: 'mb input--width-100', rows: 10 %>
     </div>
 
-     <%= f.button :submit, t(:update, scope: 'profiles.form'), class:'btn btn--small mt mb++' %>
+    <%= f.button :submit, t(:update, scope: 'profiles.form'), class:'btn btn--small mt mb++' %>
+
+    <%= link_to(profile_medialinks_path(@profile)) do %>
+      <div class='btn buttons-modals btn--small btn--full mt-'>
+        <%= t(:edit, scope: 'profiles.medialinks') %>
+      </div>
+    <% end %>
+
+    <%= link_to(edit_profile_registration_path) do %>
+      <div class='btn buttons-modals btn--small btn--full mt-'>
+        <%= t(:account, scope: 'layouts.application') %>
+      </div>
+    <% end %>
+
   </div>
 </div>
 
