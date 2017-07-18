@@ -86,6 +86,10 @@ describe 'profile navigation' do
     it 'shows the correct main topic' do
       expect(page).to have_css('.hidden', text: 'My main topic in German')
     end
+
+    it 'gives the possibility to edit the account information' do
+      expect(page).to have_css('#accountSettings')
+    end
   end
 
   describe 'edit view profile in DE' do
@@ -108,6 +112,10 @@ describe 'profile navigation' do
 
     it 'shows the correct main topic' do
       expect(page).to have_css('.hidden', text: 'Mein Hauptthema auf Englisch')
+    end
+
+    it 'gives the possibility to edit the account information' do
+      expect(page).to have_css('#accountSettings')
     end
   end
 end
