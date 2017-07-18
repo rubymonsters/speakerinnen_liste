@@ -144,7 +144,7 @@ de:
       press: "Presse"
       logged_as: "Eingeloggt als"
       my_profile: "Mein Profil"
-      account: "Benutzerkonto"
+      account: "Benutzerkonto bearbeiten"
       logout: "Ausloggen"
       signup: "Als Speakerin registrieren"
       login: "Einloggen"
@@ -195,7 +195,7 @@ de:
       link: "Bitte 'http://' davor schreiben."
       email: "E-Mail:"
     medialinks:
-      edit: "Referenzen bearbeiten"
+      edit: "nächster Schritt: Referenzen bearbeiten"
     edit:
       show_more_languages: "Noch mehr Sprachen >>"
       show_less_languages: "Weniger Sprachen >>"
