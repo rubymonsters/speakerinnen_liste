@@ -88,6 +88,7 @@ ActiveRecord::Schema.define(version: 20170711112758) do
     t.string   "main_topic"
     t.text     "bio"
     t.string   "twitter"
+    t.string   "city"
   end
 
   add_index "profile_translations", ["locale"], name: "index_profile_translations_on_locale", using: :btree

@@ -144,7 +144,10 @@ class ProfilesController < ApplicationController
       :bio_de,
       :twitter_de,
       :twitter_en,
-      translations_attributes: [:id, :bio, :main_topic, :locale])
+      :city_en,
+      :city_de,
+      translations_attributes: [:id, :bio, :main_topic, :twitter, :city, :locale],
+      medialinks_attributes: [:id, :url, :title, :description, :profile_id, :position])
   end
 
   def custom_params
