@@ -85,18 +85,18 @@ module Searchable
                 size: 999
               }
             },
-            city_de: {
-              terms: {
-                field: 'cities_de',
-                size: 999
-              }
-            },
-            city_en: {
-              terms: {
-                field: 'cities_en',
-                size: 999
-              }
-            },
+            # city_de: {
+            #   terms: {
+            #     field: 'cities_de',
+            #     size: 999
+            #   }
+            # },
+            # city_en: {
+            #   terms: {
+            #     field: 'cities_en',
+            #     size: 999
+            #   }
+            # },
             country: {
               terms: {
                 field: 'country',
@@ -242,8 +242,8 @@ module Searchable
           end
         end
         indexes :iso_languages,  type: 'string', analyzer: 'standard', 'norms': { 'enabled': false }
-        # indexes :cities, fields: { unmod: { type:  'string', index: 'not_analyzed', 'norms': { 'enabled': false } }, standard: { type:  'string', analyzer: 'cities_analyzer', 'norms': { 'enabled': false }} }
-        indexes :cities, fields: { city_en: { type:  'string', index: 'not_analyzed', 'norms': { 'enabled': false } }, cities_de: { type:  'string', index: 'not_analyzed', 'norms': { 'enabled': false }} }
+        indexes :cities, fields: { unmod: { type:  'string', index: 'not_analyzed', 'norms': { 'enabled': false } }, standard: { type:  'string', analyzer: 'cities_analyzer', 'norms': { 'enabled': false }} }
+        # indexes :cities, fields: { city_en: { type:  'string', index: 'not_analyzed', 'norms': { 'enabled': false } }, cities_de: { type:  'string', index: 'not_analyzed', 'norms': { 'enabled': false }} }
         indexes :country,    type: 'string', analyzer: 'standard', 'norms': { 'enabled': false }
         indexes :website,    type: 'string', analyzer: 'standard', 'norms': { 'enabled': false }
         indexes :medialinks, type: 'nested' do
