@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170707093704) do
+ActiveRecord::Schema.define(version: 20170711112758) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,8 +31,8 @@ ActiveRecord::Schema.define(version: 20170707093704) do
 
   create_table "categories", force: true do |t|
     t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "categories_tags", force: true do |t|
@@ -45,10 +45,10 @@ ActiveRecord::Schema.define(version: 20170707093704) do
   add_index "categories_tags", ["tag_id"], name: "index_categories_tags_on_tag_id", using: :btree
 
   create_table "category_translations", force: true do |t|
-    t.integer  "category_id", null: false
+    t.integer  "category_id"
     t.string   "locale",      null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.string   "name"
   end
 
@@ -73,18 +73,18 @@ ActiveRecord::Schema.define(version: 20170707093704) do
     t.text     "url"
     t.text     "title"
     t.text     "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.integer  "position"
   end
 
   add_index "medialinks", ["profile_id"], name: "index_medialinks_on_profile_id", using: :btree
 
   create_table "profile_translations", force: true do |t|
-    t.integer  "profile_id", null: false
+    t.integer  "profile_id"
     t.string   "locale",     null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string   "main_topic"
     t.text     "bio"
     t.string   "twitter"
@@ -101,8 +101,8 @@ ActiveRecord::Schema.define(version: 20170707093704) do
     t.string   "languages"
     t.string   "city"
     t.string   "picture"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
     t.string   "encrypted_password",     default: "",    null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
