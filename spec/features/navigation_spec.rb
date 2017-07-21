@@ -118,7 +118,7 @@ RSpec.feature 'Navigation', type: :feature do
         expect(page).to have_css('.profile_twitter')
         expect(page).to have_css('div.profile_city')
         expect(page).to have_css('div.profile_iso_languages')
-        expect(page).to have_css('div.profile_website')
+        expect(page).to have_css('.profile_website')
         expect(page).to have_css('div.profile_topic_list')
         expect(page).to have_css('form label', text: 'country')
         expect(page).to have_css('form label', text: 'picture')
