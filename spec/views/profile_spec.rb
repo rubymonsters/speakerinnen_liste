@@ -40,6 +40,10 @@ describe 'profile navigation' do
       expect(page).to have_content('www.adalovelace.de')
       expect(page).to have_content('How to programm')
     end
+
+    it 'gives the possibility to edit the account information' do
+      expect(page).to have_css('#accountSettings')
+    end
   end
   describe 'show view profile in DE' do
     before do
@@ -64,6 +68,10 @@ describe 'profile navigation' do
       expect(page).to have_content('www.adalovelace.de')
       expect(page).to have_content('How to programm')
     end
+
+    it 'gives the possibility to edit the account information' do
+      expect(page).to have_css('#accountSettings')
+    end
   end
 
   describe 'edit view profile in EN' do
@@ -85,10 +93,6 @@ describe 'profile navigation' do
 
     it 'shows the correct main topic' do
       expect(page).to have_css('.hidden', text: 'My main topic in German')
-    end
-
-    it 'gives the possibility to edit the account information' do
-      expect(page).to have_css('#accountSettings')
     end
   end
 
@@ -112,10 +116,6 @@ describe 'profile navigation' do
 
     it 'shows the correct main topic' do
       expect(page).to have_css('.hidden', text: 'Mein Hauptthema auf Englisch')
-    end
-
-    it 'gives the possibility to edit the account information' do
-      expect(page).to have_css('#accountSettings')
     end
   end
 end
