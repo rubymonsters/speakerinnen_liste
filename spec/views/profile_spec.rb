@@ -40,6 +40,10 @@ describe 'profile navigation' do
       expect(page).to have_content('www.adalovelace.de')
       expect(page).to have_content('How to programm')
     end
+
+    it 'gives the possibility to edit the account information' do
+      expect(page).to have_css('#accountSettings')
+    end
   end
   describe 'show view profile in DE' do
     before do
@@ -63,6 +67,10 @@ describe 'profile navigation' do
       expect(page).to have_content('Ada and the computer')
       expect(page).to have_content('www.adalovelace.de')
       expect(page).to have_content('How to programm')
+    end
+
+    it 'gives the possibility to edit the account information' do
+      expect(page).to have_css('#accountSettings')
     end
   end
 

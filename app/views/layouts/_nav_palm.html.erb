@@ -15,7 +15,6 @@
     <ul class="pl0 m0">
     <% if profile_signed_in? %>
       <li><%= link_to(t(:my_profile, scope: 'layouts.application'), profile_path(current_profile), class: 'nav__palm-menu-link bb')%></li>
-      <li><%= link_to(t(:account, scope: 'layouts.application'), edit_profile_registration_path, class: 'nav__palm-menu-link bb') %></li>
       <li><%= link_to(t(:logout, scope: 'layouts.application'), destroy_profile_session_path, method: :delete, class: 'nav__palm-menu-link bb') %></li>
     <% else %>
       <li><%= link_to(t(:signup, scope: 'layouts.application'), sign_up_path, class: 'nav__palm-menu-link bb') %></li>

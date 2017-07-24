@@ -18,7 +18,6 @@ RSpec.feature 'Navigation', type: :feature do
 
         expect(page).to have_css('#header__logo')
         expect(page).to have_link('My profile')
-        expect(page).to have_link('Account')
         expect(page).to have_link('Log out')
         expect(page).to have_link('Admin')
         expect(page).to have_link('DE')
@@ -153,7 +152,6 @@ RSpec.feature 'Navigation', type: :feature do
 
         expect(page).to have_css('#header__logo')
         expect(page).to have_link('My profile')
-        expect(page).to have_link('Account')
         expect(page).to have_link('Log out')
         expect(page).to have_link('DE')
       end

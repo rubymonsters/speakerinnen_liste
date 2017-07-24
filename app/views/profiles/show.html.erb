@@ -77,24 +77,32 @@
 
         <div class="o-layout__item 1/6 palm-1/1">
 
-          <label class="btn btn--small btn--full" for="modal-1">
-            <i class="fa fa-envelope-o"></i>&nbsp;
-            <%= t(:contact, scope: 'profiles.profile') %>
-          </label>
+          <% if current_profile != @profile %>
+            <label class="btn btn--small btn--full" for="modal-1">
+              <i class="fa fa-envelope-o"></i>&nbsp;
+              <%= t(:contact, scope: 'profiles.profile') %>
+            </label>
+          <%end%>
 
           <% if current_profile == @profile %>
             <%= link_to(edit_profile_path(@profile)) do %>
-              <div class='btn buttons-modals btn--small btn--full mt-'>
+              <div class='btn buttons-modals btn--small btn--full'>
                 <%= t(:edit, scope: 'profiles.profile') %>
+               </div>
+
+            <%= link_to(profile_medialinks_path(@profile)) do %>
+              <div class='btn buttons-modals btn--small btn--full mt-'>
+                <%= t(:edit, scope: 'profiles.medialinks') %>
               </div>
             <% end %>
-            <%= link_to(profile_medialinks_path(@profile)) do %>
-               <div class='btn buttons-modals btn--small btn--full mt-'>
-                 <%= t(:edit, scope: 'profiles.medialinks') %>
-               </div>
+
+            <%= link_to(edit_profile_registration_path) do %>
+              <div id='accountSettings', class='btn buttons-modals btn--small btn--full mt-'>
+                <%= t(:account, scope: 'layouts.application') %>
+              </div>
             <% end %>
           <% end %>
-
+        <% end %>
         </div>
     </div>
 

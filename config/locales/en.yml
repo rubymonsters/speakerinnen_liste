@@ -144,7 +144,7 @@ en:
       press: "Press"
       logged_as: "Logged in as"
       my_profile: "My profile"
-      account: "Account"
+      account: "Edit account settings"
       logout: "Log out"
       signup: "Register as a speaker"
       login: "Log in"
@@ -195,7 +195,7 @@ en:
       link: "Be sure to add 'http://'"
       email: "Email:"
     medialinks:
-      edit: "Edit references"
+      edit: "Edit previous talks"
     edit:
       show_more_languages: "Show more languages >>"
       show_less_languages: "Show less languages >>"
