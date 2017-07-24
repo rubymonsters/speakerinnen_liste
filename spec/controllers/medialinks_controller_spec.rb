@@ -8,7 +8,7 @@ describe ProfilesController, type: :controller do
                                                           twitter: '@alove',
                                                           main_topic: 'first computer programm',
                                                           bio: 'first programmer',
-                                                          city: 'London',
+                                                          city_en: 'London',
                                                           country: 'GB',
                                                           iso_languages: ['en', 'fr'],
                                                           topic_list: 'algorithm, mathematic'
