@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
-ruby '2.2.3'
-gem 'rails', '4.1.13'
+ruby '2.3.1'
+gem 'rails', '>= 5.0.0.rc2', '< 5.1'
 
 # Needed for Javascript Runtime
 gem 'therubyracer'
@@ -10,33 +10,31 @@ gem 'faker', '1.0.1'
 
 gem 'deadweight', require: 'deadweight/hijack/rails'
 
-# Bundle edge Rails instead:
-# gem 'rails', git: 'git://github.com/rails/rails.git'
-
 gem 'kaminari'
 gem 'mime-types', [ '~> 2.6', '>= 2.6.1' ], require: 'mime/types/columnar'
 
 gem 'pg'
-gem 'devise', '~> 3.1.1'
+gem 'devise', '~> 4.3'
 gem "recaptcha", require: "recaptcha/rails"
 gem 'omniauth-twitter'
 gem 'carrierwave'
-gem 'fog', '~> 1.32.0'
+gem 'fog', '~> 1.40'
 gem 'mini_magick', '~> 3.5.0'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
-gem 'acts-as-taggable-on', '~> 3.4.1'
+gem 'acts-as-taggable-on', '~> 5.0'
 gem 'auto_html', github: 'dejan/auto_html'
-gem 'simple_form', '~> 3.0.2'
+gem 'simple_form', '~> 3.5'
 
 gem 'country_select'
 
-gem 'globalize', '~> 4.0.2'
+gem 'globalize', git: 'https://github.com/globalize/globalize'
+gem 'activemodel-serializers-xml'
 gem 'globalize-accessors'
 
 gem 'font-awesome-rails', '~> 4.3.0.0'
 
-gem "friendly_id", "~> 5.0.1"
+gem 'friendly_id', '~> 5.2', '>= 5.2.1'
 
 gem 'rails_12factor', group: :production
 
@@ -54,8 +52,8 @@ group :development do
 end
 
 group :development, :test do
-  gem 'rspec-rails', '3.1.0'
-  gem 'capybara', '~> 2.4.1'
+  gem 'rspec-rails', '~> 3.5', '>= 3.5.2'
+  gem 'capybara', '~> 2.14', '>= 2.14.4'
   gem 'pry'
   gem 'byebug'
   gem 'selenium-webdriver', '2.38.0'
@@ -70,7 +68,7 @@ group :test do
   gem 'test_after_commit'
 end
 
-gem 'sass-rails',   '~> 4.0.3'
+gem 'sass-rails', '~> 5.0', '>= 5.0.6'
 gem 'coffee-rails', '~> 4.0.1'
 
 gem 'uglifier', '>= 1.0.3'
