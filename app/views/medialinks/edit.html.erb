@@ -21,6 +21,7 @@
         <%= m.input :url, as: :string, input_html: { class: "input--width-100" }, wrapper_html: { class: 'mt' }   %>
         <%= m.input :title, as: :string, input_html: { class: "input--width-100" }, wrapper_html: { class: 'mt' }   %>
         <%= m.input :description, label: t(:description, scope: 'activerecord.attributes.medialink').html_safe, as: :text, input_html: { rows: 10, class: "input--width-100" }, wrapper_html: { class: 'mt' }   %>
+        <%= m.input :language, as: :select, collection: IsoLanguage.top_list %>
         <%= m.submit class:"mt btn btn--small" %>
 
     <% end %>

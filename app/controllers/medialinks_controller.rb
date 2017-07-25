@@ -67,6 +67,12 @@ class MedialinksController < ApplicationController
   end
 
   def medialink_params
-    params.require(:medialink).permit(:url, :title, :description, :position)
+    params.require(:medialink).permit(
+      :url,
+      :title,
+      :description,
+      :position,
+      :language
+    )
   end
 end
