@@ -16,7 +16,8 @@ describe ProfilesController, type: :controller do
   let!(:ada_medialink) { FactoryGirl.create(:medialink, profile_id: ada.id,
                                                         title: 'Ada and the computer',
                                                         url: 'www.adalovelace.de',
-                                                        description: 'How to program')}
+                                                        description: 'How to program',
+                                                        language: 'en')}
 
   before do
     sign_in ada
@@ -44,6 +45,10 @@ describe ProfilesController, type: :controller do
       expect(ada_medialink.description).to eq('How to program')
       ada_medialink.description = 'How to programm and to use logic'
       expect(ada_medialink.description).to eq('How to programm and to use logic')
+    end
+
+    it 'should be able to add language' do
+      expect(ada_medialink.language).to eq('en')
     end
   end
 
