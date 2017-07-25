@@ -317,9 +317,11 @@ de:
     url: "URL:"
     title: "Überschrift:"
     description: "Beschreibung:"
+    language: "Sprache"
+    language_short: "de"
     edit_link: " bearbeiten"
     delete_link: " löschen"
-    language: "de"
+
     tooltip: "Verschiebe die Reihenfolge mit Drag&Drop."
   search:
     any: "Alle"
