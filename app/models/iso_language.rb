@@ -74,4 +74,9 @@ class IsoLanguage
     I18n.t('iso_639_1', locale: :en).to_a.map(&:reverse).to_h[lang_name].try(:to_s)
   end
 
+#Todo: check if we still need that. Was meant to use in form for editing medialinks
+  def self.all_longnames_with_keys
+    @languages_hash = IsoLanguage.all {|l| [I18n.t("#{l}", scope: 'iso_639_1').capitalize, l] }
+  end
+
 end

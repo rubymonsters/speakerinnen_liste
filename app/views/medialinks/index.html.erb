@@ -46,6 +46,8 @@
               <b>
                 <%= medialink.title %>
               </b>
+              <br>
+              <%= medialink.language %>
               <%= medialink.url_html if medialink.url != 'http://' %>
               <%= simple_format(medialink.description) %>
 
