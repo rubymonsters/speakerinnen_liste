@@ -13,8 +13,4 @@ class Medialink < ActiveRecord::Base
     simple_format
     link target: '_blank', rel: 'nofollow'
   end
-
-  def iso_language
-    @medialink.language
-  end
 end
