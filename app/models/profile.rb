@@ -79,9 +79,9 @@ class Profile < ActiveRecord::Base
   end
 
   def cities
-    @cities_de = "#{city_de}".gsub(/(,|\/|&|\*|\|| - | or )/, "!@#$%ˆ&*").split("!@#$%ˆ&*").map {|x| x.strip}
-    @cities_en = "#{city_en}".gsub(/(,|\/|&|\*|\|| - | or )/, "!@#$%ˆ&*").split("!@#$%ˆ&*").map {|x| x.strip}
-    (@cities_de << @cities_en).flatten!.uniq
+    cities_de = "#{city_de}".gsub(/(,|\/|&|\*|\|| - | or )/, "!@#$%ˆ&*").split("!@#$%ˆ&*").map {|x| x.strip}
+    cities_en = "#{city_en}".gsub(/(,|\/|&|\*|\|| - | or )/, "!@#$%ˆ&*").split("!@#$%ˆ&*").map {|x| x.strip}
+    (cities_de << cities_en).flatten!.uniq
   end
 
   def name_or_email
