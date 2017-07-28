@@ -121,7 +121,6 @@ class ProfilesController < ApplicationController
       :password,
       :password_confirmation,
       :remember_me,
-      :city,
       :country,
       {iso_languages: []},
       :firstname,
@@ -144,7 +143,9 @@ class ProfilesController < ApplicationController
       :twitter_en,
       :website_de,
       :website_en,
-      translations_attributes: [:id, :bio, :main_topic, :twitter, :website, :locale])
+      :city_de,
+      :city_en,
+      translations_attributes: [:id, :bio, :main_topic, :twitter, :website, :city, :locale])
   end
 
   def custom_params

@@ -20,7 +20,7 @@ describe "profile adding" do
     fill_in I18n.t(:firstname, scope: 'activerecord.attributes.profile'), with: 'Ada'
     fill_in I18n.t(:lastname, scope: 'activerecord.attributes.profile'), with: 'Lovelace'
     find(:css, "#twitter_en").set("@Lovelace")
-    find(:css, "#city").set("London")
+    find(:css, "#city_en").set("London")
 
     select "United Kingdom", from: I18n.t(:country, scope: 'activerecord.attributes.profile'), match: :first
     page.check I18n.t(:es, scope: 'iso_639_1').capitalize

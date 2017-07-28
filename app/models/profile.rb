@@ -10,9 +10,9 @@ class Profile < ActiveRecord::Base
   validate :iso_languages_array_has_right_format
   before_save :clean_iso_languages!
 
-  translates :bio, :main_topic, :twitter, :website, fallbacks_for_empty_translations: true
+  translates :bio, :main_topic, :twitter, :website, :city, fallbacks_for_empty_translations: true
   accepts_nested_attributes_for :translations
-  globalize_accessors :locales => [:en, :de], :attributes => [:main_topic, :bio, :twitter, :website]
+  globalize_accessors :locales => [:en, :de], :attributes => [:main_topic, :bio, :twitter, :website, :city]
 
   extend FriendlyId
   friendly_id :slug_candidate, use: :slugged
@@ -79,7 +79,9 @@ class Profile < ActiveRecord::Base
   end
 
   def cities
-    "#{city}".gsub(/(,|\/|&|\*|\|| - | or )/, "!@#$%ˆ&*").split("!@#$%ˆ&*").map {|x| x.strip}
+    cities_de = "#{city_de}".gsub(/(,|\/|&|\*|\|| - | or )/, "!@#$%ˆ&*").split("!@#$%ˆ&*").map {|x| x.strip}
+    cities_en = "#{city_en}".gsub(/(,|\/|&|\*|\|| - | or )/, "!@#$%ˆ&*").split("!@#$%ˆ&*").map {|x| x.strip}
+    (cities_de << cities_en).flatten!.uniq
   end
 
   def name_or_email

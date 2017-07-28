@@ -111,7 +111,7 @@ module Searchable
         output = as_json(
           {
             autocomplete: { input:  [fullname, twitter_de, twitter_en, topic_list] },
-            only: [:firstname, :lastname, :iso_languages, :city, :country],
+            only: [:firstname, :lastname, :iso_languages, :country],
               methods: [:fullname, :topic_list, :cities, *globalize_attribute_names],
               include: {
                 medialinks: { only: [:title, :description] }

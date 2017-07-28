@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Searchable, elasticsearch: true do
   let!(:profile) { FactoryGirl.create(:published, firstname: 'Ada', lastname: 'Lovelace',
                                       twitter_de: 'alovelace_de', twitter_en: 'alovelace',
-                                      city: 'London', country: 'GB',
+                                      city_de: 'London', city_en: 'London', country: 'GB',
                                       languages: 'English', iso_languages: ['en'],
                                       topic_list: ['ruby', 'algorithms'],
                                       bio_de: 'Das ist meine deutsche Bio.',
@@ -52,8 +52,8 @@ describe Searchable, elasticsearch: true do
       expect(profile.as_indexed_json['iso_languages']).to eq ['en']
     end
 
-    it 'contains the attribute city' do
-      expect(profile.as_indexed_json['city']).to eq 'London'
+    it 'contains the attribute cities' do
+      expect(profile.as_indexed_json['cities']).to eq ['London']
     end
 
     it 'contains the attribute country' do
