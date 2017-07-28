@@ -22,7 +22,7 @@
         <%= f.input :title, as: :string, input_html: { class: "input--width-100" }, wrapper_html: { class: 'mt' }   %>
         <%= f.input :description, label: t(:description, scope: 'activerecord.attributes.medialink').html_safe, as: :text, input_html: { rows: 10, class: "input--width-100" }, wrapper_html: { class: 'mt' }   %>
         <%= f.input :language, label: t(:select_language, scope: 'medialinks'), label_html: { class: "mr" } do %>
-          <%= f.select :language, options_for_select(IsoLanguage.all_languagenames_with_iso, @medialink.language), include_blank: t(:language, scope: 'profiles.index') %>
+          <%= f.select :language, options_for_select(IsoLanguage.all_languagenames_with_iso, @medialink.language), include_blank: "..." %>
         <% end %>
         <%= f.submit class:"mt btn btn--small mb" %>
 
