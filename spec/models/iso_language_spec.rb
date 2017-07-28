@@ -15,9 +15,9 @@ describe 'iso_language', type: :model do
       expect(IsoLanguage.top_list.count + IsoLanguage.rest_list.count).to eq(IsoLanguage.all.count)
     end
 
-    it 'has an array of arrays with longnames and keys' do
-      expect(IsoLanguage.all_longnames_with_keys).to be_an Array
-      expect(IsoLanguage.all_longnames_with_keys.flatten).to include("Englisch", "en")
+    it 'has an array of arrays with languagenames and iso caracters' do
+      expect(IsoLanguage.all_languagenames_with_iso).to be_an Array
+      expect(IsoLanguage.all_languagenames_with_iso.flatten).to include("Englisch", "en")
     end
   end
 end

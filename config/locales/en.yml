@@ -179,8 +179,8 @@ en:
       lastname: 'Last name:'
       topics: "My topics:"
       languages: "My languages:"
-      talks: "Previous talks:"
-      media: "Examples of previous talks:"
+      talks: "Previous talks / appearances:"
+      media: "Examples of previous talks / appearances:"
       bio: "My bio:"
       contact: "Contact"
       website: "My website/blog:"
@@ -195,7 +195,7 @@ en:
       link: "Be sure to add 'http://'"
       email: "Email:"
     medialinks:
-      edit: "Edit previous talks"
+      edit: "Edit previous talks / appearances"
     edit:
       show_more_languages: "Show more languages >>"
       show_less_languages: "Show less languages >>"
@@ -225,8 +225,8 @@ en:
     show:
       topics: "My topics:"
       languages: "My languages:"
-      talks: "Previous talks:"
-      media: "Examples of previous talks:"
+      talks: "Previous talks / appearances:"
+      media: "Examples of previous talks / appearances:"
       bio: "My bio: "
       email: "Email: "
       twitter: "Twitter:"
@@ -315,7 +315,7 @@ Links to Youtube videos will be shown as embedded videos. Other links will be cl
     description: "Description:"
     edit_link: " edit"
     delete_link: " delete"
-    language: "Language"
+    language: "This talk is in: "
     language_short: "en"
     tooltip: "Change the sort order per drag&drop."
   search:
