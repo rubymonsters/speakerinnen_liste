@@ -14,6 +14,10 @@ describe 'iso_language', type: :model do
     it 'number of list in top- and rest- equal full list' do
       expect(IsoLanguage.top_list.count + IsoLanguage.rest_list.count).to eq(IsoLanguage.all.count)
     end
-  end
 
+    it 'has an array of arrays with languagenames and iso caracters' do
+      expect(IsoLanguage.all_languagenames_with_iso).to be_an Array
+      expect(IsoLanguage.all_languagenames_with_iso.flatten).to include("Englisch", "en")
+    end
+  end
 end

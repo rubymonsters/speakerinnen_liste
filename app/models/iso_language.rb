@@ -74,4 +74,7 @@ class IsoLanguage
     I18n.t('iso_639_1', locale: :en).to_a.map(&:reverse).to_h[lang_name].try(:to_s)
   end
 
+  def self.all_languagenames_with_iso
+    IsoLanguage.all.map {|l| [I18n.t("#{l}", scope: 'iso_639_1').capitalize, l] }
+  end
 end

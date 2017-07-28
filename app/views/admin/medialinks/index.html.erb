@@ -26,7 +26,7 @@
 
         <p id="medialinks__list--sort-message"></p>
 
-        <ul id="medialinks__list" data-update-url="<%= sort_admin_profile_medialinks_url%>" class="<%= t(:language, scope: 'medialinks')%>">
+        <ul id="medialinks__list" data-update-url="<%= sort_admin_profile_medialinks_url%>" class="<%= t(:language_short, scope: 'medialinks')%>">
           <% @medialinks.each do |medialink| %>
             <%= content_tag_for(:li, medialink, nil, {'title' => t(:tooltip, scope: 'medialinks')}) do %>
               <b>
