@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170713124525) do
+ActiveRecord::Schema.define(version: 20170725131924) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -76,6 +76,7 @@ ActiveRecord::Schema.define(version: 20170713124525) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.integer  "position"
+    t.string   "language"
   end
 
   add_index "medialinks", ["profile_id"], name: "index_medialinks_on_profile_id", using: :btree
@@ -89,6 +90,7 @@ ActiveRecord::Schema.define(version: 20170713124525) do
     t.text     "bio"
     t.string   "twitter"
     t.string   "website"
+    t.string   "city"
   end
 
   add_index "profile_translations", ["locale"], name: "index_profile_translations_on_locale", using: :btree

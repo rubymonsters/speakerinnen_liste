@@ -121,7 +121,6 @@ class ProfilesController < ApplicationController
       :password,
       :password_confirmation,
       :remember_me,
-      :city,
       :country,
       {iso_languages: []},
       :firstname,
