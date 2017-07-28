@@ -317,7 +317,7 @@ de:
     url: "URL:"
     title: "Überschrift:"
     description: "Beschreibung:"
-    language: "Dieser Vortrag ist auf: "
+    select_language: "Dieser Vortrag ist auf: "
     language_short: "de"
     edit_link: " bearbeiten"
     delete_link: " löschen"

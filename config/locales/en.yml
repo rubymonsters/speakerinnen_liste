@@ -315,7 +315,7 @@ Links to Youtube videos will be shown as embedded videos. Other links will be cl
     description: "Description:"
     edit_link: " edit"
     delete_link: " delete"
-    language: "This talk is in: "
+    select_language: "This talk is in: "
     language_short: "en"
     tooltip: "Change the sort order per drag&drop."
   search:

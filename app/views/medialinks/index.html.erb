@@ -49,7 +49,7 @@
               <%= medialink.url_html if medialink.url != 'http://' %>
               <%= simple_format(medialink.description) %>
               <span class="text--color-grey">
-                <%= t(:language, scope: 'medialinks') + t("#{medialink.language}", scope: 'iso_639_1').capitalize if medialink.language != nil %>
+                <%= t(:select_language, scope: 'medialinks') + t("#{medialink.language}", scope: 'iso_639_1').capitalize if medialink.language != nil %>
               </span>
 
               <hr>
