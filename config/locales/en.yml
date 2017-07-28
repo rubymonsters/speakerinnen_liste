@@ -245,12 +245,11 @@ en:
       updated: 'Your previous talk was successfully updated.'
       destroyed: 'Your previous talk was successfully deleted.'
       no_permission: "You don’t have permission to edit the reference."
-      error: "It looks like you forgot to fill something."
+      error: "It looks like you forgot to fill in something."
     categories:
       created: '%{category_name} was successfully created.'
       updated: '%{category_name} was successfully updated.'
       destroyed: '%{category_name} was successfully deleted.'
-      error: "It looks like you forgot to fill something."
   activerecord:
     attributes:
       profile:
