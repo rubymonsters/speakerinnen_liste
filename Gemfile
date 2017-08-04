@@ -51,6 +51,7 @@ group :development do
   gem 'better_errors'
   gem 'derailed_benchmarks'
   gem 'stackprof'
+  gem 'bullet'
 end
 
 group :development, :test do

@@ -75,6 +75,9 @@ GEM
       erubis (>= 2.6.6)
       rack (>= 0.9.0)
     builder (3.2.2)
+    bullet (5.6.1)
+      activesupport (>= 3.0.0)
+      uniform_notifier (~> 1.10.0)
     byebug (6.0.2)
     capybara (2.4.4)
       mime-types (>= 1.16)
@@ -427,6 +430,7 @@ GEM
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
+    uniform_notifier (1.10.0)
     warden (1.2.3)
       rack (>= 1.0)
     websocket (1.0.7)
@@ -444,6 +448,7 @@ DEPENDENCIES
   acts-as-taggable-on (~> 3.4.1)
   auto_html!
   better_errors
+  bullet
   byebug
   capybara (~> 2.4.1)
   carrierwave
