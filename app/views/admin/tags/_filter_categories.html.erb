@@ -2,13 +2,6 @@
   <div class="o-layout pv bt mv">
     <div class="o-layout__item 1/2">
 
-      <%= check_box_tag 'uncategorized', params[:uncategorized], params[:uncategorized] %>
-      <%= label_tag 'uncategorized', t(:tags_filter_option, scope: 'admin.dashboard.tags'),
-      class: '' %>
-
-    </div>
-    <div class="o-layout__item 1/2">
-
       <%= t(:tags_search, scope: 'admin.dashboard.tags') %>
       <%= text_field_tag 'q', params[:q], class: '' %>
     </div>
@@ -35,6 +28,11 @@
         <%= radio_button_tag( 'category_id', '', params[:category_id].blank? ) %>
         <%= t(:tags_filter_default, scope: 'admin.dashboard.tags') %>
       <% end %>
+    </div>
+    <div class="o-layout__item 1/1">
+      <%= check_box_tag 'uncategorized', params[:uncategorized], params[:uncategorized] %>
+      <%= label_tag 'uncategorized', t(:tags_filter_option, scope: 'admin.dashboard.tags'),
+      class: '' %>
     </div>
   </div>
 
