@@ -12,6 +12,14 @@ SpeakerinnenListe::Application.routes.draw do
           post 'remove_category'
         end
       end
+      resources :tag_languages, except: [:new, :create] do
+        collection do
+          get 'tag_languages'
+        end
+        member do
+          post 'set_tag_language'
+        end
+      end
       resources :categories
       resources :profiles do
         resources :medialinks do
