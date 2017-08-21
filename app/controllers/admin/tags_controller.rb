@@ -62,6 +62,10 @@ class Admin::TagsController < Admin::BaseController
   end
 
   def tag_params
-    params.require(:tag).permit(:id, :tag, :name)
+    params.require(:tag).permit(
+      :id,
+      :tag,
+      :name,
+      tag_languages: [:id, :tag_id, :language])
   end
 end

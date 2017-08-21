@@ -117,6 +117,29 @@ describe Admin::TagsController, type: :controller do
 
   end
 
+  describe 'GET tag_language' do
+    context 'without any selection' do
+      before(:each) do
+        get :tag_languages
+      end
+
+      specify { expect(response).to render_template(:tag_languages) }
+      specify { expect(response.status).to eq 200 }
+
+      it 'should contain all tags' do
+        p ActsAsTaggableOn::Tag.find_by(name: 'algebra')
+
+        expect(assigns(:tags)).to eq(
+          [ActsAsTaggableOn::Tag.find_by(name: ada.topic_list[0]),
+          ActsAsTaggableOn::Tag.find_by(name: ada.topic_list[1]),
+          ActsAsTaggableOn::Tag.find_by(name: ada.topic_list[2]),
+          ActsAsTaggableOn::Tag.find_by(name: marie.topic_list[0]),
+          ActsAsTaggableOn::Tag.find_by(name: marie.topic_list[1])]
+        )
+      end
+    end
+  end
+
   describe 'GET edit' do
     before(:each) do
       topic = ActsAsTaggableOn::Tag.find_by(name: ada.topic_list[0])
@@ -127,7 +150,6 @@ describe Admin::TagsController, type: :controller do
     it 'renders the edit view' do
       expect(assigns(:tag)).to eq(ActsAsTaggableOn::Tag.find_by(name: ada.topic_list[0]))
     end
-
   end
 
   describe 'PUT update' do
@@ -191,6 +213,30 @@ describe Admin::TagsController, type: :controller do
       specify { expect(response).to redirect_to("/#{I18n.locale}/admin/tags/categorization") }
       it 'assigned categories gets removed from a topic' do
         expect(assigns(:tag).categories).to be_empty
+      end
+    end
+
+    context 'set_tag_language' do
+      before(:each) do
+        @tag = ActsAsTaggableOn::Tag.find_by_name('computer')
+        @tag.set_tag_language(3, 'en')
+      end
+
+      it 'should assign a language to a tag' do
+        expect(@tag.tag_languages.first.language).to eq('en')
+      end
+
+      it 'should assign a second language to a tag' do
+        @tag.set_tag_language(3, 'de')
+
+        expect(@tag.tag_languages.map(&:language)).to match_array(['de', 'en'])
+      end
+
+      it 'should raise error if an invalid language is used' do
+        record = TagLanguage.new(tag_id: @tag.id, language: 'fr')
+        record.valid?
+
+        expect(record.errors[:language]).to include('fr is not a valid language')
       end
     end
   end
