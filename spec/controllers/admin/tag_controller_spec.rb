@@ -127,8 +127,6 @@ describe Admin::TagsController, type: :controller do
       specify { expect(response.status).to eq 200 }
 
       it 'should contain all tags' do
-        p ActsAsTaggableOn::Tag.find_by(name: 'algebra')
-
         expect(assigns(:tags)).to eq(
           [ActsAsTaggableOn::Tag.find_by(name: ada.topic_list[0]),
           ActsAsTaggableOn::Tag.find_by(name: ada.topic_list[1]),
@@ -217,19 +215,18 @@ describe Admin::TagsController, type: :controller do
     end
 
     context 'set_tag_language' do
-      before(:each) do
-        @tag = ActsAsTaggableOn::Tag.find_by_name('computer')
-        @tag.set_tag_language(3, 'en')
-      end
+      let!(:tag) { ActsAsTaggableOn::Tag.find_by_name('computer') }
 
       it 'should assign a language to a tag' do
-        expect(@tag.tag_languages.first.language).to eq('en')
+        tag.set_tag_language(tag.id, 'en')
+        expect(tag.tag_languages.map(&:language)).to match_array(['en'])
       end
 
       it 'should assign a second language to a tag' do
-        @tag.set_tag_language(3, 'de')
+        tag.set_tag_language(tag.id, 'en')
+        tag.set_tag_language(tag.id, 'de')
 
-        expect(@tag.tag_languages.map(&:language)).to match_array(['de', 'en'])
+        expect(tag.tag_languages.map(&:language)).to match_array(['de', 'en'])
       end
 
       it 'should raise error if an invalid language is used' do

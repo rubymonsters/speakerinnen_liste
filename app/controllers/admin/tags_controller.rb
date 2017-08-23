@@ -50,6 +50,11 @@ class Admin::TagsController < Admin::BaseController
     @categories = Category.all
   end
 
+  def tag_languages
+    relation = ActsAsTaggableOn::Tag.order('tags.name ASC').page(params[:page]).per(20)
+    @tags = relation
+  end
+
   private
 
   def find_tag_and_category
