@@ -14,7 +14,7 @@ SpeakerinnenListe::Application.routes.draw do
       end
       resources :tags, except: [:new, :create] do
         collection do
-          get 'tag_languages'
+          get 'edit_tag_languages'
         end
         member do
           post 'set_tag_language'

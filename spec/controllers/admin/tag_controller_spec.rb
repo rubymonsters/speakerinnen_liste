@@ -120,10 +120,10 @@ describe Admin::TagsController, type: :controller do
   describe 'GET tag_language' do
     context 'without any selection' do
       before(:each) do
-        get :tag_languages
+        get :edit_tag_languages
       end
 
-      specify { expect(response).to render_template(:tag_languages) }
+      specify { expect(response).to render_template(:edit_tag_languages) }
       specify { expect(response.status).to eq 200 }
 
       it 'should contain all tags' do
