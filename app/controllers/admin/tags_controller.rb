@@ -52,7 +52,11 @@ class Admin::TagsController < Admin::BaseController
 
   def edit_tag_languages
     relation = ActsAsTaggableOn::Tag.order('tags.name ASC').page(params[:page]).per(20)
-    @tags = relation
+    if (params[:tag_language]).present?
+      @tags = relation.where('tag_languages.language ILIKE?', '%' + params[:tag_language] + '%')
+    else
+      @tags = relation
+    end
   end
 
   private
@@ -60,6 +64,10 @@ class Admin::TagsController < Admin::BaseController
   def find_tag_and_category
     set_tag
     @category = Category.find(params[:category_id])
+  end
+
+  def find_tag_language
+    @tag_languages = TagLanguage.all.pluck(:language).uniq
   end
 
   def set_tag

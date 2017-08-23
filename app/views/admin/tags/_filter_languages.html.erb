@@ -1,3 +1,15 @@
-<div class="o-layout pv bt mv">
-  <h2>Languages</h2>
-</div>
+<h2>Languages</h2>
+<p>Hier filtern</p>
+  <%= form_tag(edit_tag_languages_admin_tags_path, method: :get, class: 'filter_languages') do %>
+    <%= TagLanguage.tag_languages.each do |language| %>
+        <div class="o-layout__item 1/1">
+          <%= check_box_tag 'tag_language', language %>
+          <%= label_tag t(language, scope: 'i18n.language') %>
+        </div>
+    <% end %>
+    <div class="o-layout pb bb mv">
+      <div class="o-layout__item 1/1">
+        <%= submit_tag (t(:filter, scope:'general')), class: 'btn btn--small' %>
+      </div>
+    </div>
+  <% end %>

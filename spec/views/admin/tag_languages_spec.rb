@@ -19,5 +19,17 @@ describe 'admin navigation' do
       expect(page).to have_content('radioactive')
       expect(page).to have_content('x-ray')
     end
+
+    it 'should show languages section' do
+      expect(page).to have_content('Languages')
+    end
+
+    it 'should have section to filter languages' do
+      expect(page).to have_css('form.filter_languages')
+    end
+
+    it 'should have checkboxes to filter languages' do
+
+    end
   end
 end
