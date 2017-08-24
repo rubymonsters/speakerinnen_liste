@@ -41,15 +41,6 @@ class Admin::TagsController < Admin::BaseController
     @categories = Category.all
   end
 
-  def edit_tag_languages
-    relation = ActsAsTaggableOn::Tag.order('tags.name ASC').page(params[:page]).per(20)
-    if (params[:tag_language]).present?
-      @tags = relation.where('tag_languages.language ILIKE?', '%' + params[:tag_language] + '%')
-    else
-      @tags = relation
-    end
-  end
-
   private
 
   def find_tag_and_category

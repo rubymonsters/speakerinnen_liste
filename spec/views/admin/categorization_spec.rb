@@ -29,7 +29,7 @@ describe 'admin navigation' do
     end
 
     it 'should have checkboxes to filter languages' do
-
+      expect(page).to have_css('input[type="checkbox"]')
     end
   end
 end
