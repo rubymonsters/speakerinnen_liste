@@ -5,37 +5,29 @@ class TagFilter
   end
 
   def filter
+    @tags = @tags
+      .includes(:categories, :tag_languages)
+      .references(:categories, :tag_languages)
+
     if @params[:category_id].present?
-      @tags
-        .includes(:categories)
-        .where('categories.id = ?', @params[:category_id])
-        .references(:categories)
-    elsif @params[:q].present? && @params[:uncategorized].present?
-      @tags
-        .where('tags.name ILIKE ?', '%' + @params[:q] + '%')
-        .includes(:categories)
-        .where('categories.id IS NULL')
-        .references(:categories)
-    elsif @params[:q].present?
-      @tags
-        .where('tags.name ILIKE ?', '%' + @params[:q] + '%')
-    elsif @params[:uncategorized].present?
-      @tags
-        .includes(:categories)
-        .where('categories.id IS NULL')
-        .references(:categories)
-    elsif @params[:language].present?
-      @tags
-        .includes(:tag_languages)
-        .where('tag_languages.language = ?', @params[:language])
-        .references(:tag_languages)
-    elsif @params[:no_language].present?
-      @tags
-        .includes(:tag_languages)
-        .where('tag_languages.id IS NULL')
-        .references(:tag_languages)
-    else
-      @tags
+      @tags = @tags.where('categories.id = ?', @params[:category_id])
     end
+
+    if @params[:q].present?
+      @tags = @tags.where('tags.name ILIKE ?', '%' + @params[:q] + '%')
+    end
+
+    if @params[:uncategorized].present?
+      @tags = @tags.where('categories.id IS NULL')
+    end
+
+    if @params[:language].present?
+      @tags = @tags.where('tag_languages.language = ?', @params[:language])
+    end
+
+    if @params[:no_language].present?
+      @tags = @tags.where('tag_languages.id IS NULL')
+    end
+    @tags
   end
 end

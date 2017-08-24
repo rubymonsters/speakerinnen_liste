@@ -6,6 +6,7 @@ describe TagFilter do
   let!(:tag_3) { ActsAsTaggableOn::Tag.create!(id: 3, name: 'entertainment') }
 
   let!(:category_1) { Category.create!(id: 1, name: 'marketing & pr', tags: [tag_1]) }
+  let!(:category_2) { Category.create!(id: 2, name: 'development', tags: [tag_2]) }
 
   let!(:tag_language) { TagLanguage.create!(id: 1, tag_id: 1, language: 'en') }
   let!(:tag_language_second) { TagLanguage.create!(id: 2, tag_id: 1, language: 'de') }
@@ -17,7 +18,7 @@ describe TagFilter do
 
   context 'with given but empty categories' do
     let(:filter_params) { { uncategorized: true } }
-    it { is_expected.to match_array([tag_2, tag_3]) }
+    it { is_expected.to match_array([tag_3]) }
   end
 
   context 'with a given category' do
@@ -43,5 +44,15 @@ describe TagFilter do
   context 'with given language params' do
     let(:filter_params) { { language: 'en' } }
     it { is_expected.to match_array([tag_1]) }
+  end
+
+  context 'with given category and language params' do
+    let(:filter_params) { { category_id: 1, language: 'en' } }
+    it { is_expected.to match_array([tag_1]) }
+  end
+
+  context 'with given category and empty language params' do
+    let(:filter_params) { { category_id: 2, no_language: true } }
+    it { is_expected.to match_array([tag_2]) }
   end
 end
