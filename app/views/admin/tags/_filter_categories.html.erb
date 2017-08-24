@@ -7,7 +7,7 @@
     </div>
   </div>
   <h2><%= t(:categories, scope: 'admin.dashboard.categories') %>:&nbsp</h2>
-  <div class="o-layout pb">
+  <div class="o-layout pb filter_categories">
 
     <% @categories.in_groups_of(3, false) do |row_categories| %>
       <div class="o-layout__item 1/4">
@@ -34,6 +34,17 @@
       <%= label_tag 'uncategorized', t(:tags_filter_option, scope: 'admin.dashboard.tags'),
       class: '' %>
     </div>
+  </div>
+
+  <div class="o-layout pb filter_languages">
+    <h2>Languages</h2>
+    <p>Hier filtern</p>
+    <%= TagLanguage.tag_languages.each do |language| %>
+      <div class="o-layout__item 1/1">
+        <%= check_box_tag 'language', language %>
+        <%= label_tag t(language, scope: 'i18n.language') %>
+      </div>
+    <% end %>
   </div>
 
   <div class="o-layout pb bb mv">

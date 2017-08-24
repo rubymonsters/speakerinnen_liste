@@ -12,7 +12,7 @@ describe 'admin navigation' do
       click_on 'Tags'
     end
 
-    it 'should show all tags' do
+    it 'shows all tags' do
       expect(page).to have_content('algebra')
       expect(page).to have_content('algorithm')
       expect(page).to have_content('computer')
@@ -20,12 +20,12 @@ describe 'admin navigation' do
       expect(page).to have_content('x-ray')
     end
 
-    it 'should show languages section' do
-      expect(page).to have_content('Languages')
+    it 'shows section to filter categories' do
+      expect(page).to have_css('.filter_categories')
     end
 
-    it 'should have section to filter languages' do
-      expect(page).to have_css('form.filter_languages')
+    it 'shows section to filter languages' do
+      expect(page).to have_css('.filter_languages')
     end
 
     it 'should have checkboxes to filter languages' do
