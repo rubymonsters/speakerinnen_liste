@@ -24,6 +24,16 @@ class TagFilter
         .includes(:categories)
         .where('categories.id IS NULL')
         .references(:categories)
+    elsif @params[:language].present?
+      @tags
+        .includes(:tag_languages)
+        .where('tag_languages.language = ?', @params[:language])
+        .references(:tag_languages)
+    elsif @params[:no_language].present?
+      @tags
+        .includes(:tag_languages)
+        .where('tag_languages.id IS NULL')
+        .references(:tag_languages)
     else
       @tags
     end

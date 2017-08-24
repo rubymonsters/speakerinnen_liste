@@ -34,4 +34,14 @@ describe TagFilter do
     let(:filter_params) { { uncategorized: true, q: 'entertainment' } }
     it { is_expected.to match_array([tag_3]) }
   end
+
+  context 'with given but empty language params' do
+    let(:filter_params) { { no_language: true } }
+    it { is_expected.to match_array([tag_2, tag_3]) }
+  end
+
+  context 'with given language params' do
+    let(:filter_params) { { language: 'en' } }
+    it { is_expected.to match_array([tag_1]) }
+  end
 end
