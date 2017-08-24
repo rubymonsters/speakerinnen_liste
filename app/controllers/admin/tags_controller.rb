@@ -32,21 +32,12 @@ class Admin::TagsController < Admin::BaseController
   end
 
   def categorization
-    relation = ActsAsTaggableOn::Tag.order('tags.name ASC').page(params[:page]).per(20)
-
     @tags_count = ActsAsTaggableOn::Tag.count
-    if (params[:category_id]).present?
-      @tags       = relation.includes(:categories).where('categories.id = ?', params[:category_id]).references(:categories)
-    elsif (params[:q]).present? && (params[:uncategorized]).present?
-      @tags       = relation.where('tags.name ILIKE ?', '%' + params[:q] + '%').includes(:categories).where('categories.id IS NULL').references(:categories)
-    elsif (params[:q]).present?
-      @tags       = relation.where('tags.name ILIKE ?', '%' + params[:q] + '%')
-    elsif (params[:uncategorized]).present?
-      @tags       = relation.includes(:categories).where('categories.id IS NULL').references(:categories)
-    else
-      @tags = relation
-      @tags_count = nil
-    end
+    @tags = TagFilter.new(ActsAsTaggableOn::Tag.all, filter_params)
+      .filter
+      .order('tags.name ASC')
+      .page(params[:page])
+      .per(20)
     @categories = Category.all
   end
 
@@ -72,6 +63,14 @@ class Admin::TagsController < Admin::BaseController
 
   def set_tag
     @tag      = ActsAsTaggableOn::Tag.find(params[:id])
+  end
+
+  def filter_params
+     @filter_params = {
+      category_id: params[:category_id],
+      q: params[:q],
+      uncategorized: params[:uncategorized]
+      }
   end
 
   def tag_params
