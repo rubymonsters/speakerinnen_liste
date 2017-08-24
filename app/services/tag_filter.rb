@@ -8,7 +8,6 @@ class TagFilter
     @tags = @tags
       .includes(:categories, :tag_languages)
       .references(:categories, :tag_languages)
-
     if @params[:category_id].present?
       @tags = @tags.where('categories.id = ?', @params[:category_id])
     end
