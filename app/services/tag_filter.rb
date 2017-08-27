@@ -5,7 +5,6 @@ class TagFilter
   end
 
   def filter
-    # binding.pry
     @tags = @tags
       .includes(:categories, :tag_languages)
       .references(:categories, :tag_languages)
