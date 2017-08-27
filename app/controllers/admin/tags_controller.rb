@@ -43,6 +43,7 @@ class Admin::TagsController < Admin::BaseController
   end
 
   def categorization
+    # binding.pry
     @tags_count = ActsAsTaggableOn::Tag.count
     @tags = TagFilter.new(ActsAsTaggableOn::Tag.all, filter_params)
       .filter
@@ -72,7 +73,8 @@ class Admin::TagsController < Admin::BaseController
       category_id: params[:category_id],
       q: params[:q],
       uncategorized: params[:uncategorized],
-      languages: params[:languages]
+      languages: params[:languages],
+      no_language: params[:no_language]
       }
   end
 
