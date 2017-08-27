@@ -42,12 +42,12 @@ describe TagFilter do
   end
 
   context 'with given language params' do
-    let(:filter_params) { { language: 'en' } }
+    let(:filter_params) { { languages: ['en'] } }
     it { is_expected.to match_array([tag_1]) }
   end
 
   context 'with given category and language params' do
-    let(:filter_params) { { category_id: 1, language: 'en' } }
+    let(:filter_params) { { category_id: 1, languages: ['en'] } }
     it { is_expected.to match_array([tag_1]) }
   end
 

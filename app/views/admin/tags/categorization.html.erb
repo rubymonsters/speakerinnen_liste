@@ -22,6 +22,19 @@
             <b><%= link_to tag.name, edit_admin_tag_path(tag.id, page: params[:page]), data: { toggle: 'tooltip', placement: 'left' }, title: 'Edit' %></b>
             <%= tag.taggings_count %>
           </td>
+          <td>
+            <%= simple_form_for tag, url: admin_tag_path(tag) do |f| %>
+              <div>
+                <%= check_box_tag 'languages[]', 'de', tag.tag_languages.map(&:language).include?('de') %>
+                <%= label_tag t('de', scope: 'i18n.language') %>
+              </div>
+              <div>
+                <%= check_box_tag 'languages[]', 'en', tag.tag_languages.map(&:language).include?('en') %>
+                <%= label_tag t('en', scope: 'i18n.language') %>
+              </div>
+              <%= f.button :submit %>
+            <% end %>
+          </td>
           <% @categories.each do |category| %>
             <td>
               <% if tag.categories.pluck(:id).include?(category.id) %>

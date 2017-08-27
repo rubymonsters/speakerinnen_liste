@@ -5,7 +5,7 @@ class TagLanguage < ActiveRecord::Base
     inclusion: { in: %w(de en),
     message: "%{value} is not a valid language" }
 
-    def self.tag_languages
-      TagLanguage.all.pluck(:language).uniq
+    def self.allowed_languages
+      @available_tag_languages = I18n.available_locales
     end
 end

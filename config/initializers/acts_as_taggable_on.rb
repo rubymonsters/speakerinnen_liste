@@ -9,10 +9,6 @@ ActsAsTaggableOn::Tag.class_eval do
 
   accepts_nested_attributes_for :tag_languages
 
-  def set_tag_language(tag_id, language)
-    TagLanguage.create(tag_id: tag_id, language: language)
-  end
-
   def merge(wrong_tag)
     # update all taggings on any of these wrong tags to now point to the correct tag that we keep
     Profile.tagged_with(wrong_tag).each do |profile|

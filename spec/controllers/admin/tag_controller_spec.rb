@@ -213,29 +213,6 @@ describe Admin::TagsController, type: :controller do
         expect(assigns(:tag).categories).to be_empty
       end
     end
-
-    context 'set_tag_language' do
-      let!(:tag) { ActsAsTaggableOn::Tag.find_by_name('computer') }
-
-      it 'should assign a language to a tag' do
-        tag.set_tag_language(tag.id, 'en')
-        expect(tag.tag_languages.map(&:language)).to match_array(['en'])
-      end
-
-      it 'should assign a second language to a tag' do
-        tag.set_tag_language(tag.id, 'en')
-        tag.set_tag_language(tag.id, 'de')
-
-        expect(tag.tag_languages.map(&:language)).to match_array(['de', 'en'])
-      end
-
-      it 'should raise error if an invalid language is used' do
-        record = TagLanguage.new(tag_id: @tag.id, language: 'fr')
-        record.valid?
-
-        expect(record.errors[:language]).to include('fr is not a valid language')
-      end
-    end
   end
 
   describe 'DELETE topic' do

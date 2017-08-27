@@ -20,8 +20,8 @@ class TagFilter
       @tags = @tags.where('categories.id IS NULL')
     end
 
-    if @params[:language].present?
-      @tags = @tags.where('tag_languages.language = ?', @params[:language])
+    if @params[:languages].present?
+      @tags = @tags.where('tag_languages.language IN (?)', @params[:languages])
     end
 
     if @params[:no_language].present?

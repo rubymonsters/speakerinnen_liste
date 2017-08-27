@@ -2,17 +2,28 @@ class Admin::TagsController < Admin::BaseController
   before_filter :find_tag_and_category, only: [:remove_category, :set_category]
   before_action :set_tag, only: [:edit, :update, :destroy, :find_tag_and_category]
 
+  def new
+  end
+
+  def show
+  end
+
   def edit
   end
 
   def update
-    if (existing_tag = ActsAsTaggableOn::Tag.where(name: params[:tag][:name]).first)
-      existing_tag.merge(@tag)
-      redirect_to categorization_admin_tags_path(page: params[:page]), notice: ("'#{@tag.name}' was merged with the tag '#{existing_tag.name}'.")
-    elsif @tag.update_attributes(tag_params)
+    if params[:languages].present?
+      set_tag_language(@tag)
       redirect_to categorization_admin_tags_path(page: params[:page]), notice: ("'#{@tag.name}' was updated.")
     else
-      render action: 'edit'
+      if params[:tag].present? && params[:tag][:name].present? && (existing_tag = ActsAsTaggableOn::Tag.where(name: params[:tag][:name]).first)
+        existing_tag.merge(@tag)
+        redirect_to categorization_admin_tags_path(page: params[:page]), notice: ("'#{@tag.name}' was merged with the tag '#{existing_tag.name}'.")
+      elsif @tag.update_attributes(tag_params)
+        redirect_to categorization_admin_tags_path(page: params[:page]), notice: ("'#{@tag.name}' was updated.")
+      else
+        render action: 'edit'
+      end
     end
   end
 
@@ -41,15 +52,15 @@ class Admin::TagsController < Admin::BaseController
     @categories = Category.all
   end
 
+  def set_tag_language(tag)
+    params[:languages].each { |l| tag.tag_languages.create!(language: l) }
+  end
+
   private
 
   def find_tag_and_category
     set_tag
     @category = Category.find(params[:category_id])
-  end
-
-  def find_tag_language
-    @tag_languages = TagLanguage.all.pluck(:language).uniq
   end
 
   def set_tag
@@ -61,7 +72,7 @@ class Admin::TagsController < Admin::BaseController
       category_id: params[:category_id],
       q: params[:q],
       uncategorized: params[:uncategorized],
-      language: params[:language]
+      languages: params[:languages]
       }
   end
 
@@ -70,7 +81,7 @@ class Admin::TagsController < Admin::BaseController
       :id,
       :tag,
       :name,
-      :language,
+      :languages,
       tag_languages: [:id, :tag_id, :language])
   end
 end
