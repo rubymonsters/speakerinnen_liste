@@ -12,7 +12,8 @@ class Admin::TagsController < Admin::BaseController
   end
 
   def update
-    if params[:languages].present?
+    # binding.pry
+    if params[:languages].present? || params[:tag].blank?
       update_tag_languages(@tag, params[:languages])
       redirect_to categorization_admin_tags_path(page: params[:page], q: params[:q], uncategorized: params[:uncategorized], no_language: params[:no_language], category_id: params[:category_id], filter_languages: params[:filter_languages]), notice: ("'#{@tag.name}' was updated.")
     else
@@ -67,7 +68,9 @@ class Admin::TagsController < Admin::BaseController
   def update_tag_languages(tag, languages)
     # probably this is easier to accomplish, refactoring? -> also put in model
     tag.tag_languages.each(&:destroy)
-    languages.each { |l| tag.tag_languages.create!(language: l) }
+    if languages.present?
+      languages.each { |l| tag.tag_languages.create!(language: l) }
+    end
   end
 
   def filter_params
