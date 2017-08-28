@@ -12,9 +12,8 @@ class Admin::TagsController < Admin::BaseController
   end
 
   def update
-    binding.pry
     if params[:languages].present?
-      set_tag_language(@tag)
+      update_tag_languages(@tag, params[:languages])
       redirect_to categorization_admin_tags_path(page: params[:page]), notice: ("'#{@tag.name}' was updated.")
     else
       if params[:tag].present? && params[:tag][:name].present? && (existing_tag = ActsAsTaggableOn::Tag.where(name: params[:tag][:name]).first)
@@ -44,7 +43,6 @@ class Admin::TagsController < Admin::BaseController
   end
 
   def categorization
-    # binding.pry
     @tags_count = ActsAsTaggableOn::Tag.count
     @tags = TagFilter.new(ActsAsTaggableOn::Tag.all, filter_params)
       .filter
@@ -52,10 +50,6 @@ class Admin::TagsController < Admin::BaseController
       .page(params[:page])
       .per(20)
     @categories = Category.all
-  end
-
-  def set_tag_language(tag)
-    params[:languages].each { |l| tag.tag_languages.create!(language: l) }
   end
 
   private
@@ -67,6 +61,12 @@ class Admin::TagsController < Admin::BaseController
 
   def set_tag
     @tag      = ActsAsTaggableOn::Tag.find(params[:id])
+  end
+
+  def update_tag_languages(tag, languages)
+    # probably this is easier to accomplish, refactoring? -> also put in model
+    tag.tag_languages.each(&:destroy)
+    languages.each { |l| tag.tag_languages.create!(language: l) }
   end
 
   def filter_params

@@ -22,7 +22,11 @@ class TagFilter
     end
 
     if @params[:languages].present?
-      @tags = @tags.where('tag_languages.language IN (?)', @params[:languages])
+      @params[:languages].each do |language|
+        @tags = @tags.where('tag_languages.language IN (?)', language)
+          # .where('tag_languages.language ILIKE ?', 'de')
+          # .where('tag_languages.language ILIKE ?', 'en')
+      end
     end
 
     if @params[:no_language].present?
