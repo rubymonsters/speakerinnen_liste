@@ -22,11 +22,14 @@ class TagFilter
     end
 
     if @params[:languages].present?
-      @params[:languages].each do |language|
-        @tags = @tags.where('tag_languages.language IN (?)', language)
-          # .where('tag_languages.language ILIKE ?', 'de')
-          # .where('tag_languages.language ILIKE ?', 'en')
-      end
+      #ToDo: refactor to speed up
+      tag_ids = ActsAsTaggableOn::Tag
+                   .joins(:tag_languages)
+                   .where('tag_languages.language IN (?)', @params[:languages])
+                   .group("tag_languages.tag_id, tags.id HAVING count(tag_languages.tag_id) = #{@params[:languages].length}")
+                   .pluck('tags.id')
+
+      @tags = @tags.where(id: tag_ids)
     end
 
     if @params[:no_language].present?

@@ -8,8 +8,10 @@ describe TagFilter do
   let!(:category_1) { Category.create!(id: 1, name: 'marketing & pr', tags: [tag_1]) }
   let!(:category_2) { Category.create!(id: 2, name: 'development', tags: [tag_2]) }
 
-  let!(:tag_language) { TagLanguage.create!(id: 1, tag_id: 1, language: 'en') }
-  let!(:tag_language_second) { TagLanguage.create!(id: 2, tag_id: 1, language: 'de') }
+  let!(:tag_language) { TagLanguage.create!(tag_id: 1, language: 'en') }
+  let!(:tag_language_second) { TagLanguage.create!(tag_id: 1, language: 'de') }
+  let!(:tag_language_third) { TagLanguage.create!(tag_id: 3, language: 'en') }
+
 
   context 'with empty filter params' do
     let(:filter_params) { {} }
@@ -38,11 +40,16 @@ describe TagFilter do
 
   context 'with given but empty language params' do
     let(:filter_params) { { no_language: true } }
-    it { is_expected.to match_array([tag_2, tag_3]) }
+    it { is_expected.to match_array([tag_2]) }
   end
 
   context 'with given language params' do
     let(:filter_params) { { languages: ['en'] } }
+    it { is_expected.to match_array([tag_1, tag_3]) }
+  end
+
+  context 'with two given language params' do
+    let(:filter_params) { { languages: ['de', 'en'] } }
     it { is_expected.to match_array([tag_1]) }
   end
 
