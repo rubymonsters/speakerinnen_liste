@@ -36,7 +36,7 @@
               <%= medialink.description %>
               <br>
               <span class="text--color-grey">
-                <%= t(:select_language, scope: 'medialinks') + t("#{medialink.language}", scope: 'iso_639_1').capitalize if medialink.language != nil %>
+                <%= t(:select_language, scope: 'medialinks') + t("#{medialink.language}", scope: 'iso_639_1').capitalize if medialink.language.present? %>
               </span>
 
               <hr>
