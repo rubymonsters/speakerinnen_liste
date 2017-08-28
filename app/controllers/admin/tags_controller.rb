@@ -2,17 +2,30 @@ class Admin::TagsController < Admin::BaseController
   before_filter :find_tag_and_category, only: [:remove_category, :set_category]
   before_action :set_tag, only: [:edit, :update, :destroy, :find_tag_and_category]
 
+  def new
+  end
+
+  def show
+  end
+
   def edit
   end
 
   def update
-    if (existing_tag = ActsAsTaggableOn::Tag.where(name: params[:tag][:name]).first)
-      existing_tag.merge(@tag)
-      redirect_to categorization_admin_tags_path(page: params[:page]), notice: ("'#{@tag.name}' was merged with the tag '#{existing_tag.name}'.")
-    elsif @tag.update_attributes(tag_params)
-      redirect_to categorization_admin_tags_path(page: params[:page]), notice: ("'#{@tag.name}' was updated.")
+    # binding.pry
+    if params[:languages].present? || params[:tag].blank?
+      update_tag_languages(@tag, params[:languages])
+      redirect_to categorization_admin_tags_path(page: params[:page], q: params[:q], uncategorized: params[:uncategorized], no_language: params[:no_language], category_id: params[:category_id], filter_languages: params[:filter_languages]), notice: ("'#{@tag.name}' was updated.")
     else
-      render action: 'edit'
+      # ToDo change cases into methods "change language"
+      if params[:tag].present? && params[:tag][:name].present? && (existing_tag = ActsAsTaggableOn::Tag.where(name: params[:tag][:name]).first)
+        existing_tag.merge(@tag)
+        redirect_to categorization_admin_tags_path(page: params[:page]), notice: ("'#{@tag.name}' was merged with the tag '#{existing_tag.name}'.")
+      elsif @tag.update_attributes(tag_params)
+        redirect_to categorization_admin_tags_path(page: params[:page]), notice: ("'#{@tag.name}' was updated.")
+      else
+        render action: 'edit'
+      end
     end
   end
 
@@ -32,21 +45,12 @@ class Admin::TagsController < Admin::BaseController
   end
 
   def categorization
-    relation = ActsAsTaggableOn::Tag.order('tags.name ASC').page(params[:page]).per(20)
-
     @tags_count = ActsAsTaggableOn::Tag.count
-    if (params[:category_id]).present?
-      @tags       = relation.includes(:categories).where('categories.id = ?', params[:category_id]).references(:categories)
-    elsif (params[:q]).present? && (params[:uncategorized]).present?
-      @tags       = relation.where('tags.name ILIKE ?', '%' + params[:q] + '%').includes(:categories).where('categories.id IS NULL').references(:categories)
-    elsif (params[:q]).present?
-      @tags       = relation.where('tags.name ILIKE ?', '%' + params[:q] + '%')
-    elsif (params[:uncategorized]).present?
-      @tags       = relation.includes(:categories).where('categories.id IS NULL').references(:categories)
-    else
-      @tags = relation
-      @tags_count = nil
-    end
+    @tags = TagFilter.new(ActsAsTaggableOn::Tag.all, filter_params)
+      .filter
+      .order('tags.name ASC')
+      .page(params[:page])
+      .per(20)
     @categories = Category.all
   end
 
@@ -61,7 +65,31 @@ class Admin::TagsController < Admin::BaseController
     @tag      = ActsAsTaggableOn::Tag.find(params[:id])
   end
 
+  def update_tag_languages(tag, languages)
+    # probably this is easier to accomplish, refactoring? -> also put in model
+    tag.tag_languages.each(&:destroy)
+    if languages.present?
+      languages.each { |l| tag.tag_languages.create!(language: l) }
+    end
+  end
+
+  def filter_params
+     @filter_params = {
+      category_id: params[:category_id],
+      q: params[:q],
+      uncategorized: params[:uncategorized],
+      filter_languages: params[:filter_languages],
+      no_language: params[:no_language],
+      page: params[:page]
+      }
+  end
+
   def tag_params
-    params.require(:tag).permit(:id, :tag, :name)
+    params.require(:tag).permit(
+      :id,
+      :tag,
+      :name,
+      :languages,
+      tag_languages: [:id, :tag_id, :language, :_destroy])
   end
 end

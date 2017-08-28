@@ -133,7 +133,7 @@ RSpec.feature 'Navigation', type: :feature do
         click_link 'Tags'
         expect(page).to have_text('Administration::Tags')
         expect(page).to have_text('Search for tag')
-        expect(page).to have_text('The number of all tags is')
+        expect(page).to have_text('Here are 0 out of 0 tags')
         expect(page).to have_button('Filter')
       end
     end

@@ -10,6 +10,8 @@ SpeakerinnenListe::Application.routes.draw do
         member do
           post 'set_category'
           post 'remove_category'
+          post 'set_tag_language'
+          post 'remove_tag_language'
         end
       end
       resources :categories

@@ -117,6 +117,27 @@ describe Admin::TagsController, type: :controller do
 
   end
 
+  describe 'GET tag_language' do
+    context 'without any selection' do
+      before(:each) do
+        get :categorization
+      end
+
+      specify { expect(response).to render_template(:categorization) }
+      specify { expect(response.status).to eq 200 }
+
+      it 'should contain all tags' do
+        expect(assigns(:tags)).to eq(
+          [ActsAsTaggableOn::Tag.find_by(name: ada.topic_list[0]),
+          ActsAsTaggableOn::Tag.find_by(name: ada.topic_list[1]),
+          ActsAsTaggableOn::Tag.find_by(name: ada.topic_list[2]),
+          ActsAsTaggableOn::Tag.find_by(name: marie.topic_list[0]),
+          ActsAsTaggableOn::Tag.find_by(name: marie.topic_list[1])]
+        )
+      end
+    end
+  end
+
   describe 'GET edit' do
     before(:each) do
       topic = ActsAsTaggableOn::Tag.find_by(name: ada.topic_list[0])
@@ -127,7 +148,6 @@ describe Admin::TagsController, type: :controller do
     it 'renders the edit view' do
       expect(assigns(:tag)).to eq(ActsAsTaggableOn::Tag.find_by(name: ada.topic_list[0]))
     end
-
   end
 
   describe 'PUT update' do

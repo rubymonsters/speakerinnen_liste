@@ -2,19 +2,12 @@
   <div class="o-layout pv bt mv">
     <div class="o-layout__item 1/2">
 
-      <%= check_box_tag 'uncategorized', params[:uncategorized], params[:uncategorized] %>
-      <%= label_tag 'uncategorized', t(:tags_filter_option, scope: 'admin.dashboard.tags'),
-      class: '' %>
-
-    </div>
-    <div class="o-layout__item 1/2">
-
       <%= t(:tags_search, scope: 'admin.dashboard.tags') %>
       <%= text_field_tag 'q', params[:q], class: '' %>
     </div>
   </div>
   <h2><%= t(:categories, scope: 'admin.dashboard.categories') %>:&nbsp</h2>
-  <div class="o-layout pb">
+  <div class="o-layout pb filter_categories">
 
     <% @categories.in_groups_of(3, false) do |row_categories| %>
       <div class="o-layout__item 1/4">
@@ -36,6 +29,29 @@
         <%= t(:tags_filter_default, scope: 'admin.dashboard.tags') %>
       <% end %>
     </div>
+    <div class="o-layout__item 1/1">
+      <%= check_box_tag 'uncategorized', params[:uncategorized], params[:uncategorized] %>
+      <%= label_tag 'uncategorized', t(:tags_filter_option, scope: 'admin.dashboard.tags'),
+      class: '' %>
+    </div>
+  </div>
+
+  <div class="o-layout pb filter_languages">
+    <h2>Languages</h2>
+      <div class="o-layout__item 1/1">
+        <div id="filter_language_de">
+          <%= check_box_tag 'filter_languages[]', 'de', params[:filter_languages].present? && params[:filter_languages].include?('de') %>
+          <%= label_tag t('de', scope: 'i18n.language') %>
+        </div>
+        <div id="filter_language_en">
+          <%= check_box_tag 'filter_languages[]', 'en', params[:filter_languages].present? && params[:filter_languages].include?('en') %>
+          <%= label_tag t('en', scope: 'i18n.language') %>
+        </div>
+        <div id="filter_no_language">
+          <%= check_box_tag 'no_language', 'on', params[:no_language] == 'on' %>
+          <%= label_tag t('no_language', scope: 'admin.dashboard.tags') %>
+        </div>
+      </div>
   </div>
 
   <div class="o-layout pb bb mv">
