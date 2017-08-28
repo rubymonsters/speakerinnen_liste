@@ -12,6 +12,7 @@ class Admin::TagsController < Admin::BaseController
   end
 
   def update
+    binding.pry
     if params[:languages].present?
       set_tag_language(@tag)
       redirect_to categorization_admin_tags_path(page: params[:page]), notice: ("'#{@tag.name}' was updated.")
@@ -84,6 +85,6 @@ class Admin::TagsController < Admin::BaseController
       :tag,
       :name,
       :languages,
-      tag_languages: [:id, :tag_id, :language])
+      tag_languages: [:id, :tag_id, :language, :_destroy])
   end
 end
