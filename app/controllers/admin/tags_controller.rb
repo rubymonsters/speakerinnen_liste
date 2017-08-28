@@ -12,7 +12,6 @@ class Admin::TagsController < Admin::BaseController
   end
 
   def update
-    # binding.pry
     if params[:languages].present? || params[:tag].blank?
       update_tag_languages(@tag, params[:languages])
       redirect_to categorization_admin_tags_path(page: params[:page], q: params[:q], uncategorized: params[:uncategorized], no_language: params[:no_language], category_id: params[:category_id], filter_languages: params[:filter_languages]), notice: ("'#{@tag.name}' was updated.")
