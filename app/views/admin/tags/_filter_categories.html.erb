@@ -40,11 +40,11 @@
     <h2>Languages</h2>
       <div class="o-layout__item 1/1">
         <div id="filter_language_de">
-          <%= check_box_tag 'languages[]', 'de', params[:languages].present? && params[:languages].include?('de') %>
+          <%= check_box_tag 'filter_languages[]', 'de', params[:filter_languages].present? && params[:filter_languages].include?('de') %>
           <%= label_tag t('de', scope: 'i18n.language') %>
         </div>
         <div id="filter_language_en">
-          <%= check_box_tag 'languages[]', 'en', params[:languages].present? && params[:languages].include?('en') %>
+          <%= check_box_tag 'filter_languages[]', 'en', params[:filter_languages].present? && params[:filter_languages].include?('en') %>
           <%= label_tag t('en', scope: 'i18n.language') %>
         </div>
         <div id="filter_no_language">

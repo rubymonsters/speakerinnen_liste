@@ -23,7 +23,7 @@
             <%= tag.taggings_count %>
           </td>
           <td>
-            <%= simple_form_for tag, url: admin_tag_path(tag) do |f| %>
+            <%= simple_form_for tag, url: admin_tag_path(tag, @filter_params) do |f| %>
               <div>
                 <%= check_box_tag 'languages[]', 'de', tag.tag_languages.map(&:language).include?('de') %>
                 <%= label_tag t('de', scope: 'i18n.language') %>
