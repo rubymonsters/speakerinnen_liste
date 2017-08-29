@@ -25,7 +25,9 @@ class ProfilesController < ApplicationController
     else
       @profiles = profiles_for_index
     end
-    @tags = ActsAsTaggableOn::Tag.most_used(100)
+    @tags_most_used_100 = ActsAsTaggableOn::Tag.most_used(100)
+    @tags_most_used_200 = ActsAsTaggableOn::Tag.most_used(200)
+    @tags_all = ActsAsTaggableOn::Tag.all
   end
 
   def show
