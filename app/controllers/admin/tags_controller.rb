@@ -14,7 +14,7 @@ class Admin::TagsController < Admin::BaseController
   def update
     if params[:languages].present? || params[:tag].blank?
       update_tag_languages(@tag, params[:languages])
-      redirect_to categorization_admin_tags_path(page: params[:page], q: params[:q], uncategorized: params[:uncategorized], no_language: params[:no_language], category_id: params[:category_id], filter_languages: params[:filter_languages]), notice: ("'#{@tag.name}' was updated.")
+      redirect_to categorization_admin_tags_path(anchor: 'top-anchor', page: params[:page], q: params[:q], uncategorized: params[:uncategorized], no_language: params[:no_language], category_id: params[:category_id], filter_languages: params[:filter_languages]), notice: ("'#{@tag.name}' was updated.")
     else
       # ToDo change cases into methods "change language"
       if params[:tag].present? && params[:tag][:name].present? && (existing_tag = ActsAsTaggableOn::Tag.where(name: params[:tag][:name]).first)
