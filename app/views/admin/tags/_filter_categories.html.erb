@@ -37,16 +37,14 @@
   </div>
 
   <div class="o-layout pb filter_languages">
-    <h2>Languages</h2>
+    <h2><%= t(:languages, scope: 'admin.dashboard.tags') %></h2>
       <div class="o-layout__item 1/1">
-        <div id="filter_language_de">
-          <%= check_box_tag 'filter_languages[]', 'de', params[:filter_languages].present? && params[:filter_languages].include?('de') %>
-          <%= label_tag t('de', scope: 'i18n.language') %>
-        </div>
-        <div id="filter_language_en">
-          <%= check_box_tag 'filter_languages[]', 'en', params[:filter_languages].present? && params[:filter_languages].include?('en') %>
-          <%= label_tag t('en', scope: 'i18n.language') %>
-        </div>
+        <% TagLanguage.allowed_languages.each do |language| %>
+          <div <%= "id=filter_language_#{language}" %> >
+            <%= check_box_tag 'filter_languages[]', language, params[:filter_languages].present? && params[:filter_languages].include?("#{language}") %>
+            <%= label_tag t("#{language}", scope: 'i18n.language') %>
+          </div>
+        <% end %>
         <div id="filter_no_language">
           <%= check_box_tag 'no_language', 'on', params[:no_language] == 'on' %>
           <%= label_tag t('no_language', scope: 'admin.dashboard.tags') %>

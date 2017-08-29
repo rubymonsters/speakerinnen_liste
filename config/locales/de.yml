@@ -57,6 +57,7 @@ de:
         tags_count: "Die Anzahl aller Tags ist "
         tags_filter_option: "Alle Tags ohne Kategorien anzeigen"
         tags_filter_default: "Alle Kategorien auswählen"
+        languages: "Sprachen"
         no_langage: "ohne Sprache"
       medialink:
         url: "URL:"
