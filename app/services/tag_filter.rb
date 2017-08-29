@@ -28,7 +28,6 @@ class TagFilter
                    .where('tag_languages.language IN (?)', @params[:filter_languages])
                    .group("tag_languages.tag_id, tags.id HAVING count(tag_languages.tag_id) = #{@params[:filter_languages].length}")
                    .pluck('tags.id')
-
       @tags = @tags.where(id: tag_ids)
     end
 
