@@ -11,7 +11,7 @@ class ProfilesController < ApplicationController
 
   def index
     if params[:topic]
-      @profiles = profiles_for_scope(params[:topic])
+      @profiles = profiles_for_tag(params[:topic])
     elsif params[:category_id]
       profiles_for_category
     elsif params[:search]
@@ -25,9 +25,10 @@ class ProfilesController < ApplicationController
     else
       @profiles = profiles_for_index
     end
+    #binding.pry
     @tags_most_used_100 = ActsAsTaggableOn::Tag.most_used(100)
-    @tags_most_used_200 = ActsAsTaggableOn::Tag.most_used(200)
-    @tags_all = ActsAsTaggableOn::Tag.all
+    #@tags_most_used_200 = ActsAsTaggableOn::Tag.most_used(200)
+    #@tags_all = ActsAsTaggableOn::Tag.all
   end
 
   def show
@@ -163,7 +164,7 @@ class ProfilesController < ApplicationController
       .per(24)
   end
 
-  def profiles_for_scope(tag_names)
+  def profiles_for_tag(tag_names)
     Profile.is_published
       .random
       .tagged_with(tag_names, any: true)
@@ -173,12 +174,15 @@ class ProfilesController < ApplicationController
 
   def profiles_for_category
     @category = Category.find(params[:category_id])
-    @tags     = @category.tags
-    if @tags.any?
-      @tag_names      = @tags.pluck(:name)
-      @profiles       = profiles_for_scope(@tag_names)
-      @published_tags = @profiles.map { |p| p.topics.pluck(:name) }.flatten.uniq
-      @tags           = @tags.select { |t| @published_tags.include?(t.to_s) }
+    tags_in_category = @category.tags
+    if tags_in_category.any?
+      tag_names           = tags_in_category.pluck(:name)
+      published_profiles  = Profile.is_published.tagged_with(tag_names, any: true)
+      published_tags      = published_profiles.map { |p| p.topics.pluck(:name) }.flatten.uniq
+
+      @tags_in_category_published = tags_in_category.select { |t| published_tags.include?(t.to_s) }.uniq
+      binding.pry
+      @profiles         = profiles_for_tag(tag_names)
     else
       @profiles       = profiles_for_index
       redirect_to profiles_url, notice: ('No Tag for that Category found!')

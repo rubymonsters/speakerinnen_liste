@@ -1,4 +1,4 @@
   <p class="font-size-24 text--center o-layout__item 1/1">
-    <%= t(:category, scope: 'profiles', category_name: @category.name, profiles_count: @profiles.total_count, topics_count: @tags_all.size).html_safe %>
+    <%= t(:category, scope: 'profiles', category_name: @category.name, profiles_count: @profiles.total_count, topics_count: @tags_in_category_published.size).html_safe %>
   </p>
   <%= render partial: 'profiles/tag' %>

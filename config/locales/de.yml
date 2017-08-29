@@ -168,7 +168,7 @@ de:
     category: "In der Kategorie <b>%{category_name}</b> haben wir %{profiles_count} Speakerinnen*
       <br>und <a href='#topics_anchor'>%{topics_count} Themen </a>gefunden:"
     tag:
-      topics: "Top-Themen:"
+      topics: "Top-Themen"
       topics_with_category: "in der Kategorie %{category_name}"
     form:
       not_saved: "Dieses Profil konnte nicht gespeichert werden:"

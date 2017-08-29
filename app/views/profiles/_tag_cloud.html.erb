@@ -1,9 +1,6 @@
 <a id="topics_anchor"></a>
 <h1 class="bt pt text--center">
-  <%= t(:topics, scope: 'profiles.tag') %>
-  <% if @category.present? %>
-    <span class="font-size-24"><%= t(:topics_with_category, scope: 'profiles.tag', category_name: @category.name).html_safe %></span>
-  <% end %>
+  <%= t(:topics, scope: 'profiles.tag') + ":" %>
 </h1>
 
 <%= form_tag(profiles_path, method: "get", class:"topic-filter pv mv font-size-24") do %>
@@ -21,7 +18,7 @@
 
   // show matching & hide others
   $("#quick-filter").on('input', function(){
-    var searchString       = $(this).val().toLowerCase();
+    var searchString = $(this).val().toLowerCase();
 
     if (searchString.length > 1) {
       $(".s, .m, .l").each(function(index) {
