@@ -174,19 +174,9 @@ class ProfilesController < ApplicationController
 
   def profiles_for_category
     @category = Category.find(params[:category_id])
-    tags_in_category = @category.tags
-    if tags_in_category.any?
-      tag_names           = tags_in_category.pluck(:name)
-      published_profiles  = Profile.is_published.tagged_with(tag_names, any: true)
-      published_tags      = published_profiles.map { |p| p.topics.pluck(:name) }.flatten.uniq
-
-      @tags_in_category_published = tags_in_category.select { |t| published_tags.include?(t.to_s) }.uniq
-      binding.pry
-      @profiles         = profiles_for_tag(tag_names)
-    else
-      @profiles       = profiles_for_index
-      redirect_to profiles_url, notice: ('No Tag for that Category found!')
-    end
+    @tags_in_category_published = ActsAsTaggableOn::Tag.belongs_to_category(params[:category_id]).with_published_profile.uniq
+    tag_names         = @tags_in_category_published.pluck(:name)
+    @profiles         = profiles_for_tag(tag_names)
   end
 
   def profiles_for_search

@@ -11,9 +11,9 @@ ActsAsTaggableOn::Tag.class_eval do
 
   scope :with_language, -> (lang_str) { ActsAsTaggableOn::Tag.joins(:tag_languages).where(:tag_languages => {:language => lang_str }).distinct }
 
-  scope :with_published_profile, -> { ActsAsTaggableOn::Tag.joins(:taggings).joins("INNER JOIN profiles ON taggings.taggable_id=profiles.id").where(:profiles => { :published => true}) }
+  scope :with_published_profile, -> { ActsAsTaggableOn::Tag.joins(:taggings).joins("INNER JOIN profiles ON taggings.taggable_id=profiles.id").where(:profiles => { :published => true}).distinct }
 
-  scope :belongs_to_category, -> (cat_id) { ActsAsTaggableOn::Tag.joins(:categories).where(:categories => { :id => cat_id }) }
+  scope :belongs_to_category, -> (cat_id) { ActsAsTaggableOn::Tag.joins(:categories).where(:categories => { :id => cat_id }).distinct }
 
   def merge(wrong_tag)
     # update all taggings on any of these wrong tags to now point to the correct tag that we keep
