@@ -11,6 +11,8 @@ ActsAsTaggableOn::Tag.class_eval do
 
   scope :with_language, -> (lang_str) { ActsAsTaggableOn::Tag.joins(:tag_languages).where(:tag_languages => {:language => lang_str }).distinct }
 
+  scope :without_language, -> { ActsAsTaggableOn::Tag.includes(:tag_languages).where(tag_languages: { id: nil }).references(:tag_languages) }
+
   scope :with_published_profile, -> { ActsAsTaggableOn::Tag.joins(:taggings).joins("INNER JOIN profiles ON taggings.taggable_id=profiles.id").where(:profiles => { :published => true}).distinct }
 
   scope :belongs_to_category, -> (cat_id) { ActsAsTaggableOn::Tag.joins(:categories).where(:categories => { :id => cat_id }).distinct }

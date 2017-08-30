@@ -42,7 +42,7 @@
             <%= t(:topics, scope: 'profiles.profile') %>
           </h2>
           <p class="pb topics-profile">
-            <%= raw @profile.topic_list.sort.map { |topic| topic_link(topic) }.join(' ') %>
+            <%= raw @profile.topics.with_language(I18n.locale).sort.map { |topic| topic_link(topic) }.join(' ') %>
           </p>
 
           <% if @profile.iso_languages.present? %>

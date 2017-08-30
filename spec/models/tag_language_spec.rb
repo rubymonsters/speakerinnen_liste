@@ -17,11 +17,11 @@ describe TagLanguage, :type => :model do
     Category.create(id: 1, name: "Science", tags: [@tag_one_language_de, @tag_one_language_en])
     Category.create(id: 2, name: "XXX")
 
-    Profile.create(firstname: "Marie", lastname: "Curie", published: true, topic_list: [@tag_one_language_de],
+    @marie = Profile.create(firstname: "Marie", lastname: "Curie", published: true, topic_list: [@tag_one_language_de, @tag_no_language],
                     password: "123foobar", password_confirmation: "123foobar", confirmed_at: Time.now, email: "marie@curie.fr")
     Profile.create(firstname: "Pierre", lastname: "Curie", published: false, topic_list: [@tag_one_language_de, @tag_with_unpublished_profile],
                     password: "123foobar", password_confirmation: "123foobar", confirmed_at: Time.now, email: "pierre@curie.fr")
-    Profile.create(firstname: "Ada", lastname: "Lovelace", published: true, topic_list: [@tag_one_language_en, @tag_both_languages],
+    @ada = Profile.create(firstname: "Ada", lastname: "Lovelace", published: true, topic_list: [@tag_one_language_en, @tag_both_languages],
                    password: "123foobar", password_confirmation: "123foobar", confirmed_at: Time.now, email: "ada@love.uk")
   end
 
@@ -46,7 +46,8 @@ describe TagLanguage, :type => :model do
     it "shows tags used by published profile" do
       expect(ActsAsTaggableOn::Tag.with_published_profile).to match_array([@tag_one_language_de,
                                                                            @tag_one_language_en,
-                                                                           @tag_both_languages])
+                                                                           @tag_both_languages,
+                                                                           @tag_no_language])
     end
 
     it "shows tags that belong to a certain category" do
@@ -73,7 +74,7 @@ describe TagLanguage, :type => :model do
 
     it "shows tags used by published profile that belong to a certain category with no language"
 
-    it "shows tags used by published profile with language 'de' and 'en'"
+    it "shows tags used by published profile with language 'de' or 'en'"
 
     it "shows tags used by published profile with language 'de'"
 
@@ -81,15 +82,27 @@ describe TagLanguage, :type => :model do
 
     it "shows tags used by published profile with no language"
 
-    it "shows tags used by published profile with language 'de' and 'en'"
+    it "shows tags used by published profile with language 'de' or 'en'"
 
     it "shows tags used by a certain profile with no language"
 
-    it "shows tags used by a certain profile with language 'de'"
+    it "shows tags used by a certain profile with language 'de'" do
+      expect(@marie.topics.with_language('de')).to match_array([@tag_one_language_de])
+    end
 
-    it "shows tags used by a certain profile with language 'en'"
+    it "shows tags used by a certain profile with language 'de' and without language" do
+      expect(@marie.topics.with_language('de')).to match_array([@tag_one_language_de])
+      expect(@marie.topics.without_language).to match_array([@tag_no_language])
+      expect(@marie.topics.with_language('de').without_language).to match_array([@tag_one_language_de, @tag_no_language])
+    end
 
-    it "shows tags used by a certain profile with language 'de' and 'en'"
+    it "shows tags used by a certain profile with language 'en'" do
+      expect(@ada.topics.with_language('en')).to match_array([@tag_one_language_en, @tag_both_languages])
+    end
+
+    it "shows tags used by a certain profile with language 'de' or 'en'" do
+      expect(@ada.topics.with_language(['de', 'en'])).to match_array([@tag_one_language_en, @tag_both_languages])
+    end
 
     it "shows tags with no language" do
       expect(ActsAsTaggableOn::Tag.with_language('')).to match_array([])
@@ -103,7 +116,7 @@ describe TagLanguage, :type => :model do
       expect(ActsAsTaggableOn::Tag.with_language('en')).to match_array([@tag_one_language_en, @tag_both_languages])
     end
 
-    it "shows tags with language 'de' and 'en'" do
+    it "shows tags with language 'de' or 'en'" do
       expect(ActsAsTaggableOn::Tag.with_language(['en','de'])).to match_array([@tag_both_languages, @tag_one_language_en, @tag_one_language_de])
     end
   end
