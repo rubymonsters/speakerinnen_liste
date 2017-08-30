@@ -174,7 +174,7 @@ class ProfilesController < ApplicationController
 
   def profiles_for_category
     @category = Category.find(params[:category_id])
-    @tags_in_category_published = ActsAsTaggableOn::Tag.belongs_to_category(params[:category_id]).with_published_profile.uniq
+    @tags_in_category_published = ActsAsTaggableOn::Tag.belongs_to_category(params[:category_id]).with_published_profile.with_language(I18n.locale)
     tag_names         = @tags_in_category_published.pluck(:name)
     @profiles         = profiles_for_tag(tag_names)
   end
