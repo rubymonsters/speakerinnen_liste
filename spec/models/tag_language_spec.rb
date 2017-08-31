@@ -28,6 +28,7 @@ describe TagLanguage, :type => :model do
   after(:all) do
     ActsAsTaggableOn::Tag.destroy_all
     Category.destroy_all
+    Profile.destroy_all
   end
 
   it 'adds a language to the existing tag' do

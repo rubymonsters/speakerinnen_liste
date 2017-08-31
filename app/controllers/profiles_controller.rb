@@ -25,10 +25,9 @@ class ProfilesController < ApplicationController
     else
       @profiles = profiles_for_index
     end
-    #binding.pry
     @tags_most_used_100 = ActsAsTaggableOn::Tag.most_used(100)
     #@tags_most_used_200 = ActsAsTaggableOn::Tag.most_used(200)
-    #@tags_all = ActsAsTaggableOn::Tag.all
+    @tags_all = ActsAsTaggableOn::Tag.all
   end
 
   def show
@@ -39,9 +38,9 @@ class ProfilesController < ApplicationController
       redirect_to profiles_url, notice: (I18n.t('flash.profiles.show_no_permission'))
     end
 
-    @topics_in_correct_language_and_without_any = @profile.topics.with_language(I18n.locale)
-    @topics_in_correct_language_and_without_any << @profile.topics.without_language
-    @topics_in_correct_language_and_without_any.uniq.sort.map { |topic| topic_link(topic) }.join(' ')
+    @topics = @profile.topics.with_language(I18n.locale)
+    @topics << @profile.topics.without_language
+    @topics = @topics.flatten.uniq
   end
 
   # should reuse the devise view
