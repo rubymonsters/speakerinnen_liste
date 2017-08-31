@@ -37,8 +37,8 @@ class ProfilesController < ApplicationController
     else
       redirect_to profiles_url, notice: (I18n.t('flash.profiles.show_no_permission'))
     end
-
-    @topics = @profile.topics.with_language(I18n.locale)
+    @topics = []
+    @topics << @profile.topics.with_language(I18n.locale)
     @topics << @profile.topics.without_language
     @topics = @topics.flatten.uniq
   end

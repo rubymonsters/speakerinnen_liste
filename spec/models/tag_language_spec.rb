@@ -94,7 +94,8 @@ describe TagLanguage, :type => :model do
     it "shows tags used by a certain profile with language 'de' and without language" do
       expect(@marie.topics.with_language('de')).to match_array([@tag_one_language_de])
       expect(@marie.topics.without_language).to match_array([@tag_no_language])
-      topics_in_correct_language_and_without_any = @marie.topics.with_language('de')
+      topics_in_correct_language_and_without_any = []
+      topics_in_correct_language_and_without_any << @marie.topics.with_language('de')
       topics_in_correct_language_and_without_any << @marie.topics.without_language
       expect(topics_in_correct_language_and_without_any.flatten.uniq).to match_array([@tag_one_language_de, @tag_no_language])
     end
