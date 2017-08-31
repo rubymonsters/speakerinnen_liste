@@ -38,6 +38,10 @@ class ProfilesController < ApplicationController
     else
       redirect_to profiles_url, notice: (I18n.t('flash.profiles.show_no_permission'))
     end
+
+    @topics_in_correct_language_and_without_any = @profile.topics.with_language(I18n.locale)
+    @topics_in_correct_language_and_without_any << @profile.topics.without_language
+    @topics_in_correct_language_and_without_any.uniq.sort.map { |topic| topic_link(topic) }.join(' ')
   end
 
   # should reuse the devise view
