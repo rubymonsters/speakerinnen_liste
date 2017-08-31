@@ -70,7 +70,7 @@ en:
         tagline: "Find women speakers & moderators for your conference."
         search_text: "Search by anything"
         search: "Search"
-        categorien_html: "Or have a look at the <a href='#categories_anchor'>categories</a>."
+        categorien_html: "<a href='#categories_anchor'>categories and topics >></a>"
       description: "Our Categories"
       description_text: "We feel strongly about a balanced representation of men and women* on stage. We encourage women* to become more visible in their profession and field of expertise."
       speaker_shoutout: "Do you have something interesting to say?"

@@ -4,6 +4,8 @@
     <%= text_field_tag('search', params[:search], class: 'profile__search typeahead' , type: 'text', placeholder: t(:search_text, scope: 'pages.home.search')) %>
     <%= button_tag((t(:search, scope: 'pages.home.search')), class: 'btn btn--small input-btn') %>
 
-    <%= t(:categorien_html, scope: 'pages.home.search', root_path: root_path) %>
   <% end %>
 </div>
+<p>
+  <%= t(:categorien_html, scope: 'pages.home.search', root_path: root_path) %>
+</p>

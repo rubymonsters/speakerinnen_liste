@@ -70,7 +70,7 @@ de:
         tagline_html: "Finde Rednerinnen, Referentinnen & Moderatorinnen für Deine Konferenz."
         search_text: "Speakerinnen* durchsuchen"
         search: "Suche"
-        categorien_html: "Oder stöbere doch mal bei den <a href='#categories_anchor'>Kategorien</a> durch."
+        categorien_html: "<a href='#categories_anchor'>Kategorien und Themen >> </a>"
       description: "Unsere Kategorien"
       description_text: "Uns ist die Verteilung der Männer und Frauen auf Konferenzbühnen wichtig. Wir ermutigen Frauen, in ihrem professionellen Umfeld sichtbarer zu werden."
       speaker_shoutout: "Hast Du etwas Interessantes zu erzählen?"
