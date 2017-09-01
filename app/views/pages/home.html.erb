@@ -5,7 +5,11 @@
 
     <%= form_tag(profiles_path, method: 'get', class: 'page-box') do %>
       <div class="box__bg--light pv ph- border-radius">
-        <%= render partial: 'shared/search' %>
+        <%= render partial: 'shared/search_form' %>
+        <p>
+          <%= link_to(t(:all_categories, scope: 'pages.home'), root_path + "#categories_anchor" )%><br>
+          <%= link_to(t(:all_profiles, scope: 'search'), profiles_path ) %>
+        </p>
       </div>
     <% end %>
   </div>
