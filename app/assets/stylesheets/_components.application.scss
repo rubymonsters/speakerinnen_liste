@@ -140,7 +140,7 @@ h2{
   list-style-type: none;
 }
 
-.btn {
+.btn-blue {
   font-family: $sans-serif;
   font-size: $inuit-base-font-size;
   color: white;
@@ -148,7 +148,7 @@ h2{
   border: 0;
 }
 
-.btn:active, .btn:hover {
+.btn-blue:active, .btn:hover {
   color: white;
   background: $dark-blue;
 }

@@ -25,7 +25,11 @@ class ProfilesController < ApplicationController
     else
       @profiles = profiles_for_index
     end
-    @tags_most_used_100 = ActsAsTaggableOn::Tag.most_used(100)
+    if params[:all_lang]
+      @tags_most_used_100 = ActsAsTaggableOn::Tag.most_used(100)
+    else
+      @tags_most_used_100 = ActsAsTaggableOn::Tag.with_published_profile.with_language(I18n.locale)
+    end
     #@tags_most_used_200 = ActsAsTaggableOn::Tag.most_used(200)
     @tags_all = ActsAsTaggableOn::Tag.all
   end

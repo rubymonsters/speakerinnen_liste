@@ -25,7 +25,7 @@
           <%= f.input :language, label: t(:select_language, scope: 'medialinks'), label_html: { class: "mr" } do %>
            <%= f.select :language, options_for_select(IsoLanguage.all_languagenames_with_iso, @medialink.language), include_blank: "..." %>
           <% end %>
-          <%= f.button :submit, t(:new, scope: 'medialinks'), class: 'mt btn btn--small' %>
+          <%= f.button :submit, t(:new, scope: 'medialinks'), class: 'mt btn btn-blue btn--small' %>
 
         <% end %>
       </div>

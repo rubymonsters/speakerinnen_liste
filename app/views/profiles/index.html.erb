@@ -9,11 +9,11 @@
 
     <% elsif params[:topic] %>
 
-      <h1 class="text--center">
+      <h2 class="text--center">
         <%= t(:profiles_topics, scope: 'search', profiles_count: @profiles.total_count, topics_name: params[:topic]).html_safe %>
-      </h1>
+      </h2>
       <%= render partial: 'shared/search_form' %>
-      <p><%= t(:search_categories_html, scope: 'search', root_path: root_path) %></p>
+      <p class="mt--"><%= t(:search_categories_html, scope: 'search', root_path: root_path) %></p>
 
     <% elsif params[:search] %> <%# if in search: %>
 

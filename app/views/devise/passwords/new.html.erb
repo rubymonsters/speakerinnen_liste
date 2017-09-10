@@ -36,7 +36,7 @@
 
         <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { class: '', method: :post }) do |f| %>
           <%= f.input :email, autofocus: true, label: false, placeholder: "Email"  %>
-          <%= f.submit t(:send_instructions, scope: "devise.registrations"), class:'btn btn--small mv ph' %>
+          <%= f.submit t(:send_instructions, scope: "devise.registrations"), class:'btn btn-blue btn--small mv ph' %>
         <% end %>
       </div>
 

@@ -166,8 +166,8 @@ de:
       error: "Bitte fülle alle Felder aus, damit die Speakerin alle Informationen bekommt, die sie benötigt."
       error_email_for_us: "Bitte fülle alle Felder aus."
   profiles:
-    category: "In der Kategorie <b>%{category_name}</b> haben wir %{profiles_count} Speakerinnen*
-      <br>und <a href='#topics_anchor'>%{topics_count} Themen </a>gefunden:"
+    category: "In der Kategorie <b>%{category_name}</b><br> haben wir %{profiles_count} Speakerinnen*
+      <br>und %{topics_count} Themen gefunden:"
     tag:
       topics: "Top-Themen"
       topics_with_category: "in der Kategorie %{category_name}"
@@ -325,16 +325,16 @@ de:
     language_short: "de"
     edit_link: " bearbeiten"
     delete_link: " löschen"
-
     tooltip: "Verschiebe die Reihenfolge mit Drag&Drop."
   search:
     any: "Alle"
     no_profile: "Keine passende Speakerin gefunden?"
-    profiles_topics: "Zum Thema:<b>%{topics_name}</b> <br>gibt es %{profiles_count} Speakerinnen."
+    profiles_topics: "Zum dem Thema <b>%{topics_name}</b> <br>gibt es %{profiles_count} Speakerinnen:"
     profiles: "%{link}"
     all_profiles: "In allen Profilen blättern >>"
     did_you_mean: "Meinst du vielleicht %{suggestions_fullname}?"
     or_did_you_mean: "Oder %{suggestions_topic}?"
+    empty_search: "Du hast das Suchfeld leider leer gelassen. Versuch es doch noch einmal :)"
     filter: "Hier kannst du die Suchergebnisse filtern:"
     empty: "Wir haben leider keine passende Speakerin gefunden :("
     success: "Wir haben"
