@@ -23,4 +23,11 @@ module ProfilesHelper
       link_to(image_tag('avatar.jpg', alt: 'avatar', class: 'photo--grey'), profile)
     end
   end
+
+  def topics(profile)
+    topics = []
+    topics << profile.topics.with_language(I18n.locale)
+    topics << profile.topics.without_language
+    topics = topics.flatten.uniq
+  end
 end
