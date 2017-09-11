@@ -174,4 +174,26 @@ describe 'profile navigation' do
       expect(page).to have_content('mathematic')
     end
   end
+
+  describe 'index view profiles in DE' do
+    before do
+      visit '/de/profiles'
+    end
+
+    it 'shows list of all speakers' do
+      expect(page).to have_content('Ada')
+      expect(page).to have_content('Lovelace')
+      expect(page).to have_content('programmieren')
+      expect(page).to have_content('mathematic')
+    end
+
+    it 'shows tags in the correct language' do
+      expect(page).to have_content('programmieren')
+      expect(page).not_to have_content('algorithm')
+    end
+
+    it 'shows tags with no language assigned' do
+      expect(page).to have_content('mathematic')
+    end
+  end
 end
