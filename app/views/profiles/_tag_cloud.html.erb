@@ -1,18 +1,24 @@
 <a id="topics_anchor"></a>
-<h1 class="bt pt text--center">
+<h1 class="bt pv text--center">
   <%= t(:topics, scope: 'profiles.tag') + ":" %>
 </h1>
-<%= form_tag(profiles_path, method: "get", class:"topic-filter pb mv font-size-24") do %>
-  <%= text_field_tag('search[quick]', nil, class: "search-query", id: "quick-filter", placeholder: "Quick Tag Filter") %>
-  <%= button_tag("Reset", class: "btn-blue btn--small input-btn", id: "reset-quick-filter") %>
-<% end %>
 
-<button class: "btn btn--small">
-  <%= link_to_if params[:all_lang], "lang scope", profiles_path(anchor: "topics_anchor"), class: "btn-blue" %>
-</button>
-<button class: "btn btn--small">
-  <%= link_to_if !params[:all_lang], "Without lang scope", profiles_path(all_lang: "true", anchor: "topics_anchor"), class: "btn-blue" %>
-</button>
+<div class="o-layout__item 1/2">
+  <%= form_tag(profiles_path, method: "get", class:"topic-filter font-size-24") do %>
+    <%= text_field_tag('search[quick]', nil, class: "search-query", id: "quick-filter", placeholder: "Quick Tag Filter") %>
+    <%= button_tag("Reset", class: "btn-blue btn--small input-btn", id: "reset-quick-filter") %>
+  <% end %>
+</div>
+
+<div class="o-layout__item 1/2">
+  <span class="button--border <%="button--background-blue" unless params[:all_lang]%>" >
+    <%= link_to_if params[:all_lang], "Tags in " + t(I18n.locale, scope: 'iso_639_1'), profiles_path(anchor: "topics_anchor"), class: "" %>
+  </span>
+  <span class="button--border <%="button--background-blue" if params[:all_lang]%>" >
+    <%= link_to_if !params[:all_lang], t(:topics_with_no_language_scope, scope: 'profiles.tag'), profiles_path(all_lang: "true", anchor: "topics_anchor"), class: "" %>
+  </span>
+</div>
+
 
 
 <script type="text/javascript" charset="utf-8">
@@ -43,7 +49,7 @@
   });
 </script>
 
-<div class='topics-cloud pb'>
+<div class='topics-cloud pv+'>
 
   <% if params[:category_id] %>
     <% custom_tag_cloud @tags_most_used_100.sort { |x,y| x.name <=> y.name }, %w[s m l] do |topic, css_class| %>

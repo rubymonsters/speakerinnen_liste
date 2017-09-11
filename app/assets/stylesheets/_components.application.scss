@@ -33,12 +33,19 @@ a, .link{
   }
 }
 
-.button_link {
+.button--background-blue {
+  background: $blue;
+  color: white;
+  font-family: $sans-serif;
   &:hover {
-    color: $font-color;
     text-decoration: none;
   }
+}
 
+.button--border {
+  padding: 10px 20px 10px 20px;
+  border: solid $light-grey 1px;
+  text-decoration: none;
 }
 
 .sans-serif{

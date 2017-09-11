@@ -171,6 +171,7 @@ de:
     tag:
       topics: "Top-Themen"
       topics_with_category: "in der Kategorie %{category_name}"
+      topics_with_no_language_scope: "Alle Tags"
     form:
       not_saved: "Dieses Profil konnte nicht gespeichert werden:"
       profile_from: "Profil von"
