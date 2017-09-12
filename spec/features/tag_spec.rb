@@ -1,28 +1,27 @@
 describe 'displaying tags' do
   before(:all) do
       @tag_both_languages = ActsAsTaggableOn::Tag.create(name: 'social media')
-      @tag_both_languages.tag_languages << TagLanguage.new(language: "de")
-      @tag_both_languages.tag_languages << TagLanguage.new(language: "en")
+      @tag_both_languages.tag_languages << TagLanguage.new(language: 'de')
+      @tag_both_languages.tag_languages << TagLanguage.new(language: 'en')
 
       @tag_with_slash_en = ActsAsTaggableOn::Tag.create(name: 'AC/DC')
       @tag_with_slash_en.tag_languages << TagLanguage.new(language: 'en')
 
       @tag_one_language_en = ActsAsTaggableOn::Tag.create(name: 'physics')
-      @tag_one_language_en.tag_languages << TagLanguage.new(language: "en")
+      @tag_one_language_en.tag_languages << TagLanguage.new(language: 'en')
 
       @tag_one_language_de = ActsAsTaggableOn::Tag.create(name: 'Chemie')
-      @tag_one_language_de.tag_languages << TagLanguage.new(language: "de")
+      @tag_one_language_de.tag_languages << TagLanguage.new(language: 'de')
 
       @tag_with_unpublished_profile = ActsAsTaggableOn::Tag.create(name: 'sports')
+      @tag_with_unpublished_profile.tag_languages << TagLanguage.new(language: 'de')
 
-      @marie = Profile.create(firstname: "Marie", lastname: "Curie", published: true, topic_list: [@tag_one_language_de, @tag_no_language],
-                      password: "123foobar", password_confirmation: "123foobar", confirmed_at: Time.now, email: "marie@curie.fr")
-      Profile.create(firstname: "Pierre", lastname: "Curie", published: false, topic_list: [@tag_one_language_de, @tag_with_unpublished_profile],
-                      password: "123foobar", password_confirmation: "123foobar", confirmed_at: Time.now, email: "pierre@curie.fr")
-      @ada = Profile.create(firstname: "Ada", lastname: "Lovelace", published: true, main_topic_en: 'first computer programm',
+      Profile.create(firstname: 'Pierre', lastname: 'Curie', published: false, topic_list: [@tag_one_language_de, @tag_with_unpublished_profile],
+                      password: '123foobar', password_confirmation: '123foobar', confirmed_at: Time.now, email: 'pierre@curie.fr')
+      @ada = Profile.create(firstname: 'Ada', lastname: 'Lovelace', published: true, main_topic_en: 'first computer programm',
                             bio_en: 'first programmer', main_topic_de: 'Erstes Computer-Programm', bio_de: 'Erste Programmiererin',
-                            topic_list: [@tag_one_language_en, @tag_both_languages, @tag_with_slash_en], password: "123foobar", password_confirmation: "123foobar",
-                            confirmed_at: Time.now, email: "ada@love.uk")
+                            topic_list: [@tag_one_language_de, @tag_one_language_en, @tag_both_languages, @tag_with_slash_en], password: '123foobar', password_confirmation: '123foobar',
+                            confirmed_at: Time.now, email: 'ada@love.uk')
   end
 
   after(:all) do
@@ -67,11 +66,16 @@ describe 'displaying tags' do
 
   it 'shows with slash use %2F for the link generating in profiles show' do
     visit 'en/profiles'
-    assert page.has_content?('AC/DC')
     within '.topics-cloud' do
       click_link('AC/DC')
     end
-
     expect(page).to have_content('AC/DC')
+  end
+
+  it 'shows not tags from unpublished profiles' do
+    visit 'en/profiles'
+    within '.topics-cloud' do
+      expect(page).not_to have_content('sports')
+    end
   end
 end
