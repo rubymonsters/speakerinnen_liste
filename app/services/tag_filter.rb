@@ -25,8 +25,8 @@ class TagFilter
       tag_ids = ActsAsTaggableOn::Tag
              .joins(:locale_languages)
              .where('locale_languages.iso_code IN (?)', @params[:filter_languages])
-             .group("locale_languages.id, tags.id HAVING count(locale_languages.id) = #{@params[:filter_languages].length}")
-             .pluck('tags.id')
+             .group("tags_locale_languages.tag_id HAVING count(tags_locale_languages.tag_id) = #{@params[:filter_languages].length}")
+             .pluck('tags_locale_languages.tag_id')
       @tags = @tags.where(id: tag_ids)
     end
 

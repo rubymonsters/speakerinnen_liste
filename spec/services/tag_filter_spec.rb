@@ -19,13 +19,13 @@ describe TagFilter do
     ActsAsTaggableOn::Tag.create!(
       name: 'entertainment',
       locale_languages: [locale_language_en]
-     )
+    )
   end
   let!(:tag_de) do
     ActsAsTaggableOn::Tag.create!(
       name: 'Soziale Medien',
       locale_languages: [locale_language_de]
-      )
+    )
   end
 
   let!(:category_1) { Category.create!(id: 1, name: 'marketing & pr', tags: [tag_en_de, tag_de]) }
