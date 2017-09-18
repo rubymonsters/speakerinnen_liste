@@ -26,7 +26,7 @@
             <%= simple_form_for tag, url: admin_tag_path(tag, @filter_params) do |f| %>
               <% TagLanguage.allowed_languages.each do |language| %>
                 <div>
-                  <%= check_box_tag 'languages[]', language, tag.tag_languages.map(&:language).include?("#{language}") %>
+                  <%= check_box_tag 'languages[]', language, tag.locale_languages.map(&:iso_code).include?("#{language}") %>
                   <%= label_tag t(language, scope: 'i18n.language') %>
                 </div>
               <% end %>

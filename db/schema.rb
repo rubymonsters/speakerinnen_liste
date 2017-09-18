@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170918171634) do
+ActiveRecord::Schema.define(version: 20170918180437) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -141,13 +141,6 @@ ActiveRecord::Schema.define(version: 20170918171634) do
   add_index "profiles", ["email"], name: "index_profiles_on_email", unique: true, using: :btree
   add_index "profiles", ["reset_password_token"], name: "index_profiles_on_reset_password_token", unique: true, using: :btree
   add_index "profiles", ["slug"], name: "index_profiles_on_slug", unique: true, using: :btree
-
-  create_table "tag_languages", force: true do |t|
-    t.integer  "tag_id"
-    t.string   "language"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "taggings", force: true do |t|
     t.integer  "tag_id"
