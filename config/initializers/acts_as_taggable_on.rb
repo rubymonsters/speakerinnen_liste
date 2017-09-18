@@ -5,10 +5,11 @@ ActsAsTaggableOn.force_lowercase = true
 ActsAsTaggableOn::Tag.class_eval do
   has_and_belongs_to_many :categories
   has_many :profiles
+  has_many :tag_languages
   has_many :tags_locale_languages
   has_many :locale_languages, through: :tags_locale_languages
 
-  # accepts_nested_attributes_for :tag_languages, allow_destroy: true
+  accepts_nested_attributes_for :tag_languages, allow_destroy: true
 
   def merge(wrong_tag)
     # update all taggings on any of these wrong tags to now point to the correct tag that we keep
