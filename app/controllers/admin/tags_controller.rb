@@ -66,9 +66,9 @@ class Admin::TagsController < Admin::BaseController
 
   def update_tag_languages(tag, languages)
     # probably this is easier to accomplish, refactoring? -> also put in model
-    tag.tag_languages.each(&:destroy)
+    tag.locale_languages.each(&:destroy)
     if languages.present?
-      languages.each { |l| tag.tag_languages.create!(language: l) }
+      languages.each { |l| tag.locale_languages(iso_code: l) }
     end
   end
 

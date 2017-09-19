@@ -10,6 +10,7 @@ describe LocaleLanguage, type: :model do
   end
 
   it 'finds associated language of the tag' do
+    p locale_language.iso_code
     expect(tag.locale_languages).to match_array([locale_language])
   end
 

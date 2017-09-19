@@ -114,7 +114,6 @@ describe Admin::TagsController, type: :controller do
         expect(assigns(:tags)).to_not eq([ActsAsTaggableOn::Tag.find_by(name: ada.topic_list[0])])
       end
     end
-
   end
 
   describe 'GET tag_language' do
@@ -180,6 +179,17 @@ describe Admin::TagsController, type: :controller do
           expect(ActsAsTaggableOn::Tagging.count).to be 5
           expect(ActsAsTaggableOn::Tag.count).to be 4
         end
+      end
+    end
+    context '#update_tag_languages' do
+      before(:each) do
+        put :update, tag: { name: 'radioactive', languages: [] }
+        tag.save!
+      end
+
+      it 'assings a language to the topic' do
+        expect(tag.locale_languages).to be_empty
+        expect(tag.locale_languages).to match_array(['de'])
       end
     end
   end
