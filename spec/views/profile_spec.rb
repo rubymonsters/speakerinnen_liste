@@ -28,6 +28,11 @@ describe 'profile navigation' do
     @tag_german.tag_languages << TagLanguage.new(language: 'de')
   end
 
+  after(:all) do
+    ActsAsTaggableOn::Tag.destroy_all
+    TagLanguage.destroy_all
+  end
+
   describe 'show view profile in EN' do
     before do
       sign_in ada
@@ -148,17 +153,38 @@ describe 'profile navigation' do
     end
   end
 
-  describe 'index view profiles in EN', js: true do
+  describe 'index view profiles in EN' do
     before do
-      visit profiles_path
-      click_on 'EN', match: :first
+      visit '/en/profiles'
     end
 
     it 'shows list of all speakers' do
       expect(page).to have_content('Ada')
       expect(page).to have_content('Lovelace')
       expect(page).to have_content('algorithm')
+      expect(page).to have_content('mathematic')
+    end
+
+    it 'shows tags in the correct language' do
+      expect(page).to have_content('algorithm')
+      expect(page).not_to have_content('programmieren')
+    end
+
+    it 'shows tags with no language assigned' do
+      expect(page).to have_content('mathematic')
+    end
+  end
+
+  describe 'index view profiles in DE' do
+    before do
+      visit '/de/profiles'
+    end
+
+    it 'shows list of all speakers' do
+      expect(page).to have_content('Ada')
+      expect(page).to have_content('Lovelace')
       expect(page).to have_content('programmieren')
+      expect(page).to have_content('mathematic')
     end
 
     it 'shows tags in the correct language' do
