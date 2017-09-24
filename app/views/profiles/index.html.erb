@@ -46,7 +46,7 @@
       <%= link_to(t(:all_categories, scope: 'pages.home'), root_path + "#categories_anchor" )%>
     </p>
 
-    <div class="o-layout">
+    <div class="text--center o-layout__item 1/1">
       <%= render partial: 'tag_cloud' unless params[:category_id] %>
     </div>
 

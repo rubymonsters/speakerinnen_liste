@@ -26,11 +26,10 @@ class ProfilesController < ApplicationController
       @profiles = profiles_for_index
     end
     if params[:all_lang]
-      @tags_most_used_100 = ActsAsTaggableOn::Tag.most_used(100)
+      @tags_most_used_200 = ActsAsTaggableOn::Tag.with_published_profile.most_used(200)
     else
-      @tags_most_used_100 = ActsAsTaggableOn::Tag.with_published_profile.with_language(I18n.locale)
+      @tags_most_used_200 = ActsAsTaggableOn::Tag.with_published_profile.with_language(I18n.locale).most_used(200)
     end
-    #@tags_most_used_200 = ActsAsTaggableOn::Tag.most_used(200)
     @tags_all = ActsAsTaggableOn::Tag.all
   end
 
@@ -182,7 +181,8 @@ class ProfilesController < ApplicationController
   def profiles_for_category
     @category = Category.find(params[:category_id])
     @tags_in_category_published = ActsAsTaggableOn::Tag.belongs_to_category(params[:category_id]).with_published_profile.with_language(I18n.locale)
-    tag_names         = @tags_in_category_published.pluck(:name)
+    tag_names = @tags_in_category_published.pluck(:name)
+    @tags_most_used_200 = @tags_in_category_published.most_used(200)
     @profiles         = profiles_for_tag(tag_names)
   end
 

@@ -170,6 +170,9 @@ en:
     tag:
       topics: "Most Popular Topics"
       topics_with_category: "in category %{category_name}"
+      topics_language_scope: "You can filter the topics in languages:"
+      topics_with_no_language_scope: "All topics"
+      topics_quick_filter: "Search the topics cloud:"
     form:
       not_saved: "This profile could not be saved: "
       profile_from: "Profile of"

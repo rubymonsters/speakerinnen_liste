@@ -1,23 +1,26 @@
 <a id="topics_anchor"></a>
-<h1 class="bt pv text--center">
+<h1 class="bt pv">
   <%= t(:topics, scope: 'profiles.tag') + ":" %>
 </h1>
 
-<div class="o-layout__item 1/2">
+<div class="pb">
+  <p> <%= t(:topics_language_scope, scope: 'profiles.tag' ) %> </p>
+  <span class="button--border <%="button--background-blue" unless params[:all_lang]%>" >
+    <%= link_to_if params[:all_lang], "Topics in " + t(I18n.locale, scope: 'iso_639_1'), profiles_path(anchor: "topics_anchor"), class: "" %>
+  </span>
+  <span class="button--border <%="button--background-blue" if params[:all_lang]%>" >
+    <%= link_to_if !params[:all_lang], t(:topics_with_no_language_scope, scope: 'profiles.tag'), profiles_path(all_lang: "true", anchor: "topics_anchor"), class: "" %>
+  </span>
+</div>
+
+<div class="pb">
+  <p> <%= t(:topics_quick_filter, scope: 'profiles.tag' ) %> </p>
   <%= form_tag(profiles_path, method: "get", class:"topic-filter font-size-24") do %>
     <%= text_field_tag('search[quick]', nil, class: "search-query", id: "quick-filter", placeholder: "Quick Tag Filter") %>
     <%= button_tag("Reset", class: "btn-blue btn--small input-btn", id: "reset-quick-filter") %>
   <% end %>
 </div>
 
-<div class="o-layout__item 1/2">
-  <span class="button--border <%="button--background-blue" unless params[:all_lang]%>" >
-    <%= link_to_if params[:all_lang], "Tags in " + t(I18n.locale, scope: 'iso_639_1'), profiles_path(anchor: "topics_anchor"), class: "" %>
-  </span>
-  <span class="button--border <%="button--background-blue" if params[:all_lang]%>" >
-    <%= link_to_if !params[:all_lang], t(:topics_with_no_language_scope, scope: 'profiles.tag'), profiles_path(all_lang: "true", anchor: "topics_anchor"), class: "" %>
-  </span>
-</div>
 
 
 
@@ -52,11 +55,11 @@
 <div class='topics-cloud pv+'>
 
   <% if params[:category_id] %>
-    <% custom_tag_cloud @tags_most_used_100.sort { |x,y| x.name <=> y.name }, %w[s m l] do |topic, css_class| %>
+    <% custom_tag_cloud @tags_most_used_200.sort { |x,y| x.name <=> y.name }, %w[s m l] do |topic, css_class| %>
       <%= topic_link topic, class: css_class %>
     <% end %>
   <% else %>
-    <% tag_cloud @tags_most_used_100.sort { |x, y| x.name <=> y.name }, %w[s m l] do |topic, css_class| %>
+    <% tag_cloud @tags_most_used_200.sort { |x, y| x.name <=> y.name }, %w[s m l] do |topic, css_class| %>
       <%= topic_link topic, class: css_class %>
     <% end %>
   <% end %>
