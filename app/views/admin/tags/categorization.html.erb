@@ -24,14 +24,12 @@
           </td>
           <td>
             <%= simple_form_for tag, url: admin_tag_path(tag, @filter_params) do |f| %>
-              <div>
-                <%= check_box_tag 'languages[]', 'de', tag.tag_languages.map(&:language).include?('de') %>
-                <%= label_tag t('de', scope: 'i18n.language') %>
-              </div>
-              <div>
-                <%= check_box_tag 'languages[]', 'en', tag.tag_languages.map(&:language).include?('en') %>
-                <%= label_tag t('en', scope: 'i18n.language') %>
-              </div>
+              <% TagLanguage.allowed_languages.each do |language| %>
+                <div>
+                  <%= check_box_tag 'languages[]', language, tag.tag_languages.map(&:language).include?("#{language}") %>
+                  <%= label_tag t(language, scope: 'i18n.language') %>
+                </div>
+              <% end %>
               <%= f.button :submit %>
             <% end %>
           </td>
