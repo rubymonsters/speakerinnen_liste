@@ -78,7 +78,7 @@ en:
       speaker_shoutout: "Do you have something interesting to say?"
       speaker_text: "Get on the Speakerinnen* list >>"
       speakers:
-        new_speaker_heading: "Our Speakers"
+        speaker_headline: "Our Speakers*"
         speaker_text: "No more excuses for panels without women*!"
         speaker_index: "Browse all speakers >>"
         categories: "Categories and Topics >>"

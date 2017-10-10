@@ -78,7 +78,7 @@ de:
       speaker_shoutout: "Hast Du etwas Interessantes zu erzählen?"
       speaker_text: "Registriere Dich auf der SpeakerinnenListe >>"
       speakers:
-        new_speaker_heading: "Unsere Speakerinnen*"
+        speaker_headline: "Unsere Speakerinnen*"
         speaker_text: "Keine Ausreden mehr für Panels ohne Frauen!"
         speaker_index: "Alle Speakerinnen* anschauen >>"
         categories: "Kategorien und Themen >>"
