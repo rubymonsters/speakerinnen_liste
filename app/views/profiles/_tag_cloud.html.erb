@@ -4,7 +4,6 @@
 </h1>
 
 <div class="pb">
-  <p> <%= t(:topics_language_scope, scope: 'profiles.tag' ) %> </p>
   <span class="button--border <%="button--background-blue" unless params[:all_lang]%>" >
     <%= link_to_if params[:all_lang], "Topics in " + t(I18n.locale, scope: 'iso_639_1'), profiles_path(anchor: "topics_anchor"), class: "" %>
   </span>

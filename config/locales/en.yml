@@ -68,7 +68,7 @@ en:
     home:
       search:
         heading: "Organizers, find your speakers"
-        tagline: "Find women speakers & moderators for your conference."
+        tagline_html: "Find women speakers & moderators for your conference."
         search_text: "Search by anything"
         search: "Search"
       all_categories: "Categories and topics >>"
@@ -171,8 +171,7 @@ en:
     tag:
       topics: "Most Popular Topics"
       topics_with_category: "in category %{category_name}"
-      topics_language_scope: "You can filter the topics in languages:"
-      topics_with_no_language_scope: "All topics"
+      topics_with_no_language_scope: "Topics in all languages"
       topics_quick_filter: "Search the topics cloud:"
     form:
       not_saved: "This profile could not be saved: "

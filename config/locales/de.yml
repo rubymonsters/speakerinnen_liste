@@ -172,8 +172,7 @@ de:
     tag:
       topics: "Top-Themen"
       topics_with_category: "in der Kategorie %{category_name}"
-      topics_language_scope: "Hier kannst Du die Topics nach Sprachen filtern:"
-      topics_with_no_language_scope: "Alle Tags"
+      topics_with_no_language_scope: "Topics in allen Sprachen"
       topics_qick_filter: "Hier könnt ihr in der Topic Cloud suchen:"
     form:
       not_saved: "Dieses Profil konnte nicht gespeichert werden:"
