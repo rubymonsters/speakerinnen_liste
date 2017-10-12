@@ -1,129 +1,54 @@
 <section class="bg--grey">
   <div class="layout-wrapper">
-    <h1 class="bb">
-      <%= t(:new_speaker_heading, scope: 'pages.home.speakers') %>
-    </h1>
+    <% if params[:category_id] %> <%# when in categories scope %>
 
-    <%= render partial: 'shared/search' %>
+      <h2 class="text--center">
+        <%= t(:category, scope: 'profiles', category_name: @category.name, profiles_count: @profiles.total_count, topics_count: @tags_in_category_published.size).html_safe %>
+      </h2>
+      <%= render partial: 'profiles/tag' %>
 
-    <div class="mb+">
-      <%# if in search: %>
-      <% if params[:search] %>
-        <% if @profiles.any? %>
-         <p class="font-size-24 text--center o-layout__item 1/1">
-            <%= t(:success, scope: 'search' ).html_safe +
-                t(:result, scope: 'search', count: @profiles.total_count).html_safe +
-                t(:filter, scope: 'search').html_safe %>
-          </p>
+    <% elsif params[:topic] %>
 
-        <div class="o-layout layout-wrapper pt">
-            <div class="o-layout__item 1/4 lap-1/2 palm-1/1">
-              <ul id="facet_countries" class="search-aggregation">
-              <%= aggreations_title = t(:countries_agg, scope: 'search' ).html_safe%>
-                <% @aggs_countries[0..9].each do |term| %>
-                  <li class='pl- <%= 'selected' if params[:filter_countries] == term['key'] %>'>
-                    <%= link_to ISO3166::Country.find_country_by_alpha2("#{term['key']}").translation(I18n.locale), search: params[:search], filter_countries: term['key'] %><small class="sans-serif pl-"><%= term['doc_count'] %></small>
-                  </li>
-                <% end %>
-                <% if @aggs_countries.length > 10 %>
-                  <li>
-                      <a class="pl- expander_countries">
-                        <%= t(:show_more, scope: 'profiles.index') %>
-                      </a>
-                  </li>
-                  <% display_value = @aggs_countries[10..999] == [] ? "block" : "none" %>
-                  <% @aggs_countries[10..999].each do |term| %>
-                    <li class='pl- rest_facet_countries <%= 'selected' if params[:filter_countries] == term['key'] %>' style='display: <%= display_value %>;'>
-                      <%= link_to ISO3166::Country.find_country_by_alpha2("#{term['key']}").translation(I18n.locale), search: params[:search], filter_countries: term['key'] %><small class="sans-serif pl-"><%= term['doc_count'] %></small>
-                    </li>
-                  <% end %>
-                <% end %>
-              </ul>
-            </div>
-            <div class="o-layout__item 1/4 lap-1/2 palm-1/1">
-              <ul id="facet_cities" class="search-aggregation">
-              <%=t(:cities_agg, scope: 'search' ).html_safe%>
-                <% @aggs_cities[0..9].each do |term| %>
-                  <li class='pl- <%= 'selected' if params[:filter_cities] == term['key'] %>'>
-                    <%= link_to term['key'], search: params[:search], filter_cities: term['key'] %><small class="sans-serif pl-"><%= term['doc_count'] %></small>
-                  </li>
-                <% end %>
-                <% if @aggs_cities.length > 10 %>
-                  <li>
-                      <a class="pl- expander_cities">
-                        <%= t(:show_more, scope: 'profiles.index') %>
-                      </a>
-                  </li>
-                  <% display_value = @aggs_cities[10..999] == [] ? "block" : "none" %>
-                  <% @aggs_cities[10..999].each do |term| %>
-                    <li class='pl- rest_facet_cities <%= 'selected' if params[:filter_cities] == term['key'] %>' style='display: <%= display_value %>;'>
-                      <%= link_to term['key'], search: params[:search], filter_cities: term['key'] %><small class="sans-serif pl-"><%= term['doc_count'] %></small>
-                    </li>
-                  <% end %>
-                <% end %>
-              </ul>
-            </div>
-            <div class="o-layout__item 1/4 lap-1/2 palm-1/1">
-              <ul id="facet_languages" class="search-aggregation">
-              <%=t(:languages_agg, scope: 'search' ).html_safe%>
-                <% @aggs_languages[0..9].each do |term| %>
-                <li class='pl- <%= 'selected' if params[:filter_lang] == term['key'] %>'>
-                  <%= link_to t("#{term['key']}", scope: 'iso_639_1').capitalize , search: params[:search], filter_lang: term['key'] %><small class="sans-serif pl-"><%= term['doc_count'] %></small>                </li>
-                <% end %>
-                <% if @aggs_languages.length > 10 %>
-                  <li>
-                      <a class="pl- expander_languages">
-                        <%= t(:show_more, scope: 'profiles.index') %>
-                      </a>
-                  </li>
-                  <% display_value = @aggs_languages[10..999] == [] ? "block" : "none" %>
-                  <% @aggs_languages[10..999].each do |term| %>
-                    <li class='pl- rest_facet_languages <%= 'selected' if params[:filter_cities] == term['key'] %>' style='display: <%= display_value %>;'>
-                      <%= link_to t("#{term['key']}", scope: 'iso_639_1').capitalize , search: params[:search], filter_lang: term['key'] %><small class="sans-serif pl-"><%= term['doc_count'] %></small>
-                    </li>
-                  <% end %>
-                <% end %>
-              </ul>
-            </div>
-          </div>
+      <h2 class="text--center">
+        <%= t(:profiles_topics, scope: 'search', profiles_count: @profiles.total_count, topics_name: params[:topic]).html_safe %>
+      </h2>
+      <%= render partial: 'shared/search_form' %>
+      <p class="mt--"><%= t(:search_categories_html, scope: 'search', root_path: root_path) %></p>
 
-        <% elsif @profiles.size <1 && params[:search].present? && @profiles.response.response.suggest.did_you_mean_fullname.first.options.present? %>
-          <p class="font-size-24 text--left o-layout__item 1/1">
-          <%= t(:did_you_mean, scope: 'search', suggestions_fullname: @profiles.response.response.suggest.did_you_mean_fullname.first.options.map {|sug| link_to(sug.text.capitalize, "profiles_search?&search=#{sug.text}")} * ", " ).html_safe %>
-          </p>
-        <% end %>
+    <% elsif params[:search] %> <%# if in search: %>
 
-      <%# if in topic or category or nothing: %>
-      <% else %>
-        <% if params[:topic] %>
-          <p class="font-size-24 text--center o-layout__item 1/1">
-            <%= t(:profiles_topics, scope: 'search', profiles_count: @profiles.total_count, topics_name: params[:topic]).html_safe %>
-          </p>
+      <%= render partial: 'shared/search_filter' %>
 
-        <% elsif params[:category_id] %>
-          <p class="font-size-24 text--center o-layout__item 1/1">
-            <%= t(:category, scope: 'profiles', category_name: @category.name, profiles_count: @profiles.total_count, topics_count: @tags.size).html_safe %>
-          </p>
-        <% else %>
-          <p class="font-size-24 text--center o-layout__item 1/1">
-            <%= t(:all_speakerinnen, scope: 'profiles.index', profiles_count: @profiles.total_count).html_safe %>
-          </p>
-        <% end %>
-      <% end %>
-      <%= render partial: 'profiles/profile_search', collection: @profiles, as: :profile %>
-    </div>
+    <% else %>
 
-    <a id="topics_anchor"></a>
+      <h1 class="bb text--center">
+        <%= t(:speaker_headline, scope: 'pages.home.speakers') %>
+      </h1>
+      <p class="font-size-24 text--center">
+        <%= t(:all_speakerinnen, scope: 'profiles.index', profiles_count: @profiles.total_count).html_safe %>
+      </p>
+      <%= render partial: 'shared/search_form' %>
+      <%= t(:search_categories_html, scope: 'search', root_path: root_path) %>
+
+    <% end %>
+
+    <%= paginate @profiles %>
+
+    <%= render partial: 'profiles/profile_search', collection: @profiles, as: :profile %>
 
     <%= paginate @profiles %>
 
     <p class="font-size-24 text--center o-layout__item 1/1">
       <%= t(:more_options, scope: 'search').html_safe %><br>
+      <%#TODO: doesn't work anymore%>
       <%= top_link(params[:search]) %><br>
-      <%= link_to(t(:all_profiles,scope: 'search'), profiles_path).html_safe %>
+      <%= link_to(t(:all_profiles, scope: 'search'), profiles_path).html_safe %><br>
+      <%= link_to(t(:all_categories, scope: 'pages.home'), root_path + "#categories_anchor" )%>
     </p>
 
-    <%= render partial: 'tag' %>
+    <div class="text--center o-layout__item 1/1">
+      <%= render partial: 'tag_cloud' unless params[:category_id] %>
+    </div>
 
     <%= render partial: 'layouts/footer' %>
 

@@ -9,7 +9,7 @@
 
     <%= form_tag(admin_tag_path(@tag.id, page: params[:page]), method: "put") do %>
       <%= text_field(:tag, :name, value: @tag.name) %>
-      <%= submit_tag t(:save, scope: "general"), class: "btn btn--small" %>
+      <%= submit_tag t(:save, scope: "general"), class: "btn btn-blue btn--small" %>
     <% end %>
 
   </div>

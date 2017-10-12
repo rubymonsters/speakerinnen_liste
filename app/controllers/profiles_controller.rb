@@ -11,7 +11,7 @@ class ProfilesController < ApplicationController
 
   def index
     if params[:topic]
-      @profiles = profiles_for_scope(params[:topic])
+      @profiles = profiles_for_tag(params[:topic])
     elsif params[:category_id]
       profiles_for_category
     elsif params[:search]
@@ -25,7 +25,12 @@ class ProfilesController < ApplicationController
     else
       @profiles = profiles_for_index
     end
-    @tags = ActsAsTaggableOn::Tag.most_used(100)
+    if params[:all_lang]
+      @tags_most_used_200 = ActsAsTaggableOn::Tag.with_published_profile.most_used(200)
+    else
+      @tags_most_used_200 = ActsAsTaggableOn::Tag.with_published_profile.with_language(I18n.locale).most_used(200)
+    end
+    @tags_all = ActsAsTaggableOn::Tag.all
   end
 
   def show
@@ -35,6 +40,10 @@ class ProfilesController < ApplicationController
     else
       redirect_to profiles_url, notice: (I18n.t('flash.profiles.show_no_permission'))
     end
+    @topics = []
+    @topics << @profile.topics.with_language(I18n.locale)
+    @topics << @profile.topics.without_language
+    @topics = @topics.flatten.uniq
   end
 
   # should reuse the devise view
@@ -161,7 +170,7 @@ class ProfilesController < ApplicationController
       .per(24)
   end
 
-  def profiles_for_scope(tag_names)
+  def profiles_for_tag(tag_names)
     Profile.is_published
       .random
       .tagged_with(tag_names, any: true)
@@ -171,16 +180,10 @@ class ProfilesController < ApplicationController
 
   def profiles_for_category
     @category = Category.find(params[:category_id])
-    @tags     = @category.tags
-    if @tags.any?
-      @tag_names      = @tags.pluck(:name)
-      @profiles       = profiles_for_scope(@tag_names)
-      @published_tags = @profiles.map { |p| p.topics.pluck(:name) }.flatten.uniq
-      @tags           = @tags.select { |t| @published_tags.include?(t.to_s) }
-    else
-      @profiles       = profiles_for_index
-      redirect_to profiles_url, notice: ('No Tag for that Category found!')
-    end
+    @tags_in_category_published = ActsAsTaggableOn::Tag.belongs_to_category(params[:category_id]).with_published_profile.with_language(I18n.locale)
+    tag_names = @tags_in_category_published.pluck(:name)
+    @tags_most_used_200 = @tags_in_category_published.most_used(200)
+    @profiles         = profiles_for_tag(tag_names)
   end
 
   def profiles_for_search

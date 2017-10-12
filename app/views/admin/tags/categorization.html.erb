@@ -47,7 +47,7 @@
             </td>
           <% end %>
             <td>
-             <%= link_to ('<i class="fa fa-trash-o">&nbsp;</i>').html_safe, admin_tag_path(tag.id), method: :delete, data: { confirm: 'Are you sure?',toggle: 'tooltip', placement: 'left' }, class: 'btn btn--small', title: 'Delete'%>
+             <%= link_to ('<i class="fa fa-trash-o">&nbsp;</i>').html_safe, admin_tag_path(tag.id), method: :delete, data: { confirm: 'Are you sure?',toggle: 'tooltip', placement: 'left' }, class: 'btn btn-blue btn--small', title: 'Delete'%>
             </td>
         </tr>
       <% end %>
