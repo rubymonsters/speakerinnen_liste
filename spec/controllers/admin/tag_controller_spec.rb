@@ -181,17 +181,25 @@ describe Admin::TagsController, type: :controller do
         end
       end
     end
-    context '#update_tag_languages' do
-      before(:each) do
-        put :update, tag: { name: 'radioactive', languages: [] }
-        tag.save!
-      end
+
+    context '#set_tag_languages' do
+      let!(:locale_language){ LocaleLanguage.create(iso_code: "en") }
+      let(:tag){ActsAsTaggableOn::Tag.find_by(name: marie.topic_list[0])}
 
       it 'assings a language to the topic' do
-        expect(tag.locale_languages).to be_empty
-        expect(tag.locale_languages).to match_array(['de'])
+        put :update, languages: ["en"], id: tag.id
+        expect(tag.locale_languages.first.iso_code).to match('en')
+      end
+
+      it 'remove a language from the topic' do
+        tag.locale_languages << locale_language
+        put :update, id: tag.id
+        # have to reaload tag to get the new relations
+        tag = ActsAsTaggableOn::Tag.find_by(name: marie.topic_list[0])
+        expect(tag.locale_languages).to match([])
       end
     end
+
   end
 
 
