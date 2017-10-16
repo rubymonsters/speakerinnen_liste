@@ -21,16 +21,18 @@ describe 'profile navigation' do
                                                         description: 'How to programm')}
 
   before(:all) do
+    @localelanguage_en = LocaleLanguage.new(iso_code: 'en')
+    @localelanguage_de = LocaleLanguage.new(iso_code: 'de')
+
     @tag_english = ActsAsTaggableOn::Tag.create(name: 'algorithm')
-    @tag_english.tag_languages << TagLanguage.new(language: 'en')
+    @tag_english.locale_languages << @localelanguage_en
 
     @tag_german = ActsAsTaggableOn::Tag.create(name: 'programmieren')
-    @tag_german.tag_languages << TagLanguage.new(language: 'de')
+    @tag_german.locale_languages << @localelanguage_de
   end
 
   after(:all) do
     ActsAsTaggableOn::Tag.destroy_all
-    TagLanguage.destroy_all
   end
 
   describe 'show view profile in EN' do
