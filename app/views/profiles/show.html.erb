@@ -42,7 +42,7 @@
             <%= t(:topics, scope: 'profiles.profile') %>
           </h2>
           <p class="pb topics-profile">
-            <%= raw @profile.topic_list.sort.map { |topic| topic_link(topic) }.join(' ') %>
+            <%= raw @topics.sort.map { |topic| topic_link(topic) }.join(' ') %>
           </p>
 
           <% if @profile.iso_languages.present? %>
@@ -78,7 +78,7 @@
         <div class="o-layout__item 1/6 palm-1/1">
 
           <% if current_profile != @profile %>
-            <label class="btn btn--small btn--full" for="modal-1">
+            <label class="btn btn-blue btn--small btn--full" for="modal-1">
               <i class="fa fa-envelope-o"></i>&nbsp;
               <%= t(:contact, scope: 'profiles.profile') %>
             </label>
@@ -86,18 +86,18 @@
 
           <% if current_profile == @profile %>
             <%= link_to(edit_profile_path(@profile)) do %>
-              <div class='btn buttons-modals btn--small btn--full'>
+              <div class='btn btn-blue buttons-modals btn--small btn--full'>
                 <%= t(:edit, scope: 'profiles.profile') %>
                </div>
 
             <%= link_to(profile_medialinks_path(@profile)) do %>
-              <div class='btn buttons-modals btn--small btn--full mt-'>
+              <div class='btn btn-blue buttons-modals btn--small btn--full mt-'>
                 <%= t(:edit, scope: 'profiles.medialinks') %>
               </div>
             <% end %>
 
             <%= link_to(edit_profile_registration_path) do %>
-              <div id='accountSettings', class='btn buttons-modals btn--small btn--full mt-'>
+              <div id='accountSettings', class='btn btn-blue buttons-modals btn--small btn--full mt-'>
                 <%= t(:account, scope: 'layouts.application') %>
               </div>
             <% end %>

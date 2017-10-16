@@ -8,7 +8,7 @@
 
     <%= form_tag(admin_profiles_path, method: 'get', class: 'font-size-24') do %>
       <%= text_field_tag :search, params[:search], placeholder: t(:search_for_name, scope: 'admin.dashboard.profiles') %>
-      <%= submit_tag t(:search, scope: 'general'), class: 'btn btn--small' %>
+      <%= submit_tag t(:search, scope: 'general'), class: 'btn btn-blue btn--small' %>
     <% end %>
 
     <%= paginate @profiles %>
@@ -37,16 +37,17 @@
             <td><%= link_to '<i class="fa fa-pencil">&nbsp;</i>'.html_safe, edit_admin_profile_path(profile), html_options = { title: t(:edit, scope: 'general') } %></td>
             <td><%= link_to '<i class="fa fa-trash-o">&nbsp;</i>'.html_safe, admin_profile_path(profile), method: :delete, data: { confirm: 'Are you sure?' }, remote: true, class: 'delete_profile', title: t(:delete, scope: 'general') %></td>
             <td><% if profile.published %>
-                <%= link_to t(:public, scope: 'admin.dashboard.profiles'), unpublish_admin_profile_path(profile.id), method: :post, class:'btn btn--small' %>
+                <%= link_to t(:public, scope: 'admin.dashboard.profiles'), unpublish_admin_profile_path(profile.id), method: :post, class:'btn btn-blue btn--small' %>
               <% else %>
-                <%= link_to t(:invisible, scope: 'admin.dashboard.profiles'), publish_admin_profile_path(profile.id), method: :post, class:'btn btn--small btn--danger', title: 'Eine Bestätigungsmail wird verschickt.' %>
+
+                <%= link_to t(:invisible, scope: 'admin.dashboard.profiles'), publish_admin_profile_path(profile.id), method: :post, class:'btn  btn--small btn--danger', title: 'Eine Bestätigungsmail wird verschickt.' %>
               <% end %>
             </td>
             <td><%= 'Admin' if profile.admin %></td>
             <td>
               <%= form_for profile,{ url: admin_comment_admin_profile_path(profile.id), method: 'post' } do |f| %>
                 <%= f.text_field 'admin_comment' %>
-                <%= f.submit t(:add_comment, scope: 'admin.dashboard.profiles'), class: 'btn btn--small' %>
+                <%= f.submit t(:add_comment, scope: 'admin.dashboard.profiles'), class: 'btn btn-blue btn--small' %>
               <% end  %>
             </td>
           </tr>

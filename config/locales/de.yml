@@ -68,15 +68,17 @@ de:
     home:
       search:
         heading: "Mehr Frauen auf die Bühnen!"
-        tagline: "Finde Rednerinnen, Referentinnen & Moderatorinnen für Deine Konferenz"
+        tagline_html: "Finde Rednerinnen, Referentinnen & Moderatorinnen für Deine Konferenz."
         search_text: "Speakerinnen* durchsuchen"
         search: "Suche"
+      all_categories: "Kategorien und Themen >>"
+      all_speakers: "Alle Speakerinnen* >>"
       description: "Unsere Kategorien"
       description_text: "Uns ist die Verteilung der Männer und Frauen auf Konferenzbühnen wichtig. Wir ermutigen Frauen, in ihrem professionellen Umfeld sichtbarer zu werden."
       speaker_shoutout: "Hast Du etwas Interessantes zu erzählen?"
       speaker_text: "Registriere Dich auf der SpeakerinnenListe >>"
       speakers:
-        new_speaker_heading: "Unsere Speakerinnen*"
+        speaker_headline: "Unsere Speakerinnen*"
         speaker_text: "Keine Ausreden mehr für Panels ohne Frauen!"
         speaker_index: "Alle Speakerinnen* anschauen >>"
         categories: "Kategorien und Themen >>"
@@ -165,10 +167,13 @@ de:
       error: "Bitte fülle alle Felder aus, damit die Speakerin alle Informationen bekommt, die sie benötigt."
       error_email_for_us: "Bitte fülle alle Felder aus."
   profiles:
-    category: "In der Kategorie <b>%{category_name}</b> haben wir %{profiles_count} Speakerinnen* und <a href='#topics_anchor'>%{topics_count} Themen </a>gefunden."
+    category: "In der Kategorie <b>%{category_name}</b><br> haben wir %{profiles_count} Speakerinnen*
+      <br>und %{topics_count} Themen gefunden:"
     tag:
       topics: "Top-Themen"
       topics_with_category: "in der Kategorie %{category_name}"
+      topics_with_no_language_scope: "Topics in allen Sprachen"
+      topics_qick_filter: "Hier könnt ihr in der Topic Cloud suchen:"
     form:
       not_saved: "Dieses Profil konnte nicht gespeichert werden:"
       profile_from: "Profil von"
@@ -323,17 +328,17 @@ de:
     language_short: "de"
     edit_link: " bearbeiten"
     delete_link: " löschen"
-
     tooltip: "Verschiebe die Reihenfolge mit Drag&Drop."
   search:
     any: "Alle"
     no_profile: "Keine passende Speakerin gefunden?"
-    profiles_topics: "Du hast nach dem Thema: <b>%{topics_name}</b> gesucht und %{profiles_count} Speakerinnen gefunden."
+    profiles_topics: "Zum dem Thema <b>%{topics_name}</b> <br>gibt es %{profiles_count} Speakerinnen:"
     profiles: "%{link}"
-    all_profiles: ">> in allen Profilen blättern"
+    all_profiles: "In allen Profilen blättern >>"
     did_you_mean: "Meinst du vielleicht %{suggestions_fullname}?"
     or_did_you_mean: "Oder %{suggestions_topic}?"
-    filter: "<br> Hier kannst du die Suchergebnisse filtern >>"
+    empty_search: "Du hast das Suchfeld leider leer gelassen. Versuch es doch noch einmal :)"
+    filter: "Hier kannst du die Suchergebnisse filtern:"
     empty: "Wir haben leider keine passende Speakerin gefunden :("
     success: "Wir haben"
     result: {
@@ -341,7 +346,8 @@ de:
       other: " %{count} Speakerinnen gefunden! Yeah! "
     }
     more_options: "Keine passende Speakerin gefunden?"
-    adapt_search: ">> Suche anpassen"
+    search_categories_html: "Du kannst auch in <a href='%{root_path}/#categories_anchor'>Kategorien und Themen</a> stöbern."
+    adapt_search: "Suche anpassen >>"
     countries_agg: "Länder:"
     cities_agg: "Städte:"
     languages_agg: "Sprachen:"

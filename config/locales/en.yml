@@ -68,15 +68,17 @@ en:
     home:
       search:
         heading: "Organizers, find your speakers"
-        tagline: "Find women speakers & moderators for your conference"
-        search_text: "search by anything"
+        tagline_html: "Find women speakers & moderators for your conference."
+        search_text: "Search by anything"
         search: "Search"
+      all_categories: "Categories and topics >>"
+      all_speakers: "All Speakerinnen* >>"
       description: "Our Categories"
       description_text: "We feel strongly about a balanced representation of men and women* on stage. We encourage women* to become more visible in their profession and field of expertise."
       speaker_shoutout: "Do you have something interesting to say?"
       speaker_text: "Get on the Speakerinnen* list >>"
       speakers:
-        new_speaker_heading: "Our Speakers"
+        speaker_headline: "Our Speakers*"
         speaker_text: "No more excuses for panels without women*!"
         speaker_index: "Browse all speakers >>"
         categories: "Categories and Topics >>"
@@ -165,10 +167,12 @@ en:
       error: "Please fill out all the fields so that the speaker can have all the details she needs."
       error_email_for_us: "Please fill out all the fields."
   profiles:
-    category: "In the category <b>%{category_name}</b> we found %{profiles_count} speakerinnen and <a href='#topics_anchor'>%{topics_count} topics</a>."
+    category: "In the category <b>%{category_name}</b> <br> we have found %{profiles_count} speakerinnen and %{topics_count} topics:"
     tag:
       topics: "Most Popular Topics"
       topics_with_category: "in category %{category_name}"
+      topics_with_no_language_scope: "Topics in all languages"
+      topics_quick_filter: "Search the topics cloud:"
     form:
       not_saved: "This profile could not be saved: "
       profile_from: "Profile of"
@@ -323,21 +327,23 @@ Links to Youtube videos will be shown as embedded videos. Other links will be cl
   search:
     any: "Any"
     no_profile: "We didn't find anything. :( <br>But here you can browse %{link}"
-    profiles_topics: "You searched for the topic: <b>%{topics_name}</b> and found %{profiles_count} speakerinnen."
+    profiles_topics: "In the topic <b>%{topics_name}</b><br>we have found %{profiles_count} speakerinnen:"
     profiles: "%{link}"
-    all_profiles: ">> browse all profiles"
+    all_profiles: "Browse all profiles >> "
     did_you_mean: "Did you mean %{suggestions_fullname}?"
     or_did_you_mean: "Or %{suggestions_topic}?"
+    empty_search: "The search field was empty. Do you want to try again :)"
     any: "Any"
     empty: "We didn't find anything."
-    filter: "<br> Here you can filter the search results >>"
+    filter: "Here you can filter the search results:"
     success: "We found"
     result: {
       one: " a speakerin! Yeah!",
       other: " %{count} speakerinnen! Yeah! "
     }
     more_options: "You didn't find any suitable speaker?"
-    adapt_search: ">> adapt your search"
+    search_categories_html: "Have a look at our <a href='%{root_path}/#categories_anchor'>categories and topics</a>."
+    adapt_search: "Adapt your search >> "
     countries_agg: "Countries:"
     cities_agg: "Cities:"
     languages_agg: "Languages:"

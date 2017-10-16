@@ -1,18 +1,22 @@
 <section id="startpage__start-teaser" class="startpage__photo-bar">
   <div class="layout-wrapper">
     <h1 class="box__bg bg--white"><%= t(:heading, scope: 'pages.home.search') %></h1>
-    <h1 class="alpha--halve box__bg bg--white"><%= t(:tagline, scope: 'pages.home.search') %></h1>
+    <h1 class="alpha--halve box__bg bg--white"><%= t(:tagline_html, scope: 'pages.home.search', root_path: root_path) %></h1>
 
     <%= form_tag(profiles_path, method: 'get', class: 'page-box') do %>
       <div class="box__bg--light pv ph- border-radius">
-        <%= render partial: 'shared/search' %>
+        <%= render partial: 'shared/search_form' %>
+        <p>
+          <%= link_to(t(:all_categories, scope: 'pages.home'), root_path + "#categories_anchor" )%><br>
+          <%= link_to(t(:all_profiles, scope: 'search'), profiles_path ) %>
+        </p>
       </div>
     <% end %>
   </div>
 </section>
 
 <section class="layout-wrapper">
-  <h1 class="box__bg bg--white"><%= t(:new_speaker_heading, scope: 'pages.home.speakers') %></h1>
+  <h1 class="box__bg bg--white"><%= t(:speaker_headline, scope: 'pages.home.speakers') %></h1>
   <h1 class="alpha--halve bv ph0 display--block box__bg bg--white">
     <%= t(:speaker_text, scope: 'pages.home.speakers') %><BR>
     <%= link_to t(:speaker_index, scope: 'pages.home.speakers'), profiles_path %>
@@ -34,7 +38,7 @@
 </section>
 
 <!-- Anker für Kategorien -->
-<a id="categories_anker"></a>
+<a id="categories_anchor"></a>
 
 <section class="layout-wrapper">
   <h1 class="box__bg bg--white"><%= t(:description, scope: 'pages.home') %></h1>

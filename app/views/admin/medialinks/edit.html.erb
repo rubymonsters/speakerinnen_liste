@@ -4,8 +4,8 @@
 
     <h1>Admin::Medialink::Edit</h1>
 
-    <%= link_to t(:show, scope: 'admin.dashboard.profiles.edit'), admin_profile_path(@profile), class:'btn btn--small' %>
-    <%= link_to t(:show, scope: 'medialinks'), admin_profile_medialinks_path(@profile), class:'btn btn--small', title: t(:edit, scope: 'medialinks') %>
+    <%= link_to t(:show, scope: 'admin.dashboard.profiles.edit'), admin_profile_path(@profile), class:'btn btn-blue btn--small' %>
+    <%= link_to t(:show, scope: 'medialinks'), admin_profile_medialinks_path(@profile), class:'btn btn-blue btn--small', title: t(:edit, scope: 'medialinks') %>
 
 
     <h2 class="delta sans-serif mb- bt pv mt">
@@ -19,7 +19,7 @@
       <%= f.input :language, label: t(:select_language, scope: 'medialinks'), label_html: { class: "mr" } do %>
         <%= f.select :language, options_for_select(IsoLanguage.all_languagenames_with_iso, @medialink.language), include_blank: "..." %>
       <% end %>
-      <%= f.submit class: 'mt btn btn--small mb' %>
+      <%= f.submit class: 'mt btn btn-blue btn--small mb' %>
     <% end %>
 
   </div>
