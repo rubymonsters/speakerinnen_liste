@@ -4,6 +4,12 @@ RSpec.feature 'Navigation', type: :feature do
       sign_in user
     end
 
+    after(:all) do
+      ActsAsTaggableOn::Tag.destroy_all
+      LocaleLanguage.destroy_all
+      Profile.destroy_all
+    end
+
     context 'as an admin' do
       let(:user) { FactoryGirl.create(:admin) }
 
@@ -135,6 +141,20 @@ RSpec.feature 'Navigation', type: :feature do
         expect(page).to have_text('Search for tag')
         expect(page).to have_text('Here are 0 out of 0 tags')
         expect(page).to have_button('Filter')
+      end
+
+      scenario 'adding locale_language to tags' do
+        tag = ActsAsTaggableOn::Tag.create(name: 'chemie')
+        # LocaleLanguage.destroy_all
+        language_en = LocaleLanguage.create(iso_code: 'en')
+        language_de = LocaleLanguage.create(iso_code: 'de')
+        visit admin_root_path
+
+        click_link 'Tags'
+        expect(page).to have_text('chemie')
+        find('.table').find('.vertical-top').find('.locale_language').find("#en_#{language_en.id}").find('#languages_').set(true)
+        click_button 'Update Tag'
+        expect(tag.locale_languages.first.iso_code).to eq('en')
       end
     end
 

@@ -23,11 +23,11 @@
             <%= tag.taggings_count %>
           </td>
           <td>
-            <%= simple_form_for tag, url: admin_tag_path(tag, @filter_params) do |f| %>
-              <% TagLanguage.allowed_languages.each do |language| %>
-                <div>
-                  <%= check_box_tag 'languages[]', language, tag.locale_languages.map(&:iso_code).include?("#{language}") %>
-                  <%= label_tag t(language, scope: 'i18n.language') %>
+            <%= simple_form_for tag, url: admin_tag_path(tag, @filter_params), html: { class: "locale_language #{tag.name}" } do |f| %>
+              <% LocaleLanguage.all.each do |language| %>
+                <div id=<%="#{language.iso_code}_#{tag.id}"%> >
+                  <%= check_box_tag 'languages[]', language.iso_code, tag.locale_languages.map(&:iso_code).include?("#{language.iso_code}") %>
+                  <%= label_tag t(language.iso_code, scope: 'i18n.language') %>
                 </div>
               <% end %>
               <%= f.button :submit %>
