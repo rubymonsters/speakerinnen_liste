@@ -6,6 +6,7 @@ ActsAsTaggableOn::Tag.class_eval do
   has_and_belongs_to_many :categories
   has_many :profiles
   has_many :tags_locale_languages
+  has_many :tag_languages
   has_many :locale_languages, through: :tags_locale_languages
 
   # make sure that the joined table entry gets destroyed after deleting the tag
