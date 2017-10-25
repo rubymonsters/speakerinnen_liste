@@ -331,7 +331,7 @@ de:
     tooltip: "Verschiebe die Reihenfolge mit Drag&Drop."
   search:
     any: "Alle"
-    no_profile: "Keine passende Speakerin gefunden?"
+    no_profile: "Zu diesem Thema haben wir leider keine Speakerin gefunden."
     profiles_topics: "Zum dem Thema <b>%{topics_name}</b> <br>gibt es %{profiles_count} Speakerinnen:"
     profiles: "%{link}"
     all_profiles: "In allen Profilen blättern >>"
@@ -339,7 +339,6 @@ de:
     or_did_you_mean: "Oder %{suggestions_topic}?"
     empty_search: "Du hast das Suchfeld leider leer gelassen. Versuch es doch noch einmal :)"
     filter: "Hier kannst du die Suchergebnisse filtern:"
-    empty: "Wir haben leider keine passende Speakerin gefunden :("
     success: "Wir haben"
     result: {
       one: " eine Speakerin gefunden!",
