@@ -90,6 +90,11 @@
       <%= t(:empty_search, scope: 'search') %>
       <%= render partial: 'shared/search_form' %>
     </p>
+  <% else %>
+    <p>
+      <%= t(:no_profile, scope: 'search') %>
+      <%= render partial: 'shared/search_form' %>
+    </p>
   <% end %>
 
 <% end %>
