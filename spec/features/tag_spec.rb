@@ -30,7 +30,7 @@ describe 'displaying tags' do
 
   after(:all) do
     ActsAsTaggableOn::Tag.destroy_all
-    TagLanguage.destroy_all
+    LocaleLanguage.destroy_all
     Profile.destroy_all
   end
 
