@@ -145,14 +145,13 @@ RSpec.feature 'Navigation', type: :feature do
 
       scenario 'adding locale_language to tags' do
         tag = ActsAsTaggableOn::Tag.create(name: 'chemie')
-        # LocaleLanguage.destroy_all
         language_en = LocaleLanguage.create(iso_code: 'en')
         language_de = LocaleLanguage.create(iso_code: 'de')
         visit admin_root_path
 
         click_link 'Tags'
         expect(page).to have_text('chemie')
-        find('.table').find('.vertical-top').find('.locale_language').find("#en_chemie").find('#languages_').set(true)
+        find('.table').find('.vertical-top').find('.locale_language').find("#en_#{tag.id}").find('#languages_').set(true)
         click_button 'Update Tag'
         expect(tag.locale_languages.first.iso_code).to eq('en')
       end
