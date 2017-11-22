@@ -25,7 +25,7 @@
         <%= t(:speaker_headline, scope: 'pages.home.speakers') %>
       </h1>
       <p class="font-size-24 text--center">
-        <%= t(:all_speakerinnen, scope: 'profiles.index', profiles_count: @profiles.total_count).html_safe %>
+        <%= t(:all_speakerinnen, scope: 'profiles.index', profiles_count: @profiles_count).html_safe %>
       </p>
       <%= render partial: 'shared/search_form' %>
       <%= t(:search_categories_html, scope: 'search', root_path: root_path) %>

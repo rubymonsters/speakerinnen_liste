@@ -15,6 +15,18 @@ describe 'navigation', broken: false do
   end
 
   %w(en de).each do |language|
+    describe 'go to the index page' do
+      let!(:profile1) { FactoryGirl.create(:published) }
+      let!(:profile2) { FactoryGirl.create(:published) }
+
+      it 'should show the correct amount of speakerinnen' do
+        visit "#{language}/profiles"
+        save_and_open_page
+
+        expect(page).to have_content("2")
+      end
+    end
+
     context 'signed in as normal user' do
       let(:profile) { FactoryGirl.create(:profile) }
       before do
