@@ -9,7 +9,7 @@ ActsAsTaggableOn::Tag.class_eval do
   has_many :tag_languages
   has_many :locale_languages, through: :tags_locale_languages
 
-  validates_uniqueness_of :locale_languages
+  #validates_uniqueness_of :locale_languages
 
   # make sure that the joined table entry gets destroyed after deleting the tag
   #accepts_nested_attributes_for :tag_languages, allow_destroy: true
