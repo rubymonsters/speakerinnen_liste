@@ -30,6 +30,10 @@ FactoryGirl.define do
     name 'Factory Category DE'
   end
 
+  factory :locale_language do
+    iso_code 'de'
+  end
+
   factory :medialink do
     profile_id 1
     url 'http://www.somesite.com/profile'

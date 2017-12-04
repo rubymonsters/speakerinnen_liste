@@ -13,7 +13,7 @@ class Admin::TagsController < Admin::BaseController
 
   def update
     if params[:languages].present? || params[:tag].blank?
-      update_tag_languages(@tag, params[:languages])
+      set_tag_languages(@tag, params[:languages])
       redirect_to categorization_admin_tags_path(anchor: 'top-anchor', page: params[:page], q: params[:q], uncategorized: params[:uncategorized], no_language: params[:no_language], category_id: params[:category_id], filter_languages: params[:filter_languages]), notice: ("'#{@tag.name}' was updated.")
     else
       # ToDo change cases into methods "change language"
@@ -61,14 +61,23 @@ class Admin::TagsController < Admin::BaseController
   end
 
   def set_tag
-    @tag      = ActsAsTaggableOn::Tag.find(params[:id])
+    @tag = ActsAsTaggableOn::Tag.find(params[:id])
+  end
+
+  def set_tag_languages(tag, params_languages)
+    tag.locale_languages.delete_all
+    if params_languages
+      params_languages.each do |iso_string|
+        tag.locale_languages << LocaleLanguage.find_by(iso_code: iso_string)
+      end
+    end
   end
 
   def update_tag_languages(tag, languages)
     # probably this is easier to accomplish, refactoring? -> also put in model
-    tag.tag_languages.each(&:destroy)
+    tag.locale_languages.each(&:destroy)
     if languages.present?
-      languages.each { |l| tag.tag_languages.create!(language: l) }
+      languages.each { |l| tag.locale_languages(iso_code: l) }
     end
   end
 
@@ -89,6 +98,6 @@ class Admin::TagsController < Admin::BaseController
       :tag,
       :name,
       :languages,
-      tag_languages: [:id, :tag_id, :language, :_destroy])
+      locale_languages: [:id, :iso_code, :_destroy])
   end
 end

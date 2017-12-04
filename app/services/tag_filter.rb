@@ -6,8 +6,8 @@ class TagFilter
 
   def filter
     @tags = @tags
-      .includes(:categories, :tag_languages)
-      .references(:categories, :tag_languages)
+      .includes(:categories, :locale_languages)
+      .references(:categories, :locale_languages)
 
     if @params[:category_id].present?
       @tags = @tags.where('categories.id = ?', @params[:category_id])
@@ -22,17 +22,16 @@ class TagFilter
     end
 
     if @params[:filter_languages].present?
-      #ToDo: refactor to speed up
       tag_ids = ActsAsTaggableOn::Tag
-                   .joins(:tag_languages)
-                   .where('tag_languages.language IN (?)', @params[:filter_languages])
-                   .group("tag_languages.tag_id, tags.id HAVING count(tag_languages.tag_id) = #{@params[:filter_languages].length}")
-                   .pluck('tags.id')
+             .joins(:locale_languages)
+             .where('locale_languages.iso_code IN (?)', @params[:filter_languages])
+             .group("tags_locale_languages.tag_id HAVING count(tags_locale_languages.tag_id) = #{@params[:filter_languages].length}")
+             .pluck('tags_locale_languages.tag_id')
       @tags = @tags.where(id: tag_ids)
     end
 
     if @params[:no_language].present?
-      @tags = @tags.where('tag_languages.id IS NULL')
+      @tags = @tags.where('tags_locale_languages.id IS NULL')
     end
     @tags
   end

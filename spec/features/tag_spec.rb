@@ -1,32 +1,36 @@
 describe 'displaying tags' do
   before(:all) do
-      @tag_both_languages = ActsAsTaggableOn::Tag.create(name: 'social media')
-      @tag_both_languages.tag_languages << TagLanguage.new(language: 'de')
-      @tag_both_languages.tag_languages << TagLanguage.new(language: 'en')
 
-      @tag_with_slash_en = ActsAsTaggableOn::Tag.create(name: 'AC/DC')
-      @tag_with_slash_en.tag_languages << TagLanguage.new(language: 'en')
+    @localelanguage_en = LocaleLanguage.new(iso_code: 'en')
+    @localelanguage_de = LocaleLanguage.new(iso_code: 'de')
 
-      @tag_one_language_en = ActsAsTaggableOn::Tag.create(name: 'physics')
-      @tag_one_language_en.tag_languages << TagLanguage.new(language: 'en')
+    @tag_both_languages = ActsAsTaggableOn::Tag.create(name: 'social media')
+    @tag_both_languages.locale_languages << @localelanguage_de
+    @tag_both_languages.locale_languages << @localelanguage_en
 
-      @tag_one_language_de = ActsAsTaggableOn::Tag.create(name: 'Chemie')
-      @tag_one_language_de.tag_languages << TagLanguage.new(language: 'de')
+    @tag_with_slash_en = ActsAsTaggableOn::Tag.create(name: 'AC/DC')
+    @tag_with_slash_en.locale_languages << @localelanguage_en
 
-      @tag_with_unpublished_profile = ActsAsTaggableOn::Tag.create(name: 'sports')
-      @tag_with_unpublished_profile.tag_languages << TagLanguage.new(language: 'de')
+    @tag_one_language_en = ActsAsTaggableOn::Tag.create(name: 'physics')
+    @tag_one_language_en.locale_languages << @localelanguage_en
 
-      Profile.create(firstname: 'Pierre', lastname: 'Curie', published: false, topic_list: [@tag_one_language_de, @tag_with_unpublished_profile],
-                      password: '123foobar', password_confirmation: '123foobar', confirmed_at: Time.now, email: 'pierre@curie.fr')
-      @ada = Profile.create(firstname: 'Ada', lastname: 'Lovelace', published: true, main_topic_en: 'first computer programm',
-                            bio_en: 'first programmer', main_topic_de: 'Erstes Computer-Programm', bio_de: 'Erste Programmiererin',
-                            topic_list: [@tag_one_language_de, @tag_one_language_en, @tag_both_languages, @tag_with_slash_en], password: '123foobar', password_confirmation: '123foobar',
-                            confirmed_at: Time.now, email: 'ada@love.uk')
+    @tag_one_language_de = ActsAsTaggableOn::Tag.create(name: 'Chemie')
+    @tag_one_language_de.locale_languages << @localelanguage_de
+
+    @tag_with_unpublished_profile = ActsAsTaggableOn::Tag.create(name: 'sports')
+    @tag_with_unpublished_profile.locale_languages << @localelanguage_en
+
+    Profile.create(firstname: 'Pierre', lastname: 'Curie', published: false, topic_list: [@tag_one_language_de, @tag_with_unpublished_profile],
+                    password: '123foobar', password_confirmation: '123foobar', confirmed_at: Time.now, email: 'pierre@curie.fr')
+    @ada = Profile.create(firstname: 'Ada', lastname: 'Lovelace', published: true, main_topic_en: 'first computer programm',
+                          bio_en: 'first programmer', main_topic_de: 'Erstes Computer-Programm', bio_de: 'Erste Programmiererin',
+                          topic_list: [@tag_one_language_de, @tag_one_language_en, @tag_both_languages, @tag_with_slash_en], password: '123foobar', password_confirmation: '123foobar',
+                          confirmed_at: Time.now, email: 'ada@love.uk')
   end
 
   after(:all) do
     ActsAsTaggableOn::Tag.destroy_all
-    TagLanguage.destroy_all
+    LocaleLanguage.destroy_all
     Profile.destroy_all
   end
 
