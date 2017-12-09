@@ -26,7 +26,7 @@
             <%= simple_form_for tag, url: admin_tag_path(tag, @filter_params), html: { class: "locale_language #{tag.name}" } do |f| %>
               <% LocaleLanguage.all.each do |language| %>
                 <div id=<%="#{language.iso_code}_#{tag.id}"%> >
-                  <%= check_box_tag 'languages[]', language.iso_code, tag.locale_languages.map(&:iso_code).include?("#{language.iso_code}") %>
+                  <%= check_box_tag 'languages[]', language.iso_code, tag.locale_languages.map(&:iso_code).include?("#{language.iso_code}"), id: tag.name + "_" + language.iso_code %>
                   <%= label_tag t(language.iso_code, scope: 'i18n.language') %>
                 </div>
               <% end %>
