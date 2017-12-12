@@ -151,7 +151,7 @@ RSpec.feature 'Navigation', type: :feature do
 
         click_link 'Tags'
         expect(page).to have_text('chemie')
-        find('.table').find('.vertical-top').find('.locale_language').find("#en_#{tag.id}").find('#languages_').set(true)
+        find('.table').find('.vertical-top').find('.locale_language').find('#chemie_en').set(true)
         click_button 'Update Tag'
         expect(tag.locale_languages.first.iso_code).to eq('en')
       end
