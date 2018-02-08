@@ -21,8 +21,6 @@ describe 'navigation', broken: false do
 
       it 'should show the correct amount of speakerinnen' do
         visit "#{language}/profiles"
-        save_and_open_page
-
         expect(page).to have_content("2")
       end
     end

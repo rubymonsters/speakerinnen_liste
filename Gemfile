@@ -61,6 +61,8 @@ group :development, :test do
   gem 'byebug'
   gem 'selenium-webdriver', '2.38.0'
   gem 'rubocop'
+  gem 'guard'
+  gem 'guard-rspec'
 end
 
 group :test do
