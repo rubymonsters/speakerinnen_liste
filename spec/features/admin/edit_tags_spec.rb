@@ -7,6 +7,11 @@ describe 'set locale_language' do
     click_link I18n.t(:tags, scope: 'admin.dashboard.tags')
   end
 
+  before(:all) do
+    @localelanguage_en = LocaleLanguage.create!(iso_code: 'en')
+    @localelanguage_de = LocaleLanguage.create!(iso_code: 'de')
+  end
+
   after(:all) do
     ActsAsTaggableOn::Tag.destroy_all
     LocaleLanguage.destroy_all
@@ -16,9 +21,6 @@ describe 'set locale_language' do
   describe "with several tags" do
 
     before(:all) do
-      @localelanguage_en = LocaleLanguage.create!(iso_code: 'en')
-      @localelanguage_de = LocaleLanguage.create!(iso_code: 'de')
-
       @tag_both_languages = ActsAsTaggableOn::Tag.create!(name: 'social media')
       @tag_both_languages.locale_languages << @localelanguage_de
       @tag_both_languages.locale_languages << @localelanguage_en
