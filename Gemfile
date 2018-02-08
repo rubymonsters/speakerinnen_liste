@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
-ruby '2.2.3'
-gem 'rails', '4.1.13'
+ruby '2.2.7'
+gem 'rails', '~> 4.2.7.1 '
 
 # Needed for Javascript Runtime
 gem 'therubyracer'
@@ -16,22 +16,22 @@ gem 'deadweight', require: 'deadweight/hijack/rails'
 gem 'kaminari'
 gem 'mime-types', [ '~> 2.6', '>= 2.6.1' ], require: 'mime/types/columnar'
 
-gem 'pg'
-gem 'devise', '~> 3.1.1'
+gem 'pg', '~> 0.18.2'
+gem 'devise', '~> 3.4.1'
 gem "recaptcha", require: "recaptcha/rails"
 gem 'omniauth-twitter'
 gem 'carrierwave'
-gem 'fog', '~> 1.32.0'
-gem 'mini_magick', '~> 3.5.0'
+gem 'fog', '~> 1.32'
+gem 'mini_magick', '~> 3.6.0'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
-gem 'acts-as-taggable-on', '~> 3.4.1'
-gem 'auto_html', github: 'dejan/auto_html'
+gem 'acts-as-taggable-on', '~> 3.5'
+gem 'auto_html', '~>1.6.4'
 gem 'simple_form', '~> 3.0.2'
 
 gem 'country_select'
 
-gem 'globalize', '~> 4.0.2'
+gem 'globalize', '~> 5.1'
 gem 'globalize-accessors'
 
 gem 'font-awesome-rails', '~> 4.3.0.0'
@@ -55,12 +55,12 @@ group :development do
 end
 
 group :development, :test do
-  gem 'rspec-rails', '3.1.0'
+  gem 'rspec-rails', '~> 3.2', '>= 3.2.1'
   gem 'capybara', '~> 2.4.1'
   gem 'pry'
   gem 'byebug'
   gem 'selenium-webdriver', '2.38.0'
-  gem 'rubocop'
+  gem 'rubocop', '~> 0.49.0'
   gem 'guard'
   gem 'guard-rspec'
 end
