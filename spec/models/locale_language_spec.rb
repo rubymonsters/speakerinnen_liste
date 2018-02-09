@@ -1,52 +1,20 @@
 describe LocaleLanguage, type: :model do
-  let!(:locale_language_de) do
-    FactoryGirl.create(:locale_language, iso_code: 'de')
-  end
+  let!(:locale_language_de) { FactoryGirl.create(:locale_language_de) }
+  let!(:locale_language_en) { FactoryGirl.create(:locale_language_en) }
 
-  let!(:locale_language_en) do
-    FactoryGirl.create(:locale_language, iso_code: 'en')
-  end
+  let!(:tag_de) { FactoryGirl.create(:tag_chemie, locale_languages: [locale_language_de]) }
+  let!(:tag_en) { FactoryGirl.create(:tag_physics, locale_languages: [locale_language_en]) }
+  let!(:tag_no_language) { FactoryGirl.create(:tag, name: 'mathematic') }
+  let!(:tag_with_unpublished_profile) { FactoryGirl.create(:tag, name: 'sports') }
+  let!(:tag_both_languages) { FactoryGirl.create(:tag_social_media,
+                                locale_languages: [locale_language_en,locale_language_de]) }
 
-  let!(:tag_de) do
-    ActsAsTaggableOn::Tag.create(
-      name: 'Chemie',
-      locale_languages: [locale_language_de]
-    )
-  end
+  let!(:cat_1){ FactoryGirl.create(:cat_science, id: 1, tags: [tag_de, tag_en]) }
+  let!(:cat_2){ FactoryGirl.create(:cat_social, id: 2) }
 
-  let!(:tag_en) do
-    ActsAsTaggableOn::Tag.create(
-      name: 'physics',
-      locale_languages: [locale_language_en]
-    )
-  end
-
-  let!(:tag_no_language){ ActsAsTaggableOn::Tag.create(name: 'mathematic') }
-  let!(:tag_with_unpublished_profile){ ActsAsTaggableOn::Tag.create(name: 'sports') }
-
-  let!(:tag_both_languages) do
-    ActsAsTaggableOn::Tag.create(
-      name: 'social media',
-      locale_languages: [locale_language_de, locale_language_en]
-    )
-  end
-
-  let!(:category_science){ Category.create(id: 1, name: "Science", tags: [tag_de, tag_en]) }
-  let!(:category_XXX){ Category.create(id: 2, name: "XXX") }
-
-  let!(:marie){ Profile.create(firstname: "Marie", lastname: "Curie", published: true, topic_list: [tag_de, tag_no_language],
-                    password: "123foobar", password_confirmation: "123foobar", confirmed_at: Time.now, email: "marie@curie.fr") }
-  let!(:pierre){ Profile.create(firstname: "Pierre", lastname: "Curie", published: false, topic_list: [tag_de, tag_with_unpublished_profile],
-                    password: "123foobar", password_confirmation: "123foobar", confirmed_at: Time.now, email: "pierre@curie.fr") }
-  let!(:ada){ Profile.create(firstname: "Ada", lastname: "Lovelace", published: true, topic_list: [tag_en, tag_both_languages],
-                   password: "123foobar", password_confirmation: "123foobar", confirmed_at: Time.now, email: "ada@love.uk") }
-
-  after(:all) do
-    ActsAsTaggableOn::Tag.destroy_all
-    LocaleLanguage.destroy_all
-    Category.destroy_all
-    Profile.destroy_all
-  end
+  let!(:ada) { FactoryGirl.create(:published, topic_list: [tag_en, tag_both_languages]) }
+  let!(:marie) { FactoryGirl.create(:published, topic_list: [tag_de, tag_no_language]) }
+  let!(:pierre) { FactoryGirl.create(:unpublished, topic_list: [tag_de, tag_with_unpublished_profile]) }
 
   it 'finds associated language of the tag' do
     expect(tag_de.locale_languages).to match_array([locale_language_de])
@@ -60,85 +28,106 @@ describe LocaleLanguage, type: :model do
     expect(tag_de.locale_languages.first.iso_code).to eq('de')
   end
 
-  describe 'scope languages' do
-    it 'shows tags used by published profile' do
-      expect(ActsAsTaggableOn::Tag.with_published_profile).to match_array([tag_de,
-                                                                           tag_en,
-                                                                           tag_both_languages,
-                                                                           tag_no_language])
+  describe 'show all tags' do
+    it 'only for published profiles' do
+      expect(ActsAsTaggableOn::Tag.with_published_profile)
+        .to match_array([tag_de, tag_en, tag_both_languages, tag_no_language])
     end
 
-    it 'shows tags that belong to a certain category' do
-      expect(ActsAsTaggableOn::Tag.belongs_to_category(1)).to match_array([tag_de,
-                                                                           tag_en])
+    it 'that belong to a certain category' do
+      expect(ActsAsTaggableOn::Tag.belongs_to_category(1))
+        .to match_array([tag_de, tag_en])
     end
 
-    it 'shows tags used by published profile that belong to a certain category' do
-      expect(ActsAsTaggableOn::Tag.belongs_to_category(1).with_published_profile).to match_array([tag_de,
-                                                                                                  tag_en])
+    it 'only for published profile that belong to a certain category' do
+      expect(ActsAsTaggableOn::Tag.belongs_to_category(1)
+        .with_published_profile)
+        .to match_array([tag_de, tag_en])
     end
 
-    it 'shows no tags used by published profile that do not belong to a certain category' do
-      expect(ActsAsTaggableOn::Tag.belongs_to_category(2).with_published_profile).to be_empty
+    # in a language sope show all tags belonging to that language
+    # tags with no languages attached are not shown
+    describe 'in language scope' do
+      it  "'de' and only published profile" do
+        expect(ActsAsTaggableOn::Tag.with_published_profile
+          .with_language('de'))
+          .to match_array([tag_de, tag_both_languages])
+      end
+
+      it  "'en' and only published profile" do
+        expect(ActsAsTaggableOn::Tag.with_published_profile
+          .with_language('en'))
+          .to match_array([tag_en, tag_both_languages])
+      end
+
+      it "'de' and only published profile that belong to a certain category" do
+        expect(ActsAsTaggableOn::Tag.belongs_to_category(1)
+          .with_published_profile
+          .with_language('de'))
+          .to match_array([tag_de])
+      end
+
+      it "'en' and only published profile that belong to a certain category" do
+        expect(ActsAsTaggableOn::Tag.belongs_to_category(1)
+          .with_published_profile
+          .with_language('en'))
+          .to match_array([tag_en])
+      end
+
+      it 'no language' do
+        expect(ActsAsTaggableOn::Tag.with_language('')).to match_array([])
+      end
+
+      it 'de' do
+        expect(ActsAsTaggableOn::Tag.with_language('de')).to match_array([tag_de, tag_both_languages])
+      end
+
+      it 'en' do
+        expect(ActsAsTaggableOn::Tag.with_language('en')).to match_array([tag_en, tag_both_languages])
+      end
+
+      # does that make sense? Can the language sope be de AND en?
+      it 'de or en' do
+        expect(ActsAsTaggableOn::Tag.with_language(['en','de'])).to match_array([tag_both_languages, tag_en, tag_de])
+      end
+    end
+  end
+
+  describe 'shows no tags in a language scope' do
+    it 'when the category has no published profile' do
+      expect(ActsAsTaggableOn::Tag.belongs_to_category(2)
+        .with_published_profile).to be_empty
+    end
+  end
+
+  describe 'show all tags for a certain profile' do
+    it 'with no language scope' do
+      expect(marie.topics).to match_array([tag_de, tag_no_language])
     end
 
-    it 'shows tags used by published profile that belong to a certain category with language de' do
-      expect(ActsAsTaggableOn::Tag.belongs_to_category(1).with_published_profile.with_language('de')).to match_array([tag_de])
-    end
+    describe 'in language scope' do
 
-    it 'shows tags used by published profile that belong to a certain category with language en' do
-      expect(ActsAsTaggableOn::Tag.belongs_to_category(1).with_published_profile.with_language('en')).to match_array([tag_en])
-    end
+      it "'de'" do
+        expect(marie.topics.with_language('de')).to match_array([tag_de])
+      end
 
-    it 'shows tags used by published profile that belong to a certain category with no language'
+      it "'en'" do
+        expect(ada.topics.with_language('en')).to match_array([tag_en, tag_both_languages])
+      end
 
-    it 'shows tags used by published profile with language de or en'
+      it "'de' and without a language" do
+        expect(marie.topics.with_language('de')).to match_array([tag_de])
+        expect(marie.topics.without_language).to match_array([tag_no_language])
+        topics_in_correct_language_and_without_any = []
+        topics_in_correct_language_and_without_any << marie.topics.with_language('de')
+        topics_in_correct_language_and_without_any << marie.topics.without_language
+        expect(topics_in_correct_language_and_without_any.flatten.uniq).to match_array([tag_de, tag_no_language])
+      end
 
-    it 'shows tags used by published profile with language de'
+      it "'en' and 'de'" do
+        expect(ada.topics.with_language(['de', 'en'])).to match_array([tag_en, tag_both_languages])
+      end
 
-    it 'shows tags used by published profile with language en'
-
-    it 'shows tags used by published profile with no language'
-
-    it 'shows tags used by published profile with language de or en'
-
-    it 'shows tags used by a certain profile with no language'
-
-    it 'shows tags used by a certain profile with language de' do
-      expect(marie.topics.with_language('de')).to match_array([tag_de])
-    end
-
-    it 'shows tags used by a certain profile with language de and without language' do
-      expect(marie.topics.with_language('de')).to match_array([tag_de])
-      expect(marie.topics.without_language).to match_array([tag_no_language])
-      topics_in_correct_language_and_without_any = []
-      topics_in_correct_language_and_without_any << marie.topics.with_language('de')
-      topics_in_correct_language_and_without_any << marie.topics.without_language
-      expect(topics_in_correct_language_and_without_any.flatten.uniq).to match_array([tag_de, tag_no_language])
-    end
-
-    it 'shows tags used by a certain profile with language en' do
-      expect(ada.topics.with_language('en')).to match_array([tag_en, tag_both_languages])
-    end
-
-    it 'shows tags used by a certain profile with language de or en' do
-      expect(ada.topics.with_language(['de', 'en'])).to match_array([tag_en, tag_both_languages])
-    end
-
-    it 'shows tags with no language' do
-      expect(ActsAsTaggableOn::Tag.with_language('')).to match_array([])
-    end
-
-    it 'shows tags with language de' do
-      expect(ActsAsTaggableOn::Tag.with_language('de')).to match_array([tag_de, tag_both_languages])
-    end
-
-    it 'shows tags with language en' do
-      expect(ActsAsTaggableOn::Tag.with_language('en')).to match_array([tag_en, tag_both_languages])
-    end
-
-    it 'shows tags with language de or en' do
-      expect(ActsAsTaggableOn::Tag.with_language(['en','de'])).to match_array([tag_both_languages, tag_en, tag_de])
     end
   end
 end

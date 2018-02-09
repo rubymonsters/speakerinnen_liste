@@ -4,12 +4,6 @@ RSpec.feature 'Navigation', type: :feature do
       sign_in user
     end
 
-    after(:all) do
-      ActsAsTaggableOn::Tag.destroy_all
-      LocaleLanguage.destroy_all
-      Profile.destroy_all
-    end
-
     context 'as an unprivileged user' do
       let(:user) { FactoryGirl.create(:profile) }
 

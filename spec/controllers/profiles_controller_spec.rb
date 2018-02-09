@@ -2,15 +2,12 @@ include AuthHelper
 
 describe ProfilesController, type: :controller do
   describe 'test index action' do
-    let!(:profile) { FactoryGirl.create(:published, topic_list: ['ruby', 'algorithms']) }
-    let!(:profile2) { FactoryGirl.create(:profile) }
-    let!(:ada) { Profile.create!(FactoryGirl.attributes_for(:published,
-                    translations_attributes:
-                      { '0':
-                        { 'locale':       'en',
-                          'main_topic':   'first computer program',
-                          'bio':          'first female programer' }
-                        })) }
+    let!(:profile) { FactoryGirl.create(:published,
+                                        topic_list: ['ruby', 'algorithms']) }
+    let!(:profile_unpublished) { FactoryGirl.create(:unpublished) }
+    let!(:ada) { FactoryGirl.create(:published,
+                                    main_topic_en: 'first computer program',
+                                    bio_en:        'first female programer') }
 
     before do
       get :index
@@ -27,7 +24,7 @@ describe ProfilesController, type: :controller do
     end
 
     it 'should not include unpublished profiles' do
-      expect(assigns(:profiles)).not_to include(profile2)
+      expect(assigns(:profiles)).not_to include(profile_unpublished)
     end
   end
 

@@ -1,35 +1,23 @@
 include AuthHelper
 
 describe 'admin navigation' do
-  let!(:admin) { Profile.create!(FactoryGirl.attributes_for(:admin)) }
+  let!(:admin) { FactoryGirl.create(:admin) }
   let!(:admin_medialink) { FactoryGirl.create(:medialink, profile_id: admin.id) }
-  let!(:ada) { Profile.create!(FactoryGirl.attributes_for(:published,
+
+  let!(:ada) { FactoryGirl.create(:published,
                     firstname: 'Ada',
                     lastname: 'Lovelace',
                     email: 'ada@lovelace.de',
                     twitter: '@alove',
-                    translations_attributes:
-                      {
-                      '0':
-                        { 'locale':       'de',
-                          'main_topic':   'erstes Computer Programm',
-                          'bio':          'erste Programmiererin' },
-                      '1':
-                        { 'locale':       'en',
-                          'main_topic':   'first computer program',
-                          'bio':          'first female programer' }
-                        },
+                    main_topic_de: 'erstes Computer Programm',
+                    bio_de: 'erste Programmiererin',
+                    main_topic_en:   'first computer program',
+                    bio_en:          'first female programer',
                     city: 'London',
                     iso_languages: ['en', 'fr'],
-                    topic_list: 'algorithm, mathematic')
-                      )
-                    }
-
-  let!(:marie) { Profile.create!(FactoryGirl.attributes_for(:unpublished,
-                    firstname: 'Marie' )) }
-
-  let!(:rosa) { Profile.create!(FactoryGirl.attributes_for(:unconfirmed,
-                    firstname: 'Rosa' )) }
+                    topic_list: 'algorithm, mathematic') }
+  let!(:marie) { FactoryGirl.create(:unpublished, firstname: 'Marie') }
+  let!(:rosa) { FactoryGirl.create(:unconfirmed, firstname: 'Rosa') }
 
   let!(:ada_medialink) { FactoryGirl.create(:medialink,
                                   profile_id: ada.id,

@@ -1,17 +1,10 @@
 RSpec.feature 'Navigation', type: :feature do
   context 'logged in as an admin' do
-    let(:user) { FactoryGirl.create(:admin) }
+    let!(:admin) { FactoryGirl.create(:admin) }
 
     before do
-      sign_in user
+      sign_in admin
     end
-
-    after(:all) do
-      ActsAsTaggableOn::Tag.destroy_all
-      LocaleLanguage.destroy_all
-      Profile.destroy_all
-    end
-
 
     scenario 'shows admin link' do
       visit root_path
@@ -40,10 +33,8 @@ RSpec.feature 'Navigation', type: :feature do
       expect(page).to have_link('Profiles', admin_profiles_path)
     end
 
-    context 'category abc' do
-      before do
-        FactoryGirl.create(:category, name: 'abc')
-      end
+    context 'category' do
+      let!(:category){ FactoryGirl.create(:cat_science) }
 
       scenario 'viewing edit categories in admin area' do
         visit admin_root_path
@@ -83,10 +74,7 @@ RSpec.feature 'Navigation', type: :feature do
     end
 
     context 'two profiles' do
-      before do
-        FactoryGirl.create(:profile, published: true)
-        FactoryGirl.create(:admin, published: false)
-      end
+      let!(:user) { FactoryGirl.create(:published) }
 
       scenario 'viewing edit profiles in admin area' do
         visit admin_root_path

@@ -1,5 +1,7 @@
 describe 'adds slug when creating a profile' do
-  let!(:user) { Profile.create!(FactoryGirl.attributes_for(:published, firstname: 'Ada', lastname: 'Lovelace')) }
+  let!(:user) { FactoryGirl.create(:published,
+                                   lastname: "lovelace",
+                                   firstname: "ada") }
 
   describe 'slug' do
     it 'uses the user id' do
