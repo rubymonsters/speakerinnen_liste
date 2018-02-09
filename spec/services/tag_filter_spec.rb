@@ -1,35 +1,19 @@
 describe TagFilter do
   subject(:tag_filter) { described_class.new(ActsAsTaggableOn::Tag.all, filter_params).filter }
 
-  let!(:locale_language_en) do
-    FactoryGirl.create(:locale_language, iso_code: 'en')
-  end
-  let!(:locale_language_de) do
-    FactoryGirl.create(:locale_language, iso_code: 'de')
-  end
+  let!(:locale_language_de) { FactoryGirl.create(:locale_language_de) }
+  let!(:locale_language_en) { FactoryGirl.create(:locale_language_en) }
 
-  let!(:tag_en_de) do
-    ActsAsTaggableOn::Tag.create!(
-      name: 'social media',
-      locale_languages: [locale_language_en, locale_language_de]
-    )
-  end
+  let!(:tag_de) { FactoryGirl.create(:tag_chemie, locale_languages: [locale_language_de]) }
+  let!(:tag_en) { FactoryGirl.create(:tag_physics, locale_languages: [locale_language_en]) }
+  let!(:tag_no_lang) { FactoryGirl.create(:tag, name: 'ruby') }
+  let!(:tag_en_de) { FactoryGirl.create(:tag_social_media,
+                                locale_languages: [locale_language_en,locale_language_de]) }
   let!(:tag_no_lang) { ActsAsTaggableOn::Tag.create!(name: 'ruby') }
-  let!(:tag_en) do
-    ActsAsTaggableOn::Tag.create!(
-      name: 'entertainment',
-      locale_languages: [locale_language_en]
-    )
-  end
-  let!(:tag_de) do
-    ActsAsTaggableOn::Tag.create!(
-      name: 'Soziale Medien',
-      locale_languages: [locale_language_de]
-    )
-  end
 
-  let!(:category_1) { Category.create!(id: 1, name: 'marketing & pr', tags: [tag_en_de, tag_de]) }
-  let!(:category_2) { Category.create!(id: 2, name: 'development', tags: [tag_no_lang]) }
+  let!(:cat_1){ FactoryGirl.create(:cat_science, id: 1, tags: [tag_de, tag_en_de]) }
+  let!(:cat_2){ FactoryGirl.create(:cat_social, id: 2, tags: [tag_no_lang]) }
+
 
   context 'with empty filter params' do
     let(:filter_params) { {} }
@@ -52,7 +36,7 @@ describe TagFilter do
   end
 
   context 'with empty category and given query' do
-    let(:filter_params) { { uncategorized: true, q: 'entertainment' } }
+    let(:filter_params) { { uncategorized: true, q: 'physics' } }
     it { is_expected.to match_array([tag_en]) }
   end
 

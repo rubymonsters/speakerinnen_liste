@@ -14,14 +14,7 @@ describe LocaleLanguage, type: :model do
 
   let!(:ada) { FactoryGirl.create(:published, topic_list: [tag_en, tag_both_languages]) }
   let!(:marie) { FactoryGirl.create(:published, topic_list: [tag_de, tag_no_language]) }
-  let!(:piere) { FactoryGirl.create(:unpublished, topic_list: [tag_de, tag_with_unpublished_profile]) }
-
-  after(:all) do
-    ActsAsTaggableOn::Tag.destroy_all
-    LocaleLanguage.destroy_all
-    Category.destroy_all
-    Profile.destroy_all
-  end
+  let!(:pierre) { FactoryGirl.create(:unpublished, topic_list: [tag_de, tag_with_unpublished_profile]) }
 
   it 'finds associated language of the tag' do
     expect(tag_de.locale_languages).to match_array([locale_language_de])
