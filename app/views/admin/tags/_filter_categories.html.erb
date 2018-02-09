@@ -39,10 +39,10 @@
   <div class="o-layout pb filter_languages">
     <h2><%= t(:languages, scope: 'admin.dashboard.tags') %></h2>
       <div class="o-layout__item 1/1">
-        <% TagLanguage.allowed_languages.each do |language| %>
-          <div <%= "id=filter_language_#{language}" %> >
-            <%= check_box_tag 'filter_languages[]', language, params[:filter_languages].present? && params[:filter_languages].include?("#{language}") %>
-            <%= label_tag t("#{language}", scope: 'i18n.language') %>
+        <% LocaleLanguage.all.each do |language| %>
+          <div <%= "id=filter_language_#{language.iso_code}" %> >
+            <%= check_box_tag 'filter_languages[]', language.iso_code, params[:filter_languages].present? && params[:filter_languages].include?("#{language.iso_code}") %>
+            <%= label_tag t("#{language.iso_code}", scope: 'i18n.language') %>
           </div>
         <% end %>
         <div id="filter_no_language">

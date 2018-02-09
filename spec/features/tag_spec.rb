@@ -7,8 +7,7 @@ describe 'displaying tags' do
                        locale_languages: [locale_language_en, locale_language_de])
   end
   let!(:tag_with_slash_en) do
-    FactoryGirl.create(:tag, name: 'AC/DC',
-                                            locale_languages: [locale_language_en])
+    FactoryGirl.create(:tag, name: 'AC/DC', locale_languages: [locale_language_en])
   end
 
   let!(:tag_de) { FactoryGirl.create(:tag_chemie, locale_languages: [locale_language_de]) }

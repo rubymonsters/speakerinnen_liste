@@ -1,9 +1,13 @@
 include AuthHelper
 
 describe 'admin navigation' do
-  let!(:admin) { Profile.create!(FactoryGirl.attributes_for(:admin)) }
-  let!(:ada) { Profile.create!(FactoryGirl.attributes_for(:published, topic_list: %w[algebra algorithm computer])) }
-  let!(:marie) { Profile.create!(FactoryGirl.attributes_for(:published, topic_list: ['radioactive', 'x-ray'])) }
+  let!(:admin) { FactoryGirl.create(:admin) }
+
+  let!(:tag_physics) { FactoryGirl.create(:tag_physics) }
+  let!(:tag_chemie) { FactoryGirl.create(:tag_chemie) }
+
+  let!(:ada) { FactoryGirl.create(:published, topic_list: [tag_physics, tag_chemie]) }
+  let!(:marie) { FactoryGirl.create(:published, topic_list: [tag_physics, tag_chemie]) }
 
   describe 'in tags' do
     before do
@@ -13,11 +17,8 @@ describe 'admin navigation' do
     end
 
     it 'shows all tags' do
-      expect(page).to have_content('algebra')
-      expect(page).to have_content('algorithm')
-      expect(page).to have_content('computer')
-      expect(page).to have_content('radioactive')
-      expect(page).to have_content('x-ray')
+      expect(page).to have_content('physics')
+      expect(page).to have_content('chemie')
     end
 
     it 'shows section to filter categories' do
