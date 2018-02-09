@@ -1,5 +1,13 @@
 SpeakerinnenListe::Application.routes.draw do
 
+  devise_for :profiles,
+              only: :omniauth_callbacks,
+              controllers: {
+                omniauth_callbacks: 'omniauth_callbacks',
+                confirmations: :confirmations,
+                registrations: :registrations
+              }
+
   scope '(:locale)', locale: /en|de/ do
 
     namespace :admin do
@@ -34,7 +42,7 @@ SpeakerinnenListe::Application.routes.draw do
       end
     end
 
-    devise_for :profiles, controllers: {
+    devise_for :profiles, skip: :omniauth_callbacks, controllers: {
       omniauth_callbacks: 'omniauth_callbacks',
       confirmations: :confirmations,
       registrations: :registrations
