@@ -1,7 +1,6 @@
 describe 'iso_language' do
-
   describe 'lists of language-codes' do
-    it "has a list of all language-codes as two letter strings" do
+    it 'has a list of all language-codes as two letter strings' do
       expect(IsoLanguage.all).to be_an Array
       expect(IsoLanguage.all.map(&:class).uniq).to eq [String]
       expect(IsoLanguage.all.map(&:size).uniq).to eq [2]
@@ -17,7 +16,7 @@ describe 'iso_language' do
 
     it 'has an array of arrays with languagenames and iso caracters' do
       expect(IsoLanguage.all_languagenames_with_iso).to be_an Array
-      expect(IsoLanguage.all_languagenames_with_iso.flatten).to include("Englisch", "en")
+      expect(IsoLanguage.all_languagenames_with_iso.flatten).to include('Englisch', 'en')
     end
   end
 end

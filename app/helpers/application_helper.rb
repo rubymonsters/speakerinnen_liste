@@ -21,7 +21,7 @@ module ApplicationHelper
     tooltip = tooltip_mapping[column]
 
     direction = column == sort_column && sort_direction == 'desc' ? 'asc' : 'desc'
-    link_to(("<i class='fa fa-arrow-#{icon_direction}'>&nbsp;</i>").html_safe + title, { sort: column, direction: direction }, data: { toggle: 'tooltip', placement: 'left' }, title: tooltip)
+    link_to("<i class='fa fa-arrow-#{icon_direction}'>&nbsp;</i>".html_safe + title, { sort: column, direction: direction }, data: { toggle: 'tooltip', placement: 'left' }, title: tooltip)
   end
 
   def custom_tag_cloud(tags, classes)

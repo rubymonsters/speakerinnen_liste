@@ -14,11 +14,11 @@ describe 'locale_language' do
 
   it 'adding locale_language to tags' do
     expect(page).to have_text('chemie')
-    expect(page).to_not have_checked_field("chemie_en")
-    expect(page).to_not have_checked_field("chemie_de")
+    expect(page).to_not have_checked_field('chemie_en')
+    expect(page).to_not have_checked_field('chemie_de')
     check 'chemie_en'
     click_button 'Update Tag'
-    expect(page).to have_checked_field("chemie_en")
+    expect(page).to have_checked_field('chemie_en')
     expect(tag_chemie.locale_languages.first.iso_code).to eq('en')
   end
 end

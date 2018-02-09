@@ -6,9 +6,21 @@ Style/WhileUntilModifier:
   MaxLineLength: 100
 Style/AlignHash:
   Enabled: false
+Metrics/BlockLength:
+  ExcludedMethods: ['describe', 'context']
+Metrics/ModuleLength:
+  Exclude:
+    - "**/*_spec.rb"
+    - "spec/*.rb"
+
+Metrics/BlockLength:
+  Exclude:
+    - "**/*_spec.rb"
+    - "spec/*.rb"
+    - "spec/**/*.rb"
 
 Metrics/LineLength:
-  Max: 100
+  Enabled: false
 Metrics/MethodLength:
   Max: 5
 Metrics/ParameterLists:
@@ -22,3 +34,4 @@ AllCops:
     - 'db/**/*'
     - 'config/**/*'
     - 'bin/**/*'
+

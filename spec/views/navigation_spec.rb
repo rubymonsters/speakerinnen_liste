@@ -9,19 +9,19 @@ describe 'navigation', broken: false do
   before do
     @links_array = [categorization_admin_tags_path, admin_categories_path, admin_profiles_path]
     @lang_links_map = {
-      'en' => %w(Categories Tags Profiles),
-      'de' => %w(Kategorien Tags Profile)
+      'en' => %w[Categories Tags Profiles],
+      'de' => %w[Kategorien Tags Profile]
     }
   end
 
-  %w(en de).each do |language|
+  %w[en de].each do |language|
     describe 'go to the index page' do
       let!(:profile1) { FactoryGirl.create(:published) }
       let!(:profile2) { FactoryGirl.create(:published) }
 
       it 'should show the correct amount of speakerinnen' do
         visit "#{language}/profiles"
-        expect(page).to have_content("2")
+        expect(page).to have_content('2')
       end
     end
 
@@ -35,7 +35,7 @@ describe 'navigation', broken: false do
       it { should have_no_link('Admin', admin_root_path) }
       it 'should lead to the show view of the profile' do
         expect(page).to have_content(profile.fullname)
-        expect(page).to have_link(I18n.t('edit', scope: 'profiles.profile'), edit_profile_path(language, profile.id) )
+        expect(page).to have_link(I18n.t('edit', scope: 'profiles.profile'), edit_profile_path(language, profile.id))
       end
     end
 

@@ -48,7 +48,7 @@ module Searchable
                       'bio_en^0.8',
                       'bio_de^0.8'
                     ],
-                    tie_breaker: 0.3,
+                    tie_breaker: 0.3
                   }
                 }
               ]
@@ -91,32 +91,24 @@ module Searchable
             }
           }
         }
-        if @filter_lang
-          query_hash[:post_filter] = { 'term': { 'iso_languages': @filter_lang }}
-        end
+      query_hash[:post_filter] = { 'term': { 'iso_languages': @filter_lang } } if @filter_lang
 
-        if @filter_cities
-          query_hash[:post_filter] = { 'term': { 'cities.unmod': @filter_cities }}
-        end
+      query_hash[:post_filter] = { 'term': { 'cities.unmod': @filter_cities } } if @filter_cities
 
-        if @filter_countries
-          query_hash[:post_filter] = { 'term': { 'country': @filter_countries }}
-        end
-        __elasticsearch__.search(query_hash)
+      query_hash[:post_filter] = { 'term': { 'country': @filter_countries } } if @filter_countries
+      __elasticsearch__.search(query_hash)
     end
 
-    def as_indexed_json(options={})
-        output = as_json(
-          {
-            autocomplete: { input:  [fullname, twitter_de, twitter_en, topic_list] },
-            only: [:firstname, :lastname, :iso_languages, :country],
-              methods: [:fullname, :topic_list, :cities, *globalize_attribute_names],
-              include: {
-                medialinks: { only: [:title, :description] }
-            }
-          }
-        )
-        output.select{ |key, value| value.present? }
+    def as_indexed_json(_options = {})
+      output = as_json(
+        autocomplete: { input: [fullname, twitter_de, twitter_en, topic_list] },
+only: %i[firstname lastname iso_languages country],
+  methods: [:fullname, :topic_list, :cities, *globalize_attribute_names],
+  include: {
+    medialinks: { only: %i[title description] }
+  }
+      )
+      output.select { |_key, value| value.present? }
     end
 
     elasticsearch_mappings = {
@@ -160,38 +152,38 @@ module Searchable
             cities_analyzer: {
               type: 'custom',
               tokenizer: 'standard',
-              filter: [
-                'lowercase',
-                'german_normalization',
-                'asciifolding'
+              filter: %w[
+                lowercase
+                german_normalization
+                asciifolding
               ]
             },
             fullname_analyzer: {
               type: 'custom',
               tokenizer: 'standard',
-              filter: [
-                'lowercase',
-                'german_normalization',
-                'asciifolding',
-                'synonym_filter'
+              filter: %w[
+                lowercase
+                german_normalization
+                asciifolding
+                synonym_filter
               ]
             },
             english_without_stemming: {
               tokenizer:  'standard',
-              filter: [
-                'english_possessive_stemmer',
-                'lowercase',
-                'english_stop',
-                'synonym_filter'
+              filter: %w[
+                english_possessive_stemmer
+                lowercase
+                english_stop
+                synonym_filter
               ]
             },
             german_without_stemming: {
               tokenizer:  'standard',
-              filter: [
-                'lowercase',
-                'german_stop',
-                'german_normalization',
-                'synonym_filter'
+              filter: %w[
+                lowercase
+                german_stop
+                german_normalization
+                synonym_filter
               ]
             }
           }
@@ -199,36 +191,34 @@ module Searchable
       }
     }
 
-    ANALYZERS = { de: 'german', en: 'english' }
+    ANALYZERS = { de: 'german', en: 'english' }.freeze
 
     settings elasticsearch_mappings do
       mappings dynamic: 'false' do
-        indexes :fullname,   type: 'string', analyzer: 'fullname_analyzer',   'norms': { 'enabled': false } do
+        indexes :fullname,   type: 'string', analyzer: 'fullname_analyzer', 'norms': { 'enabled': false } do
           indexes :suggest,  type: 'completion'
         end
-        indexes :lastname,   type: 'string', analyzer: 'fullname_analyzer',   'norms': { 'enabled': false } do
+        indexes :lastname,   type: 'string', analyzer: 'fullname_analyzer', 'norms': { 'enabled': false } do
           indexes :suggest,  type: 'completion'
         end
-        indexes :twitter_de,    type: 'string', analyzer: 'twitter_analyzer',    'norms': { 'enabled': false } do
+        indexes :twitter_de, type: 'string', analyzer: 'twitter_analyzer', 'norms': { 'enabled': false } do
           indexes :suggest,  type: 'completion'
         end
-        indexes :twitter_en,    type: 'string', analyzer: 'twitter_analyzer',    'norms': { 'enabled': false } do
+        indexes :twitter_en, type: 'string', analyzer: 'twitter_analyzer', 'norms': { 'enabled': false } do
           indexes :suggest,  type: 'completion'
         end
         indexes :topic_list, type: 'string', analyzer: 'standard', 'norms': { 'enabled': false } do
           indexes :suggest,  type: 'completion'
         end
         I18n.available_locales.each do |locale|
-          [:main_topic, :bio, :website].each do |name|
+          %i[main_topic bio website].each do |name|
             indexes :"#{name}_#{locale}", type: 'string', analyzer: "#{ANALYZERS[locale]}_without_stemming" do
-              if name == :main_topic
-                indexes :suggest, type: 'completion'
-              end
+              indexes :suggest, type: 'completion' if name == :main_topic
             end
           end
         end
         indexes :iso_languages,  type: 'string', analyzer: 'standard', 'norms': { 'enabled': false }
-        indexes :cities, fields: { unmod: { type:  'string', index: 'not_analyzed', 'norms': { 'enabled': false } }, standard: { type:  'string', analyzer: 'cities_analyzer', 'norms': { 'enabled': false }} }
+        indexes :cities, fields: { unmod: { type: 'string', index: 'not_analyzed', 'norms': { 'enabled': false } }, standard: { type: 'string', analyzer: 'cities_analyzer', 'norms': { 'enabled': false } } }
         indexes :country,    type: 'string', analyzer: 'standard', 'norms': { 'enabled': false }
         indexes :medialinks, type: 'nested' do
           indexes :title, 'norms': { 'enabled': false }
@@ -244,33 +234,28 @@ module Searchable
     end
 
     def self.typeahead(q)
-      self.__elasticsearch__.client.suggest(index: self.index_name, body: {
-        fullname_suggest: {
-          text: q,
-          completion: { field: 'fullname.suggest'
-          }
-        },
+      __elasticsearch__.client.suggest(index: index_name, body: {
+                                         fullname_suggest: {
+                                           text: q,
+                                           completion: { field: 'fullname.suggest' }
+                                         },
         lastname_suggest: {
           text: q,
-          completion: { field: 'lastname.suggest'
-          }
+          completion: { field: 'lastname.suggest' }
         },
         main_topic_de_suggest: {
           text: q,
-          completion: { field: 'main_topic_de.suggest'
-          }
+          completion: { field: 'main_topic_de.suggest' }
         },
         main_topic_en_suggest: {
           text: q,
-          completion: { field: 'main_topic_en.suggest'
-          }
+          completion: { field: 'main_topic_en.suggest' }
         },
         topic_list_suggest: {
           text: q,
-          completion: { field: 'topic_list.suggest'
-          }
+          completion: { field: 'topic_list.suggest' }
         }
-      })
+                                       })
     end
   end
 end

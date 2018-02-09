@@ -1,13 +1,12 @@
 class Admin::CategoriesController < Admin::BaseController
-  before_action :set_category, only: [:show, :edit, :update, :destroy]
+  before_action :set_category, only: %i[show edit update destroy]
 
   def new
     @category = Category.new
     build_missing_translations(@category)
   end
 
-  def show
-  end
+  def show; end
 
   def index
     @categories = Category.order(:name).all
@@ -16,7 +15,7 @@ class Admin::CategoriesController < Admin::BaseController
   def create
     @category = Category.new(category_params)
     if @category.save
-      redirect_to admin_categories_path, notice: (I18n.t('flash.categories.created', category_name: @category.name))
+      redirect_to admin_categories_path, notice: I18n.t('flash.categories.created', category_name: @category.name)
     else
       render action: 'new'
     end
@@ -28,7 +27,7 @@ class Admin::CategoriesController < Admin::BaseController
 
   def update
     if @category.update_attributes(category_params)
-      redirect_to admin_categories_path, notice: (I18n.t('flash.categories.updated', category_name: @category.name))
+      redirect_to admin_categories_path, notice: I18n.t('flash.categories.updated', category_name: @category.name)
     else
       render action: 'edit'
     end
@@ -36,7 +35,7 @@ class Admin::CategoriesController < Admin::BaseController
 
   def destroy
     @category.destroy
-    redirect_to admin_categories_path, notice: (I18n.t('flash.categories.destroyed', category_name: @category.name))
+    redirect_to admin_categories_path, notice: I18n.t('flash.categories.destroyed', category_name: @category.name)
   end
 
   private
@@ -46,7 +45,6 @@ class Admin::CategoriesController < Admin::BaseController
   end
 
   def category_params
-    params.require(:category).permit(:name, translations_attributes: [:id, :name, :locale])
+    params.require(:category).permit(:name, translations_attributes: %i[id name locale])
   end
-
 end

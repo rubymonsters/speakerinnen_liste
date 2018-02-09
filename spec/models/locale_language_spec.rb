@@ -6,11 +6,13 @@ describe LocaleLanguage, type: :model do
   let!(:tag_en) { FactoryGirl.create(:tag_physics, locale_languages: [locale_language_en]) }
   let!(:tag_no_language) { FactoryGirl.create(:tag, name: 'mathematic') }
   let!(:tag_with_unpublished_profile) { FactoryGirl.create(:tag, name: 'sports') }
-  let!(:tag_both_languages) { FactoryGirl.create(:tag_social_media,
-                                locale_languages: [locale_language_en,locale_language_de]) }
+  let!(:tag_both_languages) do
+    FactoryGirl.create(:tag_social_media,
+                       locale_languages: [locale_language_en, locale_language_de])
+  end
 
-  let!(:cat_1){ FactoryGirl.create(:cat_science, id: 1, tags: [tag_de, tag_en]) }
-  let!(:cat_2){ FactoryGirl.create(:cat_social, id: 2) }
+  let!(:cat_1) { FactoryGirl.create(:cat_science, id: 1, tags: [tag_de, tag_en]) }
+  let!(:cat_2) { FactoryGirl.create(:cat_social, id: 2) }
 
   let!(:ada) { FactoryGirl.create(:published, topic_list: [tag_en, tag_both_languages]) }
   let!(:marie) { FactoryGirl.create(:published, topic_list: [tag_de, tag_no_language]) }
@@ -48,13 +50,13 @@ describe LocaleLanguage, type: :model do
     # in a language sope show all tags belonging to that language
     # tags with no languages attached are not shown
     describe 'in language scope' do
-      it  "'de' and only published profile" do
+      it "'de' and only published profile" do
         expect(ActsAsTaggableOn::Tag.with_published_profile
           .with_language('de'))
           .to match_array([tag_de, tag_both_languages])
       end
 
-      it  "'en' and only published profile" do
+      it "'en' and only published profile" do
         expect(ActsAsTaggableOn::Tag.with_published_profile
           .with_language('en'))
           .to match_array([tag_en, tag_both_languages])
@@ -88,7 +90,7 @@ describe LocaleLanguage, type: :model do
 
       # does that make sense? Can the language sope be de AND en?
       it 'de or en' do
-        expect(ActsAsTaggableOn::Tag.with_language(['en','de'])).to match_array([tag_both_languages, tag_en, tag_de])
+        expect(ActsAsTaggableOn::Tag.with_language(%w[en de])).to match_array([tag_both_languages, tag_en, tag_de])
       end
     end
   end
@@ -106,7 +108,6 @@ describe LocaleLanguage, type: :model do
     end
 
     describe 'in language scope' do
-
       it "'de'" do
         expect(marie.topics.with_language('de')).to match_array([tag_de])
       end
@@ -125,9 +126,8 @@ describe LocaleLanguage, type: :model do
       end
 
       it "'en' and 'de'" do
-        expect(ada.topics.with_language(['de', 'en'])).to match_array([tag_en, tag_both_languages])
+        expect(ada.topics.with_language(%w[de en])).to match_array([tag_en, tag_both_languages])
       end
-
     end
   end
 end

@@ -1,12 +1,12 @@
 FactoryGirl.define do
   factory :profile do
-    firstname "Factory"
-    lastname "Girl"
+    firstname 'Factory'
+    lastname 'Girl'
     sequence :email do |n|
       "person#{n}@example.com"
     end
-    password "123foobar"
-    password_confirmation "123foobar"
+    password '123foobar'
+    password_confirmation '123foobar'
     confirmed_at Time.now
 
     factory :admin do
@@ -54,16 +54,15 @@ FactoryGirl.define do
 
   factory :tag, class: ActsAsTaggableOn::Tag do
     factory :tag_chemie do
-      name "chemie"
+      name 'chemie'
     end
 
     factory :tag_physics do
-      name "physics"
+      name 'physics'
     end
 
     factory :tag_social_media do
-      name "social media"
+      name 'social media'
     end
   end
-
 end

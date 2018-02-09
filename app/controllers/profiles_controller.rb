@@ -3,9 +3,9 @@ class ProfilesController < ApplicationController
   include CategoriesHelper
   include ActsAsTaggableOn::TagsHelper
 
-  before_action :set_profile, only: [:show, :edit, :update, :destroy, :require_permission]
+  before_action :set_profile, only: %i[show edit update destroy require_permission]
 
-  before_filter :require_permission, only: [:edit, :destroy, :update]
+  before_filter :require_permission, only: %i[edit destroy update]
 
   respond_to :json
 
@@ -39,7 +39,7 @@ class ProfilesController < ApplicationController
       @message = Message.new
       @medialinks = @profile.medialinks.order(:position)
     else
-      redirect_to profiles_url, notice: (I18n.t('flash.profiles.show_no_permission'))
+      redirect_to profiles_url, notice: I18n.t('flash.profiles.show_no_permission')
     end
     @topics = []
     @topics << @profile.topics.with_language(I18n.locale)
@@ -54,7 +54,7 @@ class ProfilesController < ApplicationController
 
   def update
     if @profile.update_attributes(profile_params)
-      redirect_to @profile, notice: (I18n.t('flash.profiles.updated', profile_name: @profile.name_or_email))
+      redirect_to @profile, notice: I18n.t('flash.profiles.updated', profile_name: @profile.name_or_email)
     elsif current_profile
       build_missing_translations(@profile)
       render action: 'edit'
@@ -63,13 +63,13 @@ class ProfilesController < ApplicationController
 
   def destroy
     @profile.destroy
-    redirect_to profiles_url, notice: (I18n.t('flash.profiles.destroyed', profile_name: @profile.name_or_email))
+    redirect_to profiles_url, notice: I18n.t('flash.profiles.destroyed', profile_name: @profile.name_or_email)
   end
 
   def require_permission
     return if can_edit_profile?(current_profile, @profile)
 
-    redirect_to profiles_url, notice: (I18n.t('flash.profiles.no_permission'))
+    redirect_to profiles_url, notice: I18n.t('flash.profiles.no_permission')
   end
 
   def render_footer?
@@ -81,27 +81,26 @@ class ProfilesController < ApplicationController
     suggester_options = []
     suggestions = Profile.typeahead(params[:q])
     suggestions.each do |s|
-      if /.*_suggest/ === s.first
-          suggester_fields.push(s)
-      end
+      suggester_fields.push(s) if s.first === /.*_suggest/
     end
-    suggester_fields.map {|s| suggester_options.push(s[1].first['options'])}
+    suggester_fields.map { |s| suggester_options.push(s[1].first['options']) }
     suggestions_ordered = suggestions_upcase(suggester_options)
     respond_with(suggestions_ordered)
   end
 
   private
+
   def suggestions_upcase(suggestions_raw)
     sugg_upcase_complete = []
     sugg_text = []
-    suggestions_raw.flatten.sort_by { |s| s["score"] }
+    suggestions_raw.flatten.sort_by { |s| s['score'] }
 
-    sugg_upcase_complete = suggestions_raw.flatten.each do  |s|
-      s["text"] =  s["text"].split.map(&:capitalize).join(' ')
-      sugg_text.push(s["text"])
+    sugg_upcase_complete = suggestions_raw.flatten.each do |s|
+      s['text'] = s['text'].split.map(&:capitalize).join(' ')
+      sugg_text.push(s['text'])
     end
 
-    duplicates = sugg_text.select{|element| sugg_text.count(element) > 1 }
+    duplicates = sugg_text.select { |element| sugg_text.count(element) > 1 }
     delete_duplicates(sugg_upcase_complete, duplicates)
   end
 
@@ -109,14 +108,14 @@ class ProfilesController < ApplicationController
     if dupli != []
       dupli.uniq!.each do |x|
         upcased_suggestions.find do |s|
-          if x == s["text"]
+          if x == s['text']
             upcased_suggestions.delete(s)
             dupli.delete(x)
           end
         end
       end
     end
-    return upcased_suggestions
+    upcased_suggestions
   end
 
   # Use callbacks to share common setup or constraints between actions.
@@ -132,7 +131,7 @@ class ProfilesController < ApplicationController
       :password_confirmation,
       :remember_me,
       :country,
-      {iso_languages: []},
+      { iso_languages: [] },
       :firstname,
       :lastname,
       :picture,
@@ -155,7 +154,8 @@ class ProfilesController < ApplicationController
       :website_en,
       :city_de,
       :city_en,
-      translations_attributes: [:id, :bio, :main_topic, :twitter, :website, :city, :locale])
+      translations_attributes: %i[id bio main_topic twitter website city locale]
+    )
   end
 
   def custom_params
@@ -165,18 +165,18 @@ class ProfilesController < ApplicationController
 
   def profiles_for_index
     Profile.is_published
-      .main_topic_translated_in(I18n.locale)
-      .random
-      .page(params[:page])
-      .per(24)
+           .main_topic_translated_in(I18n.locale)
+           .random
+           .page(params[:page])
+           .per(24)
   end
 
   def profiles_for_tag(tag_names)
     Profile.is_published
-      .random
-      .tagged_with(tag_names, any: true)
-      .page(params[:page])
-      .per(24)
+           .random
+           .tagged_with(tag_names, any: true)
+           .page(params[:page])
+           .per(24)
   end
 
   def profiles_for_category
@@ -184,13 +184,13 @@ class ProfilesController < ApplicationController
     @tags_in_category_published = ActsAsTaggableOn::Tag.belongs_to_category(params[:category_id]).with_published_profile.with_language(I18n.locale)
     tag_names = @tags_in_category_published.pluck(:name)
     @tags_most_used_200 = @tags_in_category_published.most_used(200)
-    @profiles         = profiles_for_tag(tag_names)
+    @profiles = profiles_for_tag(tag_names)
   end
 
   def profiles_for_search
     Profile.is_published
-      .search(params[:search], params[:filter_countries], params[:filter_cities], params[:filter_lang])
-      .page(params[:page]).per(24)
-      .records
+           .search(params[:search], params[:filter_countries], params[:filter_cities], params[:filter_lang])
+           .page(params[:page]).per(24)
+           .records
   end
 end

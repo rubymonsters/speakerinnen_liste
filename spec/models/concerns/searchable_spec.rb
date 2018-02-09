@@ -1,19 +1,23 @@
 require 'spec_helper'
 
 describe Searchable, elasticsearch: true do
-  let!(:profile) { FactoryGirl.create(:published, firstname: 'Ada', lastname: 'Lovelace',
+  let!(:profile) do
+    FactoryGirl.create(:published, firstname: 'Ada', lastname: 'Lovelace',
                                       twitter_de: 'alovelace_de', twitter_en: 'alovelace',
                                       city_de: 'London', city_en: 'London', country: 'GB',
                                       languages: 'English', iso_languages: ['en'],
-                                      topic_list: ['ruby', 'algorithms'],
+                                      topic_list: %w[ruby algorithms],
                                       bio_de: 'Das ist meine deutsche Bio.',
                                       bio_en: 'This is my english bio.',
                                       main_topic_de: 'Das Leben', main_topic_en: 'Life',
-                                      email: 'info@example.com') }
+                                      email: 'info@example.com')
+  end
 
-  let!(:profile2) { FactoryGirl.create(:published, firstname: 'Marie', lastname: 'Curie',
+  let!(:profile2) do
+    FactoryGirl.create(:published, firstname: 'Marie', lastname: 'Curie',
                                       twitter: 'mcurie', city: 'Paris',
-                                      country: 'FR',  languages: 'Polish, French', iso_languages: ['pl', 'fr']) }
+                                      country: 'FR', languages: 'Polish, French', iso_languages: %w[pl fr])
+  end
 
   let!(:profile_not_published) { FactoryGirl.create(:unpublished, firstname: 'Fred') }
 
@@ -45,7 +49,7 @@ describe Searchable, elasticsearch: true do
     end
 
     it 'contains the attribute topic list' do
-      expect(profile.as_indexed_json['topic_list']).to eq ['ruby', 'algorithms']
+      expect(profile.as_indexed_json['topic_list']).to eq %w[ruby algorithms]
     end
 
     it 'contains the attribute language' do

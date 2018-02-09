@@ -18,11 +18,11 @@ class ContactController < ApplicationController
         redirect_to(root_path, notice: t(:notice, scope: 'contact.form'))
       end
     else
-      if @profile.present?
-        flash.now.alert = t(:error, scope: 'contact.form')
-      else
-        flash.now.alert = t(:error_email_for_us, scope: 'contact.form')
-      end
+      flash.now.alert = if @profile.present?
+                          t(:error, scope: 'contact.form')
+                        else
+                          t(:error_email_for_us, scope: 'contact.form')
+                        end
       render :new
     end
   end

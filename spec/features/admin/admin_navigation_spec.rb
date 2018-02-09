@@ -34,7 +34,7 @@ RSpec.feature 'Navigation', type: :feature do
     end
 
     context 'category' do
-      let!(:category){ FactoryGirl.create(:cat_science) }
+      let!(:category) { FactoryGirl.create(:cat_science) }
 
       scenario 'viewing edit categories in admin area' do
         visit admin_root_path
@@ -121,5 +121,4 @@ RSpec.feature 'Navigation', type: :feature do
       expect(page).to have_css('form label', text: 'My bio in English')
     end
   end
-
 end

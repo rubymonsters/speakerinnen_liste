@@ -4,26 +4,30 @@ describe 'admin navigation' do
   let!(:admin) { FactoryGirl.create(:admin) }
   let!(:admin_medialink) { FactoryGirl.create(:medialink, profile_id: admin.id) }
 
-  let!(:ada) { FactoryGirl.create(:published,
-                    firstname: 'Ada',
-                    lastname: 'Lovelace',
-                    email: 'ada@lovelace.de',
-                    twitter: '@alove',
-                    main_topic_de: 'erstes Computer Programm',
-                    bio_de: 'erste Programmiererin',
-                    main_topic_en:   'first computer program',
-                    bio_en:          'first female programer',
-                    city: 'London',
-                    iso_languages: ['en', 'fr'],
-                    topic_list: 'algorithm, mathematic') }
+  let!(:ada) do
+    FactoryGirl.create(:published,
+                       firstname: 'Ada',
+                       lastname: 'Lovelace',
+                       email: 'ada@lovelace.de',
+                       twitter: '@alove',
+                       main_topic_de: 'erstes Computer Programm',
+                       bio_de: 'erste Programmiererin',
+                       main_topic_en:   'first computer program',
+                       bio_en:          'first female programer',
+                       city: 'London',
+                       iso_languages: %w[en fr],
+                       topic_list: 'algorithm, mathematic')
+  end
   let!(:marie) { FactoryGirl.create(:unpublished, firstname: 'Marie') }
   let!(:rosa) { FactoryGirl.create(:unconfirmed, firstname: 'Rosa') }
 
-  let!(:ada_medialink) { FactoryGirl.create(:medialink,
-                                  profile_id: ada.id,
-                                  title: 'Ada and the computer',
-                                   url: 'www.adalovelace.de',
-                                   description: 'How to programm')}
+  let!(:ada_medialink) do
+    FactoryGirl.create(:medialink,
+                       profile_id: ada.id,
+                       title: 'Ada and the computer',
+                        url: 'www.adalovelace.de',
+                        description: 'How to programm')
+  end
 
   describe 'in profile' do
     before do
@@ -52,7 +56,6 @@ describe 'admin navigation' do
       expect(page).to have_content('www.adalovelace.de')
       expect(page).to have_content('How to programm')
     end
-
   end
 
   describe 'all profiles' do
@@ -68,6 +71,5 @@ describe 'admin navigation' do
       expect(page).to have_content('Marie')
       expect(page).not_to have_content('Rosa')
     end
-
   end
 end

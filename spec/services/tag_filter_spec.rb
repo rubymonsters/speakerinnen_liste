@@ -7,13 +7,14 @@ describe TagFilter do
   let!(:tag_de) { FactoryGirl.create(:tag_chemie, locale_languages: [locale_language_de]) }
   let!(:tag_en) { FactoryGirl.create(:tag_physics, locale_languages: [locale_language_en]) }
   let!(:tag_no_lang) { FactoryGirl.create(:tag, name: 'ruby') }
-  let!(:tag_en_de) { FactoryGirl.create(:tag_social_media,
-                                locale_languages: [locale_language_en,locale_language_de]) }
+  let!(:tag_en_de) do
+    FactoryGirl.create(:tag_social_media,
+                       locale_languages: [locale_language_en, locale_language_de])
+  end
   let!(:tag_no_lang) { ActsAsTaggableOn::Tag.create!(name: 'ruby') }
 
-  let!(:cat_1){ FactoryGirl.create(:cat_science, id: 1, tags: [tag_de, tag_en_de]) }
-  let!(:cat_2){ FactoryGirl.create(:cat_social, id: 2, tags: [tag_no_lang]) }
-
+  let!(:cat_1) { FactoryGirl.create(:cat_science, id: 1, tags: [tag_de, tag_en_de]) }
+  let!(:cat_2) { FactoryGirl.create(:cat_social, id: 2, tags: [tag_no_lang]) }
 
   context 'with empty filter params' do
     let(:filter_params) { {} }
@@ -51,7 +52,7 @@ describe TagFilter do
   end
 
   context 'with two given language params' do
-    let(:filter_params) { { filter_languages: ['de', 'en'] } }
+    let(:filter_params) { { filter_languages: %w[de en] } }
     it { is_expected.to match_array([tag_en_de]) }
   end
 
