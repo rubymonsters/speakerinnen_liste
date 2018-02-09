@@ -1,2 +1,0 @@
-class TagLanguagesController < ApplicationController
-end
