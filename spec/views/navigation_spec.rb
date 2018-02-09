@@ -40,9 +40,9 @@ describe 'navigation', broken: false do
     end
 
     context 'signed in as admin' do
-      let(:profile) { FactoryGirl.create(:admin) }
+      let(:admin) { FactoryGirl.create(:admin) }
       before do
-        sign_in profile, language
+        sign_in admin, language
       end
 
       it_should_behave_like 'successful sign in'
