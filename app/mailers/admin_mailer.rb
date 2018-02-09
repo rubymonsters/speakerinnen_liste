@@ -13,6 +13,6 @@ class AdminMailer < ActionMailer::Base
     mail(
       to: @profile.email,
       subject: I18n.t('devise.mailer.published.subject')
-      )
+    )
   end
 end

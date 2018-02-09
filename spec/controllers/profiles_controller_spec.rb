@@ -2,12 +2,16 @@ include AuthHelper
 
 describe ProfilesController, type: :controller do
   describe 'test index action' do
-    let!(:profile) { FactoryGirl.create(:published,
-                                        topic_list: ['ruby', 'algorithms']) }
+    let!(:profile) do
+      FactoryGirl.create(:published,
+                         topic_list: %w[ruby algorithms])
+    end
     let!(:profile_unpublished) { FactoryGirl.create(:unpublished) }
-    let!(:ada) { FactoryGirl.create(:published,
-                                    main_topic_en: 'first computer program',
-                                    bio_en:        'first female programer') }
+    let!(:ada) do
+      FactoryGirl.create(:published,
+                         main_topic_en: 'first computer program',
+                         bio_en:        'first female programer')
+    end
 
     before do
       get :index
@@ -31,15 +35,15 @@ describe ProfilesController, type: :controller do
   describe 'search action', elasticsearch: true do
     it 'should display search results if search term is present' do
       sleep 1
-      get :index, {:search => 'ruby'}
+      get :index, search: 'ruby'
       expect(response).to be_success
     end
 
     it 'should store aggregations in aggs variable' do
-      get :index, {:search => 'ruby'}
-      expect(assigns :aggs).to have_key(:city)
-      expect(assigns :aggs).to have_key(:lang)
-      expect(assigns :aggs).to have_key(:country)
+      get :index, search: 'ruby'
+      expect(assigns(:aggs)).to have_key(:city)
+      expect(assigns(:aggs)).to have_key(:lang)
+      expect(assigns(:aggs)).to have_key(:country)
     end
   end
 
@@ -107,8 +111,7 @@ describe ProfilesController, type: :controller do
               'main_topic':   'Social Media',
               'bio':          'English Bio',
               'id':           en_translation.id
-            }
-            }
+            } }
       }
       patch :update, { id: profile.id }.merge(profile: profile_params)
 

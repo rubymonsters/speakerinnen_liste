@@ -4,12 +4,12 @@ namespace :elasticsearch do
   namespace :import do
     CLIENT = Elasticsearch::Model.client
 
-    task :all => [:profiles]
+    task all: [:profiles]
 
-    task :profiles => :environment do
-      profile_task = Proc.new { Indexer.perform(Profile) }
+    task profiles: :environment do
+      profile_task = proc { Indexer.perform(Profile) }
       invoke_task &profile_task
-      puts "Done importing Profiles"
+      puts 'Done importing Profiles'
     end
 
     # task :medialinks => :environment do
@@ -18,16 +18,14 @@ namespace :elasticsearch do
     #   puts "Done importing Keywords"
     # end
 
-    def invoke_task &block
-      begin
-        puts "starting import..."
-        yield
-        puts "Done successfully!"
-      rescue Exception => e
-        puts "Failure!"
-        puts e.message, e.backtrace
-        Rails.logger.info "#{e.message}", "#{e.backtrace}"
-      end
+    def invoke_task
+      puts 'starting import...'
+      yield
+      puts 'Done successfully!'
+    rescue Exception => e
+      puts 'Failure!'
+      puts e.message, e.backtrace
+      Rails.logger.info e.message.to_s, e.backtrace.to_s
     end
   end
 end

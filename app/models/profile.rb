@@ -12,7 +12,7 @@ class Profile < ActiveRecord::Base
 
   translates :bio, :main_topic, :twitter, :website, :city, fallbacks_for_empty_translations: true
   accepts_nested_attributes_for :translations
-  globalize_accessors :locales => [:en, :de], :attributes => [:main_topic, :bio, :twitter, :website, :city]
+  globalize_accessors locales: %i[en de], attributes: %i[main_topic bio twitter website city]
 
   extend FriendlyId
   friendly_id :slug_candidate, use: :slugged
@@ -31,7 +31,7 @@ class Profile < ActiveRecord::Base
 
   acts_as_taggable_on :topics
 
-  before_save(on: [:create, :update]) do
+  before_save(on: %i[create update]) do
     twitter.gsub!(%r{^@|https:|http:|:|//|www.|twitter.com/}, '') if twitter
     firstname.strip! if firstname
     lastname.strip! if lastname
@@ -69,9 +69,10 @@ class Profile < ActiveRecord::Base
   scope :no_admin, -> { where(admin: false) }
 
   # only show profile where the main_topic is filled in in the current locale
-  scope :main_topic_translated_in, -> (locale) { joins("INNER JOIN profile_translations ON profile_translations.profile_id = profiles.id")
-    .where('profile_translations.locale' => locale)
-    .where.not("profile_translations.main_topic" => [nil, ''])
+  scope :main_topic_translated_in, ->(locale) {
+    joins('INNER JOIN profile_translations ON profile_translations.profile_id = profiles.id')
+      .where('profile_translations.locale' => locale)
+      .where.not('profile_translations.main_topic' => [nil, ''])
   }
 
   def fullname
@@ -79,8 +80,8 @@ class Profile < ActiveRecord::Base
   end
 
   def cities
-    cities_de = "#{city_de}".gsub(/(,|\/|&|\*|\|| - | or )/, "!@#$%ˆ&*").split("!@#$%ˆ&*").map {|x| x.strip}
-    cities_en = "#{city_en}".gsub(/(,|\/|&|\*|\|| - | or )/, "!@#$%ˆ&*").split("!@#$%ˆ&*").map {|x| x.strip}
+    cities_de = city_de.to_s.gsub(/(,|\/|&|\*|\|| - | or )/, "!@\#$%ˆ&*").split("!@\#$%ˆ&*").map(&:strip)
+    cities_en = city_en.to_s.gsub(/(,|\/|&|\*|\|| - | or )/, "!@\#$%ˆ&*").split("!@\#$%ˆ&*").map(&:strip)
     (cities_de << cities_en).flatten!.uniq
   end
 
@@ -92,25 +93,25 @@ class Profile < ActiveRecord::Base
     main_topic.present? ? main_topic : topic_list.first
   end
 
- # Try building a slug based on the following fields in
+  # Try building a slug based on the following fields in
   # increasing order of specificity.
   def slug_candidate
-    #[:full_name, :id] - you can do this only onUpdate (when :id already set) When you are creating a new record in your DB table this will not work!
+    # [:full_name, :id] - you can do this only onUpdate (when :id already set) When you are creating a new record in your DB table this will not work!
     [
       :fullname,
-      [:fullname, :id]
+      %i[fullname id]
     ]
   end
 
   def should_generate_new_friendly_id?
-   slug.blank? || firstname_changed? || lastname_changed?
+    slug.blank? || firstname_changed? || lastname_changed?
   end
 
   def website_with_protocol
     if website =~ %r{^https?://}
-      return website
+      website
     else
-      return 'http://' + website
+      'http://' + website
     end
   end
 
@@ -123,7 +124,7 @@ class Profile < ActiveRecord::Base
   end
 
   def country_name
-    country_name = ISO3166::Country[self.country]
+    country_name = ISO3166::Country[country]
     country_name.translations[I18n.locale.to_s] || country.name
   end
 
@@ -132,7 +133,10 @@ class Profile < ActiveRecord::Base
   end
 
   def update_or_remove_index
-    if published then __elasticsearch__.index_document else __elasticsearch__.delete_document end rescue nil # rescue a deleted document if not indexed
+    published ? __elasticsearch__.index_document : __elasticsearch__.delete_document
+  rescue
+    nil
+    # rescue a deleted document if not indexed
   end
 
   def password_required?
@@ -147,13 +151,13 @@ class Profile < ActiveRecord::Base
     end
   end
 
-   #for simple admin search
-   def self.admin_search(query)
-     where("firstname || ' ' || lastname ILIKE :query", query: "%#{query}%")
-   end
+  # for simple admin search
+  def self.admin_search(query)
+    where("firstname || ' ' || lastname ILIKE :query", query: "%#{query}%")
+  end
 
   def clean_iso_languages!
-    iso_languages.reject! { |r| r.empty? }
+    iso_languages.reject!(&:empty?)
   end
 
   # custom validations
@@ -162,10 +166,10 @@ class Profile < ActiveRecord::Base
     return if iso_languages == []
 
     if iso_languages.map(&:class).uniq != [String]
-      errors.add(:iso_languages, "must be an array of strings")
+      errors.add(:iso_languages, 'must be an array of strings')
     end
     if iso_languages.map(&:size).uniq != [2]
-      errors.add(:iso_languages, "each element must be two charactes")
+      errors.add(:iso_languages, 'each element must be two charactes')
     end
   end
 end

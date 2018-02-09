@@ -1,5 +1,4 @@
 describe 'category', type: :model do
-
   let!(:category_sonstiges) { FactoryGirl.create(:category, name: 'Sonstiges') }
   let!(:category_A) { FactoryGirl.create(:category, name: 'A') }
   let!(:category_B) { FactoryGirl.create(:category, name: 'B') }
@@ -12,6 +11,4 @@ describe 'category', type: :model do
       expect(@categories.last.name).to eq 'Sonstiges'
     end
   end
-
 end
-

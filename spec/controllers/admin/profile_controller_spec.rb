@@ -4,11 +4,13 @@ describe Admin::ProfilesController, type: :controller do
   let!(:admin) { FactoryGirl.create(:admin) }
   let!(:admin_medialink) { FactoryGirl.create(:medialink, profile_id: admin.id) }
   let!(:non_admin) { FactoryGirl.create(:published) }
-  let!(:non_admin_medialink) { FactoryGirl.create(:medialink,
-                                                  profile_id: non_admin.id,
-                                                  title: 'Ada and the computer',
-                                                  url: 'www.adalovelace.de',
-                                                  description: 'How to program')}
+  let!(:non_admin_medialink) do
+    FactoryGirl.create(:medialink,
+                       profile_id: non_admin.id,
+                       title: 'Ada and the computer',
+                       url: 'www.adalovelace.de',
+                       description: 'How to program')
+  end
 
   describe 'GET index' do
     before(:each) do

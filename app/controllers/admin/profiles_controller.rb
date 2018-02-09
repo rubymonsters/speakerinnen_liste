@@ -1,7 +1,7 @@
 class Admin::ProfilesController < Admin::BaseController
   helper_method :sort_column, :sort_direction
 
-  before_action :set_profile, only: [:show, :edit, :update, :destroy, :publish, :unpublish, :admin_comment]
+  before_action :set_profile, only: %i[show edit update destroy publish unpublish admin_comment]
 
   def index
     if params[:search]
@@ -11,11 +11,9 @@ class Admin::ProfilesController < Admin::BaseController
     end
   end
 
-  def new
-  end
+  def new; end
 
-  def create
-  end
+  def create; end
 
   def show
     @medialinks = @profile.medialinks.order(:position)
@@ -27,7 +25,7 @@ class Admin::ProfilesController < Admin::BaseController
 
   def update
     if @profile.update_attributes(profile_params)
-      redirect_to admin_profile_path(@profile), notice: (I18n.t('flash.profiles.updated', profile_name: @profile.name_or_email))
+      redirect_to admin_profile_path(@profile), notice: I18n.t('flash.profiles.updated', profile_name: @profile.name_or_email)
     else
       render :edit
     end
@@ -36,9 +34,9 @@ class Admin::ProfilesController < Admin::BaseController
   def destroy
     @profile.destroy
 
-     respond_to do |format|
-      format.html { redirect_to admin_profiles_path, notice: (I18n.t('flash.profiles.destroyed', profile_name: @profile.name_or_email)) }
-      format.js   { render layout: false }
+    respond_to do |format|
+      format.html { redirect_to admin_profiles_path, notice: I18n.t('flash.profiles.destroyed', profile_name: @profile.name_or_email) }
+      format.js { render layout: false }
     end
   end
 
@@ -47,18 +45,18 @@ class Admin::ProfilesController < Admin::BaseController
     @profile.save(validate: false)
     # Tells the AdminMailer to send publish mail to the speakerin
     AdminMailer.profile_published(@profile).deliver
-    redirect_to admin_profiles_path, notice: (I18n.t('flash.profiles.updated', profile_name: @profile.name_or_email))
+    redirect_to admin_profiles_path, notice: I18n.t('flash.profiles.updated', profile_name: @profile.name_or_email)
   end
 
   def unpublish
     @profile.published = false
     @profile.save(validate: false)
-    redirect_to admin_profiles_path, notice: (I18n.t('flash.profiles.updated', profile_name: @profile.name_or_email))
+    redirect_to admin_profiles_path, notice: I18n.t('flash.profiles.updated', profile_name: @profile.name_or_email)
   end
 
   def admin_comment
     if @profile.update_attributes(profile_params)
-      redirect_to admin_profiles_path, notice: (I18n.t('flash.profiles.updated', profile_name: @profile.name_or_email))
+      redirect_to admin_profiles_path, notice: I18n.t('flash.profiles.updated', profile_name: @profile.name_or_email)
     else
       render :index
     end
@@ -79,7 +77,7 @@ class Admin::ProfilesController < Admin::BaseController
       :password_confirmation,
       :remember_me,
       :country,
-      {iso_languages: []},
+      { iso_languages: [] },
       :firstname,
       :lastname,
       :picture,
@@ -101,7 +99,8 @@ class Admin::ProfilesController < Admin::BaseController
       :website_en,
       :city_de,
       :city_en,
-      translations_attributes: [:id, :bio, :main_topic, :twitter, :website, :city, :locale])
+      translations_attributes: %i[id bio main_topic twitter website city locale]
+    )
   end
 
   def sort_column
@@ -109,7 +108,6 @@ class Admin::ProfilesController < Admin::BaseController
   end
 
   def sort_direction
-    %w(asc desc).include?(params[:direction]) ? params[:direction] : 'desc'
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : 'desc'
   end
-
 end

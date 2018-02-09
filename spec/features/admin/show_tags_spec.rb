@@ -4,13 +4,19 @@ describe 'show locale_language' do
   let!(:locale_language_de) { FactoryGirl.create(:locale_language_de) }
   let!(:locale_language_en) { FactoryGirl.create(:locale_language_en) }
 
-  let!(:tag_both_lang) { FactoryGirl.create(:tag_social_media,
-                            locale_languages: [locale_language_en,locale_language_de]) }
-  let!(:tag_en) { FactoryGirl.create(:tag_physics,
-                                     locale_languages: [locale_language_en]) }
-  let!(:tag_with_slash_en) { FactoryGirl.create(:tag,
-                                                name: 'AC/DC',
-                                                locale_languages: [locale_language_en]) }
+  let!(:tag_both_lang) do
+    FactoryGirl.create(:tag_social_media,
+                       locale_languages: [locale_language_en, locale_language_de])
+  end
+  let!(:tag_en) do
+    FactoryGirl.create(:tag_physics,
+                       locale_languages: [locale_language_en])
+  end
+  let!(:tag_with_slash_en) do
+    FactoryGirl.create(:tag,
+                       name: 'AC/DC',
+                       locale_languages: [locale_language_en])
+  end
 
   before(:each) do
     sign_in admin
@@ -26,9 +32,9 @@ describe 'show locale_language' do
 
   it 'correct locale language are set to the tags' do
     expect(page).to have_content('AC/DC')
-    expect(page).to_not have_checked_field("physics_de")
-    expect(page).to have_checked_field("physics_en")
-    expect(page).to have_checked_field("social media_en")
-    expect(page).to have_checked_field("social media_de")
+    expect(page).to_not have_checked_field('physics_de')
+    expect(page).to have_checked_field('physics_en')
+    expect(page).to have_checked_field('social media_en')
+    expect(page).to have_checked_field('social media_de')
   end
 end

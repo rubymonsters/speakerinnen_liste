@@ -6,28 +6,31 @@ describe 'profile navigation' do
 
   let!(:tag_de) { FactoryGirl.create(:tag_chemie, locale_languages: [locale_language_de]) }
   let!(:tag_en) { FactoryGirl.create(:tag_physics, locale_languages: [locale_language_en]) }
-  let!(:tag_no_lang) { FactoryGirl.create(:tag, name: "math") }
+  let!(:tag_no_lang) { FactoryGirl.create(:tag, name: 'math') }
 
-  let!(:ada) { FactoryGirl.create(:published,
-                                  firstname: 'Ada',
-                                  lastname: 'Lovelace',
-                                  email: 'ada@lovelace.de',
-                                  twitter: '@alove',
-                                  main_topic_en: 'first computer programm',
-                                  bio_en: 'first programmer',
-                                  main_topic_de: 'Erstes Computer-Programm',
-                                  bio_de: 'Erste Programmiererin',
-                                  city: 'London',
-                                  country: 'GB',
-                                  iso_languages: ['en', 'de'],
-                                  topic_list: [tag_de, tag_en, tag_no_lang]) }
+  let!(:ada) do
+    FactoryGirl.create(:published,
+                       firstname: 'Ada',
+                       lastname: 'Lovelace',
+                       email: 'ada@lovelace.de',
+                       twitter: '@alove',
+                       main_topic_en: 'first computer programm',
+                       bio_en: 'first programmer',
+                       main_topic_de: 'Erstes Computer-Programm',
+                       bio_de: 'Erste Programmiererin',
+                       city: 'London',
+                       country: 'GB',
+                       iso_languages: %w[en de],
+                       topic_list: [tag_de, tag_en, tag_no_lang])
+  end
 
-  let!(:ada_medialink) { FactoryGirl.create(:medialink,
-                                            profile_id: ada.id,
-                                            title: 'Ada and the computer',
-                                            url: 'www.adalovelace.de',
-                                            description: 'How to programm')}
-
+  let!(:ada_medialink) do
+    FactoryGirl.create(:medialink,
+                       profile_id: ada.id,
+                       title: 'Ada and the computer',
+                       url: 'www.adalovelace.de',
+                       description: 'How to programm')
+  end
 
   describe 'show view profile in EN' do
     before do

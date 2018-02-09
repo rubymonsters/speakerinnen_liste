@@ -11,5 +11,4 @@ class Category < ActiveRecord::Base
 
     categories_without_miscellaneous + category_miscellaneous
   end
-
 end

@@ -2,8 +2,8 @@ include AuthHelper
 
 describe 'admin navigation' do
   let!(:admin) { Profile.create!(FactoryGirl.attributes_for(:admin)) }
-  let!(:ada) { Profile.create!(FactoryGirl.attributes_for(:published, topic_list: ['algebra','algorithm','computer'])) }
-  let!(:marie) { Profile.create!(FactoryGirl.attributes_for(:published, topic_list: ['radioactive','x-ray'])) }
+  let!(:ada) { Profile.create!(FactoryGirl.attributes_for(:published, topic_list: %w[algebra algorithm computer])) }
+  let!(:marie) { Profile.create!(FactoryGirl.attributes_for(:published, topic_list: ['radioactive', 'x-ray'])) }
 
   describe 'in tags' do
     before do

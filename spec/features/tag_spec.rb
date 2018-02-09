@@ -2,19 +2,25 @@ describe 'displaying tags' do
   let!(:locale_language_de) { FactoryGirl.create(:locale_language_de) }
   let!(:locale_language_en) { FactoryGirl.create(:locale_language_en) }
 
-  let!(:tag_both_languages) { FactoryGirl.create(:tag_social_media,
-                                locale_languages: [locale_language_en,locale_language_de]) }
-  let!(:tag_with_slash_en) { FactoryGirl.create(:tag, name: 'AC/DC',
-                                            locale_languages: [locale_language_en]) }
+  let!(:tag_both_languages) do
+    FactoryGirl.create(:tag_social_media,
+                       locale_languages: [locale_language_en, locale_language_de])
+  end
+  let!(:tag_with_slash_en) do
+    FactoryGirl.create(:tag, name: 'AC/DC',
+                                            locale_languages: [locale_language_en])
+  end
 
   let!(:tag_de) { FactoryGirl.create(:tag_chemie, locale_languages: [locale_language_de]) }
   let!(:tag_en) { FactoryGirl.create(:tag_physics, locale_languages: [locale_language_en]) }
   let!(:tag_with_unpublished_profile) { FactoryGirl.create(:tag, name: 'sports') }
 
-  let!(:ada) { FactoryGirl.create(:published, topic_list: [tag_en,
-                                                           tag_both_languages,
-                                                           tag_de,
-                                                           tag_with_slash_en]) }
+  let!(:ada) do
+    FactoryGirl.create(:published, topic_list: [tag_en,
+                                                tag_both_languages,
+                                                tag_de,
+                                                tag_with_slash_en])
+  end
   let!(:pierre) { FactoryGirl.create(:unpublished, topic_list: [tag_de, tag_with_unpublished_profile]) }
 
   it 'shows tagging after profile edit' do
