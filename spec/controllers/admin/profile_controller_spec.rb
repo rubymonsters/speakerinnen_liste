@@ -1,19 +1,20 @@
 include AuthHelper
 
 describe Admin::ProfilesController, type: :controller do
-  let!(:admin) { Profile.create!(FactoryGirl.attributes_for(:admin)) }
+  let!(:admin) { FactoryGirl.create(:admin) }
   let!(:admin_medialink) { FactoryGirl.create(:medialink, profile_id: admin.id) }
-  let!(:non_admin) { Profile.create!(FactoryGirl.attributes_for(:published)) }
-  let!(:non_admin_medialink) { FactoryGirl.create(:medialink, profile_id: non_admin.id,
-                                                        title: 'Ada and the computer',
-                                                        url: 'www.adalovelace.de',
-                                                        description: 'How to program')}
+  let!(:non_admin) { FactoryGirl.create(:published) }
+  let!(:non_admin_medialink) { FactoryGirl.create(:medialink,
+                                                  profile_id: non_admin.id,
+                                                  title: 'Ada and the computer',
+                                                  url: 'www.adalovelace.de',
+                                                  description: 'How to program')}
 
   describe 'GET index' do
     before(:each) do
       sign_in admin
-      @profile = Profile.create!(FactoryGirl.attributes_for(:admin, firstname: 'Awe'))
-      @profile1 = Profile.create!(FactoryGirl.attributes_for(:admin, firstname: 'NotInc'))
+      @profile = FactoryGirl.create(:admin, firstname: 'Awe')
+      @profile1 = FactoryGirl.create(:admin, firstname: 'NotInc')
     end
 
     describe 'when search param is provided' do

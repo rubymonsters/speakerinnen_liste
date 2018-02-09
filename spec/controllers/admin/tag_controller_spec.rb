@@ -1,9 +1,9 @@
 include AuthHelper
 
 describe Admin::TagsController, type: :controller do
-  let!(:admin) { Profile.create!(FactoryGirl.attributes_for(:admin)) }
-  let!(:ada) { Profile.create!(FactoryGirl.attributes_for(:published, topic_list: ['algebra','algorithm','computer'])) }
-  let!(:marie) { Profile.create!(FactoryGirl.attributes_for(:published, topic_list: ['radioactive','x-ray'])) }
+  let!(:admin) { FactoryGirl.create(:admin) }
+  let!(:ada) { FactoryGirl.create(:published, topic_list: ['algebra','algorithm','computer']) }
+  let!(:marie) { FactoryGirl.create(:published, topic_list: ['radioactive','x-ray']) }
 
   before(:each) do
     sign_in admin

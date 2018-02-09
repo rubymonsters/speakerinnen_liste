@@ -2,15 +2,16 @@ include AuthHelper
 
 describe ProfilesController, type: :controller do
   describe 'test index action' do
-    let!(:profile) { FactoryGirl.create(:published, topic_list: ['ruby', 'algorithms']) }
+    let!(:profile) { FactoryGirl.create(:published,
+                                        topic_list: ['ruby', 'algorithms']) }
     let!(:profile2) { FactoryGirl.create(:profile) }
-    let!(:ada) { Profile.create!(FactoryGirl.attributes_for(:published,
+    let!(:ada) { FactoryGirl.create(:published,
                     translations_attributes:
                       { '0':
                         { 'locale':       'en',
                           'main_topic':   'first computer program',
                           'bio':          'first female programer' }
-                        })) }
+                        }) }
 
     before do
       get :index

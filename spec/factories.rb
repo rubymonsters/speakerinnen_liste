@@ -27,11 +27,22 @@ FactoryGirl.define do
   end
 
   factory :category do
-    name 'Factory Category DE'
+    factory :cat_science do
+      name 'Science'
+    end
+    factory :cat_social do
+      name 'Social'
+    end
   end
 
   factory :locale_language do
-    iso_code 'de'
+    factory :locale_language_de do
+      iso_code 'de'
+    end
+
+    factory :locale_language_en do
+      iso_code 'en'
+    end
   end
 
   factory :medialink do
@@ -40,4 +51,19 @@ FactoryGirl.define do
     title 'thisTitle'
     description 'lorep ipsum...'
   end
+
+  factory :tag, class: ActsAsTaggableOn::Tag do
+    factory :tag_chemie do
+      name "chemie"
+    end
+
+    factory :tag_physics do
+      name "physics"
+    end
+
+    factory :tag_social_media do
+      name "social media"
+    end
+  end
+
 end
