@@ -5,7 +5,6 @@ one:
   email: ada@mail.de
   encrypted_password: <%= Profile.new.send(:password_digest, 'Testpassword') %>
   languages: Deutsch
-  city: New York
   talks: CCC
   published: true
 
@@ -15,7 +14,6 @@ two:
   lastname: lastname
   email: inge@mail.de
   languages: Deutsch
-  city: Berlin
   talks: Repuclica
 
 three:
@@ -24,7 +22,6 @@ three:
   lastname: lastname
   email: anon@mail.de
   languages: Deutsch
-  city: Hintertupfingen
   talks:
 
 jane:
@@ -34,5 +31,4 @@ jane:
   email: jane_admin@server.org
   encrypted_password: <%= Profile.new.send(:password_digest, 'Testpassword') %>
   languages: MyString
-  city: MyString
   admin: true
