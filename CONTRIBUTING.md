@@ -35,7 +35,7 @@ When you have made your changes and tested them, please send us a [pull request]
 	cp config/database_example.yml config/database.yml
 	```
 	
-2. Install [PostgreSQL](http://www.postgresql.org/download/) (it depends on your OS)
+2. Install [PostgreSQL](http://www.postgresql.org/download/) (it depends on your OS) - currently (2018-02) we use PostgreSQL 9.5.5
 
 3. [Create a PostgreSQL](https://www.digitalocean.com/community/tutorials/how-to-use-roles-and-manage-grant-permissions-in-postgresql-on-a-vps--2) user with the same name as your username
 
