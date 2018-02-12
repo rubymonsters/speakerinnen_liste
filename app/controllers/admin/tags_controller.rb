@@ -40,7 +40,7 @@ class Admin::TagsController < Admin::BaseController
     redirect_to categorization_admin_tags_path(page: params[:page], q: params[:q], uncategorized: params[:uncategorized]), notice: "Just added the tag '#{@tag.name}' to the category '#{@category.name}'."
   end
 
-  def categorization
+  def index
     @tags_count = ActsAsTaggableOn::Tag.count
     @tags = TagFilter.new(ActsAsTaggableOn::Tag.all, filter_params)
                      .filter

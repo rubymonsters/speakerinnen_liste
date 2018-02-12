@@ -12,7 +12,7 @@ describe Admin::TagsController, type: :controller do
   describe 'GET categorization' do
     context 'without any selection' do
       before(:each) do
-        get :categorization
+        get :index
       end
 
       specify { expect(response).to render_template(:categorization) }
