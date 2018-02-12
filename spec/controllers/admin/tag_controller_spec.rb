@@ -9,13 +9,13 @@ describe Admin::TagsController, type: :controller do
     sign_in admin
   end
 
-  describe 'GET categorization' do
+  describe 'GET index' do
     context 'without any selection' do
       before(:each) do
         get :index
       end
 
-      specify { expect(response).to render_template(:categorization) }
+      specify { expect(response).to render_template(:index) }
       specify { expect(response.status).to eq 200 }
 
       it 'should contain all tags' do
@@ -37,10 +37,10 @@ describe Admin::TagsController, type: :controller do
         marie_tag = ActsAsTaggableOn::Tag.find_by(name: marie.topic_list[1])
         ada_tag.categories << category
         marie_tag.categories << category
-        get :categorization, category_id: category.id
+        get :index, category_id: category.id
       end
 
-      specify { expect(response).to render_template(:categorization) }
+      specify { expect(response).to render_template(:index) }
 
       it 'find only the topic associated with the category' do
         expect(assigns(:tags)).to eq(
@@ -58,10 +58,10 @@ describe Admin::TagsController, type: :controller do
 
     context 'searches for topics no matter if they are assigned to a category' do
       before(:each) do
-        get :categorization, q: 'alg'
+        get :index, q: 'alg'
       end
 
-      specify { expect(response).to render_template(:categorization) }
+      specify { expect(response).to render_template(:index) }
 
       it 'find the correct topic' do
         expect(assigns(:tags)).to eq(
@@ -77,10 +77,10 @@ describe Admin::TagsController, type: :controller do
         category.save!
         ada_tag = ActsAsTaggableOn::Tag.find_by(name: ada.topic_list[0])
         ada_tag.categories << category
-        get :categorization, q: 'alg', uncategorized: true
+        get :index, q: 'alg', uncategorized: true
       end
 
-      specify { expect(response).to render_template(:categorization) }
+      specify { expect(response).to render_template(:index) }
 
       it 'finds the uncategorized topic' do
         expect(assigns(:tags)).to eq([ActsAsTaggableOn::Tag.find_by(name: 'algorithm')])
@@ -97,10 +97,10 @@ describe Admin::TagsController, type: :controller do
         category.save!
         tag = ActsAsTaggableOn::Tag.find_by(name: ada.topic_list[0])
         tag.categories << category
-        get :categorization, uncategorized: true
+        get :index, uncategorized: true
       end
 
-      specify { expect(response).to render_template(:categorization) }
+      specify { expect(response).to render_template(:index) }
       it 'finds only uncategorized topics' do
         expect(assigns(:tags)).to eq([
                                        ActsAsTaggableOn::Tag.find_by(name: ada.topic_list[1]),
@@ -119,10 +119,10 @@ describe Admin::TagsController, type: :controller do
   describe 'GET tag_language' do
     context 'without any selection' do
       before(:each) do
-        get :categorization
+        get :index
       end
 
-      specify { expect(response).to render_template(:categorization) }
+      specify { expect(response).to render_template(:index) }
       specify { expect(response.status).to eq 200 }
 
       it 'should contain all tags' do
@@ -160,7 +160,7 @@ describe Admin::TagsController, type: :controller do
           put :update, id: @wrong_topic.id, tag: { name: 'mathematic' }
         end
 
-        specify { expect(response).to redirect_to("/#{I18n.locale}/admin/tags/categorization") }
+        specify { expect(response).to redirect_to("/#{I18n.locale}/admin/tags/index") }
         it 'changes the topic name' do
           expect(ActsAsTaggableOn::Tag.find(@wrong_topic.id).name).to eq('mathematic')
         end
@@ -171,7 +171,7 @@ describe Admin::TagsController, type: :controller do
           put :update, id: @wrong_topic.id, tag: { name: 'radioactive' }
         end
 
-        specify { expect(response).to redirect_to("/#{I18n.locale}/admin/tags/categorization") }
+        specify { expect(response).to redirect_to("/#{I18n.locale}/admin/tags/index") }
         it 'deletes the wrong topic and adds a new tagging' do
           expect(ActsAsTaggableOn::Tag.find_by(name: 'algebra')).to be_nil
           expect(ActsAsTaggableOn::Tag.find_by(name: 'radioactive')).to be_truthy
@@ -211,7 +211,7 @@ describe Admin::TagsController, type: :controller do
         post :set_category, id: @tag.id, category_id: @category.id
       end
 
-      specify { expect(response).to redirect_to("/#{I18n.locale}/admin/tags/categorization") }
+      specify { expect(response).to redirect_to("/#{I18n.locale}/admin/tags/index") }
       it 'category gets assigned to a topic' do
         expect(assigns(:tag).categories.first.name).to eq 'Science'
       end
@@ -223,7 +223,7 @@ describe Admin::TagsController, type: :controller do
         post :remove_category, id: @tag.id, category_id: @category.id
       end
 
-      specify { expect(response).to redirect_to("/#{I18n.locale}/admin/tags/categorization") }
+      specify { expect(response).to redirect_to("/#{I18n.locale}/admin/tags/index") }
       it 'assigned categories gets removed from a topic' do
         expect(assigns(:tag).categories).to be_empty
       end
