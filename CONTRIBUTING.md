@@ -43,12 +43,40 @@ When you have made your changes and tested them, please send us a [pull request]
 
 4.b) With a **ubuntu** you follow that guide to install [elasticseach 2.4.5](https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-elasticsearch-on-ubuntu-16-04) PAY ATTENION TO THE VERSION!
 
-you also need to export that variable in the terminal window and start elasticsearch before running the tests:
+to install:
+```bash
+$ wget https://download.elastic.co/elasticsearch/elasticsearch/elasticsearch-2.4.5.deb
+$ sudo dpkg -i elasticsearch-2.4.5.deb
+$ sudo update-rc.d elasticsearch defaults
+```
 
-	```
-	export TEST_CLUSTER_COMMAND=./tmp/elasticsearch-2.4.5/bin/elasticsearch
-	sudo service elasticsearch start
-	```
+to start:
+```bash
+$ sudo service elasticsearch status
+$ sudo service elasticsearch start
+$ be rake elasticsearch:import:all
+```
+
+to test:
+```bash
+curl "localhost:9200/_nodes/settings?pretty=true"
+```
+
+To get the tests running:
+
+You have to start elasticsearch!
+```bash
+$ export ES_VERSION=2.4.5
+$ curl -sS https://download.elastic.co/elasticsearch/release/org/elasticsearch/distribution/tar/elasticsearch/${ES_VERSION}/elasticsearch-${ES_VERSION}.tar.gz | tar xz -C ./tmp
+$ export TEST_CLUSTER_COMMAND=./tmp/elasticsearch-2.4.5/bin/elasticsearch
+$ sudo service elasticsearch start
+bundle expec rspec
+```
+
+if the tests are still failing:
+```
+rake db:test:clone
+```
 
 5. Install Bundler (if you don't have it already)
 	```
