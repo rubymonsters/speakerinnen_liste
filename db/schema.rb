@@ -17,20 +17,20 @@ ActiveRecord::Schema.define(version: 20180208140337) do
   enable_extension "plpgsql"
 
   create_table "api_tokens", force: :cascade do |t|
-    t.string "name",  limit: 255
-    t.string "token", limit: 255
+    t.string "name"
+    t.string "token"
   end
 
   create_table "blog_posts", force: :cascade do |t|
-    t.string   "title",      limit: 255
+    t.string   "title"
     t.text     "body"
-    t.string   "url",        limit: 255
+    t.string   "url"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "categories", force: :cascade do |t|
-    t.string   "name",       limit: 255
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -45,21 +45,21 @@ ActiveRecord::Schema.define(version: 20180208140337) do
   add_index "categories_tags", ["tag_id"], name: "index_categories_tags_on_tag_id", using: :btree
 
   create_table "category_translations", force: :cascade do |t|
-    t.integer  "category_id",             null: false
-    t.string   "locale",      limit: 255, null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "name",        limit: 255
+    t.integer  "category_id", null: false
+    t.string   "locale",      null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "name"
   end
 
   add_index "category_translations", ["category_id"], name: "index_category_translations_on_category_id", using: :btree
   add_index "category_translations", ["locale"], name: "index_category_translations_on_locale", using: :btree
 
   create_table "friendly_id_slugs", force: :cascade do |t|
-    t.string   "slug",           limit: 255, null: false
-    t.integer  "sluggable_id",               null: false
+    t.string   "slug",                      null: false
+    t.integer  "sluggable_id",              null: false
     t.string   "sluggable_type", limit: 50
-    t.string   "scope",          limit: 255
+    t.string   "scope"
     t.datetime "created_at"
   end
 
@@ -69,7 +69,7 @@ ActiveRecord::Schema.define(version: 20180208140337) do
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
 
   create_table "locale_languages", force: :cascade do |t|
-    t.string   "iso_code",   limit: 255
+    t.string   "iso_code"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -82,59 +82,59 @@ ActiveRecord::Schema.define(version: 20180208140337) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "position"
-    t.string   "language",    limit: 255
+    t.string   "language"
   end
 
   add_index "medialinks", ["profile_id"], name: "index_medialinks_on_profile_id", using: :btree
 
   create_table "profile_translations", force: :cascade do |t|
-    t.integer  "profile_id",             null: false
-    t.string   "locale",     limit: 255, null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "main_topic", limit: 255
+    t.integer  "profile_id", null: false
+    t.string   "locale",     null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "main_topic"
     t.text     "bio"
-    t.string   "twitter",    limit: 255
-    t.string   "website",    limit: 255
-    t.string   "city",       limit: 255
+    t.string   "twitter"
+    t.string   "website"
+    t.string   "city"
   end
 
   add_index "profile_translations", ["locale"], name: "index_profile_translations_on_locale", using: :btree
   add_index "profile_translations", ["profile_id"], name: "index_profile_translations_on_profile_id", using: :btree
 
   create_table "profiles", force: :cascade do |t|
-    t.string   "firstname",              limit: 255
-    t.string   "lastname",               limit: 255
-    t.string   "email",                  limit: 255
-    t.string   "languages",              limit: 255
-    t.string   "city",                   limit: 255
-    t.string   "picture",                limit: 255
+    t.string   "firstname"
+    t.string   "lastname"
+    t.string   "email"
+    t.string   "languages"
+    t.string   "city"
+    t.string   "picture"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "encrypted_password",     limit: 255, default: "",    null: false
-    t.string   "reset_password_token",   limit: 255
+    t.string   "encrypted_password",     default: "",    null: false
+    t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                      default: 0
+    t.integer  "sign_in_count",          default: 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip",     limit: 255
-    t.string   "last_sign_in_ip",        limit: 255
-    t.string   "confirmation_token",     limit: 255
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.string   "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
-    t.string   "unconfirmed_email",      limit: 255
-    t.string   "talks",                  limit: 255
-    t.boolean  "admin",                              default: false
-    t.string   "provider",               limit: 255
-    t.string   "uid",                    limit: 255
-    t.string   "media_url",              limit: 255
-    t.boolean  "published",                          default: false
-    t.string   "website",                limit: 255
+    t.string   "unconfirmed_email"
+    t.string   "talks"
+    t.boolean  "admin",                  default: false
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "media_url"
+    t.boolean  "published",              default: false
+    t.string   "website"
     t.text     "admin_comment"
-    t.string   "slug",                   limit: 255
-    t.string   "country",                limit: 255
-    t.string   "iso_languages",          limit: 255
+    t.string   "slug"
+    t.string   "country"
+    t.string   "iso_languages"
   end
 
   add_index "profiles", ["confirmation_token"], name: "index_profiles_on_confirmation_token", unique: true, using: :btree
@@ -144,7 +144,7 @@ ActiveRecord::Schema.define(version: 20180208140337) do
 
   create_table "tag_languages", force: :cascade do |t|
     t.integer  "tag_id"
-    t.string   "language",   limit: 255
+    t.string   "language"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -152,9 +152,9 @@ ActiveRecord::Schema.define(version: 20180208140337) do
   create_table "taggings", force: :cascade do |t|
     t.integer  "tag_id"
     t.integer  "taggable_id"
-    t.string   "taggable_type", limit: 255
+    t.string   "taggable_type"
     t.integer  "tagger_id"
-    t.string   "tagger_type",   limit: 255
+    t.string   "tagger_type"
     t.string   "context",       limit: 128
     t.datetime "created_at"
   end
@@ -163,8 +163,8 @@ ActiveRecord::Schema.define(version: 20180208140337) do
   add_index "taggings", ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context", using: :btree
 
   create_table "tags", force: :cascade do |t|
-    t.string  "name",           limit: 255
-    t.integer "taggings_count",             default: 0
+    t.string  "name"
+    t.integer "taggings_count", default: 0
   end
 
   add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
