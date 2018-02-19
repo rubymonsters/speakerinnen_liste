@@ -43,14 +43,12 @@ When you have made your changes and tested them, please send us a [pull request]
 
 4.b) With a **ubuntu** you follow that guide to install [elasticseach 2.4.5](https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-elasticsearch-on-ubuntu-16-04) PAY ATTENION TO THE VERSION!
 
-you also need to export that variable in the terminal window and start elasticsearch befoer running the tests:
-```
-export TEST_CLUSTER_COMMAND=./tmp/elasticsearch-2.4.5/bin/elasticsearch
-sudo service elasticsearch start
-```
+you also need to export that variable in the terminal window and start elasticsearch before running the tests:
 
-
-
+	```
+	export TEST_CLUSTER_COMMAND=./tmp/elasticsearch-2.4.5/bin/elasticsearch
+	sudo service elasticsearch start
+	```
 
 5. Install Bundler (if you don't have it already)
 	```
