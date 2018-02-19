@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180208140337) do
+ActiveRecord::Schema.define(version: 20180210215444) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -107,7 +107,6 @@ ActiveRecord::Schema.define(version: 20180208140337) do
     t.string   "lastname",               limit: 255
     t.string   "email",                  limit: 255
     t.string   "languages",              limit: 255
-    t.string   "city",                   limit: 255
     t.string   "picture",                limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -130,7 +129,6 @@ ActiveRecord::Schema.define(version: 20180208140337) do
     t.string   "uid",                    limit: 255
     t.string   "media_url",              limit: 255
     t.boolean  "published",                          default: false
-    t.string   "website",                limit: 255
     t.text     "admin_comment"
     t.string   "slug",                   limit: 255
     t.string   "country",                limit: 255
@@ -141,13 +139,6 @@ ActiveRecord::Schema.define(version: 20180208140337) do
   add_index "profiles", ["email"], name: "index_profiles_on_email", unique: true, using: :btree
   add_index "profiles", ["reset_password_token"], name: "index_profiles_on_reset_password_token", unique: true, using: :btree
   add_index "profiles", ["slug"], name: "index_profiles_on_slug", unique: true, using: :btree
-
-  create_table "tag_languages", force: :cascade do |t|
-    t.integer  "tag_id"
-    t.string   "language",   limit: 255
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "taggings", force: :cascade do |t|
     t.integer  "tag_id"
