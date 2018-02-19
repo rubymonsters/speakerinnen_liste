@@ -1,12 +1,21 @@
 [![Build Status](https://travis-ci.org/rubymonsters/speakerinnen_liste.png)](https://travis-ci.org/rubymonsters/speakerinnen_liste) [![Code Climate](https://codeclimate.com/github/rubymonsters/speakerinnen_liste.png)](https://codeclimate.com/github/rubymonsters/speakerinnen_liste)
 
+# About speakerinnen.org
+
 speakerinnen.org is a searchable web directory designed specifically for women conference speakers. Women speakers are encouraged to sign up and provide professional information, including their area of expertise, any previous conferences they've presented at, contact details, etc.
 
 The aim of the app is to provide a way for conference and event organizers to find and contact appropriate women speakers. (But obviously there are many different contexts in which it can be used...)
 
 ==================
 
-## Getting Started
+# Technical Requirements
+
+- Ruby '2.2.7'
+- Ruby on Rails, '~> 4.2.7.1 '
+- Elasticsearch v2.4.x - https://www.elastic.co/downloads/elasticsearch
+- ImageMagick - https://www.imagemagick.org
+
+# Getting Started
 
 1. For your database.yml please copy config/database_example.yml (Example below in Mac OS X or Linux):
 
