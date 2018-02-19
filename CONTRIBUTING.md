@@ -39,8 +39,17 @@ When you have made your changes and tested them, please send us a [pull request]
 
 3. [Create a PostgreSQL](https://www.digitalocean.com/community/tutorials/how-to-use-roles-and-manage-grant-permissions-in-postgresql-on-a-vps--2) user with the same name as your username
 
-4. With a Mac: Install [elasticsearch](https://www.elastic.co/guide/en/elasticsearch/reference/2.4/setup.html) - we use version 2.4. If you are on a Mac and use homebrew and have any issues to install the old version (which is 'keg only'), try ```brew link —force elasticsearch@2.4``` to make elasticsearch run.
---> Information on Ubuntu will follow soon. 
+4.a) With a **Mac**: Install [elasticsearch](https://www.elastic.co/guide/en/elasticsearch/reference/2.4/setup.html) - we use version 2.4. If you are on a Mac and use homebrew and have any issues to install the old version (which is 'keg only'), try ```brew link —force elasticsearch@2.4``` to make elasticsearch run.
+4.b) With a ubuntu you follow that guide to install [elasticseach 2.4.5])(https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-elasticsearch-on-ubuntu-16-04)
+
+you also need to export:
+```
+TEST_CLUSTER_COMMAND=./tmp/elasticsearch-2.4.5/bin/elasticsearch
+sudo service elasticsearch start
+```
+
+
+
 
 5. Install Bundler (if you don't have it already)
 	```
