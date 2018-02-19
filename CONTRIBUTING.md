@@ -39,8 +39,44 @@ When you have made your changes and tested them, please send us a [pull request]
 
 3. [Create a PostgreSQL](https://www.digitalocean.com/community/tutorials/how-to-use-roles-and-manage-grant-permissions-in-postgresql-on-a-vps--2) user with the same name as your username
 
-4. With a Mac: Install [elasticsearch](https://www.elastic.co/guide/en/elasticsearch/reference/2.4/setup.html) - we use version 2.4. If you are on a Mac and use homebrew and have any issues to install the old version (which is 'keg only'), try ```brew link —force elasticsearch@2.4``` to make elasticsearch run.
---> Information on Ubuntu will follow soon. 
+4.a) With a **Mac**: Install [elasticsearch](https://www.elastic.co/guide/en/elasticsearch/reference/2.4/setup.html) - we use version 2.4. If you are on a Mac and use homebrew and have any issues to install the old version (which is 'keg only'), try ```brew link —force elasticsearch@2.4``` to make elasticsearch run.
+
+4.b) With a **ubuntu** you follow that guide to install [elasticseach 2.4.5](https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-elasticsearch-on-ubuntu-16-04) PAY ATTENION TO THE VERSION!
+
+to install:
+```bash
+$ wget https://download.elastic.co/elasticsearch/elasticsearch/elasticsearch-2.4.5.deb
+$ sudo dpkg -i elasticsearch-2.4.5.deb
+$ sudo update-rc.d elasticsearch defaults
+```
+
+to start:
+```bash
+$ sudo service elasticsearch status
+$ sudo service elasticsearch start
+$ be rake elasticsearch:import:all
+```
+
+to test:
+```bash
+curl "localhost:9200/_nodes/settings?pretty=true"
+```
+
+To get the tests running:
+
+You have to start elasticsearch!
+```bash
+$ export ES_VERSION=2.4.5
+$ curl -sS https://download.elastic.co/elasticsearch/release/org/elasticsearch/distribution/tar/elasticsearch/${ES_VERSION}/elasticsearch-${ES_VERSION}.tar.gz | tar xz -C ./tmp
+$ export TEST_CLUSTER_COMMAND=./tmp/elasticsearch-2.4.5/bin/elasticsearch
+$ sudo service elasticsearch start
+bundle expec rspec
+```
+
+if the tests are still failing:
+```
+rake db:test:clone
+```
 
 5. Install Bundler (if you don't have it already)
 	```
