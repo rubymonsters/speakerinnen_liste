@@ -16,14 +16,15 @@ The aim of the app is to provide a way for conference and event organizers to fi
 - Ruby on Rails, '~> 4.2.7.1 '
 - Elasticsearch v2.4.x - https://www.elastic.co/downloads/elasticsearch
 - ImageMagick - https://www.imagemagick.org
+- PostgreSQL 9.5.5
 
 # Getting Started
 
-1. For your database.yml please copy config/database_example.yml (Example below in Mac OS X or Linux):
+1. For your database.yml please copy config/database_example.yml and adjust the required settings for different environments (Example below in Mac OS X or Linux):
 
-	```
-	cp config/database_example.yml config/database.yml
-	```
+```
+cp config/database_example.yml config/database.yml
+```
 
 2. Install [PostgreSQL](http://www.postgresql.org/download/) (it depends on your OS) - currently (2018-02) we use PostgreSQL 9.5.5
 
