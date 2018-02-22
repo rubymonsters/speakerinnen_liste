@@ -102,11 +102,11 @@ module Searchable
     def as_indexed_json(_options = {})
       output = as_json(
         autocomplete: { input: [fullname, twitter_de, twitter_en, topic_list] },
-only: %i[firstname lastname iso_languages country],
-  methods: [:fullname, :topic_list, :cities, *globalize_attribute_names],
-  include: {
-    medialinks: { only: %i[title description] }
-  }
+        only: %i[firstname lastname iso_languages country],
+        methods: [:fullname, :topic_list, :cities, *globalize_attribute_names],
+        include: {
+        medialinks: { only: %i[title description] }
+    }
       )
       output.select { |_key, value| value.present? }
     end
