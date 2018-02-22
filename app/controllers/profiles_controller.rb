@@ -80,8 +80,9 @@ class ProfilesController < ApplicationController
     suggester_fields  = []
     suggester_options = []
     suggestions = Profile.typeahead(params[:q])
+                          .select { |key, _value| key.to_s.match(/.*_suggest/) }
     suggestions.each do |s|
-      suggester_fields.push(s) if s.first === /.*_suggest/
+      suggester_fields.push(s)
     end
     suggester_fields.map { |s| suggester_options.push(s[1].first['options']) }
     suggestions_ordered = suggestions_upcase(suggester_options)
