@@ -29,7 +29,7 @@ The aim of the app is to provide a way for conference and event organizers to fi
 $ cp config/database_example.yml config/database.yml
 ```
 
-**1.2 Adjust the settings of that config file according to your needs and ensure you have all server environments (development, test, staging, production) configured**
+**1.2 Adjust the settings of that config file according to your needs and ensure you have all server environments (development, test, staging, production) configured.**
 
 
 ## 2. Postgres
@@ -69,10 +69,17 @@ If you have any issues to install the old version (which is 'keg only'), try `br
 
 ```bash
 
-# Installation
+# Installation Option 1: wget
 $ wget https://download.elastic.co/elasticsearch/elasticsearch/elasticsearch-2.4.5.deb
 $ sudo dpkg -i elasticsearch-2.4.5.deb
 $ sudo update-rc.d elasticsearch defaults
+
+# Installation Option 2: curl
+$ export ES_VERSION=2.4.5
+$ curl -sS https://download.elastic.co/elasticsearch/release/org/elasticsearch/distribution/tar/elasticsearch/${ES_VERSION}/elasticsearch-${ES_VERSION}.tar.gz | tar xz -C ./tmp
+
+# Set the test cluster command path for Elasticsearch
+$ export TEST_CLUSTER_COMMAND=./tmp/elasticsearch-2.4.5/bin/elasticsearch
 
 # Check the Elasticsearch status
 $ sudo service elasticsearch status
@@ -81,27 +88,15 @@ $ sudo service elasticsearch status
 $ sudo service elasticsearch start
 ```
 
-### Command Line / Download
+Please note: You can either export the variables any time you need them with `$ export VARIABLE_KEY=value` or you can store them permanently in your `.env` file and load it into your current project with `$ source .env`. To verify your env variables are now set, run `$ echo $VARIABLE_KEY` or unset them again run `$ unset VARIABLE_KEY`.
 
-```bash
 
-# Set the Elasticsearch version
-$ export ES_VERSION=2.4.5
+### Browser Download
 
-# Download the Elasticsearch 2.4.5 version
-$ curl -sS https://download.elastic.co/elasticsearch/release/org/elasticsearch/distribution/tar/elasticsearch/${ES_VERSION}/elasticsearch-${ES_VERSION}.tar.gz | tar xz -C ./tmp
-
-# Browser download
 https://www.elastic.co/downloads/past-releases/elasticsearch-2-4-5
+
 For more info, please follow the setup instructions here:
 https://www.elastic.co/guide/en/elasticsearch/reference/2.4/setup.html
-
-# Set the test cluster command path for Elasticsearch
-$ export TEST_CLUSTER_COMMAND=./tmp/elasticsearch-2.4.5/bin/elasticsearch
-
-# Start Elasticsearch
-$ sudo service elasticsearch start
-```
 
 
 **3.3 After installation verify your Elasticsearch is working:**
@@ -178,7 +173,7 @@ $ curl "localhost:9200/_nodes/settings?pretty=true"
 
   ```ruby
 
-  bundle exec rake db:seed # this will create initial profiles that are listed in the db/seed.rb
+  $ bundle exec rake db:seed # this will create initial profiles that are listed in the db/seed.rb
   ```
 
 **4.6 Import the profiles into the Elasticsearch index:**
@@ -198,10 +193,10 @@ $ curl "localhost:9200/_nodes/settings?pretty=true"
   b) via homebrew:
 
   ```bash
-  $ brew services start elasticsearch@2.4 # (as metioned in the Elasticsearch installation section)
+  $ brew services start elasticsearch@2.4 # (as mentioned in the Elasticsearch installation section)
   ```
 
-  c) via sudo service:
+  c) via sudo service (ubuntu):
 
   ```bash
   $ sudo service elasticsearch start
@@ -223,7 +218,7 @@ $ curl "localhost:9200/_nodes/settings?pretty=true"
   ```ruby
 
   # Log into the rails console
-  rails c
+  $ bundle exec rails c
 
   # Inside the rails console
   user = Profile.find(<your-profile-id>)
