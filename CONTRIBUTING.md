@@ -70,7 +70,7 @@ $ export ES_VERSION=2.4.5
 $ curl -sS https://download.elastic.co/elasticsearch/release/org/elasticsearch/distribution/tar/elasticsearch/${ES_VERSION}/elasticsearch-${ES_VERSION}.tar.gz | tar xz -C ./tmp
 $ export TEST_CLUSTER_COMMAND=./tmp/elasticsearch-2.4.5/bin/elasticsearch
 $ sudo service elasticsearch start
-bundle expec rspec
+bundle exec rspec
 ```
 
 if the tests are still failing:
