@@ -7,7 +7,7 @@ describe 'navigation', broken: false do
   subject { page }
 
   before do
-    @links_array = [categorization_admin_tags_path, admin_categories_path, admin_profiles_path]
+    @links_array = [admin_tags_path, admin_categories_path, admin_profiles_path]
     @lang_links_map = {
       'en' => %w[Categories Tags Profiles],
       'de' => %w[Kategorien Tags Profile]
