@@ -10,6 +10,11 @@ describe 'profile', type: :model do
       expect(profile.admin).to be(false)
     end
 
+    it 'admin is true when user is admin' do
+      profile_admin = FactoryGirl.build(:profile, admin: true)
+      expect(profile_admin.admin).to be(true)
+    end
+
     it 'returns a profile fullname as a string' do
       expect(profile.fullname).to eq 'Factory Girl'
     end
@@ -50,6 +55,25 @@ describe 'profile', type: :model do
       it 'in firstname and lastname' do
         expect(profile.firstname).to eq 'Ada'
         expect(profile.lastname).to eq 'Lovelace'
+      end
+    end
+  end
+
+  describe 'twitter handle' do
+    context 'sign up with twitter handle' do
+      auth = Hashie::Mash.new(provider: 'twitter', uid: 'uid', info: { nickname: 'nickname', name: 'Maren' })
+
+      it 'builds profile properly from twitter omniauth' do
+        profile = Profile.from_omniauth(auth)
+
+        expect(profile.uid).to eq 'uid'
+        expect(profile.twitter).to eq 'nickname'
+      end
+
+      it 'removes @ symbol from twitter handle' do
+        profile_twitter = FactoryGirl.build(:profile, twitter: '@tweeter', email: 'me@me.com')
+
+        expect(profile.twitter).to eq 'tweeter'
       end
     end
   end
