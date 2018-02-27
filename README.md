@@ -57,10 +57,13 @@ $ brew install elasticsearch@2.4
 # After installation
 $ echo 'export PATH="/usr/local/opt/elasticsearch@2.4/bin:$PATH"' >> ~/.zshrc # please check, if you have to replace `~/.zshrc` with any other dotfile, e.g. .bash_profile, .bashrc, etc.
 $ brew services list # check if Elasticsearch is now listed as brew services
-$ brew services start elasticsearch@2.4 # start elasticsearch
+$ brew services start elasticsearch@2.4
+
+# Optional: Set a symlink and run Elasticsearch automatically on startup
+$ ln -sfv /usr/local/opt/elasticsearch@2.4/*.plist ~/Library/LaunchAgents
 
 # Troubleshooting:
-If you have any issues to install the old version (which is 'keg only'), try `brew link —force elasticsearch@2.4` to make Elasticsearch run.
+If you have any issues to install the old version (which is 'keg only'), try `$ brew link —force elasticsearch@2.4` to make Elasticsearch run.
 ```
 
 ### Ubuntu
@@ -88,7 +91,7 @@ $ sudo service elasticsearch status
 $ sudo service elasticsearch start
 ```
 
-Please note: You can either export the variables any time you need them with `$ export VARIABLE_KEY=value` or you can store them permanently in your `.env` file and load it into your current project with `$ source .env`. To verify your env variables are now set, run `$ echo $VARIABLE_KEY` or unset them again run `$ unset VARIABLE_KEY`.
+Please note: You can either export the variables any time you need them with `$ export VARIABLE_KEY=value` or you can store them permanently in your `.env` file and load it into your current project with `$ source .env`. To verify your env variables are now set, run `$ echo $VARIABLE_KEY` or to unset run `$ unset VARIABLE_KEY`.
 
 
 ### Browser Download
@@ -101,7 +104,7 @@ https://www.elastic.co/guide/en/elasticsearch/reference/2.4/setup.html
 
 **3.3 After installation verify your Elasticsearch is working:**
 
-```javascript
+```json
 
 $ curl "localhost:9200/_nodes/settings?pretty=true"
 
@@ -145,6 +148,7 @@ $ curl "localhost:9200/_nodes/settings?pretty=true"
 **4.1 Install Bundler (if you don't have it already)**
 
   ```ruby
+
   $  gem install bundler
   ```
 
@@ -179,8 +183,6 @@ $ curl "localhost:9200/_nodes/settings?pretty=true"
 **4.6 Import the profiles into the Elasticsearch index:**
 
   ```ruby
-
-  # Run the rake task to import data
   $ bundle exec rake elasticsearch:import:all
   ```
 
@@ -193,12 +195,14 @@ $ curl "localhost:9200/_nodes/settings?pretty=true"
   b) via homebrew:
 
   ```bash
-  $ brew services start elasticsearch@2.4 # (as mentioned in the Elasticsearch installation section)
+
+  $ brew services start elasticsearch@2.4
   ```
 
   c) via sudo service (ubuntu):
 
   ```bash
+
   $ sudo service elasticsearch start
   ```
 
@@ -236,7 +240,7 @@ $ curl "localhost:9200/_nodes/settings?pretty=true"
 ```ruby
 
 # Run all tests of the project
-$ bundle exec rspec
+$ bundle exec rspec spec
 
 # If the tests are still failing, run:
 $ bundle exec rake db:test:clone
@@ -246,9 +250,9 @@ $ bundle exec rake db:test:clone
 
 Do you want to contribute?
 
-If you want to contribute, you can get an overview over the open issues. We are happy to answer your questions if you consider to help. All the issues have a link to their specification. If you want to work on an issue feel free to assign yourself.
+If you want to contribute, you can get an overview over the open issues on our [Project Management Board](https://github.com/rubymonsters/speakerinnen_liste/projects/1) and via https://github.com/rubymonsters/speakerinnen_liste/issues/216.
 
-https://github.com/rubymonsters/speakerinnen_liste/issues/216
+We are happy to answer your questions if you consider to help. All the issues have a link to their specification. If you want to work on an issue feel free to assign yourself.
 
 Find further details in: https://github.com/rubymonsters/speakerinnen_liste/blob/master/CONTRIBUTING.md
 
