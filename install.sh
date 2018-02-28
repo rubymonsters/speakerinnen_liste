@@ -16,8 +16,8 @@ apt-get install -y software-properties-common
 
 # Install build essentials & libraries
 apt-get install -y git curl python-software-properties build-essential \
-                   imagemagick libmagick++-dev libxslt-dev libxml2-dev \
-                   zlib1g-dev vim ruby ruby-dev git
+                   imagemagick libmagick++-dev libxml2-dev \
+                   vim ruby ruby-dev
 
 # Install latest release of node.js 9.x PPA
 apt-get update
