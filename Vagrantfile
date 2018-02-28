@@ -40,7 +40,7 @@ Vagrant.configure("2") do |config|
     # apt-get install -y apache2
     # SHELL
 
-    # config.vm.provision "file", source: "~/.gitconfig", destination: ".gitconfig"
-    # config.vm.provision "shell", path: 'install.sh'
+    config.vm.provision "file", source: "~/.gitconfig", destination: ".gitconfig"
+    config.vm.provision "shell", path: 'install.sh'
   end
 end
