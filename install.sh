@@ -29,3 +29,24 @@ apt-get install nodejs
 # Create a symlink for nodejs and node
 ln -s `which nodejs` /usr/bin/node
 
+# Install bundler
+gem install bundler
+
+# Install Java (required for Elasticsearch)
+apt-get install -y openjdk-9-jre-headless
+
+# Install Ruby Version Manager (rvm)
+apt-add-repository -y ppa:rael-gc/rvm
+apt-get update
+apt-get install -y rvm
+rvm install "ruby-2.2.7"
+
+# If you run into trouble try following
+# apt-get install rvm
+# rvm group add rvm "$USER"
+# rvm fix-permissions
+# rvm install "ruby-2.2.7"
+
+# Install Postgres & packages
+apt-get update
+apt-get install -y postgresql postgresql-contrib libpq-dev
