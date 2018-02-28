@@ -32,3 +32,4 @@
 .ruby-version
 .ruby-gemset
 .env
+.vagrant
