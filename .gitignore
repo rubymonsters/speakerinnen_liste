@@ -33,3 +33,4 @@
 .ruby-gemset
 .env
 .vagrant
+.gitconfig
