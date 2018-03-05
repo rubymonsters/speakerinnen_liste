@@ -50,7 +50,6 @@ group :development do
   gem 'bullet', '~> 5.7.3'
   gem 'derailed_benchmarks'
   gem 'letter_opener'
-  # gem 'quiet_assets' # mutes asset pipeline log messages
   gem 'stackprof'
 end
 
