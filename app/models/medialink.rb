@@ -1,4 +1,4 @@
-class Medialink < ActiveRecord::Base
+class Medialink < ApplicationRecord
   include AutoHtml
 
   belongs_to :profile

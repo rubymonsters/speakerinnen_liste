@@ -1,4 +1,4 @@
-class Profile < ActiveRecord::Base
+class Profile < ApplicationRecord
   include AutoHtml
   include HasPicture
   include Searchable

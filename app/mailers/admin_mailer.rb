@@ -1,4 +1,4 @@
-class AdminMailer < ActionMailer::Base
+class AdminMailer < ApplicationMailer
   default from: 'team@speakerinnen.org'
 
   def new_profile_confirmed(profile)
