@@ -1,2 +1,2 @@
-class ApiToken < ActiveRecord::Base
+class ApiToken < ApplicationRecord
 end

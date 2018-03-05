@@ -1,4 +1,4 @@
-class NotificationsMailer < ActionMailer::Base
+class NotificationsMailer < ApplicationMailer
   default from: 'team@speakerinnen.org'
   default to: 'team@speakerinnen.org'
 
