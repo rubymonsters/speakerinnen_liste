@@ -611,7 +611,7 @@ DEPENDENCIES
   pry
   quiet_assets
   rack-piwik (~> 0.3.0)
-  rails (~> 4.2.7.1)
+  rails
   rails_12factor
   recaptcha
   rspec-rails (~> 3.2, >= 3.2.1)
@@ -626,7 +626,7 @@ DEPENDENCIES
   unicorn
 
 RUBY VERSION
-   ruby 2.2.7p470
+   ruby 2.3.1p112
 
 BUNDLED WITH
    1.16.1
