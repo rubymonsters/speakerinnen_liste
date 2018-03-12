@@ -2,12 +2,12 @@
 # include AuthHelper
 
 # describe Api::V1::ProfilesController, type: :controller do
-#   let(:profile1) { FactoryGirl.create(:published, twitter: 'factorygirl', city: 'New York', country: 'Unicornland') }
+#   let(:profile1) { FactoryBot.create(:published, twitter: 'factorygirl', city: 'New York', country: 'Unicornland') }
 #   let(:data) { JSON.parse(response.body) }
 
 #   describe 'test index action' do
-#     let(:profile2) { FactoryGirl.create(:published) }
-#     let(:unpublished_profile) { FactoryGirl.create(:profile) }
+#     let(:profile2) { FactoryBot.create(:published) }
+#     let(:unpublished_profile) { FactoryBot.create(:profile) }
 
 #     before do
 #       http_login('horst', '123')

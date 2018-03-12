@@ -16,8 +16,8 @@ describe 'navigation', broken: false do
 
   %w[en de].each do |language|
     describe 'go to the index page' do
-      let!(:profile1) { FactoryGirl.create(:published) }
-      let!(:profile2) { FactoryGirl.create(:published) }
+      let!(:profile1) { FactoryBot.create(:published) }
+      let!(:profile2) { FactoryBot.create(:published) }
 
       it 'should show the correct amount of speakerinnen' do
         visit "#{language}/profiles"
@@ -26,7 +26,7 @@ describe 'navigation', broken: false do
     end
 
     context 'signed in as normal user' do
-      let(:profile) { FactoryGirl.create(:profile) }
+      let(:profile) { FactoryBot.create(:profile) }
       before do
         sign_in profile, language
       end
@@ -40,7 +40,7 @@ describe 'navigation', broken: false do
     end
 
     context 'signed in as admin' do
-      let(:admin) { FactoryGirl.create(:admin) }
+      let(:admin) { FactoryBot.create(:admin) }
       before do
         sign_in admin, language
       end

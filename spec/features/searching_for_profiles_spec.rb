@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe 'profile search' do
   let!(:profile) do
-    FactoryGirl.create(:published, firstname: 'Ada', lastname: 'Lovelace',
+    FactoryBot.create(:published, firstname: 'Ada', lastname: 'Lovelace',
                                       twitter: 'alovelace', city: 'London',
                                       country: 'GB',
                                       iso_languages: ['en'],
@@ -14,7 +14,7 @@ describe 'profile search' do
   end
 
   let!(:profile1) do
-    FactoryGirl.create(:published, firstname: 'Maria', lastname: 'Curie',
+    FactoryBot.create(:published, firstname: 'Maria', lastname: 'Curie',
                                       twitter: '', city: 'Paris',
                                       country: 'FR',
                                       iso_languages: %w[en fr],
@@ -25,10 +25,10 @@ describe 'profile search' do
                                       email: 'maria@example.com')
   end
   #
-  let!(:profile2) { FactoryGirl.create(:published, firstname: 'Christiane', lastname: 'König', city: 'Heidelberg', languages: 'German') }
-  let!(:profile3) { FactoryGirl.create(:published, firstname: 'Maren ', lastname: 'Meier') }
+  let!(:profile2) { FactoryBot.create(:published, firstname: 'Christiane', lastname: 'König', city: 'Heidelberg', languages: 'German') }
+  let!(:profile3) { FactoryBot.create(:published, firstname: 'Maren ', lastname: 'Meier') }
 
-  let!(:profile_not_matched) { FactoryGirl.create(:published, firstname: 'Angela', city: 'New York', twitter: '@adavis') }
+  let!(:profile_not_matched) { FactoryBot.create(:published, firstname: 'Angela', city: 'New York', twitter: '@adavis') }
 
   describe 'public search', elasticsearch: true do
     # it 'displays profiles that are a partial match' do
@@ -67,7 +67,7 @@ describe 'profile search' do
   #   before do
   #     sign_in admin
   #   end
-  #   let(:admin) { FactoryGirl.create(:admin) }
+  #   let(:admin) { FactoryBot.create(:admin) }
 
   #   it 'finds the correct profile' do
   #     visit admin_profiles_path

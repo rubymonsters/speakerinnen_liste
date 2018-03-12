@@ -1,19 +1,19 @@
 describe 'show locale_language' do
-  let!(:admin) { FactoryGirl.create(:admin) }
+  let!(:admin) { FactoryBot.create(:admin) }
 
-  let!(:locale_language_de) { FactoryGirl.create(:locale_language_de) }
-  let!(:locale_language_en) { FactoryGirl.create(:locale_language_en) }
+  let!(:locale_language_de) { FactoryBot.create(:locale_language_de) }
+  let!(:locale_language_en) { FactoryBot.create(:locale_language_en) }
 
   let!(:tag_both_lang) do
-    FactoryGirl.create(:tag_social_media,
+    FactoryBot.create(:tag_social_media,
                        locale_languages: [locale_language_en, locale_language_de])
   end
   let!(:tag_en) do
-    FactoryGirl.create(:tag_physics,
+    FactoryBot.create(:tag_physics,
                        locale_languages: [locale_language_en])
   end
   let!(:tag_with_slash_en) do
-    FactoryGirl.create(:tag,
+    FactoryBot.create(:tag,
                        name: 'AC/DC',
                        locale_languages: [locale_language_en])
   end

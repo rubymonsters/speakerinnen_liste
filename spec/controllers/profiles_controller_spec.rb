@@ -3,12 +3,12 @@ include AuthHelper
 describe ProfilesController, type: :controller do
   describe 'test index action' do
     let!(:profile) do
-      FactoryGirl.create(:published,
+      FactoryBot.create(:published,
                          topic_list: %w[ruby algorithms])
     end
-    let!(:profile_unpublished) { FactoryGirl.create(:unpublished) }
+    let!(:profile_unpublished) { FactoryBot.create(:unpublished) }
     let!(:ada) do
-      FactoryGirl.create(:published,
+      FactoryBot.create(:published,
                          main_topic_en: 'first computer program',
                          bio_en:        'first female programer')
     end
@@ -48,9 +48,9 @@ describe ProfilesController, type: :controller do
   end
 
   describe 'show profile' do
-    let!(:profile) { FactoryGirl.create(:unpublished) }
-    let!(:profile1) { FactoryGirl.create(:published) }
-    let!(:admin) { FactoryGirl.create(:admin) }
+    let!(:profile) { FactoryBot.create(:unpublished) }
+    let!(:profile1) { FactoryBot.create(:published) }
+    let!(:admin) { FactoryBot.create(:admin) }
 
     describe 'of unpublished profile' do
       it 'is not permitted for unauthorized not signed in profile' do
@@ -86,7 +86,7 @@ describe ProfilesController, type: :controller do
   end
 
   describe 'edit profile' do
-    let!(:profile) { FactoryGirl.create(:published) }
+    let!(:profile) { FactoryBot.create(:published) }
 
     before do
       sign_in profile

@@ -1,11 +1,11 @@
 include AuthHelper
 
 describe Admin::ProfilesController, type: :controller do
-  let!(:admin) { FactoryGirl.create(:admin) }
-  let!(:admin_medialink) { FactoryGirl.create(:medialink, profile_id: admin.id) }
-  let!(:non_admin) { FactoryGirl.create(:published) }
+  let!(:admin) { FactoryBot.create(:admin) }
+  let!(:admin_medialink) { FactoryBot.create(:medialink, profile_id: admin.id) }
+  let!(:non_admin) { FactoryBot.create(:published) }
   let!(:non_admin_medialink) do
-    FactoryGirl.create(:medialink,
+    FactoryBot.create(:medialink,
                        profile_id: non_admin.id,
                        title: 'Ada and the computer',
                        url: 'www.adalovelace.de',
@@ -15,8 +15,8 @@ describe Admin::ProfilesController, type: :controller do
   describe 'GET index' do
     before(:each) do
       sign_in admin
-      @profile = FactoryGirl.create(:admin, firstname: 'Awe')
-      @profile1 = FactoryGirl.create(:admin, firstname: 'NotInc')
+      @profile = FactoryBot.create(:admin, firstname: 'Awe')
+      @profile1 = FactoryBot.create(:admin, firstname: 'NotInc')
     end
 
     describe 'when search param is provided' do
@@ -205,7 +205,7 @@ describe Admin::ProfilesController, type: :controller do
   end
 
   describe 'POST published' do
-    before { @unpublished = FactoryGirl.create(:unpublished) }
+    before { @unpublished = FactoryBot.create(:unpublished) }
 
     context 'When user is admin' do
       before(:each) do
@@ -249,7 +249,7 @@ describe Admin::ProfilesController, type: :controller do
   end
 
   describe 'POST unpublished' do
-    before { @published = FactoryGirl.create(:published) }
+    before { @published = FactoryBot.create(:published) }
 
     context 'When user is admin' do
       before(:each) do
