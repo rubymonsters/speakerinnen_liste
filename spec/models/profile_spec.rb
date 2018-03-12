@@ -59,25 +59,6 @@ describe 'profile', type: :model do
     end
   end
 
-  describe 'twitter handle' do
-    context 'sign up with twitter handle' do
-      auth = Hashie::Mash.new(provider: 'twitter', uid: 'uid', info: { nickname: 'nickname', name: 'Maren' })
-
-      it 'builds profile properly from twitter omniauth' do
-        profile = Profile.from_omniauth(auth)
-
-        expect(profile.uid).to eq 'uid'
-        expect(profile.twitter).to eq 'nickname'
-      end
-
-      it 'removes @ symbol from twitter handle' do
-        profile_twitter = FactoryGirl.build(:profile, twitter: '@tweeter', email: 'me@me.com')
-
-        expect(profile.twitter).to eq 'tweeter'
-      end
-    end
-  end
-
   describe 'iso_languages' do
     it 'is empty' do
       expect(Profile.new.iso_languages).to eq []
