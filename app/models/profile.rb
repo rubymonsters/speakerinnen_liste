@@ -32,7 +32,7 @@ class Profile < ApplicationRecord
   acts_as_taggable_on :topics
 
   before_save(on: %i[create update]) do
-    twitter.gsub!(%r{^@|https:|http:|:|//|www.|twitter.com/}, '') if twitter
+    twitter.gsub(%r{^@|https:|http:|:|//|www.|twitter.com/}, '') if twitter
     firstname.strip! if firstname
     lastname.strip! if lastname
   end

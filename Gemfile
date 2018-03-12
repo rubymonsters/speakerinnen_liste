@@ -55,7 +55,7 @@ end
 
 group :development, :test do
   gem 'byebug'
-  gem 'capybara', '~> 2.4.1'
+  gem 'capybara', '~> 2.18.0'
   gem 'guard'
   gem 'guard-rspec'
   gem 'pry'
@@ -69,7 +69,7 @@ group :test do
   gem 'elasticsearch-extensions', git: 'git://github.com/elasticsearch/elasticsearch-ruby.git', ref: '2.x'
   gem 'factory_bot_rails'
   gem 'poltergeist', '1.17.0'
-  gem 'test_after_commit'
+  gem 'rails-controller-testing'
 end
 
 gem 'coffee-rails', '~> 4.2.2'
