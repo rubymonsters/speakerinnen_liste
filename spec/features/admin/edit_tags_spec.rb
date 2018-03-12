@@ -1,10 +1,10 @@
 describe 'locale_language' do
-  let!(:admin) { FactoryGirl.create(:admin) }
+  let!(:admin) { FactoryBot.create(:admin) }
 
-  let!(:locale_language_de) { FactoryGirl.create(:locale_language_de) }
-  let!(:locale_language_en) { FactoryGirl.create(:locale_language_en) }
+  let!(:locale_language_de) { FactoryBot.create(:locale_language_de) }
+  let!(:locale_language_en) { FactoryBot.create(:locale_language_en) }
 
-  let!(:tag_chemie) { FactoryGirl.create(:tag_chemie) }
+  let!(:tag_chemie) { FactoryBot.create(:tag_chemie) }
 
   before(:each) do
     sign_in admin

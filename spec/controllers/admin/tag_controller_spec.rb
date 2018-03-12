@@ -1,9 +1,9 @@
 include AuthHelper
 
 describe Admin::TagsController, type: :controller do
-  let!(:admin) { FactoryGirl.create(:admin) }
-  let!(:ada) { FactoryGirl.create(:published, topic_list: %w[algebra algorithm computer]) }
-  let!(:marie) { FactoryGirl.create(:published, topic_list: ['radioactive', 'x-ray']) }
+  let!(:admin) { FactoryBot.create(:admin) }
+  let!(:ada) { FactoryBot.create(:published, topic_list: %w[algebra algorithm computer]) }
+  let!(:marie) { FactoryBot.create(:published, topic_list: ['radioactive', 'x-ray']) }
 
   before(:each) do
     sign_in admin

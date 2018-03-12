@@ -1,15 +1,15 @@
 include AuthHelper
 
 describe 'profile navigation' do
-  let!(:locale_language_de) { FactoryGirl.create(:locale_language_de) }
-  let!(:locale_language_en) { FactoryGirl.create(:locale_language_en) }
+  let!(:locale_language_de) { FactoryBot.create(:locale_language_de) }
+  let!(:locale_language_en) { FactoryBot.create(:locale_language_en) }
 
-  let!(:tag_de) { FactoryGirl.create(:tag_chemie, locale_languages: [locale_language_de]) }
-  let!(:tag_en) { FactoryGirl.create(:tag_physics, locale_languages: [locale_language_en]) }
-  let!(:tag_no_lang) { FactoryGirl.create(:tag, name: 'math') }
+  let!(:tag_de) { FactoryBot.create(:tag_chemie, locale_languages: [locale_language_de]) }
+  let!(:tag_en) { FactoryBot.create(:tag_physics, locale_languages: [locale_language_en]) }
+  let!(:tag_no_lang) { FactoryBot.create(:tag, name: 'math') }
 
   let!(:ada) do
-    FactoryGirl.create(:published,
+    FactoryBot.create(:published,
                        firstname: 'Ada',
                        lastname: 'Lovelace',
                        email: 'ada@lovelace.de',
@@ -25,7 +25,7 @@ describe 'profile navigation' do
   end
 
   let!(:ada_medialink) do
-    FactoryGirl.create(:medialink,
+    FactoryBot.create(:medialink,
                        profile_id: ada.id,
                        title: 'Ada and the computer',
                        url: 'www.adalovelace.de',

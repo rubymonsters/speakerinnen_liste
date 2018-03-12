@@ -1,8 +1,8 @@
 include AuthHelper
 
 describe Admin::CategoriesController, type: :controller do
-  let!(:admin) { FactoryGirl.create(:admin) }
-  let!(:category) { FactoryGirl.create(:cat_science) }
+  let!(:admin) { FactoryBot.create(:admin) }
+  let!(:category) { FactoryBot.create(:cat_science) }
 
   before(:each) do
     sign_in admin

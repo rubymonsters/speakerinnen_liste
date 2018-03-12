@@ -1,11 +1,11 @@
 include AuthHelper
 
 describe 'admin navigation' do
-  let!(:admin) { FactoryGirl.create(:admin) }
-  let!(:admin_medialink) { FactoryGirl.create(:medialink, profile_id: admin.id) }
+  let!(:admin) { FactoryBot.create(:admin) }
+  let!(:admin_medialink) { FactoryBot.create(:medialink, profile_id: admin.id) }
 
   let!(:ada) do
-    FactoryGirl.create(:published,
+    FactoryBot.create(:published,
                        firstname: 'Ada',
                        lastname: 'Lovelace',
                        email: 'ada@lovelace.de',
@@ -18,11 +18,11 @@ describe 'admin navigation' do
                        iso_languages: %w[en fr],
                        topic_list: 'algorithm, mathematic')
   end
-  let!(:marie) { FactoryGirl.create(:unpublished, firstname: 'Marie') }
-  let!(:rosa) { FactoryGirl.create(:unconfirmed, firstname: 'Rosa') }
+  let!(:marie) { FactoryBot.create(:unpublished, firstname: 'Marie') }
+  let!(:rosa) { FactoryBot.create(:unconfirmed, firstname: 'Rosa') }
 
   let!(:ada_medialink) do
-    FactoryGirl.create(:medialink,
+    FactoryBot.create(:medialink,
                        profile_id: ada.id,
                        title: 'Ada and the computer',
                         url: 'www.adalovelace.de',

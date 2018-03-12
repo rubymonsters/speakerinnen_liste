@@ -67,7 +67,7 @@ end
 group :test do
   gem 'database_cleaner', '~> 1.2.0'
   gem 'elasticsearch-extensions', git: 'git://github.com/elasticsearch/elasticsearch-ruby.git', ref: '2.x'
-  gem 'factory_girl_rails', '4.9.0'
+  gem 'factory_bot_rails'
   gem 'poltergeist', '1.17.0'
   gem 'test_after_commit'
 end
