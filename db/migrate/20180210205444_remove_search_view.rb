@@ -1,5 +1,11 @@
-class SearchViewVersion2 < ActiveRecord::Migration
+class RemoveSearchView < ActiveRecord::Migration
   def up
+    execute <<-SQL
+      DROP VIEW searches;
+    SQL
+  end
+
+  def down
     execute <<-SQL
       DROP VIEW searches;
       CREATE VIEW searches AS
@@ -13,10 +19,6 @@ class SearchViewVersion2 < ActiveRecord::Migration
       GROUP BY profiles.id;
 
     SQL
-
-  end
-
-  def down
   end
 
 end

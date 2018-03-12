@@ -13,7 +13,7 @@ SpeakerinnenListe::Application.routes.draw do
     namespace :admin do
       resources :tags, except: [:new, :create] do
         collection do
-          get 'categorization'
+          get 'index'
         end
         member do
           post 'set_category'
