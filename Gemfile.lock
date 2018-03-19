@@ -471,6 +471,8 @@ GEM
     rdoc (6.0.1)
     recaptcha (4.6.4)
       json
+    record_tag_helper (1.0.0)
+      actionview (~> 5.x)
     redcarpet (3.4.0)
     ref (2.0.0)
     request_store (1.4.0)
@@ -617,6 +619,7 @@ DEPENDENCIES
   rails-controller-testing
   rails_12factor
   recaptcha
+  record_tag_helper (~> 1.0)
   rspec-rails (~> 3.7.2)
   rubocop (~> 0.49.0)
   sass-rails (~> 5.0.7)
