@@ -1,6 +1,6 @@
 class MedialinksController < ApplicationController
-  before_filter :fetch_profile_from_params
-  before_filter :ensure_own_medialinks
+  before_action :fetch_profile_from_params
+  before_action :ensure_own_medialinks
 
   before_action :set_medialink, only: %i[edit update destroy]
 

@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  before_filter :set_locale
+  before_action :set_locale
 
   def authenticate_admin!
     return if current_profile && current_profile.admin?
