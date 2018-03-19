@@ -44,6 +44,7 @@ gem 'active_model_serializers', '~> 0.10.7'
 
 gem 'elasticsearch-model', '~> 2.0'
 gem 'elasticsearch-rails', '~> 2.0'
+gem 'record_tag_helper', '~> 1.0'
 
 group :development do
   gem 'better_errors'

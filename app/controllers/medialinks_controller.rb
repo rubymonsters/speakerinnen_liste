@@ -30,7 +30,7 @@ class MedialinksController < ApplicationController
   def create
     @medialink = @profile.medialinks.build(medialink_params)
     if @medialink.save
-      flash[:notice] = I18n.t('flash.medialink.created').html_safe
+      flash[:notice] = I18n.t('flash.medialink.created')
       redirect_to profile_medialinks_path(@profile)
     else
       flash[:notice] = I18n.t('flash.medialink.error')
