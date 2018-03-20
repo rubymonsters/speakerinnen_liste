@@ -25,7 +25,7 @@ describe ProfilesController, type: :controller do
 
   before do
     sign_in ada
-    get :edit, id: ada.id
+    get :edit, params: { id: ada.id }
   end
 
   describe 'test update action' do
