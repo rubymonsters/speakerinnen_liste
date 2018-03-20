@@ -52,7 +52,7 @@
         input_html: { value: @profile.topic_list.to_s, class: "input--width-100" }, wrapper_html: { class: "mv" } %>
 
     <ul class='hidden' id='availableTags'>
-      <% ActsAsTaggableOn::Tag.uniq.pluck(:name).each do |tag_name| %>
+      <% ActsAsTaggableOn::Tag.distinct.pluck(:name).each do |tag_name| %>
         <li><%= tag_name %></li>
       <% end %>
     </ul>

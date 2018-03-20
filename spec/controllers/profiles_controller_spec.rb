@@ -35,12 +35,12 @@ describe ProfilesController, type: :controller do
   describe 'search action', elasticsearch: true do
     it 'should display search results if search term is present' do
       sleep 1
-      get :index, search: 'ruby'
+      get :index, params: { search: 'ruby' }
       expect(response).to be_success
     end
 
     it 'should store aggregations in aggs variable' do
-      get :index, search: 'ruby'
+      get :index, params: { search: 'ruby' }
       expect(assigns(:aggs)).to have_key(:city)
       expect(assigns(:aggs)).to have_key(:lang)
       expect(assigns(:aggs)).to have_key(:country)
@@ -54,7 +54,7 @@ describe ProfilesController, type: :controller do
 
     describe 'of unpublished profile' do
       it 'is not permitted for unauthorized not signed in profile' do
-        get :show, id: profile.id
+        get :show, params: { id: profile.id }
         expect(response).to redirect_to("/#{I18n.locale}/profiles")
       end
 
@@ -72,14 +72,14 @@ describe ProfilesController, type: :controller do
 
       it 'is permitted for admin' do
         sign_in admin
-        get :show, id: profile.id
+        get :show, params: { id: profile.id }
         expect(response).to render_template(:show)
       end
     end
 
     describe 'of published profile' do
       it 'should be seen by all profiles' do
-        get :show, id: profile1.id
+        get :show, params: { id: profile1.id }
         expect(response).to render_template(:show)
       end
     end
@@ -113,7 +113,7 @@ describe ProfilesController, type: :controller do
               'id':           en_translation.id
             } }
       }
-      patch :update, { id: profile.id }.merge(profile: profile_params)
+      patch :update, params: { id: profile.id }.merge(profile: profile_params)
 
       expect(profile.reload.translations.size).to eq(2)
     end
