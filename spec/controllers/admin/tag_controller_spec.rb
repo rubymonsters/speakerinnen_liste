@@ -187,7 +187,7 @@ describe Admin::TagsController, type: :controller do
 
       it 'assings a language to the topic' do
         # should be --> put :update, params: { languages: ['en'], id: tag.id } but test fails then
-        put :update, languages: ['en'], id: tag.id
+        put :update, params: { languages: ['en'], id: tag.id }
         expect(tag.locale_languages.first.iso_code).to match('en')
       end
 
@@ -222,7 +222,7 @@ describe Admin::TagsController, type: :controller do
       before(:each) do
         @tag.categories << @category
         # should be --> post :remove_category, params: { id: @tag.id, category_id: @category.id }
-        post :remove_category, id: @tag.id, category_id: @category.id
+        post :remove_category, params: { id: @tag.id, category_id: @category.id }
       end
 
       specify { expect(response).to redirect_to("/#{I18n.locale}/admin/tags/index") }
@@ -237,7 +237,7 @@ describe Admin::TagsController, type: :controller do
       before(:each) do
         @tag = ActsAsTaggableOn::Tag.find_by_name('algorithm')
         # should be --> delete :destroy, params: { id: @tag.id }
-        delete :destroy, id: @tag.id
+        delete :destroy, params: { id: @tag.id }
       end
 
       it 'should not find the destroyed tag' do

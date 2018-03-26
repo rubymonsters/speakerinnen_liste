@@ -60,13 +60,13 @@ describe ProfilesController, type: :controller do
 
       it 'is not permitted for unauthorized signed in profile' do
         sign_in profile1
-        get :show, id: profile.id
+        get :show, params: { id: profile.id }
         expect(response).to redirect_to("/#{I18n.locale}/profiles")
       end
 
       it 'is permitted for own profile' do
         sign_in profile
-        get :show, id: profile.id
+        get :show, params: { id: profile.id }
         expect(response).to render_template(:show)
       end
 

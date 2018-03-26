@@ -49,7 +49,7 @@ describe Admin::CategoriesController, type: :controller do
 
   describe 'GET edit' do
     before(:each) do
-      get :edit, id: category.id
+      get :edit, params: { id: category.id }
     end
 
     specify { expect(response).to render_template(:edit) }
