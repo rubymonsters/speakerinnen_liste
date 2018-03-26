@@ -41,7 +41,7 @@ RSpec.configure do |config|
 
   config.include Rails.application.routes.url_helpers
   config.include Capybara::DSL
-  config.include Devise::TestHelpers, type: :controller
+  config.include Devise::Test::ControllerHelpers, type: :controller
 
   config.filter_run_excluding broken: true
 
