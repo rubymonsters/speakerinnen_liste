@@ -10,6 +10,11 @@ describe 'profile', type: :model do
       expect(profile.admin).to be(false)
     end
 
+    it 'admin is true when user is admin' do
+      profile_admin = FactoryGirl.build(:profile, admin: true)
+      expect(profile_admin.admin).to be(true)
+    end
+
     it 'returns a profile fullname as a string' do
       expect(profile.fullname).to eq 'Factory Girl'
     end

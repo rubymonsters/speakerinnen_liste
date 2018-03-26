@@ -34,4 +34,11 @@ describe 'tags', type: :model do
     expect(ActsAsTaggableOn::Tag.count).to eq 1
     expect(ActsAsTaggableOn::Tagging.count).to eq 2
   end
+
+  it 'forces tags to lowercase' do
+    ada.topic_list.clear
+    ada.topic_list.add('Juni')
+    ada.save!
+    expect(ada.topic_list.first).to eq('juni')
+  end
 end
