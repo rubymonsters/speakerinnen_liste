@@ -89,6 +89,21 @@ describe ProfilesController, type: :controller do
     let!(:profile) { FactoryGirl.create(:published) }
     let!(:profile1) { FactoryGirl.create(:published) }
 
+    context 'when editing own profile' do
+      before do
+        sign_in profile
+        get :edit, locale: 'de', id: profile.id
+      end
+
+      it 'should render edit view' do
+        expect(response).to render_template(:edit)
+      end
+
+      it 'should return a 200 status response' do
+        expect(response.status).to eq 200
+      end
+    end
+
     context 'when trying to edit a different profile' do
       before do
         sign_in profile
@@ -150,6 +165,139 @@ describe ProfilesController, type: :controller do
       patch :update, { id: profile.id }.merge(profile: profile_params)
 
       expect(profile.reload.translations.size).to eq(2)
+    end
+  end
+
+  describe 'update profile action' do
+    let!(:profile) { FactoryGirl.create(:published) }
+    let!(:profile1) { FactoryGirl.create(:published) }
+
+    context 'when updating own profile' do
+      before do
+        sign_in profile
+        put :update, id: profile.id, profile: { firstname: 'marie', lastname: 'curie' }
+      end
+
+      it 'should update the requested Profile' do
+        profile.reload
+        expect(profile.firstname).to eq 'marie'
+      end
+
+      it 'should redirect to the updated profile' do
+        expect(response).to redirect_to("/#{I18n.locale}/profiles/marie-curie")
+      end
+
+      it 'should return a 302 status response' do
+        expect(response.status).to eq 302
+      end
+    end
+
+    context 'when trying to update a different profile' do
+      before do
+        sign_in profile
+        put :update, id: profile1.id, profile: { firstname: 'marie', lastname: 'curie' }
+      end
+
+      it 'should not update the requested profile' do
+        profile1.reload
+        expect(profile1.firstname).to eq("Factory")
+      end
+
+      it 'should redirect to profiles overview' do
+        expect(response).to redirect_to("/#{I18n.locale}/profiles")
+      end
+
+      it 'should return a 302 status response' do
+        expect(response.status).to eq 302
+      end
+    end
+
+    context 'when trying update profile if user is not signed in' do
+      before do
+        put :update, id: profile.id, profile: { firstname: 'marie', lastname: 'curie' }
+      end
+
+      it 'should not update the requested profile' do
+        profile.reload
+        expect(profile1.firstname).to eq("Factory")
+      end
+
+      it 'should redirect to profiles overview' do
+        expect(response).to redirect_to("/#{I18n.locale}/profiles")
+      end
+
+      it 'should return a 302 status response' do
+        expect(response.status).to eq 302
+      end
+    end
+  end
+
+  describe 'destroy profile action' do
+    let!(:profile) { FactoryGirl.create(:published) }
+    let!(:profile1) { FactoryGirl.create(:published) }
+
+    context 'when destroying own profile' do
+      before do
+        sign_in profile
+      end
+
+      it 'should destroy requested profile' do
+        expect do
+          delete :destroy, id: profile.id
+        end.to change(Profile, :count).by(-1)
+      end
+
+      it 'should not find the destroyed user' do
+        delete :destroy, id: profile.id
+        expect { Profile.find(profile.id) }.to raise_exception(ActiveRecord::RecordNotFound)
+      end
+
+      it 'should redirect to the updated profile' do
+        delete :destroy, id: profile.id
+        expect(response).to redirect_to("/#{I18n.locale}/profiles")
+      end
+
+      it 'should return a 302 status response' do
+        delete :destroy, id: profile.id
+        expect(response.status).to eq 302
+      end
+    end
+
+    context 'when trying to destroy a different profile' do
+      before do
+        sign_in profile
+        delete :destroy, id: profile1.id
+      end
+
+      it 'should not destroy the requested profile' do
+        expect(Profile.where(id: profile1.id).count).to eq 1
+      end
+
+      it 'should redirect to profiles overview' do
+        expect(response).to redirect_to("/#{I18n.locale}/profiles")
+      end
+
+      it 'should return a 302 status response' do
+        expect(response.status).to eq 302
+      end
+    end
+
+    context 'when trying destroy profile if user is not signed in' do
+      before do
+        delete :destroy, id: profile.id
+      end
+
+      it 'should not destroy the requested profile' do
+        expect(Profile.where(id: profile.id).count).to eq 1
+      end
+
+      it 'should redirect to profiles overview' do
+        expect(response).to redirect_to("/#{I18n.locale}/profiles")
+      end
+
+      it 'should return a 302 status response' do
+        expect(response.status).to eq 302
+      end
     end
   end
 end

@@ -20,30 +20,6 @@ class ProfilesControllerTest < ActionController::TestCase
 
   # update
 
-  test 'should update own profile' do
-    ada = profiles(:one)
-    ada.confirm!
-    sign_in(ada)
-
-    put :update, locale: 'de', id: @profile.id, profile: { bio: @profile2.bio }
-    assert_redirected_to profile_path(assigns(:profile))
-    assert_equal "#{@profile.name_or_email} wurde erfolgreich geändert.", flash[:notice]
-  end
-
-  test 'should not be able to update different profile' do
-    ada = profiles(:one)
-    ada.confirm!
-    sign_in(ada)
-
-    put :update, id: @profile2.id, profile: { bio: @profile.bio }
-    assert_redirected_to profiles_path
-  end
-
-  test 'should not be able to update profile if user is not signed in' do
-    put :update, id: @profile2.id, profile: { bio: @profile.bio }
-    assert_redirected_to profiles_path
-  end
-
   test 'should update profile if user signed in as admin' do
     jane = profiles(:jane)
     jane.confirm!
@@ -55,37 +31,6 @@ class ProfilesControllerTest < ActionController::TestCase
   end
 
   # destroy
-
-  test 'should destroy own profile if user is signed' do
-    ada = profiles(:one)
-    ada.confirm!
-    sign_in(ada)
-
-    assert_difference('Profile.count', -1) do
-      delete :destroy, locale: 'de', id: @profile.id
-    end
-    assert_redirected_to profiles_path
-    assert_equal "#{@profile.name_or_email} wurde erfolgreich gelöscht.", flash[:notice]
-  end
-
-  test 'should not be able to destroy different profile' do
-    ada = profiles(:one)
-    ada.confirm!
-    sign_in(ada)
-
-    assert_difference('Profile.count', 0) do
-      delete :destroy, id: @profile2.id
-    end
-    assert_redirected_to profiles_path
-  end
-
-  test 'should not destroy profile if user is not sign in' do
-    assert_difference('Profile.count', 0) do
-      delete :destroy, id: @profile.id
-    end
-    assert_redirected_to profiles_path
-  end
-
   test 'should destroy profile if user signed in as admin' do
     jane = profiles(:jane)
     jane.confirm!
