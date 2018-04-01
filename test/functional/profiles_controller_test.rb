@@ -8,21 +8,6 @@ class ProfilesControllerTest < ActionController::TestCase
     @profile2 = profiles(:two)
   end
 
-  test 'should not be able edit different profile' do
-    ada = profiles(:one)
-    ada.confirm!
-    sign_in(ada)
-
-    get :edit, locale: 'de', id: @profile2.id
-    assert_response :redirect
-    assert_equal 'Du hast nicht die Rechte, das Profil zu bearbeiten.', flash[:notice]
-  end
-
-  test 'should not be able edit profile if user is not signed in' do
-    get :edit, locale: 'de', id: @profile2.id
-    assert_response :redirect
-    assert_equal 'Du hast nicht die Rechte, das Profil zu bearbeiten.', flash[:notice]
-  end
 
   test 'should get edit if user signed in as admin' do
     jane = profiles(:jane)

@@ -85,11 +85,45 @@ describe ProfilesController, type: :controller do
     end
   end
 
-  describe 'edit profile' do
+  describe 'edit profile action' do
     let!(:profile) { FactoryGirl.create(:published) }
+    let!(:profile1) { FactoryGirl.create(:published) }
 
-    before do
-      sign_in profile
+    context 'when trying to edit a different profile' do
+      before do
+        sign_in profile
+        get :edit, locale: 'de', id: profile1.id
+      end
+
+      it 'should not render edit view' do
+        expect(response).to_not render_template(:edit)
+      end
+
+      it 'should redirect to profiles overview' do
+        expect(response).to redirect_to("/#{I18n.locale}/profiles")
+      end
+
+      it 'should return a 302 status response' do
+        expect(response.status).to eq 302
+      end
+    end
+
+    context 'when trying edit profile if user is not signed in' do
+      before do
+        get :edit, locale: 'de', id: profile.id
+      end
+
+      it 'should not render edit view' do
+       expect(response).to_not render_template(:edit)
+      end
+
+      it 'should redirect to profiles overview' do
+        expect(response).to redirect_to("/#{I18n.locale}/profiles")
+      end
+
+      it 'should return a 302 status response' do
+        expect(response.status).to eq 302
+      end
     end
 
     it "doesn't create extra translations" do
