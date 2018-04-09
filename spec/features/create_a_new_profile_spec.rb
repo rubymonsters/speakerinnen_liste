@@ -9,6 +9,8 @@ describe 'profile adding' do
     fill_in 'profile_password_confirmation', with: '12345678'
     click_button I18n.t(:signup, scope: 'devise.registrations')
 
+    #add a test for email sent
+
     Profile.last.confirm!
 
     click_link I18n.t(:login, scope: 'layouts.application')
@@ -50,4 +52,7 @@ describe 'profile adding' do
     expect(page).to have_content('www.adalovelace.de')
     expect(page).to have_content('@liebe')
   end
+
+#add a test when email is taken
+
 end

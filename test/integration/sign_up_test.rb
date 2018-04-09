@@ -25,6 +25,7 @@ class SignUpTest < ActionDispatch::IntegrationTest
     assert page.has_content?('has already been taken')
   end
 
+  #
   test 'after signing up with twitter the user is required to enter the email address' do
     OmniAuth.config.test_mode = true
     OmniAuth.config.mock_auth[:twitter] = OmniAuth::AuthHash.new(
