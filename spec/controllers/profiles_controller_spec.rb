@@ -17,29 +17,29 @@ describe ProfilesController, type: :controller do
       get :index
     end
 
-    it 'should display index' do
+    it 'displays index' do
       expect(response).to be_success
       expect(response.response_code).to eq(200)
       expect(response).to render_template('index')
     end
 
-    it 'should display published profiles' do
+    it 'displays published profiles' do
       expect(assigns(:profiles)).to eq([ada])
     end
 
-    it 'should not include unpublished profiles' do
+    it 'does not include unpublished profiles' do
       expect(assigns(:profiles)).not_to include(profile_unpublished)
     end
   end
 
   describe 'search action', elasticsearch: true do
-    it 'should display search results if search term is present' do
+    it 'displays search results if search term is present' do
       sleep 1
       get :index, search: 'ruby'
       expect(response).to be_success
     end
 
-    it 'should store aggregations in aggs variable' do
+    it 'stores aggregations in aggs variable' do
       get :index, search: 'ruby'
       expect(assigns(:aggs)).to have_key(:city)
       expect(assigns(:aggs)).to have_key(:lang)
@@ -78,7 +78,7 @@ describe ProfilesController, type: :controller do
     end
 
     describe 'of published profile' do
-      it 'should be seen by all profiles' do
+      it 'can be seen by all profiles' do
         get :show, id: profile1.id
         expect(response).to render_template(:show)
       end
@@ -95,11 +95,11 @@ describe ProfilesController, type: :controller do
         get :edit, locale: 'de', id: profile.id
       end
 
-      it 'should render edit view' do
+      it 'renders edit view' do
         expect(response).to render_template(:edit)
       end
 
-      it 'should return a 200 status response' do
+      it 'returns a 200 status response' do
         expect(response.status).to eq 200
       end
     end
@@ -110,15 +110,15 @@ describe ProfilesController, type: :controller do
         get :edit, locale: 'de', id: profile1.id
       end
 
-      it 'should not render edit view' do
+      it 'does not render edit view' do
         expect(response).to_not render_template(:edit)
       end
 
-      it 'should redirect to profiles overview' do
+      it 'redirects to profiles overview' do
         expect(response).to redirect_to("/#{I18n.locale}/profiles")
       end
 
-      it 'should return a 302 status response' do
+      it 'returns a 302 status response' do
         expect(response.status).to eq 302
       end
     end
@@ -128,15 +128,15 @@ describe ProfilesController, type: :controller do
         get :edit, locale: 'de', id: profile.id
       end
 
-      it 'should not render edit view' do
+      it 'does not render edit view' do
        expect(response).to_not render_template(:edit)
       end
 
-      it 'should redirect to profiles overview' do
+      it 'redirects to profiles overview' do
         expect(response).to redirect_to("/#{I18n.locale}/profiles")
       end
 
-      it 'should return a 302 status response' do
+      it 'returns a 302 status response' do
         expect(response.status).to eq 302
       end
     end
@@ -169,26 +169,45 @@ describe ProfilesController, type: :controller do
   end
 
   describe 'update profile action' do
-    let!(:profile) { FactoryGirl.create(:published) }
+    let!(:profile) { FactoryGirl.create(:published, email: 'factory@girl.com') }
     let!(:profile1) { FactoryGirl.create(:published) }
 
-    context 'when updating own profile' do
+    context 'when updating own profile with valid params' do
       before do
         sign_in profile
         put :update, id: profile.id, profile: { firstname: 'marie', lastname: 'curie' }
       end
 
-      it 'should update the requested Profile' do
+      it 'updates the requested Profile' do
         profile.reload
         expect(profile.firstname).to eq 'marie'
       end
 
-      it 'should redirect to the updated profile' do
+      it 'redirects to the updated profile' do
         expect(response).to redirect_to("/#{I18n.locale}/profiles/marie-curie")
       end
 
-      it 'should return a 302 status response' do
+      it 'returns a 302 status response' do
         expect(response.status).to eq 302
+      end
+    end
+
+    context 'when invalid params are supplied' do
+      before do
+        sign_in profile
+        put :update, id: profile.id, profile: { email: ' ' }
+      end
+
+      it 'does not update the requested Profile' do
+        expect(profile.email).to eq('factory@girl.com')
+      end
+
+      it 'renders the edit template' do
+        expect(response).to render_template(:edit)
+      end
+
+      it 'returns a 200 status response' do
+        expect(response.status).to eq 200
       end
     end
 
@@ -198,16 +217,16 @@ describe ProfilesController, type: :controller do
         put :update, id: profile1.id, profile: { firstname: 'marie', lastname: 'curie' }
       end
 
-      it 'should not update the requested profile' do
+      it 'does not update the requested profile' do
         profile1.reload
         expect(profile1.firstname).to eq("Factory")
       end
 
-      it 'should redirect to profiles overview' do
+      it 'redirects to profiles overview' do
         expect(response).to redirect_to("/#{I18n.locale}/profiles")
       end
 
-      it 'should return a 302 status response' do
+      it 'returns a 302 status response' do
         expect(response.status).to eq 302
       end
     end
@@ -217,7 +236,7 @@ describe ProfilesController, type: :controller do
         put :update, id: profile.id, profile: { firstname: 'marie', lastname: 'curie' }
       end
 
-      it 'should not update the requested profile' do
+      it 'does not update the requested profile' do
         profile.reload
         expect(profile1.firstname).to eq("Factory")
       end

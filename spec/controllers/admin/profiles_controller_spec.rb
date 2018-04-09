@@ -85,7 +85,7 @@ describe Admin::ProfilesController, type: :controller do
   end
 
   describe 'GET edit' do
-    context 'when user is admin' do
+    context 'when user is admin they can edit any profile' do
       before(:each) do
         sign_in admin
         get :edit, { id: non_admin.id }, format: :json
@@ -103,7 +103,7 @@ describe Admin::ProfilesController, type: :controller do
       end
     end
 
-    context 'when user is not admin' do
+    context 'when user is not admin they can edit only their own profile' do
       before(:each) do
         sign_in non_admin
         get :edit, id: admin.id
