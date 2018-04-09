@@ -71,6 +71,7 @@ group :test do
   gem 'factory_bot_rails'
   gem 'poltergeist', '1.17.0'
   gem 'rails-controller-testing'
+  gem "minitest", "5.10.1" #remove this after upgrading rails from 5.0.0
 end
 
 gem 'coffee-rails', '~> 4.2.2'
