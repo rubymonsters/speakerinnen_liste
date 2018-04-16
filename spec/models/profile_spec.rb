@@ -11,7 +11,7 @@ describe 'profile', type: :model do
     end
 
     it 'admin is true when user is admin' do
-      profile_admin = FactoryGirl.build(:profile, admin: true)
+      profile_admin = FactoryBot.build(:profile, admin: true)
       expect(profile_admin.admin).to be(true)
     end
 
