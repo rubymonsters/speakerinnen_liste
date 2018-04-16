@@ -98,10 +98,6 @@ describe ProfilesController, type: :controller do
       it 'renders edit view' do
         expect(response).to render_template(:edit)
       end
-
-      it 'returns a 200 status response' do
-        expect(response.status).to eq 200
-      end
     end
 
     context 'when trying to edit a different profile' do
@@ -117,10 +113,6 @@ describe ProfilesController, type: :controller do
       it 'redirects to profiles overview' do
         expect(response).to redirect_to("/#{I18n.locale}/profiles")
       end
-
-      it 'returns a 302 status response' do
-        expect(response.status).to eq 302
-      end
     end
 
     context 'when trying edit profile if user is not signed in' do
@@ -134,10 +126,6 @@ describe ProfilesController, type: :controller do
 
       it 'redirects to profiles overview' do
         expect(response).to redirect_to("/#{I18n.locale}/profiles")
-      end
-
-      it 'returns a 302 status response' do
-        expect(response.status).to eq 302
       end
     end
 
@@ -186,10 +174,6 @@ describe ProfilesController, type: :controller do
       it 'redirects to the updated profile' do
         expect(response).to redirect_to("/#{I18n.locale}/profiles/marie-curie")
       end
-
-      it 'returns a 302 status response' do
-        expect(response.status).to eq 302
-      end
     end
 
     context 'when invalid params are supplied' do
@@ -204,10 +188,6 @@ describe ProfilesController, type: :controller do
 
       it 'renders the edit template' do
         expect(response).to render_template(:edit)
-      end
-
-      it 'returns a 200 status response' do
-        expect(response.status).to eq 200
       end
     end
 
@@ -225,10 +205,6 @@ describe ProfilesController, type: :controller do
       it 'redirects to profiles overview' do
         expect(response).to redirect_to("/#{I18n.locale}/profiles")
       end
-
-      it 'returns a 302 status response' do
-        expect(response.status).to eq 302
-      end
     end
 
     context 'when trying update profile if user is not signed in' do
@@ -243,10 +219,6 @@ describe ProfilesController, type: :controller do
 
       it 'should redirect to profiles overview' do
         expect(response).to redirect_to("/#{I18n.locale}/profiles")
-      end
-
-      it 'should return a 302 status response' do
-        expect(response.status).to eq 302
       end
     end
   end
@@ -271,14 +243,9 @@ describe ProfilesController, type: :controller do
         expect { Profile.find(profile.id) }.to raise_exception(ActiveRecord::RecordNotFound)
       end
 
-      it 'should redirect to the updated profile' do
+      it 'should redirect to profiles overview' do
         delete :destroy, id: profile.id
         expect(response).to redirect_to("/#{I18n.locale}/profiles")
-      end
-
-      it 'should return a 302 status response' do
-        delete :destroy, id: profile.id
-        expect(response.status).to eq 302
       end
     end
 
@@ -295,10 +262,6 @@ describe ProfilesController, type: :controller do
       it 'should redirect to profiles overview' do
         expect(response).to redirect_to("/#{I18n.locale}/profiles")
       end
-
-      it 'should return a 302 status response' do
-        expect(response.status).to eq 302
-      end
     end
 
     context 'when trying destroy profile if user is not signed in' do
@@ -312,10 +275,6 @@ describe ProfilesController, type: :controller do
 
       it 'should redirect to profiles overview' do
         expect(response).to redirect_to("/#{I18n.locale}/profiles")
-      end
-
-      it 'should return a 302 status response' do
-        expect(response.status).to eq 302
       end
     end
   end
