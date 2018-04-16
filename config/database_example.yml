@@ -14,3 +14,13 @@ test:
   <<: *default
   database: YOUR-DATABASE-NAME
   password: YOUR-DATABASE-USERNAME-PASSWORD
+
+staging:
+  <<: *default
+  database: YOUR-DATABASE-NAME
+  password: YOUR-DATABASE-USERNAME-PASSWORD
+
+production:
+  <<: *default
+  database: YOUR-DATABASE-NAME
+  password: YOUR-DATABASE-USERNAME-PASSWORD
