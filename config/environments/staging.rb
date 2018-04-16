@@ -31,6 +31,8 @@ SpeakerinnenListe::Application.configure do
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   # config.force_ssl = true
+  config.ssl_options = { hsts: false }
+
 
   # See everything in the log (default is :info)
   # config.log_level = :debug
