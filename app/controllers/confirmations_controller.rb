@@ -4,9 +4,7 @@ class ConfirmationsController < Devise::ConfirmationsController
   # The path used after confirmation.
   def after_confirmation_path_for(resource_name, resource)
     path = profile_path(resource.id)
-    if Devise.allow_insecure_sign_in_after_confirmation
-      path
-    elsif signed_in?
+    if signed_in?
       path
     else
       scope = Devise::Mapping.find_scope!(resource)
