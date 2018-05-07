@@ -9,7 +9,8 @@ class ConfirmationsController < Devise::ConfirmationsController
     else
       scope = Devise::Mapping.find_scope!(resource)
       session["#{scope}_return_to"] = path
-      redirect_to new_session_path(resource_name), notice: I18n.t(:confirmed, scope: 'devise.confirmations')
+      flash[:notice] = I18n.t(:confirmed, scope: 'devise.confirmations')
+      new_session_path(resource_name)
     end
   end
 end
