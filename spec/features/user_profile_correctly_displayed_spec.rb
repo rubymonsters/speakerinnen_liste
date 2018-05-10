@@ -1,5 +1,5 @@
 RSpec.feature 'DisplayProfile', type: :feature do
-  describe 'When choosing A language' do
+  describe 'When viewing a user profile page ' do
 
     let!(:ada) {FactoryGirl.create(:published,
                                     firstname: 'Ada',
@@ -9,7 +9,7 @@ RSpec.feature 'DisplayProfile', type: :feature do
                                     attributes: { main_topic: 'Teatime', locale: :en }
                                     )}
 
-    let!(:Inge){FactoryGirl.create(:published, 
+    let!(:Inge){FactoryGirl.create(:published,
                                     firstname: 'Inge',
                                     lastname: 'Inga',
                                     topic_list: ['fruehling', 'sommer'],
@@ -17,7 +17,7 @@ RSpec.feature 'DisplayProfile', type: :feature do
                                     attributes: { main_topic: 'Sauerkraut', locale: :de }
                                     )}
 
-    it 'displays correcly users profile in English' do
+    it 'displays profile correcly in English' do
       visit '/en'
       click_link('Ada Lovelace', match: :first)
 
@@ -26,7 +26,7 @@ RSpec.feature 'DisplayProfile', type: :feature do
       expect(page).to have_content('My bio')
     end
 
-    it 'displays correcly users profile in German' do
+    it 'displays profile correcly in German' do
       visit '/de'
       click_link('Inge Inga', match: :first)
 
