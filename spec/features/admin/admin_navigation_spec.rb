@@ -1,6 +1,24 @@
 RSpec.feature 'Navigation', type: :feature do
+  let!(:admin) { FactoryGirl.create(:admin, email: 'ada@mail.de') }
+
+  context 'admin login' do
+    scenario 'visits admin page with right credentials' do
+      visit root_path
+      expect(page).to have_text('Log in')
+
+      click_link 'Log in'
+      expect(page).to have_text('Forgot your password?')
+
+      fill_in('profile[email]', with: 'ada@mail.de')
+      fill_in('profile[password]', with: '123foobar')
+      click_button 'Sign in'
+      click_link 'Admin'
+      expect(page).to have_text('Tags')
+      expect(page).to have_text('Profile')
+    end
+  end
+
   context 'logged in as an admin' do
-    let!(:admin) { FactoryGirl.create(:admin) }
 
     before do
       sign_in admin
@@ -40,7 +58,6 @@ RSpec.feature 'Navigation', type: :feature do
         visit admin_root_path
 
         click_link 'Categories'
-
         expect(page).to have_text('Administration::Categories')
         expect(page).to have_link('Add')
         expect(page).to have_link('Edit')
@@ -95,6 +112,15 @@ RSpec.feature 'Navigation', type: :feature do
 
         expect(page).to have_button('Add comment')
       end
+    end
+
+    scenario 'viewing the correct table in the admin profile page' do
+      visit admin_root_path
+
+      click_link('Profile')
+      expect(page).to have_text('Speakerinnen')
+      expect(page).to have_text('Factory')
+      expect(page).to have_text('Comment')
     end
 
     scenario 'viewing profile edit in admin area' do
