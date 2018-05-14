@@ -1,4 +1,4 @@
-SpeakerinnenListe::Application.routes.draw do
+Rails.application.routes.draw do
 
   devise_for :profiles,
               only: :omniauth_callbacks,
@@ -48,7 +48,7 @@ SpeakerinnenListe::Application.routes.draw do
       registrations: :registrations
     }
 
-    get 'topics/:topic', to: 'profiles#index', as: :topic
+    get 'topics', to: 'profiles#index', as: :topic
 
     get 'profiles_typeahead' => 'profiles#typeahead'
 

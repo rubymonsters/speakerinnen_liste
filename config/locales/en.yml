@@ -247,7 +247,7 @@ en:
       no_permission: "You don’t have permission to edit the profile."
       show_no_permission: "You don’t have permission to see the profile."
     medialink:
-      created: "Your previous talk was successfully created. <a href='#medialinks_anchor', class='text__link--bg'>Here</a> you can find a list of your previous talks."
+      created: "Your previous talk was successfully created."
       updated: 'Your previous talk was successfully updated.'
       destroyed: 'Your previous talk was successfully deleted.'
       no_permission: "You don’t have permission to edit the reference."

@@ -5,7 +5,7 @@ RSpec.feature 'Navigation', type: :feature do
     end
 
     context 'as an unprivileged user' do
-      let(:user) { FactoryGirl.create(:profile) }
+      let(:user) { FactoryBot.create(:profile) }
 
       scenario 'shows no admin link' do
         visit root_path
@@ -58,7 +58,7 @@ RSpec.feature 'Navigation', type: :feature do
   describe 'logging in' do
     context 'registered user' do
       before do
-        FactoryGirl.create(:profile, email: 'ltest@exp.com', password: 'rightpassword', password_confirmation: 'rightpassword')
+        FactoryBot.create(:profile, email: 'ltest@exp.com', password: 'rightpassword', password_confirmation: 'rightpassword')
       end
 
       scenario 'successful login' do

@@ -1,6 +1,6 @@
 class MedialinksController < ApplicationController
-  before_filter :fetch_profile_from_params
-  before_filter :ensure_own_medialinks
+  before_action :fetch_profile_from_params
+  before_action :ensure_own_medialinks
 
   before_action :set_medialink, only: %i[edit update destroy]
 
@@ -30,7 +30,7 @@ class MedialinksController < ApplicationController
   def create
     @medialink = @profile.medialinks.build(medialink_params)
     if @medialink.save
-      flash[:notice] = I18n.t('flash.medialink.created').html_safe
+      flash[:notice] = I18n.t('flash.medialink.created')
       redirect_to profile_medialinks_path(@profile)
     else
       flash[:notice] = I18n.t('flash.medialink.error')

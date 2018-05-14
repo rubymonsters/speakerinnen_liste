@@ -3,12 +3,12 @@ include AuthHelper
 describe ProfilesController, type: :controller do
   describe 'test index action' do
     let!(:profile) do
-      FactoryGirl.create(:published,
+      FactoryBot.create(:published,
                          topic_list: %w[ruby algorithms])
     end
-    let!(:profile_unpublished) { FactoryGirl.create(:unpublished) }
+    let!(:profile_unpublished) { FactoryBot.create(:unpublished) }
     let!(:ada) do
-      FactoryGirl.create(:published,
+      FactoryBot.create(:published,
                          main_topic_en: 'first computer program',
                          bio_en:        'first female programer')
     end
@@ -35,12 +35,12 @@ describe ProfilesController, type: :controller do
   describe 'search action', elasticsearch: true do
     it 'displays search results if search term is present' do
       sleep 1
-      get :index, search: 'ruby'
+      get :index, params: { search: 'ruby' }
       expect(response).to be_success
     end
 
-    it 'stores aggregations in aggs variable' do
-      get :index, search: 'ruby'
+    it 'should store aggregations in aggs variable' do
+      get :index, params: { search: 'ruby' }
       expect(assigns(:aggs)).to have_key(:city)
       expect(assigns(:aggs)).to have_key(:lang)
       expect(assigns(:aggs)).to have_key(:country)
@@ -48,46 +48,46 @@ describe ProfilesController, type: :controller do
   end
 
   describe 'show profile' do
-    let!(:profile) { FactoryGirl.create(:unpublished) }
-    let!(:profile1) { FactoryGirl.create(:published) }
-    let!(:admin) { FactoryGirl.create(:admin) }
+    let!(:profile) { FactoryBot.create(:unpublished) }
+    let!(:profile1) { FactoryBot.create(:published) }
+    let!(:admin) { FactoryBot.create(:admin) }
 
     describe 'of unpublished profile' do
       it 'is not permitted for unauthorized not signed in profile' do
-        get :show, id: profile.id
+        get :show, params: { id: profile.id }
         expect(response).to redirect_to("/#{I18n.locale}/profiles")
       end
 
       it 'is not permitted for unauthorized signed in profile' do
         sign_in profile1
-        get :show, id: profile.id
+        get :show, params: { id: profile.id }
         expect(response).to redirect_to("/#{I18n.locale}/profiles")
       end
 
       it 'is permitted for own profile' do
         sign_in profile
-        get :show, id: profile.id
+        get :show, params: { id: profile.id }
         expect(response).to render_template(:show)
       end
 
       it 'is permitted for admin' do
         sign_in admin
-        get :show, id: profile.id
+        get :show, params: { id: profile.id }
         expect(response).to render_template(:show)
       end
     end
 
     describe 'of published profile' do
-      it 'can be seen by all profiles' do
-        get :show, id: profile1.id
+      it 'should be seen by all profiles' do
+        get :show, params: { id: profile1.id }
         expect(response).to render_template(:show)
       end
     end
   end
 
-  describe 'edit profile action' do
-    let!(:profile) { FactoryGirl.create(:published) }
-    let!(:profile1) { FactoryGirl.create(:published) }
+  describe 'edit profile' do
+    let!(:profile) { FactoryBot.create(:published) }
+    let!(:profile1) { FactoryBot.create(:published) }
 
     context 'when editing own profile' do
       before do
@@ -150,15 +150,15 @@ describe ProfilesController, type: :controller do
               'id':           en_translation.id
             } }
       }
-      patch :update, { id: profile.id }.merge(profile: profile_params)
+      patch :update, params: { id: profile.id }.merge(profile: profile_params)
 
       expect(profile.reload.translations.size).to eq(2)
     end
   end
 
   describe 'update profile action' do
-    let!(:profile) { FactoryGirl.create(:published, email: 'factory@girl.com') }
-    let!(:profile1) { FactoryGirl.create(:published) }
+    let!(:profile) { FactoryBot.create(:published, email: 'factory@girl.com') }
+    let!(:profile1) { FactoryBot.create(:published) }
 
     context 'when updating own profile with valid params' do
       before do
@@ -224,8 +224,8 @@ describe ProfilesController, type: :controller do
   end
 
   describe 'destroy profile action' do
-    let!(:profile) { FactoryGirl.create(:published) }
-    let!(:profile1) { FactoryGirl.create(:published) }
+    let!(:profile) { FactoryBot.create(:published) }
+    let!(:profile1) { FactoryBot.create(:published) }
 
     context 'when destroying own profile' do
       before do

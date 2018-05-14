@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Searchable, elasticsearch: true do
   let!(:profile) do
-    FactoryGirl.create(:published, firstname: 'Ada', lastname: 'Lovelace',
+    FactoryBot.create(:published, firstname: 'Ada', lastname: 'Lovelace',
                                       twitter_de: 'alovelace_de', twitter_en: 'alovelace',
                                       city_de: 'London', city_en: 'London', country: 'GB',
                                       languages: 'English', iso_languages: ['en'],
@@ -14,12 +14,12 @@ describe Searchable, elasticsearch: true do
   end
 
   let!(:profile2) do
-    FactoryGirl.create(:published, firstname: 'Marie', lastname: 'Curie',
+    FactoryBot.create(:published, firstname: 'Marie', lastname: 'Curie',
                                       twitter: 'mcurie', city: 'Paris',
                                       country: 'FR', languages: 'Polish, French', iso_languages: %w[pl fr])
   end
 
-  let!(:profile_not_published) { FactoryGirl.create(:unpublished, firstname: 'Fred') }
+  let!(:profile_not_published) { FactoryBot.create(:unpublished, firstname: 'Fred') }
 
   describe 'elasticsearch index' do
     it 'should be created' do
@@ -83,7 +83,7 @@ describe Searchable, elasticsearch: true do
     # it 'contains the attribute medialinks' do
     #   #ToDo we have to create the medialink here and reload the profile because.
     #   #the medialink seems already populated. Why does that happen?
-    #   FactoryGirl.create(:medialink, profile_id: profile.id)
+    #   FactoryBot.create(:medialink, profile_id: profile.id)
     #   profile.reload
 
     #   expect(profile.as_indexed_json['medialinks'][0]['title']).to eq 'thisTitle'

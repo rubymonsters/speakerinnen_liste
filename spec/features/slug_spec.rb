@@ -1,6 +1,6 @@
 describe 'adds slug when creating a profile' do
   let!(:user) do
-    FactoryGirl.create(:published,
+    FactoryBot.create(:published,
                        lastname: 'lovelace',
                        firstname: 'ada')
   end

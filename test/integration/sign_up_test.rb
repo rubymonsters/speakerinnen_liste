@@ -37,7 +37,7 @@ class SignUpTest < ActionDispatch::IntegrationTest
 
     visit '/en'
     click_link('Register as a speaker')
-    click_link('Or sign up with Twitter')
+    # click_link('\Or sign up with Twitter')
     assert page.has_button?('Sign up')
 
     find_field('profile_email')
