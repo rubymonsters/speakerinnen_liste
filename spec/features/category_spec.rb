@@ -1,8 +1,8 @@
 RSpec.feature 'Category', type: :feature do
   describe 'when a category is assigned to tags' do
 
-    let!(:ada) {FactoryGirl.create(:published, topic_list: ['fruehling'])}
-    let!(:pierre){FactoryGirl.create(:published, topic_list: ['fruehling', 'sommer'])}
+    let!(:ada) {FactoryBot.create(:published, topic_list: ['fruehling'])}
+    let!(:pierre){FactoryBot.create(:published, topic_list: ['fruehling', 'sommer'])}
     let(:tag_fruehling) {ActsAsTaggableOn::Tag.find_by_name('fruehling')}
     let(:tag_sommer) {ActsAsTaggableOn::Tag.find_by_name('sommer')}
 

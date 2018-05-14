@@ -1,5 +1,5 @@
 RSpec.feature 'Navigation', type: :feature do
-  let!(:admin) { FactoryGirl.create(:admin, email: 'ada@mail.de') }
+  let!(:admin) { FactoryBot.create(:admin, email: 'ada@mail.de') }
 
   context 'admin login' do
     scenario 'visits admin page with right credentials' do

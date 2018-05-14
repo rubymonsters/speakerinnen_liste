@@ -1,5 +1,5 @@
 describe 'signup' do
-  let!(:user) { FactoryGirl.create(:published, email: 'ada@mail.de' ) }
+  let!(:user) { FactoryBot.create(:published, email: 'ada@mail.de' ) }
 
   context 'signup with email' do
     it 'sends out confirmation link' do

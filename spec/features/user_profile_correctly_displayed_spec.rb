@@ -1,7 +1,7 @@
 RSpec.feature 'DisplayProfile', type: :feature do
   describe 'When viewing a user profile page ' do
 
-    let!(:ada) {FactoryGirl.create(:published,
+    let!(:ada) {FactoryBot.create(:published,
                                     firstname: 'Ada',
                                     lastname: 'Lovelace',
                                     topic_list: ['fruehling'],
@@ -9,7 +9,7 @@ RSpec.feature 'DisplayProfile', type: :feature do
                                     attributes: { main_topic: 'Teatime', locale: :en }
                                     )}
 
-    let!(:Inge){FactoryGirl.create(:published,
+    let!(:Inge){FactoryBot.create(:published,
                                     firstname: 'Inge',
                                     lastname: 'Inga',
                                     topic_list: ['fruehling', 'sommer'],

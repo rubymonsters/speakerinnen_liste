@@ -1,5 +1,5 @@
 RSpec.feature 'Login', type: :feature do
-  let!(:user) { FactoryGirl.create(:published, email: 'ada@mail.de' ) }
+  let!(:user) { FactoryBot.create(:published, email: 'ada@mail.de' ) }
 
   it 'login with correct password' do
     visit '/de'

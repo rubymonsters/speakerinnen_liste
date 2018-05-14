@@ -11,7 +11,7 @@ describe 'profile adding' do
 
     #add a test for email sent
 
-    Profile.last.confirm!
+    Profile.last.confirm
 
     click_link I18n.t(:login, scope: 'layouts.application')
     fill_in 'E-Mail', with: 'test@test.de'
