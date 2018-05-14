@@ -17,23 +17,23 @@ describe ProfilesController, type: :controller do
       get :index
     end
 
-    it 'should display index' do
+    it 'displays index' do
       expect(response).to be_success
       expect(response.response_code).to eq(200)
       expect(response).to render_template('index')
     end
 
-    it 'should display published profiles' do
+    it 'displays published profiles' do
       expect(assigns(:profiles)).to eq([ada])
     end
 
-    it 'should not include unpublished profiles' do
+    it 'does not include unpublished profiles' do
       expect(assigns(:profiles)).not_to include(profile_unpublished)
     end
   end
 
   describe 'search action', elasticsearch: true do
-    it 'should display search results if search term is present' do
+    it 'displays search results if search term is present' do
       sleep 1
       get :index, params: { search: 'ruby' }
       expect(response).to be_success
@@ -87,9 +87,46 @@ describe ProfilesController, type: :controller do
 
   describe 'edit profile' do
     let!(:profile) { FactoryBot.create(:published) }
+    let!(:profile1) { FactoryBot.create(:published) }
 
-    before do
-      sign_in profile
+    context 'when editing own profile' do
+      before do
+        sign_in profile
+        get :edit, locale: 'de', id: profile.id
+      end
+
+      it 'renders edit view' do
+        expect(response).to render_template(:edit)
+      end
+    end
+
+    context 'when trying to edit a different profile' do
+      before do
+        sign_in profile
+        get :edit, locale: 'de', id: profile1.id
+      end
+
+      it 'does not render edit view' do
+        expect(response).to_not render_template(:edit)
+      end
+
+      it 'redirects to profiles overview' do
+        expect(response).to redirect_to("/#{I18n.locale}/profiles")
+      end
+    end
+
+    context 'when trying edit profile if user is not signed in' do
+      before do
+        get :edit, locale: 'de', id: profile.id
+      end
+
+      it 'does not render edit view' do
+       expect(response).to_not render_template(:edit)
+      end
+
+      it 'redirects to profiles overview' do
+        expect(response).to redirect_to("/#{I18n.locale}/profiles")
+      end
     end
 
     it "doesn't create extra translations" do
@@ -116,6 +153,129 @@ describe ProfilesController, type: :controller do
       patch :update, params: { id: profile.id }.merge(profile: profile_params)
 
       expect(profile.reload.translations.size).to eq(2)
+    end
+  end
+
+  describe 'update profile action' do
+    let!(:profile) { FactoryBot.create(:published, email: 'factory@girl.com') }
+    let!(:profile1) { FactoryBot.create(:published) }
+
+    context 'when updating own profile with valid params' do
+      before do
+        sign_in profile
+        put :update, id: profile.id, profile: { firstname: 'marie', lastname: 'curie' }
+      end
+
+      it 'updates the requested Profile' do
+        profile.reload
+        expect(profile.firstname).to eq 'marie'
+      end
+
+      it 'redirects to the updated profile' do
+        expect(response).to redirect_to("/#{I18n.locale}/profiles/marie-curie")
+      end
+    end
+
+    context 'when invalid params are supplied' do
+      before do
+        sign_in profile
+        put :update, id: profile.id, profile: { email: ' ' }
+      end
+
+      it 'does not update the requested Profile' do
+        expect(profile.email).to eq('factory@girl.com')
+      end
+
+      it 'renders the edit template' do
+        expect(response).to render_template(:edit)
+      end
+    end
+
+    context 'when trying to update a different profile' do
+      before do
+        sign_in profile
+        put :update, id: profile1.id, profile: { firstname: 'marie', lastname: 'curie' }
+      end
+
+      it 'does not update the requested profile' do
+        profile1.reload
+        expect(profile1.firstname).to eq("Factory")
+      end
+
+      it 'redirects to profiles overview' do
+        expect(response).to redirect_to("/#{I18n.locale}/profiles")
+      end
+    end
+
+    context 'when trying update profile if user is not signed in' do
+      before do
+        put :update, id: profile.id, profile: { firstname: 'marie', lastname: 'curie' }
+      end
+
+      it 'does not update the requested profile' do
+        profile.reload
+        expect(profile1.firstname).to eq("Factory")
+      end
+
+      it 'should redirect to profiles overview' do
+        expect(response).to redirect_to("/#{I18n.locale}/profiles")
+      end
+    end
+  end
+
+  describe 'destroy profile action' do
+    let!(:profile) { FactoryBot.create(:published) }
+    let!(:profile1) { FactoryBot.create(:published) }
+
+    context 'when destroying own profile' do
+      before do
+        sign_in profile
+      end
+
+      it 'should destroy requested profile' do
+        expect do
+          delete :destroy, id: profile.id
+        end.to change(Profile, :count).by(-1)
+      end
+
+      it 'should not find the destroyed user' do
+        delete :destroy, id: profile.id
+        expect { Profile.find(profile.id) }.to raise_exception(ActiveRecord::RecordNotFound)
+      end
+
+      it 'should redirect to profiles overview' do
+        delete :destroy, id: profile.id
+        expect(response).to redirect_to("/#{I18n.locale}/profiles")
+      end
+    end
+
+    context 'when trying to destroy a different profile' do
+      before do
+        sign_in profile
+        delete :destroy, id: profile1.id
+      end
+
+      it 'should not destroy the requested profile' do
+        expect(Profile.where(id: profile1.id).count).to eq 1
+      end
+
+      it 'should redirect to profiles overview' do
+        expect(response).to redirect_to("/#{I18n.locale}/profiles")
+      end
+    end
+
+    context 'when trying destroy profile if user is not signed in' do
+      before do
+        delete :destroy, id: profile.id
+      end
+
+      it 'should not destroy the requested profile' do
+        expect(Profile.where(id: profile.id).count).to eq 1
+      end
+
+      it 'should redirect to profiles overview' do
+        expect(response).to redirect_to("/#{I18n.locale}/profiles")
+      end
     end
   end
 end
