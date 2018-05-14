@@ -13,7 +13,7 @@ describe 'iso_language' do
       expect(IsoLanguage.top_list.count + IsoLanguage.rest_list.count).to eq(IsoLanguage.all.count)
     end
 
-    it 'has an array of arrays with languagenames and iso caracters' do
+    it 'has an array of arrays with languagenames and iso characters' do
       expect(IsoLanguage.all_languagenames_with_iso).to be_an Array
       expect(IsoLanguage.all_languagenames_with_iso.flatten).to include('Englisch', 'en')
     end
