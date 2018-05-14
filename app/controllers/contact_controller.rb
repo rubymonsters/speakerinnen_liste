@@ -1,5 +1,5 @@
 class ContactController < ApplicationController
-  before_filter :reject_spam_bots, only: [:create]
+  before_action :reject_spam_bots, only: [:create]
 
   def new
     @profile = Profile.friendly.find(params[:id]) if params[:id]

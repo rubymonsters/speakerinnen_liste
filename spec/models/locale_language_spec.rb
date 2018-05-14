@@ -1,22 +1,22 @@
 describe LocaleLanguage, type: :model do
-  let!(:locale_language_de) { FactoryGirl.create(:locale_language_de) }
-  let!(:locale_language_en) { FactoryGirl.create(:locale_language_en) }
+  let!(:locale_language_de) { FactoryBot.create(:locale_language_de) }
+  let!(:locale_language_en) { FactoryBot.create(:locale_language_en) }
 
-  let!(:tag_de) { FactoryGirl.create(:tag_chemie, locale_languages: [locale_language_de]) }
-  let!(:tag_en) { FactoryGirl.create(:tag_physics, locale_languages: [locale_language_en]) }
-  let!(:tag_no_language) { FactoryGirl.create(:tag, name: 'mathematic') }
-  let!(:tag_with_unpublished_profile) { FactoryGirl.create(:tag, name: 'sports') }
+  let!(:tag_de) { FactoryBot.create(:tag_chemie, locale_languages: [locale_language_de]) }
+  let!(:tag_en) { FactoryBot.create(:tag_physics, locale_languages: [locale_language_en]) }
+  let!(:tag_no_language) { FactoryBot.create(:tag, name: 'mathematic') }
+  let!(:tag_with_unpublished_profile) { FactoryBot.create(:tag, name: 'sports') }
   let!(:tag_both_languages) do
-    FactoryGirl.create(:tag_social_media,
+    FactoryBot.create(:tag_social_media,
                        locale_languages: [locale_language_en, locale_language_de])
   end
 
-  let!(:cat_1) { FactoryGirl.create(:cat_science, id: 1, tags: [tag_de, tag_en]) }
-  let!(:cat_2) { FactoryGirl.create(:cat_social, id: 2) }
+  let!(:cat_1) { FactoryBot.create(:cat_science, id: 1, tags: [tag_de, tag_en]) }
+  let!(:cat_2) { FactoryBot.create(:cat_social, id: 2) }
 
-  let!(:ada) { FactoryGirl.create(:published, topic_list: [tag_en, tag_both_languages]) }
-  let!(:marie) { FactoryGirl.create(:published, topic_list: [tag_de, tag_no_language]) }
-  let!(:pierre) { FactoryGirl.create(:unpublished, topic_list: [tag_de, tag_with_unpublished_profile]) }
+  let!(:ada) { FactoryBot.create(:published, topic_list: [tag_en, tag_both_languages]) }
+  let!(:marie) { FactoryBot.create(:published, topic_list: [tag_de, tag_no_language]) }
+  let!(:pierre) { FactoryBot.create(:unpublished, topic_list: [tag_de, tag_with_unpublished_profile]) }
 
   it 'finds associated language of the tag' do
     expect(tag_de.locale_languages).to match_array([locale_language_de])

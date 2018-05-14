@@ -1,7 +1,7 @@
 describe 'category', type: :model do
-  let!(:category_sonstiges) { FactoryGirl.create(:category, name: 'Sonstiges') }
-  let!(:category_A) { FactoryGirl.create(:category, name: 'A') }
-  let!(:category_B) { FactoryGirl.create(:category, name: 'B') }
+  let!(:category_sonstiges) { FactoryBot.create(:category, name: 'Sonstiges') }
+  let!(:category_A) { FactoryBot.create(:category, name: 'A') }
+  let!(:category_B) { FactoryBot.create(:category, name: 'B') }
 
   describe 'category order' do
     it "orders alphabetically and 'Sonstiges' at the end" do

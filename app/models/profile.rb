@@ -1,4 +1,4 @@
-class Profile < ActiveRecord::Base
+class Profile < ApplicationRecord
   include AutoHtml
   include HasPicture
   include Searchable
@@ -32,7 +32,7 @@ class Profile < ActiveRecord::Base
   acts_as_taggable_on :topics
 
   before_save(on: %i[create update]) do
-    twitter.gsub!(%r{^@|https:|http:|:|//|www.|twitter.com/}, '') if twitter
+    twitter.gsub(%r{^@|https:|http:|:|//|www.|twitter.com/}, '') if twitter
     firstname.strip! if firstname
     lastname.strip! if lastname
   end
@@ -53,7 +53,7 @@ class Profile < ActiveRecord::Base
 
   def self.new_with_session(params, session)
     if session['devise.user_attributes']
-      new(session['devise.user_attributes'], without_protection: true) do |profile|
+      new(session['devise.user_attributes']) do |profile|
         profile.attributes = params
         profile.valid?
       end

@@ -1,4 +1,4 @@
-class Category < ActiveRecord::Base
+class Category < ApplicationRecord
   has_and_belongs_to_many :tags, class_name: 'ActsAsTaggableOn::Tag'
 
   validates :name, presence: true

@@ -2,7 +2,7 @@ include AuthHelper
 
 describe ProfilesController, type: :controller do
   let!(:ada) do
-    FactoryGirl.create(:published,
+    FactoryBot.create(:published,
                        firstname: 'Ada',
                        lastname: 'Lovelace',
                        email: 'ada@lovelace.de',
@@ -15,7 +15,7 @@ describe ProfilesController, type: :controller do
                        topic_list: 'algorithm, mathematic')
   end
   let!(:ada_medialink) do
-    FactoryGirl.create(:medialink,
+    FactoryBot.create(:medialink,
                        profile_id: ada.id,
                        title: 'Ada and the computer',
                        url: 'www.adalovelace.de',
@@ -25,7 +25,7 @@ describe ProfilesController, type: :controller do
 
   before do
     sign_in ada
-    get :edit, id: ada.id
+    get :edit, params: { id: ada.id }
   end
 
   describe 'test update action' do

@@ -19,6 +19,7 @@ RSpec.feature 'Navigation', type: :feature do
   end
 
   context 'logged in as an admin' do
+    let!(:admin) { FactoryBot.create(:admin) }
 
     before do
       sign_in admin
@@ -52,7 +53,7 @@ RSpec.feature 'Navigation', type: :feature do
     end
 
     context 'category' do
-      let!(:category) { FactoryGirl.create(:cat_science) }
+      let!(:category) { FactoryBot.create(:cat_science) }
 
       scenario 'viewing edit categories in admin area' do
         visit admin_root_path
@@ -91,7 +92,7 @@ RSpec.feature 'Navigation', type: :feature do
     end
 
     context 'two profiles' do
-      let!(:user) { FactoryGirl.create(:published) }
+      let!(:user) { FactoryBot.create(:published) }
 
       scenario 'viewing edit profiles in admin area' do
         visit admin_root_path

@@ -1,20 +1,20 @@
 describe TagFilter do
   subject(:tag_filter) { described_class.new(ActsAsTaggableOn::Tag.all, filter_params).filter }
 
-  let!(:locale_language_de) { FactoryGirl.create(:locale_language_de) }
-  let!(:locale_language_en) { FactoryGirl.create(:locale_language_en) }
+  let!(:locale_language_de) { FactoryBot.create(:locale_language_de) }
+  let!(:locale_language_en) { FactoryBot.create(:locale_language_en) }
 
-  let!(:tag_de) { FactoryGirl.create(:tag_chemie, locale_languages: [locale_language_de]) }
-  let!(:tag_en) { FactoryGirl.create(:tag_physics, locale_languages: [locale_language_en]) }
-  let!(:tag_no_lang) { FactoryGirl.create(:tag, name: 'ruby') }
+  let!(:tag_de) { FactoryBot.create(:tag_chemie, locale_languages: [locale_language_de]) }
+  let!(:tag_en) { FactoryBot.create(:tag_physics, locale_languages: [locale_language_en]) }
+  let!(:tag_no_lang) { FactoryBot.create(:tag, name: 'ruby') }
   let!(:tag_en_de) do
-    FactoryGirl.create(:tag_social_media,
+    FactoryBot.create(:tag_social_media,
                        locale_languages: [locale_language_en, locale_language_de])
   end
   let!(:tag_no_lang) { ActsAsTaggableOn::Tag.create!(name: 'ruby') }
 
-  let!(:cat_1) { FactoryGirl.create(:cat_science, id: 1, tags: [tag_de, tag_en_de]) }
-  let!(:cat_2) { FactoryGirl.create(:cat_social, id: 2, tags: [tag_no_lang]) }
+  let!(:cat_1) { FactoryBot.create(:cat_science, id: 1, tags: [tag_de, tag_en_de]) }
+  let!(:cat_2) { FactoryBot.create(:cat_social, id: 2, tags: [tag_no_lang]) }
 
   context 'with empty filter params' do
     let(:filter_params) { {} }

@@ -1,7 +1,8 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
+  rescue_from ActionController::RoutingError, with: :not_found
 
-  before_filter :set_locale
+  before_action :set_locale
 
   def authenticate_admin!
     return if current_profile && current_profile.admin?
@@ -36,5 +37,9 @@ class ApplicationController < ActionController::Base
     options = super
     options.update(locale: I18n.locale)
     options
+  end
+
+  def not_found
+    render plain: "404 Not Found", status: 404
   end
 end

@@ -1,13 +1,13 @@
 include AuthHelper
 
 describe 'admin navigation' do
-  let!(:admin) { FactoryGirl.create(:admin) }
+  let!(:admin) { FactoryBot.create(:admin) }
 
-  let!(:tag_physics) { FactoryGirl.create(:tag_physics) }
-  let!(:tag_chemie) { FactoryGirl.create(:tag_chemie) }
+  let!(:tag_physics) { FactoryBot.create(:tag_physics) }
+  let!(:tag_chemie) { FactoryBot.create(:tag_chemie) }
 
-  let!(:ada) { FactoryGirl.create(:published, topic_list: [tag_physics, tag_chemie]) }
-  let!(:marie) { FactoryGirl.create(:published, topic_list: [tag_physics, tag_chemie]) }
+  let!(:ada) { FactoryBot.create(:published, topic_list: [tag_physics, tag_chemie]) }
+  let!(:marie) { FactoryBot.create(:published, topic_list: [tag_physics, tag_chemie]) }
 
   describe 'in tags' do
     before do

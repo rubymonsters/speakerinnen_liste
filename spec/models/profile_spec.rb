@@ -1,9 +1,9 @@
 describe 'profile', type: :model do
-  let(:profile) { FactoryGirl.create(:profile) }
+  let(:profile) { FactoryBot.create(:profile) }
 
   describe 'profile settings' do
     it 'has a valid factory' do
-      expect(FactoryGirl.build(:profile)).to be_valid
+      expect(FactoryBot.build(:profile)).to be_valid
     end
 
     it "by default isn't admin" do
@@ -11,7 +11,7 @@ describe 'profile', type: :model do
     end
 
     it 'admin is true when user is admin' do
-      profile_admin = FactoryGirl.build(:profile, admin: true)
+      profile_admin = FactoryBot.build(:profile, admin: true)
       expect(profile_admin.admin).to be(true)
     end
 
@@ -20,15 +20,15 @@ describe 'profile', type: :model do
     end
 
     it 'is invalid without email' do
-      profile_no_email = FactoryGirl.build(:profile, email: nil)
+      profile_no_email = FactoryBot.build(:profile, email: nil)
       profile_no_email.valid?
       expect(profile_no_email.errors[:email].size).to eq(1)
     end
 
     it 'is invalid when email address is already taken' do
-      first_profile_same_email = FactoryGirl.create(:profile)
+      first_profile_same_email = FactoryBot.create(:profile)
       email = first_profile_same_email.email
-      second_profile_same_email = FactoryGirl.build(:profile, email: email)
+      second_profile_same_email = FactoryBot.build(:profile, email: email)
       second_profile_same_email.valid?
       expect(second_profile_same_email.errors[:email].size).to eq(1)
     end
@@ -36,7 +36,7 @@ describe 'profile', type: :model do
 
   describe '#name_or_email' do
     context 'user has no name information only email adress' do
-      let(:profile_no_name) { FactoryGirl.create(:profile, firstname: nil, lastname: nil, email: 'factorygirl@test.de') }
+      let(:profile_no_name) { FactoryBot.create(:profile, firstname: nil, lastname: nil, email: 'factorygirl@test.de') }
 
       it 'return the email adress' do
         expect(profile_no_name.name_or_email).to eq 'factorygirl@test.de'
@@ -50,7 +50,7 @@ describe 'profile', type: :model do
     end
 
     context 'delete trailing white space' do
-      let(:profile) { FactoryGirl.create(:profile, firstname: 'Ada ', lastname: 'Lovelace ', email: 'factorygirl@test.de') }
+      let(:profile) { FactoryBot.create(:profile, firstname: 'Ada ', lastname: 'Lovelace ', email: 'factorygirl@test.de') }
 
       it 'in firstname and lastname' do
         expect(profile.firstname).to eq 'Ada'
@@ -65,7 +65,7 @@ describe 'profile', type: :model do
     end
 
     it 'saves to iso_languages without the empty string in the array' do
-      p = FactoryGirl.build(:profile, iso_languages: ['en', 'es', ''])
+      p = FactoryBot.build(:profile, iso_languages: ['en', 'es', ''])
       p.save!
       p.reload
       expect(p.iso_languages).to eq %w[en es]
