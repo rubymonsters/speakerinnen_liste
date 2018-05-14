@@ -90,4 +90,5 @@ de:
     vo: "volapük"
     yi: "jiddisch"
     zh: "chinesisch"
-    wen: "sorbisch"         #   iso_639_2:
+    wen: "sorbisch"                 #   iso_639_2:
+    sgn: "gebärdensprachen"         #   iso_639_2:

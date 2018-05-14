@@ -90,4 +90,5 @@ en:
     vo: "volapuk"
     yi: "yiddish"
     zh: "chinese"
-    wen: "sorbian"    #   iso_639_2:
+    wen: "sorbian"                #   iso_639_2:
+    sgn: "sign languages"         #   iso_639_2:
