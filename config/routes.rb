@@ -56,6 +56,7 @@ Rails.application.routes.draw do
     post 'contact' => 'contact#create'
 
     get 'impressum' => 'pages#impressum'
+    get 'privacy' => 'pages#privacy'
     get 'about' => 'pages#about'
     get 'links' => 'pages#links'
     get 'faq' => 'pages#faq'

@@ -132,8 +132,8 @@ de:
     press:
       title: "Medien über uns"
     imprint:
-      title: "Impressum & Datenschutzerklärung"
-      privacy: "Wir setzen Piwik ein, um anonymisierte Daten von AnwenderInnen zu erheben. Diese Daten helfen uns die Gebrauchstauglichkeit der Webseite zu verbessern."
+      title: "Impressum"
+      privacy: ""
   layouts:
     application:
       title: "Speakerinnen*-Liste"
