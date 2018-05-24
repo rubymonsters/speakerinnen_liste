@@ -340,6 +340,16 @@ header {
   position: fixed;
   bottom: 0px;
   z-index: 1;
+
+  a, .link {
+    color: white;
+    text-decoration: underline;
+  }
+
+  .btn {
+    color: #00978b;
+    text-decoration: none;
+  }
 }
 
 /* startpage */
