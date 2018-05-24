@@ -339,6 +339,7 @@ header {
 .cookie-consent-dialog {
   position: fixed;
   bottom: 0px;
+  z-index: 1;
 }
 
 /* startpage */
