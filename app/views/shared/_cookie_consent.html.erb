@@ -1,0 +1,11 @@
+<% if cookies[:cookie_consent].blank? %>
+  <div class="cookie-consent-dialog clearfix" role="alert">
+    <p><%= t(:cookie_consent, scope: 'pages.home').html_safe %>
+    <%= link_to(
+      'OK',
+      url_for(params.permit!.merge(allow_cookies: true)),
+      class: 'btn'
+    ) %>
+    </p>
+  </div>
+<% end %>

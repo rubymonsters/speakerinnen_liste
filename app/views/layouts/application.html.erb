@@ -27,7 +27,7 @@
           <%= Array(alert).join('<br>').html_safe %>
         </div>
       <% end %>
-
+      <%= render 'shared/cookie_consent' %>
       <%= yield %>
 
       <%= render 'layouts/footer' if render_footer? %>
