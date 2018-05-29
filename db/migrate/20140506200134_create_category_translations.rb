@@ -1,4 +1,4 @@
-class CreateCategoryTranslations < ActiveRecord::Migration
+class CreateCategoryTranslations < ActiveRecord::Migration[4.2]
   def up
     Category.create_translation_table!({
       name: :string,

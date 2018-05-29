@@ -1,4 +1,4 @@
-class AddDefaultValueToAdminAttribute < ActiveRecord::Migration
+class AddDefaultValueToAdminAttribute < ActiveRecord::Migration[4.2]
 	def up
     change_column :profiles, :admin, :boolean, :default => false
 	end
