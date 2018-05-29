@@ -57,7 +57,7 @@ describe Admin::ProfilesController, type: :controller do
     context 'when user is admin' do
       before(:each) do
         sign_in admin
-        get :show, { params: { id: non_admin.id } }, format: :json
+        get :show, { params: { id: non_admin.id } }
       end
 
       specify { expect(response.status).to eq 200 }
@@ -88,7 +88,7 @@ describe Admin::ProfilesController, type: :controller do
     context 'when user is admin they can edit any profile' do
       before(:each) do
         sign_in admin
-        get :edit, { params: { id: non_admin.id } }, format: :json
+        get :edit, { params: { id: non_admin.id } }
       end
 
       specify { expect(response.status).to eq 200 }

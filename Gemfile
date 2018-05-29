@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 ruby '2.3.1'
-gem 'rails', '5.0.0'
+gem 'rails', '5.1.0'
 
 # Needed for Javascript Runtime
 gem 'therubyracer'
@@ -16,7 +16,7 @@ gem 'deadweight', require: 'deadweight/hijack/rails'
 gem 'kaminari'
 gem 'mime-types', ['~> 2.6', '>= 2.6.1'], require: 'mime/types/columnar'
 
-gem 'acts-as-taggable-on', '~> 4.0'
+gem 'acts-as-taggable-on', '~> 5.0'
 gem 'auto_html', '~>1.6.4'
 gem 'carrierwave', '~> 1.0'
 gem 'devise', '~> 4.4.1'
