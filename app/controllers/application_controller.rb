@@ -53,7 +53,7 @@ class ApplicationController < ActionController::Base
       cookies[:cookie_consent] = {
          value: true,
          expires: 1.year.from_now,
-         domain: :all
+         domain: (Rails.env.staging? ? nil : :all)
       }
       reset_session
     elsif !cookie_consent_given?
