@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -38,11 +37,10 @@ ActiveRecord::Schema.define(version: 20180210215444) do
   create_table "categories_tags", force: :cascade do |t|
     t.integer "category_id"
     t.integer "tag_id"
+    t.index ["category_id", "tag_id"], name: "index_categories_tags_on_category_id_and_tag_id", using: :btree
+    t.index ["category_id"], name: "index_categories_tags_on_category_id", using: :btree
+    t.index ["tag_id"], name: "index_categories_tags_on_tag_id", using: :btree
   end
-
-  add_index "categories_tags", ["category_id", "tag_id"], name: "index_categories_tags_on_category_id_and_tag_id", using: :btree
-  add_index "categories_tags", ["category_id"], name: "index_categories_tags_on_category_id", using: :btree
-  add_index "categories_tags", ["tag_id"], name: "index_categories_tags_on_tag_id", using: :btree
 
   create_table "category_translations", force: :cascade do |t|
     t.integer  "category_id", null: false
@@ -50,10 +48,9 @@ ActiveRecord::Schema.define(version: 20180210215444) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.string   "name"
+    t.index ["category_id"], name: "index_category_translations_on_category_id", using: :btree
+    t.index ["locale"], name: "index_category_translations_on_locale", using: :btree
   end
-
-  add_index "category_translations", ["category_id"], name: "index_category_translations_on_category_id", using: :btree
-  add_index "category_translations", ["locale"], name: "index_category_translations_on_locale", using: :btree
 
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string   "slug",                      null: false
@@ -61,12 +58,11 @@ ActiveRecord::Schema.define(version: 20180210215444) do
     t.string   "sluggable_type", limit: 50
     t.string   "scope"
     t.datetime "created_at"
+    t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true, using: :btree
+    t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", using: :btree
+    t.index ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
+    t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
   end
-
-  add_index "friendly_id_slugs", ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true, using: :btree
-  add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", using: :btree
-  add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
-  add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
 
   create_table "locale_languages", force: :cascade do |t|
     t.string   "iso_code"
@@ -83,9 +79,8 @@ ActiveRecord::Schema.define(version: 20180210215444) do
     t.datetime "updated_at"
     t.integer  "position"
     t.string   "language"
+    t.index ["profile_id"], name: "index_medialinks_on_profile_id", using: :btree
   end
-
-  add_index "medialinks", ["profile_id"], name: "index_medialinks_on_profile_id", using: :btree
 
   create_table "profile_translations", force: :cascade do |t|
     t.integer  "profile_id", null: false
@@ -97,10 +92,9 @@ ActiveRecord::Schema.define(version: 20180210215444) do
     t.string   "twitter"
     t.string   "website"
     t.string   "city"
+    t.index ["locale"], name: "index_profile_translations_on_locale", using: :btree
+    t.index ["profile_id"], name: "index_profile_translations_on_profile_id", using: :btree
   end
-
-  add_index "profile_translations", ["locale"], name: "index_profile_translations_on_locale", using: :btree
-  add_index "profile_translations", ["profile_id"], name: "index_profile_translations_on_profile_id", using: :btree
 
   create_table "profiles", force: :cascade do |t|
     t.string   "firstname"
@@ -133,32 +127,29 @@ ActiveRecord::Schema.define(version: 20180210215444) do
     t.string   "slug"
     t.string   "country"
     t.string   "iso_languages"
+    t.index ["confirmation_token"], name: "index_profiles_on_confirmation_token", unique: true, using: :btree
+    t.index ["email"], name: "index_profiles_on_email", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_profiles_on_reset_password_token", unique: true, using: :btree
+    t.index ["slug"], name: "index_profiles_on_slug", unique: true, using: :btree
   end
-
-  add_index "profiles", ["confirmation_token"], name: "index_profiles_on_confirmation_token", unique: true, using: :btree
-  add_index "profiles", ["email"], name: "index_profiles_on_email", unique: true, using: :btree
-  add_index "profiles", ["reset_password_token"], name: "index_profiles_on_reset_password_token", unique: true, using: :btree
-  add_index "profiles", ["slug"], name: "index_profiles_on_slug", unique: true, using: :btree
 
   create_table "taggings", force: :cascade do |t|
     t.integer  "tag_id"
-    t.integer  "taggable_id"
     t.string   "taggable_type"
-    t.integer  "tagger_id"
+    t.integer  "taggable_id"
     t.string   "tagger_type"
+    t.integer  "tagger_id"
     t.string   "context",       limit: 128
     t.datetime "created_at"
+    t.index ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true, using: :btree
+    t.index ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context", using: :btree
   end
-
-  add_index "taggings", ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true, using: :btree
-  add_index "taggings", ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context", using: :btree
 
   create_table "tags", force: :cascade do |t|
     t.string  "name"
     t.integer "taggings_count", default: 0
+    t.index ["name"], name: "index_tags_on_name", unique: true, using: :btree
   end
-
-  add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
 
   create_table "tags_locale_languages", force: :cascade do |t|
     t.integer  "tag_id"
