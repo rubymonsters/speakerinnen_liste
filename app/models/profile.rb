@@ -168,8 +168,5 @@ class Profile < ApplicationRecord
     if iso_languages.map(&:class).uniq != [String]
       errors.add(:iso_languages, 'must be an array of strings')
     end
-    if iso_languages.map(&:size).uniq != [2]
-      errors.add(:iso_languages, 'each element must be two charactes')
-    end
   end
 end
