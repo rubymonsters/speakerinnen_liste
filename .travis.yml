@@ -10,9 +10,13 @@ env:
 before_install:
   - curl -sS https://download.elastic.co/elasticsearch/release/org/elasticsearch/distribution/tar/elasticsearch/${ES_VERSION}/elasticsearch-${ES_VERSION}.tar.gz | tar xz -C /tmp
 
+services:
+  - postgresql
+
 before_script:
   - cp config/database.yml.travis config/database.yml
-  - bundle exec rake db:create db:migrate
+  - "psql -c 'create database travis;' -U postgres"
+  - bundle exec rake db:migrate
   - export RECAPTCHA_SECRET_KEY=6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe
   - export RECAPTCHA_SITE_KEY=6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI
   - sleep 10
