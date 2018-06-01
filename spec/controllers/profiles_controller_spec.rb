@@ -13,7 +13,7 @@ describe ProfilesController, type: :controller do
     end
 
     it 'displays index' do
-      expect(response).to be_success
+      expect(response).to be_successful
       expect(response.response_code).to eq(200)
       expect(response).to render_template('index')
     end
@@ -31,7 +31,7 @@ describe ProfilesController, type: :controller do
     it 'displays search results if search term is present' do
       sleep 1
       get :index, params: { search: 'ruby' }
-      expect(response).to be_success
+      expect(response).to be_successful
     end
 
     it 'should store aggregations in aggs variable' do

@@ -129,7 +129,7 @@ class Profile < ApplicationRecord
   end
 
   def self.random
-    order('RANDOM()')
+    order(Arel.sql('random()'))
   end
 
   def update_or_remove_index

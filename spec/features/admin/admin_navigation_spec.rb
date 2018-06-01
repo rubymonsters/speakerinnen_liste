@@ -28,9 +28,9 @@ RSpec.feature 'Navigation', type: :feature do
       click_link 'Admin'
       expect(page).to have_text('Administration')
 
-      expect(page).to have_link('Categories', admin_tags_path)
-      expect(page).to have_link('Tags', admin_categories_path)
-      expect(page).to have_link('Profiles', admin_profiles_path)
+      expect(page).to have_link('Categories', href: '/en/admin/categories')
+      expect(page).to have_link('Tags', href: '/en/admin/tags/index')
+      expect(page).to have_link('Profiles', href: '/en/admin/profiles')
     end
 
     context 'category' do
