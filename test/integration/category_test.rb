@@ -19,6 +19,16 @@ class CategoryIntegrationTest < ActionDispatch::IntegrationTest
     category_jahreszeiten = Category.new(name: 'Jahreszeiten')
     category_jahreszeiten.save!
 
+    # fixtures names are not working due to globalize translates: https://github.com/globalize/globalize/issues/658
+    # so I did a workaround
+    cat1 = Category.find(1)
+    cat1.name = "test"
+    cat1.save!
+
+    cat2 = Category.find(2)
+    cat2.name = "test2"
+    cat2.save!
+
     tag_fruehling = ActsAsTaggableOn::Tag.find_by_name('fruehling')
     tag_sommer    = ActsAsTaggableOn::Tag.find_by_name('sommer')
 
@@ -29,7 +39,8 @@ class CategoryIntegrationTest < ActionDispatch::IntegrationTest
     assert_equal tag_fruehling.categories.first.name, 'Jahreszeiten'
     # because of the fixtures there are 3 categories
     assert_equal Category.all.count, 3
-    visit '/'
+    visit '/de'
     assert page.has_content?('Jahreszeiten')
+
   end
 end
