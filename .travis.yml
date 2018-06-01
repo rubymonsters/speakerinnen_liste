@@ -12,10 +12,10 @@ before_install:
 
 services:
   - postgresql
-
+  
 before_script:
   - cp config/database.yml.travis config/database.yml
-  - "psql -c 'create database travis;' -U postgres"
+  - psql -c 'create database travis_test;' -U postgres
   - bundle exec rake db:migrate
   - export RECAPTCHA_SECRET_KEY=6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe
   - export RECAPTCHA_SITE_KEY=6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI
