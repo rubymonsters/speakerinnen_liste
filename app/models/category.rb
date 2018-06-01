@@ -6,9 +6,6 @@ class Category < ApplicationRecord
   accepts_nested_attributes_for :translations
 
   def self.sorted_categories
-    p Category.all
-    p Category.all.includes(:translations)
-    p Category.all.includes(:translations).where("id <> '12'")
     categories_without_miscellaneous = Category.all.includes(:translations).where("id <> '12'").sort_by(&:name)
     category_miscellaneous = where(id: '12')
 
