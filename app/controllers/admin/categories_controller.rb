@@ -9,7 +9,6 @@ class Admin::CategoriesController < Admin::BaseController
   def show; end
 
   def index
-    puts @categories
     @categories = Category.order(:name).all
   end
 
