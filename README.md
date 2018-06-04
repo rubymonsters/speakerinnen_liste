@@ -246,6 +246,12 @@ $ bundle exec rspec spec
 $ bundle exec rake db:test:clone
 ```
 
+
+# Database:
+Our databadse schema looks like that:
+
+https://github.com/rubymonsters/speakerinnen_liste/issues/644
+
 # Contributing
 
 Do you want to contribute?
