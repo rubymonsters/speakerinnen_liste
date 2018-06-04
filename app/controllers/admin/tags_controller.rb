@@ -16,7 +16,7 @@ class Admin::TagsController < Admin::BaseController
       # TODO: change cases into methods "change language"
       if params[:tag].present? && params[:tag][:name].present? && (existing_tag = ActsAsTaggableOn::Tag.where(name: params[:tag][:name]).first)
         existing_tag.merge(@tag)
-        redirect_to admin_tags_path(page: params[:page]), notice: "'#{@tag.name}' was merged with the tag '#{existing_tag.name}'."
+        redirect_to admin_tags_path(params: session[:filter_params]), notice: "'#{@tag.name}' was merged with the tag '#{existing_tag.name}'."
       elsif @tag.update_attributes(tag_params)
         redirect_to admin_tags_path(page: params[:page]), notice: "'#{@tag.name}' was updated."
       else
@@ -41,6 +41,7 @@ class Admin::TagsController < Admin::BaseController
   end
 
   def index
+    session[:filter_params] = filter_params
     @tags_count = ActsAsTaggableOn::Tag.count
     @tags = TagFilter.new(ActsAsTaggableOn::Tag.all, filter_params)
                      .filter
