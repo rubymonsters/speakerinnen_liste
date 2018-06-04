@@ -1,5 +1,5 @@
-RSpec.feature 'Localization', type: :feature do
-  scenario 'start page localization' do
+RSpec.describe 'Localization', type: :system do
+  it 'start page localization' do
     visit root_path
 
     within '#nav__lap-and-up' do

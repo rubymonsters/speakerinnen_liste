@@ -33,7 +33,6 @@ gem 'country_select'
 
 gem 'globalize', git: 'https://github.com/globalize/globalize'
 gem 'globalize-accessors'
-gem 'activemodel-serializers-xml'
 
 gem 'font-awesome-rails', '~> 4.7.0.3'
 
@@ -61,7 +60,7 @@ group :development, :test do
   gem 'guard'
   gem 'guard-rspec'
   gem 'pry'
-  gem 'rspec-rails'
+  gem 'rspec-rails', '~> 3.7.2'
   gem 'rubocop', '~> 0.49.0'
   gem 'selenium-webdriver', '2.38.0'
 end

@@ -70,10 +70,6 @@ GEM
       globalid (>= 0.3.6)
     activemodel (5.2.0)
       activesupport (= 5.2.0)
-    activemodel-serializers-xml (1.0.2)
-      activemodel (> 5.x)
-      activesupport (> 5.x)
-      builder (~> 3.1)
     activerecord (5.2.0)
       activemodel (= 5.2.0)
       activesupport (= 5.2.0)
@@ -626,7 +622,6 @@ PLATFORMS
 
 DEPENDENCIES
   active_model_serializers
-  activemodel-serializers-xml
   acts-as-taggable-on!
   auto_html (~> 1.6.4)
   better_errors
@@ -671,7 +666,7 @@ DEPENDENCIES
   rails_12factor
   recaptcha
   record_tag_helper (~> 1.0)
-  rspec-rails
+  rspec-rails (~> 3.7.2)
   rubocop (~> 0.49.0)
   sass-rails (~> 5.0.7)
   selenium-webdriver (= 2.38.0)
