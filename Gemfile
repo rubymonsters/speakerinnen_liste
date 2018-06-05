@@ -5,6 +5,9 @@ gem 'rails', '5.2.0'
 # Needed for Javascript Runtime
 gem 'therubyracer'
 
+# used in the rail 5.2 version
+gem 'bootsnap', '~> 1.3'
+
 gem 'faker', '1.0.1'
 gem 'normalize-rails'
 
