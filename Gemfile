@@ -22,7 +22,7 @@ gem 'mime-types'
 gem 'acts-as-taggable-on', git: 'https://github.com/Fodoj/acts-as-taggable-on.git', branch: 'rails-5.2'  # temporary: https://github.com/mbleigh/acts-as-taggable-on/issues/874
 gem 'auto_html', '~>1.6.4'
 gem 'carrierwave', '~> 1.0'
-gem 'devise', '~> 4.4.1'
+gem 'devise', '~> 4.4', '>= 4.4.3'
 gem 'fog', '~> 1.32'
 gem 'jquery-rails', '~> 4.3.1'
 gem 'jquery-ui-rails', '~> 6.0.1'

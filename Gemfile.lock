@@ -17,11 +17,11 @@ GIT
 
 GIT
   remote: https://github.com/Fodoj/acts-as-taggable-on.git
-  revision: 33cc9bde97292a878732ef7c37861557bd7f058f
+  revision: ef3797a848bd76a5290d209ff856e55a9f9053c5
   branch: rails-5.2
   specs:
     acts-as-taggable-on (5.0.0)
-      activerecord (>= 5.0)
+      activerecord (~> 5.0)
 
 GIT
   remote: https://github.com/globalize/globalize
@@ -178,7 +178,7 @@ GEM
       i18n (~> 0.4)
     faraday (0.15.2)
       multipart-post (>= 1.2, < 3)
-    ffi (1.9.23)
+    ffi (1.9.25)
     fission (0.5.0)
       CFPropertyList (~> 2.2)
     fog (1.42.0)
@@ -422,7 +422,7 @@ GEM
     multipart-post (2.0.0)
     nenv (0.3.0)
     netrc (0.11.0)
-    newrelic_rpm (5.1.0.344)
+    newrelic_rpm (5.2.0.345)
     nio4r (2.3.1)
     nokogiri (1.8.2)
       mini_portile2 (~> 2.3.0)
@@ -598,12 +598,12 @@ GEM
     trollop (2.1.2)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
-    uglifier (4.1.10)
+    uglifier (4.1.11)
       execjs (>= 0.3.0, < 3)
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.5)
-    unicode-display_width (1.3.3)
+    unicode-display_width (1.4.0)
     unicode_utils (1.4.0)
     unicorn (5.4.0)
       kgio (~> 2.6)
@@ -637,7 +637,7 @@ DEPENDENCIES
   database_cleaner (~> 1.6.0)
   deadweight
   derailed_benchmarks
-  devise (~> 4.4.1)
+  devise (~> 4.4, >= 4.4.3)
   elasticsearch-extensions!
   elasticsearch-model (~> 2.0)
   elasticsearch-rails (~> 2.0)
