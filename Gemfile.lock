@@ -17,12 +17,11 @@ GIT
 
 GIT
   remote: https://github.com/Fodoj/acts-as-taggable-on.git
-  revision: 12b0a1538e5d015570a923dd73c5f864d2c26655
+  revision: 33cc9bde97292a878732ef7c37861557bd7f058f
   branch: rails-5.2
   specs:
     acts-as-taggable-on (5.0.0)
       activerecord (>= 5.0)
-      rake
 
 GIT
   remote: https://github.com/globalize/globalize
@@ -97,6 +96,8 @@ GEM
       coderay (>= 1.0.0)
       erubi (>= 1.0.0)
       rack (>= 0.9.0)
+    bootsnap (1.3.0)
+      msgpack (~> 1.0)
     builder (3.2.3)
     bullet (5.7.5)
       activesupport (>= 3.0.0)
@@ -416,6 +417,7 @@ GEM
     minitest (5.10.1)
     money (6.11.3)
       i18n (>= 0.6.4, < 1.1)
+    msgpack (1.2.4)
     multi_json (1.13.1)
     multipart-post (2.0.0)
     nenv (0.3.0)
@@ -625,6 +627,7 @@ DEPENDENCIES
   acts-as-taggable-on!
   auto_html (~> 1.6.4)
   better_errors
+  bootsnap (~> 1.3)
   bullet (~> 5.7.3)
   byebug
   capybara (~> 2.18.0)
