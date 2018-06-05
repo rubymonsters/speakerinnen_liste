@@ -99,7 +99,8 @@ Rails.application.configure do
 
   # piwik data collection and analytics
   config.gem 'rack-piwik', lib: 'rack/piwik'
-  config.middleware.use Rack::Piwik, piwik_url: 'tyranja.cassiopeia.uberspace.de/piwik/', piwik_id: '1',
+  config.middleware.use Rack::Piwik, piwik_url: 'tyranja.cassiopeia.uberspace.de/piwik/', piwik_id: '1', disable_cookies: false
+
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
 
