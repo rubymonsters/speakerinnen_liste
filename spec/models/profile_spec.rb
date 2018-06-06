@@ -91,18 +91,6 @@ describe 'profile', type: :model do
         profile.valid?
         expect(profile.errors[:iso_languages].size).to eq(0)
       end
-
-      it 'is invalid for languages with three letters' do
-        profile = Profile.new(iso_languages: %w[en de espaniol])
-        profile.valid?
-        expect(profile.errors[:iso_languages].size).to eq(1)
-      end
-
-      it 'is invalid for other strings' do
-        profile = Profile.new(iso_languages: ['deutsch', :de])
-        profile.valid?
-        expect(profile.errors[:iso_languages].size).to eq(2)
-      end
     end
   end
 end

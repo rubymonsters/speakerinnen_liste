@@ -38,6 +38,7 @@ en:
         make_public: "Make public"
         invisible: "invisible"
         make_invisible: "Make invisible"
+        confirmed: "confirmed"
         roles: "Roles"
         comment: "Comment"
         add_comment: "Add comment"

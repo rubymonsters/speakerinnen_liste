@@ -3,7 +3,7 @@
 
     <h1>Administration::<%= t(:profiles, scope: 'admin.dashboard.profiles')%></h1>
 
-    <%= Profile.all.size %> Speakerinnen.
+    <%= Profile.is_confirmed.size %> <%= t(:confirmed, scope: 'admin.dashboard.profiles') %> Speakerinnen.
     <%= Profile.all.select {|profile| profile.published?}.size %> <%= t(:public, scope: 'admin.dashboard.profiles') %>.
 
     <%= form_tag(admin_profiles_path, method: 'get', class: 'font-size-24') do %>
