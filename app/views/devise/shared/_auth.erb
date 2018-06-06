@@ -37,6 +37,10 @@
           <% if @signup && f.object.password_required? == false %>
             <%= t(:explanation_email, scope: "devise.registrations") %>
             <%= f.input :email, placeholder: t(:email, scope: "devise.registrations"), autofocus: true, label: false, input_html: { class: 'mb-' } %>
+            <!-- <% if Rails.env.production? %>
+              <%= flash[:recaptcha_error] %>
+              <%= recaptcha_tags %>
+            <% end %> -->
           <% else %>
             <%= f.input :email, placeholder: t(:email, scope: "devise.registrations"), autofocus: true, label: false, input_html: { class: 'mb-' } %>
             <%= f.input :password, placeholder: t(:password, scope: "devise.registrations"), label: false, input_html: { class: 'mb-' } %>
