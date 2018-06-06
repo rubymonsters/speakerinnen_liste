@@ -117,11 +117,4 @@ SpeakerinnenListe::Application.configure do
     #:password => ENV['POSTMARK_API_TOKEN'],
     #:authentication => :plain
   #}
-  config.after_initialize do
-    Bullet.enable = true
-    Bullet.alert = true
-    Bullet.bullet_logger = true
-    Bullet.console = true
-    Bullet.rails_logger = true
-  end
 end
