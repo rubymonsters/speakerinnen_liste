@@ -4,8 +4,7 @@ Rails.application.routes.draw do
               only: :omniauth_callbacks,
               controllers: {
                 omniauth_callbacks: 'omniauth_callbacks',
-                confirmations: :confirmations,
-                registrations: :registrations
+                confirmations: :confirmations
               }
 
   scope '(:locale)', locale: /en|de/ do
@@ -44,8 +43,7 @@ Rails.application.routes.draw do
 
     devise_for :profiles, skip: :omniauth_callbacks, controllers: {
       omniauth_callbacks: 'omniauth_callbacks',
-      confirmations: :confirmations,
-      registrations: :registrations
+      confirmations: :confirmations
     }
 
     get 'topics', to: 'profiles#index', as: :topic
