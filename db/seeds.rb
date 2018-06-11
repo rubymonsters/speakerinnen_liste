@@ -94,3 +94,8 @@ ActsAsTaggableOn::Tag.create(name: "5th Tag")
 ActsAsTaggableOn::Tag.create(name: "6th Tag")
 
 puts "20 tags were created"
+
+LocaleLanguage.create(iso_code: "de")
+LocaleLanguage.create(iso_code: "en")
+
+puts "2 languages were created"
