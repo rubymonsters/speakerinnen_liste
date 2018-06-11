@@ -1,5 +1,5 @@
 describe 'contact profile' do
-  let!(:user) { FactoryGirl.create(:published) }
+  let!(:user) { FactoryBot.create(:published) }
 
   it 'should show the contact button' do
     visit profile_path(id: user.id)

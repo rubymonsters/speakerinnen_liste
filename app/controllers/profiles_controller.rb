@@ -5,7 +5,7 @@ class ProfilesController < ApplicationController
 
   before_action :set_profile, only: %i[show edit update destroy require_permission]
 
-  before_filter :require_permission, only: %i[edit destroy update]
+  before_action :require_permission, only: %i[edit destroy update]
 
   respond_to :json
 

@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
-ruby '2.2.7'
-gem 'rails', '~> 4.2.7.1 '
+ruby '2.3.1'
+gem 'rails', '5.0.0'
 
 # Needed for Javascript Runtime
 gem 'therubyracer'
@@ -16,51 +16,50 @@ gem 'deadweight', require: 'deadweight/hijack/rails'
 gem 'kaminari'
 gem 'mime-types', ['~> 2.6', '>= 2.6.1'], require: 'mime/types/columnar'
 
-gem 'acts-as-taggable-on', '~> 3.5'
+gem 'acts-as-taggable-on', '~> 4.0'
 gem 'auto_html', '~>1.6.4'
-gem 'carrierwave'
-gem 'devise', '~> 3.4.1'
+gem 'carrierwave', '~> 1.0'
+gem 'devise', '~> 4.4.1'
 gem 'fog', '~> 1.32'
-gem 'jquery-rails'
-gem 'jquery-ui-rails'
+gem 'jquery-rails', '~> 4.3.1'
+gem 'jquery-ui-rails', '~> 6.0.1'
 gem 'mini_magick', '~> 3.6.0'
 gem 'omniauth-twitter'
 gem 'pg', '~> 0.18.2'
-gem 'recaptcha', require: 'recaptcha/rails'
-gem 'simple_form', '~> 3.0.2'
+gem 'simple_form', '~> 3.5.1'
 
 gem 'country_select'
 
-gem 'globalize', '~> 5.1'
+gem 'globalize', '~> 5.1.0'
 gem 'globalize-accessors'
 
-gem 'font-awesome-rails', '~> 4.3.0.0'
+gem 'font-awesome-rails', '~> 4.7.0.3'
 
-gem 'friendly_id', '~> 5.0.1'
+gem 'friendly_id', '~> 5.2.3'
 
 gem 'rails_12factor', group: :production
 
-gem 'active_model_serializers', '~> 0.10.0'
+gem 'active_model_serializers', '~> 0.10.7'
 
 gem 'elasticsearch-model', '~> 2.0'
 gem 'elasticsearch-rails', '~> 2.0'
+gem 'record_tag_helper', '~> 1.0'
 
 group :development do
   gem 'better_errors'
-  gem 'bullet'
+  gem 'bullet', '~> 5.7.3'
   gem 'derailed_benchmarks'
   gem 'letter_opener'
-  gem 'quiet_assets' # mutes asset pipeline log messages
   gem 'stackprof'
 end
 
 group :development, :test do
   gem 'byebug'
-  gem 'capybara', '~> 2.4.1'
+  gem 'capybara', '~> 2.18.0'
   gem 'guard'
   gem 'guard-rspec'
   gem 'pry'
-  gem 'rspec-rails', '~> 3.2', '>= 3.2.1'
+  gem 'rspec-rails', '~> 3.7.2'
   gem 'rubocop', '~> 0.49.0'
   gem 'selenium-webdriver', '2.38.0'
 end
@@ -68,13 +67,14 @@ end
 group :test do
   gem 'database_cleaner', '~> 1.2.0'
   gem 'elasticsearch-extensions', git: 'git://github.com/elasticsearch/elasticsearch-ruby.git', ref: '2.x'
-  gem 'factory_girl_rails', '4.1.0'
-  gem 'poltergeist', '1.8.0'
-  gem 'test_after_commit'
+  gem 'factory_bot_rails'
+  gem 'poltergeist', '1.17.0'
+  gem 'rails-controller-testing'
+  gem "minitest", "5.10.1" #remove this after upgrading rails from 5.0.0
 end
 
-gem 'coffee-rails', '~> 4.0.1'
-gem 'sass-rails',   '~> 4.0.3'
+gem 'coffee-rails', '~> 4.2.2'
+gem 'sass-rails',   '~> 5.0.7'
 
 gem 'uglifier', '>= 1.0.3'
 

@@ -38,6 +38,7 @@ de:
         make_public: "veröffentliche"
         invisible: "unsichtbar"
         make_invisible: "Mache unsichtbar"
+        confirmed: "bestätigte"
         roles: "Rollen"
         comment: "Kommentar"
         add_comment: "Kommentar hinzufügen"
@@ -73,6 +74,7 @@ de:
         search: "Suche"
       all_categories: "Kategorien und Themen >>"
       all_speakers: "Alle Speakerinnen* >>"
+      cookie_consent: "Wir nehmen den Datenschutz sehr ernst. Damit wir unsere Webseite optimal gestalten und verbessern können, verwenden wir Cookies. Durch die weitere Nutzung der Webseite stimmst Du der Verwendung von Cookies zu. Mehr Informationen in unserer <a href='%{link}'>Datenschutzerklärung</a>."
       description: "Unsere Kategorien"
       description_text: "Uns ist die Verteilung der Männer und Frauen auf Konferenzbühnen wichtig. Wir ermutigen Frauen, in ihrem professionellen Umfeld sichtbarer zu werden."
       speaker_shoutout: "Hast Du etwas Interessantes zu erzählen?"
@@ -132,8 +134,8 @@ de:
     press:
       title: "Medien über uns"
     imprint:
-      title: "Impressum & Datenschutzerklärung"
-      privacy: "Wir setzen Piwik ein, um anonymisierte Daten von AnwenderInnen zu erheben. Diese Daten helfen uns die Gebrauchstauglichkeit der Webseite zu verbessern."
+      title: "Impressum"
+      privacy: "Datenschutzerklärung"
   layouts:
     application:
       title: "Speakerinnen*-Liste"
@@ -249,7 +251,7 @@ de:
       no_permission: "Du hast nicht die Rechte, das Profil zu bearbeiten."
       show_no_permission: "Du hast nicht die Rechte, das Profil anzuschauen."
     medialink:
-      created: "Referenz wurde erfolgreich erstellt. <a href='#medialinks_anchor', class='text__link--bg'>Hier</a> geht es zur Liste Deiner Referenzen."
+      created: "Referenz wurde erfolgreich erstellt."
       updated: "Referenz wurde erfolgreich geändert."
       destroyed: "Referenz wurde erfolgreich gelöscht."
       no_permission: "Du hast nicht die Rechte, die Referenz zu bearbeiten."

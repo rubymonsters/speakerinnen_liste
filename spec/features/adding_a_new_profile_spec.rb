@@ -9,7 +9,7 @@ describe 'profile adding' do
     fill_in 'profile_password_confirmation', with: '12345678'
     click_button I18n.t(:signup, scope: 'devise.registrations')
 
-    Profile.last.confirm!
+    Profile.last.confirm
 
     click_link I18n.t(:login, scope: 'layouts.application')
     fill_in 'E-Mail', with: 'test@test.de'

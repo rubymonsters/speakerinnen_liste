@@ -38,6 +38,7 @@ en:
         make_public: "Make public"
         invisible: "invisible"
         make_invisible: "Make invisible"
+        confirmed: "confirmed"
         roles: "Roles"
         comment: "Comment"
         add_comment: "Add comment"
@@ -73,6 +74,7 @@ en:
         search: "Search"
       all_categories: "Categories and topics >>"
       all_speakers: "All Speakerinnen* >>"
+      cookie_consent: "We take the protection of your personal data and its confidential treatment very seriously. We use cookies to optimize and to improve the services we offer you. By using this website, you agree to the use of cookies. Find more information about data security in our <a href='%{link}'>privacy policy</a>."
       description: "Our Categories"
       description_text: "We feel strongly about a balanced representation of men and women* on stage. We encourage women* to become more visible in their profession and field of expertise."
       speaker_shoutout: "Do you have something interesting to say?"
@@ -133,7 +135,7 @@ en:
       title: "Press about us"
     imprint:
       title: "Legal Details"
-      privac¥: "We are using Piwik data analytics to collect anonymized data that will help us to improve the usability of our website."
+      privacy: "Privacy Policy"
   layouts:
     application:
       title: "speakerinnen.org"
@@ -247,7 +249,7 @@ en:
       no_permission: "You don’t have permission to edit the profile."
       show_no_permission: "You don’t have permission to see the profile."
     medialink:
-      created: "Your previous talk was successfully created. <a href='#medialinks_anchor', class='text__link--bg'>Here</a> you can find a list of your previous talks."
+      created: "Your previous talk was successfully created."
       updated: 'Your previous talk was successfully updated.'
       destroyed: 'Your previous talk was successfully deleted.'
       no_permission: "You don’t have permission to edit the reference."

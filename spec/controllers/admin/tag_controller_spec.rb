@@ -1,9 +1,9 @@
 include AuthHelper
 
 describe Admin::TagsController, type: :controller do
-  let!(:admin) { FactoryGirl.create(:admin) }
-  let!(:ada) { FactoryGirl.create(:published, topic_list: %w[algebra algorithm computer]) }
-  let!(:marie) { FactoryGirl.create(:published, topic_list: ['radioactive', 'x-ray']) }
+  let!(:admin) { FactoryBot.create(:admin) }
+  let!(:ada) { FactoryBot.create(:published, topic_list: %w[algebra algorithm computer]) }
+  let!(:marie) { FactoryBot.create(:published, topic_list: ['radioactive', 'x-ray']) }
 
   before(:each) do
     sign_in admin
@@ -37,7 +37,7 @@ describe Admin::TagsController, type: :controller do
         marie_tag = ActsAsTaggableOn::Tag.find_by(name: marie.topic_list[1])
         ada_tag.categories << category
         marie_tag.categories << category
-        get :index, category_id: category.id
+        get :index, params: { category_id: category.id }
       end
 
       specify { expect(response).to render_template(:index) }
@@ -58,7 +58,7 @@ describe Admin::TagsController, type: :controller do
 
     context 'searches for topics no matter if they are assigned to a category' do
       before(:each) do
-        get :index, q: 'alg'
+        get :index, params: { q: 'alg' }
       end
 
       specify { expect(response).to render_template(:index) }
@@ -77,7 +77,7 @@ describe Admin::TagsController, type: :controller do
         category.save!
         ada_tag = ActsAsTaggableOn::Tag.find_by(name: ada.topic_list[0])
         ada_tag.categories << category
-        get :index, q: 'alg', uncategorized: true
+        get :index, params: { q: 'alg', uncategorized: true }
       end
 
       specify { expect(response).to render_template(:index) }
@@ -97,7 +97,7 @@ describe Admin::TagsController, type: :controller do
         category.save!
         tag = ActsAsTaggableOn::Tag.find_by(name: ada.topic_list[0])
         tag.categories << category
-        get :index, uncategorized: true
+        get :index, params: { uncategorized: true }
       end
 
       specify { expect(response).to render_template(:index) }
@@ -140,7 +140,7 @@ describe Admin::TagsController, type: :controller do
   describe 'GET edit' do
     before(:each) do
       topic = ActsAsTaggableOn::Tag.find_by(name: ada.topic_list[0])
-      get :edit, id: topic.id
+      get :edit, params: { id: topic.id }
     end
 
     specify { expect(response).to render_template(:edit) }
@@ -157,7 +157,7 @@ describe Admin::TagsController, type: :controller do
 
       context 'topic name is unique' do
         before(:each) do
-          put :update, id: @wrong_topic.id, tag: { name: 'mathematic' }
+          put :update, params: { id: @wrong_topic.id, tag: { name: 'mathematic' } }
         end
 
         specify { expect(response).to redirect_to("/#{I18n.locale}/admin/tags/index") }
@@ -168,7 +168,7 @@ describe Admin::TagsController, type: :controller do
 
       context 'topic name already exist' do
         before(:each) do
-          put :update, id: @wrong_topic.id, tag: { name: 'radioactive' }
+          put :update, params: { id: @wrong_topic.id, tag: { name: 'radioactive' } }
         end
 
         specify { expect(response).to redirect_to("/#{I18n.locale}/admin/tags/index") }
@@ -186,13 +186,14 @@ describe Admin::TagsController, type: :controller do
       let(:tag) { ActsAsTaggableOn::Tag.find_by(name: marie.topic_list[0]) }
 
       it 'assings a language to the topic' do
-        put :update, languages: ['en'], id: tag.id
+        # should be --> put :update, params: { languages: ['en'], id: tag.id } but test fails then
+        put :update, params: { languages: ['en'], id: tag.id }
         expect(tag.locale_languages.first.iso_code).to match('en')
       end
 
       it 'remove a language from the topic' do
         tag.locale_languages << locale_language
-        put :update, id: tag.id
+        put :update, params: { id: tag.id }
         # have to reaload tag to get the new relations
         tag = ActsAsTaggableOn::Tag.find_by(name: marie.topic_list[0])
         expect(tag.locale_languages).to match([])
@@ -208,7 +209,7 @@ describe Admin::TagsController, type: :controller do
 
     context 'set_category' do
       before(:each) do
-        post :set_category, id: @tag.id, category_id: @category.id
+        post :set_category, params: { id: @tag.id, category_id: @category.id }
       end
 
       specify { expect(response).to redirect_to("/#{I18n.locale}/admin/tags/index") }
@@ -220,7 +221,8 @@ describe Admin::TagsController, type: :controller do
     context 'removes_category' do
       before(:each) do
         @tag.categories << @category
-        post :remove_category, id: @tag.id, category_id: @category.id
+        # should be --> post :remove_category, params: { id: @tag.id, category_id: @category.id }
+        post :remove_category, params: { id: @tag.id, category_id: @category.id }
       end
 
       specify { expect(response).to redirect_to("/#{I18n.locale}/admin/tags/index") }
@@ -234,7 +236,8 @@ describe Admin::TagsController, type: :controller do
     context 'topic' do
       before(:each) do
         @tag = ActsAsTaggableOn::Tag.find_by_name('algorithm')
-        delete :destroy, id: @tag.id
+        # should be --> delete :destroy, params: { id: @tag.id }
+        delete :destroy, params: { id: @tag.id }
       end
 
       it 'should not find the destroyed tag' do

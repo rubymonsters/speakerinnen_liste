@@ -335,6 +335,22 @@ header {
   background: white;
 }
 
+/* cookie consent dialog */
+.cookie-consent-dialog {
+  position: fixed;
+  bottom: 0px;
+  z-index: 1;
+
+  a, .link {
+    color: white;
+    text-decoration: underline;
+  }
+
+  .btn {
+    color: #00978b;
+    text-decoration: none;
+  }
+}
 
 /* startpage */
 #startpage__start-teaser {
@@ -643,7 +659,7 @@ input[type=file] {
   list-style: none;
   margin: 0;
   padding: 0;
-  line-height: 24px;
+  line-height: 20px;
   position: relative;
 }
 

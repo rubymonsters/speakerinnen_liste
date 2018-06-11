@@ -1,8 +1,8 @@
 include AuthHelper
 
 describe Admin::CategoriesController, type: :controller do
-  let!(:admin) { FactoryGirl.create(:admin) }
-  let!(:category) { FactoryGirl.create(:cat_science) }
+  let!(:admin) { FactoryBot.create(:admin) }
+  let!(:category) { FactoryBot.create(:cat_science) }
 
   before(:each) do
     sign_in admin
@@ -20,7 +20,13 @@ describe Admin::CategoriesController, type: :controller do
   describe 'POST create' do
     before(:each) do
       @old_categories = Category.count
-      post :create, 'category' => { 'translations_attributes' => { '0' => { 'locale' => 'de', 'name' => 'Wissenschaft' }, '1' => { 'locale' => 'en', 'name' => 'Science' } } }
+      post :create, params: { category: {
+                                translations_attributes: {
+                                  '0' => { locale: 'de', name: 'Wissenschaft' },
+                                  '1' => { locale: 'en', name: 'Science' }
+                                }
+                              }
+                            }
     end
 
     specify { expect(response).to redirect_to("/#{I18n.locale}/admin/categories") }
@@ -43,7 +49,7 @@ describe Admin::CategoriesController, type: :controller do
 
   describe 'GET edit' do
     before(:each) do
-      get :edit, id: category.id
+      get :edit, params: { id: category.id }
     end
 
     specify { expect(response).to render_template(:edit) }
@@ -59,7 +65,7 @@ describe Admin::CategoriesController, type: :controller do
   describe 'PUT update' do
     context 'rename the category' do
       before(:each) do
-        put :update, id: category.id, category: { name: 'Science & Technology' }
+        put :update, params: { id: category.id, category: { name: 'Science & Technology' } }
       end
 
       specify { expect(response).to redirect_to("/#{I18n.locale}/admin/categories") }
@@ -71,7 +77,7 @@ describe Admin::CategoriesController, type: :controller do
 
   describe 'DESTROY category' do
     before(:each) do
-      delete :destroy, id: category.id
+      delete :destroy, params: { id: category.id }
     end
 
     it 'deletes the category' do
@@ -100,7 +106,7 @@ describe Admin::CategoriesController, type: :controller do
               'id':           en_translation.id
             } }
       }
-      patch :update, { id: category.id }.merge(category: category_params)
+      patch :update, params: { id: category.id }.merge(category: category_params)
     end
 
     it "doesn't create extra translations" do

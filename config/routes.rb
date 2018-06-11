@@ -1,11 +1,10 @@
-SpeakerinnenListe::Application.routes.draw do
+Rails.application.routes.draw do
 
   devise_for :profiles,
               only: :omniauth_callbacks,
               controllers: {
                 omniauth_callbacks: 'omniauth_callbacks',
-                confirmations: :confirmations,
-                registrations: :registrations
+                confirmations: :confirmations
               }
 
   scope '(:locale)', locale: /en|de/ do
@@ -44,11 +43,10 @@ SpeakerinnenListe::Application.routes.draw do
 
     devise_for :profiles, skip: :omniauth_callbacks, controllers: {
       omniauth_callbacks: 'omniauth_callbacks',
-      confirmations: :confirmations,
-      registrations: :registrations
+      confirmations: :confirmations
     }
 
-    get 'topics/:topic', to: 'profiles#index', as: :topic
+    get 'topics', to: 'profiles#index', as: :topic
 
     get 'profiles_typeahead' => 'profiles#typeahead'
 
@@ -56,6 +54,7 @@ SpeakerinnenListe::Application.routes.draw do
     post 'contact' => 'contact#create'
 
     get 'impressum' => 'pages#impressum'
+    get 'privacy' => 'pages#privacy'
     get 'about' => 'pages#about'
     get 'links' => 'pages#links'
     get 'faq' => 'pages#faq'

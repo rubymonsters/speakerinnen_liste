@@ -5,8 +5,10 @@ SpeakerinnenListe::Application.configure do
   config.cache_classes = true
 
   # Full error reports are disabled and caching is turned on
-  config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
+
+  # Show full error reports.
+  config.consider_all_requests_local = true
 
   config.eager_load = true
 
@@ -31,6 +33,8 @@ SpeakerinnenListe::Application.configure do
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   # config.force_ssl = true
+  config.ssl_options = { hsts: false }
+
 
   # See everything in the log (default is :info)
   # config.log_level = :debug

@@ -1,5 +1,5 @@
 class Api::V1::ProfilesController < ApplicationController
-  before_filter :api_authentication_required
+  before_action :api_authentication_required
   respond_to :json
 
   def index

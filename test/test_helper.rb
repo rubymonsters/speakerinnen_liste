@@ -23,7 +23,7 @@ class ActionDispatch::IntegrationTest
 end
 
 class ActionController::TestCase
-  include Devise::TestHelpers
+  include Devise::Test::ControllerHelpers
   # These helpers are not going to work for integration tests driven by Capybara or Webrat.
   # They are meant to be used with functional tests only. Instead, fill in the form or explicitly
   # set the user in session;

@@ -1,5 +1,5 @@
 class Admin::MedialinksController < Admin::BaseController
-  before_filter :fetch_profile_from_params
+  before_action :fetch_profile_from_params
 
   before_action :set_medialink, only: %i[edit update destroy]
 
