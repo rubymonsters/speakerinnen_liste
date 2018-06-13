@@ -27,6 +27,8 @@
 * Trumps: High-specificity, very explicit selectors. Overrides and helper classes (e.g. .hidden {}).
 */
 
+// Custom bootstrap variables must be set or imported *before* bootstrap.
+@import "bootstrap";
 
 @import 'inuit/settings.defaults';
 @import 'inuit/settings.responsive';
