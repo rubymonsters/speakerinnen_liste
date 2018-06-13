@@ -83,6 +83,8 @@ Rails.application.routes.draw do
     end
   end
 
+  unless Rails.application.config.consider_all_requests_local
     # having created corresponding controller and action
-  get '*path', to: 'errors#error_404', via: :all
+    get '*path', to: 'errors#error_404', via: :all
+  end
 end
