@@ -71,12 +71,18 @@ GEM
     auto_html (1.6.4)
       redcarpet (~> 3.1)
       rinku (~> 1.5.0)
+    autoprefixer-rails (8.6.2)
+      execjs
     bcrypt (3.1.11)
     benchmark-ips (2.7.2)
     better_errors (2.4.0)
       coderay (>= 1.0.0)
       erubi (>= 1.0.0)
       rack (>= 0.9.0)
+    bootstrap (4.1.1)
+      autoprefixer-rails (>= 6.0.3)
+      popper_js (>= 1.12.9, < 2)
+      sass (>= 3.5.2)
     builder (3.2.3)
     bullet (5.7.3)
       activesupport (>= 3.0.0)
@@ -116,13 +122,7 @@ GEM
       countries (~> 2.0)
       sort_alphabetical (~> 1.0)
     crass (1.0.3)
-    css_parser (1.2.6)
-      addressable
-      rdoc
     database_cleaner (1.2.0)
-    deadweight (0.2.2)
-      css_parser (~> 1.2.6)
-      nokogiri
     derailed_benchmarks (1.3.2)
       benchmark-ips (~> 2)
       get_process_mem (~> 0)
@@ -415,6 +415,7 @@ GEM
       capybara (~> 2.1)
       cliver (~> 0.3.1)
       websocket-driver (>= 0.2.0)
+    popper_js (1.12.9)
     powerpack (0.1.1)
     pry (0.11.3)
       coderay (~> 1.1.0)
@@ -468,7 +469,6 @@ GEM
       json (>= 1.8)
       nokogiri (~> 1.5)
       trollop (~> 2.1)
-    rdoc (6.0.1)
     record_tag_helper (1.0.0)
       actionview (~> 5.x)
     redcarpet (3.4.0)
@@ -578,6 +578,7 @@ DEPENDENCIES
   acts-as-taggable-on (~> 4.0)
   auto_html (~> 1.6.4)
   better_errors
+  bootstrap (~> 4.1.1)
   bullet (~> 5.7.3)
   byebug
   capybara (~> 2.18.0)
@@ -585,7 +586,6 @@ DEPENDENCIES
   coffee-rails (~> 4.2.2)
   country_select
   database_cleaner (~> 1.2.0)
-  deadweight
   derailed_benchmarks
   devise (~> 4.4.1)
   elasticsearch-extensions!

@@ -11,11 +11,11 @@ gem 'jquery-rails', '~> 4.3.1'
 gem 'jquery-ui-rails', '~> 6.0.1'
 gem 'font-awesome-rails', '~> 4.7.0.3'
 gem 'normalize-rails'
+gem 'uglifier', '>= 1.0.3'
 
 # Needed for Javascript Runtime
 gem 'therubyracer'
 
-# test gems
 gem 'faker', '1.0.1'
 
 gem 'kaminari'
@@ -28,10 +28,12 @@ gem 'mime-types', ['~> 2.6', '>= 2.6.1'], require: 'mime/types/columnar'
 
 gem 'acts-as-taggable-on', '~> 4.0'
 
+# images and images uplaod
 gem 'carrierwave', '~> 1.0'
 gem 'fog', '~> 1.32'
 gem 'mini_magick', '~> 3.6.0'
 
+# login
 gem 'devise', '~> 4.4.1'
 gem 'omniauth-twitter'
 
@@ -46,6 +48,13 @@ gem 'active_model_serializers', '~> 0.10.7'
 gem 'elasticsearch-model', '~> 2.0'
 gem 'elasticsearch-rails', '~> 2.0'
 gem 'record_tag_helper', '~> 1.0'
+
+
+# Use unicorn as the app server
+gem 'unicorn'
+
+gem 'newrelic_rpm'
+gem 'rack-piwik', '~> 0.3.0', require: 'rack/piwik'
 
 group :development do
   gem 'better_errors'
@@ -74,11 +83,3 @@ group :test do
   gem 'rails-controller-testing'
   gem "minitest", "5.10.1" #remove this after upgrading rails from 5.0.0
 end
-
-gem 'uglifier', '>= 1.0.3'
-
-# Use unicorn as the app server
-gem 'unicorn'
-
-gem 'newrelic_rpm'
-gem 'rack-piwik', '~> 0.3.0', require: 'rack/piwik'
