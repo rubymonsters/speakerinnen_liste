@@ -9,7 +9,6 @@ gem 'bootstrap', '~> 4.1.1'
 gem 'simple_form', '~> 3.5.1'
 gem 'jquery-rails', '~> 4.3.1'
 gem 'jquery-ui-rails', '~> 6.0.1'
-gem 'font-awesome-rails', '~> 4.7.0.3'
 gem 'normalize-rails'
 gem 'uglifier', '>= 1.0.3'
 
