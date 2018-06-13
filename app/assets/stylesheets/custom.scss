@@ -19,3 +19,20 @@ $font-family-base:
   font-weight: 700;
   font-style: normal;
 }
+
+$blue: #00978b;
+$link-color: $blue;
+a, .link {
+	// font-family: $sans-serif;
+	color: $link-color;
+	text-decoration: none;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+    //background: linear-gradient($link-color, $link-color) no-repeat;
+    //background-size: 100% 1px;
+    //background-position: 0 1.15em;
+    //text-shadow: .05em 0 white, -.05em 0 white;
+  }
+}

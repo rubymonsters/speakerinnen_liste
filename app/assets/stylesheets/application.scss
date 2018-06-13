@@ -27,8 +27,12 @@
 * Trumps: High-specificity, very explicit selectors. Overrides and helper classes (e.g. .hidden {}).
 */
 // Custom bootstrap variables must be set or imported *before* bootstrap.
-@import "bootstrap";
+
+
+// To override the bootstrap variables
 @import "custom";
+
+@import "bootstrap";
 
 @import 'settings.application';
 
