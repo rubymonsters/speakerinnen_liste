@@ -1,0 +1,21 @@
+/*fonts*/
+$font-family-base:
+  'OpenSans';
+  // src: font_url('OpenSans/OpenSans-Regular-webfont.eot');
+  // src: font_url('OpenSans/OpenSans-Regular-webfont.eot?#iefix') format('embedded-opentype'),
+  // font_url('OpenSans/OpenSans-Regular-webfont.woff') format('woff'),
+  // font_url('OpenSans/OpenSans-Regular-webfont.ttf') format('truetype'),
+  // font_url('OpenSans/OpenSans-Regular-webfont.svg#open_sansregular') format('svg');
+  // font-weight: 400;
+  // font-style: normal;
+
+@font-face {
+  font-family: 'OpenSans';
+  src: font_url('OpenSans/OpenSans-Bold-webfont.eot');
+  src: font_url('OpenSans/OpenSans-Bold-webfont.eot?#iefix') format('embedded-opentype'),
+  font_url('OpenSans/OpenSans-Bold-webfont.woff') format('woff'),
+  font_url('OpenSans/OpenSans-Bold-webfont.ttf') format('truetype'),
+  font_url('OpenSans/OpenSans-Bold-webfont.svg#open_sansbold') format('svg');
+  font-weight: 700;
+  font-style: normal;
+}
