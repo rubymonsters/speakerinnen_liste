@@ -29,7 +29,7 @@ gem 'jquery-ui-rails', '~> 6.0.1'
 gem 'mini_magick', '~> 3.6.0'
 gem 'omniauth-twitter'
 gem 'pg', '~> 0.18.2'
-gem 'simple_form', '~> 3.5.1'
+gem 'simple_form'
 
 gem 'country_select'
 
