@@ -40,8 +40,6 @@ gem 'font-awesome-rails', '~> 4.7.0.3'
 
 gem 'friendly_id'
 
-gem 'rails_12factor', group: :production
-
 gem 'active_model_serializers'
 
 gem 'elasticsearch-model', '~> 2.0'
