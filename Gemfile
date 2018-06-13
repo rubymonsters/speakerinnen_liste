@@ -2,38 +2,40 @@ source 'https://rubygems.org'
 ruby '2.3.1'
 gem 'rails', '5.0.0'
 
+# layout gems
+gem 'coffee-rails', '~> 4.2.2'
+gem 'sass-rails',   '~> 5.0.7'
+gem 'bootstrap', '~> 4.1.1'
+gem 'simple_form', '~> 3.5.1'
+gem 'jquery-rails', '~> 4.3.1'
+gem 'jquery-ui-rails', '~> 6.0.1'
+gem 'font-awesome-rails', '~> 4.7.0.3'
+gem 'normalize-rails'
+
 # Needed for Javascript Runtime
 gem 'therubyracer'
 
+# test gems
 gem 'faker', '1.0.1'
-gem 'normalize-rails'
-
-gem 'deadweight', require: 'deadweight/hijack/rails'
-
-# Bundle edge Rails instead:
-# gem 'rails', git: 'git://github.com/rails/rails.git'
 
 gem 'kaminari'
+gem 'country_select'
+gem 'globalize', '~> 5.1.0'
+gem 'globalize-accessors'
+gem 'auto_html', '~>1.6.4'
+
 gem 'mime-types', ['~> 2.6', '>= 2.6.1'], require: 'mime/types/columnar'
 
 gem 'acts-as-taggable-on', '~> 4.0'
-gem 'auto_html', '~>1.6.4'
+
 gem 'carrierwave', '~> 1.0'
-gem 'devise', '~> 4.4.1'
 gem 'fog', '~> 1.32'
-gem 'jquery-rails', '~> 4.3.1'
-gem 'jquery-ui-rails', '~> 6.0.1'
 gem 'mini_magick', '~> 3.6.0'
+
+gem 'devise', '~> 4.4.1'
 gem 'omniauth-twitter'
+
 gem 'pg', '~> 0.18.2'
-gem 'simple_form', '~> 3.5.1'
-
-gem 'country_select'
-
-gem 'globalize', '~> 5.1.0'
-gem 'globalize-accessors'
-
-gem 'font-awesome-rails', '~> 4.7.0.3'
 
 gem 'friendly_id', '~> 5.2.3'
 
@@ -72,9 +74,6 @@ group :test do
   gem 'rails-controller-testing'
   gem "minitest", "5.10.1" #remove this after upgrading rails from 5.0.0
 end
-
-gem 'coffee-rails', '~> 4.2.2'
-gem 'sass-rails',   '~> 5.0.7'
 
 gem 'uglifier', '>= 1.0.3'
 
