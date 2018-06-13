@@ -12,7 +12,7 @@ before_install:
 
 services:
   - postgresql
-  
+
 before_script:
   - cp config/database.yml.travis config/database.yml
   - psql -c 'create database travis_test;' -U postgres

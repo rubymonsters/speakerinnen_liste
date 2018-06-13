@@ -47,7 +47,7 @@ de:
       update_needs_confirmation: "Deine Daten wurden aktualisiert, aber Du musst Deine neue E-Mail-Adresse bestätigen. Du erhältst in wenigen Minuten eine E-Mail, mit der Du die Änderung Deiner E-Mail-Adresse abschließen kannst."
       updated: 'Deine Daten wurden aktualisiert.'
       email: "E-Mail"
-      password: "Mindestens 8 Zeichen"
+      password: "Passwort (mindestens 8 Zeichen)"
       confirmation: "Bestätige Dein Passwort"
       signup: "Registrieren"
       signin: "Anmelden"
