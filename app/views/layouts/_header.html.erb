@@ -2,8 +2,54 @@
 <header id=<%= 'admin__header--color' if controller_path =~ /admin\// %>>
   <%# TODO: hidden <h1>Speakerinnen</h1>%>
 
-  <%= render 'layouts/nav_lap_and_up' %>
-  <%= render 'layouts/nav_palm' %>
+<nav class=="navbar navbar-expand-lg navbar-light bg-light">
+  <%= link_to(root_path, id: 'header__home-link', class: 'navbar-brand') do %>
+    <%= image_tag('logo_header.png', alt: 'logo', id: 'header__logo') %>
+  <% end %>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <% if profile_signed_in? %>
+        <li class="nav-item">
+          <%= link_to(t(:my_profile, scope: 'layouts.application'), profile_path(current_profile), class:"navbar-link")%>
+        </li>
+        <li class="nav-item">
+          <%= link_to(t(:logout, scope: 'layouts.application'), destroy_profile_session_path, method: :delete, class:"navbar-link") %>
+        </li>
+      <% else %>
+        <li class="nav-item">
+          <%= link_to(t(:signup, scope: 'layouts.application'), sign_up_path, class:"navbar-link") %>
+        </li>
+        <li class="nav-item">
+          <%= link_to(t(:login, scope: 'layouts.application'), new_profile_session_path, class:"navbar-link") %>
+        </li>
+      <% end %>
+      <% if admin?(current_profile) %>
+        <li class="nav-item">
+          <%= link_to 'Admin', admin_root_path %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+  <%= link_to_unless I18n.locale == :en, 'EN', {locale: :en} %> |
+  <%= link_to_unless I18n.locale == :de, 'DE', {locale: :de} %>
+</nav>
+
+
+  <div id="nav__lap_and_up-menu" class="bt" style="display: none">
+    <%= link_to 'Speakerinnen Blog', 'https://blog.speakerinnen.org/', target: '_blank', class: 'nav__lap_and_up-menu-link ph' %>
+    <%= link_to 'Fiftypercent', 'https://50prozent.speakerinnen.org/', target: '_blank', class: 'nav__lap_and_up-menu-link ph' %>
+    <%= link_to t(:contact, scope: 'pages.home.footer'), contact_path, class: 'nav__lap_and_up-menu-link ph' %>
+    <%= link_to t(:about_title, scope: 'pages.home.footer'), about_path, class: 'nav__lap_and_up-menu-link ph' %>
+    <%= link_to t(:faq, scope: 'pages.home.footer'), faq_path, class: 'nav__lap_and_up-menu-link ph' %>
+  </div>
+
+    </div>
+  </div>
+</div>
 
   <!-- Anchor for top -->
   <a id="top"></a>
