@@ -1,14 +1,16 @@
+# frozen_string_literal: true
+
 class ApplicationController < ActionController::Base
   protect_from_forgery
   unless Rails.application.config.consider_all_requests_local
-    rescue_from ActionController::RoutingError, with: :render_404
+    rescue_from ActiveRecord::RecordNotFound, with: :render_404
   end
 
   before_action :set_locale
   before_action :check_cookie_consent
 
   def authenticate_admin!
-    return if current_profile && current_profile.admin?
+    return if current_profile&.admin?
 
     redirect_to profiles_url, notice: I18n.t('flash.profiles.no_permission')
   end
@@ -40,10 +42,6 @@ class ApplicationController < ActionController::Base
     options = super
     options.update(locale: I18n.locale)
     options
-  end
-
-  def not_found
-    render plain: "404 Not Found", status: 404
   end
 
   def cookie_consent_given?
