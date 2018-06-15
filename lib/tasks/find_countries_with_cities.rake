@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 desc 'find and count cities from profiles with missing countries'
 task find_all_existing_cities: :environment do
   profiles_without_countries = Profile.is_published.where(country: nil).all

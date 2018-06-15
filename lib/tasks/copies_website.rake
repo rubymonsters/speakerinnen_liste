@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 desc 'copies website_de into website_en'
 task copies_website: :environment do
   Profile.all.each do |profile|

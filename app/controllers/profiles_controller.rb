@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ProfilesController < ApplicationController
   include ProfilesHelper
   include CategoriesHelper
@@ -26,11 +28,11 @@ class ProfilesController < ApplicationController
       @profiles = profiles_for_index
       @profiles_count = Profile.is_published.count
     end
-    if params[:all_lang]
-      @tags_most_used_200 = ActsAsTaggableOn::Tag.with_published_profile.most_used(200)
-    else
-      @tags_most_used_200 = ActsAsTaggableOn::Tag.with_published_profile.with_language(I18n.locale).most_used(200)
-    end
+    @tags_most_used_200 = if params[:all_lang]
+                            ActsAsTaggableOn::Tag.with_published_profile.most_used(200)
+                          else
+                            ActsAsTaggableOn::Tag.with_published_profile.with_language(I18n.locale).most_used(200)
+                          end
     @tags_all = ActsAsTaggableOn::Tag.all
   end
 
@@ -80,7 +82,7 @@ class ProfilesController < ApplicationController
     suggester_fields  = []
     suggester_options = []
     suggestions = Profile.typeahead(params[:q])
-                          .select { |key, _value| key.to_s.match(/.*_suggest/) }
+                         .select { |key, _value| key.to_s.match(/.*_suggest/) }
     suggestions.each do |s|
       suggester_fields.push(s)
     end

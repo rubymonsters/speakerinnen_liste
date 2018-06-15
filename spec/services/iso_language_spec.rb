@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe 'iso_language' do
   describe 'lists of language-codes' do
     it 'has a list of all language-codes as two letter strings' do

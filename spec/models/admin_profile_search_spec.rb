@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe 'profile', type: :model do
   describe '.profile_search' do
     let!(:ada) { FactoryBot.create(:profile, firstname: 'Ada') }

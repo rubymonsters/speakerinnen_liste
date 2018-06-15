@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class TagFilter
   def initialize(tags, params)
     @tags = tags

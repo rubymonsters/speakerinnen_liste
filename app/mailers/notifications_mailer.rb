@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class NotificationsMailer < ApplicationMailer
   default from: 'team@speakerinnen.org'
   default to: 'team@speakerinnen.org'

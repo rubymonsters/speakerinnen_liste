@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.feature 'Localization', type: :feature do
   scenario 'start page localization' do
     visit root_path

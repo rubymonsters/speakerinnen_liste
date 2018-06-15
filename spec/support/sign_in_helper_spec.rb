@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module SignInHelper
   # TODO: Thats not correct any more
   # default locale of the site is 'de', so we set the same default here
