@@ -192,6 +192,8 @@ en:
       bio: "My bio:"
       contact: "Contact"
       website: "My website/blog:"
+      website_2: "My 2. website/blog:"
+      website_3: "My 3. website/blog:"
       city: "My city:"
       country: "My country:"
       country_select: "Select a country:"
@@ -279,6 +281,8 @@ en:
         twitter: "My twitteraccount:"
         email: "My email address: <i class='fa fa-info-circle' aria-hidden='true'></i>"
         website: "My website:"
+        website_2: "My 2. website:"
+        website_3: "My 3. website:"
         picture: "A picture of me: ( if possible in color, we show it in black and white.)"
       medialink:
         url: "URL:"
