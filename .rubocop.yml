@@ -1,10 +1,6 @@
 Documentation:
   Enabled: false
-Style/IfUnlessModifier:
-  MaxLineLength: 100
-Style/WhileUntilModifier:
-  MaxLineLength: 100
-Style/AlignHash:
+Layout/AlignHash:
   Enabled: false
 Metrics/BlockLength:
   ExcludedMethods: ['describe', 'context']
@@ -34,4 +30,3 @@ AllCops:
     - 'db/**/*'
     - 'config/**/*'
     - 'bin/**/*'
-

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe 'contact profile' do
   let!(:user) { FactoryBot.create(:published) }
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe 'profile search' do
@@ -24,7 +26,6 @@ describe 'profile search' do
                                       main_topic_de: 'x-ray', main_topic_en: 'Röntgen',
                                       email: 'maria@example.com')
   end
-  #
   let!(:profile2) { FactoryBot.create(:published, firstname: 'Christiane', lastname: 'König', city: 'Heidelberg', languages: 'German') }
   let!(:profile3) { FactoryBot.create(:published, firstname: 'Maren ', lastname: 'Meier') }
 

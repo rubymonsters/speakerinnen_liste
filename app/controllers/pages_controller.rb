@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PagesController < ApplicationController
   def home
     @profiles   = Profile.is_published.main_topic_translated_in(I18n.locale).random.limit(8)

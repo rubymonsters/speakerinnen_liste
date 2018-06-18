@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Profile < ApplicationRecord
   include AutoHtml
   include HasPicture
@@ -32,9 +34,9 @@ class Profile < ApplicationRecord
   acts_as_taggable_on :topics
 
   before_save(on: %i[create update]) do
-    twitter.gsub(%r{^@|https:|http:|:|//|www.|twitter.com/}, '') if twitter
-    firstname.strip! if firstname
-    lastname.strip! if lastname
+    twitter&.gsub(%r{^@|https:|http:|:|//|www.|twitter.com/}, '')
+    firstname&.strip!
+    lastname&.strip!
   end
 
   after_save :update_or_remove_index
@@ -134,7 +136,7 @@ class Profile < ApplicationRecord
 
   def update_or_remove_index
     published ? __elasticsearch__.index_document : __elasticsearch__.delete_document
-  rescue
+  rescue StandardError
     nil
     # rescue a deleted document if not indexed
   end

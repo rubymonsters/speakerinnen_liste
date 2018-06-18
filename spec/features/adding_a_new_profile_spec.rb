@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe 'profile adding' do
   it 'allows to create a profile with languages' do
     # capyara visit method set the locale to :en

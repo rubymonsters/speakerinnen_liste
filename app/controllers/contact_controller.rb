@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ContactController < ApplicationController
   before_action :reject_spam_bots, only: [:create]
 

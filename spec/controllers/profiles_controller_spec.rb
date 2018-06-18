@@ -1,16 +1,18 @@
+# frozen_string_literal: true
+
 include AuthHelper
 
 describe ProfilesController, type: :controller do
   describe 'test index action' do
     let!(:profile) do
       FactoryBot.create(:published,
-                         topic_list: %w[ruby algorithms])
+                        topic_list: %w[ruby algorithms])
     end
     let!(:profile_unpublished) { FactoryBot.create(:unpublished) }
     let!(:ada) do
       FactoryBot.create(:published,
-                         main_topic_en: 'first computer program',
-                         bio_en:        'first female programer')
+                        main_topic_en: 'first computer program',
+                        bio_en:        'first female programer')
     end
 
     before do
@@ -35,7 +37,7 @@ describe ProfilesController, type: :controller do
   describe 'search action', elasticsearch: true do
     it 'displays search results if search term is present' do
       sleep 1
-      get :index, params: { search: 'ruby' }
+      get :index, params: {  search: 'ruby' }
       expect(response).to be_success
     end
 
@@ -121,7 +123,7 @@ describe ProfilesController, type: :controller do
       end
 
       it 'does not render edit view' do
-       expect(response).to_not render_template(:edit)
+        expect(response).to_not render_template(:edit)
       end
 
       it 'redirects to profiles overview' do
@@ -199,7 +201,7 @@ describe ProfilesController, type: :controller do
 
       it 'does not update the requested profile' do
         profile1.reload
-        expect(profile1.firstname).to eq("Factory")
+        expect(profile1.firstname).to eq('Factory')
       end
 
       it 'redirects to profiles overview' do
@@ -214,7 +216,7 @@ describe ProfilesController, type: :controller do
 
       it 'does not update the requested profile' do
         profile.reload
-        expect(profile1.firstname).to eq("Factory")
+        expect(profile1.firstname).to eq('Factory')
       end
 
       it 'should redirect to profiles overview' do

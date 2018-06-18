@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe TagFilter do
   subject(:tag_filter) { described_class.new(ActsAsTaggableOn::Tag.all, filter_params).filter }
 
@@ -9,7 +11,7 @@ describe TagFilter do
   let!(:tag_no_lang) { FactoryBot.create(:tag, name: 'ruby') }
   let!(:tag_en_de) do
     FactoryBot.create(:tag_social_media,
-                       locale_languages: [locale_language_en, locale_language_de])
+                      locale_languages: [locale_language_en, locale_language_de])
   end
   let!(:tag_no_lang) { ActsAsTaggableOn::Tag.create!(name: 'ruby') }
 
