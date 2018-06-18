@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Searchable
   extend ActiveSupport::Concern
 
@@ -105,8 +107,8 @@ module Searchable
         only: %i[firstname lastname iso_languages country],
         methods: [:fullname, :topic_list, :cities, *globalize_attribute_names],
         include: {
-        medialinks: { only: %i[title description] }
-    }
+          medialinks: { only: %i[title description] }
+        }
       )
       output.select { |_key, value| value.present? }
     end

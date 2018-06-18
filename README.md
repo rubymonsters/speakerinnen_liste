@@ -246,6 +246,12 @@ $ bundle exec rspec spec
 $ bundle exec rake db:test:clone
 ```
 
+# Please use Rubocop
+
+```ruby
+# Runs rubocop and corrects all errors it can 
+$ rubocop -a
+```
 
 # Database:
 Our databadse schema looks like that:

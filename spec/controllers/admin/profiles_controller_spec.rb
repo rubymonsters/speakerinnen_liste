@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 include AuthHelper
 
 describe Admin::ProfilesController, type: :controller do
@@ -6,10 +8,10 @@ describe Admin::ProfilesController, type: :controller do
   let!(:non_admin) { FactoryBot.create(:published) }
   let!(:non_admin_medialink) do
     FactoryBot.create(:medialink,
-                       profile_id: non_admin.id,
-                       title: 'Ada and the computer',
-                       url: 'www.adalovelace.de',
-                       description: 'How to program')
+                      profile_id: non_admin.id,
+                      title: 'Ada and the computer',
+                      url: 'www.adalovelace.de',
+                      description: 'How to program')
   end
 
   describe 'GET index' do

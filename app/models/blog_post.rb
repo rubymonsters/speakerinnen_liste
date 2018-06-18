@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class BlogPost < ApplicationRecord
   def self.update
     # JSON holen

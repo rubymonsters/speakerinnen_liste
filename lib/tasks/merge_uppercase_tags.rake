@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 namespace :tags do
   desc 'merges upper case tags into lower case ones'
   task merge: :environment do

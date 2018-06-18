@@ -1,12 +1,16 @@
+# frozen_string_literal: true
+
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  rescue_from ActionController::RoutingError, with: :not_found
+  unless Rails.application.config.consider_all_requests_local
+    rescue_from ActiveRecord::RecordNotFound, with: :render_404
+  end
 
   before_action :set_locale
   before_action :check_cookie_consent
 
   def authenticate_admin!
-    return if current_profile && current_profile.admin?
+    return if current_profile&.admin?
 
     redirect_to profiles_url, notice: I18n.t('flash.profiles.no_permission')
   end
@@ -40,10 +44,6 @@ class ApplicationController < ActionController::Base
     options
   end
 
-  def not_found
-    render plain: "404 Not Found", status: 404
-  end
-
   def cookie_consent_given?
     cookies[:cookie_consent] || Rails.env.test?
   end
@@ -51,13 +51,20 @@ class ApplicationController < ActionController::Base
   def check_cookie_consent
     if params[:allow_cookies] == 'true'
       cookies[:cookie_consent] = {
-         value: true,
+        value: true,
          expires: 1.year.from_now,
          domain: (Rails.env.staging? ? nil : :all)
       }
       reset_session
     elsif !cookie_consent_given?
       request.session_options[:skip] = true
+    end
+  end
+
+  def render_404
+    respond_to do |format|
+      format.html { render template: 'errors/not_found', status: 404 }
+      format.all { render nothing: true, status: 404 }
     end
   end
 end

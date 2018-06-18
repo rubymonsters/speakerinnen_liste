@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # in app/mailers/my_devise_mailer.rb
 class ConfirmationMailer < Devise::Mailer
   # To make sure that your mailer uses the devise views
