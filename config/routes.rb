@@ -4,8 +4,7 @@ Rails.application.routes.draw do
               only: :omniauth_callbacks,
               controllers: {
                 omniauth_callbacks: 'omniauth_callbacks',
-                confirmations: :confirmations,
-                registrations: :registrations
+                confirmations: :confirmations
               }
 
   scope '(:locale)', locale: /en|de/ do
@@ -44,8 +43,7 @@ Rails.application.routes.draw do
 
     devise_for :profiles, skip: :omniauth_callbacks, controllers: {
       omniauth_callbacks: 'omniauth_callbacks',
-      confirmations: :confirmations,
-      registrations: :registrations
+      confirmations: :confirmations
     }
 
     get 'topics', to: 'profiles#index', as: :topic
@@ -83,5 +81,10 @@ Rails.application.routes.draw do
     constraints(host: /^(speakerinnen-liste.herokuapp.com|speakerinnen.org)$/) do
       root to: redirect('http://www.speakerinnen.org')
     end
+  end
+
+  unless Rails.application.config.consider_all_requests_local
+    # having created corresponding controller and action
+    get '*path', to: 'errors#error_404', via: :all
   end
 end

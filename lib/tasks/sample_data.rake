@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 namespace :db do
   desc 'Fill database with sample data'
   task populate: :environment do
@@ -15,13 +17,13 @@ namespace :db do
                       password_confirmation: password,
                       bio: Faker::Lorem.paragraph,
                       city: Faker::Address.city,
-                      topic_list: all_topics.sample(rand(4) + 1).join(', '),
-                      languages: all_languages.sample(rand(3) + 1).join(', '),
+                      topic_list: all_topics.sample(rand(1..4)).join(', '),
+                      languages: all_languages.sample(rand(1..3)).join(', '),
                       talks: all_talks.sample(rand(4)). join(', '),
                       picture: File.open(File.join(Rails.root, 'app', 'assets', 'images', 'avatar.jpg')),
                       twitter: Faker::Name.first_name)
       user = Profile.where(email: email).first
-      user.admin = n == 0 ? true : false
+      user.admin = n == 0
       user.confirmed_at = Time.now
       user.save!
     end

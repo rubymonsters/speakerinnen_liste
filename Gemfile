@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 ruby '2.3.1'
 gem 'rails', '5.2.0'
@@ -29,7 +31,6 @@ gem 'jquery-ui-rails', '~> 6.0.1'
 gem 'mini_magick', '~> 3.6.0'
 gem 'omniauth-twitter'
 gem 'pg', '~> 0.18.2'
-gem 'recaptcha', require: 'recaptcha/rails'
 gem 'simple_form'
 
 gem 'country_select'
@@ -40,8 +41,6 @@ gem 'globalize-accessors'
 gem 'font-awesome-rails', '~> 4.7.0.3'
 
 gem 'friendly_id'
-
-gem 'rails_12factor', group: :production
 
 gem 'active_model_serializers'
 
@@ -72,9 +71,9 @@ group :test do
   gem 'database_cleaner', '~> 1.6.0'
   gem 'elasticsearch-extensions', git: 'git://github.com/elasticsearch/elasticsearch-ruby.git', ref: '2.x'
   gem 'factory_bot_rails'
+  gem 'minitest', '5.10.1' # remove this after upgrading rails from 5.0.0
   gem 'poltergeist', '1.17.0'
   gem 'rails-controller-testing'
-  gem "minitest", "5.10.1" #remove this after upgrading rails from 5.0.0
 end
 
 gem 'coffee-rails', '~> 4.2.2'

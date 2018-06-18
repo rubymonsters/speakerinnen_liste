@@ -1,4 +1,4 @@
-# Encoding: utf-8
+# frozen_string_literal: true
 
 class SearchLanguages
   def self.collection_for_dropdown(i18n_language = :en)

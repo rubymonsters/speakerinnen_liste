@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Api::V1::ProfilesController < ApplicationController
   before_action :api_authentication_required
   respond_to :json

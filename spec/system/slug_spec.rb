@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 describe 'adds slug when creating a profile' do
   let!(:user) do
     FactoryBot.create(:published,
-                       lastname: 'lovelace',
-                       firstname: 'ada')
+                      lastname: 'lovelace',
+                      firstname: 'ada')
   end
 
   describe 'slug' do

@@ -451,7 +451,7 @@ GEM
       capybara (~> 2.1)
       cliver (~> 0.3.1)
       websocket-driver (>= 0.2.0)
-    powerpack (0.1.1)
+    powerpack (0.1.2)
     pry (0.11.3)
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
@@ -482,11 +482,6 @@ GEM
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.0.4)
       loofah (~> 2.2, >= 2.2.2)
-    rails_12factor (0.0.3)
-      rails_serve_static_assets
-      rails_stdout_logging
-    rails_serve_static_assets (0.0.5)
-    rails_stdout_logging (0.0.5)
     railties (5.2.0)
       actionpack (= 5.2.0)
       activesupport (= 5.2.0)
@@ -509,8 +504,6 @@ GEM
       nokogiri (~> 1.5)
       trollop (~> 2.1)
     rdoc (6.0.4)
-    recaptcha (4.8.0)
-      json
     record_tag_helper (1.0.0)
       actionview (~> 5.x)
     redcarpet (3.4.0)
@@ -666,8 +659,6 @@ DEPENDENCIES
   rack-piwik (~> 0.3.0)
   rails (= 5.2.0)
   rails-controller-testing
-  rails_12factor
-  recaptcha
   record_tag_helper (~> 1.0)
   rspec-rails (~> 3.7.2)
   rubocop (~> 0.49.0)

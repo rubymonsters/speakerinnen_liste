@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 include AuthHelper
 
 describe ProfilesController, type: :controller do
@@ -116,7 +118,7 @@ describe ProfilesController, type: :controller do
       end
 
       it 'does not render edit view' do
-       expect(response).to_not render_template(:edit)
+        expect(response).to_not render_template(:edit)
       end
 
       it 'redirects to profiles overview' do
@@ -194,7 +196,7 @@ describe ProfilesController, type: :controller do
 
       it 'does not update the requested profile' do
         profile1.reload
-        expect(profile1.firstname).to eq("Factory")
+        expect(profile1.firstname).to eq('Factory')
       end
 
       it 'redirects to profiles overview' do
@@ -209,7 +211,7 @@ describe ProfilesController, type: :controller do
 
       it 'does not update the requested profile' do
         profile.reload
-        expect(profile1.firstname).to eq("Factory")
+        expect(profile1.firstname).to eq('Factory')
       end
 
       it 'should redirect to profiles overview' do

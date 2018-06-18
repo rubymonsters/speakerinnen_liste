@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 namespace :city_translation do
   desc 'copies city_en into city_de'
   task copies_city: :environment do
