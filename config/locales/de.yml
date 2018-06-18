@@ -193,6 +193,8 @@ de:
       bio: "Meine Biografie: "
       contact: "Kontakt"
       website: "Meine Webseite/Blog:"
+      website_2: "Meine 2. Webseite/Blog:"
+      website_3: "Meine 3. Webseite/Blog:"
       city: "Meine Stadt:"
       country: "Mein Land:"
       country_select: "Wähle ein Land aus:"
@@ -281,6 +283,8 @@ de:
         twitter: "Mein Twitteraccount:"
         email: "Meine E-Mailadresse: <i class='fa fa-info-circle' aria-hidden='true'></i>"
         website: "Meine Webseite:"
+        website_2: "Meine 2. Webseite:"
+        website_3: "Meine 3. Webseite:"
         picture: "Ein Foto von mir: ( wenn möglich in Farbe, wir zeigen es in Graustufen.)"
       medialink:
         url: "URL:"
