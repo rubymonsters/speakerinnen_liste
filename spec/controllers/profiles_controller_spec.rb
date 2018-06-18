@@ -4,7 +4,7 @@ include AuthHelper
 
 describe ProfilesController, type: :controller do
   describe 'test index action' do
-    let!(:profile) { create(:published, topic_list: %w(ruby algorithms) }
+    let!(:profile) { create(:published, topic_list: %w(ruby algorithms)) }
     let!(:profile_unpublished) { FactoryBot.create(:unpublished) }
     let!(:ada) { create(:published,
                         main_topic_en: 'first computer program',
