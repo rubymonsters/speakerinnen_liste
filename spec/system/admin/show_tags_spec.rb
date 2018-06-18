@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe 'show locale_language' do
   let!(:admin) { create(:admin) }
   let!(:locale_language_de) { create(:locale_language_de) }

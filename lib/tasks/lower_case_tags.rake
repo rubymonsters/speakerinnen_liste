@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 namespace :tags do
   desc 'converts upper case tags into lower case ones'
   task convert: :environment do

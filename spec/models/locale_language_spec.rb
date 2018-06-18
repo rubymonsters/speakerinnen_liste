@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe LocaleLanguage, type: :model do
   let!(:locale_language_de) { FactoryBot.create(:locale_language_de) }
   let!(:locale_language_en) { FactoryBot.create(:locale_language_en) }
@@ -8,7 +10,7 @@ describe LocaleLanguage, type: :model do
   let!(:tag_with_unpublished_profile) { FactoryBot.create(:tag, name: 'sports') }
   let!(:tag_both_languages) do
     FactoryBot.create(:tag_social_media,
-                       locale_languages: [locale_language_en, locale_language_de])
+                      locale_languages: [locale_language_en, locale_language_de])
   end
 
   let!(:cat_1) { FactoryBot.create(:cat_science, id: 1, tags: [tag_de, tag_en]) }

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 shared_examples_for 'successful sign in' do
   it { should have_content(I18n.t('devise.sessions.signed_in')) }
   it { should have_link(I18n.t('layouts.application.logout')) }

@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 describe 'displaying tags' do
   let!(:locale_language_de) { FactoryBot.create(:locale_language_de) }
   let!(:locale_language_en) { FactoryBot.create(:locale_language_en) }
 
   let!(:tag_both_languages) do
     FactoryBot.create(:tag_social_media,
-                       locale_languages: [locale_language_en, locale_language_de])
+                      locale_languages: [locale_language_en, locale_language_de])
   end
   let!(:tag_with_slash_en) do
     FactoryBot.create(:tag, name: 'AC/DC', locale_languages: [locale_language_en])
@@ -16,9 +18,9 @@ describe 'displaying tags' do
 
   let!(:ada) do
     FactoryBot.create(:published, topic_list: [tag_en,
-                                                tag_both_languages,
-                                                tag_de,
-                                                tag_with_slash_en])
+                                               tag_both_languages,
+                                               tag_de,
+                                               tag_with_slash_en])
   end
   let!(:pierre) { create(:unpublished, topic_list: [tag_de, tag_with_unpublished_profile]) }
 

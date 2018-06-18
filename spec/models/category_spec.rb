@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe 'category', type: :model do
   let!(:category_sonstiges) { FactoryBot.create(:category, name: 'Sonstiges') }
   let!(:category_A) { FactoryBot.create(:category, name: 'A') }
