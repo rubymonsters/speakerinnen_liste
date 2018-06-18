@@ -16,20 +16,20 @@ ActiveRecord::Schema.define(version: 20180210215444) do
   enable_extension "plpgsql"
 
   create_table "api_tokens", force: :cascade do |t|
-    t.string "name"
-    t.string "token"
+    t.string "name",  limit: 255
+    t.string "token", limit: 255
   end
 
   create_table "blog_posts", force: :cascade do |t|
-    t.string   "title"
+    t.string   "title",      limit: 255
     t.text     "body"
-    t.string   "url"
+    t.string   "url",        limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "categories", force: :cascade do |t|
-    t.string   "name"
+    t.string   "name",       limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -53,10 +53,10 @@ ActiveRecord::Schema.define(version: 20180210215444) do
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
-    t.string   "slug",                      null: false
-    t.integer  "sluggable_id",              null: false
+    t.string   "slug",           limit: 255, null: false
+    t.integer  "sluggable_id",               null: false
     t.string   "sluggable_type", limit: 50
-    t.string   "scope"
+    t.string   "scope",          limit: 255
     t.datetime "created_at"
     t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true, using: :btree
     t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", using: :btree
@@ -65,7 +65,7 @@ ActiveRecord::Schema.define(version: 20180210215444) do
   end
 
   create_table "locale_languages", force: :cascade do |t|
-    t.string   "iso_code"
+    t.string   "iso_code",   limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -80,14 +80,15 @@ ActiveRecord::Schema.define(version: 20180210215444) do
     t.integer  "position"
     t.string   "language"
     t.index ["profile_id"], name: "index_medialinks_on_profile_id", using: :btree
+    t.string   "language",    limit: 255
   end
 
   create_table "profile_translations", force: :cascade do |t|
-    t.integer  "profile_id", null: false
-    t.string   "locale",     null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string   "main_topic"
+    t.integer  "profile_id",             null: false
+    t.string   "locale",     limit: 255, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "main_topic", limit: 255
     t.text     "bio"
     t.string   "twitter"
     t.string   "website"
@@ -97,32 +98,32 @@ ActiveRecord::Schema.define(version: 20180210215444) do
   end
 
   create_table "profiles", force: :cascade do |t|
-    t.string   "firstname"
-    t.string   "lastname"
-    t.string   "email"
-    t.string   "languages"
-    t.string   "picture"
+    t.string   "firstname",              limit: 255
+    t.string   "lastname",               limit: 255
+    t.string   "email",                  limit: 255
+    t.string   "languages",              limit: 255
+    t.string   "picture",                limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "encrypted_password",     default: "",    null: false
-    t.string   "reset_password_token"
+    t.string   "encrypted_password",     limit: 255, default: "",    null: false
+    t.string   "reset_password_token",   limit: 255
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0
+    t.integer  "sign_in_count",                      default: 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
-    t.string   "confirmation_token"
+    t.string   "current_sign_in_ip",     limit: 255
+    t.string   "last_sign_in_ip",        limit: 255
+    t.string   "confirmation_token",     limit: 255
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
-    t.string   "unconfirmed_email"
-    t.string   "talks"
-    t.boolean  "admin",                  default: false
-    t.string   "provider"
-    t.string   "uid"
-    t.string   "media_url"
-    t.boolean  "published",              default: false
+    t.string   "unconfirmed_email",      limit: 255
+    t.string   "talks",                  limit: 255
+    t.boolean  "admin",                              default: false
+    t.string   "provider",               limit: 255
+    t.string   "uid",                    limit: 255
+    t.string   "media_url",              limit: 255
+    t.boolean  "published",                          default: false
     t.text     "admin_comment"
     t.string   "slug"
     t.string   "country"
