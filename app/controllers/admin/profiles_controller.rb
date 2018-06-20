@@ -1,14 +1,16 @@
+# frozen_string_literal: true
+
 class Admin::ProfilesController < Admin::BaseController
   helper_method :sort_column, :sort_direction
 
   before_action :set_profile, only: %i[show edit update destroy publish unpublish admin_comment]
 
   def index
-    if params[:search]
-      @profiles = Profile.is_confirmed.admin_search(params[:search]).order('created_at DESC').page(params[:page]).per(100)
-    else
-      @profiles = Profile.is_confirmed.order(sort_column + ' ' + sort_direction).order('created_at DESC').page(params[:page]).per(100)
-    end
+    @profiles = if params[:search]
+                  Profile.is_confirmed.admin_search(params[:search]).order('created_at DESC').page(params[:page]).per(100)
+                else
+                  Profile.is_confirmed.order(sort_column + ' ' + sort_direction).order('created_at DESC').page(params[:page]).per(100)
+                end
   end
 
   def new; end

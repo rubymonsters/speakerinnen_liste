@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 # skip until refactoring api
 # include AuthHelper
 

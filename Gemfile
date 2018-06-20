@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 ruby '2.3.1'
 gem 'rails', '5.0.0'
@@ -78,7 +80,7 @@ group :test do
   gem 'database_cleaner', '~> 1.2.0'
   gem 'elasticsearch-extensions', git: 'git://github.com/elasticsearch/elasticsearch-ruby.git', ref: '2.x'
   gem 'factory_bot_rails'
+  gem 'minitest', '5.10.1' # remove this after upgrading rails from 5.0.0
   gem 'poltergeist', '1.17.0'
   gem 'rails-controller-testing'
-  gem "minitest", "5.10.1" #remove this after upgrading rails from 5.0.0
 end

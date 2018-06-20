@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe 'tags', type: :model do
   let!(:ada) { FactoryBot.create(:published, firstname: 'Ada') }
   let!(:marie) { FactoryBot.create(:published, firstname: 'Marie') }

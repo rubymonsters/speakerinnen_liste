@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 include AuthHelper
 
 describe Admin::TagsController, type: :controller do

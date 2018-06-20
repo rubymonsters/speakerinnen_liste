@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Admin::MedialinksController < Admin::BaseController
   before_action :fetch_profile_from_params
 

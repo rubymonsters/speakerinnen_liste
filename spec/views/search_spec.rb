@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe 'profile search', elasticsearch: true, type: :view do
   context 'on startpage' do
     before { visit root_path }

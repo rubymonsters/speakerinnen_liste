@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class LocaleLanguage < ApplicationRecord
   has_many :tags_locale_languages
   has_many(

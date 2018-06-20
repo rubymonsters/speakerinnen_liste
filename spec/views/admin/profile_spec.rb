@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 include AuthHelper
 
 describe 'admin navigation' do
@@ -6,27 +8,27 @@ describe 'admin navigation' do
 
   let!(:ada) do
     FactoryBot.create(:published,
-                       firstname: 'Ada',
-                       lastname: 'Lovelace',
-                       email: 'ada@lovelace.de',
-                       twitter: '@alove',
-                       main_topic_de: 'erstes Computer Programm',
-                       bio_de: 'erste Programmiererin',
-                       main_topic_en:   'first computer program',
-                       bio_en:          'first female programer',
-                       city: 'London',
-                       iso_languages: %w[en fr],
-                       topic_list: 'algorithm, mathematic')
+                      firstname: 'Ada',
+                      lastname: 'Lovelace',
+                      email: 'ada@lovelace.de',
+                      twitter: '@alove',
+                      main_topic_de: 'erstes Computer Programm',
+                      bio_de: 'erste Programmiererin',
+                      main_topic_en:   'first computer program',
+                      bio_en:          'first female programer',
+                      city: 'London',
+                      iso_languages: %w[en fr],
+                      topic_list: 'algorithm, mathematic')
   end
   let!(:marie) { FactoryBot.create(:unpublished, firstname: 'Marie') }
   let!(:rosa) { FactoryBot.create(:unconfirmed, firstname: 'Rosa') }
 
   let!(:ada_medialink) do
     FactoryBot.create(:medialink,
-                       profile_id: ada.id,
-                       title: 'Ada and the computer',
-                        url: 'www.adalovelace.de',
-                        description: 'How to programm')
+                      profile_id: ada.id,
+                      title: 'Ada and the computer',
+                       url: 'www.adalovelace.de',
+                       description: 'How to programm')
   end
 
   describe 'in profile' do
