@@ -31,6 +31,8 @@
 
 // To override the bootstrap variables
 @import "custom";
+@import "font-awesome";
+@import 'modal';
 
 @import "bootstrap";
 
@@ -38,4 +40,6 @@
 
 @import 'devise-login.application';
 
-@import 'modal';
+body {
+  padding-top: 60px;
+}

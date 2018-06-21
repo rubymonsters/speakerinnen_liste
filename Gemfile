@@ -8,6 +8,7 @@ gem 'rails', '5.0.0'
 gem 'coffee-rails', '~> 4.2.2'
 gem 'sass-rails',   '~> 5.0.7'
 gem 'bootstrap', '~> 4.1.1'
+gem "font-awesome-rails"
 gem 'simple_form', '~> 3.5.1'
 gem 'jquery-rails', '~> 4.3.1'
 gem 'jquery-ui-rails', '~> 6.0.1'
