@@ -1,13 +1,4 @@
 /*fonts*/
-// $font-family-sans-serif:
-//   'OpenSans';
-//   src: font_url('OpenSans/OpenSans-Regular-webfont.eot');
-//   src: font_url('OpenSans/OpenSans-Regular-webfont.eot?#iefix') format('embedded-opentype'),
-//   font_url('OpenSans/OpenSans-Regular-webfont.woff') format('woff'),
-//   font_url('OpenSans/OpenSans-Regular-webfont.ttf') format('truetype'),
-//   font_url('OpenSans/OpenSans-Regular-webfont.svg#open_sansregular') format('svg');
-//   font-weight: 400;
-//   font-style: normal;
 
 @font-face {
   font-family: 'OpenSans';
@@ -39,11 +30,15 @@ $dark-grey: #3C3C3A;
 $serif: Georgia, serif;
 $sans-serif: "OpenSans", "Helvetica Neue", Helvetica, sans-serif;
 
-// variables
+/* variables colors */
 $font-color: $dark-grey;
 $link-color: $blue;
 
-html {
+/* units */
+$base-spacing-unit: 24px;
+
+body {
+  padding-top: 60px;
 	font-family: $serif;
 	color: $font-color;
 }
@@ -61,4 +56,46 @@ a, .link {
     //background-position: 0 1.15em;
     //text-shadow: .05em 0 white, -.05em 0 white;
   }
+}
+
+h1 {
+  font-weight: normal;
+  line-height: 60px;
+  margin: 0 0 $base-spacing-unit;
+}
+
+h2 {
+  font-weight: normal;
+  line-height: 60px;
+  margin: 0 0 $base-spacing-unit;
+}
+
+.box__bg {
+  display: inline-block;
+  padding: $base-spacing-unit $base-spacing-unit;
+}
+
+.bg--white {
+  background: $transparent-white;
+}
+
+/* startpage */
+#startpage__start-teaser {
+  background: image-url('start-teaser.jpg') no-repeat center center;
+  background-size: cover;
+}
+
+#startpage__teaser-bg-01 {
+  background: image-url('teaser-bg-01.png') no-repeat center center;
+  background-size: cover;
+}
+
+#startpage__teaser-bg-02 {
+  background: image-url('teaser-bg-02.jpg') no-repeat center center;
+  background-size: cover;
+}
+
+.startpage__photo-bar {
+  box-shadow: 0 0 20px $transparent-black inset;
+  min-height: 696px;
 }
