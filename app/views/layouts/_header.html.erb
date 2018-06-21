@@ -2,70 +2,58 @@
 <header id=<%= 'admin__header--color' if controller_path =~ /admin\// %>>
   <%# TODO: hidden <h1>Speakerinnen</h1>%>
 
-<nav class=="navbar navbar-expand-lg navbar-light bg-light">
-  <%= link_to(root_path, id: 'header__home-link', class: 'navbar-brand') do %>
-    <%= image_tag('logo_header.png', alt: 'logo', id: 'header__logo') %>
-  <% end %>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-      <% if profile_signed_in? %>
-        <li class="nav-item">
-          <%= link_to(t(:my_profile, scope: 'layouts.application'), profile_path(current_profile), class:"navbar-link")%>
-        </li>
-        <li class="nav-item">
-          <%= link_to(t(:logout, scope: 'layouts.application'), destroy_profile_session_path, method: :delete, class:"navbar-link") %>
-        </li>
-      <% else %>
-        <li class="nav-item">
-          <%= link_to(t(:signup, scope: 'layouts.application'), sign_up_path, class:"navbar-link") %>
-        </li>
-        <li class="nav-item">
-          <%= link_to(t(:login, scope: 'layouts.application'), new_profile_session_path, class:"navbar-link") %>
-        </li>
+  <div class="row">
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-light">
+      <%= link_to(root_path, id: 'header__home-link', class: 'navbar-brand') do %>
+        <%= image_tag('logo_header.png', alt: 'logo', id: 'header__logo') %>
       <% end %>
-      <% if admin?(current_profile) %>
-        <li class="nav-item">
-          <%= link_to 'Admin', admin_root_path %>
-        </li>
-      <% end %>
-    </ul>
-  </div>
-  <%= link_to_unless I18n.locale == :en, 'EN', {locale: :en} %> |
-  <%= link_to_unless I18n.locale == :de, 'DE', {locale: :de} %>
-</nav>
 
+      <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="fa fa-bars"></span>
+      </button>
 
-  <div id="nav__lap_and_up-menu" class="bt" style="display: none">
-    <%= link_to 'Speakerinnen Blog', 'https://blog.speakerinnen.org/', target: '_blank', class: 'nav__lap_and_up-menu-link ph' %>
-    <%= link_to 'Fiftypercent', 'https://50prozent.speakerinnen.org/', target: '_blank', class: 'nav__lap_and_up-menu-link ph' %>
-    <%= link_to t(:contact, scope: 'pages.home.footer'), contact_path, class: 'nav__lap_and_up-menu-link ph' %>
-    <%= link_to t(:about_title, scope: 'pages.home.footer'), about_path, class: 'nav__lap_and_up-menu-link ph' %>
-    <%= link_to t(:faq, scope: 'pages.home.footer'), faq_path, class: 'nav__lap_and_up-menu-link ph' %>
+      <div class="collapse navbar-collapse offset-md-6" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <% if profile_signed_in? %>
+            <li class="nav-item">
+              <%= link_to(t(:my_profile, scope: 'layouts.application'), profile_path(current_profile), class:"nav-link")%>
+            </li>
+            <li class="nav-item">
+              <%= link_to(t(:logout, scope: 'layouts.application'), destroy_profile_session_path, method: :delete, class:"nav-link") %>
+            </li>
+          <% else %>
+            <li class="nav-item">
+              <%= link_to(t(:signup, scope: 'layouts.application'), sign_up_path, class:"nav-link") %>
+            </li>
+            <li class="nav-item">
+              <%= link_to(t(:login, scope: 'layouts.application'), new_profile_session_path, class:"nav-link") %>
+            </li>
+          <% end %>
+          <% if admin?(current_profile) %>
+            <li class="nav-item">
+              <%= link_to 'Admin', admin_root_path, class:"nav-link" %>
+            </li>
+          <% end %>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              More
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <%= link_to 'Speakerinnen Blog', 'https://blog.speakerinnen.org/', target: '_blank', class: 'dropdown-item' %>
+              <%= link_to 'Fiftypercent', 'https://50prozent.speakerinnen.org/', target: '_blank', class: 'dropdown-item'%>
+              <%= link_to t(:contact, scope: 'pages.home.footer'), contact_path, class: 'dropdown-item'%>
+              <%= link_to t(:about_title, scope: 'pages.home.footer'), about_path, class: 'dropdown-item' %>
+              <%= link_to t(:faq, scope: 'pages.home.footer'), faq_path, class: 'dropdown-item' %>
+            </div>
+          </li>
+        </ul>
+        <%= link_to_unless I18n.locale == :en, 'EN', {locale: :en} %> |
+        <%= link_to_unless I18n.locale == :de, 'DE', {locale: :de} %>
+      </div>
+    </nav>
   </div>
-
-    </div>
-  </div>
-</div>
 
   <!-- Anchor for top -->
   <a id="top"></a>
 
 </header>
-
-<script>
-$( "#nav__palm-menu-trigger" ).click(function() {
-  $( "#nav__palm-menu" ).toggle( 250, function() {
-    // Animation complete.
-  });
-});
-
-$( "#nav__lap_and_up-menu-trigger" ).click(function() {
-  $( "#nav__lap_and_up-menu" ).toggle( 250, function() {
-    // Animation complete.
-  });
-});
-</script>
