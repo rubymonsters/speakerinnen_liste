@@ -15,29 +15,26 @@
     <%= favicon_link_tag 'favicon.ico' %>
   </head>
   <body>
-  <div class="container-fluid">
-    <%= render 'layouts/header' %>
-  </div>
+    <div class="container-fluid">
+      <div class="row">
+        <%= render 'layouts/header' %>
 
-  <div class="container">
-    <div id="content">
-      <% if notice %>
-        <div class='notice'>
-          <%= notice %>
-        </div>
-      <% end %>
-      <% if alert %>
-        <div class='alert'>
-          <%= Array(alert).join('<br>').html_safe %>
-        </div>
-      <% end %>
-      <%= render 'shared/cookie_consent' %>
-      <%= yield %>
-
-      <%= render 'layouts/footer' if render_footer? %>
+        <% if notice %>
+          <div class='notice'>
+            <%= notice %>
+          </div>
+        <% end %>
+        <% if alert %>
+          <div class='alert'>
+            <%= Array(alert).join('<br>').html_safe %>
+          </div>
+        <% end %>
+        <%= render 'shared/cookie_consent' %>
+        <%= yield %>
+        <%= render 'layouts/footer' if render_footer? %>
+      </div>
     </div>
     <!-- Piwik -->
-  </div>
     <% if cookies[:cookie_consent] == 'true' %>
       <script type="text/javascript">
         var _paq = _paq || [];

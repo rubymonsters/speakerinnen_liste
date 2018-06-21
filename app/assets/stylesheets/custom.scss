@@ -38,7 +38,7 @@ $link-color: $blue;
 $base-spacing-unit: 24px;
 
 body {
-  padding-top: 60px;
+  padding-top: $header-height;
 	font-family: $serif;
 	color: $font-color;
 }
@@ -70,6 +70,14 @@ h2 {
   margin: 0 0 $base-spacing-unit;
 }
 
+/* layout */
+.layout-wrapper {
+  max-width: $layout-width;
+  margin: 0 auto;
+  padding: (4*$base-spacing-unit) ($base-spacing-unit/2) 0 ;
+  // padding: quadruple($inuit-base-spacing-unit) halve($inuit-base-spacing-unit) 0;
+}
+
 .box__bg {
   display: inline-block;
   padding: $base-spacing-unit $base-spacing-unit;
@@ -98,4 +106,21 @@ h2 {
 .startpage__photo-bar {
   box-shadow: 0 0 20px $transparent-black inset;
   min-height: 696px;
+  width: 100%
+}
+
+.alpha--halve {
+  font-size: $heading-size-1/2;
+  line-height: 40px;
+}
+
+.page-box {
+  padding: 12px;
+  background-color: $transparent-white;
+  display: inline-block;
+}
+
+.copyright {
+  text-align: right;
+  margin-right: 10px;
 }
