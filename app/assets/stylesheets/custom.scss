@@ -124,3 +124,44 @@ h2 {
   text-align: right;
   margin-right: 10px;
 }
+
+/* cookie consent dialog */
+.cookie-consent-dialog {
+  position: fixed;
+  bottom: 0px;
+  z-index: 1;
+
+  a, .link {
+    color: $white;
+    text-decoration: underline;
+  }
+
+  .btn {
+    // color: $blue;
+    text-decoration: none;
+  }
+}
+
+/* diverses */
+
+.notice {
+  background: $blue;
+  color: $white;
+  font-family: $sans-serif;
+  padding: $base-spacing-unit;
+  text-align: center;
+}
+
+.alert {
+  background: $red;
+  color: $white;
+  font-family: $sans-serif;
+  padding: $base-spacing-unit;
+  text-align: center;
+}
+
+
+.border-vertical {
+  border-top: $border;
+  border-bottom: $border;
+}
