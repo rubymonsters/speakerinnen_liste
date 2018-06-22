@@ -85,6 +85,20 @@ h2 {
   margin-right: 10px;
 }
 
+.startpage-categories__list-links {
+  color: $dark-grey;
+  font-size: 1.9em;
+  background-color: $link-bg-color;
+  padding: 3px 6px;
+  line-height: 2em;
+
+  &:hover {
+    color: $link-color-hover;
+    background-color: $link-bg-color-hover;
+    text-decoration: none;
+  }
+}
+
 /* cookie consent dialog */
 .cookie-consent-dialog {
   position: fixed;
@@ -103,7 +117,6 @@ h2 {
 }
 
 /* diverses */
-
 .notice {
   background: $blue;
   color: $white;
@@ -120,8 +133,64 @@ h2 {
   text-align: center;
 }
 
-
 .border-vertical {
   border-top: $border;
   border-bottom: $border;
+}
+
+.display--block {
+  display: block;
+}
+
+.list--style-none {
+  list-style-type: none;
+}
+
+.sans-serif{
+	font-family: $sans-serif;
+}
+
+/* profiles */
+.photo--grey {
+  border: $border;
+  -webkit-transition: 1s;
+  -moz-transition: 1s;
+  -ms-transition: 1s;
+  -o-transition: 1s;
+  transition: 1s;
+  -webkit-filter: grayscale(100%);
+  filter: gray; /* IE6-9 */
+  -ms-filter: grayscale(100%);
+  -o-filter: grayscale(100%);
+  filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale"); /* Firefox 3.5+ */
+  filter: grayscale(100%);
+  max-width: 100%;
+}
+
+.photo--grey:hover {
+  -webkit-filter: grayscale(0%);
+  -moz-filter: grayscale(0%);
+  -ms-filter: grayscale(0%);
+  -o-filter: grayscale(0%);
+  filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'1 0 0 0 0, 0 1 0 0 0, 0 0 1 0 0, 0 0 0 1 0\'/></filter></svg>#grayscale");
+  filter: grayscale(00%);
+}
+
+.profile-box {
+  width: 100%;
+  margin-bottom: $base-spacing-unit;
+}
+
+.profile-box h5 {
+  font-weight: normal;
+  margin: 0;
+  color: $font-color;
+}
+
+.profile-box p {
+  font-weight: normal;
+  font-family: $sans-serif;
+  margin: 0;
+  color: $font-color;
+  overflow: hidden;
 }
