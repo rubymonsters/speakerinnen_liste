@@ -1,44 +1,4 @@
-/*fonts*/
-
-@font-face {
-  font-family: 'OpenSans';
-  src: font_url('OpenSans/OpenSans-Regular-webfont.eot');
-  src: font_url('OpenSans/OpenSans-Regular-webfont.eot?#iefix') format('embedded-opentype'),
-  font_url('OpenSans/OpenSans-Regular-webfont.woff') format('woff'),
-  font_url('OpenSans/OpenSans-Regular-webfont.ttf') format('truetype'),
-  font_url('OpenSans/OpenSans-Regular-webfont.svg#open_sansbold') format('svg');
-  font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'OpenSans';
-  src: font_url('OpenSans/OpenSans-Bold-webfont.eot');
-  src: font_url('OpenSans/OpenSans-Bold-webfont.eot?#iefix') format('embedded-opentype'),
-  font_url('OpenSans/OpenSans-Bold-webfont.woff') format('woff'),
-  font_url('OpenSans/OpenSans-Bold-webfont.ttf') format('truetype'),
-  font_url('OpenSans/OpenSans-Bold-webfont.svg#open_sansbold') format('svg');
-  font-weight: 700;
-  font-style: normal;
-}
-
-/* colors */
-$blue: #00978b;
-$dark-grey: #3C3C3A;
-
-/* font */
-$serif: Georgia, serif;
-$sans-serif: "OpenSans", "Helvetica Neue", Helvetica, sans-serif;
-
-/* variables colors */
-$font-color: $dark-grey;
-$link-color: $blue;
-
-/* units */
-$base-spacing-unit: 24px;
-
 body {
-  padding-top: $header-height;
 	font-family: $serif;
 	color: $font-color;
 }
