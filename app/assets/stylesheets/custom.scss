@@ -35,7 +35,7 @@ h2 {
   max-width: $layout-width;
   margin: 0 auto;
   padding: (4*$base-spacing-unit) ($base-spacing-unit/2) 0 ;
-  // padding: quadruple($inuit-base-spacing-unit) halve($inuit-base-spacing-unit) 0;
+  width: 100%;
 }
 
 .box__bg {
@@ -66,7 +66,9 @@ h2 {
 .startpage__photo-bar {
   box-shadow: 0 0 20px $transparent-black inset;
   min-height: 696px;
-  width: 100%
+  width: 100%;
+  margin-top: 4*$base-spacing-unit;
+
 }
 
 .alpha--halve {
