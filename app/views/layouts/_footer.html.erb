@@ -1,22 +1,19 @@
-<footer id="main-page-footer" class="pb">
-  <div class="layout-wrapper">
-    <p class="">
-      <%= t(:women, scope: 'pages.home.footer').html_safe %>
-    </p>
-    <h1 class="bt"><%= t(:contact, scope: 'pages.home.footer') %></h1>
-    <nav class="ph0 pv border-vertical">
-      <%= t(:address, scope: 'pages.home.footer') .html_safe %> |
-      <%= link_to t(:contact_link, scope: 'pages.home.footer'), contact_path, class:"ph-" %> |
-      <%= link_to t(:about_title, scope: 'pages.home.footer'), about_path, class: "ph-" %> |
-      <%= link_to t(:faq, scope: 'pages.home.footer'), faq_path, class: "ph-"  %> |
-      <%= t(:github, scope: 'pages.home.footer').html_safe %> |
-      <%= link_to t(:title, scope: 'pages.imprint'), impressum_path, class:"ph-" %> |
-      <%= link_to t(:privacy, scope: 'pages.imprint'), privacy_path, class:"ph-" %>
-    </nav>
-    <p>
-    <span style="vertical-align: top">Supported by:</span>
-    <%= image_tag('BMBF_RGB_Gef_M.jpg', style:'padding-left: 20px') %>
-    <%= image_tag('travisfoundation-1.png', style: "width: 250px; padding-left: 20px; vertical-align: top") %>
-    </p>
-  </div>
-</footer>
+<section class="layout-wrapper">
+  <h5><%= t(:women, scope: 'pages.home.footer').html_safe %></h5>
+  <h1 class="box__bg bg--white"><%= t(:contact, scope: 'pages.home.footer') %></h1>
+
+  <nav class="ph0 pv border-vertical">
+    <%= t(:address, scope: 'pages.home.footer') .html_safe %> |
+    <%= link_to t(:contact_link, scope: 'pages.home.footer'), contact_path, class:"ph-" %> |
+    <%= link_to t(:about_title, scope: 'pages.home.footer'), about_path, class: "ph-" %> |
+    <%= link_to t(:faq, scope: 'pages.home.footer'), faq_path, class: "ph-"  %> |
+    <%= t(:github, scope: 'pages.home.footer').html_safe %> |
+    <%= link_to t(:title, scope: 'pages.imprint'), impressum_path, class:"ph-" %> |
+    <%= link_to t(:privacy, scope: 'pages.imprint'), privacy_path, class:"ph-" %>
+  </nav>
+  <p>
+  <span style="vertical-align: top">Supported by:</span>
+  <%= image_tag('BMBF_RGB_Gef_M.jpg', style:'padding-left: 20px') %>
+  <%= image_tag('travisfoundation-1.png', style: "width: 250px; padding-left: 20px; vertical-align: top") %>
+  </p>
+</section>
