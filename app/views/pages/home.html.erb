@@ -20,7 +20,7 @@
 
 <section class="layout-wrapper">
   <h1 class="box__bg bg--white"><%= t(:speaker_headline, scope: 'pages.home.speakers') %></h4>
-  <h4 class="border-vertical display--block box__bg bg--white">
+  <h4 class="border-vertical d-block box__bg bg--white">
     <%= t(:speaker_text, scope: 'pages.home.speakers') %><BR>
     <%= link_to t(:speaker_index, scope: 'pages.home.speakers'), profiles_path %>
   </h1>
@@ -48,7 +48,7 @@
 
 <section class="layout-wrapper">
   <h1 class="box__bg bg--white"><%= t(:description, scope: 'pages.home') %></h1>
-  <h4 class="border-vertical display--block box__bg bg--white">
+  <h4 class="border-vertical d-block box__bg bg--white">
     <%= t(:description_text, scope: 'pages.home') %>
   </h4>
   <div class="container">
@@ -71,28 +71,28 @@
 <section class="layout-wrapper">
   <h1 class="box__bg bg--white">Speakerinnen*</h1>
   <div class="row">
-    <div class="col">
-      <h1 class="alpha--halve border-vertical ph0 display--block">
+    <div class="col-md">
+      <h4 class="py-2 mb-4 border-vertical d-block">
         <%= link_to t(:about_title, scope: 'pages.home.footer'), about_path %>
-      </h1>
+      </h4>
       <p>
         <%= t(:about, scope: 'pages.home.footer').html_safe %>
         <%= link_to t(:more, scope: 'pages.home.footer').html_safe, about_path  %>
       </p>
     </div>
-    <div class="col">
-      <h1 class="alpha--halve border-vertical ph0 display--block">
+    <div class="col-md">
+      <h4 class="py-2 mb-4 border-vertical d-block">
         <%= link_to t(:press, scope: 'pages.home.footer'), press_path %>
-      </h1>
+      </h4>
       <p>
         <%= t(:press_short, scope: 'pages.home.footer').html_safe %>
         <%= link_to t(:more, scope: 'pages.home.footer').html_safe, press_path  %>
       </p>
     </div>
-    <div class="col">
-      <h1 class="alpha--halve border-vertical ph0 display--block">
+    <div class="col-md">
+      <h4 class="py-2 mb-4 border-vertical d-block">
         <%= link_to t(:blog, scope:"pages.home.footer"), 'http://blog.speakerinnen.org/', target: '_blank' %>
-      </h1>
+      </h4>
       <p>
         <% @blog_posts.each do |blogpost| %>
           <strong><%= blogpost.title %></strong><br>
