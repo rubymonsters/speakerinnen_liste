@@ -13,14 +13,14 @@ class Admin::TagsController < Admin::BaseController
   def update
     if params[:languages].present? || params[:tag].blank?
       set_tag_languages(@tag, params[:languages])
-      redirect_to admin_tags_path(anchor: 'top-anchor', params: session[:filter_params]), notice: "'#{@tag.name}' was updated."
+      redirect_to admin_tags_path(anchor: 'top-anchor'), notice: "'#{@tag.name}' was updated."
     else
       # TODO: change cases into methods "change language"
       if params[:tag].present? && params[:tag][:name].present? && (existing_tag = ActsAsTaggableOn::Tag.where(name: params[:tag][:name]).first)
         existing_tag.merge(@tag)
-        redirect_to admin_tags_path(params: session[:filter_params]), notice: "'#{@tag.name}' was merged with the tag '#{existing_tag.name}'."
+        redirect_to admin_tags_path(filter_params_from_session), notice: "'#{@tag.name}' was merged with the tag '#{existing_tag.name}'."
       elsif @tag.update_attributes(tag_params)
-        redirect_to admin_tags_path(params: session[:filter_params]), notice: "'#{@tag.name}' was updated."
+        redirect_to admin_tags_path(filter_params_from_session), notice: "'#{@tag.name}' was updated."
       else
         render action: 'edit'
       end
@@ -29,17 +29,17 @@ class Admin::TagsController < Admin::BaseController
 
   def destroy
     @tag.destroy
-    redirect_to admin_tags_path(params: session[:filter_params]), notice: "'#{@tag.name}' was destroyed."
+    redirect_to admin_tags_path(session[:filter_params]), notice: "'#{@tag.name}' was destroyed."
   end
 
   def remove_category
     @tag.categories.delete @category
-    redirect_to admin_tags_path(params: session[:filter_params]), alert: "The tag '#{@tag.name}' is deleted from the category '#{@category.name}'."
+    redirect_to admin_tags_path(filter_params_from_session), alert: "The tag '#{@tag.name}' is deleted from the category '#{@category.name}'."
   end
 
   def set_category
     @tag.categories << @category
-    redirect_to admin_tags_path(params: session[:filter_params]), notice: "Just added the tag '#{@tag.name}' to the category '#{@category.name}'."
+    redirect_to admin_tags_path(filter_params_from_session), notice: "Just added the tag '#{@tag.name}' to the category '#{@category.name}'."
   end
 
   def index
@@ -87,6 +87,12 @@ class Admin::TagsController < Admin::BaseController
       page: params[:page]
     }
   end
+
+  def filter_params_from_session
+    session[:filter_params] || {}
+  end
+
+
 
   def tag_params
     params.require(:tag).permit(
