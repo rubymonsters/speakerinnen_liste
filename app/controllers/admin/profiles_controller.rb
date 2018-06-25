@@ -105,7 +105,7 @@ class Admin::ProfilesController < Admin::BaseController
       :website_3_en,
       :city_de,
       :city_en,
-      translations_attributes: %i[id bio main_topic twitter website city locale]
+      translations_attributes: %i[id bio main_topic twitter website website_2 website_3 city locale]
     )
   end
 
