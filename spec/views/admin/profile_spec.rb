@@ -27,8 +27,8 @@ describe 'admin navigation' do
     FactoryBot.create(:medialink,
                       profile_id: ada.id,
                       title: 'Ada and the computer',
-                       url: 'www.adalovelace.de',
-                       description: 'How to programm')
+                      url: 'www.adalovelace.de',
+                      description: 'How to programm')
   end
 
   describe 'in profile' do
@@ -54,8 +54,7 @@ describe 'admin navigation' do
       expect(page).to have_content('mathematic')
       expect(page).to have_content('English')
       expect(page).to have_content('French')
-      expect(page).to have_content('Ada and the computer')
-      expect(page).to have_content('www.adalovelace.de')
+      expect(page).to have_link('Ada and the computer', href: 'www.adalovelace.de')
       expect(page).to have_content('How to programm')
     end
   end
