@@ -247,4 +247,24 @@ describe Admin::TagsController, type: :controller do
       end
     end
   end
+
+  describe 'remember selected filters from index page' do
+    before(:each) do
+      @category = Category.new(name: 'Science')
+      @category.save!
+      ada_tag = ActsAsTaggableOn::Tag.find_by(name: ada.topic_list[0])
+      marie_tag = ActsAsTaggableOn::Tag.find_by(name: marie.topic_list[1])
+      ada_tag.categories << @category
+      marie_tag.categories << @category
+      get :index, params: { category_id: @category.id }
+    end
+
+    context 'after updating a tag' do
+      before do
+        put :update, params: { id: @category.id, tag: { name: 'mathematic' } }
+      end
+
+      specify { expect(response).to redirect_to("/#{I18n.locale}/admin/tags/index?category_id=#{@category.id}")}
+    end
+  end
 end
