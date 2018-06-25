@@ -108,7 +108,7 @@ en:
         more: ">> more"
         contact: "Contact"
         contact_link: "Email"
-        address: "<a href='http://twitter.com/speakerinnen', target='_blank', class='pv-'>Twitter</a>"
+        twitter: "<a href='http://twitter.com/speakerinnen', target='_blank', class='pv-'>Twitter</a>"
         github: "<a href='http://github.com/rubymonsters/speakerinnen_liste' target='_blank', class='pv-'>GitHub</a>"
         devblog: "<a href='http://speakerinnen.wordpress.com/', target='_blank>Developer Blog</a>"
         faq_short: |

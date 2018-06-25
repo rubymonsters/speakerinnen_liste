@@ -4,7 +4,7 @@
     <h4 class="box__bg bg--white"><%= t(:tagline_html, scope: 'pages.home.search', root_path: root_path) %></h4>
 
     <%= form_tag(profiles_path, method: 'get', class: 'page-box') do %>
-      <div class="box__bg--light pv ph- border-radius">
+      <div class="box__bg--light p-3">
         <%= render partial: 'shared/search_form' %>
         <p>
           <%= link_to(t(:all_categories, scope: 'pages.home'), root_path + "#categories_anchor" )%><br>
@@ -19,8 +19,8 @@
 </div> -->
 
 <section class="layout-wrapper">
-  <h1 class="box__bg bg--white"><%= t(:speaker_headline, scope: 'pages.home.speakers') %></h4>
-  <h4 class="border-vertical d-block box__bg bg--white">
+  <h1 class="box__bg bg--white mb-0"><%= t(:speaker_headline, scope: 'pages.home.speakers') %></h4>
+  <h4 class="border-vertical d-block box__bg bg--white mb-4">
     <%= t(:speaker_text, scope: 'pages.home.speakers') %><BR>
     <%= link_to t(:speaker_index, scope: 'pages.home.speakers'), profiles_path %>
   </h1>
@@ -47,8 +47,8 @@
 <a id="categories_anchor"></a>
 
 <section class="layout-wrapper">
-  <h1 class="box__bg bg--white"><%= t(:description, scope: 'pages.home') %></h1>
-  <h4 class="border-vertical d-block box__bg bg--white">
+  <h1 class="box__bg bg--white mb-0"><%= t(:description, scope: 'pages.home') %></h1>
+  <h4 class="border-vertical d-block box__bg bg--white mb-4">
     <%= t(:description_text, scope: 'pages.home') %>
   </h4>
   <div class="container">
@@ -69,10 +69,10 @@
 </div> -->
 
 <section class="layout-wrapper">
-  <h1 class="box__bg bg--white">Speakerinnen*</h1>
+  <h1 class="box__bg bg--white mb-0">Speakerinnen*</h1>
   <div class="row">
     <div class="col-md">
-      <h4 class="py-2 mb-4 border-vertical d-block">
+      <h4 class="border-vertical d-block py-2 mb-4 ">
         <%= link_to t(:about_title, scope: 'pages.home.footer'), about_path %>
       </h4>
       <p>
@@ -81,7 +81,7 @@
       </p>
     </div>
     <div class="col-md">
-      <h4 class="py-2 mb-4 border-vertical d-block">
+      <h4 class="border-vertical d-block py-2 mb-4">
         <%= link_to t(:press, scope: 'pages.home.footer'), press_path %>
       </h4>
       <p>
@@ -90,7 +90,7 @@
       </p>
     </div>
     <div class="col-md">
-      <h4 class="py-2 mb-4 border-vertical d-block">
+      <h4 class="border-vertical d-block py-2 mb-4 ">
         <%= link_to t(:blog, scope:"pages.home.footer"), 'http://blog.speakerinnen.org/', target: '_blank' %>
       </h4>
       <p>

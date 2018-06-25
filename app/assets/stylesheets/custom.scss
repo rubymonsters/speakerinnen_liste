@@ -30,6 +30,14 @@ h2 {
   margin: 0 0 $base-spacing-unit;
 }
 
+.list--style-none {
+  list-style-type: none;
+}
+
+.sans-serif{
+	font-family: $sans-serif;
+}
+
 /* layout */
 .layout-wrapper {
   max-width: $layout-width;
@@ -68,7 +76,6 @@ h2 {
   min-height: 696px;
   width: 100%;
   margin-top: 4*$base-spacing-unit;
-
 }
 
 .page-box {
@@ -96,6 +103,15 @@ h2 {
   }
 }
 
+/* footer */
+.footer__link {
+  padding: 0 4px;
+}
+
+#main-page-footer {
+  background: $body-bg-color-grey;
+}
+
 /* cookie consent dialog */
 .cookie-consent-dialog {
   position: fixed;
@@ -108,7 +124,7 @@ h2 {
   }
 
   .btn {
-    // color: $blue;
+    color: $white;
     text-decoration: none;
   }
 }
@@ -135,12 +151,36 @@ h2 {
   border-bottom: $border;
 }
 
-.list--style-none {
-  list-style-type: none;
+.btn-blue {
+  font-family: $sans-serif;
+  color: white;
+  background: $blue;
+  border-radius: 0;
 }
 
-.sans-serif{
-	font-family: $sans-serif;
+.btn-blue:active, .btn:hover {
+  color: white;
+  background: $dark-blue;
+}
+
+.btn--danger {
+  background: $red;
+}
+
+textarea, input {
+  // border-radius: $border-radius;
+  border: 1px solid $light-grey;
+  line-height: 32px;
+  font-family: $sans-serif;
+  padding-left: quarter($base-spacing-unit);
+}
+
+.input--width-100 {
+  width: 100%;
+  }
+
+.profile__search {
+  width: 264px;
 }
 
 /* profiles */
@@ -186,4 +226,33 @@ h2 {
   margin: 0;
   color: $font-color;
   overflow: hidden;
+}
+
+/* autocomplete in search */
+.twitter-typeahead {
+  font-family: $sans-serif;
+  vertical-align: middle;
+}
+
+.tt-dropdown-menu {
+  background: white;
+  width: 100%;
+  padding: 10px;
+  color: $dark-grey;
+}
+
+.tt-suggestion {
+  margin: 0;
+  background: $transparent-white;
+  padding: halve($base-spacing-unit) $base-spacing-unit;
+
+  p {
+    margin: 0;
+  }
+
+  &:hover {
+    background-color: whitesmoke;
+    color: $blue;
+    cursor: pointer;
+  }
 }
