@@ -2,7 +2,7 @@
 <header id=<%= 'admin__header--color' if controller_path =~ /admin\// %>>
   <%# TODO: hidden <h1>Speakerinnen</h1>%>
 
-  <nav class="navbar navbar-expand-md navbar-light fixed-top bg-light">
+  <nav class="navbar navbar-expand-md navbar-light fixed-top" id="header">
     <%= link_to(root_path, id: 'header__home-link', class: 'navbar-brand') do %>
       <%= image_tag('logo_header.png', alt: 'logo', id: 'header__logo') %>
     <% end %>

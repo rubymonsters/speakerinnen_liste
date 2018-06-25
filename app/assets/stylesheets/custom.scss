@@ -55,6 +55,9 @@ h2 {
   background: $transparent-white;
 }
 
+#header {
+  background: $body-bg-color-grey;
+}
 /* startpage */
 #startpage__start-teaser {
   background: image-url('start-teaser.jpg') no-repeat center center;
