@@ -98,7 +98,11 @@ class Admin::ProfilesController < Admin::BaseController
       :twitter_de,
       :twitter_en,
       :website_de,
+      :website_2_de,
+      :website_3_de,
       :website_en,
+      :website_2_en,
+      :website_3_en,
       :city_de,
       :city_en,
       translations_attributes: %i[id bio main_topic twitter website city locale]
