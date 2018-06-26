@@ -41,7 +41,6 @@ RSpec.feature 'Editing', type: :feature do
       expect(page).to have_content('English')
       expect(page).to have_content('German')
       expect(page).to have_content('Vienna')
-      save_and_open_page
       expect(page).to have_content('Austria')
       expect(page).to have_content('www.adalovelace.org')
       expect(page).to have_content('www.mariecurie.org')
