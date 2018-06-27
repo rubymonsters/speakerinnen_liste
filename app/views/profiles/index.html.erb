@@ -1,8 +1,8 @@
-<section class="bg--grey">
-  <div class="layout-wrapper">
+<section class="bg--grey col">
+  <div class="layout-wrapper text-center">
     <% if params[:category_id] %> <%# when in categories scope %>
 
-      <h2 class="text--center">
+      <h2>
         <%= t(:category, scope: 'profiles', category_name: @category.name, profiles_count: @profiles.total_count, topics_count: @tags_in_category_published.size).html_safe %>
       </h2>
       <%= render partial: 'profiles/tag' %>
@@ -21,12 +21,8 @@
 
     <% else %>
 
-      <h1 class="bb text--center">
-        <%= t(:speaker_headline, scope: 'pages.home.speakers') %>
-      </h1>
-      <p class="font-size-24 text--center">
-        <%= t(:all_speakerinnen, scope: 'profiles.index', profiles_count: @profiles_count).html_safe %>
-      </p>
+      <h1 class="border-bottom"><%= t(:speaker_headline, scope: 'pages.home.speakers') %></h1>
+      <h4 class="pb-3"><%= t(:all_speakerinnen, scope: 'profiles.index', profiles_count: @profiles_count).html_safe %></h4>
       <%= render partial: 'shared/search_form' %>
       <%= t(:search_categories_html, scope: 'search', root_path: root_path) %>
 
