@@ -69,9 +69,8 @@
       <%= f.text_field :twitter_de, as: :text, placeholder: '@', class: "profile_twitter mb input--width-100", maxlength: 30 %>
       <%= f.label :website, id: "website_de", class: "mb input--width-100" %>
       <%= f.text_field :website_de, as: :text, placeholder: 'http://', class: "profile_website mb input--width-100"%>
-      <%= f.label :website_2, id: "website_2_de", class: "mb input--width-100" %>
+      <%= f.label :additional_websites, id: "website_2_de", class: "mb input--width-100" %>
       <%= f.text_field :website_2_de, as: :text, placeholder: 'http://', class: "profile_website mb input--width-100"%>
-      <%= f.label :website_3, id: "website_3_de", class: "mb input--width-100" %>
       <%= f.text_field :website_3_de, as: :text, placeholder: 'http://', class: "profile_website mb input--width-100"%>
       <%= f.label :main_topic, t(:main_topic, scope: 'activerecord.attributes.profile',
         language: t(:de, scope: 'i18n.language')).html_safe, id: "main_topic_de", class: "tooltip", title: t(:main_topic_tooltip, scope: 'activerecord.attributes.profile').html_safe %>
@@ -88,9 +87,8 @@
       <%= f.text_field :twitter_en, as: :text, placeholder: '@', class: "profile_twitter mb input--width-100", maxlength: 30 %>
       <%= f.label :website, id: "website_en", class: "mb input--width-100" %>
       <%= f.text_field :website_en, as: :text, placeholder: 'http://', class: "profile_website mb input--width-100" %>
-      <%= f.label :website_2, id: "website_2_en", class: "mb input--width-100" %>
+      <%= f.label :additional_websites, id: "website_2_en", class: "mb input--width-100" %>
       <%= f.text_field :website_2_en, as: :text, placeholder: 'http://', class: "profile_website mb input--width-100" %>
-      <%= f.label :website_3, id: "website_3_en", class: "mb input--width-100" %>
       <%= f.text_field :website_3_en, as: :text, placeholder: 'http://', class: "profile_website mb input--width-100" %>
       <%= f.label :main_topic, t(:main_topic, scope: 'activerecord.attributes.profile',
         language: t(:en, scope: 'i18n.language')).html_safe, id: "main_topic_en", class: "tooltip", title: t(:main_topic_tooltip, scope: 'activerecord.attributes.profile').html_safe %>

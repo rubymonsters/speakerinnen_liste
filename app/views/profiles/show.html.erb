@@ -28,32 +28,29 @@
             </p>
           <% end %>
 
-          <% if @profile.website.present? %>
+          <% if @profile.website.present? && ( @profile.website_2.present? || @profile.website_3.present? ) %>
+            <h2 class="delta sans-serif mb-">
+              <%= t(:websites, scope: 'profiles.profile') %>
+            </h2>
+            <p>
+              <%= link_to @profile.website, @profile.website_with_protocol(@profile.website),
+              target: '_blank' %>
+            </p>
+            <p>
+              <%= link_to @profile.website_2, @profile.website_with_protocol(@profile.website_2),
+              target: '_blank' if @profile.website_2.present? %>
+            </p>
+            <p>
+              <%= link_to @profile.website_3, @profile.website_with_protocol(@profile.website_3),
+              target: '_blank' if @profile.website_3.present?%>
+            </p>
+            <p class="pb"></p>
+          <% elsif @profile.website.present? %>
             <h2 class="delta sans-serif mb-">
               <%= t(:website, scope: 'profiles.profile') %>
             </h2>
             <p class="pb">
               <%= link_to @profile.website, @profile.website_with_protocol(@profile.website),
-              target: '_blank' %>
-            </p>
-          <% end %>
-
-          <% if @profile.website_2.present? %>
-            <h2 class="delta sans-serif mb-">
-              <%= t(:website_2, scope: 'profiles.profile') %>
-            </h2>
-            <p class="pb">
-              <%= link_to @profile.website_2, @profile.website_with_protocol(@profile.website_2),
-              target: '_blank' %>
-            </p>
-          <% end %>
-
-          <% if @profile.website_3.present? %>
-            <h2 class="delta sans-serif mb-">
-              <%= t(:website_3, scope: 'profiles.profile') %>
-            </h2>
-            <p class="pb">
-              <%= link_to @profile.website_3, @profile.website_with_protocol(@profile.website_3),
               target: '_blank' %>
             </p>
           <% end %>
