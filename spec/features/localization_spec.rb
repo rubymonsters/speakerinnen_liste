@@ -4,14 +4,14 @@ RSpec.feature 'Localization', type: :feature do
   scenario 'start page localization' do
     visit root_path
 
-    within '#nav__lap-and-up' do
+    within '#DropdownLanguages' do
       click_link 'DE'
     end
 
     expect(page).to have_link('Einloggen')
     expect(page).to have_button('Suche')
 
-    within '#nav__lap-and-up' do
+    within '#DropdownLanguages' do
       click_link 'EN'
     end
 

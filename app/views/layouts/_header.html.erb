@@ -45,15 +45,14 @@
             <%= link_to t(:faq, scope: 'pages.home.footer'), faq_path, class: 'dropdown-item' %>
           </div>
         </li>
-      </ul>
-    </div>
-    <div class="justify-content-end">
-      <ul class="navbar-nav">
-        <li class="nav-item nav-link sans-serif" >
-          <%= link_to_unless I18n.locale == :en, 'EN', {locale: :en} %> |
-        </li>
-        <li class="nav-item nav-link sans-serif">
-          <%= link_to_unless I18n.locale == :de, 'DE', {locale: :de} %>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLinkLang" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="fa fa-globe"></span>
+          </a>
+          <div class="dropdown-menu sans-serif" aria-labelledby="navbarDropdownMenuLinkLang" id="DropdownLanguages">
+            <%= link_to_unless I18n.locale == :en, "<span class='dropdown-item disabled'>EN</span>".html_safe, {locale: :en}, class: 'dropdown-item' %>
+            <%= link_to_unless I18n.locale == :de, "<span class='dropdown-item disabled'>DE</span>".html_safe, {locale: :de}, class: 'dropdown-item' %>
+          </div>
         </li>
       </ul>
     </div>
