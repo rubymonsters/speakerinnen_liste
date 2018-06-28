@@ -223,20 +223,12 @@ textarea, input {
 .profile-box {
   width: 100%;
   margin-bottom: $base-spacing-unit;
+  font-family: $sans-serif;
 }
 
 .profile-box h5 {
   font-weight: normal;
-  margin: 0;
   color: $font-color;
-}
-
-.profile-box p {
-  font-weight: normal;
-  font-family: $sans-serif;
-  margin: 0;
-  color: $font-color;
-  overflow: hidden;
 }
 
 /* autocomplete in search */

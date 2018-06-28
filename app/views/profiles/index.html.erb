@@ -7,7 +7,7 @@
       </h2>
       <%= render partial: 'profiles/tag' %>
 
-    <% elsif params[:topic] %>
+    <% elsif params[:topic] %> <%# when in topic scope %>
 
       <h2 class="text--center">
         <%= t(:profiles_topics, scope: 'search', profiles_count: @profiles.total_count, topics_name: params[:topic]).html_safe %>
