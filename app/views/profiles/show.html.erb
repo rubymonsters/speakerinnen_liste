@@ -111,16 +111,21 @@
           <h5><%= t(:media, scope: 'profiles.profile') %></h5>
 
           <% @medialinks.each do |medialink| %>
+            <br>
             <% if medialink.url =~ /youtube|vimeo/i %>
               <b><%= medialink.title %></b>
               <%= medialink.url_html if medialink.url != 'http://' %>
             <% else %>
-              <%= link_to medialink.title, medialink.url %>
+              <%= link_to medialink.title, medialink.url, class:"font-weight-bold" %>
             <% end %>
+            <br>
+            <br>
             <%= simple_format(medialink.description) %>
             <span>
               <%= t(:select_language, scope: 'medialinks') + t("#{medialink.language}", scope: 'iso_639_1').capitalize if medialink.language.present? %>
             </span>
+            <br>
+            <hr>
           <% end %>
 
         </div>
