@@ -109,16 +109,20 @@
       <div class="row mb-3">
         <div class="col box__bg bg--white">
           <h5><%= t(:media, scope: 'profiles.profile') %></h5>
+
           <% @medialinks.each do |medialink| %>
-            <b><%= medialink.title %></b>
-            <%= medialink.url_html if medialink.url != 'http://' %>
+            <% if medialink.url =~ /youtube|vimeo/i %>
+              <b><%= medialink.title %></b>
+              <%= medialink.url_html if medialink.url != 'http://' %>
+            <% else %>
+              <%= link_to medialink.title, medialink.url %>
+            <% end %>
             <%= simple_format(medialink.description) %>
-            <br>
             <span>
               <%= t(:select_language, scope: 'medialinks') + t("#{medialink.language}", scope: 'iso_639_1').capitalize if medialink.language.present? %>
             </span>
-            <hr>
           <% end %>
+
         </div>
       </div>
     <% end %>
