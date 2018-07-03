@@ -23,17 +23,18 @@
 }
 
 /* colors */
-$dark-grey: #3C3C3A;
 $white: #FFF;
 $white-smoke: #F5F5F5;
-$black: #000;
 $light-grey: #CCC;
+$grey: #7F7F7F;
+$dark-grey: #3C3C3A;
+$black: #000;
 
 $blue: #00978b;
 $dark-blue: darken($blue, 10%);
 
-$dark-red: #b62848;
 $red: #d95270;
+$dark-red: #b62848;
 
 $transparent-black: rgba( $black, .5 );
 $transparent-white: rgba( $white, .6 );
@@ -51,6 +52,7 @@ $link-bg-color-hover: $dark-grey;
 
 /* variables colors */
 $font-color: $dark-grey;
+$font-color-title: $grey;
 $link-color: $blue;
 
 /* background-color */

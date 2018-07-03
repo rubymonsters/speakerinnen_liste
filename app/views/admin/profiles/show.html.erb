@@ -141,17 +141,14 @@
             <%= t(:media, scope: 'profiles.profile') %>
           </h2>
 
-          <ul class="pl0">
             <% @medialinks.each do |medialink| %>
-              <li class="list--style-none pb mb+ bb">
                 <b><%= medialink.title %></b>
                 <%= medialink.url_html if medialink.url != 'http://' %>
                 <%= medialink.description %>
-                <br>
-                <span class="text--color-grey">
+                <span>
                   <%= t(:select_language, scope: 'medialinks') + t("#{medialink.language}", scope: 'iso_639_1').capitalize if medialink.language.present? %>
                 </span>
-              </li>
+                <hr>
             <% end %>
           </ul>
         </div>

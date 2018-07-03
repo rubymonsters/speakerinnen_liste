@@ -35,7 +35,7 @@
               <%= medialink.url_html if medialink.url != 'http://' %>
               <%= medialink.description %>
               <br>
-              <span class="text--color-grey">
+              <span>
                 <%= t(:select_language, scope: 'medialinks') + t("#{medialink.language}", scope: 'iso_639_1').capitalize if medialink.language.present? %>
               </span>
 
@@ -53,4 +53,3 @@
 
   </div>
 </section>
-
