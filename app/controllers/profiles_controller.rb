@@ -139,7 +139,6 @@ class ProfilesController < ApplicationController
       :lastname,
       :picture,
       :remove_picture,
-      :talks,
       :content,
       :name,
       :topic_list,

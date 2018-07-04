@@ -188,7 +188,6 @@ de:
       lastname: 'Nachname:'
       topics: 'Meine Themen:'
       languages: "Meine Sprache/n:"
-      talks: "Vorträge gehalten über:"
       media: "Meine Vorträge / Referenzen:"
       bio: "Meine Biografie: "
       contact: "Kontakt"
@@ -236,7 +235,6 @@ de:
       profile_from: "Profil von"
       topics: "Meine Themen:"
       languages: "Meine Sprache/n:"
-      talks: "Vorträge gehalten über:"
       media: "Meine Vorträge / Referenzen:"
       bio: "Meine Biografie:"
       email: "E-mail:"
@@ -274,7 +272,6 @@ de:
         main_topic: "Mein Hauptthema auf %{language}: <i class='fa fa-info-circle' aria-hidden='true'></i>"
         main_topic_tooltip: "Es werden nur 30 Zeichen angezeigt. Trage Dein wichtigstes Thema hier nochmal ein. Dieses Thema wird mit Deinem Namen und Bild auf der Speakerinnen-Übersichtsseite zu sehen sein."
         tag_list: "schon vorhandene Tags"
-        talks: "Vortragsthemen"
         languages: "Ich spreche:"
         city: "Die Stadt, in der ich lebe: <i class='fa fa-info-circle' aria-hidden='true'></i>"
         city_tooltip: "Bitte gib mehrere Städte mit Komma getrennt ein, z.B. Berlin, New York."

@@ -84,7 +84,6 @@ class Admin::ProfilesController < Admin::BaseController
       :lastname,
       :picture,
       :remove_picture,
-      :talks,
       :content,
       :name,
       :topic_list,
