@@ -15,22 +15,15 @@
     <%= favicon_link_tag 'favicon.ico' %>
   </head>
   <body>
-    <div class="container-fluid">
-      <div class="row">
-        <%= render 'layouts/header' %>
+    <%= render 'layouts/header' %>
 
-        <% if notice %>
-          <div class='notice'> <%= notice %> </div>
-        <% end %>
-        <% if alert %>
-          <div class='alert'> <%= Array(alert).join('<br>').html_safe %> </div>
-        <% end %>
+    <% if notice %> <div class='notice'> <%= notice %> </div> <% end %>
+    <% if alert %> <div class='alert'> <%= Array(alert).join('<br>').html_safe %> </div> <% end %>
 
-        <%= render 'shared/cookie_consent' %>
-        <%= yield %>
-        <%= render 'layouts/footer' if render_footer? %>
-      </div>
-    </div>
+    <%= render 'shared/cookie_consent' %>
+    <%= yield %>
+    <%= render 'layouts/footer' if render_footer? %>
+
     <!-- Piwik -->
     <% if cookies[:cookie_consent] == 'true' %>
       <script type="text/javascript">

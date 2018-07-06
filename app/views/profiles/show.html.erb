@@ -1,5 +1,5 @@
 <section class="bg--grey col">
-  <div class="layout-wrapper profile-box">
+  <div class="container profile-box pt-5">
     <div class="row">
       <div class="col text-right py-3">
         <%= link_to(t(:home, scope: 'profiles.edit'), profiles_path) %>
@@ -133,16 +133,15 @@
     <% end %>
 
   </div>
-</section>
-
 <!-- Modal -->
 
-<input class="modal-state" id="modal-1" type="checkbox" />
-<div class="modal">
-  <label class="modal__bg" for="modal-1"></label>
-  <div class="modal__inner">
-    <label class="modal__close" for="modal-1"></label>
-      <h2 class="bb"><%= "#{t('.contact')} #{@profile.fullname}:"%></h2>
-      <%= render partial: 'contact/form', locals: {url: contact_profile_path(@profile)} %>
+  <input class="modal-state" id="modal-1" type="checkbox" />
+  <div class="modal">
+    <label class="modal__bg" for="modal-1"></label>
+    <div class="modal__inner">
+      <label class="modal__close" for="modal-1"></label>
+        <h2 class="bb"><%= "#{t('.contact')} #{@profile.fullname}:"%></h2>
+        <%= render partial: 'contact/form', locals: {url: contact_profile_path(@profile)} %>
+    </div>
   </div>
-</div>
+</section>

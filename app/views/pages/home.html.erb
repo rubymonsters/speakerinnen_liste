@@ -1,6 +1,6 @@
 <section id="startpage__start-teaser" class="startpage__photo-bar">
-  <div class="layout-wrapper">
-    <h1 class="box__bg bg--white"><%= t(:heading, scope: 'pages.home.search') %></h1>
+  <div class="container">
+    <h1 class="display-4 box__bg bg--white mt-5"><%= t(:heading, scope: 'pages.home.search') %></h1>
     <h4 class="box__bg bg--white"><%= t(:tagline_html, scope: 'pages.home.search', root_path: root_path) %></h4>
 
     <%= form_tag(profiles_path, method: 'get', class: 'page-box') do %>
@@ -18,24 +18,20 @@
    Copyright: public domain ( modified )
 </div> -->
 
-<section class="layout-wrapper">
-  <h1 class="box__bg mb-0"><%= t(:speaker_headline, scope: 'pages.home.speakers') %></h4>
+<div class="container">
+  <h1 class="box__bg mb-0 mt-5"><%= t(:speaker_headline, scope: 'pages.home.speakers') %></h4>
   <h4 class="border-vertical d-block box__bg bg--white mb-4">
-    <%= t(:speaker_text, scope: 'pages.home.speakers') %><BR>
+    <%= t(:speaker_text, scope: 'pages.home.speakers') %>
     <%= link_to t(:speaker_index, scope: 'pages.home.speakers'), profiles_path %>
   </h1>
-  <div class="container">
-    <div class="row">
-      <% if @profiles.any? %>
-          <%= render partial: "profiles/profile", collection: @profiles %>
-      <% end %>
-    </div>
+  <div class="row">
+    <%= render partial: "profiles/profile", collection: @profiles if @profiles.any? %>
   </div>
-</section>
+</div>
 
 <section id="startpage__teaser-bg-01" class="startpage__photo-bar">
-  <div class="layout-wrapper">
-    <h1 class="box__bg bg--white"><%= t(:quote, scope: 'pages.home') %></h1>
+  <div class="container">
+    <h1 class="display-4 box__bg bg--white mt-5"><%= t(:quote, scope: 'pages.home') %></h1>
     <h4 class="box__bg bg--white"><%= t(:quote_text, scope: 'pages.home') %></h4>
   </div>
 </section>
@@ -46,21 +42,19 @@
 <!-- Anker für Kategorien -->
 <a id="categories_anchor"></a>
 
-<section class="layout-wrapper">
-  <h1 class="box__bg mb-0"><%= t(:description, scope: 'pages.home') %></h1>
+<div class="container">
+  <h1 class="box__bg mb-0 mt-5"><%= t(:description, scope: 'pages.home') %></h1>
   <h4 class="border-vertical d-block box__bg bg--white mb-4">
     <%= t(:description_text, scope: 'pages.home') %>
   </h4>
-  <div class="container">
-    <div class="row">
-      <%= render partial: "shared/categories", object: @categories %>
-    </div>
+  <div class="row">
+    <%= render partial: "shared/categories", object: @categories %>
   </div>
-</section>
+</div>
 
 <section id="startpage__teaser-bg-02" class="startpage__photo-bar">
-  <div class="layout-wrapper">
-    <h1 class="box__bg bg--white"><%= t(:speaker_shoutout, scope: 'pages.home').html_safe %></h1>
+  <div class="container">
+    <h1 class="display-4 box__bg bg--white mt-5"><%= t(:speaker_shoutout, scope: 'pages.home').html_safe %></h1>
     <h4 class="box__bg bg--white"><%=link_to t(:speaker_text, scope: 'pages.home').html_safe, new_profile_registration_path %></h4>
   </div>
 </section>
@@ -68,9 +62,9 @@
    Copyright by Tilman Vogler
 </div> -->
 
-<section class="layout-wrapper">
-  <h1 class="box__bg mb-0">Speakerinnen*</h1>
-  <div class="row">
+<div class="container">
+  <h1 class="box__bg mb-0 mt-5">Speakerinnen*</h1>
+  <div class="row pl-4">
     <div class="col-md">
       <h4 class="border-vertical d-block py-2 mb-4 ">
         <%= link_to t(:about_title, scope: 'pages.home.footer'), about_path %>
@@ -104,4 +98,4 @@
       </p>
     </div>
   </div>
-</section>
+</div>
