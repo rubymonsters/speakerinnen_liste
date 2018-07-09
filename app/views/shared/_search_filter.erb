@@ -2,82 +2,91 @@
   <h1 class="text--center">
     <%= t(:success, scope: 'search' ) + t(:result, scope: 'search', count: @profiles.total_count).html_safe %>
   </h1>
-  <p>
-    <%= render partial: 'shared/search_form' %>
+  <%= render partial: 'shared/search_form' %>
+
+  <% languages_to_filter = aggregations_to_filter?(@aggs_languages) %>
+  <% cities_to_filter = aggregations_to_filter?(@aggs_cities) %>
+  <% countries_to_filter = aggregations_to_filter?(@aggs_countries) %>
+  <% if (@profiles.size > 1 && (languages_to_filter || cities_to_filter || countries_to_filter)) || result_from_filter? %>
     <%= t(:filter, scope: 'search') %>
-  </p>
 
+    <div class="o-layout layout-wrapper pt-">
 
-  <div class="o-layout layout-wrapper pt-">
+      <%# countries filter %>
+      <% if countries_to_filter %>
+        <div class="o-layout__item 1/4 lap-1/2 palm-1/1">
+          <ul id="facet_countries" class="search-aggregation">
+            <%= aggreations_title = t(:countries_agg, scope: 'search' ).html_safe%>
+            <% @aggs_countries[0..9].each do |term| %>
+              <li class='pl- <%= 'selected' if params[:filter_countries] == term['key'] %>'>
+                <%= link_to ISO3166::Country.find_country_by_alpha2("#{term['key']}").translation(I18n.locale), search: params[:search], filter_countries: term['key'] %><small class="sans-serif pl-"><%= term['doc_count'] %></small>
+              </li>
+            <% end %>
+            <% if @aggs_countries.length > 10 %>
+              <li>
+                <a class="pl- expander_countries"><%= t(:show_more, scope: 'profiles.index') %></a>
+              </li>
+              <% display_value = @aggs_countries[10..999] == [] ? "block" : "none" %>
+              <% @aggs_countries[10..999].each do |term| %>
+                <li class='pl- rest_facet_countries <%= 'selected' if params[:filter_countries] == term['key'] %>' style='display: <%= display_value %>;'>
+                  <%= link_to ISO3166::Country.find_country_by_alpha2("#{term['key']}").translation(I18n.locale), search: params[:search], filter_countries: term['key'] %><small class="sans-serif pl-"><%= term['doc_count'] %></small>
+                </li>
+              <% end %>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
 
-    <%# countries filter %>
-    <div class="o-layout__item 1/4 lap-1/2 palm-1/1">
-      <ul id="facet_countries" class="search-aggregation">
-        <%= aggreations_title = t(:countries_agg, scope: 'search' ).html_safe%>
-        <% @aggs_countries[0..9].each do |term| %>
-          <li class='pl- <%= 'selected' if params[:filter_countries] == term['key'] %>'>
-            <%= link_to ISO3166::Country.find_country_by_alpha2("#{term['key']}").translation(I18n.locale), search: params[:search], filter_countries: term['key'] %><small class="sans-serif pl-"><%= term['doc_count'] %></small>
-          </li>
-        <% end %>
-        <% if @aggs_countries.length > 10 %>
-          <li>
-            <a class="pl- expander_countries"><%= t(:show_more, scope: 'profiles.index') %></a>
-          </li>
-          <% display_value = @aggs_countries[10..999] == [] ? "block" : "none" %>
-          <% @aggs_countries[10..999].each do |term| %>
-            <li class='pl- rest_facet_countries <%= 'selected' if params[:filter_countries] == term['key'] %>' style='display: <%= display_value %>;'>
-              <%= link_to ISO3166::Country.find_country_by_alpha2("#{term['key']}").translation(I18n.locale), search: params[:search], filter_countries: term['key'] %><small class="sans-serif pl-"><%= term['doc_count'] %></small>
-            </li>
-          <% end %>
-        <% end %>
-      </ul>
+      <%# cities filter %>
+      <% if cities_to_filter %>
+        <div class="o-layout__item 1/4 lap-1/2 palm-1/1">
+          <ul id="facet_cities" class="search-aggregation">
+          <%=t(:cities_agg, scope: 'search' ).html_safe%>
+            <% @aggs_cities[0..9].each do |term| %>
+              <li class='pl- <%= 'selected' if params[:filter_cities] == term['key'] %>'>
+                <%= link_to term['key'], search: params[:search], filter_cities: term['key'] %><small class="sans-serif pl-"><%= term['doc_count'] %></small>
+              </li>
+            <% end %>
+            <% if @aggs_cities.length > 10 %>
+              <li>
+                <a class="pl- expander_cities"><%= t(:show_more, scope: 'profiles.index') %></a>
+              </li>
+              <% display_value = @aggs_cities[10..999] == [] ? "block" : "none" %>
+              <% @aggs_cities[10..999].each do |term| %>
+                <li class='pl- rest_facet_cities <%= 'selected' if params[:filter_cities] == term['key'] %>' style='display: <%= display_value %>;'>
+                  <%= link_to term['key'], search: params[:search], filter_cities: term['key'] %><small class="sans-serif pl-"><%= term['doc_count'] %></small>
+                </li>
+              <% end %>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <%# language filter %>
+      <% if languages_to_filter %>
+        <div class="o-layout__item 1/4 lap-1/2 palm-1/1">
+          <ul id="facet_languages" class="search-aggregation">
+          <%=t(:languages_agg, scope: 'search' ).html_safe%>
+            <% @aggs_languages[0..9].each do |term| %>
+            <li class='pl- <%= 'selected' if params[:filter_lang] == term['key'] %>'>
+              <%= link_to t("#{term['key']}", scope: 'iso_639_1').capitalize , search: params[:search], filter_lang: term['key'] %><small class="sans-serif pl-"><%= term['doc_count'] %></small>                </li>
+            <% end %>
+            <% if @aggs_languages.length > 10 %>
+              <li><a class="pl- expander_languages"><%= t(:show_more, scope: 'profiles.index') %></a>
+              </li>
+              <% display_value = @aggs_languages[10..999] == [] ? "block" : "none" %>
+              <% @aggs_languages[10..999].each do |term| %>
+                <li class='pl- rest_facet_languages <%= 'selected' if params[:filter_cities] == term['key'] %>' style='display: <%= display_value %>;'>
+                  <%= link_to t("#{term['key']}", scope: 'iso_639_1').capitalize , search: params[:search], filter_lang: term['key'] %><small class="sans-serif pl-"><%= term['doc_count'] %></small>
+                </li>
+              <% end %>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
     </div>
-
-    <%# cities filter %>
-    <div class="o-layout__item 1/4 lap-1/2 palm-1/1">
-      <ul id="facet_cities" class="search-aggregation">
-      <%=t(:cities_agg, scope: 'search' ).html_safe%>
-        <% @aggs_cities[0..9].each do |term| %>
-          <li class='pl- <%= 'selected' if params[:filter_cities] == term['key'] %>'>
-            <%= link_to term['key'], search: params[:search], filter_cities: term['key'] %><small class="sans-serif pl-"><%= term['doc_count'] %></small>
-          </li>
-        <% end %>
-        <% if @aggs_cities.length > 10 %>
-          <li>
-            <a class="pl- expander_cities"><%= t(:show_more, scope: 'profiles.index') %></a>
-          </li>
-          <% display_value = @aggs_cities[10..999] == [] ? "block" : "none" %>
-          <% @aggs_cities[10..999].each do |term| %>
-            <li class='pl- rest_facet_cities <%= 'selected' if params[:filter_cities] == term['key'] %>' style='display: <%= display_value %>;'>
-              <%= link_to term['key'], search: params[:search], filter_cities: term['key'] %><small class="sans-serif pl-"><%= term['doc_count'] %></small>
-            </li>
-          <% end %>
-        <% end %>
-      </ul>
-    </div>
-
-    <%# language filter %>
-    <div class="o-layout__item 1/4 lap-1/2 palm-1/1">
-      <ul id="facet_languages" class="search-aggregation">
-      <%=t(:languages_agg, scope: 'search' ).html_safe%>
-        <% @aggs_languages[0..9].each do |term| %>
-        <li class='pl- <%= 'selected' if params[:filter_lang] == term['key'] %>'>
-          <%= link_to t("#{term['key']}", scope: 'iso_639_1').capitalize , search: params[:search], filter_lang: term['key'] %><small class="sans-serif pl-"><%= term['doc_count'] %></small>                </li>
-        <% end %>
-        <% if @aggs_languages.length > 10 %>
-          <li><a class="pl- expander_languages"><%= t(:show_more, scope: 'profiles.index') %></a>
-          </li>
-          <% display_value = @aggs_languages[10..999] == [] ? "block" : "none" %>
-          <% @aggs_languages[10..999].each do |term| %>
-            <li class='pl- rest_facet_languages <%= 'selected' if params[:filter_cities] == term['key'] %>' style='display: <%= display_value %>;'>
-              <%= link_to t("#{term['key']}", scope: 'iso_639_1').capitalize , search: params[:search], filter_lang: term['key'] %><small class="sans-serif pl-"><%= term['doc_count'] %></small>
-            </li>
-          <% end %>
-        <% end %>
-      </ul>
-    </div>
-
-  </div>
+  <% end %>
 
 <% elsif @profiles.size < 1 %>
 

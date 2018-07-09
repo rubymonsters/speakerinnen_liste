@@ -4,6 +4,7 @@ class ProfilesController < ApplicationController
   include ProfilesHelper
   include CategoriesHelper
   include ActsAsTaggableOn::TagsHelper
+  include SearchHelper
 
   before_action :set_profile, only: %i[show edit update destroy require_permission]
 
