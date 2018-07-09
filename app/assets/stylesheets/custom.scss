@@ -1,6 +1,7 @@
 body {
 	font-family: $serif;
 	color: $font-color;
+	margin-top: 96px;
 }
 
 a, .link {
@@ -16,18 +17,6 @@ a, .link {
     //background-position: 0 1.15em;
     //text-shadow: .05em 0 white, -.05em 0 white;
   }
-}
-
-h1 {
-  font-weight: normal;
-  line-height: 60px;
-  margin: 0 0 $base-spacing-unit;
-}
-
-h2 {
-  font-weight: normal;
-  line-height: 60px;
-  margin: 0 0 $base-spacing-unit;
 }
 
 .list--style-none {
@@ -62,6 +51,27 @@ h2 {
 #header {
   background: $body-bg-color-grey;
 }
+
+.error {
+  color: $red;
+}
+
+.notice {
+  background: $blue;
+  color: white;
+  font-family: $sans-serif;
+  padding: $base-spacing-unit;
+  text-align: center;
+}
+
+.alert {
+  background: $red;
+  color: white;
+  font-family: $sans-serif;
+  padding: $base-spacing-unit;
+  text-align: center;
+}
+
 /* startpage */
 #startpage__start-teaser {
   background: image-url('start-teaser.jpg') no-repeat center center;
@@ -82,7 +92,6 @@ h2 {
   box-shadow: 0 0 20px $transparent-black inset;
   min-height: 696px;
   width: 100%;
-  margin-top: 4*$base-spacing-unit;
 }
 
 .page-box {

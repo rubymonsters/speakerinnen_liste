@@ -203,6 +203,8 @@ de:
       sure: "Bist Du sicher?"
       link: "Bitte 'http://' davor schreiben."
       email: "E-Mail:"
+      empty_profile: "Hier gib es noch nix sehen ¯\\_(ツ)_/¯."
+      check_faq: "Fülle bitte die Felder via 'Edit Profile' aus!. <BR> Für mehr Informationen, wie Du am besten dein Profil angelegst, kannst Du hier nach schauen: <a href='https://speakerinnen.org/de/faq'>FAQ</a>"
     medialinks:
       edit: "Referenzen bearbeiten"
     edit:

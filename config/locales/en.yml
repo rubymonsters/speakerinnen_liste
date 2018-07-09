@@ -202,6 +202,8 @@ en:
       sure: "Are you sure?"
       link: "Be sure to add 'http://'"
       email: "Email:"
+      empty_profile: "There is nothing here yet ¯\\_(ツ)_/¯."
+      check_faq: "To get started please fill out the formular via 'Edit Profile'!<BR> For more information how to fill in your profile, check here: <a href='https://speakerinnen.org/de/faq'>FAQ</a>"
     medialinks:
       edit: "Edit previous talks / appearances"
     edit:

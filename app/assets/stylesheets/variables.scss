@@ -39,6 +39,9 @@ $dark-red: #b62848;
 $transparent-black: rgba( $black, .5 );
 $transparent-white: rgba( $white, .6 );
 
+/* colors for login sign */
+$box-shadow-black: rgba(0,0,0,0.75);
+
 /* font */
 $serif: Georgia, serif;
 $sans-serif: "OpenSans", "Helvetica Neue", Helvetica, sans-serif;
@@ -61,7 +64,6 @@ $body-bg-color-grey: $white-smoke;
 
 /* units */
 $base-spacing-unit: 24px;
-$heading-size-1: 48px;
 
 /* layout settings */
 $layout-width: 940px;
