@@ -23,7 +23,11 @@ describe 'profile navigation' do
                       city: 'London',
                       country: 'GB',
                       iso_languages: %w[en de],
-                      topic_list: [tag_de, tag_en, tag_no_lang])
+                      topic_list: [tag_de, tag_en, tag_no_lang],
+                      website_en: 'www.ada.en',
+                      website_de: 'www.ada.de',
+                      website_2_en: 'wwww.ada2.de',
+                      website_3_en: 'wwww.ada3.de')
   end
 
   let!(:ada_medialink) do
@@ -53,6 +57,11 @@ describe 'profile navigation' do
       expect(page).to have_content('German')
       expect(page).to have_content('English')
       expect(page).to have_link('Ada and the computer', href: 'www.adalovelace.de')
+      expect(page).to have_content('www.ada.en')
+      expect(page).not_to have_content('www.ada2.de')
+      expect(page).not_to have_content('www.ada3.de')
+      expect(page).to have_content('Ada and the computer')
+      expect(page).to have_content('www.adalovelace.de')
       expect(page).to have_content('How to programm')
     end
 
@@ -90,6 +99,11 @@ describe 'profile navigation' do
       expect(page).to have_content('Englisch')
       expect(page).to have_content('Deutsch')
       expect(page).to have_link('Ada and the computer', href: 'www.adalovelace.de')
+      expect(page).to have_content('www.ada.de')
+      expect(page).to have_content('www.ada2.de')
+      expect(page).to have_content('www.ada3.de')
+      expect(page).to have_content('Ada and the computer')
+      expect(page).to have_content('www.adalovelace.de')
       expect(page).to have_content('How to programm')
     end
 
@@ -195,4 +209,5 @@ describe 'profile navigation' do
       expect(page).to have_content('math')
     end
   end
+
 end
