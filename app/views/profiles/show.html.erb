@@ -38,11 +38,12 @@
             </p>
             <p>
               <%= link_to @profile.website_2, @profile.website_with_protocol(@profile.website_2),
-              target: '_blank' if @profile.website_2.present? %>
+              target: '_blank' if (@profile.website_2 + "_" + I18n.locale.to_s).present? %>
             </p>
             <p>
+              test
               <%= link_to @profile.website_3, @profile.website_with_protocol(@profile.website_3),
-              target: '_blank' if @profile.website_3.present?%>
+              target: '_blank' if @profile.website_3_en.present?%>
             </p>
             <p class="pb"></p>
           <% elsif @profile.website.present? %>
