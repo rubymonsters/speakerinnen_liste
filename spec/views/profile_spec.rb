@@ -24,10 +24,9 @@ describe 'profile navigation' do
                       country: 'GB',
                       iso_languages: %w[en de],
                       topic_list: [tag_de, tag_en, tag_no_lang],
-                      website_en: 'www.ada.en',
                       website_de: 'www.ada.de',
-                      website_2_en: 'wwww.ada2.de',
-                      website_3_en: 'wwww.ada3.de')
+                      website_2_de: 'wwww.ada2.de',
+                      website_3_de: 'wwww.ada3.de')
   end
 
   let!(:ada_medialink) do
@@ -41,6 +40,7 @@ describe 'profile navigation' do
   describe 'show view profile in EN' do
     before do
       sign_in ada
+      save_and_open_page
       click_on 'EN', match: :first
     end
 
@@ -57,9 +57,9 @@ describe 'profile navigation' do
       expect(page).to have_content('German')
       expect(page).to have_content('English')
       expect(page).to have_link('Ada and the computer', href: 'www.adalovelace.de')
-      expect(page).to have_content('www.ada.en')
-      expect(page).not_to have_content('www.ada2.de')
-      expect(page).not_to have_content('www.ada3.de')
+      expect(page).to have_content('www.ada.de')
+      expect(page).to have_content('www.ada2.de')
+      expect(page).to have_content('www.ada3.de')
       expect(page).to have_content('Ada and the computer')
       expect(page).to have_content('www.adalovelace.de')
       expect(page).to have_content('How to programm')
@@ -76,6 +76,16 @@ describe 'profile navigation' do
 
     it 'shows tags with no language assigned' do
       expect(page).to have_content('math')
+    end
+
+    it 'shows only the english website when at least one english website is present' do
+      ada.website_en = "www.ada.en"
+      ada.save!
+      visit current_path
+      save_and_open_page
+      expect(page).to have_content('www.ada.en')
+      expect(page).not_to have_content('www.ada2.de')
+      expect(page).not_to have_content('www.ada3.de')
     end
   end
 
