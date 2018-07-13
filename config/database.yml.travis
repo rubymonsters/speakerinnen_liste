@@ -1,5 +1,4 @@
 test:
   adapter: postgresql
-  database: rgsoc_teams_test
+  database: travis_test
   username: postgres
-  min_messages: error

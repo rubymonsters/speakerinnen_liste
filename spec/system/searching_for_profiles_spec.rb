@@ -26,10 +26,11 @@ describe 'profile search' do
                                       main_topic_de: 'x-ray', main_topic_en: 'Röntgen',
                                       email: 'maria@example.com')
   end
-  let!(:profile2) { FactoryBot.create(:published, firstname: 'Christiane', lastname: 'König', city: 'Heidelberg', languages: 'German') }
-  let!(:profile3) { FactoryBot.create(:published, firstname: 'Maren ', lastname: 'Meier') }
+  #
+  let!(:profile2) { create(:published, firstname: 'Christiane', lastname: 'König', city: 'Heidelberg', languages: 'German') }
+  let!(:profile3) { create(:published, firstname: 'Maren ', lastname: 'Meier') }
 
-  let!(:profile_not_matched) { FactoryBot.create(:published, firstname: 'Angela', city: 'New York', twitter: '@adavis') }
+  let!(:profile_not_matched) { create(:published, firstname: 'Angela', city: 'New York', twitter: '@adavis') }
 
   describe 'public search', elasticsearch: true do
     # it 'displays profiles that are a partial match' do

@@ -1,4 +1,4 @@
-  class SearchViewAddMedialinksTitleDescriptionProfileTranslationsBioMainTopic < ActiveRecord::Migration
+  class SearchViewAddMedialinksTitleDescriptionProfileTranslationsBioMainTopic < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
       DROP VIEW searches;

@@ -1,4 +1,4 @@
-class RemoveTopicsFromProfiles < ActiveRecord::Migration
+class RemoveTopicsFromProfiles < ActiveRecord::Migration[4.2]
   def up
     remove_column :profiles, :topics
   end

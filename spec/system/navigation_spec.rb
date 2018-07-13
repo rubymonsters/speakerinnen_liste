@@ -1,6 +1,4 @@
-# frozen_string_literal: true
-
-RSpec.feature 'Navigation', type: :feature do
+RSpec.describe 'Navigation', type: :system do
   context 'logged in' do
     before do
       sign_in user
@@ -9,13 +7,13 @@ RSpec.feature 'Navigation', type: :feature do
     context 'as an unprivileged user' do
       let(:user) { FactoryBot.create(:profile) }
 
-      scenario 'shows no admin link' do
+      it 'shows no admin link' do
         visit root_path
 
         expect(page).to_not have_link('Admin')
       end
 
-      scenario 'page has header' do
+      it 'page has header' do
         visit root_path
 
         expect(page).to have_css('#header__logo')
@@ -27,7 +25,7 @@ RSpec.feature 'Navigation', type: :feature do
   end
 
   context 'guest user' do
-    scenario 'page has header' do
+    it 'page has header' do
       visit root_path
 
       expect(page).to have_css('#header__logo')
@@ -36,7 +34,7 @@ RSpec.feature 'Navigation', type: :feature do
       expect(page).to have_link('DE')
     end
 
-    scenario 'viewing the start page' do
+    it 'viewing the start page' do
       visit root_path
 
       expect(page).to have_css('#startpage__start-teaser')
@@ -44,7 +42,7 @@ RSpec.feature 'Navigation', type: :feature do
       expect(page).to have_css('#startpage__teaser-bg-02')
     end
 
-    scenario 'viewing the contact page' do
+    it 'viewing the contact page' do
       visit root_path
 
       click_link 'Email'
@@ -63,7 +61,7 @@ RSpec.feature 'Navigation', type: :feature do
         FactoryBot.create(:profile, email: 'ltest@exp.com', password: 'rightpassword', password_confirmation: 'rightpassword')
       end
 
-      scenario 'successful login' do
+      it 'successful login' do
         visit new_profile_session_path
 
         fill_in 'profile_email', with: 'ltest@exp.com'
@@ -74,7 +72,7 @@ RSpec.feature 'Navigation', type: :feature do
         expect(page).to have_css('.notice', text: 'Logged in successfully.')
       end
 
-      scenario 'wrong password' do
+      it 'wrong password' do
         visit new_profile_session_path
 
         fill_in 'profile_email', with: 'ltest@exp.com'
@@ -85,7 +83,7 @@ RSpec.feature 'Navigation', type: :feature do
         expect(page).to have_css('.alert', text: 'Invalid email or password.')
       end
 
-      scenario 'empty password' do
+      it 'empty password' do
         visit new_profile_session_path
 
         fill_in 'profile_email', with: 'ltest@exp.com'
@@ -96,7 +94,7 @@ RSpec.feature 'Navigation', type: :feature do
         expect(page).to have_css('.alert', text: 'Invalid email or password.')
       end
 
-      scenario 'non-existing email' do
+      it 'non-existing email' do
         visit new_profile_session_path
 
         fill_in 'profile_email', with: 'false@exp.com'
@@ -107,7 +105,7 @@ RSpec.feature 'Navigation', type: :feature do
         expect(page).to have_css('.alert', text: 'Invalid email or password.')
       end
 
-      scenario 'empty email' do
+      it 'empty email' do
         visit new_profile_session_path
 
         fill_in 'profile_email', with: ''

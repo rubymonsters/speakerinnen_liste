@@ -1,4 +1,4 @@
-class AddDeviseToProfiles < ActiveRecord::Migration
+class AddDeviseToProfiles < ActiveRecord::Migration[4.2]
   def self.up
     change_table(:profiles) do |t|
       ## Database authenticatable
