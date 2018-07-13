@@ -40,7 +40,6 @@ describe 'profile navigation' do
   describe 'show view profile in EN' do
     before do
       sign_in ada
-      save_and_open_page
       click_on 'EN', match: :first
     end
 
@@ -58,8 +57,8 @@ describe 'profile navigation' do
       expect(page).to have_content('English')
       expect(page).to have_link('Ada and the computer', href: 'www.adalovelace.de')
       expect(page).to have_content('www.ada.de')
-      expect(page).to have_content('www.ada2.de')
-      expect(page).to have_content('www.ada3.de')
+      expect(page).not_to have_content('www.ada2.de')
+      expect(page).not_to have_content('www.ada3.de')
       expect(page).to have_content('Ada and the computer')
       expect(page).to have_content('www.adalovelace.de')
       expect(page).to have_content('How to programm')
@@ -78,15 +77,6 @@ describe 'profile navigation' do
       expect(page).to have_content('math')
     end
 
-    it 'shows only the english website when at least one english website is present' do
-      ada.website_en = "www.ada.en"
-      ada.save!
-      visit current_path
-      save_and_open_page
-      expect(page).to have_content('www.ada.en')
-      expect(page).not_to have_content('www.ada2.de')
-      expect(page).not_to have_content('www.ada3.de')
-    end
   end
 
   describe 'show view profile in DE' do
@@ -131,6 +121,38 @@ describe 'profile navigation' do
     end
   end
 
+  describe 'no fallback for additional websites in the show view' do
+    before do
+      ada.website_en = "www.ada.en"
+      ada.save!
+      sign_in ada
+      click_on 'EN', match: :first
+    end
+
+    it 'shows only the english website when at least one english website is present' do
+      expect(page).to have_content('www.ada.en')
+      expect(page).not_to have_content('www.ada2.de')
+      expect(page).not_to have_content('www.ada3.de')
+      click_on 'DE', match: :first
+      expect(page).to have_content('www.ada.de')
+      expect(page).to have_content('www.ada2.de')
+      expect(page).to have_content('www.ada3.de')
+    end
+
+    it 'shows the english websites when they are present' do
+      ada.website_2_en = "www.ada2.en"
+      ada.save!
+      visit current_path
+      expect(page).to have_content('www.ada.en')
+      expect(page).to have_content('www.ada2.en')
+      expect(page).not_to have_content('www.ada3.de')
+      click_on 'DE', match: :first
+      expect(page).to have_content('www.ada.de')
+      expect(page).to have_content('www.ada2.de')
+      expect(page).to have_content('www.ada3.de')
+    end
+  end
+  
   describe 'edit view profile in EN' do
     before do
       sign_in ada
