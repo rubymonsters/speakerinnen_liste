@@ -28,6 +28,7 @@
             </p>
           <% end %>
 
+          <!-- only globalize fall-back for the first website -->
           <% if @profile.website.present? && ( @profile.website_2.present? || @profile.website_3.present? ) %>
             <h2 class="delta sans-serif mb-">
               <%= t(:websites, scope: 'profiles.profile') %>
@@ -38,12 +39,11 @@
             </p>
             <p>
               <%= link_to @profile.website_2, @profile.website_with_protocol(@profile.website_2),
-              target: '_blank' if (@profile.website_2 + "_" + I18n.locale.to_s).present? %>
+              target: '_blank' if @profile.send(("website_2_" + I18n.locale.to_s).to_sym).present? %>
             </p>
             <p>
-              test
               <%= link_to @profile.website_3, @profile.website_with_protocol(@profile.website_3),
-              target: '_blank' if @profile.website_3_en.present?%>
+              target: '_blank' if @profile.send(("website_3_" + I18n.locale.to_s).to_sym).present? %>
             </p>
             <p class="pb"></p>
           <% elsif @profile.website.present? %>
