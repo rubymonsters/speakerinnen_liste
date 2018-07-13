@@ -119,7 +119,7 @@ describe 'profile navigation' do
     end
   end
 
-  describe 'no fallback for additional websites in the show view' do
+  describe 'no globalize fall-back options for additional websites in the show view' do
     before do
       ada.website_en = "www.ada.en"
       ada.save!
@@ -127,7 +127,7 @@ describe 'profile navigation' do
       click_on 'EN', match: :first
     end
 
-    it 'shows only the english website when at least one english website is present' do
+    it 'shows only the fall-back for the first website' do
       expect(page).to have_content('www.ada.en')
       expect(page).not_to have_content('www.ada2.de')
       expect(page).not_to have_content('www.ada3.de')
@@ -150,7 +150,7 @@ describe 'profile navigation' do
       expect(page).to have_content('www.ada3.de')
     end
   end
-  
+
   describe 'edit view profile in EN' do
     before do
       sign_in ada
