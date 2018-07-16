@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_11_194230) do
+ActiveRecord::Schema.define(version: 2018_06_18_181504) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -92,6 +92,8 @@ ActiveRecord::Schema.define(version: 2018_06_11_194230) do
     t.string "twitter", limit: 255
     t.string "website", limit: 255
     t.string "city", limit: 255
+    t.string "website_2"
+    t.string "website_3"
     t.index ["locale"], name: "index_profile_translations_on_locale"
     t.index ["profile_id"], name: "index_profile_translations_on_profile_id"
   end
