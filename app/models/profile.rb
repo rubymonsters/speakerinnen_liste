@@ -117,6 +117,10 @@ class Profile < ApplicationRecord
     end
   end
 
+  def website_in_language_scope(lang, number="")
+    self.send(("website_" + number + lang.to_s).to_sym)
+  end
+
   def twitter_name_formatted
     twitter.gsub(%r{^@|https:|http:|:|//|www.|twitter.com/}, '')
   end

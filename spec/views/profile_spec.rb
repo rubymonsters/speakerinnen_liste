@@ -57,8 +57,8 @@ describe 'profile navigation' do
       expect(page).to have_content('English')
       expect(page).to have_link('Ada and the computer', href: 'www.adalovelace.de')
       expect(page).to have_content('www.ada.de')
-      expect(page).not_to have_content('www.ada2.de')
-      expect(page).not_to have_content('www.ada3.de')
+      expect(page).to have_content('www.ada2.de')
+      expect(page).to have_content('www.ada3.de')
       expect(page).to have_content('How to programm')
     end
 
@@ -117,25 +117,24 @@ describe 'profile navigation' do
     end
   end
 
-  describe 'no globalize fall-back options for additional websites in the show view' do
+  describe 'globalize fall-back options for websites' do
     before do
-      ada.website_en = "www.ada.en"
-      ada.save!
       sign_in ada
       click_on 'EN', match: :first
     end
 
-    it 'shows only the fall-back for the first website' do
-      expect(page).to have_content('www.ada.en')
-      expect(page).not_to have_content('www.ada2.de')
-      expect(page).not_to have_content('www.ada3.de')
+    it 'when there is no website given for the current language scope you are in use the fall-back' do
+      expect(page).to have_content('www.ada.de')
+      expect(page).to have_content('www.ada2.de')
+      expect(page).to have_content('www.ada3.de')
       click_on 'DE', match: :first
       expect(page).to have_content('www.ada.de')
       expect(page).to have_content('www.ada2.de')
       expect(page).to have_content('www.ada3.de')
     end
 
-    it 'shows the english websites when they are present' do
+    it 'when there is at least one website given for the current language dont use fall-back' do
+      ada.website_en = "www.ada.en"
       ada.website_2_en = "www.ada2.en"
       ada.save!
       visit current_path
