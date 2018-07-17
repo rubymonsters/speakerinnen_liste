@@ -1,6 +1,4 @@
-# frozen_string_literal: true
-
-RSpec.feature 'Navigation', type: :feature do
+RSpec.describe 'Navigation', type: :system do
   context 'logged in as an admin' do
     let!(:admin) { FactoryBot.create(:admin) }
 
@@ -8,13 +6,13 @@ RSpec.feature 'Navigation', type: :feature do
       sign_in admin
     end
 
-    scenario 'shows admin link' do
+    it 'shows admin link' do
       visit root_path
 
       expect(page).to have_link('Admin')
     end
 
-    scenario 'page has header' do
+    it 'page has header' do
       visit root_path
 
       expect(page).to have_css('#header__logo')
@@ -24,21 +22,21 @@ RSpec.feature 'Navigation', type: :feature do
       expect(page).to have_link('DE')
     end
 
-    scenario 'navigating to admin page' do
+    it 'navigating to admin page' do
       visit root_path
 
       click_link 'Admin'
       expect(page).to have_text('Administration')
 
-      expect(page).to have_link('Categories', admin_tags_path)
-      expect(page).to have_link('Tags', admin_categories_path)
-      expect(page).to have_link('Profiles', admin_profiles_path)
+      expect(page).to have_link('Categories', href: '/en/admin/categories')
+      expect(page).to have_link('Tags', href: '/en/admin/tags/index')
+      expect(page).to have_link('Profiles', href: '/en/admin/profiles')
     end
 
     context 'category' do
       let!(:category) { FactoryBot.create(:cat_science) }
 
-      scenario 'viewing edit categories in admin area' do
+      it 'viewing edit categories in admin area' do
         visit admin_root_path
 
         click_link 'Categories'
@@ -52,7 +50,7 @@ RSpec.feature 'Navigation', type: :feature do
         expect(page).to have_css('.categories > thead > tr', text: 'English:')
       end
 
-      scenario 'viewing edit "abc" category in admin area' do
+      it 'viewing edit "abc" category in admin area' do
         visit admin_categories_path
 
         click_link 'Edit'
@@ -64,7 +62,7 @@ RSpec.feature 'Navigation', type: :feature do
         expect(page).to have_text('Enter new category name in English:')
       end
 
-      scenario 'view add category in admin area' do
+      it 'view add category in admin area' do
         visit admin_categories_path
 
         click_link 'Add'
@@ -78,7 +76,7 @@ RSpec.feature 'Navigation', type: :feature do
     context 'two profiles' do
       let!(:user) { FactoryBot.create(:published) }
 
-      scenario 'viewing edit profiles in admin area' do
+      it 'viewing edit profiles in admin area' do
         visit admin_root_path
 
         click_link 'Profiles'
@@ -99,7 +97,7 @@ RSpec.feature 'Navigation', type: :feature do
       end
     end
 
-    scenario 'viewing profile edit in admin area' do
+    it 'viewing profile edit in admin area' do
       visit admin_profiles_path
 
       click_link 'Edit'

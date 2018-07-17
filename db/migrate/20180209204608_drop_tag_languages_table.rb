@@ -1,4 +1,4 @@
-class DropTagLanguagesTable < ActiveRecord::Migration
+class DropTagLanguagesTable < ActiveRecord::Migration[4.2]
  def up
     drop_table :tag_languages
   end

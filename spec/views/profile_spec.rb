@@ -55,11 +55,10 @@ describe 'profile navigation' do
       expect(page).to have_content('math')
       expect(page).to have_content('German')
       expect(page).to have_content('English')
+      expect(page).to have_link('Ada and the computer', href: 'www.adalovelace.de')
       expect(page).to have_content('www.ada.de')
       expect(page).not_to have_content('www.ada2.de')
       expect(page).not_to have_content('www.ada3.de')
-      expect(page).to have_content('Ada and the computer')
-      expect(page).to have_content('www.adalovelace.de')
       expect(page).to have_content('How to programm')
     end
 
@@ -97,11 +96,10 @@ describe 'profile navigation' do
       expect(page).to have_content('math')
       expect(page).to have_content('Englisch')
       expect(page).to have_content('Deutsch')
+      expect(page).to have_link('Ada and the computer', href: 'www.adalovelace.de')
       expect(page).to have_content('www.ada.de')
       expect(page).to have_content('www.ada2.de')
       expect(page).to have_content('www.ada3.de')
-      expect(page).to have_content('Ada and the computer')
-      expect(page).to have_content('www.adalovelace.de')
       expect(page).to have_content('How to programm')
     end
 

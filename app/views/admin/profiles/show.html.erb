@@ -170,9 +170,13 @@
           <ul class="pl0">
             <% @medialinks.each do |medialink| %>
               <li class="list--style-none pb mb+ bb">
-                <b><%= medialink.title %></b>
-                <%= medialink.url_html if medialink.url != 'http://' %>
-                <%= medialink.description %>
+                <% if medialink.url =~ /youtube|vimeo/i %>
+                  <b><%= medialink.title %></b>
+                  <%= medialink.url_html if medialink.url != 'http://' %>
+                <% else %>
+                  <%= link_to medialink.title, medialink.url %>
+                <% end %>
+                <%= simple_format(medialink.description) %>
                 <br>
                 <span class="text--color-grey">
                   <%= t(:select_language, scope: 'medialinks') + t("#{medialink.language}", scope: 'iso_639_1').capitalize if medialink.language.present? %>

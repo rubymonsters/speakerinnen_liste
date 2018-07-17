@@ -1,4 +1,4 @@
-class RestrictSearchToPublishedProfiles < ActiveRecord::Migration
+class RestrictSearchToPublishedProfiles < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
       DROP VIEW searches;
