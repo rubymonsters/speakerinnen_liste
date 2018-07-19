@@ -1,5 +1,5 @@
 body {
-	font-family: $serif;
+	font-family: $sans-serif;
 	color: $font-color;
 	margin-top: 96px;
 }
@@ -19,16 +19,24 @@ a, .link {
   }
 }
 
-.sans-serif{
+h1, h4 {
+	font-family: $serif;
+}
+
+.sans-serif {
 	font-family: $sans-serif;
 }
 
 /* layout */
-.layout-wrapper {
-  max-width: $layout-width;
-  margin: 0 auto;
-  padding: (4*$base-spacing-unit) ($base-spacing-unit/2) 0 ;
-  width: 100%;
+// .layout-wrapper {
+//   max-width: $layout-width;
+//   margin: 0 auto;
+//   padding: (4*$base-spacing-unit) ($base-spacing-unit/2) 0 ;
+//   width: 100%;
+// }
+
+.container {
+	padding: 0 36px;
 }
 
 .box__bg {
@@ -198,7 +206,19 @@ textarea, input {
 .profile__search {
   width: 264px;
 }
-
+//
+// .faq__image--float {
+//   margin-left: 10px;
+//   margin-bottom: 10px;
+//   float: right;
+//   border: $border;
+// }
+//
+// .faq__image--small {
+//   width: 300px;
+//   height: auto;
+// }
+//
 /* profiles */
 .photo--grey {
   border: $border;
