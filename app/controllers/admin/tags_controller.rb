@@ -13,7 +13,7 @@ class Admin::TagsController < Admin::BaseController
   def update
     if params[:languages].present? || params[:tag].blank?
       set_tag_languages(@tag, params[:languages])
-      redirect_to admin_tags_path(anchor: 'top-anchor'), notice: "'#{@tag.name}' was updated."
+      redirect_to admin_tags_path(filter_params_from_session.merge(anchor: 'top-anchor')), notice: "'#{@tag.name}' was updated."
     else
       # TODO: change cases into methods "change language"
       if params[:tag].present? && params[:tag][:name].present? && (existing_tag = ActsAsTaggableOn::Tag.where(name: params[:tag][:name]).first)
