@@ -1,4 +1,4 @@
-class RemoveCreatedAtAndUpdatedAtColumnsFromCategoriesTags < ActiveRecord::Migration
+class RemoveCreatedAtAndUpdatedAtColumnsFromCategoriesTags < ActiveRecord::Migration[4.2]
   def up
     remove_column :categories_tags, :created_at
     remove_column :categories_tags, :updated_at

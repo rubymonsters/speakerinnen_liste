@@ -1,4 +1,4 @@
-class CreateTagLanguages < ActiveRecord::Migration
+class CreateTagLanguages < ActiveRecord::Migration[4.2]
   def change
     create_table :tag_languages do |t|
       t.integer :tag_id

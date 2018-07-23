@@ -1,4 +1,4 @@
-class CreateMedialinks < ActiveRecord::Migration
+class CreateMedialinks < ActiveRecord::Migration[4.2]
   def change
     create_table :medialinks do |t|
       t.belongs_to :profile

@@ -1,4 +1,4 @@
-class AddSearchSqlView < ActiveRecord::Migration
+class AddSearchSqlView < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
       CREATE VIEW searches AS

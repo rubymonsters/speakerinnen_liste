@@ -1,4 +1,4 @@
-class SearchViewVersion2 < ActiveRecord::Migration
+class SearchViewVersion2 < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
       DROP VIEW searches;

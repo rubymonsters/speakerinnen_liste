@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Admin::TagsController < Admin::BaseController
-  before_filter :find_tag_and_category, only: %i[remove_category set_category]
+  before_action :find_tag_and_category, only: %i[remove_category set_category]
   before_action :set_tag, only: %i[edit update destroy find_tag_and_category]
 
   def new; end
