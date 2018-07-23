@@ -87,7 +87,6 @@ class Admin::ProfilesController < Admin::BaseController
       :content,
       :name,
       :topic_list,
-      :media_url,
       :medialinks,
       :admin_comment,
       :bio_de,

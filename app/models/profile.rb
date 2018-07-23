@@ -19,15 +19,6 @@ class Profile < ApplicationRecord
   extend FriendlyId
   friendly_id :slug_candidate, use: :slugged
 
-  auto_html_for :media_url do
-    html_escape
-    image
-    youtube width: 400, height: 250
-    vimeo width: 400, height: 250
-    simple_format
-    link target: '_blank', rel: 'nofollow'
-  end
-
   devise :database_authenticatable, :registerable, :omniauthable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 

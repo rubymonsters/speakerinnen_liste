@@ -142,7 +142,6 @@ class ProfilesController < ApplicationController
       :content,
       :name,
       :topic_list,
-      :media_url,
       :medialinks,
       :slug,
       :admin_comment,

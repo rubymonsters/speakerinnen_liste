@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180702192942) do
+ActiveRecord::Schema.define(version: 20180723193311) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -122,7 +122,6 @@ ActiveRecord::Schema.define(version: 20180702192942) do
     t.boolean  "admin",                  default: false
     t.string   "provider"
     t.string   "uid"
-    t.string   "media_url"
     t.boolean  "published",              default: false
     t.text     "admin_comment"
     t.string   "slug"
