@@ -29,7 +29,7 @@ class Admin::TagsController < Admin::BaseController
 
   def destroy
     @tag.destroy
-    redirect_to admin_tags_path(session[:filter_params]), notice: "'#{@tag.name}' was destroyed."
+    redirect_to admin_tags_path(filter_params_from_session), notice: "'#{@tag.name}' was destroyed."
   end
 
   def remove_category
@@ -91,8 +91,6 @@ class Admin::TagsController < Admin::BaseController
   def filter_params_from_session
     session[:filter_params] || {}
   end
-
-
 
   def tag_params
     params.require(:tag).permit(
