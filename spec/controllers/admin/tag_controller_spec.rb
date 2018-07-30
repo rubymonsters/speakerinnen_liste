@@ -263,7 +263,7 @@ describe Admin::TagsController, type: :controller do
 
     context 'after updating a tag name' do
       before do
-        put :update, params: { id: category.id, tag: { name: 'mathematic' } }
+        put :update, params: { id: ada_tag.id, tag: { name: 'mathematic' } }
       end
 
       specify {expect(response).to redirect_to("/#{I18n.locale}/admin/tags/index?category_id=#{category.id}")}
