@@ -32,6 +32,7 @@ gem 'mini_magick', '~> 3.6.0'
 gem 'omniauth-twitter'
 gem 'pg', '~> 0.18.2'
 gem 'simple_form'
+gem 'invisible_captcha'
 
 gem 'country_select'
 

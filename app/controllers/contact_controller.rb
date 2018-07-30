@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class ContactController < ApplicationController
+  invisible_captcha only: [:create]
   before_action :reject_spam_bots, only: [:create]
 
   def new
