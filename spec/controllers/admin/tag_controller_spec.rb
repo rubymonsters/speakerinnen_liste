@@ -249,12 +249,12 @@ describe Admin::TagsController, type: :controller do
   end
 
   describe 'keep selected filters from index page' do
-    let(:category) { Category.create(name: 'Science') }
+    let(:category) { Category.create!(name: 'Science') }
     let(:ada_tag) { ActsAsTaggableOn::Tag.find_by(name: ada.topic_list[0]) }
     let(:marie_tag) { ActsAsTaggableOn::Tag.find_by(name: marie.topic_list[1]) }
 
     before(:each) do
-      LocaleLanguage.create(iso_code: 'en')
+      LocaleLanguage.create!(iso_code: 'en')
       ada_tag.categories << category
       marie_tag.categories << category
       session[:filter_params] = nil
