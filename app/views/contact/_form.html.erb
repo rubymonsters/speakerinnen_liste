@@ -7,7 +7,7 @@
 
     <%= simple_form_for @message, url: url, html: {id: ""} do |f| %>
       <%= f.input :name, as: :string, required: false, label: t(".name"), input_html: { class: 'mb input--width-100' }  %>
-      <%= f.input :email, label: "*" + t(".email"), wrapper_html: { id: 'message_email' }   %>
+      <%= f.input :email, label: t(".email"), required: false, input_html: { class: 'mb input--width-100' }   %> 
       <%= invisible_captcha %>
       <%= f.input :subject, label: t(".subject"), required: false, input_html: { class: 'mb input--width-100' }   %>
       <%= f.input :body, as: :text, label: t(".body"), required: false, input_html: { class: 'mb input--width-100' }   %>
