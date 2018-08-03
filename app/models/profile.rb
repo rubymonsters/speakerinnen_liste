@@ -12,9 +12,9 @@ class Profile < ApplicationRecord
   validate :iso_languages_array_has_right_format
   before_save :clean_iso_languages!
 
-  translates :bio, :main_topic, :twitter, :website, :city, fallbacks_for_empty_translations: true
+  translates :bio, :main_topic, :twitter, :website, :website_2, :website_3, :city, fallbacks_for_empty_translations: true
   accepts_nested_attributes_for :translations
-  globalize_accessors locales: %i[en de], attributes: %i[main_topic bio twitter website city]
+  globalize_accessors locales: %i[en de], attributes: %i[main_topic bio twitter website website_2 website_3 city]
 
   extend FriendlyId
   friendly_id :slug_candidate, use: :slugged
@@ -109,12 +109,16 @@ class Profile < ApplicationRecord
     slug.blank? || firstname_changed? || lastname_changed?
   end
 
-  def website_with_protocol
-    if website =~ %r{^https?://}
-      website
+  def website_with_protocol(profile_website)
+    if profile_website =~ %r{^https?://}
+      profile_website
     else
-      'http://' + website
+      'http://' + profile_website
     end
+  end
+
+  def website_in_language_scope(lang, number="")
+    self.send(("website_" + number + lang.to_s).to_sym)
   end
 
   def twitter_name_formatted

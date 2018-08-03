@@ -26,7 +26,7 @@
          <%= t(:website, scope: 'profiles.profile') %>
        </h2>
        <p class="pb">
-         <%= link_to profile.website, profile.website_with_protocol,
+         <%= link_to profile.website, profile.website_with_protocol(profile.website),
          target: '_blank' %>
        </p>
      <% end %>

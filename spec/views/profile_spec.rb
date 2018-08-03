@@ -23,7 +23,10 @@ describe 'profile navigation' do
                       city: 'London',
                       country: 'GB',
                       iso_languages: %w[en de],
-                      topic_list: [tag_de, tag_en, tag_no_lang])
+                      topic_list: [tag_de, tag_en, tag_no_lang],
+                      website_de: 'www.ada.de',
+                      website_2_de: 'wwww.ada2.de',
+                      website_3_de: 'wwww.ada3.de')
   end
 
   let!(:ada_medialink) do
@@ -53,6 +56,9 @@ describe 'profile navigation' do
       expect(page).to have_content('German')
       expect(page).to have_content('English')
       expect(page).to have_link('Ada and the computer', href: 'www.adalovelace.de')
+      expect(page).to have_content('www.ada.de')
+      expect(page).to have_content('www.ada2.de')
+      expect(page).to have_content('www.ada3.de')
       expect(page).to have_content('How to programm')
     end
 
@@ -68,6 +74,7 @@ describe 'profile navigation' do
     it 'shows tags with no language assigned' do
       expect(page).to have_content('math')
     end
+
   end
 
   describe 'show view profile in DE' do
@@ -90,6 +97,9 @@ describe 'profile navigation' do
       expect(page).to have_content('Englisch')
       expect(page).to have_content('Deutsch')
       expect(page).to have_link('Ada and the computer', href: 'www.adalovelace.de')
+      expect(page).to have_content('www.ada.de')
+      expect(page).to have_content('www.ada2.de')
+      expect(page).to have_content('www.ada3.de')
       expect(page).to have_content('How to programm')
     end
 
@@ -104,6 +114,37 @@ describe 'profile navigation' do
 
     it 'shows tags with no language assigned' do
       expect(page).to have_content('math')
+    end
+  end
+
+  describe 'globalize fall-back options for websites' do
+    before do
+      sign_in ada
+      click_on 'EN', match: :first
+    end
+
+    it 'when there is no website given for the current language scope you are in use the fall-back' do
+      expect(page).to have_content('www.ada.de')
+      expect(page).to have_content('www.ada2.de')
+      expect(page).to have_content('www.ada3.de')
+      click_on 'DE', match: :first
+      expect(page).to have_content('www.ada.de')
+      expect(page).to have_content('www.ada2.de')
+      expect(page).to have_content('www.ada3.de')
+    end
+
+    it 'when there is at least one website given for the current language dont use fall-back' do
+      ada.website_en = "www.ada.en"
+      ada.website_2_en = "www.ada2.en"
+      ada.save!
+      visit current_path
+      expect(page).to have_content('www.ada.en')
+      expect(page).to have_content('www.ada2.en')
+      expect(page).not_to have_content('www.ada3.de')
+      click_on 'DE', match: :first
+      expect(page).to have_content('www.ada.de')
+      expect(page).to have_content('www.ada2.de')
+      expect(page).to have_content('www.ada3.de')
     end
   end
 
@@ -195,4 +236,5 @@ describe 'profile navigation' do
       expect(page).to have_content('math')
     end
   end
+
 end
