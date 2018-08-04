@@ -11,16 +11,18 @@ class Admin::TagsController < Admin::BaseController
   def edit; end
 
   def update
-    if params[:languages].present? || params[:tag].blank?
+    if is_language_update?
       set_tag_languages(@tag, params[:languages])
+      #what about update_tag_languages??
       redirect_to admin_tags_path(filter_params_from_session.merge(anchor: 'top-anchor')), notice: "'#{@tag.name}' was updated."
+      #does apply only for language update?
     else
-      # TODO: change cases into methods "change language"
-      if params[:tag].present? && params[:tag][:name].present? && (existing_tag = ActsAsTaggableOn::Tag.where(name: params[:tag][:name]).first)
+      if existing_tag = tag_name_exists
         existing_tag.merge(@tag)
         redirect_to admin_tags_path(filter_params_from_session), notice: "'#{@tag.name}' was merged with the tag '#{existing_tag.name}'."
       elsif @tag.update_attributes(tag_params)
         redirect_to admin_tags_path(filter_params_from_session), notice: "'#{@tag.name}' was updated."
+        #apply only for name update?
       else
         render action: 'edit'
       end
@@ -77,6 +79,24 @@ class Admin::TagsController < Admin::BaseController
     languages.each { |l| tag.locale_languages(iso_code: l) } if languages.present?
   end
 
+  def is_language_update?
+    params[:languages].present? || params[:tag].blank?
+  end
+
+  def tag_name_exists
+    ActsAsTaggableOn::Tag.where(name: params[:tag][:name]).first if params[:tag].present? && params[:tag][:name].present?
+  end
+
+  def tag_params
+    params.require(:tag).permit(
+      :id,
+      :tag,
+      :name,
+      :languages,
+      locale_languages: %i[id iso_code _destroy]
+    )
+  end
+
   def filter_params
     @filter_params = {
       category_id: params[:category_id],
@@ -92,13 +112,8 @@ class Admin::TagsController < Admin::BaseController
     session[:filter_params] || {}
   end
 
-  def tag_params
-    params.require(:tag).permit(
-      :id,
-      :tag,
-      :name,
-      :languages,
-      locale_languages: %i[id iso_code _destroy]
-    )
+  #top-anchor for all???
+  def redirect_to_index_with_filters(message)
+    redirect_to admin_tags_path(filter_params_from_session.merge(anchor: 'top-anchor')), message
   end
 end
