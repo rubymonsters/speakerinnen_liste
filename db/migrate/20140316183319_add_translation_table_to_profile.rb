@@ -1,4 +1,4 @@
-class AddTranslationTableToProfile < ActiveRecord::Migration
+class AddTranslationTableToProfile < ActiveRecord::Migration[4.2]
   def up
 		Profile.create_translation_table!({
 			:main_topic => :string, 

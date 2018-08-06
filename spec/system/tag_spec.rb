@@ -22,7 +22,7 @@ describe 'displaying tags' do
                                                tag_de,
                                                tag_with_slash_en])
   end
-  let!(:pierre) { FactoryBot.create(:unpublished, topic_list: [tag_de, tag_with_unpublished_profile]) }
+  let!(:pierre) { create(:unpublished, topic_list: [tag_de, tag_with_unpublished_profile]) }
 
   it 'shows tagging after profile edit' do
     sign_in ada

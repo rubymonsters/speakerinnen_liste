@@ -29,7 +29,7 @@ module ApplicationHelper
   def custom_tag_cloud(tags, classes)
     return [] if tags.empty?
 
-    max_count = tags.sort_by { |t| t.taggings.count }.last.taggings.count.to_f
+    max_count = tags.pluck(:taggings_count).max.to_f
 
     tags.each do |tag|
       index = ((tag.taggings.count / max_count) * (classes.size - 1))

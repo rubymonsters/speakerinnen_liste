@@ -1,5 +1,5 @@
-one:
-  name: Internet
+my_first_cat:
+  id: 1
 
-two:
-  name: Kunst
+my_second_cat:
+  id: 2

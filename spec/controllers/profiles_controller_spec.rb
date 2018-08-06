@@ -4,23 +4,18 @@ include AuthHelper
 
 describe ProfilesController, type: :controller do
   describe 'test index action' do
-    let!(:profile) do
-      FactoryBot.create(:published,
-                        topic_list: %w[ruby algorithms])
-    end
+    let!(:profile) { create(:published, topic_list: %w(ruby algorithms)) }
     let!(:profile_unpublished) { FactoryBot.create(:unpublished) }
-    let!(:ada) do
-      FactoryBot.create(:published,
+    let!(:ada) { create(:published,
                         main_topic_en: 'first computer program',
-                        bio_en:        'first female programer')
-    end
+                        bio_en: 'first female programer') }
 
     before do
       get :index
     end
 
     it 'displays index' do
-      expect(response).to be_success
+      expect(response).to be_successful
       expect(response.response_code).to eq(200)
       expect(response).to render_template('index')
     end
@@ -37,8 +32,8 @@ describe ProfilesController, type: :controller do
   describe 'search action', elasticsearch: true do
     it 'displays search results if search term is present' do
       sleep 1
-      get :index, params: {  search: 'ruby' }
-      expect(response).to be_success
+      get :index, params: { search: 'ruby' }
+      expect(response).to be_successful
     end
 
     it 'should store aggregations in aggs variable' do
@@ -94,7 +89,7 @@ describe ProfilesController, type: :controller do
     context 'when editing own profile' do
       before do
         sign_in profile
-        get :edit, locale: 'de', id: profile.id
+        get :edit, params: { locale: 'de', id: profile.id }
       end
 
       it 'renders edit view' do
@@ -105,7 +100,7 @@ describe ProfilesController, type: :controller do
     context 'when trying to edit a different profile' do
       before do
         sign_in profile
-        get :edit, locale: 'de', id: profile1.id
+        get :edit, params: { locale: 'de', id: profile1.id }
       end
 
       it 'does not render edit view' do
@@ -119,7 +114,7 @@ describe ProfilesController, type: :controller do
 
     context 'when trying edit profile if user is not signed in' do
       before do
-        get :edit, locale: 'de', id: profile.id
+        get :edit, params: { locale: 'de', id: profile.id }
       end
 
       it 'does not render edit view' do
@@ -165,7 +160,7 @@ describe ProfilesController, type: :controller do
     context 'when updating own profile with valid params' do
       before do
         sign_in profile
-        put :update, id: profile.id, profile: { firstname: 'marie', lastname: 'curie' }
+        put :update, params: { id: profile.id, profile: { firstname: 'marie', lastname: 'curie' } }
       end
 
       it 'updates the requested Profile' do
@@ -181,7 +176,7 @@ describe ProfilesController, type: :controller do
     context 'when invalid params are supplied' do
       before do
         sign_in profile
-        put :update, id: profile.id, profile: { email: ' ' }
+        put :update, params: { id: profile.id, profile: { email: ' ' } }
       end
 
       it 'does not update the requested Profile' do
@@ -196,7 +191,7 @@ describe ProfilesController, type: :controller do
     context 'when trying to update a different profile' do
       before do
         sign_in profile
-        put :update, id: profile1.id, profile: { firstname: 'marie', lastname: 'curie' }
+        put :update, params: { id: profile1.id, profile: { firstname: 'marie', lastname: 'curie' } }
       end
 
       it 'does not update the requested profile' do
@@ -211,7 +206,7 @@ describe ProfilesController, type: :controller do
 
     context 'when trying update profile if user is not signed in' do
       before do
-        put :update, id: profile.id, profile: { firstname: 'marie', lastname: 'curie' }
+        put :update, params: { id: profile.id, profile: { firstname: 'marie', lastname: 'curie' } }
       end
 
       it 'does not update the requested profile' do
@@ -236,17 +231,17 @@ describe ProfilesController, type: :controller do
 
       it 'should destroy requested profile' do
         expect do
-          delete :destroy, id: profile.id
+          delete :destroy, params: { id: profile.id }
         end.to change(Profile, :count).by(-1)
       end
 
       it 'should not find the destroyed user' do
-        delete :destroy, id: profile.id
+        delete :destroy, params: { id: profile.id }
         expect { Profile.find(profile.id) }.to raise_exception(ActiveRecord::RecordNotFound)
       end
 
       it 'should redirect to profiles overview' do
-        delete :destroy, id: profile.id
+        delete :destroy, params: { id: profile.id }
         expect(response).to redirect_to("/#{I18n.locale}/profiles")
       end
     end
@@ -254,7 +249,7 @@ describe ProfilesController, type: :controller do
     context 'when trying to destroy a different profile' do
       before do
         sign_in profile
-        delete :destroy, id: profile1.id
+        delete :destroy, params: { id: profile1.id }
       end
 
       it 'should not destroy the requested profile' do
@@ -268,7 +263,7 @@ describe ProfilesController, type: :controller do
 
     context 'when trying destroy profile if user is not signed in' do
       before do
-        delete :destroy, id: profile.id
+        delete :destroy, params: { id: profile.id }
       end
 
       it 'should not destroy the requested profile' do
