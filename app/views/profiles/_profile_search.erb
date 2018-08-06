@@ -38,7 +38,7 @@
        <%= raw topics(profile).map { |topic| topic_link(topic) }.join(' ') %>
      </p>
 
-     <% if profile.languages.present? %>
+     <% if profile.iso_languages.present? %>
        <h2 class="delta sans-serif mb-">
          <%= t(:languages, scope: 'profiles.profile') %>
        </h2>
