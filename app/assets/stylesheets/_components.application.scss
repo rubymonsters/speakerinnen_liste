@@ -188,6 +188,8 @@ ul.tagit {
   font-family: $sans-serif;
   padding: $inuit-base-spacing-unit;
   text-align: center;
+	position: fixed;
+  width: 100%;
 }
 
 .alert {
@@ -196,6 +198,8 @@ ul.tagit {
   font-family: $sans-serif;
   padding: $inuit-base-spacing-unit;
   text-align: center;
+	position: fixed;
+  width: 100%;
 }
 
 .text--color-red {
