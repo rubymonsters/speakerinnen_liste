@@ -25,7 +25,7 @@
      <% if profile.website.present? %>
        <h5> <%= t(:website, scope: 'profiles.profile') %> </h5>
        <p class="pb-2">
-         <%= link_to profile.website, profile.website_with_protocol,
+         <%= link_to profile.website, profile.website_with_protocol(profile.website),
          target: '_blank' %>
        </p>
      <% end %>

@@ -1,4 +1,4 @@
-<section class="bg--grey pb-5">
+<!-- <section class="bg--grey pb-5"> -->
   <div class="container profile-box py-5">
     <div class="row">
       <div class="col text-right py-3">
@@ -28,21 +28,69 @@
           </p>
         <% end %>
 
-        <% if @profile.twitter.present? %>
-          <h5><%= t(:twitter, scope: 'profiles.profile') %></h5>
-          <p class="pb-2">
-            <%=link_to '@' + @profile.twitter_name_formatted, @profile.twitter_link_formatted,
-            target: '_blank' %>
-          </p>
-        <% end %>
+          <!-- only use globalize fall-back when there is no website at all in the current language scope provided -->
 
-        <% if @profile.website.present? %>
-          <h5><%= t(:website, scope: 'profiles.profile') %></h5>
-          <p class="pb-2">
-            <%= link_to @profile.website, @profile.website_with_protocol,
-            target: '_blank' %>
-          </p>
-        <% end %>
+          <!-- when there is at least one website in the current language provided use no fall-back for the missing additional websites -->
+          <% if @profile.website_in_language_scope(I18n.locale).present? ||
+                @profile.website_in_language_scope(I18n.locale, "2_").present? ||
+                @profile.website_in_language_scope(I18n.locale, "3_").present? %>
+
+            <!-- Show the view for more than one website: -->
+            <% if @profile.website_in_language_scope(I18n.locale).present? &&
+                 ( @profile.website_in_language_scope(I18n.locale, "2_").present? || @profile.website_in_language_scope(I18n.locale, "3_").present? ) %>
+
+              <h2 class="delta sans-serif mb-"> <%= t(:websites, scope: 'profiles.profile') %> </h2>
+              <p>
+                <%= link_to @profile.website_in_language_scope(I18n.locale), @profile.website_with_protocol(@profile.website_in_language_scope(I18n.locale)),
+                target: '_blank' %>
+              </p>
+              <p>
+                <%= link_to @profile.website_in_language_scope(I18n.locale, "2_"), @profile.website_with_protocol(@profile.website_in_language_scope(I18n.locale, "2_")),
+                target: '_blank' if @profile.website_in_language_scope(I18n.locale, "2_").present? %>
+              </p>
+              <p>
+                <%= link_to @profile.website_in_language_scope(I18n.locale, "3_"), @profile.website_with_protocol(@profile.website_in_language_scope(I18n.locale, "3_")),
+                target: '_blank' if @profile.website_in_language_scope(I18n.locale, "3_").present? %>
+              </p>
+              <p class="pb"></p>
+            <!-- Show the view for just one website: -->
+            <% elsif @profile.website_in_language_scope(I18n.locale).present? %>
+              <h2 class="delta sans-serif mb-"> <%= t(:website, scope: 'profiles.profile') %> </h2>
+              <p class="pb">
+                <%= link_to @profile.website_in_language_scope(I18n.locale), @profile.website_with_protocol(@profile.website_in_language_scope(I18n.locale)),
+                target: '_blank' %>
+              </p>
+            <% end %>
+
+          <!-- if there is no website in the current language use the globalize fall-back option for all websites -->
+          <% else %>
+
+            <!-- Show the view for more than one website: -->
+            <% if @profile.website.present? && ( @profile.website_2.present? || @profile.website_3.present? ) %>
+              <h2 class="delta sans-serif mb-"> <%= t(:websites, scope: 'profiles.profile') %> </h2>
+              <p>
+                <%= link_to @profile.website, @profile.website_with_protocol(@profile.website),
+                target: '_blank' %>
+              </p>
+              <p>
+                <%= link_to @profile.website_2, @profile.website_with_protocol(@profile.website_2),
+                target: '_blank' if @profile.website_2.present? %>
+              </p>
+              <p>
+                <%= link_to @profile.website_3, @profile.website_with_protocol(@profile.website_3),
+                target: '_blank' if @profile.website_3.present? %>
+              </p>
+              <p class="pb"></p>
+
+            <!-- Show the view for just one website: -->
+            <% elsif @profile.website.present? %>
+              <h2 class="delta sans-serif mb-"> <%= t(:website, scope: 'profiles.profile') %> </h2>
+              <p class="pb">
+                <%= link_to @profile.website, @profile.website_with_protocol(@profile.website),
+                target: '_blank' %>
+              </p>
+            <% end %>
+          <% end %>
 
         <% if @topics.present? %>
           <h5><%= t(:topics, scope: 'profiles.profile') %></h5>

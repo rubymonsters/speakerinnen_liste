@@ -1,23 +1,13 @@
 # frozen_string_literal: true
 
 describe 'show locale_language' do
-  let!(:admin) { FactoryBot.create(:admin) }
-
-  let!(:locale_language_de) { FactoryBot.create(:locale_language_de) }
-  let!(:locale_language_en) { FactoryBot.create(:locale_language_en) }
-
-  let!(:tag_both_lang) do
-    FactoryBot.create(:tag_social_media,
-                      locale_languages: [locale_language_en, locale_language_de])
-  end
-  let!(:tag_en) do
-    FactoryBot.create(:tag_physics,
-                      locale_languages: [locale_language_en])
-  end
+  let!(:admin) { create(:admin) }
+  let!(:locale_language_de) { create(:locale_language_de) }
+  let!(:locale_language_en) { create(:locale_language_en) }
+  let!(:tag_both_lang) { create(:tag_social_media, locale_languages: [locale_language_en, locale_language_de]) }
+  let!(:tag_en) { create(:tag_physics, locale_languages: [locale_language_en]) }
   let!(:tag_with_slash_en) do
-    FactoryBot.create(:tag,
-                      name: 'AC/DC',
-                      locale_languages: [locale_language_en])
+    create(:tag, name: 'AC/DC', locale_languages: [locale_language_en])
   end
 
   before(:each) do

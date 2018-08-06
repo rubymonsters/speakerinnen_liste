@@ -2,8 +2,14 @@
   <div class="container text-center">
     <% if params[:category_id] %> <%# when in categories scope %>
 
-      <h2>
-        <%= t(:category, scope: 'profiles', category_name: @category.name, profiles_count: @profiles.total_count, topics_count: @tags_in_category_published.size).html_safe %>
+      <h2 class="text--center">
+        <%= t(
+          :category,
+          scope: 'profiles',
+          category_name: @category.name,
+          profiles_count: @profiles.total_count,
+          topics_count: @tags_in_category_published.size
+        ).html_safe %>
       </h2>
       <%= render partial: 'profiles/tag' %>
 

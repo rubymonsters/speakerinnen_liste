@@ -155,6 +155,10 @@ class ProfilesController < ApplicationController
       :twitter_en,
       :website_de,
       :website_en,
+      :website_2_de,
+      :website_2_en,
+      :website_3_de,
+      :website_3_en,
       :city_de,
       :city_en,
       translations_attributes: %i[id bio main_topic twitter website city locale]
@@ -168,6 +172,7 @@ class ProfilesController < ApplicationController
 
   def profiles_for_index
     Profile.is_published
+           .includes(:translations)
            .main_topic_translated_in(I18n.locale)
            .random
            .page(params[:page])
@@ -177,14 +182,23 @@ class ProfilesController < ApplicationController
   def profiles_for_tag(tag_names)
     Profile.is_published
            .random
-           .tagged_with(tag_names, any: true)
+           .includes(:translations)
+           .joins(:topics)
+           .where({
+              tags: {
+                name: tag_names
+              }
+            })
            .page(params[:page])
            .per(24)
   end
 
   def profiles_for_category
     @category = Category.find(params[:category_id])
-    @tags_in_category_published = ActsAsTaggableOn::Tag.belongs_to_category(params[:category_id]).with_published_profile.with_language(I18n.locale)
+    @tags_in_category_published = ActsAsTaggableOn::Tag
+      .belongs_to_category(params[:category_id])
+      .with_published_profile
+      .with_language(I18n.locale)
     tag_names = @tags_in_category_published.pluck(:name)
     @tags_most_used_200 = @tags_in_category_published.most_used(200)
     @profiles = profiles_for_tag(tag_names)
@@ -192,6 +206,7 @@ class ProfilesController < ApplicationController
 
   def profiles_for_search
     Profile.is_published
+           .includes(:taggings, :translations)
            .search(params[:search], params[:filter_countries], params[:filter_cities], params[:filter_lang])
            .page(params[:page]).per(24)
            .records
