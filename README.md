@@ -254,9 +254,9 @@ $ rubocop -a
 ```
 
 # Database:
-Our databadse schema looks like that:
+Our database schema looks like that:
 
-https://github.com/rubymonsters/speakerinnen_liste/issues/644
+https://user-images.githubusercontent.com/1218914/43900439-368fa600-9be5-11e8-8f9c-d209784de1ef.jpg
 
 # Contributing
 
