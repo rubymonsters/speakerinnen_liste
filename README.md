@@ -256,7 +256,8 @@ $ rubocop -a
 # Database:
 Our database schema looks like that:
 
-https://user-images.githubusercontent.com/1218914/43900439-368fa600-9be5-11e8-8f9c-d209784de1ef.jpg
+
+![db](https://user-images.githubusercontent.com/1218914/43900439-368fa600-9be5-11e8-8f9c-d209784de1ef.jpg)
 
 # Contributing
 
