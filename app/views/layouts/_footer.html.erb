@@ -1,9 +1,8 @@
 <section id="main-page-footer" class="py-5">
   <div class="container">
-    <h5><%= t(:women, scope: 'pages.home.footer').html_safe %></h5>
-    <h1 class="box__bg"><%= t(:contact, scope: 'pages.home.footer') %></h1>
+    <h5><b><%= t(:women, scope: 'pages.home.footer').html_safe %></b></h5>
 
-    <nav class="border-vertical py-2 mb-4 text-center">
+    <nav class="border-vertical py-2 my-5 text-center">
       <%= t(:twitter, scope: 'pages.home.footer').html_safe %> |
       <%= link_to t(:contact_link, scope: 'pages.home.footer'), contact_path, class:"px-2" %> |
       <%= link_to t(:about_title, scope: 'pages.home.footer'), about_path, class: "px-2" %> |
