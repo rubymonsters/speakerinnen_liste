@@ -187,7 +187,6 @@ en:
       lastname: 'Last name:'
       topics: "My topics:"
       languages: "My languages:"
-      talks: "Previous talks / appearances:"
       media: "Examples of previous talks / appearances:"
       bio: "My bio:"
       contact: "Contact"
@@ -236,7 +235,6 @@ en:
     show:
       topics: "My topics:"
       languages: "My languages:"
-      talks: "Previous talks / appearances:"
       media: "Examples of previous talks / appearances:"
       bio: "My bio: "
       email: "Email: "
@@ -274,7 +272,6 @@ en:
         main_topic: "My main topic in %{language}: <i class='fa fa-info-circle' aria-hidden='true'></i>"
         main_topic_tooltip: "Only 30 characters are shown. Please choose one topic as your favorite topic and enter it again. It will be visible along with your name and picture at the speaker overview site."
         tag_list: "Existing topics"
-        talks: "My talks"
         languages: "I can talk in:"
         city: "The city, I live in:  <i class='fa fa-info-circle' aria-hidden='true'></i>"
         city_tooltip: "Please list multiple cities with a comma as a seperator, e.g. Berlin, New York."

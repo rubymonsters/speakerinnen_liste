@@ -35,9 +35,11 @@
        <%= raw topics(profile).map { |topic| topic_link(topic) }.join(' ') %>
      </p>
 
-     <% if profile.languages.present? %>
-       <h5> <%= t(:languages, scope: 'profiles.profile') %> </h2>
-       <p class="pb-2">
+     <% if profile.iso_languages.present? %>
+       <h2 class="delta sans-serif mb-">
+         <%= t(:languages, scope: 'profiles.profile') %>
+       </h2>
+       <p class="pb">
           <% profile.iso_languages.each do |iso|%>
             <%= t("#{iso}", scope: 'iso_639_1').capitalize %>
           <% end %>

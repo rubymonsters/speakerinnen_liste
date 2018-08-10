@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_18_181504) do
-
+ActiveRecord::Schema.define(version: 2018_07_23_204811) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -102,7 +101,6 @@ ActiveRecord::Schema.define(version: 2018_06_18_181504) do
     t.string "firstname", limit: 255
     t.string "lastname", limit: 255
     t.string "email", limit: 255
-    t.string "languages", limit: 255
     t.string "picture", limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -119,11 +117,9 @@ ActiveRecord::Schema.define(version: 2018_06_18_181504) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string "unconfirmed_email", limit: 255
-    t.string "talks", limit: 255
     t.boolean "admin", default: false
     t.string "provider", limit: 255
     t.string "uid", limit: 255
-    t.string "media_url", limit: 255
     t.boolean "published", default: false
     t.text "admin_comment"
     t.string "slug", limit: 255

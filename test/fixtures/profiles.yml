@@ -4,8 +4,6 @@ one:
   lastname: Lovelace
   email: ada@mail.de
   encrypted_password: <%= Profile.new.send(:password_digest, 'Testpassword') %>
-  languages: Deutsch
-  talks: CCC
   published: true
 
 two:
@@ -13,16 +11,12 @@ two:
   firstname: Inge
   lastname: lastname
   email: inge@mail.de
-  languages: Deutsch
-  talks: Repuclica
 
 three:
   id: 3
   firstname: Anon
   lastname: lastname
   email: anon@mail.de
-  languages: Deutsch
-  talks:
 
 jane:
   id: 4
@@ -30,5 +24,4 @@ jane:
   lastname: Admin
   email: jane_admin@server.org
   encrypted_password: <%= Profile.new.send(:password_digest, 'Testpassword') %>
-  languages: MyString
   admin: true
