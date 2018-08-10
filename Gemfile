@@ -5,7 +5,7 @@ ruby '2.3.1'
 gem 'rails', '5.2.0'
 
 # Needed for Javascript Runtime
-gem 'therubyracer'
+# gem 'therubyracer'
 
 # used in the rail 5.2 version
 gem 'bootsnap', '~> 1.3'
