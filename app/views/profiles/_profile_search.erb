@@ -1,6 +1,6 @@
 <div class="box__bg bg--white profile-box text-left">
 
-  <div class="row">
+  <div class="row mb-5">
     <div class="col-sm-12 col-md-4">
     </div>
     <div class="col-sm-12 col-md-8">
@@ -36,10 +36,8 @@
      </p>
 
      <% if profile.iso_languages.present? %>
-       <h2 class="delta sans-serif mb-">
-         <%= t(:languages, scope: 'profiles.profile') %>
-       </h2>
-       <p class="pb">
+       <h5><%= t(:languages, scope: 'profiles.profile') %></h5>
+       <p>
           <% profile.iso_languages.each do |iso|%>
             <%= t("#{iso}", scope: 'iso_639_1').capitalize %>
           <% end %>

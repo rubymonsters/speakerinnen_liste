@@ -336,10 +336,6 @@ textarea, input {
 }
 
 // topics
-.topics-cloud {
-  min-height: 200px;
-  text-align: center;
-}
 
 .topics-cloud a, .topics-profile a {
   background-color: #fff;
@@ -362,4 +358,17 @@ textarea, input {
 .topics-cloud #quick-filter {
   height: 32px;
   width: 160px;
+}
+
+/*classes for topicscloud*/
+.s {
+  font-size: 12px;
+}
+
+.m {
+  font-size: 16px;
+}
+
+.l {
+  font-size: 18px;
 }

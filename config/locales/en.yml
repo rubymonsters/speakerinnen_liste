@@ -169,7 +169,7 @@ en:
       error: "Please fill out all the fields so that the speaker can have all the details she needs."
       error_email_for_us: "Please fill out all the fields."
   profiles:
-    category: "In the category <b>%{category_name}</b> <br> we have found %{profiles_count} speakerinnen and %{topics_count} topics:"
+    category: "In the category <b>%{category_name}</b> we have found <b>%{profiles_count}</b> speakerinnen and <b>%{topics_count}</b> topics:"
     tag:
       topics: "Most Popular Topics"
       topics_with_category: "in category %{category_name}"
