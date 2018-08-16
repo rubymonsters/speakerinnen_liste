@@ -171,10 +171,11 @@ de:
   profiles:
     category: "In der Kategorie <b>%{category_name}</b> haben wir <b>%{profiles_count}</b> Speakerinnen* und <b>%{topics_count}</b> Themen gefunden:"
     tag:
-      topics: "Top-Themen"
+      topics: "Die 200 Top-Themen"
+      tag_choose_languages: "Du kannst die Topics auch nach Sprache sortieren:"
       topics_with_category: "in der Kategorie %{category_name}"
       topics_with_no_language_scope: "Topics in allen Sprachen"
-      topics_qick_filter: "Hier könnt ihr in der Topic Cloud suchen:"
+      topics_quick_filter: "Hier könnt ihr in der Topic Cloud suchen:"
     form:
       not_saved: "Dieses Profil konnte nicht gespeichert werden:"
       profile_from: "Profil von"
@@ -334,7 +335,7 @@ de:
   search:
     any: "Alle"
     no_profile: "Zu diesem Thema haben wir leider keine Speakerin gefunden."
-    profiles_topics: "Zum dem Thema <b>%{topics_name}</b> <br>gibt es %{profiles_count} Speakerinnen:"
+    profiles_topics: "Zum dem Thema <b>%{topics_name}</b> gibt es <b>%{profiles_count}</b> Speakerinnen:"
     profiles: "%{link}"
     all_profiles: "In allen Profilen blättern >>"
     did_you_mean: "Meinst du vielleicht %{suggestions_fullname}?"
@@ -346,7 +347,7 @@ de:
       one: " eine Speakerin gefunden!",
       other: " %{count} Speakerinnen gefunden! Yeah! "
     }
-    more_options: "Keine passende Speakerin gefunden?"
+    more_options: "<b>Keine passende Speakerin gefunden?</b><br> Vielleicht helfen Dir diese Links weiter:"
     search_categories_html: "Du kannst auch in <a href='%{root_path}/#categories_anchor'>Kategorien und Themen</a> stöbern."
     adapt_search: "Suche anpassen >>"
     countries_agg: "Länder:"

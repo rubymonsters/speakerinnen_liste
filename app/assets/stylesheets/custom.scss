@@ -191,6 +191,35 @@ h1, h4 {
   background: $red;
 }
 
+.button--background-blue {
+  background: $blue;
+  color: white;
+  font-family: $sans-serif;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.button--border {
+  padding: 10px 20px 10px 20px;
+  border: solid $light-grey 1px;
+  text-decoration: none;
+}
+
+.topics-cloud .topic-filter {
+  float: right;
+}
+
+.topics-cloud #quick-filter {
+  height: 32px;
+  width: 160px;
+}
+
+.input-btn {
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+
 textarea, input {
   // border-radius: $border-radius;
   border: 1px solid $light-grey;

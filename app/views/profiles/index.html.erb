@@ -15,9 +15,9 @@
 
     <% elsif params[:topic] %> <%# when in topic scope %>
 
-      <h2>
+      <h5 class="text-center py-5">
         <%= t(:profiles_topics, scope: 'search', profiles_count: @profiles.total_count, topics_name: params[:topic]).html_safe %>
-      </h2>
+      </h5>
       <%= render partial: 'shared/search_form' %>
       <p class="mt-1"><%= t(:search_categories_html, scope: 'search', root_path: root_path) %></p>
 
@@ -40,15 +40,15 @@
 
     <%= paginate @profiles %>
 
-    <p class="font-size-24 text--center o-layout__item 1/1">
-      <%= t(:more_options, scope: 'search').html_safe %><br>
+    <h5 class="text-center"><%= t(:more_options, scope: 'search').html_safe %></h5>
+    <p class="text-center mb-5">
       <%#TODO: doesn't work anymore%>
       <%= top_link(params[:search]) %><br>
       <%= link_to(t(:all_profiles, scope: 'search'), profiles_path).html_safe %><br>
       <%= link_to(t(:all_categories, scope: 'pages.home'), root_path + "#categories_anchor" )%>
     </p>
 
-    <div class="text--center o-layout__item 1/1">
+    <div class="text-center border-vertical py-5">
       <%= render partial: 'tag_cloud' unless params[:category_id] %>
     </div>
 

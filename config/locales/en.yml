@@ -171,7 +171,8 @@ en:
   profiles:
     category: "In the category <b>%{category_name}</b> we have found <b>%{profiles_count}</b> speakerinnen and <b>%{topics_count}</b> topics:"
     tag:
-      topics: "Most Popular Topics"
+      topics: "The 200 most popular topics"
+      tag_choose_languages: "You can sort the topics via languages"
       topics_with_category: "in category %{category_name}"
       topics_with_no_language_scope: "Topics in all languages"
       topics_quick_filter: "Search the topics cloud:"
@@ -330,7 +331,7 @@ Links to Youtube videos will be shown as embedded videos. Other links will be cl
   search:
     any: "Any"
     no_profile: "Unfortunately we don't have a speaker for that topic."
-    profiles_topics: "In the topic <b>%{topics_name}</b><br>we have found %{profiles_count} speakerinnen:"
+    profiles_topics: "In the topic <b>%{topics_name}</b> we have found <b>%{profiles_count}<b> speakerinnen:"
     profiles: "%{link}"
     all_profiles: "Browse all profiles >> "
     did_you_mean: "Did you mean %{suggestions_fullname}?"
@@ -343,7 +344,7 @@ Links to Youtube videos will be shown as embedded videos. Other links will be cl
       one: " a speakerin! Yeah!",
       other: " %{count} speakerinnen! Yeah! "
     }
-    more_options: "You didn't find any suitable speaker?"
+    more_options: "<b>You didn't find any suitable speaker?</b><br> Maybe the following links can help you:"
     search_categories_html: "Have a look at our <a href='%{root_path}/#categories_anchor'>categories and topics</a>."
     adapt_search: "Adapt your search >> "
     countries_agg: "Countries:"
