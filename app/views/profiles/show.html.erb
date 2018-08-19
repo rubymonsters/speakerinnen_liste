@@ -8,12 +8,12 @@
 
     <div class="row mb-5">
       <div class="col">
-        <h1><%= @profile.fullname %></h1>
+        <h1 class="display-4"><%= @profile.fullname %></h1>
       </div>
     </div>
 
-    <div class="row mb-3">
-      <div class="col-md-4">
+    <div class="row mb-5">
+      <div class="col-md-3">
           <%= profile_picture_link(@profile) %>
           <p class="mt-2"><%= @profile.main_topic_or_first_topic.truncate(30) if @profile.main_topic_or_first_topic %></p>
       </div>
@@ -130,10 +130,10 @@
         <% end %>
       </div>
 
-      <div class="col-md-2">
+      <div class="col-md-3">
 
         <% if current_profile != @profile %>
-          <label class="btn btn-blue btn--small btn--full" for="modal-1">
+          <label class="btn btn-blue btn-sm" for="modal-1">
             <i class="fa fa-envelope-o"></i>&nbsp;
             <%= t(:contact, scope: 'profiles.profile') %>
           </label>
@@ -141,18 +141,18 @@
 
         <% if current_profile == @profile %>
           <%= link_to(edit_profile_path(@profile)) do %>
-            <div class='btn btn-blue buttons-modals btn--small btn--full'>
+            <div class='btn btn-blue buttons-modals btn-block'>
               <%= t(:edit, scope: 'profiles.profile') %>
              </div>
 
           <%= link_to(profile_medialinks_path(@profile)) do %>
-            <div class='btn btn-blue buttons-modals btn--small btn--full mt-3'>
+            <div class='btn btn-blue buttons-modals mt-3 btn-block'>
               <%= t(:edit, scope: 'profiles.medialinks') %>
             </div>
           <% end %>
 
           <%= link_to(edit_profile_registration_path) do %>
-            <div id='accountSettings', class='btn btn-blue buttons-modals btn--small btn--full mt-3'>
+            <div id='accountSettings', class='btn btn-blue buttons-modals btn-block mt-3'>
               <%= t(:account, scope: 'layouts.application') %>
             </div>
           <% end %>
