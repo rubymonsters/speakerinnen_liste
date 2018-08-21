@@ -1,5 +1,5 @@
-<div class="o-layout mt">
-  <div class="o-layout__item 2/6">
+<div class="row">
+  <div class="col-3">
 
     <%= f.label :picture %>
     <p>
@@ -20,7 +20,7 @@
 
   </div>
 
-  <div class="o-layout__item 4/6 box__bg bg--white">
+  <div class="col-6 box__bg bg--white">
     <!-- ToDo: width of input fields should be made responsive -->
 
     <%= f.input :firstname, label_html: { id: "firstname" }, input_html: { class: "mb input--width-100" } %>
@@ -46,7 +46,7 @@
     </div>
   </div>
 
-  <div class="o-layout__item 1/1 box__bg bg--white mt">
+  <div class="col-12 box__bg bg--white mt">
     <%= f.input :topic_list, label: t(:topic_list, scope: 'activerecord.attributes.profile').html_safe,
         label_html: { id: "topic_list", class: "tooltip", title: t(:topic_list_tooltip, scope: 'activerecord.attributes.profile').html_safe },
         input_html: { value: @profile.topic_list.to_s, class: "input--width-100" }, wrapper_html: { class: "mv" } %>
