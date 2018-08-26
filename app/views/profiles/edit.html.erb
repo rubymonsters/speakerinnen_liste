@@ -1,5 +1,9 @@
 <section class="bg--grey">
   <div class="container py-5">
+   <div class="text-left mb-5">
+      <%= link_to(t(:home, scope: 'profiles.edit'), profiles_path) %><br>
+      <%= link_to(t(:show, scope: 'profiles.edit'), profile_path) %>
+    </div>
     <div class="row">
       <div class="col-9">
         <%= render 'shared/error_messages' %>
@@ -7,10 +11,6 @@
         <h1><%= t(:update, scope: "profiles.form")%></h1>
       </div>
 
-     <div class="col-3 text-right">
-        <%= link_to(t(:home, scope: 'profiles.edit'), profiles_path) %><br>
-        <%= link_to(t(:show, scope: 'profiles.edit'), profile_path) %>
-      </div>
     </div>
 
     <%= simple_form_for(@profile, html: { multipart: true, class: "profile-box"}) do |f| %>

@@ -2,15 +2,15 @@
   <div class="col-6">
 
     <%= f.label :picture, t(:picture, scope: 'profiles.form').html_safe %>
-    <br>
-    <small>
-      <%= t(:picture_info, scope: 'profiles.form').html_safe %><br>
-    </small>
     <p>
       <!-- ToDo: width of picture should be made responsive -->
       <%= image_tag(@profile.picture_url, width: 200) if @profile.picture.present? %>
     </p>
     <p><%= f.file_field :picture %></p>
+    <small class="form-text text-muted">
+      <%= t(:picture_info, scope: 'profiles.form').html_safe %><br>
+    </small>
+    <br>
 
     <%= f.check_box :remove_picture %>
     <%= t(:delete_picture, scope: 'profiles.form') %>
@@ -61,14 +61,14 @@
   <% end %>
 </ul>
 
-    <ul class="nav nav-tabs">
-      <li class="nav-item">
-        <a id="show-de" class="nav-link <%= I18n.locale == :de ? "active" : "" %>" href="#"> <%= t(:de, scope: 'i18n.language').html_safe %></a>
-      </li>
-      <li class="nav-item">
-        <a id="show-en" class="nav-link <%= I18n.locale == :en ? "active" : "" %>" href="#"> <%= t(:en, scope: 'i18n.language').html_safe %></a>
-      </li>
-    </ul>
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a id="show-de" class="nav-link <%= I18n.locale == :de ? "active" : "" %>" href="#"> <%= t(:de, scope: 'i18n.language').html_safe %></a>
+  </li>
+  <li class="nav-item">
+    <a id="show-en" class="nav-link <%= I18n.locale == :en ? "active" : "" %>" href="#"> <%= t(:en, scope: 'i18n.language').html_safe %></a>
+  </li>
+</ul>
 
 <div class="row mb-5">
   <div class="col-12 box__bg bg--white mt">

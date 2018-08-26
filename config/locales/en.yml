@@ -183,8 +183,8 @@ en:
       update: "Update your profile"
       picture: "A picture of me:"
       picture_info: "Please upload a photo in <b>color</b>, we show it in black and white.
-        <br>Make sure you use .jpg, .jpeg or .png and that you have all copyrights for this photo.
-        <br>The size of your photo should be<b> smaller than 1MB</b>."
+        Make sure you use .jpg, .jpeg or .png and that you have all copyrights for this photo.
+        The size of your photo should be<b> smaller than 1MB</b>."
       firstname: "My first name:"
       lastname: "My last name:"
       bio: "My bio in %{language}: <i class='fa fa-info-circle' aria-hidden='true'></i><br><small class='form-text text-muted'>You can use simple HTML tags to format the text. For example: <i>< i > italic < /i ></i> or <b>< b > bold < /b ></b>.</small>"
@@ -232,8 +232,8 @@ en:
     medialinks:
       edit: "Edit previous talks"
     edit:
-      show: "Show own Profile >>"
-      home: "Show all Speakerinnen* >>"
+      show: "<< Show own Profile"
+      home: "<< Show all Speakerinnen*"
     index:
       title: "Speakerinnen*"
       text: "Welcome!<br>

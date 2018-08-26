@@ -182,9 +182,9 @@ de:
       delete_picture: "Lösche mein Foto"
       update: "Aktualisiere dein Profil"
       picture: "Ein Foto von mir:"
-      picture_info: "Lade bitte ein Foto in <b>Farbe</b> hoch, wir zeigen es in Graustufen.
-        <br>Nutze .jpg, .jpeg oder .png und achte darauf, daß Du die Rechte zu diesem Foto besitzt!
-        <br>Die Größe des Fotos sollte <b>kleiner als 1MB</b> sein."
+      picture_info: "Lade bitte das Foto in <b>Farbe</b> hoch, wir zeigen es in Graustufen.
+        Nutze .jpg, .jpeg oder .png und achte darauf, daß Du die Rechte zu diesem Foto besitzt!
+        Die Größe des Fotos sollte <b>kleiner als 1MB</b> sein."
       firstname: "Mein Vorname:"
       lastname: "Mein Nachname:"
       bio: "Meine Biografie auf %{language}: <i class='fa fa-info-circle' aria-hidden='true'></i> <br><small class='form-text text-muted'>Du kannst einfache HTML Tags nutzen, um den Text zu formatieren. Zum Beispiel: <i>< i >italic< /i ></i> oder <b>< b > fett < /b ></b>.</small>"
@@ -232,8 +232,8 @@ de:
     medialinks:
       edit: "Referenzen bearbeiten"
     edit:
-      show: "Eigenes Profil anzeigen >>"
-      home: "Alle Speakerinnen* anzeigen >>"
+      show: "<< Eigenes Profil anzeigen"
+      home: "<< Alle Speakerinnen* anzeigen"
     index:
       title: "Speakerinnen*"
       text: "Schön, dass Du hier bist. <br>
