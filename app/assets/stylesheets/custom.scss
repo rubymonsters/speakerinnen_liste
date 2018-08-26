@@ -4,7 +4,7 @@ body {
 	margin-top: 96px;
 }
 
-a, .link {
+a, .link, #expander {
 	font-family: $sans-serif;
 	color: $link-color;
 	text-decoration: none;
@@ -58,22 +58,6 @@ h1, h4 {
 
 .error {
   color: $red;
-}
-
-.notice {
-  background: $blue;
-  color: white;
-  font-family: $sans-serif;
-  padding: $base-spacing-unit;
-  text-align: center;
-}
-
-.alert {
-  background: $red;
-  color: white;
-  font-family: $sans-serif;
-  padding: $base-spacing-unit;
-  text-align: center;
 }
 
 /* startpage */
@@ -165,10 +149,6 @@ h1, h4 {
   border-bottom: $border;
 }
 
-.border-bottom {
-  border-bottom: $border;
-}
-
 .btn-blue {
   font-family: $sans-serif;
   color: white;
@@ -185,19 +165,14 @@ h1, h4 {
   background: $red;
 }
 
-.button--background-blue {
-  background: $blue;
-  color: white;
-  font-family: $sans-serif;
-  &:hover {
-    text-decoration: none;
-  }
-}
-
 .button--border {
   padding: 10px 20px 10px 20px;
   border: solid $light-grey 1px;
   text-decoration: none;
+}
+
+.color-grey {
+  color: $font-color-title;
 }
 
 .topics-cloud .topic-filter {
@@ -222,23 +197,6 @@ textarea, input {
   padding-left: quarter($base-spacing-unit);
 }
 
-.input--width-100 {
-  width: 100%;
-  }
-
-//
-// .faq__image--float {
-//   margin-left: 10px;
-//   margin-bottom: 10px;
-//   float: right;
-//   border: $border;
-// }
-//
-// .faq__image--small {
-//   width: 300px;
-//   height: auto;
-// }
-//
 /* profiles */
 .photo--grey {
   border: $border;
@@ -304,6 +262,10 @@ textarea, input {
     color: $blue;
     cursor: pointer;
   }
+}
+
+.profile__search {
+    width: 300px;
 }
 
 /* paginate */
@@ -391,4 +353,53 @@ textarea, input {
 
 .l {
   font-size: 18px;
+}
+
+.tabrow {
+  text-align: left;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  line-height: 20px;
+  position: relative;
+}
+
+.tabrow li {
+  margin: 0 10px;
+  padding: 0 10px;
+  display: inline-block;
+  cursor: pointer;
+  position: relative;
+  z-index: 0;
+}
+
+.tabrow li.selected {
+  border: 1px solid #AAA;
+  color: #000;
+  z-index: 2;
+  border-bottom-color: #FBFBFB;
+  background: #FBFBFB;
+}
+
+.tabrow li.unselected {
+  color: $link-color;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+
+.tabrow:after {
+  position: absolute;
+  content: "";
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  border-bottom: 1px solid #AAA;
+  z-index: 1;
+}
+
+.tabrow:before {
+  z-index: 1;
 }
