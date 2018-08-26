@@ -181,22 +181,45 @@ en:
       profile_from: "Profile of"
       delete_picture: "Delete my photo"
       update: "Update your profile"
-      copyright_photo: "Please make sure you use .jpg, .jpeg or .png and that you have all copyrights for this photo."
-      size_photo: "The size of your photo should be smaller than 1MB."
-    profile:
+      picture: "A picture of me:"
+      picture_info: "Please upload a photo in <b>color</b>, we show it in black and white.
+        <br>Make sure you use .jpg, .jpeg or .png and that you have all copyrights for this photo.
+        <br>The size of your photo should be<b> smaller than 1MB</b>."
+      firstname: "My first name:"
+      lastname: "My last name:"
+      bio: "My bio in %{language}: <i class='fa fa-info-circle' aria-hidden='true'></i><br><small class='form-text text-muted'>You can use simple HTML tags to format the text. For example: <i>< i > italic < /i ></i> or <b>< b > bold < /b ></b>.</small>"
+      bio_tooltip: "Here you can add a short or long bio of yourself. Please also add specific expertise and topics you feel comfortable speaking about. This will help organizers of events to understand whether you might be the person they're looking for."
+      topic_list: "My topics as tags, please don't choose more than 10 tags: <i class='fa fa-info-circle' aria-hidden='true'></i>"
+      topic_list_tooltip: "Please have a look first, if your topic already exists."
+      main_topic_title: "My main topic"
+      main_topic: "My main topic in %{language}:
+        <br><small class='form-text text-muted'>Only 30 characters are shown.
+        <br>Please choose one topic as your favorite topic and enter it again. It will be visible along with your name and picture at the speaker overview site.</small>"
+      tag_list: "Existing topics"
+      languages: "I can talk in:"
+      show_more_languages: "Show more languages"
+      show_less_languages: "Show less languages"
+      city: "The city, I live in:  <i class='fa fa-info-circle' aria-hidden='true'></i>"
+      city_tooltip: "Please list multiple cities with a comma as a seperator, e.g. Berlin, New York."
+      country: "The country, I live in:"
+      twitter: "My twitteraccount:"
+      email: "My email address: <i class='fa fa-info-circle' aria-hidden='true'></i>"
+      website: "My website:"
+      additional_websites: "Additional websites/blogs:"
+    show:
       firstname: 'First name:'
       lastname: 'Last name:'
       topics: "My topics:"
       languages: "My languages:"
       media: "Examples of previous talks / appearances:"
       bio: "My bio:"
-      contact: "Contact"
-      website: "My website/blog:"
       websites: "My websites/blogs:"
       city: "My city:"
       country: "My country:"
       country_select: "Select a country:"
       twitter: "My twitter handle:"
+      website: "My website/blog:"
+      contact: "Contact"
       show: "Show"
       edit: "Edit profile"
       destroy: "Delete"
@@ -205,14 +228,12 @@ en:
       email: "Email:"
       empty_profile: "There is nothing here yet ¯\\_(ツ)_/¯."
       check_faq: "To get started please fill out the formular via 'Edit Profile'!<BR> For more information how to fill in your profile, check here: <a href='https://speakerinnen.org/de/faq'>FAQ</a>"
+      topics: "My topics:"
     medialinks:
-      edit: "Edit previous talks / appearances"
+      edit: "Edit previous talks"
     edit:
-      show_more_languages: "Show more languages >>"
-      show_less_languages: "Show less languages >>"
       show: "Show own Profile >>"
       home: "Show all Speakerinnen* >>"
-      back: "Back"
     index:
       title: "Speakerinnen*"
       text: "Welcome!<br>
@@ -232,17 +253,6 @@ en:
       show_less: "Less >>"
     new:
       new_profile: "New profile"
-      back: "Back"
-    show:
-      topics: "My topics:"
-      languages: "My languages:"
-      media: "Examples of previous talks / appearances:"
-      bio: "My bio: "
-      email: "Email: "
-      twitter: "Twitter:"
-      contact: "Email to"
-      back: "Back"
-      edit: "Edit"
   flash:
     profiles:
       created: 'Profile was successfully created.'
@@ -260,32 +270,6 @@ en:
       created: '%{category_name} was successfully created.'
       updated: '%{category_name} was successfully updated.'
       destroyed: '%{category_name} was successfully deleted.'
-  activerecord:
-    attributes:
-      profile:
-        firstname: "My first name:"
-        lastname: "My last name:"
-        bio: "My bio in %{language}: <i class='fa fa-info-circle' aria-hidden='true'></i><br><small><br>You can use simple HTML tags to format the text. For example: <i>< i > italic < /i ></i> or <b>< b > bold < /b ></b>.</small>"
-        bio_tooltip: "Here you can add a short or long bio of yourself. Please also add specific expertise and topics you feel comfortable speaking about. This will help organizers of events to understand whether you might be the person they're looking for."
-        topic_list: "My topics as tags, please don't choose more than 10 tags: <i class='fa fa-info-circle' aria-hidden='true'></i>"
-        topic_list_tooltip: "Please have a look first, if your topic already exists."
-        main_topic_title: "My main topic"
-        main_topic: "My main topic in %{language}: <i class='fa fa-info-circle' aria-hidden='true'></i>"
-        main_topic_tooltip: "Only 30 characters are shown. Please choose one topic as your favorite topic and enter it again. It will be visible along with your name and picture at the speaker overview site."
-        tag_list: "Existing topics"
-        languages: "I can talk in:"
-        city: "The city, I live in:  <i class='fa fa-info-circle' aria-hidden='true'></i>"
-        city_tooltip: "Please list multiple cities with a comma as a seperator, e.g. Berlin, New York."
-        country: "The country, I live in:"
-        twitter: "My twitteraccount:"
-        email: "My email address: <i class='fa fa-info-circle' aria-hidden='true'></i>"
-        website: "My website:"
-        additional_websites: "Additional websites/blogs:"
-        picture: "A picture of me: ( if possible in color, we show it in black and white.)"
-      medialink:
-        url: "URL:"
-        title: "Title:"
-        description: "Description:<br><small>You can use simple HTML tags to format the text. For example: <i>< i > italic < /i ></i> or <b> < b > bold < /b ></b>.</small>"
   devise:
     registrations:
       edit:

@@ -108,7 +108,7 @@ RSpec.describe 'Navigation', type: :system do
 
       expect(page).to have_css('div.profile_firstname')
       expect(page).to have_css('div.profile_lastname')
-      expect(page).to have_css('.profile_twitter')
+      expect(page).to have_css('#profile_twitter')
       expect(page).to have_css('#city_en')
       expect(page).to have_css('div.profile_iso_languages')
       expect(page).to have_css('#profile_website_de')

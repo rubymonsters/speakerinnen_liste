@@ -181,22 +181,45 @@ de:
       profile_from: "Profil von"
       delete_picture: "Lösche mein Foto"
       update: "Aktualisiere dein Profil"
-      copyright_photo: "Bitte nutze .jpg, .jpeg oder .png und achte darauf, daß Du die Rechte zu diesem Foto besitzt!"
-      size_photo: "Die Größe des Fotos sollte kleiner als 1MB sein."
-    profile:
+      picture: "Ein Foto von mir:"
+      picture_info: "Lade bitte ein Foto in <b>Farbe</b> hoch, wir zeigen es in Graustufen.
+        <br>Nutze .jpg, .jpeg oder .png und achte darauf, daß Du die Rechte zu diesem Foto besitzt!
+        <br>Die Größe des Fotos sollte <b>kleiner als 1MB</b> sein."
+      firstname: "Mein Vorname:"
+      lastname: "Mein Nachname:"
+      bio: "Meine Biografie auf %{language}: <i class='fa fa-info-circle' aria-hidden='true'></i> <br><small class='form-text text-muted'>Du kannst einfache HTML Tags nutzen, um den Text zu formatieren. Zum Beispiel: <i>< i >italic< /i ></i> oder <b>< b > fett < /b ></b>.</small>"
+      bio_tooltip: "Hier ist Platz für eine kurze oder auch längere Bio. Außerdem sollten hier Fachkenntnisse und mögliche Vortragsthemen genauer beschrieben werden. Das hilft Veranstalterinnen und Veranstaltern herauszufinden, ob Ihr die Richtigen für ihr Event sein könntet."
+      topic_list: "Meine Themen als Tags, wähle bitte nicht mehr als 10 Tags: <i class='fa fa-info-circle'></i>"
+      topic_list_tooltip: "Bitte schaue zuerst, ob Dein Thema schon vorhanden ist."
+      main_topic_title: "Mein Hauptthema:"
+      main_topic: "Mein Hauptthema auf %{language}:
+        <br><small class='form-text text-muted'>Es werden nur 30 Zeichen angezeigt.
+        <br>Trage Dein wichtigstes Thema hier nochmal ein. Dieses Thema wird mit Deinem Namen und Bild auf der Speakerinnen-Übersichtsseite zu sehen sein.</small>"
+      tag_list: "schon vorhandene Tags"
+      languages: "Ich spreche:"
+      show_more_languages: "Noch mehr Sprachen"
+      show_less_languages: "Weniger Sprachen"
+      city: "Die Stadt, in der ich lebe: <i class='fa fa-info-circle' aria-hidden='true'></i>"
+      city_tooltip: "Bitte gib mehrere Städte mit Komma getrennt ein, z.B. Berlin, New York."
+      country: "Das Land, in dem ich lebe:"
+      twitter: "Mein Twitteraccount:"
+      email: "Meine E-Mailadresse: <i class='fa fa-info-circle' aria-hidden='true'></i>"
+      website: "Meine Webseite:"
+      additional_websites: "Zusätzliche Webseiten/Blogs:"
+    show:
       firstname: 'Vorname:'
       lastname: 'Nachname:'
       topics: 'Meine Themen:'
       languages: "Meine Sprache/n:"
       media: "Meine Vorträge / Referenzen:"
       bio: "Meine Biografie: "
-      contact: "Kontakt"
       website: "Meine Webseite/Blog:"
       websites: "Meine Webseiten/Blogs:"
       city: "Meine Stadt:"
       country: "Mein Land:"
       country_select: "Wähle ein Land aus:"
       twitter: "Mein Twittername:"
+      contact: "Kontakt"
       show: "Anzeigen"
       edit: "Profil bearbeiten"
       destroy: "Löschen"
@@ -205,14 +228,12 @@ de:
       email: "E-Mail:"
       empty_profile: "Hier gib es noch nix sehen ¯\\_(ツ)_/¯."
       check_faq: "Fülle bitte die Felder via 'Edit Profile' aus!. <BR> Für mehr Informationen, wie Du am besten dein Profil angelegst, kannst Du hier nach schauen: <a href='https://speakerinnen.org/de/faq'>FAQ</a>"
+      profile_from: "Profil von"
     medialinks:
       edit: "Referenzen bearbeiten"
     edit:
-      show_more_languages: "Noch mehr Sprachen >>"
-      show_less_languages: "Weniger Sprachen >>"
       show: "Eigenes Profil anzeigen >>"
       home: "Alle Speakerinnen* anzeigen >>"
-      back: "Zurück"
     index:
       title: "Speakerinnen*"
       text: "Schön, dass Du hier bist. <br>
@@ -232,18 +253,6 @@ de:
       show_less: "Weniger >>"
     new:
       new_profile: "Neues Profil"
-      back: "Zurück"
-    show:
-      profile_from: "Profil von"
-      topics: "Meine Themen:"
-      languages: "Meine Sprache/n:"
-      media: "Meine Vorträge / Referenzen:"
-      bio: "Meine Biografie:"
-      email: "E-mail:"
-      twitter: "Twitter:"
-      contact: "E-Mail an"
-      back: "Zurück"
-      edit: "Bearbeiten"
   flash:
     profiles:
       created: "Profil wurde erfolgreich erstellt."
@@ -261,32 +270,6 @@ de:
       created: '%{category_name} wurde erfolgreich erstellt.'
       updated: '%{category_name} wurde erfolgreich geändert.'
       destroyed: '%{category_name} wurde erfolgreich gelöscht.'
-  activerecord:
-    attributes:
-      profile:
-        firstname: "Mein Vorname:"
-        lastname: "Mein Nachname:"
-        bio: "Meine Bio auf %{language}: <i class='fa fa-info-circle' aria-hidden='true'></i> <br><small>Du kannst einfache HTML Tags nutzen, um den Text zu formatieren. Zum Beispiel: <i>< i >italic< /i ></i> oder <b>< b > fett < /b ></b>.</small>"
-        bio_tooltip: "Hier ist Platz für eine kurze oder auch längere Bio. Außerdem sollten hier Fachkenntnisse und mögliche Vortragsthemen genauer beschrieben werden. Das hilft Veranstalterinnen und Veranstaltern herauszufinden, ob Ihr die Richtigen für ihr Event sein könntet."
-        topic_list: "Meine Themen als Tags, wähle bitte nicht mehr als 10 Tags: <i class='fa fa-info-circle' aria-hidden='true'></i>"
-        topic_list_tooltip: "Bitte schaue zuerst, ob Dein Thema schon vorhanden ist."
-        main_topic_title: "Mein Hauptthema:"
-        main_topic: "Mein Hauptthema auf %{language}: <i class='fa fa-info-circle' aria-hidden='true'></i>"
-        main_topic_tooltip: "Es werden nur 30 Zeichen angezeigt. Trage Dein wichtigstes Thema hier nochmal ein. Dieses Thema wird mit Deinem Namen und Bild auf der Speakerinnen-Übersichtsseite zu sehen sein."
-        tag_list: "schon vorhandene Tags"
-        languages: "Ich spreche:"
-        city: "Die Stadt, in der ich lebe: <i class='fa fa-info-circle' aria-hidden='true'></i>"
-        city_tooltip: "Bitte gib mehrere Städte mit Komma getrennt ein, z.B. Berlin, New York."
-        country: "Das Land, in dem ich lebe:"
-        twitter: "Mein Twitteraccount:"
-        email: "Meine E-Mailadresse: <i class='fa fa-info-circle' aria-hidden='true'></i>"
-        website: "Meine Webseite:"
-        additional_websites: "Zusätzliche Webseiten/Blogs:"
-        picture: "Ein Foto von mir: ( wenn möglich in Farbe, wir zeigen es in Graustufen.)"
-      medialink:
-        url: "URL:"
-        title: "Überschrift:"
-        description: "Beschreibung:<br><small>Du kannst einfache HTML Tags nutzen, um den Text zu formatieren. Zum Beispiel: <i>< i >italic< /i ></i> oder <b>< b > fett < /b ></b>.</small>"
   devise:
     registrations:
       edit:

@@ -34,7 +34,7 @@
             </h2>
           <% if @profile.firstname.present? %>
             <h2 class="delta sans-serif mb-">
-              <%= t(:firstname, scope: 'profiles.profile') %>
+              <%= t(:firstname, scope: 'profiles.show') %>
             </h2>
             <p class="bb pb">
               <%= @profile.firstname %>
@@ -43,7 +43,7 @@
 
           <% if @profile.lastname.present? %>
             <h2 class="delta sans-serif mb-">
-              <%= t(:lastname, scope: 'profiles.profile') %>
+              <%= t(:lastname, scope: 'profiles.show') %>
             </h2>
             <p class="bb pb">
               <%= @profile.lastname %>
@@ -52,7 +52,7 @@
 
           <% if @profile.twitter.present? %>
             <h2 class="delta sans-serif mb-">
-              <%= t(:twitter, scope: 'profiles.profile') %>
+              <%= t(:twitter, scope: 'profiles.show') %>
             </h2>
             <p class="bb pb">
               <%=link_to '@' + @profile.twitter_name_formatted, @profile.twitter_link_formatted,
@@ -71,7 +71,7 @@
             <% if @profile.website_in_language_scope(I18n.locale).present? &&
                  ( @profile.website_in_language_scope(I18n.locale, "2_").present? || @profile.website_in_language_scope(I18n.locale, "3_").present? ) %>
 
-              <h2 class="delta sans-serif mb-"> <%= t(:websites, scope: 'profiles.profile') %> </h2>
+              <h2 class="delta sans-serif mb-"> <%= t(:websites, scope: 'profiles.show') %> </h2>
               <p>
                 <%= link_to @profile.website_in_language_scope(I18n.locale), @profile.website_with_protocol(@profile.website_in_language_scope(I18n.locale)),
                 target: '_blank' %>
@@ -87,7 +87,7 @@
               <p class="pb"></p>
             <!-- Show the view for just one website: -->
             <% elsif @profile.website_in_language_scope(I18n.locale).present? %>
-              <h2 class="delta sans-serif mb-"> <%= t(:website, scope: 'profiles.profile') %> </h2>
+              <h2 class="delta sans-serif mb-"> <%= t(:website, scope: 'profiles.show') %> </h2>
               <p class="pb">
                 <%= link_to @profile.website_in_language_scope(I18n.locale), @profile.website_with_protocol(@profile.website_in_language_scope(I18n.locale)),
                 target: '_blank' %>
@@ -99,7 +99,7 @@
 
             <!-- Show the view for more than one website: -->
             <% if @profile.website.present? && ( @profile.website_2.present? || @profile.website_3.present? ) %>
-              <h2 class="delta sans-serif mb-"> <%= t(:websites, scope: 'profiles.profile') %> </h2>
+              <h2 class="delta sans-serif mb-"> <%= t(:websites, scope: 'profiles.show') %> </h2>
               <p>
                 <%= link_to @profile.website, @profile.website_with_protocol(@profile.website),
                 target: '_blank' %>
@@ -116,7 +116,7 @@
 
             <!-- Show the view for just one website: -->
             <% elsif @profile.website.present? %>
-              <h2 class="delta sans-serif mb-"> <%= t(:website, scope: 'profiles.profile') %> </h2>
+              <h2 class="delta sans-serif mb-"> <%= t(:website, scope: 'profiles.show') %> </h2>
               <p class="pb">
                 <%= link_to @profile.website, @profile.website_with_protocol(@profile.website),
                 target: '_blank' %>
@@ -125,7 +125,7 @@
           <% end %>
 
           <h2 class="delta sans-serif mb-">
-            <%= t(:topics, scope: 'profiles.profile') %>
+            <%= t(:topics, scope: 'profiles.show') %>
           </h2>
           <p class="bb pb topics-profile">
             <%= raw @profile.topic_list.sort.map { |topic| topic_link(topic) }.join(' ') %>
@@ -133,7 +133,7 @@
 
           <% if @profile.iso_languages.present? %>
             <h2 class="delta sans-serif mb-">
-              <%= t(:languages, scope: 'profiles.profile') %>
+              <%= t(:languages, scope: 'profiles.show') %>
             </h2>
             <p class="bb pb">
             <% @profile.iso_languages.each do |iso|%>
@@ -144,7 +144,7 @@
 
           <% if @profile.city.present? %>
             <h2 class="delta sans-serif mb-">
-              <%= t(:city, scope: 'profiles.profile') %>
+              <%= t(:city, scope: 'profiles.show') %>
             </h2>
             <p class="bb pb">
               <%= @profile.city %></span>
@@ -153,7 +153,7 @@
 
           <% if @profile.country.present? %>
             <h2 class="delta sans-serif mb-">
-              <%= t(:country, scope: 'profiles.profile') %>
+              <%= t(:country, scope: 'profiles.show') %>
             </h2>
             <p class="pb">
               <%= @profile.country_name %>
@@ -177,7 +177,7 @@
           <div class="o-layout pt">
             <div class="o-layout__item 5/6 box__bg bg--white">
               <h2 class="delta sans-serif pb">
-                <%= t(:main_topic_title, scope: 'activerecord.attributes.profile') + ":" %>
+                <%= t(:main_topic_title, scope: 'profiles.form') + ":" %>
               </h2>
               <%= @profile.main_topic %>
             </div>
@@ -188,7 +188,7 @@
           <div class="o-layout pt">
             <div class="o-layout__item 5/6 box__bg bg--white">
               <h2 class="delta sans-serif pb">
-                <%= t(:bio, scope: 'profiles.profile') %>
+                <%= t(:bio, scope: 'profiles.show') %>
               </h2>
               <%= simple_format(@profile.bio) %>
             </div>
@@ -201,7 +201,7 @@
       <div class="o-layout pt+">
         <div class="o-layout__item 5/6 box__bg bg--white mb+">
           <h2 class="delta sans-serif pb">
-            <%= t(:media, scope: 'profiles.profile') %>
+            <%= t(:media, scope: 'profiles.show') %>
           </h2>
 
             <% @medialinks.each do |medialink| %>
