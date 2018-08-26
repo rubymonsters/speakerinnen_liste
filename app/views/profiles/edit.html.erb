@@ -13,7 +13,7 @@
       </div>
     </div>
 
-    <%= simple_form_for(@profile, html: { multipart: true, class: ""}) do |f| %>
+    <%= simple_form_for(@profile, html: { multipart: true, class: "profile-box"}) do |f| %>
       <%= render partial: "shared/profile_formfields",
                    locals: { form_type: :update_profile, f: f, profile: @profile } %>
     <% end %>

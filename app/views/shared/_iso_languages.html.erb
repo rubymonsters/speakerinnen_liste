@@ -1,11 +1,11 @@
 <% checked = @profile.iso_languages.any? {|l| l == iso_languages } %>
-<div style="display: inline-block;">
-<label class="checkbox ml-">
-  <input class="check_boxes optional"
-         id="profile_iso_languages_<%= iso_languages %>"
-         name="profile[iso_languages][]"
-         value="<%= iso_languages %>"
-         type="checkbox" <%="checked=true" if checked %> >
-         <%= t("#{iso_languages}", scope: 'iso_639_1').capitalize %>
-</label>
+<div class="form-check form-check-inline">
+  <label class="checkbox ml-">
+    <input class="check_boxes optional"
+           id="profile_iso_languages_<%= iso_languages %>"
+           name="profile[iso_languages][]"
+           value="<%= iso_languages %>"
+           type="checkbox" <%="checked=true" if checked %> >
+           <%= t("#{iso_languages}", scope: 'iso_639_1').capitalize %>
+  </label>
 </div>
