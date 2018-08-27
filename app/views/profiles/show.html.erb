@@ -12,7 +12,7 @@
           <p class="mt-2"><%= @profile.main_topic_or_first_topic.truncate(30) if @profile.main_topic_or_first_topic %></p>
       </div>
 
-      <div class="col-md-6 box__bg bg--white">
+      <div class="col-md-6 p-3 bg--white">
         <% unless @profile.fullname.present? %>
           <p class="error">
             <%= t(:empty_profile, scope: 'profiles.show').html_safe %>
@@ -157,7 +157,7 @@
 
     <% if @profile.bio %>
       <div class="row mb-3">
-        <div class="col box__bg bg--white">
+        <div class="col p-3 bg--white">
           <h5><%= t(:bio, scope: 'profiles.show') %></h5>
           <%= simple_format(@profile.bio) %>
         </div>
@@ -166,7 +166,7 @@
 
     <% if @profile.medialinks.any? %>
       <div class="row mb-3">
-        <div class="col box__bg bg--white">
+        <div class="col p-3 bg--white">
           <h5><%= t(:media, scope: 'profiles.show') %></h5>
 
           <% @medialinks.each do |medialink| %>
