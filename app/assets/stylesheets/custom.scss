@@ -223,18 +223,10 @@ textarea, input {
   filter: grayscale(00%);
 }
 
-.profile-box {
-  width: 100%;
-  margin-bottom: $base-spacing-unit;
-  font-family: $sans-serif;
-}
-
-.profile-box h5 {
+.profile-show h5 {
   font-weight: normal;
   color: $font-color-title;
-  // color: $font-color;
 }
-
 
 /* medialinks */
 
