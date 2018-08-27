@@ -235,6 +235,33 @@ textarea, input {
   // color: $font-color;
 }
 
+
+/* medialinks */
+
+.simple_form abbr[title] {
+  border-bottom: none;
+}
+
+ul#medialinks__list {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+
+  li {
+    margin: 0 3px 35px 3px;
+    padding: 0.8em;
+    background-color: white;
+    cursor: move;
+    border: $border;
+    border-left: 24px solid $light-grey;
+
+  }
+}
+
+#medialinks__list--sort-message {
+  color: $blue;
+}
+
 /* autocomplete in search */
 .twitter-typeahead {
   font-family: $sans-serif;
