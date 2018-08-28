@@ -171,7 +171,7 @@ en:
   profiles:
     category: "In the category <b>%{category_name}</b> we have found <b>%{profiles_count}</b> speakerinnen and <b>%{topics_count}</b> topics:"
     tag:
-      topics: "The 200 most popular topics"
+      top_topics: "The 200 most popular topics"
       tag_choose_languages: "You can sort the topics via languages"
       topics_with_category: "in category %{category_name}"
       topics_with_no_language_scope: "Topics in all languages"

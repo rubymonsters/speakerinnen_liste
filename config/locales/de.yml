@@ -171,7 +171,7 @@ de:
   profiles:
     category: "In der Kategorie <b>%{category_name}</b> haben wir <b>%{profiles_count}</b> Speakerinnen* und <b>%{topics_count}</b> Themen gefunden:"
     tag:
-      topics: "Die 200 Top-Themen"
+      top_topics: "Die 200 Top-Themen"
       tag_choose_languages: "Du kannst die Topics auch nach Sprache sortieren:"
       topics_with_category: "in der Kategorie %{category_name}"
       topics_with_no_language_scope: "Topics in allen Sprachen"
