@@ -221,6 +221,7 @@ de:
       country_select: "Wähle ein Land aus:"
       twitter: "Mein Twittername:"
       contact: "Kontakt"
+      email_to: "E-Mail an "
       show: "Anzeigen"
       edit: "Profil bearbeiten"
       destroy: "Löschen"

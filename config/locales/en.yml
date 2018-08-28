@@ -221,6 +221,7 @@ en:
       twitter: "My twitter handle:"
       website: "My website/blog:"
       contact: "Contact"
+      email_to: "Email to "
       show: "Show"
       edit: "Edit profile"
       destroy: "Delete"
