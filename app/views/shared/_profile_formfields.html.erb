@@ -1,5 +1,5 @@
 <div class="row mb-5">
-  <div class="col-6">
+  <div class="col-sm-12 col-md-6">
 
     <%= f.label :picture, t(:picture, scope: 'profiles.form').html_safe %>
     <p>
@@ -17,7 +17,7 @@
 
   </div>
 
-  <div class="col-6 p-3 bg--white">
+  <div class="col-sm-12 col-md-6 p-3 bg--white">
     <!-- ToDo: width of input fields should be made responsive -->
     <%= f.input :firstname, label: t(:firstname, scope: 'profiles.form'),
         label_html: { id: "firstname" }, input_html: { class: "mb-3 form-control" } %>
