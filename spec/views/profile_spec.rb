@@ -189,7 +189,6 @@ describe 'profile navigation' do
     end
 
     it 'shows the correct main topic' do
-      save_and_open_page
       expect(page).to have_css('.d-none', text: 'Mein Hauptthema auf Englisch')
     end
   end

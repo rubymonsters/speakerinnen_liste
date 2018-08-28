@@ -49,7 +49,7 @@
 </div>
 
 <div class="row mb-5">
-  <div class="col-12 box__bg bg--white mt">
+  <div class="col-12 bg--white p-3">
     <%= f.input :topic_list, label: t(:topic_list, scope: 'profiles.form').html_safe,
         label_html: { id: "topic_list", class: "", title: t(:topic_list_tooltip, scope: 'profiles.form').html_safe },
         input_html: { value: @profile.topic_list.to_s, class: "form-control" }, wrapper_html: { class: "my-3" } %>
@@ -71,7 +71,7 @@
 </ul>
 
 <div class="row mb-5">
-  <div class="col-12 box__bg bg--white mt">
+  <div class="col-12 p-3 bg--white">
     <div id="edit-de" class="form-group <%= "d-none" unless I18n.locale == :de %>" >
       <%= f.label :city, t(:city, scope: 'profiles.form').html_safe,
         id: "city_de", title: t(:city_tooltip, scope: 'profiles.form').html_safe %>
