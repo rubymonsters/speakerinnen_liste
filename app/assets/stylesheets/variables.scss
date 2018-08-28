@@ -32,7 +32,6 @@ $black: #000;
 $blue: #00978b;
 $dark-blue: darken($blue, 10%);
 
-$red: #d95270;
 $dark-red: #b62848;
 
 $transparent-black: rgba( $black, .5 );
@@ -57,7 +56,9 @@ $font-color: $dark-grey;
 $font-color-title: $grey;
 $link-color: $blue;
 
+// bootstrap variables override
 $primary: $blue;
+$red: #d95270;
 
 /* background-color */
 $body-bg-color: $white;

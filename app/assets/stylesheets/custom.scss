@@ -150,10 +150,8 @@ h1, h4 {
 }
 
 .btn-blue {
-  font-family: $sans-serif;
   color: white;
   background: $blue;
-  border-radius: 0;
 }
 
 .btn-blue:active, .btn:hover {
@@ -161,8 +159,8 @@ h1, h4 {
   background: $dark-blue;
 }
 
-.btn--danger {
-  background: $red;
+.btn {
+  border-radius: 0;
 }
 
 .button--border {
