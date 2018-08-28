@@ -51,7 +51,7 @@
   });
 </script>
 
-<div class='topics-cloud border-bottom py-5'>
+<div class='topics-cloud py-5'>
 
   <% if params[:category_id] %>
     <% custom_tag_cloud @tags_most_used_200.sort { |x,y| x.name <=> y.name }, %w[s m l] do |topic, css_class| %>
