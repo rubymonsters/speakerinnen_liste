@@ -56,6 +56,7 @@ class ApplicationController < ActionController::Base
          domain: (Rails.env.staging? ? nil : :all)
       }
       reset_session
+      redirect_back(fallback_location: root_path)
     elsif !cookie_consent_given?
       request.session_options[:skip] = true
     end
