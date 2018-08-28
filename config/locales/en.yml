@@ -275,18 +275,27 @@ en:
     registrations:
       edit:
         account_from: "Account of "
-        password_needed: "We need your current password in order to change your password or email."
+        change_email: "<b>You can change your email address here.</b>
+        <br> Please enter you new email address and your current password."
+        password_current: "Current password:"
+        password_current_placeholder: "Current password"
+        password_change: "Here you can change the password."
         password_blank: "Leave blank if you do not want to change the password."
-        password_current: "Current password"
+        password: "Password"
+        password: "Password:
+        <br><small class='form-text text-muted'>We need your password in order to change your email.</small>"
         no_password: "You cannot change your email address here since you are logged in via twitter and use the same email address as on twitter."
         update: "Update Account"
-        delete_account: "Delete my account"
+        delete_account: "Here you can delete your account"
         unhappy: "Unhappy?"
         delete: "Delete"
         sure: "Are you sure?"
-        confirmation: "Waiting for confirmation from: "
-        email: "Email: <i class='fa fa-info-circle' aria-hidden='true'></i>"
-        email_tooltip: "Your email address will not be published. It is only used for getting in contact if an event organizer is interested in your profile."
+        confirmation: "You have changed you email address and still have to click on the link in your confirmation email.
+        <br>Your new email address is: "
+        email_placeholder: "Email"
+        email: "New email:
+          <br><small class='form-text text-muted'>Your email address will not be published.
+          It is only used for getting in contact if an event organizer is interested in your profile.</small>"
       new:
         sign_up: "Register"
         password: "Password"

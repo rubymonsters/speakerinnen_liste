@@ -275,18 +275,27 @@ de:
     registrations:
       edit:
         account_from: "Account von "
-        password_needed: 'Wir brauchen dein aktuelles Passwort, um die E-Mail Adresse oder das Passwort ändern zu können.'
+        change_email: "<b>Hier kannst Du Deine Email Adresse ändern.</b>
+        <br> Gebe die neue Email Adresse ein und Dein aktuelles Passwort."
+        password_current: "Aktuelles Passwort:"
+        password_current_placeholder: "Aktuelles Passwort"
+        password_change: "Hier kannst Du Dein Passwort ändern."
         password_blank: "Bitte leer lassen, wenn das Passwort nicht geändert werden soll."
-        password_current: "Aktuelles Passwort"
+        password_placeholder: "Passwort"
+        password: "Passwort:
+        <br><small class='form-text text-muted'>Wir brauchen dein Passwort, um deine E-Mail Adresse ändern zu können.</small>"
         no_password: "Du kannst deine E-Mail-Adresse hier nicht ändern, weil du über Twitter eingeloggt bist und die dortige E-Mail benutzt wird."
         update: "Aktualisiere Account"
-        delete_account: "Lösche meinen Account"
+        delete_account: "Hier kannst Du Deinen Account löschen!"
         unhappy: "Unglücklich?"
         delete: "Löschen"
         sure: "Sicher?"
-        confirmation: "Warte auf die Bestätigung von: "
-        email: "E-Mail: <i class='fa fa-info-circle' aria-hidden='true'></i>"
-        email_tooltip: "Deine E-Mailadresse wird nirgendwo veröffentlicht, sondern nur dazu genutzt, dass Interessentinnen und Interessenten Kontakt zu Dir aufnehmen können."
+        confirmation: "Du hast Deine E-Mail Adresse geändert und musst noch auf den Bestätigungslink in Deiner Email klicken.
+        <br>Deine neue Email Adresse ist: "
+        email_placeholer: "Neue E-Mail"
+        email: "E-Mail:
+          <br><small class='form-text text-muted'>Deine E-Mailadresse wird nirgendwo veröffentlicht, sondern nur dazu genutzt,
+          dass Interessentinnen und Interessenten Kontakt zu Dir aufnehmen können.</small>"
       new:
         sign_up: "Registrieren"
         password: "Passwort"
