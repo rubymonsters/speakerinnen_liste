@@ -61,6 +61,7 @@ de:
         languages: "Sprachen"
         no_langage: "ohne Sprache"
       medialink:
+        show: "Zeige alle Referenzen"
         url: "URL:"
         title: "Überschrift:"
         description: "Beschreibung:"

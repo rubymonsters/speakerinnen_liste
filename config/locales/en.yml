@@ -61,6 +61,7 @@ en:
         languages: "Languages"
         no_language: "no language"
       medialink:
+        show: "Show all medialinks"
         url: "URL:"
         title: "Title:"
         description: "Description:"
