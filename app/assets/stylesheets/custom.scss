@@ -2,6 +2,7 @@ body {
 	font-family: $sans-serif;
 	color: $font-color;
 	margin-top: 96px;
+	background-color: $white-smoke;
 }
 
 a, .link, #expander {
@@ -28,15 +29,9 @@ h1, h4 {
 }
 
 /* layout */
-// .layout-wrapper {
-//   max-width: $layout-width;
-//   margin: 0 auto;
-//   padding: (4*$base-spacing-unit) ($base-spacing-unit/2) 0 ;
-//   width: 100%;
-// }
 
 .container {
-	padding: 0 36px;
+	padding: 36px 36px;
 }
 
 .box__bg {
