@@ -19,6 +19,7 @@ class Admin::ProfilesController < Admin::BaseController
 
   def show
     @medialinks = @profile.medialinks.order(:position)
+    @message = Message.new
   end
 
   def edit
