@@ -76,7 +76,10 @@ en:
         search: "Search"
       all_categories: "Categories and topics >>"
       all_speakers: "All Speakerinnen* >>"
-      cookie_consent: "We take the protection of your personal data and its confidential treatment very seriously. We use cookies to optimize and to improve the services we offer you. By using this website, you agree to the use of cookies. Find more information about data security in our <a href='%{link}'>privacy policy</a>."
+      cookie_consent: "We take the protection of your personal data and its confidential treatment very seriously.
+        We use cookies to optimize and to improve the services we offer you.
+        By using this website, you agree to the use of cookies.
+        Find more information about data security in our <a href='%{link}' class='link'>privacy policy</a>."
       description: "Our Categories"
       description_text: "We feel strongly about a balanced representation of men and women* on stage. We encourage women* to become more visible in their profession and field of expertise."
       speaker_shoutout: "Do you have something interesting to say?"
