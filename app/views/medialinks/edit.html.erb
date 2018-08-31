@@ -1,28 +1,26 @@
-<section class="bg--grey">
-  <div class="container py-5">
-    <%= render 'shared/error_messages' %>
-   <div class="text-left mb-5">
-      <%= link_to(t(:home, scope: 'profiles.edit'), profiles_path) %><br>
-      <%= link_to(t(:show, scope: 'profiles.edit'), profile_path) %>
-    </div>
+<div class="container py-5">
+  <%= render 'shared/error_messages' %>
+ <div class="text-left mb-5">
+    <%= link_to(t(:home, scope: 'profiles.edit'), profiles_path) %><br>
+    <%= link_to(t(:show, scope: 'profiles.edit'), @profile) %>
+  </div>
 
-    <h1 class="mb-5"><%= t(:edit, scope: "medialinks")%></h1>
+  <h1 class="mb-5"><%= t(:edit, scope: "medialinks")%></h1>
 
-    <%= simple_form_for [@profile, @medialink], html: {class: 'p-3 bg--white'} do |f| %>
+  <%= simple_form_for [@profile, @medialink], html: {class: 'p-3 bg--white'} do |f| %>
 
-      <%= f.input :url, label: t(:url, scope: 'medialinks').html_safe,
-        as: :string, input_html: { class: "form-control mb-3" } %>
-      <%= f.input :title, label: t(:title, scope: 'medialinks').html_safe,
-        as: :string, input_html: { class: "form-control mb-3" } %>
-      <%= f.input :description, label: t(:description, scope: 'medialinks').html_safe,
-      as: :text, input_html: { rows: 10, class: "form-control mb-3" } %>
-      <%= f.input :language, label: t(:select_language, scope: 'medialinks'), label_html: { class: "" } do %>
-        <%= f.select :language, options_for_select(IsoLanguage.all_languagenames_with_iso, @medialink.language), include_blank: "..." %>
-      <% end %>
-
-      <%= f.submit class:"mt btn btn-blue mt-3" %>
-
+    <%= f.input :url, label: t(:url, scope: 'medialinks').html_safe,
+      as: :string, input_html: { class: "form-control mb-3" } %>
+    <%= f.input :title, label: t(:title, scope: 'medialinks').html_safe,
+      as: :string, input_html: { class: "form-control mb-3" } %>
+    <%= f.input :description, label: t(:description, scope: 'medialinks').html_safe,
+    as: :text, input_html: { rows: 10, class: "form-control mb-3" } %>
+    <%= f.input :language, label: t(:select_language, scope: 'medialinks'), label_html: { class: "" } do %>
+      <%= f.select :language, options_for_select(IsoLanguage.all_languagenames_with_iso, @medialink.language), include_blank: "..." %>
     <% end %>
 
-  </div>
-</section>
+    <%= f.submit class:"mt btn btn-blue mt-3" %>
+
+  <% end %>
+
+</div>

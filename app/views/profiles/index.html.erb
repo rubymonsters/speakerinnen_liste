@@ -1,59 +1,57 @@
-<section class="bg--grey">
-  <div class="container">
-    <% if params[:category_id] %> <%# when in categories scope %>
+<div class="container">
+  <% if params[:category_id] %> <%# when in categories scope %>
 
-      <h5 class="text-center py-5">
-        <%= t(
-          :category,
-          scope: 'profiles',
-          category_name: @category.name,
-          profiles_count: @profiles.total_count,
-          topics_count: @tags_in_category_published.size
-        ).html_safe %>
-      </h5>
-      <%= render partial: 'profiles/tag' %>
+    <h5 class="text-center py-5">
+      <%= t(
+        :category,
+        scope: 'profiles',
+        category_name: @category.name,
+        profiles_count: @profiles.total_count,
+        topics_count: @tags_in_category_published.size
+      ).html_safe %>
+    </h5>
+    <%= render partial: 'profiles/tag' %>
 
-    <% elsif params[:topic] %> <%# when in topic scope %>
+  <% elsif params[:topic] %> <%# when in topic scope %>
 
-      <h5 class="text-center py-5">
-        <%= t(:profiles_topics, scope: 'search', profiles_count: @profiles.total_count, topics_name: params[:topic]).html_safe %>
-      </h5>
-      <%= render partial: 'shared/search_form' %>
-      <p class="mt-1"><%= t(:search_categories_html, scope: 'search', root_path: root_path) %></p>
+    <h5 class="text-center py-5">
+      <%= t(:profiles_topics, scope: 'search', profiles_count: @profiles.total_count, topics_name: params[:topic]).html_safe %>
+    </h5>
+    <%= render partial: 'shared/search_form' %>
+    <p class="mt-1"><%= t(:search_categories_html, scope: 'search', root_path: root_path) %></p>
 
-    <% elsif params[:search] %> <%# if in search: %>
+  <% elsif params[:search] %> <%# if in search: %>
 
-      <%= render partial: 'shared/search_filter' %>
+    <%= render partial: 'shared/search_filter' %>
 
-    <% else %>
+  <% else %>
 
-      <h1 class="display-4 text-center pt-5"><%= t(:speaker_headline, scope: 'pages.home.speakers') %></h1>
-      <h4 class="text-center pb-5 pt-3"><%= t(:all_speakerinnen, scope: 'profiles.index', profiles_count: @profiles_count).html_safe %></h4>
-      <%= render partial: 'shared/search_form' %>
-      <%= t(:search_categories_html, scope: 'search', root_path: root_path) %>
+    <h1 class="display-4 text-center pt-5"><%= t(:speaker_headline, scope: 'pages.home.speakers') %></h1>
+    <h4 class="text-center pb-5 pt-3"><%= t(:all_speakerinnen, scope: 'profiles.index', profiles_count: @profiles_count).html_safe %></h4>
+    <%= render partial: 'shared/search_form' %>
+    <%= t(:search_categories_html, scope: 'search', root_path: root_path) %>
 
-    <% end %>
+  <% end %>
 
-    <%= paginate @profiles %>
+  <%= paginate @profiles %>
 
-    <%= render partial: 'profiles/profile_search', collection: @profiles, as: :profile %>
+  <%= render partial: 'profiles/profile_search', collection: @profiles, as: :profile %>
 
-    <%= paginate @profiles %>
+  <%= paginate @profiles %>
 
-    <h5 class="text-center"><%= t(:more_options, scope: 'search').html_safe %></h5>
-    <p class="text-center mb-5">
-      <%#TODO: doesn't work anymore%>
-      <%= top_link(params[:search]) %><br>
-      <%= link_to(t(:all_profiles, scope: 'search'), profiles_path).html_safe %><br>
-      <%= link_to(t(:all_categories, scope: 'pages.home'), root_path + "#categories_anchor" )%>
-    </p>
+  <h5 class="text-center"><%= t(:more_options, scope: 'search').html_safe %></h5>
+  <p class="text-center mb-5">
+    <%#TODO: doesn't work anymore%>
+    <%= top_link(params[:search]) %><br>
+    <%= link_to(t(:all_profiles, scope: 'search'), profiles_path).html_safe %><br>
+    <%= link_to(t(:all_categories, scope: 'pages.home'), root_path + "#categories_anchor" )%>
+  </p>
 
-    <%= render partial: 'tag_cloud' unless params[:category_id] %>
+  <%= render partial: 'tag_cloud' unless params[:category_id] %>
 
-    <%= render partial: 'layouts/footer' %>
+  <%= render partial: 'layouts/footer' %>
 
-  </div>
-</section>
+</div>
 
 <script type="text/javascript" charset="utf-8">
   // ToDo: refactor code, make it more DRY
