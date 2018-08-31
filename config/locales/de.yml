@@ -60,6 +60,7 @@ de:
         tags_filter_default: "Alle Kategorien auswählen"
         languages: "Sprachen"
         no_langage: "ohne Sprache"
+        show_all_tags: "Alle Tags"
       medialink:
         show: "Zeige alle Referenzen"
         url: "URL:"

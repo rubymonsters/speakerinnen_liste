@@ -1,63 +1,57 @@
 <%= form_tag(admin_tags_path, method: :get, class: '') do %>
-  <div class="o-layout pv bt mv">
-    <div class="o-layout__item 1/2">
 
-      <%= t(:tags_search, scope: 'admin.dashboard.tags') %>
-      <%= text_field_tag 'q', params[:q], class: '' %>
-    </div>
-  </div>
-  <h2><%= t(:categories, scope: 'admin.dashboard.categories') %>:&nbsp</h2>
-  <div class="o-layout pb filter_categories">
+  <h2 class="mt-5 mb-3"><%= t(:categories, scope: 'admin.dashboard.categories') %>:&nbsp</h2>
+
+  <div class="row filter_categories">
 
     <% @categories.in_groups_of(3, false) do |row_categories| %>
-      <div class="o-layout__item 1/4">
-        <% row_categories.each do |category| %>
+      <% row_categories.each do |category| %>
+        <div class="col-3">
           <%= label_tag 'category_id_#{category.id}', class: 'radio' do %>
             <%= radio_button_tag( 'category_id', category.id, params[:category_id] == category.id.to_s ) %>
             <%= category.name %>
             <br>
           <% end %>
-        <% end %>
-      </div>
-    <% end %>
-  </div>
-
-  <div class="o-layout pb">
-    <div class="o-layout__item 1/1">
-      <%= label_tag 'category_id_', class: 'radio' do %>
-        <%= radio_button_tag( 'category_id', '', params[:category_id].blank? ) %>
-        <%= t(:tags_filter_default, scope: 'admin.dashboard.tags') %>
-      <% end %>
-    </div>
-    <div class="o-layout__item 1/1">
-      <%= check_box_tag 'uncategorized', params[:uncategorized], params[:uncategorized] %>
-      <%= label_tag 'uncategorized', t(:tags_filter_option, scope: 'admin.dashboard.tags'),
-      class: '' %>
-    </div>
-  </div>
-
-  <div class="o-layout pb filter_languages">
-    <h2><%= t(:languages, scope: 'admin.dashboard.tags') %></h2>
-      <div class="o-layout__item 1/1">
-        <% LocaleLanguage.all.each do |language| %>
-          <div <%= "id=filter_language_#{language.iso_code}" %> >
-            <%= check_box_tag 'filter_languages[]', language.iso_code, params[:filter_languages].present? && params[:filter_languages].include?("#{language.iso_code}") %>
-            <%= label_tag t("#{language.iso_code}", scope: 'i18n.language') %>
-          </div>
-        <% end %>
-        <div id="filter_no_language">
-          <%= check_box_tag 'no_language', 'on', params[:no_language] == 'on' %>
-          <%= label_tag t('no_language', scope: 'admin.dashboard.tags') %>
         </div>
-      </div>
+      <% end %>
+    <% end %>
+
   </div>
 
+  <div class="mt-3 mb-5">
+    <%= label_tag 'category_id_', class: 'radio' do %>
+      <%= radio_button_tag( 'category_id', '', params[:category_id].blank? ) %>
+      <%= t(:tags_filter_default, scope: 'admin.dashboard.tags') %>
+    <% end %>
+    <%= check_box_tag 'uncategorized', params[:uncategorized], params[:uncategorized] %>
+    <%= label_tag 'uncategorized', t(:tags_filter_option, scope: 'admin.dashboard.tags'),
+    class: '' %>
+  </div>
+
+  <div class="row">
+    <div class="col-6">
+      <h2><%= t(:languages, scope: 'admin.dashboard.tags') %>:</h2>
+      <% LocaleLanguage.all.each do |language| %>
+        <span <%= "id=filter_language_#{language.iso_code}" %> >
+          <%= check_box_tag 'filter_languages[]', language.iso_code, params[:filter_languages].present? && params[:filter_languages].include?("#{language.iso_code}") %>
+          <%= label_tag t("#{language.iso_code}", scope: 'i18n.language') %>
+        </span>
+      <% end %>
+
+      <div id="filter_no_language">
+        <%= check_box_tag 'no_language', 'on', params[:no_language] == 'on' %>
+        <%= label_tag t('no_language', scope: 'admin.dashboard.tags') %>
+      </div>
+    </div>
+
+    <div class="col-6">
+      <h2><%= t(:search, scope: 'general') %>:</h2>
+      <%= t(:tags_search, scope: 'admin.dashboard.tags') %>
+      <%= text_field_tag 'q', params[:q], class: '' %>
+    </div>
+  </div>
   <!-- Anchor for top after updating of tags -->
   <a id= "top-anchor"></a>
 
-  <div class="o-layout pb bb mv">
-    <div class="o-layout__item 1/1">
-      <%= submit_tag (t(:filter, scope:'general')), class: 'btn btn-blue btn--small' %>
-    </div>
-  </div>
+  <%= submit_tag (t(:filter, scope:'general')), class: 'btn btn-blue btn-sm mt-3' %>
 <% end %>

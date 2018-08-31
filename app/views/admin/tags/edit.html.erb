@@ -1,16 +1,18 @@
-<section class="content--bg-white">
-  <div class="layout-wrapper">
+<div class="container py-5">
 
-    <h1>Administration::<%= t(:tags, scope: "admin.dashboard.tags")%>::<%= t(:edit, scope: "general")%></h1>
+  <h1>Administration::<%= t(:tags, scope: "admin.dashboard.tags")%>::<%= t(:edit, scope: "general")%></h1>
 
-    <p><%= t(:current_tagname, scope: "admin.dashboard.tags") %><b><%= @tag.name %></b></p>
-
-    <p><%= t(:new_tagname, scope: "admin.dashboard.tags")%></p>
-
-    <%= form_tag(admin_tag_path(@tag.id, page: params[:page]), method: "put") do %>
-      <%= text_field(:tag, :name, value: @tag.name) %>
-      <%= submit_tag t(:save, scope: "general"), class: "btn btn-blue btn--small" %>
-    <% end %>
-
+  <div class="my-3 py-3 border-vertical">
+    <%= link_to t(:show_all_tags, scope: 'admin.dashboard.tags'), admin_tags_path, class:'btn btn-blue btn-sm' %>
   </div>
-</section>
+
+  <p><%= t(:current_tagname, scope: "admin.dashboard.tags") %><b class="pl-1"><%= @tag.name %></b></p>
+
+  <p class="mt-5"><%= t(:new_tagname, scope: "admin.dashboard.tags")%></p>
+
+  <%= form_tag(admin_tag_path(@tag.id, page: params[:page]), method: "put") do %>
+    <%= text_field(:tag, :name, value: @tag.name) %>
+    <%= submit_tag t(:save, scope: "general"), class: "btn btn-blue btn-sm" %>
+  <% end %>
+
+</div>

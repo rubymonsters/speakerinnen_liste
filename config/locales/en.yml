@@ -60,6 +60,7 @@ en:
         tags_filter_default: "Show all categories"
         languages: "Languages"
         no_language: "no language"
+        show_all_tags: "All tags"
       medialink:
         show: "Show all medialinks"
         url: "URL:"

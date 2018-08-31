@@ -47,6 +47,14 @@ h1, h4 {
   background: $body-bg-color-grey;
 }
 
+.color-white {
+  color: $white;
+}
+
+.color-grey {
+  color: $font-color-title;
+}
+
 #header {
   background: $body-bg-color-grey;
 }
@@ -162,10 +170,6 @@ h1, h4 {
   padding: 10px 20px 10px 20px;
   border: solid $light-grey 1px;
   text-decoration: none;
-}
-
-.color-grey {
-  color: $font-color-title;
 }
 
 .topics-cloud .topic-filter {
