@@ -50,8 +50,8 @@
             <span class="fa fa-globe"></span>
           </a>
           <div class="dropdown-menu sans-serif" aria-labelledby="navbarDropdownMenuLinkLang" id="DropdownLanguages">
-            <%= link_to_unless I18n.locale == :en, "<span class='dropdown-item disabled'>EN</span>".html_safe, {locale: :en}, class: 'dropdown-item' %>
-            <%= link_to_unless I18n.locale == :de, "<span class='dropdown-item disabled'>DE</span>".html_safe, {locale: :de}, class: 'dropdown-item' %>
+            <%= link_to 'EN', {locale: :en}, class: "dropdown-item #{'active' if I18n.locale == :en }" %>
+            <%= link_to 'DE', {locale: :de}, class: "dropdown-item #{'active' if I18n.locale == :de }" %>
           </div>
         </li>
       </ul>
