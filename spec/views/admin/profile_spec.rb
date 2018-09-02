@@ -46,8 +46,6 @@ describe 'admin navigation' do
       expect(page).to have_content('Lovelace')
       expect(page).to have_content('@alove')
       expect(page).to have_content('London')
-      expect(page).to have_content('erstes Computer Programm')
-      expect(page).to have_content('erste Programmiererin')
       expect(page).to have_content('first female programer')
       expect(page).to have_content('first computer program')
       expect(page).to have_content('algorithm')
