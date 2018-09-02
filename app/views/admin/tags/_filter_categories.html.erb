@@ -29,7 +29,7 @@
   </div>
 
   <div class="row">
-    <div class="col-6">
+    <div class="col-6 filter_languages">
       <h2><%= t(:languages, scope: 'admin.dashboard.tags') %>:</h2>
       <% LocaleLanguage.all.each do |language| %>
         <span <%= "id=filter_language_#{language.iso_code}" %> >
