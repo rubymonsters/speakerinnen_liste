@@ -1,4 +1,4 @@
-<div class="bg--white p-5 my-5 text-left">
+<div class="bg--white p-5 my-5 text-left profile-show">
 
   <div class="row mb-5">
     <div class="col-sm-12 col-md-4">
@@ -10,7 +10,7 @@
   <div class="row">
     <div class="col-sm-12 col-md-4">
       <%= profile_picture_link(profile) %>
-      <p><%= profile.main_topic_or_first_topic if profile.main_topic_or_first_topic %></p>
+      <b><%= profile.main_topic_or_first_topic if profile.main_topic_or_first_topic %></b>
     </div>
 
     <div class="col-sm-12 col-md-8">

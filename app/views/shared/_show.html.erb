@@ -3,7 +3,7 @@
 <div class="row mb-5">
   <div class="col-md-3">
       <%= profile_picture_link(@profile) %>
-      <p class="mt-2"><%= @profile.main_topic_or_first_topic.truncate(30) if @profile.main_topic_or_first_topic %></p>
+      <b class="mt-2"><%= @profile.main_topic_or_first_topic if @profile.main_topic_or_first_topic %></b>
   </div>
 
   <div class="col-md-6 p-3 bg--white">
