@@ -1,215 +1,27 @@
-<section class="bg--grey pb+">
-  <div class="layout-wrapper">
-    <div class="o-layout">
-      <div class="o-layout__item 2/3 palm-1/1">
-        <h1><%= @profile.fullname %></h1>
-      </div>
-
-      <div class="o-layout__item 1/3 palm-1/1 text--right">
-        <%= link_to(t(:home, scope: 'profiles.edit'), profiles_path) %>
-      </div>
-    </div>
-
-    <div class="o-layout">
-      <div class="o-layout__item 2/6 palm-1/1 pr">
-          <%= profile_picture_link(@profile) %>
-          <p class="mt0"><%= @profile.main_topic_or_first_topic.truncate(30) if @profile.main_topic_or_first_topic %></p>
-
-      </div>
-
-      <div class="o-layout__item 3/6 palm-1/1 bg--white box__bg pt">
-          <% if @profile.twitter.present? %>
-            <h2 class="delta sans-serif mb-">
-              <%= t(:twitter, scope: 'profiles.profile') %>
-            </h2>
-            <p class="pb">
-              <%=link_to '@' + @profile.twitter_name_formatted, @profile.twitter_link_formatted,
-              target: '_blank' %>
-            </p>
-          <% end %>
-
-          <!-- only use globalize fall-back when there is no website at all in the current language scope provided -->
-
-          <!-- when there is at least one website in the current language provided use no fall-back for the missing additional websites -->
-          <% if @profile.website_in_language_scope(I18n.locale).present? ||
-                @profile.website_in_language_scope(I18n.locale, "2_").present? ||
-                @profile.website_in_language_scope(I18n.locale, "3_").present? %>
-
-            <!-- Show the view for more than one website: -->
-            <% if @profile.website_in_language_scope(I18n.locale).present? &&
-                 ( @profile.website_in_language_scope(I18n.locale, "2_").present? || @profile.website_in_language_scope(I18n.locale, "3_").present? ) %>
-
-              <h2 class="delta sans-serif mb-"> <%= t(:websites, scope: 'profiles.profile') %> </h2>
-              <p>
-                <%= link_to @profile.website_in_language_scope(I18n.locale), @profile.website_with_protocol(@profile.website_in_language_scope(I18n.locale)),
-                target: '_blank' %>
-              </p>
-              <p>
-                <%= link_to @profile.website_in_language_scope(I18n.locale, "2_"), @profile.website_with_protocol(@profile.website_in_language_scope(I18n.locale, "2_")),
-                target: '_blank' if @profile.website_in_language_scope(I18n.locale, "2_").present? %>
-              </p>
-              <p>
-                <%= link_to @profile.website_in_language_scope(I18n.locale, "3_"), @profile.website_with_protocol(@profile.website_in_language_scope(I18n.locale, "3_")),
-                target: '_blank' if @profile.website_in_language_scope(I18n.locale, "3_").present? %>
-              </p>
-              <p class="pb"></p>
-            <!-- Show the view for just one website: -->
-            <% elsif @profile.website_in_language_scope(I18n.locale).present? %>
-              <h2 class="delta sans-serif mb-"> <%= t(:website, scope: 'profiles.profile') %> </h2>
-              <p class="pb">
-                <%= link_to @profile.website_in_language_scope(I18n.locale), @profile.website_with_protocol(@profile.website_in_language_scope(I18n.locale)),
-                target: '_blank' %>
-              </p>
-            <% end %>
-
-          <!-- if there is no website in the current language use the globalize fall-back option for all websites -->
-          <% else %>
-
-            <!-- Show the view for more than one website: -->
-            <% if @profile.website.present? && ( @profile.website_2.present? || @profile.website_3.present? ) %>
-              <h2 class="delta sans-serif mb-"> <%= t(:websites, scope: 'profiles.profile') %> </h2>
-              <p>
-                <%= link_to @profile.website, @profile.website_with_protocol(@profile.website),
-                target: '_blank' %>
-              </p>
-              <p>
-                <%= link_to @profile.website_2, @profile.website_with_protocol(@profile.website_2),
-                target: '_blank' if @profile.website_2.present? %>
-              </p>
-              <p>
-                <%= link_to @profile.website_3, @profile.website_with_protocol(@profile.website_3),
-                target: '_blank' if @profile.website_3.present? %>
-              </p>
-              <p class="pb"></p>
-
-            <!-- Show the view for just one website: -->
-            <% elsif @profile.website.present? %>
-              <h2 class="delta sans-serif mb-"> <%= t(:website, scope: 'profiles.profile') %> </h2>
-              <p class="pb">
-                <%= link_to @profile.website, @profile.website_with_protocol(@profile.website),
-                target: '_blank' %>
-              </p>
-            <% end %>
-          <% end %>
-
-          <h2 class="delta sans-serif mb-">
-            <%= t(:topics, scope: 'profiles.profile') %>
-          </h2>
-          <p class="pb topics-profile">
-            <%= raw @topics.sort.map { |topic| topic_link(topic) }.join(' ') %>
-          </p>
-
-          <% if @profile.iso_languages.present? %>
-            <h2 class="delta sans-serif mb-">
-              <%= t(:languages, scope: 'profiles.profile') %>
-            </h2>
-            <p class="pb">
-            <% @profile.iso_languages.each do |iso|%>
-              <%= t("#{iso}", scope: 'iso_639_1').capitalize %>
-            <% end %>
-            </p>
-          <% end %>
-
-          <% if @profile.city.present? %>
-            <h2 class="delta sans-serif mb-">
-              <%= t(:city, scope: 'profiles.profile') %>
-            </h2>
-            <p class="pb">
-              <%= @profile.city %></span>
-            </p>
-          <% end %>
-
-          <% if @profile.country.present? %>
-            <h2 class="delta sans-serif mb-">
-              <%= t(:country, scope: 'profiles.profile') %>
-            </h2>
-            <p class="pb">
-              <%= @profile.country_name %>
-            </p>
-          <% end %>
-        </div>
-
-        <div class="o-layout__item 1/6 palm-1/1">
-
-          <% if current_profile != @profile %>
-            <label class="btn btn-blue btn--small btn--full" for="modal-1">
-              <i class="fa fa-envelope-o"></i>&nbsp;
-              <%= t(:contact, scope: 'profiles.profile') %>
-            </label>
-          <%end%>
-
-          <% if current_profile == @profile %>
-            <%= link_to(edit_profile_path(@profile)) do %>
-              <div class='btn btn-blue buttons-modals btn--small btn--full'>
-                <%= t(:edit, scope: 'profiles.profile') %>
-               </div>
-
-            <%= link_to(profile_medialinks_path(@profile)) do %>
-              <div class='btn btn-blue buttons-modals btn--small btn--full mt-'>
-                <%= t(:edit, scope: 'profiles.medialinks') %>
-              </div>
-            <% end %>
-
-            <%= link_to(edit_profile_registration_path) do %>
-              <div id='accountSettings', class='btn btn-blue buttons-modals btn--small btn--full mt-'>
-                <%= t(:account, scope: 'layouts.application') %>
-              </div>
-            <% end %>
-          <% end %>
-        <% end %>
-        </div>
-    </div>
-
-    <% if @profile.bio %>
-      <div class="o-layout pv">
-        <div class="o-layout__item 5/6 palm-1/1 box__bg bg--white">
-          <h2 class="delta sans-serif pb">
-            <%= t(:bio, scope: 'profiles.profile') %>
-          </h2>
-          <%= simple_format(@profile.bio) %>
-        </div>
-      </div>
-    <% end %>
-
-    <% if @profile.medialinks.any? %>
-      <div class="o-layout pv">
-        <div class="o-layout__item 5/6 palm-1/1 box__bg bg--white">
-          <h2 class="delta sans-serif pb">
-            <%= t(:media, scope: 'profiles.profile') %>
-          </h2>
-
-          <ul class="pl0">
-            <% @medialinks.each do |medialink| %>
-            <li class="list--style-none pb mb+ bb">
-              <% if medialink.url =~ /youtube|vimeo/i %>
-                <b><%= medialink.title %></b>
-                <%= medialink.url_html if medialink.url != 'http://' %>
-              <% else %>
-                <%= link_to medialink.title, medialink.url %>
-              <% end %>
-              <%= simple_format(medialink.description) %>
-              <span class="text--color-grey">
-                <%= t(:select_language, scope: 'medialinks') + t("#{medialink.language}", scope: 'iso_639_1').capitalize if medialink.language.present? %>
-              </span>
-            </li>
-            <% end %>
-          </ul>
-
-        </div>
-      </div>
-    <% end %>
-
+<div class="container profile-show py-5">
+  <div class="text-left pb-5">
+    <%= link_to(t(:home, scope: 'profiles.edit'), profiles_path) %>
   </div>
-</section>
+
+  <%= render partial: "shared/show", object: @profile %>
+</div>
+
 
 <!-- Modal -->
-
-<input class="modal-state" id="modal-1" type="checkbox" />
-<div class="modal">
-  <label class="modal__bg" for="modal-1"></label>
-  <div class="modal__inner">
-    <label class="modal__close" for="modal-1"></label>
-      <h2 class="bb"><%= "#{t('.contact')} #{@profile.fullname}:"%></h2>
-      <%= render partial: 'contact/form', locals: {url: contact_profile_path(@profile)} %>
+<div class="modal fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="ModalLabel">
+          <%= "#{t(:email_to, scope: 'profiles.show' )} #{@profile.fullname}:"%>
+        </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= render partial: 'contact/form', locals: {url: contact_profile_path(@profile)} %>
+      </div>
+    </div>
   </div>
-</div>
+</div><!-- Modal -->

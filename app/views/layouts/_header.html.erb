@@ -2,24 +2,63 @@
 <header id=<%= 'admin__header--color' if controller_path =~ /admin\// %>>
   <%# TODO: hidden <h1>Speakerinnen</h1>%>
 
-  <%= render 'layouts/nav_lap_and_up' %>
-  <%= render 'layouts/nav_palm' %>
+  <nav class="navbar navbar-expand-md navbar-light fixed-top pr-5 border-bottom" id="header">
+    <%= link_to(root_path, id: 'header__home-link', class: 'navbar-brand') do %>
+      <%= image_tag('logo_header.png', alt: 'logo', id: 'header__logo') %>
+    <% end %>
+
+    <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="fa fa-bars"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <% if profile_signed_in? %>
+          <li class="nav-item pl-3">
+            <%= link_to(t(:my_profile, scope: 'layouts.application'), profile_path(current_profile))%>
+          </li>
+          <li class="nav-item pl-3">
+            <%= link_to(t(:logout, scope: 'layouts.application'), destroy_profile_session_path, method: :delete) %>
+          </li>
+        <% else %>
+          <li class="nav-item pl-3">
+            <%= link_to(t(:signup, scope: 'layouts.application'), sign_up_path) %>
+          </li>
+          <li class="nav-item pl-3">
+            <%= link_to(t(:login, scope: 'layouts.application'), new_profile_session_path) %>
+          </li>
+        <% end %>
+        <% if admin?(current_profile) %>
+          <li class="nav-item pl-3">
+            <%= link_to 'Admin', admin_root_path%>
+          </li>
+        <% end %>
+        <li class="nav-item dropdown pl-3">
+          <a class="dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            More
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <%= link_to 'Speakerinnen Blog', 'https://blog.speakerinnen.org/', target: '_blank', class: 'dropdown-item' %>
+            <%= link_to 'Fiftypercent', 'https://50prozent.speakerinnen.org/', target: '_blank', class: 'dropdown-item'%>
+            <%= link_to t(:contact, scope: 'pages.home.footer'), contact_path, class: 'dropdown-item'%>
+            <%= link_to t(:about_title, scope: 'pages.home.footer'), about_path, class: 'dropdown-item' %>
+            <%= link_to t(:faq, scope: 'pages.home.footer'), faq_path, class: 'dropdown-item' %>
+          </div>
+        </li>
+        <li class="nav-item dropdown pl-3">
+          <a class="dropdown-toggle" href="#" id="navbarDropdownMenuLinkLang" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="fa fa-globe"></span>
+          </a>
+          <div class="dropdown-menu sans-serif" aria-labelledby="navbarDropdownMenuLinkLang" id="DropdownLanguages">
+            <%= link_to 'EN', {locale: :en}, class: "dropdown-item #{'active' if I18n.locale == :en }" %>
+            <%= link_to 'DE', {locale: :de}, class: "dropdown-item #{'active' if I18n.locale == :de }" %>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
 
   <!-- Anchor for top -->
   <a id="top"></a>
 
 </header>
-
-<script>
-$( "#nav__palm-menu-trigger" ).click(function() {
-  $( "#nav__palm-menu" ).toggle( 250, function() {
-    // Animation complete.
-  });
-});
-
-$( "#nav__lap_and_up-menu-trigger" ).click(function() {
-  $( "#nav__lap_and_up-menu" ).toggle( 250, function() {
-    // Animation complete.
-  });
-});
-</script>

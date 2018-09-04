@@ -19,6 +19,11 @@ class Admin::ProfilesController < Admin::BaseController
 
   def show
     @medialinks = @profile.medialinks.order(:position)
+    @message = Message.new
+    @topics = []
+    @topics << @profile.topics.with_language(I18n.locale)
+    @topics << @profile.topics.without_language
+    @topics = @topics.flatten.uniq
   end
 
   def edit

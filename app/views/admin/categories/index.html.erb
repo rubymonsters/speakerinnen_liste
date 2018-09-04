@@ -1,47 +1,46 @@
-<section class="content--bg-white">
-  <div class="layout-wrapper">
+<div class="m-5">
 
-    <h1>Administration::<%= t(:categories, scope: "admin.dashboard.categories")%></h1>
+  <h1>Administration::<%= t(:categories, scope: "admin.dashboard.categories")%></h1>
 
-    <%= link_to ('<i class="fa fa-plus-circle">&nbsp;</i>' + t(:add, scope: "general")).html_safe,
-    new_admin_category_path, class: "btn btn-blue btn--small" %>
+  <%= link_to ('<i class="fa fa-plus-circle">&nbsp;</i>' + t(:add, scope: "general")).html_safe,
+  new_admin_category_path, class: "btn btn-blue btn-sm my-5" %>
 
-    <table class="table table--compact mv+ categories">
-      <thead class="text--left">
-        <tr>
-          <th><%= t(:category_language_de, scope: "admin.dashboard.categories")%></th>
-          <th><%= t(:category_language_en, scope: "admin.dashboard.categories")%></th>
-          <th><%= t(:amount_of_tags, scope: "admin.dashboard.categories")%></th>
-          <th></th>
-          <th></th>
-        </tr>
-      </thead>
+  <table class="table categories">
+    <thead class="bg--lightgrey">
+      <tr>
+        <th><%= t(:category_language_de, scope: "admin.dashboard.categories")%></th>
+        <th><%= t(:category_language_en, scope: "admin.dashboard.categories")%></th>
+        <th><%= t(:amount_of_tags, scope: "admin.dashboard.categories")%></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
 
-      <% @categories.each do |category| %>
-        <tr>
-        <% Globalize.with_locale(:de) do %>
-          <td>
-            <%= category.name %>
-          </td>
-        <% end %>
-        <% Globalize.with_locale(:en) do %>
-          <td>
-            <%= category.name %>
-          </td>
-        <% end %>
-          <td>
-            <%= category.tags.count %>
-          </td>
-          <td>
-            <%= link_to ('<i class="fa fa-pencil">&nbsp;</i>' + t(:edit, scope: "general")).html_safe,
-                edit_admin_category_path(category.id) %>
-          </td>
-          <td>
-            <%= link_to ('<i class="fa fa-trash-o">&nbsp;</i>' + t(:delete, scope: "general")).html_safe, admin_category_path(category.id), method: :delete,
-              confirm: "Do you want to delete the category #{category.name}?" %>
-          </td>
-        </tr>
+    <% @categories.each do |category| %>
+      <tr>
+      <% Globalize.with_locale(:de) do %>
+        <td>
+          <%= category.name %>
+        </td>
       <% end %>
-    </table>
-  </div>
-</section>
+      <% Globalize.with_locale(:en) do %>
+        <td>
+          <%= category.name %>
+        </td>
+      <% end %>
+        <td>
+          <%= category.tags.count %>
+        </td>
+        <td>
+          <%= link_to ('<i class="fa fa-pencil">&nbsp;</i>' + t(:edit, scope: "general")).html_safe,
+              edit_admin_category_path(category.id) %>
+        </td>
+        <td>
+          <%= link_to ('<i class="fa fa-trash-o">&nbsp;</i>' + t(:delete, scope: "general")).html_safe,
+            admin_category_path(category.id), method: :delete,
+            confirm: "Do you want to delete the category #{category.name}?" %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</div>

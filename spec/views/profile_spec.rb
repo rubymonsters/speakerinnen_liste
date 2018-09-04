@@ -162,11 +162,11 @@ describe 'profile navigation' do
     end
 
     it 'shows the correct tabs and the selected tab' do
-      expect(page).to have_css('.selected', text: 'English')
+      expect(page).to have_css('.active', text: 'English')
     end
 
     it 'shows the correct main topic' do
-      expect(page).to have_css('.hidden', text: 'My main topic in German')
+      expect(page).to have_css('.d-none', text: 'My main topic in German')
     end
   end
 
@@ -185,11 +185,11 @@ describe 'profile navigation' do
     end
 
     it 'shows the correct tabs and the selected tab' do
-      expect(page).to have_css('.selected', text: 'Deutsch')
+      expect(page).to have_css('.active', text: 'Deutsch')
     end
 
     it 'shows the correct main topic' do
-      expect(page).to have_css('.hidden', text: 'Mein Hauptthema auf Englisch')
+      expect(page).to have_css('.d-none', text: 'Mein Hauptthema auf Englisch')
     end
   end
 

@@ -5,7 +5,7 @@ ruby '2.3.1'
 gem 'rails', '5.2.0'
 
 # Needed for Javascript Runtime
-gem 'therubyracer'
+# gem 'therubyracer'
 
 # used in the rail 5.2 version
 gem 'bootsnap', '~> 1.3'
@@ -39,6 +39,7 @@ gem 'country_select'
 gem 'globalize', git: 'https://github.com/globalize/globalize'
 gem 'globalize-accessors'
 
+gem 'bootstrap', '~> 4.1.1'
 gem 'font-awesome-rails', '~> 4.7.0.3'
 
 gem 'friendly_id'

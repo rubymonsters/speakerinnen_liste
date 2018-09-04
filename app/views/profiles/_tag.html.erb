@@ -1,8 +1,8 @@
 <a id="topics_anchor"></a>
 
-<%= form_tag(profiles_path, method: "get", class:"topic-filter pv mv font-size-24") do %>
+<%= form_tag(profiles_path, method: "get", class:"topic-filter py-3 text-center") do %>
   <%= text_field_tag('search[quick]', nil, class: "search-query", id: "quick-filter", placeholder: "Quick Tag Filter") %>
-  <%= button_tag("Reset", class: "btn btn-blue btn--small input-btn", id: "reset-quick-filter") %>
+  <%= button_tag("Reset", class: "btn btn-blue", id: "reset-quick-filter") %>
 <% end %>
 
 <script type="text/javascript" charset="utf-8">
@@ -33,7 +33,7 @@
   });
 </script>
 
-<div class='topics-cloud pb'>
+<div class='topics-cloud text-center border-bottom pb-5 mb-5'>
 
   <% if params[:category_id] %>
     <% custom_tag_cloud @tags_most_used_200.sort { |x,y| x.name <=> y.name }, %w[s m l] do |topic, css_class| %>

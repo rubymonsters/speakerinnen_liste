@@ -18,8 +18,8 @@ RSpec.feature 'Editing', type: :feature do
       expect(page).to have_link('Show profile')
       expect(page).to have_link('List all profiles')
 
-      fill_in I18n.t(:firstname, scope: 'activerecord.attributes.profile'), with: 'Ada'
-      fill_in I18n.t(:lastname, scope: 'activerecord.attributes.profile'), with: 'Lovelace'
+      fill_in I18n.t(:firstname, scope: 'profiles.form'), with: 'Ada'
+      fill_in I18n.t(:lastname, scope: 'profiles.form'), with: 'Lovelace'
       find(:css, '#profile_twitter_en').set('@Lovelace')
       find(:css, '#profile_city_en').set('Vienna')
       find(:css, '#profile_website_en').set('www.adalovelace.org')
@@ -30,7 +30,7 @@ RSpec.feature 'Editing', type: :feature do
       find(:css, '#profile_website_de').set('www.adalovelace.de')
       find(:css, '#profile_website_2_de').set('www.mariecurie.de')
       find(:css, '#profile_website_3_de').set('www.marthanussbaum.de')
-      select 'Austria', from: I18n.t(:country, scope: 'activerecord.attributes.profile'), match: :first
+      select 'Austria', from: I18n.t(:country, scope: 'profiles.form'), match: :first
       find(:css, '#profile_iso_languages_en').set(true)
       find(:css, '#profile_iso_languages_de').set(true)
 
