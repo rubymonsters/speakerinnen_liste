@@ -51,8 +51,8 @@
           </td>
           <td><%= 'Admin' if profile.admin %></td>
           <td>
-            <%= form_for profile,{ url: admin_comment_admin_profile_path(profile.id), method: 'post' } do |f| %>
-              <%= f.text_field 'admin_comment' %>
+            <%= form_for profile,{ url: admin_comment_admin_profile_path(profile.id), method: 'post', html: { class: 'form-inline'} } do |f| %>
+              <%= f.text_field 'admin_comment', class: 'form-control mr-2' %>
               <%= f.submit t(:add_comment, scope: 'admin.dashboard.profiles'), class: 'btn btn-blue btn-sm' %>
             <% end  %>
           </td>
