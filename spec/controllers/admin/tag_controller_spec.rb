@@ -162,7 +162,7 @@ describe Admin::TagsController, type: :controller do
           put :update, params: { id: @wrong_topic.id, tag: { name: 'mathematic' } }
         end
 
-        specify { expect(response).to redirect_to("/#{I18n.locale}/admin/tags/index") }
+        specify { expect(response).to redirect_to("/#{I18n.locale}/admin/tags/index#top-anchor") }
         it 'changes the topic name' do
           expect(ActsAsTaggableOn::Tag.find(@wrong_topic.id).name).to eq('mathematic')
         end
@@ -173,7 +173,7 @@ describe Admin::TagsController, type: :controller do
           put :update, params: { id: @wrong_topic.id, tag: { name: 'radioactive' } }
         end
 
-        specify { expect(response).to redirect_to("/#{I18n.locale}/admin/tags/index") }
+        specify { expect(response).to redirect_to("/#{I18n.locale}/admin/tags/index#top-anchor") }
         it 'deletes the wrong topic and adds a new tagging' do
           expect(ActsAsTaggableOn::Tag.find_by(name: 'algebra')).to be_nil
           expect(ActsAsTaggableOn::Tag.find_by(name: 'radioactive')).to be_truthy
@@ -214,7 +214,7 @@ describe Admin::TagsController, type: :controller do
         post :set_category, params: { id: @tag.id, category_id: @category.id }
       end
 
-      specify { expect(response).to redirect_to("/#{I18n.locale}/admin/tags/index") }
+      specify { expect(response).to redirect_to("/#{I18n.locale}/admin/tags/index#top-anchor") }
       it 'category gets assigned to a topic' do
         expect(assigns(:tag).categories.first.name).to eq 'Science'
       end
@@ -227,7 +227,7 @@ describe Admin::TagsController, type: :controller do
         post :remove_category, params: { id: @tag.id, category_id: @category.id }
       end
 
-      specify { expect(response).to redirect_to("/#{I18n.locale}/admin/tags/index") }
+      specify { expect(response).to redirect_to("/#{I18n.locale}/admin/tags/index#top-anchor") }
       it 'assigned categories gets removed from a topic' do
         expect(assigns(:tag).categories).to be_empty
       end
@@ -266,7 +266,7 @@ describe Admin::TagsController, type: :controller do
         put :update, params: { id: ada_tag.id, tag: { name: 'mathematic' } }
       end
 
-      specify {expect(response).to redirect_to("/#{I18n.locale}/admin/tags/index?category_id=#{category.id}")}
+      specify {expect(response).to redirect_to("/#{I18n.locale}/admin/tags/index?category_id=#{category.id}#top-anchor")}
     end
 
     context 'after updating a tag language' do
@@ -282,7 +282,7 @@ describe Admin::TagsController, type: :controller do
         delete :destroy, params: { id: ada_tag.id }
       end
 
-      specify {expect(response).to redirect_to("/#{I18n.locale}/admin/tags/index?category_id=#{category.id}")}
+      specify {expect(response).to redirect_to("/#{I18n.locale}/admin/tags/index?category_id=#{category.id}#top-anchor")}
     end
 
     context 'after seting a category' do
@@ -290,7 +290,7 @@ describe Admin::TagsController, type: :controller do
         post :set_category, params: { id: ada_tag.id, category_id: category.id }
       end
 
-      specify {expect(response).to redirect_to("/#{I18n.locale}/admin/tags/index?category_id=#{category.id}")}
+      specify {expect(response).to redirect_to("/#{I18n.locale}/admin/tags/index?category_id=#{category.id}#top-anchor")}
     end
 
     context 'after removing a category' do
@@ -298,7 +298,7 @@ describe Admin::TagsController, type: :controller do
         post :remove_category, params: { id: ada_tag.id, category_id: category.id }
       end
 
-      specify { expect(response).to redirect_to("/#{I18n.locale}/admin/tags/index?category_id=#{category.id}")}
+      specify { expect(response).to redirect_to("/#{I18n.locale}/admin/tags/index?category_id=#{category.id}#top-anchor")}
     end
   end
 end

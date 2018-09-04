@@ -22,7 +22,14 @@
 
   <% elsif params[:search] %> <%# if in search: %>
 
-    <%= render partial: 'shared/search_filter' %>
+      <%= render partial: 'shared/search_filter',
+        locals: {
+          profiles: @profiles,
+          aggs_languages: @aggs_languages,
+          aggs_countries: @aggs_countries,
+          aggs_cities: @aggs_cities
+        }
+      %>
 
   <% else %>
 
