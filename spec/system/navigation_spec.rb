@@ -1,7 +1,8 @@
 RSpec.describe 'Navigation', type: :system do
   context 'normal visitor' do
     before do
-      FactoryBot.create(:published, main_topic_en: "engineer")
+      FactoryBot.create(:published, firstname: "Emily", lastname: "Roebling",
+        main_topic_en: "engineer", city_en: "Trenton", iso_languages: ['en'])
       FactoryBot.create(:published, main_topic_en: "technican")
       FactoryBot.create(:cat_science)
     end
@@ -15,7 +16,7 @@ RSpec.describe 'Navigation', type: :system do
       expect(page).to have_link('DE')
     end
 
-    it 'start has content' do
+    it 'startpage has content' do
       visit root_path
 
       expect(page).to have_css('#startpage__start-teaser')
@@ -48,7 +49,7 @@ RSpec.describe 'Navigation', type: :system do
       expect(page).to have_button('Send')
     end
 
-    it 'viewing the speakerinnen owerview page' do
+    it 'viewing the speakerinnen overview page' do
       visit root_path
 
       click_link 'Browse all profiles >>'
@@ -59,10 +60,29 @@ RSpec.describe 'Navigation', type: :system do
       expect(page).to have_css("input.profile__search")
       expect(page).to have_button('Search')
       # profile
+      expect(page).to have_link('Emily Roebling')
       expect(page).to have_css(".profile-card", count: 2)
+      expect(page).to have_css(".profile-subtitle", text: "engineer")
+      expect(page).to have_text("English")
       # tag_cloud
       expect(page).to have_css("#topics-cloud")
+    end
 
+    it 'viewing a single speakerin page' do
+      visit root_path
+
+      click_link 'Browse all profiles >>'
+      click_link 'Emily Roebling'
+      # header
+      expect(page).to have_css('#header__logo')
+      expect(page).to have_link('Register as a speaker')
+      # navi links
+      expect(page).to have_link('<< Show all Speakerinnen*')
+      # profile
+      expect(page).to have_css(".profile-page")
+      expect(page).to have_css(".profile-subtitle", text: "engineer")
+      expect(page).to have_text("Trenton")
+      expect(page).to have_text("English")
     end
   end
 

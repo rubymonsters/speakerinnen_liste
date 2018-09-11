@@ -4,13 +4,13 @@
     <div class="col-sm-12 col-md-4">
     </div>
     <div class="col-sm-12 col-md-8">
-      <h2><%= link_to profile.fullname, profile %></h2>
+      <h1><%= link_to profile.fullname, profile %></h1>
     </div>
   </div>
   <div class="row">
     <div class="col-sm-12 col-md-4">
       <%= profile_picture_link(profile) %>
-      <b><%= profile.main_topic_or_first_topic if profile.main_topic_or_first_topic %></b>
+      <div class="profile-subtitle"><%= profile.main_topic_or_first_topic if profile.main_topic_or_first_topic %></div>
     </div>
 
     <div class="col-sm-12 col-md-8">
