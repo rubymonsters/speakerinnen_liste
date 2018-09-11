@@ -1,12 +1,12 @@
 RSpec.describe 'Navigation', type: :system do
-  context 'guest user' do
+  context 'normal visitor' do
     before do
       FactoryBot.create(:published, main_topic_en: "engineer")
       FactoryBot.create(:published, main_topic_en: "technican")
       FactoryBot.create(:cat_science)
     end
 
-    it 'page has header' do
+    it 'startpage has header' do
       visit root_path
 
       expect(page).to have_css('#header__logo')
@@ -15,17 +15,25 @@ RSpec.describe 'Navigation', type: :system do
       expect(page).to have_link('DE')
     end
 
-    it 'viewing the start page' do
+    it 'start has content' do
       visit root_path
 
-      save_and_open_page
       expect(page).to have_css('#startpage__start-teaser')
       expect(page).to have_css('#startpage__teaser-bg-01')
       expect(page).to have_css('#startpage__teaser-bg-02')
       expect(page).to have_css('.profile-box', text: 'engineer')
       expect(page).to have_css('.profile-box', text: 'technican')
-      expect(page).to have_css('.startpage-categories__list-links')
+      expect(page).to have_css('.startpage-categories__list-links', count: 1)
       expect(page).to have_link("Science")
+    end
+
+    it 'startpage has footer' do
+      visit root_path
+
+      expect(page).to have_css('#main-page-footer')
+      expect(page).to have_link('Twitter')
+      expect(page).to have_link('Email')
+      expect(page).to have_link('About us')
     end
 
     it 'viewing the contact page' do
