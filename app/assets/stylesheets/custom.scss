@@ -168,15 +168,6 @@ h1, h4 {
   text-decoration: none;
 }
 
-.topics-cloud .topic-filter {
-  float: right;
-}
-
-.topics-cloud #quick-filter {
-  height: 32px;
-  width: 160px;
-}
-
 textarea, input {
   // border-radius: $border-radius;
   border: 1px solid $light-grey;
@@ -326,7 +317,8 @@ ul#medialinks__list {
 
 // topics
 
-.topics-cloud a, .topics-profile a {
+
+#topics-cloud a, #topics-profile a {
   background-color: #fff;
   color: $blue;
   padding: 0px 4px;
@@ -340,11 +332,11 @@ ul#medialinks__list {
   }
 }
 
-.topics-cloud .topic-filter {
+#topics-cloud .topic-filter {
   float: right;
 }
 
-.topics-cloud #quick-filter {
+#topics-cloud #quick-filter {
   height: 32px;
   width: 160px;
 }

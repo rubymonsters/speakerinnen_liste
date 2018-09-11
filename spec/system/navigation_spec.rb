@@ -39,6 +39,23 @@ RSpec.describe 'Navigation', type: :system do
 
       expect(page).to have_button('Send')
     end
+
+    it 'viewing the speakerinnen owerview page' do
+      visit root_path
+
+      click_link 'Browse all profiles >>'
+      # header
+      expect(page).to have_css('#header__logo')
+      expect(page).to have_link('Register as a speaker')
+      # search
+      expect(page).to have_css("input.profile__search")
+      expect(page).to have_button('Search')
+      # profile
+      expect(page).to have_css(".profile-card", count: 2)
+      # tag_cloud
+      expect(page).to have_css("#topics-cloud")
+
+    end
   end
 
   context 'logged in' do

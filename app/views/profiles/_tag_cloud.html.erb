@@ -4,15 +4,18 @@
     <%= t(:top_topics, scope: 'profiles.tag') %>
   </h1>
 
-  <div class="pt-3">
-    <p><%= t(:tag_choose_languages, scope: 'profiles.tag') %></p>
-    <span class="button--border <%="button--background-blue" unless params[:all_lang]%>" >
-      <%= link_to_if params[:all_lang], "Topics in " + t(I18n.locale, scope: 'iso_639_1'), profiles_path(anchor: "topics_anchor"), class: "" %>
-    </span>
-    <span class="button--border <%="button--background-blue" if params[:all_lang]%>" >
-      <%= link_to_if !params[:all_lang], t(:topics_with_no_language_scope, scope: 'profiles.tag'), profiles_path(all_lang: "true", anchor: "topics_anchor"), class: "" %>
-    </span>
-  </div>
+  <% unless params[:category_id] %>
+    <div class="pt-3">
+      <p><%= t(:tag_choose_languages, scope: 'profiles.tag') %></p>
+      <span class="button--border <%="button--background-blue" unless params[:all_lang]%>" >
+        <%= link_to_if params[:all_lang], "Topics in " + t(I18n.locale, scope: 'iso_639_1'), profiles_path(anchor: "topics_anchor"), class: "" %>
+      </span>
+      <span class="button--border <%="button--background-blue" if params[:all_lang]%>" >
+        <%= link_to_if !params[:all_lang], t(:topics_with_no_language_scope, scope: 'profiles.tag'), profiles_path(all_lang: "true", anchor: "topics_anchor"), class: "" %>
+      </span>
+    </div>
+  <% end %>
+
 </div>
 
 <div class="text-center py-5">
@@ -23,6 +26,21 @@
   <% end %>
 </div>
 
+<div class='text-center pb-5 mb-5' id="topics-cloud" >
+
+  <% if params[:category_id] %>
+    <% custom_tag_cloud @tags_most_used_200_in_category.sort { |x,y| x.name <=> y.name }, %w[s m l] do |topic, css_class| %>
+      <%= topic_link topic, class: css_class %>
+    <% end %>
+  <% else %>
+    <% tag_cloud @tags_most_used_200.sort { |x, y| x.name <=> y.name }, %w[s m l] do |topic, css_class| %>
+      <%= topic_link topic, class: css_class %>
+    <% end %>
+  <% end %>
+
+</div>
+
+<!-- javascript for the tag_cloud search -->
 <script type="text/javascript" charset="utf-8">
 
   // empty the input-field & show all topics
@@ -50,17 +68,3 @@
 
   });
 </script>
-
-<div class='topics-cloud py-5'>
-
-  <% if params[:category_id] %>
-    <% custom_tag_cloud @tags_most_used_200.sort { |x,y| x.name <=> y.name }, %w[s m l] do |topic, css_class| %>
-      <%= topic_link topic, class: css_class %>
-    <% end %>
-  <% else %>
-    <% tag_cloud @tags_most_used_200.sort { |x, y| x.name <=> y.name }, %w[s m l] do |topic, css_class| %>
-      <%= topic_link topic, class: css_class %>
-    <% end %>
-  <% end %>
-
-</div>
