@@ -72,7 +72,7 @@ de:
       search:
         heading: "Mehr Frauen auf die Bühnen!"
         tagline_html: "Finde Rednerinnen, Referentinnen & Moderatorinnen für Deine Konferenz."
-        search_text: "Speakerinnen* durchsuchen"
+        search_text: "Suche nach Namen oder Thema"
         search: "Suche"
       all_categories: "Kategorien und Themen >>"
       all_speakers: "Alle Speakerinnen* >>"
@@ -239,8 +239,8 @@ de:
     medialinks:
       edit: "Referenzen bearbeiten"
     edit:
-      show: "<< Eigenes Profil anzeigen"
-      home: "<< Alle Speakerinnen* anzeigen"
+      show: "Eigenes Profil anzeigen >>"
+      home: "Alle Speakerinnen* anzeigen >>"
     index:
       title: "Speakerinnen*"
       text: "Schön, dass Du hier bist. <br>

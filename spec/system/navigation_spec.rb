@@ -77,7 +77,7 @@ RSpec.describe 'Navigation', type: :system do
       expect(page).to have_css('#header__logo')
       expect(page).to have_link('Register as a speaker')
       # navi links
-      expect(page).to have_link('<< Show all Speakerinnen*')
+      expect(page).to have_link('Show all Speakerinnen* >>')
       # profile
       expect(page).to have_css(".profile-page")
       expect(page).to have_css(".profile-subtitle", text: "engineer")

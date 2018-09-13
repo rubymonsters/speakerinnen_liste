@@ -1,9 +1,8 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<header id=<%= 'admin__header--color' if controller_path =~ /admin\// %>>
+<header>
   <%# TODO: hidden <h1>Speakerinnen</h1>%>
-
-  <nav class="navbar navbar-expand-md navbar-light fixed-top pr-5 border-bottom" id="header">
-    <%= link_to(root_path, id: 'header__home-link', class: 'navbar-brand') do %>
+  <nav class="navbar navbar-expand-md navbar-light fixed-top pr-5 py-0 border-bottom" <%= "id=admin__header--color" if controller_path =~ /admin\// %> >
+    <%= link_to(root_path, id: 'header__home-link', class: 'navbar-brand p-0') do %>
       <%= image_tag('logo_header.png', alt: 'logo', id: 'header__logo') %>
     <% end %>
 

@@ -72,7 +72,7 @@ en:
       search:
         heading: "Organizers, find your speakers"
         tagline_html: "Find women speakers & moderators for your conference."
-        search_text: "Search by anything"
+        search_text: "Search by name or topic"
         search: "Search"
       all_categories: "Categories and topics >>"
       all_speakers: "All Speakerinnen* >>"
@@ -239,8 +239,8 @@ en:
     medialinks:
       edit: "Edit previous talks"
     edit:
-      show: "<< Show own Profile"
-      home: "<< Show all Speakerinnen*"
+      show: "Show own profile >>"
+      home: "Show all Speakerinnen* >>"
     index:
       title: "Speakerinnen*"
       text: "Welcome!<br>

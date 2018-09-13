@@ -8,18 +8,16 @@
         <div class="col-sm-12 col-md-8 col-lg-6 box__bg bg--white ml-3">
         <%= form_tag(profiles_path, method: 'get') do %>
           <%= render partial: 'shared/search_form' %>
-          <p>
-            <%= link_to(t(:all_categories, scope: 'pages.home'), root_path + "#categories_anchor" )%><br>
-            <%= link_to(t(:all_profiles, scope: 'search'), profiles_path ) %>
-          </p>
+          <h5><%= link_to(t(:all_categories, scope: 'pages.home'), root_path + "#categories_anchor" )%></h5>
+          <h5><%= link_to(t(:all_profiles, scope: 'search'), profiles_path ) %></h5>
         <% end %>
         </div>
       </div>
     </div>
   </section>
-  <!-- <div class="copyright">
+  <div class="copyright">
      Copyright: public domain ( modified )
-  </div> -->
+  </div>
 
   <div class="container my-5">
     <h1 class="box__bg"><%= t(:speaker_headline, scope: 'pages.home.speakers') %></h4>
@@ -38,9 +36,9 @@
       <h4 class="box__bg bg--white"><%= t(:quote_text, scope: 'pages.home') %></h4>
     </div>
   </section>
-  <!-- <div class="justify-content-end">
+  <div class="copyright">
     Copyright by Ute Mayer
-  </div> -->
+  </div>
 
   <!-- Anker für Kategorien -->
   <a id="categories_anchor"></a>
@@ -61,9 +59,9 @@
       <h4 class="box__bg bg--white"><%=link_to t(:speaker_text, scope: 'pages.home').html_safe, new_profile_registration_path %></h4>
     </div>
   </section>
-  <!-- <div class="copyright">
+  <div class="copyright">
      Copyright by Tilman Vogler
-  </div> -->
+  </div>
 
   <div class="container my-5">
     <h1 class="box__bg">Speakerinnen*</h1>

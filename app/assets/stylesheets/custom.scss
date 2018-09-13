@@ -1,7 +1,7 @@
 body {
 	font-family: $sans-serif;
 	color: $font-color;
-	margin-top: 96px;
+	margin-top: 70px;
 	background-color: $white-smoke;
 }
 
@@ -176,6 +176,10 @@ textarea, input {
   padding-left: quarter($base-spacing-unit);
 }
 
+#admin__header--color {
+	background: #ffcc00;
+}
+
 /* profiles */
 
 .profile-box {
@@ -189,6 +193,10 @@ textarea, input {
 }
 
 .profile-card h5 {
+}
+
+.profile-navi {
+	text-align: right;
 }
 
 .photo--grey {
