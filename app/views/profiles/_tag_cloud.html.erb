@@ -1,8 +1,6 @@
 <a id="topics_anchor"></a>
 <div class="text-center border-top pt-3">
-  <h1>
-    <%= t(:top_topics, scope: 'profiles.tag') %>
-  </h1>
+  <h1><%= t(:top_topics, scope: 'profiles.tag') %></h1>
 
   <% unless params[:category_id] %>
     <div class="pt-3">
@@ -26,7 +24,7 @@
   <% end %>
 </div>
 
-<div class='text-center pb-5 mb-5' id="topics-cloud" >
+<div class='text-center pb-5 mb-5 topics-cloud' >
 
   <% if params[:category_id] %>
     <% custom_tag_cloud @tags_most_used_200_in_category.sort { |x,y| x.name <=> y.name }, %w[s m l] do |topic, css_class| %>

@@ -338,9 +338,9 @@ ul#medialinks__list {
 // topics
 
 
-#topics-cloud a, #topics-profile a {
+.topics-cloud a, .topics-profile a {
   background-color: #fff;
-  color: $blue;
+  color: $dark-grey;
   padding: 0px 4px;
   &:hover {
     -webkit-transition: all .2s ease-in-out;
@@ -351,6 +351,19 @@ ul#medialinks__list {
     text-decoration: none;
   }
 }
+// #topics-cloud a, #topics-profile a {
+//   background-color: #fff;
+//   color: $blue;
+//   padding: 0px 4px;
+//   &:hover {
+//     -webkit-transition: all .2s ease-in-out;
+//     -moz-transition: all .2s ease-in-out;
+//     -o-transition: all .2s ease-in-out;
+//     background-color: $dark-grey;
+//     color: whitesmoke;
+//     text-decoration: none;
+//   }
+// }
 
 #topics-cloud .topic-filter {
   float: right;
