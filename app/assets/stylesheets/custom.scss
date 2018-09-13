@@ -192,6 +192,9 @@ textarea, input {
 	font-weight: bold;
 }
 
+.profile-title {
+}
+
 .profile-card h5 {
 }
 
@@ -280,7 +283,7 @@ ul#medialinks__list {
 }
 
 .profile__search {
-    width: 300px;
+    // width: 	300px;
 }
 
 /* paginate */
@@ -369,4 +372,31 @@ ul#medialinks__list {
 
 .l {
   font-size: 18px;
+}
+
+// responsive
+@include media-breakpoint-down(sm) {
+  h1, .display-4 {
+    font-size: 1.8rem;
+  }
+
+	h4 {
+    font-size: 1.1rem;
+	}
+
+	h5 {
+    font-size: 1.0rem;
+	}
+
+	.startpage-categories__list-links {
+    font-size: 1.0rem;
+	}
+
+	.profile-box {
+		text-align: center;
+	}
+
+	.copyright {
+		font-size: 0.8rem;
+	}
 }
