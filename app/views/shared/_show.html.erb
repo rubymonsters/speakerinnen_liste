@@ -1,12 +1,12 @@
-<h1 class="display-4 mb-5"><%= @profile.fullname %></h1>
+<h1 class="display-4 profile-title"><%= @profile.fullname %></h1>
 
-<div class="row mb-5">
+<div class="row">
   <div class="col-md-3">
       <%= profile_picture_link(@profile) %>
-      <div class="profile-subtitle mt-2"><%= @profile.main_topic_or_first_topic if @profile.main_topic_or_first_topic %></div>
+      <div class="profile-subtitle"><%= @profile.main_topic_or_first_topic if @profile.main_topic_or_first_topic %></div>
   </div>
 
-  <div class="col-md-6 p-3 bg--white">
+  <div class="col-md-6 p-3 mb-3 bg--white">
     <% unless @profile.fullname.present? %>
       <p class="error">
         <%= t(:empty_profile, scope: 'profiles.show').html_safe %>
@@ -150,7 +150,7 @@
 </div>
 
 <% if @profile.bio %>
-  <div class="row mb-3">
+  <div class="row my-3">
     <div class="col p-3 bg--white">
       <h5><%= t(:bio, scope: 'profiles.show') %></h5>
       <%= simple_format(@profile.bio) %>
