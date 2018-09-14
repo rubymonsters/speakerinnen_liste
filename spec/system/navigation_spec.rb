@@ -65,7 +65,7 @@ RSpec.describe 'Navigation', type: :system do
       expect(page).to have_css(".profile-subtitle", text: "engineer")
       expect(page).to have_text("English")
       # tag_cloud
-      expect(page).to have_css("#topics-cloud")
+      expect(page).to have_css(".topics-cloud")
     end
 
     it 'viewing a single speakerin page' do

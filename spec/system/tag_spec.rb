@@ -36,7 +36,7 @@ describe 'displaying tags' do
 
   it 'shows only german tags in topic cloud' do
     visit 'de/profiles'
-    within '#topics-cloud' do
+    within '.topics-cloud' do
       expect(page).to have_content('chemie')
       expect(page).not_to have_content('fruehling')
     end
@@ -44,7 +44,7 @@ describe 'displaying tags' do
 
   it 'shows only english tags in topic cloud' do
     visit 'en/profiles'
-    within '#topics-cloud' do
+    within '.topics-cloud' do
       expect(page).to have_content('physics')
       expect(page).not_to have_content('chemie')
     end
@@ -53,14 +53,14 @@ describe 'displaying tags' do
   it 'shows tags with a blank' do
     visit '/profiles'
     assert page.has_content?('social media')
-    within '#topics-cloud' do
+    within '.topics-cloud' do
       expect(page).to have_content('social media')
     end
   end
 
   it 'shows with slash use %2F for the link generating in profiles show' do
     visit 'en/profiles'
-    within '#topics-cloud' do
+    within '.topics-cloud' do
       click_link('AC/DC')
     end
     expect(page).to have_content('AC/DC')
@@ -68,7 +68,7 @@ describe 'displaying tags' do
 
   it 'shows not tags from unpublished profiles' do
     visit 'en/profiles'
-    within '#topics-cloud' do
+    within '.topics-cloud' do
       expect(page).not_to have_content('sports')
     end
   end
