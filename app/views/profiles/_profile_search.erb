@@ -1,48 +1,41 @@
-<div class="o-layout__item 1/1 lap-1/1 palm-1/1 mb">
-  <div class="o-layout box__bg bg--white profile-box">
+<div class="bg--white profile-card">
 
-    <div class="o-layout__item 1/1 palm-1/1">
-      <h2><%= link_to profile.fullname, profile %></h2>
+  <div class="row mb-3">
+    <div class="col-sm-12">
+      <h1><%= link_to profile.fullname, profile %></h1>
     </div>
-
-    <div class="o-layout__item 1/4 palm-1/1">
+  </div>
+  <div class="row">
+    <div class="col-sm-12 col-md-4">
       <%= profile_picture_link(profile) %>
-      <p class="mt0"><%= profile.main_topic_or_first_topic if profile.main_topic_or_first_topic %></p>
+      <div class="profile-subtitle"><%= profile.main_topic_or_first_topic if profile.main_topic_or_first_topic %></div>
     </div>
 
-    <div class="o-layout__item 3/4 palm-1/1">
+    <div class="col-sm-12 col-md-8">
      <% if profile.twitter.present? %>
-         <h2 class="delta sans-serif mb-">
-           <%= t(:twitter, scope: 'profiles.profile') %>
-         </h2>
-         <p class="pb">
+         <h5><%= t(:twitter, scope: 'profiles.show') %></h5>
+         <p class="pb-2">
            <%=link_to '@' + profile.twitter_name_formatted, profile.twitter_link_formatted,
            target: '_blank' %>
          </p>
      <% end %>
 
      <% if profile.website.present? %>
-       <h2 class="delta sans-serif mb-">
-         <%= t(:website, scope: 'profiles.profile') %>
-       </h2>
-       <p class="pb">
+       <h5> <%= t(:website, scope: 'profiles.show') %> </h5>
+       <p class="pb-2">
          <%= link_to profile.website, profile.website_with_protocol(profile.website),
          target: '_blank' %>
        </p>
      <% end %>
 
-     <h2 class="delta sans-serif mb-">
-       <%= t(:topics, scope: 'profiles.profile') %>
-     </h2>
-     <p class="pb topics-profile">
+     <h5><%= t(:topics, scope: 'profiles.show') %></h5>
+     <p class="pb-2 topics-profile">
        <%= raw topics(profile).map { |topic| topic_link(topic) }.join(' ') %>
      </p>
 
      <% if profile.iso_languages.present? %>
-       <h2 class="delta sans-serif mb-">
-         <%= t(:languages, scope: 'profiles.profile') %>
-       </h2>
-       <p class="pb">
+       <h5><%= t(:languages, scope: 'profiles.show') %></h5>
+       <p>
           <% profile.iso_languages.each do |iso|%>
             <%= t("#{iso}", scope: 'iso_639_1').capitalize %>
           <% end %>

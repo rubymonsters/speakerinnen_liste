@@ -1,0 +1,72 @@
+/*fonts*/
+
+@font-face {
+  font-family: 'OpenSans';
+  src: font_url('OpenSans/OpenSans-Regular-webfont.eot');
+  src: font_url('OpenSans/OpenSans-Regular-webfont.eot?#iefix') format('embedded-opentype'),
+  font_url('OpenSans/OpenSans-Regular-webfont.woff') format('woff'),
+  font_url('OpenSans/OpenSans-Regular-webfont.ttf') format('truetype'),
+  font_url('OpenSans/OpenSans-Regular-webfont.svg#open_sansbold') format('svg');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'OpenSans';
+  src: font_url('OpenSans/OpenSans-Bold-webfont.eot');
+  src: font_url('OpenSans/OpenSans-Bold-webfont.eot?#iefix') format('embedded-opentype'),
+  font_url('OpenSans/OpenSans-Bold-webfont.woff') format('woff'),
+  font_url('OpenSans/OpenSans-Bold-webfont.ttf') format('truetype'),
+  font_url('OpenSans/OpenSans-Bold-webfont.svg#open_sansbold') format('svg');
+  font-weight: 700;
+  font-style: normal;
+}
+/* colors */
+$white: #FFF;
+$white-smoke: #F5F5F5;
+$light-grey: #CCC;
+$grey: #7F7F7F;
+$dark-grey: #3C3C3A;
+$black: #000;
+
+$blue: #00978b;
+$dark-blue: darken($blue, 10%);
+
+$dark-red: #b62848;
+
+$transparent-black: rgba( $black, .5 );
+$transparent-white: rgba( $white, .7 );
+
+/* colors for login sign */
+$box-shadow-black: rgba(0,0,0,0.75);
+
+/* font */
+$serif: Georgia, serif;
+$sans-serif: "OpenSans", "Helvetica Neue", Helvetica, sans-serif;
+
+// /* link-color */
+$link-color: $blue;
+$link-color-hover: $white-smoke;
+
+$link-bg-color: $white-smoke;
+$link-bg-color-hover: $dark-grey;
+
+/* variables colors */
+$font-color: $dark-grey;
+$font-color-title: $grey;
+$link-color: $blue;
+
+// bootstrap variables override
+$primary: $blue;
+$red: #d95270;
+
+/* background-color */
+$body-bg-color: $white;
+$body-bg-color-grey: $white-smoke;
+
+/* units */
+$base-spacing-unit: 24px;
+
+/* layout settings */
+$layout-width: 940px;
+$border: 1px solid $light-grey;

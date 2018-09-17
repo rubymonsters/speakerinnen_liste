@@ -1,68 +1,43 @@
-<section class="bg--grey">
-  <div class="layout-wrapper">
-
-    <div class="o-layout">
-      <div class="o-layout__item 2/3">
-
-        <h1><%= t(:index, scope: 'medialinks')%></h1>
-
-      </div>
-      <div class="o-layout__item 1/3">
-
-        <%= link_to(t(:home, scope: 'profiles.edit'), profiles_path) %><br>
-        <%= link_to(t(:show, scope: 'profiles.edit'), @profile) %>
-
-      </div>
-    </div>
-    <div class="o-layout">
-      <div class="o-layout__item 2/3">
-
-        <p class="pb bb"><%= t(:medialink_description, scope: 'medialinks').html_safe %></p>
-
-      </div>
-    </div>
-
-    <div class="o-layout pb+">
-      <div class="o-layout__item 1/1">
-
-        <%= link_to(new_profile_medialink_path(@profile)) do %>
-          <div class="btn btn-blue btn--small mv">
-            <i class="fa fa-plus-circle"></i>
-            <%= t(:new, scope: 'medialinks') %>
-          </div>
-        <% end %>
-
-        <h2 class="pt">
-          <%= t(:media, scope: 'profiles.profile') %>
-        </h2>
-
-        <p class="help"><%= t(:help, scope: 'medialinks').html_safe %></p>
-
-        <p id="medialinks__list--sort-message"></p>
-
-        <ul id="medialinks__list" data-update-url="<%= sort_profile_medialinks_url%>" class="<%= t(:language_short, scope: 'medialinks')%>">
-          <% @medialinks.each do |medialink| %>
-            <%= content_tag_for(:li, medialink, nil, {'title' => t(:tooltip, scope: 'medialinks')}) do %>
-              <% if medialink.url =~ /youtube|vimeo/i %>
-                <b><%= medialink.title %></b>
-                <%= medialink.url_html if medialink.url != 'http://' %>
-              <% else %>
-                <%= link_to medialink.title, medialink.url %>
-              <% end %>
-              <%= simple_format(medialink.description) %>
-              <span class="text--color-grey">
-                <%= t(:select_language, scope: 'medialinks') + t("#{medialink.language}", scope: 'iso_639_1').capitalize if medialink.language.present? %>
-              </span>
-              <hr>
-
-              <%= link_to '<i class="fa fa-pencil"></i>'.html_safe+ t(:edit_link, scope: 'medialinks'), edit_profile_medialink_path(@profile, medialink) %>
-              <%= link_to '<i class="fa fa-minus-circle"></i>'.html_safe+ t(:delete_link, scope: 'medialinks'), profile_medialink_path(@profile, medialink),
-                method: :delete, data: { confirm: 'Are you sure?'}, title: t(:delete, scope: "medialinks") %>
-            <% end %>
-          <% end %>
-        </ul>
-
-      </div>
-    </div>
+<div class="container py-5">
+  <div class="profile-navi mb-5">
+    <%= link_to(t(:home, scope: 'profiles.edit'), profiles_path) %><br>
+    <%= link_to(t(:show, scope: 'profiles.edit'), @profile) %>
   </div>
-</section>
+
+  <h1 class="mb-5"><%= t(:index, scope: 'medialinks')%></h1>
+
+  <p class="border-bottom mb-5 pb-5"><%= t(:medialink_description, scope: 'medialinks').html_safe %></p>
+
+  <%= link_to(new_profile_medialink_path(@profile)) do %>
+    <div class="btn btn-blue">
+      <i class="fa fa-plus-circle"></i>
+      <%= t(:new, scope: 'medialinks') %>
+    </div>
+  <% end %>
+
+  <p class="mt-5"><%= t(:help, scope: 'medialinks').html_safe %></p>
+
+  <p id="medialinks__list--sort-message"></p>
+
+  <ul id="medialinks__list" data-update-url="<%= sort_profile_medialinks_url%>" class="<%= t(:language_short, scope: 'medialinks')%>">
+    <% @medialinks.each do |medialink| %>
+      <%= content_tag_for(:li, medialink, nil, {'title' => t(:tooltip, scope: 'medialinks')}) do %>
+        <% if medialink.url =~ /youtube|vimeo/i %>
+          <b><%= medialink.title %></b>
+          <%= medialink.url_html if medialink.url != 'http://' %>
+        <% else %>
+          <%= link_to medialink.title, medialink.url %>
+        <% end %>
+        <%= simple_format(medialink.description) %>
+        <span class="color-grey">
+          <%= t(:select_language, scope: 'medialinks') + t("#{medialink.language}", scope: 'iso_639_1').capitalize if medialink.language.present? %>
+        </span>
+        <hr>
+
+        <%= link_to '<i class="fa fa-pencil"></i>'.html_safe+ t(:edit_link, scope: 'medialinks'), edit_profile_medialink_path(@profile, medialink) %>
+        <%= link_to '<i class="fa fa-minus-circle"></i>'.html_safe+ t(:delete_link, scope: 'medialinks'), profile_medialink_path(@profile, medialink),
+          method: :delete, data: { confirm: 'Are you sure?'}, title: t(:delete, scope: "medialinks") %>
+      <% end %>
+    <% end %>
+  </ul>
+</div>

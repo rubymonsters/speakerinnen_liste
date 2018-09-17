@@ -6,7 +6,7 @@ describe 'contact profile' do
   it 'should show the contact button' do
     visit profile_path(id: user.id)
 
-    expect(page).to have_text(I18n.t(:contact, scope: 'profiles.profile'))
+    expect(page).to have_text(I18n.t(:contact, scope: 'profiles.show'))
     expect(page).to have_content('Factory Girl')
   end
 

@@ -199,7 +199,7 @@ class ProfilesController < ApplicationController
       .with_published_profile
       .with_language(I18n.locale)
     tag_names = @tags_in_category_published.pluck(:name)
-    @tags_most_used_200 = @tags_in_category_published.most_used(200)
+    @tags_most_used_200_in_category = @tags_in_category_published.most_used(200)
     @profiles = profiles_for_tag(tag_names)
   end
 

@@ -37,7 +37,7 @@ describe 'navigation', broken: false do
       it { should have_no_link('Admin') }
       it 'should lead to the show view of the profile' do
         expect(page).to have_content(profile.fullname)
-        expect(page).to have_link(I18n.t('edit', scope: 'profiles.profile'))
+        expect(page).to have_link(I18n.t('edit', scope: 'profiles.show'))
       end
     end
 

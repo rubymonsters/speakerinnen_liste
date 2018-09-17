@@ -1,8 +1,5 @@
-<div class="o-layout__item 1/4 lap-1/2 palm-1/1 mb profile-box">
+<div class="col-sm-6 col-md-4 col-lg-3 my-3 profile-box">
   <%= profile_picture_link(profile) %>
-  <h5><%= link_to profile.fullname, profile %></h5>
-  <p><%= profile.main_topic_or_first_topic.truncate(30) if profile.main_topic_or_first_topic %></p>
-  <% if profile.twitter.present? %>
-    <p><%= "Twitter: " %> <%= link_to "@" + profile.twitter_name_formatted, profile.twitter_link_formatted, target: '_blank' %></p>
-  <% end %>
+  <div><%= link_to profile.fullname, profile %></div>
+  <div class="profile-subtitle"><%= profile.main_topic_or_first_topic.truncate(60) if profile.main_topic_or_first_topic %></div>
 </div>

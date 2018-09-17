@@ -1,4 +1,4 @@
-<div class="text--center">
+<div class="text-center">
   <div class="the-badge">
     <div class="image-only-container">
       <div class="badge-rope-left badge-rope-height">
@@ -22,31 +22,35 @@
         </div>
       </div>
     </div>
-    <div class="badge-canvas text--center">
+    <div class="badge-canvas text-center">
       <div class="image-only-container">
         <div class="badge-perforation">
         </div>
       </div>
-      <div class="text--center">
+      <div class="text-center">
         <%= image_tag('logo_header.png') %>
       </div>
 
-      <div class="p- sans-serif login-form">
+      <div class="p-3 login-form">
         <%= simple_form_for(resource, as: resource_name, url: @target_url, html: { class: ""}) do |f| %>
 
           <% if @signup && f.object.password_required? == false %>
             <%= t(:explanation_email, scope: "devise.registrations") %>
-            <%= f.input :email, placeholder: t(:email, scope: "devise.registrations"), autofocus: true, label: false, input_html: { class: 'mb-' } %>
+            <%= f.input :email, placeholder: t(:email, scope: "devise.registrations"),
+            autofocus: true, label: false, input_html: { class: 'form-control mb-3' } %>
           <% else %>
-            <%= f.input :email, placeholder: t(:email, scope: "devise.registrations"), autofocus: true, label: false, input_html: { class: 'mb-' } %>
-            <%= f.input :password, placeholder: t(:password, scope: "devise.registrations"), label: false, input_html: { class: 'mb-' } %>
+            <%= f.input :email, placeholder: t(:email, scope: "devise.registrations"),
+            autofocus: true, label: false, input_html: { class: 'form-control mb-3' } %>
+            <%= f.input :password, placeholder: t(:password, scope: "devise.registrations"),
+            label: false, input_html: { class: 'form-control mb-3' } %>
             <% if @signup %>
-              <%= f.input :password_confirmation, placeholder: t(:confirmation, scope: "devise.registrations"), label: false, input_html: { class: 'mb' } %>
+              <%= f.input :password_confirmation, placeholder: t(:confirmation, scope: "devise.registrations"),
+              label: false, input_html: { class: 'form-control mb-3' } %>
             <% end %>
           <% end %>
 
           <% if !@signup && devise_mapping.rememberable? %>
-            <div class="pv-">
+            <div class="px-3">
               <%= f.check_box :remember_me %>
               <%= f.label :remember_me, t(:remember, scope: "devise.registrations") %>
               </div>
@@ -54,20 +58,21 @@
 
           <% button = @signup ? 'signup' : 'signin' %>
 
-          <%= f.submit t(button, scope: "devise.registrations"), class:'btn btn-blue btn--small mb' %>
+          <%= f.submit t(button, scope: "devise.registrations"), class:'btn btn-blue mb-3' %>
 
           <%# Show the "login via twitter"" button only when not redirected from twitter" %>
           <% if devise_mapping.omniauthable? && session["devise.user_attributes"].blank? %>
             <% Profile.omniauth_providers.each do |provider| %>
-              <%= link_to t(button+'_via', scope: "devise.registrations"), omniauth_authorize_path(:profile, provider), class: 'btn btn-blue btn--small mb' %>
+              <%= link_to t(button+'_via', scope: "devise.registrations"), omniauth_authorize_path(:profile, provider),
+              class: 'btn btn-blue mb-3' %>
             <% end %>
           <% end %>
 
           <% if !@signup && devise_mapping.recoverable? && controller_name != 'passwords' %>
-            <%= link_to t(:forgot_password, scope: "devise.registrations"), new_password_path(resource_name), class:"mb-" %>
+            <%= link_to t(:forgot_password, scope: "devise.registrations"), new_password_path(resource_name), class:"mb-3" %>
           <% end %>
 
-          <div class="font-size--small">
+          <div>
             <% if devise_mapping.confirmable? && controller_name != 'confirmations' %>
               <%= link_to t(:no_confirmation, scope: "devise.registrations"), new_confirmation_path(:profile) %>
             <% end %>

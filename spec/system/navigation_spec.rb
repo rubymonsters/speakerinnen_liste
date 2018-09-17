@@ -1,11 +1,98 @@
 RSpec.describe 'Navigation', type: :system do
-  context 'logged in' do
+  context 'normal visitor' do
     before do
-      sign_in user
+      FactoryBot.create(:published, firstname: "Emily", lastname: "Roebling",
+        main_topic_en: "engineer", city_en: "Trenton", iso_languages: ['en'])
+      FactoryBot.create(:published, main_topic_en: "technican")
+      FactoryBot.create(:cat_science)
     end
 
+    it 'startpage has header' do
+      visit root_path
+
+      expect(page).to have_css('#header__logo')
+      expect(page).to have_link('Register as a speaker')
+      expect(page).to have_link('Log in')
+      expect(page).to have_link('DE')
+    end
+
+    it 'startpage has content' do
+      visit root_path
+
+      expect(page).to have_css('#startpage__start-teaser')
+      expect(page).to have_css('#startpage__teaser-bg-01')
+      expect(page).to have_css('#startpage__teaser-bg-02')
+      expect(page).to have_css('.profile-box', text: 'engineer')
+      expect(page).to have_css('.profile-box', text: 'technican')
+      expect(page).to have_css('.startpage-categories__list-links', count: 1)
+      expect(page).to have_link("Science")
+    end
+
+    it 'startpage has footer' do
+      visit root_path
+
+      expect(page).to have_css('#main-page-footer')
+      expect(page).to have_link('Twitter')
+      expect(page).to have_link('Email')
+      expect(page).to have_link('About us')
+    end
+
+    it 'viewing the contact page' do
+      visit root_path
+
+      click_link 'Email'
+      expect(page).to have_css('form label', text: 'Your name')
+      expect(page).to have_css('form label', text: 'Your email address')
+      expect(page).to have_css('form label', text: 'Subject')
+      expect(page).to have_css('form label', text: 'Your message')
+
+      expect(page).to have_button('Send')
+    end
+
+    it 'viewing the speakerinnen overview page' do
+      visit root_path
+
+      click_link 'Browse all profiles >>'
+      # header
+      expect(page).to have_css('#header__logo')
+      expect(page).to have_link('Register as a speaker')
+      # search
+      expect(page).to have_css("input.profile__search")
+      expect(page).to have_button('Search')
+      # profile
+      expect(page).to have_link('Emily Roebling')
+      expect(page).to have_css(".profile-card", count: 2)
+      expect(page).to have_css(".profile-subtitle", text: "engineer")
+      expect(page).to have_text("English")
+      # tag_cloud
+      expect(page).to have_css(".topics-cloud")
+    end
+
+    it 'viewing a single speakerin page' do
+      visit root_path
+
+      click_link 'Browse all profiles >>'
+      click_link 'Emily Roebling'
+      # header
+      expect(page).to have_css('#header__logo')
+      expect(page).to have_link('Register as a speaker')
+      # navi links
+      expect(page).to have_link('Show all Speakerinnen* >>')
+      # profile
+      expect(page).to have_css(".profile-page")
+      expect(page).to have_css(".profile-subtitle", text: "engineer")
+      expect(page).to have_text("Trenton")
+      expect(page).to have_text("English")
+    end
+  end
+
+  context 'logged in' do
     context 'as an unprivileged user' do
       let(:user) { FactoryBot.create(:profile) }
+
+      before do
+        sign_in user
+      end
 
       it 'shows no admin link' do
         visit root_path
@@ -22,36 +109,28 @@ RSpec.describe 'Navigation', type: :system do
         expect(page).to have_link('DE')
       end
     end
-  end
 
-  context 'guest user' do
-    it 'page has header' do
-      visit root_path
+    context 'as an admin user' do
+      let(:admin) { FactoryBot.create(:admin) }
 
-      expect(page).to have_css('#header__logo')
-      expect(page).to have_link('Register as a speaker')
-      expect(page).to have_link('Log in')
-      expect(page).to have_link('DE')
-    end
+      before do
+        sign_in admin
+      end
 
-    it 'viewing the start page' do
-      visit root_path
+      it 'shows admin link' do
+        visit root_path
 
-      expect(page).to have_css('#startpage__start-teaser')
-      expect(page).to have_css('#startpage__teaser-bg-01')
-      expect(page).to have_css('#startpage__teaser-bg-02')
-    end
+        expect(page).to have_link('Admin')
+      end
 
-    it 'viewing the contact page' do
-      visit root_path
+      it 'page has header' do
+        visit root_path
 
-      click_link 'Email'
-      expect(page).to have_css('form label', text: 'Your name')
-      expect(page).to have_css('form label', text: 'Your email address')
-      expect(page).to have_css('form label', text: 'Subject')
-      expect(page).to have_css('form label', text: 'Your message')
-
-      expect(page).to have_button('Send')
+        expect(page).to have_css('#header__logo')
+        expect(page).to have_link('My profile')
+        expect(page).to have_link('Log out')
+        expect(page).to have_link('DE')
+      end
     end
   end
 
