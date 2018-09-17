@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-include AuthHelper
-
 describe Admin::TagsController, type: :controller do
+  include AuthHelper
+
   let!(:admin) { FactoryBot.create(:admin) }
   let!(:ada) { FactoryBot.create(:published, topic_list: %w[algebra algorithm computer]) }
   let!(:marie) { FactoryBot.create(:published, topic_list: ['radioactive', 'x-ray']) }
@@ -223,7 +223,6 @@ describe Admin::TagsController, type: :controller do
     context 'removes_category' do
       before(:each) do
         @tag.categories << @category
-        # should be --> post :remove_category, params: { id: @tag.id, category_id: @category.id }
         post :remove_category, params: { id: @tag.id, category_id: @category.id }
       end
 
@@ -266,7 +265,7 @@ describe Admin::TagsController, type: :controller do
         put :update, params: { id: ada_tag.id, tag: { name: 'mathematic' } }
       end
 
-      specify {expect(response).to redirect_to("/#{I18n.locale}/admin/tags/index?category_id=#{category.id}#top-anchor")}
+      specify { expect(response).to redirect_to("/#{I18n.locale}/admin/tags/index?category_id=#{category.id}#top-anchor") }
     end
 
     context 'after updating a tag language' do
@@ -274,7 +273,7 @@ describe Admin::TagsController, type: :controller do
         put :update, params: { languages: ['en'], id: ada_tag.id }
       end
 
-      specify {expect(response).to redirect_to("/#{I18n.locale}/admin/tags/index?category_id=#{category.id}#top-anchor")}
+      specify { expect(response).to redirect_to("/#{I18n.locale}/admin/tags/index?category_id=#{category.id}#top-anchor") }
     end
 
     context 'after deleting a tag' do
@@ -282,7 +281,7 @@ describe Admin::TagsController, type: :controller do
         delete :destroy, params: { id: ada_tag.id }
       end
 
-      specify {expect(response).to redirect_to("/#{I18n.locale}/admin/tags/index?category_id=#{category.id}#top-anchor")}
+      specify { expect(response).to redirect_to("/#{I18n.locale}/admin/tags/index?category_id=#{category.id}#top-anchor") }
     end
 
     context 'after seting a category' do
@@ -290,7 +289,7 @@ describe Admin::TagsController, type: :controller do
         post :set_category, params: { id: ada_tag.id, category_id: category.id }
       end
 
-      specify {expect(response).to redirect_to("/#{I18n.locale}/admin/tags/index?category_id=#{category.id}#top-anchor")}
+      specify { expect(response).to redirect_to("/#{I18n.locale}/admin/tags/index?category_id=#{category.id}#top-anchor") }
     end
 
     context 'after removing a category' do
@@ -298,7 +297,7 @@ describe Admin::TagsController, type: :controller do
         post :remove_category, params: { id: ada_tag.id, category_id: category.id }
       end
 
-      specify { expect(response).to redirect_to("/#{I18n.locale}/admin/tags/index?category_id=#{category.id}#top-anchor")}
+      specify { expect(response).to redirect_to("/#{I18n.locale}/admin/tags/index?category_id=#{category.id}#top-anchor") }
     end
   end
 end

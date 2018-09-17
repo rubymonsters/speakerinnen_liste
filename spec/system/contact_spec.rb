@@ -30,5 +30,4 @@ describe 'contact profile' do
 
     expect(page).to have_content(I18n.t(:error, scope: 'contact.form'))
   end
-
 end

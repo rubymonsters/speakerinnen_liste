@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-include AuthHelper
-
 describe Admin::ProfilesController, type: :controller do
+  include AuthHelper
+
   let!(:admin) { FactoryBot.create(:admin) }
   let!(:admin_medialink) { FactoryBot.create(:medialink, profile_id: admin.id) }
   let!(:non_admin) { FactoryBot.create(:published) }
@@ -59,7 +59,7 @@ describe Admin::ProfilesController, type: :controller do
     context 'when user is admin' do
       before(:each) do
         sign_in admin
-        get :show, { params: { id: non_admin.id } }
+        get :show, params: { id: non_admin.id }
       end
 
       specify { expect(response.status).to eq 200 }
@@ -90,7 +90,7 @@ describe Admin::ProfilesController, type: :controller do
     context 'when user is admin they can edit any profile' do
       before(:each) do
         sign_in admin
-        get :edit, { params: { id: non_admin.id } }
+        get :edit, params: { id: non_admin.id }
       end
 
       specify { expect(response.status).to eq 200 }

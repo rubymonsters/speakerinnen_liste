@@ -11,21 +11,19 @@ class Admin::TagsController < Admin::BaseController
   def edit; end
 
   def update
-    if is_tag_language_update?
+    if tag_language_update?
       set_tag_languages(@tag, params[:languages])
       redirect_to admin_tags_path(filter_params_from_session.merge(anchor: 'top-anchor')),
                   notice: "'#{@tag.name}' was updated."
+    elsif existing_tag = tag_name_exists?
+      existing_tag.merge(@tag)
+      redirect_to admin_tags_path(filter_params_from_session.merge(anchor: 'top-anchor')),
+                  notice: "'#{@tag.name}' was merged with the tag '#{existing_tag.name}'."
+    elsif @tag.update_attributes(tag_params)
+      redirect_to admin_tags_path(filter_params_from_session.merge(anchor: 'top-anchor')),
+                  notice: "'#{@tag.name}' was updated."
     else
-      if existing_tag = tag_name_exists?
-        existing_tag.merge(@tag)
-        redirect_to admin_tags_path(filter_params_from_session.merge(anchor: 'top-anchor')),
-                    notice: "'#{@tag.name}' was merged with the tag '#{existing_tag.name}'."
-      elsif @tag.update_attributes(tag_params)
-        redirect_to admin_tags_path(filter_params_from_session.merge(anchor: 'top-anchor')),
-                    notice: "'#{@tag.name}' was updated."
-        else
-        render action: 'edit'
-      end
+      render action: 'edit'
     end
   end
 
@@ -76,7 +74,7 @@ class Admin::TagsController < Admin::BaseController
     end
   end
 
-  def is_tag_language_update?
+  def tag_language_update?
     params[:languages].present? || params[:tag].blank?
   end
 

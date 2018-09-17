@@ -15,5 +15,5 @@ class ConfirmationMailer < Devise::Mailer
       options[:template_name] = 'confirmation_instructions'
     end
     super
-   end
+  end
 end

@@ -23,7 +23,7 @@ namespace :db do
                       picture: File.open(File.join(Rails.root, 'app', 'assets', 'images', 'avatar.jpg')),
                       twitter: Faker::Name.first_name)
       user = Profile.where(email: email).first
-      user.admin = n == 0
+      user.admin = n.zero?
       user.confirmed_at = Time.now
       user.save!
     end

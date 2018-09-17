@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-include AuthHelper
-
 describe 'profile navigation' do
+  include AuthHelper
+
   let!(:locale_language_de) { FactoryBot.create(:locale_language_de) }
   let!(:locale_language_en) { FactoryBot.create(:locale_language_en) }
 
@@ -74,7 +74,6 @@ describe 'profile navigation' do
     it 'shows tags with no language assigned' do
       expect(page).to have_content('math')
     end
-
   end
 
   describe 'show view profile in DE' do
@@ -134,8 +133,8 @@ describe 'profile navigation' do
     end
 
     it 'when there is at least one website given for the current language dont use fall-back' do
-      ada.website_en = "www.ada.en"
-      ada.website_2_en = "www.ada2.en"
+      ada.website_en = 'www.ada.en'
+      ada.website_2_en = 'www.ada2.en'
       ada.save!
       visit current_path
       expect(page).to have_content('www.ada.en')
@@ -236,5 +235,4 @@ describe 'profile navigation' do
       expect(page).to have_content('math')
     end
   end
-
 end

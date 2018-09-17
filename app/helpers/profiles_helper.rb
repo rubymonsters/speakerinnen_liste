@@ -30,6 +30,6 @@ module ProfilesHelper
     topics = []
     topics << profile.topics.with_language(I18n.locale)
     topics << profile.topics.without_language
-    topics = topics.flatten.uniq
+    topics.flatten.uniq
   end
 end

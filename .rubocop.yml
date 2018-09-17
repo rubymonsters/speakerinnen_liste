@@ -18,9 +18,32 @@ Metrics/BlockLength:
 Metrics/LineLength:
   Enabled: false
 Metrics/MethodLength:
-  Max: 5
-Metrics/ParameterLists:
-  Max: 4
+  Enabled: false
+Naming/FileName:
+  Enabled: false
+Metrics/ClassLength:
+  Enabled: false
+Metrics/AbcSize:
+  Enabled: false
+Metrics/PerceivedComplexity:
+  Enabled: false
+Style/RegexpLiteral:
+  Enabled: false
+Style/ClassAndModuleChildren:
+  Enabled: false
+Style/GuardClause:
+  Enabled: false
+Style/Lambda:
+  Enabled: false
+Naming/UncommunicativeMethodParamName:
+  Enabled: false
+Naming/VariableNumber:
+  Enabled: false
+Lint/UselessAssignment:
+  Enabled: false
+Lint/AssignmentInCondition:
+  Enabled: false
+
 
 AllCops:
   Include:
@@ -30,3 +53,9 @@ AllCops:
     - 'db/**/*'
     - 'config/**/*'
     - 'bin/**/*'
+    - 'lib/tasks/*'
+    - 'app/models/concerns/searchable.rb'
+    - 'test/test_helper.rb'
+    - 'app/services/tag_filter.rb'
+    - 'spec/spec_helper.rb'
+    - 'spec/support/utilities.rb'

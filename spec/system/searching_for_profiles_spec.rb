@@ -26,7 +26,6 @@ describe 'profile search' do
                                       main_topic_de: 'x-ray', main_topic_en: 'Röntgen',
                                       email: 'maria@example.com')
   end
-  #
   let!(:profile2) { create(:published, firstname: 'Christiane', lastname: 'König', city: 'Heidelberg', languages: 'German') }
   let!(:profile3) { create(:published, firstname: 'Maren ', lastname: 'Meier') }
 
@@ -52,7 +51,7 @@ describe 'profile search' do
 
     #     it 'displays profiles that are a partial match wit UTF-8 characters' do
     #       visit root_path
-    #       fill_in 'search', with: 'König'
+    #       fill_in 'search', with: 'Koenig'
     #       click_button I18n.t(:search, scope: 'pages.home.search')
     #       expect(page).to have_content('Christiane')
     #     end
