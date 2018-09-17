@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-include AuthHelper
-
 describe Admin::CategoriesController, type: :controller do
+  include AuthHelper
+
   let!(:admin) { FactoryBot.create(:admin) }
   let!(:category) { FactoryBot.create(:cat_science) }
 

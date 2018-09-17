@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe 'Localization', type: :system do
   it 'start page localization' do
     visit root_path

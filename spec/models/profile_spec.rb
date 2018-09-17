@@ -38,10 +38,10 @@ describe 'profile', type: :model do
 
   describe '#name_or_email' do
     context 'user has no name information only email adress' do
-      let(:profile_no_name) { FactoryBot.create(:profile, firstname: nil, lastname: nil, email: 'factorygirl@test.de') }
+      let(:profile) { create(:profile, firstname: nil, lastname: nil, email: 'factorygirl@test.de') }
 
       it 'return the email adress' do
-        expect(profile_no_name.name_or_email).to eq 'factorygirl@test.de'
+        expect(profile.name_or_email).to eq 'factorygirl@test.de'
       end
     end
 
@@ -52,7 +52,7 @@ describe 'profile', type: :model do
     end
 
     context 'delete trailing white space' do
-      let(:profile) { FactoryBot.create(:profile, firstname: 'Ada ', lastname: 'Lovelace ', email: 'factorygirl@test.de') }
+      let(:profile) { create(:profile, firstname: 'Ada ', lastname: 'Lovelace ', email: 'factorygirl@test.de') }
 
       it 'in firstname and lastname' do
         expect(profile.firstname).to eq 'Ada'
@@ -93,6 +93,15 @@ describe 'profile', type: :model do
         profile.valid?
         expect(profile.errors[:iso_languages].size).to eq(0)
       end
+    end
+  end
+
+  describe 'cities' do
+    it 'gets rid of additional charaters' do
+      profile.city_de = 'Rom & Wien'
+      profile.city_en = 'Rom or Paris'
+      profile.save!
+      expect(profile.cities).to eq(%w[Rom Wien Paris])
     end
   end
 end

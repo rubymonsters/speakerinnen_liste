@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe 'Navigation', type: :system do
   context 'logged in as an admin' do
     let!(:admin) { FactoryBot.create(:admin) }

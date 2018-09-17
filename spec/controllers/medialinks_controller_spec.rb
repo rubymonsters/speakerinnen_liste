@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-include AuthHelper
-
 describe ProfilesController, type: :controller do
+  include AuthHelper
+
   let!(:ada) do
     FactoryBot.create(:published,
                       firstname: 'Ada',

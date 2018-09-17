@@ -56,7 +56,7 @@ describe 'navigation', broken: false do
         it { should have_content('Administration') }
 
         it 'should have localized links' do
-          @lang_links_map[language].each_with_index do |link, index|
+          @lang_links_map[language].each_with_index do |link, _index|
             expect(page).to have_link(link)
           end
         end

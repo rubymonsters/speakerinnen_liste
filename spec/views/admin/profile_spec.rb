@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-include AuthHelper
-
 describe 'admin navigation' do
+  include AuthHelper
+
   let!(:admin) { FactoryBot.create(:admin) }
   let!(:admin_medialink) { FactoryBot.create(:medialink, profile_id: admin.id) }
 

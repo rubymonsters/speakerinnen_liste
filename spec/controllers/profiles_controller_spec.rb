@@ -1,14 +1,16 @@
 # frozen_string_literal: true
 
-include AuthHelper
-
 describe ProfilesController, type: :controller do
+  include AuthHelper
+
   describe 'test index action' do
-    let!(:profile) { create(:published, topic_list: %w(ruby algorithms)) }
+    let!(:profile) { create(:published, topic_list: %w[ruby algorithms]) }
     let!(:profile_unpublished) { FactoryBot.create(:unpublished) }
-    let!(:ada) { create(:published,
-                        main_topic_en: 'first computer program',
-                        bio_en: 'first female programer') }
+    let!(:ada) do
+      create(:published,
+             main_topic_en: 'first computer program',
+                 bio_en: 'first female programer')
+    end
 
     before do
       get :index
@@ -32,7 +34,7 @@ describe ProfilesController, type: :controller do
   describe 'search action', elasticsearch: true do
     it 'displays search results if search term is present' do
       sleep 1
-      get :index, params: { search: 'ruby' }
+      get :index, params: {  search: 'ruby' }
       expect(response).to be_successful
     end
 
