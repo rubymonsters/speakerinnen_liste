@@ -21,7 +21,7 @@ gem 'deadweight', require: 'deadweight/hijack/rails'
 gem 'kaminari'
 gem 'mime-types'
 
-gem 'acts-as-taggable-on', git: 'https://github.com/Fodoj/acts-as-taggable-on.git', branch: 'rails-5.2' # temporary: https://github.com/mbleigh/acts-as-taggable-on/issues/874
+gem 'acts-as-taggable-on', '~> 6.0'
 gem 'auto_html', '~>1.6.4'
 gem 'carrierwave', '~> 1.0'
 gem 'devise', '~> 4.4', '>= 4.4.3'
