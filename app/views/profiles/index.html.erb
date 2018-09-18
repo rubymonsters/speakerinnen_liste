@@ -17,8 +17,6 @@
     <h5 class="text-center py-5">
       <%= t(:profiles_topics, scope: 'search', profiles_count: @profiles.total_count, topics_name: params[:topic]).html_safe %>
     </h5>
-    <%= render partial: 'shared/search_form' %>
-    <p class="mt-1"><%= t(:search_categories_html, scope: 'search', root_path: root_path) %></p>
 
   <% elsif params[:search] %> <%# if in search: %>
 
