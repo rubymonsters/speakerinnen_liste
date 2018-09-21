@@ -33,14 +33,15 @@
        <%= raw topics(profile).map { |topic| topic_link(topic) }.join(' ') %>
      </p>
 
-     <% if profile.iso_languages.present? %>
-       <h5><%= t(:languages, scope: 'profiles.show') %></h5>
-       <p>
+      <% if profile.iso_languages.present? %>
+        <h5><%= t(:languages, scope: 'profiles.show') %></h5>
+        <p>
           <% profile.iso_languages.each do |iso|%>
             <%= t("#{iso}", scope: 'iso_639_1').capitalize %>
           <% end %>
-       </p>
-     <% end %>
+        </p>
+      <% end %>
+      <div class="text-right"><%= link_to ">>  " + t(:to_profile, scope: 'profiles.show'), profile %></div>
     </div>
 
   </div>

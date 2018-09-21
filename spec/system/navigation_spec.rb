@@ -68,6 +68,8 @@ RSpec.describe 'Navigation', type: :system do
       expect(page).to have_text('English')
       # tag_cloud
       expect(page).to have_css('.topics-cloud')
+      # link t profile
+      expect(page).to have_link('To the profile')
     end
 
     it 'viewing a single speakerin page' do
