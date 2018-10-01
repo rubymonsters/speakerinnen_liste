@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_23_204811) do
+ActiveRecord::Schema.define(version: 2018_09_24_140846) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,14 @@ ActiveRecord::Schema.define(version: 2018_07_23_204811) do
     t.string "name"
     t.index ["category_id"], name: "index_category_translations_on_category_id"
     t.index ["locale"], name: "index_category_translations_on_locale"
+  end
+
+  create_table "featured_profiles", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.string "profile_ids", default: [], array: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "friendly_id_slugs", id: :serial, force: :cascade do |t|
@@ -134,10 +142,10 @@ ActiveRecord::Schema.define(version: 2018_07_23_204811) do
 
   create_table "taggings", id: :serial, force: :cascade do |t|
     t.integer "tag_id"
-    t.string "taggable_type"
     t.integer "taggable_id"
-    t.string "tagger_type"
+    t.string "taggable_type"
     t.integer "tagger_id"
+    t.string "tagger_type"
     t.string "context", limit: 128
     t.datetime "created_at"
     t.index ["context"], name: "index_taggings_on_context"
