@@ -10,6 +10,8 @@ class PagesController < ApplicationController
                 .limit(8)
     @categories = Category.sorted_categories
     @blog_posts = BlogPost.order('created_at DESC').limit(2)
+    @featured_event = FeaturedProfile.find_by public: true
+    @featured_profiles = FeaturedProfile.featured_women
   end
 
   def render_footer?

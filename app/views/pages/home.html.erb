@@ -16,12 +16,24 @@
      Copyright: public domain ( modified )
   </div>
 
+  <% if @featured_profiles.length > 2 %>
+    <div class="container">
+      <h1 class="box__bg"><%= @featured_event.title %></h1>
+      <h4 class="border-vertical d-block box__bg mb-4">
+        <%= @featured_event.description %>
+      </h4>
+      <div class="row">
+        <%= render partial: "profiles/profile", collection: @featured_profiles %>
+      </div>
+    </div>
+  <% end %>
+
   <div class="container">
-    <h1 class="box__bg"><%= t(:speaker_headline, scope: 'pages.home.speakers') %></h4>
+    <h1 class="box__bg"><%= t(:speaker_headline, scope: 'pages.home.speakers') %></h1>
     <h4 class="border-vertical d-block box__bg mb-4">
       <%= t(:speaker_text, scope: 'pages.home.speakers') %>
       <%= link_to t(:speaker_index, scope: 'pages.home.speakers'), profiles_path %>
-    </h1>
+    </h4>
     <div class="row">
       <%= render partial: "profiles/profile", collection: @profiles if @profiles.any? %>
     </div>
