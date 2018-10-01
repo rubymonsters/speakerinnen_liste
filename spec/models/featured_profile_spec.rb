@@ -1,5 +1,5 @@
-require 'rails_helper'
+# frozen_string_literal: true
 
-RSpec.describe FeaturedProfile, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+describe FeaturedProfile, type: :model do
+
 end
