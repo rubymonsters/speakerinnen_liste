@@ -121,10 +121,17 @@
   <div class="col-md-3">
 
     <% if current_profile != @profile %>
-      <button type="button" class="btn btn-blue btn-block" data-toggle="modal" data-target="#contactModal">
-        <i class="fa fa-envelope-o"></i>&nbsp;
-        <%= t(:contact, scope: 'profiles.show') %>
-      </button>
+      <% if cookies[:cookie_consent].blank? %>
+        <button type="button" class="btn btn-blue btn-block" data-toggle="modal" data-target="#contactCookie">
+          <i class="fa fa-envelope-o"></i>&nbsp;
+          <%= t(:contact, scope: 'profiles.show') %>
+        </button>
+      <% else %>
+        <button type="button" class="btn btn-blue btn-block" data-toggle="modal" data-target="#contactModal">
+          <i class="fa fa-envelope-o"></i>&nbsp;
+          <%= t(:contact, scope: 'profiles.show') %>
+        </button>
+      <% end %>
     <% end %>
 
     <% if current_profile == @profile %>
@@ -185,7 +192,24 @@
   </div>
 <% end %>
 
-<!-- Modal -->
+<!-- Modal Cookie -->
+<div class="modal fade" id="contactCookie" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <p><%= t(:cookie_contact, scope: 'pages.home', link: privacy_path).html_safe %>
+        <%= link_to(
+          'OK',
+          url_for(params.permit!.merge(allow_cookies: true)),
+          class: 'btn btn-blue'
+        ) %>
+        </p>
+      </div>
+    </div>
+  </div>
+</div><!-- Modal Cookies-->
+
+<!-- Modal Contact -->
 <div class="modal fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">

@@ -76,10 +76,9 @@ de:
         search: "Suche"
       all_categories: "Kategorien und Themen >>"
       all_speakers: "Alle Speakerinnen* >>"
-      cookie_consent: "Wir nehmen den Datenschutz sehr ernst.
-        Damit wir unsere Webseite optimal gestalten und verbessern können, verwenden wir Cookies.
-        Durch die weitere Nutzung der Webseite stimmst Du der Verwendung von Cookies zu.
-        Mehr Informationen in unserer <a href='%{link}' class='link'>Datenschutzerklärung</a>."
+      cookie_contact: "Du musst der Verwendung von Cookies zustimmen, bevor Du das Kontaktformular benutzen kannst."
+      cookie_consent: "Um unsere Seite nutzerfreundlich zu gestalten und zu verbessern, speichern wir Informationen über Deine Nutzung. Das machen wir über einfache Textdateien (Cookies), die auf deinem Computer gespeichert werden. Diese Cookies sind sicher und beinhalten keine sensiblen Informationen. Wichtig: Der volle Umfang der Seite kann nur genutzt werden, wenn Du der Verwendung von Cookies zustimmst (z.B. Login, Registrierung, Kontaktaufnahme). Die Suche funktioniert auch ohne Cookies. Um die Nutzung der Webseite zu messen, nutzen wir Matomoto. Auch hierfür nutzen wir Cookies, die Du aber deaktivieren kannst. Mehr Informationen in unserer <a href='%{link}' class='link'>Datenschutzerklärung</a>."
+      allow_cookies: "Ich stimme zu"
       description: "Unsere Kategorien"
       description_text: "Uns ist die Verteilung der Männer und Frauen auf Konferenzbühnen wichtig. Wir ermutigen Frauen, in ihrem professionellen Umfeld sichtbarer zu werden."
       speaker_shoutout: "Hast Du etwas Interessantes zu erzählen?"
