@@ -199,7 +199,7 @@
       <div class="modal-body">
         <p><%= t(:cookie_contact, scope: 'pages.home', link: privacy_path).html_safe %>
         <%= link_to(
-          'OK',
+          t(:allow_cookies, scope: 'pages.home'),
           url_for(params.permit!.merge(allow_cookies: true)),
           class: 'btn btn-blue'
         ) %>
