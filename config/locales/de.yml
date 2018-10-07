@@ -76,7 +76,9 @@ de:
         search: "Suche"
       all_categories: "Kategorien und Themen >>"
       all_speakers: "Alle Speakerinnen* >>"
-      cookie_contact: "Du musst der Verwendung von Cookies zustimmen, bevor Du das Kontaktformular benutzen kannst."
+      hint: "Hinweis"
+      cookie_contact: "Du musst der Verwendung von Cookies zustimmen, bevor Du das Kontaktformular benutzen kannst.<br>
+      Mehr Informationen in unserer <a href='%{link}' class='link'>Datenschutzerklärung</a>.<br>"
       cookie_consent: "Um unsere Seite nutzerfreundlich zu gestalten und zu verbessern, speichern wir Informationen über Deine Nutzung. Das machen wir über einfache Textdateien (Cookies), die auf deinem Computer gespeichert werden. Diese Cookies sind sicher und beinhalten keine sensiblen Informationen. Wichtig: Der volle Umfang der Seite kann nur genutzt werden, wenn Du der Verwendung von Cookies zustimmst (z.B. Login, Registrierung, Kontaktaufnahme). Die Suche funktioniert auch ohne Cookies. Um die Nutzung der Webseite zu messen, nutzen wir Matomoto. Auch hierfür nutzen wir Cookies, die Du aber deaktivieren kannst. Mehr Informationen in unserer <a href='%{link}' class='link'>Datenschutzerklärung</a>."
       allow_cookies: "Ich stimme zu"
       description: "Unsere Kategorien"
