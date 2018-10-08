@@ -43,7 +43,8 @@ Rails.application.routes.draw do
 
     devise_for :profiles, skip: :omniauth_callbacks, controllers: {
       omniauth_callbacks: 'omniauth_callbacks',
-      confirmations: :confirmations
+      confirmations: :confirmations,
+      registrations: :registrations
     }
 
     get 'topics', to: 'profiles#index', as: :topic
