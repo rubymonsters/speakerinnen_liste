@@ -79,7 +79,15 @@ de:
       hint: "Hinweis"
       cookie_contact: "Du musst der Verwendung von Cookies zustimmen, bevor Du das Kontaktformular benutzen kannst.<br>
       Mehr Informationen in unserer <a href='%{link}' class='link'>Datenschutzerklärung</a>.<br>"
-      cookie_consent: "Um unsere Seite nutzerfreundlich zu gestalten und zu verbessern, speichern wir Informationen über Deine Nutzung. Das machen wir über einfache Textdateien (Cookies), die auf deinem Computer gespeichert werden. Diese Cookies sind sicher und beinhalten keine sensiblen Informationen. Wichtig: Der volle Umfang der Seite kann nur genutzt werden, wenn Du der Verwendung von Cookies zustimmst (z.B. Login, Registrierung, Kontaktaufnahme). Die Suche funktioniert auch ohne Cookies. Um die Nutzung der Webseite zu messen, nutzen wir Matomoto. Auch hierfür nutzen wir Cookies, die Du aber deaktivieren kannst. Mehr Informationen in unserer <a href='%{link}' class='link'>Datenschutzerklärung</a>."
+      cookie_consent: "Um unsere Seite nutzer*innenfreundlich zu gestalten und weiter
+      verbessern zu können, speichern wir einzelne Informationen daüber, wie
+      sie genutzt wird. Das geschieht, indem wir einfache Textdateien, auch
+      Cookies genannt, durch das Aufrufen der Seite auf deinem Computer
+      ablegen, wo sie dann gespeichert werden.
+      <br> Wichtig: Bestimmte Funktionen können nur genutzt werden, wenn Du die
+      Cookies akzeptiertst: Log-In, Registrierung, Kontaktaufnahme. Die Suche funktioniert auch ohne Cookies. Außerdem benutzen wir eine
+      Software, die Matomoto heißt, um zu wissen, wie die Besucher*innen und Nutzer*innen von speakerinnen.org die Seite nutzen: Das hilft uns auch
+      dabei, sie zu verbessern. Auch hierfür nutzen wir Cookies, die Du aber deaktivieren kannst. Mehr Informationen in unserer <a href='%{link}' class='link'>Datenschutzerklärung</a>."
       allow_cookies: "Ich stimme zu"
       description: "Unsere Kategorien"
       description_text: "Uns ist die Verteilung der Männer und Frauen auf Konferenzbühnen wichtig. Wir ermutigen Frauen, in ihrem professionellen Umfeld sichtbarer zu werden."
