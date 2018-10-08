@@ -1,5 +1,6 @@
 class FeaturedProfile < ApplicationRecord
   translates :title, :description
+  globalize_accessors :locales => [:de, :en], :attributes => [:title, :description]
 
   def self.featured_women
     featured = FeaturedProfile.find_by(public: true)
