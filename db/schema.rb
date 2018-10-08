@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_01_180333) do
+ActiveRecord::Schema.define(version: 2018_10_08_181029) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,9 +52,18 @@ ActiveRecord::Schema.define(version: 2018_10_01_180333) do
     t.index ["locale"], name: "index_category_translations_on_locale"
   end
 
-  create_table "featured_profiles", force: :cascade do |t|
+  create_table "featured_profile_translations", force: :cascade do |t|
+    t.integer "featured_profile_id", null: false
+    t.string "locale", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "title"
     t.text "description"
+    t.index ["featured_profile_id"], name: "index_featured_profile_translations_on_featured_profile_id"
+    t.index ["locale"], name: "index_featured_profile_translations_on_locale"
+  end
+
+  create_table "featured_profiles", force: :cascade do |t|
     t.string "profile_ids", default: [], array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

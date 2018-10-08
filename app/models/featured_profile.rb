@@ -1,4 +1,6 @@
 class FeaturedProfile < ApplicationRecord
+  translates :title, :description
+
   def self.featured_women
     featured = FeaturedProfile.find_by(public: true)
     if featured == nil
