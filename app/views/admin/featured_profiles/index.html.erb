@@ -1,0 +1,23 @@
+<div class="m-5">
+  <h1 class="text-center mt-5 pt-5">Administration::<%= t(:featured_profiles, scope: 'admin.dashboard.featured_profiles')%></h1>
+
+  <table class="table">
+    <thead class="bg--lightgrey">
+      <tr>
+        <th>Titel</th>
+        <th>Beschreibung</th>
+        <th>Profile Ids</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @featured_profiles.each do |featured_profile|  %>
+        <tr>
+          <td><%= featured_profile.title %></td>
+          <td><%= featured_profile.description %></td>
+          <td><%= featured_profile.profile_ids %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+</div>
