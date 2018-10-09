@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   devise_for :profiles,
               only: :omniauth_callbacks,
               controllers: {
-                omniauth_callbacks: 'omniauth_callbacks',
+                omniauth_callbacks: :omniauth_callbacks,
                 confirmations: :confirmations,
                 registrations: :registrations
               }
@@ -47,7 +47,7 @@ Rails.application.routes.draw do
     devise_for :profiles,
       skip: :omniauth_callbacks,
       controllers: {
-        omniauth_callbacks: 'omniauth_callbacks',
+        omniauth_callbacks: :omniauth_callbacks,
         confirmations: :confirmations,
         registrations: :registrations
       }
