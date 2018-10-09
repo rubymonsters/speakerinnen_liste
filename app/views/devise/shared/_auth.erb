@@ -34,6 +34,7 @@
       <div class="p-3 login-form">
         <%= simple_form_for(resource, as: resource_name, url: @target_url, html: { class: ""}) do |f| %>
 
+          <%= invisible_captcha %>
           <% if @signup && f.object.password_required? == false %>
             <%= t(:explanation_email, scope: "devise.registrations") %>
             <%= f.input :email, placeholder: t(:email, scope: "devise.registrations"),
