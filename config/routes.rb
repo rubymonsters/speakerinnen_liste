@@ -4,7 +4,8 @@ Rails.application.routes.draw do
               only: :omniauth_callbacks,
               controllers: {
                 omniauth_callbacks: 'omniauth_callbacks',
-                confirmations: :confirmations
+                confirmations: :confirmations,
+                registrations: :registrations
               }
 
   scope '(:locale)', locale: /en|de/ do
