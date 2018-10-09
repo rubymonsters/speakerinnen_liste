@@ -31,16 +31,16 @@
         <%= image_tag('logo_header.png') %>
       </div>
 
-      <div class="p-3 sans-serif login-form">
+      <div class="p-3 login-form">
         <h4><%= t(:edit_password, scope: "devise.passwords") %></h4>
 
         <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put, class: '' }) do |f| %>
 
           <%= f.hidden_field :reset_password_token %>
 
-          <%= f.input :password, placeholder: t(:new_password, scope: "devise.passwords"), autofocus: true, label: false %>
-          <%= f.input :password, placeholder: t(:password_confirmation, scope: "devise.passwords"), label: false %>
-          <%= f.submit t(:new_password, scope: "devise.passwords"), class:'btn btn-blue btn-sm mx-3 py-3' %>
+          <%= f.input :password, placeholder: t(:new_password, scope: "devise.passwords"), autofocus: true, label: false, input_html: { class: 'form-control mb-3' }  %>
+          <%= f.input :password, placeholder: t(:password_confirmation, scope: "devise.passwords"), label: false, input_html: { class: 'form-control mb-3'  %>
+          <%= f.submit t(:new_password, scope: "devise.passwords"), class:'btn btn-blue' %>
         <% end %>
       </div>
 
