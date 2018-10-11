@@ -59,7 +59,14 @@
 
           <% button = @signup ? 'signup' : 'signin' %>
 
-          <%= f.submit t(button, scope: "devise.registrations"), class:'btn btn-blue mb-3' %>
+          <!-- Make sure cookie consent is given -->
+          <% if cookies[:cookie_consent].blank? %>
+            <button type="button" class="btn btn-blue mb-3" data-toggle="modal" data-target="#contactCookie">
+              <%= t(button, scope: 'devise.registrations') %>
+            </button>
+          <% else %>
+            <%= f.submit t(button, scope: "devise.registrations"), class:'btn btn-blue mb-3' %>
+          <% end %>
 
           <%# Show the "login via twitter"" button only when not redirected from twitter" %>
           <% if devise_mapping.omniauthable? && session["devise.user_attributes"].blank? %>
