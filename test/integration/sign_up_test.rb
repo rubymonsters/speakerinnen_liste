@@ -4,6 +4,7 @@ require 'test_helper'
 
 class SignUpTest < ActionDispatch::IntegrationTest
   test 'sign up with email sends out confirmation link' do
+    page.driver.browser.set_cookie("cookie_consent=true")
     visit '/en'
     assert page.has_content?('Register')
     click_link('Register as a speaker')
@@ -16,6 +17,7 @@ class SignUpTest < ActionDispatch::IntegrationTest
   end
 
   test "sign up with email doesn't work when email is already been taken" do
+    page.driver.browser.set_cookie("cookie_consent=true")
     visit '/en'
     assert page.has_content?('Register')
     click_link('Register as a speaker')

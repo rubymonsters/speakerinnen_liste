@@ -10,6 +10,7 @@ class LoginTest < ActionDispatch::IntegrationTest
   end
 
   test 'login works with password' do
+    page.driver.browser.set_cookie("cookie_consent=true")
     visit '/de'
     assert page.has_content?('Einloggen')
     click_link('Einloggen')
@@ -22,6 +23,7 @@ class LoginTest < ActionDispatch::IntegrationTest
   end
 
   test 'login works not with wrong password' do
+    page.driver.browser.set_cookie("cookie_consent=true")
     visit '/de'
     assert page.has_content?('Einloggen')
     click_link('Einloggen')
