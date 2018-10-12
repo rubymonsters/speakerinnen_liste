@@ -142,6 +142,7 @@ RSpec.describe 'Navigation', type: :system do
     context 'registered user' do
       before do
         FactoryBot.create(:profile, email: 'ltest@exp.com', password: 'rightpassword', password_confirmation: 'rightpassword')
+        page.driver.browser.set_cookie("cookie_consent=true")
       end
 
       it 'successful login' do
