@@ -7,6 +7,7 @@ RSpec.describe 'Navigation', type: :system do
         main_topic_en: 'engineer', city_en: 'Trenton', iso_languages: ['en'])
       FactoryBot.create(:published, main_topic_en: 'technican')
       FactoryBot.create(:cat_science)
+      page.driver.browser.set_cookie("cookie_consent=true")
     end
 
     it 'startpage has header' do
