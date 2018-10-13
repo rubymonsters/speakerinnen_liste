@@ -1,8 +1,0 @@
-<div class="container bg--white py-5">
-  <h1 class="mb-3">
-  <% if @profile.blank? %>
-    <%= t(:title, scope: "contact.form") %>
-  <% end %>
-  </h1>
-  <%= render partial: 'form', locals: { url: '' } %>
-</div>
