@@ -198,6 +198,7 @@ describe 'profile navigation' do
     end
 
     it 'shows list of all speakers' do
+      save_and_open_page
       expect(page).to have_content('Ada')
       expect(page).to have_content('Lovelace')
       expect(page).to have_content('physics')

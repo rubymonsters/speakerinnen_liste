@@ -36,14 +36,14 @@ RSpec.describe 'Navigation', type: :system do
 
       expect(page).to have_css('#main-page-footer')
       expect(page).to have_link('Twitter')
-      expect(page).to have_link('Email')
+      expect(page).to have_button('Email')
       expect(page).to have_link('About us')
     end
 
     it 'viewing the contact page' do
       visit root_path
 
-      click_link 'Email'
+      click_button 'Email'
       expect(page).to have_css('form label', text: 'Your name')
       expect(page).to have_css('form label', text: 'Your email address')
       expect(page).to have_css('form label', text: 'Subject')
