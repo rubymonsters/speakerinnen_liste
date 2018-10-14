@@ -35,6 +35,7 @@ class ProfilesController < ApplicationController
                             ActsAsTaggableOn::Tag.with_published_profile.with_language(I18n.locale).most_used(200)
                           end
     @tags_all = ActsAsTaggableOn::Tag.all
+    @message = Message.new
   end
 
   def show

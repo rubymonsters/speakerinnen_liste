@@ -7,6 +7,7 @@ RSpec.describe 'Navigation', type: :system do
         main_topic_en: 'engineer', city_en: 'Trenton', iso_languages: ['en'])
       FactoryBot.create(:published, main_topic_en: 'technican')
       FactoryBot.create(:cat_science)
+      page.driver.browser.set_cookie("cookie_consent=true")
     end
 
     it 'startpage has header' do
@@ -35,14 +36,14 @@ RSpec.describe 'Navigation', type: :system do
 
       expect(page).to have_css('#main-page-footer')
       expect(page).to have_link('Twitter')
-      expect(page).to have_link('Email')
+      expect(page).to have_button('Email')
       expect(page).to have_link('About us')
     end
 
     it 'viewing the contact page' do
       visit root_path
 
-      click_link 'Email'
+      click_button 'Email'
       expect(page).to have_css('form label', text: 'Your name')
       expect(page).to have_css('form label', text: 'Your email address')
       expect(page).to have_css('form label', text: 'Subject')
@@ -142,6 +143,7 @@ RSpec.describe 'Navigation', type: :system do
     context 'registered user' do
       before do
         FactoryBot.create(:profile, email: 'ltest@exp.com', password: 'rightpassword', password_confirmation: 'rightpassword')
+        page.driver.browser.set_cookie("cookie_consent=true")
       end
 
       it 'successful login' do

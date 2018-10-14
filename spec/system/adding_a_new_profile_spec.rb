@@ -4,6 +4,7 @@ describe 'profile adding' do
   it 'allows to create a profile with languages' do
     # capyara visit method set the locale to :en
     visit root_path
+    page.driver.browser.set_cookie("cookie_consent=true")
 
     click_link I18n.t(:signup, scope: 'layouts.application')
     fill_in 'E-Mail', with: 'test@test.de'
