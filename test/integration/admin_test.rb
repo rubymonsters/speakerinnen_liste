@@ -10,6 +10,7 @@ class AdminTest < ActionDispatch::IntegrationTest
   end
 
   test 'visit admin page with right credentials' do
+    page.driver.browser.set_cookie("cookie_consent=true")
     visit '/de'
     assert page.has_content?('Einloggen')
     click_link('Einloggen')
@@ -23,6 +24,7 @@ class AdminTest < ActionDispatch::IntegrationTest
   end
 
   test 'see on admin profile page the correct table' do
+    page.driver.browser.set_cookie("cookie_consent=true")
     visit '/de'
     click_link('Einloggen')
     fill_in('profile[email]', with: 'jane_admin@server.org')
