@@ -84,7 +84,13 @@
           <% end %>
 
           <% if !@signup && devise_mapping.recoverable? && controller_name != 'passwords' %>
+            <% if cookies[:cookie_consent].blank? %>
+              <button type="button" class="btn btn-blue mb-3" data-toggle="modal" data-target="#contactCookie">
+                <%= t(:forgot_password, scope: "devise.registrations") %>
+              </button>
+            <% else %>
             <%= link_to t(:forgot_password, scope: "devise.registrations"), new_password_path(resource_name), class:"mb-3" %>
+            <% end %>
           <% end %>
 
           <div>
