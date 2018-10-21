@@ -1,5 +1,5 @@
-<!-- Modal Cookie -->
-<div class="modal fade" id="contactCookie" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- Modal Contact -->
+<div class="modal fade" id="contactHint" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -11,7 +11,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <p><%= t(:cookie_contact, scope: 'pages.home', link: privacy_path).html_safe %>
+        <p><%= t(:contact_modal, scope: 'pages.home', link: privacy_path).html_safe %>
         <%= link_to(
           t(:allow_cookies, scope: 'pages.home'),
           url_for(params.permit!.merge(allow_cookies: true)),

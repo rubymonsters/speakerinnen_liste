@@ -61,21 +61,17 @@
 
           <!-- Make sure cookie consent is given -->
           <% if cookies[:cookie_consent].blank? %>
-            <button type="button" class="btn btn-blue mb-3" data-toggle="modal" data-target="#contactCookie">
-              <%= t(button, scope: 'devise.registrations') %>
-            </button>
+            <%= link_to(t(button, scope: "devise.registrations"), "#link", "data-role" => "button", "data-toggle" => "modal", "data-target" => "#authModal", class: 'btn btn-blue mb-3') %>
           <% else %>
             <%= f.submit t(button, scope: "devise.registrations"), class:'btn btn-blue mb-3' %>
           <% end %>
 
           <!-- Show the "login via twitter"" button only when not redirected from twitter" -->
-          <!-- Make sure cookie consent is given -->
-          <% if cookies[:cookie_consent].blank? %>
-            <button type="button" class="btn btn-blue mb-3" data-toggle="modal" data-target="#contactCookie">
-              <%= t(button+'_via', scope: "devise.registrations") %>
-            </button>
-          <% else %>
-            <% if devise_mapping.omniauthable? && session["devise.user_attributes"].blank? %>
+          <% if devise_mapping.omniauthable? && session["devise.user_attributes"].blank? %>
+            <!-- Make sure cookie consent is given -->
+            <% if cookies[:cookie_consent].blank? %>
+              <%= link_to(t(button+'_via', scope: "devise.registrations"), "#link", "data-role" => "button", "data-toggle" => "modal", "data-target" => "#authModal", class: 'btn btn-blue mb-3' ) %>
+            <% else %>
               <% Profile.omniauth_providers.each do |provider| %>
                 <%= link_to t(button+'_via', scope: "devise.registrations"), omniauth_authorize_path(:profile, provider),
                 class: 'btn btn-blue mb-3' %>
@@ -85,11 +81,9 @@
 
           <% if !@signup && devise_mapping.recoverable? && controller_name != 'passwords' %>
             <% if cookies[:cookie_consent].blank? %>
-              <button type="button" class="btn btn-blue mb-3" data-toggle="modal" data-target="#contactCookie">
-                <%= t(:forgot_password, scope: "devise.registrations") %>
-              </button>
+              <%= link_to(t(:forgot_password, scope: "devise.registrations"), "#link", "data-role" => "button", "data-toggle" => "modal", "data-target" => "#authModal", class: "mb-3" ) %>
             <% else %>
-            <%= link_to t(:forgot_password, scope: "devise.registrations"), new_password_path(resource_name), class:"mb-3" %>
+              <%= link_to t(:forgot_password, scope: "devise.registrations"), new_password_path(resource_name), class:"mb-3" %>
             <% end %>
           <% end %>
 
@@ -107,3 +101,8 @@
     </div>
   </div>
 </div>
+<% if cookies[:cookie_consent].blank? %>
+  <script>
+    $('#authModal').modal('show')
+  </script>
+<% end %>
