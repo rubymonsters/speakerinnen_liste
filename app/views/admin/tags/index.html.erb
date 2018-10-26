@@ -20,24 +20,34 @@
     <% @tags.each do |tag| %>
       <tr>
         <td>
-          <b><%= link_to tag.name, edit_admin_tag_path(tag.id, page: params[:page]),
-          data: { toggle: 'tooltip', placement: 'left' }, title: 'Edit' %></b>
-          <%= tag.taggings_count %>
+          <b> <%= tag.name %> </b>
         </td>
         <td>
-          <%= simple_form_for tag, url: admin_tag_path(tag, @filter_params), html: { class: "locale_language #{tag.name}" } do |f| %>
-            <% LocaleLanguage.all.each do |language| %>
-              <div id=<%="#{language.iso_code}_#{tag.id}"%> >
-                <%= check_box_tag 'languages[]', language.iso_code,
-                  tag.locale_languages.map(&:iso_code).include?("#{language.iso_code}"),
-                  id: tag.name + "_" + language.iso_code %>
-                <%= label_tag t(language.iso_code, scope: 'i18n.language') %>
-              </div>
-            <% end %>
-            <%= f.button :submit, t(:save, scope: 'general'), class:'btn btn-blue btn-sm' %>
+          <% tag.categories.pluck(:name).each do |name| %>
+            <%= name %> <br/>
           <% end %>
         </td>
-        <% @categories.each do |category| %>
+        <td>
+          <% tag.locale_languages.pluck(:iso_code).each do |lang| %>
+            <%= t(lang, scope: 'i18n.language') %> <br/>
+          <% end %>
+        </td>
+
+
+
+        <!-- <%= simple_form_for tag, url: admin_tag_path(tag, @filter_params), html: { class: "locale_language #{tag.name}" } do |f| %>
+          <% LocaleLanguage.all.each do |language| %>
+            <div id=<%="#{language.iso_code}_#{tag.id}"%> >
+              <%= check_box_tag 'languages[]', language.iso_code,
+                tag.locale_languages.map(&:iso_code).include?("#{language.iso_code}"),
+                id: tag.name + "_" + language.iso_code %>
+              <%= label_tag t(language.iso_code, scope: 'i18n.language') %>
+            </div>
+          <% end %>
+          <%= f.button :submit, t(:save, scope: 'general'), class:'btn btn-blue btn-sm' %>
+        <% end %> -->
+
+        <!-- <% @categories.each do |category| %>
           <td>
             <% if tag.categories.pluck(:id).include?(category.id) %>
               <%= link_to category.name, remove_category_admin_tag_path(tag,
@@ -49,12 +59,19 @@
               uncategorized: params[:uncategorized]), method: :post %>
             <% end %>
           </td>
-        <% end %>
-          <td>
-           <%= link_to ('<i class="fa fa-trash-o">&nbsp;</i>').html_safe, admin_tag_path(tag.id),
-           method: :delete, data: { confirm: 'Are you sure?',toggle: 'tooltip', placement: 'left' },
-            class: 'btn btn-danger btn-sm', title: 'Delete'%>
-          </td>
+        <% end %> -->
+        <td>
+          <%= tag.taggings_count %>
+        </td>
+        <td>
+          <%= link_to '<i class="fa fa-pencil">&nbsp;</i>'.html_safe, edit_admin_tag_path(tag.id, page: params[:page]),
+          data: { toggle: 'tooltip', placement: 'left' }, title: 'Edit' %>
+        </td>
+        <td>
+         <%= link_to ('<i class="fa fa-trash-o">&nbsp;</i>').html_safe, admin_tag_path(tag.id),
+         method: :delete, data: { confirm: 'Are you sure?',toggle: 'tooltip', placement: 'left' },
+          class: 'btn btn-danger btn-sm', title: 'Delete'%>
+        </td>
       </tr>
     <% end %>
   </table>
