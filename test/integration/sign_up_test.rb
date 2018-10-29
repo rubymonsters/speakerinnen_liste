@@ -39,6 +39,7 @@ class SignUpTest < ActionDispatch::IntegrationTest
       }
     )
 
+    page.driver.browser.set_cookie("cookie_consent=true")
     visit '/en'
     click_link('Register as a speaker')
     # click_link('\Or sign up with Twitter')
