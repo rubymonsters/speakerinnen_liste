@@ -122,7 +122,7 @@
 
     <% if current_profile != @profile %>
         <button type="button" class="btn btn-blue btn-block" data-toggle="modal"
-        data-target=<%= cookies[:cookie_consent].blank? ? "#contactCookie" : "#contactModal" %>>
+        data-target=<%= cookies[:cookie_consent].blank? ? "#contactHint" : "#contactModal" %>>
           <i class="fa fa-envelope-o"></i>&nbsp;
           <%= t(:contact, scope: 'profiles.show') %>
         </button>
