@@ -77,9 +77,9 @@ de:
       all_categories: "Kategorien und Themen >>"
       all_speakers: "Alle Speakerinnen* >>"
       hint: "Hinweis"
-      auth_modal: "Du musst der Verwendung von Cookies zustimmen, bevor Du Dich einloggen oder anmelden kannst.<br>
+      auth_modal: "Du musst der <b>Verwendung von Cookies zustimmen</b>, bevor Du Dich einloggen oder anmelden kannst.<br>
       Mehr Informationen in unserer <a href='%{link}' class='link'>Datenschutzerklärung</a>.<br>"
-      contact_modal: "Du musst der Verwendung von Cookies zustimmen, bevor Du das Kontaktformular benutzen kannst.<br>
+      contact_modal: "Du musst der <b>Verwendung von Cookies zustimmen</b>, bevor Du das Kontaktformular benutzen kannst.<br>
       Mehr Informationen in unserer <a href='%{link}' class='link'>Datenschutzerklärung</a>.<br>"
       cookie_consent: "Um unsere Seite nutzer*innenfreundlich zu gestalten und weiter
       verbessern zu können, speichern wir einzelne Informationen daüber, wie
