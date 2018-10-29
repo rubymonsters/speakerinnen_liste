@@ -10,6 +10,17 @@ describe 'contact profile' do
 
       find("button[data-target='#contactHint']")
     end
+    it 'fill the contact form correct and not get a success message' do
+      visit profile_path(id: ada.id)
+
+      fill_in I18n.t('.name', scope: 'contact.form'), with: 'Ada'
+      fill_in I18n.t('.email', scope: 'contact.form'), with: 'Ada@email.de'
+      fill_in I18n.t('.subject', scope: 'contact.form'), with: 'Need a speakerin'
+      fill_in I18n.t('.body', scope: 'contact.form'), with: 'The conference ABC would like to invite you as a speakerin'
+      click_button I18n.t('.send', scope: 'contact.form')
+
+      expect(page).to_not have_content(I18n.t(:notice, scope: 'contact.form'))
+    end
   end
 
   context "cookie consent is set" do
