@@ -1,6 +1,9 @@
 <div class="m-5">
   <h1 class="text-center mt-5 pt-5">Administration::<%= t(:featured_profiles, scope: 'admin.dashboard.featured_profiles')%></h1>
 
+  <%= link_to ('<i class="fa fa-plus-circle">&nbsp;</i>' + t(:add, scope: "general")).html_safe,
+  new_admin_featured_profile_path, class: "btn btn-blue btn-sm my-5" %>
+
   <table class="table">
     <thead class="bg--lightgrey">
       <tr>
