@@ -10,6 +10,7 @@ describe 'contact profile' do
 
       find("button[data-target='#contactHint']")
     end
+
     it 'fill the contact form correct and not get a success message' do
       visit profile_path(id: ada.id)
 
@@ -26,16 +27,15 @@ describe 'contact profile' do
   context "cookie consent is set" do
 
     it 'should open contact modal when cookie consent is set' do
-      page.driver.browser.set_cookie("cookie_consent=true")
       visit profile_path(id: ada.id)
-
+      find_link(class: "cookie-consent").click
       find("button[data-target='#contactModal']")
     end
 
     it 'fill the contact form correct and get a success message' do
-      page.driver.browser.set_cookie("cookie_consent=true")
       visit profile_path(id: ada.id)
 
+      find_link(class: "cookie-consent").click
       find("button[data-target='#contactModal']").click
       fill_in I18n.t('.name', scope: 'contact.form'), with: 'Ada'
       fill_in I18n.t('.email', scope: 'contact.form'), with: 'Ada@email.de'
@@ -48,6 +48,7 @@ describe 'contact profile' do
 
     it 'fills the contact form only with email' do
       visit profile_path(id: ada.id)
+      find_link(class: "cookie-consent").click
 
       fill_in I18n.t('.email', scope: 'contact.form'), with: 'Ada@email.de'
       click_button I18n.t('.send', scope: 'contact.form')
