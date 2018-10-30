@@ -28,6 +28,12 @@ FactoryBot.define do
     end
   end
 
+  factory :featured_profile do
+    title 'gaming'
+    profile_ids [1]
+    self.public true
+  end
+
   factory :category do
     factory :cat_science do
       name 'Science'
