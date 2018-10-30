@@ -1,0 +1,2 @@
+module FeaturedProfilesHelper
+end

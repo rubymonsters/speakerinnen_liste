@@ -22,6 +22,7 @@ Rails.application.routes.draw do
         end
       end
       resources :categories
+      resources :featured_profiles
       resources :profiles do
         resources :medialinks do
           collection { post :sort }
