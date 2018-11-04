@@ -51,7 +51,6 @@ de:
       tags:
         tags: "Tags"
         current_tagname: "Bisheriger Name des Tags:"
-        new_tagname: "Trage den neuen Namen des Tags ein: "
         tags_of: " von "
         tags_here_are: "Du siehst "
         tags_search: "Suche nach einem bestimmtem Tag:"
@@ -61,6 +60,10 @@ de:
         languages: "Sprachen"
         no_langage: "ohne Sprache"
         show_all_tags: "Alle Tags"
+        edit:
+          new_tagname: "Trage den neuen Namen des Tags ein: "
+          select_languages: "Sprache(n) des Tags auswählen: "
+          select_categories: "Kategorie(n) des Tags auswählen: "
       medialink:
         show: "Zeige alle Referenzen"
         url: "URL:"
