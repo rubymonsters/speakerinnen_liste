@@ -53,7 +53,7 @@
   <a id="categories_anchor"></a>
 
   <div class="container">
-    <h1 class="box__bg"><%= t(:description, scope: 'pages.home') %></h1>
+    <h1 class="box__bg"><%= t(:category_filter, scope: 'pages.home') %></h1>
     <h4 class="border-vertical d-block box__bg mb-4">
       <%= t(:description_text, scope: 'pages.home') %>
     </h4>
@@ -63,6 +63,7 @@
   </div>
 
   <div class="container">
+    <h1 class="box__bg"><%= t(:tag_filter, scope: 'pages.home') %></h1>
     <div class="row">
       <div class="col">
         <% ActsAsTaggableOn::Tag.most_used(100).each do |tag| %>
@@ -70,13 +71,13 @@
         <% end %>
       </div>
     </div>
-    <div class="row">
+    <div class="row mt-3">
       <div class="col">
         <div class="form-group">
           <%= form_tag(profiles_path, :method => "get") do %>
-            <%= text_area_tag :tag_search, params[:tag_search], id: "taginput", class: "form-control", rows: 3 %>
+            <%= text_area_tag :tag_search, params[:tag_search], id: "taginput", class: "form-control mb-3", rows: 3 %>
             <%= submit_tag "Search", class: "btn btn-primary" %>
-            <span class="btn btn-primary" id="clear">Clear</span>
+            <span class="btn btn-primary" id="clear"><i class="fa fa-times pr-1"></i>Clear</span>
           <% end %>
         </div>
       </div>
