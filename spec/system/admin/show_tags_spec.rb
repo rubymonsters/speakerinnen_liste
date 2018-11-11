@@ -4,7 +4,6 @@ describe 'show locale_language' do
   let!(:admin) { create(:admin) }
   let!(:locale_language_de) { create(:locale_language_de) }
   let!(:locale_language_en) { create(:locale_language_en) }
-  let!(:tag_both_lang) { create(:tag_social_media, locale_languages: [locale_language_en, locale_language_de]) }
   let!(:tag_en) { create(:tag_physics, locale_languages: [locale_language_en]) }
   let!(:tag_with_slash_en) do
     create(:tag, name: 'AC/DC', locale_languages: [locale_language_en])
@@ -16,17 +15,15 @@ describe 'show locale_language' do
     click_link I18n.t(:tags, scope: 'admin.dashboard.tags')
   end
 
-  it 'viewing edit tags in admin area' do
+  it 'views edit tags in admin area' do
     expect(page).to have_text('Administration::Tags')
     expect(page).to have_text('Search for tag')
     expect(page).to have_button('Filter')
   end
 
-  it 'correct locale language are set to the tags' do
+  it 'presents correct locale language for a tags' do
     expect(page).to have_content('AC/DC')
-    expect(page).to_not have_checked_field('physics_de')
-    expect(page).to have_checked_field('physics_en')
-    expect(page).to have_checked_field('social media_en')
-    expect(page).to have_checked_field('social media_de')
+    expect(page.html).to include('English<br/>')
+    expect(page.html).to_not include('German<br/>')
   end
 end

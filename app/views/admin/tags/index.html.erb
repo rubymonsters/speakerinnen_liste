@@ -30,25 +30,9 @@
         </td>
         <td>
           <% tag.locale_languages.pluck(:iso_code).each do |lang| %>
-            <%= t(lang, scope: 'i18n.language') %> <br/>
+            <%= t(lang, scope: 'i18n.language') %><br/>
           <% end %>
         </td>
-
-
-
-        <!-- <% @categories.each do |category| %>
-          <td>
-            <% if tag.categories.pluck(:id).include?(category.id) %>
-              <%= link_to category.name, remove_category_admin_tag_path(tag,
-              category_id: category.id, page: params[:page], q: params[:q],
-              uncategorized: params[:uncategorized]), method: :post, class: 'color-white bg-primary px-1'  %>
-            <% else %>
-              <%= link_to category.name, set_category_admin_tag_path(tag,
-              category_id: category.id, page: params[:page], q: params[:q],
-              uncategorized: params[:uncategorized]), method: :post %>
-            <% end %>
-          </td>
-        <% end %> -->
         <td>
           <%= tag.taggings_count %>
         </td>

@@ -27,7 +27,7 @@
     <p class="mt-5"><%= t(:select_categories, scope: "admin.dashboard.tags.edit")%>
       <% @categories.each do |category| %>
         <div id=<%="#{category.id}_#{@tag.id}"%> >
-          <%= check_box_tag 'categories[]',
+          <%= check_box_tag 'tag[categories][]',
               category.id,
               @tag.categories.pluck(:id).include?(category.id),
               id: "#{@tag.id}_#{category.id}" %>

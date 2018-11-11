@@ -12,15 +12,18 @@ describe 'locale_language' do
     sign_in admin
     visit admin_root_path
     click_link I18n.t(:tags, scope: 'admin.dashboard.tags')
+    click_link tag_chemie.name
   end
 
   it 'adding locale_language to tags' do
-    expect(page).to have_text('chemie')
-    expect(page).to_not have_checked_field('chemie_en')
-    expect(page).to_not have_checked_field('chemie_de')
-    check 'chemie_en'
+    expect(page).to have_selector("input[value='chemie']")
+    expect(page).to_not have_checked_field("#{tag_chemie.id}_en")
+    expect(page).to_not have_checked_field("#{tag_chemie.id}_de")
+    puts page.html
+    check "#{tag_chemie.id}_en"
     click_button 'Save'
-    expect(page).to have_checked_field('chemie_en')
+    expect(page.html).to include('English<br/>')
+    expect(page.html).to_not include('German<br/>')
     expect(tag_chemie.locale_languages.first.iso_code).to eq('en')
   end
 end

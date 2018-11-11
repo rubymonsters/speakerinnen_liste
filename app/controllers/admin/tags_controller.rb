@@ -15,12 +15,13 @@ class Admin::TagsController < Admin::BaseController
     if existing_tag = tag_name_exists?
       existing_tag.merge(@tag)
       set_tag_languages(params[:tag][:languages])
-      set_tag_categories(params[:categories])
+      set_tag_categories(params[:tag][:categories])
       redirect_to admin_tags_path(filter_params_from_session.merge(anchor: 'top-anchor')),
                   notice: "'#{@tag.name}' was merged with the tag '#{existing_tag.name}' ."
-    elsif @tag.update_attributes(tag_params)
+    elsif
+      @tag.update_attributes(tag_params)
       set_tag_languages(params[:tag][:languages])
-      set_tag_categories(params[:categories])
+      set_tag_categories(params[:tag][:categories])
       redirect_to admin_tags_path(filter_params_from_session.merge(anchor: 'top-anchor')),
                   notice: "'#{@tag.name}' was updated."
     else
@@ -51,19 +52,15 @@ class Admin::TagsController < Admin::BaseController
     @tag = ActsAsTaggableOn::Tag.find(params[:id])
   end
 
+  def tag_name_exists?
+    ActsAsTaggableOn::Tag.where(name: params[:tag][:name]).where.not(id: params[:id]).first if params[:tag].present? && params[:tag][:name].present? && params[:id].present?
+  end
+
   def set_tag_languages(params_languages)
     @tag.locale_languages.delete_all
     params_languages&.each do |iso_string|
       @tag.locale_languages << LocaleLanguage.find_by(iso_code: iso_string)
     end
-  end
-
-  def tag_language_update?
-    params[:languages].present? || params[:tag].blank?
-  end
-
-  def tag_name_exists?
-    ActsAsTaggableOn::Tag.where(name: params[:tag][:name]).where.not(id: params[:id]).first if params[:tag].present? && params[:tag][:name].present? && params[:id].present?
   end
 
   def set_tag_categories(params_categories)
@@ -79,6 +76,7 @@ class Admin::TagsController < Admin::BaseController
       :tag,
       :name,
       :languages,
+      :categories,
       locale_languages: %i[id iso_code _destroy]
     )
   end
