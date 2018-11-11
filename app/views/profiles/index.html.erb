@@ -31,7 +31,8 @@
 
   <% elsif params[:tag_search] %> <%# when searching %>
     <h1 class="display-4 text-center pt-5"><%= t(:speaker_headline, scope: 'pages.home.speakers') %></h1>
-    <h4 class="text-center pb-5 pt-3"><%= t(:all_tagged_speakerinnen, scope: 'profiles.index', profiles_tagged_count: @profiles_tagged_count, tags: params[:tag_search]).html_safe %></h4>
+    <h4 class="text-center pb-5 pt-3"><%= t(:all_tagged_speakerinnen, scope: 'profiles.index', count: @profiles_tagged_count) + t(:tag_filter, scope: 'profiles.index', count: @tags.count, tags: params[:tag_search]).html_safe %></h4>
+
     <% ActsAsTaggableOn::Tag.most_used(100).each do |tag| %>
       <button class="btn btn-secondary btn-sm border rounded m-1 select-tag <%= "disabled" if params[:tag_search].include?(tag.name) %>" ><%= tag.name  %></button>
     <% end %>

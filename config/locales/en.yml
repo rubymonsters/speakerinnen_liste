@@ -261,7 +261,14 @@ en:
       country_search_hint: "(Beware: A lot of speakers do not have a specified country.)"
       language: "Language"
       all_speakerinnen: "We are already %{profiles_count}!"
-      all_tagged_speakerinnen: "There are %{profiles_tagged_count} Speakerinnen for the topics: %{tags}!" 
+      all_tagged_speakerinnen: {
+        one: "There is one speakerin ",
+        other: "There are %{count} speakerinnen "
+      }
+      tag_filter: {
+        one: "for the topic: %{tags}.",
+        other: "fot the topics: %{tags}."
+      }
       show_more: "More >>"
       show_less: "Less >>"
     new:
