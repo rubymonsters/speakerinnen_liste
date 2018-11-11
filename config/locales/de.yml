@@ -268,6 +268,7 @@ de:
       country_search_hint: "(Achtung: Viele Speakerinnen haben kein Land eingetragen.)"
       language: "Sprache"
       all_speakerinnen: "Wir sind schon %{profiles_count}!"
+      all_tagged_speakerinnen: "Es gibt %{profiles_tagged_count} Speakerinnen zu den Themen: %{tags}!" 
       show_more: "Mehr >>"
       show_less: "Weniger >>"
     new:

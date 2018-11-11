@@ -18,7 +18,7 @@
       <%= t(:profiles_topics, scope: 'search', profiles_count: @profiles.total_count, topics_name: params[:topic]).html_safe %>
     </h5>
 
-  <% elsif params[:search] %> <%# if in search: %>
+  <% elsif params[:search] %> <%# when normal search: %>
 
       <%= render partial: 'shared/search_filter',
         locals: {
@@ -28,6 +28,37 @@
           aggs_cities: @aggs_cities
         }
       %>
+
+  <% elsif params[:tag_search] %> <%# when searching %>
+    <h1 class="display-4 text-center pt-5"><%= t(:speaker_headline, scope: 'pages.home.speakers') %></h1>
+    <h4 class="text-center pb-5 pt-3"><%= t(:all_tagged_speakerinnen, scope: 'profiles.index', profiles_tagged_count: @profiles_tagged_count, tags: params[:tag_search]).html_safe %></h4>
+    <% ActsAsTaggableOn::Tag.most_used(100).each do |tag| %>
+      <button class="btn btn-secondary btn-sm border rounded m-1 select-tag <%= "disabled" if params[:tag_search].include?(tag.name) %>" ><%= tag.name  %></button>
+    <% end %>
+    <div class="form-group">
+      <%= form_tag(profiles_path, :method => "get") do %>
+        <%= text_area_tag :tag_search, params[:tag_search], id: "taginput", class: "form-control", rows: 3 %>
+        <%= submit_tag "Search", class: "btn btn-primary" %>
+        <span class="btn btn-primary" id="clear">Clear</span>
+      <% end %>
+    </div>
+    <script>
+      $( ".select-tag" ).click(function() {
+        $(this).addClass( "disabled" );
+        var oldtags = $( "#taginput" ).val();
+        var newtag = $( this ).text();
+        var connector = ", "
+        if(oldtags.length === 0) { var connector = ""};
+        $( "#taginput" ).val( oldtags + connector + newtag );
+      });
+      $( "#clear" ).click(function() {
+        $( "#taginput" ).val('');
+        $(".select-tag").removeClass( "disabled" );
+      });
+    </script>
+
+    <%= render partial: 'shared/search_form' %>
+    <%= t(:search_categories_html, scope: 'search', root_path: root_path) %>
 
   <% else %>
 
