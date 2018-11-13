@@ -26,12 +26,34 @@ describe 'profile search' do
                                       main_topic_de: 'x-ray', main_topic_en: 'Röntgen',
                                       email: 'maria@example.com')
   end
-  let!(:profile2) { create(:published, firstname: 'Christiane', lastname: 'König', city: 'Heidelberg', languages: 'German') }
+  let!(:profile2) { create(:published, firstname: 'Christiane', lastname: 'König', city: 'Heidelberg') }
   let!(:profile3) { create(:published, firstname: 'Maren ', lastname: 'Meier') }
 
   let!(:profile_not_matched) { create(:published, firstname: 'Angela', city: 'New York', twitter: '@adavis') }
 
-  describe 'public search', elasticsearch: true do
+  describe 'tag filter', js: true do
+    it 'finds profiles with the selected tag' do
+      visit root_path
+      click_button "physicist"
+      click_button "Filter"
+
+      expect(page).to have_content('Maria')
+    end
+
+    it 'finds profiles with the selected tags' do
+      visit root_path
+      click_button "physicist"
+      click_button "computer"
+      click_button "Filter"
+
+      expect(page).to have_content('Maria')
+      expect(page).to have_content('Ada')
+      expect(page).to_not have_content('Angela')
+    end
+
+  end
+
+  # describe 'public search', elasticsearch: true do
     # it 'displays profiles that are a partial match' do
     # visit root_path
     # fill_in 'search', with: 'Ada Lovelace'
@@ -62,7 +84,7 @@ describe 'profile search' do
     #       click_button I18n.t(:search, scope: 'pages.home.search')
     #       expect(page).to have_content('Meier')
     #     end
-  end
+  # end
 
   # describe 'search in admin area' do
   #   before do
