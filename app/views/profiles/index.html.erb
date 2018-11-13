@@ -39,7 +39,7 @@
     <div class="form-group">
       <%= form_tag(profiles_path, :method => "get") do %>
         <%= text_area_tag :tag_search, params[:tag_search], id: "taginput", class: "form-control", rows: 3 %>
-        <%= submit_tag "Search", class: "btn btn-primary" %>
+        <%= submit_tag "Filter", class: "btn btn-primary" %>
         <span class="btn btn-primary" id="clear">Clear</span>
       <% end %>
     </div>
