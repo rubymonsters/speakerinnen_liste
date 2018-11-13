@@ -27,7 +27,7 @@ class ProfilesController < ApplicationController
       @aggs_countries = @aggs[:country][:buckets]
     elsif params[:tag_search]
       @tags = params[:tag_search].split(/\s*,\s*/)
-      @profiles = profiles_for_tag_filter
+      @profiles = Profile.is_published.has_tags(@tags).page(params[:page]).per(24)
       @profiles_tagged_count = @profiles.total_count
     else
       @profiles = profiles_for_index
@@ -215,9 +215,4 @@ class ProfilesController < ApplicationController
            .records
   end
 
-  def profiles_for_tag_filter
-    Profile.is_published
-            .tagged_with(@tags, :any => true)
-            .page(params[:page]).per(24)
-  end
 end

@@ -67,10 +67,10 @@ describe 'profile', type: :model do
     end
 
     it 'saves to iso_languages without the empty string in the array' do
-      p = FactoryBot.build(:profile, iso_languages: ['en', 'es', ''])
-      p.save!
-      p.reload
-      expect(p.iso_languages).to eq %w[en es]
+      profile = FactoryBot.build(:profile, iso_languages: ['en', 'es', ''])
+      profile.save!
+      profile.reload
+      expect(profile.iso_languages).to eq %w[en es]
     end
 
     context 'language string only valid when correct format' do
@@ -93,6 +93,18 @@ describe 'profile', type: :model do
         profile.valid?
         expect(profile.errors[:iso_languages].size).to eq(0)
       end
+    end
+  end
+
+  describe 'profile tag filter' do
+    let!(:ruby_expert) { create(:published, topic_list: %w[ruby algorithms]) }
+    let!(:java_expert) { create(:published, topic_list: %w[java]) }
+    let!(:c_expert) { create(:published, topic_list: %w[c]) }
+
+    it 'only shows the profile which is tagged' do
+      expect(Profile.has_tags("ruby").first).to eq ruby_expert
+      expect(Profile.has_tags("ruby").count).to eq 1
+      expect(Profile.has_tags("ruby, java").count).to eq 2
     end
   end
 
