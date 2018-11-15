@@ -22,6 +22,8 @@
         <td>
           <b><%= link_to tag.name, edit_admin_tag_path(tag.id, page: params[:page]),
           data: { toggle: 'tooltip', placement: 'left' }, title: 'Edit' %></b>
+          <%= link_to '<i class="fa fa-pencil">&nbsp;</i>'.html_safe, edit_admin_tag_path(tag.id, page: params[:page]),
+          data: { toggle: 'tooltip', placement: 'left' }, title: 'Edit' %>
         </td>
         <td>
           <% tag.categories.pluck(:name).each do |name| %>
@@ -34,11 +36,10 @@
           <% end %>
         </td>
         <td>
-          <%= tag.taggings_count %>
-        </td>
-        <td>
-          <%= link_to '<i class="fa fa-pencil">&nbsp;</i>'.html_safe, edit_admin_tag_path(tag.id, page: params[:page]),
-          data: { toggle: 'tooltip', placement: 'left' }, title: 'Edit' %>
+          <% tag.taggings.each do |tagging| %>
+            <%= link_to tagging.taggable.name_or_email, admin_profile_path(tagging.taggable),
+                html_options = { title: t(:show, scope: 'admin.dashboard.profiles.edit') } %><br/>
+          <% end %>
         </td>
         <td>
          <%= link_to ('<i class="fa fa-trash-o">&nbsp;</i>').html_safe, admin_tag_path(tag.id),
