@@ -2,7 +2,7 @@
 
 source 'https://rubygems.org'
 ruby '2.3.1'
-gem 'rails', '5.2.0'
+gem 'rails', '5.2.1'
 
 # Needed for Javascript Runtime
 # gem 'therubyracer'
