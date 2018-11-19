@@ -1,16 +1,25 @@
 <div class="container">
   <% if params[:category_id] %> <%# when in categories scope %>
+    <div class="row">
+      <%= render partial: "shared/categories", object: @categories %>
+    </div>
 
-    <h5 class="text-center py-5">
-      <%= t(
-        :category,
-        scope: 'profiles',
-        category_name: @category.name,
-        profiles_count: @profiles.total_count,
-        topics_count: @tags_in_category_published.size
-      ).html_safe %>
-    </h5>
-    <%= render partial: 'tag_cloud'  %>
+    <% @tags_in_category_200.each do |tag| %>
+      <button class="btn btn-secondary btn-sm border rounded m-1 select-tag <%= "disabled" if params[:tag_search] && params[:tag_search].include?(tag.name) %> " ><%= tag.name  %></button>
+    <% end %>
+    <div class="form-group">
+      <%= form_tag(profiles_path, :method => "get") do %>
+        <%= text_area_tag :tag_search, params[:tag_search], id: "taginput", class: "form-control", rows: 3 %>
+        <%= hidden_field_tag :category_id , params[:category_id] %>
+        <%= submit_tag t(:tag_filter, scope: 'pages.home'), class: "btn btn-primary" %>
+        <span class="btn btn-primary" id="clear">Clear</span>
+      <% end %>
+    </div>
+    <h4 class="text-center py-5">
+      <%= t(:category, scope: 'profiles', category_name: @category.name, profiles_count: @profiles.total_count).html_safe %>
+      <%= params[:tag_search] ? t(:tag_filter, scope: 'profiles.index', count: @tags.count, tags: params[:tag_search]).html_safe :
+      t(:tags_count, scope: 'profiles', topics_count: @tags_in_category_published.size).html_safe %>
+    </h4>
 
   <% elsif params[:topic] %> <%# when in topic scope %>
 
@@ -43,20 +52,6 @@
         <span class="btn btn-primary" id="clear">Clear</span>
       <% end %>
     </div>
-    <script>
-      $( ".select-tag" ).click(function() {
-        $(this).addClass( "disabled" );
-        var oldtags = $( "#taginput" ).val();
-        var newtag = $( this ).text();
-        var connector = ", "
-        if(oldtags.length === 0) { var connector = ""};
-        $( "#taginput" ).val( oldtags + connector + newtag );
-      });
-      $( "#clear" ).click(function() {
-        $( "#taginput" ).val('');
-        $(".select-tag").removeClass( "disabled" );
-      });
-    </script>
 
     <%= render partial: 'shared/search_form' %>
     <%= t(:search_categories_html, scope: 'search', root_path: root_path) %>
@@ -91,7 +86,21 @@
 </div>
 
 <script type="text/javascript" charset="utf-8">
-  // ToDo: refactor code, make it more DRY
+  // tag filter
+  $( ".select-tag" ).click(function() {
+    $(this).addClass( "disabled" );
+    var oldtags = $( "#taginput" ).val();
+    var newtag = $( this ).text();
+    var connector = ", "
+    if(oldtags.length === 0) { var connector = ""};
+    $( "#taginput" ).val( oldtags + connector + newtag );
+  });
+  $( "#clear" ).click(function() {
+    $( "#taginput" ).val('');
+    $(".select-tag").removeClass( "disabled" );
+  });
+
+  // elasticsearch search filter
   $('.expander_countries').click(function(){
     if ( $('.rest_facet_countries').css('display') == 'none' ) {
       $('.rest_facet_countries').css('display','block');

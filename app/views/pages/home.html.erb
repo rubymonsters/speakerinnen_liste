@@ -55,7 +55,7 @@
     <div class="row">
       <div class="col">
         <% ActsAsTaggableOn::Tag.most_used(100).each do |tag| %>
-          <button class="btn btn-secondary btn-sm border rounded m-1 select-tag"><%= tag.name  %></button>
+          <button class="btn btn-secondary btn-sm border rounded m-1 select-tag"><%= tag.name %></button>
         <% end %>
       </div>
     </div>

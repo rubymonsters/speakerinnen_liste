@@ -186,7 +186,8 @@ de:
       error: "Bitte fülle alle Felder aus, damit die Speakerin alle Informationen bekommt, die sie benötigt."
       error_email_for_us: "Bitte fülle alle Felder aus."
   profiles:
-    category: "In der Kategorie <b>%{category_name}</b> haben wir <b>%{profiles_count}</b> Speakerinnen* und <b>%{topics_count}</b> Themen gefunden:"
+    category: "In der Kategorie <b>%{category_name}</b> haben wir <b>%{profiles_count}</b> Speakerinnen* "
+    tags_count: "und <b>%{topics_count}</b> Themen gefunden:"
     tag:
       top_topics: "Die 200 Top-Themen"
       tag_choose_languages: "Du kannst die Topics auch nach Sprache sortieren:"

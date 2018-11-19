@@ -91,8 +91,6 @@ h1, h4 {
 }
 
 .startpage-categories__list-links {
-  color: $dark-grey;
-  font-size: 1.9em;
   background-color: $link-bg-color;
   padding: 3px 6px;
   line-height: 2em;
@@ -102,6 +100,12 @@ h1, h4 {
     background-color: $link-bg-color-hover;
     text-decoration: none;
   }
+}
+
+.category_selected {
+    color: $link-color-hover;
+    background-color: $link-bg-color-hover;
+    text-decoration: none;
 }
 
 /* footer */

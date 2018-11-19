@@ -1,9 +1,18 @@
-<% @categories.each_slice(5).with_index do |sliced_categories, index| %>
-    <div class="col-md-6">
+<% @categories.each_slice(4).with_index do |sliced_categories, index| %>
+    <div class="col-md-4">
       <ul class="list-unstyled pl-4">
         <% sliced_categories.each do |category| %>
           <li>
-            <%= category_link category, class:"startpage-categories__list-links" %>
+            <%
+              category_css = "startpage-categories__list-links"
+              if params[:category_id].to_i == category.id
+                category_css << " category_selected"
+              end
+              puts params[:category_id].inspect
+              puts category.id.inspect
+              puts category_css
+             %>
+            <%= category_link category, class: category_css%>
           </li>
         <% end %>
       </ul>

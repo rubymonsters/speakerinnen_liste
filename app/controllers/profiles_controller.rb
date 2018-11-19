@@ -16,7 +16,7 @@ class ProfilesController < ApplicationController
     if params[:topic]
       @profiles = profiles_for_tag(params[:topic])
     elsif params[:category_id]
-      profiles_for_category
+      profiles_for_category(params[:category_id], params[:tag_search])
     elsif params[:search]
       @profiles = profiles_for_search
 
@@ -196,15 +196,21 @@ class ProfilesController < ApplicationController
            .per(24)
   end
 
-  def profiles_for_category
-    @category = Category.find(params[:category_id])
+  def profiles_for_category(category_id, tags_search=nil)
+    @categories = Category.sorted_categories
+    @category = Category.find(category_id)
     @tags_in_category_published = ActsAsTaggableOn::Tag
-                                  .belongs_to_category(params[:category_id])
+                                  .belongs_to_category(category_id)
                                   .with_published_profile
                                   .with_language(I18n.locale)
     tag_names = @tags_in_category_published.pluck(:name)
-    @tags_most_used_200_in_category = @tags_in_category_published.most_used(200)
-    @profiles = profiles_for_tag(tag_names)
+    @tags_in_category_200 = @tags_in_category_published.most_used(200)
+    if tags_search.present?
+      @tags = tags_search.split(/\s*,\s*/) if tags_search
+      @profiles = profiles_for_tag(@tags)
+    else
+      @profiles = profiles_for_tag(tag_names)
+    end
   end
 
   def profiles_for_search
