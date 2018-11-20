@@ -19,10 +19,6 @@ class PagesController < ApplicationController
                                    .with_language(I18n.locale)
                                    .most_used(100)
     end
-    respond_to do |format|
-        format.js
-        format.html
-    end
   end
 
   def render_footer?

@@ -33,12 +33,12 @@
       <h4 class="startpage-subtitle box__bg bg--white"><%= t(:quote_text, scope: 'pages.home') %></h4>
     </div>
   </section>
+  <!-- Anker für Kategorien -->
+  <a id="categories_anchor"></a>
   <div class="copyright">
     Copyright by Ute Mayer
   </div>
 
-  <!-- Anker für Kategorien -->
-  <a id="categories_anchor"></a>
 
   <div class="container">
     <div class="row">
@@ -57,8 +57,8 @@
         <% else %>
           <h5>Search in 200 most used Tags</h5>
         <% end %>
-        <div id="tag-box" >
-          <%= render partial: "pages/tag_box", locals: {tags: @tags} %>
+        <div id="tag-box" class="mb-3" >
+          <%= render partial: "shared/tag_box", locals: {tags: @tags} %>
         </div>
         <div class="form-group">
           <%= form_tag(profiles_path, method: "get") do %>
@@ -85,7 +85,6 @@
       $(".select-tag").removeClass( "disabled" );
     });
   </script>
-
   <section id="startpage__teaser-bg-02" class="startpage__photo-bar">
     <div class="container">
       <h1 class="display-4 box__bg bg--white mt-5"><%= t(:speaker_shoutout, scope: 'pages.home').html_safe %></h1>

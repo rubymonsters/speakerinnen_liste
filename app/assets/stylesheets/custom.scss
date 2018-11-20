@@ -342,13 +342,13 @@ ul#medialinks__list {
 
 // topics
 
-.tag-box {
-	height: 400px;
+#tag-box {
+	max-height: 400px;
 	overflow:scroll;
 	background: #ffff7e;
 }
 
-.tag-box button {
+#tag-box button {
 	background: #f5e51b;
 }
 
