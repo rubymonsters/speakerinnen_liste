@@ -90,7 +90,7 @@ h1, h4 {
   margin-right: 10px;
 }
 
-.startpage-categories__list-links {
+.category-links {
   background-color: $link-bg-color;
   padding: 3px 6px;
   line-height: 2em;
@@ -107,6 +107,8 @@ h1, h4 {
     background-color: $link-bg-color-hover;
     text-decoration: none;
 }
+
+
 
 /* footer */
 .footer__link {
@@ -340,6 +342,16 @@ ul#medialinks__list {
 
 // topics
 
+.tag-box {
+	height: 400px;
+	overflow:scroll;
+	background: #ffff7e;
+}
+
+.tag-box button {
+	background: #f5e51b;
+}
+
 
 .topics-cloud a, .topics-profile a {
   background-color: #fff;
@@ -396,7 +408,7 @@ ul#medialinks__list {
 		padding: 36px 12px;
 	}
 
-	.startpage-categories__list-links {
+	.category-links {
     font-size: 1.0rem;
 	}
 

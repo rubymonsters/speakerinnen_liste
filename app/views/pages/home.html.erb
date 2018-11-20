@@ -41,30 +41,29 @@
   <a id="categories_anchor"></a>
 
   <div class="container">
-    <h1 class="box__bg"><%= t(:category_filter, scope: 'pages.home') %></h1>
-    <h4 class="border-vertical d-block box__bg mb-4">
-      <%= t(:description_text, scope: 'pages.home') %>
-    </h4>
     <div class="row">
-      <%= render partial: "shared/categories", object: @categories %>
-    </div>
-  </div>
-
-  <div class="container">
-    <h1 class="box__bg"><%= t(:tag_filter, scope: 'pages.home') %></h1>
-    <div class="row">
-      <div class="col">
-        <% ActsAsTaggableOn::Tag.most_used(100).each do |tag| %>
-          <button class="btn btn-secondary btn-sm border rounded m-1 select-tag"><%= tag.name %></button>
+      <div class="col-3">
+        <h5>Choose a category</h5>
+        <%= render partial: "shared/categories", object: @categories %>
+        <% if params[:category_id] %>
+          <%= link_to "Search in category", profiles_path(category_id: params[:category_id]), class:"btn btn-primary" %>
+        <% else %>
+          <button class="btn btn-primary" disabled>Search in category</button>
         <% end %>
       </div>
-    </div>
-    <div class="row mt-3">
-      <div class="col">
+      <div class="col-9">
+        <% if params[:category_id] %>
+          <h5>Search in tags for category <b><%= Category.find(params[:category_id]).name %></b></h5>
+        <% else %>
+          <h5>Search in 200 most used Tags</h5>
+        <% end %>
+        <div id="tag-box" >
+          <%= render partial: "pages/tag_box", locals: {tags: @tags} %>
+        </div>
         <div class="form-group">
-          <%= form_tag(profiles_path, :method => "get") do %>
+          <%= form_tag(profiles_path, method: "get") do %>
             <%= text_area_tag :tag_search, params[:tag_search], id: "taginput", class: "form-control mb-3", rows: 3 %>
-            <%= submit_tag "Filter", class: "btn btn-primary" %>
+            <%= submit_tag "Search in topics", class: "btn btn-primary" %>
             <span class="btn btn-primary" id="clear"><i class="fa fa-times pr-1"></i>Clear</span>
           <% end %>
         </div>
@@ -78,7 +77,8 @@
       var newtag = $( this ).text();
       var connector = ", "
       if(oldtags.length === 0) { var connector = ""};
-      $( "#taginput" ).val( oldtags + connector + newtag );
+      var all_tags = oldtags + connector + newtag;
+      $( "#taginput" ).val( all_tags );
     });
     $( "#clear" ).click(function() {
       $( "#taginput" ).val('');
