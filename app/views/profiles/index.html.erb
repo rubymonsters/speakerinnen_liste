@@ -4,17 +4,6 @@
       <%= render partial: "shared/categories", object: @categories %>
     </div>
 
-    <% @tags_in_category_200.each do |tag| %>
-      <button class="btn btn-secondary btn-sm border rounded m-1 select-tag <%= "disabled" if params[:tag_search] && params[:tag_search].include?(tag.name) %> " ><%= tag.name  %></button>
-    <% end %>
-    <div class="form-group">
-      <%= form_tag(profiles_path, :method => "get") do %>
-        <%= text_area_tag :tag_search, params[:tag_search], id: "taginput", class: "form-control", rows: 3 %>
-        <%= hidden_field_tag :category_id , params[:category_id] %>
-        <%= submit_tag t(:tag_filter, scope: 'pages.home'), class: "btn btn-primary" %>
-        <span class="btn btn-primary" id="clear">Clear</span>
-      <% end %>
-    </div>
     <h4 class="text-center py-5">
       <%= t(:category, scope: 'profiles', category_name: @category.name, profiles_count: @profiles.total_count).html_safe %>
       <%= params[:tag_search] ? t(:tag_filter, scope: 'profiles.index', count: @tags.count, tags: params[:tag_search]).html_safe :
@@ -41,17 +30,6 @@
   <% elsif params[:tag_search] %> <%# when searching %>
     <h1 class="display-4 text-center pt-5"><%= t(:speaker_headline, scope: 'pages.home.speakers') %></h1>
     <h4 class="text-center pb-5 pt-3"><%= t(:all_tagged_speakerinnen, scope: 'profiles.index', count: @profiles_tagged_count) + t(:tag_filter, scope: 'profiles.index', count: @tags.count, tags: params[:tag_search]).html_safe %></h4>
-
-    <% ActsAsTaggableOn::Tag.most_used(100).each do |tag| %>
-      <button class="btn btn-secondary btn-sm border rounded m-1 select-tag <%= "disabled" if params[:tag_search].include?(tag.name) %>" ><%= tag.name  %></button>
-    <% end %>
-    <div class="form-group">
-      <%= form_tag(profiles_path, :method => "get") do %>
-        <%= text_area_tag :tag_search, params[:tag_search], id: "taginput", class: "form-control", rows: 3 %>
-        <%= submit_tag "Filter", class: "btn btn-primary" %>
-        <span class="btn btn-primary" id="clear">Clear</span>
-      <% end %>
-    </div>
 
     <%= render partial: 'shared/search_form' %>
     <%= t(:search_categories_html, scope: 'search', root_path: root_path) %>

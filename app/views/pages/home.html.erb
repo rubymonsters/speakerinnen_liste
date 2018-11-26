@@ -39,31 +39,33 @@
     Copyright by Ute Mayer
   </div>
 
-
   <div class="container">
     <div class="row">
       <div class="col-3">
         <h5>Choose a category</h5>
-        <%= render partial: "shared/categories", object: @categories %>
-        <% if params[:category_id] %>
-          <%= link_to "Search in category", profiles_path(category_id: params[:category_id]), class:"btn btn-primary" %>
-        <% else %>
-          <button class="btn btn-primary" disabled>Search in category</button>
-        <% end %>
+        <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+          <% @categories.each do |category| %>
+            <a class="nav-link" id="v-pills-<%= category.short_name %>-tab" data-toggle="pill" href="#v-pills-<%= category.short_name %>" role="tab" aria-controls="v-pills-<%= category.short_name %>" aria-selected="false">
+              <%= category.name %>
+            </a>
+          <% end %>
+        </div>
       </div>
+
       <div class="col-9">
-        <% if params[:category_id] %>
-          <h5>Search in tags for category <b><%= Category.find(params[:category_id]).name %></b></h5>
-        <% else %>
-          <h5>Search in 200 most used Tags</h5>
-        <% end %>
-        <div id="tag-box" class="mb-3" >
-          <%= render partial: "shared/tag_box", locals: {tags: @tags} %>
+        <div class="tab-content mb-3" id="available-tags-box">
+          <% @categories.each do |category| %>
+            <div class="tab-pane fade" id="v-pills-<%= category.short_name %>" role="tabpanel" aria-labelledby="v-pills-<%= category.short_name %>-tab" >
+              <%= render partial: "shared/tag_box", locals: { :tags => instance_variable_get("@tags_#{category.short_name}"), :category => category } %>
+            </div>
+          <% end %>
+        </div>
+        <div id="selected-tags-box" class="border my-3">
         </div>
         <div class="form-group">
           <%= form_tag(profiles_path, method: "get") do %>
-            <%= text_area_tag :tag_search, params[:tag_search], id: "taginput", class: "form-control mb-3", rows: 3 %>
-            <%= submit_tag "Search in topics", class: "btn btn-primary" %>
+            <%= text_field_tag :tag_search, params[:tag_search], id: "hidden_tag_input", class: "form-control d-none"   %>
+            <%= submit_tag "Search in topics", class: "btn btn-primary", id: "search_in_topic" %>
             <span class="btn btn-primary" id="clear"><i class="fa fa-times pr-1"></i>Clear</span>
           <% end %>
         </div>
@@ -71,18 +73,23 @@
     </div>
   </div>
   <script>
-    $( ".select-tag" ).click(function() {
+    $( "#available-tags-box .available-tag" ).click(function() {
+      $(this).clone().appendTo($( "#selected-tags-box" )).append($("<i class='pl-2 fa fa-times-circle'></i>")).removeClass("available-tag").addClass("selected-tag");
       $(this).addClass( "disabled" );
-      var oldtags = $( "#taginput" ).val();
-      var newtag = $( this ).text();
-      var connector = ", "
-      if(oldtags.length === 0) { var connector = ""};
-      var all_tags = oldtags + connector + newtag;
-      $( "#taginput" ).val( all_tags );
+    });
+    $( "#selected-tags-box .selected-tag" ).click(function() {
+      console.log("test");
+      $(this).remove();
+    });
+    $( "#search_in_topic" ).click(function() {
+      var all_tags = $('#selected-tags-box .selected-tag').map(function(){
+        return $(this).text();
+      }).get().join();
+      $('#hidden_tag_input').val(all_tags);
     });
     $( "#clear" ).click(function() {
-      $( "#taginput" ).val('');
-      $(".select-tag").removeClass( "disabled" );
+      $( "#selected-tags-box .selected-tag" ).remove();
+      $(".selected-tag").removeClass( "disabled" );
     });
   </script>
   <section id="startpage__teaser-bg-02" class="startpage__photo-bar">
