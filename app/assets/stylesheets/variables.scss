@@ -70,3 +70,32 @@ $base-spacing-unit: 24px;
 /* layout settings */
 $layout-width: 940px;
 $border: 1px solid $light-grey;
+
+/* Backgrounds */
+.bg-navy { background-color: #001F3F; }
+.bg-blue { background-color: #0074D9; }
+.bg-aqua { background-color: #7FDBFF; }
+.bg-teal { background-color: #39CCCC; }
+.bg-olive { background-color: #3D9970; }
+.bg-green { background-color: #2ECC40; }
+.bg-lime { background-color: #01FF70; }
+.bg-yellow { background-color: #FFDC00; }
+.bg-orange { background-color: #FF851B; }
+.bg-red { background-color: #FF4136; }
+.bg-fuchsia { background-color: #F012BE; }
+.bg-purple { background-color: #B10DC9; }
+.bg-maroon { background-color: #85144B; }
+
+/* Colors */
+$navy: #001F3F;
+$aqua: #7FDBFF;
+// $teal: #39CCCC; }
+// $olive: #3D9970; }
+$green: #2ECC40;
+$lime: #01FF70;
+$yellow: #FFDC00;
+$orange: #FF851B;
+$red: #FF4136;
+$fuchsia: #F012BE;
+$purple: #B10DC9;
+$maroon: #85144B;

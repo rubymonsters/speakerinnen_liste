@@ -13,10 +13,6 @@ a, .link, #expander {
 
   &:hover {
     text-decoration: underline;
-    //background: linear-gradient($link-color, $link-color) no-repeat;
-    //background-size: 100% 1px;
-    //background-position: 0 1.15em;
-    //text-shadow: .05em 0 white, -.05em 0 white;
   }
 }
 
@@ -90,7 +86,7 @@ h1, h4 {
   margin-right: 10px;
 }
 
-.category-links {
+.category_links {
   background-color: $link-bg-color;
   padding: 3px 6px;
   line-height: 2em;
@@ -342,16 +338,177 @@ ul#medialinks__list {
 
 // topics
 
-#tag-box {
+#available-tags-box {
 	max-height: 400px;
-	overflow:scroll;
-	background: #ffff7e;
+	overflow: scroll;
+	background: $white-smoke;
 }
 
-#tag-box button {
-	background: #f5e51b;
+#selected-tags-box {
+	height: 100px;
 }
 
+button.cat_arts {
+	background: $navy;
+	color: white;
+	&:hover {
+		background: $navy;
+		color: white;
+	}
+}
+a:link#v-pills-arts-tab.active {
+	background: $navy;
+	color: white;
+}
+a:link#v-pills-arts-tab {
+	&:hover {
+		background: $navy;
+		color: white;
+	}
+}
+
+button.cat_body {
+	background: $aqua;
+	&:hover {
+		background: $aqua;
+	}
+}
+a:link#v-pills-body-tab.active {
+		background: $aqua;
+}
+a:link#v-pills-body-tab {
+	&:hover {
+		background: $aqua;
+	}
+}
+
+button.cat_career {
+	background: $lime;
+	&:hover {
+		background: $lime;
+	}
+}
+a:link#v-pills-career-tab.active {
+		background: $lime;
+}
+a:link#v-pills-career-tab {
+	&:hover {
+		background: $lime;
+	}
+}
+
+button.cat_companies {
+	background: $yellow;
+	&:hover {
+		background: $yellow;
+	}
+}
+a:link#v-pills-companies-tab.active {
+		background: $yellow;
+}
+a:link#v-pills-companies-tab {
+	&:hover {
+		background: $yellow;
+	}
+}
+
+button.cat_diversity{
+	background: $orange;
+	&:hover {
+		background: $orange;
+	}
+}
+a:link#v-pills-diversity-tab.active {
+		background: $orange;
+}
+a:link#v-pills-diversity-tab {
+	&:hover {
+		background: $orange;
+	}
+}
+
+button.cat_internet {
+	background: $red;
+	&:hover {
+		background: $red;
+	}
+}
+a:link#v-pills-internet-tab.active {
+		background: $red;
+}
+a:link#v-pills-internet-tab {
+	&:hover {
+		background: $red;
+	}
+}
+
+button.cat_marketing {
+	background: $fuchsia;
+	&:hover {
+		background: $fuchsia;
+	}
+}
+a:link#v-pills-marketing-tab.active {
+		background: $fuchsia;
+}
+a:link#v-pills-marketing-tab {
+	&:hover {
+		background: $fuchsia;
+	}
+}
+
+button.cat_politics{
+	background: $purple;
+	color: white;
+	&:hover {
+		background: $purple;
+		color: white;
+	}
+}
+a:link#v-pills-politics-tab.active {
+	background: $purple;
+	color: white;
+}
+a:link#v-pills-politics-tab {
+	&:hover {
+		background: $purple;
+		color: white;
+	}
+}
+
+button.cat_science{
+	background: $maroon;
+	color: white;
+	&:hover {
+		background: $maroon;
+		color: white;
+	}
+}
+a:link#v-pills-science-tab.active {
+	background: $maroon;
+	color: white;
+}
+a:link#v-pills-science-tab {
+	&:hover {
+		background: $maroon;
+		color: white;
+	}
+}
+
+button.cat_miscellaneous{
+	background: $green;
+	&:hover {
+		background: $green;
+	}
+}
+a:link#v-pills-miscellaneous-tab.active {
+		background: $green;
+}
+a:link#v-pills-miscellaneous-tab {
+	&:hover {
+		background: $green;
+	}
+}
 
 .topics-cloud a, .topics-profile a {
   background-color: #fff;
