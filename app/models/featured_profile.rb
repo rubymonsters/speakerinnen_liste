@@ -1,4 +1,5 @@
 class FeaturedProfile < ApplicationRecord
+  #serialize :profile_ids
   translates :title, :description
   globalize_accessors :locales => [:de, :en], :attributes => [:title, :description]
 

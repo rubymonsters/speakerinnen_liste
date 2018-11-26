@@ -22,15 +22,22 @@ class Admin::FeaturedProfilesController < Admin::BaseController
 
   private
 
+  PARAMS = [
+    :title_de,
+    :title_en,
+    :description_de,
+    :description_en,
+    :public,
+    :profile_ids,
+    translations_attributes: %i[id title description locale]
+  ]
+
   def featured_profile_params
-    params.require(:featured_profile).permit(
-      :title_de,
-      :title_en,
-      :description_de,
-      :description_en,
-      :public,
-      :profile_ids,
-      translations_attributes: %i[id title description locale]
-    )
+    hash = params.require(:featured_profile).permit(*PARAMS)
+    hash.merge(profile_ids: normalize_profile_ids(hash[:profile_ids]))
+  end
+
+  def normalize_profile_ids(ids)
+    ids.split(",").map(&:to_i)
   end
 end
