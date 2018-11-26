@@ -390,10 +390,12 @@ button.cat_career {
 }
 a:link#v-pills-career-tab.active {
 		background: $lime;
+		color: black;
 }
 a:link#v-pills-career-tab {
 	&:hover {
 		background: $lime;
+		color: black;
 	}
 }
 

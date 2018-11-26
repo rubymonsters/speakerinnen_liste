@@ -42,10 +42,10 @@
   <div class="container">
     <div class="row">
       <div class="col-3">
-        <h5>Choose a category</h5>
+        <h5>Choose a category:</h5>
         <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-          <% @categories.each do |category| %>
-            <a class="nav-link" id="v-pills-<%= category.short_name %>-tab" data-toggle="pill" href="#v-pills-<%= category.short_name %>" role="tab" aria-controls="v-pills-<%= category.short_name %>" aria-selected="false">
+          <% @categories.each_with_index do |category, index| %>
+            <a class="nav-link <%= "active show" if index == 0%>" id="v-pills-<%= category.short_name %>-tab" data-toggle="pill" href="#v-pills-<%= category.short_name %>" role="tab" aria-controls="v-pills-<%= category.short_name %>" aria-selected="false">
               <%= category.name %>
             </a>
           <% end %>
@@ -53,9 +53,10 @@
       </div>
 
       <div class="col-9">
+        <h5>Choose one or more tags:</h5>
         <div class="tab-content mb-3" id="available-tags-box">
-          <% @categories.each do |category| %>
-            <div class="tab-pane fade" id="v-pills-<%= category.short_name %>" role="tabpanel" aria-labelledby="v-pills-<%= category.short_name %>-tab" >
+          <% @categories.each_with_index do |category, index| %>
+            <div class="tab-pane fade <%= "active show" if index == 0%>" id="v-pills-<%= category.short_name %>" role="tabpanel" aria-labelledby="v-pills-<%= category.short_name %>-tab" >
               <%= render partial: "shared/tag_box", locals: { :tags => instance_variable_get("@tags_#{category.short_name}"), :category => category } %>
             </div>
           <% end %>
@@ -90,6 +91,13 @@
     $( "#clear" ).click(function() {
       $( "#selected-tags-box .selected-tag" ).remove();
       $(".selected-tag").removeClass( "disabled" );
+    });
+    $(document).ready(function() {
+      <% if params[:tag_search] %>
+        <% params[:tag_search].split(",").each do |tag_name| %>
+          $(<%=tag_name%>).clone().appendTo($( "#selected-tags-box" )).append($("<i class='pl-2 fa fa-times-circle'></i>")).removeClass("available-tag").addClass("selected-tag");
+        <% end %>
+      <% end %>
     });
   </script>
   <section id="startpage__teaser-bg-02" class="startpage__photo-bar">
