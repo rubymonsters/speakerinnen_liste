@@ -40,6 +40,7 @@
   </div>
 
   <div class="container">
+    <h1 class="box__bg">Filter via tags</h1>
     <div class="row">
       <div class="col-3">
         <h5>Choose a category:</h5>
@@ -101,6 +102,12 @@
       <% end %>
     });
   </script>
+  <div class="container border-top">
+    <h1 class="box__bg">Filter via categories</h1>
+    <div class="row">
+      <%= render partial: "shared/categories", object: @categories %>
+    </div>
+  </div>
   <section id="startpage__teaser-bg-02" class="startpage__photo-bar">
     <div class="container">
       <h1 class="display-4 box__bg bg--white mt-5"><%= t(:speaker_shoutout, scope: 'pages.home').html_safe %></h1>
