@@ -613,3 +613,7 @@ a:link#v-pills-miscellaneous-tab {
 		display: none;
 	}
 }
+
+.no-click {
+    pointer-events: none;
+}

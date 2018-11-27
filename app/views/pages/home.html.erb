@@ -75,12 +75,13 @@
   </div>
   <script>
     $( "#available-tags-box .available-tag" ).click(function() {
-      console.log("test");
       $(this).clone().appendTo( "#selected-tags-box" ).append("<i class='pl-2 fa fa-times-circle'></i>").removeClass("available-tag").addClass("selected-tag");
-      $(this).addClass( "disabled" );
+      $(this).addClass( "disabled no-click" );
     });
     $(document).on('click','.selected-tag',function() {
       $(this).remove();
+      var tag_name = $(this).attr('id');
+      $("#available-tags-box #" + tag_name).removeClass( "disabled no-click" );
     });
     $( "#search_in_topic" ).click(function() {
       var all_tags = $('#selected-tags-box .selected-tag').map(function(){
@@ -90,12 +91,12 @@
     });
     $( "#clear" ).click(function() {
       $( "#selected-tags-box .selected-tag" ).remove();
-      $(".available-tag").removeClass( "disabled" );
+      $(".available-tag").removeClass( "disabled no-click" );
     });
     $(document).ready(function() {
       <% if params[:tag_search] %>
         <% params[:tag_search].split(",").each do |tag_name| %>
-          $(<%=tag_name%>).clone().appendTo($( "#selected-tags-box" )).append($("<i class='pl-2 fa fa-times-circle'></i>")).removeClass("available-tag").addClass("selected-tag");
+          $("#<%= tag_name %>").clone().appendTo($( "#selected-tags-box" )).append($("<i class='pl-2 fa fa-times-circle'></i>")).removeClass("available-tag").addClass("selected-tag");
         <% end %>
       <% end %>
     });
