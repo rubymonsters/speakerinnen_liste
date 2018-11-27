@@ -268,7 +268,7 @@ en:
       }
       tag_filter: {
         one: "for the topic: %{tags}.",
-        other: "fot the topics: %{tags}."
+        other: "for the topics: %{tags}."
       }
       show_more: "More >>"
       show_less: "Less >>"
