@@ -351,180 +351,69 @@ ul#medialinks__list {
 div#v-pills-tab a {
 	color: black;
 }
-button.cat_arts {
-	background: $navy;
-	color: white;
-	&:hover {
-		background: $navy;
+
+// colors of categories and tags
+$categories_dark_color: (
+  arts: $navy,
+	science: $maroon,
+	politics: $purple
+);
+
+@each $name, $color in $categories_dark_color {
+	button.cat_#{$name} {
+		background: $color;
+		color: white;
+		&:hover {
+			background: $color;
+			color: white;
+		}
+	}
+	a:link#v-pills-#{$name}-tab.active {
+		background: $color;
 		color: white;
 	}
-}
-a:link#v-pills-arts-tab.active {
-	background: $navy;
-	color: white;
-}
-a:link#v-pills-arts-tab {
-	i { color: $navy; }
-	&:hover {
-		background: $navy;
-		color: white;
+	a:link#v-pills-#{$name}-tab {
+		i { color: $color; }
+		&:hover {
+			background: $color;
+			color: white;
+		}
 	}
 }
 
-button.cat_body {
-	background: $aqua;
-	&:hover {
-		background: $aqua;
-	}
-}
-a:link#v-pills-body-tab.active {
-	background: $aqua;
-}
-a:link#v-pills-body-tab {
-	i { color: $aqua; }
-	&:hover {
-		background: $aqua;
-	}
-}
+$categories_bright_color: (
+  body: $aqua,
+	career: $lime,
+	companies: $yellow,
+	diversity: $orange,
+	internet: $red,
+	marketing: $fuchsia,
+	miscellaneous: $green
+);
 
-button.cat_career {
-	background: $lime;
-	&:hover {
-		background: $lime;
+@each $name, $color in $categories_bright_color {
+	button.cat_#{$name} {
+		background: $color;
+		color: black;
+		&:hover {
+			background: $color;
+			color: black;
+		}
 	}
-}
-a:link#v-pills-career-tab.active {
-	background: $lime;
-	color: black;
-}
-a:link#v-pills-career-tab {
-	i { color: $lime; }
-	&:hover {
-		background: $lime;
+	a:link#v-pills-#{$name}-tab.active {
+		background: $color;
 		color: black;
 	}
-}
-
-button.cat_companies {
-	background: $yellow;
-	&:hover {
-		background: $yellow;
-	}
-}
-a:link#v-pills-companies-tab.active {
-	background: $yellow;
-}
-a:link#v-pills-companies-tab {
-	i { color: $yellow; }
-	&:hover {
-		background: $yellow;
+	a:link#v-pills-#{$name}-tab {
+		i { color: $color; }
+		&:hover {
+			background: $color;
+			color: black;
+		}
 	}
 }
 
-button.cat_diversity{
-	background: $orange;
-	&:hover {
-		background: $orange;
-	}
-}
-a:link#v-pills-diversity-tab.active {
-	background: $orange;
-}
-a:link#v-pills-diversity-tab {
-	i { color: $orange; }
-	&:hover {
-		background: $orange;
-	}
-}
-
-button.cat_internet {
-	background: $red;
-	&:hover {
-		background: $red;
-	}
-}
-a:link#v-pills-internet-tab.active {
-	background: $red;
-}
-a:link#v-pills-internet-tab {
-	i { color: $red; }
-	&:hover {
-		background: $red;
-	}
-}
-
-button.cat_marketing {
-	background: $fuchsia;
-	&:hover {
-		background: $fuchsia;
-	}
-}
-a:link#v-pills-marketing-tab.active {
-	background: $fuchsia;
-}
-a:link#v-pills-marketing-tab {
-	i { color: $fuchsia; }
-	&:hover {
-		background: $fuchsia;
-	}
-}
-
-button.cat_politics{
-	background: $purple;
-	color: white;
-	&:hover {
-		background: $purple;
-		color: white;
-	}
-}
-a:link#v-pills-politics-tab.active {
-	background: $purple;
-	color: white;
-}
-a:link#v-pills-politics-tab {
-	i { color: $purple; }
-	&:hover {
-		background: $purple;
-		color: white;
-	}
-}
-
-button.cat_science{
-	background: $maroon;
-	color: white;
-	&:hover {
-		background: $maroon;
-		color: white;
-	}
-}
-a:link#v-pills-science-tab.active {
-	background: $maroon;
-	color: white;
-}
-a:link#v-pills-science-tab {
-	i { color: $maroon; }
-	&:hover {
-		background: $maroon;
-		color: white;
-	}
-}
-
-button.cat_miscellaneous{
-	background: $green;
-	&:hover {
-		background: $green;
-	}
-}
-a:link#v-pills-miscellaneous-tab.active {
-	background: $green;
-}
-a:link#v-pills-miscellaneous-tab {
-	i { color: $green; }
-	&:hover {
-		background: $green;
-	}
-}
-
+// topics cloud
 .topics-cloud a, .topics-profile a {
   background-color: #fff;
   color: $dark-grey;
