@@ -46,7 +46,7 @@
         <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
           <% @categories.each_with_index do |category, index| %>
             <a class="nav-link <%= "active show" if index == 0%>" id="v-pills-<%= category.short_name %>-tab" data-toggle="pill" href="#v-pills-<%= category.short_name %>" role="tab" aria-controls="v-pills-<%= category.short_name %>" aria-selected="false">
-              <%= category.name %>
+              <i class="fa fa-circle pr-2 small"></i><%= category.name %>
             </a>
           <% end %>
         </div>
@@ -75,11 +75,11 @@
   </div>
   <script>
     $( "#available-tags-box .available-tag" ).click(function() {
-      $(this).clone().appendTo($( "#selected-tags-box" )).append($("<i class='pl-2 fa fa-times-circle'></i>")).removeClass("available-tag").addClass("selected-tag");
+      console.log("test");
+      $(this).clone().appendTo( "#selected-tags-box" ).append("<i class='pl-2 fa fa-times-circle'></i>").removeClass("available-tag").addClass("selected-tag");
       $(this).addClass( "disabled" );
     });
-    $( "#selected-tags-box .selected-tag" ).click(function() {
-      console.log("test");
+    $(document).on('click','.selected-tag',function() {
       $(this).remove();
     });
     $( "#search_in_topic" ).click(function() {
@@ -90,7 +90,7 @@
     });
     $( "#clear" ).click(function() {
       $( "#selected-tags-box .selected-tag" ).remove();
-      $(".selected-tag").removeClass( "disabled" );
+      $(".available-tag").removeClass( "disabled" );
     });
     $(document).ready(function() {
       <% if params[:tag_search] %>

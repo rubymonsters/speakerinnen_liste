@@ -347,7 +347,9 @@ ul#medialinks__list {
 #selected-tags-box {
 	height: 100px;
 }
-
+div#v-pills-tab a {
+	color: black;
+}
 button.cat_arts {
 	background: $navy;
 	color: white;
@@ -361,6 +363,7 @@ a:link#v-pills-arts-tab.active {
 	color: white;
 }
 a:link#v-pills-arts-tab {
+	i { color: $navy; }
 	&:hover {
 		background: $navy;
 		color: white;
@@ -374,9 +377,10 @@ button.cat_body {
 	}
 }
 a:link#v-pills-body-tab.active {
-		background: $aqua;
+	background: $aqua;
 }
 a:link#v-pills-body-tab {
+	i { color: $aqua; }
 	&:hover {
 		background: $aqua;
 	}
@@ -389,10 +393,11 @@ button.cat_career {
 	}
 }
 a:link#v-pills-career-tab.active {
-		background: $lime;
-		color: black;
+	background: $lime;
+	color: black;
 }
 a:link#v-pills-career-tab {
+	i { color: $lime; }
 	&:hover {
 		background: $lime;
 		color: black;
@@ -406,9 +411,10 @@ button.cat_companies {
 	}
 }
 a:link#v-pills-companies-tab.active {
-		background: $yellow;
+	background: $yellow;
 }
 a:link#v-pills-companies-tab {
+	i { color: $yellow; }
 	&:hover {
 		background: $yellow;
 	}
@@ -421,9 +427,10 @@ button.cat_diversity{
 	}
 }
 a:link#v-pills-diversity-tab.active {
-		background: $orange;
+	background: $orange;
 }
 a:link#v-pills-diversity-tab {
+	i { color: $orange; }
 	&:hover {
 		background: $orange;
 	}
@@ -436,9 +443,10 @@ button.cat_internet {
 	}
 }
 a:link#v-pills-internet-tab.active {
-		background: $red;
+	background: $red;
 }
 a:link#v-pills-internet-tab {
+	i { color: $red; }
 	&:hover {
 		background: $red;
 	}
@@ -451,9 +459,10 @@ button.cat_marketing {
 	}
 }
 a:link#v-pills-marketing-tab.active {
-		background: $fuchsia;
+	background: $fuchsia;
 }
 a:link#v-pills-marketing-tab {
+	i { color: $fuchsia; }
 	&:hover {
 		background: $fuchsia;
 	}
@@ -472,6 +481,7 @@ a:link#v-pills-politics-tab.active {
 	color: white;
 }
 a:link#v-pills-politics-tab {
+	i { color: $purple; }
 	&:hover {
 		background: $purple;
 		color: white;
@@ -491,6 +501,7 @@ a:link#v-pills-science-tab.active {
 	color: white;
 }
 a:link#v-pills-science-tab {
+	i { color: $maroon; }
 	&:hover {
 		background: $maroon;
 		color: white;
@@ -504,9 +515,10 @@ button.cat_miscellaneous{
 	}
 }
 a:link#v-pills-miscellaneous-tab.active {
-		background: $green;
+	background: $green;
 }
 a:link#v-pills-miscellaneous-tab {
+	i { color: $green; }
 	&:hover {
 		background: $green;
 	}
