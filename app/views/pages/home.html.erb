@@ -67,8 +67,8 @@
         <div class="form-group">
           <%= form_tag(profiles_path, method: "get") do %>
             <%= text_field_tag :tag_search, params[:tag_search], id: "hidden_tag_input", class: "form-control d-none"   %>
-            <%= submit_tag "Search in topics", class: "btn btn-primary", id: "search_in_topic" %>
-            <span class="btn btn-primary" id="clear"><i class="fa fa-times pr-1"></i>Clear</span>
+            <%= submit_tag "Find A Speaker", class: "btn btn-primary", id: "search_in_topic" %>
+            <span class="btn btn-primary" id="clear">Clear All</span>
           <% end %>
         </div>
       </div>
