@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Admin::TagsController < Admin::BaseController
+  helper_method :sort_column, :sort_direction
+
   before_action :set_tag, only: %i[edit update destroy find_tag_and_category]
 
   def new; end
@@ -38,9 +40,9 @@ class Admin::TagsController < Admin::BaseController
   def index
     @categories = Category.all.includes(:translations)
     @tags_count = ActsAsTaggableOn::Tag.count
-    @tags = TagFilter.new(ActsAsTaggableOn::Tag.all.includes(:tags_locale_languages, :actsastaggableon_tags_categories), filter_params)
+    @tags = TagFilter.new(ActsAsTaggableOn::Tag.all.includes(:tags_locale_languages, :actsastaggableon_tags_categories, :taggings), filter_params)
                      .filter
-                     .order('tags.name ASC')
+                     .order(sort_column + ' ' + sort_direction)
                      .page(params[:page])
                      .per(20)
     session[:filter_params] = filter_params
@@ -94,5 +96,13 @@ class Admin::TagsController < Admin::BaseController
 
   def filter_params_from_session
     session[:filter_params] || {}
+  end
+
+  def sort_column
+    %w[tags.name taggings.created_at].include?(params[:sort]) ? params[:sort] : 'tags.name'
+  end
+
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : 'asc'
   end
 end

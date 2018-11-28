@@ -60,6 +60,9 @@ de:
         languages: "Sprachen"
         no_langage: "ohne Sprache"
         show_all_tags: "Alle Tags"
+        categories: "Kategorien"
+        created_at: "Letztes Tagging"
+        delete: "Löschen"
         edit:
           new_tagname: "Trage den neuen Namen des Tags ein: "
           select_languages: "Sprache(n) des Tags auswählen: "

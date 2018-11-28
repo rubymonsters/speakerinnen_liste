@@ -15,39 +15,53 @@
 
 <div class="mx-5">
   <%= paginate @tags %>
-
-  <table class='table'>
-    <% @tags.each do |tag| %>
+  <table class="table">
+    <thead class="bg--lightgrey">
       <tr>
-        <td>
-          <b><%= link_to tag.name, edit_admin_tag_path(tag.id, page: params[:page]),
-          data: { toggle: 'tooltip', placement: 'left' }, title: 'Edit' %></b>
-          <%= link_to '<i class="fa fa-pencil">&nbsp;</i>'.html_safe, edit_admin_tag_path(tag.id, page: params[:page]),
-          data: { toggle: 'tooltip', placement: 'left' }, title: 'Edit' %>
-        </td>
-        <td>
-          <% tag.categories.pluck(:name).each do |name| %>
-            <%= name %> <br/>
-          <% end %>
-        </td>
-        <td>
-          <% tag.locale_languages.pluck(:iso_code).each do |lang| %>
-            <%= t(lang, scope: 'i18n.language') %><br/>
-          <% end %>
-        </td>
-        <td>
-          <% tag.taggings.each do |tagging| %>
-            <%= link_to tagging.taggable.name_or_email, admin_profile_path(tagging.taggable),
-                html_options = { title: t(:show, scope: 'admin.dashboard.profiles.edit') } %><br/>
-          <% end %>
-        </td>
-        <td>
-         <%= link_to ('<i class="fa fa-trash-o">&nbsp;</i>').html_safe, admin_tag_path(tag.id),
-         method: :delete, data: { confirm: 'Are you sure?',toggle: 'tooltip', placement: 'left' },
-          class: 'btn btn-danger btn-sm', title: 'Delete'%>
-        </td>
+        <th><%= sortable "tags.name", "Name" %></th>
+        <th><%= t(:categories, scope: 'admin.dashboard.tags') %></th>
+        <th><%= t(:languages, scope: 'admin.dashboard.tags') %></th>
+        <th>Profiles</th>
+        <th><%= sortable 'taggings.created_at', t(:created_at, scope: 'admin.dashboard.tags') %></th>
+        <th><%= t(:delete, scope: 'admin.dashboard.tags') %></th>
       </tr>
-    <% end %>
+    </thead>
+    <tbody>
+      <% @tags.each do |tag| %>
+        <tr>
+          <td>
+            <b><%= link_to tag.name, edit_admin_tag_path(tag.id, page: params[:page]),
+            data: { toggle: 'tooltip', placement: 'left' }, title: 'Edit' %></b></b>
+            <%= link_to '<i class="fa fa-pencil">&nbsp;</i>'.html_safe, edit_admin_tag_path(tag.id, page: params[:page]),
+            data: { toggle: 'tooltip', placement: 'left' }, title: 'Edit' %>
+          </td>
+          <td>
+            <% tag.categories.pluck(:name).each do |name| %>
+              <%= name %> <br/>
+            <% end %>
+          </td>
+          <td>
+            <% tag.locale_languages.pluck(:iso_code).each do |lang| %>
+              <%= t(lang, scope: 'i18n.language') %><br/>
+            <% end %>
+          </td>
+          <td>
+            <% tag.taggings.each do |tagging| %>
+              <%= link_to tagging.taggable.name_or_email, admin_profile_path(tagging.taggable),
+                  html_options = { title: t(:show, scope: 'admin.dashboard.profiles.edit') } %><br/>
+            <% end %>
+          </td>
+          <td>
+            <%= tag.taggings.sort_by{|t| t.created_at }.last.created_at.strftime('%d.%m.%Y') %>
+          </td>
+          <td>
+           <%= link_to ('<i class="fa fa-trash-o">&nbsp;</i>').html_safe, admin_tag_path(tag.id),
+           method: :delete, data: { confirm: 'Are you sure?',toggle: 'tooltip', placement: 'left' },
+            class: 'btn btn-danger btn-sm', title: 'Delete'%>
+          </td>
+        </tr>
+      <% end %>
+    <tbody>
   </table>
 
   <%= paginate @tags %>
