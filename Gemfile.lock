@@ -438,7 +438,7 @@ GEM
       subexec (~> 0.2.1)
     mini_mime (1.0.0)
     mini_portile2 (2.3.0)
-    minitest (5.10.1)
+    minitest (5.11.3)
     money (6.11.3)
       i18n (>= 0.6.4, < 1.1)
     msgpack (1.2.4)
@@ -685,7 +685,7 @@ DEPENDENCIES
   letter_opener
   mime-types
   mini_magick (~> 3.6.0)
-  minitest (= 5.10.1)
+  minitest (= 5.11.3)
   newrelic_rpm
   normalize-rails
   omniauth-twitter
