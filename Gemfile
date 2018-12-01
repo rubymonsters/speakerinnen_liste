@@ -66,7 +66,7 @@ group :development, :test do
   gem 'pry'
   gem 'rspec-rails', '~> 3.8.1'
   gem 'rubocop', '~> 0.49.0'
-  gem 'selenium-webdriver', '2.38.0'
+  gem 'selenium-webdriver', '3.141.0'
 end
 
 group :test do
