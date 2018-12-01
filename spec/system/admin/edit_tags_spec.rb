@@ -19,7 +19,6 @@ describe 'locale_language' do
     expect(page).to have_selector("input[value='chemie']")
     expect(page).to_not have_checked_field("#{tag_chemie.id}_en")
     expect(page).to_not have_checked_field("#{tag_chemie.id}_de")
-    puts page.html
     check "#{tag_chemie.id}_en"
     click_button 'Save'
     expect(page.html).to include('English<br/>')
