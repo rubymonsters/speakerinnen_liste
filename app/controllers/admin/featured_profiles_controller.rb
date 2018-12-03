@@ -1,4 +1,6 @@
 class Admin::FeaturedProfilesController < Admin::BaseController
+  before_action :set_featured_profile, only: %i[edit update destroy announce_event stop_event]
+
   def index
     @featured_profiles = FeaturedProfile.all
   end
@@ -20,6 +22,31 @@ class Admin::FeaturedProfilesController < Admin::BaseController
   def edit
   end
 
+  def update
+    if @featured_profile.update_attributes(featured_profile_params)
+      redirect_to admin_featured_profiles_path, notice: I18n.t('flash.featured_profiles.updated', featured_profile_title: @featured_profile.title)
+    else
+      render action: 'edit'
+    end
+  end
+
+  def destroy
+    @featured_profile.destroy
+    redirect_to admin_featured_profiles_path, notice: I18n.t('flash.featured_profiles.destroyed', featured_profile_title: @featured_profile.title)
+  end
+
+  def announce_event
+    @featured_profile.public = true
+    @featured_profile.save
+    redirect_to admin_featured_profiles_path, notice: I18n.t('flash.featured_profiles.updated', featured_profile_title: @featured_profile.title)
+  end
+
+  def stop_event
+    @featured_profile.public = false
+    @featured_profile.save
+    redirect_to admin_featured_profiles_path, notice: I18n.t('flash.featured_profiles.updated', featured_profile_title: @featured_profile.title)
+  end
+
   private
 
   PARAMS = [
@@ -39,5 +66,9 @@ class Admin::FeaturedProfilesController < Admin::BaseController
 
   def normalize_profile_ids(ids)
     ids.split(",").map(&:to_i)
+  end
+
+  def set_featured_profile
+    @featured_profile = FeaturedProfile.find(params[:id])
   end
 end

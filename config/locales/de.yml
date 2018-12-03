@@ -33,6 +33,8 @@ de:
         title: "Titel"
         description: "Beschreibung"
         profile_ids: "IDs der Profile (kommagetrennte Liste)"
+        public: "Ankündigung"
+        invisible: "-"
       profiles:
         profiles: "Profile"
         created_at: "Erstellt"
