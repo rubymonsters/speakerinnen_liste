@@ -61,7 +61,7 @@ de:
         no_langage: "ohne Sprache"
         show_all_tags: "Alle Tags"
         categories: "Kategorien"
-        created_at: "Letztes Tagging"
+        created_at: "Erstellungsdatum"
         delete: "Löschen"
         edit:
           new_tagname: "Trage den neuen Namen des Tags ein: "
