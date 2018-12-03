@@ -5,9 +5,6 @@ describe FeaturedProfile, type: :model do
   let!(:profile) { FactoryBot.create(:profile, id: 1) }
 
   describe 'featured profile' do
-    it "has a title" do
-      #expect(featured_profile.title).to eq 'gaming'
-    end
 
     it "points to the profiles" do
     @featured = FeaturedProfile.featured_women

@@ -10,6 +10,7 @@
         <th>Titel</th>
         <th>Beschreibung</th>
         <th>Profile Ids</th>
+        <th>öffentlich</th>
       </tr>
     </thead>
     <tbody>
@@ -18,6 +19,11 @@
           <td><%= featured_profile.title %></td>
           <td><%= featured_profile.description %></td>
           <td><%= featured_profile.profile_ids %></td>
+          <td>
+            <% if featured_profile.public %>
+              Ja
+            <% end %>
+          </td>
         </tr>
       <% end %>
     </tbody>
