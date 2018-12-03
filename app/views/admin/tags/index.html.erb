@@ -52,8 +52,8 @@
             <% end %>
           </td>
           <td>
-            <% if  !tag.taggings.empty? %>
-              <%= tag.taggings.sort_by{|t| t.created_at }.last.created_at.strftime('%d.%m.%Y') %>
+            <% if !tag.taggings.empty? %>
+              <%= tag.taggings.sort_by{|t| t.created_at }.first.created_at.strftime('%d.%m.%Y') %>
             <% end %>
           </td>
           <td>
