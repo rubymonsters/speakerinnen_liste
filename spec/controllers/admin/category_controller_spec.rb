@@ -22,12 +22,7 @@ describe Admin::CategoriesController, type: :controller do
   describe 'POST create' do
     before(:each) do
       @old_categories = Category.count
-      post :create, params: { category: {
-        translations_attributes: {
-          '0' => { locale: 'de', name: 'Wissenschaft' },
-          '1' => { locale: 'en', name: 'Science' }
-        }
-      } }
+      post :create, params: { category: { name: 'Science' } }
     end
 
     specify { expect(response).to redirect_to("/#{I18n.locale}/admin/categories") }
@@ -89,7 +84,7 @@ describe Admin::CategoriesController, type: :controller do
 
   context 'translations' do
     before(:each) do
-      de_factory_translation = category.translations.find_by('locale' => 'de')
+      de_factory_translation = category.translations.where(locale: 'en').first
       en_translation = category.translations.create!('locale' => 'en')
 
       category_params = {
