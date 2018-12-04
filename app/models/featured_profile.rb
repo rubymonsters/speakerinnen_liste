@@ -9,7 +9,9 @@ class FeaturedProfile < ApplicationRecord
       return nil
     else
       featured_profiles = []
-      featured.profile_ids.each { | id | featured_profiles << Profile.find(id) }
+      featured.profile_ids.each do | id |
+        featured_profiles << Profile.find(id) if Profile.exists?(id)
+      end
     end
     featured_profiles
   end

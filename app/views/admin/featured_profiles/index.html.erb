@@ -19,7 +19,7 @@
       <% @featured_profiles.each do |featured_profile|  %>
         <tr>
           <td><%= featured_profile.title %></td>
-          <td><%= featured_profile.description %></td>
+          <td><%= featured_profile.description[0..99] %></td>
           <td><%= featured_profile.profile_ids %></td>
           <td>
             <% if featured_profile.public %>
