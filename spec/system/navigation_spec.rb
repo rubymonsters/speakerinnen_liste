@@ -27,7 +27,7 @@ RSpec.describe 'Navigation', type: :system do
       expect(page).to have_css('#startpage__teaser-bg-02')
       expect(page).to have_css('.profile-box', text: 'engineer')
       expect(page).to have_css('.profile-box', text: 'technican')
-      expect(page).to have_css('.category-links', count: 1)
+      expect(page).to have_css('.category_links', count: 1)
       expect(page).to have_link('Science')
     end
 
