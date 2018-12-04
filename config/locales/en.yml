@@ -51,7 +51,6 @@ en:
       tags:
         tags: "Tags"
         current_tagname: "Current tag name: "
-        new_tagname: "Enter new tag name: "
         tags_of: " out of "
         tags_here_are: "Here are "
         tags_search: "Search for tag"
@@ -61,6 +60,13 @@ en:
         languages: "Languages"
         no_language: "no language"
         show_all_tags: "All tags"
+        categories: "categories"
+        created_at: "created at"
+        delete: "Delete"
+        edit:
+          new_tagname: "Enter new tag name: "
+          select_languages: "Select tag's language/s: "
+          select_categories: "Select tag's category/ies: "
       medialink:
         show: "Show all medialinks"
         url: "URL:"
