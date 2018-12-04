@@ -18,11 +18,11 @@
   <table class="table">
     <thead class="bg--lightgrey">
       <tr>
-        <th><%= sortable "tags.name", "Name" %></th>
+        <th><%= sortable "tags.name", "Name", @filter_params %></th>
         <th><%= t(:categories, scope: 'admin.dashboard.tags') %></th>
         <th><%= t(:languages, scope: 'admin.dashboard.tags') %></th>
         <th>Profiles</th>
-        <th><%= sortable 'taggings.created_at', t(:created_at, scope: 'admin.dashboard.tags') %></th>
+        <th><%= sortable 'taggings.created_at', t(:created_at, scope: 'admin.dashboard.tags'), @filter_params %></th>
         <th><%= t(:delete, scope: 'admin.dashboard.tags') %></th>
       </tr>
     </thead>
