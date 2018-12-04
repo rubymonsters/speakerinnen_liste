@@ -30,10 +30,10 @@ FactoryBot.define do
 
   factory :category do
     factory :cat_science do
-      name 'Science'
+      name_en 'Science'
     end
     factory :cat_social do
-      name 'Social'
+      name_en 'Social'
     end
   end
 
