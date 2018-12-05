@@ -46,7 +46,7 @@ gem 'friendly_id'
 
 gem 'active_model_serializers'
 
-gem 'elasticsearch-model', '~> 2.0'
+gem 'elasticsearch-model', '~> 6.0'
 gem 'elasticsearch-rails', '~> 2.0'
 gem 'record_tag_helper', '~> 1.0'
 
