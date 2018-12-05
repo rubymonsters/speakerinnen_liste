@@ -3,12 +3,16 @@
 require 'spec_helper'
 
 describe 'profile search' do
+  let!(:locale_language_de) { create(:locale_language_de) }
+  let!(:locale_language_en) { create(:locale_language_en) }
+  let!(:tag_en) { create(:tag_physics, locale_languages: [locale_language_en]) }
+
   let!(:ada) do
     FactoryBot.create(:published, firstname: 'Ada', lastname: 'Lovelace',
                                       twitter: 'alovelace', city: 'London',
                                       country: 'GB',
                                       iso_languages: ['en'],
-                                      topic_list: %w[computer algorithms],
+                                      topic_list: [ tag_en] ,
                                       bio_de: 'Ada:Das ist meine deutsche Bio.',
                                       bio_en: 'Ada:This is my english bio.',
                                       main_topic_de: 'Das Leben', main_topic_en: 'Life',
@@ -20,7 +24,7 @@ describe 'profile search' do
                                       twitter: '', city: 'Paris',
                                       country: 'FR',
                                       iso_languages: %w[en fr],
-                                      topic_list: %w[physicist chemist],
+                                      topic_list: [tag_en],
                                       bio_de: 'Maria: Das ist meine deutsche Bio.',
                                       bio_en: 'Maria: This is my english bio.',
                                       main_topic_de: 'x-ray', main_topic_en: 'Röntgen',
@@ -34,14 +38,13 @@ describe 'profile search' do
 
   describe 'tag filter', js: true do
     before do
-      ada_tag = ActsAsTaggableOn::Tag.find_by(name: ada.topic_list[0])
-      marie_tag = ActsAsTaggableOn::Tag.find_by(name: marie.topic_list[1])
-      ada_tag.categories << category
-      marie_tag.categories << category
+      tag = ActsAsTaggableOn::Tag.first
+      tag.categories << category
     end
 
-    skip 'is skiped because I need to figure out how the new tagfilter can be tested, finds profiles with the selected tag' do
+    skip'is skiped because I need to figure out how the new tagfilter can be tested, finds profiles with the selected tag' do
       visit root_path
+      save_and_open_page  
       click_button "physicist"
       click_button "Filter"
 
