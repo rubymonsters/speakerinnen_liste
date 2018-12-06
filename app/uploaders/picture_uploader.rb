@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PictureUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
 
@@ -6,7 +8,7 @@ class PictureUploader < CarrierWave::Uploader::Base
   end
 
   version :profile do
-    process resize_to_fill: [250, 250]
+    process resize_to_fill: [300, 300]
   end
 
   version :profiles_list do

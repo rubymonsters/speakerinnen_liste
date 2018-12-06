@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
 
+  # for production I have to add devise routes here
   devise_for :profiles,
               only: :omniauth_callbacks,
               controllers: {
-                omniauth_callbacks: 'omniauth_callbacks',
+                omniauth_callbacks: :omniauth_callbacks,
                 confirmations: :confirmations,
                 registrations: :registrations
               }
@@ -42,11 +43,14 @@ Rails.application.routes.draw do
       end
     end
 
-    devise_for :profiles, skip: :omniauth_callbacks, controllers: {
-      omniauth_callbacks: 'omniauth_callbacks',
-      confirmations: :confirmations,
-      registrations: :registrations
-    }
+  # for localhost I have to add devise routes here
+    devise_for :profiles,
+      skip: :omniauth_callbacks,
+      controllers: {
+        omniauth_callbacks: :omniauth_callbacks,
+        confirmations: :confirmations,
+        registrations: :registrations
+      }
 
     get 'topics', to: 'profiles#index', as: :topic
 
@@ -56,6 +60,7 @@ Rails.application.routes.draw do
     post 'contact' => 'contact#create'
 
     get 'impressum' => 'pages#impressum'
+    get 'privacy' => 'pages#privacy'
     get 'about' => 'pages#about'
     get 'links' => 'pages#links'
     get 'faq' => 'pages#faq'
@@ -82,5 +87,10 @@ Rails.application.routes.draw do
     constraints(host: /^(speakerinnen-liste.herokuapp.com|speakerinnen.org)$/) do
       root to: redirect('http://www.speakerinnen.org')
     end
+  end
+
+  unless Rails.application.config.consider_all_requests_local
+    # having created corresponding controller and action
+    get '*path', to: 'errors#error_404', via: :all
   end
 end

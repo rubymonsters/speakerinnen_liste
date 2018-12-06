@@ -1,14 +1,16 @@
+# frozen_string_literal: true
+
 class Admin::ProfilesController < Admin::BaseController
   helper_method :sort_column, :sort_direction
 
   before_action :set_profile, only: %i[show edit update destroy publish unpublish admin_comment]
 
   def index
-    if params[:search]
-      @profiles = Profile.is_confirmed.admin_search(params[:search]).order('created_at DESC').page(params[:page]).per(100)
-    else
-      @profiles = Profile.is_confirmed.order(sort_column + ' ' + sort_direction).order('created_at DESC').page(params[:page]).per(100)
-    end
+    @profiles = if params[:search]
+                  Profile.is_confirmed.admin_search(params[:search]).order('created_at DESC').page(params[:page]).per(100)
+                else
+                  Profile.is_confirmed.order(sort_column + ' ' + sort_direction).order('created_at DESC').page(params[:page]).per(100)
+                end
   end
 
   def new; end
@@ -17,6 +19,11 @@ class Admin::ProfilesController < Admin::BaseController
 
   def show
     @medialinks = @profile.medialinks.order(:position)
+    @message = Message.new
+    @topics = []
+    @topics << @profile.topics.with_language(I18n.locale)
+    @topics << @profile.topics.without_language
+    @topics = @topics.flatten.uniq
   end
 
   def edit
@@ -82,11 +89,9 @@ class Admin::ProfilesController < Admin::BaseController
       :lastname,
       :picture,
       :remove_picture,
-      :talks,
       :content,
       :name,
       :topic_list,
-      :media_url,
       :medialinks,
       :admin_comment,
       :bio_de,
@@ -96,10 +101,14 @@ class Admin::ProfilesController < Admin::BaseController
       :twitter_de,
       :twitter_en,
       :website_de,
+      :website_2_de,
+      :website_3_de,
       :website_en,
+      :website_2_en,
+      :website_3_en,
       :city_de,
       :city_en,
-      translations_attributes: %i[id bio main_topic twitter website city locale]
+      translations_attributes: %i[id bio main_topic twitter website website_2 website_3 city locale]
     )
   end
 

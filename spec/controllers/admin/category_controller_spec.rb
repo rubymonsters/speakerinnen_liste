@@ -1,6 +1,8 @@
-include AuthHelper
+# frozen_string_literal: true
 
 describe Admin::CategoriesController, type: :controller do
+  include AuthHelper
+
   let!(:admin) { FactoryBot.create(:admin) }
   let!(:category) { FactoryBot.create(:cat_science) }
 
@@ -21,12 +23,11 @@ describe Admin::CategoriesController, type: :controller do
     before(:each) do
       @old_categories = Category.count
       post :create, params: { category: {
-                                translations_attributes: {
-                                  '0' => { locale: 'de', name: 'Wissenschaft' },
-                                  '1' => { locale: 'en', name: 'Science' }
-                                }
-                              }
-                            }
+        translations_attributes: {
+          '0' => { locale: 'de', name: 'Wissenschaft' },
+          '1' => { locale: 'en', name: 'Science' }
+        }
+      } }
     end
 
     specify { expect(response).to redirect_to("/#{I18n.locale}/admin/categories") }

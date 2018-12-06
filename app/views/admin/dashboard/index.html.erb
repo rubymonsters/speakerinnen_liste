@@ -1,16 +1,6 @@
-<section class="content--bg-white">
-  <div class="layout-wrapper">
-    <h1>Administration</h1>
-    <ul class="list--style-none pl0 font-size-24">
-      <li>
-        <%= link_to(t(:categories, scope: "admin.dashboard.categories"), admin_categories_path)%>
-      </li>
-      <li>
-        <%= link_to(t(:tags, scope: "admin.dashboard.tags"), admin_tags_path) %>
-      </li>
-      <li>
-        <%= link_to(t(:profiles, scope: "admin.dashboard.profiles"), admin_profiles_path) %>
-      </li>
-    </ul>
-  </div>
-</section>
+<div class="container py-5 bg--white">
+  <h1 class="pb-5">Administration</h1>
+  <h5><%= link_to(t(:categories, scope: "admin.dashboard.categories"), admin_categories_path)%></h5>
+  <h5><%= link_to(t(:tags, scope: "admin.dashboard.tags"), admin_tags_path) %></h5>
+  <h5><%= link_to(t(:profiles, scope: "admin.dashboard.profiles"), admin_profiles_path) %></h5>
+</div>

@@ -16,23 +16,18 @@
   </head>
   <body>
     <%= render 'layouts/header' %>
-    <div id="content">
-      <% if notice %>
-        <div class='notice'>
-          <%= notice %>
-        </div>
-      <% end %>
-      <% if alert %>
-        <div class='alert'>
-          <%= Array(alert).join('<br>').html_safe %>
-        </div>
-      <% end %>
 
-      <%= yield %>
+    <% if notice %> <div class='notice'> <%= notice %> </div> <% end %>
+    <% if alert %> <div class='alert'> <%= Array(alert).join('<br>').html_safe %> </div> <% end %>
 
-      <%= render 'layouts/footer' if render_footer? %>
-    </div>
-      <!-- Piwik -->
+    <%= render 'shared/cookie_consent' %>
+    <%= render 'shared/contact_hint_modal' %>
+    <%= render 'shared/auth_hint_modal' %>
+    <%= yield %>
+    <%= render 'layouts/footer' if render_footer? %>
+
+    <!-- Piwik -->
+    <% if cookies[:cookie_consent] == 'true' %>
       <script type="text/javascript">
         var _paq = _paq || [];
         _paq.push(['trackPageView']);
@@ -46,6 +41,7 @@
         })();
       </script>
       <noscript><p><img src="//tyranja.cassiopeia.uberspace.de/piwik/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>
-      <!-- End Piwik Code -->
+    <% end %>
+    <!-- End Piwik Code -->
   </body>
 </html>

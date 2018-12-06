@@ -1,26 +1,28 @@
-include AuthHelper
+# frozen_string_literal: true
 
 describe ProfilesController, type: :controller do
+  include AuthHelper
+
   let!(:ada) do
     FactoryBot.create(:published,
-                       firstname: 'Ada',
-                       lastname: 'Lovelace',
-                       email: 'ada@lovelace.de',
-                       twitter: '@alove',
-                       main_topic_en: 'first computer programm',
-                       bio_en: 'first programmer',
-                       city_en: 'London',
-                       country: 'GB',
-                       iso_languages: %w[en fr],
-                       topic_list: 'algorithm, mathematic')
+                      firstname: 'Ada',
+                      lastname: 'Lovelace',
+                      email: 'ada@lovelace.de',
+                      twitter: '@alove',
+                      main_topic_en: 'first computer programm',
+                      bio_en: 'first programmer',
+                      city_en: 'London',
+                      country: 'GB',
+                      iso_languages: %w[en fr],
+                      topic_list: 'algorithm, mathematic')
   end
   let!(:ada_medialink) do
     FactoryBot.create(:medialink,
-                       profile_id: ada.id,
-                       title: 'Ada and the computer',
-                       url: 'www.adalovelace.de',
-                       description: 'How to program',
-                       language: 'en')
+                      profile_id: ada.id,
+                      title: 'Ada and the computer',
+                      url: 'www.adalovelace.de',
+                      description: 'How to program',
+                      language: 'en')
   end
 
   before do

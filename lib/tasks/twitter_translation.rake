@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 desc 'copies twitter_de into twitter_en'
 task copies_twitter: :environment do
   Profile.all.each do |profile|

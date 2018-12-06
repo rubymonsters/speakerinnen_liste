@@ -1,5 +1,6 @@
+# frozen_string_literal: true
+
 class Profile < ApplicationRecord
-  include AutoHtml
   include HasPicture
   include Searchable
   include ActiveModel::Serialization
@@ -10,21 +11,12 @@ class Profile < ApplicationRecord
   validate :iso_languages_array_has_right_format
   before_save :clean_iso_languages!
 
-  translates :bio, :main_topic, :twitter, :website, :city, fallbacks_for_empty_translations: true
+  translates :bio, :main_topic, :twitter, :website, :website_2, :website_3, :city, fallbacks_for_empty_translations: true
   accepts_nested_attributes_for :translations
-  globalize_accessors locales: %i[en de], attributes: %i[main_topic bio twitter website city]
+  globalize_accessors locales: %i[en de], attributes: %i[main_topic bio twitter website website_2 website_3 city]
 
   extend FriendlyId
   friendly_id :slug_candidate, use: :slugged
-
-  auto_html_for :media_url do
-    html_escape
-    image
-    youtube width: 400, height: 250
-    vimeo width: 400, height: 250
-    simple_format
-    link target: '_blank', rel: 'nofollow'
-  end
 
   devise :database_authenticatable, :registerable, :omniauthable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
@@ -32,9 +24,9 @@ class Profile < ApplicationRecord
   acts_as_taggable_on :topics
 
   before_save(on: %i[create update]) do
-    twitter.gsub(%r{^@|https:|http:|:|//|www.|twitter.com/}, '') if twitter
-    firstname.strip! if firstname
-    lastname.strip! if lastname
+    twitter&.gsub(%r{^@|https:|http:|:|//|www.|twitter.com/}, '')
+    firstname&.strip!
+    lastname&.strip!
   end
 
   after_save :update_or_remove_index
@@ -107,12 +99,16 @@ class Profile < ApplicationRecord
     slug.blank? || firstname_changed? || lastname_changed?
   end
 
-  def website_with_protocol
-    if website =~ %r{^https?://}
-      website
+  def website_with_protocol(profile_website)
+    if profile_website =~ %r{^https?://}
+      profile_website
     else
-      'http://' + website
+      'http://' + profile_website
     end
+  end
+
+  def website_in_language_scope(lang, number = '')
+    send(('website_' + number + lang.to_s).to_sym)
   end
 
   def twitter_name_formatted
@@ -129,12 +125,12 @@ class Profile < ApplicationRecord
   end
 
   def self.random
-    order('RANDOM()')
+    order(Arel.sql('random()'))
   end
 
   def update_or_remove_index
     published ? __elasticsearch__.index_document : __elasticsearch__.delete_document
-  rescue
+  rescue StandardError
     nil
     # rescue a deleted document if not indexed
   end
@@ -167,9 +163,6 @@ class Profile < ApplicationRecord
 
     if iso_languages.map(&:class).uniq != [String]
       errors.add(:iso_languages, 'must be an array of strings')
-    end
-    if iso_languages.map(&:size).uniq != [2]
-      errors.add(:iso_languages, 'each element must be two charactes')
     end
   end
 end

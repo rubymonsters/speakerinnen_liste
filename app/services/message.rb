@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 class Message
   include ActiveModel::Validations
   include ActiveModel::Conversion
   extend ActiveModel::Naming
 
-  attr_accessor :name, :email, :subject, :body, HONEYPOT_EMAIL_ATTR_NAME
+  attr_accessor :name, :email, :subject, :body
 
   validates :name, :email, :subject, :body, presence: true
   validates :email, format: { with: /.+@.+\..+/ }, allow_blank: false

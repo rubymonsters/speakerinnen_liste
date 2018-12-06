@@ -1,11 +1,13 @@
+# frozen_string_literal: true
+
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 ENV['RAILS_ENV'] ||= 'test'
-require File.expand_path('../../config/environment', __FILE__)
+require File.expand_path('../config/environment', __dir__)
 require 'rspec/rails'
 require 'elasticsearch/extensions/test/cluster'
 require 'capybara/poltergeist'
 Capybara.javascript_driver = :poltergeist
-Capybara.default_wait_time = 10
+Capybara.default_max_wait_time = 10
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
 Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
@@ -65,7 +67,7 @@ RSpec.configure do |config|
         puts e
         # This kills "Index does not exist" errors being written to console
         # by this: https://github.com/elastic/elasticsearch-rails/blob/738c63efacc167b6e8faae3b01a1a0135cfc8bbb/elasticsearch-model/lib/elasticsearch/model/indexing.rb#L268
-      rescue => e
+      rescue StandardError => e
         STDERR.puts "There was an error creating the elasticsearch index for #{model.name}: #{e.inspect}"
       end
     end
@@ -82,10 +84,10 @@ RSpec.configure do |config|
       next unless model.respond_to?(:__elasticsearch__)
       begin
         model.__elasticsearch__.delete_index!
-      rescue => Elasticsearch::Transport::Transport::Errors::NotFound
+      rescue StandardError => Elasticsearch::Transport::Transport::Errors::NotFound
         # This kills "Index does not exist" errors being written to console
         # by this: https://github.com/elastic/elasticsearch-rails/blob/738c63efacc167b6e8faae3b01a1a0135cfc8bbb/elasticsearch-model/lib/elasticsearch/model/indexing.rb#L268
-      rescue => e
+      rescue StandardError => e
         STDERR.puts "There was an error removing the elasticsearch index for #{model.name}: #{e.inspect}"
       end
     end

@@ -1,6 +1,8 @@
-include AuthHelper
+# frozen_string_literal: true
 
 describe 'admin navigation' do
+  include AuthHelper
+
   let!(:admin) { FactoryBot.create(:admin) }
 
   let!(:tag_physics) { FactoryBot.create(:tag_physics) }

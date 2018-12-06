@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 module ApplicationHelper
   def devise_mapping
     Devise.mappings[:profile]
   end
 
-  def sortable(column, title = nil)
+  def sortable(column, title = nil, filter_params = {})
     title ||= column.titleize
 
     direction_mapping = {
@@ -21,13 +23,14 @@ module ApplicationHelper
     tooltip = tooltip_mapping[column]
 
     direction = column == sort_column && sort_direction == 'desc' ? 'asc' : 'desc'
-    link_to("<i class='fa fa-arrow-#{icon_direction}'>&nbsp;</i>".html_safe + title, { sort: column, direction: direction }, data: { toggle: 'tooltip', placement: 'left' }, title: tooltip)
+    arrow = column == sort_column ? "<i class='fa fa-arrow-#{icon_direction}'>&nbsp;</i>".html_safe : ""
+    link_to(arrow + title, filter_params.merge( sort: column, direction: direction ), data: { toggle: 'tooltip', placement: 'left' }, title: tooltip)
   end
 
   def custom_tag_cloud(tags, classes)
     return [] if tags.empty?
 
-    max_count = tags.sort_by { |t| t.taggings.count }.last.taggings.count.to_f
+    max_count = tags.pluck(:taggings_count).max.to_f
 
     tags.each do |tag|
       index = ((tag.taggings.count / max_count) * (classes.size - 1))

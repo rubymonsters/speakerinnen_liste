@@ -38,9 +38,10 @@ de:
         make_public: "veröffentliche"
         invisible: "unsichtbar"
         make_invisible: "Mache unsichtbar"
+        confirmed: "bestätigte"
         roles: "Rollen"
         comment: "Kommentar"
-        add_comment: "Kommentar hinzufügen"
+        add_comment: "Kommentar speichern"
         profile_status: "Das Profil ist "
         name_of_profile: "Der Name der Speakerin ist "
         search_for_name: "Suche nach Namen"
@@ -50,7 +51,6 @@ de:
       tags:
         tags: "Tags"
         current_tagname: "Bisheriger Name des Tags:"
-        new_tagname: "Trage den neuen Namen des Tags ein: "
         tags_of: " von "
         tags_here_are: "Du siehst "
         tags_search: "Suche nach einem bestimmtem Tag:"
@@ -59,7 +59,16 @@ de:
         tags_filter_default: "Alle Kategorien auswählen"
         languages: "Sprachen"
         no_langage: "ohne Sprache"
+        show_all_tags: "Alle Tags"
+        categories: "Kategorien"
+        created_at: "Erstellungsdatum"
+        delete: "Löschen"
+        edit:
+          new_tagname: "Trage den neuen Namen des Tags ein: "
+          select_languages: "Sprache(n) des Tags auswählen: "
+          select_categories: "Kategorie(n) des Tags auswählen: "
       medialink:
+        show: "Zeige alle Referenzen"
         url: "URL:"
         title: "Überschrift:"
         description: "Beschreibung:"
@@ -69,30 +78,45 @@ de:
       search:
         heading: "Mehr Frauen auf die Bühnen!"
         tagline_html: "Finde Rednerinnen, Referentinnen & Moderatorinnen für Deine Konferenz."
-        search_text: "Speakerinnen* durchsuchen"
+        search_text: "Namen oder Thema"
         search: "Suche"
       all_categories: "Kategorien und Themen >>"
       all_speakers: "Alle Speakerinnen* >>"
+      hint: "Hinweis"
+      auth_modal: "Du musst der <b>Verwendung von Cookies zustimmen</b>, bevor Du Dich einloggen oder anmelden kannst.<br>
+      Mehr Informationen in unserer <a href='%{link}' class='link'>Datenschutzerklärung</a>.<br>"
+      contact_modal: "Du musst der <b>Verwendung von Cookies zustimmen</b>, bevor Du das Kontaktformular benutzen kannst.<br>
+      Mehr Informationen in unserer <a href='%{link}' class='link'>Datenschutzerklärung</a>.<br>"
+      cookie_consent: "Um unsere Seite nutzer*innenfreundlich zu gestalten und weiter
+      verbessern zu können, speichern wir einzelne Informationen daüber, wie
+      sie genutzt wird. Das geschieht, indem wir einfache Textdateien, auch
+      Cookies genannt, durch das Aufrufen der Seite auf deinem Computer
+      ablegen, wo sie dann gespeichert werden.
+      <br> Wichtig: Bestimmte Funktionen können nur genutzt werden, wenn Du die
+      Cookies akzeptiertst: Log-In, Registrierung, Kontaktaufnahme. Die Suche funktioniert auch ohne Cookies. Außerdem benutzen wir eine
+      Software, die Matomoto heißt, um zu wissen, wie die Besucher*innen und Nutzer*innen von speakerinnen.org die Seite nutzen: Das hilft uns auch
+      dabei, sie zu verbessern. Auch hierfür nutzen wir Cookies, die Du aber deaktivieren kannst. Mehr Informationen in unserer <a href='%{link}' class='link'>Datenschutzerklärung</a>."
+      allow_cookies: "Ich stimme zu"
       description: "Unsere Kategorien"
-      description_text: "Uns ist die Verteilung der Männer und Frauen auf Konferenzbühnen wichtig. Wir ermutigen Frauen, in ihrem professionellen Umfeld sichtbarer zu werden."
+      description_text: "Uns ist die Verteilung der Männer und Frauen* auf Konferenzbühnen wichtig. Wir ermutigen Frauen, in ihrem professionellen Umfeld sichtbarer zu werden."
       speaker_shoutout: "Hast Du etwas Interessantes zu erzählen?"
-      speaker_text: "Registriere Dich auf der SpeakerinnenListe >>"
+      speaker_text: "Registriere Dich auf speakerinnen.org >>"
       speakers:
-        speaker_headline: "Unsere Speakerinnen*"
+        speaker_headline: "Unsere Speakerinnen"
         speaker_text: "Keine Ausreden mehr für Panels ohne Frauen!"
         speaker_index: "Alle Speakerinnen* anschauen >>"
         categories: "Kategorien und Themen >>"
       mission_statement:
         heading: "Unsere Vision"
-        content: "<p>Wir finden, dass weibliche Speakerinnen* für Event-Organisatoren einfacher zu finden sein sollen.</p><p>Wir finden auch, dass Konferenzen die besten Speaker und Speakerinnen auf ihren Bühnen haben sollten, egal von welchem Geschlecht.</p><p>Wir glauben an Kollaboration und nicht an Wettbewerb. Wir ermutigen unsere Speakerinnen und Event-Organisatoren sich gegenseitig zu unterstützen.</p>"
+        content: "<p>Wir finden, dass Speakerinnen für Event-Organisator*innen einfacher zu finden sein sollen.</p><p>Wir finden auch, dass Konferenzen die besten Speaker und Speakerinnen auf ihren Bühnen haben sollten, egal von welchem Geschlecht.</p><p>Wir glauben an Kollaboration und nicht an Wettbewerb. Wir ermutigen unsere Speakerinnen und Event-Organisatoren sich gegenseitig zu unterstützen.</p>"
       quote: "Wir glauben an Kollaboration - nicht an Wettbewerb."
-      quote_text: "So ermutigen wir unsere Speakerinnen* und Event-Organisatoren, sich gegenseitig zu unterstützen."
+      quote_text: "So ermutigen wir unsere Speakerinnen und Event-Organisator*innen, sich gegenseitig zu unterstützen."
       footer:
         about_title: "Über uns"
         about: |
                 Die Speakerinnen-Liste hat das Ziel, die Sichtbarkeit von Frauen* bei Konferenzen, Panels, Talkshows und überall da zu erhöhen, wo öffentlich gesprochen wird.<br>
                 Hier können Veranstalter_innen Expertinnen* finden, die kompetent über ihre Themen sprechen können und wollen.<br>
-                Frauen* können sich selbst mit ihren Themen und Referenzen in die Datenbank eintragen und so besser findbar werden.
+                Frauen können sich selbst mit ihren Themen und Referenzen in die Datenbank eintragen und so besser findbar werden.
         more: ">> mehr"
         railsgirls: |
                 Die Speakerinnen-Liste wurde von 8 Frauen mit der Unterstützung von 4 Coaches als Lernprojekt der Rails Girls Berlin gebaut.<br><br>
@@ -106,8 +130,8 @@ de:
         links_text: "Hier gibt es Links zu ähnlichen Projekten:"
         contact: "Kontakt"
         contact_link: "E-Mail"
-        address: "<a href='http://twitter.com/speakerinnen', target='_blank', class='pv-'>Twitter</a>"
-        github: "<a href='http://github.com/rubymonsters/speakerinnen_liste', target='_blank', class='pv-'>GitHub</a>"
+        twitter: "<a href='http://twitter.com/speakerinnen', target='_blank', class='btn btn-link px-2'>Twitter</a>"
+        github: "<a href='http://github.com/rubymonsters/speakerinnen_liste', target='_blank', class='btn btn-link px-2'>GitHub</a>"
         devblog: "<a href='http://speakerinnen.wordpress.com/', taget='_blank'>Entwicklerinnen-Blog</a>"
         faq_short: |
             <strong>Warum gibt es Thema XYZ noch nicht?</strong><br>
@@ -126,20 +150,20 @@ de:
             <br><br>
             <strong>Die Hälfte der Macht den Speakerinnen</strong><br>
             <a href="http://newthinking.de/2016/03/02/die-halfte-der-macht-den-speakerinnen/">Newthinking Blog</a>
-        women: "* Mit Frauen* meinen wir alle, die sich selbst als Frau verstehen."
+        women: "* Mit Frauen meinen wir alle, die sich selbst als Frau verstehen (auch wenn wir den  * an manchen Stellen für die bessere Lesbarkeit weglassen)."
     about:
       title: "Über uns"
     press:
       title: "Medien über uns"
     imprint:
-      title: "Impressum & Datenschutzerklärung"
-      privacy: "Wir setzen Piwik ein, um anonymisierte Daten von AnwenderInnen zu erheben. Diese Daten helfen uns die Gebrauchstauglichkeit der Webseite zu verbessern."
+      title: "Impressum"
+      privacy: "Datenschutzerklärung"
   layouts:
     application:
-      title: "Speakerinnen*-Liste"
+      title: "Speakerinnen.org"
       home: "Home"
       menu: "Menü"
-      list: "Speakerinnen*"
+      list: "Speakerinnen"
       contact: "Kontakt"
       impressum: "Impressum"
       search: "Suchen"
@@ -167,50 +191,76 @@ de:
       error: "Bitte fülle alle Felder aus, damit die Speakerin alle Informationen bekommt, die sie benötigt."
       error_email_for_us: "Bitte fülle alle Felder aus."
   profiles:
-    category: "In der Kategorie <b>%{category_name}</b><br> haben wir %{profiles_count} Speakerinnen*
-      <br>und %{topics_count} Themen gefunden:"
+    category: "In der Kategorie <b>%{category_name}</b> haben wir <b>%{profiles_count}</b> Speakerinnen und <b>%{topics_count}</b> Themen gefunden:"
     tag:
-      topics: "Top-Themen"
+      top_topics: "Die 200 Top-Themen"
+      tag_choose_languages: "Du kannst die Topics auch nach Sprache sortieren:"
       topics_with_category: "in der Kategorie %{category_name}"
       topics_with_no_language_scope: "Topics in allen Sprachen"
-      topics_qick_filter: "Hier könnt ihr in der Topic Cloud suchen:"
+      topics_quick_filter: "Hier könnt ihr in der Topic Cloud suchen:"
     form:
       not_saved: "Dieses Profil konnte nicht gespeichert werden:"
       profile_from: "Profil von"
       delete_picture: "Lösche mein Foto"
       update: "Aktualisiere dein Profil"
-      copyright_photo: "Bitte nutze .jpg, .jpeg oder .png und achte darauf, daß Du die Rechte zu diesem Foto besitzt!"
-      size_photo: "Die Größe des Fotos sollte kleiner als 1MB sein."
-    profile:
+      picture: "Ein Foto von mir:"
+      picture_info: "Lade bitte das Foto in <b>Farbe</b> hoch, wir zeigen es in Graustufen.
+        Nutze .jpg, .jpeg oder .png und achte darauf, daß Du die Rechte zu diesem Foto besitzt!
+        Die Größe des Fotos sollte <b>kleiner als 1MB</b> sein."
+      firstname: "Mein Vorname:"
+      lastname: "Mein Nachname:"
+      bio: "Meine Biografie auf %{language}: <i class='fa fa-info-circle' aria-hidden='true'></i>
+      <br><small class='form-text text-muted'>Du kannst einfache HTML Tags nutzen, um den Text zu formatieren. Zum Beispiel: <i>< i >italic< /i ></i> oder <b>< b > fett < /b ></b>.</small>"
+      bio_tooltip: "Hier ist Platz für eine kurze oder auch längere Bio. Außerdem sollten hier Fachkenntnisse und mögliche Vortragsthemen genauer beschrieben werden. Das hilft Veranstalterinnen und Veranstaltern herauszufinden, ob Ihr die Richtigen für ihr Event sein könntet."
+      topic_list: "Meine Themen als Tags, wähle bitte nicht mehr als 10 Tags: <i class='fa fa-info-circle'></i>"
+      topic_list_tooltip: "Bitte schaue zuerst, ob Dein Thema schon vorhanden ist."
+      main_topic_title: "Mein Hauptthema:"
+      main_topic: "Mein Hauptthema auf %{language}:
+        <br><small class='form-text text-muted'>Es werden nur 30 Zeichen angezeigt.
+        <br>Trage Dein wichtigstes Thema hier nochmal ein. Dieses Thema wird mit Deinem Namen und Bild auf der Speakerinnen-Übersichtsseite zu sehen sein.</small>"
+      tag_list: "schon vorhandene Tags"
+      languages: "Ich spreche:"
+      show_more_languages: "Noch mehr Sprachen"
+      show_less_languages: "Weniger Sprachen"
+      city: "Die Stadt, in der ich lebe: <i class='fa fa-info-circle' aria-hidden='true'></i>"
+      city_tooltip: "Bitte gib mehrere Städte mit Komma getrennt ein, z.B. Berlin, New York."
+      country: "Das Land, in dem ich lebe:"
+      twitter: "Mein Twitteraccount:"
+      email: "Meine E-Mailadresse: <i class='fa fa-info-circle' aria-hidden='true'></i>"
+      website: "Meine Webseite:"
+      additional_websites: "Zusätzliche Webseiten/Blogs:"
+    show:
       firstname: 'Vorname:'
       lastname: 'Nachname:'
       topics: 'Meine Themen:'
       languages: "Meine Sprache/n:"
-      talks: "Vorträge gehalten über:"
       media: "Meine Vorträge / Referenzen:"
       bio: "Meine Biografie: "
-      contact: "Kontakt"
       website: "Meine Webseite/Blog:"
+      websites: "Meine Webseiten/Blogs:"
       city: "Meine Stadt:"
       country: "Mein Land:"
       country_select: "Wähle ein Land aus:"
       twitter: "Mein Twittername:"
+      contact: "Kontakt"
+      email_to: "E-Mail an "
       show: "Anzeigen"
       edit: "Profil bearbeiten"
       destroy: "Löschen"
       sure: "Bist Du sicher?"
       link: "Bitte 'http://' davor schreiben."
       email: "E-Mail:"
+      empty_profile: "Hier gib es noch nix zu sehen ¯\\_(ツ)_/¯."
+      check_faq: "Fülle bitte die Felder via 'Edit Profile' aus!. <BR> Für mehr Informationen, wie Du am besten dein Profil angelegst, kannst Du hier nach schauen: <a href='https://speakerinnen.org/de/faq'>FAQ</a>"
+      profile_from: "Profil von"
+      to_profile: "Zum Profil"
     medialinks:
       edit: "Referenzen bearbeiten"
     edit:
-      show_more_languages: "Noch mehr Sprachen >>"
-      show_less_languages: "Weniger Sprachen >>"
       show: "Eigenes Profil anzeigen >>"
       home: "Alle Speakerinnen* anzeigen >>"
-      back: "Zurück"
     index:
-      title: "Speakerinnen*"
+      title: "Speakerinnen"
       text: "Schön, dass Du hier bist. <br>
              Auf dieser Seite findest Du Frauen* für deine Konferenz oder Veranstaltung: als Rednerin, Panel- oder Workshopmoderatorin.
              <p>Du kannst entweder durch die Profile blättern, einen Einstieg über die meist verwendeten <a href='#topics_anchor', class='text__link--bg'>Themen</a> finden, oder gezielt suchen.</p>
@@ -228,19 +278,6 @@ de:
       show_less: "Weniger >>"
     new:
       new_profile: "Neues Profil"
-      back: "Zurück"
-    show:
-      profile_from: "Profil von"
-      topics: "Meine Themen:"
-      languages: "Meine Sprache/n:"
-      talks: "Vorträge gehalten über:"
-      media: "Meine Vorträge / Referenzen:"
-      bio: "Meine Biografie:"
-      email: "E-mail:"
-      twitter: "Twitter:"
-      contact: "E-Mail an"
-      back: "Zurück"
-      edit: "Bearbeiten"
   flash:
     profiles:
       created: "Profil wurde erfolgreich erstellt."
@@ -258,48 +295,31 @@ de:
       created: '%{category_name} wurde erfolgreich erstellt.'
       updated: '%{category_name} wurde erfolgreich geändert.'
       destroyed: '%{category_name} wurde erfolgreich gelöscht.'
-  activerecord:
-    attributes:
-      profile:
-        firstname: "Mein Vorname:"
-        lastname: "Mein Nachname:"
-        bio: "Meine Bio auf %{language}: <i class='fa fa-info-circle' aria-hidden='true'></i> <br><small>Du kannst einfache HTML Tags nutzen, um den Text zu formatieren. Zum Beispiel: <i>< i >italic< /i ></i> oder <b>< b > fett < /b ></b>.</small>"
-        bio_tooltip: "Hier ist Platz für eine kurze oder auch längere Bio. Außerdem sollten hier Fachkenntnisse und mögliche Vortragsthemen genauer beschrieben werden. Das hilft Veranstalterinnen und Veranstaltern herauszufinden, ob Ihr die Richtigen für ihr Event sein könntet."
-        topic_list: "Meine Themen als Tags: <i class='fa fa-info-circle' aria-hidden='true'></i>"
-        topic_list_tooltip: "Bitte schaue zuerst, ob Dein Thema schon vorhanden ist."
-        main_topic_title: "Mein Hauptthema:"
-        main_topic: "Mein Hauptthema auf %{language}: <i class='fa fa-info-circle' aria-hidden='true'></i>"
-        main_topic_tooltip: "Es werden nur 30 Zeichen angezeigt. Trage Dein wichtigstes Thema hier nochmal ein. Dieses Thema wird mit Deinem Namen und Bild auf der Speakerinnen-Übersichtsseite zu sehen sein."
-        tag_list: "schon vorhandene Tags"
-        talks: "Vortragsthemen"
-        languages: "Ich spreche:"
-        city: "Die Stadt, in der ich lebe: <i class='fa fa-info-circle' aria-hidden='true'></i>"
-        city_tooltip: "Bitte gib mehrere Städte mit Komma getrennt ein, z.B. Berlin, New York."
-        country: "Das Land, in dem ich lebe:"
-        twitter: "Mein Twitteraccount:"
-        email: "Meine E-Mailadresse: <i class='fa fa-info-circle' aria-hidden='true'></i>"
-        website: "Meine Webseite:"
-        picture: "Ein Foto von mir: ( wenn möglich in Farbe, wir zeigen es in Graustufen.)"
-      medialink:
-        url: "URL:"
-        title: "Überschrift:"
-        description: "Beschreibung:<br><small>Du kannst einfache HTML Tags nutzen, um den Text zu formatieren. Zum Beispiel: <i>< i >italic< /i ></i> oder <b>< b > fett < /b ></b>.</small>"
   devise:
     registrations:
       edit:
         account_from: "Account von "
-        password_needed: 'Wir brauchen dein aktuelles Passwort, um die E-Mail Adresse oder das Passwort ändern zu können.'
+        change_email: "<b>Hier kannst Du Deine Email Adresse ändern.</b>
+        <br> Gebe die neue Email Adresse ein und Dein aktuelles Passwort."
+        password_current: "Aktuelles Passwort:"
+        password_current_placeholder: "Aktuelles Passwort"
+        password_change: "Hier kannst Du Dein Passwort ändern."
         password_blank: "Bitte leer lassen, wenn das Passwort nicht geändert werden soll."
-        password_current: "Aktuelles Passwort"
+        password_placeholder: "Passwort"
+        password: "Passwort:
+        <br><small class='form-text text-muted'>Wir brauchen dein Passwort, um deine E-Mail Adresse ändern zu können.</small>"
         no_password: "Du kannst deine E-Mail-Adresse hier nicht ändern, weil du über Twitter eingeloggt bist und die dortige E-Mail benutzt wird."
         update: "Aktualisiere Account"
-        delete_account: "Lösche meinen Account"
+        delete_account: "Hier kannst Du Deinen Account löschen!"
         unhappy: "Unglücklich?"
         delete: "Löschen"
         sure: "Sicher?"
-        confirmation: "Warte auf die Bestätigung von: "
-        email: "E-Mail: <i class='fa fa-info-circle' aria-hidden='true'></i>"
-        email_tooltip: "Deine E-Mailadresse wird nirgendwo veröffentlicht, sondern nur dazu genutzt, dass Interessentinnen und Interessenten Kontakt zu Dir aufnehmen können."
+        confirmation: "Du hast Deine E-Mail Adresse geändert und musst noch auf den Bestätigungslink in Deiner Email klicken.
+        <br>Deine neue Email Adresse ist: "
+        email_placeholer: "Neue E-Mail"
+        email: "E-Mail:
+          <br><small class='form-text text-muted'>Deine E-Mailadresse wird nirgendwo veröffentlicht, sondern nur dazu genutzt,
+          dass Interessentinnen und Interessenten Kontakt zu Dir aufnehmen können.</small>"
       new:
         sign_up: "Registrieren"
         password: "Passwort"
@@ -320,10 +340,11 @@ de:
     YouTube-Clips können direkt abgespielt werden, alle anderen URLs erscheinen als klickbare Links.
     Es können auch Audio-Dateien oder Texte verlinkt werden!
     <br>"
-    help: "Du kannst die Reihenfolge der Vorträge mit Drag&Drop verschieben."
+    help: "Du kannst die Reihenfolge der Vorträge mit <b>Drag&Drop</b> verschieben."
     url: "URL:"
     title: "Überschrift:"
-    description: "Beschreibung:"
+    description: "Beschreibung:
+      <br><small class='form-text text-muted'>Du kannst einfache HTML Tags nutzen, um den Text zu formatieren. Zum Beispiel: <i>< i >italic< /i ></i> oder <b>< b > fett < /b ></b>.</small>"
     select_language: "Dieser Vortrag ist auf: "
     language_short: "de"
     edit_link: " bearbeiten"
@@ -332,7 +353,7 @@ de:
   search:
     any: "Alle"
     no_profile: "Zu diesem Thema haben wir leider keine Speakerin gefunden."
-    profiles_topics: "Zum dem Thema <b>%{topics_name}</b> <br>gibt es %{profiles_count} Speakerinnen:"
+    profiles_topics: "Zum dem Thema <b>%{topics_name}</b> gibt es <b>%{profiles_count}</b> Speakerinnen:"
     profiles: "%{link}"
     all_profiles: "In allen Profilen blättern >>"
     did_you_mean: "Meinst du vielleicht %{suggestions_fullname}?"
@@ -344,7 +365,7 @@ de:
       one: " eine Speakerin gefunden!",
       other: " %{count} Speakerinnen gefunden! Yeah! "
     }
-    more_options: "Keine passende Speakerin gefunden?"
+    more_options: "<b>Keine passende Speakerin gefunden?</b><br> Vielleicht helfen Dir diese Links weiter:"
     search_categories_html: "Du kannst auch in <a href='%{root_path}/#categories_anchor'>Kategorien und Themen</a> stöbern."
     adapt_search: "Suche anpassen >>"
     countries_agg: "Länder:"

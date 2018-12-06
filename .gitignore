@@ -14,9 +14,11 @@
 /log/*.log
 /tmp
 /log
+.settings/.jsdtscope
+.project
+.settings/org.eclipse.wst.jsdt.ui.superType.container
+.settings/org.eclipse.wst.jsdt.ui.superType.name
 
-# Ignore the public directory
-/public
 /config/database.yml
 /db/structure.sql
 

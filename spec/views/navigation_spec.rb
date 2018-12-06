@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 shared_examples_for 'successful sign in' do
   it { should have_content(I18n.t('devise.sessions.signed_in')) }
-  it { should have_link(I18n.t('layouts.application.logout'), destroy_profile_session_path) }
+  it { should have_link(I18n.t('layouts.application.logout')) }
 end
 
 describe 'navigation', broken: false do
@@ -32,10 +34,10 @@ describe 'navigation', broken: false do
       end
 
       it_should_behave_like 'successful sign in'
-      it { should have_no_link('Admin', admin_root_path) }
+      it { should have_no_link('Admin') }
       it 'should lead to the show view of the profile' do
         expect(page).to have_content(profile.fullname)
-        expect(page).to have_link(I18n.t('edit', scope: 'profiles.profile'), edit_profile_path(language, profile.id))
+        expect(page).to have_link(I18n.t('edit', scope: 'profiles.show'))
       end
     end
 
@@ -46,7 +48,7 @@ describe 'navigation', broken: false do
       end
 
       it_should_behave_like 'successful sign in'
-      it { should have_link('Admin', admin_root_path) }
+      it { expect(page).to have_link('Admin') }
 
       describe 'access admin actions' do
         before { click_on 'Admin' }
@@ -54,8 +56,8 @@ describe 'navigation', broken: false do
         it { should have_content('Administration') }
 
         it 'should have localized links' do
-          @lang_links_map[language].each_with_index do |link, index|
-            expect(page).to have_link(link, @links_array[index])
+          @lang_links_map[language].each_with_index do |link, _index|
+            expect(page).to have_link(link)
           end
         end
       end

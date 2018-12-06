@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 module ProfilesHelper
   def can_edit_profile?(current_profile, profile)
     # current_profile is nil if no user is logged in
-    if current_profile == profile || (current_profile && current_profile.admin?)
+    if current_profile == profile || (current_profile&.admin?)
       true
     else
       false
@@ -18,7 +20,7 @@ module ProfilesHelper
 
   def profile_picture_link(profile)
     if profile.picture.present?
-      link_to(image_tag(profile.picture.profile.url, class: 'photo--grey'), profile)
+      link_to(image_tag(profile.picture.profile.url, alt: profile.fullname, class: 'photo--grey'), profile)
     else
       link_to(image_tag('avatar.jpg', alt: 'avatar', class: 'photo--grey'), profile)
     end
@@ -28,6 +30,6 @@ module ProfilesHelper
     topics = []
     topics << profile.topics.with_language(I18n.locale)
     topics << profile.topics.without_language
-    topics = topics.flatten.uniq
+    topics.flatten.uniq
   end
 end

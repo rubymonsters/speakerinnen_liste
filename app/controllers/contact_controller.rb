@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class ContactController < ApplicationController
-  before_action :reject_spam_bots, only: [:create]
+  invisible_captcha only: [:create] , on_spam: :spam_callback_method
 
   def new
     @profile = Profile.friendly.find(params[:id]) if params[:id]
@@ -30,14 +32,11 @@ class ContactController < ApplicationController
   private
 
   def message_params
-    params.require(:message).permit(:name, :email, :subject, :body, HONEYPOT_EMAIL_ATTR_NAME)
+    params.require(:message).permit(:name, :email, :subject, :body)
   end
 
-  def reject_spam_bots
-    if params[:message][:email].present? && params[:message][:email] != params[:message][HONEYPOT_EMAIL_ATTR_NAME]
-      render text: 'ok'
-    else
-      params[:message][:email] = params[:message][HONEYPOT_EMAIL_ATTR_NAME]
-    end
+  def spam_callback_method
+    redirect_to root_path
   end
+
 end

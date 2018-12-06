@@ -1,18 +1,11 @@
-<section class="bg--grey">
-  <% if @profile.blank? %>
-      <h1>
-        <%= t(:title, scope: "contact.form") %>
-      </h1>
-  <% end %>
+<%= simple_form_for @message, url: url, html: {id: ""} do |f| %>
+  <%= f.input :name, as: :string, required: false, label: t(".name"), input_html: { class: 'form-control mb-3' }  %>
+  <%= f.input :email, label: t(".email"), required: false, input_html: { class: 'form-control mb-3' }   %>
+  <%= invisible_captcha %>
+  <%= f.input :subject, label: t(".subject"), required: false, input_html: { class: 'form-control mb-3' }   %>
+  <%= f.input :body, as: :text, label: t(".body"), required: false, input_html: { class: 'form-control mb-3' }   %>
 
-    <%= simple_form_for @message, url: url, html: {id: ""} do |f| %>
-      <%= f.input :name, as: :string, required: false, label: t(".name"), input_html: { class: 'mb input--width-100' }  %>
-      <%= f.input :email, label: "*" + t(".email"), wrapper_html: { id: 'message_email' }   %>
-      <%= f.input HONEYPOT_EMAIL_ATTR_NAME, label: t(".email"), required: false, input_html: { class: 'mb input--width-100' }   %>
-      <%= f.input :subject, label: t(".subject"), required: false, input_html: { class: 'mb input--width-100' }   %>
-      <%= f.input :body, as: :text, label: t(".body"), required: false, input_html: { class: 'mb input--width-100' }   %>
-
-      <%= f.submit t(".send"), class:"btn btn-blue btn--small mb+"%>
-    <% end %>
+  <div class="modal-footer">
+    <%= f.submit t(".send"), class:"btn btn-blue"%>
   </div>
-</section>
+<% end %>

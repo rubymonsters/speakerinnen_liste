@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class MedialinksController < ApplicationController
   before_action :fetch_profile_from_params
   before_action :ensure_own_medialinks

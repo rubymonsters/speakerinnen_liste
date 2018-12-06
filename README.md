@@ -11,8 +11,8 @@ The aim of the app is to provide a way for conference and event organizers to fi
 
 # Technical Requirements
 
-- Ruby v2.2.7
-- Ruby on Rails, '~> 4.2.7.1 '
+- Ruby v2.3.1
+- Ruby on Rails, '5.2.0'
 - Elasticsearch v2.4.5 - https://www.elastic.co
 - ImageMagick - https://www.imagemagick.org
 - PostgreSQL v9.5.5 - https://www.postgresql.org
@@ -245,6 +245,19 @@ $ bundle exec rspec spec
 # If the tests are still failing, run:
 $ bundle exec rake db:test:clone
 ```
+
+# Please use Rubocop
+
+```ruby
+# Runs rubocop and corrects all errors it can 
+$ rubocop -a
+```
+
+# Database:
+Our database schema looks like that:
+
+
+![db](https://user-images.githubusercontent.com/1218914/43900439-368fa600-9be5-11e8-8f9c-d209784de1ef.jpg)
 
 # Contributing
 
