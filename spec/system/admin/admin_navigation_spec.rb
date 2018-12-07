@@ -42,7 +42,6 @@ RSpec.describe 'Navigation', type: :system do
         visit admin_root_path
 
         click_link 'Categories'
-
         expect(page).to have_text('Administration::Categories')
         expect(page).to have_link('Add')
         expect(page).to have_link('Edit')

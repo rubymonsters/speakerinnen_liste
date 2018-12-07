@@ -15,48 +15,55 @@
 
 <div class="mx-5">
   <%= paginate @tags %>
-
-  <table class='table'>
-    <% @tags.each do |tag| %>
+  <table class="table">
+    <thead class="bg--lightgrey">
       <tr>
-        <td>
-          <b><%= link_to tag.name, edit_admin_tag_path(tag.id, page: params[:page]),
-          data: { toggle: 'tooltip', placement: 'left' }, title: 'Edit' %></b>
-          <%= tag.taggings_count %>
-        </td>
-        <td>
-          <%= simple_form_for tag, url: admin_tag_path(tag, @filter_params), html: { class: "locale_language #{tag.name}" } do |f| %>
-            <% LocaleLanguage.all.each do |language| %>
-              <div id=<%="#{language.iso_code}_#{tag.id}"%> >
-                <%= check_box_tag 'languages[]', language.iso_code,
-                  tag.locale_languages.map(&:iso_code).include?("#{language.iso_code}"),
-                  id: tag.name + "_" + language.iso_code %>
-                <%= label_tag t(language.iso_code, scope: 'i18n.language') %>
-              </div>
-            <% end %>
-            <%= f.button :submit, t(:save, scope: 'general'), class:'btn btn-blue btn-sm' %>
-          <% end %>
-        </td>
-        <% @categories.each do |category| %>
+        <th><%= sortable "tags.name", "Name", @filter_params %></th>
+        <th><%= t(:categories, scope: 'admin.dashboard.tags') %></th>
+        <th><%= t(:languages, scope: 'admin.dashboard.tags') %></th>
+        <th>Profiles</th>
+        <th><%= sortable 'taggings.created_at', t(:created_at, scope: 'admin.dashboard.tags'), @filter_params %></th>
+        <th><%= t(:delete, scope: 'admin.dashboard.tags') %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @tags.each do |tag| %>
+        <tr>
           <td>
-            <% if tag.categories.pluck(:id).include?(category.id) %>
-              <%= link_to category.name, remove_category_admin_tag_path(tag,
-              category_id: category.id, page: params[:page], q: params[:q],
-              uncategorized: params[:uncategorized]), method: :post, class: 'color-white bg-primary px-1'  %>
-            <% else %>
-              <%= link_to category.name, set_category_admin_tag_path(tag,
-              category_id: category.id, page: params[:page], q: params[:q],
-              uncategorized: params[:uncategorized]), method: :post %>
+            <b><%= link_to tag.name, edit_admin_tag_path(tag.id, page: params[:page]),
+            data: { toggle: 'tooltip', placement: 'left' }, title: 'Edit' %></b></b>
+            <%= link_to '<i class="fa fa-pencil">&nbsp;</i>'.html_safe, edit_admin_tag_path(tag.id, page: params[:page]),
+            data: { toggle: 'tooltip', placement: 'left' }, title: 'Edit' %>
+          </td>
+          <td>
+            <% tag.categories.pluck(:name).each do |name| %>
+              <%= name %> <br/>
             <% end %>
           </td>
-        <% end %>
+          <td>
+            <% tag.locale_languages.pluck(:iso_code).each do |lang| %>
+              <%= t(lang, scope: 'i18n.language') %><br/>
+            <% end %>
+          </td>
+          <td>
+            <% tag.taggings.each do |tagging| %>
+              <%= link_to tagging.taggable.name_or_email, admin_profile_path(tagging.taggable),
+                  html_options = { title: t(:show, scope: 'admin.dashboard.profiles.edit') } %><br/>
+            <% end %>
+          </td>
+          <td>
+            <% if !tag.taggings.empty? %>
+              <%= tag.taggings.sort_by{|t| t.created_at }.first.created_at.strftime('%d.%m.%Y') %>
+            <% end %>
+          </td>
           <td>
            <%= link_to ('<i class="fa fa-trash-o">&nbsp;</i>').html_safe, admin_tag_path(tag.id),
            method: :delete, data: { confirm: 'Are you sure?',toggle: 'tooltip', placement: 'left' },
             class: 'btn btn-danger btn-sm', title: 'Delete'%>
           </td>
-      </tr>
-    <% end %>
+        </tr>
+      <% end %>
+    <tbody>
   </table>
 
   <%= paginate @tags %>
