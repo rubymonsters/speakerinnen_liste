@@ -1,5 +1,8 @@
 RSpec.feature 'Login', type: :feature do
   let!(:user) { FactoryBot.create(:published, email: 'ada@mail.de' ) }
+  before do
+    page.driver.browser.set_cookie("cookie_consent=true")
+  end
 
   it 'login with correct password' do
     visit '/de'
