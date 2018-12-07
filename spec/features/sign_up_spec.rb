@@ -1,5 +1,6 @@
 describe 'signup' do
   let!(:user) { FactoryBot.create(:published, email: 'ada@mail.de' ) }
+  page.driver.browser.set_cookie("cookie_consent=true")
 
   context 'signup with email' do
     it 'sends out confirmation link' do
