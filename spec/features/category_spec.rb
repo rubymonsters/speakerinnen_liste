@@ -7,7 +7,9 @@ RSpec.feature 'Category', type: :feature do
     let(:tag_sommer) {ActsAsTaggableOn::Tag.find_by_name('sommer')}
 
     before do
-      category_jahreszeiten = Category.new(name: 'Jahreszeiten')
+      category_jahreszeiten = Category.new(name_de: 'Jahreszeiten')
+      # needs both translations
+      category_jahreszeiten = Category.new(name_en: 'seasons')
       category_jahreszeiten.save!
       tag_fruehling.categories << category_jahreszeiten
       tag_sommer.categories << category_jahreszeiten
