@@ -17,13 +17,13 @@ RSpec.feature 'Category', type: :feature do
 
     it 'tags have the correct category' do
       expect(ActsAsTaggableOn::Tag.count).to equal(2)
-      expect(tag_fruehling.categories.first.name).to eq('Jahreszeiten')
+      expect(tag_fruehling.categories.first.name).to eq('seasons')
       expect(Category.all.count).to equal(1)
     end
 
     it 'shows category in root path' do
       visit root_path
-      expect(page).to have_content('Jahreszeiten')
+      expect(page).to have_content('seasons')
     end
   end
 end
