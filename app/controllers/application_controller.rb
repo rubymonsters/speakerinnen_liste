@@ -45,7 +45,7 @@ class ApplicationController < ActionController::Base
   end
 
   def cookie_consent_given?
-    cookies[:cookie_consent] || Rails.env.test?
+    cookies[:cookie_consent]
   end
 
   def check_cookie_consent

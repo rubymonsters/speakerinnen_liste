@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
 
+  # for production I have to add devise routes here
   devise_for :profiles,
               only: :omniauth_callbacks,
               controllers: {
-                omniauth_callbacks: 'omniauth_callbacks',
-                confirmations: :confirmations
+                omniauth_callbacks: :omniauth_callbacks,
+                confirmations: :confirmations,
+                registrations: :registrations
               }
 
   scope '(:locale)', locale: /en|de/ do
@@ -47,10 +49,14 @@ Rails.application.routes.draw do
       end
     end
 
-    devise_for :profiles, skip: :omniauth_callbacks, controllers: {
-      omniauth_callbacks: 'omniauth_callbacks',
-      confirmations: :confirmations
-    }
+  # for localhost I have to add devise routes here
+    devise_for :profiles,
+      skip: :omniauth_callbacks,
+      controllers: {
+        omniauth_callbacks: :omniauth_callbacks,
+        confirmations: :confirmations,
+        registrations: :registrations
+      }
 
     get 'topics', to: 'profiles#index', as: :topic
 

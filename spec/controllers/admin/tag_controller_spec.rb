@@ -3,7 +3,7 @@
 describe Admin::TagsController, type: :controller do
   include AuthHelper
 
-  let!(:admin) { FactoryBot.create(:admin) }
+  let(:admin) { FactoryBot.create(:admin) }
   let!(:ada) { FactoryBot.create(:published, topic_list: %w[algebra algorithm computer]) }
   let!(:marie) { FactoryBot.create(:published, topic_list: ['radioactive', 'x-ray']) }
 
@@ -118,27 +118,6 @@ describe Admin::TagsController, type: :controller do
     end
   end
 
-  describe 'GET tag_language' do
-    context 'without any selection' do
-      before(:each) do
-        get :index
-      end
-
-      specify { expect(response).to render_template(:index) }
-      specify { expect(response.status).to eq 200 }
-
-      it 'should contain all tags' do
-        expect(assigns(:tags)).to eq(
-          [ActsAsTaggableOn::Tag.find_by(name: ada.topic_list[0]),
-           ActsAsTaggableOn::Tag.find_by(name: ada.topic_list[1]),
-           ActsAsTaggableOn::Tag.find_by(name: ada.topic_list[2]),
-           ActsAsTaggableOn::Tag.find_by(name: marie.topic_list[0]),
-           ActsAsTaggableOn::Tag.find_by(name: marie.topic_list[1])]
-        )
-      end
-    end
-  end
-
   describe 'GET edit' do
     before(:each) do
       topic = ActsAsTaggableOn::Tag.find_by(name: ada.topic_list[0])
@@ -152,83 +131,137 @@ describe Admin::TagsController, type: :controller do
   end
 
   describe 'PUT update' do
-    context 'rename the topic' do
-      before(:each) do
-        @wrong_topic = ActsAsTaggableOn::Tag.find_by(name: ada.topic_list[0])
+    let(:name) {marie.topic_list[0]}
+    let(:tag) { ActsAsTaggableOn::Tag.find_by(name: name) }
+
+    context 'update a tag with a unique name' do
+      it 'redirects to index page after submit' do
+        put :update, params: { tag: { name: tag.name, languages: [], categories: [] }, id: tag.id }
+        expect(response).to redirect_to("/#{I18n.locale}/admin/tags/index#top-anchor")
       end
 
-      context 'topic name is unique' do
-        before(:each) do
-          put :update, params: { id: @wrong_topic.id, tag: { name: 'mathematic' } }
+      context 'tag name' do
+        it 'changes the tags name whan tag name is changed' do
+          put :update, params: { tag: { name: 'rediation',  languages: [], categories: [] }, id: tag.id }
+          expect(ActsAsTaggableOn::Tag.find(tag.id).name).to eq('rediation')
         end
 
-        specify { expect(response).to redirect_to("/#{I18n.locale}/admin/tags/index#top-anchor") }
-        it 'changes the topic name' do
-          expect(ActsAsTaggableOn::Tag.find(@wrong_topic.id).name).to eq('mathematic')
+        it 'does nothing when tag name is not changed' do
+          put :update, params: { tag: { name: tag.name, languages: [], categories: [] }, id: tag.id }
+          expect(ActsAsTaggableOn::Tag.find(tag.id).name).to eq('radioactive')
         end
       end
 
-      context 'topic name already exist' do
-        before(:each) do
-          put :update, params: { id: @wrong_topic.id, tag: { name: 'radioactive' } }
+      context 'tag languages' do
+        let!(:locale_language) { LocaleLanguage.create(iso_code: 'en') }
+
+        it 'assings a language to a tag when language is selected' do
+          put :update, params: {tag: {name: tag.name, languages: ['en'], categories: []}, id: tag.id }
+          expect(tag.locale_languages.first.iso_code).to match('en')
         end
 
-        specify { expect(response).to redirect_to("/#{I18n.locale}/admin/tags/index#top-anchor") }
-        it 'deletes the wrong topic and adds a new tagging' do
-          expect(ActsAsTaggableOn::Tag.find_by(name: 'algebra')).to be_nil
-          expect(ActsAsTaggableOn::Tag.find_by(name: 'radioactive')).to be_truthy
+        it 'removes a language from a tag whan language is unselected' do
+          tag.locale_languages << locale_language
+          put :update, params: { tag: {name: tag.name, languages: [], categories: []}, id: tag.id }
+          # have to reaload tag to get the new relations
+          tag = ActsAsTaggableOn::Tag.find_by(name: name)
+          expect(tag.locale_languages).to match([])
+        end
+
+        it 'does nothing when languages are not changed' do
+          tag.locale_languages << locale_language
+          put :update, params: { tag: {name: tag.name, languages: ['en'], categories: [] }, id: tag.id }
+          # have to reaload tag to get the new relations
+          tag = ActsAsTaggableOn::Tag.find_by(name: name)
+          expect(tag.locale_languages.first.iso_code).to match('en')
+        end
+      end
+
+      context 'tag categories' do
+        let(:category) { Category.create!(name: 'Science') }
+
+        it 'assigns category to a tag whan category is selected' do
+          put :update, params: { tag: { name: tag.name, languages: [], categories: [category.id] }, id: tag.id }
+          expect(assigns(:tag).categories.first.name).to eq 'Science'
+        end
+
+        it 'removes assigned categories from a tag when category is unselected' do
+          tag.categories << category
+          put :update, params: { tag: { neme: tag.name, languages: [], categories: [] }, id: tag.id }
+          expect(assigns(:tag).categories).to be_empty
+        end
+
+        it 'does nothing when categories are not changed' do
+          tag.categories << category
+          put :update, params: {tag: {name: tag.name, languages: [], categories: [category.id]}, id: tag.id }
+          expect(assigns(:tag).categories.first.name).to eq 'Science'
+        end
+      end
+    end
+
+    context 'update a tag when tag name already exist' do
+      it 'redirects to index page when after submit' do
+        put :update, params: { tag: { name: tag.name, languages: [], categories: [] }, id: tag.id }
+        expect(response).to redirect_to("/#{I18n.locale}/admin/tags/index#top-anchor")
+      end
+
+      context 'tag name' do
+        before(:each) do
+          put :update, params: { id: tag.id, tag: { name: 'algebra', languages: [], categories: [] } }
+        end
+
+        it 'deletes the tag and adds a new tagging' do
+          expect(ActsAsTaggableOn::Tag.find_by(name: 'radioactive')).to be_nil
+          expect(ActsAsTaggableOn::Tag.find_by(name: 'algebra')).to be_truthy
           expect(ActsAsTaggableOn::Tagging.count).to be 5
           expect(ActsAsTaggableOn::Tag.count).to be 4
         end
       end
-    end
 
-    context '#set_tag_languages' do
-      let!(:locale_language) { LocaleLanguage.create(iso_code: 'en') }
-      let(:tag) { ActsAsTaggableOn::Tag.find_by(name: marie.topic_list[0]) }
+      context 'tag languages' do
+        let!(:locale_language) { LocaleLanguage.create(iso_code: 'en') }
 
-      it 'assings a language to the topic' do
-        # should be --> put :update, params: { languages: ['en'], id: tag.id } but test fails then
-        put :update, params: { languages: ['en'], id: tag.id }
-        expect(tag.locale_languages.first.iso_code).to match('en')
+        it 'assings a language to a tag when language is selected' do
+          put :update, params: { tag: { name: tag.name, languages: ['en'], categories: [] }, id: tag.id }
+          expect(tag.locale_languages.first.iso_code).to match('en')
+        end
+
+        it 'removes a language from a tag whan language is unselected' do
+          tag.locale_languages << locale_language
+          put :update, params: { tag: { name: tag.name, languages: [], categories: [] }, id: tag.id }
+          # have to reaload tag to get the new relations
+          tag = ActsAsTaggableOn::Tag.find_by(name: name)
+          expect(tag.locale_languages).to match([])
+        end
+
+        it 'does nothing when languages are not changed' do
+          tag.locale_languages << locale_language
+          put :update, params: { tag: { name: tag.name, languages: ['en'], categories: [] }, id: tag.id }
+          # have to reaload tag to get the new relations
+          tag = ActsAsTaggableOn::Tag.find_by(name: name)
+          expect(tag.locale_languages.first.iso_code).to match('en')
+        end
       end
 
-      it 'remove a language from the topic' do
-        tag.locale_languages << locale_language
-        put :update, params: { id: tag.id }
-        # have to reaload tag to get the new relations
-        tag = ActsAsTaggableOn::Tag.find_by(name: marie.topic_list[0])
-        expect(tag.locale_languages).to match([])
-      end
-    end
-  end
+      context 'tag categories' do
+        let(:category) { Category.create!(name: 'Science') }
 
-  describe 'POST' do
-    before(:each) do
-      @tag = ActsAsTaggableOn::Tag.find_by_name('algorithm')
-      @category = Category.create!(name: 'Science')
-    end
+        it 'assigns category to a tag whan category is selected' do
+          put :update, params: { tag: { name: tag.name, languages: [], categories: [category.id] }, id: tag.id }
+          expect(assigns(:tag).categories.first.name).to eq 'Science'
+        end
 
-    context 'set_category' do
-      before(:each) do
-        post :set_category, params: { id: @tag.id, category_id: @category.id }
-      end
+        it 'removes assigned categories from a tag when category is unselected' do
+          tag.categories << category
+          put :update, params: { tag: { neme: tag.name, languages: [], categories: [] }, id: tag.id }
+          expect(assigns(:tag).categories).to be_empty
+        end
 
-      specify { expect(response).to redirect_to("/#{I18n.locale}/admin/tags/index#top-anchor") }
-      it 'category gets assigned to a topic' do
-        expect(assigns(:tag).categories.first.name).to eq 'Science'
-      end
-    end
-
-    context 'removes_category' do
-      before(:each) do
-        @tag.categories << @category
-        post :remove_category, params: { id: @tag.id, category_id: @category.id }
-      end
-
-      specify { expect(response).to redirect_to("/#{I18n.locale}/admin/tags/index#top-anchor") }
-      it 'assigned categories gets removed from a topic' do
-        expect(assigns(:tag).categories).to be_empty
+        it 'does nothing when categories are not changed' do
+          tag.categories << category
+          put :update, params: {tag: {name: tag.name, languages: [], categories: [category.id]}, id: tag.id,  }
+          expect(assigns(:tag).categories.first.name).to eq 'Science'
+        end
       end
     end
   end
@@ -260,17 +293,9 @@ describe Admin::TagsController, type: :controller do
       get :index, params: { category_id: category.id }
     end
 
-    context 'after updating a tag name' do
+    context 'after updating a tag' do
       before do
-        put :update, params: { id: ada_tag.id, tag: { name: 'mathematic' } }
-      end
-
-      specify { expect(response).to redirect_to("/#{I18n.locale}/admin/tags/index?category_id=#{category.id}#top-anchor") }
-    end
-
-    context 'after updating a tag language' do
-      before do
-        put :update, params: { languages: ['en'], id: ada_tag.id }
+        put :update, params: { id: ada_tag.id, tag: { name: 'mathematic', languages: ['en'], categories: [category.id] } }
       end
 
       specify { expect(response).to redirect_to("/#{I18n.locale}/admin/tags/index?category_id=#{category.id}#top-anchor") }
@@ -279,22 +304,6 @@ describe Admin::TagsController, type: :controller do
     context 'after deleting a tag' do
       before do
         delete :destroy, params: { id: ada_tag.id }
-      end
-
-      specify { expect(response).to redirect_to("/#{I18n.locale}/admin/tags/index?category_id=#{category.id}#top-anchor") }
-    end
-
-    context 'after seting a category' do
-      before do
-        post :set_category, params: { id: ada_tag.id, category_id: category.id }
-      end
-
-      specify { expect(response).to redirect_to("/#{I18n.locale}/admin/tags/index?category_id=#{category.id}#top-anchor") }
-    end
-
-    context 'after removing a category' do
-      before do
-        post :remove_category, params: { id: ada_tag.id, category_id: category.id }
       end
 
       specify { expect(response).to redirect_to("/#{I18n.locale}/admin/tags/index?category_id=#{category.id}#top-anchor") }

@@ -21,6 +21,8 @@
     <% if alert %> <div class='alert'> <%= Array(alert).join('<br>').html_safe %> </div> <% end %>
 
     <%= render 'shared/cookie_consent' %>
+    <%= render 'shared/contact_hint_modal' %>
+    <%= render 'shared/auth_hint_modal' %>
     <%= yield %>
     <%= render 'layouts/footer' if render_footer? %>
 

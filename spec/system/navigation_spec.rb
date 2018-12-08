@@ -7,6 +7,7 @@ RSpec.describe 'Navigation', type: :system do
         main_topic_en: 'engineer', city_en: 'Trenton', iso_languages: ['en'])
       FactoryBot.create(:published, main_topic_en: 'technican')
       FactoryBot.create(:cat_science)
+      page.driver.browser.set_cookie("cookie_consent=true")
     end
 
     it 'startpage has header' do
@@ -81,7 +82,7 @@ RSpec.describe 'Navigation', type: :system do
       expect(page).to have_css('#header__logo')
       expect(page).to have_link('Register as a speaker')
       # navi links
-      expect(page).to have_link('Show all Speakerinnen* >>')
+      expect(page).to have_link('Show all women speakers >>')
       # profile
       expect(page).to have_css('.profile-page')
       expect(page).to have_css('.profile-subtitle', text: 'engineer')
@@ -142,6 +143,7 @@ RSpec.describe 'Navigation', type: :system do
     context 'registered user' do
       before do
         FactoryBot.create(:profile, email: 'ltest@exp.com', password: 'rightpassword', password_confirmation: 'rightpassword')
+        page.driver.browser.set_cookie("cookie_consent=true")
       end
 
       it 'successful login' do

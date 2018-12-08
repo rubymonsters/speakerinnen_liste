@@ -4,12 +4,19 @@
 
     <nav class="border-vertical py-2 my-5">
       <%= t(:twitter, scope: 'pages.home.footer').html_safe %> |
-      <%= link_to t(:contact_link, scope: 'pages.home.footer'), contact_path, class:"px-2" %> |
-      <%= link_to t(:about_title, scope: 'pages.home.footer'), about_path, class: "px-2" %> |
-      <%= link_to t(:faq, scope: 'pages.home.footer'), faq_path, class: "px-2"  %> |
+      <!-- Make sure cookie consent is given -->
+      <% if cookies[:cookie_consent].blank? %>
+        <button type="button" class="btn btn-link px-2" data-toggle="modal" data-target="#contactHint">
+          <%= t(:contact_link, scope: 'pages.home.footer') %>
+        </button> |
+      <% else %>
+        <%= link_to t(:contact_link, scope: 'pages.home.footer'), contact_path, class:"btn btn-link px-2" %> |
+      <% end %>
+      <%= link_to t(:about_title, scope: 'pages.home.footer'), about_path, class: "btn btn-link px-2" %> |
+      <%= link_to t(:faq, scope: 'pages.home.footer'), faq_path, class: "btn btn-link px-2"  %> |
       <%= t(:github, scope: 'pages.home.footer').html_safe %> |
-      <%= link_to t(:title, scope: 'pages.imprint'), impressum_path, class:"px-2" %> |
-      <%= link_to t(:privacy, scope: 'pages.imprint'), privacy_path, class:"px-2" %>
+      <%= link_to t(:title, scope: 'pages.imprint'), impressum_path, class:"btn btn-link px-2" %> |
+      <%= link_to t(:privacy, scope: 'pages.imprint'), privacy_path, class:"btn btn-link px-2" %>
     </nav>
     <p>
     <span class="align-top">Supported by:</span>
