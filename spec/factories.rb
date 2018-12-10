@@ -2,69 +2,69 @@
 
 FactoryBot.define do
   factory :profile do
-    firstname 'Factory'
-    lastname 'Girl'
+    firstname { 'Factory' }
+    lastname { 'Girl' }
     sequence :email do |n|
       "person#{n}@example.com"
     end
-    password '123foobar'
-    password_confirmation '123foobar'
-    confirmed_at Time.now
+    password { '123foobar' }
+    password_confirmation { '123foobar' }
+    confirmed_at { Time.now }
 
     factory :admin do
-      admin true
+      admin { true }
     end
 
     factory :published do
-      published true
+      published { true }
     end
 
     factory :unpublished do
-      published false
+      published { false }
     end
 
     factory :unconfirmed do
-      confirmed_at nil
+      confirmed_at { nil }
     end
   end
 
   factory :category do
     factory :cat_science do
-      name 'Science'
+      name { 'Science' }
     end
     factory :cat_social do
-      name 'Social'
+      name { 'Social' }
     end
   end
 
   factory :locale_language do
     factory :locale_language_de do
-      iso_code 'de'
+      iso_code { 'de' }
     end
 
     factory :locale_language_en do
-      iso_code 'en'
+      iso_code { 'en' }
     end
   end
 
   factory :medialink do
-    profile_id 1
-    url 'http://www.somesite.com/profile'
-    title 'thisTitle'
-    description 'lorep ipsum...'
+    profile_id { 1 }
+    url { 'http://www.somesite.com/profile' }
+    title { 'thisTitle' }
+    description { 'lorep ipsum...' }
   end
 
   factory :tag, class: ActsAsTaggableOn::Tag do
     factory :tag_chemie do
-      name 'chemie'
+      name { 'chemie' }
     end
 
     factory :tag_physics do
-      name 'physics'
+      name { 'physics' }
     end
 
     factory :tag_social_media do
-      name 'social media'
+      name { 'social media' }
     end
   end
 end
