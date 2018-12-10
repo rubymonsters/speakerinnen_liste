@@ -177,8 +177,8 @@ GEM
     factory_bot_rails (4.10.0)
       factory_bot (~> 4.10.0)
       railties (>= 3.0.0)
-    faker (1.0.1)
-      i18n (~> 0.4)
+    faker (1.9.1)
+      i18n (>= 0.7)
     faraday (0.15.2)
       multipart-post (>= 1.2, < 3)
     ffi (1.9.25)
@@ -383,7 +383,7 @@ GEM
     http-cookie (1.0.3)
       domain_name (~> 0.5)
     httpclient (2.8.3)
-    i18n (0.9.5)
+    i18n (1.0.1)
       concurrent-ruby (~> 1.0)
     i18n_data (0.8.0)
     invisible_captcha (0.12.0)
@@ -666,7 +666,7 @@ DEPENDENCIES
   elasticsearch-model (~> 2.0)
   elasticsearch-rails (~> 2.0)
   factory_bot_rails
-  faker (= 1.0.1)
+  faker (= 1.9.1)
   fog (~> 2.1)
   font-awesome-rails (~> 4.7.0.3)
   friendly_id
