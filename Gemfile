@@ -60,7 +60,7 @@ end
 
 group :development, :test do
   gem 'byebug'
-  gem 'capybara', '~> 2.18.0'
+  gem 'capybara', '~> 3.12.0'
   gem 'guard'
   gem 'guard-rspec'
   gem 'pry'
