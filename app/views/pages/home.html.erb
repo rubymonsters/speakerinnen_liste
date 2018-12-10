@@ -74,15 +74,27 @@
       </div>
     </div>
   </div>
+  
   <script>
     $( "#available-tags-box .available-tag" ).click(function() {
       $(this).clone().appendTo( "#selected-tags-box" ).append("<i class='pl-2 fa fa-times-circle'></i>").removeClass("available-tag").addClass("selected-tag");
       $(this).addClass( "disabled no-click" );
+      var category = $(this).attr('class').split(' ')[0];
+      category = category.split('_');
+      category = category[1]; 
+      $("#v-pills-" + category + "-tab").addClass( "font-weight-bold");
     });
     $(document).on('click','.selected-tag',function() {
+      var category = $(this).attr('class').split(' ')[0];
       $(this).remove();
       var tag_name = $(this).attr('id');
       $("#available-tags-box #" + tag_name).removeClass( "disabled no-click" );
+
+      if (!$(".selected-tag").hasClass(category)) {
+        category = category.split('_');
+        category = category[1]; 
+        $("#v-pills-" + category + "-tab").removeClass( "font-weight-bold");
+          }
     });
     $( "#search_in_topic" ).click(function() {
       var all_tags = $('#selected-tags-box .selected-tag').map(function(){
@@ -102,6 +114,7 @@
       <% end %>
     });
   </script>
+
   <div class="container border-top">
     <h1 class="box__bg">Filter via categories</h1>
     <div class="row">
