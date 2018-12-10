@@ -20,6 +20,7 @@ class Admin::FeaturedProfilesController < Admin::BaseController
   end
 
   def edit
+    @featured_profile.profile_ids = @featured_profile.profile_ids.join(", ")
   end
 
   def update
