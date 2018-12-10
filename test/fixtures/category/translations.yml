@@ -1,9 +1,0 @@
-one:
-  locale: en
-  name: Internet
-  globalized_model: my_first_cat
-
-two:
-  locale: en
-  name: Kunst
-  globalized_model: my_second_cat

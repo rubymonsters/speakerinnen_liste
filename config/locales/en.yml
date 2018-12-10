@@ -47,7 +47,7 @@ en:
         comment: "Comment"
         add_comment: "Add comment"
         profile_status: "The Profile is "
-        name_of_profile: "The Name of the Speakerin is "
+        name_of_profile: "The Name of the speaker is "
         search_for_name: "Search for name"
         edit:
           show: "Show profile"
@@ -55,7 +55,6 @@ en:
       tags:
         tags: "Tags"
         current_tagname: "Current tag name: "
-        new_tagname: "Enter new tag name: "
         tags_of: " out of "
         tags_here_are: "Here are "
         tags_search: "Search for tag"
@@ -65,6 +64,13 @@ en:
         languages: "Languages"
         no_language: "no language"
         show_all_tags: "All tags"
+        categories: "categories"
+        created_at: "created at"
+        delete: "Delete"
+        edit:
+          new_tagname: "Enter new tag name: "
+          select_languages: "Select tag's language/s: "
+          select_categories: "Select tag's category/ies: "
       medialink:
         show: "Show all medialinks"
         url: "URL:"
@@ -79,13 +85,16 @@ en:
         search_text: "Search by name or topic"
         search: "Search"
       all_categories: "Categories and topics >>"
-      all_speakers: "All Speakerinnen* >>"
-      cookie_consent: "We take the protection of your personal data and its confidential treatment very seriously.
-        We use cookies to optimize and to improve the services we offer you.
-        By using this website, you agree to the use of cookies.
-        Find more information about data security in our <a href='%{link}' class='link'>privacy policy</a>."
+      all_speakers: "All women speakers >>"
+      hint: "Hint"
+      auth_modal: "You have to <b>agree to the use of cookies</b> before using the register or login form.<br>
+       Find more information about data security in our <a href='%{link}' class='link'>privacy policy</a>.<br>"
+      contact_modal: "You have to <b>agree to the use of cookies</b>. before using the contact form.<br>
+       Find more information about data security in our <a href='%{link}' class='link'>privacy policy</a>.<br>"
+      cookie_consent: "In order to deliver a personalised, responsive service and to improve the site, we remember and store information about how you use it. This is done using simple text files called cookies which sit on your computer. These cookies are completely safe and secure and will never contain any sensitive information. Important: To use the full functionality of this site (e.g. login, registration and sending mail to the speakers) you have to agree to the use of cookies. For web statistics we use Matomoto which also uses cookies. These can be deactivated separately. Find more information about data security in our <a href='%{link}' class='link'>privacy policy</a>."
+      allow_cookies: "I agree"
       description: "Our Categories"
-      description_text: "We feel strongly about a balanced representation of men and women* on stage. We encourage women* to become more visible in their profession and field of expertise."
+      description_text: "We feel strongly about a balanced representation of men and women* on stage. We encourage women to become more visible in their profession and field of expertise."
       speaker_shoutout: "Do you have something interesting to say?"
       speaker_text: "Get on the Speakerinnen* list >>"
       speakers:
@@ -103,11 +112,11 @@ en:
         about: |
               Speakerinnen.org aims to increase the visibility and participation of women* at (but not limited to) conferences, panels and talk shows.<br>
               Organizers and hosts can find experts, who gladly (and competently) share their knowledge. <br>
-              women* can register in our database with the topics they are interested in covering, and can add references to their abilities.
+              women can register in our database with the topics they are interested in covering, and can add references to their abilities.
         more: ">> more"
         railsgirls: |
-              8 women* supported by 4 coaches coded this web application as a Rails Girls Berlin learning project.<br><br>
-              <a href='http://railsgirlsberlin.de', target='_blank'>Rails Girls</a> is an international not-for-profit group that aims to get women* into programming
+              8 women supported by 4 coaches coded this web application as a Rails Girls Berlin learning project.<br><br>
+              <a href='http://railsgirlsberlin.de', target='_blank'>Rails Girls</a> is an international not-for-profit group that aims to get women into programming
               with workshops, scholarships, and a safe learning community.
         press: "Media Coverage"
         blog: "Our blog"
@@ -137,7 +146,7 @@ en:
             <br><br>
             <strong>Die Hälfte der Macht den Speakerinnen</strong><br>
             <a href="http://newthinking.de/2016/03/02/die-halfte-der-macht-den-speakerinnen/">Newthinking Blog</a>
-        women: "* When we say women* we mean everyone who defines herself as a woman."
+        women: "* When we say women we mean everyone who defines herself as a woman. Please note: Sometimes for better readability in long textures the term women is written without a star."
     about:
       title: "About us"
     press:
@@ -245,9 +254,9 @@ en:
       edit: "Edit previous talks"
     edit:
       show: "Show own profile >>"
-      home: "Show all Speakerinnen* >>"
+      home: "Show all women speakers >>"
     index:
-      title: "Speakerinnen*"
+      title: "All women speakers"
       text: "Welcome!<br>
             Here you can find women* for your conference or your event: speakers, panel hosts, or workshop hosts.
             <p>Browse individual profiles, filter via the most listed <a href='#topics_anchor', class='text__link--bg'>topics</a>, or use the search function for a specific search.</p>

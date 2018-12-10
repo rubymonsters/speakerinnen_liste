@@ -57,7 +57,6 @@ de:
       tags:
         tags: "Tags"
         current_tagname: "Bisheriger Name des Tags:"
-        new_tagname: "Trage den neuen Namen des Tags ein: "
         tags_of: " von "
         tags_here_are: "Du siehst "
         tags_search: "Suche nach einem bestimmtem Tag:"
@@ -67,6 +66,13 @@ de:
         languages: "Sprachen"
         no_langage: "ohne Sprache"
         show_all_tags: "Alle Tags"
+        categories: "Kategorien"
+        created_at: "Erstellungsdatum"
+        delete: "Löschen"
+        edit:
+          new_tagname: "Trage den neuen Namen des Tags ein: "
+          select_languages: "Sprache(n) des Tags auswählen: "
+          select_categories: "Kategorie(n) des Tags auswählen: "
       medialink:
         show: "Zeige alle Referenzen"
         url: "URL:"
@@ -82,30 +88,41 @@ de:
         search: "Suche"
       all_categories: "Kategorien und Themen >>"
       all_speakers: "Alle Speakerinnen* >>"
-      cookie_consent: "Wir nehmen den Datenschutz sehr ernst.
-        Damit wir unsere Webseite optimal gestalten und verbessern können, verwenden wir Cookies.
-        Durch die weitere Nutzung der Webseite stimmst Du der Verwendung von Cookies zu.
-        Mehr Informationen in unserer <a href='%{link}' class='link'>Datenschutzerklärung</a>."
+      hint: "Hinweis"
+      auth_modal: "Du musst der <b>Verwendung von Cookies zustimmen</b>, bevor Du Dich einloggen oder anmelden kannst.<br>
+      Mehr Informationen in unserer <a href='%{link}' class='link'>Datenschutzerklärung</a>.<br>"
+      contact_modal: "Du musst der <b>Verwendung von Cookies zustimmen</b>, bevor Du das Kontaktformular benutzen kannst.<br>
+      Mehr Informationen in unserer <a href='%{link}' class='link'>Datenschutzerklärung</a>.<br>"
+      cookie_consent: "Um unsere Seite nutzer*innenfreundlich zu gestalten und weiter
+      verbessern zu können, speichern wir einzelne Informationen daüber, wie
+      sie genutzt wird. Das geschieht, indem wir einfache Textdateien, auch
+      Cookies genannt, durch das Aufrufen der Seite auf deinem Computer
+      ablegen, wo sie dann gespeichert werden.
+      <br> Wichtig: Bestimmte Funktionen können nur genutzt werden, wenn Du die
+      Cookies akzeptiertst: Log-In, Registrierung, Kontaktaufnahme. Die Suche funktioniert auch ohne Cookies. Außerdem benutzen wir eine
+      Software, die Matomoto heißt, um zu wissen, wie die Besucher*innen und Nutzer*innen von speakerinnen.org die Seite nutzen: Das hilft uns auch
+      dabei, sie zu verbessern. Auch hierfür nutzen wir Cookies, die Du aber deaktivieren kannst. Mehr Informationen in unserer <a href='%{link}' class='link'>Datenschutzerklärung</a>."
+      allow_cookies: "Ich stimme zu"
       description: "Unsere Kategorien"
-      description_text: "Uns ist die Verteilung der Männer und Frauen auf Konferenzbühnen wichtig. Wir ermutigen Frauen, in ihrem professionellen Umfeld sichtbarer zu werden."
+      description_text: "Uns ist die Verteilung der Männer und Frauen* auf Konferenzbühnen wichtig. Wir ermutigen Frauen, in ihrem professionellen Umfeld sichtbarer zu werden."
       speaker_shoutout: "Hast Du etwas Interessantes zu erzählen?"
-      speaker_text: "Registriere Dich auf der SpeakerinnenListe >>"
+      speaker_text: "Registriere Dich auf speakerinnen.org >>"
       speakers:
-        speaker_headline: "Unsere Speakerinnen*"
+        speaker_headline: "Unsere Speakerinnen"
         speaker_text: "Keine Ausreden mehr für Panels ohne Frauen!"
         speaker_index: "Alle Speakerinnen* anschauen >>"
         categories: "Kategorien und Themen >>"
       mission_statement:
         heading: "Unsere Vision"
-        content: "<p>Wir finden, dass weibliche Speakerinnen* für Event-Organisatoren einfacher zu finden sein sollen.</p><p>Wir finden auch, dass Konferenzen die besten Speaker und Speakerinnen auf ihren Bühnen haben sollten, egal von welchem Geschlecht.</p><p>Wir glauben an Kollaboration und nicht an Wettbewerb. Wir ermutigen unsere Speakerinnen und Event-Organisatoren sich gegenseitig zu unterstützen.</p>"
+        content: "<p>Wir finden, dass Speakerinnen für Event-Organisator*innen einfacher zu finden sein sollen.</p><p>Wir finden auch, dass Konferenzen die besten Speaker und Speakerinnen auf ihren Bühnen haben sollten, egal von welchem Geschlecht.</p><p>Wir glauben an Kollaboration und nicht an Wettbewerb. Wir ermutigen unsere Speakerinnen und Event-Organisatoren sich gegenseitig zu unterstützen.</p>"
       quote: "Wir glauben an Kollaboration - nicht an Wettbewerb."
-      quote_text: "So ermutigen wir unsere Speakerinnen* und Event-Organisatoren, sich gegenseitig zu unterstützen."
+      quote_text: "So ermutigen wir unsere Speakerinnen und Event-Organisator*innen, sich gegenseitig zu unterstützen."
       footer:
         about_title: "Über uns"
         about: |
                 Die Speakerinnen-Liste hat das Ziel, die Sichtbarkeit von Frauen* bei Konferenzen, Panels, Talkshows und überall da zu erhöhen, wo öffentlich gesprochen wird.<br>
                 Hier können Veranstalter_innen Expertinnen* finden, die kompetent über ihre Themen sprechen können und wollen.<br>
-                Frauen* können sich selbst mit ihren Themen und Referenzen in die Datenbank eintragen und so besser findbar werden.
+                Frauen können sich selbst mit ihren Themen und Referenzen in die Datenbank eintragen und so besser findbar werden.
         more: ">> mehr"
         railsgirls: |
                 Die Speakerinnen-Liste wurde von 8 Frauen mit der Unterstützung von 4 Coaches als Lernprojekt der Rails Girls Berlin gebaut.<br><br>
@@ -119,8 +136,8 @@ de:
         links_text: "Hier gibt es Links zu ähnlichen Projekten:"
         contact: "Kontakt"
         contact_link: "E-Mail"
-        twitter: "<a href='http://twitter.com/speakerinnen', target='_blank', class='px-2'>Twitter</a>"
-        github: "<a href='http://github.com/rubymonsters/speakerinnen_liste', target='_blank', class='px-2'>GitHub</a>"
+        twitter: "<a href='http://twitter.com/speakerinnen', target='_blank', class='btn btn-link px-2'>Twitter</a>"
+        github: "<a href='http://github.com/rubymonsters/speakerinnen_liste', target='_blank', class='btn btn-link px-2'>GitHub</a>"
         devblog: "<a href='http://speakerinnen.wordpress.com/', taget='_blank'>Entwicklerinnen-Blog</a>"
         faq_short: |
             <strong>Warum gibt es Thema XYZ noch nicht?</strong><br>
@@ -139,7 +156,7 @@ de:
             <br><br>
             <strong>Die Hälfte der Macht den Speakerinnen</strong><br>
             <a href="http://newthinking.de/2016/03/02/die-halfte-der-macht-den-speakerinnen/">Newthinking Blog</a>
-        women: "* Mit Frauen* meinen wir alle, die sich selbst als Frau verstehen."
+        women: "* Mit Frauen meinen wir alle, die sich selbst als Frau verstehen (auch wenn wir den  * an manchen Stellen für die bessere Lesbarkeit weglassen)."
     about:
       title: "Über uns"
     press:
@@ -149,10 +166,10 @@ de:
       privacy: "Datenschutzerklärung"
   layouts:
     application:
-      title: "Speakerinnen*-Liste"
+      title: "Speakerinnen.org"
       home: "Home"
       menu: "Menü"
-      list: "Speakerinnen*"
+      list: "Speakerinnen"
       contact: "Kontakt"
       impressum: "Impressum"
       search: "Suchen"
@@ -180,7 +197,7 @@ de:
       error: "Bitte fülle alle Felder aus, damit die Speakerin alle Informationen bekommt, die sie benötigt."
       error_email_for_us: "Bitte fülle alle Felder aus."
   profiles:
-    category: "In der Kategorie <b>%{category_name}</b> haben wir <b>%{profiles_count}</b> Speakerinnen* und <b>%{topics_count}</b> Themen gefunden:"
+    category: "In der Kategorie <b>%{category_name}</b> haben wir <b>%{profiles_count}</b> Speakerinnen und <b>%{topics_count}</b> Themen gefunden:"
     tag:
       top_topics: "Die 200 Top-Themen"
       tag_choose_languages: "Du kannst die Topics auch nach Sprache sortieren:"
@@ -239,7 +256,7 @@ de:
       sure: "Bist Du sicher?"
       link: "Bitte 'http://' davor schreiben."
       email: "E-Mail:"
-      empty_profile: "Hier gib es noch nix sehen ¯\\_(ツ)_/¯."
+      empty_profile: "Hier gib es noch nix zu sehen ¯\\_(ツ)_/¯."
       check_faq: "Fülle bitte die Felder via 'Edit Profile' aus!. <BR> Für mehr Informationen, wie Du am besten dein Profil angelegst, kannst Du hier nach schauen: <a href='https://speakerinnen.org/de/faq'>FAQ</a>"
       profile_from: "Profil von"
       to_profile: "Zum Profil"
@@ -249,7 +266,7 @@ de:
       show: "Eigenes Profil anzeigen >>"
       home: "Alle Speakerinnen* anzeigen >>"
     index:
-      title: "Speakerinnen*"
+      title: "Speakerinnen"
       text: "Schön, dass Du hier bist. <br>
              Auf dieser Seite findest Du Frauen* für deine Konferenz oder Veranstaltung: als Rednerin, Panel- oder Workshopmoderatorin.
              <p>Du kannst entweder durch die Profile blättern, einen Einstieg über die meist verwendeten <a href='#topics_anchor', class='text__link--bg'>Themen</a> finden, oder gezielt suchen.</p>

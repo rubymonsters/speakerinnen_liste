@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 source 'https://rubygems.org'
-ruby '2.3.1'
-gem 'rails', '5.2.0'
+ruby '2.4.2'
+gem 'rails', '5.2.1.1'
 
 # Needed for Javascript Runtime
 # gem 'therubyracer'
@@ -25,11 +25,11 @@ gem 'acts-as-taggable-on', '~> 6.0'
 gem 'auto_html', '~>1.6.4'
 gem 'carrierwave', '~> 1.0'
 gem 'devise', '~> 4.4', '>= 4.4.3'
-gem 'fog', '~> 1.32'
+gem 'fog', '~> 2.1'
 gem 'invisible_captcha'
 gem 'jquery-rails', '~> 4.3.1'
 gem 'jquery-ui-rails', '~> 6.0.1'
-gem 'mini_magick', '~> 3.6.0'
+gem 'mini_magick', '~> 4.9.2'
 gem 'omniauth-twitter'
 gem 'pg', '~> 0.18.2'
 gem 'simple_form'
@@ -64,17 +64,17 @@ group :development, :test do
   gem 'guard'
   gem 'guard-rspec'
   gem 'pry'
-  gem 'rspec-rails', '~> 3.7.2'
-  gem 'rubocop', '~> 0.49.0'
-  gem 'selenium-webdriver', '2.38.0'
+  gem 'rspec-rails', '~> 3.8.1'
+  gem 'rubocop', '~> 0.60.0'
+  gem 'selenium-webdriver', '3.141.0'
 end
 
 group :test do
   gem 'database_cleaner', '~> 1.6.0'
   gem 'elasticsearch-extensions', git: 'git://github.com/elasticsearch/elasticsearch-ruby.git', ref: '2.x'
   gem 'factory_bot_rails'
-  gem 'minitest', '5.10.1' # remove this after upgrading rails from 5.0.0
-  gem 'poltergeist', '1.17.0'
+  gem 'minitest', '5.11.3' # remove this after upgrading rails from 5.0.0
+  gem 'poltergeist', '1.18.1'
   gem 'rails-controller-testing'
 end
 

@@ -1,33 +1,59 @@
 # frozen_string_literal: true
 
 describe 'contact profile' do
-  let!(:user) { FactoryBot.create(:published) }
+  let!(:ada) { FactoryBot.create(:published) }
 
-  it 'should show the contact button' do
-    visit profile_path(id: user.id)
+  context "cookie consent is NOT set" do
 
-    expect(page).to have_text(I18n.t(:contact, scope: 'profiles.show'))
-    expect(page).to have_content('Factory Girl')
+    it 'contact button should open hint modal' do
+      visit profile_path(id: ada.id)
+
+      find("button[data-target='#contactHint']")
+    end
+
+    it 'fill the contact form correct and not get a success message' do
+      visit profile_path(id: ada.id)
+
+      fill_in I18n.t('.name', scope: 'contact.form'), with: 'Ada'
+      fill_in I18n.t('.email', scope: 'contact.form'), with: 'Ada@email.de'
+      fill_in I18n.t('.subject', scope: 'contact.form'), with: 'Need a speakerin'
+      fill_in I18n.t('.body', scope: 'contact.form'), with: 'The conference ABC would like to invite you as a speakerin'
+      click_button I18n.t('.send', scope: 'contact.form')
+
+      expect(page).to_not have_content(I18n.t(:notice, scope: 'contact.form'))
+    end
   end
 
-  it 'fill the contact form correct and get a success message' do
-    visit profile_path(id: user.id)
+  context "cookie consent is set" do
 
-    fill_in I18n.t('.name', scope: 'contact.form'), with: 'Ada'
-    fill_in I18n.t('.email', scope: 'contact.form'), with: 'Ada@email.de'
-    fill_in I18n.t('.subject', scope: 'contact.form'), with: 'Need a speakerin'
-    fill_in I18n.t('.body', scope: 'contact.form'), with: 'The conference ABC would like to invite you as a speakerin'
-    click_button I18n.t('.send', scope: 'contact.form')
+    it 'should open contact modal when cookie consent is set' do
+      visit profile_path(id: ada.id)
+      find_link(class: "cookie-consent").click
+      find("button[data-target='#contactModal']")
+    end
 
-    expect(page).to have_content(I18n.t(:notice, scope: 'contact.form'))
-  end
+    it 'fill the contact form correct and get a success message' do
+      visit profile_path(id: ada.id)
 
-  it 'fills the contact form only with email' do
-    visit profile_path(id: user.id)
+      find_link(class: "cookie-consent").click
+      find("button[data-target='#contactModal']").click
+      fill_in I18n.t('.name', scope: 'contact.form'), with: 'Ada'
+      fill_in I18n.t('.email', scope: 'contact.form'), with: 'Ada@email.de'
+      fill_in I18n.t('.subject', scope: 'contact.form'), with: 'Need a speakerin'
+      fill_in I18n.t('.body', scope: 'contact.form'), with: 'The conference ABC would like to invite you as a speakerin'
+      click_button I18n.t('.send', scope: 'contact.form')
 
-    fill_in I18n.t('.email', scope: 'contact.form'), with: 'Ada@email.de'
-    click_button I18n.t('.send', scope: 'contact.form')
+      expect(page).to have_content(I18n.t(:notice, scope: 'contact.form'))
+    end
 
-    expect(page).to have_content(I18n.t(:error, scope: 'contact.form'))
+    it 'fills the contact form only with email' do
+      visit profile_path(id: ada.id)
+      find_link(class: "cookie-consent").click
+
+      fill_in I18n.t('.email', scope: 'contact.form'), with: 'Ada@email.de'
+      click_button I18n.t('.send', scope: 'contact.form')
+
+      expect(page).to have_content(I18n.t(:error, scope: 'contact.form'))
+    end
   end
 end
