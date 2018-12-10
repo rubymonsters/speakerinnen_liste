@@ -10,7 +10,7 @@ gem 'rails', '5.2.2'
 # used in the rail 5.2 version
 gem 'bootsnap', '~> 1.3'
 
-gem 'faker', '1.0.1'
+gem 'faker', '1.9.1'
 gem 'normalize-rails'
 
 gem 'deadweight', require: 'deadweight/hijack/rails'
