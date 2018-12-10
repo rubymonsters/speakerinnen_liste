@@ -169,7 +169,7 @@ GEM
       activesupport (> 3)
       elasticsearch (~> 2)
       hashie
-    elasticsearch-rails (2.0.1)
+    elasticsearch-rails (6.0.0)
     erubi (1.7.1)
     excon (0.62.0)
     execjs (2.7.0)
@@ -666,7 +666,7 @@ DEPENDENCIES
   devise (~> 4.4, >= 4.4.3)
   elasticsearch-extensions!
   elasticsearch-model (~> 2.0)
-  elasticsearch-rails (~> 2.0)
+  elasticsearch-rails (~> 6.0)
   factory_bot_rails
   faker (= 1.9.1)
   fog (~> 2.1)
