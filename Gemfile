@@ -52,7 +52,7 @@ gem 'record_tag_helper', '~> 1.0'
 
 group :development do
   gem 'better_errors'
-  gem 'bullet', '~> 5.7.3'
+  gem 'bullet', '~> 5.9.0'
   gem 'derailed_benchmarks'
   gem 'letter_opener'
   gem 'stackprof'
