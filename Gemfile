@@ -15,9 +15,6 @@ gem 'normalize-rails'
 
 gem 'deadweight', require: 'deadweight/hijack/rails'
 
-# Bundle edge Rails instead:
-# gem 'rails', git: 'git://github.com/rails/rails.git'
-
 gem 'kaminari'
 gem 'mime-types'
 
@@ -49,6 +46,17 @@ gem 'active_model_serializers'
 gem 'elasticsearch-model', '~> 2.0'
 gem 'elasticsearch-rails', '~> 2.0'
 gem 'record_tag_helper', '~> 1.0'
+gem 'exception_notification'
+
+gem 'coffee-rails', '~> 4.2.2'
+gem 'sass-rails',   '~> 5.0.7'
+
+gem 'uglifier', '>= 1.0.3'
+
+gem 'unicorn'
+
+gem 'newrelic_rpm'
+gem 'rack-piwik', '~> 0.3.0', require: 'rack/piwik'
 
 group :development do
   gem 'better_errors'
@@ -78,13 +86,3 @@ group :test do
   gem 'rails-controller-testing'
 end
 
-gem 'coffee-rails', '~> 4.2.2'
-gem 'sass-rails',   '~> 5.0.7'
-
-gem 'uglifier', '>= 1.0.3'
-
-# Use unicorn as the app server
-gem 'unicorn'
-
-gem 'newrelic_rpm'
-gem 'rack-piwik', '~> 0.3.0', require: 'rack/piwik'
