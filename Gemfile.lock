@@ -51,7 +51,7 @@ GEM
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.0, >= 1.0.3)
-    active_model_serializers (0.10.7)
+    active_model_serializers (0.10.8)
       actionpack (>= 4.1, < 6)
       activemodel (>= 4.1, < 6)
       case_transform (>= 0.2)
@@ -669,8 +669,8 @@ DEPENDENCIES
   devise (~> 4.4, >= 4.4.3)
   elasticsearch-extensions!
   elasticsearch-model (~> 2.0)
-  exception_notification
   elasticsearch-rails (~> 6.0)
+  exception_notification
   factory_bot_rails
   faker (= 1.9.1)
   fog (~> 2.1)
