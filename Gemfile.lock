@@ -171,6 +171,9 @@ GEM
       hashie
     elasticsearch-rails (6.0.0)
     erubi (1.7.1)
+    exception_notification (4.3.0)
+      actionmailer (>= 4.0, < 6)
+      activesupport (>= 4.0, < 6)
     excon (0.62.0)
     execjs (2.7.0)
     factory_bot (4.11.1)
@@ -666,6 +669,7 @@ DEPENDENCIES
   devise (~> 4.4, >= 4.4.3)
   elasticsearch-extensions!
   elasticsearch-model (~> 2.0)
+  exception_notification
   elasticsearch-rails (~> 6.0)
   factory_bot_rails
   faker (= 1.9.1)
