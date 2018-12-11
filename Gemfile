@@ -2,7 +2,7 @@
 
 source 'https://rubygems.org'
 ruby '2.4.2'
-gem 'rails', '5.2.1.1'
+gem 'rails', '5.2.2'
 
 # Needed for Javascript Runtime
 # gem 'therubyracer'
@@ -10,7 +10,7 @@ gem 'rails', '5.2.1.1'
 # used in the rail 5.2 version
 gem 'bootsnap', '~> 1.3'
 
-gem 'faker', '1.0.1'
+gem 'faker', '1.9.1'
 gem 'normalize-rails'
 
 gem 'deadweight', require: 'deadweight/hijack/rails'
@@ -44,7 +44,7 @@ gem 'friendly_id'
 gem 'active_model_serializers'
 
 gem 'elasticsearch-model', '~> 2.0'
-gem 'elasticsearch-rails', '~> 2.0'
+gem 'elasticsearch-rails', '~> 6.0'
 gem 'record_tag_helper', '~> 1.0'
 gem 'exception_notification'
 
@@ -60,7 +60,7 @@ gem 'rack-piwik', '~> 0.3.0', require: 'rack/piwik'
 
 group :development do
   gem 'better_errors'
-  gem 'bullet', '~> 5.7.3'
+  gem 'bullet', '~> 5.9.0'
   gem 'derailed_benchmarks'
   gem 'letter_opener'
   gem 'stackprof'
@@ -68,7 +68,7 @@ end
 
 group :development, :test do
   gem 'byebug'
-  gem 'capybara', '~> 2.18.0'
+  gem 'capybara', '~> 3.12.0'
   gem 'guard'
   gem 'guard-rspec'
   gem 'pry'
