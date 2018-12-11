@@ -94,14 +94,7 @@ Rails.application.configure do
     authentication:       'plain',
     enable_starttls_auto: true  }
 
-  config.middleware.use ExceptionNotification::Rack,
-    :email => {
-      :email_prefix => "[SPEAKERINNEN ERROR] ",
-      :sender_address => %{"Team" <no-reply@speakerinnen.org>},
-      :exception_recipients => %w{team@speakerinnen.org}
-  }
-
-  # search box --> heroku elasticsearch add-on
+    # search box --> heroku elasticsearch add-on
   Elasticsearch::Model.client = Elasticsearch::Client.new host: ENV['SEARCHBOX_URL']
 
   # piwik data collection and analytics
