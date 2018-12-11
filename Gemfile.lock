@@ -141,7 +141,7 @@ GEM
     css_parser (1.2.6)
       addressable
       rdoc
-    database_cleaner (1.6.2)
+    database_cleaner (1.7.0)
     deadweight (0.2.2)
       css_parser (~> 1.2.6)
       nokogiri
@@ -660,7 +660,7 @@ DEPENDENCIES
   carrierwave (~> 1.2)
   coffee-rails (~> 4.2.2)
   country_select
-  database_cleaner (~> 1.6.0)
+  database_cleaner (~> 1.7.0)
   deadweight
   derailed_benchmarks
   devise (~> 4.4, >= 4.4.3)

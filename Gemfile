@@ -70,7 +70,7 @@ group :development, :test do
 end
 
 group :test do
-  gem 'database_cleaner', '~> 1.6.0'
+  gem 'database_cleaner', '~> 1.7.0'
   gem 'elasticsearch-extensions', git: 'git://github.com/elasticsearch/elasticsearch-ruby.git', ref: '2.x'
   gem 'factory_bot_rails'
   gem 'minitest', '5.11.3' # remove this after upgrading rails from 5.0.0
