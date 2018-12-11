@@ -31,7 +31,7 @@ gem 'jquery-rails', '~> 4.3.1'
 gem 'jquery-ui-rails', '~> 6.0.1'
 gem 'mini_magick', '~> 4.9.2'
 gem 'omniauth-twitter'
-gem 'pg', '~> 0.18.2'
+gem 'pg', '~> 1.1.3'
 gem 'simple_form'
 
 gem 'country_select'
