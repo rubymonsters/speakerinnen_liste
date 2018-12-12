@@ -669,8 +669,8 @@ DEPENDENCIES
   devise (~> 4.4, >= 4.4.3)
   elasticsearch-extensions!
   elasticsearch-model (~> 2.0)
-  exception_notification
   elasticsearch-rails (~> 6.0)
+  exception_notification
   factory_bot_rails
   faker (= 1.9.1)
   fog (~> 2.1)
@@ -711,4 +711,4 @@ RUBY VERSION
    ruby 2.4.2p198
 
 BUNDLED WITH
-   1.16.4
+   1.17.2
