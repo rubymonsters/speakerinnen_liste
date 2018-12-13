@@ -43,7 +43,7 @@ class Admin::MedialinksController < Admin::BaseController
     params[:medialink].each_with_index do |id, index|
       Medialink.where(id: id).update_all(position: index + 1)
     end
-    render nothing: true
+    head :ok
   end
 
   protected
