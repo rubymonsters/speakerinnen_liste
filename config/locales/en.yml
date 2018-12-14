@@ -122,8 +122,8 @@ en:
         more: ">> more"
         contact: "Contact"
         contact_link: "Email"
-        twitter: "<a href='http://twitter.com/speakerinnen', target='_blank', class='pv-'>Twitter</a>"
-        github: "<a href='http://github.com/rubymonsters/speakerinnen_liste' target='_blank', class='pv-'>GitHub</a>"
+        twitter: "<a href='https://twitter.com/speakerinnen', target='_blank', class='pv-'>Twitter</a>"
+        github: "<a href='https://github.com/rubymonsters/speakerinnen_liste' target='_blank', class='pv-'>GitHub</a>"
         devblog: "<a href='http://speakerinnen.wordpress.com/', target='_blank>Developer Blog</a>"
         faq_short: |
                 <strong>Why is there no speaker for the topic I am looking for?</strong><br>
