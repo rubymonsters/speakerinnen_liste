@@ -7,7 +7,7 @@ class Admin::ProfilesController < Admin::BaseController
 
   def index
     @profiles = if params[:search]
-                  Profile.is_confirmed.admin_search(params[:search]).order('created_at DESC').page(params[:page]).per(100)
+                  Profile.is_confirmed.admin_search(params[:search]).order('profiles.created_at DESC').page(params[:page]).per(100)
                 else
                   Profile.is_confirmed.order(sort_column + ' ' + sort_direction).order('created_at DESC').page(params[:page]).per(100)
                 end

@@ -149,7 +149,9 @@ class Profile < ApplicationRecord
 
   # for simple admin search
   def self.admin_search(query)
-    where("firstname || ' ' || lastname ILIKE :query", query: "%#{query}%")
+    self.includes(taggings: :tag)
+    .references(:tag)    
+    .where("firstname || ' ' || lastname || tags.name ILIKE :query", query: "%#{query}%")
   end
 
   def clean_iso_languages!
