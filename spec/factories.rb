@@ -28,6 +28,10 @@ FactoryBot.define do
     end
   end
 
+  factory :featured_profile do
+    title 'New Event'
+  end
+
   factory :category do
     factory :cat_science do
       name 'Science'
