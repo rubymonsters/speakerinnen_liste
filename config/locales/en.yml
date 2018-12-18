@@ -44,7 +44,7 @@ en:
         add_comment: "Add comment"
         profile_status: "The Profile is "
         name_of_profile: "The Name of the speaker is "
-        search_for_name: "Search for name"
+        search: "Search for name or topic"
         edit:
           show: "Show profile"
           show_all: "List all profiles"
