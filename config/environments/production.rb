@@ -98,7 +98,7 @@ Rails.application.configure do
     :email => {
       :email_prefix => "[SPEAKERINNEN ERROR] ",
       :sender_address => %{"Team" <no-reply@speakerinnen.org>},
-      :exception_recipients => %w{team@speakerinnen.org}
+      :exception_recipients => %w{devops@speakerinnen.org}
   }
   
   # search box --> heroku elasticsearch add-on
