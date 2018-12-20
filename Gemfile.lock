@@ -17,7 +17,7 @@ GIT
 
 GIT
   remote: https://github.com/globalize/globalize
-  revision: 4702dc861ca662c50331fc8734cc6f682c0508db
+  revision: 3fe2f93ab2d0f5d9c2b84e085f627cf469db72a1
   specs:
     globalize (5.2.0)
       activemodel (>= 4.2, < 5.3)
@@ -128,7 +128,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.12.2)
-    concurrent-ruby (1.1.3)
+    concurrent-ruby (1.1.4)
     countries (2.1.4)
       i18n_data (~> 0.8.0)
       money (~> 6.9)
