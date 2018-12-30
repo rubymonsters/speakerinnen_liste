@@ -137,7 +137,7 @@ describe Admin::TagsController, type: :controller do
     context 'update a tag with a unique name' do
       it 'redirects to index page after submit' do
         put :update, params: { tag: { name: tag.name, languages: [], categories: [] }, id: tag.id }
-        expect(response).to redirect_to("/#{I18n.locale}/admin/tags/index#top-anchor")
+        expect(response).to redirect_to("/#{I18n.locale}/admin/tags/index#tag_#{tag.id}")
       end
 
       context 'tag name' do
@@ -202,7 +202,7 @@ describe Admin::TagsController, type: :controller do
     context 'update a tag when tag name already exist' do
       it 'redirects to index page when after submit' do
         put :update, params: { tag: { name: tag.name, languages: [], categories: [] }, id: tag.id }
-        expect(response).to redirect_to("/#{I18n.locale}/admin/tags/index#top-anchor")
+        expect(response).to redirect_to("/#{I18n.locale}/admin/tags/index#tag_#{tag.id}")
       end
 
       context 'tag name' do
@@ -298,7 +298,7 @@ describe Admin::TagsController, type: :controller do
         put :update, params: { id: ada_tag.id, tag: { name: 'mathematic', languages: ['en'], categories: [category.id] } }
       end
 
-      specify { expect(response).to redirect_to("/#{I18n.locale}/admin/tags/index?category_id=#{category.id}#top-anchor") }
+      specify { expect(response).to redirect_to("/#{I18n.locale}/admin/tags/index?category_id=#{category.id}#tag_#{ada_tag.id}") }
     end
 
     context 'after deleting a tag' do
