@@ -55,8 +55,8 @@ en:
         tags_here_are: "Here are "
         tags_search: "Search for tag"
         tags_count: "The number of all tags is "
-        tags_filter_option: "Show all tags without category"
-        tags_filter_default: "Show all categories"
+        tags_filter_option: "Tags without category"
+        tags_filter_default: "All categories"
         languages: "Languages"
         no_language: "no language"
         show_all_tags: "All tags"
@@ -143,7 +143,7 @@ en:
             <strong>Nicht mehr allein unter Männern</strong><br>
             <a href="https://www.taz.de/!5043737/" target="_blank" rel="noopener">taz (German)</a>
             <br><br>
-            
+
         women: "* When we say women we mean everyone who defines herself as a woman. Please note: Sometimes for better readability in long textures the term women is written without a star."
     about:
       title: "About us"
