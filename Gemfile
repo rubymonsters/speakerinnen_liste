@@ -20,7 +20,7 @@ gem 'mime-types'
 
 gem 'acts-as-taggable-on', '~> 6.0'
 gem 'auto_html', '~>1.6.4'
-gem 'carrierwave', '~> 1.2'
+gem 'carrierwave', '~> 1.3'
 gem 'devise', '~> 4.5'
 gem 'fog', '~> 2.1'
 gem 'invisible_captcha'
