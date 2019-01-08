@@ -6,7 +6,7 @@ CarrierWave.configure do |config|
       :aws_secret_access_key  => ENV['AWS_SECRET_ACCESS_KEY'],
       :region                 => 'us-east-1',
     }
-    config.fog_directory  = 'speakerinnen'
+    config.fog_directory  = ENV['AWS_BUCKET_NAME']
     config.fog_public     = false
     config.fog_attributes = {'Cache-Control'=>'max-age=315576000'}
     config.storage = :fog
