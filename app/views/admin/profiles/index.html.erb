@@ -17,6 +17,7 @@
   <table class="table">
     <thead class="bg--lightgrey">
       <tr>
+        <th><%= sortable 'id', 'ID' %></th>
         <th><%= sortable 'lastname', 'Speakerinnen' %></th>
         <th><%= sortable 'created_at', t(:created_at, scope: 'admin.dashboard.profiles') %></th>
         <th><%= sortable 'updated_at', t(:updated_at, scope: 'admin.dashboard.profiles') %></th>
@@ -31,6 +32,7 @@
     <tbody>
       <% @profiles.each do |profile|  %>
         <tr>
+          <td><%= profile.id %></td>
           <td><%= link_to profile.name_or_email, admin_profile_path(profile),
               html_options = { title: t(:show, scope: 'admin.dashboard.profiles.edit') } %></td>
           <td><%= profile.created_at.strftime('%d.%m.%Y um %H:%M Uhr') %></td>
