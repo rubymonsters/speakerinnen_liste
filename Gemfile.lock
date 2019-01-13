@@ -285,7 +285,7 @@ GEM
       fog-core (>= 1.45, <= 2.1.0)
       fog-json (>= 1.0)
       ipaddress (>= 0.8)
-    fog-ovirt (1.1.2)
+    fog-ovirt (1.1.4)
       fog-core
       fog-json
       fog-xml
@@ -441,7 +441,7 @@ GEM
     mimemagic (0.3.2)
     mini_magick (4.9.2)
     mini_mime (1.0.1)
-    mini_portile2 (2.3.0)
+    mini_portile2 (2.4.0)
     mini_racer (0.2.4)
       libv8 (>= 6.3)
     minitest (5.11.3)
@@ -452,8 +452,8 @@ GEM
     netrc (0.11.0)
     newrelic_rpm (5.6.0.349)
     nio4r (2.3.1)
-    nokogiri (1.8.5)
-      mini_portile2 (~> 2.3.0)
+    nokogiri (1.10.1)
+      mini_portile2 (~> 2.4.0)
     normalize-rails (4.1.1)
     notiffany (0.1.1)
       nenv (~> 0.1)
