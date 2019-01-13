@@ -419,6 +419,7 @@ GEM
       addressable (~> 2.3)
     letter_opener (1.7.0)
       launchy (~> 2.2)
+    libv8 (6.7.288.46.1)
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -441,6 +442,8 @@ GEM
     mini_magick (4.9.2)
     mini_mime (1.0.1)
     mini_portile2 (2.3.0)
+    mini_racer (0.2.4)
+      libv8 (>= 6.3)
     minitest (5.11.3)
     msgpack (1.2.4)
     multi_json (1.13.1)
@@ -693,6 +696,7 @@ DEPENDENCIES
   letter_opener
   mime-types
   mini_magick (~> 4.9.2)
+  mini_racer
   minitest (= 5.11.3)
   newrelic_rpm
   normalize-rails
@@ -717,4 +721,4 @@ RUBY VERSION
    ruby 2.4.2p198
 
 BUNDLED WITH
-   1.17.2
+   2.0.1

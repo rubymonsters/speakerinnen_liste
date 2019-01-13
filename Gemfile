@@ -6,6 +6,7 @@ gem 'rails', '5.2.2'
 
 # Needed for Javascript Runtime
 # gem 'therubyracer'
+gem 'mini_racer'
 
 # used in the rail 5.2 version
 gem 'bootsnap', '~> 1.3'
