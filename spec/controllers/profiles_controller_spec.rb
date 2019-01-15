@@ -9,7 +9,7 @@ describe ProfilesController, type: :controller do
     let!(:ada) do
       create(:published,
              main_topic_en: 'first computer program',
-                 bio_en: 'first female programer')
+             bio_en: 'first female programer')
     end
 
     before do
@@ -136,17 +136,17 @@ describe ProfilesController, type: :controller do
         translations_attributes:
           { '0':
             {
-              'locale':       'de',
-              'main_topic':   'Soziale Medien',
-              'bio':          'Deutsche Biografie',
-              'id':           de_translation.id
+              'locale': 'de',
+              'main_topic': 'Soziale Medien',
+              'bio': 'Deutsche Biografie',
+              'id': de_translation.id
             },
-          '1':
+            '1':
             {
-              'locale':       'en',
-              'main_topic':   'Social Media',
-              'bio':          'English Bio',
-              'id':           en_translation.id
+              'locale': 'en',
+              'main_topic': 'Social Media',
+              'bio': 'English Bio',
+              'id': en_translation.id
             } }
       }
       patch :update, params: { id: profile.id }.merge(profile: profile_params)

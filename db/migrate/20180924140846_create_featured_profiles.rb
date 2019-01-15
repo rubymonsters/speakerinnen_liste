@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateFeaturedProfiles < ActiveRecord::Migration[5.2]
   def change
     create_table :featured_profiles do |t|

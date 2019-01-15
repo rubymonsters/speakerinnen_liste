@@ -1,5 +1,6 @@
-describe 'start page' do
+# frozen_string_literal: true
 
+describe 'start page' do
   it 'shows start page in German' do
     visit '/de'
 

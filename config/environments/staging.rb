@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 SpeakerinnenListe::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
@@ -13,7 +15,7 @@ SpeakerinnenListe::Application.configure do
   config.eager_load = true
 
   # Disable Rails's static asset server (Apache or nginx will already do this)
-  #config.serve_static_assets = false
+  # config.serve_static_assets = false
 
   # Compress JavaScripts and CSS
   config.assets.compress = true
@@ -34,7 +36,6 @@ SpeakerinnenListe::Application.configure do
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   # config.force_ssl = true
   config.ssl_options = { hsts: false }
-
 
   # See everything in the log (default is :info)
   # config.log_level = :debug
@@ -73,14 +74,13 @@ SpeakerinnenListe::Application.configure do
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
 
-  config.action_mailer.default_url_options = { :host => 'staging-speakerinnen-liste.herokuapp.com'}
+  config.action_mailer.default_url_options = { host: 'staging-speakerinnen-liste.herokuapp.com' }
 
   config.action_mailer.perform_deliveries = true
 
   config.action_mailer.raise_delivery_errors = false
 
-  config.action_mailer.default :charset => "utf-8"
-
+  config.action_mailer.default charset: 'utf-8'
 
   # config.action_mailer.smtp_settings = {
   #   # These are configured on Heroku with `heroku config:set`, see
@@ -102,19 +102,20 @@ SpeakerinnenListe::Application.configure do
   config.action_mailer.delivery_method = :smtp
 
   config.action_mailer.smtp_settings = {
-    address:              'mail.so36.net',
-    port:                 587,
-    domain:               'staging-speakerinnen-liste.heroku.com',
-    user_name:            'team@speakerinnen.org',
-    password:             ENV['TEAM_MAIL_PASSWORD'],
-    authentication:       'plain',
-    enable_starttls_auto: true  }
-  #config.action_mailer.smtp_settings = {
-    #:address => ENV['POSTMARK_SMTP_SERVER'],
-    #:port => '25', # or 2525
-    #:domain => 'staging-speakerinnen-liste.heroku.com',
-    #:user_name => ENV['POSTMARK_API_TOKEN'],
-    #:password => ENV['POSTMARK_API_TOKEN'],
-    #:authentication => :plain
-  #}
+    address: 'mail.so36.net',
+    port: 587,
+    domain: 'staging-speakerinnen-liste.heroku.com',
+    user_name: 'team@speakerinnen.org',
+    password: ENV['TEAM_MAIL_PASSWORD'],
+    authentication: 'plain',
+    enable_starttls_auto: true
+  }
+  # config.action_mailer.smtp_settings = {
+  #:address => ENV['POSTMARK_SMTP_SERVER'],
+  #:port => '25', # or 2525
+  #:domain => 'staging-speakerinnen-liste.heroku.com',
+  #:user_name => ENV['POSTMARK_API_TOKEN'],
+  #:password => ENV['POSTMARK_API_TOKEN'],
+  #:authentication => :plain
+  # }
 end

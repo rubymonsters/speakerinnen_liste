@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 describe 'signup' do
-  let!(:user) { FactoryBot.create(:published, email: 'ada@mail.de' ) }
+  let!(:user) { FactoryBot.create(:published, email: 'ada@mail.de') }
   before do
-    page.driver.browser.set_cookie("cookie_consent=true")
+    page.driver.browser.set_cookie('cookie_consent=true')
   end
 
   context 'signup with email' do

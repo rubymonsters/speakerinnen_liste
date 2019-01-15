@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -73,12 +75,11 @@ Rails.application.configure do
   end
 
   config.middleware.use ExceptionNotification::Rack,
-  :email => {
-    :email_prefix => "[SPEAKERINNEN ERROR] ",
-    :sender_address => %{"notifier" <no-reply@speakerinnen.org>},
-    :exception_recipients => %w{team@speakerinnen.org}
-  }
+                        email: {
+                          email_prefix: '[SPEAKERINNEN ERROR] ',
+                          sender_address: %("notifier" <no-reply@speakerinnen.org>),
+                          exception_recipients: %w[team@speakerinnen.org]
+                        }
 
   config.action_mailer.delivery_method = :letter_opener
 end
-  

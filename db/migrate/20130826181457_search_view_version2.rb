@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SearchViewVersion2 < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
@@ -13,10 +15,7 @@ class SearchViewVersion2 < ActiveRecord::Migration[4.2]
       GROUP BY profiles.id;
 
     SQL
-
   end
 
-  def down
-  end
-
+  def down; end
 end

@@ -11,9 +11,7 @@ class TagFilter
             .includes(:categories, :locale_languages)
             .references(:categories, :locale_languages)
 
-    if @params[:category_id].present?
-      @tags = @tags.where('categories.id = ?', @params[:category_id])
-    end
+    @tags = @tags.where('categories.id = ?', @params[:category_id]) if @params[:category_id].present?
 
     @tags = @tags.where('tags.name ILIKE ?', '%' + @params[:q] + '%') if @params[:q].present?
 

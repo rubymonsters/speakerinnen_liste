@@ -96,15 +96,15 @@ describe Admin::CategoriesController, type: :controller do
         translations_attributes:
           { '0':
             {
-              'locale':       'de',
-              'name':         'Wissenschaft',
-              'id':           de_factory_translation.id
+              'locale': 'de',
+              'name': 'Wissenschaft',
+              'id': de_factory_translation.id
             },
-          '1':
+            '1':
             {
-              'locale':       'en',
-              'name':         'Science',
-              'id':           en_translation.id
+              'locale': 'en',
+              'name': 'Science',
+              'id': en_translation.id
             } }
       }
       patch :update, params: { id: category.id }.merge(category: category_params)

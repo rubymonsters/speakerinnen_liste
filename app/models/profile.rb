@@ -61,7 +61,7 @@ class Profile < ApplicationRecord
   scope :no_admin, -> { where(admin: false) }
 
   # only show profile where the main_topic is filled in in the current locale
-  scope :main_topic_translated_in, ->(locale) {
+  scope :main_topic_translated_in, lambda { |locale|
     joins('INNER JOIN profile_translations ON profile_translations.profile_id = profiles.id')
       .where('profile_translations.locale' => locale)
       .where.not('profile_translations.main_topic' => [nil, ''])
@@ -72,8 +72,8 @@ class Profile < ApplicationRecord
   end
 
   def cities
-    cities_de = city_de.to_s.gsub(/(,|\/|&|\*|\|| - | or )/, "!@\#$%ˆ&*").split("!@\#$%ˆ&*").map(&:strip)
-    cities_en = city_en.to_s.gsub(/(,|\/|&|\*|\|| - | or )/, "!@\#$%ˆ&*").split("!@\#$%ˆ&*").map(&:strip)
+    cities_de = city_de.to_s.gsub(%r{(,|/|&|\*|\|| - | or )}, "!@\#$%ˆ&*").split("!@\#$%ˆ&*").map(&:strip)
+    cities_en = city_en.to_s.gsub(%r{(,|/|&|\*|\|| - | or )}, "!@\#$%ˆ&*").split("!@\#$%ˆ&*").map(&:strip)
     (cities_de << cities_en).flatten!.uniq
   end
 
@@ -100,7 +100,7 @@ class Profile < ApplicationRecord
   end
 
   def website_with_protocol(profile_website)
-    if profile_website =~ %r{^https?://}
+    if %r{^https?://}.match?(profile_website)
       profile_website
     else
       'http://' + profile_website
@@ -149,9 +149,9 @@ class Profile < ApplicationRecord
 
   # for simple admin search
   def self.admin_search(query)
-    self.includes(taggings: :tag)
-    .references(:tag)    
-    .where("firstname || ' ' || lastname || tags.name ILIKE :query", query: "%#{query}%")
+    includes(taggings: :tag)
+      .references(:tag)
+      .where("firstname || ' ' || lastname || tags.name ILIKE :query", query: "%#{query}%")
   end
 
   def clean_iso_languages!
@@ -163,8 +163,6 @@ class Profile < ApplicationRecord
     clean_iso_languages!
     return if iso_languages == []
 
-    if iso_languages.map(&:class).uniq != [String]
-      errors.add(:iso_languages, 'must be an array of strings')
-    end
+    errors.add(:iso_languages, 'must be an array of strings') if iso_languages.map(&:class).uniq != [String]
   end
 end

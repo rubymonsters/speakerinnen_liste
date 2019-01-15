@@ -5,20 +5,20 @@ require 'spec_helper'
 describe Searchable, elasticsearch: true do
   let!(:profile) do
     FactoryBot.create(:published, firstname: 'Ada', lastname: 'Lovelace',
-                                      twitter_de: 'alovelace_de', twitter_en: 'alovelace',
-                                      city_de: 'London', city_en: 'London', country: 'GB',
-                                      iso_languages: ['en'],
-                                      topic_list: %w[ruby algorithms],
-                                      bio_de: 'Das ist meine deutsche Bio.',
-                                      bio_en: 'This is my english bio.',
-                                      main_topic_de: 'Das Leben', main_topic_en: 'Life',
-                                      email: 'info@example.com')
+                                  twitter_de: 'alovelace_de', twitter_en: 'alovelace',
+                                  city_de: 'London', city_en: 'London', country: 'GB',
+                                  iso_languages: ['en'],
+                                  topic_list: %w[ruby algorithms],
+                                  bio_de: 'Das ist meine deutsche Bio.',
+                                  bio_en: 'This is my english bio.',
+                                  main_topic_de: 'Das Leben', main_topic_en: 'Life',
+                                  email: 'info@example.com')
   end
 
   let!(:profile2) do
     FactoryBot.create(:published, firstname: 'Marie', lastname: 'Curie',
-                                      twitter: 'mcurie', city: 'Paris',
-                                      country: 'FR', iso_languages: %w[pl fr])
+                                  twitter: 'mcurie', city: 'Paris',
+                                  country: 'FR', iso_languages: %w[pl fr])
   end
 
   let!(:profile_not_published) { FactoryBot.create(:unpublished, firstname: 'Fred') }

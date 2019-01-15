@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Admin::FeaturedProfilesController < Admin::BaseController
   before_action :set_featured_profile, only: %i[edit update destroy announce_event stop_event]
 
@@ -6,7 +8,7 @@ class Admin::FeaturedProfilesController < Admin::BaseController
   end
 
   def new
-    @featured_profile = FeaturedProfile.new()
+    @featured_profile = FeaturedProfile.new
   end
 
   def create
@@ -20,7 +22,7 @@ class Admin::FeaturedProfilesController < Admin::BaseController
   end
 
   def edit
-    @featured_profile.profile_ids = @featured_profile.profile_ids.join(", ")
+    @featured_profile.profile_ids = @featured_profile.profile_ids.join(', ')
   end
 
   def update
@@ -58,7 +60,7 @@ class Admin::FeaturedProfilesController < Admin::BaseController
     :public,
     :profile_ids,
     translations_attributes: %i[id title description locale]
-  ]
+  ].freeze
 
   def featured_profile_params
     hash = params.require(:featured_profile).permit(*PARAMS)
@@ -66,7 +68,7 @@ class Admin::FeaturedProfilesController < Admin::BaseController
   end
 
   def normalize_profile_ids(ids)
-    ids.split(",").map(&:to_i)
+    ids.split(',').map(&:to_i)
   end
 
   def set_featured_profile

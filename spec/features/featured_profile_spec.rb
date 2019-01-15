@@ -1,6 +1,7 @@
+# frozen_string_literal: true
+
 RSpec.feature 'Featured Profile', type: :feature do
   describe 'when a featured profile is added' do
-
     let!(:profile_2) { FactoryBot.create(:profile, id: 2) }
     let!(:profile_3) { FactoryBot.create(:profile, id: 3) }
 

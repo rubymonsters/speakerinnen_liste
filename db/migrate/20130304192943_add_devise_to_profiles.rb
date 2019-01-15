@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 class AddDeviseToProfiles < ActiveRecord::Migration[4.2]
   def self.up
     change_table(:profiles) do |t|
       ## Database authenticatable
-      #t.string :email,              :null => false, :default => ""
-      t.string :encrypted_password, :null => false, :default => ""
+      # t.string :email,              :null => false, :default => ""
+      t.string :encrypted_password, null: false, default: ''
 
       ## Recoverable
       t.string   :reset_password_token
@@ -13,7 +15,7 @@ class AddDeviseToProfiles < ActiveRecord::Migration[4.2]
       t.datetime :remember_created_at
 
       ## Trackable
-      t.integer  :sign_in_count, :default => 0
+      t.integer  :sign_in_count, default: 0
       t.datetime :current_sign_in_at
       t.datetime :last_sign_in_at
       t.string   :current_sign_in_ip
@@ -33,14 +35,13 @@ class AddDeviseToProfiles < ActiveRecord::Migration[4.2]
       ## Token authenticatable
       # t.string :authentication_token
 
-
       # Uncomment below if timestamps were not included in your original model.
       # t.timestamps
     end
 
-    add_index :profiles, :email,                :unique => true
-    add_index :profiles, :reset_password_token, :unique => true
-    add_index :profiles, :confirmation_token,   :unique => true
+    add_index :profiles, :email,                unique: true
+    add_index :profiles, :reset_password_token, unique: true
+    add_index :profiles, :confirmation_token,   unique: true
     # add_index :profiles, :unlock_token,         :unique => true
     # add_index :profiles, :authentication_token, :unique => true
   end

@@ -1,5 +1,8 @@
+# frozen_string_literal: true
+
 class RegistrationsController < Devise::RegistrationsController
-  invisible_captcha only: [:create] , on_spam: :spam_callback_method
+  invisible_captcha only: [:create], on_spam: :spam_callback_method
+
   private
 
   def spam_callback_method

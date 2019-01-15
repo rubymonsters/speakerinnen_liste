@@ -5,26 +5,26 @@ require 'spec_helper'
 describe 'profile search' do
   let!(:profile) do
     FactoryBot.create(:published, firstname: 'Ada', lastname: 'Lovelace',
-                                      twitter: 'alovelace', city: 'London',
-                                      country: 'GB',
-                                      iso_languages: ['en'],
-                                      topic_list: %w[computer algorithms],
-                                      bio_de: 'Ada:Das ist meine deutsche Bio.',
-                                      bio_en: 'Ada:This is my english bio.',
-                                      main_topic_de: 'Das Leben', main_topic_en: 'Life',
-                                      email: 'info@example.com')
+                                  twitter: 'alovelace', city: 'London',
+                                  country: 'GB',
+                                  iso_languages: ['en'],
+                                  topic_list: %w[computer algorithms],
+                                  bio_de: 'Ada:Das ist meine deutsche Bio.',
+                                  bio_en: 'Ada:This is my english bio.',
+                                  main_topic_de: 'Das Leben', main_topic_en: 'Life',
+                                  email: 'info@example.com')
   end
 
   let!(:profile1) do
     FactoryBot.create(:published, firstname: 'Maria', lastname: 'Curie',
-                                      twitter: '', city: 'Paris',
-                                      country: 'FR',
-                                      iso_languages: %w[en fr],
-                                      topic_list: %w[physicist chemist],
-                                      bio_de: 'Maria: Das ist meine deutsche Bio.',
-                                      bio_en: 'Maria: This is my english bio.',
-                                      main_topic_de: 'x-ray', main_topic_en: 'Röntgen',
-                                      email: 'maria@example.com')
+                                  twitter: '', city: 'Paris',
+                                  country: 'FR',
+                                  iso_languages: %w[en fr],
+                                  topic_list: %w[physicist chemist],
+                                  bio_de: 'Maria: Das ist meine deutsche Bio.',
+                                  bio_en: 'Maria: This is my english bio.',
+                                  main_topic_de: 'x-ray', main_topic_en: 'Röntgen',
+                                  email: 'maria@example.com')
   end
   let!(:profile2) { create(:published, firstname: 'Christiane', lastname: 'König', city: 'Heidelberg', languages: 'German') }
   let!(:profile3) { create(:published, firstname: 'Maren ', lastname: 'Meier') }

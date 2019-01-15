@@ -581,6 +581,8 @@ GEM
       rainbow (>= 2.2.2, < 4.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (~> 1.4.0)
+    rubocop-rspec (1.31.0)
+      rubocop (>= 0.60.0)
     ruby-prof (0.17.0)
     ruby-progressbar (1.10.0)
     ruby_dep (1.5.0)
@@ -699,6 +701,7 @@ DEPENDENCIES
   record_tag_helper (~> 1.0)
   rspec-rails (~> 3.8.1)
   rubocop (~> 0.62.0)
+  rubocop-rspec
   sassc-rails
   selenium-webdriver (= 3.141.0)
   simple_form

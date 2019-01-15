@@ -1,10 +1,11 @@
+# frozen_string_literal: true
+
 class CreateCategoryTranslations < ActiveRecord::Migration[4.2]
   def up
     Category.create_translation_table!({
-      name: :string,
-    }, {
-      migrate_data: true
-    })
+                                         name: :string
+                                       },
+                                       migrate_data: true)
   end
 
   def down

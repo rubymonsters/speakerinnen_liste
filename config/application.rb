@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'boot'
 
 require 'rails/all'
@@ -11,10 +13,9 @@ module SpeakerinnenListe
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.0
 
-
-  # globlalize fallback
-    config.i18n.available_locales = [:en, :de]
-    config.i18n.fallbacks = {'de' => 'en', 'en' => 'de'}
+    # globlalize fallback
+    config.i18n.available_locales = %i[en de]
+    config.i18n.fallbacks = { 'de' => 'en', 'en' => 'de' }
 
     config.i18n.enforce_available_locales = true
     # or if one of your gem compete for pre-loading, use

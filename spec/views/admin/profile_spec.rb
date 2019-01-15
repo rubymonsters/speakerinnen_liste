@@ -14,8 +14,8 @@ describe 'admin navigation' do
                       twitter: '@alove',
                       main_topic_de: 'erstes Computer Programm',
                       bio_de: 'erste Programmiererin',
-                      main_topic_en:   'first computer program',
-                      bio_en:          'first female programer',
+                      main_topic_en: 'first computer program',
+                      bio_en: 'first female programer',
                       city: 'London',
                       iso_languages: %w[en fr],
                       topic_list: 'algorithm, mathematic')

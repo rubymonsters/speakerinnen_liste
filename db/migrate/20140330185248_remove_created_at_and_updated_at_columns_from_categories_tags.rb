@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RemoveCreatedAtAndUpdatedAtColumnsFromCategoriesTags < ActiveRecord::Migration[4.2]
   def up
     remove_column :categories_tags, :created_at

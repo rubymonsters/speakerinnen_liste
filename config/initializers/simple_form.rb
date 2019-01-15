@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 SimpleForm.setup do |config|
   config.wrappers :default, class: :input, hint_class: :field_with_hint, error_class: :field_with_errors do |b|
     b.use :html5
@@ -13,7 +15,7 @@ SimpleForm.setup do |config|
     b.use :error, wrap_with: { tag: :span, class: :error }
   end
 
-  config.label_text = proc { |label, required| "#{label}" }
+  config.label_text = proc { |label, _required| label.to_s }
   config.default_wrapper = :default
   config.boolean_style = :nested
   config.button_class = 'btn'

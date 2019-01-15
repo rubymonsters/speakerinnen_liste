@@ -46,8 +46,8 @@ gem 'active_model_serializers'
 
 gem 'elasticsearch-model', '~> 2.0'
 gem 'elasticsearch-rails', '~> 6.0'
-gem 'record_tag_helper', '~> 1.0'
 gem 'exception_notification'
+gem 'record_tag_helper', '~> 1.0'
 
 gem 'coffee-rails', '~> 4.2.2'
 gem 'sassc-rails'
@@ -75,6 +75,7 @@ group :development, :test do
   gem 'pry'
   gem 'rspec-rails', '~> 3.8.1'
   gem 'rubocop', '~> 0.62.0'
+  gem 'rubocop-rspec'
   gem 'selenium-webdriver', '3.141.0'
 end
 
@@ -86,4 +87,3 @@ group :test do
   gem 'poltergeist', '1.18.1'
   gem 'rails-controller-testing'
 end
-

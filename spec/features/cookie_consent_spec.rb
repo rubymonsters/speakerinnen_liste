@@ -1,5 +1,6 @@
-RSpec.feature 'Cookie consent', type: :feature do
+# frozen_string_literal: true
 
+RSpec.feature 'Cookie consent', type: :feature do
   let(:original_path) { root_path }
 
   scenario 'After consent given, redirects back without allow_cookies param' do

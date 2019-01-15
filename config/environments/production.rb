@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -54,7 +56,7 @@ Rails.application.configure do
   config.log_level = :debug
 
   # Prepend all log lines with the following tags.
-  config.log_tags = [ :request_id ]
+  config.log_tags = [:request_id]
 
   # Use a different cache store in production.
   # config.cache_store = :mem_cache_store
@@ -76,31 +78,32 @@ Rails.application.configure do
   # Send deprecation notices to registered listeners.
   config.active_support.deprecation = :notify
 
-  config.action_mailer.default_url_options = { host: 'speakerinnen.org'}
+  config.action_mailer.default_url_options = { host: 'speakerinnen.org' }
 
   config.action_mailer.perform_deliveries = true
 
   config.action_mailer.raise_delivery_errors = false
 
-  config.action_mailer.default charset: "utf-8"
+  config.action_mailer.default charset: 'utf-8'
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    address:              'mail.so36.net',
-    port:                 587,
-    domain:               'speakerinnen.org',
-    user_name:            'team@speakerinnen.org',
-    password:             ENV['TEAM_MAIL_PASSWORD'],
-    authentication:       'plain',
-    enable_starttls_auto: true  }
+    address: 'mail.so36.net',
+    port: 587,
+    domain: 'speakerinnen.org',
+    user_name: 'team@speakerinnen.org',
+    password: ENV['TEAM_MAIL_PASSWORD'],
+    authentication: 'plain',
+    enable_starttls_auto: true
+  }
 
   config.middleware.use ExceptionNotification::Rack,
-    :email => {
-      :email_prefix => "[SPEAKERINNEN ERROR] ",
-      :sender_address => %{"Team" <no-reply@speakerinnen.org>},
-      :exception_recipients => %w{devops@speakerinnen.org}
-  }
-  
+                        email: {
+                          email_prefix: '[SPEAKERINNEN ERROR] ',
+                          sender_address: %("Team" <no-reply@speakerinnen.org>),
+                          exception_recipients: %w[devops@speakerinnen.org]
+                        }
+
   # search box --> heroku elasticsearch add-on
   Elasticsearch::Model.client = Elasticsearch::Client.new host: ENV['SEARCHBOX_URL']
 
@@ -115,7 +118,7 @@ Rails.application.configure do
   # require 'syslog/logger'
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
 
-  if ENV["RAILS_LOG_TO_STDOUT"].present?
+  if ENV['RAILS_LOG_TO_STDOUT'].present?
     logger           = ActiveSupport::Logger.new(STDOUT)
     logger.formatter = config.log_formatter
     config.logger    = ActiveSupport::TaggedLogging.new(logger)

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RemoveSearchView < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
@@ -20,5 +22,4 @@ class RemoveSearchView < ActiveRecord::Migration[4.2]
 
     SQL
   end
-
 end

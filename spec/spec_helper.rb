@@ -59,6 +59,7 @@ RSpec.configure do |config|
   config.before :each, elasticsearch: true do
     ActiveRecord::Base.descendants.each do |model|
       next unless model.respond_to?(:__elasticsearch__)
+
       begin
         model.__elasticsearch__.create_index!
         model.__elasticsearch__.refresh_index!
@@ -82,6 +83,7 @@ RSpec.configure do |config|
   config.after :each, elasticsearch: true do
     ActiveRecord::Base.descendants.each do |model|
       next unless model.respond_to?(:__elasticsearch__)
+
       begin
         model.__elasticsearch__.delete_index!
       rescue StandardError => Elasticsearch::Transport::Transport::Errors::NotFound

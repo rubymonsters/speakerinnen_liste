@@ -131,7 +131,7 @@ describe Admin::TagsController, type: :controller do
   end
 
   describe 'PUT update' do
-    let(:name) {marie.topic_list[0]}
+    let(:name) { marie.topic_list[0] }
     let(:tag) { ActsAsTaggableOn::Tag.find_by(name: name) }
 
     context 'update a tag with a unique name' do
@@ -156,13 +156,13 @@ describe Admin::TagsController, type: :controller do
         let!(:locale_language) { LocaleLanguage.create(iso_code: 'en') }
 
         it 'assings a language to a tag when language is selected' do
-          put :update, params: {tag: {name: tag.name, languages: ['en'], categories: []}, id: tag.id }
+          put :update, params: { tag: { name: tag.name, languages: ['en'], categories: [] }, id: tag.id }
           expect(tag.locale_languages.first.iso_code).to match('en')
         end
 
         it 'removes a language from a tag whan language is unselected' do
           tag.locale_languages << locale_language
-          put :update, params: { tag: {name: tag.name, languages: [], categories: []}, id: tag.id }
+          put :update, params: { tag: { name: tag.name, languages: [], categories: [] }, id: tag.id }
           # have to reaload tag to get the new relations
           tag = ActsAsTaggableOn::Tag.find_by(name: name)
           expect(tag.locale_languages).to match([])
@@ -170,7 +170,7 @@ describe Admin::TagsController, type: :controller do
 
         it 'does nothing when languages are not changed' do
           tag.locale_languages << locale_language
-          put :update, params: { tag: {name: tag.name, languages: ['en'], categories: [] }, id: tag.id }
+          put :update, params: { tag: { name: tag.name, languages: ['en'], categories: [] }, id: tag.id }
           # have to reaload tag to get the new relations
           tag = ActsAsTaggableOn::Tag.find_by(name: name)
           expect(tag.locale_languages.first.iso_code).to match('en')
@@ -193,7 +193,7 @@ describe Admin::TagsController, type: :controller do
 
         it 'does nothing when categories are not changed' do
           tag.categories << category
-          put :update, params: {tag: {name: tag.name, languages: [], categories: [category.id]}, id: tag.id }
+          put :update, params: { tag: { name: tag.name, languages: [], categories: [category.id] }, id: tag.id }
           expect(assigns(:tag).categories.first.name).to eq 'Science'
         end
       end
@@ -259,7 +259,7 @@ describe Admin::TagsController, type: :controller do
 
         it 'does nothing when categories are not changed' do
           tag.categories << category
-          put :update, params: {tag: {name: tag.name, languages: [], categories: [category.id]}, id: tag.id,  }
+          put :update, params: { tag: { name: tag.name, languages: [], categories: [category.id] }, id: tag.id }
           expect(assigns(:tag).categories.first.name).to eq 'Science'
         end
       end

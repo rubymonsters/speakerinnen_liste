@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class ContactController < ApplicationController
-  invisible_captcha only: [:create] , on_spam: :spam_callback_method
+  invisible_captcha only: [:create], on_spam: :spam_callback_method
 
   def new
     @profile = Profile.friendly.find(params[:id]) if params[:id]
@@ -38,5 +38,4 @@ class ContactController < ApplicationController
   def spam_callback_method
     redirect_to root_path
   end
-
 end

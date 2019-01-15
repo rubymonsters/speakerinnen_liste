@@ -1,10 +1,11 @@
+# frozen_string_literal: true
+
 RSpec.feature 'Category', type: :feature do
   describe 'when a category is assigned to tags' do
-
-    let!(:ada) {FactoryBot.create(:published, topic_list: ['fruehling'])}
-    let!(:pierre){FactoryBot.create(:published, topic_list: ['fruehling', 'sommer'])}
-    let(:tag_fruehling) {ActsAsTaggableOn::Tag.find_by_name('fruehling')}
-    let(:tag_sommer) {ActsAsTaggableOn::Tag.find_by_name('sommer')}
+    let!(:ada) { FactoryBot.create(:published, topic_list: ['fruehling']) }
+    let!(:pierre) { FactoryBot.create(:published, topic_list: %w[fruehling sommer]) }
+    let(:tag_fruehling) { ActsAsTaggableOn::Tag.find_by_name('fruehling') }
+    let(:tag_sommer) { ActsAsTaggableOn::Tag.find_by_name('sommer') }
 
     before do
       category_jahreszeiten = Category.new(name: 'Jahreszeiten')

@@ -49,6 +49,7 @@ task find_all_existing_cities: :environment do
     profile_could_be_matched = false
     city_to_country_mapping.each do |country, cities|
       next unless matching_city = cities.find { |city| profile.city =~ /#{Regexp.quote(city)}/ }
+
       matched_profile_counter += 1
       profile_could_be_matched = true
       profile.update_attribute(:country, country)

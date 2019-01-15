@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateTagsLocaleLanguages < ActiveRecord::Migration[4.2]
   def change
     create_table :tags_locale_languages do |t|

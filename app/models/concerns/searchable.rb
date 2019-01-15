@@ -125,16 +125,16 @@ module Searchable
               ]
             },
             english_stop: {
-              type:       'stop',
-              stopwords:  '_english_'
+              type: 'stop',
+              stopwords: '_english_'
             },
             english_possessive_stemmer: {
-              type:       'stemmer',
-              language:   'possessive_english'
+              type: 'stemmer',
+              language: 'possessive_english'
             },
             german_stop: {
-              type:       'stop',
-              stopwords:  '_german_'
+              type: 'stop',
+              stopwords: '_german_'
             }
           },
           char_filter: {
@@ -171,7 +171,7 @@ module Searchable
               ]
             },
             english_without_stemming: {
-              tokenizer:  'standard',
+              tokenizer: 'standard',
               filter: %w[
                 english_possessive_stemmer
                 lowercase
@@ -180,7 +180,7 @@ module Searchable
               ]
             },
             german_without_stemming: {
-              tokenizer:  'standard',
+              tokenizer: 'standard',
               filter: %w[
                 lowercase
                 german_stop
@@ -241,22 +241,22 @@ module Searchable
                                            text: q,
                                            completion: { field: 'fullname.suggest' }
                                          },
-        lastname_suggest: {
-          text: q,
-          completion: { field: 'lastname.suggest' }
-        },
-        main_topic_de_suggest: {
-          text: q,
-          completion: { field: 'main_topic_de.suggest' }
-        },
-        main_topic_en_suggest: {
-          text: q,
-          completion: { field: 'main_topic_en.suggest' }
-        },
-        topic_list_suggest: {
-          text: q,
-          completion: { field: 'topic_list.suggest' }
-        }
+                                         lastname_suggest: {
+                                           text: q,
+                                           completion: { field: 'lastname.suggest' }
+                                         },
+                                         main_topic_de_suggest: {
+                                           text: q,
+                                           completion: { field: 'main_topic_de.suggest' }
+                                         },
+                                         main_topic_en_suggest: {
+                                           text: q,
+                                           completion: { field: 'main_topic_en.suggest' }
+                                         },
+                                         topic_list_suggest: {
+                                           text: q,
+                                           completion: { field: 'topic_list.suggest' }
+                                         }
                                        })
     end
   end

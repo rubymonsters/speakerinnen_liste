@@ -58,5 +58,4 @@ class ApplicationController < ActionController::Base
       request.session_options[:skip] = true
     end
   end
-
 end

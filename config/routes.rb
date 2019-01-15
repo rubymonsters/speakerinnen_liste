@@ -1,18 +1,18 @@
-Rails.application.routes.draw do
+# frozen_string_literal: true
 
+Rails.application.routes.draw do
   # for production I have to add devise routes here
   devise_for :profiles,
-              only: :omniauth_callbacks,
-              controllers: {
-                omniauth_callbacks: :omniauth_callbacks,
-                confirmations: :confirmations,
-                registrations: :registrations
-              }
+             only: :omniauth_callbacks,
+             controllers: {
+               omniauth_callbacks: :omniauth_callbacks,
+               confirmations: :confirmations,
+               registrations: :registrations
+             }
 
   scope '(:locale)', locale: /en|de/ do
-
     namespace :admin do
-      resources :tags, except: [:new, :create] do
+      resources :tags, except: %i[new create] do
         collection do
           get 'index'
         end
@@ -45,24 +45,24 @@ Rails.application.routes.draw do
 
     namespace :api do
       namespace :v1 do
-        resources :profiles, only: [:index, :show]
+        resources :profiles, only: %i[index show]
       end
     end
 
-  # for localhost I have to add devise routes here
+    # for localhost I have to add devise routes here
     devise_for :profiles,
-      skip: :omniauth_callbacks,
-      controllers: {
-        omniauth_callbacks: :omniauth_callbacks,
-        confirmations: :confirmations,
-        registrations: :registrations
-      }
+               skip: :omniauth_callbacks,
+               controllers: {
+                 omniauth_callbacks: :omniauth_callbacks,
+                 confirmations: :confirmations,
+                 registrations: :registrations
+               }
 
     get 'topics', to: 'profiles#index', as: :topic
 
     get 'profiles_typeahead' => 'profiles#typeahead'
 
-    get  'contact' => 'contact#new',    as: 'contact'
+    get  'contact' => 'contact#new', as: 'contact'
     post 'contact' => 'contact#create'
 
     get 'impressum' => 'pages#impressum'
@@ -76,13 +76,13 @@ Rails.application.routes.draw do
 
     get 'categories/:category_id', to: 'profiles#index', as: :category
 
-    resources :profiles, except: [:new, :create] do
+    resources :profiles, except: %i[new create] do
       resources :medialinks
-        get  'contact' => 'contact#new', as: 'contact', on: :member
-        post 'contact' => 'contact#create', on: :member
+      get  'contact' => 'contact#new', as: 'contact', on: :member
+      post 'contact' => 'contact#create', on: :member
 
       resources :medialinks do
-       collection { post :sort }
+        collection { post :sort }
       end
     end
 
@@ -94,5 +94,4 @@ Rails.application.routes.draw do
       root to: redirect('http://www.speakerinnen.org')
     end
   end
-
 end
