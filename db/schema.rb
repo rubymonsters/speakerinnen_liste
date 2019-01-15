@@ -30,8 +30,8 @@ ActiveRecord::Schema.define(version: 2018_11_06_084846) do
 
   create_table "categories", id: :serial, force: :cascade do |t|
     t.string "name", limit: 255
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "categories_tags", id: :serial, force: :cascade do |t|
@@ -43,10 +43,10 @@ ActiveRecord::Schema.define(version: 2018_11_06_084846) do
   end
 
   create_table "category_translations", id: :serial, force: :cascade do |t|
-    t.integer "category_id", null: false
+    t.integer "category_id"
     t.string "locale", limit: 255, null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "name", limit: 255
     t.index ["category_id"], name: "index_category_translations_on_category_id"
     t.index ["locale"], name: "index_category_translations_on_locale"
@@ -94,18 +94,18 @@ ActiveRecord::Schema.define(version: 2018_11_06_084846) do
     t.text "url"
     t.text "title"
     t.text "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.integer "position"
     t.string "language", limit: 255
     t.index ["profile_id"], name: "index_medialinks_on_profile_id"
   end
 
   create_table "profile_translations", id: :serial, force: :cascade do |t|
-    t.integer "profile_id", null: false
+    t.integer "profile_id"
     t.string "locale", limit: 255, null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "main_topic", limit: 255
     t.text "bio"
     t.string "twitter", limit: 255
@@ -122,8 +122,8 @@ ActiveRecord::Schema.define(version: 2018_11_06_084846) do
     t.string "lastname", limit: 255
     t.string "email", limit: 255
     t.string "picture", limit: 255
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "encrypted_password", limit: 255, default: "", null: false
     t.string "reset_password_token", limit: 255
     t.datetime "reset_password_sent_at"
@@ -173,7 +173,6 @@ ActiveRecord::Schema.define(version: 2018_11_06_084846) do
   create_table "tags", id: :serial, force: :cascade do |t|
     t.string "name", limit: 255
     t.integer "taggings_count", default: 0
-    t.string "slug"
     t.index ["name"], name: "index_tags_on_name", unique: true
   end
 

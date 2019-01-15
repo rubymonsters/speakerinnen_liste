@@ -50,7 +50,7 @@ gem 'record_tag_helper', '~> 1.0'
 gem 'exception_notification'
 
 gem 'coffee-rails', '~> 4.2.2'
-gem 'sass-rails',   '~> 5.0.7'
+gem 'sassc-rails'
 
 gem 'uglifier', '>= 1.0.3'
 
