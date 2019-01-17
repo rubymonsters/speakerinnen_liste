@@ -43,7 +43,6 @@ en:
         invisible: "invisible"
         make_invisible: "Make invisible"
         confirmed: "confirmed"
-        roles: "Roles"
         comment: "Comment"
         add_comment: "Add comment"
         profile_status: "The Profile is "
