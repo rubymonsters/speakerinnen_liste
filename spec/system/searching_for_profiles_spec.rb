@@ -8,10 +8,10 @@ describe 'profile search' do
   let!(:algorithm) { create(:tag_algorithm, locale_languages: [locale_language_en]) }
   let!(:ada) { create(:ada, topic_list: [algorithm]) }
   let!(:marie) { create(:marie, topic_list: [physics]) }
-  let!(:profile2) { create(:published, firstname: 'Christiane', lastname: 'König', main_topic_en: 'Blogs') }
-  let!(:profile3) { create(:published, firstname: 'Maren ', lastname: 'Meier', main_topic_en: 'Big Data') }
+  let!(:profile2) { create(:published_profile, firstname: 'Christiane', lastname: 'König', main_topic_en: 'Blogs') }
+  let!(:profile3) { create(:published_profile, firstname: 'Maren ', lastname: 'Meier', main_topic_en: 'Big Data') }
 
-  let!(:profile_not_matched) { create(:published, firstname: 'Angela', main_topic_en: 'rassism' ) }
+  let!(:profile_not_matched) { create(:published_profile, firstname: 'Angela', main_topic_en: 'rassism' ) }
 
   describe 'public search', elasticsearch: true do
     it 'displays profiles that are a partial match' do

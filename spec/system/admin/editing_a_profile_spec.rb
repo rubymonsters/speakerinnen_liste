@@ -3,7 +3,7 @@
 RSpec.feature 'Editing', type: :feature do
   context 'logged in as an admin' do
     let!(:admin) { create(:admin) }
-    let!(:user) { create(:published) }
+    let!(:user) { create(:published_profile) }
 
     before do
       sign_in admin

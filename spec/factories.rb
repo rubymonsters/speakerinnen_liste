@@ -2,8 +2,8 @@
 
 FactoryBot.define do
   factory :profile do
-    firstname { 'Sonnenschein' }
-    lastname { 'Susi' }
+    firstname { 'Susi' }
+    lastname { 'Sonnenschein' }
     sequence :email do |n|
       "person#{n}@example.com"
     end
@@ -15,15 +15,15 @@ FactoryBot.define do
       admin { true }
     end
 
-    factory :published do
+    factory :published_profile do
       published { true }
     end
 
-    factory :unpublished do
+    factory :unpublished_profile do
       published { false }
     end
 
-    factory :unconfirmed do
+    factory :unconfirmed_profile do
       confirmed_at { nil }
     end
 
@@ -33,11 +33,14 @@ FactoryBot.define do
       twitter_en { 'alovelace' }
       city_en { 'London' }
       country { 'GB' }
-      iso_languages { ['en'] }
+      iso_languages { ['en', 'de'] }
       bio_de { 'Ada: Das ist meine deutsche Bio.' }
       bio_en { 'Ada: This is my english bio.' }
       main_topic_de { 'Mathematik' }
-      main_topic_en { 'mathematic' }
+      main_topic_en { 'math' }
+      website_de { 'www.ada.de' }
+      website_2_de { 'wwww.ada2.de' }
+      website_3_de { 'wwww.ada3.de' }
       published { true }
     end
 

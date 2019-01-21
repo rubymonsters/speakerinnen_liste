@@ -8,21 +8,19 @@ describe 'displaying tags' do
     FactoryBot.create(:tag_social_media,
                       locale_languages: [locale_language_en, locale_language_de])
   end
-  let!(:tag_with_slash_en) do
-    FactoryBot.create(:tag, name: 'AC/DC', locale_languages: [locale_language_en])
-  end
+  let!(:tag_with_slash_en) { create(:tag, name: 'AC/DC', locale_languages: [locale_language_en]) }
 
   let!(:tag_de) { FactoryBot.create(:tag_chemie, locale_languages: [locale_language_de]) }
   let!(:tag_en) { FactoryBot.create(:tag_physics, locale_languages: [locale_language_en]) }
   let!(:tag_with_unpublished_profile) { FactoryBot.create(:tag, name: 'sports') }
 
   let!(:ada) do
-    FactoryBot.create(:published, topic_list: [tag_en,
+    FactoryBot.create(:published_profile, topic_list: [tag_en,
                                                tag_both_languages,
                                                tag_de,
                                                tag_with_slash_en])
   end
-  let!(:pierre) { create(:unpublished, topic_list: [tag_de, tag_with_unpublished_profile]) }
+  let!(:pierre) { create(:unpublished_profile, topic_list: [tag_de, tag_with_unpublished_profile]) }
 
   it 'shows tagging after profile edit' do
     sign_in ada

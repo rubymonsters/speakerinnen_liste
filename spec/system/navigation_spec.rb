@@ -3,9 +3,8 @@
 RSpec.describe 'Navigation', type: :system do
   context 'normal visitor' do
     before do
-      FactoryBot.create(:published, firstname: 'Emily', lastname: 'Roebling',
-        main_topic_en: 'engineer', city_en: 'Trenton', iso_languages: ['en'])
-      FactoryBot.create(:published, main_topic_en: 'technican')
+      FactoryBot.create(:ada)
+      FactoryBot.create(:published_profile, main_topic_en: 'technican')
       FactoryBot.create(:cat_science)
       page.driver.browser.set_cookie("cookie_consent=true")
     end
@@ -25,7 +24,7 @@ RSpec.describe 'Navigation', type: :system do
       expect(page).to have_css('#startpage__start-teaser')
       expect(page).to have_css('#startpage__teaser-bg-01')
       expect(page).to have_css('#startpage__teaser-bg-02')
-      expect(page).to have_css('.profile-box', text: 'engineer')
+      expect(page).to have_css('.profile-box', text: 'math')
       expect(page).to have_css('.profile-box', text: 'technican')
       expect(page).to have_css('.startpage-categories__list-links', count: 1)
       expect(page).to have_link('Science')
@@ -63,9 +62,9 @@ RSpec.describe 'Navigation', type: :system do
       expect(page).to have_css('input.profile__search')
       expect(page).to have_button('Search')
       # profile
-      expect(page).to have_link('Emily Roebling')
+      expect(page).to have_link('Ada Lovelace')
       expect(page).to have_css('.profile-card', count: 2)
-      expect(page).to have_css('.profile-subtitle', text: 'engineer')
+      expect(page).to have_css('.profile-subtitle', text: 'math')
       expect(page).to have_text('English')
       # tag_cloud
       expect(page).to have_css('.topics-cloud')
@@ -77,7 +76,7 @@ RSpec.describe 'Navigation', type: :system do
       visit root_path
 
       click_link 'Browse all profiles >>'
-      click_link 'Emily Roebling'
+      click_link 'Ada Lovelace'
       # header
       expect(page).to have_css('#header__logo')
       expect(page).to have_link('Register as a speaker')
@@ -85,8 +84,8 @@ RSpec.describe 'Navigation', type: :system do
       expect(page).to have_link('Show all women speakers >>')
       # profile
       expect(page).to have_css('.profile-page')
-      expect(page).to have_css('.profile-subtitle', text: 'engineer')
-      expect(page).to have_text('Trenton')
+      expect(page).to have_css('.profile-subtitle', text: 'math')
+      expect(page).to have_text('London')
       expect(page).to have_text('English')
     end
   end

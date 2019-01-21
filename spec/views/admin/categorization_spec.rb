@@ -2,17 +2,14 @@
 
 describe 'admin navigation' do
   include AuthHelper
-
   let!(:admin) { FactoryBot.create(:admin) }
-
   let!(:tag_physics) { FactoryBot.create(:tag_physics) }
   let!(:tag_chemie) { FactoryBot.create(:tag_chemie) }
 
-  let!(:ada) { FactoryBot.create(:published, topic_list: [tag_physics, tag_chemie]) }
-  let!(:marie) { FactoryBot.create(:published, topic_list: [tag_physics, tag_chemie]) }
-
   describe 'in tags' do
     before do
+      create(:ada, topic_list: [tag_physics, tag_chemie])
+      create(:marie, topic_list: [tag_physics, tag_chemie])
       sign_in admin
       click_on 'Admin'
       click_on 'Tags'

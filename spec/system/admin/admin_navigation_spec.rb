@@ -33,6 +33,7 @@ RSpec.describe 'Navigation', type: :system do
       expect(page).to have_link('Categories', href: '/en/admin/categories')
       expect(page).to have_link('Tags', href: '/en/admin/tags/index')
       expect(page).to have_link('Profiles', href: '/en/admin/profiles')
+      expect(page).to have_link('Featured Profiles', href: '/en/admin/featured_profiles')
     end
 
     context 'category' do
@@ -75,7 +76,7 @@ RSpec.describe 'Navigation', type: :system do
     end
 
     context 'two profiles' do
-      let!(:user) { FactoryBot.create(:published) }
+      let!(:user) { FactoryBot.create(:published_profile) }
 
       it 'viewing edit profiles in admin area' do
         visit admin_root_path

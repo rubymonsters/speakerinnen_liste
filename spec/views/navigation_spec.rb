@@ -7,6 +7,8 @@ end
 
 describe 'navigation', broken: false do
   subject { page }
+  let!(:profile1) { FactoryBot.create(:published_profile) }
+  let!(:profile2) { FactoryBot.create(:published_profile) }
 
   before do
     @links_array = [admin_tags_path, admin_categories_path, admin_profiles_path]
@@ -18,8 +20,6 @@ describe 'navigation', broken: false do
 
   %w[en de].each do |language|
     describe 'go to the index page' do
-      let!(:profile1) { FactoryBot.create(:published) }
-      let!(:profile2) { FactoryBot.create(:published) }
 
       it 'should show the correct amount of speakerinnen' do
         visit "#{language}/profiles"
@@ -28,15 +28,14 @@ describe 'navigation', broken: false do
     end
 
     context 'signed in as normal user' do
-      let(:profile) { FactoryBot.create(:profile) }
       before do
-        sign_in profile, language
+        sign_in profile1, language
       end
 
       it_should_behave_like 'successful sign in'
       it { should have_no_link('Admin') }
       it 'should lead to the show view of the profile' do
-        expect(page).to have_content(profile.fullname)
+        expect(page).to have_content(profile1.fullname)
         expect(page).to have_link(I18n.t('edit', scope: 'profiles.show'))
       end
     end
