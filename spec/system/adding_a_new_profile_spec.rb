@@ -11,7 +11,7 @@ describe 'profile adding' do
     fill_in 'profile_password', with: '12345678'
     fill_in 'profile_password_confirmation', with: '12345678'
     click_button I18n.t(:signup, scope: 'devise.registrations')
-
+    expect(page).to have_css('div.notice', text: I18n.t(:signed_up_but_unconfirmed, scope: 'devise.registrations'))
     Profile.last.confirm
 
     click_link I18n.t(:login, scope: 'layouts.application')

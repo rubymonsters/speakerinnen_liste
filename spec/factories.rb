@@ -2,8 +2,8 @@
 
 FactoryBot.define do
   factory :profile do
-    firstname { 'Factory' }
-    lastname { 'Girl' }
+    firstname { 'Sonnenschein' }
+    lastname { 'Susi' }
     sequence :email do |n|
       "person#{n}@example.com"
     end
@@ -26,10 +26,39 @@ FactoryBot.define do
     factory :unconfirmed do
       confirmed_at { nil }
     end
+
+    factory :ada do
+      firstname { 'Ada' }
+      lastname { 'Lovelace' }
+      twitter_en { 'alovelace' }
+      city_en { 'London' }
+      country { 'GB' }
+      iso_languages { ['en'] }
+      bio_de { 'Ada: Das ist meine deutsche Bio.' }
+      bio_en { 'Ada: This is my english bio.' }
+      main_topic_de { 'Mathematik' }
+      main_topic_en { 'mathematic' }
+      published { true }
+    end
+
+    factory :marie do
+      firstname { 'Marie' }
+      lastname { 'Curie' }
+      twitter_en { 'curie' }
+      city_en { 'Paris' }
+      country { 'FR' }
+      iso_languages { ['en', 'pl'] }
+      bio_de { 'Marie: Das ist meine deutsche Bio.' }
+      bio_en { 'Marie: This is my english bio.' }
+      main_topic_de { 'Radioaktivität' }
+      main_topic_en { 'radioactivity' }
+      published { true }
+    end
+
   end
 
   factory :featured_profile do
-    title 'New Event'
+    title { 'New Event' }
   end
 
   factory :category do
@@ -69,6 +98,10 @@ FactoryBot.define do
 
     factory :tag_social_media do
       name { 'social media' }
+    end
+
+    factory :tag_algorithm do
+      name { 'algorithm' }
     end
   end
 end
