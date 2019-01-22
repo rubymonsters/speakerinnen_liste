@@ -5,7 +5,7 @@ describe ProfilesController, type: :controller do
 
   let!(:profile_published) { create(:published_profile, topic_list: %w[ruby algorithms]) }
   let!(:profile_unpublished) { create(:unpublished_profile) }
-  let!(:ada) { create(:ada, email: "ada@mail.org" ) }
+  let!(:ada) { create(:published_profile, email: "ada@mail.org") }
   let!(:admin) { create(:admin) }
 
   describe 'test index action' do
@@ -120,8 +120,8 @@ describe ProfilesController, type: :controller do
     end
 
     it "doesn't create extra translations" do
-      de_translation = ada.translations.create!('locale' => 'de')
-      en_translation = ada.translations.create!('locale' => 'en')
+      de_translation = ada.translations.create!('locale' => 'de', 'main_topic' => 'Hauptthema')
+      en_translation = ada.translations.create!('locale' => 'en', 'main_topic' => 'Main topic')
 
       profile_params = {
         translations_attributes:

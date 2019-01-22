@@ -34,8 +34,8 @@ FactoryBot.define do
       city_en { 'London' }
       country { 'GB' }
       iso_languages { ['en', 'de'] }
-      bio_de { 'Ada: Das ist meine deutsche Bio.' }
-      bio_en { 'Ada: This is my english bio.' }
+      bio_de { 'Sie hat den ersten Algorithmus veröffentlicht.' }
+      bio_en { 'She published the first algorithm for a machine.' }
       main_topic_de { 'Mathematik' }
       main_topic_en { 'math' }
       website_de { 'www.ada.de' }
@@ -51,8 +51,8 @@ FactoryBot.define do
       city_en { 'Paris' }
       country { 'FR' }
       iso_languages { ['en', 'pl'] }
-      bio_de { 'Marie: Das ist meine deutsche Bio.' }
-      bio_en { 'Marie: This is my english bio.' }
+      bio_de { 'Marie Curie war die erste Frau, die einen Nobelpreis bekommen hat.' }
+      bio_en { 'Marie Curie was the first woman to be awarded a Nobel Prize.' }
       main_topic_de { 'Radioaktivität' }
       main_topic_en { 'radioactivity' }
       published { true }

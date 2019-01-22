@@ -34,7 +34,7 @@ describe 'admin navigation' do
       expect(page).to have_content('Lovelace')
       expect(page).to have_content('@alove')
       expect(page).to have_content('London')
-      expect(page).to have_content('Ada: This is my english bio.')
+      expect(page).to have_content('She published the first algorithm for a machine.')
       expect(page).to have_content('math')
       expect(page).to have_content('algorithm')
       expect(page).to have_content('English')
