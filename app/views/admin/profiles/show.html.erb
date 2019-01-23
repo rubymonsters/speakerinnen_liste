@@ -6,24 +6,8 @@
   <div class="my-3 py-3 border-vertical">
     <%= link_to t(:show_all, scope: 'admin.dashboard.profiles.edit'), admin_profiles_path, class:'btn btn-blue btn-sm' %>
     <%= link_to t(:edit_profile, scope: "admin.dashboard"), edit_admin_profile_path(@profile), class:"btn btn-blue btn-sm" %>
-    <%= link_to t(:edit, scope: 'medialinks'), admin_profile_medialinks_path(@profile), class:'btn btn-blue btn-sm',
-        title: t(:edit, scope: 'medialinks') %>
-    <% if @profile.published %>
-      <%= link_to t(:make_invisible, scope: 'admin.dashboard.profiles'), unpublish_admin_profile_path(@profile.id),
-      method: :post, class:'btn btn-sm btn-danger', title: 'Hier kannst Du das Profile wieder unsichtbar machen.' %>
-    <% else %>
-      <%= link_to t(:make_public, scope: 'admin.dashboard.profiles'), publish_admin_profile_path(@profile.id),
-      method: :post, class:'btn btn-sm btn-danger', title: 'Eine Bestätigungsmail wird verschickt.' %>
-    <% end %>
-    <%= t(:profile_status, scope: 'admin.dashboard.profiles') + t(:public, scope: 'admin.dashboard.profiles') + '.' if @profile.published? %>
-    <%= form_for @profile,{ url: admin_comment_admin_profile_path(@profile.id), method: 'post', html: { class: 'mt-3' }}  do |f| %>
-      <div class="form-group">
-        <%= f.text_field 'admin_comment', class: "form-control mr-2" %>
-        <%= f.submit t(:add_comment, scope: 'admin.dashboard.profiles'), class: 'btn btn-blue btn-sm' %>
-      </div>
-    <% end  %>
   </div>
-
+  <%= render partial: 'admin_edit', locals: {page: "show"} %>
   <%= render partial: "shared/show", object: @profile %>
 
 </div>
