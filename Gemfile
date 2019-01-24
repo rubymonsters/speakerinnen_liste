@@ -48,7 +48,7 @@ gem 'elasticsearch-model', '~> 2.0'
 gem 'elasticsearch-rails', '~> 6.0'
 gem 'record_tag_helper', '~> 1.0'
 gem 'exception_notification'
-gem 'honeycomb-rails'
+gem 'honeycomb-beeline'
 
 gem 'coffee-rails', '~> 4.2.2'
 gem 'sassc-rails'
