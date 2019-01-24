@@ -4,7 +4,7 @@
 
 require 'honeycomb-beeline'
 
-Honeycomb.init(writekey: ENV['HONEYCOMB_API_KEY'], dataset: 'rails-dataset')
+Honeycomb.init(writekey: ENV['HONEYCOMB_API_KEY'], dataset: 'rails-dataset', db_dataset: 'db-dataset')
 
 require ::File.expand_path('../config/environment', __FILE__)
 
