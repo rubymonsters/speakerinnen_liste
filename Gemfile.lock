@@ -65,6 +65,8 @@ GEM
       activemodel (= 5.2.2)
       activesupport (= 5.2.2)
       arel (>= 9.0)
+    activerecord-honeycomb (0.4.0)
+      libhoney
     activestorage (5.2.2)
       actionpack (= 5.2.2)
       activerecord (= 5.2.2)
@@ -184,6 +186,8 @@ GEM
       i18n (>= 0.7)
     faraday (0.15.4)
       multipart-post (>= 1.2, < 3)
+    faraday-honeycomb (0.3.1)
+      libhoney (>= 1.5.0)
     ffi (1.9.25)
     fission (0.5.0)
       CFPropertyList (~> 2.2)
@@ -383,9 +387,12 @@ GEM
       rspec (>= 2.99.0, < 4.0)
     hashie (3.6.0)
     heapy (0.1.4)
-    honeycomb-rails (0.8.1)
-      libhoney (>= 1.9)
-      rails (>= 3.0.0)
+    honeycomb-beeline (0.6.0)
+      activerecord-honeycomb (>= 0.4.0)
+      faraday-honeycomb (>= 0.3.0)
+      libhoney (>= 1.8.1)
+      rack-honeycomb (>= 0.4.0)
+      sequel-honeycomb (>= 0.4.0)
     http (3.3.0)
       addressable (~> 2.3)
       http-cookie (~> 1.0)
@@ -500,6 +507,8 @@ GEM
       method_source (~> 0.9.0)
     public_suffix (3.0.3)
     rack (2.0.6)
+    rack-honeycomb (0.5.0)
+      libhoney (>= 1.5.0)
     rack-piwik (0.3.0)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
@@ -610,6 +619,8 @@ GEM
     selenium-webdriver (3.141.0)
       childprocess (~> 0.5)
       rubyzip (~> 1.2, >= 1.2.2)
+    sequel-honeycomb (0.4.1)
+      libhoney
     shellany (0.0.1)
     signet (0.11.0)
       addressable (~> 2.3)
@@ -691,7 +702,7 @@ DEPENDENCIES
   globalize-accessors
   guard
   guard-rspec
-  honeycomb-rails
+  honeycomb-beeline
   invisible_captcha
   jquery-rails (~> 4.3.1)
   jquery-ui-rails (~> 6.0.1)
