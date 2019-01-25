@@ -14,8 +14,9 @@ describe 'profile search' do
   let!(:profile_not_matched) { create(:published_profile, firstname: 'Angela', main_topic_en: 'rassism' ) }
 
   describe 'public search', elasticsearch: true do
+    before { visit root_path }
+
     it 'displays profiles that are a partial match' do
-      visit root_path
       fill_in 'search', with: 'ada lovelace'
       click_button(I18n.t(:search, scope: 'pages.home.search'))
       # expect(profile.__elasticsearch__.search('ada').results.first.fullname).to eq('ada lovelace')
@@ -23,7 +24,6 @@ describe 'profile search' do
     end
 
     it 'displays profiles that are a partial match with more than one search input' do
-      visit root_path
       fill_in 'search', with: 'Marie' 
       click_button(I18n.t(:search, scope: 'pages.home.search'))
       # expect(page).to have_content('Ada')
@@ -31,17 +31,35 @@ describe 'profile search' do
     end
 
     it 'displays profiles that are a partial match with utf-8 characters' do
-      visit root_path
       fill_in 'search', with: 'koenig'
       click_button I18n.t(:search, scope: 'pages.home.search')
       expect(page).to have_content('Christiane')
     end
 
     it 'displays profiles that have an empty space' do
-      visit root_path
       fill_in 'search', with: 'maren meier'
       click_button I18n.t(:search, scope: 'pages.home.search')
       expect(page).to have_content('Meier')
+    end
+
+    it 'shows button search' do
+      expect(page).to have_selector('#search')
+    end
+
+    it 'shows autofill' do
+      expect(page).to have_selector('.typeahead')
+    end
+  end
+
+  context 'on profile_search page' do
+    before { visit profiles_path }
+
+    it 'shows button search' do
+      expect(page).to have_selector('#search')
+    end
+
+    it 'shows autofill' do
+      expect(page).to have_selector('.typeahead')
     end
   end
 
