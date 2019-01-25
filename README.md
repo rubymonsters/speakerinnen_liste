@@ -262,7 +262,8 @@ Our database schema looks like that:
 ![db](https://user-images.githubusercontent.com/1218914/43900439-368fa600-9be5-11e8-8f9c-d209784de1ef.jpg)
 
 # Metrics
-For seeing our mertics we use the free community edition of honeyycomb ( https://ui.honeycomb.io/login )
+For seeing our metrics we use the free community edition of honeyycomb ( https://ui.honeycomb.io/login )
+More infos how to use this: https://docs.honeycomb.io/beeline/ruby/
 
 # Contributing
 
