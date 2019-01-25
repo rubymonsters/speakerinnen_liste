@@ -4,7 +4,7 @@
 
 require 'honeycomb-beeline'
 
-Honeycomb.init(writekey: ENV['HONEYCOMB_API_KEY'], dataset: 'SpeakerinnenListe')
+Honeycomb.init(writekey: ENV['HONEYCOMB_API_KEY'], dataset: 'rails-dataset')
 
 require ::File.expand_path('../config/environment', __FILE__)
 
