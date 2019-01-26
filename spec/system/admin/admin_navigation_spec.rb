@@ -85,16 +85,19 @@ RSpec.describe 'Navigation', type: :system do
         expect(page).to have_link('public')
         expect(page).to have_link('invisible')
 
+        expect(page).to have_css('.table > thead > tr', text: 'ID')
         expect(page).to have_css('.table > thead > tr', text: 'Speakerinnen')
         expect(page).to have_css('.table > thead > tr', text: 'Created')
         expect(page).to have_css('.table > thead > tr', text: 'Updated')
         expect(page).to have_css('.table > thead > tr', text: 'Links')
         expect(page).to have_css('.table > thead > tr', text: 'Picture')
+        expect(page).to have_css('.table > thead > tr', text: 'Roles')
         expect(page).to have_css('.table > thead > tr', text: 'Visibility')
-        expect(page).to have_css('.table > thead > tr', text: 'Admin')
         expect(page).to have_css('.table > thead > tr', text: 'Comment')
+        expect(page).to have_css('.table > thead > tr', text: 'Edit')
+        expect(page).to have_css('.table > thead > tr', text: 'Delete')
 
-        expect(page).to have_button('Add comment')
+        expect(page).to have_button('Save comment')
       end
     end
 
@@ -104,8 +107,11 @@ RSpec.describe 'Navigation', type: :system do
       click_link 'Edit'
       expect(page).to have_text('Administration::Profiles::Edit')
       expect(page).to have_button('Update your profile')
-      expect(page).to have_link('Show profile')
       expect(page).to have_link('List all profiles')
+      expect(page).to have_link('Show profile')
+      expect(page).to have_button('Save comment')
+      expect(page).to have_link('Edit Previous Talk')
+
 
       expect(page).to have_css('div.profile_firstname')
       expect(page).to have_css('div.profile_lastname')
