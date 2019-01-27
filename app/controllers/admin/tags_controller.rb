@@ -87,7 +87,6 @@ class Admin::TagsController < Admin::BaseController
     @filter_params = {
       category_id: params[:category_id],
       q: params[:q],
-      uncategorized: params[:uncategorized],
       filter_languages: params[:filter_languages],
       no_language: params[:no_language],
       page: params[:page]
