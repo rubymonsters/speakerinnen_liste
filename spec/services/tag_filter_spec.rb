@@ -24,7 +24,7 @@ describe TagFilter do
   end
 
   context 'with given but empty categories' do
-    let(:filter_params) { { uncategorized: true } }
+    let(:filter_params) { { category_id: 'uncategorized' } }
     it { is_expected.to match_array([tag_en]) }
   end
 
@@ -39,7 +39,7 @@ describe TagFilter do
   end
 
   context 'with empty category and given query' do
-    let(:filter_params) { { uncategorized: true, q: 'physics' } }
+    let(:filter_params) { { category_id: 'uncategorized', q: 'physics' } }
     it { is_expected.to match_array([tag_en]) }
   end
 

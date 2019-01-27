@@ -79,7 +79,7 @@ describe Admin::TagsController, type: :controller do
         category.save!
         ada_tag = ActsAsTaggableOn::Tag.find_by(name: ada.topic_list[0])
         ada_tag.categories << category
-        get :index, params: { q: 'alg', uncategorized: true }
+        get :index, params: { q: 'alg', category_id: 'uncategorized' }
       end
 
       specify { expect(response).to render_template(:index) }
@@ -99,7 +99,7 @@ describe Admin::TagsController, type: :controller do
         category.save!
         tag = ActsAsTaggableOn::Tag.find_by(name: ada.topic_list[0])
         tag.categories << category
-        get :index, params: { uncategorized: true }
+        get :index, params: { category_id: 'uncategorized' }
       end
 
       specify { expect(response).to render_template(:index) }
