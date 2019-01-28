@@ -24,7 +24,7 @@ Rails.application.routes.draw do
         end
       end
       resources :categories
-      resources :featured_profiles do
+      resources :features do
         member do
           post 'announce_event'
           post 'stop_event'

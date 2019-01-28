@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_06_084846) do
+ActiveRecord::Schema.define(version: 2019_01_21_202420) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 2018_11_06_084846) do
     t.index ["tag_id"], name: "index_categories_tags_on_tag_id"
   end
 
-  create_table "category_translations", force: :cascade do |t|
+  create_table "category_translations", id: :serial, force: :cascade do |t|
     t.integer "category_id", null: false
     t.string "locale", null: false
     t.datetime "created_at", null: false
@@ -52,18 +52,18 @@ ActiveRecord::Schema.define(version: 2018_11_06_084846) do
     t.index ["locale"], name: "index_category_translations_on_locale"
   end
 
-  create_table "featured_profile_translations", force: :cascade do |t|
-    t.integer "featured_profile_id", null: false
+  create_table "feature_translations", force: :cascade do |t|
+    t.integer "feature_id", null: false
     t.string "locale", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "title"
     t.text "description"
-    t.index ["featured_profile_id"], name: "index_featured_profile_translations_on_featured_profile_id"
-    t.index ["locale"], name: "index_featured_profile_translations_on_locale"
+    t.index ["feature_id"], name: "index_feature_translations_on_feature_id"
+    t.index ["locale"], name: "index_feature_translations_on_locale"
   end
 
-  create_table "featured_profiles", force: :cascade do |t|
+  create_table "features", force: :cascade do |t|
     t.string "profile_names", default: [], array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -101,7 +101,7 @@ ActiveRecord::Schema.define(version: 2018_11_06_084846) do
     t.index ["profile_id"], name: "index_medialinks_on_profile_id"
   end
 
-  create_table "profile_translations", force: :cascade do |t|
+  create_table "profile_translations", id: :serial, force: :cascade do |t|
     t.integer "profile_id", null: false
     t.string "locale", null: false
     t.datetime "created_at", null: false
@@ -155,8 +155,9 @@ ActiveRecord::Schema.define(version: 2018_11_06_084846) do
     t.integer "tag_id"
     t.string "taggable_type"
     t.integer "taggable_id"
-    t.string "tagger_type"
+    t.string "taggable_type"
     t.integer "tagger_id"
+    t.string "tagger_type"
     t.string "context", limit: 128
     t.datetime "created_at"
     t.index ["context"], name: "index_taggings_on_context"

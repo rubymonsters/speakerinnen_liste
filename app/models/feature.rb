@@ -1,4 +1,4 @@
-class FeaturedProfile < ApplicationRecord
+class Feature < ApplicationRecord
   validates :title, presence: true
   translates :title, :description
   globalize_accessors :locales => [:de, :en], :attributes => [:title, :description]
