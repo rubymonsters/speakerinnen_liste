@@ -6,6 +6,8 @@ class Profile < ApplicationRecord
   include ActiveModel::Serialization
 
   has_many :medialinks
+  has_many :feature_profiles
+  has_many :features, through: :feature_profiles
 
   serialize :iso_languages, Array
   validate :iso_languages_array_has_right_format

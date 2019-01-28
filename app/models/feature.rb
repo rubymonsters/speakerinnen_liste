@@ -1,4 +1,7 @@
 class Feature < ApplicationRecord
+  has_many :feature_profiles
+  has_many :profiles, through: :feature_profiles
+  
   validates :title, presence: true
   translates :title, :description
   globalize_accessors :locales => [:de, :en], :attributes => [:title, :description]

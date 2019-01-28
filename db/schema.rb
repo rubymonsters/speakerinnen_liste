@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_21_202420) do
+ActiveRecord::Schema.define(version: 2019_01_28_230146) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,15 @@ ActiveRecord::Schema.define(version: 2019_01_21_202420) do
     t.string "name"
     t.index ["category_id"], name: "index_category_translations_on_category_id"
     t.index ["locale"], name: "index_category_translations_on_locale"
+  end
+
+  create_table "feature_profiles", force: :cascade do |t|
+    t.bigint "feature_id"
+    t.bigint "profile_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["feature_id"], name: "index_feature_profiles_on_feature_id"
+    t.index ["profile_id"], name: "index_feature_profiles_on_profile_id"
   end
 
   create_table "feature_translations", force: :cascade do |t|
@@ -184,4 +193,6 @@ ActiveRecord::Schema.define(version: 2019_01_21_202420) do
     t.datetime "updated_at"
   end
 
+  add_foreign_key "feature_profiles", "features"
+  add_foreign_key "feature_profiles", "profiles"
 end
