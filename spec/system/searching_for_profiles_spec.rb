@@ -17,26 +17,32 @@ describe 'profile search' do
     before { visit root_path }
 
     it 'displays profiles that are a partial match' do
+      Profile.__elasticsearch__.refresh_index!
+
       fill_in 'search', with: 'ada lovelace'
       click_button(I18n.t(:search, scope: 'pages.home.search'))
-      # expect(profile.__elasticsearch__.search('ada').results.first.fullname).to eq('ada lovelace')
       expect(page).to have_content('Ada')
     end
 
     it 'displays profiles that are a partial match with more than one search input' do
-      fill_in 'search', with: 'Marie' 
+      Profile.__elasticsearch__.refresh_index!
+
+      fill_in 'search', with: 'Marie'
       click_button(I18n.t(:search, scope: 'pages.home.search'))
-      # expect(page).to have_content('Ada')
       expect(page).to have_content('Curie')
     end
 
     it 'displays profiles that are a partial match with utf-8 characters' do
+      Profile.__elasticsearch__.refresh_index!
+
       fill_in 'search', with: 'koenig'
       click_button I18n.t(:search, scope: 'pages.home.search')
       expect(page).to have_content('Christiane')
     end
 
     it 'displays profiles that have an empty space' do
+      Profile.__elasticsearch__.refresh_index!
+
       fill_in 'search', with: 'maren meier'
       click_button I18n.t(:search, scope: 'pages.home.search')
       expect(page).to have_content('Meier')
@@ -70,6 +76,8 @@ describe 'profile search' do
     let(:admin) { FactoryBot.create(:admin) }
 
     it 'finds the correct profile' do
+      Profile.__elasticsearch__.refresh_index!
+
       visit admin_profiles_path
       fill_in 'search', with: 'ada lovelace'
       click_button I18n.t(:search, scope: 'pages.home.search')
