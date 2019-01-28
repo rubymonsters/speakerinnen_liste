@@ -36,6 +36,7 @@ RSpec.describe 'Navigation', type: :system do
             expect(page).to have_css('.profile-box', text: 'climate')
           else
             expect(page).to have_css('.profile-box', text: 'Mathematik')
+            expect(page).to have_css('.profile-box', text: 'Klima')
           end
           expect(page).to have_css('.startpage-categories__list-links', count: 1)
           expect(page).to have_link('Science')
@@ -101,34 +102,32 @@ RSpec.describe 'Navigation', type: :system do
             expect(page).to have_text('London')
             expect(page).to have_text('Englisch')
           end
+          # contact
+          expect(page).to have_button I18n.t(:contact, scope: 'profiles.show')
         end
       end
 
       describe 'registered user' do
         let!(:user) { FactoryBot.create(:profile, email: 'ltest@exp.com', password: 'rightpassword', password_confirmation: 'rightpassword') }
-        before do
-          page.driver.browser.set_cookie("cookie_consent=true")
+        
+        context 'after login' do
+          before { sign_in user }
+
+          it 'should lead to the show view of the profile' do
+            expect(page).to have_content(user.fullname)
+            expect(page).to have_link(I18n.t('edit', scope: 'profiles.show'))
+          end
+
+          it 'page has header and no admin link' do
+            expect(page).to have_css('#header__logo')
+            expect(page).to have_link(I18n.t(:my_profile, scope: 'layouts.application'))
+            expect(page).to have_link(I18n.t('layouts.application.logout'))
+            expect(page).to have_link('DE')
+            expect(page).to_not have_link('Admin')
+          end
         end
 
-        it 'should lead to the show view of the profile' do
-          sign_in user
-
-          expect(page).to have_content(user.fullname)
-          expect(page).to have_link(I18n.t('edit', scope: 'profiles.show'))
-        end
-
-        it 'page has header and no admin link' do
-          sign_in user
-          visit root_path
-
-          expect(page).to have_css('#header__logo')
-          expect(page).to have_link(I18n.t(:my_profile, scope: 'layouts.application'))
-          expect(page).to have_link(I18n.t('layouts.application.logout'))
-          expect(page).to have_link('DE')
-          expect(page).to_not have_link('Admin')
-        end
-
-        context 'login' do
+        context 'different login scenarios' do
           before { visit new_profile_session_path }
 
           it 'successful login' do
