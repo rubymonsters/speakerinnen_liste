@@ -28,6 +28,11 @@ describe TagFilter do
     it { is_expected.to match_array([tag_en]) }
   end
 
+  context 'with given all categoriies' do
+    let(:filter_params) { { category_id: 'categorized' } }
+    it { is_expected.to match_array([tag_en_de, tag_no_lang, tag_de]) }
+  end
+
   context 'with a given category' do
     let(:filter_params) { { category_id: 1 } }
     it { is_expected.to match_array([tag_en_de, tag_de]) }
@@ -41,6 +46,11 @@ describe TagFilter do
   context 'with empty category and given query' do
     let(:filter_params) { { category_id: 'uncategorized', q: 'physics' } }
     it { is_expected.to match_array([tag_en]) }
+  end
+
+  context 'with all categories and given query' do
+    let(:filter_params) { { category_id: 'categorized', q: 'chemie' } }
+    it { is_expected.to match_array([tag_de]) }
   end
 
   context 'with given but empty language params' do

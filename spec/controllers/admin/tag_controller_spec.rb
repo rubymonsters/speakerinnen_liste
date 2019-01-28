@@ -116,6 +116,46 @@ describe Admin::TagsController, type: :controller do
         expect(assigns(:tags)).to_not eq([ActsAsTaggableOn::Tag.find_by(name: ada.topic_list[0])])
       end
     end
+
+    context 'searches only for categorized topics' do
+      before(:each) do
+        category = Category.new(name: 'Science')
+        category.save!
+        ada_tag = ActsAsTaggableOn::Tag.find_by(name: ada.topic_list[0])
+        ada_tag.categories << category
+        get :index, params: { q: 'alg', category_id: 'categorized' }
+      end
+
+      specify { expect(response).to render_template(:index) }
+
+      it 'does not find the uncategorized topic' do
+        expect(assigns(:tags)).to_not eq([ActsAsTaggableOn::Tag.find_by(name: 'algorithm')])
+      end
+
+      it 'finds the categorized topics' do
+        expect(assigns(:tags)).to eq([ActsAsTaggableOn::Tag.find_by(name: 'algebra')])
+      end
+    end
+
+    context 'select categorized' do
+      before(:each) do
+        category = Category.new(name: 'Science')
+        category.save!
+        tag1 = ActsAsTaggableOn::Tag.find_by(name: ada.topic_list[0])
+        tag2 = ActsAsTaggableOn::Tag.find_by(name: marie.topic_list[0])
+        tag1.categories << category
+        tag2.categories << category
+        get :index, params: { category_id: 'categorized' }
+      end
+
+      specify { expect(response).to render_template(:index) }
+      it 'finds only categorized topics' do
+        expect(assigns(:tags)).to eq([
+                                       ActsAsTaggableOn::Tag.find_by(name: 'algebra'),
+                                       ActsAsTaggableOn::Tag.find_by(name: 'radioactive'),
+                                     ])
+      end
+    end
   end
 
   describe 'GET edit' do
