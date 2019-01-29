@@ -8,6 +8,7 @@ describe 'in tags' do
 
   let!(:tag_chemie) { FactoryBot.create(:tag_chemie) }
   let!(:tag_physics) { FactoryBot.create(:tag_physics) }
+  let!(:tag_with_slash_en) { create(:tag, name: 'AC/DC', locale_languages: [locale_language_en]) }
 
   before do
     create(:ada, topic_list: [tag_physics, tag_chemie])
@@ -44,5 +45,17 @@ describe 'in tags' do
 
   it 'should have checkboxes to filter languages' do
     expect(page).to have_css('input[type="checkbox"]')
+  end
+
+  it 'views edit tags in admin area' do
+    expect(page).to have_text('Administration::Tags')
+    expect(page).to have_text('Search for tag')
+    expect(page).to have_button('Filter')
+  end
+
+  it 'presents correct locale language for a tags' do
+    expect(page).to have_content('AC/DC')
+    expect(page.html).to include('English<br/>')
+    expect(page.html).to_not include('German<br/>')
   end
 end
