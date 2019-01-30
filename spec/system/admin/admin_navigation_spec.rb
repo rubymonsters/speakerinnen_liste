@@ -6,17 +6,15 @@ RSpec.describe 'Navigation', type: :system do
 
     before do
       sign_in admin
+      visit root_path
     end
 
     it 'shows admin link' do
-      visit root_path
-
       expect(page).to have_link('Admin')
     end
 
     it 'page has header' do
-      visit root_path
-
+      expect(page).to have_link I18n.t('layouts.application.logout')
       expect(page).to have_css('#header__logo')
       expect(page).to have_link('My profile')
       expect(page).to have_link('Log out')
@@ -25,8 +23,6 @@ RSpec.describe 'Navigation', type: :system do
     end
 
     it 'navigating to admin page' do
-      visit root_path
-
       click_link 'Admin'
       expect(page).to have_text('Administration')
 

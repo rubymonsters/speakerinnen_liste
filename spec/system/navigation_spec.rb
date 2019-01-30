@@ -104,6 +104,7 @@ RSpec.describe 'Navigation', type: :system do
           end
           # contact
           expect(page).to have_button I18n.t(:contact, scope: 'profiles.show')
+          expect(page).to_not have_link I18n.t(:edit, scope: 'profiles.show')
         end
       end
 
@@ -115,7 +116,7 @@ RSpec.describe 'Navigation', type: :system do
 
           it 'should lead to the show view of the profile' do
             expect(page).to have_content(user.fullname)
-            expect(page).to have_link(I18n.t('edit', scope: 'profiles.show'))
+            expect(page).to have_link I18n.t(:edit, scope: 'profiles.show')
           end
 
           it 'page has header and no admin link' do
@@ -171,39 +172,6 @@ RSpec.describe 'Navigation', type: :system do
 
             expect(page).to have_css('.alert', text: I18n.t(:invalid, scope: 'devise.failure'))
           end
-        end
-      end
-
-      context 'signed in as admin user' do
-        let(:admin) { FactoryBot.create(:admin) }
-
-        before do
-          sign_in admin, language
-        end
-
-        it 'page has header and admin link' do
-          expect(page).to have_text I18n.t('devise.sessions.signed_in')
-          expect(page).to have_link I18n.t('layouts.application.logout')
-          expect(page).to have_link('Admin')
-          expect(page).to have_css('#header__logo')
-          expect(page).to have_link(I18n.t(:my_profile, scope: 'layouts.application'))
-          expect(page).to have_link('DE')
-          expect(page).to have_link('EN')
-        end
-
-        describe 'access admin actions' do
-          before { click_on 'Admin' }
-
-          it 'show text' do
-            expect(page).to have_content('Administration')
-          end
-
-          it 'should have localized links' do
-            @lang_links_map[language].each_with_index do |link, _index|
-              expect(page).to have_link(link)
-            end
-          end
-
         end
       end
     end

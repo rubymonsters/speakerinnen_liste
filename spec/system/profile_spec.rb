@@ -3,12 +3,12 @@
 describe 'profile navigation' do
   include AuthHelper
 
-  let!(:locale_language_de) { FactoryBot.create(:locale_language_de) }
-  let!(:locale_language_en) { FactoryBot.create(:locale_language_en) }
+  let!(:locale_language_de) { create(:locale_language_de) }
+  let!(:locale_language_en) { create(:locale_language_en) }
 
-  let!(:tag_de) { FactoryBot.create(:tag_chemie, locale_languages: [locale_language_de]) }
-  let!(:tag_en) { FactoryBot.create(:tag_physics, locale_languages: [locale_language_en]) }
-  let!(:tag_no_lang) { FactoryBot.create(:tag, name: 'writer') }
+  let!(:tag_de) { create(:tag_chemie, locale_languages: [locale_language_de]) }
+  let!(:tag_en) { create(:tag_physics, locale_languages: [locale_language_en]) }
+  let!(:tag_no_lang) { create(:tag, name: 'writer') }
 
   let!(:ada) { create(:ada, topic_list: [tag_de, tag_en, tag_no_lang]) }
   let!(:ada_medialink) do
