@@ -24,4 +24,3 @@ before_script:
   - sleep 10
 script:
   - bundle exec rspec spec/
-  - bundle exec rake test
