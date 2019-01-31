@@ -20,7 +20,6 @@ class Admin::FeaturesController < Admin::BaseController
   end
 
   def edit
-    @feature.profile_ids = @feature.profile_ids.join(", ")
   end
 
   def update
@@ -40,13 +39,13 @@ class Admin::FeaturesController < Admin::BaseController
   def announce_event
     @feature.public = true
     @feature.save
-    redirect_to admin_features_path, notice: I18n.t('flash.features.updated', feature_title: @feature.title)
+    redirect_to admin_features_path, notice: I18n.t('flash.features.announced', feature_title: @feature.title)
   end
 
   def stop_event
     @feature.public = false
     @feature.save
-    redirect_to admin_features_path, notice: I18n.t('flash.features.updated', feature_title: @feature.title)
+    redirect_to admin_features_path, notice: I18n.t('flash.features.stopped', feature_title: @feature.title)
   end
 
   private
@@ -63,12 +62,6 @@ class Admin::FeaturesController < Admin::BaseController
 
   def feature_params
     params.require(:feature).permit(*PARAMS)
-    # hash = params.require(:feature).permit(*PARAMS)
-    # hash.merge(profile_ids: normalize_profile_ids(hash[:profile_ids]))
-  end
-
-  def normalize_profile_ids(ids)
-    ids.split(",").map(&:to_i)
   end
 
   def set_feature

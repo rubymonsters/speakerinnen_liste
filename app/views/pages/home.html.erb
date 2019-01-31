@@ -16,18 +16,18 @@
      Copyright: public domain ( modified )
   </div>
 
-  <!-- anchor for featured profiles -->
-  <a id="current_topic"></a>
+  <!-- anchor for features -->
+  <a id="features"></a>
 
-  <% if @featured_events %>
-    <% @featured_events.each do |featured_event| %>
+  <% if @features %>
+    <% @features.each do |feature| %>
       <div class="container">
-        <h1 class="box__bg"><%= featured_event.title %></h1>
+        <h1 class="box__bg"><%= feature.title %></h1>
         <h4 class="border-vertical d-block box__bg mb-4">
-          <%= featured_event.description %>
+          <%= feature.description %>
         </h4>
         <div class="row">
-          <%= render partial: "profiles/profile", collection: featured_event.ids %>
+          <%= render partial: "profiles/profile", collection: feature.profiles %>
         </div>
       </div>
     <% end %>

@@ -32,9 +32,9 @@ de:
       features:
         title: "Titel"
         description: "Beschreibung"
-        profile_ids: "IDs der Profile (kommagetrennte Liste)"
+        profiles: "Profile auswählen"
         public: "public"
-        invisible: "-"
+        invisible: "---"
       profiles:
         profiles: "Profile"
         created_at: "Erstellt"
@@ -306,6 +306,8 @@ de:
       created: '%{feature_title} wurde erfolgreich erstellt.'
       updated: '%{feature_title} wurde erfolgreich geändert.'
       destroyed: '%{feature_title} wurde erfolgreich gelöscht.'
+      announced: '%{feature_title} wird auf der Homepage angekündigt.'
+      stopped: 'Die Ankündigung von %{feature_title} wird nicht mehr angezeigt.'
     comment:
       updated: 'Kommentar wurde erfolgreich geändert.'
   devise:
