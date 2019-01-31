@@ -17,20 +17,23 @@
   <table class="table">
     <thead class="bg--lightgrey">
       <tr>
+        <th><%= sortable 'id', 'ID' %></th>
         <th><%= sortable 'lastname', 'Speakerinnen' %></th>
         <th><%= sortable 'created_at', t(:created_at, scope: 'admin.dashboard.profiles') %></th>
         <th><%= sortable 'updated_at', t(:updated_at, scope: 'admin.dashboard.profiles') %></th>
         <th>Links</th>
         <th></th>
         <th></th>
+        <th>Picture</th>
         <th><%= sortable 'published', t(:visibility, scope: 'admin.dashboard.profiles') %></th>
-        <th><%= t(:roles, scope: 'admin.dashboard.profiles') %></th>
+        <th><%= Admin %></th>
         <th><%= t(:comment, scope: 'admin.dashboard.profiles') %></th>
       </tr>
     </thead>
     <tbody>
       <% @profiles.each do |profile|  %>
         <tr>
+          <td><%= profile.id %></td>
           <td><%= link_to profile.name_or_email, admin_profile_path(profile),
               html_options = { title: t(:show, scope: 'admin.dashboard.profiles.edit') } %></td>
           <td><%= profile.created_at.strftime('%d.%m.%Y um %H:%M Uhr') %></td>
@@ -42,6 +45,7 @@
           <td><%= link_to '<i class="fa fa-trash-o">&nbsp;</i>'.html_safe, admin_profile_path(profile),
               method: :delete, data: { confirm: 'Are you sure?' }, remote: true,
               class: 'delete_profile', title: t(:delete, scope: 'general') %></td>
+          <td><%= "x" if profile.picture.present? %></td>
           <td><% if profile.published %>
               <%= link_to t(:public, scope: 'admin.dashboard.profiles'), unpublish_admin_profile_path(profile.id),
               method: :post, class:'btn btn-blue btn-block btn-sm' %>

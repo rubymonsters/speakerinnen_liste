@@ -6,6 +6,7 @@ gem 'rails', '5.2.2'
 
 # Needed for Javascript Runtime
 # gem 'therubyracer'
+gem 'mini_racer'
 
 # used in the rail 5.2 version
 gem 'bootsnap', '~> 1.3'
@@ -20,7 +21,7 @@ gem 'mime-types'
 
 gem 'acts-as-taggable-on', '~> 6.0'
 gem 'auto_html', '~>1.6.4'
-gem 'carrierwave', '~> 1.2'
+gem 'carrierwave', '~> 1.3'
 gem 'devise', '~> 4.5'
 gem 'fog', '~> 2.1'
 gem 'invisible_captcha'
@@ -36,7 +37,7 @@ gem 'country_select'
 gem 'globalize', git: 'https://github.com/globalize/globalize'
 gem 'globalize-accessors'
 
-gem 'bootstrap', '~> 4.1.1'
+gem 'bootstrap', '~> 4.2.1'
 gem 'font-awesome-rails', '~> 4.7.0.3'
 
 gem 'friendly_id'
@@ -47,9 +48,10 @@ gem 'elasticsearch-model', '~> 2.0'
 gem 'elasticsearch-rails', '~> 6.0'
 gem 'record_tag_helper', '~> 1.0'
 gem 'exception_notification'
+gem 'honeycomb-beeline'
 
 gem 'coffee-rails', '~> 4.2.2'
-gem 'sass-rails',   '~> 5.0.7'
+gem 'sassc-rails'
 
 gem 'uglifier', '>= 1.0.3'
 
@@ -73,7 +75,7 @@ group :development, :test do
   gem 'guard-rspec'
   gem 'pry'
   gem 'rspec-rails', '~> 3.8.1'
-  gem 'rubocop', '~> 0.61.1'
+  gem 'rubocop', '~> 0.62.0'
   gem 'selenium-webdriver', '3.141.0'
 end
 

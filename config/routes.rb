@@ -24,6 +24,12 @@ Rails.application.routes.draw do
         end
       end
       resources :categories
+      resources :featured_profiles do
+        member do
+          post 'announce_event'
+          post 'stop_event'
+        end
+      end
       resources :profiles do
         resources :medialinks do
           collection { post :sort }

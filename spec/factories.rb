@@ -2,8 +2,8 @@
 
 FactoryBot.define do
   factory :profile do
-    firstname { 'Factory' }
-    lastname { 'Girl' }
+    firstname { 'Susi' }
+    lastname { 'Sonnenschein' }
     sequence :email do |n|
       "person#{n}@example.com"
     end
@@ -15,17 +15,53 @@ FactoryBot.define do
       admin { true }
     end
 
-    factory :published do
+    factory :published_profile do
       published { true }
     end
 
-    factory :unpublished do
+    factory :unpublished_profile do
       published { false }
     end
 
-    factory :unconfirmed do
+    factory :unconfirmed_profile do
       confirmed_at { nil }
     end
+
+    factory :ada do
+      firstname { 'Ada' }
+      lastname { 'Lovelace' }
+      twitter_en { 'alovelace' }
+      city_en { 'London' }
+      country { 'GB' }
+      iso_languages { ['en', 'de'] }
+      bio_de { 'Sie hat den ersten Algorithmus veröffentlicht.' }
+      bio_en { 'She published the first algorithm for a machine.' }
+      main_topic_de { 'Mathematik' }
+      main_topic_en { 'math' }
+      website_de { 'www.ada.de' }
+      website_2_de { 'wwww.ada2.de' }
+      website_3_de { 'wwww.ada3.de' }
+      published { true }
+    end
+
+    factory :marie do
+      firstname { 'Marie' }
+      lastname { 'Curie' }
+      twitter_en { 'curie' }
+      city_en { 'Paris' }
+      country { 'FR' }
+      iso_languages { ['en', 'pl'] }
+      bio_de { 'Marie Curie war die erste Frau, die einen Nobelpreis bekommen hat.' }
+      bio_en { 'Marie Curie was the first woman to be awarded a Nobel Prize.' }
+      main_topic_de { 'Radioaktivität' }
+      main_topic_en { 'radioactivity' }
+      published { true }
+    end
+
+  end
+
+  factory :featured_profile do
+    title { 'New Event' }
   end
 
   factory :category do
@@ -65,6 +101,10 @@ FactoryBot.define do
 
     factory :tag_social_media do
       name { 'social media' }
+    end
+
+    factory :tag_algorithm do
+      name { 'algorithm' }
     end
   end
 end

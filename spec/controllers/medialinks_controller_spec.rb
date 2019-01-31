@@ -3,19 +3,7 @@
 describe ProfilesController, type: :controller do
   include AuthHelper
 
-  let!(:ada) do
-    FactoryBot.create(:published,
-                      firstname: 'Ada',
-                      lastname: 'Lovelace',
-                      email: 'ada@lovelace.de',
-                      twitter: '@alove',
-                      main_topic_en: 'first computer programm',
-                      bio_en: 'first programmer',
-                      city_en: 'London',
-                      country: 'GB',
-                      iso_languages: %w[en fr],
-                      topic_list: 'algorithm, mathematic')
-  end
+  let!(:ada) { create(:ada) }
   let!(:ada_medialink) do
     FactoryBot.create(:medialink,
                       profile_id: ada.id,
