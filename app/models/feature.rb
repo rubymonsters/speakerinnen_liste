@@ -1,6 +1,6 @@
 class Feature < ApplicationRecord
   has_many :feature_profiles
-  has_many :profiles, through: :feature_profiles
+  has_many :profiles, through: :feature_profiles, dependent: :destroy
   
   validates :title, presence: true
   translates :title, :description
