@@ -24,7 +24,7 @@ RSpec.feature 'Feature', type: :feature do
 
     it 'shows link to feature profiles on home page' do
       visit root_path
-      expect(page).to have_link('Factory Girl')
+      expect(page).to have_link('Susi Sonnenschein')
     end
 
     it 'does not show unpublished feature on home page' do
