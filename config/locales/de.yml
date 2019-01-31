@@ -29,7 +29,7 @@ de:
         category_name: "Name der Kategorie"
         current_name: "Bisheriger Name der Kategorie:"
         new_name: "Trage den neuen Namen der Kategorie in %{language} ein: "
-      featured_profiles:
+      features:
         title: "Titel"
         description: "Beschreibung"
         profile_ids: "IDs der Profile (kommagetrennte Liste)"
@@ -302,12 +302,12 @@ de:
       created: '%{category_name} wurde erfolgreich erstellt.'
       updated: '%{category_name} wurde erfolgreich geändert.'
       destroyed: '%{category_name} wurde erfolgreich gelöscht.'
-    featured_profiles:
-      created: '%{featured_profile_title} wurde erfolgreich erstellt.'
-      updated: '%{featured_profile_title} wurde erfolgreich geändert.'
-      destroyed: '%{featured_profile_title} wurde erfolgreich gelöscht.'
+    features:
+      created: '%{feature_title} wurde erfolgreich erstellt.'
+      updated: '%{feature_title} wurde erfolgreich geändert.'
+      destroyed: '%{feature_title} wurde erfolgreich gelöscht.'
     comment:
-      updated: 'Kommentar wurde erfolgreich geändert.'    
+      updated: 'Kommentar wurde erfolgreich geändert.'
   devise:
     registrations:
       edit:

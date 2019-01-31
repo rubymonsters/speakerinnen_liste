@@ -2,17 +2,17 @@ class Admin::FeaturesController < Admin::BaseController
   before_action :set_feature, only: %i[edit update destroy announce_event stop_event]
 
   def index
-    @featured_profiles = Feature.all
+    @features = Feature.all
   end
 
   def new
-    @featured_profile = Feature.new()
+    @feature = Feature.new()
   end
 
   def create
-    @featured_profile = Feature.new(feature_params)
-    if @featured_profile.save
-      redirect_to admin_features_path, notice: I18n.t('flash.features.created', featured_profile_title: @featured_profile.title)
+    @feature = Feature.new(feature_params)
+    if @feature.save
+      redirect_to admin_features_path, notice: I18n.t('flash.features.created', feature_title: @feature.title)
     else
       flash[:notice] = I18n.t('flash.features.error')
       render action: 'new'
@@ -20,32 +20,33 @@ class Admin::FeaturesController < Admin::BaseController
   end
 
   def edit
-    @featured_profile.profile_ids = @featured_profile.profile_ids.join(", ")
+    @feature.profile_ids = @feature.profile_ids.join(", ")
   end
 
   def update
-    if @featured_profile.update_attributes(feature_params)
-      redirect_to admin_features_path, notice: I18n.t('flash.features.updated', featured_profile_title: @featured_profile.title)
+    if @feature.update_attributes(feature_params)
+      redirect_to admin_features_path, notice: I18n.t('flash.features.updated', feature_title: @feature.title)
     else
       render action: 'edit'
     end
   end
 
   def destroy
-    @featured_profile.destroy
-    redirect_to admin_features_path, notice: I18n.t('flash.features.destroyed', featured_profile_title: @featured_profile.title)
+    feature_title = @feature.title
+    @feature.destroy
+    redirect_to admin_features_path, notice: I18n.t('flash.features.destroyed', feature_title: feature_title)
   end
 
   def announce_event
-    @featured_profile.public = true
-    @featured_profile.save
-    redirect_to admin_features_path, notice: I18n.t('flash.features.updated', featured_profile_title: @featured_profile.title)
+    @feature.public = true
+    @feature.save
+    redirect_to admin_features_path, notice: I18n.t('flash.features.updated', feature_title: @feature.title)
   end
 
   def stop_event
-    @featured_profile.public = false
-    @featured_profile.save
-    redirect_to admin_features_path, notice: I18n.t('flash.features.updated', featured_profile_title: @featured_profile.title)
+    @feature.public = false
+    @feature.save
+    redirect_to admin_features_path, notice: I18n.t('flash.features.updated', feature_title: @feature.title)
   end
 
   private
@@ -56,13 +57,14 @@ class Admin::FeaturesController < Admin::BaseController
     :description_de,
     :description_en,
     :public,
-    :profile_ids,
+    profile_ids: [],
     translations_attributes: %i[id title description locale]
   ]
 
   def feature_params
-    hash = params.require(:feature).permit(*PARAMS)
-    hash.merge(profile_ids: normalize_profile_ids(hash[:profile_ids]))
+    params.require(:feature).permit(*PARAMS)
+    # hash = params.require(:feature).permit(*PARAMS)
+    # hash.merge(profile_ids: normalize_profile_ids(hash[:profile_ids]))
   end
 
   def normalize_profile_ids(ids)
@@ -70,6 +72,6 @@ class Admin::FeaturesController < Admin::BaseController
   end
 
   def set_feature
-    @featured_profile = Feature.find(params[:id])
+    @feature = Feature.find(params[:id])
   end
 end
