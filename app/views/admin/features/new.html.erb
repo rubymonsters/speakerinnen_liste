@@ -1,61 +1,23 @@
 <div class="container bg--white">
 
   <h1>Administration::<%= t(:features, scope: "admin.dashboard.features")%>::<%= t(:add, scope: 'general')%></h1>
+  
+  <%= render 'form' %>
 
-  <%= simple_form_for [:admin, @feature] do |f| %>
-
-    <ul class="nav nav-tabs">
-      <li class="nav-item">
-        <a id="show-de" class="nav-link <%= I18n.locale == :de ? "active" : "" %>" href="#"> <%= t(:de, scope: 'i18n.language').html_safe %></a>
-      </li>
-      <li class="nav-item">
-        <a id="show-en" class="nav-link <%= I18n.locale == :en ? "active" : "" %>" href="#"> <%= t(:en, scope: 'i18n.language').html_safe %></a>
-      </li>
-    </ul>
-
-    <div class="row mb-5">
-      <div class="col-12 p-3 bg--white">
-        <div id="edit-de" class="form-group <%= "d-none" unless I18n.locale == :de %>" >
-          <%= f.label :title, t(:title, scope: 'admin.dashboard.features').html_safe, id: "title_de" %>
-          <%= f.text_field :title_de, as: :text, class: "form-control mb-3" %>
-
-          <%= f.label :description, t(:description, scope: 'admin.dashboard.features'), id: "description_de" %>
-          <%= f.text_area :description_de, as: :text, class: "form-control mb-3"%>
-        </div>
-
-        <div id="edit-en" class="form-group <%= "d-none" unless I18n.locale == :en %>" >
-          <%= f.label :title, t(:title, scope: 'admin.dashboard.features'), id: "title_en" %>
-          <%= f.text_field :title_en, as: :text, class: "form-control mb-3" %>
-
-          <%= f.label :description, t(:description, scope: 'admin.dashboard.features'), id: "description_en" %>
-          <%= f.text_area :description_en, as: :text, class: "form-control mb-3" %>
-        </div>
-
-        <div class="form-group">
-          <%= f.label :profile_ids, t(:profile_ids, scope: 'admin.dashboard.features').html_safe, id: "profile_ids" %>
-          <%= f.association :profiles, label_method: :lastname, value_method: :id, include_blank: false, class: "form-control mb-3" %>
-        </div>
-
-        <%= f.button :submit, t(:add, scope: 'general'), class:'btn btn-blue' %>
-
-      </div>
-    </div>
-
-  <% end %>
 </div>
 
 <script type="text/javascript" charset="utf-8">
-$('#show-de').click(function(){
+  $('#show-de').click(function(){
     $("#edit-de").removeClass('d-none').addClass('d-block');
     $("#edit-en").removeClass('d-block').addClass('d-none');
     $('#show-de').addClass('active');
     $('#show-en').removeClass('active');
   });
 
-$('#show-en').click(function(){
+  $('#show-en').click(function(){
     $("#edit-en").removeClass('d-none').addClass('d-block');
     $("#edit-de").removeClass('d-block').addClass('d-none');
     $('#show-en').addClass('active');
     $('#show-de').removeClass('active');
   });
-</script>
+</script>    
