@@ -3,32 +3,14 @@
 describe 'profile navigation' do
   include AuthHelper
 
-  let!(:locale_language_de) { FactoryBot.create(:locale_language_de) }
-  let!(:locale_language_en) { FactoryBot.create(:locale_language_en) }
+  let!(:locale_language_de) { create(:locale_language_de) }
+  let!(:locale_language_en) { create(:locale_language_en) }
 
-  let!(:tag_de) { FactoryBot.create(:tag_chemie, locale_languages: [locale_language_de]) }
-  let!(:tag_en) { FactoryBot.create(:tag_physics, locale_languages: [locale_language_en]) }
-  let!(:tag_no_lang) { FactoryBot.create(:tag, name: 'math') }
+  let!(:tag_de) { create(:tag_chemie, locale_languages: [locale_language_de]) }
+  let!(:tag_en) { create(:tag_physics, locale_languages: [locale_language_en]) }
+  let!(:tag_no_lang) { create(:tag, name: 'writer') }
 
-  let!(:ada) do
-    FactoryBot.create(:published,
-                      firstname: 'Ada',
-                      lastname: 'Lovelace',
-                      email: 'ada@lovelace.de',
-                      twitter: '@alove',
-                      main_topic_en: 'first computer programm',
-                      bio_en: 'first programmer',
-                      main_topic_de: 'Erstes Computer-Programm',
-                      bio_de: 'Erste Programmiererin',
-                      city: 'London',
-                      country: 'GB',
-                      iso_languages: %w[en de],
-                      topic_list: [tag_de, tag_en, tag_no_lang],
-                      website_de: 'www.ada.de',
-                      website_2_de: 'wwww.ada2.de',
-                      website_3_de: 'wwww.ada3.de')
-  end
-
+  let!(:ada) { create(:ada, topic_list: [tag_de, tag_en, tag_no_lang]) }
   let!(:ada_medialink) do
     FactoryBot.create(:medialink,
                       profile_id: ada.id,
@@ -49,10 +31,10 @@ describe 'profile navigation' do
       expect(page).to have_content('@alove')
       expect(page).to have_content('London')
       expect(page).to have_content('United Kingdom')
-      expect(page).to have_content('first programmer')
-      expect(page).to have_content('first computer programm')
+      expect(page).to have_content('She published the first algorithm for a machine.')
+      expect(page).to have_content('math') 
       expect(page).to have_content('physics')
-      expect(page).to have_content('math')
+      expect(page).to have_content('writer')
       expect(page).to have_content('German')
       expect(page).to have_content('English')
       expect(page).to have_link('Ada and the computer', href: 'www.adalovelace.de')
@@ -89,10 +71,10 @@ describe 'profile navigation' do
       expect(page).to have_content('@alove')
       expect(page).to have_content('London')
       expect(page).to have_content('Vereinigtes Königreich')
-      expect(page).to have_content('Erste Programmiererin')
-      expect(page).to have_content('Erstes Computer-Programm')
+      expect(page).to have_content('Sie hat den ersten Algorithmus veröffentlicht.')
+      expect(page).to have_content('Mathematik')
       expect(page).to have_content('chemie')
-      expect(page).to have_content('math')
+      expect(page).to have_content('writer')
       expect(page).to have_content('Englisch')
       expect(page).to have_content('Deutsch')
       expect(page).to have_link('Ada and the computer', href: 'www.adalovelace.de')
@@ -112,7 +94,7 @@ describe 'profile navigation' do
     end
 
     it 'shows tags with no language assigned' do
-      expect(page).to have_content('math')
+      expect(page).to have_content('writer')
     end
   end
 
@@ -210,7 +192,7 @@ describe 'profile navigation' do
     end
 
     it 'shows tags with no language assigned' do
-      expect(page).to have_content('math')
+      expect(page).to have_content('writer')
     end
   end
 
@@ -223,7 +205,7 @@ describe 'profile navigation' do
       expect(page).to have_content('Ada')
       expect(page).to have_content('Lovelace')
       expect(page).to have_content('chemie')
-      expect(page).to have_content('math')
+      expect(page).to have_content('writer')
     end
 
     it 'shows tags in the correct language' do
@@ -232,7 +214,7 @@ describe 'profile navigation' do
     end
 
     it 'shows tags with no language assigned' do
-      expect(page).to have_content('math')
+      expect(page).to have_content('writer')
     end
   end
 end

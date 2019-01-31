@@ -15,8 +15,6 @@ module Searchable
 
       query_hash =
         {
-          # minimum score depends completely on the given data and query, find out what works in your case.
-          min_score: 0.08, # this makes index creation on tests fail :(
           explain: true,
           query: {
             bool: {
@@ -93,6 +91,11 @@ module Searchable
             }
           }
         }
+
+      # minimum score depends completely on the given data and query, find out what works in your case.
+      # can't be integrated directly in query hash because tests fail
+      query_hash = { min_score: 0.08 } if Rails.env != 'test'
+
       query_hash[:post_filter] = { 'term': { 'iso_languages': @filter_lang } } if @filter_lang
 
       query_hash[:post_filter] = { 'term': { 'cities.unmod': @filter_cities } } if @filter_cities

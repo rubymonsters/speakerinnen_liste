@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 describe 'tags', type: :model do
-  let!(:ada) { FactoryBot.create(:published, firstname: 'Ada') }
-  let!(:marie) { FactoryBot.create(:published, firstname: 'Marie') }
-  let!(:grace) { FactoryBot.create(:published, firstname: 'Grace') }
+  let!(:ada) { FactoryBot.create(:ada, firstname: 'Ada') }
+  let!(:marie) { FactoryBot.create(:marie, firstname: 'Marie') }
+  let!(:grace) { FactoryBot.create(:published_profile, firstname: 'Grace') }
 
   before :each do
     ada.topic_list.add('media')
