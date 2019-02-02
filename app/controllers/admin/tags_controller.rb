@@ -18,13 +18,13 @@ class Admin::TagsController < Admin::BaseController
       existing_tag.merge(@tag)
       set_tag_languages(params[:tag][:languages])
       set_tag_categories(params[:tag][:categories])
-      redirect_to admin_tags_path(filter_params_from_session.merge(anchor: 'top-anchor')),
+      redirect_to admin_tags_path(filter_params_from_session.merge(anchor: "tag_#{@tag.id}")),
                   notice: "'#{@tag.name}' was merged with the tag '#{existing_tag.name}' ."
     elsif
       @tag.update_attributes(tag_params)
       set_tag_languages(params[:tag][:languages])
       set_tag_categories(params[:tag][:categories])
-      redirect_to admin_tags_path(filter_params_from_session.merge(anchor: 'top-anchor')),
+      redirect_to admin_tags_path(filter_params_from_session.merge(anchor: "tag_#{@tag.id}")),
                   notice: "'#{@tag.name}' was updated."
     else
       render action: 'edit'
@@ -87,7 +87,6 @@ class Admin::TagsController < Admin::BaseController
     @filter_params = {
       category_id: params[:category_id],
       q: params[:q],
-      uncategorized: params[:uncategorized],
       filter_languages: params[:filter_languages],
       no_language: params[:no_language],
       page: params[:page]

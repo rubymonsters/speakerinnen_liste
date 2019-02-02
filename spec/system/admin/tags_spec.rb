@@ -49,7 +49,7 @@ describe 'in tags' do
 
   it 'views edit tags in admin area' do
     expect(page).to have_text('Administration::Tags')
-    expect(page).to have_text('Search for tag')
+    expect(page).to have_text('Search')
     expect(page).to have_button('Filter')
   end
 
