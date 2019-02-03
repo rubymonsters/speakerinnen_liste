@@ -94,7 +94,7 @@ module Searchable
 
       # minimum score depends completely on the given data and query, find out what works in your case.
       # can't be integrated directly in query hash because tests fail
-      query_hash = { min_score: 0.08 } if Rails.env != 'test'
+      query_hash[:min_score] = 0.08 if Rails.env != 'test'
 
       query_hash[:post_filter] = { 'term': { 'iso_languages': @filter_lang } } if @filter_lang
 
