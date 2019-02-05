@@ -55,6 +55,7 @@ class Admin::FeaturesController < Admin::BaseController
     :title_en,
     :description_de,
     :description_en,
+    :position,
     :public,
     profile_ids: [],
     translations_attributes: %i[id title description locale]
