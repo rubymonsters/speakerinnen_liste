@@ -32,6 +32,8 @@ en:
       features:
         title: "Title"
         description: "Description"
+        position: "Position"
+        visibility: "Visibility"
         profiles: "Choose profiles"
       profiles:
         profiles: "Profiles"

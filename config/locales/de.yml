@@ -33,6 +33,8 @@ de:
         title: "Titel"
         description: "Beschreibung"
         profiles: "Profile auswählen"
+        position: "Position"
+        visibility: "Veröffentlicht"
         public: "public"
         invisible: "---"
       profiles:

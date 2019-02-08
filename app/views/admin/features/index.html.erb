@@ -7,10 +7,11 @@
   <table class="table">
     <thead class="bg--lightgrey">
       <tr>
-        <th>Titel</th>
-        <th>Beschreibung</th>
+        <th><%= t(:title, scope: 'admin.dashboard.features') %></th>
+        <th><%= t(:description, scope: 'admin.dashboard.features') %></th>
         <th>Profile Ids</th>
-        <th>öffentlich</th>
+        <th>Position</th>
+        <th><%= t(:visibility, scope: 'admin.dashboard.features') %></th>
         <th></th>
         <th></th>
       </tr>
@@ -21,6 +22,7 @@
           <td><%= feature.title %></td>
           <td><%= feature.description[0..99] %></td>
           <td><%= feature.profile_ids %></td>
+          <td><%= feature.position %></td>
           <td>
             <% if feature.public %>
               <%= link_to t(:public, scope: 'admin.dashboard.features'), stop_event_admin_feature_path(feature.id),
