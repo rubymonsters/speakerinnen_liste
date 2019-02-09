@@ -29,7 +29,7 @@ RSpec.describe 'Navigation', type: :system do
       expect(page).to have_link('Categories', href: '/en/admin/categories')
       expect(page).to have_link('Tags', href: '/en/admin/tags/index')
       expect(page).to have_link('Profiles', href: '/en/admin/profiles')
-      expect(page).to have_link('Featured Profiles', href: '/en/admin/featured_profiles')
+      expect(page).to have_link('Features', href: '/en/admin/features')
     end
 
     context 'category' do
