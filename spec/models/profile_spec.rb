@@ -18,7 +18,7 @@ describe 'profile', type: :model do
     end
 
     it 'returns a profile fullname as a string' do
-      expect(profile.fullname).to eq 'Factory Girl'
+      expect(profile.fullname).to eq 'Susi Sonnenschein'
     end
 
     it 'is invalid without email' do
@@ -47,7 +47,7 @@ describe 'profile', type: :model do
 
     context 'user has name information' do
       it 'return the fullname' do
-        expect(profile.name_or_email).to eq 'Factory Girl'
+        expect(profile.name_or_email).to eq 'Susi Sonnenschein'
       end
     end
 

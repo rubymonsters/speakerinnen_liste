@@ -11,13 +11,15 @@ class TagFilter
             .includes(:categories, :locale_languages)
             .references(:categories, :locale_languages)
 
-    if @params[:category_id].present?
+    if @params[:category_id] == 'uncategorized'
+        @tags = @tags.where('categories.id IS NULL')
+    elsif @params[:category_id] == 'categorized'
+      @tags = @tags.where('categories.id IS NOT NULL')
+    elsif @params[:category_id].present?
       @tags = @tags.where('categories.id = ?', @params[:category_id])
     end
 
     @tags = @tags.where('tags.name ILIKE ?', '%' + @params[:q] + '%') if @params[:q].present?
-
-    @tags = @tags.where('categories.id IS NULL') if @params[:uncategorized].present?
 
     if @params[:filter_languages].present?
       tag_ids = ActsAsTaggableOn::Tag

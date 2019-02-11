@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-RSpec.feature 'Editing', type: :feature do
+RSpec.feature 'Editing a profile', type: :system do
   context 'logged in as an admin' do
     let!(:admin) { create(:admin) }
-    let!(:user) { create(:published) }
+    let!(:user) { create(:published_profile) }
 
     before do
       sign_in admin
@@ -13,10 +13,6 @@ RSpec.feature 'Editing', type: :feature do
       visit admin_profiles_path
 
       click_link 'Edit', match: :first
-      expect(page).to have_text('Administration::Profiles::Edit')
-      expect(page).to have_button('Update your profile')
-      expect(page).to have_link('Show profile')
-      expect(page).to have_link('List all profiles')
 
       fill_in I18n.t(:firstname, scope: 'profiles.form'), with: 'Ada'
       fill_in I18n.t(:lastname, scope: 'profiles.form'), with: 'Lovelace'
