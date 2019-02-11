@@ -92,16 +92,17 @@ RSpec.describe 'Navigation', type: :system do
           expect(page).to have_link('public')
           expect(page).to have_link('invisible')
 
+          expect(page).to have_css('.table > thead > tr', text: 'ID')
           expect(page).to have_css('.table > thead > tr', text: 'Speakerinnen')
           expect(page).to have_css('.table > thead > tr', text: 'Created')
           expect(page).to have_css('.table > thead > tr', text: 'Updated')
           expect(page).to have_css('.table > thead > tr', text: 'Links')
           expect(page).to have_css('.table > thead > tr', text: 'Picture')
           expect(page).to have_css('.table > thead > tr', text: 'Visibility')
-          expect(page).to have_css('.table > thead > tr', text: 'Admin')
+          expect(page).to have_css('.table > thead > tr', text: 'Roles')
           expect(page).to have_css('.table > thead > tr', text: 'Comment')
 
-          expect(page).to have_button('Add comment')
+          expect(page).to have_button('Save comment')
         end
 
         it 'shows published and unpublished but not the unconfirmed profiles' do
