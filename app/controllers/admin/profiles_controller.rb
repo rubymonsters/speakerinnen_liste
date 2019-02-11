@@ -3,7 +3,7 @@
 class Admin::ProfilesController < Admin::BaseController
   helper_method :sort_column, :sort_direction
 
-  before_action :set_profile, only: %i[show edit update destroy publish unpublish admin_comment]
+  before_action :set_profile, only: %i[show edit update destroy publish unpublish admin_comment assign_feature]
 
   def index
     @profiles = if params[:search]
@@ -70,6 +70,14 @@ class Admin::ProfilesController < Admin::BaseController
       else
         redirect_to admin_profiles_path, notice: I18n.t('flash.profiles.updated', profile_name: @profile.name_or_email)
       end
+    else
+      render :index
+    end
+  end
+  
+  def assign_feature
+    if @profile.update_attributes(profile_params)
+      redirect_to admin_profiles_path, notice: I18n.t('flash.profiles.updated', profile_name: @profile.name_or_email)
     else
       render :index
     end

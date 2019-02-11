@@ -1,5 +1,5 @@
 RSpec.feature 'Feature', type: :feature do
-  describe 'when a featured profile is added' do
+  describe 'when a feature is added' do
 
     let!(:profile_2) { FactoryBot.create(:profile, id: 2) }
     let!(:profile_3) { FactoryBot.create(:profile, id: 3) }
@@ -9,7 +9,7 @@ RSpec.feature 'Feature', type: :feature do
       @feature_2 = Feature.create(title: 'Second subject', description: 'Description for second subject', profiles: [profile_2, profile_3], position: 1, public: true)
     end
 
-    it 'shows feature on home page' do
+    it 'shows public feature on home page' do
       visit root_path
       expect(page).to have_content('New announced Event')
       expect(page).to have_content('Description for announced event')
@@ -22,12 +22,12 @@ RSpec.feature 'Feature', type: :feature do
       feature_descriptions[1].should have_content("Description for announced event")
     end
 
-    it 'shows link to feature profiles on home page' do
+    it 'shows link to assigned profiles on home page' do
       visit root_path
       expect(page).to have_link('Susi Sonnenschein')
     end
 
-    it 'does not show unpublished feature on home page' do
+    it 'does not show not public feature on home page' do
       @feature_1.public = false
       @feature_1.save
       visit root_path

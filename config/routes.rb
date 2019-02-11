@@ -38,6 +38,7 @@ Rails.application.routes.draw do
           post 'publish'
           post 'unpublish'
           post 'admin_comment'
+          post 'assign_feature'
         end
       end
       root to: 'dashboard#index'
