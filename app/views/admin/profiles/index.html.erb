@@ -22,12 +22,12 @@
         <th><%= sortable 'created_at', t(:created_at, scope: 'admin.dashboard.profiles') %></th>
         <th><%= sortable 'updated_at', t(:updated_at, scope: 'admin.dashboard.profiles') %></th>
         <th>Links</th>
-        <th></th>
-        <th></th>
         <th>Picture</th>
+        <th><%= t(:roles, scope: 'admin.dashboard.profiles') %></th>
         <th><%= sortable 'published', t(:visibility, scope: 'admin.dashboard.profiles') %></th>
-        <th><%= Admin %></th>
         <th><%= t(:comment, scope: 'admin.dashboard.profiles') %></th>
+        <th>Edit</th>
+        <th>Delete</th>
       </tr>
     </thead>
     <tbody>
@@ -36,32 +36,33 @@
           <td><%= profile.id %></td>
           <td><%= link_to profile.name_or_email, admin_profile_path(profile),
               html_options = { title: t(:show, scope: 'admin.dashboard.profiles.edit') } %></td>
-          <td><%= profile.created_at.strftime('%d.%m.%Y um %H:%M Uhr') %></td>
-          <td><%= profile.updated_at.strftime('%d.%m.%Y um %H:%M Uhr') %></td>
-          <td><%= link_to profile.medialinks.size, admin_profile_medialinks_path(profile),
-              html_options = { title: t(:show, scope: 'medialinks') } %></td>
-          <td><%= link_to '<i class="fa fa-pencil">&nbsp;</i>'.html_safe, edit_admin_profile_path(profile),
-              html_options = { title: t(:edit, scope: 'general') } %></td>
-          <td><%= link_to '<i class="fa fa-trash-o">&nbsp;</i>'.html_safe, admin_profile_path(profile),
-              method: :delete, data: { confirm: 'Are you sure?' }, remote: true,
-              class: 'delete_profile', title: t(:delete, scope: 'general') %></td>
-          <td><%= "x" if profile.picture.present? %></td>
+          <td><%= profile.created_at.strftime('%d.%m.%Y') %></td>
+          <td><%= profile.updated_at.strftime('%d.%m.%Y') %></td>
+          <td><center><%= link_to profile.medialinks.size, admin_profile_medialinks_path(profile),
+              html_options = { title: t(:show, scope: 'medialinks') } %></center></td>
+          <td>
+            <%= '<center><i class="fa fa-camera">&nbsp;</i></center>'.html_safe if profile.picture.present? %>
+          </td>
+          <td><%= 'Admin' if profile.admin %></td>
           <td><% if profile.published %>
               <%= link_to t(:public, scope: 'admin.dashboard.profiles'), unpublish_admin_profile_path(profile.id),
               method: :post, class:'btn btn-blue btn-block btn-sm' %>
             <% else %>
-
               <%= link_to t(:invisible, scope: 'admin.dashboard.profiles'), publish_admin_profile_path(profile.id),
               method: :post, class:'btn btn-sm btn-block btn-danger', title: 'Eine Bestätigungsmail wird verschickt.' %>
             <% end %>
           </td>
-          <td><%= 'Admin' if profile.admin %></td>
           <td>
             <%= form_for profile,{ url: admin_comment_admin_profile_path(profile.id), method: 'post' } do |f| %>
               <%= f.text_field 'admin_comment' %>
               <%= f.submit t(:add_comment, scope: 'admin.dashboard.profiles'), class: 'btn btn-blue btn-sm' %>
             <% end  %>
           </td>
+          <td><center><%= link_to '<i class="fa fa-pencil">&nbsp;</i>'.html_safe, edit_admin_profile_path(profile),
+              html_options = { title: t(:edit, scope: 'general') } %></center></td>
+          <td><center><%= link_to '<i class="fa fa-trash-o">&nbsp;</i>'.html_safe, admin_profile_path(profile),
+              method: :delete, data: { confirm: 'Are you sure?' }, remote: true,
+              class: 'delete_profile', title: t(:delete, scope: 'general') %></center></td>
         </tr>
       <% end %>
     </tbody>

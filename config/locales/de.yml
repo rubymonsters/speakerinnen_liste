@@ -306,6 +306,8 @@ de:
       created: '%{featured_profile_title} wurde erfolgreich erstellt.'
       updated: '%{featured_profile_title} wurde erfolgreich geändert.'
       destroyed: '%{featured_profile_title} wurde erfolgreich gelöscht.'
+    comment:
+      updated: 'Kommentar wurde erfolgreich geändert.'    
   devise:
     registrations:
       edit:
