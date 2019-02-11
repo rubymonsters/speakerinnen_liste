@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 2019_02_07_175759) do
     t.index ["tag_id"], name: "index_categories_tags_on_tag_id"
   end
 
-  create_table "category_translations", id: :serial, force: :cascade do |t|
+  create_table "category_translations", force: :cascade do |t|
     t.integer "category_id", null: false
     t.string "locale", null: false
     t.datetime "created_at", null: false
@@ -109,7 +109,7 @@ ActiveRecord::Schema.define(version: 2019_02_07_175759) do
     t.index ["profile_id"], name: "index_medialinks_on_profile_id"
   end
 
-  create_table "profile_translations", id: :serial, force: :cascade do |t|
+  create_table "profile_translations", force: :cascade do |t|
     t.integer "profile_id", null: false
     t.string "locale", null: false
     t.datetime "created_at", null: false
@@ -163,9 +163,8 @@ ActiveRecord::Schema.define(version: 2019_02_07_175759) do
     t.integer "tag_id"
     t.string "taggable_type"
     t.integer "taggable_id"
-    t.string "taggable_type"
-    t.integer "tagger_id"
     t.string "tagger_type"
+    t.integer "tagger_id"
     t.string "context", limit: 128
     t.datetime "created_at"
     t.index ["context"], name: "index_taggings_on_context"
