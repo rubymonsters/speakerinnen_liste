@@ -37,8 +37,7 @@ Rails.application.routes.draw do
         member do
           post 'publish'
           post 'unpublish'
-          post 'admin_comment'
-          post 'assign_feature'
+          post 'admin_update'
         end
       end
       root to: 'dashboard#index'
