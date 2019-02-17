@@ -37,7 +37,7 @@ comment this out because people search here for profiles and NOT for tags and ge
       <%= topic_link topic, class: css_class %>
     <% end %>
   <% else %>
-    <% cache('tag_cloud', expires_in: 1.minutes) do %>
+    <% cache('tag_cloud', expires_in: 1.days) do %>
       <% tag_cloud @tags_most_used_200.sort { |x, y| x.name <=> y.name }, %w[s m l] do |topic, css_class| %>
         <%= topic_link topic, class: css_class %>
       <% end %>
