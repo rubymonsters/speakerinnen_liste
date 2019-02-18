@@ -134,6 +134,7 @@ h1, h4 {
   padding: $base-spacing-unit;
   text-align: center;
   position: fixed;
+	z-index: 1030;
   width: 100%;
 }
 
@@ -144,6 +145,7 @@ h1, h4 {
   padding: $base-spacing-unit;
   text-align: center;
 	position: fixed;
+	z-index: 1030;
 	width: 100%;
 }
 
