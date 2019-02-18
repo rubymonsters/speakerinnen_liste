@@ -3,7 +3,7 @@
 class Admin::ProfilesController < Admin::BaseController
   helper_method :sort_column, :sort_direction
 
-  before_action :set_profile, only: %i[show edit update destroy publish unpublish admin_comment]
+  before_action :set_profile, only: %i[show edit update destroy publish unpublish admin_update]
 
   def index
     @profiles = if params[:search]
@@ -61,7 +61,7 @@ class Admin::ProfilesController < Admin::BaseController
     redirect_to admin_profiles_path, notice: I18n.t('flash.profiles.updated', profile_name: @profile.name_or_email)
   end
 
-  def admin_comment
+  def admin_update
     redirects = {show: admin_profile_path(@profile), edit: edit_admin_profile_path(@profile)}
 
     if @profile.update_attributes(profile_params)
@@ -114,6 +114,7 @@ class Admin::ProfilesController < Admin::BaseController
       :website_3_en,
       :city_de,
       :city_en,
+      feature_ids: [],
       translations_attributes: %i[id bio main_topic twitter website website_2 website_3 city locale]
     )
   end

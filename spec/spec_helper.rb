@@ -75,7 +75,7 @@ RSpec.configure do |config|
 
   # Stop elasticsearch cluster after test run
   config.after :suite do
-    Elasticsearch::Extensions::Test::Cluster.stop(port: 9250, nodes: 1) if Elasticsearch::Extensions::Test::Cluster.running?(on: 9250)
+    Elasticsearch::Extensions::Test::Cluster.stop(port: 9250, nodes: 1)
   end
 
   # Delete indexes for all elastic searchable models to ensure clean state between tests

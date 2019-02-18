@@ -24,7 +24,7 @@ Rails.application.routes.draw do
         end
       end
       resources :categories
-      resources :featured_profiles do
+      resources :features do
         member do
           post 'announce_event'
           post 'stop_event'
@@ -37,7 +37,7 @@ Rails.application.routes.draw do
         member do
           post 'publish'
           post 'unpublish'
-          post 'admin_comment'
+          post 'admin_update'
         end
       end
       root to: 'dashboard#index'

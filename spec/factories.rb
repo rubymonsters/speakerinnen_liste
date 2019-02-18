@@ -60,8 +60,8 @@ FactoryBot.define do
 
   end
 
-  factory :featured_profile do
-    title { 'New Event' }
+  factory :feature do
+    title 'New Event'
   end
 
   factory :category do

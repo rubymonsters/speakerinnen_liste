@@ -160,6 +160,7 @@ class ProfilesController < ApplicationController
       :website_3_en,
       :city_de,
       :city_en,
+      feature_ids: [],
       translations_attributes: %i[id bio main_topic twitter website city locale]
     )
   end

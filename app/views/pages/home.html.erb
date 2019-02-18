@@ -16,33 +16,39 @@
      Copyright: public domain ( modified )
   </div>
 
-  <!-- anchor for featured profiles -->
-  <a id="current_topic"></a>
+  <!-- anchor for features -->
+  <a id="features"></a>
 
-  <% if @featured_events %>
-    <% @featured_events.each do |featured_event| %>
+  <% if @features.any? %>
+    <% @features.each do |feature| %>
       <div class="container">
-        <h1 class="box__bg"><%= featured_event.title %></h1>
+        <h1 class="box__bg"><%= feature.title %></h1>
         <h4 class="border-vertical d-block box__bg mb-4">
-          <%= featured_event.description %>
+          <%= feature.description %>
         </h4>
         <div class="row">
-          <%= render partial: "profiles/profile", collection: featured_event.ids %>
+          <%= render partial: "profiles/profile", collection: feature.profiles %>
         </div>
       </div>
     <% end %>
-  <% end %>
-
-  <div class="container">
-    <h1 class="box__bg"><%= t(:speaker_headline, scope: 'pages.home.speakers') %></h1>
-    <h4 class="border-vertical d-block box__bg mb-4">
-      <%= t(:speaker_text, scope: 'pages.home.speakers') %>
-      <%= link_to t(:speaker_index, scope: 'pages.home.speakers'), profiles_path %>
-    </h4>
-    <div class="row">
-      <%= render partial: "profiles/profile", collection: @profiles if @profiles.any? %>
+    <div class="container">
+      <h4 class="border-vertical d-block box__bg mb-4">
+        <%= t(:speaker_text, scope: 'pages.home.speakers') %>
+        <%= link_to t(:speaker_index, scope: 'pages.home.speakers'), profiles_path %>
+      </h4>
     </div>
-  </div>
+  <% else %>
+    <div class="container">
+      <h1 class="box__bg"><%= t(:speaker_headline, scope: 'pages.home.speakers') %></h1>
+      <h4 class="border-vertical d-block box__bg mb-4">
+        <%= t(:speaker_text, scope: 'pages.home.speakers') %>
+        <%= link_to t(:speaker_index, scope: 'pages.home.speakers'), profiles_path %>
+      </h4>
+      <div class="row">
+        <%= render partial: "profiles/profile", collection: @profiles if @profiles.any? %>
+      </div>
+    </div>
+  <% end %>
 
   <section id="startpage__teaser-bg-01" class="startpage__photo-bar">
     <div class="container">
