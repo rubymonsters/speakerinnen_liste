@@ -102,7 +102,7 @@ RSpec.describe 'Navigation', type: :system do
           expect(page).to have_css('.table > thead > tr', text: 'Roles')
           expect(page).to have_css('.table > thead > tr', text: 'Comment')
 
-          expect(page).to have_button('Save comment')
+          expect(page).to have_button('Add comment')
         end
 
         it 'shows published and unpublished but not the unconfirmed profiles' do
