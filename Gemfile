@@ -37,7 +37,7 @@ gem 'country_select'
 gem 'globalize', git: 'https://github.com/globalize/globalize'
 gem 'globalize-accessors'
 
-gem 'bootstrap', '~> 4.2.1'
+gem 'bootstrap', '~> 4.3.1'
 gem 'font-awesome-rails', '~> 4.7.0.3'
 
 gem 'friendly_id'
