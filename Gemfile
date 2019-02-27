@@ -60,6 +60,8 @@ gem 'unicorn'
 gem 'newrelic_rpm'
 gem 'rack-piwik', '~> 0.3.0', require: 'rack/piwik'
 
+gem 'aws-sdk-s3', require: false
+
 group :development do
   gem 'better_errors'
   gem 'bullet', '~> 5.9.0'
@@ -87,4 +89,3 @@ group :test do
   gem 'poltergeist', '1.18.1'
   gem 'rails-controller-testing'
 end
-

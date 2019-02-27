@@ -2,11 +2,13 @@
   <div class="col-sm-12 col-md-6">
 
     <%= f.label :picture, t(:picture, scope: 'profiles.form').html_safe %>
-    <p>
       <!-- ToDo: width of picture should be made responsive -->
-      <%= image_tag(@profile.picture_url, width: 200) if @profile.picture.present? %>
-    </p>
-    <p><%= f.file_field :picture %></p>
+      <% if @profile.image.attached? %>
+        <p>
+          <%= image_tag @profile.image %>
+        </p>
+      <% end %>
+    <p><%= f.file_field :image %></p>
     <small class="form-text text-muted">
       <%= t(:picture_info, scope: 'profiles.form').html_safe %><br>
     </small>
