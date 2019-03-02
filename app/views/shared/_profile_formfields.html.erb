@@ -1,22 +1,23 @@
 <div class="row mb-5">
   <div class="col-sm-12 col-md-6">
-
     <%= f.label :picture, t(:picture, scope: 'profiles.form').html_safe %>
-      <!-- ToDo: width of picture should be made responsive -->
-      <% if @profile.image.attached? %>
-        <p>
-          <%= image_tag @profile.image %>
-        </p>
-      <% end %>
-    <p><%= f.file_field :image %></p>
-    <small class="form-text text-muted">
-      <%= t(:picture_info, scope: 'profiles.form').html_safe %><br>
-    </small>
-    <br>
-
-    <%= f.check_box :remove_picture %>
-    <%= t(:delete_picture, scope: 'profiles.form') %>
-
+    <!-- ToDo: width of picture should be made responsive -->
+    <% if @profile.picture.present? %>
+      <p><%= image_tag(@profile.picture_url, width: 200) %></p>
+      <br>
+      <%= f.check_box :remove_picture %>
+      <%= t(:delete_picture, scope: 'profiles.form') %>
+    <% elsif @profile.image.attached? %>
+      <p><%= image_tag(@profile.image, width: 200) %></p>
+      <br>
+      <%= link_to t(:delete_picture, scope: 'profiles.form'), image_path(@profile.image.id), :method => :delete, data: { confirm: 'Are you sure?' } %>
+    <% else %>
+      <p><%= f.file_field :image %></p>
+      <!-- <p> f.file_field :picture </p> -->
+      <small class="form-text text-muted">
+        <%= t(:picture_info, scope: 'profiles.form').html_safe %><br>
+      </small>
+    <% end %>
   </div>
 
   <div class="col-sm-12 col-md-6 p-3 bg--white">
