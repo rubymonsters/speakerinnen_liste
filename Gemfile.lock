@@ -619,6 +619,8 @@ GEM
     selenium-webdriver (3.141.0)
       childprocess (~> 0.5)
       rubyzip (~> 1.2, >= 1.2.2)
+    sentry-raven (2.9.0)
+      faraday (>= 0.7.6, < 1.0)
     sequel-honeycomb (0.4.1)
       libhoney
     shellany (0.0.1)
@@ -726,6 +728,7 @@ DEPENDENCIES
   rubocop (~> 0.62.0)
   sassc-rails
   selenium-webdriver (= 3.141.0)
+  sentry-raven
   simple_form
   stackprof
   uglifier (>= 1.0.3)
