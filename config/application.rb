@@ -31,3 +31,7 @@ module SpeakerinnenListe
     # the framework and any gems in your application.
   end
 end
+
+Raven.configure do |config|
+  config.dsn = ENV['SENTRY_DNS']
+end
