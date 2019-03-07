@@ -60,6 +60,8 @@ gem 'unicorn'
 gem 'newrelic_rpm'
 gem 'rack-piwik', '~> 0.3.0', require: 'rack/piwik'
 
+gem "sentry-raven"
+
 group :development do
   gem 'better_errors'
   gem 'bullet', '~> 5.9.0'
