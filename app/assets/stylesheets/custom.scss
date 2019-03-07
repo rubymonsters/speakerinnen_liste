@@ -1,14 +1,14 @@
 body {
-	font-family: $sans-serif;
-	color: $font-color;
-	margin-top: 70px;
-	background-color: $white-smoke;
+  font-family: $sans-serif;
+  color: $font-color;
+  margin-top: 70px;
+  background-color: $white-smoke;
 }
 
 a, .link, #expander {
-	font-family: $sans-serif;
-	color: $link-color;
-	text-decoration: none;
+  font-family: $sans-serif;
+  color: $link-color;
+  text-decoration: none;
   cursor: pointer;
 
   &:hover {
@@ -21,17 +21,17 @@ a, .link, #expander {
 }
 
 h1, h4 {
-	font-family: $serif;
+  font-family: $serif;
 }
 
 .sans-serif {
-	font-family: $sans-serif;
+  font-family: $sans-serif;
 }
 
 /* layout */
 
 .container {
-	padding: 36px 36px;
+  padding: 36px 36px;
 }
 
 .box__bg {
@@ -134,7 +134,7 @@ h1, h4 {
   padding: $base-spacing-unit;
   text-align: center;
   position: fixed;
-	z-index: 1030;
+  z-index: 1030;
   width: 100%;
 }
 
@@ -144,9 +144,9 @@ h1, h4 {
   font-family: $sans-serif;
   padding: $base-spacing-unit;
   text-align: center;
-	position: fixed;
-	z-index: 1030;
-	width: 100%;
+  position: fixed;
+  z-index: 1030;
+  width: 100%;
 }
 
 .border-vertical {
@@ -182,7 +182,7 @@ textarea, input {
 }
 
 #admin__header--color {
-	background: #ffcc00;
+  background: #ffcc00;
 }
 
 /* profiles */
@@ -194,21 +194,21 @@ textarea, input {
 }
 
 .profile-subtitle {
-	font-weight: bold;
-	margin: 0.5rem 0;
+  font-weight: bold;
+  margin: 0.5rem 0;
 }
 
 .profile-title {
-	margin: 3rem 0;
+  margin: 3rem 0;
 }
 
 .profile-card {
-	padding: 3rem;
-	margin: 3rem 0;
+  padding: 3rem;
+  margin: 3rem 0;
 }
 
 .profile-navi {
-	text-align: right;
+  text-align: right;
 }
 
 .photo--grey {
@@ -295,7 +295,7 @@ ul#medialinks__list {
 
 .pagination {
   text-align: center;
-	display: block;
+  display: block;
 }
 
 .pagination ul {
@@ -385,50 +385,50 @@ ul#medialinks__list {
     font-size: 1.8rem;
   }
 
-	h4 {
+  h4 {
     font-size: 1.1rem;
-	}
+  }
 
-	h5 {
+  h5 {
     font-size: 1.0rem;
-		font-weight: bold;
-	}
+    font-weight: bold;
+  }
 
-	.container {
-		padding: 36px 12px;
-	}
+  .container {
+    padding: 36px 12px;
+  }
 
-	.startpage-categories__list-links {
+  .startpage-categories__list-links {
     font-size: 1.0rem;
-	}
+  }
 
-	.profile-box {
-		text-align: center;
-	}
+  .profile-box {
+    text-align: center;
+  }
 
-	.copyright {
-		font-size: 0.8rem;
-	}
+  .copyright {
+    font-size: 0.8rem;
+  }
 
-	.profile-card {
-		padding: 1rem;
-		margin: 1rem 0;
-	}
+  .profile-card {
+    padding: 1rem;
+    margin: 1rem 0;
+  }
 
-	.profile-subtitle {
-		margin: 0.5rem 0;
-	}
+  .profile-subtitle {
+    margin: 0.5rem 0;
+  }
 
-	.profile-card .profile-subtitle {
-		padding-bottom: 1rem;
-	  border-bottom: $border;
-	}
+  .profile-card .profile-subtitle {
+    padding-bottom: 1rem;
+    border-bottom: $border;
+  }
 
-	.profile-title {
-		margin: 1rem 0;
-	}
+  .profile-title {
+    margin: 1rem 0;
+  }
 
-	.startpage-subtitle {
-		display: none;
-	}
+  .startpage-subtitle {
+    display: none;
+  }
 }
