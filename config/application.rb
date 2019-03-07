@@ -32,6 +32,3 @@ module SpeakerinnenListe
   end
 end
 
-Raven.configure do |config|
-  config.dsn = ENV['SENTRY_DNS']
-end
