@@ -1,7 +1,4 @@
 Rails.application.configure do
-  Raven.configure do |config|
-    config.dsn = ENV['SENTRY_DNS']
-  end
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
