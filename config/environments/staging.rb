@@ -117,4 +117,10 @@ SpeakerinnenListe::Application.configure do
     #:password => ENV['POSTMARK_API_TOKEN'],
     #:authentication => :plain
   #}
+  config.middleware.use ExceptionNotification::Rack,
+  :email => {
+    :email_prefix => "[SPEAKERINNEN ERROR STAGING] ",
+    :sender_address => %{"notifier" <no-reply@speakerinnen.org>},
+    :exception_recipients => %w{devops@speakerinnen.org}
+  }
 end
