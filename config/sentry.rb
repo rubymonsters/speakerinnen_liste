@@ -8,4 +8,4 @@ Raven.configure do |config|
 
   # Overwrite excluded exceptions
   config.excluded_exceptions = []
-en
+end
