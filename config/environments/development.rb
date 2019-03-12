@@ -74,9 +74,9 @@ Rails.application.configure do
 
   config.middleware.use ExceptionNotification::Rack,
   :email => {
-    :email_prefix => "[SPEAKERINNEN ERROR] ",
+    :email_prefix => "[SPEAKERINNEN ERROR STAGING] ",
     :sender_address => %{"notifier" <no-reply@speakerinnen.org>},
-    :exception_recipients => %w{team@speakerinnen.org}
+    :exception_recipients => %w{devops@speakerinnen.org}
   }
 
   config.action_mailer.delivery_method = :letter_opener

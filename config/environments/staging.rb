@@ -117,6 +117,14 @@ SpeakerinnenListe::Application.configure do
     #:password => ENV['POSTMARK_API_TOKEN'],
     #:authentication => :plain
   #}
+
   # Store uploaded files on the local file system (see config/storage.yml for options)
   config.active_storage.service = :staging
+  
+  config.middleware.use ExceptionNotification::Rack,
+  :email => {
+    :email_prefix => "[SPEAKERINNEN ERROR STAGING] ",
+    :sender_address => %{"notifier" <no-reply@speakerinnen.org>},
+    :exception_recipients => %w{devops@speakerinnen.org}
+  }
 end

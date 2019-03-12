@@ -96,11 +96,11 @@ Rails.application.configure do
 
   config.middleware.use ExceptionNotification::Rack,
     :email => {
-      :email_prefix => "[SPEAKERINNEN ERROR] ",
+      :email_prefix => "[SPEAKERINNEN ERROR PRODUCTION] ",
       :sender_address => %{"Team" <no-reply@speakerinnen.org>},
       :exception_recipients => %w{devops@speakerinnen.org}
   }
-  
+
   # search box --> heroku elasticsearch add-on
   Elasticsearch::Model.client = Elasticsearch::Client.new host: ENV['SEARCHBOX_URL']
 
