@@ -57,7 +57,6 @@ gem 'uglifier', '>= 1.0.3'
 
 gem 'unicorn'
 
-gem 'newrelic_rpm'
 gem 'rack-piwik', '~> 0.3.0', require: 'rack/piwik'
 
 gem "sentry-raven"
