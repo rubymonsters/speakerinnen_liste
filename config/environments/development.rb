@@ -52,7 +52,7 @@ Rails.application.configure do
   # number of complex assets.
   config.assets.debug = true
 
-  config.action_mailer.delivery_method = :file
+  # config.action_mailer.delivery_method = :file
 
   # Suppress logger output for asset requests.
   config.assets.quiet = true
@@ -71,4 +71,14 @@ Rails.application.configure do
     Bullet.console = true
     Bullet.rails_logger = true
   end
+
+  config.middleware.use ExceptionNotification::Rack,
+  :email => {
+    :email_prefix => "[SPEAKERINNEN ERROR STAGING] ",
+    :sender_address => %{"notifier" <no-reply@speakerinnen.org>},
+    :exception_recipients => %w{devops@speakerinnen.org}
+  }
+
+  config.action_mailer.delivery_method = :letter_opener
 end
+  

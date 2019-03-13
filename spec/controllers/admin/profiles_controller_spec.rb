@@ -5,7 +5,7 @@ describe Admin::ProfilesController, type: :controller do
 
   let!(:admin) { FactoryBot.create(:admin) }
   let!(:admin_medialink) { FactoryBot.create(:medialink, profile_id: admin.id) }
-  let!(:non_admin) { FactoryBot.create(:published) }
+  let!(:non_admin) { FactoryBot.create(:published_profile) }
   let!(:non_admin_medialink) do
     FactoryBot.create(:medialink,
                       profile_id: non_admin.id,
@@ -207,7 +207,7 @@ describe Admin::ProfilesController, type: :controller do
   end
 
   describe 'POST published' do
-    before { @unpublished = FactoryBot.create(:unpublished) }
+    before { @unpublished = FactoryBot.create(:unpublished_profile) }
 
     context 'When user is admin' do
       before(:each) do
@@ -251,7 +251,7 @@ describe Admin::ProfilesController, type: :controller do
   end
 
   describe 'POST unpublished' do
-    before { @published = FactoryBot.create(:published) }
+    before { @published = FactoryBot.create(:published_profile) }
 
     context 'When user is admin' do
       before(:each) do

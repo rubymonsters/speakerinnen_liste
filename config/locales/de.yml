@@ -10,7 +10,7 @@ de:
     edit: "Bearbeiten"
     back: "Zurück"
     delete: "Löschen"
-    filter: "Filtern"
+    filter: "Filtern/ Suchen"
     create: "Erstellen"
     save: "Speichern"
     search: "Suche"
@@ -29,6 +29,14 @@ de:
         category_name: "Name der Kategorie"
         current_name: "Bisheriger Name der Kategorie:"
         new_name: "Trage den neuen Namen der Kategorie in %{language} ein: "
+      features:
+        title: "Titel"
+        description: "Beschreibung"
+        profiles: "Profile auswählen"
+        position: "Position"
+        visibility: "Veröffentlicht"
+        public: "public"
+        invisible: "---"
       profiles:
         profiles: "Profile"
         created_at: "Erstellt"
@@ -39,12 +47,13 @@ de:
         invisible: "unsichtbar"
         make_invisible: "Mache unsichtbar"
         confirmed: "bestätigte"
-        roles: "Rollen"
         comment: "Kommentar"
-        add_comment: "Kommentar speichern"
+        add_comment: "Kom. speichern"
+        assign_feature: "Feature zuordnen"
+        feature_list: "Zugeordnete Features"
         profile_status: "Das Profil ist "
         name_of_profile: "Der Name der Speakerin ist "
-        search_for_name: "Suche nach Namen"
+        search: "Suche nach Namen oder Topic"
         edit:
           show: "Zeige Profil"
           show_all: "Liste aller Profile"
@@ -55,8 +64,9 @@ de:
         tags_here_are: "Du siehst "
         tags_search: "Suche nach einem bestimmtem Tag:"
         tags_count: "Die Anzahl aller Tags ist "
-        tags_filter_option: "Alle Tags ohne Kategorien anzeigen"
-        tags_filter_default: "Alle Kategorien auswählen"
+        tags_filter_uncategorized: "Tags ohne Kategorien"
+        tags_filter_categorized: "Alle Tags mit Kategorien"
+        tags_filter_default: "Alle Kategorien"
         languages: "Sprachen"
         no_langage: "ohne Sprache"
         show_all_tags: "Alle Tags"
@@ -131,8 +141,8 @@ de:
         links_text: "Hier gibt es Links zu ähnlichen Projekten:"
         contact: "Kontakt"
         contact_link: "E-Mail"
-        twitter: "<a href='http://twitter.com/speakerinnen', target='_blank', class='btn btn-link px-2'>Twitter</a>"
-        github: "<a href='http://github.com/rubymonsters/speakerinnen_liste', target='_blank', class='btn btn-link px-2'>GitHub</a>"
+        twitter: "<a href='https://twitter.com/speakerinnen', target='_blank', class='btn btn-link px-2'>Twitter</a>"
+        github: "<a href='https://github.com/rubymonsters/speakerinnen_liste', target='_blank', class='btn btn-link px-2'>GitHub</a>"
         devblog: "<a href='http://speakerinnen.wordpress.com/', taget='_blank'>Entwicklerinnen-Blog</a>"
         faq_short: |
             <strong>Warum gibt es Thema XYZ noch nicht?</strong><br>
@@ -141,16 +151,17 @@ de:
             Ja.
         press_short: |
             <strong>Speakerinnen.org verhilft zu Expertise auf der Bühne</strong><br>
-            <a href="http://www.n24.de/n24/Wissen/Job-Karriere/d/9207158/-speakerinnen-org--verhilft-zu-expertise-auf-der-buehne.html">N24</a>
+            <a href="https://www.focus.de/digital/computer/technik-speakerinnen-org-verhilft-zu-expertise-auf-der-buehne_id_6004519.html" target="_blank" rel="noopener">Focus</a>
             <br><br>
             <strong>Rauf auf die Podien: Weibliche Redner sind immer noch selten</strong><br>
-            <a href="http://www.sueddeutsche.de/news/karriere/arbeit-rauf-auf-die-podien-weibliche-redner-sind-immer-noch-selten-dpa.urn-newsml-dpa-com-20090101-160302-99-61792">Süddeutsche Zeitung</a>
-            <br><br>
-            <strong>Zum Frauentag: Mehr Frauen auf die Bühnen!</strong><br>
-            <a href="http://www.taz.de/!161906/">taz</a>
+            <a href="https://www.sueddeutsche.de/news/karriere/arbeit-rauf-auf-die-podien-weibliche-redner-sind-immer-noch-selten-dpa.urn-newsml-dpa-com-20090101-160302-99-61792" target="_blank" rel="noopener">Süddeutsche Zeitung</a>
             <br><br>
             <strong>Die Hälfte der Macht den Speakerinnen</strong><br>
-            <a href="http://newthinking.de/2016/03/02/die-halfte-der-macht-den-speakerinnen/">Newthinking Blog</a>
+            <a href="https://newthinking.de/de/haelfte-macht-den-speakerinnen" target="_blank" rel="noopener">Newthinking Blog</a>
+            <br><br>
+            <strong>Nicht mehr allein unter Männern</strong><br>
+            <a href="https://www.taz.de/!5043737/" target="_blank" rel="noopener">taz</a>
+            <br><br>
         women: "* Mit Frauen meinen wir alle, die sich selbst als Frau verstehen (auch wenn wir den  * an manchen Stellen für die bessere Lesbarkeit weglassen)."
     about:
       title: "Über uns"
@@ -305,6 +316,14 @@ de:
       created: '%{category_name} wurde erfolgreich erstellt.'
       updated: '%{category_name} wurde erfolgreich geändert.'
       destroyed: '%{category_name} wurde erfolgreich gelöscht.'
+    features:
+      created: '%{feature_title} wurde erfolgreich erstellt.'
+      updated: '%{feature_title} wurde erfolgreich geändert.'
+      destroyed: '%{feature_title} wurde erfolgreich gelöscht.'
+      announced: '%{feature_title} wird auf der Homepage angekündigt.'
+      stopped: 'Die Ankündigung von %{feature_title} wird nicht mehr angezeigt.'
+    comment:
+      updated: 'Kommentar wurde erfolgreich geändert.'
   devise:
     registrations:
       edit:

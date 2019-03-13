@@ -1,6 +1,6 @@
 describe 'signup' do
-  let!(:user) { FactoryBot.create(:published, email: 'ada@mail.de' ) }
   before do
+    create(:ada, email: 'ada@mail.de' )
     page.driver.browser.set_cookie("cookie_consent=true")
   end
 

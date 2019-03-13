@@ -1,15 +1,10 @@
 RSpec.feature 'Category', type: :feature do
   describe 'when a category is assigned to tags' do
 
-    let!(:ada) {FactoryBot.create(:published, topic_list: ['fruehling'])}
-    let!(:pierre){FactoryBot.create(:published, topic_list: ['fruehling', 'sommer'])}
     let(:tag_fruehling) {ActsAsTaggableOn::Tag.find_by_name('fruehling')}
     let(:tag_sommer) {ActsAsTaggableOn::Tag.find_by_name('sommer')}
 
     before do
-      category_jahreszeiten = Category.new(name_de: 'Jahreszeiten')
-      # needs both translations
-      category_jahreszeiten = Category.new(name_en: 'seasons')
       category_jahreszeiten.save!
       tag_fruehling.categories << category_jahreszeiten
       tag_sommer.categories << category_jahreszeiten

@@ -24,6 +24,12 @@ Rails.application.routes.draw do
         end
       end
       resources :categories
+      resources :features do
+        member do
+          post 'announce_event'
+          post 'stop_event'
+        end
+      end
       resources :profiles do
         resources :medialinks do
           collection { post :sort }
@@ -31,7 +37,7 @@ Rails.application.routes.draw do
         member do
           post 'publish'
           post 'unpublish'
-          post 'admin_comment'
+          post 'admin_update'
         end
       end
       root to: 'dashboard#index'
@@ -89,8 +95,4 @@ Rails.application.routes.draw do
     end
   end
 
-  unless Rails.application.config.consider_all_requests_local
-    # having created corresponding controller and action
-    get '*path', to: 'errors#error_404', via: :all
-  end
 end

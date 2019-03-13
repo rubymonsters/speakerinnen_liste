@@ -2,9 +2,6 @@
 
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  unless Rails.application.config.consider_all_requests_local
-    rescue_from ActiveRecord::RecordNotFound, with: :render_404
-  end
 
   before_action :set_locale
   before_action :check_cookie_consent
@@ -62,10 +59,4 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def render_404
-    respond_to do |format|
-      format.html { render template: 'errors/not_found', status: 404 }
-      format.all { render nothing: true, status: 404 }
-    end
-  end
 end
