@@ -37,7 +37,6 @@ RSpec.describe 'Navigation', type: :system do
             expect(page).to have_css('.profile-box', text: 'Mathematik')
             expect(page).to have_css('.profile-box', text: 'Klima')
           end
-          expect(page).to have_css('.startpage-categories__list-links', count: 1)
           expect(page).to have_link('Science')
         end
 
