@@ -98,7 +98,7 @@ describe 'profile', type: :model do
 
   describe 'profile tag filter' do
     let!(:ruby_expert) { create(:published_profile, topic_list: %w[ruby algorithms]) }
-    let!(:java_expert) { create(:published_profile, topic_elist: %w[java]) }
+    let!(:java_expert) { create(:published_profile, topic_list: %w[java]) }
     let!(:c_expert) { create(:published_profile, topic_list: %w[c]) }
 
     it 'only shows the profile which is tagged' do
