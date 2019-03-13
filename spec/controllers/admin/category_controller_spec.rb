@@ -84,7 +84,7 @@ describe Admin::CategoriesController, type: :controller do
 
   context 'translations' do
     before(:each) do
-      de_factory_translation = category.translations.where(locale: 'en').first
+      de_factory_translation = category.translations.find_by('locale' => 'de')
       en_translation = category.translations.create!('locale' => 'en')
 
       category_params = {
