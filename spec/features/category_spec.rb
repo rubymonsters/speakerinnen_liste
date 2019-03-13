@@ -5,6 +5,10 @@ RSpec.feature 'Category', type: :feature do
     let(:tag_sommer) {ActsAsTaggableOn::Tag.find_by_name('sommer')}
 
     before do
+      FactoryBot.create(:ada, topic_list: ['fruehling'])
+      FactoryBot.create(:marie, topic_list: ['fruehling', 'sommer'])
+      category_jahreszeiten = Category.new(name: 'seasons')
+      category_jahreszeiten.save!      
       tag_fruehling.categories << category_jahreszeiten
       tag_sommer.categories << category_jahreszeiten
     end
