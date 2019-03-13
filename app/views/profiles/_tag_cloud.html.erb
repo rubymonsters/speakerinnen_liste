@@ -13,9 +13,9 @@
       </span>
     </div>
   <% end %>
-
 </div>
 
+<!-- start tag cloud search -->
 <% if false %>
 comment this out because people search here for profiles and NOT for tags and get error messages
 <div class="text-center py-5">
@@ -26,8 +26,10 @@ comment this out because people search here for profiles and NOT for tags and ge
   <% end %>
 </div>
 <% end %>
+<!-- end tag cloud search -->
 
 
+<!-- start tag cloud -->
 <div class='text-center my-5 topics-cloud' >
 
   <% if params[:category_id] %>
@@ -35,12 +37,15 @@ comment this out because people search here for profiles and NOT for tags and ge
       <%= topic_link topic, class: css_class %>
     <% end %>
   <% else %>
-    <% tag_cloud @tags_most_used_200.sort { |x, y| x.name <=> y.name }, %w[s m l] do |topic, css_class| %>
-      <%= topic_link topic, class: css_class %>
+    <% cache('tag_cloud', expires_in: 5.minutes) do %>
+      <% tag_cloud @tags_most_used_200.sort { |x, y| x.name <=> y.name }, %w[s m l] do |topic, css_class| %>
+        <%= topic_link topic, class: css_class %>
+      <% end %>
     <% end %>
   <% end %>
 
 </div>
+<!-- end tag cloud -->
 
 <!-- javascript for the tag_cloud search -->
 <script type="text/javascript" charset="utf-8">

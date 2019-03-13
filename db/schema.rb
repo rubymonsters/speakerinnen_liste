@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_23_204811) do
+ActiveRecord::Schema.define(version: 2019_02_07_175759) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 2018_07_23_204811) do
     t.index ["tag_id"], name: "index_categories_tags_on_tag_id"
   end
 
-  create_table "category_translations", id: :serial, force: :cascade do |t|
+  create_table "category_translations", force: :cascade do |t|
     t.integer "category_id", null: false
     t.string "locale", null: false
     t.datetime "created_at", null: false
@@ -50,6 +50,33 @@ ActiveRecord::Schema.define(version: 2018_07_23_204811) do
     t.string "name"
     t.index ["category_id"], name: "index_category_translations_on_category_id"
     t.index ["locale"], name: "index_category_translations_on_locale"
+  end
+
+  create_table "feature_profiles", force: :cascade do |t|
+    t.bigint "feature_id"
+    t.bigint "profile_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["feature_id"], name: "index_feature_profiles_on_feature_id"
+    t.index ["profile_id"], name: "index_feature_profiles_on_profile_id"
+  end
+
+  create_table "feature_translations", force: :cascade do |t|
+    t.integer "feature_id", null: false
+    t.string "locale", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "title"
+    t.text "description"
+    t.index ["feature_id"], name: "index_feature_translations_on_feature_id"
+    t.index ["locale"], name: "index_feature_translations_on_locale"
+  end
+
+  create_table "features", force: :cascade do |t|
+    t.integer "position"
+    t.boolean "public"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "friendly_id_slugs", id: :serial, force: :cascade do |t|
@@ -82,7 +109,7 @@ ActiveRecord::Schema.define(version: 2018_07_23_204811) do
     t.index ["profile_id"], name: "index_medialinks_on_profile_id"
   end
 
-  create_table "profile_translations", id: :serial, force: :cascade do |t|
+  create_table "profile_translations", force: :cascade do |t|
     t.integer "profile_id", null: false
     t.string "locale", null: false
     t.datetime "created_at", null: false
@@ -164,4 +191,6 @@ ActiveRecord::Schema.define(version: 2018_07_23_204811) do
     t.datetime "updated_at"
   end
 
+  add_foreign_key "feature_profiles", "features"
+  add_foreign_key "feature_profiles", "profiles"
 end

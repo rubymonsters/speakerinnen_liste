@@ -10,7 +10,7 @@ en:
     edit: "Edit"
     back: "Back"
     delete: "Delete"
-    filter: "Filter"
+    filter: "Filter/ Search"
     create: "Create"
     save: "Save"
     search: "Search"
@@ -29,6 +29,12 @@ en:
         category_name: "Category name"
         current_name: "Current category name: "
         new_name: "Enter new category name in %{language}: "
+      features:
+        title: "Title"
+        description: "Description"
+        position: "Position"
+        visibility: "Visibility"
+        profiles: "Choose profiles"
       profiles:
         profiles: "Profiles"
         created_at: "Created"
@@ -39,12 +45,13 @@ en:
         invisible: "invisible"
         make_invisible: "Make invisible"
         confirmed: "confirmed"
-        roles: "Roles"
         comment: "Comment"
         add_comment: "Add comment"
+        assign_feature: "Assign feature"
+        feature_list: "Assigned features"
         profile_status: "The Profile is "
         name_of_profile: "The Name of the speaker is "
-        search_for_name: "Search for name"
+        search: "Search for name or topic"
         edit:
           show: "Show profile"
           show_all: "List all profiles"
@@ -55,8 +62,9 @@ en:
         tags_here_are: "Here are "
         tags_search: "Search for tag"
         tags_count: "The number of all tags is "
-        tags_filter_option: "Show all tags without category"
-        tags_filter_default: "Show all categories"
+        tags_filter_uncategorized: "Tags without category"
+        tags_filter_categorized: "All tags with category"
+        tags_filter_default: "All categories"
         languages: "Languages"
         no_language: "no language"
         show_all_tags: "All tags"
@@ -144,7 +152,7 @@ en:
             <strong>Nicht mehr allein unter Männern</strong><br>
             <a href="https://www.taz.de/!5043737/" target="_blank" rel="noopener">taz (German)</a>
             <br><br>
-            
+
         women: "* When we say women we mean everyone who defines herself as a woman. Please note: Sometimes for better readability in long textures the term women is written without a star."
     about:
       title: "About us"
@@ -299,6 +307,14 @@ en:
       created: '%{category_name} was successfully created.'
       updated: '%{category_name} was successfully updated.'
       destroyed: '%{category_name} was successfully deleted.'
+    features:
+      created: '%{feature_title} was successfully created.'
+      updated: '%{feature_title} was successfully updated.'
+      destroyed: '%{feature_title} was successfully deleted.'
+      announced: '%{feature_title} is anounced on homepage.'
+      stopped: 'Announcement of %{feature_title} is not shown anymore.'
+    comment:
+      updated: 'Comment was successfully updated.'
   devise:
     registrations:
       edit:

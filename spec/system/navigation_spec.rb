@@ -1,205 +1,180 @@
 # frozen_string_literal: true
 
 RSpec.describe 'Navigation', type: :system do
-  context 'normal visitor' do
-    before do
-      FactoryBot.create(:published, firstname: 'Emily', lastname: 'Roebling',
-        main_topic_en: 'engineer', city_en: 'Trenton', iso_languages: ['en'])
-      FactoryBot.create(:published, main_topic_en: 'technican')
-      FactoryBot.create(:cat_science)
-      page.driver.browser.set_cookie("cookie_consent=true")
-    end
-
-    it 'startpage has header' do
-      visit root_path
-
-      expect(page).to have_css('#header__logo')
-      expect(page).to have_link('Register as a speaker')
-      expect(page).to have_link('Log in')
-      expect(page).to have_link('DE')
-    end
-
-    it 'startpage has content' do
-      visit root_path
-
-      expect(page).to have_css('#startpage__start-teaser')
-      expect(page).to have_css('#startpage__teaser-bg-01')
-      expect(page).to have_css('#startpage__teaser-bg-02')
-      expect(page).to have_css('.profile-box', text: 'engineer')
-      expect(page).to have_css('.profile-box', text: 'technican')
-      expect(page).to have_css('.category_links', count: 1)
-      expect(page).to have_link('Science')
-    end
-
-    it 'startpage has footer' do
-      visit root_path
-
-      expect(page).to have_css('#main-page-footer')
-      expect(page).to have_link('Twitter')
-      expect(page).to have_link('Email')
-      expect(page).to have_link('About us')
-    end
-
-    it 'viewing the contact page' do
-      visit root_path
-
-      click_link 'Email'
-      expect(page).to have_css('form label', text: 'Your name')
-      expect(page).to have_css('form label', text: 'Your email address')
-      expect(page).to have_css('form label', text: 'Subject')
-      expect(page).to have_css('form label', text: 'Your message')
-
-      expect(page).to have_button('Send')
-    end
-
-    it 'viewing the speakerinnen overview page' do
-      visit root_path
-
-      click_link 'Browse all profiles >>'
-      # header
-      expect(page).to have_css('#header__logo')
-      expect(page).to have_link('Register as a speaker')
-      # search
-      expect(page).to have_css('input.profile__search')
-      expect(page).to have_button('Search')
-      # profile
-      expect(page).to have_link('Emily Roebling')
-      expect(page).to have_css('.profile-card', count: 2)
-      expect(page).to have_css('.profile-subtitle', text: 'engineer')
-      expect(page).to have_text('English')
-      # tag_cloud
-      expect(page).to have_css('.topics-cloud')
-      # link t profile
-      expect(page).to have_link('To the profile')
-    end
-
-    it 'viewing a single speakerin page' do
-      visit root_path
-
-      click_link 'Browse all profiles >>'
-      click_link 'Emily Roebling'
-      # header
-      expect(page).to have_css('#header__logo')
-      expect(page).to have_link('Register as a speaker')
-      # navi links
-      expect(page).to have_link('Show all women speakers >>')
-      # profile
-      expect(page).to have_css('.profile-page')
-      expect(page).to have_css('.profile-subtitle', text: 'engineer')
-      expect(page).to have_text('Trenton')
-      expect(page).to have_text('English')
-    end
+  before do
+    FactoryBot.create(:ada)
+    FactoryBot.create(:published_profile, main_topic_en: 'climate', main_topic_de: 'Klima')
+    FactoryBot.create(:cat_science)
+    @lang_links_map = {
+      'en' => %w[Categories Tags Profiles Featured Profiles],
+      'de' => %w[Kategorien Tags Profile Featured Profiles]
+    }
+    page.driver.browser.set_cookie("cookie_consent=true")
   end
 
-  context 'logged in' do
-    context 'as an unprivileged user' do
-      let(:user) { FactoryBot.create(:profile) }
+  %w[en de].each do |language|
+    context "in language: #{language}" do
+      context 'normal visitor' do
+        before { visit "#{language}" }
 
-      before do
-        sign_in user
+        it 'startpage has header' do
+          expect(page).to have_css('#header__logo')
+          expect(page).to have_link(I18n.t('layouts.application.signup'))
+          expect(page).to have_link(I18n.t('layouts.application.login'))
+          expect(page).to have_link('DE')
+          expect(page).to have_link('EN')
+          expect(page).to have_no_link('Admin')
+        end
+
+        it 'startpage has content' do
+          expect(page).to have_css('#startpage__start-teaser')
+          expect(page).to have_css('#startpage__teaser-bg-01')
+          expect(page).to have_css('#startpage__teaser-bg-02')
+          if language == "en"
+            expect(page).to have_css('.profile-box', text: 'math')
+            expect(page).to have_css('.profile-box', text: 'climate')
+          else
+            expect(page).to have_css('.profile-box', text: 'Mathematik')
+            expect(page).to have_css('.profile-box', text: 'Klima')
+          end
+          expect(page).to have_css('.startpage-categories__list-links', count: 1)
+          expect(page).to have_link('Science')
+        end
+
+        it 'startpage has footer' do
+          expect(page).to have_css('#main-page-footer')
+          expect(page).to have_link('Twitter')
+          expect(page).to have_link(I18n.t(:contact_link, scope: 'pages.home.footer'))
+          expect(page).to have_link(I18n.t(:about_title, scope: 'pages.home.footer'))
+        end
+
+        it 'viewing the contact page' do
+          click_link I18n.t(:contact_link, scope: 'pages.home.footer')
+          expect(page).to have_css('form label', text: I18n.t(:name, scope: 'contact.form'))
+          expect(page).to have_css('form label', text: I18n.t(:email, scope: 'contact.form'))
+          expect(page).to have_css('form label', text: I18n.t(:body, scope: 'contact.form'))
+          expect(page).to have_css('form label', text: I18n.t(:subject, scope: 'contact.form'))
+          expect(page).to have_button(I18n.t(:send, scope: 'contact.form'))
+        end
+
+        it 'viewing the speakerinnen overview page' do
+          click_link I18n.t(:speaker_index, scope: 'pages.home.speakers')
+          # header
+          expect(page).to have_css('#header__logo')
+          expect(page).to have_link(I18n.t('layouts.application.signup'))
+          # search
+          expect(page).to have_css('input.profile__search')
+          expect(page).to have_button(I18n.t(:search, scope: 'pages.home.search'))
+          # profile
+          expect(page).to have_content('2')
+          expect(page).to have_link('Ada Lovelace')
+          expect(page).to have_css('.profile-card', count: 2)
+          if language == "en"
+            expect(page).to have_css('.profile-subtitle', text: 'math')
+            expect(page).to have_text('English')
+          else
+            expect(page).to have_css('.profile-subtitle', text: 'Mathematik')
+            expect(page).to have_text('Englisch')
+          end
+          # tag_cloud
+          expect(page).to have_css('.topics-cloud')
+          # link t profile
+          expect(page).to have_link I18n.t(:to_profile, scope: 'profiles.show')
+        end
+
+        it 'viewing a single speakerin page' do
+          click_link I18n.t(:speaker_index, scope: 'pages.home.speakers')
+          click_link 'Ada Lovelace'
+          # header
+          expect(page).to have_css('#header__logo')
+          expect(page).to have_link(I18n.t('layouts.application.signup'))
+          # navi links
+          expect(page).to have_link I18n.t(:home, scope: 'profiles.edit')
+          # profile
+          expect(page).to have_css('.profile-page')
+          if language == "en"
+            expect(page).to have_css('.profile-subtitle', text: 'math')
+            expect(page).to have_text('London')
+            expect(page).to have_text('English')
+          else
+            expect(page).to have_css('.profile-subtitle', text: 'Mathematik')
+            expect(page).to have_text('London')
+            expect(page).to have_text('Englisch')
+          end
+          # contact
+          expect(page).to have_button I18n.t(:contact, scope: 'profiles.show')
+          expect(page).to_not have_link I18n.t(:edit, scope: 'profiles.show')
+        end
       end
 
-      it 'shows no admin link' do
-        visit root_path
+      describe 'registered user' do
+        let!(:user) { FactoryBot.create(:profile, email: 'ltest@exp.com', password: 'rightpassword', password_confirmation: 'rightpassword') }
+        
+        context 'after login' do
+          before { sign_in user }
 
-        expect(page).to_not have_link('Admin')
-      end
+          it 'should lead to the show view of the profile' do
+            expect(page).to have_content(user.fullname)
+            expect(page).to have_link I18n.t(:edit, scope: 'profiles.show')
+          end
 
-      it 'page has header' do
-        visit root_path
+          it 'page has header and no admin link' do
+            expect(page).to have_css('#header__logo')
+            expect(page).to have_link(I18n.t(:my_profile, scope: 'layouts.application'))
+            expect(page).to have_link(I18n.t('layouts.application.logout'))
+            expect(page).to have_link('DE')
+            expect(page).to_not have_link('Admin')
+          end
+        end
 
-        expect(page).to have_css('#header__logo')
-        expect(page).to have_link('My profile')
-        expect(page).to have_link('Log out')
-        expect(page).to have_link('DE')
+        context 'different login scenarios' do
+          before { visit new_profile_session_path }
+
+          it 'successful login' do
+            fill_in 'profile_email', with: 'ltest@exp.com'
+            fill_in 'profile_password', with: 'rightpassword'
+            click_button I18n.t(:signin, scope: 'devise.registrations')
+
+            expect(page).to have_css('.notice', text: I18n.t(:signed_in, scope: 'devise.sessions'))
+            expect(page).to have_text I18n.t('devise.sessions.signed_in')
+            expect(page).to have_link I18n.t('layouts.application.logout')
+          end
+
+          it 'wrong password' do
+            fill_in 'profile_email', with: 'ltest@exp.com'
+            fill_in 'profile_password', with: 'wrongpassword'
+            click_button I18n.t(:signin, scope: 'devise.registrations')
+
+            expect(page).to have_css('.alert', text: I18n.t(:invalid, scope: 'devise.failure'))
+          end
+
+          it 'empty password' do
+            fill_in 'profile_email', with: 'ltest@exp.com'
+            fill_in 'profile_password', with: ''
+            click_button I18n.t(:signin, scope: 'devise.registrations')
+
+            expect(page).to have_css('.alert', text: I18n.t(:invalid, scope: 'devise.failure'))
+          end
+
+          it 'non-existing email' do
+            fill_in 'profile_email', with: 'false@exp.com'
+            fill_in 'profile_password', with: 'rightpassword'
+            click_button I18n.t(:signin, scope: 'devise.registrations')
+
+            expect(page).to have_css('.alert', text: I18n.t(:invalid, scope: 'devise.failure'))
+          end
+
+          it 'empty email' do
+            fill_in 'profile_email', with: ''
+            fill_in 'profile_password', with: 'rightpassword'
+            click_button I18n.t(:signin, scope: 'devise.registrations')
+
+            expect(page).to have_css('.alert', text: I18n.t(:invalid, scope: 'devise.failure'))
+          end
+        end
       end
     end
 
-    context 'as an admin user' do
-      let(:admin) { FactoryBot.create(:admin) }
+  end # of language scope
 
-      before do
-        sign_in admin
-      end
-
-      it 'shows admin link' do
-        visit root_path
-
-        expect(page).to have_link('Admin')
-      end
-
-      it 'page has header' do
-        visit root_path
-
-        expect(page).to have_css('#header__logo')
-        expect(page).to have_link('My profile')
-        expect(page).to have_link('Log out')
-        expect(page).to have_link('DE')
-      end
-    end
-  end
-
-  describe 'logging in' do
-    context 'registered user' do
-      before do
-        FactoryBot.create(:profile, email: 'ltest@exp.com', password: 'rightpassword', password_confirmation: 'rightpassword')
-        page.driver.browser.set_cookie("cookie_consent=true")
-      end
-
-      it 'successful login' do
-        visit new_profile_session_path
-
-        fill_in 'profile_email', with: 'ltest@exp.com'
-        fill_in 'profile_password', with: 'rightpassword'
-
-        click_button 'Sign in'
-
-        expect(page).to have_css('.notice', text: 'Logged in successfully.')
-      end
-
-      it 'wrong password' do
-        visit new_profile_session_path
-
-        fill_in 'profile_email', with: 'ltest@exp.com'
-        fill_in 'profile_password', with: 'wrongpassword'
-
-        click_button 'Sign in'
-
-        expect(page).to have_css('.alert', text: 'Invalid email or password.')
-      end
-
-      it 'empty password' do
-        visit new_profile_session_path
-
-        fill_in 'profile_email', with: 'ltest@exp.com'
-        fill_in 'profile_password', with: ''
-
-        click_button 'Sign in'
-
-        expect(page).to have_css('.alert', text: 'Invalid email or password.')
-      end
-
-      it 'non-existing email' do
-        visit new_profile_session_path
-
-        fill_in 'profile_email', with: 'false@exp.com'
-        fill_in 'profile_password', with: 'rightpassword'
-
-        click_button 'Sign in'
-
-        expect(page).to have_css('.alert', text: 'Invalid email or password.')
-      end
-
-      it 'empty email' do
-        visit new_profile_session_path
-
-        fill_in 'profile_email', with: ''
-        fill_in 'profile_password', with: 'rightpassword'
-
-        click_button 'Sign in'
-
-        expect(page).to have_css('.alert', text: 'Invalid email or password.')
-      end
-    end
-  end
 end

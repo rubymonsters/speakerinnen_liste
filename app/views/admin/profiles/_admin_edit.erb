@@ -1,0 +1,27 @@
+<div class="my-3 py-3 border-vertical">
+  <%= t(:profile_status, scope: 'admin.dashboard.profiles') + t(:public, scope: 'admin.dashboard.profiles') + ' ' if @profile.published? %>
+  <% if @profile.published %>
+    <%= link_to t(:make_invisible, scope: 'admin.dashboard.profiles'), unpublish_admin_profile_path(@profile.id),
+    method: :post, class:'btn btn-sm btn-danger', title: 'Hier kannst Du das Profile wieder unsichtbar machen.' %>
+  <% else %>
+    <%= link_to t(:make_public, scope: 'admin.dashboard.profiles'), publish_admin_profile_path(@profile.id),
+    method: :post, class:'btn btn-sm btn-danger', title: 'Eine Bestätigungsmail wird verschickt.' %>
+  <% end %>
+  <%= link_to t(:edit, scope: 'medialinks'), admin_profile_medialinks_path(@profile), class:'btn btn-blue btn-sm', title: t(:edit, scope: 'medialinks') %>
+  <br>
+  <br>
+  <%= form_for @profile,{ url: admin_update_admin_profile_path(@profile.id), method: 'post' } do |f| %>
+    <%= hidden_field_tag 'page', page %>
+    <%= f.text_field 'admin_comment' %>
+    <%= f.submit t(:add_comment, scope: 'admin.dashboard.profiles'), class: 'btn btn-blue btn-sm' %>
+  <% end %>
+  <br>
+  <%= simple_form_for @profile, { url: admin_update_admin_profile_path(@profile.id), method: 'post', 
+      html: { class: 'mt-3' }}  do |f| %>
+    <div class="form-group">
+      <%= f.association :features, label: t(:feature_list, scope: 'admin.dashboard.profiles').html_safe, 
+          input_html: { value: @profile.features.map { |f| f.title }, class: "form-control" }, wrapper_html: { class: "my-3" } %>
+      <%= f.submit t(:assign_feature, scope: 'admin.dashboard.profiles'), class: 'btn btn-blue btn-sm' %>
+    </div>
+  <% end  %>
+</div>

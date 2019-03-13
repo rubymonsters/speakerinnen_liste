@@ -51,7 +51,7 @@ Rails.application.configure do
 
   # Use the lowest log level to ensure availability of diagnostic information
   # when problems arise.
-  config.log_level = :debug
+  config.log_level = :info # :debug
 
   # Prepend all log lines with the following tags.
   config.log_tags = [ :request_id ]
@@ -71,7 +71,7 @@ Rails.application.configure do
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
-  config.i18n.fallbacks = true
+  config.i18n.fallbacks = [I18n.default_locale]
 
   # Send deprecation notices to registered listeners.
   config.active_support.deprecation = :notify
@@ -96,11 +96,11 @@ Rails.application.configure do
 
   config.middleware.use ExceptionNotification::Rack,
     :email => {
-      :email_prefix => "[SPEAKERINNEN ERROR] ",
+      :email_prefix => "[SPEAKERINNEN ERROR PRODUCTION] ",
       :sender_address => %{"Team" <no-reply@speakerinnen.org>},
-      :exception_recipients => %w{team@speakerinnen.org}
+      :exception_recipients => %w{devops@speakerinnen.org}
   }
-  
+
   # search box --> heroku elasticsearch add-on
   Elasticsearch::Model.client = Elasticsearch::Client.new host: ENV['SEARCHBOX_URL']
 

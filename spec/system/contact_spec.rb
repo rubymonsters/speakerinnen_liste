@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 describe 'contact profile' do
-  let!(:ada) { FactoryBot.create(:published) }
+  let!(:ada) { FactoryBot.create(:ada) }
 
   context "cookie consent is NOT set" do
 

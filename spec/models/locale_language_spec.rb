@@ -16,9 +16,9 @@ describe LocaleLanguage, type: :model do
   let!(:cat_1) { FactoryBot.create(:cat_science, id: 1, tags: [tag_de, tag_en]) }
   let!(:cat_2) { FactoryBot.create(:cat_social, id: 2) }
 
-  let!(:ada) { FactoryBot.create(:published, topic_list: [tag_en, tag_both_languages]) }
-  let!(:marie) { FactoryBot.create(:published, topic_list: [tag_de, tag_no_language]) }
-  let!(:pierre) { FactoryBot.create(:unpublished, topic_list: [tag_de, tag_with_unpublished_profile]) }
+  let!(:ada) { FactoryBot.create(:ada, topic_list: [tag_en, tag_both_languages]) }
+  let!(:marie) { FactoryBot.create(:marie, topic_list: [tag_de, tag_no_language]) }
+  let!(:susi) { FactoryBot.create(:unpublished_profile, topic_list: [tag_de, tag_with_unpublished_profile]) }
 
   it 'finds associated language of the tag' do
     expect(tag_de.locale_languages).to match_array([locale_language_de])

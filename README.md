@@ -18,6 +18,8 @@ The aim of the app is to provide a way for conference and event organizers to fi
 - PostgreSQL v9.5.5 - https://www.postgresql.org
 - Bundler - https://bundler.io
 
+- we use heroku to deploy, honeycomb to show metrics, elasticsearch for search 
+
 # Getting Started
 
 ## 1. Copy & Configuration
@@ -258,6 +260,18 @@ Our database schema looks like that:
 
 
 ![db](https://user-images.githubusercontent.com/1218914/43900439-368fa600-9be5-11e8-8f9c-d209784de1ef.jpg)
+
+# Metrics
+For seeing our metrics we use the free community edition of honeyycomb ( https://ui.honeycomb.io/login )
+More infos how to use this: https://docs.honeycomb.io/beeline/ruby/
+
+# Logging
+We are using papertrail.
+`heroku addons:open papertrail --app speakerinnen-liste`
+
+# Report Errors
+We are using sentry.
+`heroku addons:open sentry --app speakerinnen-liste`
 
 # Contributing
 

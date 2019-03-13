@@ -3,172 +3,85 @@
 require 'spec_helper'
 
 describe 'profile search' do
-  let!(:locale_language_de) { create(:locale_language_de) }
   let!(:locale_language_en) { create(:locale_language_en) }
-  let!(:tag_en) { create(:tag_physics, locale_languages: [locale_language_en]) }
+  let!(:physics) { create(:tag_physics, locale_languages: [locale_language_en]) }
+  let!(:algorithm) { create(:tag_algorithm, locale_languages: [locale_language_en]) }
+  let!(:ada) { create(:ada, topic_list: [algorithm]) }
+  let!(:marie) { create(:marie, topic_list: [physics]) }
+  let!(:profile2) { create(:published_profile, firstname: 'Christiane', lastname: 'König', main_topic_en: 'Blogs') }
+  let!(:profile3) { create(:published_profile, firstname: 'Maren ', lastname: 'Meier', main_topic_en: 'Big Data') }
 
-  let!(:ada) do
-    FactoryBot.create(:published, firstname: 'Ada', lastname: 'Lovelace',
-                                      twitter: 'alovelace', city: 'London',
-                                      country: 'GB',
-                                      iso_languages: ['en'],
-                                      topic_list: [ tag_en] ,
-                                      bio_de: 'Ada:Das ist meine deutsche Bio.',
-                                      bio_en: 'Ada:This is my english bio.',
-                                      main_topic_de: 'Das Leben', main_topic_en: 'Life',
-                                      email: 'info@example.com')
-  end
+  let!(:profile_not_matched) { create(:published_profile, firstname: 'Angela', main_topic_en: 'rassism' ) }
 
-  let!(:marie) do
-    FactoryBot.create(:published, firstname: 'Maria', lastname: 'Curie',
-                                      twitter: '', city: 'Paris',
-                                      country: 'FR',
-                                      iso_languages: %w[en fr],
-                                      topic_list: [tag_en],
-                                      bio_de: 'Maria: Das ist meine deutsche Bio.',
-                                      bio_en: 'Maria: This is my english bio.',
-                                      main_topic_de: 'x-ray', main_topic_en: 'Röntgen',
-                                      email: 'maria@example.com')
-  end
-  let!(:profile2) { create(:published, firstname: 'Christiane', lastname: 'König', city: 'Heidelberg') }
-  let!(:profile3) { create(:published, firstname: 'Maren ', lastname: 'Meier') }
+  describe 'public search', elasticsearch: true do
+    before { visit root_path }
 
-  let!(:profile_not_matched) { create(:published, firstname: 'Angela', city: 'New York', twitter: '@adavis') }
-  let!(:category) { create(:cat_science) }
+    it 'displays profiles that are a partial match' do
+      Profile.__elasticsearch__.refresh_index!
 
-  describe 'tag filter', js: true do
-    before do
-      tag = ActsAsTaggableOn::Tag.first
-      tag.categories << category
-    end
-
-    skip'is skiped because I need to figure out how the new tagfilter can be tested, finds profiles with the selected tag' do
-      visit root_path
-      save_and_open_page  
-      click_button "physicist"
-      click_button "Filter"
-
-      expect(page).to have_content('Maria')
-    end
-
-    skip 'finds profiles with the selected tags' do
-      visit root_path
-      click_button "physicist"
-      click_button "computer"
-      click_button "Filter"
-
-      expect(page).to have_content('Maria')
+      fill_in 'search', with: 'ada lovelace'
+      click_button(I18n.t(:search, scope: 'pages.home.search'))
       expect(page).to have_content('Ada')
-      expect(page).to_not have_content('Angela')
     end
 
+    it 'displays profiles that are a partial match with more than one search input' do
+      Profile.__elasticsearch__.refresh_index!
+
+      fill_in 'search', with: 'Marie'
+      click_button(I18n.t(:search, scope: 'pages.home.search'))
+      expect(page).to have_content('Curie')
+    end
+
+    it 'displays profiles that are a partial match with utf-8 characters' do
+      Profile.__elasticsearch__.refresh_index!
+
+      fill_in 'search', with: 'koenig'
+      click_button I18n.t(:search, scope: 'pages.home.search')
+      expect(page).to have_content('Christiane')
+    end
+
+    it 'displays profiles that have an empty space' do
+      Profile.__elasticsearch__.refresh_index!
+
+      fill_in 'search', with: 'maren meier'
+      click_button I18n.t(:search, scope: 'pages.home.search')
+      expect(page).to have_content('Meier')
+    end
+
+    it 'shows button search' do
+      expect(page).to have_selector('#search')
+    end
+
+    it 'shows autofill' do
+      expect(page).to have_selector('.typeahead')
+    end
   end
 
-  # describe 'public search', elasticsearch: true do
-    # it 'displays profiles that are a partial match' do
-    # visit root_path
-    # fill_in 'search', with: 'Ada Lovelace'
-    # click_button(I18n.t(:search, scope: 'pages.home.search'))
-    # expect(Profile.__elasticsearch__.search('Ada').results.first.fullname).to eq('Ada Lovelace')
-    # expect(page).to have_content('Ada')
-    # end
+  context 'on profile_search page' do
+    before { visit profiles_path }
 
-    #     it 'displays profiles that are a partial match with more than one search input' do
-    #       visit root_path
-    #       fill_in 'search', with: 'Ada Curie'
-    #       click_button I18n.t(:search, scope: 'pages.home.search')
-    #       #save_and_open_page
-    #       expect(page).to have_content('Ada')
-    #       expect(page).to have_content('Curie')
-    #     end
+    it 'shows button search' do
+      expect(page).to have_selector('#search')
+    end
 
-    #     it 'displays profiles that are a partial match wit UTF-8 characters' do
-    #       visit root_path
-    #       fill_in 'search', with: 'Koenig'
-    #       click_button I18n.t(:search, scope: 'pages.home.search')
-    #       expect(page).to have_content('Christiane')
-    #     end
+    it 'shows autofill' do
+      expect(page).to have_selector('.typeahead')
+    end
+  end
 
-    #     it 'displays profiles that have an empty space' do
-    #       visit root_path
-    #       fill_in 'search_quick', with: 'Maren Meier'
-    #       click_button I18n.t(:search, scope: 'pages.home.search')
-    #       expect(page).to have_content('Meier')
-    #     end
-  # end
+  describe 'search in admin area' do
+    before do
+      sign_in admin
+    end
+    let(:admin) { FactoryBot.create(:admin) }
 
-  # describe 'search in admin area' do
-  #   before do
-  #     sign_in admin
-  #   end
-  #   let(:admin) { FactoryBot.create(:admin) }
+    it 'finds the correct profile' do
+      Profile.__elasticsearch__.refresh_index!
 
-  #   it 'finds the correct profile' do
-  #     visit admin_profiles_path
-  #     fill_in 'admin_search', with: 'Ada Lovelace'
-  #     click_button I18n.t(:search, scope: 'pages.home.search')
-  #     expect(page).to have_content('Ada')
-  #   end
-  # end
-
-  #   describe 'detailed search' do
-
-  #     before do
-  #       visit profiles_path
-  #     end
-
-  #     it 'displays profiles partial match for city' do
-  #       within '#detailed-search' do
-  #         fill_in I18n.t(:city, scope: 'profiles.index'), with: 'Lon'
-  #         click_button I18n.t(:search, scope: 'pages.home.search')
-  #       end
-  #       expect(page).to have_content('Ada')
-  #     end
-
-  #     it 'displays profiles that match of the selected country' do
-  #       within '#detailed-search' do
-  #         select 'United Kingdom', :from => 'Country', :match => :first
-  #         click_button I18n.t(:search, scope: 'pages.home.search')
-  #       end
-  #       expect(page).to have_content('Ada')
-  #     end
-
-  #     it 'displays profiles that match any of the selected languages' do
-  #       within '#detailed-search' do
-  #         select 'Spanish', :from => 'Language'
-  #         #select I18n.t(:languages, scope: 'profiles.index'), match: 'Spanish'
-  #         click_button I18n.t(:search, scope: 'pages.home.search')
-  #       end
-  #       expect(page).to have_content('Ada')
-  #     end
-
-  #     it 'displays profiles partial match for name' do
-  #       within '#detailed-search' do
-  #         fill_in I18n.t(:name, scope: 'profiles.index'), with: 'Love'
-  #         click_button I18n.t(:search, scope: 'pages.home.search')
-  #       end
-  #       expect(page).to have_content('Ada')
-  #     end
-
-  #     it 'displays profiles partial match for twitter' do
-  #       within '#detailed-search' do
-  #         fill_in 'Twitter', with: 'Adal'
-  #         click_button I18n.t(:search, scope: 'pages.home.search')
-  #       end
-  #       expect(page).to have_content('Ada')
-  #     end
-
-  #     it 'displays profiles partial match for topic' do
-  #       skip "TODO: Does not work because it uses javascript now :("
-  #       profile.topic_list.add('Algorithm')
-  #       profile.save!
-
-  #       visit profiles_path
-  #       within '#detailed-search' do
-  #         fill_in "profile_topic_list", with: 'Algo'
-  #         click_button I18n.t(:search, scope: 'pages.home.search')
-  #       end
-  #       expect(page).to have_content('Ada')
-  #     end
-  #   end
+      visit admin_profiles_path
+      fill_in 'search', with: 'ada lovelace'
+      click_button I18n.t(:search, scope: 'pages.home.search')
+      expect(page).to have_content('Lovelace')
+    end
+  end
 end

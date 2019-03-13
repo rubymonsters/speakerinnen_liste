@@ -4,8 +4,8 @@ describe Admin::TagsController, type: :controller do
   include AuthHelper
 
   let(:admin) { FactoryBot.create(:admin) }
-  let!(:ada) { FactoryBot.create(:published, topic_list: %w[algebra algorithm computer]) }
-  let!(:marie) { FactoryBot.create(:published, topic_list: ['radioactive', 'x-ray']) }
+  let!(:ada) { FactoryBot.create(:ada, topic_list: %w[algebra algorithm computer]) }
+  let!(:marie) { FactoryBot.create(:marie, topic_list: ['radioactive', 'x-ray']) }
 
   before(:each) do
     sign_in admin
@@ -79,7 +79,7 @@ describe Admin::TagsController, type: :controller do
         category.save!
         ada_tag = ActsAsTaggableOn::Tag.find_by(name: ada.topic_list[0])
         ada_tag.categories << category
-        get :index, params: { q: 'alg', uncategorized: true }
+        get :index, params: { q: 'alg', category_id: 'uncategorized' }
       end
 
       specify { expect(response).to render_template(:index) }
@@ -99,7 +99,7 @@ describe Admin::TagsController, type: :controller do
         category.save!
         tag = ActsAsTaggableOn::Tag.find_by(name: ada.topic_list[0])
         tag.categories << category
-        get :index, params: { uncategorized: true }
+        get :index, params: { category_id: 'uncategorized' }
       end
 
       specify { expect(response).to render_template(:index) }
@@ -114,6 +114,46 @@ describe Admin::TagsController, type: :controller do
 
       it 'does not categorized topics' do
         expect(assigns(:tags)).to_not eq([ActsAsTaggableOn::Tag.find_by(name: ada.topic_list[0])])
+      end
+    end
+
+    context 'searches only for categorized topics' do
+      before(:each) do
+        category = Category.new(name: 'Science')
+        category.save!
+        ada_tag = ActsAsTaggableOn::Tag.find_by(name: ada.topic_list[0])
+        ada_tag.categories << category
+        get :index, params: { q: 'alg', category_id: 'categorized' }
+      end
+
+      specify { expect(response).to render_template(:index) }
+
+      it 'does not find the uncategorized topic' do
+        expect(assigns(:tags)).to_not eq([ActsAsTaggableOn::Tag.find_by(name: 'algorithm')])
+      end
+
+      it 'finds the categorized topics' do
+        expect(assigns(:tags)).to eq([ActsAsTaggableOn::Tag.find_by(name: 'algebra')])
+      end
+    end
+
+    context 'select categorized' do
+      before(:each) do
+        category = Category.new(name: 'Science')
+        category.save!
+        tag1 = ActsAsTaggableOn::Tag.find_by(name: ada.topic_list[0])
+        tag2 = ActsAsTaggableOn::Tag.find_by(name: marie.topic_list[0])
+        tag1.categories << category
+        tag2.categories << category
+        get :index, params: { category_id: 'categorized' }
+      end
+
+      specify { expect(response).to render_template(:index) }
+      it 'finds only categorized topics' do
+        expect(assigns(:tags)).to eq([
+                                       ActsAsTaggableOn::Tag.find_by(name: 'algebra'),
+                                       ActsAsTaggableOn::Tag.find_by(name: 'radioactive'),
+                                     ])
       end
     end
   end
@@ -137,7 +177,7 @@ describe Admin::TagsController, type: :controller do
     context 'update a tag with a unique name' do
       it 'redirects to index page after submit' do
         put :update, params: { tag: { name: tag.name, languages: [], categories: [] }, id: tag.id }
-        expect(response).to redirect_to("/#{I18n.locale}/admin/tags/index#top-anchor")
+        expect(response).to redirect_to("/#{I18n.locale}/admin/tags/index#tag_#{tag.id}")
       end
 
       context 'tag name' do
@@ -202,7 +242,7 @@ describe Admin::TagsController, type: :controller do
     context 'update a tag when tag name already exist' do
       it 'redirects to index page when after submit' do
         put :update, params: { tag: { name: tag.name, languages: [], categories: [] }, id: tag.id }
-        expect(response).to redirect_to("/#{I18n.locale}/admin/tags/index#top-anchor")
+        expect(response).to redirect_to("/#{I18n.locale}/admin/tags/index#tag_#{tag.id}")
       end
 
       context 'tag name' do
@@ -298,7 +338,7 @@ describe Admin::TagsController, type: :controller do
         put :update, params: { id: ada_tag.id, tag: { name: 'mathematic', languages: ['en'], categories: [category.id] } }
       end
 
-      specify { expect(response).to redirect_to("/#{I18n.locale}/admin/tags/index?category_id=#{category.id}#top-anchor") }
+      specify { expect(response).to redirect_to("/#{I18n.locale}/admin/tags/index?category_id=#{category.id}#tag_#{ada_tag.id}") }
     end
 
     context 'after deleting a tag' do
