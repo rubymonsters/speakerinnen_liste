@@ -127,26 +127,21 @@ h1, h4 {
 }
 
 /* diverses */
-.notice {
-  background: $blue;
+.alert {
   color: $white;
-  font-family: $sans-serif;
   padding: $base-spacing-unit;
   text-align: center;
   position: fixed;
-  z-index: 1030;
+  z-index: 5;
   width: 100%;
 }
 
-.alert {
+.alert-info {
+  background: $blue;
+}
+
+.alert-warning {
   background: $red;
-  color: $white;
-  font-family: $sans-serif;
-  padding: $base-spacing-unit;
-  text-align: center;
-  position: fixed;
-  z-index: 1030;
-  width: 100%;
 }
 
 .border-vertical {
