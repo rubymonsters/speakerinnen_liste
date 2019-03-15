@@ -16,6 +16,6 @@ class Category < ApplicationRecord
   end
 
   def short_name
-    self.name.split.first.downcase
+    self.name_en.split.first.downcase
   end
 end
