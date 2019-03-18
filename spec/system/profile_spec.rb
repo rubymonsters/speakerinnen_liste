@@ -32,7 +32,7 @@ describe 'profile navigation' do
       expect(page).to have_content('London')
       expect(page).to have_content('United Kingdom')
       expect(page).to have_content('She published the first algorithm for a machine.')
-      expect(page).to have_content('math') 
+      expect(page).to have_content('math')
       expect(page).to have_content('physics')
       expect(page).to have_content('writer')
       expect(page).to have_content('German')
@@ -139,7 +139,7 @@ describe 'profile navigation' do
     it 'directs after edit profile to the edit page' do
       expect(page).to have_content('name')
       expect(page).to have_content('twitteraccount')
-      expect(page).to have_content('My main topic in German')
+      expect(page).to have_content('My main focus in German')
     end
 
     it 'shows the correct tabs and the selected tab' do
@@ -147,7 +147,7 @@ describe 'profile navigation' do
     end
 
     it 'shows the correct main topic' do
-      expect(page).to have_css('.d-none', text: 'My main topic in German')
+      expect(page).to have_css('.d-none', text: 'My main focus in German')
     end
   end
 
@@ -162,7 +162,7 @@ describe 'profile navigation' do
     it 'directs after edit profile to the edit page' do
       expect(page).to have_content('Vorname')
       expect(page).to have_content('Twitteraccount')
-      expect(page).to have_content('Mein Hauptthema auf Deutsch:')
+      expect(page).to have_content('Mein Schwerpunkt auf Deutsch:')
     end
 
     it 'shows the correct tabs and the selected tab' do
@@ -170,7 +170,7 @@ describe 'profile navigation' do
     end
 
     it 'shows the correct main topic' do
-      expect(page).to have_css('.d-none', text: 'Mein Hauptthema auf Englisch')
+      expect(page).to have_css('.d-none', text: 'Mein Schwerpunkt auf Englisch')
     end
   end
 
