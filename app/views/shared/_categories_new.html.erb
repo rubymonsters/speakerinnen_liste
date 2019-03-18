@@ -1,0 +1,9 @@
+<% @categories.each do |category| %>
+    <div class="col-md-6">
+      <ul class="list-unstyled pl-4">
+          <li>
+            <%= category_link category, class:"startpage-categories__list-links" %>
+          </li>
+      </ul>
+    </div>
+<% end %>
