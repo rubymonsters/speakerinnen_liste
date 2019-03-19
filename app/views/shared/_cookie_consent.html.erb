@@ -1,5 +1,5 @@
 <% if cookies[:cookie_consent].blank? %>
-  <div class="cookie-consent-dialog notice clearfix">
+  <div class="cookie-consent-dialog alert-info alert clearfix">
     <p><%= t(:cookie_consent, scope: 'pages.home', link: privacy_path).html_safe %>
     <%= link_to(
       t(:allow_cookies, scope: 'pages.home'),
