@@ -162,7 +162,7 @@ describe 'profile navigation' do
     it 'directs after edit profile to the edit page' do
       expect(page).to have_content('Vorname')
       expect(page).to have_content('Twitteraccount')
-      expect(page).to have_content('Mein Schwerpunkt auf Deutsch:')
+      expect(page).to have_content('Mein Themenschwerpunkt auf Deutsch:')
     end
 
     it 'shows the correct tabs and the selected tab' do
@@ -170,7 +170,7 @@ describe 'profile navigation' do
     end
 
     it 'shows the correct main topic' do
-      expect(page).to have_css('.d-none', text: 'Mein Schwerpunkt auf Englisch')
+      expect(page).to have_css('.d-none', text: 'Mein Themenschwerpunkt auf Englisch')
     end
   end
 
