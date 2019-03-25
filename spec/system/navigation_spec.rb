@@ -38,7 +38,7 @@ RSpec.describe 'Navigation', type: :system do
             expect(page).to have_css('.profile-box', text: 'Mathematik')
             expect(page).to have_css('.profile-box', text: 'Klima')
           end
-          expect(page).to have_css('.startpage-categories__list-links', count: 1)
+          expect(page).to have_css('.startpage-categories__list-items', count: 1)
           expect(page).to have_link('Science')
         end
 
@@ -110,7 +110,7 @@ RSpec.describe 'Navigation', type: :system do
 
       describe 'registered user' do
         let!(:user) { FactoryBot.create(:profile, email: 'ltest@exp.com', password: 'rightpassword', password_confirmation: 'rightpassword') }
-        
+
         context 'after login' do
           before { sign_in user }
 

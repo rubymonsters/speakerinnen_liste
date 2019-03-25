@@ -1,9 +1,8 @@
-<% @categories.each do |category| %>
-    <div class="col-md-6">
-      <ul class="list-unstyled pl-4">
-          <li>
-            <%= category_link category, class:"startpage-categories__list-links" %>
-          </li>
-      </ul>
-    </div>
-<% end %>
+<ul>
+  <% @categories.each_with_index do |category, i| %>
+    <li class="startpage-categories__list-items category_item_<%=i%>" >
+      <%= category_link category %>
+      <%= category_profiles_count category.id %>
+    </li>
+  <% end %>
+</ul>

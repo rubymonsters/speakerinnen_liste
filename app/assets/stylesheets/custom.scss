@@ -90,18 +90,64 @@ h1, h4 {
   margin-right: 10px;
 }
 
-.startpage-categories__list-links {
-  color: $dark-grey;
-  font-size: 1.9em;
-  background-color: $link-bg-color;
+.startpage-categories__list-items {
+  font-size: 1.5em;
   padding: 3px 6px;
   line-height: 2em;
+  list-style: none;
+  width: auto;
 
   &:hover {
-    color: $link-color-hover;
-    background-color: $link-bg-color-hover;
     text-decoration: none;
   }
+}
+
+.startpage-categories__list-items a {
+  color: black;
+}
+
+.category_item_0 {
+  background-color: #68D2CA;
+}
+
+.category_item_1 {
+  background-color: #69B7CB;
+}
+
+.category_item_2 {
+  background-color: #8DB5E4;
+}
+
+.category_item_3 {
+  background-color: #A3A8F1;
+}
+
+.category_item_4 {
+  background-color: #C8ABCF;
+}
+
+.category_item_5 {
+  background-color: #CB50AE;
+}
+
+.category_item_6 {
+  background-color: #AC356F;
+}
+
+.category_item_7 {
+  background-color: #C0374A;
+}
+
+.category_item_8 {
+  background-color: #DA5735;
+}
+
+.category_item_9 {
+  background-color: #C35F0F;
+}
+
+.startpage-categories__count {
+  text-align: right;
 }
 
 /* footer */
