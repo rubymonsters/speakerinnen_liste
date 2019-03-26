@@ -19,7 +19,7 @@
   <!-- anchor for features -->
   <a id="features"></a>
 
-  <% if @features %>
+  <% if @features.load.any? %>
     <% @features.each do |feature| %>
       <div class="container">
         <h1 class="box__bg"><%= feature.title %></h1>
