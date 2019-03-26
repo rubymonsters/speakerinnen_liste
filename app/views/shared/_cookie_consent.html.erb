@@ -1,11 +1,19 @@
 <% if cookies[:cookie_consent].blank? %>
   <div class="cookie-consent-dialog alert-info alert clearfix">
-    <p><%= t(:cookie_consent, scope: 'pages.home', link: privacy_path).html_safe %>
+    <a href="#hide1" class="hide" id="hide1">++++</a>
+    <a href="#show1" class="show" id="show1">-----</a>
+    <div class="cookie_consent_summary"> 
+      <%= t(:cookie_consent_summary, scope: 'pages.home', link: privacy_path).html_safe %>
+    </div>
+    <div class="cookie_consent_detail">
+      <p>
+        <%= t(:cookie_consent_detail, scope: 'pages.home', link: privacy_path).html_safe %>
+      </p>
+    </div>
     <%= link_to(
       t(:allow_cookies, scope: 'pages.home'),
       url_for(params.permit!.merge(allow_cookies: true)),
       class: 'btn btn-light cookie-consent'
     ) %>
-    </p>
   </div>
 <% end %>
