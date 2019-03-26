@@ -1,4 +1,4 @@
-<% if profiles.any? %>
+<% if profiles.load.any? %>
   <h1 class="text-center py-5">
     <%= t(:success, scope: 'search' ) + t(:result, scope: 'search', count: profiles.total_count).html_safe %>
   </h1>
@@ -7,17 +7,17 @@
   <% languages_to_filter = aggregations_to_filter?(aggs_languages) %>
   <% cities_to_filter = aggregations_to_filter?(aggs_cities) %>
   <% countries_to_filter = aggregations_to_filter?(aggs_countries) %>
+
   <% if (profiles.size > 1 && (languages_to_filter || cities_to_filter || countries_to_filter)) || result_from_filter? %>
     <%= t(:filter, scope: 'search') %>
 
     <div class="row">
 
-    <%# countries filter %>
       <%# countries filter %>
       <% if countries_to_filter %>
-          <div class="col-sm-12 col-md-4">
+        <div class="col-sm-12 col-md-4">
 
-         <ul id="facet_countries" class="search-aggregation">
+          <ul id="facet_countries" class="search-aggregation">
             <%= t(:countries_agg, scope: 'search' ).html_safe%>
             <% aggs_countries[0..9].each do |term| %>
               <li class='pl-1 <%= 'selected' if params[:filter_countries] == term['key'] %>'>
