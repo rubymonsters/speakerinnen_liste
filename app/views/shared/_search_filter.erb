@@ -1,4 +1,4 @@
-<% if @profiles.any? %>
+<% if profiles.any? %>
   <h1 class="text-center py-5">
     <%= t(:success, scope: 'search' ) + t(:result, scope: 'search', count: profiles.total_count).html_safe %>
   </h1>

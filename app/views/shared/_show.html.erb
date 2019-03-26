@@ -159,7 +159,7 @@
   </div>
 <% end %>
 
-<% if @profile.medialinks.any? %>
+<% if @medialinks.load.any? %>
   <div class="row mb-3">
     <div class="col p-3 bg--white">
       <h5><%= t(:media, scope: 'profiles.show') %></h5>

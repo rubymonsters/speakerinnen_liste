@@ -27,7 +27,7 @@ class ProfilesController < ApplicationController
       @aggs_countries = @aggs[:country][:buckets]
     else
       @profiles = profiles_for_index
-      @profiles_count = Profile.is_published.count
+      @profiles_count = Profile.is_published.size
     end
     @tags_most_used_200 = if params[:all_lang]
                             ActsAsTaggableOn::Tag.with_published_profile.most_used(200)
