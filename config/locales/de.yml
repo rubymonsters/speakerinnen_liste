@@ -98,8 +98,7 @@ de:
       contact_modal: "Du musst der <b>Verwendung von Cookies zustimmen</b>, bevor Du das Kontaktformular benutzen kannst.<br>
       Mehr Informationen in unserer <a href='%{link}' class='link'>Datenschutzerklärung</a>.<br>"
       cookie_consent_summary: "Um unsere Seite nutzer*innenfreundlich zu gestalten und weiter
-      verbessern zu können, speichern wir einzelne Informationen daüber, wie
-      sie genutzt wird." 
+      verbessern zu können, speichern wir einzelne Informationen darüber, wie sie genutzt wird." 
       cookie_consent_detail: "Das geschieht, indem wir einfache Textdateien, auch
       Cookies genannt, durch das Aufrufen der Seite auf deinem Computer
       ablegen, wo sie dann gespeichert werden.
