@@ -90,12 +90,17 @@ h1, h4 {
   margin-right: 10px;
 }
 
+//categories
+.startpage-categories__list {
+  width: 100%;
+  padding: 0px;
+  padding-bottom: 10px;
+}
+
 .startpage-categories__list-items {
-  font-size: 1.5em;
-  padding: 3px 6px;
+  font-size: 1.9em;
+  padding-left: 40px;
   line-height: 2em;
-  list-style: none;
-  width: auto;
 
   &:hover {
     text-decoration: none;
@@ -104,6 +109,13 @@ h1, h4 {
 
 .startpage-categories__list-items a {
   color: black;
+}
+
+.startpage-categories__count {
+  font-size: 1.9em;
+  padding-right: 36px;
+  line-height: 2em;
+  text-align: right;
 }
 
 .category_item_0 {
@@ -144,10 +156,6 @@ h1, h4 {
 
 .category_item_9 {
   background-color: #C35F0F;
-}
-
-.startpage-categories__count {
-  text-align: right;
 }
 
 /* footer */
@@ -382,7 +390,6 @@ ul#medialinks__list {
 }
 
 // topics
-
 
 .topics-cloud a, .topics-profile a {
   background-color: #fff;
