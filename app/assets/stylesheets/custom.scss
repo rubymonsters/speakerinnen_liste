@@ -115,6 +115,7 @@ h1, h4 {
 
 /* cookie consent dialog */
 .cookie-consent-dialog {
+  height:auto !important; 
   position: fixed;
   bottom: 0px;
   z-index: 1;
