@@ -35,7 +35,7 @@
       
       <div class="form-group">
         <%= f.label t(:profiles, scope: 'admin.dashboard.features').html_safe %>
-        <%= f.association :profiles, label_method: :lastname, value_method: :id, class: "form-control mb-3" %>
+        <%= f.select(:profile_ids, Profile.all.map{|p|[p.fullname, p.id]}, { include_blank: true }, :multiple => true, id: :select_profile, class: 'form-control select_profile') %>
       </div>
       
       <%= f.button :submit, t(:save, scope: 'general'), class:'btn btn-blue' %>
@@ -44,3 +44,9 @@
   </div>
 
 <% end %>
+
+<script>
+    $(document).ready(function() {
+      $('#select_profile').select2();
+    });
+</script>
