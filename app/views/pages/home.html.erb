@@ -19,7 +19,7 @@
   <!-- anchor for features -->
   <a id="features"></a>
 
-  <% if @features.any? %>
+  <% if @features.load.any? %>
     <% @features.each do |feature| %>
       <div class="container">
         <h1 class="box__bg"><%= feature.title %></h1>
@@ -45,7 +45,7 @@
         <%= link_to t(:speaker_index, scope: 'pages.home.speakers'), profiles_path %>
       </h4>
       <div class="row">
-        <%= render partial: "profiles/profile", collection: @profiles if @profiles.any? %>
+        <%= render partial: "profiles/profile", collection: @profiles if @profiles %>
       </div>
     </div>
   <% end %>
