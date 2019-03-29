@@ -21,9 +21,8 @@
     <div class="form-group">
       <%= f.label t(:feature_list, scope: 'admin.dashboard.profiles').html_safe %>
       <%= f.select(:feature_ids, Feature.all.map{|feature|[feature.title, feature.id]}, { include_blank: true }, :multiple => true, id: :select_feature, class: 'form-control select_feature') %>
-
-      <%= f.submit t(:assign_feature, scope: 'admin.dashboard.profiles'), class: 'btn btn-blue btn-sm' %>
     </div>
+    <%= f.submit t(:assign_feature, scope: 'admin.dashboard.profiles'), class: 'btn btn-blue btn-sm' %>
   <% end  %>
 </div>
 
