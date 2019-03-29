@@ -9,6 +9,7 @@ describe 'displaying tags' do
 
   let!(:tag_de) { create(:tag_chemie, locale_languages: [locale_language_de]) }
   let!(:tag_en) { create(:tag_physics, locale_languages: [locale_language_en]) }
+  let!(:tag_new) { create(:tag_fruehling, locale_languages: [locale_language_de]) }
   let!(:tag_with_unpublished_profile) { create(:tag, name: 'sports') }
 
   let!(:ada) do
@@ -19,11 +20,11 @@ describe 'displaying tags' do
   end
   let!(:pierre) { create(:unpublished_profile, topic_list: [tag_de, tag_with_unpublished_profile]) }
 
-  it 'shows tagging after profile edit' do
+  it 'shows tagging after select tag in profile edit' do
     sign_in ada
     visit edit_profile_path(ada.id, locale: 'de')
 
-    fill_in 'profile[topic_list]', with: 'fruehling'
+    first('.select_tags', minimum: 1).select('fruehling')    
     click_button 'Aktualisiere dein Profil'
 
     expect(page).to have_content('fruehling')
