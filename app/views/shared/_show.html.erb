@@ -87,12 +87,10 @@
         <p class="pb-1"></p>
     <% end %>
 
-    <% if @topics %>
-      <h5><%= t(:topics, scope: 'profiles.show') %></h5>
-      <p class="pb-2 topics-profile">
-        <%= raw @topics.sort.map { |topic| topic_link(topic) }.join(' ') %>
-      </p>
-    <% end %>
+    <h5><%= t(:topics, scope: 'profiles.show') %></h5>
+    <p class="pb-2 topics-profile">
+      <%= raw topics_for_profile(@profile).map { |topic| topic_link(topic) }.join(' ') %>
+    </p>
 
     <% if @profile.iso_languages.present? %>
       <h5><%= t(:languages, scope: 'profiles.show') %></h5>
