@@ -19,7 +19,7 @@ ActsAsTaggableOn::Tag.class_eval do
 
   scope :with_language, -> (lang_str) { ActsAsTaggableOn::Tag.joins(:locale_languages).where(:locale_languages => {:iso_code => lang_str }).distinct }
 
-  scope :without_language, -> { ActsAsTaggableOn::Tag.includes(:locale_languages).where(locale_languages: { id: nil }).references(:locale_languages) }
+  scope :without_language, -> { ActsAsTaggableOn::Tag.left_outer_joins(:locale_languages).where(locale_languages: { id: nil }) }
 
   scope :with_published_profile, -> { ActsAsTaggableOn::Tag.joins(:taggings).joins("INNER JOIN profiles ON taggings.taggable_id=profiles.id").where(:profiles => { :published => true}).distinct }
 
