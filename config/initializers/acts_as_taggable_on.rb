@@ -12,9 +12,9 @@ ActsAsTaggableOn::Tag.class_eval do
 
   # make sure that the joined table entry gets destroyed after deleting the tag
   #accepts_nested_attributes_for :tag_languages, allow_destroy: true
-  scope :translated_in_current_language_and_not_translated, -> (lang_str) { ActsAsTaggableOn::Tag.includes(:locale_languages)
+  scope :translated_in_current_language_and_not_translated, -> (lang_str) { ActsAsTaggableOn::Tag.left_outer_joins(:locale_languages)
                                                                 .where(locale_languages: { id: nil })
-                                                                .or( ActsAsTaggableOn::Tag.includes(:locale_languages)
+                                                                .or( ActsAsTaggableOn::Tag.left_outer_joins(:locale_languages)
                                                                 .where(:locale_languages => {:iso_code => lang_str }) ) }
 
   scope :with_language, -> (lang_str) { ActsAsTaggableOn::Tag.joins(:locale_languages).where(:locale_languages => {:iso_code => lang_str }).distinct }
