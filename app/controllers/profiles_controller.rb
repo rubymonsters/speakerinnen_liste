@@ -177,7 +177,7 @@ class ProfilesController < ApplicationController
   def profiles_for_tag(tag_names)
     Profile.is_published
            .random
-           .includes(:translations)
+           .includes(:taggings, :translations)
            .joins(:topics)
            .where(
              tags: {
