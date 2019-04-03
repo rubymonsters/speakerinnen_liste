@@ -34,7 +34,7 @@ en:
         description: "Description"
         position: "Position"
         visibility: "Visibility"
-        profiles: "Assign profiles"
+        profiles: "Assign profiles (Click in the field to select one or more from all existing profiles):"
       profiles:
         profiles: "Profiles"
         created_at: "Created"
@@ -48,7 +48,7 @@ en:
         comment: "Comment"
         add_comment: "Add comment"
         assign_feature: "Save features"
-        feature_list: "Assign features"
+        feature_list: "Assign features (Click in the field to select one or more from all existing features):"
         profile_status: "The Profile is "
         name_of_profile: "The Name of the speaker is "
         search: "Search for name or topic"
