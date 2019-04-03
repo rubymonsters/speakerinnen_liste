@@ -22,7 +22,7 @@ module ProfilesHelper
     if profile.picture.present?
       link_to(image_tag(profile.picture.profile.url, alt: profile.fullname, class: 'photo--grey'), profile)
     elsif profile.image.attached?
-      link_to(image_tag(profile.image.variant(resize: '300x300').processed, class: 'photo--grey'), profile)
+      link_to(image_tag(profile.image_variant, class: 'photo--grey'), profile)
     else
       link_to(image_tag('avatar.jpg', alt: 'avatar', class: 'photo--grey'), profile)
     end
