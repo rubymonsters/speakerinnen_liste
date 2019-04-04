@@ -16,7 +16,6 @@
 //= require typeahead/typeahead.bundle.min
 //= require typeahead/typeahead.jquery.min
 //= require typeahead/bloodhound.min
-//= require tag-it/tag-it
 //= require popper
 //= require bootstrap-sprockets
 //= require_tree .

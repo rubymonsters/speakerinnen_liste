@@ -34,7 +34,7 @@ en:
         description: "Description"
         position: "Position"
         visibility: "Visibility"
-        profiles: "Choose profiles"
+        profiles: "Assign profiles"
       profiles:
         profiles: "Profiles"
         created_at: "Created"
@@ -47,8 +47,8 @@ en:
         confirmed: "confirmed"
         comment: "Comment"
         add_comment: "Add comment"
-        assign_feature: "Assign feature"
-        feature_list: "Assigned features"
+        assign_feature: "Save features"
+        feature_list: "Assign features"
         profile_status: "The Profile is "
         name_of_profile: "The Name of the speaker is "
         search: "Search for name or topic"
@@ -216,7 +216,7 @@ en:
       bio: "My bio in %{language}: <i class='fa fa-info-circle' aria-hidden='true'></i>
         <br><small class='form-text text-muted'>You can use simple HTML tags to format the text. For example: <i>< i > italic < /i ></i> or <b>< b > bold < /b ></b>.</small>"
       bio_tooltip: "Here you can add a short or long bio of yourself. Please also add specific expertise and topics you feel comfortable speaking about. This will help organizers of events to understand whether you might be the person they're looking for."
-      topic_list: "My topics as tags, please don't choose more than 10 tags: <i class='fa fa-info-circle' aria-hidden='true'></i>"
+      topic_list: "My topics as tags, please don't choose more than 10 tags:"
       topic_list_tooltip: "Please have a look first, if your topic already exists."
       main_topic_title: "My main focus"
       main_topic: "My main focus in %{language}:

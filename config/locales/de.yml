@@ -32,7 +32,7 @@ de:
       features:
         title: "Titel"
         description: "Beschreibung"
-        profiles: "Profile auswählen"
+        profiles: "Profile zuordnen"
         position: "Position"
         visibility: "Veröffentlicht"
         public: "public"
@@ -49,8 +49,8 @@ de:
         confirmed: "bestätigte"
         comment: "Kommentar"
         add_comment: "Kom. speichern"
-        assign_feature: "Feature zuordnen"
-        feature_list: "Zugeordnete Features"
+        assign_feature: "Features speichern"
+        feature_list: "Features zuordnen"
         profile_status: "Das Profil ist "
         name_of_profile: "Der Name der Speakerin ist "
         search: "Suche nach Namen oder Topic"
@@ -223,7 +223,7 @@ de:
       bio: "Meine Biografie auf %{language}: <i class='fa fa-info-circle' aria-hidden='true'></i>
       <br><small class='form-text text-muted'>Du kannst einfache HTML Tags nutzen, um den Text zu formatieren. Zum Beispiel: <i>< i >italic< /i ></i> oder <b>< b > fett < /b ></b>.</small>"
       bio_tooltip: "Hier ist Platz für eine kurze oder auch längere Bio. Außerdem sollten hier Fachkenntnisse und mögliche Vortragsthemen genauer beschrieben werden. Das hilft Veranstalterinnen und Veranstaltern herauszufinden, ob Ihr die Richtigen für ihr Event sein könntet."
-      topic_list: "Meine Themen als Tags, wähle bitte nicht mehr als 10 Tags: <i class='fa fa-info-circle'></i>"
+      topic_list: "Meine Themen als Tags, wähle bitte nicht mehr als 10 Tags:"
       topic_list_tooltip: "Bitte schaue zuerst, ob Dein Thema schon vorhanden ist."
       main_topic_title: "Themenschwerpunkt:"
       main_topic: "Mein Themenschwerpunkt auf %{language}:
