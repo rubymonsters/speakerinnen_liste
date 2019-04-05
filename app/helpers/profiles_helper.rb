@@ -26,10 +26,7 @@ module ProfilesHelper
     end
   end
 
-  def topics(profile)
-    topics = []
-    topics << profile.topics.with_language(I18n.locale)
-    topics << profile.topics.without_language
-    topics.flatten.uniq
+  def topics_for_profile(profile)
+    profile.topics.translated_in_current_language_and_not_translated(I18n.locale)
   end
 end
