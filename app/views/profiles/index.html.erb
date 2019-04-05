@@ -2,8 +2,7 @@
   <% if params[:category_id] %> <%# when in categories scope %>
 
     <h5 class="text-center py-5">
-      <%= t(
-        :category,
+      <%= t(:category,
         scope: 'profiles',
         category_name: @category.name,
         profiles_count: @profiles.total_count,
@@ -15,8 +14,12 @@
   <% elsif params[:topic] %> <%# when in topic scope %>
 
     <h5 class="text-center py-5">
-      <%= t(:profiles_topics, scope: 'search', profiles_count: @profiles.total_count, topics_name: params[:topic]).html_safe %>
+      <%= t(:profiles_topics, 
+            scope: 'search', 
+            profiles_count: @profiles.total_count, 
+            topics_name: params[:topic]).html_safe %>
     </h5>
+    <%= render partial: 'shared/search_form' %>
 
   <% elsif params[:search] %> <%# if in search: %>
 
@@ -33,10 +36,11 @@
 
     <h1 class="display-4 text-center pt-5"><%= t(:speaker_headline, scope: 'pages.home.speakers') %></h1>
     <h4 class="text-center pb-5 pt-3"><%= t(:all_speakerinnen, scope: 'profiles.index', profiles_count: @profiles_count).html_safe %></h4>
-    <%= render partial: 'shared/search_form' %>
     <%= t(:search_categories_html, scope: 'search', root_path: root_path) %>
+    <%= render partial: 'shared/search_form' %>
 
   <% end %>
+
 
   <%= paginate @profiles %>
 
@@ -46,8 +50,7 @@
 
   <h5 class="text-center"><%= t(:more_options, scope: 'search').html_safe %></h5>
   <p class="text-center mb-5">
-    <%#TODO: doesn't work anymore%>
-    <%= top_link(params[:search]) %><br>
+    <%= params[:search] ? top_link_with_params(params[:search]) : top_link  %><br>
     <%= link_to(t(:all_profiles, scope: 'search'), profiles_path).html_safe %><br>
     <%= link_to(t(:all_categories, scope: 'pages.home'), root_path + "#categories_anchor" )%>
   </p>
