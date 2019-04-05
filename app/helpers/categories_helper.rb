@@ -9,10 +9,8 @@ module CategoriesHelper
     tags_in_category_published = ActsAsTaggableOn::Tag
                                   .belongs_to_category(category_id)
                                   .with_published_profile
-                                  .with_language(I18n.locale)
     tag_names = tags_in_category_published.pluck(:name)
     profiles = Profile.is_published
-           .random
            .includes(:translations)
            .joins(:topics)
            .where(
@@ -20,6 +18,13 @@ module CategoriesHelper
                name: tag_names
              }
            )
-    profiles_count = profiles.count
+    profiles.count
+  end
+
+  def column_count(category_id)
+      profiles_per_category = category_profiles_count(category_id)
+      total_profiles = Profile.count/5 #delete devision by 5 
+      ratio = (profiles_per_category.to_f/total_profiles)
+      (ratio*740).ceil
   end
 end

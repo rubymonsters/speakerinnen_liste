@@ -97,7 +97,7 @@ h1, h4 {
   padding-bottom: 10px;
 }
 
-.startpage-categories__list-items {
+.startpage-categories__items {
   font-size: 1.9em;
   padding-left: 40px;
   line-height: 2em;
@@ -107,15 +107,18 @@ h1, h4 {
   }
 }
 
-.startpage-categories__list-items a {
+.startpage-categories__items a {
   color: black;
 }
 
 .startpage-categories__count {
+  color: black;
   font-size: 1.9em;
   padding-right: 36px;
   line-height: 2em;
   text-align: right;
+  float: right;
+  opacity: 0.5;
 }
 
 .category_item_0 {

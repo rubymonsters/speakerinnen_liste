@@ -1,8 +1,12 @@
 <% @categories.each_with_index do |category, i| %>
-  <div class="startpage-categories__list-items col-6 category_item_<%=i%>" >
+<%
+  column_1 = 400 + column_count(category.id)
+  column_2 = 1140 - column_1
+%>
+  <span class="startpage-categories__items category_item_<%=i%>" style="width:<%=column_1%>px !important">
     <%= category_link category %>
-  </div>
-  <div class="startpage-categories__count col-6 category_item_<%=i%>" >  
+  </span>
+  <span class="startpage-categories__count category_item_<%=i%>" style="width:<%=column_2%>px !important">
     <%= category_profiles_count category.id %>
-  </div>
+  </span>
 <% end %>
