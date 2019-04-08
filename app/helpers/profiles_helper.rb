@@ -10,10 +10,6 @@ module ProfilesHelper
     end
   end
 
-  def top_link(params)
-    link_to t(:adapt_search, scope: 'search'), profiles_path + "?utf8=✓&utf8=✓&search=#{params}&button=/#top"
-  end
-
   def topic_link(topic, options = {})
     link_to topic, topic_path(topic: topic.to_s), options
   end
