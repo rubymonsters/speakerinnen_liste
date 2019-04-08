@@ -10,6 +10,8 @@
       ).html_safe %>
     </h5>
     <%= render partial: 'tag_cloud' %>
+    <%= t(:search_categories_html, scope: 'search', root_path: root_path) %><br><br>
+    <%= render partial: 'shared/search_form' %>
 
   <% elsif params[:topic] %> <%# when in topic scope %>
 
@@ -36,7 +38,7 @@
 
     <h1 class="display-4 text-center pt-5"><%= t(:speaker_headline, scope: 'pages.home.speakers') %></h1>
     <h4 class="text-center pb-5 pt-3"><%= t(:all_speakerinnen, scope: 'profiles.index', profiles_count: @profiles_count).html_safe %></h4>
-    <%= t(:search_categories_html, scope: 'search', root_path: root_path) %>
+    <%= t(:search_categories_html, scope: 'search', root_path: root_path) %><br><br>
     <%= render partial: 'shared/search_form' %>
 
   <% end %>
@@ -50,7 +52,7 @@
 
   <h5 class="text-center"><%= t(:more_options, scope: 'search').html_safe %></h5>
   <p class="text-center mb-5">
-    <%= params[:search] ? top_link_with_params(params[:search]) : top_link  %><br>
+    <a href="#top"><%= t(:adapt_search, scope: 'search')%></a> <br>
     <%= link_to(t(:all_profiles, scope: 'search'), profiles_path).html_safe %><br>
     <%= link_to(t(:all_categories, scope: 'pages.home'), root_path + "#categories_anchor" )%>
   </p>
