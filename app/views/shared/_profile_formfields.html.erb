@@ -50,10 +50,16 @@
 
 <div class="row mb-5">
   <div class="col-12 bg--white p-3">
-    <%= f.label t(:topic_list, scope: 'profiles.form').html_safe %>
-    <%= f.select(:topic_list, ActsAsTaggableOn::Tag.all.pluck(:name), { include_blank: true }, :multiple => true, id: :select_tags, class: 'form-control select_tags') %>
+    <%= f.input :topic_list, label: t(:topic_list, scope: 'profiles.form').html_safe,
+        label_html: { id: "topic_list", class: "", title: t(:topic_list_tooltip, scope: 'profiles.form').html_safe },
+        input_html: { value: @profile.topic_list.to_s, class: "form-control" }, wrapper_html: { class: "my-3" } %>
   </div>
 </div>
+<ul class="d-none" id='availableTags'>
+  <% ActsAsTaggableOn::Tag.distinct.pluck(:name).each do |tag_name| %>
+    <li><%= tag_name %></li>
+  <% end %>
+</ul>
 
 <ul class="nav nav-tabs">
   <li class="nav-item">
@@ -146,12 +152,4 @@ $('#show-en').click(function(){
     $('#show-de').removeClass('active');
   });
 
-</script>
-
-<script>
-    $(document).ready(function() {
-      $('#select_tags').select2({
-        tags: true
-      });
-    });
 </script>

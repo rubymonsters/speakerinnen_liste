@@ -88,3 +88,4 @@ group :test do
   gem 'poltergeist', '1.18.1'
   gem 'rails-controller-testing'
 end
+

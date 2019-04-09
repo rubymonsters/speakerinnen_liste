@@ -137,7 +137,7 @@ class ProfilesController < ApplicationController
       :remove_picture,
       :content,
       :name,
-      { topic_list: [] },
+      :topic_list,
       :medialinks,
       :slug,
       :admin_comment,

@@ -147,7 +147,7 @@ RSpec.describe 'Navigation', type: :system do
           expect(page).to have_css('#profile_website_de')
           expect(page).to have_css('#profile_website_2_de')
           expect(page).to have_css('#profile_website_3_de')
-          expect(page).to have_css('#select_tags')
+          expect(page).to have_css('div.profile_topic_list')
           expect(page).to have_css('form label', text: 'country')
           expect(page).to have_css('form label', text: 'picture')
           expect(page).to have_css('form label', text: 'My main focus in German')
