@@ -61,7 +61,7 @@ FactoryBot.define do
   end
 
   factory :feature do
-    title { 'New Event' }
+    title 'New Event'
   end
 
   factory :category do
@@ -97,10 +97,6 @@ FactoryBot.define do
 
     factory :tag_physics do
       name { 'physics' }
-    end
-    
-    factory :tag_fruehling do
-      name { 'fruehling' }
     end
 
     factory :tag_social_media do
