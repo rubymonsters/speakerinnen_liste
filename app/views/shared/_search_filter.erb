@@ -1,8 +1,4 @@
 <% if profiles.load.any? %>
-  <h1 class="text-center py-5">
-    <%= t(:success, scope: 'search' ) + t(:result, scope: 'search', count: profiles.total_count).html_safe %>
-  </h1>
-  <%= render partial: 'shared/search_form' %>
 
   <% languages_to_filter = aggregations_to_filter?(aggs_languages) %>
   <% cities_to_filter = aggregations_to_filter?(aggs_cities) %>
