@@ -92,15 +92,15 @@ h1, h4 {
 
 //categories
 .startpage-categories__list {
-  width: 100%;
+  // width: 100%;
   padding: 0px;
   padding-bottom: 10px;
 }
 
 .startpage-categories__items {
-  font-size: 1.9em;
-  padding-left: 40px;
-  line-height: 2em;
+  font-size: 2.5em;
+  padding: 20px;
+  z-index: 1;
 
   &:hover {
     text-decoration: none;
@@ -109,16 +109,32 @@ h1, h4 {
 
 .startpage-categories__items a {
   color: black;
+  float: left;
+  text-align: left;
 }
 
 .startpage-categories__count {
   color: black;
-  font-size: 1.9em;
-  padding-right: 36px;
-  line-height: 2em;
-  text-align: right;
-  float: right;
+  font-size: 2.5em;
+  padding-right: 20px;
   opacity: 0.5;
+  float: right;
+  text-align: right;
+}
+
+.startpage-categories__list .progress {
+  height: 70px;
+  max-width: 100%;
+  border-radius: 0;
+  position: relative;
+}
+
+.startpage-categories__number{
+  background-color: transparent;
+  float: right;
+  color: black;
+  position: absolute;
+  right: 20px;
 }
 
 .category_item_0 {

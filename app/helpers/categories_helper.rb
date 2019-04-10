@@ -21,10 +21,7 @@ module CategoriesHelper
     profiles.count
   end
 
-  def column_count(category_id)
-      profiles_per_category = category_profiles_count(category_id)
-      total_profiles = Profile.count/5 #delete devision by 5 
-      ratio = (profiles_per_category.to_f/total_profiles)
-      (ratio*740).ceil
+  def category_profiles_ratio(category_id)
+      category_profiles_count(category_id).to_f/Profile.count*100
   end
 end
