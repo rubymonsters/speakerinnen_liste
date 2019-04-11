@@ -1,0 +1,76 @@
+<div class="container bg--white pb-5">
+  <h1 class="box__bg">Filter via tags</h1>
+  <div class="row">
+    <div class="col-3">
+      <h5>Choose a category:</h5>
+      <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+        <% @categories.each_with_index do |category, index| %>
+          <a class="nav-link <%= "active show" if index == 0%>" id="v-pills-<%= category.short_name %>-tab" data-toggle="pill" href="#v-pills-<%= category.short_name %>" role="tab" aria-controls="v-pills-<%= category.short_name %>" aria-selected="false">
+            <i class="fa fa-circle pr-2 small"></i><%= category.name %>
+          </a>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="col-9">
+      <h5>Choose one or more tags:</h5>
+      <div class="tab-content mb-3" id="available-tags-box">
+        <% @categories.each_with_index do |category, index| %>
+          <div class="tab-pane fade <%= "active show" if index == 0%>" id="v-pills-<%= category.short_name %>" role="tabpanel" aria-labelledby="v-pills-<%= category.short_name %>-tab" >
+            <%= render partial: "shared/tag_box", locals: { :tags => instance_variable_get("@tags_#{category.short_name}"), :category => category } %>
+          </div>
+        <% end %>
+      </div>
+      <div id="selected-tags-box" class="border my-3">
+      </div>
+      <div class="form-group">
+        <%= form_tag(profiles_path, method: "get") do %>
+          <%= text_field_tag :tag_search, params[:tag_search], id: "hidden_tag_input", class: "form-control d-none"   %>
+          <%= submit_tag "Find A Speaker", class: "btn btn-primary", id: "search_in_topic" %>
+          <span class="btn btn-primary" id="clear">Clear All</span>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  $( "#available-tags-box .available-tag" ).click(function() {
+    $(this).clone().appendTo( "#selected-tags-box" ).append("<i class='pl-2 fa fa-times-circle'></i>").removeClass("available-tag").addClass("selected-tag");
+    $(this).addClass( "disabled no-click" );
+    var category = $(this).attr('class').split(' ')[0];
+    category = category.split('_');
+    category = category[1];
+    $("#v-pills-" + category + "-tab").addClass( "font-weight-bold");
+  });
+  $(document).on('click','.selected-tag',function() {
+    var category = $(this).attr('class').split(' ')[0];
+    $(this).remove();
+    var tag_name = $(this).attr('id');
+    $("#available-tags-box #" + tag_name).removeClass( "disabled no-click" );
+
+    if (!$(".selected-tag").hasClass(category)) {
+      category = category.split('_');
+      category = category[1];
+      $("#v-pills-" + category + "-tab").removeClass( "font-weight-bold");
+        }
+  });
+  $( "#search_in_topic" ).click(function() {
+    var all_tags = $('#selected-tags-box .selected-tag').map(function(){
+      return $(this).text();
+    }).get().join();
+    $('#hidden_tag_input').val(all_tags);
+  });
+  $( "#clear" ).click(function() {
+    $( "#selected-tags-box .selected-tag" ).remove();
+    $(".available-tag").removeClass( "disabled no-click" );
+  });
+  $(document).ready(function() {
+    <% if params[:tag_search] %>
+      <% params[:tag_search].split(",").each do |tag_name| %>
+        $("#<%= tag_name %>").clone().appendTo($( "#selected-tags-box" )).append($("<i class='pl-2 fa fa-times-circle'></i>")).removeClass("available-tag").addClass("selected-tag");
+      <% end %>
+    <% end %>
+  });
+</script>
+</div>
