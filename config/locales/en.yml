@@ -34,7 +34,7 @@ en:
         description: "Description"
         position: "Position"
         visibility: "Visibility"
-        profiles: "Choose profiles"
+        profiles: "Assign profiles"
       profiles:
         profiles: "Profiles"
         created_at: "Created"
@@ -47,8 +47,8 @@ en:
         confirmed: "confirmed"
         comment: "Comment"
         add_comment: "Add comment"
-        assign_feature: "Assign feature"
-        feature_list: "Assigned features"
+        assign_feature: "Save features"
+        feature_list: "Assign features"
         profile_status: "The Profile is "
         name_of_profile: "The Name of the speaker is "
         search: "Search for name or topic"
@@ -95,7 +95,9 @@ en:
        Find more information about data security in our <a href='%{link}' class='link'>privacy policy</a>.<br>"
       contact_modal: "You have to <b>agree to the use of cookies</b>. before using the contact form.<br>
        Find more information about data security in our <a href='%{link}' class='link'>privacy policy</a>.<br>"
-      cookie_consent: "In order to deliver a personalised, responsive service and to improve the site, we remember and store information about how you use it. This is done using simple text files called cookies which sit on your computer. These cookies are completely safe and secure and will never contain any sensitive information. Important: To use the full functionality of this site (e.g. login, registration and sending mail to the speakers) you have to agree to the use of cookies. For web statistics we use Matomoto which also uses cookies. These can be deactivated separately. Find more information about data security in our <a href='%{link}' class='link'>privacy policy</a>."
+      cookie_consent_summary: "In order to deliver a personalised, responsive service and to improve the site, 
+      we remember and store information about how you use it." 
+      cookie_consent_detail: "This is done using simple text files called cookies which sit on your computer. These cookies are completely safe and secure and will never contain any sensitive information. Important: To use the full functionality of this site (e.g. login, registration and sending mail to the speakers) you have to agree to the use of cookies. For web statistics we use Matomoto which also uses cookies. These can be deactivated separately. Find more information about data security in our <a href='%{link}' class='link'>privacy policy</a>."
       allow_cookies: "I agree"
       category_filter: "Our Categories"
       description_text: "We feel strongly about a balanced representation of men and women* on stage. We encourage women* to become more visible in their profession and field of expertise."
@@ -218,8 +220,8 @@ en:
       bio_tooltip: "Here you can add a short or long bio of yourself. Please also add specific expertise and topics you feel comfortable speaking about. This will help organizers of events to understand whether you might be the person they're looking for."
       topic_list: "My topics as tags, please don't choose more than 10 tags: <i class='fa fa-info-circle' aria-hidden='true'></i>"
       topic_list_tooltip: "Please have a look first, if your topic already exists."
-      main_topic_title: "My main topic"
-      main_topic: "My main topic in %{language}:
+      main_topic_title: "My main focus"
+      main_topic: "My main focus in %{language}:
         <br><small class='form-text text-muted'>Only 30 characters are shown.
         <br>Please choose one topic as your favorite topic and enter it again. It will be visible along with your name and picture at the speaker overview site.</small>"
       tag_list: "Existing topics"

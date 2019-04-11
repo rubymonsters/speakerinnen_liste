@@ -31,14 +31,13 @@ class ProfilesController < ApplicationController
       @profiles_tagged_count = @profiles.total_count
     else
       @profiles = profiles_for_index
-      @profiles_count = Profile.is_published.count
+      @profiles_count = Profile.is_published.size
     end
     @tags_most_used_200 = if params[:all_lang]
                             ActsAsTaggableOn::Tag.with_published_profile.most_used(200)
                           else
                             ActsAsTaggableOn::Tag.with_published_profile.with_language(I18n.locale).most_used(200)
                           end
-    @tags_all = ActsAsTaggableOn::Tag.all
   end
 
   def show
@@ -48,10 +47,6 @@ class ProfilesController < ApplicationController
     else
       redirect_to profiles_url, notice: I18n.t('flash.profiles.show_no_permission')
     end
-    @topics = []
-    @topics << @profile.topics.with_language(I18n.locale)
-    @topics << @profile.topics.without_language
-    @topics = @topics.flatten.uniq
   end
 
   # should reuse the devise view
@@ -186,7 +181,7 @@ class ProfilesController < ApplicationController
   def profiles_for_tag(tag_names)
     Profile.is_published
            .random
-           .includes(:translations)
+           .includes(:taggings, :translations)
            .joins(:topics)
            .where(
              tags: {
@@ -201,9 +196,9 @@ class ProfilesController < ApplicationController
     @categories = Category.sorted_categories
     @category = Category.find(category_id)
     @tags_in_category_published = ActsAsTaggableOn::Tag
-                                  .belongs_to_category(category_id)
                                   .with_published_profile
-                                  .with_language(I18n.locale)
+                                  .belongs_to_category(params[:category_id])
+                                  .translated_in_current_language_and_not_translated(I18n.locale)
     tag_names = @tags_in_category_published.pluck(:name)
     @tags_in_category_200 = @tags_in_category_published.most_used(200)
     if tags_search.present?

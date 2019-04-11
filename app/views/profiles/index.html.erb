@@ -8,12 +8,15 @@
     </h4>
     <%= link_to "<< back to the category filter", root_path(anchor: "categories_anchor"), class: "btn btn-blue mt-3" %>
 
-
   <% elsif params[:topic] %> <%# when in topic scope %>
 
     <h5 class="text-center py-5">
-      <%= t(:profiles_topics, scope: 'search', profiles_count: @profiles.total_count, topics_name: params[:topic]).html_safe %>
+      <%= t(:profiles_topics,
+            scope: 'search',
+            profiles_count: @profiles.total_count,
+            topics_name: params[:topic]).html_safe %>
     </h5>
+    <%= render partial: 'shared/search_form' %>
 
   <% elsif params[:search] %> <%# when normal search: %>
 
@@ -35,10 +38,11 @@
 
     <h1 class="display-4 text-center pt-5"><%= t(:speaker_headline, scope: 'pages.home.speakers') %></h1>
     <h4 class="text-center pb-5 pt-3"><%= t(:all_speakerinnen, scope: 'profiles.index', profiles_count: @profiles_count).html_safe %></h4>
+    <%= t(:search_categories_html, scope: 'search', root_path: root_path) %><br><br>
     <%= render partial: 'shared/search_form' %>
-    <%= t(:search_categories_html, scope: 'search', root_path: root_path) %>
 
   <% end %>
+
 
   <%= paginate @profiles %>
 
@@ -48,8 +52,7 @@
 
   <h5 class="text-center"><%= t(:more_options, scope: 'search').html_safe %></h5>
   <p class="text-center mb-5">
-    <%#TODO: doesn't work anymore%>
-    <%= top_link(params[:search]) %><br>
+    <a href="#top"><%= t(:adapt_search, scope: 'search')%></a> <br>
     <%= link_to(t(:all_profiles, scope: 'search'), profiles_path).html_safe %><br>
     <%= link_to(t(:all_categories, scope: 'pages.home'), root_path + "#categories_anchor" )%>
   </p>

@@ -21,7 +21,7 @@ class PagesController < ApplicationController
                                  .belongs_to_more_than_one_profile
                                  .with_language(I18n.locale)
                                  .most_used(100)
-    @features = Feature.where(public: true).order(:position)
+    @features   = Feature.published_feature.order(:position)
   end
 
   def render_footer?

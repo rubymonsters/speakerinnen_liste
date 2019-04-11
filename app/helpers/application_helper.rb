@@ -33,8 +33,24 @@ module ApplicationHelper
     max_count = tags.pluck(:taggings_count).max.to_f
 
     tags.each do |tag|
-      index = ((tag.taggings.count / max_count) * (classes.size - 1))
+      index = ((tag.taggings.size / max_count) * (classes.size - 1))
       yield tag, classes[index.nan? ? 0 : index.round]
     end
   end
+  
+  def bootstrap_class_for(flash_type)
+    case flash_type
+    when "success"
+      "alert-success"
+    when "error"
+      "alert-danger"
+    when "alert"
+      "alert-warning"
+    when "notice"
+      "alert-info"
+    else
+      flash_type.to_s
+    end
+  end
+
 end

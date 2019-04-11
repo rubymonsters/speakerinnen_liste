@@ -134,7 +134,7 @@ RSpec.describe 'Navigation', type: :system do
             fill_in 'profile_password', with: 'rightpassword'
             click_button I18n.t(:signin, scope: 'devise.registrations')
 
-            expect(page).to have_css('.notice', text: I18n.t(:signed_in, scope: 'devise.sessions'))
+            expect(page).to have_css('.alert-info', text: I18n.t(:signed_in, scope: 'devise.sessions'))
             expect(page).to have_text I18n.t('devise.sessions.signed_in')
             expect(page).to have_link I18n.t('layouts.application.logout')
           end
