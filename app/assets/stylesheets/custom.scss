@@ -118,7 +118,7 @@ h1, h4 {
 
 /* cookie consent dialog */
 .cookie-consent-dialog {
-  height:auto !important; 
+  height:auto !important;
   position: fixed;
   bottom: 0px;
   z-index: 1;
@@ -357,9 +357,9 @@ div#v-pills-tab a {
 
 // colors of categories and tags
 $categories_dark_color: (
-  arts: $navy,
-	science: $maroon,
-	politics: $purple
+  arts: $teal,
+	science: $red_orange,
+	politics: $raspberry_red
 );
 
 @each $name, $color in $categories_dark_color {
@@ -385,13 +385,13 @@ $categories_dark_color: (
 }
 
 $categories_bright_color: (
-  body: $aqua,
-	career: $lime,
-	companies: $yellow,
-	diversity: $orange,
-	internet: $red,
-	marketing: $fuchsia,
-	miscellaneous: $green
+  body: $dark_teal,
+	career: $soft_blue,
+	companies: $purple,
+	diversity: $rose,
+	internet: $pink,
+	marketing: $dark_pink,
+	miscellaneous: $bronze
 );
 
 @each $name, $color in $categories_bright_color {
