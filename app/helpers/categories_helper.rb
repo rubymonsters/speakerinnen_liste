@@ -6,22 +6,32 @@ module CategoriesHelper
   end
 
   def category_profiles_count(category_id)
-    tags_in_category_published = ActsAsTaggableOn::Tag
-                                  .belongs_to_category(category_id)
-                                  .with_published_profile
-    tag_names = tags_in_category_published.pluck(:name)
-    profiles = Profile.is_published
-           .includes(:translations)
-           .joins(:topics)
-           .where(
-             tags: {
-               name: tag_names
-             }
-           )
-    profiles.count
+    category_profiles = categories_profiles_counts.select{ |e| e[0] == category_id }
+    category_profiles.empty? ? 0 : category_profiles.first[1]
   end
 
   def category_profiles_ratio(category_id)
-      category_profiles_count(category_id).to_f/Profile.count*100
+      category_profiles_count(category_id).to_f/profiles_count*100
+  end
+
+  private
+
+  def profiles_count
+    @profiles_count ||= Profile.count
+  end
+
+  def categories_profiles_counts
+    @categories_profiles_counts ||= begin
+      sql = "SELECT c.id, COUNT(p.id)
+            FROM
+              categories c
+              JOIN categories_tags ct ON c.id = ct.category_id
+              JOIN taggings t ON ct.tag_id = t.tag_id
+              JOIN profiles p ON t.taggable_id = p.id
+            WHERE p.published = true
+            GROUP BY (c.id)"
+      res = ActiveRecord::Base.connection.execute(sql)
+      res.values
+    end
   end
 end
