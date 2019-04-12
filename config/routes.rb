@@ -74,7 +74,7 @@ Rails.application.routes.draw do
 
     get '/', to: 'pages#home'
 
-    get 'categories/:category_id', to: 'profiles#index', as: :category
+    resources :categories
 
     resources :profiles, except: [:new, :create] do
       resources :medialinks
