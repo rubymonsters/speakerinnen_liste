@@ -25,7 +25,7 @@ ActsAsTaggableOn::Tag.class_eval do
 
   scope :belongs_to_category, -> (cat_id) { ActsAsTaggableOn::Tag.joins(:categories).where(:categories => { :id => cat_id }).distinct }
 
-  scope :belongs_to_more_than_one_profile, -> { ActsAsTaggableOn::Tag.where("taggings_count > ?", 1) }
+  scope :belongs_to_more_than_one_profile, -> { ActsAsTaggableOn::Tag.joins(:taggings).where("taggings_count > ?", 1) }
 
   def merge(wrong_tag)
     # update all taggings on any of these wrong tags to now point to the correct tag that we keep

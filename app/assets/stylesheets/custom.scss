@@ -100,9 +100,9 @@ h1, h4 {
 }
 
 .category_selected {
-    color: $link-color-hover;
-    background-color: $link-bg-color-hover;
-    text-decoration: none;
+  color: $link-color-hover;
+  background-color: $link-bg-color-hover;
+  text-decoration: none;
 }
 
 
@@ -382,6 +382,9 @@ $categories_dark_color: (
 			color: white;
 		}
 	}
+  a:link#cat-#{$name} {
+    color: $color;
+  }
 }
 
 $categories_bright_color: (
@@ -414,7 +417,12 @@ $categories_bright_color: (
 			color: black;
 		}
 	}
+  a:link#cat-#{$name} {
+    color: $color;
+  }
 }
+
+
 
 // topics cloud
 .topics-cloud a, .topics-profile a {

@@ -1,8 +1,24 @@
 <div class="container bg--white pb-5">
-  <h1 class="box__bg">Filter via tags</h1>
   <div class="row">
     <div class="col-3">
-      <h5>Choose a category:</h5>
+    </div>
+    <div class="col-9">
+      <div class="tab-content mb-3" id="selected-category">
+        <% @categories.each do |category| %>
+           <div class=<%= "d-none" unless category.id.to_s == params[:category_id] %> id="cat-<%= category.short_name %>">
+            <a id="cat-<%= category.short_name %>" href="#<%= category.id %>">
+              <%= t(:title, scope: 'category', category_name: category.name).html_safe %>
+            </a>
+          </div>
+        <% end %>
+      </div>
+      <h4><%= t(:filter, scope: 'category') %></h4>
+    </div>
+      <%# link_tod t(:title, scope: 'category', category_name: @category.name, profiles_count: @profiles.total_count).html_safe,'#speakers', class: 'h4' %>
+  </div>
+
+  <div class="row">
+    <div class="col-3">
       <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
         <% @categories.each do |category| %>
           <a class="nav-link <%= "active show" if category.id.to_s == params[:category_id] %>" id="v-pills-<%= category.short_name %>-tab" data-toggle="pill" href="#v-pills-<%= category.short_name %>" role="tab" aria-controls="v-pills-<%= category.short_name %>" aria-selected="false">
@@ -13,21 +29,23 @@
     </div>
 
     <div class="col-9">
-      <h5>Choose one or more tags:</h5>
       <div class="tab-content mb-3" id="available-tags-box">
         <% @categories.each do |category| %>
           <div class="tab-pane fade <%= "active show" if category.id.to_s == params[:category_id] %>" id="v-pills-<%= category.short_name %>" role="tabpanel" aria-labelledby="v-pills-<%= category.short_name %>-tab" >
-            <%= render partial: "shared/tag_box", locals: { :tags => instance_variable_get("@tags_#{category.short_name}"), :category => category } %>
+<!--             <a id="cat-<%= category.short_name %>" data-toggle="pill" href="#<%= category.id %>" role="tab" aria-controls="v-pills-<%= category.short_name %>" aria-selected="false">
+              <%= t(:title, scope: 'category', category_name: category.name).html_safe %>
+            </a>
+ -->            <%= render partial: "shared/tag_box", locals: { :tags => instance_variable_get("@tags_#{category.short_name}"), :category => category } %>
           </div>
         <% end %>
       </div>
       <div id="selected-tags-box" class="border my-3">
       </div>
-      <div class="form-group">
+      <div class="form-group text-right">
         <%= form_tag(profiles_path, method: "get") do %>
-          <%= text_field_tag :tag_search, params[:tag_search], id: "hidden_tag_input", class: "form-control d-none"   %>
-          <%= submit_tag "Find A Speaker", class: "btn btn-primary", id: "search_in_topic" %>
+          <%= text_field_tag :tag_search, params[:tag_search], id: "hidden_tag_input", class: "form-control d-none" %>
           <span class="btn btn-primary" id="clear">Clear All</span>
+          <%= submit_tag "Find A Speaker", class: "btn btn-primary", id: "search_in_topic" %>
         <% end %>
       </div>
     </div>
@@ -42,6 +60,12 @@
     category = category.split('_');
     category = category[1];
     $("#v-pills-" + category + "-tab").addClass( "font-weight-bold");
+  });
+  $( ".nav-link" ).click(function() {
+    var category = $(this).attr('id').split('-');
+    category = category[2];
+    console.log("#cat-" + category)
+    $("#cat-" + category).toggleClass( "d-none" );
   });
   $(document).on('click','.selected-tag',function() {
     var category = $(this).attr('class').split(' ')[0];
