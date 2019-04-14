@@ -5,27 +5,31 @@
     </div>
     <div class="col-md-8">
       <% if params[:category_id] %> <%# when in categories scope %>
-        <%= link_to t(:category, scope: 'profiles', 
+        <%= link_to t(:category, scope: 'profiles',
             category_name: @category.name,
             profiles_count: @profiles.total_count,
             topics_count: @tags_in_category_published.size
           ).html_safe, '#speakers', class: 'h4' %>
       <% elsif params[:topic] %> <%# when in topic scope %>
-        <%= link_to t(:profiles_topics, scope: 'search', 
-            profiles_count: @profiles.total_count, 
-            topics_name: params[:topic]).html_safe, 
+        <%= link_to t(:profiles_topics, scope: 'search',
+            profiles_count: @profiles.total_count,
+            topics_name: params[:topic]).html_safe,
             '#speakers', class: 'h4' %>
       <% elsif params[:search] %> <%# if in search: %>
-        <%= link_to t(:success, scope: 'search' ).html_safe + 
-                    t(:result, scope: 'search', 
-                    count: @profiles.total_count).html_safe, 
+        <%= link_to t(:success, scope: 'search' ).html_safe +
+                    t(:result, scope: 'search',
+                    count: @profiles.total_count).html_safe,
                     '#speakers', class: 'h4' %>
       <% else %>
         <h4><%= t(:all_speakerinnen, scope: 'profiles.index', profiles_count: @profiles_count).html_safe %></h4>
       <% end %>
     </div>
   </div>
-  <%= t(:search_categories_html, scope: 'search', root_path: root_path) %><br><br>
+  <div class="row">
+    <div class="col-md-4">
+    <%= t(:search_categories_html, scope: 'search', root_path: root_path) %><br><br>
+    </div>
+  </div>
 
 
   <% if params[:search] %> <%# if in search: %>

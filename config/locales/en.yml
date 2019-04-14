@@ -95,8 +95,8 @@ en:
        Find more information about data security in our <a href='%{link}' class='link'>privacy policy</a>.<br>"
       contact_modal: "You have to <b>agree to the use of cookies</b>. before using the contact form.<br>
        Find more information about data security in our <a href='%{link}' class='link'>privacy policy</a>.<br>"
-      cookie_consent_summary: "In order to deliver a personalised, responsive service and to improve the site, 
-      we remember and store information about how you use it." 
+      cookie_consent_summary: "In order to deliver a personalised, responsive service and to improve the site,
+      we remember and store information about how you use it."
       cookie_consent_detail: "This is done using simple text files called cookies which sit on your computer. These cookies are completely safe and secure and will never contain any sensitive information. Important: To use the full functionality of this site (e.g. login, registration and sending mail to the speakers) you have to agree to the use of cookies. For web statistics we use Matomoto which also uses cookies. These can be deactivated separately. Find more information about data security in our <a href='%{link}' class='link'>privacy policy</a>."
       allow_cookies: "I agree"
       description: "Our Categories"
@@ -198,7 +198,7 @@ en:
     category: "We have <b>%{profiles_count}</b> speakerinnen and <b>%{topics_count}</b> topics in category <b>%{category_name}</b> <i class='fa fa-caret-down' style='font-size: 21px'></i>"
     tag:
       top_topics: "The 200 most popular topics"
-      topics_cat: "Topics in category <b>%{category_name}"
+      topics_category: "Topics in category <b>%{category_name}"
       tag_choose_languages: "You can sort the topics via languages"
       topics_with_category: "in category %{category_name}"
       topics_with_no_language_scope: "Topics in all languages"
@@ -377,7 +377,7 @@ Links to Youtube videos will be shown as embedded videos. Other links will be cl
       other: " %{count} speakerinnen!<i class='fa fa-caret-down' style='font-size: 21px'></i>"
     }
     more_options: "<b>You didn't find any suitable speaker?</b><br> Maybe the following links can help you:"
-    search_categories_html: "Have a look at our <a href='%{root_path}/#categories_anchor'>categories</a> and <a href='#tag_cloud_anchor'>topics</a>."
+    search_categories_html: "Have a look at our other <a href='%{root_path}/#categories_anchor'>categories</a> and <a href='#tag_cloud_anchor'>topics</a>."
     adapt_search: "Adapt your search >> "
     countries_agg: "Countries:"
     cities_agg: "Cities:"

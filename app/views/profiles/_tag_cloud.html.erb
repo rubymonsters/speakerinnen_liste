@@ -2,7 +2,7 @@
 <div class='text-center border-top my-5 topics-cloud' >
 
   <% if params[:category_id] %>
-    <h2 class="my-4"><%= t(:topics_cat, scope: 'profiles.tag', category_name: @category.name).html_safe %></h2><br><br>
+    <h2 class="my-4"><%= t(:topics_category, scope: 'profiles.tag', category_name: @category.name).html_safe %></h2><br><br>
     <% custom_tag_cloud @tags_most_used_200_in_category.sort { |x,y| x.name <=> y.name }, %w[s m l] do |topic, css_class| %>
       <%= topic_link topic, class: css_class %>
     <% end %>
