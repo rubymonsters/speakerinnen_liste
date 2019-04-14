@@ -22,7 +22,7 @@ module CategoriesHelper
 
   def categories_profiles_counts
     @categories_profiles_counts ||= begin
-      sql = "SELECT c.id, COUNT(p.id)
+      sql = "SELECT c.id, COUNT(DISTINCT p.id)
             FROM
               categories c
               JOIN categories_tags ct ON c.id = ct.category_id

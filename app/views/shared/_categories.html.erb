@@ -1,11 +1,16 @@
-<% @categories.each_slice(5).with_index do |sliced_categories, index| %>
-    <div class="col-md-6">
-      <ul class="list-unstyled pl-4">
-        <% sliced_categories.each do |category| %>
-          <li>
-            <%= category_link category, class:"startpage-categories__list-links" %>
-          </li>
-        <% end %>
-      </ul>
+<% @categories.each_with_index do |category, i| %>
+  <%
+    bar_1 = 20 + category_profiles_ratio(category.id)
+    bar_2 = 100 - bar_1
+  %>
+  <div class="progress" >
+    <div class="progress-bar startpage-categories__items category_item_<%=i%>" role="progressbar" style="width: <%=bar_1%>%" aria-valuenow="<%=bar_1%>" aria-valuemin="0" aria-valuemax="100">
+      <%= category_link category %>
+      <div class="startpage-categories__number">
+        <%= category_profiles_count category.id %>
+      </div>
     </div>
+    <div class="progress-bar startpage-categories__count category_item_<%=i%>" role="progressbar" style="width: <%=bar_2%>%" aria-valuenow="<%=bar_2%>" aria-valuemin="0" aria-valuemax="100">
+    </div>
+  </div>
 <% end %>
