@@ -204,7 +204,8 @@ de:
       error_email_for_us: "Bitte fülle alle Felder aus."
   category:
     title: "Schau Dir alle Speakerinnen* der Kategorie <b>%{category_name}</b> an <i class='fa fa-caret-right' style='font-size: 21px'></i><br>"
-    filter: "wähle einen oder mehrere Tags aus verschiedenen Kategorien:"
+    filter: "Wähle einen oder mehrere Tags aus verschiedenen Kategorien:"
+  profiles:
     tag:
       top_topics: "Die 200 Top-Themen"
       tag_choose_languages: "Du kannst die Topics auch nach Sprache sortieren:"
@@ -297,6 +298,7 @@ de:
       }
       show_more: "Mehr >>"
       show_less: "Weniger >>"
+      profiles_in_category: "Schau Dir alle Speakerinnen* der Kategorie <b>%{category_name}</b> an <i class='fa fa-caret-down' style='font-size: 21px'></i><br>"
     new:
       new_profile: "Neues Profil"
   flash:

@@ -1,27 +1,25 @@
-<div class="container bg--white pb-5">
+<div class="m-5 pt-5">
   <div class="row">
     <div class="col-3">
     </div>
     <div class="col-9">
       <div class="tab-content mb-3" id="selected-category">
         <% @categories.each do |category| %>
-           <div class=<%= "d-none" unless category.id.to_s == params[:category_id] %> id="cat-<%= category.short_name %>">
-            <a id="cat-<%= category.short_name %>" href="#<%= category.id %>">
-              <%= t(:title, scope: 'category', category_name: category.name).html_safe %>
-            </a>
-          </div>
+          <a id="<%= "category-" + category.short_name %>"
+            class="category-title<%= " d-none" unless category.id.to_s == ( params[:category_id] || @category.id.to_s ) %>" href=<%= profiles_path(category_id: category.id) %> >
+            <%= t(:title, scope: 'category', category_name: category.name).html_safe %>
+          </a>
         <% end %>
       </div>
       <h4><%= t(:filter, scope: 'category') %></h4>
     </div>
-      <%# link_tod t(:title, scope: 'category', category_name: @category.name, profiles_count: @profiles.total_count).html_safe,'#speakers', class: 'h4' %>
   </div>
 
   <div class="row">
     <div class="col-3">
       <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
         <% @categories.each do |category| %>
-          <a class="nav-link <%= "active show" if category.id.to_s == params[:category_id] %>" id="v-pills-<%= category.short_name %>-tab" data-toggle="pill" href="#v-pills-<%= category.short_name %>" role="tab" aria-controls="v-pills-<%= category.short_name %>" aria-selected="false">
+          <a class="nav-link category-link <%= "active show" if category.id.to_s == ( params[:category_id]  || @category.id.to_s ) %>" id="v-pills-<%= category.short_name %>-tab" data-toggle="pill" href="#v-pills-<%= category.short_name %>" role="tab" aria-controls="v-pills-<%= category.short_name %>" aria-selected="false">
             <i class="fa fa-circle pr-2 small"></i><%= category.name %>
           </a>
         <% end %>
@@ -31,11 +29,11 @@
     <div class="col-9">
       <div class="tab-content mb-3" id="available-tags-box">
         <% @categories.each do |category| %>
-          <div class="tab-pane fade <%= "active show" if category.id.to_s == params[:category_id] %>" id="v-pills-<%= category.short_name %>" role="tabpanel" aria-labelledby="v-pills-<%= category.short_name %>-tab" >
+          <div class="tab-pane fade <%= "active show" if category.id.to_s == ( params[:category_id]  || @category.id.to_s )%>" id="v-pills-<%= category.short_name %>" role="tabpanel" aria-labelledby="v-pills-<%= category.short_name %>-tab" >
 <!--             <a id="cat-<%= category.short_name %>" data-toggle="pill" href="#<%= category.id %>" role="tab" aria-controls="v-pills-<%= category.short_name %>" aria-selected="false">
               <%= t(:title, scope: 'category', category_name: category.name).html_safe %>
             </a>
- -->            <%= render partial: "shared/tag_box", locals: { :tags => instance_variable_get("@tags_#{category.short_name}"), :category => category } %>
+ -->            <%= render partial: "shared/tagbox", locals: { :tags => instance_variable_get("@tags_#{category.short_name}"), :category => category } %>
           </div>
         <% end %>
       </div>
@@ -61,11 +59,12 @@
     category = category[1];
     $("#v-pills-" + category + "-tab").addClass( "font-weight-bold");
   });
-  $( ".nav-link" ).click(function() {
+  $( ".category-link" ).click(function() {
     var category = $(this).attr('id').split('-');
     category = category[2];
-    console.log("#cat-" + category)
-    $("#cat-" + category).toggleClass( "d-none" );
+    $(".category-title").addClass( "d-none" );
+    $("#category-" + category).removeClass( "d-none" );
+    $("#available-tags-box").css('background-color', $teal);
   });
   $(document).on('click','.selected-tag',function() {
     var category = $(this).attr('class').split(' ')[0];

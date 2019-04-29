@@ -21,55 +21,21 @@
   font-weight: 700;
   font-style: normal;
 }
-/* colors */
+/* old colors */
 $white: #FFF;
 $white-smoke: #F5F5F5;
 $light-grey: #CCC;
 $grey: #7F7F7F;
 $dark-grey: #3C3C3A;
 $black: #000;
+/* -------------*/
 
-$blue: #00978b;
-$dark-blue: darken($blue, 10%);
+$bg-grey: #F2F2F2;
 
-$dark-red: #b62848;
+$beige: rgba(181, 138, 0, 0.62);
 
-$transparent-black: rgba( $black, .5 );
-$transparent-white: rgba( $white, .7 );
-
-/* colors for login sign */
-$box-shadow-black: rgba(0,0,0,0.75);
-
-/* font */
-$serif: Georgia, serif;
-$sans-serif: "OpenSans", "Helvetica Neue", Helvetica, sans-serif;
-
-// /* link-color */
-$link-color: $blue;
-$link-color-hover: $white-smoke;
-
-$link-bg-color: $white-smoke;
-$link-bg-color-hover: $dark-grey;
-
-/* variables colors */
-$font-color: $dark-grey;
-$font-color-title: $grey;
-$link-color: $blue;
-
-// bootstrap variables override
-$primary: $blue;
-$red: #d95270;
-
-/* background-color */
-$body-bg-color: $white;
-$body-bg-color-grey: $white-smoke;
-
-/* units */
-$base-spacing-unit: 24px;
-
-/* layout settings */
-$layout-width: 940px;
-$border: 1px solid $light-grey;
+$speakerinnen-blue: #20736D;
+$dark-blue: darken($speakerinnen-blue, 10%);
 
 /* new category colors */
 $teal: #68D2CA;
@@ -108,18 +74,45 @@ $bronze_2: #95610F;
 $dark_yellow: #B58A00;
 $dark_yellow_2: #725907;
 
-$beige: #CCB15C;
 
-/* Backgrounds */
-.bg-teal { background-color: $teal; }
-.bg-dark_teal { background-color: $dark_teal; }
-.bg-soft_blue { background-color: $soft_blue; }
-.bg-purple { background-color: $purple; }
-.bg-rose { background-color: $rose; }
-.bg-pink { background-color: $pink; }
-.bg-dark_pink { background-color: $dark_pink; }
-.bg-raspberry_red { background-color: $raspberry_red; }
-.bg-red_orange { background-color: red_orange; }
-.bg-orange { background-color: $orange; }
-.bg-bronze { background-color: $bronze; }
-.bg-dark_yellow { background-color: $dark_yellow; }
+// bootstrap variables override
+$primary: $speakerinnen-blue;
+$red: #d95270;
+
+
+/* old colors */
+
+$dark-red: #b62848;
+
+$transparent-black: rgba( $black, .5 );
+$transparent-white: rgba( $white, .7 );
+
+/* colors for login sign */
+$box-shadow-black: rgba(0,0,0,0.75);
+
+/* font */
+$serif: Georgia, serif;
+$sans-serif: "OpenSans", "Helvetica Neue", Helvetica, sans-serif;
+
+// /* link-color */
+$link-color: $speakerinnen-blue;
+$link-color-hover: $white-smoke;
+
+$link-bg-color: $white-smoke;
+$link-bg-color-hover: $dark-grey;
+
+/* variables colors */
+$font-color: $dark-grey;
+$font-color-title: $grey;
+$link-color: $speakerinnen-blue;
+
+/* background-color */
+$body-bg-color: $white;
+$body-bg-color-grey: $bg-grey;
+
+/* units */
+$base-spacing-unit: 24px;
+
+/* layout settings */
+$layout-width: 940px;
+$border: 1px solid $light-grey;

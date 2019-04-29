@@ -39,10 +39,6 @@ h1, h4 {
   background: $transparent-white;
 }
 
-.bg--grey {
-  background: $body-bg-color-grey;
-}
-
 .color-white {
   color: $white;
 }
@@ -52,7 +48,7 @@ h1, h4 {
 }
 
 #header {
-  background: $body-bg-color-grey;
+  background: $speakerinnen-blue;
 }
 
 .error {
@@ -142,7 +138,7 @@ h1, h4 {
 }
 
 .alert-info {
-  background: $blue;
+  background: $primary;
 }
 
 .alert-warning {
@@ -156,7 +152,7 @@ h1, h4 {
 
 .btn-blue {
   color: white;
-  background: $blue;
+  background: $primary;
 }
 
 .btn-blue:active, .btn:hover {
@@ -259,7 +255,7 @@ ul#medialinks__list {
 }
 
 #medialinks__list--sort-message {
-  color: $blue;
+  color: $primary;
 }
 
 /* autocomplete in search */
@@ -286,7 +282,7 @@ ul#medialinks__list {
 
   &:hover {
     background-color: whitesmoke;
-    color: $blue;
+    color: $primary;
     cursor: pointer;
   }
 }
@@ -340,87 +336,6 @@ ul#medialinks__list {
     color: $link-color-hover;
 }
 
-// topics
-
-#available-tags-box {
-	max-height: 400px;
-	overflow: scroll;
-	background: $white-smoke;
-}
-
-#selected-tags-box {
-	height: 100px;
-}
-div#v-pills-tab a {
-	color: black;
-}
-
-// colors of categories and tags
-$categories_dark_color: (
-  arts: $teal,
-	science: $red_orange,
-	politics: $raspberry_red
-);
-
-@each $name, $color in $categories_dark_color {
-	button.cat_#{$name} {
-		background: $color;
-		color: white;
-		&:hover {
-			background: $color;
-			color: white;
-		}
-	}
-	a:link#v-pills-#{$name}-tab.active {
-		background: $color;
-		color: white;
-	}
-	a:link#v-pills-#{$name}-tab {
-		i { color: $color; }
-		&:hover {
-			background: $color;
-			color: white;
-		}
-	}
-  a:link#cat-#{$name} {
-    color: $color;
-  }
-}
-
-$categories_bright_color: (
-  body: $dark_teal,
-	career: $soft_blue,
-	companies: $purple,
-	diversity: $rose,
-	internet: $pink,
-	marketing: $dark_pink,
-	miscellaneous: $bronze
-);
-
-@each $name, $color in $categories_bright_color {
-	button.cat_#{$name} {
-		background: $color;
-		color: black;
-		&:hover {
-			background: $color;
-			color: black;
-		}
-	}
-	a:link#v-pills-#{$name}-tab.active {
-		background: $color;
-		color: black;
-	}
-	a:link#v-pills-#{$name}-tab {
-		i { color: $color; }
-		&:hover {
-			background: $color;
-			color: black;
-		}
-	}
-  a:link#cat-#{$name} {
-    color: $color;
-  }
-}
 
 
 

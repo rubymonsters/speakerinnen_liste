@@ -198,6 +198,7 @@ en:
   category:
     title: "Look though the all speakerinnen of the category <b>%{category_name}</b> <i class='fa fa-caret-right' style='font-size: 21px'></i>"
     filter: "Choose one or more tags from any category:"
+  profiles:
     tag:
       top_topics: "The 200 most popular topics"
       tag_choose_languages: "You can sort the topics via languages"
@@ -290,6 +291,7 @@ en:
       }
       show_more: "More >>"
       show_less: "Less >>"
+      profiles_in_category: "Here are all Speakerinnen* in category <b>%{category_name}</b> <i class='fa fa-caret-down' style='font-size: 21px'></i><br>"
     new:
       new_profile: "New profile"
   flash:

@@ -3,7 +3,7 @@
 class CategoriesController < ApplicationController
   def index
     @categories = Category.sorted_categories
-    @category = Category.find params[:category_id]
+    @category = params[:category_id] ? Category.find(params[:category_id]) : Category.find(1)
     Category.all.includes(:translations).each do |category|
       instance_variable_set("@tags_#{category.short_name}",
         ActsAsTaggableOn::Tag.belongs_to_category(category.id)

@@ -2,11 +2,11 @@
   <% if params[:category_id] %> <%# when in categories scope %>
 
     <h4 class="text-center py-5">
-      <%= t(:category, scope: 'profiles', category_name: @category.name, profiles_count: @profiles.total_count).html_safe %>
-      <%= params[:tag_search] ? t(:tag_filter, scope: 'profiles.index', count: @tags.count, tags: params[:tag_search]).html_safe :
-      t(:tags_count, scope: 'profiles', topics_count: @tags_in_category_published.size).html_safe %>
+      <%= t(:profiles_in_category, scope: 'profiles.index',
+          category_name: @category.name,
+          profiles_count: @profiles.total_count).html_safe %>
     </h4>
-    <%= link_to "<< back to the category filter", root_path(anchor: "categories_anchor"), class: "btn btn-blue mt-3" %>
+    <%= link_to "<< back to the category filter", root_path(anchor: "categories_anchor"), class: "btn btn-primary mt-3" %>
 
   <% elsif params[:topic] %> <%# when in topic scope %>
 
@@ -30,9 +30,12 @@
       %>
 
   <% elsif params[:tag_search] %> <%# when searching %>
-    <h1 class="display-4 text-center pt-5"><%= t(:speaker_headline, scope: 'pages.home.speakers') %></h1>
-    <h4 class="text-center pt-3"><%= t(:all_tagged_speakerinnen, scope: 'profiles.index', count: @profiles_tagged_count).html_safe + t(:tag_filter, scope: 'profiles.index', count: @tags.count, tags: params[:tag_search]).html_safe %></h4>
-    <%= link_to "<< back to the tag filter", root_path(tag_search: params[:tag_search].gsub(/\s+/, "-"), anchor: "categories_anchor"), class: "btn btn-blue mt-3" %>
+    <h4 class="text-center pt-3">
+      <%# t(:all_tagged_speakerinnen, scope: 'profiles.index', count: @profiles_tagged_count).html_safe + t(:tag_filter, scope: 'profiles.index', count: @tags.count, tags: params[:tag_search]).html_safe %></h4>
+
+    <%= link_to "<< back to the tag filter", categories_path(tag_search: params[:tag_search].gsub(/\s+/, "-")), class: "btn btn-blue mt-3" %>
+
+      <%# params[:tag_search] ? t(:tag_filter, scope: 'profiles.index', count: @tags.count, tags: arams[:tag_search]).html_safe : t(:tags_count, scope: 'profiles', topics_count: @tags_in_category_published.size).html_safe %>
 
   <% else %>
 
