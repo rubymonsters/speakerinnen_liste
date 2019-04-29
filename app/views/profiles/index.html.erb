@@ -1,58 +1,60 @@
 <div class="container">
-  <% if params[:category_id] %> <%# when in categories scope %>
-
-    <h4 class="text-center py-5">
-      <%= t(:profiles_in_category, scope: 'profiles.index',
-          category_name: @category.name,
-          profiles_count: @profiles.total_count).html_safe %>
-    </h4>
-    <%= link_to "<< back to the category filter", root_path(anchor: "categories_anchor"), class: "btn btn-primary mt-3" %>
-
-  <% elsif params[:topic] %> <%# when in topic scope %>
-
-    <h5 class="text-center py-5">
-      <%= t(:profiles_topics,
-            scope: 'search',
+  <div class="row">
+    <div class="col-md-4">
+      <%= render partial: 'shared/search_form' %>
+    </div>
+    <div class="col-md-8">
+      <% if params[:category_id] %> <%# when in categories scope %>
+        <%= link_to t(:category, scope: 'profiles',
+            category_name: @category.name,
             profiles_count: @profiles.total_count,
-            topics_name: params[:topic]).html_safe %>
-    </h5>
-    <%= render partial: 'shared/search_form' %>
-
-  <% elsif params[:search] %> <%# when normal search: %>
-
-      <%= render partial: 'shared/search_filter',
-        locals: {
-          profiles: @profiles,
-          aggs_languages: @aggs_languages,
-          aggs_countries: @aggs_countries,
-          aggs_cities: @aggs_cities
-        }
-      %>
-
-  <% elsif params[:tag_search] %> <%# when searching %>
-    <h4 class="text-center pt-3">
-      <%# t(:all_tagged_speakerinnen, scope: 'profiles.index', count: @profiles_tagged_count).html_safe + t(:tag_filter, scope: 'profiles.index', count: @tags.count, tags: params[:tag_search]).html_safe %></h4>
-
-    <%= link_to "<< back to the tag filter", categories_path(tag_search: params[:tag_search].gsub(/\s+/, "-")), class: "btn btn-blue mt-3" %>
-
-      <%# params[:tag_search] ? t(:tag_filter, scope: 'profiles.index', count: @tags.count, tags: arams[:tag_search]).html_safe : t(:tags_count, scope: 'profiles', topics_count: @tags_in_category_published.size).html_safe %>
-
-  <% else %>
-
-    <h1 class="display-4 text-center pt-5"><%= t(:speaker_headline, scope: 'pages.home.speakers') %></h1>
-    <h4 class="text-center pb-5 pt-3"><%= t(:all_speakerinnen, scope: 'profiles.index', profiles_count: @profiles_count).html_safe %></h4>
+            topics_count: @tags_in_category_published.size
+          ).html_safe, '#speakers', class: 'h4' %>
+        <%= link_to "<< back to the category filter", root_path(anchor: "categories_anchor"), class: "btn btn-primary mt-3" %>
+      <% elsif params[:topic] %> <%# when in single topic scope %>
+        <%= link_to t(:profiles_topics, scope: 'search',
+            profiles_count: @profiles.total_count,
+            topics_name: params[:topic]).html_safe,
+            '#speakers', class: 'h4' %>
+      <% elsif params[:search] %> <%# when in search scope %>
+        <%= link_to t(:success, scope: 'search' ).html_safe +
+                    t(:result, scope: 'search',
+                    count: @profiles.total_count).html_safe,
+                    '#speakers', class: 'h4' %>
+      <% elsif params[:tag_search] %> <%# when in tagfilter scope %>
+        <h1 class="display-4 text-center pt-5"><%= t(:speaker_headline, scope: 'pages.home.speakers') %></h1>
+        <h4 class="text-center pt-3"><%= t(:all_tagged_speakerinnen, scope: 'profiles.index', count: @profiles_tagged_count).html_safe + t(:tag_filter, scope: 'profiles.index', count: @tags.count, tags: params[:tag_search]).html_safe %></h4>
+        <%= link_to "<< back to the tag filter", root_path(tag_search: params[:tag_search].gsub(/\s+/, "-"), anchor: "categories_anchor"), class: "btn btn-blue mt-3" %>
+      <% else %>
+        <h4><%= t(:all_speakerinnen, scope: 'profiles.index', profiles_count: @profiles_count).html_safe %></h4>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
     <%= t(:search_categories_html, scope: 'search', root_path: root_path) %><br><br>
-    <%= render partial: 'shared/search_form' %>
+    </div>
+  </div>
 
+  <% if params[:search] %> <%# if in search scope show aggregates %>
+    <%= render partial: 'shared/search_filter',
+      locals: {
+        profiles: @profiles,
+        aggs_languages: @aggs_languages,
+        aggs_countries: @aggs_countries,
+        aggs_cities: @aggs_cities
+      }
+    %>
   <% end %>
 
-
+  <a id="speakers"></a>
   <%= paginate @profiles %>
 
   <%= render partial: 'profiles/profile_search', collection: @profiles, as: :profile %>
 
   <%= paginate @profiles %>
 
+  <a id="tag_cloud_anchor"></a>
   <h5 class="text-center"><%= t(:more_options, scope: 'search').html_safe %></h5>
   <p class="text-center mb-5">
     <a href="#top"><%= t(:adapt_search, scope: 'search')%></a> <br>
@@ -60,7 +62,7 @@
     <%= link_to(t(:all_categories, scope: 'pages.home'), root_path + "#categories_anchor" )%>
   </p>
 
-  <%= render partial: 'tag_cloud' unless params[:category_id] %>
+  <%= render partial: 'tag_cloud' %>
 
   <%= render partial: 'layouts/footer' %>
 

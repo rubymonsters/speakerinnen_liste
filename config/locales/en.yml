@@ -201,6 +201,7 @@ en:
   profiles:
     tag:
       top_topics: "The 200 most popular topics"
+      topics_category: "Topics in category <b>%{category_name}"
       tag_choose_languages: "You can sort the topics via languages"
       topics_with_category: "in category %{category_name}"
       topics_with_no_language_scope: "Topics in all languages"
@@ -270,7 +271,7 @@ en:
       title: "All women speakers"
       text: "Welcome!<br>
             Here you can find women* for your conference or your event: speakers, panel hosts, or workshop hosts.
-            <p>Browse individual profiles, filter via the most listed <a href='#topics_anchor', class='text__link--bg'>topics</a>, or use the search function for a specific search.</p>
+            <p>Browse individual profiles, filter via the most listed <a href='#tag_cloud_anchor', class='text__link--bg'>topics</a>, or use the search function for a specific search.</p>
             Enjoy!"
       name: "Name"
       twitter: "Twitter"
@@ -280,7 +281,7 @@ en:
       country: "Country"
       country_search_hint: "(Beware: A lot of speakers do not have a specified country.)"
       language: "Language"
-      all_speakerinnen: "We are already %{profiles_count}!"
+      all_speakerinnen: "We are already %{profiles_count} speakerinnen!"
       all_tagged_speakerinnen: {
         one: "There is one speakerin ",
         other: "There are %{count} speakerinnen "
@@ -374,7 +375,7 @@ Links to Youtube videos will be shown as embedded videos. Other links will be cl
   search:
     any: "Any"
     no_profile: "Unfortunately we don't have a speaker for that topic."
-    profiles_topics: "In the topic <b>%{topics_name}</b> we have found <b>%{profiles_count}<b> speakerinnen:"
+    profiles_topics: "In the topic <b>%{topics_name}</b> we have found <b>%{profiles_count}</b> speakerinnen <i class='fa fa-caret-down' style='font-size: 21px'></i>"
     profiles: "%{link}"
     all_profiles: "Browse all profiles >> "
     did_you_mean: "Did you mean %{suggestions_fullname}?"
@@ -384,11 +385,11 @@ Links to Youtube videos will be shown as embedded videos. Other links will be cl
     filter: "Here you can filter the search results:"
     success: "We found"
     result: {
-      one: " a speakerin! Yeah!",
-      other: " %{count} speakerinnen! Yeah! "
+      one: " a speakerin! <i class='fa fa-caret-down' style='font-size: 21px'></i>",
+      other: " %{count} speakerinnen!<i class='fa fa-caret-down' style='font-size: 21px'></i>"
     }
     more_options: "<b>You didn't find any suitable speaker?</b><br> Maybe the following links can help you:"
-    search_categories_html: "Have a look at our <a href='%{root_path}/#categories_anchor'>categories and topics</a>."
+    search_categories_html: "Have a look at our other <a href='%{root_path}/#categories_anchor'>categories</a> and <a href='#tag_cloud_anchor'>topics</a>."
     adapt_search: "Adapt your search >> "
     countries_agg: "Countries:"
     cities_agg: "Cities:"
