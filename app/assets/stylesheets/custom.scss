@@ -91,26 +91,17 @@ h1, h4 {
 }
 
 //categories
-.startpage-categories__list {
-  // width: 100%;
-  padding: 0px;
-  padding-bottom: 10px;
-}
-
 .startpage-categories__items {
   font-size: 2.5em;
   padding: 20px;
   z-index: 1;
-
-  &:hover {
-    text-decoration: none;
-  }
 }
 
 .startpage-categories__items a {
   color: black;
   float: left;
   text-align: left;
+  text-decoration: underline;
 }
 
 .startpage-categories__count {
@@ -188,7 +179,7 @@ h1, h4 {
 
 /* cookie consent dialog */
 .cookie-consent-dialog {
-  height:auto !important; 
+  height:auto !important;
   position: fixed;
   bottom: 0px;
   z-index: 1;
