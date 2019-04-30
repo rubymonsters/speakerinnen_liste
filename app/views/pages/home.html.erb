@@ -19,7 +19,7 @@
   <!-- anchor for features -->
   <a id="features"></a>
 
-  <% if @features.any? %>
+  <% if @features.load.any? %>
     <% @features.each do |feature| %>
       <div class="container">
         <h1 class="box__bg"><%= feature.title %></h1>
@@ -45,7 +45,7 @@
         <%= link_to t(:speaker_index, scope: 'pages.home.speakers'), profiles_path %>
       </h4>
       <div class="row">
-        <%= render partial: "profiles/profile", collection: @profiles if @profiles.any? %>
+        <%= render partial: "profiles/profile", collection: @profiles if @profiles %>
       </div>
     </div>
   <% end %>
@@ -90,15 +90,6 @@
         <p>
           <%= t(:about, scope: 'pages.home.footer').html_safe %>
           <%= link_to t(:more, scope: 'pages.home.footer').html_safe, about_path  %>
-        </p>
-      </div>
-      <div class="col-md">
-        <h4 class="border-vertical d-block py-2 mb-4">
-          <%= link_to t(:press, scope: 'pages.home.footer'), press_path %>
-        </h4>
-        <p>
-          <%= t(:press_short, scope: 'pages.home.footer').html_safe %>
-          <%= link_to t(:more, scope: 'pages.home.footer').html_safe, press_path  %>
         </p>
       </div>
       <div class="col-md">

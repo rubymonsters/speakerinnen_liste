@@ -87,12 +87,10 @@
         <p class="pb-1"></p>
     <% end %>
 
-    <% if @topics.present? %>
-      <h5><%= t(:topics, scope: 'profiles.show') %></h5>
-      <p class="pb-2 topics-profile">
-        <%= raw @topics.sort.map { |topic| topic_link(topic) }.join(' ') %>
-      </p>
-    <% end %>
+    <h5><%= t(:topics, scope: 'profiles.show') %></h5>
+    <p class="pb-2 topics-profile">
+      <%= raw topics_for_profile(@profile).map { |topic| topic_link(topic) }.join(' ') %>
+    </p>
 
     <% if @profile.iso_languages.present? %>
       <h5><%= t(:languages, scope: 'profiles.show') %></h5>
@@ -159,7 +157,7 @@
   </div>
 <% end %>
 
-<% if @profile.medialinks.any? %>
+<% if @medialinks.load.any? %>
   <div class="row mb-3">
     <div class="col p-3 bg--white">
       <h5><%= t(:media, scope: 'profiles.show') %></h5>
