@@ -2,10 +2,10 @@
   <div class="row">
     <div class="col-md-12">
       <% if params[:category_id] %> <%# when in categories scope %>
-        <h4><%= t(:profiles_in_category, scope: 'profiles.index',
+        <h4>
+          <%= t(:profiles_in_category, scope: 'profiles.index',
             category_name: @category.name,
-            profiles_count: @profiles.total_count,
-            topics_count: @tags_in_category_published.size
+            profiles_count: @profiles.total_count
           ).html_safe %>
         </h4>
         <%= link_to "<< back to the category filter", root_path(anchor: "categories_anchor"), class: "btn btn-primary mt-3" %>

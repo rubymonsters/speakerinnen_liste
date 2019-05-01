@@ -200,7 +200,6 @@ class ProfilesController < ApplicationController
                                   .belongs_to_category(params[:category_id])
                                   .translated_in_current_language_and_not_translated(I18n.locale)
     tag_names = @tags_in_category_published.pluck(:name)
-    @tags_in_category_200 = @tags_in_category_published.most_used(200)
     if tags_search.present?
       @tags = tags_search.split(/\s*,\s*/) if tags_search
       @profiles = profiles_for_tag(@tags)

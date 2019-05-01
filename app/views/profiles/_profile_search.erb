@@ -10,7 +10,11 @@
           <%= profile.main_topic_or_first_topic.truncate(60) if profile.main_topic_or_first_topic %>
         </p>
         <p>
-          <%= profile.topic_list.take(5) %>
+          <% profile.topics.limit(5).each do |tag| %>
+            <% if tag.categories.first %>
+              <button id="<%= tag.name.gsub(/\s+/, "-") %>" class="cat_<%= tag.categories.first.short_name %> btn btn-sm m-1 rounded available-tag"><%= tag.name %></button>
+            <% end %>
+          <% end %>
         </p>
       </div>
     </div>
