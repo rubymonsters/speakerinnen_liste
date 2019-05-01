@@ -16,9 +16,9 @@ module ProfilesHelper
 
   def profile_picture_link(profile)
     if profile.picture.present?
-      link_to(image_tag(profile.picture.profile.url, alt: profile.fullname, class: 'photo--grey'), profile)
+      link_to(image_tag(profile.picture.profile.url, alt: profile.fullname, class: 'photo--grey card-img-top', alt: 'Speakerinnen Picture'), profile)
     else
-      link_to(image_tag('avatar.jpg', alt: 'avatar', class: 'photo--grey'), profile)
+      link_to(image_tag('avatar.jpg', alt: 'avatar', class: 'photo--grey card-img-top', alt: "Speakerinnen Picture"), profile)
     end
   end
 

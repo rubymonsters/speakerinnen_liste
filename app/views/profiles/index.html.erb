@@ -1,9 +1,6 @@
-<div class="container">
+<div class="container-fluid px-5 py-5">
   <div class="row">
-    <div class="col-md-4">
-      <%= render partial: 'shared/search_form' %>
-    </div>
-    <div class="col-md-8">
+    <div class="col-md-12">
       <% if params[:category_id] %> <%# when in categories scope %>
         <%= link_to t(:category, scope: 'profiles',
             category_name: @category.name,
@@ -22,20 +19,13 @@
                     count: @profiles.total_count).html_safe,
                     '#speakers', class: 'h4' %>
       <% elsif params[:tag_search] %> <%# when in tagfilter scope %>
-        <h1 class="display-4 text-center pt-5"><%= t(:speaker_headline, scope: 'pages.home.speakers') %></h1>
-        <h4 class="text-center pt-3"><%= t(:all_tagged_speakerinnen, scope: 'profiles.index', count: @profiles_tagged_count).html_safe + t(:tag_filter, scope: 'profiles.index', count: @tags.count, tags: params[:tag_search]).html_safe %></h4>
+        <h4 class="pt-3"><%= t(:all_tagged_speakerinnen, scope: 'profiles.index', count: @profiles_tagged_count).html_safe + t(:tag_filter, scope: 'profiles.index', count: @tags.count, tags: params[:tag_search]).html_safe %></h4>
         <%= link_to "<< back to the tag filter", root_path(tag_search: params[:tag_search].gsub(/\s+/, "-"), anchor: "categories_anchor"), class: "btn btn-blue mt-3" %>
       <% else %>
         <h4><%= t(:all_speakerinnen, scope: 'profiles.index', profiles_count: @profiles_count).html_safe %></h4>
       <% end %>
     </div>
   </div>
-  <div class="row">
-    <div class="col-md-4">
-    <%= t(:search_categories_html, scope: 'search', root_path: root_path) %><br><br>
-    </div>
-  </div>
-
   <% if params[:search] %> <%# if in search scope show aggregates %>
     <%= render partial: 'shared/search_filter',
       locals: {
@@ -50,7 +40,9 @@
   <a id="speakers"></a>
   <%= paginate @profiles %>
 
-  <%= render partial: 'profiles/profile_search', collection: @profiles, as: :profile %>
+  <div class="row">
+    <%= render partial: 'profiles/profile_search', collection: @profiles, as: :profile %>
+  </div>
 
   <%= paginate @profiles %>
 
