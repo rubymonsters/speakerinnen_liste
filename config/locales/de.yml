@@ -299,7 +299,7 @@ de:
       }
       show_more: "Mehr >>"
       show_less: "Weniger >>"
-      profiles_in_category: "Schau Dir alle Speakerinnen* der Kategorie <b>%{category_name}</b> an <i class='fa fa-caret-down' style='font-size: 21px'></i><br>"
+      profiles_in_category: "Wir haben %{profiles_count} Speakerinnen* in der Kategorie <b>%{category_name}</b>:"
     new:
       new_profile: "Neues Profil"
   flash:

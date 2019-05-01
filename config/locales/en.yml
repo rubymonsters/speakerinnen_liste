@@ -292,7 +292,7 @@ en:
       }
       show_more: "More >>"
       show_less: "Less >>"
-      profiles_in_category: "Here are all Speakerinnen* in category <b>%{category_name}</b> <i class='fa fa-caret-down' style='font-size: 21px'></i><br>"
+      profiles_in_category: "There are %{profiles_count} Speakerinnen* in the category <b>%{category_name}</b>"
     new:
       new_profile: "New profile"
   flash:
