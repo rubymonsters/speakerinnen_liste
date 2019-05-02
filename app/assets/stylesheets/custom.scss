@@ -13,10 +13,6 @@ a, .link, #expander {
 
   &:hover {
     text-decoration: underline;
-    //background: linear-gradient($link-color, $link-color) no-repeat;
-    //background-size: 100% 1px;
-    //background-position: 0 1.15em;
-    //text-shadow: .05em 0 white, -.05em 0 white;
   }
 }
 
@@ -91,27 +87,6 @@ h1, h4 {
 }
 
 //categories
-.startpage-categories__items {
-  font-size: 2.5em;
-  padding: 20px;
-  z-index: 1;
-}
-
-.startpage-categories__items a {
-  color: black;
-  float: left;
-  text-align: left;
-  text-decoration: underline;
-}
-
-.startpage-categories__count {
-  color: black;
-  font-size: 2.5em;
-  padding-right: 20px;
-  opacity: 0.5;
-  float: right;
-  text-align: right;
-}
 
 .startpage-categories__list .progress {
   height: 70px;
@@ -120,12 +95,12 @@ h1, h4 {
   position: relative;
 }
 
-.startpage-categories__number{
-  background-color: transparent;
-  float: right;
+.progress-bar {
+  font-size: 2.5em;
   color: black;
-  position: absolute;
-  right: 20px;
+  a {
+    color: black;
+  }
 }
 
 /* footer */

@@ -102,7 +102,28 @@ $categories_bright_color: (
   }
 }
 
-$categories_second_color: (
+// brighter colors
+$categories_brighter_color: (
+  career: $soft_blue_1,
+  diversity: $rose_1,
+  internet: $pink_1,
+  companies: $purple_1,
+  miscellaneous: $bronze_1,
+  arts: $teal_1,
+  science: $red_orange_1,
+  politics: $raspberry_red_1,
+  body: $dark_teal_1,
+  marketing: $dark_pink_1
+);
+
+@each $name, $color in $categories_brighter_color {
+  div.category_item_#{$name}_bright {
+    background-color: $color;
+  }
+}
+
+// darker colors
+$categories_darker_color: (
   career: $soft_blue_2,
   diversity: $rose_2,
   internet: $pink_2,
@@ -115,7 +136,7 @@ $categories_second_color: (
   marketing: $dark_pink_2
 );
 
-@each $name, $color in $categories_second_color {
+@each $name, $color in $categories_darker_color {
   div#v-pills-#{$name} {
     background-color: $color;
   }
