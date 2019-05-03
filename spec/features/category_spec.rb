@@ -7,7 +7,7 @@ RSpec.feature 'Category', type: :feature do
     before do
       FactoryBot.create(:ada, topic_list: ['fruehling'])
       FactoryBot.create(:marie, topic_list: ['fruehling', 'sommer'])
-      category_jahreszeiten = Category.new(name: 'Jahreszeiten')
+      category_jahreszeiten = Category.new(name_en: 'Jahreszeiten')
       category_jahreszeiten.save!
       tag_fruehling.categories << category_jahreszeiten
       tag_sommer.categories << category_jahreszeiten
