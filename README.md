@@ -6,7 +6,7 @@ speakerinnen.org is a searchable web directory designed specifically for women* 
 
 The aim of the app is to provide a way for conference and event organizers to find and contact appropriate women* speakers. (But obviously there are many different contexts in which it can be used...)
 
-**Please note: Sometimes for better readability in long textures the term `women` is written without a star but we always mean everyone who defines as a woman.**
+**Please note: Sometimes for better readability in long passages of text the term `women` is written without a star but we always mean everyone who defines herself as a woman.**
 
 
 # Technical Requirements
