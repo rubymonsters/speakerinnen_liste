@@ -63,17 +63,17 @@
   <!-- Anker für Kategorien -->
   <a id="categories_anchor"></a>
 
-  <div class="container">
+  <div class="container startpage-categories__list">
     <h1 class="box__bg"><%= t(:description, scope: 'pages.home') %></h1>
     <h4 class="border-vertical d-block box__bg mb-4">
       <%= t(:description_text, scope: 'pages.home') %>
     </h4>
-    <div class="row">
+    <div>
       <%= render partial: "shared/categories", object: @categories %>
     </div>
   </div>
 
-  <section id="startpage__teaser-bg-02" class="startpage__photo-bar">
+  <section id="startpage__teaser-bg-02" class="startpage__photo-bar my-5">
     <div class="container">
       <h1 class="display-4 box__bg bg--white mt-5"><%= t(:speaker_shoutout, scope: 'pages.home').html_safe %></h1>
       <h4 class="box__bg bg--white"><%=link_to t(:speaker_text, scope: 'pages.home').html_safe, new_profile_registration_path %></h4>
