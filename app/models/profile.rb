@@ -152,7 +152,7 @@ class Profile < ApplicationRecord
   # for simple admin search
   def self.admin_search(query)
     self.includes(taggings: :tag)
-    .references(:tag)    
+    .references(:tag)
     .where("firstname || ' ' || lastname || tags.name ILIKE :query", query: "%#{query}%")
   end
 

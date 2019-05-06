@@ -11,7 +11,7 @@ module CategoriesHelper
   end
 
   def category_profiles_ratio(category_id)
-      category_profiles_count(category_id).to_f/profiles_count*100
+    category_profiles_count(category_id).to_f/profiles_count*100
   end
 
   private
