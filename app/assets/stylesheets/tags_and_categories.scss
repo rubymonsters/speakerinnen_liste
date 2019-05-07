@@ -59,10 +59,6 @@ $categories_dark_color: (
   a:link#category-#{$name} {
     color: $color;
   }
-
-  div.category_item_#{$name} {
-    background-color: $color;
-  }
 }
 
 $categories_bright_color: (
@@ -96,9 +92,39 @@ $categories_bright_color: (
   a:link#category-#{$name} {
     color: $color;
   }
+}
 
+// custom colors
+$categories_custom_color: (
+  career: $soft_blue,
+  diversity: $rose,
+  internet: $pink,
+  companies: $purple,
+  miscellaneous: $bronze,
+  arts: $teal,
+  science: $red_orange,
+  politics: $raspberry_red,
+  body: $dark_teal,
+  marketing: $dark_pink
+);
+@each $name, $color in $categories_custom_color {
   div.category_item_#{$name} {
     background-color: $color;
+  }
+  @include media-breakpoint-down(sm) {
+   div.category_item_#{$name} {
+      font-size: 1.5rem;
+    }
+  }
+  @include media-breakpoint-down(xs) {
+   div.category_item_#{$name} {
+      font-size: 1.0rem;
+    }
+  }
+  @include media-breakpoint-down(xs) {
+   div.category_item_#{$name}_numbers {
+      font-size: 1.2rem;
+    }
   }
 }
 
@@ -117,7 +143,7 @@ $categories_brighter_color: (
 );
 
 @each $name, $color in $categories_brighter_color {
-  div.category_item_#{$name}_bright {
+  div.category_item_#{$name}_numbers {
     background-color: $color;
   }
 }

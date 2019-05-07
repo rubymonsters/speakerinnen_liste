@@ -7,7 +7,7 @@
     <div class="progress-bar category_item_<%=category.short_name%> text-left pl-3" role="progressbar" style="width: <%=bar_1%>%" aria-valuenow="<%=bar_1%>" aria-valuemin="0" aria-valuemax="100">
       <%= category_link(category) %>
     </div>
-    <div class="progress-bar category_item_<%=category.short_name%>_bright text-right pr-3" role="progressbar" style="width: <%=bar_2%>%" aria-valuenow="<%=bar_2%>" aria-valuemin="0" aria-valuemax="100">
+    <div class="progress-bar category_item_<%=category.short_name%>_numbers text-right pr-3" role="progressbar" style="width: <%=bar_2%>%" aria-valuenow="<%=bar_2%>" aria-valuemin="0" aria-valuemax="100">
       <%= category_profiles_count(category.id) %>
     </div>
   </div>
