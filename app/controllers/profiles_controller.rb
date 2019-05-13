@@ -179,17 +179,20 @@ class ProfilesController < ApplicationController
   end
 
   def profiles_for_tag(tag_names)
-    Profile.is_published
-           .random
-           .includes(:taggings, :translations)
-           .joins(:topics)
-           .where(
-             tags: {
-               name: tag_names
-             }
-           )
-           .page(params[:page])
-           .per(24)
+    # uniq turn the relation into a array and to paginate the array we
+    # need the Kaminari.paginate_array method
+    profiles_array = Profile.is_published
+                             .includes(:taggings, :translations)
+                             .joins(:topics)
+                             .where(
+                               tags: {
+                                 name: tag_names
+                               }
+                             )
+                             .random
+                             .uniq
+
+    Kaminari.paginate_array(profiles_array).page(params[:page]).per(24)
   end
 
   def profiles_for_category(category_id, tags_search=nil)

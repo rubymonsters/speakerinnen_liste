@@ -78,16 +78,27 @@ h1, h4 {
   margin-right: 10px;
 }
 
+//categories
+
 .category_links {
   background-color: $link-bg-color;
   padding: 3px 6px;
   line-height: 2em;
 	font-size: 1.3rem;
 
-  &:hover {
-    color: $link-color-hover;
-    background-color: $link-bg-color-hover;
-    text-decoration: none;
+
+.startpage-categories__list .progress {
+  height: 70px;
+  max-width: 100%;
+  border-radius: 0;
+  position: relative;
+}
+
+.progress-bar {
+  font-size: 2.5em;
+  color: black;
+  a {
+    color: black;
   }
 }
 
@@ -334,8 +345,8 @@ ul#medialinks__list {
 
 
 
-
 // topics cloud
+
 .topics-cloud a, .topics-profile a {
   background-color: #fff;
   color: $dark-grey;

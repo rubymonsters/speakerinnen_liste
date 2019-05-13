@@ -61,15 +61,17 @@ FactoryBot.define do
   end
 
   factory :feature do
-    title 'New Event'
+    title  { New Event }
   end
 
   factory :category do
     factory :cat_science do
-      name { 'Science' }
+      name_en { 'Science' }
+      name_de { 'Wissenschaft' }
     end
     factory :cat_social do
-      name { 'Social' }
+      name_en { 'Social' }
+      name_de { 'Soziales' }
     end
   end
 

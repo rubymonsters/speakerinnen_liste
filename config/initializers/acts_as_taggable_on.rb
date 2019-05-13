@@ -4,7 +4,7 @@ ActsAsTaggableOn.force_lowercase = true
 
 ActsAsTaggableOn::Tag.class_eval do
   has_and_belongs_to_many :categories
-  has_many :profiles
+  has_many :profiles, through: :taggings, source: :taggable, source_type: "Profile"
   has_many :tags_locale_languages
   has_many :locale_languages, through: :tags_locale_languages
 
