@@ -313,6 +313,8 @@ de:
       destroyed: '%{feature_title} wurde erfolgreich gelöscht.'
       announced: '%{feature_title} wird auf der Homepage angekündigt.'
       stopped: 'Die Ankündigung von %{feature_title} wird nicht mehr angezeigt.'
+    image:
+      destroyed: 'Dein Bild wurde erfolgreich gelöscht.'
     comment:
       updated: 'Kommentar wurde erfolgreich geändert.'
   devise:

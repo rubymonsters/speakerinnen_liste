@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-
 class Profile < ApplicationRecord
   include HasPicture
   include Searchable
@@ -8,6 +7,7 @@ class Profile < ApplicationRecord
   has_many :medialinks
   has_many :feature_profiles
   has_many :features, through: :feature_profiles, dependent: :destroy
+  has_one_attached :image
 
   serialize :iso_languages, Array
   validate :iso_languages_array_has_right_format
@@ -168,5 +168,14 @@ class Profile < ApplicationRecord
     if iso_languages.map(&:class).uniq != [String]
       errors.add(:iso_languages, 'must be an array of strings')
     end
+  end
+  
+  def image_variant
+    variation = ActiveStorage::Variation.new(combine_options: {
+      resize: "300x300^",
+      gravity: "center",
+      crop: "300x300+0+0",
+    })
+    ActiveStorage::Variant.new(image.blob, variation)
   end
 end

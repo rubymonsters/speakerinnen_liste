@@ -59,6 +59,8 @@ gem 'unicorn'
 
 gem 'rack-piwik', '~> 0.3.0', require: 'rack/piwik'
 
+gem 'aws-sdk-s3', require: false
+
 gem "sentry-raven"
 
 group :development do
@@ -88,4 +90,3 @@ group :test do
   gem 'poltergeist', '1.18.1'
   gem 'rails-controller-testing'
 end
-

@@ -306,6 +306,8 @@ en:
       destroyed: '%{feature_title} was successfully deleted.'
       announced: '%{feature_title} is anounced on homepage.'
       stopped: 'Announcement of %{feature_title} is not shown anymore.'
+    image:
+      destroyed: 'Your picture was successfully deleted.'
     comment:
       updated: 'Comment was successfully updated.'
   devise:

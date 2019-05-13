@@ -10,7 +10,9 @@ Rails.application.routes.draw do
               }
 
   scope '(:locale)', locale: /en|de/ do
-
+    
+    delete 'image/:id/destroy', to: 'image#destroy', as: 'image'
+    
     namespace :admin do
       resources :tags, except: [:new, :create] do
         collection do
