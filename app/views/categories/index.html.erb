@@ -20,7 +20,7 @@
       <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
         <% @categories.each do |category| %>
           <a class="nav-link category-link <%= "active show" if category.id.to_s == ( params[:category_id]  || @category.id.to_s ) %>" id="v-pills-<%= category.short_name %>-tab" data-toggle="pill" href="#v-pills-<%= category.short_name %>" role="tab" aria-controls="v-pills-<%= category.short_name %>" aria-selected="false">
-            <i class="fa fa-circle pr-2 small"></i><%= category.name %>
+            <i class="fa fa-circle pr-2 small" id="icon-<%= category.short_name%>"></i><%= category.name %>
           </a>
         <% end %>
       </div>
@@ -42,7 +42,7 @@
       <div class="form-group text-right">
         <%= form_tag(profiles_path, method: "get") do %>
           <%= text_field_tag :tag_search, params[:tag_search], id: "hidden_tag_input", class: "form-control d-none" %>
-          <span class="btn btn-primary" id="clear">Clear All</span>
+          <span class="btn btn-outline-primary" id="clear">Clear All</span>
           <%= submit_tag "Find A Speaker", class: "btn btn-primary", id: "search_in_topic" %>
         <% end %>
       </div>
@@ -57,7 +57,7 @@
     var category = $(this).attr('class').split(' ')[0];
     category = category.split('_');
     category = category[1];
-    $("#v-pills-" + category + "-tab").addClass( "font-weight-bold");
+    $("#icon-" + category).addClass("icon-active-" + category);
   });
   $( ".category-link" ).click(function() {
     var category = $(this).attr('id').split('-');
@@ -75,7 +75,7 @@
     if (!$(".selected-tag").hasClass(category)) {
       category = category.split('_');
       category = category[1];
-      $("#v-pills-" + category + "-tab").removeClass( "font-weight-bold");
+      $("#icon-" + category).removeClass("icon-active-" + category);
         }
   });
   $( "#search_in_topic" ).click(function() {

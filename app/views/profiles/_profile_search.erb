@@ -12,7 +12,7 @@
         <p>
           <% profile.topics.limit(5).each do |tag| %>
             <% if tag.categories.first %>
-              <button id="<%= tag.name.gsub(/\s+/, "-") %>" class="cat_<%= tag.categories.first.short_name %> btn btn-sm m-1 rounded available-tag"><%= tag.name %></button>
+              <button id="<%= tag.name.gsub(/\s+/, "-") %>" class="cat_bright_<%= tag.categories.first.short_name %> btn btn-sm m-1 rounded available-tag"><%= tag.name %></button>
             <% end %>
           <% end %>
         </p>
