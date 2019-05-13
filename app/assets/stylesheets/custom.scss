@@ -13,10 +13,6 @@ a, .link, #expander {
 
   &:hover {
     text-decoration: underline;
-    //background: linear-gradient($link-color, $link-color) no-repeat;
-    //background-size: 100% 1px;
-    //background-position: 0 1.15em;
-    //text-shadow: .05em 0 white, -.05em 0 white;
   }
 }
 
@@ -90,17 +86,20 @@ h1, h4 {
   margin-right: 10px;
 }
 
-.startpage-categories__list-links {
-  color: $dark-grey;
-  font-size: 1.9em;
-  background-color: $link-bg-color;
-  padding: 3px 6px;
-  line-height: 2em;
+//categories
 
-  &:hover {
-    color: $link-color-hover;
-    background-color: $link-bg-color-hover;
-    text-decoration: none;
+.startpage-categories__list .progress {
+  height: 70px;
+  max-width: 100%;
+  border-radius: 0;
+  position: relative;
+}
+
+.progress-bar {
+  font-size: 2.5em;
+  color: black;
+  a {
+    color: black;
   }
 }
 
@@ -115,6 +114,7 @@ h1, h4 {
 
 /* cookie consent dialog */
 .cookie-consent-dialog {
+  height:auto !important;
   position: fixed;
   bottom: 0px;
   z-index: 1;
@@ -127,26 +127,22 @@ h1, h4 {
 }
 
 /* diverses */
-.notice {
-  background: $blue;
+
+.alert {
   color: $white;
-  font-family: $sans-serif;
   padding: $base-spacing-unit;
   text-align: center;
   position: fixed;
-  z-index: 1030;
+  z-index: 5;
   width: 100%;
 }
 
-.alert {
+.alert-info {
+  background: $blue;
+}
+
+.alert-warning {
   background: $red;
-  color: $white;
-  font-family: $sans-serif;
-  padding: $base-spacing-unit;
-  text-align: center;
-  position: fixed;
-  z-index: 1030;
-  width: 100%;
 }
 
 .border-vertical {
@@ -341,7 +337,6 @@ ul#medialinks__list {
 }
 
 // topics
-
 
 .topics-cloud a, .topics-profile a {
   background-color: #fff;

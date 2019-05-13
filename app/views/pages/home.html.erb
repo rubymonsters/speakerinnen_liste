@@ -19,7 +19,7 @@
   <!-- anchor for features -->
   <a id="features"></a>
 
-  <% if @features.any? %>
+  <% if @features.load.any? %>
     <% @features.each do |feature| %>
       <div class="container">
         <h1 class="box__bg"><%= feature.title %></h1>
@@ -45,7 +45,7 @@
         <%= link_to t(:speaker_index, scope: 'pages.home.speakers'), profiles_path %>
       </h4>
       <div class="row">
-        <%= render partial: "profiles/profile", collection: @profiles if @profiles.any? %>
+        <%= render partial: "profiles/profile", collection: @profiles if @profiles %>
       </div>
     </div>
   <% end %>
@@ -63,17 +63,17 @@
   <!-- Anker für Kategorien -->
   <a id="categories_anchor"></a>
 
-  <div class="container">
+  <div class="container startpage-categories__list">
     <h1 class="box__bg"><%= t(:description, scope: 'pages.home') %></h1>
     <h4 class="border-vertical d-block box__bg mb-4">
       <%= t(:description_text, scope: 'pages.home') %>
     </h4>
-    <div class="row">
+    <div>
       <%= render partial: "shared/categories", object: @categories %>
     </div>
   </div>
 
-  <section id="startpage__teaser-bg-02" class="startpage__photo-bar">
+  <section id="startpage__teaser-bg-02" class="startpage__photo-bar my-5">
     <div class="container">
       <h1 class="display-4 box__bg bg--white mt-5"><%= t(:speaker_shoutout, scope: 'pages.home').html_safe %></h1>
       <h4 class="box__bg bg--white"><%=link_to t(:speaker_text, scope: 'pages.home').html_safe, new_profile_registration_path %></h4>
@@ -93,15 +93,6 @@
         <p>
           <%= t(:about, scope: 'pages.home.footer').html_safe %>
           <%= link_to t(:more, scope: 'pages.home.footer').html_safe, about_path  %>
-        </p>
-      </div>
-      <div class="col-md">
-        <h4 class="border-vertical d-block py-2 mb-4">
-          <%= link_to t(:press, scope: 'pages.home.footer'), press_path %>
-        </h4>
-        <p>
-          <%= t(:press_short, scope: 'pages.home.footer').html_safe %>
-          <%= link_to t(:more, scope: 'pages.home.footer').html_safe, press_path  %>
         </p>
       </div>
       <div class="col-md">

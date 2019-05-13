@@ -4,7 +4,9 @@
 
 require 'honeycomb-beeline'
 
-Honeycomb.init
+Honeycomb.init(
+  sample_rate: 5
+)
 
 require ::File.expand_path('../config/environment', __FILE__)
 

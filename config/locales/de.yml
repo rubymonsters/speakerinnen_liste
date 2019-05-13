@@ -32,7 +32,7 @@ de:
       features:
         title: "Titel"
         description: "Beschreibung"
-        profiles: "Profile auswählen"
+        profiles: "Profile zuordnen"
         position: "Position"
         visibility: "Veröffentlicht"
         public: "public"
@@ -49,8 +49,8 @@ de:
         confirmed: "bestätigte"
         comment: "Kommentar"
         add_comment: "Kom. speichern"
-        assign_feature: "Feature zuordnen"
-        feature_list: "Zugeordnete Features"
+        assign_feature: "Features speichern"
+        feature_list: "Features zuordnen"
         profile_status: "Das Profil ist "
         name_of_profile: "Der Name der Speakerin ist "
         search: "Suche nach Namen oder Topic"
@@ -97,9 +97,9 @@ de:
       Mehr Informationen in unserer <a href='%{link}' class='link'>Datenschutzerklärung</a>.<br>"
       contact_modal: "Du musst der <b>Verwendung von Cookies zustimmen</b>, bevor Du das Kontaktformular benutzen kannst.<br>
       Mehr Informationen in unserer <a href='%{link}' class='link'>Datenschutzerklärung</a>.<br>"
-      cookie_consent: "Um unsere Seite nutzer*innenfreundlich zu gestalten und weiter
-      verbessern zu können, speichern wir einzelne Informationen daüber, wie
-      sie genutzt wird. Das geschieht, indem wir einfache Textdateien, auch
+      cookie_consent_summary: "Um unsere Seite nutzer*innenfreundlich zu gestalten und weiter
+      verbessern zu können, speichern wir einzelne Informationen darüber, wie sie genutzt wird."
+      cookie_consent_detail: "Das geschieht, indem wir einfache Textdateien, auch
       Cookies genannt, durch das Aufrufen der Seite auf deinem Computer
       ablegen, wo sie dann gespeichert werden.
       <br> Wichtig: Bestimmte Funktionen können nur genutzt werden, wenn Du die
@@ -107,7 +107,7 @@ de:
       Software, die Matomoto heißt, um zu wissen, wie die Besucher*innen und Nutzer*innen von speakerinnen.org die Seite nutzen: Das hilft uns auch
       dabei, sie zu verbessern. Auch hierfür nutzen wir Cookies, die Du aber deaktivieren kannst. Mehr Informationen in unserer <a href='%{link}' class='link'>Datenschutzerklärung</a>."
       allow_cookies: "Ich stimme zu"
-      description: "Unsere Kategorien"
+      description: "Nach Kategorien durchsuchen"
       description_text: "Uns ist die Verteilung der Männer und Frauen* auf Konferenzbühnen wichtig. Wir ermutigen Frauen, in ihrem professionellen Umfeld sichtbarer zu werden."
       speaker_shoutout: "Hast Du etwas Interessantes zu erzählen?"
       speaker_text: "Registriere Dich auf speakerinnen.org >>"
@@ -202,9 +202,10 @@ de:
       error: "Bitte fülle alle Felder aus, damit die Speakerin alle Informationen bekommt, die sie benötigt."
       error_email_for_us: "Bitte fülle alle Felder aus."
   profiles:
-    category: "In der Kategorie <b>%{category_name}</b> haben wir <b>%{profiles_count}</b> Speakerinnen und <b>%{topics_count}</b> Themen gefunden:"
+    category: "Wir haben <b>%{profiles_count}</b> Speakerinnen und <b>%{topics_count}</b> Themen in der Kategorie <b>%{category_name}</b> gelistet <i class='fa fa-caret-down' style='font-size: 21px'></i>"
     tag:
       top_topics: "Die 200 Top-Themen"
+      topics_category: "Themen in der Kategorie <b>%{category_name}</b>"
       tag_choose_languages: "Du kannst die Topics auch nach Sprache sortieren:"
       topics_with_category: "in der Kategorie %{category_name}"
       topics_with_no_language_scope: "Topics in allen Sprachen"
@@ -225,8 +226,8 @@ de:
       bio_tooltip: "Hier ist Platz für eine kurze oder auch längere Bio. Außerdem sollten hier Fachkenntnisse und mögliche Vortragsthemen genauer beschrieben werden. Das hilft Veranstalterinnen und Veranstaltern herauszufinden, ob Ihr die Richtigen für ihr Event sein könntet."
       topic_list: "Meine Themen als Tags, wähle bitte nicht mehr als 10 Tags: <i class='fa fa-info-circle'></i>"
       topic_list_tooltip: "Bitte schaue zuerst, ob Dein Thema schon vorhanden ist."
-      main_topic_title: "Mein Hauptthema:"
-      main_topic: "Mein Hauptthema auf %{language}:
+      main_topic_title: "Themenschwerpunkt:"
+      main_topic: "Mein Themenschwerpunkt auf %{language}:
         <br><small class='form-text text-muted'>Es werden nur 30 Zeichen angezeigt.
         <br>Trage Dein wichtigstes Thema hier nochmal ein. Dieses Thema wird mit Deinem Namen und Bild auf der Speakerinnen-Übersichtsseite zu sehen sein.</small>"
       tag_list: "schon vorhandene Tags"
@@ -274,7 +275,7 @@ de:
       title: "Speakerinnen"
       text: "Schön, dass Du hier bist. <br>
              Auf dieser Seite findest Du Frauen* für deine Konferenz oder Veranstaltung: als Rednerin, Panel- oder Workshopmoderatorin.
-             <p>Du kannst entweder durch die Profile blättern, einen Einstieg über die meist verwendeten <a href='#topics_anchor', class='text__link--bg'>Themen</a> finden, oder gezielt suchen.</p>
+             <p>Du kannst entweder durch die Profile blättern, einen Einstieg über die meist verwendeten <a href='#tag_cloud_anchor', class='text__link--bg'>Themen</a> finden, oder gezielt suchen.</p>
              Viel Spaß und Erfolg dabei!"
       name: "Name"
       twitter: "Twitter"
@@ -284,7 +285,7 @@ de:
       country: "Land"
       country_search_hint: "(Achtung: Viele Speakerinnen haben kein Land eingetragen.)"
       language: "Sprache"
-      all_speakerinnen: "Wir sind schon %{profiles_count}!"
+      all_speakerinnen: "Wir sind schon %{profiles_count} Speakerinnen!"
       show_more: "Mehr >>"
       show_less: "Weniger >>"
     new:
@@ -374,7 +375,7 @@ de:
   search:
     any: "Alle"
     no_profile: "Zu diesem Thema haben wir leider keine Speakerin gefunden."
-    profiles_topics: "Zum dem Thema <b>%{topics_name}</b> gibt es <b>%{profiles_count}</b> Speakerinnen:"
+    profiles_topics: "Zum dem Thema <b>%{topics_name}</b> gibt es <b>%{profiles_count}</b> Speakerinnen <i class='fa fa-caret-down' style='font-size: 21px'></i>"
     profiles: "%{link}"
     all_profiles: "In allen Profilen blättern >>"
     did_you_mean: "Meinst du vielleicht %{suggestions_fullname}?"
@@ -383,11 +384,11 @@ de:
     filter: "Hier kannst du die Suchergebnisse filtern:"
     success: "Wir haben"
     result: {
-      one: " eine Speakerin gefunden!",
-      other: " %{count} Speakerinnen gefunden! Yeah! "
+      one: " eine Speakerin gefunden! <i class='fa fa-caret-down' style='font-size: 21px'></i>",
+      other: " %{count} Speakerinnen gefunden! <i class='fa fa-caret-down' style='font-size: 21px'></i>"
     }
     more_options: "<b>Keine passende Speakerin gefunden?</b><br> Vielleicht helfen Dir diese Links weiter:"
-    search_categories_html: "Du kannst auch in <a href='%{root_path}/#categories_anchor'>Kategorien und Themen</a> stöbern."
+    search_categories_html: "Du kannst auch in anderen <a href='%{root_path}/#categories_anchor'>Kategorien</a> und <a href='#tag_cloud_anchor'>Themen</a> stöbern."
     adapt_search: "Suche anpassen >>"
     countries_agg: "Länder:"
     cities_agg: "Städte:"

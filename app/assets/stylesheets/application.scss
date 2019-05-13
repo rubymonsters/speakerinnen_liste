@@ -30,8 +30,9 @@
 
 
 // To override the bootstrap variables
-@import "variables";
-@import "font-awesome";
-@import "bootstrap";
+@import 'variables';
+@import 'font-awesome';
+@import 'bootstrap';
 @import 'custom';
+@import 'tags_and_categories';
 @import 'devise-login';

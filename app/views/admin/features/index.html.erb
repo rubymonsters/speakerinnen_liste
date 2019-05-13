@@ -9,7 +9,7 @@
       <tr>
         <th><%= t(:title, scope: 'admin.dashboard.features') %></th>
         <th><%= t(:description, scope: 'admin.dashboard.features') %></th>
-        <th>Profile Ids</th>
+        <th>Speakerinnen</th>
         <th>Position</th>
         <th><%= t(:visibility, scope: 'admin.dashboard.features') %></th>
         <th></th>
@@ -17,11 +17,14 @@
       </tr>
     </thead>
     <tbody>
-      <% @features.each do |feature|  %>
+      <% @features.each do |feature| %>
         <tr>
           <td><%= feature.title %></td>
           <td><%= feature.description[0..99] %></td>
-          <td><%= feature.profile_ids %></td>
+          <td>
+            <% feature.profiles.each do |profile| %>
+              - <%= link_to profile.name_or_email, admin_profile_path(profile) %> - 
+            <% end %>
           <td><%= feature.position %></td>
           <td>
             <% if feature.public %>

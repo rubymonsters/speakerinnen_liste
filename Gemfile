@@ -2,7 +2,7 @@
 
 source 'https://rubygems.org'
 ruby '2.4.2'
-gem 'rails', '5.2.2'
+gem 'rails', '5.2.2.1'
 
 # Needed for Javascript Runtime
 # gem 'therubyracer'
@@ -22,7 +22,7 @@ gem 'mime-types'
 gem 'acts-as-taggable-on', '~> 6.0'
 gem 'auto_html', '~>1.6.4'
 gem 'carrierwave', '~> 1.3'
-gem 'devise', '~> 4.5'
+gem 'devise', '~> 4.6'
 gem 'fog', '~> 2.1'
 gem 'invisible_captcha'
 gem 'jquery-rails', '~> 4.3.1'

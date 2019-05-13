@@ -10,10 +10,6 @@ module ProfilesHelper
     end
   end
 
-  def top_link(params)
-    link_to t(:adapt_search, scope: 'search'), profiles_path + "?utf8=✓&utf8=✓&search=#{params}&button=/#top"
-  end
-
   def topic_link(topic, options = {})
     link_to topic, topic_path(topic: topic.to_s), options
   end
@@ -28,10 +24,7 @@ module ProfilesHelper
     end
   end
 
-  def topics(profile)
-    topics = []
-    topics << profile.topics.with_language(I18n.locale)
-    topics << profile.topics.without_language
-    topics.flatten.uniq
+  def topics_for_profile(profile)
+    profile.topics.translated_in_current_language_and_not_translated(I18n.locale)
   end
 end

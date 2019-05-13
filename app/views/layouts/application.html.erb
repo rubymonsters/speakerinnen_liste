@@ -11,15 +11,14 @@
     <title><%= t '.title' %></title>
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
     <%= csrf_meta_tags %>
     <%= favicon_link_tag 'favicon.ico' %>
   </head>
   <body>
     <%= render 'layouts/header' %>
-
-    <% if notice %> <div class='notice'> <%= notice %> </div> <% end %>
-    <% if alert %> <div class='alert'> <%= Array(alert).join('<br>').html_safe %> </div> <% end %>
-
+    <%= render 'shared/flash', flash: flash %> 
     <%= render 'shared/cookie_consent' %>
     <%= render 'shared/contact_hint_modal' %>
     <%= render 'shared/auth_hint_modal' %>

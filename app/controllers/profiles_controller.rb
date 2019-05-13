@@ -27,14 +27,13 @@ class ProfilesController < ApplicationController
       @aggs_countries = @aggs[:country][:buckets]
     else
       @profiles = profiles_for_index
-      @profiles_count = Profile.is_published.count
+      @profiles_count = Profile.is_published.size
     end
     @tags_most_used_200 = if params[:all_lang]
                             ActsAsTaggableOn::Tag.with_published_profile.most_used(200)
                           else
                             ActsAsTaggableOn::Tag.with_published_profile.with_language(I18n.locale).most_used(200)
                           end
-    @tags_all = ActsAsTaggableOn::Tag.all
   end
 
   def show
@@ -44,10 +43,6 @@ class ProfilesController < ApplicationController
     else
       redirect_to profiles_url, notice: I18n.t('flash.profiles.show_no_permission')
     end
-    @topics = []
-    @topics << @profile.topics.with_language(I18n.locale)
-    @topics << @profile.topics.without_language
-    @topics = @topics.flatten.uniq
   end
 
   # should reuse the devise view
@@ -181,25 +176,27 @@ class ProfilesController < ApplicationController
   end
 
   def profiles_for_tag(tag_names)
-    Profile.is_published
-           .random
-           .includes(:translations)
-           .joins(:topics)
-           .where(
-             tags: {
-               name: tag_names
-             }
-           )
-           .page(params[:page])
-           .per(24)
+    # uniq turn the relation into a array and to paginate the array we
+    # need the Kaminari.paginate_array method
+    profiles_array = Profile.is_published
+                             .includes(:taggings, :translations)
+                             .joins(:topics)
+                             .where(
+                               tags: {
+                                 name: tag_names
+                               }
+                             )
+                             .random
+                             .uniq
+
+    Kaminari.paginate_array(profiles_array).page(params[:page]).per(24)
   end
 
   def profiles_for_category
     @category = Category.find(params[:category_id])
     @tags_in_category_published = ActsAsTaggableOn::Tag
                                   .belongs_to_category(params[:category_id])
-                                  .with_published_profile
-                                  .with_language(I18n.locale)
+                                  .translated_in_current_language_and_not_translated(I18n.locale)
     tag_names = @tags_in_category_published.pluck(:name)
     @tags_most_used_200_in_category = @tags_in_category_published.most_used(200)
     @profiles = profiles_for_tag(tag_names)
