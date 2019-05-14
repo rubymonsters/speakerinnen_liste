@@ -1,0 +1,176 @@
+/* Backgrounds bright colors*/
+.bg-teal { background-color: $teal; }
+.bg-dark_teal { background-color: $dark_teal; }
+.bg-soft_blue { background-color: $soft_blue; }
+.bg-purple { background-color: $purple; }
+.bg-rose { background-color: $rose; }
+.bg-pink { background-color: $pink; }
+.bg-dark_pink { background-color: $dark_pink; }
+.bg-raspberry_red { background-color: $raspberry_red; }
+.bg-red_orange { background-color: red_orange; }
+.bg-orange { background-color: $orange; }
+.bg-bronze { background-color: $bronze; }
+.bg-dark_yellow { background-color: $dark_yellow; }
+
+// topics
+
+#available-tags-box {
+  max-height: 400px;
+  overflow: scroll;
+  background: $white-smoke;
+}
+
+#selected-tags-box {
+  height: 100px;
+}
+div#v-pills-tab a {
+  color: black;
+}
+
+// colors of categories and tags
+$categories_dark_color: (
+  arts: $teal,
+  science: $red_orange,
+  politics: $raspberry_red,
+  body: $dark_teal,
+  marketing: $dark_pink
+);
+
+@each $name, $color in $categories_dark_color {
+  button.cat_#{$name} {
+    background: $color;
+    color: white;
+    &:hover {
+      background: $color;
+      color: white;
+    }
+  }
+  a:link#v-pills-#{$name}-tab.active {
+    background: $color;
+    color: white;
+  }
+  a:link#v-pills-#{$name}-tab {
+    i { color: $color; }
+    &:hover {
+      background: $color;
+      color: white;
+    }
+  }
+  a:link#category-#{$name} {
+    color: $color;
+  }
+}
+
+$categories_bright_color: (
+  career: $soft_blue,
+  diversity: $rose,
+  internet: $pink,
+  companies: $purple,
+  miscellaneous: $bronze
+);
+
+@each $name, $color in $categories_bright_color {
+  button.cat_#{$name} {
+    background: $color;
+    color: black;
+    &:hover {
+      background: $color;
+      color: black;
+    }
+  }
+  a:link#v-pills-#{$name}-tab.active {
+    background: $color;
+    color: black;
+  }
+  a:link#v-pills-#{$name}-tab {
+    i { color: $color; }
+    &:hover {
+      background: $color;
+      color: black;
+    }
+  }
+  a:link#category-#{$name} {
+    color: $color;
+  }
+}
+
+// custom colors
+$categories_custom_color: (
+  career: $soft_blue,
+  diversity: $rose,
+  internet: $pink,
+  companies: $purple,
+  miscellaneous: $bronze,
+  arts: $teal,
+  science: $red_orange,
+  politics: $raspberry_red,
+  body: $dark_teal,
+  marketing: $dark_pink
+);
+@each $name, $color in $categories_custom_color {
+  div.category_item_#{$name} {
+    background-color: $color;
+  }
+  @include media-breakpoint-down(sm) {
+   div.category_item_#{$name} {
+      font-size: 1.5rem;
+    }
+  }
+  @include media-breakpoint-down(xs) {
+   div.category_item_#{$name} {
+      font-size: 1.0rem;
+    }
+  }
+  @include media-breakpoint-down(xs) {
+   div.category_item_#{$name}_numbers {
+      font-size: 1.2rem;
+    }
+  }
+}
+
+// brighter colors
+$categories_brighter_color: (
+  career: $soft_blue_1,
+  diversity: $rose_1,
+  internet: $pink_1,
+  companies: $purple_1,
+  miscellaneous: $bronze_1,
+  arts: $teal_1,
+  science: $red_orange_1,
+  politics: $raspberry_red_1,
+  body: $dark_teal_1,
+  marketing: $dark_pink_1
+);
+
+@each $name, $color in $categories_brighter_color {
+  div.category_item_#{$name}_numbers {
+    background-color: $color;
+  }
+}
+
+// darker colors
+$categories_darker_color: (
+  career: $soft_blue_2,
+  diversity: $rose_2,
+  internet: $pink_2,
+  companies: $purple_2,
+  miscellaneous: $bronze_2,
+  arts: $teal_2,
+  science: $red_orange_2,
+  politics: $raspberry_red_2,
+  body: $dark_teal_2,
+  marketing: $dark_pink_2
+);
+
+@each $name, $color in $categories_darker_color {
+  div#v-pills-#{$name} {
+    background-color: $color;
+  }
+  button.cat_#{$name} i {
+    color: $color;
+  }
+
+  .bg-color-#{$name} {
+    background-color: $color;
+  }
+}

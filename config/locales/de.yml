@@ -107,7 +107,7 @@ de:
       Software, die Matomoto heißt, um zu wissen, wie die Besucher*innen und Nutzer*innen von speakerinnen.org die Seite nutzen: Das hilft uns auch
       dabei, sie zu verbessern. Auch hierfür nutzen wir Cookies, die Du aber deaktivieren kannst. Mehr Informationen in unserer <a href='%{link}' class='link'>Datenschutzerklärung</a>."
       allow_cookies: "Ich stimme zu"
-      description: "Unsere Kategorien"
+      description: "Nach Kategorien durchsuchen"
       description_text: "Uns ist die Verteilung der Männer und Frauen* auf Konferenzbühnen wichtig. Wir ermutigen Frauen, in ihrem professionellen Umfeld sichtbarer zu werden."
       speaker_shoutout: "Hast Du etwas Interessantes zu erzählen?"
       speaker_text: "Registriere Dich auf speakerinnen.org >>"
@@ -313,6 +313,8 @@ de:
       destroyed: '%{feature_title} wurde erfolgreich gelöscht.'
       announced: '%{feature_title} wird auf der Homepage angekündigt.'
       stopped: 'Die Ankündigung von %{feature_title} wird nicht mehr angezeigt.'
+    image:
+      destroyed: 'Dein Bild wurde erfolgreich gelöscht.'
     comment:
       updated: 'Kommentar wurde erfolgreich geändert.'
   devise:

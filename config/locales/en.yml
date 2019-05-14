@@ -99,7 +99,7 @@ en:
       we remember and store information about how you use it."
       cookie_consent_detail: "This is done using simple text files called cookies which sit on your computer. These cookies are completely safe and secure and will never contain any sensitive information. Important: To use the full functionality of this site (e.g. login, registration and sending mail to the speakers) you have to agree to the use of cookies. For web statistics we use Matomoto which also uses cookies. These can be deactivated separately. Find more information about data security in our <a href='%{link}' class='link'>privacy policy</a>."
       allow_cookies: "I agree"
-      description: "Our Categories"
+      description: "Browse by categories"
       description_text: "We feel strongly about a balanced representation of men and women* on stage. We encourage women to become more visible in their profession and field of expertise."
       speaker_shoutout: "Do you have something interesting to say?"
       speaker_text: "Get on the Speakerinnen* list >>"
@@ -154,7 +154,7 @@ en:
             <a href="https://www.taz.de/!5043737/" target="_blank" rel="noopener">taz (German)</a>
             <br><br>
 
-        women: "* When we say women we mean everyone who defines herself as a woman. Please note: Sometimes for better readability in long textures the term women is written without a star."
+        women: "* When we say women we mean everyone who defines herself as a woman. Please note: Sometimes for better readability in long passages of text the term 'women' is written without a star."
     about:
       title: "About us"
     press:
@@ -306,6 +306,8 @@ en:
       destroyed: '%{feature_title} was successfully deleted.'
       announced: '%{feature_title} is anounced on homepage.'
       stopped: 'Announcement of %{feature_title} is not shown anymore.'
+    image:
+      destroyed: 'Your picture was successfully deleted.'
     comment:
       updated: 'Comment was successfully updated.'
   devise:

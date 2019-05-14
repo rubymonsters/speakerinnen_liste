@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 RSpec.describe 'Navigation', type: :system do
+  let!(:published_profile) { create(:published_profile, main_topic_en: 'climate', main_topic_de: 'Klima') }
+  let!(:ada) { create(:ada) }
+  let!(:science) { create(:cat_science) }
 
   before do
-    FactoryBot.create(:ada)
-    FactoryBot.create(:published_profile, main_topic_en: 'climate', main_topic_de: 'Klima')
-    FactoryBot.create(:cat_science)
     @lang_links_map = {
       'en' => %w[Categories Tags Profiles Featured Profiles],
       'de' => %w[Kategorien Tags Profile Featured Profiles]
@@ -31,15 +31,10 @@ RSpec.describe 'Navigation', type: :system do
           expect(page).to have_css('#startpage__start-teaser')
           expect(page).to have_css('#startpage__teaser-bg-01')
           expect(page).to have_css('#startpage__teaser-bg-02')
-          if language == "en"
-            expect(page).to have_css('.profile-box', text: 'math')
-            expect(page).to have_css('.profile-box', text: 'climate')
-          else
-            expect(page).to have_css('.profile-box', text: 'Mathematik')
-            expect(page).to have_css('.profile-box', text: 'Klima')
-          end
-          expect(page).to have_css('.startpage-categories__list-links', count: 1)
-          expect(page).to have_link('Science')
+          expect(page).to have_css('.profile-box', text: published_profile.main_topic)
+          expect(page).to have_css('.profile-box', text: ada.main_topic)
+          expect(page).to have_css('.category_item_science', count: 1)
+          expect(page).to have_link(science.name)
         end
 
         it 'startpage has footer' do
@@ -70,13 +65,8 @@ RSpec.describe 'Navigation', type: :system do
           expect(page).to have_content('2')
           expect(page).to have_link('Ada Lovelace')
           expect(page).to have_css('.profile-card', count: 2)
-          if language == "en"
-            expect(page).to have_css('.profile-subtitle', text: 'math')
-            expect(page).to have_text('English')
-          else
-            expect(page).to have_css('.profile-subtitle', text: 'Mathematik')
-            expect(page).to have_text('Englisch')
-          end
+          expect(page).to have_css('.profile-subtitle', text: ada.main_topic)
+          expect(page).to have_text(ada.iso_languages.first)
           # tag_cloud
           expect(page).to have_css('.topics-cloud')
           # link t profile
@@ -93,15 +83,9 @@ RSpec.describe 'Navigation', type: :system do
           expect(page).to have_link I18n.t(:home, scope: 'profiles.edit')
           # profile
           expect(page).to have_css('.profile-page')
-          if language == "en"
-            expect(page).to have_css('.profile-subtitle', text: 'math')
-            expect(page).to have_text('London')
-            expect(page).to have_text('English')
-          else
-            expect(page).to have_css('.profile-subtitle', text: 'Mathematik')
-            expect(page).to have_text('London')
-            expect(page).to have_text('Englisch')
-          end
+          expect(page).to have_css('.profile-subtitle', text: ada.main_topic)
+          expect(page).to have_text(ada.iso_languages.first)
+          expect(page).to have_text('London')
           # contact
           expect(page).to have_button I18n.t(:contact, scope: 'profiles.show')
           expect(page).to_not have_link I18n.t(:edit, scope: 'profiles.show')
@@ -110,7 +94,7 @@ RSpec.describe 'Navigation', type: :system do
 
       describe 'registered user' do
         let!(:user) { FactoryBot.create(:profile, email: 'ltest@exp.com', password: 'rightpassword', password_confirmation: 'rightpassword') }
-        
+
         context 'after login' do
           before { sign_in user }
 
