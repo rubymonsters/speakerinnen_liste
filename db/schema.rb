@@ -121,6 +121,7 @@ ActiveRecord::Schema.define(version: 2019_30_04_111200) do
     t.string "city"
     t.string "website_2"
     t.string "website_3"
+    t.string "profession"
     t.index ["locale"], name: "index_profile_translations_on_locale"
     t.index ["profile_id"], name: "index_profile_translations_on_profile_id"
   end
@@ -153,7 +154,6 @@ ActiveRecord::Schema.define(version: 2019_30_04_111200) do
     t.string "slug"
     t.string "country"
     t.string "iso_languages"
-    t.string "profession"
     t.index ["confirmation_token"], name: "index_profiles_on_confirmation_token", unique: true
     t.index ["email"], name: "index_profiles_on_email", unique: true
     t.index ["reset_password_token"], name: "index_profiles_on_reset_password_token", unique: true
