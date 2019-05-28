@@ -30,10 +30,10 @@ div#v-pills-tab a {
 // colors of categories and tags
 $categories_dark_color: (
   arts: $teal,
-  science: $red_orange,
-  politics: $raspberry_red,
   body: $dark_teal,
-  marketing: $dark_pink
+  marketing: $raspberry_red,
+  politics: $red_orange,
+  science: $orange_1
 );
 
 @each $name, $color in $categories_dark_color {
@@ -63,9 +63,10 @@ $categories_dark_color: (
 
 $categories_bright_color: (
   career: $soft_blue,
-  diversity: $rose,
-  internet: $pink,
   companies: $purple,
+  diversity: $rose,
+  environment: $pink,
+  internet: $dark_pink,
   miscellaneous: $bronze
 );
 
@@ -96,17 +97,19 @@ $categories_bright_color: (
 
 // custom colors
 $categories_custom_color: (
-  career: $soft_blue,
-  diversity: $rose,
-  internet: $pink,
-  companies: $purple,
-  miscellaneous: $bronze,
   arts: $teal,
-  science: $red_orange,
-  politics: $raspberry_red,
   body: $dark_teal,
-  marketing: $dark_pink
+  career: $soft_blue,
+  companies: $purple,
+  diversity: $rose,
+  environment: $pink,
+  internet: $dark_pink,
+  marketing: $raspberry_red,
+  politics: $red_orange,
+  science: $orange,
+  miscellaneous: $bronze
 );
+
 @each $name, $color in $categories_custom_color {
   div.category_item_#{$name} {
     background-color: $color;
@@ -130,16 +133,17 @@ $categories_custom_color: (
 
 // brighter colors
 $categories_brighter_color: (
-  career: $soft_blue_1,
-  diversity: $rose_1,
-  internet: $pink_1,
-  companies: $purple_1,
-  miscellaneous: $bronze_1,
   arts: $teal_1,
-  science: $red_orange_1,
-  politics: $raspberry_red_1,
   body: $dark_teal_1,
-  marketing: $dark_pink_1
+  career: $soft_blue_1,
+  companies: $purple_1,
+  diversity: $rose_1,
+  environment: $pink_1,
+  internet: $dark_pink_1,
+  marketing: $raspberry_red_1,
+  politics: $red_orange_1,
+  science: $orange_1,
+  miscellaneous: $bronze_1
 );
 
 @each $name, $color in $categories_brighter_color {
@@ -150,16 +154,17 @@ $categories_brighter_color: (
 
 // darker colors
 $categories_darker_color: (
-  career: $soft_blue_2,
-  diversity: $rose_2,
-  internet: $pink_2,
-  companies: $purple_2,
-  miscellaneous: $bronze_2,
   arts: $teal_2,
-  science: $red_orange_2,
-  politics: $raspberry_red_2,
   body: $dark_teal_2,
-  marketing: $dark_pink_2
+  career: $soft_blue_2,
+  companies: $purple_2,
+  diversity: $rose_2,
+  environment: $pink_2,
+  internet: $dark_pink_2,
+  marketing: $raspberry_red_2,
+  politics: $red_orange_2,
+  science: $orange_2,
+  miscellaneous: $bronze_2
 );
 
 @each $name, $color in $categories_darker_color {
