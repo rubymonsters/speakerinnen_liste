@@ -12,7 +12,7 @@ class ContactController < ApplicationController
     @profile = Profile.friendly.find(params[:id]) if params[:id]
     @message = Message.new(message_params)
 
-    if @message.valid? && @message.email != 'bakerjeffer2@gmail.com'
+    if @message.valid? && @message.email != 'bakerjeffer2@gmail.com' || "technic.trader@googlemail.com"
       NotificationsMailer.new_message(@message, @profile && @profile.email).deliver
       if @profile.present?
         redirect_to(profile_path(@profile), notice: t(:notice, scope: 'contact.form'))
