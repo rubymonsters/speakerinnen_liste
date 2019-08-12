@@ -63,7 +63,7 @@ describe 'contact profile' do
 
       find("button[data-target='#contactModal']").click
       fill_in I18n.t('.name', scope: 'contact.form'), with: 'Ada'
-      fill_in I18n.t('.email', scope: 'contact.form'), with: 'bakerjeffer2@gmail.com'
+      fill_in I18n.t('.email', scope: 'contact.form'), with: 'fish@email.de'
       fill_in I18n.t('.subject', scope: 'contact.form'), with: 'Need a speakerin'
       fill_in I18n.t('.body', scope: 'contact.form'), with: 'The conference ABC would like to invite you as a speakerin'
       click_button I18n.t('.send', scope: 'contact.form')
