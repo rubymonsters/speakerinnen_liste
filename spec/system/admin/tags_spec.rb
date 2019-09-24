@@ -15,7 +15,7 @@ describe 'in tags' do
     create(:marie, topic_list: [tag_physics, tag_chemie])
     sign_in admin
     visit admin_root_path
-    click_link I18n.t(:tags, scope: 'admin.dashboard.tags')
+    click_link I18n.t(:tags, scope: 'admin.tags')
   end
 
   it 'adding locale_language to tags' do

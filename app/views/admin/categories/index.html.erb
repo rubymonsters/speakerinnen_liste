@@ -1,6 +1,6 @@
 <div class="m-5">
 
-  <h1>Administration::<%= t(:categories, scope: "admin.dashboard.categories")%></h1>
+  <h1>Administration::<%= t(:categories, scope: "admin.categories")%></h1>
 
   <%= link_to ('<i class="fa fa-plus-circle">&nbsp;</i>' + t(:add, scope: "general")).html_safe,
   new_admin_category_path, class: "btn btn-blue btn-sm my-5" %>
@@ -8,9 +8,9 @@
   <table class="table categories">
     <thead class="bg--lightgrey">
       <tr>
-        <th><%= t(:category_language_de, scope: "admin.dashboard.categories")%></th>
-        <th><%= t(:category_language_en, scope: "admin.dashboard.categories")%></th>
-        <th><%= t(:amount_of_tags, scope: "admin.dashboard.categories")%></th>
+        <th><%= t(:category_language_de, scope: "admin.categories")%></th>
+        <th><%= t(:category_language_en, scope: "admin.categories")%></th>
+        <th><%= t(:amount_of_tags, scope: "admin.categories")%></th>
         <th></th>
         <th></th>
       </tr>

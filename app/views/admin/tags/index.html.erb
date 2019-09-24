@@ -1,11 +1,11 @@
 <div class="container pt-5">
-  <h1 class="text-center mb-3">Administration::<%= t(:tags, scope: 'admin.dashboard.tags')%></h1>
+  <h1 class="text-center mb-3">Administration::<%= t(:tags, scope: 'admin.tags')%></h1>
 
   <div class="font-weight-bold text-center border-top pt-3">
     <% if @tags_count %>
-    <%= t(:tags_here_are, scope: 'admin.dashboard.tags') + @tags.total_count.to_s + t(:tags_of, scope: 'admin.dashboard.tags') + @tags_count.to_s + ' tags.' %>
+    <%= t(:tags_here_are, scope: 'admin.tags') + @tags.total_count.to_s + t(:tags_of, scope: 'admin.tags') + @tags_count.to_s + ' tags.' %>
     <% else %>
-    <%= t(:tags_count, scope: 'admin.dashboard.tags') + @tags.total_count.to_s + '.' %>
+    <%= t(:tags_count, scope: 'admin.tags') + @tags.total_count.to_s + '.' %>
     <% end %>
   </div>
 
@@ -23,11 +23,11 @@
         <thead class="bg--lightgrey">
           <tr>
             <th><%= sortable "tags.name", "Name", @filter_params %></th>
-            <th><%= t(:categories, scope: 'admin.dashboard.tags') %></th>
-            <th><%= t(:languages, scope: 'admin.dashboard.tags') %></th>
+            <th><%= t(:categories, scope: 'admin.tags') %></th>
+            <th><%= t(:languages, scope: 'admin.tags') %></th>
             <th>Profiles</th>
-            <th><%= sortable 'taggings.created_at', t(:created_at, scope: 'admin.dashboard.tags'), @filter_params %></th>
-            <th><%= t(:delete, scope: 'admin.dashboard.tags') %></th>
+            <th><%= sortable 'taggings.created_at', t(:created_at, scope: 'admin.tags'), @filter_params %></th>
+            <th><%= t(:delete, scope: 'admin.tags') %></th>
           </tr>
         </thead>
         <tbody>
@@ -52,7 +52,7 @@
             <td>
               <% tag.taggings.each do |tagging| %>
               <%= link_to tagging.taggable.name_or_email, admin_profile_path(tagging.taggable),
-              html_options = { title: t(:show, scope: 'admin.dashboard.profiles.edit') } %><br/>
+              html_options = { title: t(:show, scope: 'admin.profiles.edit') } %><br/>
               <% end %>
             </td>
             <td>

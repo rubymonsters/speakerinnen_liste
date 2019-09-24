@@ -1,0 +1,23 @@
+en:
+  search:
+    any: "Any"
+    no_profile: "Unfortunately we don't have a speaker for that topic."
+    profiles_topics: "In the topic <b>%{topics_name}</b> we have found <b>%{profiles_count}</b> speakerinnen <i class='fa fa-caret-down' style='font-size: 21px'></i>"
+    profiles: "%{link}"
+    all_profiles: "Browse all profiles >> "
+    did_you_mean: "Did you mean %{suggestions_fullname}?"
+    or_did_you_mean: "Or %{suggestions_topic}?"
+    empty_search: "The search field was empty. Do you want to try again :)"
+    any: "Any"
+    filter: "Here you can filter the search results:"
+    success: "We found"
+    result: {
+      one: " a speakerin! <i class='fa fa-caret-down' style='font-size: 21px'></i>",
+      other: " %{count} speakerinnen!<i class='fa fa-caret-down' style='font-size: 21px'></i>"
+    }
+    more_options: "<b>You didn't find any suitable speaker?</b><br> Maybe the following links can help you:"
+    search_categories_html: "Have a look at our other <a href='%{root_path}/#categories_anchor'>categories</a> and <a href='#tag_cloud_anchor'>topics</a>."
+    adapt_search: "Adapt your search >> "
+    countries_agg: "Countries:"
+    cities_agg: "Cities:"
+    languages_agg: "Languages:"
