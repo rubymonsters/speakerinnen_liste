@@ -4,21 +4,21 @@
   <h1>Admin::Medialink::New</h1>
 
   <div class="my-3 py-3 border-vertical">
-    <%= link_to t(:show_all, scope: 'admin.dashboard.profiles.edit'), admin_profiles_path, class:'btn btn-blue btn-sm' %>
-    <%= link_to t(:show, scope: 'admin.dashboard.profiles.edit'), admin_profile_path(@profile), class:'btn btn-blue btn-sm' %>
-    <%= link_to t(:show, scope: 'admin.dashboard.medialink'), admin_profile_medialinks_path(@profile), class:'btn btn-blue btn-sm' %>
+    <%= link_to t(:show_all, scope: 'admin.profiles.edit'), admin_profiles_path, class:'btn btn-blue btn-sm' %>
+    <%= link_to t(:show, scope: 'admin.profiles.edit'), admin_profile_path(@profile), class:'btn btn-blue btn-sm' %>
+    <%= link_to t(:show, scope: 'admin.medialink'), admin_profile_medialinks_path(@profile), class:'btn btn-blue btn-sm' %>
     <% if @profile.published %>
-      <%= link_to t(:make_invisible, scope: 'admin.dashboard.profiles'), unpublish_admin_profile_path(@profile.id),
+      <%= link_to t(:make_invisible, scope: 'admin.profiles'), unpublish_admin_profile_path(@profile.id),
       method: :post, class:'btn btn-sm btn-danger', title: 'Hier kannst Du das Profile wieder unsichtbar machen.' %>
     <% else %>
-      <%= link_to t(:make_public, scope: 'admin.dashboard.profiles'), publish_admin_profile_path(@profile.id),
+      <%= link_to t(:make_public, scope: 'admin.profiles'), publish_admin_profile_path(@profile.id),
       method: :post, class:'btn btn-sm btn-danger', title: 'Eine Bestätigungsmail wird verschickt.' %>
     <% end %>
-    <%= t(:profile_status, scope: 'admin.dashboard.profiles') + t(:public, scope: 'admin.dashboard.profiles') + '.' if @profile.published? %>
+    <%= t(:profile_status, scope: 'admin.profiles') + t(:public, scope: 'admin.profiles') + '.' if @profile.published? %>
   </div>
 
   <h2>
-    <%= t(:new_medialink_for, scope: 'admin.dashboard.medialink') %> <b><%= @profile.fullname %></b>
+    <%= t(:new_medialink_for, scope: 'admin.medialink') %> <b><%= @profile.fullname %></b>
   </h2>
 
   <%= simple_form_for [:admin, @profile, @medialink], html: {class: 'p-3 bg--white'} do |f| %>

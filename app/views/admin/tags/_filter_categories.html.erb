@@ -8,20 +8,20 @@
   </div>
 
   <div class="filter_categories">
-    <h5 class="mt-3 mb-3"><%= t(:categories, scope: 'admin.dashboard.categories') %>:&nbsp</h5>
+    <h5 class="mt-3 mb-3"><%= t(:categories, scope: 'admin.categories') %>:&nbsp</h5>
     <%= label_tag 'category_id_all', class: 'radio' do %>
       <%= radio_button_tag( 'category_id', '', params[:category_id].blank? ) %>
-      <%= t(:tags_filter_default, scope: 'admin.dashboard.tags') %>
+      <%= t(:tags_filter_default, scope: 'admin.tags') %>
     <% end %>
     <br>
     <%= label_tag 'category_id_empty', class: 'radio' do %>
       <%= radio_button_tag( 'category_id', 'uncategorized', params[:category_id] == 'uncategorized' )%>
-      <%= t(:tags_filter_uncategorized, scope: 'admin.dashboard.tags') %>
+      <%= t(:tags_filter_uncategorized, scope: 'admin.tags') %>
     <% end %>
     <br>
     <%= label_tag 'category_id_present', class: 'radio' do %>
       <%= radio_button_tag( 'category_id', 'categorized', params[:category_id] == 'categorized' )%>
-      <%= t(:tags_filter_categorized, scope: 'admin.dashboard.tags') %>
+      <%= t(:tags_filter_categorized, scope: 'admin.tags') %>
     <% end %>
     <br>
     <br>
@@ -35,7 +35,7 @@
   </div>
 
   <div class="filter_languages">
-    <h5 class="mt-3 mb-3"><%= t(:languages, scope: 'admin.dashboard.tags') %>:</h5>
+    <h5 class="mt-3 mb-3"><%= t(:languages, scope: 'admin.tags') %>:</h5>
     <% LocaleLanguage.all.each do |language| %>
       <span <%= "id=filter_language_#{language.iso_code}" %> >
         <%= check_box_tag 'filter_languages[]', language.iso_code, params[:filter_languages].present? && params[:filter_languages].include?("#{language.iso_code}") %>
@@ -45,7 +45,7 @@
     <% end %>
 
     <%= check_box_tag 'no_language', 'on', params[:no_language] == 'on' %>
-    <%= label_tag t('no_language', scope: 'admin.dashboard.tags') %>
+    <%= label_tag t('no_language', scope: 'admin.tags') %>
   </div>
 
   <%= submit_tag (t(:filter, scope:'general')), class: 'btn btn-blue btn-sm mt-3' %>

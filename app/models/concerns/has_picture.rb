@@ -13,6 +13,6 @@ module HasPicture
   def file_size
     return unless picture.size.to_f / (1000 * 1000) > 1
 
-    errors.add(:picture, I18n.t('error_messages.picture_too_big'))
+    errors.add(:profiles, I18n.t('error_messages.picture_too_big'))
   end
 end

@@ -1,0 +1,93 @@
+en:
+  profiles:
+    category: "We have <b>%{profiles_count}</b> speakerinnen and <b>%{topics_count}</b> topics in category <b>%{category_name}</b> <i class='fa fa-caret-down' style='font-size: 21px'></i>"
+    tag:
+      top_topics: "The 200 most popular topics"
+      topics_category: "Topics in category <b>%{category_name}"
+      tag_choose_languages: "You can sort the topics via languages"
+      topics_with_category: "in category %{category_name}"
+      topics_with_no_language_scope: "Topics in all languages"
+      topics_quick_filter: "Search the topics cloud:"
+    form:
+      not_saved: "This profile could not be saved: "
+      profile_from: "Profile of"
+      delete_picture: "<i class='fa fa-trash pr-2'></i>Delete my photo"
+      update: "Update your profile"
+      picture: "A picture of me:"
+      picture_info: "Please upload a photo in <b>color</b>, we show it in black and white.
+        Make sure you use .jpg, .jpeg or .png and that you have all copyrights for this photo.
+        The size of your photo should be<b> smaller than 1MB</b>."
+      firstname: "My first name:"
+      lastname: "My last name:"
+      translated_infos: "Translated Infos:"
+      bio: "My bio in %{language}: <i class='fa fa-info-circle' aria-hidden='true'></i>
+        <br><small class='form-text text-muted'>You can use simple HTML tags to format the text. For example: <i>< i > italic < /i ></i> or <b>< b > bold < /b ></b>.</small>"
+      bio_tooltip: "Here you can add a short or long bio of yourself. Please also add specific expertise and topics you feel comfortable speaking about. This will help organizers of events to understand whether you might be the person they're looking for."
+      topic_list: "My topics as tags, please don't choose more than 10 tags: <i class='fa fa-info-circle' aria-hidden='true'></i>"
+      topic_list_tooltip: "Please have a look first, if your topic already exists."
+      main_topic_title: "My main focus"
+      main_topic: "My main focus in %{language}:
+        <br><small class='form-text text-muted'>Only 30 characters are shown.
+        <br>Please choose one topic as your favorite topic and enter it again. It will be visible along with your name and picture at the speaker overview site.</small>"
+      tag_list: "Existing topics"
+      languages: "I can talk in:"
+      show_more_languages: "Show more languages"
+      show_less_languages: "Show less languages"
+      city: "The city, I live in:  <i class='fa fa-info-circle' aria-hidden='true'></i>"
+      city_tooltip: "Please list multiple cities with a comma as a seperator, e.g. Berlin, New York."
+      country: "The country, I live in:"
+      twitter: "My twitteraccount:"
+      email: "My email address: <i class='fa fa-info-circle' aria-hidden='true'></i>"
+      website: "My website:"
+      additional_websites: "Additional websites/blogs:"
+    show:
+      firstname: 'First name:'
+      lastname: 'Last name:'
+      topics: "My topics:"
+      languages: "My languages:"
+      media: "Examples of previous talks / appearances:"
+      bio: "My bio:"
+      websites: "My websites/blogs:"
+      city: "My city:"
+      country: "My country:"
+      country_select: "Select a country:"
+      twitter: "My twitter handle:"
+      website: "My website/blog:"
+      contact: "Contact"
+      email_to: "Email to "
+      show: "Show"
+      edit: "Edit profile"
+      destroy: "Delete"
+      sure: "Are you sure?"
+      link: "Be sure to add 'http://'"
+      email: "Email:"
+      empty_profile: "There is nothing here yet ¯\\_(ツ)_/¯."
+      check_faq: "To get started please fill out the formular via 'Edit Profile'!<BR> For more information how to fill in your profile, check here: <a href='https://speakerinnen.org/de/faq'>FAQ</a>"
+      topics: "My topics:"
+      to_profile: "To the profile"
+    medialinks:
+      edit: "Edit previous talks"
+    edit:
+      show: "Show own profile"
+      home: "Show all women speakers >>"
+    index:
+      title: "All women speakers"
+      text: "Welcome!<br>
+            Here you can find women* for your conference or your event: speakers, panel hosts, or workshop hosts.
+            <p>Browse individual profiles, filter via the most listed <a href='#tag_cloud_anchor', class='text__link--bg'>topics</a>, or use the search function for a specific search.</p>
+            Enjoy!"
+      name: "Name"
+      twitter: "Twitter"
+      topics: "Topics"
+      topic: "Topic"
+      city: "City"
+      country: "Country"
+      country_search_hint: "(Beware: A lot of speakers do not have a specified country.)"
+      language: "Language"
+      all_speakerinnen: "We are already %{profiles_count} speakerinnen!"
+      show_more: "More >>"
+      show_less: "Less >>"
+    new:
+      new_profile: "New profile"
+  error_messages:
+    picture_too_big: " is too big. You cannot upload a file greater than 1MB."

@@ -1,5 +1,5 @@
 <div class="m-5">
-  <h1 class="text-center mt-5 pt-5">Administration::<%= t(:features, scope: 'admin.dashboard.features')%></h1>
+  <h1 class="text-center mt-5 pt-5">Administration::<%= t(:features, scope: 'admin.features')%></h1>
 
   <%= link_to ('<i class="fa fa-plus-circle">&nbsp;</i>' + t(:add, scope: "general")).html_safe,
   new_admin_feature_path, class: "btn btn-blue btn-sm my-5" %>
@@ -7,11 +7,11 @@
   <table class="table">
     <thead class="bg--lightgrey">
       <tr>
-        <th><%= t(:title, scope: 'admin.dashboard.features') %></th>
-        <th><%= t(:description, scope: 'admin.dashboard.features') %></th>
+        <th><%= t(:title, scope: 'admin.features') %></th>
+        <th><%= t(:description, scope: 'admin.features') %></th>
         <th>Speakerinnen</th>
         <th>Position</th>
-        <th><%= t(:visibility, scope: 'admin.dashboard.features') %></th>
+        <th><%= t(:visibility, scope: 'admin.features') %></th>
         <th></th>
         <th></th>
       </tr>
@@ -23,16 +23,16 @@
           <td><%= feature.description[0..99] %></td>
           <td>
             <% feature.profiles.each do |profile| %>
-              - <%= link_to profile.name_or_email, admin_profile_path(profile) %> - 
+              - <%= link_to profile.name_or_email, admin_profile_path(profile) %> -
             <% end %>
           <td><%= feature.position %></td>
           <td>
             <% if feature.public %>
-              <%= link_to t(:public, scope: 'admin.dashboard.features'), stop_event_admin_feature_path(feature.id),
+              <%= link_to t(:public, scope: 'admin.features'), stop_event_admin_feature_path(feature.id),
                 method: :post, class:'btn btn-blue btn-block btn-sm' %>
               <% else %>
 
-                <%= link_to t(:invisible, scope: 'admin.dashboard.features'), announce_event_admin_feature_path(feature.id),
+                <%= link_to t(:invisible, scope: 'admin.features'), announce_event_admin_feature_path(feature.id),
                 method: :post, class:'btn btn-sm btn-block btn-light', title: 'Dieses Feature mit zugehörigen Profilen auf der Homepage ankündigen.' %>
               <% end %>
           </td>
