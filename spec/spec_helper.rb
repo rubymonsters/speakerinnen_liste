@@ -2,6 +2,7 @@
 
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 ENV['RAILS_ENV'] ||= 'test'
+ENV['FISHY_EMAILS']="fish@email.de"
 require File.expand_path('../config/environment', __dir__)
 require 'rspec/rails'
 require 'elasticsearch/extensions/test/cluster'

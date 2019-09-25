@@ -17,64 +17,24 @@
 #available-tags-box {
   max-height: 400px;
   overflow: scroll;
-  background: $tag-box-background;
+  background: $white-smoke;
 }
 
 #selected-tags-box {
   height: 100px;
 }
-
 div#v-pills-tab a {
   color: black;
 }
 
 // colors of categories and tags
 $categories_dark_color: (
-  internet: $pink,
-  marketing: $dark_pink,
-  politics: $raspberry_red,
-  science: $red_orange,
-  environment: $orange,
-  miscellaneous: $bronze,
-);
-
-$categories_bright_color: (
   arts: $teal,
   body: $dark_teal,
-  career: $soft_blue,
-  companies: $purple,
-  diversity: $rose,
+  marketing: $raspberry_red,
+  politics: $red_orange,
+  science: $orange_1
 );
-
-$categories_custom_color: (
-  arts: $teal,
-  body: $dark_teal,
-  career: $soft_blue,
-  companies: $purple,
-  diversity: $rose,
-  internet: $pink,
-  marketing: $dark_pink,
-  politics: $raspberry_red,
-  science: $red_orange,
-  environment: $orange,
-  miscellaneous: $bronze,
-);
-
-// brighter colors
-$categories_second_color: (
-  arts: $teal_1,
-  body: $dark_teal_1,
-  career: $soft_blue_1,
-  companies: $purple_1,
-  diversity: $rose_1,
-  internet: $pink_1,
-  marketing: $dark_pink_1,
-  politics: $raspberry_red_1,
-  science: $red_orange_1,
-  environment: $orange_1,
-  miscellaneous: $bronze_1,
-);
-// create classes and ids for the tagfilter
 
 @each $name, $color in $categories_dark_color {
   button.cat_#{$name} {
@@ -85,7 +45,30 @@ $categories_second_color: (
       color: white;
     }
   }
+  a:link#v-pills-#{$name}-tab.active {
+    background: $color;
+    color: white;
+  }
+  a:link#v-pills-#{$name}-tab {
+    i { color: $color; }
+    &:hover {
+      background: $color;
+      color: white;
+    }
+  }
+  a:link#category-#{$name} {
+    color: $color;
+  }
 }
+
+$categories_bright_color: (
+  career: $soft_blue,
+  companies: $purple,
+  diversity: $rose,
+  environment: $pink,
+  internet: $dark_pink,
+  miscellaneous: $bronze
+);
 
 @each $name, $color in $categories_bright_color {
   button.cat_#{$name} {
@@ -96,41 +79,40 @@ $categories_second_color: (
       color: black;
     }
   }
-}
-
-// create classes and ids for the tagfilter with brighter background color
-
-@each $name, $color in $categories_second_color {
-  button.cat_bright_#{$name} {
+  a:link#v-pills-#{$name}-tab.active {
     background: $color;
     color: black;
+  }
+  a:link#v-pills-#{$name}-tab {
+    i { color: $color; }
     &:hover {
       background: $color;
       color: black;
     }
   }
+  a:link#category-#{$name} {
+    color: $color;
+  }
 }
+
+// custom colors
+$categories_custom_color: (
+  arts: $teal,
+  body: $dark_teal,
+  career: $soft_blue,
+  companies: $purple,
+  diversity: $rose,
+  environment: $pink,
+  internet: $dark_pink,
+  marketing: $raspberry_red,
+  politics: $red_orange,
+  science: $orange,
+  miscellaneous: $bronze
+);
 
 @each $name, $color in $categories_custom_color {
   div.category_item_#{$name} {
     background-color: $color;
-  }
-  a#v-pills-#{$name}-tab {
-    i { color: $body-bg-color-grey; }
-    &:hover {
-      color: $color;
-    }
-    i.icon-active-#{$name} {
-      color: $color;
-    }
-  }
-
-  a#v-pills-#{$name}-tab.active {
-    color: $color;
-    background: $body-bg-color-grey;
-  }
-  a#category-#{$name} {
-    color: $color;
   }
   @include media-breakpoint-down(sm) {
    div.category_item_#{$name} {
@@ -149,40 +131,51 @@ $categories_second_color: (
   }
 }
 
+// brighter colors
+$categories_brighter_color: (
+  arts: $teal_1,
+  body: $dark_teal_1,
+  career: $soft_blue_1,
+  companies: $purple_1,
+  diversity: $rose_1,
+  environment: $pink_1,
+  internet: $dark_pink_1,
+  marketing: $raspberry_red_1,
+  politics: $red_orange_1,
+  science: $orange_1,
+  miscellaneous: $bronze_1
+);
 
-
-@each $name, $color in $categories_second_color {
+@each $name, $color in $categories_brighter_color {
   div.category_item_#{$name}_numbers {
     background-color: $color;
   }
 }
 
 // darker colors
-$categories_third_color: (
+$categories_darker_color: (
   arts: $teal_2,
   body: $dark_teal_2,
   career: $soft_blue_2,
   companies: $purple_2,
   diversity: $rose_2,
-  internet: $pink_2,
-  marketing: $dark_pink_2,
-  politics: $raspberry_red_2,
-  science: $red_orange_2,
-  environment: $orange_2,
-  miscellaneous: $bronze_2,
+  environment: $pink_2,
+  internet: $dark_pink_2,
+  marketing: $raspberry_red_2,
+  politics: $red_orange_2,
+  science: $orange_2,
+  miscellaneous: $bronze_2
 );
 
-
-@each $name, $color in $categories_third_color {
+@each $name, $color in $categories_darker_color {
   div#v-pills-#{$name} {
-    //background-color: $color;
+    background-color: $color;
   }
-
   button.cat_#{$name} i {
     color: $color;
   }
 
-  bg-color-#{$name} {
+  .bg-color-#{$name} {
     background-color: $color;
   }
 }

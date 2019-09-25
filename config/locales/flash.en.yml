@@ -1,0 +1,28 @@
+en:
+  flash:
+    profiles:
+      created: 'Profile was successfully created.'
+      updated: '%{profile_name} was successfully updated.'
+      destroyed: '%{profile_name} was successfully deleted.'
+      no_permission: "You don’t have permission to edit the profile."
+      show_no_permission: "You don’t have permission to see the profile."
+    medialink:
+      created: "Your previous talk was successfully created."
+      updated: 'Your previous talk was successfully updated.'
+      destroyed: 'Your previous talk was successfully deleted.'
+      no_permission: "You don’t have permission to edit the reference."
+      error: "It looks like you forgot to fill in something."
+    categories:
+      created: '%{category_name} was successfully created.'
+      updated: '%{category_name} was successfully updated.'
+      destroyed: '%{category_name} was successfully deleted.'
+    features:
+      created: '%{feature_title} was successfully created.'
+      updated: '%{feature_title} was successfully updated.'
+      destroyed: '%{feature_title} was successfully deleted.'
+      announced: '%{feature_title} is anounced on homepage.'
+      stopped: 'Announcement of %{feature_title} is not shown anymore.'
+    image:
+      destroyed: 'Your picture was successfully deleted.'
+    comment:
+      updated: 'Comment was successfully updated.'

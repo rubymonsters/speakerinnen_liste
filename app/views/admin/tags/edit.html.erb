@@ -1,9 +1,9 @@
 <div class="container py-5">
 
-  <h1>Administration::<%= t(:tags, scope: "admin.dashboard.tags")%>::<%= t(:edit, scope: "general")%></h1>
+  <h1>Administration::<%= t(:tags, scope: "admin.tags")%>::<%= t(:edit, scope: "general")%></h1>
 
   <div class="my-3 py-3 border-vertical">
-    <%= link_to t(:show_all_tags, scope: 'admin.dashboard.tags'), admin_tags_path, class:'btn btn-blue btn-sm' %>
+    <%= link_to t(:show_all_tags, scope: 'admin.tags'), admin_tags_path, class:'btn btn-blue btn-sm' %>
   </div>
 
   <h2 class="mb-3"><%= @tag.name %></h2>
@@ -11,13 +11,13 @@
 
     <div class="row">
       <div class="col-4">
-        <h5><%= t(:new_tagname, scope: "admin.dashboard.tags")%>:</h5>
+        <h5><%= t(:new_tagname, scope: "admin.tags")%>:</h5>
         <div class="input-group">
           <%= text_field(:tag, :name, value: @tag.name, class: "form-control") %>
         </div>
       </div>
       <div class="col-4">
-        <h5><%= t(:select_languages, scope: "admin.dashboard.tags.edit")%></h5>
+        <h5><%= t(:select_languages, scope: "admin.tags.edit")%></h5>
         <% LocaleLanguage.all.each do |language| %>
           <div id=<%="#{language.iso_code}_#{@tag.id}"%> >
             <%= check_box_tag 'tag[languages][]',
@@ -30,7 +30,7 @@
         <% end %>
       </div>
       <div class="col-4">
-        <h5><%= t(:select_categories, scope: "admin.dashboard.tags.edit")%></h5>
+        <h5><%= t(:select_categories, scope: "admin.tags.edit")%></h5>
         <% @categories.each do |category| %>
           <div id=<%="#{category.id}_#{@tag.id}"%> >
             <%= check_box_tag 'tag[categories][]',

@@ -10,7 +10,9 @@
 # Ignore the default SQLite database.
 /db/*.sqlite3
 
-# Ignore all logfiles and tempfiles.
+# Ignore all pictures, logfiles and tempfiles.
+/public/uploads
+/storage
 /log/*.log
 /tmp
 /log

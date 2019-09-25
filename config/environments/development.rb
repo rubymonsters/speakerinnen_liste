@@ -72,13 +72,5 @@ Rails.application.configure do
     Bullet.rails_logger = true
   end
 
-  config.middleware.use ExceptionNotification::Rack,
-  :email => {
-    :email_prefix => "[SPEAKERINNEN ERROR STAGING] ",
-    :sender_address => %{"notifier" <no-reply@speakerinnen.org>},
-    :exception_recipients => %w{devops@speakerinnen.org}
-  }
-
   config.action_mailer.delivery_method = :letter_opener
 end
-  
