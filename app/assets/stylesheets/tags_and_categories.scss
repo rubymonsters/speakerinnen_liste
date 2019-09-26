@@ -56,8 +56,9 @@ $categories_dark_color: (
       color: white;
     }
   }
-  a:link#category-#{$name} {
+  #category-#{$name} {
     color: $color;
+    text-decoration: underline;
   }
 }
 
@@ -90,8 +91,9 @@ $categories_bright_color: (
       color: black;
     }
   }
-  a:link#category-#{$name} {
+  #category-#{$name} {
     color: $color;
+    text-decoration: underline;
   }
 }
 

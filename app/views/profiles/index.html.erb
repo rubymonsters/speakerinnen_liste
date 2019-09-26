@@ -21,7 +21,7 @@
                     '#speakers', class: 'h4' %>
       <% elsif params[:tag_search] %> <%# when in tagfilter scope %>
         <h4 class="pt-3"><%= t(:all_tagged_speakerinnen, scope: 'profiles.index', count: @profiles_tagged_count).html_safe + t(:tag_filter, scope: 'profiles.index', count: @tags.count, tags: params[:tag_search]).html_safe %></h4>
-        <%= link_to "<< back to the tag filter", root_path(tag_search: params[:tag_search].gsub(/\s+/, "-"), anchor: "categories_anchor"), class: "btn btn-blue mt-3" %>
+        <%= link_to "<< back to the tag filter", categories_path(tag_search: params[:tag_search].gsub(/\s+/, "-"), anchor: "categories_anchor"), class: "btn btn-blue mt-3" %>
       <% else %>
         <h4><%= t(:all_speakerinnen, scope: 'profiles.index', profiles_count: @profiles_count).html_safe %></h4>
       <% end %>

@@ -85,9 +85,20 @@ en:
       country_search_hint: "(Beware: A lot of speakers do not have a specified country.)"
       language: "Language"
       all_speakerinnen: "We are already %{profiles_count} speakerinnen!"
+      all_tagged_speakerinnen: {
+        one: "There is one speakerin ",
+        other: "There are %{count} speakerinnen "
+      }
+      tag_filter: {
+        one: "for the topic: <b>%{tags}</b>.",
+        other: "for the topics: <b>%{tags}</b>."
+      }
       show_more: "More >>"
       show_less: "Less >>"
     new:
       new_profile: "New profile"
   error_messages:
     picture_too_big: " is too big. You cannot upload a file greater than 1MB."
+  category:
+    title: "Look though the all speakerinnen of the category <b>%{category_name}</b> <i class='fa fa-caret-right' style='font-size: 21px'></i>"
+    filter: "Choose one or more tags from any category:"
