@@ -91,3 +91,8 @@ de:
       new_profile: "Neues Profil"
   error_messages:
     picture_too_big: " ist zu groß. Bitte nicht größer als 1 MB"
+  category:
+    title: "Schau Dir <b>alle</b> Speakerinnen* der Kategorie <b>%{category_name}</b> an oder<br>"
+    all_speakerinnen: "<b>alle</b> Speakerinnen*"
+    title_2: "der Kategorie <b>%{category_name}</b> an oder<br>"
+    filter: "wähle einen oder mehrere Tags aus verschiedenen Kategorien:"

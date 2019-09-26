@@ -30,7 +30,9 @@
           </li>
         <% end %>
         <% if admin?(current_profile) %>
-          <li class="nav-item active pl-2">
+                  <span class="border-right mx-2" style="height: 77px;"></span>
+
+          <li class="nav-item active pt-3">
             <%= link_to 'Admin', admin_root_path, class: "nav-link" %>
           </li>
         <% end %>

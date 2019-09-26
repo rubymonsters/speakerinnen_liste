@@ -80,3 +80,6 @@ en:
     imprint:
       title: "Legal Details"
       privacy: "Privacy Policy"
+  category:
+    title: "Look though the all speakerinnen of the category <b>%{category_name}</b> <i class='fa fa-caret-right' style='font-size: 21px'></i>"
+    filter: "Choose one or more tags from any category:"

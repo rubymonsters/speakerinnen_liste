@@ -2,16 +2,16 @@
   <div class="row">
     <div class="col-3">
     </div>
-    <div class="col-9">
+    <div class="col-9 mb-3">
       <div class="tab-content mb-3" id="selected-category">
         <% @categories.each do |category| %>
           <a id="<%= "category-" + category.short_name %>"
-            class="category-title<%= " d-none" unless category.id.to_s == ( params[:category_id] || @category.id.to_s ) %>" href=<%= profiles_path(category_id: category.id) %> >
+            class="h4 category-title<%= " d-none" unless category.id.to_s == ( params[:category_id] || @category.id.to_s ) %>" href=<%= profiles_path(category_id: category.id) %> >
             <%= t(:title, scope: 'category', category_name: category.name).html_safe %>
           </a>
         <% end %>
       </div>
-      <h4><%= t(:filter, scope: 'category') %></h4>
+      <span class="h4"><%= t(:filter, scope: 'category') %></span>
     </div>
   </div>
 
