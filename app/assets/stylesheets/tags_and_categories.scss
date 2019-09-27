@@ -33,11 +33,12 @@ $categories_dark_color: (
   body: $dark_teal,
   marketing: $raspberry_red,
   politics: $red_orange,
-  science: $orange_1
+  internet: $dark_pink,
+  miscellaneous: $bronze
 );
 
 @each $name, $color in $categories_dark_color {
-  button.cat_#{$name} {
+  .cat_#{$name} {
     background: $color;
     color: white;
     &:hover {
@@ -67,12 +68,11 @@ $categories_bright_color: (
   companies: $purple,
   diversity: $rose,
   environment: $pink,
-  internet: $dark_pink,
-  miscellaneous: $bronze
+  science: $orange_1
 );
 
 @each $name, $color in $categories_bright_color {
-  button.cat_#{$name} {
+  .cat_#{$name} {
     background: $color;
     color: black;
     &:hover {

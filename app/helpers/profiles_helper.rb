@@ -14,6 +14,12 @@ module ProfilesHelper
     link_to topic, topic_path(topic: topic.to_s), options
   end
 
+  def topic_link_color(topic)
+    if topic.categories.first
+      link_to topic, topic_path(topic: topic.to_s), id: topic.name.gsub(/\s+/, "-"), class: "cat_#{topic.categories.first.short_name} btn btn-sm m-1 rounded available-tag"
+    end
+  end
+
   def profile_picture_link(profile)
     if profile.picture.present?
       link_to(image_tag(profile.picture.profile.url, alt: profile.fullname, class: 'photo--grey'), profile)
