@@ -5,8 +5,8 @@
     Administration::<%= t(:profiles, scope: 'admin.profiles')%>::<%= t(:edit, scope: 'general')%>
   </h1>
   <div class="my-3 py-3 border-vertical">
-    <%= link_to t(:show_all, scope: 'admin.profiles.edit'), admin_profiles_path, class:'btn btn-blue btn-sm' %>
-    <%= link_to t(:show, scope: 'admin.profiles.edit'), admin_profile_path(@profile), class:'btn btn-blue btn-sm' %>
+    <%= link_to t(:show_all, scope: 'admin.profiles.edit'), admin_profiles_path, class: 'btn btn-primary btn-sm' %>
+    <%= link_to t(:show, scope: 'admin.profiles.edit'), admin_profile_path(@profile), class: 'btn btn-primary btn-sm' %>
   </div>
   <%= render partial: 'admin_edit', locals: {page: "edit"} %>
   <h2 class="mb-3">

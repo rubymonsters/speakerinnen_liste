@@ -8,7 +8,7 @@
             profiles_count: @profiles.total_count
           ).html_safe %>
         </h4>
-        <%= link_to "<< back to the category filter", root_path(anchor: "categories_anchor"), class: "btn btn-primary mt-3" %>
+        <%= link_to t(:back_to_filters, scope: 'profiles.index'), root_path(anchor: "categories_anchor"), class: "btn btn-outline-primary mt-3" %>
       <% elsif params[:topic] %> <%# when in single topic scope %>
         <%= link_to t(:profiles_topics, scope: 'search',
             profiles_count: @profiles.total_count,
@@ -21,7 +21,7 @@
                     '#speakers', class: 'h4' %>
       <% elsif params[:tag_search] %> <%# when in tagfilter scope %>
         <h4 class="pt-3"><%= t(:all_tagged_speakerinnen, scope: 'profiles.index', count: @profiles_tagged_count).html_safe + t(:tag_filter, scope: 'profiles.index', count: @tags.count, tags: params[:tag_search]).html_safe %></h4>
-        <%= link_to "<< back to the tag filter", categories_path(tag_search: params[:tag_search].gsub(/\s+/, "-"), anchor: "categories_anchor"), class: "btn btn-blue mt-3" %>
+        <%= link_to t(:back_to_filters, scope: 'profiles.index'), categories_path(tag_search: params[:tag_search].gsub(/\s+/, "-"), anchor: "categories_anchor"), class: "btn btn-outline-primary mt-3" %>
       <% else %>
         <h4><%= t(:all_speakerinnen, scope: 'profiles.index', profiles_count: @profiles_count).html_safe %></h4>
       <% end %>
@@ -48,16 +48,21 @@
   <%= paginate @profiles %>
 
   <a id="tag_cloud_anchor"></a>
-  <h5 class="text-center"><%= t(:more_options, scope: 'search').html_safe %></h5>
-  <p class="text-center mb-5">
-    <a href="#top"><%= t(:adapt_search, scope: 'search')%></a> <br>
-    <%= link_to(t(:all_profiles, scope: 'search'), profiles_path).html_safe %><br>
-    <%= link_to(t(:all_categories, scope: 'pages.home'), root_path + "#categories_anchor" )%>
-  </p>
 
-  <%= render partial: 'layouts/footer' %>
-
+  <div class="row">
+    <div class="col-12">
+      <h5 class="text-center"><%= t(:more_options, scope: 'search').html_safe %></h5>
+      <p class="text-center mb-5">
+        <a href="#top"><%= t(:adapt_search, scope: 'search')%></a> <br>
+        <%= link_to(t(:all_profiles, scope: 'search'), profiles_path).html_safe %><br>
+        <%= link_to(t(:all_categories, scope: 'pages.home'), root_path + "#categories_anchor" )%>
+      </p>
+    </div>
+  </div>
 </div>
+
+<%= render partial: 'layouts/footer' %>
+
 
 <script type="text/javascript" charset="utf-8">
   // tag filter

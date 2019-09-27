@@ -2,18 +2,18 @@
   <%= t(:profile_status, scope: 'admin.profiles') + t(:public, scope: 'admin.profiles') + ' ' if @profile.published? %>
   <% if @profile.published %>
     <%= link_to t(:make_invisible, scope: 'admin.profiles'), unpublish_admin_profile_path(@profile.id),
-    method: :post, class:'btn btn-sm btn-danger', title: 'Hier kannst Du das Profile wieder unsichtbar machen.' %>
+    method: :post, class: 'btn btn-sm btn-danger', title: 'Hier kannst Du das Profile wieder unsichtbar machen.' %>
   <% else %>
     <%= link_to t(:make_public, scope: 'admin.profiles'), publish_admin_profile_path(@profile.id),
-    method: :post, class:'btn btn-sm btn-danger', title: 'Eine Bestätigungsmail wird verschickt.' %>
+    method: :post, class: 'btn btn-sm btn-danger', title: 'Eine Bestätigungsmail wird verschickt.' %>
   <% end %>
-  <%= link_to t(:edit, scope: 'medialinks'), admin_profile_medialinks_path(@profile), class:'btn btn-blue btn-sm', title: t(:edit, scope: 'medialinks') %>
+  <%= link_to t(:edit, scope: 'medialinks'), admin_profile_medialinks_path(@profile), class: 'btn btn-primary btn-sm', title: t(:edit, scope: 'medialinks') %>
   <br>
   <br>
   <%= form_for @profile,{ url: admin_update_admin_profile_path(@profile.id), method: 'post' } do |f| %>
     <%= hidden_field_tag 'page', page %>
     <%= f.text_field 'admin_comment' %>
-    <%= f.submit t(:add_comment, scope: 'admin.profiles'), class: 'btn btn-blue btn-sm' %>
+    <%= f.submit t(:add_comment, scope: 'admin.profiles'), class: 'btn btn-primary btn-sm' %>
   <% end %>
   <br>
   <%= simple_form_for @profile, { url: admin_update_admin_profile_path(@profile.id), method: 'post',
@@ -22,7 +22,7 @@
       <%= f.label t(:feature_list, scope: 'admin.profiles').html_safe %>
       <%= f.select(:feature_ids, Feature.all.map{|feature|[feature.title, feature.id]}, { include_blank: true }, :multiple => true, id: :select_feature, class: 'form-control select_feature') %>
     </div>
-    <%= f.submit t(:assign_feature, scope: 'admin.profiles'), class: 'btn btn-blue btn-sm' %>
+    <%= f.submit t(:assign_feature, scope: 'admin.profiles'), class: 'btn btn-primary btn-sm' %>
   <% end  %>
 </div>
 

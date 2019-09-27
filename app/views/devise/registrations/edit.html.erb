@@ -38,7 +38,7 @@
 
       <%= button_to t(:update, scope: "devise.registrations.edit"),
       registration_path(resource_name), data: { confirm: t(:sure, scope: "devise.registrations.edit") },
-      method: :put, class:"btn btn-blue mt-3" %>
+      method: :put, class:"btn btn-primary mt-3" %>
 
     </div>
   <% end %>
@@ -67,7 +67,7 @@
 
         <%= button_to t(:update, scope: "devise.registrations.edit"),
         registration_path(resource_name), data: { confirm: t(:sure, scope: "devise.registrations.edit") },
-        method: :put, class:"btn btn-blue" %>
+        method: :put, class:"btn btn-primary" %>
 
       </div>
     <% end %>

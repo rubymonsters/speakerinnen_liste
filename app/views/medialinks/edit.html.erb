@@ -19,7 +19,7 @@
       <%= f.select :language, options_for_select(IsoLanguage.all_languagenames_with_iso, @medialink.language), include_blank: "..." %>
     <% end %>
 
-    <%= f.submit class:"mt btn btn-blue mt-3" %>
+    <%= f.submit class: "mt btn btn-primary mt-3" %>
 
   <% end %>
 

@@ -1,9 +1,9 @@
 <section class="bg--white">
   <section id="startpage__start-teaser" class="startpage__photo-bar">
     <div class="container">
-      <h1 class="display-4 box__bg bg--white mt-5"><%= t(:heading, scope: 'pages.home.search') %></h1>
-      <h4 class="startpage-subtitle box__bg bg--white"><%= t(:tagline_html, scope: 'pages.home.search', root_path: root_path) %></h4><BR>
-      <div class="box__bg bg--white">
+      <h1 class="display-4 box__bg bg--white-trans mt-5"><%= t(:heading, scope: 'pages.home.search') %></h1>
+      <h4 class="startpage-subtitle box__bg bg--white-trans"><%= t(:tagline_html, scope: 'pages.home.search', root_path: root_path) %></h4><BR>
+      <div class="box__bg bg--white-trans">
         <%= form_tag(profiles_path, method: 'get') do %>
           <%= render partial: 'shared/search_form' %>
           <h5><%= link_to(t(:all_categories, scope: 'pages.home'), root_path + "#categories_anchor" )%></h5>
@@ -52,8 +52,8 @@
 
   <section id="startpage__teaser-bg-01" class="startpage__photo-bar">
     <div class="container">
-      <h1 class="display-4 box__bg bg--white mt-5"><%= t(:quote, scope: 'pages.home') %></h1>
-      <h4 class="startpage-subtitle box__bg bg--white"><%= t(:quote_text, scope: 'pages.home') %></h4>
+      <h1 class="display-4 box__bg bg--white-trans mt-5"><%= t(:quote, scope: 'pages.home') %></h1>
+      <h4 class="startpage-subtitle box__bg bg--white-trans"><%= t(:quote_text, scope: 'pages.home') %></h4>
     </div>
   </section>
   <div class="copyright">
@@ -75,7 +75,7 @@
 
   <section id="startpage__teaser-bg-02" class="startpage__photo-bar my-5">
     <div class="container">
-      <h1 class="display-4 box__bg bg--white mt-5"><%= t(:speaker_shoutout, scope: 'pages.home').html_safe %></h1>
+      <h1 class="display-4 box__bg bg--white-trans mt-5"><%= t(:speaker_shoutout, scope: 'pages.home').html_safe %></h1>
       <h4 class="box__bg bg--white"><%=link_to t(:speaker_text, scope: 'pages.home').html_safe, new_profile_registration_path %></h4>
     </div>
   </section>

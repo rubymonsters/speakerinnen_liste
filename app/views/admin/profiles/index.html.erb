@@ -5,11 +5,11 @@
     <%= Profile.all.select {|profile| profile.published?}.size %> <%= t(:public, scope: 'admin.profiles') %>
   </div>
 
-  <%= form_tag(admin_profiles_path, method: 'get', class:'mt-3 form-row') do %>
+  <%= form_tag(admin_profiles_path, method: 'get', class: 'mt-3 form-row') do %>
       <div class="col-md-6 mb-4">
         <%= text_field_tag :search, params[:search], class: "form-control", id: "formGroupExampleInput", placeholder: t(:search, scope: 'admin.profiles') %>
       </div>
-    <%= submit_tag t(:search, scope: 'general'), class: 'btn btn-blue' %>
+    <%= submit_tag t(:search, scope: 'general'), class: 'btn btn-primary' %>
   <% end %>
 
   <%= paginate @profiles %>
@@ -46,16 +46,16 @@
           <td><%= 'Admin' if profile.admin %></td>
           <td><% if profile.published %>
               <%= link_to t(:public, scope: 'admin.profiles'), unpublish_admin_profile_path(profile.id),
-              method: :post, class:'btn btn-blue btn-block btn-sm' %>
+              method: :post, class: 'btn btn-primary btn-block btn-sm' %>
             <% else %>
               <%= link_to t(:invisible, scope: 'admin.profiles'), publish_admin_profile_path(profile.id),
-              method: :post, class:'btn btn-sm btn-block btn-danger', title: 'Eine Bestätigungsmail wird verschickt.' %>
+              method: :post, class: 'btn btn-sm btn-block btn-danger', title: 'Eine Bestätigungsmail wird verschickt.' %>
             <% end %>
           </td>
           <td>
             <%= form_for profile,{ url: admin_update_admin_profile_path(profile.id), method: 'post' } do |f| %>
               <%= f.text_field 'admin_comment' %>
-              <%= f.submit t(:add_comment, scope: 'admin.profiles'), class: 'btn btn-blue btn-sm' %>
+              <%= f.submit t(:add_comment, scope: 'admin.profiles'), class: 'btn btn-primary btn-sm' %>
             <% end  %>
           </td>
           <td><center><%= link_to '<i class="fa fa-pencil">&nbsp;</i>'.html_safe, edit_admin_profile_path(profile),
