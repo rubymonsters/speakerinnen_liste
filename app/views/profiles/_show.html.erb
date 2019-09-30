@@ -126,27 +126,12 @@
           </a>
       <% end %>
 
-      <% if current_profile == @profile || current_profile.admin? %>
-        <%= link_to(edit_profile_path(@profile)) do %>
-          <div class=''>
-            <%= t(:edit, scope: 'profiles.show') %>
-           </div>
-
-        <%= link_to(profile_medialinks_path(@profile)) do %>
-          <div class=''>
-            <%= t(:edit, scope: 'profiles.medialinks') %>
-          </div>
-        <% end %>
-      <% end %>
-
       <% if current_profile == @profile %>
-        <%= link_to(edit_profile_registration_path) do %>
-          <div id='accountSettings', class=''>
-            <%= t(:account, scope: 'layouts.application') %>
-          </div>
-        <% end %>
+        <%= link_to t(:edit, scope: 'profiles.show'), edit_profile_path(@profile) %><br>
+        <%= link_to t(:edit, scope: 'profiles.medialinks'), profile_medialinks_path(@profile) %><br>
+        <%= link_to t(:account, scope: 'layouts.application'), edit_profile_registration_path %>
       <% end %>
-    <% end %>
+
     </div>
   </div>
 
