@@ -14,7 +14,7 @@
   </h2>
   <%= simple_form_for @profile, url: admin_profile_path(@profile),
                          html: { multipart: true } do |f| %>
-    <%= render partial: 'shared/profile_formfields',
+    <%= render partial: 'profiles/profile_formfields',
                  locals: { form_type: :update_profile, f: f, profile: @profile } %>
   <% end %>
 </div>
