@@ -90,8 +90,8 @@ en:
         other: "There are %{count} speakerinnen "
       }
       tag_filter: {
-        one: "for the topic: <b>%{tags}</b>.",
-        other: "for the topics: <b>%{tags}</b>."
+        one: "for the topic: ",
+        other: "for the topics: "
       }
       show_more: "More >>"
       show_less: "Less >>"

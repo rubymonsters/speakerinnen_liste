@@ -90,8 +90,8 @@ de:
         other: " %{count} Speakerinnen gefunden "
       }
       tag_filter: {
-        one: "zu dem Thema: %{tags}.",
-        other: "zu den Themen: %{tags}."
+        one: "zu dem Thema: ",
+        other: "zu den Themen: "
       }
       show_more: "Mehr >>"
       show_less: "Weniger >>"

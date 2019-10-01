@@ -14,6 +14,7 @@ class ProfilesController < ApplicationController
 
   def index
     if params[:topic]
+      @tags = params[:topic].split(/\s*,\s*/)
       @profiles = profiles_for_tag(params[:topic])
     elsif params[:category_id]
       profiles_for_category(params[:category_id], params[:tag_search])
