@@ -68,7 +68,7 @@ h1, h4 {
 }
 
 .alert-info {
-  background: $primary;
+  background: $yellow;
 }
 
 .alert-warning {
@@ -150,31 +150,10 @@ textarea, input {
     font-size: 1.0rem;
   }
 
-  .profile-box {
-    text-align: center;
-  }
-
   .copyright {
     font-size: 0.8rem;
   }
 
-  .profile-card {
-    padding: 1rem;
-    margin: 1rem 0;
-  }
-
-  .profile-subtitle {
-    margin: 0.5rem 0;
-  }
-
-  .profile-card .profile-subtitle {
-    padding-bottom: 1rem;
-    border-bottom: $border;
-  }
-
-  .profile-title {
-    margin: 1rem 0;
-  }
 
   .startpage-subtitle {
     display: none;

@@ -1,28 +1,25 @@
 
 /* profiles */
 
-.profile-box {
+.profile-navi {
+  text-align: right;
 }
 
-.profile-page {
+.profile-box {
+  text-align: center;
 }
 
 .profile-subtitle {
   font-weight: bold;
-  margin: 0.5rem 0;
 }
 
-.profile-title {
-  margin: 3rem 0;
+.card {
+  background: none;
+  border: none;
 }
 
-.profile-card {
-  padding: 3rem;
-  margin: 3rem 0;
-}
-
-.profile-navi {
-  text-align: right;
+.card-body {
+  padding: 0;
 }
 
 .photo--grey {

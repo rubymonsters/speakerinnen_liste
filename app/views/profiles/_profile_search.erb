@@ -2,10 +2,10 @@
   <div class="col-sm-6 col-md-4 col-lg-3 my-3">
     <div class="card" style="width: 20rem;">
       <%= profile_picture_link(profile) %>
-      <div class="card-body">
-        <h5 class="card-title">
-          <b><%= link_to profile.fullname, profile %></b>
-        </h5>
+      <div class="card-body pt-3">
+        <span class="card-title font-weight-bold">
+          <%= link_to profile.fullname, profile %>
+        </span>
         <p class="card-text">
           <%= profile.main_topic_or_first_topic.truncate(60) if profile.main_topic_or_first_topic %>
         </p>
