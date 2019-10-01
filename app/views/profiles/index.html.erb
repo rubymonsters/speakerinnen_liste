@@ -51,7 +51,7 @@
   <%= paginate @profiles %>
 
   <div class="row">
-    <%= render partial: 'profiles/profile_search', collection: @profiles, as: :profile %>
+    <%= render partial: 'profiles/profile', collection: @profiles, as: :profile %>
   </div>
 
   <%= paginate @profiles %>
