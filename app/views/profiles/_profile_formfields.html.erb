@@ -10,7 +10,7 @@
     <% elsif @profile.image.attached? %>
       <p><%= image_tag(@profile.image, width: 200) %></p>
       <br>
-      <%= link_to t(:delete_picture, scope: 'profiles.form'), image_path(@profile.image.id), :method => :delete, data: { confirm: 'Are you sure?' } %>
+      <%= link_to t(:delete_picture, scope: 'profiles.form').html_safe, image_path(@profile.image.id), :method => :delete, data: { confirm: 'Are you sure?' } %>
     <% else %>
       <!-- :picture for carrierwave and :image for active storage -->
       <p><%= f.file_field :image %></p>
