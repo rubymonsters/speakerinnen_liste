@@ -15,9 +15,7 @@ module ProfilesHelper
   end
 
   def topic_link_color(topic)
-    if topic.categories.first
-      link_to topic, topic_path(topic: topic.to_s), id: topic.name.gsub(/\s+/, "-"), class: "cat_#{topic.categories.first.short_name} btn btn-sm m-1 rounded available-tag"
-    end
+    link_to topic, topic_path(topic: topic.to_s), id: topic.name.gsub(/\s+/, "-"), class: "#{"cat_" + topic.categories.first.short_name if topic.categories.first} btn btn-sm m-1 rounded available-tag"
   end
 
   def profile_picture_link(profile)

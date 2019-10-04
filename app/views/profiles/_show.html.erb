@@ -129,7 +129,7 @@
       <% if current_profile == @profile %>
         <%= link_to t(:edit, scope: 'profiles.show'), edit_profile_path(@profile) %><br>
         <%= link_to t(:edit, scope: 'profiles.medialinks'), profile_medialinks_path(@profile) %><br>
-        <%= link_to t(:account, scope: 'layouts.application'), edit_profile_registration_path %>
+        <%= link_to t(:account, scope: 'layouts.application'), edit_profile_registration_path, id: "accountSettings" %>
       <% end %>
 
     </div>
