@@ -19,6 +19,11 @@ describe 'displaying tags' do
   end
   let!(:pierre) { create(:unpublished_profile, topic_list: [tag_de, tag_with_unpublished_profile]) }
 
+  let!(:science) { FactoryBot.create(:cat_science, tags: [tag_de, tag_en]) }
+  let!(:social) { FactoryBot.create(:cat_social, tags: [tag_both_languages, tag_with_slash_en, tag_with_unpublished_profile]) }
+
+
+
   it 'shows tagging after profile edit' do
     sign_in ada
     visit edit_profile_path(ada.id, locale: 'de')
@@ -31,7 +36,11 @@ describe 'displaying tags' do
 
   context "in the category index page" do
 
-    it 'shows all the categories to coose the tags from'
+    it 'shows all the categories to coose the tags from' do
+      visit 'de/categories'
+      expect(page).to have_content('Wissenschaft')
+      expect(page).to have_content('Soziales')
+    end
 
     context 'in the tags box' do
       it 'shows the tags for the category you choose'
