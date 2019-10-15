@@ -19,7 +19,8 @@ de:
         Die Größe des Fotos sollte <b>kleiner als 1MB</b> sein."
       firstname: "Mein Vorname:"
       lastname: "Mein Nachname:"
-      translated_infos: "Übersetzte Infos:"
+      translated_infos: "Übersetzte Infos"
+      personal_infos: "Persönliche Infos"
       bio: "Meine Biografie auf %{language}: <i class='fa fa-info-circle' aria-hidden='true'></i>
       <br><small class='form-text text-muted'>Du kannst einfache HTML Tags nutzen, um den Text zu formatieren. Zum Beispiel: <i>< i >italic< /i ></i> oder <b>< b > fett < /b ></b>.</small>"
       bio_tooltip: "Hier ist Platz für eine kurze oder auch längere Bio. Außerdem sollten hier Fachkenntnisse und mögliche Vortragsthemen genauer beschrieben werden. Das hilft Veranstalterinnen und Veranstaltern herauszufinden, ob Ihr die Richtigen für ihr Event sein könntet."
