@@ -24,16 +24,17 @@ The aim of the app is to provide a way for conference and event organizers to fi
 
 ## 1. Copy & Configuration
 
-Clone the repository. `git clone git@github.com:rubymonsters/speakerinnen_liste.git`
 
-**1.1 Copy `config/database_example.yml` and rename it to `database.yml` file and make sure it is always set to `.gitignore`:**
+**1.1 Clone the repository. `git clone git@github.com:rubymonsters/speakerinnen_liste.git`
+
+**1.2 Copy `config/database_example.yml` and rename it to `database.yml` file and make sure it is always set to `.gitignore`:**
 
 ```bash
 
 $ cp config/database_example.yml config/database.yml
 ```
 
-**1.2 Adjust the settings of that config file according to your needs and ensure you have all server environments (development, test, staging, production) configured.**
+**1.3 Adjust the settings of that config file according to your needs and ensure you have all server environments (development, test, staging, production) configured.**
 
 
 ## 2. Postgres
