@@ -42,6 +42,21 @@ $ cp config/database_example.yml config/database.yml
 **2.1 Install [PostgreSQL](http://www.postgresql.org/download/) dependent on your operating system**
 
 **2.2 Create a [PostgreSQL user](https://www.digitalocean.com/community/tutorials/how-to-use-roles-and-manage-grant-permissions-in-postgresql-on-a-vps--2) that is needed to log into the database (by default a `postgres` superuser is created after installation)**
+_Troubleshooting:_
+- more infos: https://wiki.ubuntuusers.de/PostgreSQL/
+- `find locate pg_hba.conf`
+```
+local   all             postgres                                trust
+
+# TYPE  DATABASE        USER            ADDRESS                 METHOD
+
+# "local" is for Unix domain socket connections only
+local   all             all                                     trust
+# IPv4 local connections:
+host    all             all             127.0.0.1/32            trust
+# IPv6 local connections:
+host    all             all             ::1/128                 md5
+```
 
 ## 3. Elasticsearch
 
