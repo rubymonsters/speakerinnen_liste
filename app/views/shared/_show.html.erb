@@ -94,6 +94,13 @@
       <%= raw topics_for_profile(@profile).map { |topic| topic_link(topic) }.join(' ') %>
     </p>
 
+    <%# if @profile.profession.present? %>
+      <h5><%= t(:profession, scope: 'profiles.show') %></h5>
+      <p class="pb-2">
+        <%= @profile.profession %>
+      </p>
+      <%# end %>
+
     <% if @profile.iso_languages.present? %>
       <h5><%= t(:languages, scope: 'profiles.show') %></h5>
       <p class="pb-2">
