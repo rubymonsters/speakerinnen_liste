@@ -11,11 +11,12 @@ class Profile < ApplicationRecord
 
   serialize :iso_languages, Array
   validate :iso_languages_array_has_right_format
+  validates :profession, length: { maximum: 60, message: "Please use less than 80 characters." }
   before_save :clean_iso_languages!
 
-  translates :bio, :main_topic, :twitter, :website, :website_2, :website_3, :city, fallbacks_for_empty_translations: true
+  translates :bio, :main_topic, :profession, :twitter, :website, :website_2, :website_3, :city, fallbacks_for_empty_translations: true
   accepts_nested_attributes_for :translations
-  globalize_accessors locales: %i[en de], attributes: %i[main_topic bio twitter website website_2 website_3 city]
+  globalize_accessors locales: %i[en de], attributes: %i[main_topic bio profession twitter website website_2 website_3 city]
 
   extend FriendlyId
   friendly_id :slug_candidate, use: :slugged
