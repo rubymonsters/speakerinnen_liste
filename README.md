@@ -288,4 +288,4 @@ Find further details in: https://github.com/rubymonsters/speakerinnen_liste/blob
 
 # ♥ Code of Conduct
 
-Please note that speakerinnen.org has a [Contributor Code of Conduct](https://github.com/rubymonsters/speakerinnen_liste/blob/master/code-of-conduct.md) based on the [Contributor Covenant](https://www.contributor-covenant.org). By participating in this project online or at events you agree to abide by its terms.
+Please note that [speakerinnen](htts://speakerinnen.org) has a [Contributor Code of Conduct](https://github.com/rubymonsters/speakerinnen_liste/blob/master/code-of-conduct.md) based on the [Contributor Covenant](https://www.contributor-covenant.org). By participating in this project online or at events you agree to abide by its terms.
