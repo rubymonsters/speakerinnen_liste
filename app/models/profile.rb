@@ -15,7 +15,7 @@ class Profile < ApplicationRecord
 
   translates :bio, :main_topic, :profession, :twitter, :website, :website_2, :website_3, :city, fallbacks_for_empty_translations: true
   accepts_nested_attributes_for :translations
-  globalize_accessors locales: %i[en de], attributes: %i[main_topic bio twitter website website_2 website_3 city]
+  globalize_accessors locales: %i[en de], attributes: %i[main_topic bio profession twitter website website_2 website_3 city]
 
   extend FriendlyId
   friendly_id :slug_candidate, use: :slugged
