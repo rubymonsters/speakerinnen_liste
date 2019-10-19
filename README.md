@@ -288,4 +288,4 @@ Find further details in: https://github.com/rubymonsters/speakerinnen_liste/blob
 
 # Code of Conduct
 
-tba
+tba-
