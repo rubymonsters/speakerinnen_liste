@@ -58,8 +58,8 @@ host    all             all             127.0.0.1/32            trust
 # IPv6 local connections:
 host    all             all             ::1/128                 md5
 ```
-
-## 3. Elasticsearch
+ 
+## 3. Elasticsearch ( there is not need to do that if you don't want to test the search )
 
 **3.1 Install Elasticsearch 2.4**
 
