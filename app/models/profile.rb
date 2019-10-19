@@ -11,6 +11,7 @@ class Profile < ApplicationRecord
 
   serialize :iso_languages, Array
   validate :iso_languages_array_has_right_format
+  validates :profession, length: { maximum: 60, message: "Please use less than 80 characters." }
   before_save :clean_iso_languages!
 
   translates :bio, :main_topic, :profession, :twitter, :website, :website_2, :website_3, :city, fallbacks_for_empty_translations: true

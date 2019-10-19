@@ -7,13 +7,11 @@ default: &default
 
 development:
   <<: *default
-  database: YOUR-DATABASE-NAME
-  password: YOUR-DATABASE-USERNAME-PASSWORD
+  database: speakerinnen_development
 
 test:
   <<: *default
-  database: YOUR-DATABASE-NAME
-  password: YOUR-DATABASE-USERNAME-PASSWORD
+  database: speakerinnen_test
 
 staging:
   <<: *default
