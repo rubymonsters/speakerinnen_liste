@@ -11,7 +11,7 @@ The aim of the app is to provide a way for conference and event organizers to fi
 
 # Technical Requirements
 
-- Ruby v2.3.1
+- Ruby v2.4.2
 - Ruby on Rails, '5.2.0'
 - Elasticsearch v2.4.5 - https://www.elastic.co
 - ImageMagick - https://www.imagemagick.org
