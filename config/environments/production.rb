@@ -95,6 +95,7 @@ Rails.application.configure do
     enable_starttls_auto: true  }
 
   config.middleware.use ExceptionNotification::Rack,
+    :ignore_crawlers => %w{Googlebot bingbot MJ12bot Seekport},
     :email => {
       :email_prefix => "[SPEAKERINNEN ERROR PRODUCTION] ",
       :sender_address => %{"Team" <no-reply@speakerinnen.org>},

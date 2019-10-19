@@ -1,0 +1,94 @@
+de:
+  profiles:
+    category: "Wir haben <b>%{profiles_count}</b> Speakerinnen und <b>%{topics_count}</b> Themen in der Kategorie <b>%{category_name}</b> gelistet <i class='fa fa-caret-down' style='font-size: 21px'></i>"
+    tag:
+      top_topics: "Die 200 Top-Themen"
+      topics_category: "Themen in der Kategorie <b>%{category_name}</b>"
+      tag_choose_languages: "Du kannst die Topics auch nach Sprache sortieren:"
+      topics_with_category: "in der Kategorie %{category_name}"
+      topics_with_no_language_scope: "Topics in allen Sprachen"
+      topics_quick_filter: "Hier könnt ihr in der Topic Cloud suchen:"
+    form:
+      not_saved: "Dieses Profil konnte nicht gespeichert werden:"
+      profile_from: "Profil von"
+      delete_picture: "<i class='fa fa-trash pr-2'></i>Lösche mein Foto"
+      update: "Aktualisiere dein Profil"
+      picture: "Ein Foto von mir:"
+      picture_info: "Lade bitte das Foto in <b>Farbe</b> hoch, wir zeigen es in Graustufen.
+        Nutze .jpg, .jpeg oder .png und achte darauf, daß Du die Rechte zu diesem Foto besitzt!
+        Die Größe des Fotos sollte <b>kleiner als 1MB</b> sein."
+      firstname: "Mein Vorname:"
+      lastname: "Mein Nachname:"
+      translated_infos: "Übersetzte Infos"
+      personal_infos: "Persönliche Infos"
+      bio: "Meine Biografie auf %{language}: <i class='fa fa-info-circle' aria-hidden='true'></i>
+      <br><small class='form-text text-muted'>Du kannst einfache HTML Tags nutzen, um den Text zu formatieren. Zum Beispiel: <i>< i >italic< /i ></i> oder <b>< b > fett < /b ></b>.</small>"
+      bio_tooltip: "Hier ist Platz für eine kurze oder auch längere Bio. Außerdem sollten hier Fachkenntnisse und mögliche Vortragsthemen genauer beschrieben werden. Das hilft Veranstalterinnen und Veranstaltern herauszufinden, ob Ihr die Richtigen für ihr Event sein könntet."
+      topic_list: "Meine Themen als Tags, wähle bitte nicht mehr als 10 Tags: <i class='fa fa-info-circle'></i>"
+      topic_list_tooltip: "Bitte schaue zuerst, ob Dein Thema schon vorhanden ist."
+      main_topic_title: "Themenschwerpunkt:"
+      main_topic: "Mein Themenschwerpunkt auf %{language}:
+        <br><small class='form-text text-muted'>Es werden nur 30 Zeichen angezeigt.
+        <br>Trage Dein wichtigstes Thema hier nochmal ein. Dieses Thema wird mit Deinem Namen und Bild auf der Speakerinnen-Übersichtsseite zu sehen sein.</small>"
+      tag_list: "schon vorhandene Tags"
+      languages: "Ich spreche:"
+      show_more_languages: "Noch mehr Sprachen"
+      show_less_languages: "Weniger Sprachen"
+      city: "Die Stadt, in der ich lebe: <i class='fa fa-info-circle' aria-hidden='true'></i>"
+      city_tooltip: "Bitte gib mehrere Städte mit Komma getrennt ein, z.B. Berlin, New York."
+      country: "Das Land, in dem ich lebe:"
+      twitter: "Mein Twitteraccount:"
+      email: "Meine E-Mailadresse: <i class='fa fa-info-circle' aria-hidden='true'></i>"
+      website: "Meine Webseite:"
+      additional_websites: "Zusätzliche Webseiten/Blogs:"
+    show:
+      firstname: 'Vorname:'
+      lastname: 'Nachname:'
+      topics: 'Meine Themen:'
+      languages: "Meine Sprache/n:"
+      media: "Meine Vorträge / Referenzen:"
+      bio: "Meine Biografie: "
+      website: "Meine Webseite/Blog:"
+      websites: "Meine Webseiten/Blogs:"
+      city: "Meine Stadt:"
+      country: "Mein Land:"
+      country_select: "Wähle ein Land aus:"
+      twitter: "Mein Twittername:"
+      contact: "Kontakt"
+      email_to: "E-Mail an "
+      show: "Anzeigen"
+      edit: "Profil bearbeiten"
+      destroy: "Löschen"
+      sure: "Bist Du sicher?"
+      link: "Bitte 'http://' davor schreiben."
+      email: "E-Mail:"
+      empty_profile: "Hier gib es noch nix zu sehen ¯\\_(ツ)_/¯."
+      check_faq: "Fülle bitte die Felder via 'Edit Profile' aus!. <BR> Für mehr Informationen, wie Du am besten dein Profil angelegst, kannst Du hier nach schauen: <a href='https://speakerinnen.org/de/faq'>FAQ</a>"
+      profile_from: "Profil von"
+      to_profile: "Zum Profil"
+    medialinks:
+      edit: "Referenzen bearbeiten"
+    edit:
+      show: "Eigenes Profil anzeigen"
+      home: "Alle Speakerinnen* anzeigen >>"
+    index:
+      title: "Speakerinnen"
+      text: "Schön, dass Du hier bist. <br>
+             Auf dieser Seite findest Du Frauen* für deine Konferenz oder Veranstaltung: als Rednerin, Panel- oder Workshopmoderatorin.
+             <p>Du kannst entweder durch die Profile blättern, einen Einstieg über die meist verwendeten <a href='#tag_cloud_anchor', class='text__link--bg'>Themen</a> finden, oder gezielt suchen.</p>
+             Viel Spaß und Erfolg dabei!"
+      name: "Name"
+      twitter: "Twitter"
+      topics: "Themen"
+      topic: "Thema"
+      city: "Stadt"
+      country: "Land"
+      country_search_hint: "(Achtung: Viele Speakerinnen haben kein Land eingetragen.)"
+      language: "Sprache"
+      all_speakerinnen: "Wir sind schon %{profiles_count} Speakerinnen!"
+      show_more: "Mehr >>"
+      show_less: "Weniger >>"
+    new:
+      new_profile: "Neues Profil"
+  error_messages:
+    picture_too_big: " ist zu groß. Bitte nicht größer als 1 MB"

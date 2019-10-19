@@ -1,7 +1,7 @@
 <div class="container bg--white">
 
-  <h1>Administration::<%= t(:features, scope: "admin.dashboard.features")%>::<%= t(:add, scope: 'general')%></h1>
-  
+  <h1>Administration::<%= t(:features, scope: "admin.features")%>::<%= t(:add, scope: 'general')%></h1>
+
   <%= render 'form' %>
 
 </div>
@@ -20,4 +20,4 @@
     $('#show-en').addClass('active');
     $('#show-de').removeClass('active');
   });
-</script>    
+</script>

@@ -1,13 +1,13 @@
 <div class="m-5">
-  <h1 class="text-center mt-5 pt-5">Administration::<%= t(:profiles, scope: 'admin.dashboard.profiles')%></h1>
+  <h1 class="text-center mt-5 pt-5">Administration::<%= t(:profiles, scope: 'admin.profiles')%></h1>
   <div class="text-center">
-    <%= Profile.is_confirmed.size %> <%= t(:confirmed, scope: 'admin.dashboard.profiles') %> Speakerinnen.
-    <%= Profile.all.select {|profile| profile.published?}.size %> <%= t(:public, scope: 'admin.dashboard.profiles') %>
+    <%= Profile.is_confirmed.size %> <%= t(:confirmed, scope: 'admin.profiles') %> Speakerinnen.
+    <%= Profile.all.select {|profile| profile.published?}.size %> <%= t(:public, scope: 'admin.profiles') %>
   </div>
 
   <%= form_tag(admin_profiles_path, method: 'get', class:'mt-3 form-row') do %>
       <div class="col-md-6 mb-4">
-        <%= text_field_tag :search, params[:search], class: "form-control", id: "formGroupExampleInput", placeholder: t(:search, scope: 'admin.dashboard.profiles') %>
+        <%= text_field_tag :search, params[:search], class: "form-control", id: "formGroupExampleInput", placeholder: t(:search, scope: 'admin.profiles') %>
       </div>
     <%= submit_tag t(:search, scope: 'general'), class: 'btn btn-blue' %>
   <% end %>
@@ -19,13 +19,13 @@
       <tr>
         <th><%= sortable 'id', 'ID' %></th>
         <th><%= sortable 'lastname', 'Speakerinnen' %></th>
-        <th><%= sortable 'created_at', t(:created_at, scope: 'admin.dashboard.profiles') %></th>
-        <th><%= sortable 'updated_at', t(:updated_at, scope: 'admin.dashboard.profiles') %></th>
+        <th><%= sortable 'created_at', t(:created_at, scope: 'admin.profiles') %></th>
+        <th><%= sortable 'updated_at', t(:updated_at, scope: 'admin.profiles') %></th>
         <th>Links</th>
         <th>Picture</th>
-        <th><%= t(:roles, scope: 'admin.dashboard.profiles') %></th>
-        <th><%= sortable 'published', t(:visibility, scope: 'admin.dashboard.profiles') %></th>
-        <th><%= t(:comment, scope: 'admin.dashboard.profiles') %></th>
+        <th><%= t(:roles, scope: 'admin.profiles') %></th>
+        <th><%= sortable 'published', t(:visibility, scope: 'admin.profiles') %></th>
+        <th><%= t(:comment, scope: 'admin.profiles') %></th>
         <th>Edit</th>
         <th>Delete</th>
       </tr>
@@ -35,7 +35,7 @@
         <tr>
           <td><%= profile.id %></td>
           <td><%= link_to profile.name_or_email, admin_profile_path(profile),
-              html_options = { title: t(:show, scope: 'admin.dashboard.profiles.edit') } %></td>
+              html_options = { title: t(:show, scope: 'admin.profiles.edit') } %></td>
           <td><%= profile.created_at.strftime('%d.%m.%Y') %></td>
           <td><%= profile.updated_at.strftime('%d.%m.%Y') %></td>
           <td><center><%= link_to profile.medialinks.size, admin_profile_medialinks_path(profile),
@@ -45,17 +45,17 @@
           </td>
           <td><%= 'Admin' if profile.admin %></td>
           <td><% if profile.published %>
-              <%= link_to t(:public, scope: 'admin.dashboard.profiles'), unpublish_admin_profile_path(profile.id),
+              <%= link_to t(:public, scope: 'admin.profiles'), unpublish_admin_profile_path(profile.id),
               method: :post, class:'btn btn-blue btn-block btn-sm' %>
             <% else %>
-              <%= link_to t(:invisible, scope: 'admin.dashboard.profiles'), publish_admin_profile_path(profile.id),
+              <%= link_to t(:invisible, scope: 'admin.profiles'), publish_admin_profile_path(profile.id),
               method: :post, class:'btn btn-sm btn-block btn-danger', title: 'Eine Bestätigungsmail wird verschickt.' %>
             <% end %>
           </td>
           <td>
             <%= form_for profile,{ url: admin_update_admin_profile_path(profile.id), method: 'post' } do |f| %>
               <%= f.text_field 'admin_comment' %>
-              <%= f.submit t(:add_comment, scope: 'admin.dashboard.profiles'), class: 'btn btn-blue btn-sm' %>
+              <%= f.submit t(:add_comment, scope: 'admin.profiles'), class: 'btn btn-blue btn-sm' %>
             <% end  %>
           </td>
           <td><center><%= link_to '<i class="fa fa-pencil">&nbsp;</i>'.html_safe, edit_admin_profile_path(profile),

@@ -1,0 +1,28 @@
+de:
+  flash:
+    profiles:
+      created: "Profil wurde erfolgreich erstellt."
+      updated: '%{profile_name} wurde erfolgreich geändert.'
+      destroyed: '%{profile_name} wurde erfolgreich gelöscht.'
+      no_permission: "Du hast nicht die Rechte, das Profil zu bearbeiten."
+      show_no_permission: "Du hast nicht die Rechte, das Profil anzuschauen."
+    medialink:
+      created: "Referenz wurde erfolgreich erstellt."
+      updated: "Referenz wurde erfolgreich geändert."
+      destroyed: "Referenz wurde erfolgreich gelöscht."
+      no_permission: "Du hast nicht die Rechte, die Referenz zu bearbeiten."
+      error: "Es sieht so aus, als ob Du noch was eintragen musst."
+    categories:
+      created: '%{category_name} wurde erfolgreich erstellt.'
+      updated: '%{category_name} wurde erfolgreich geändert.'
+      destroyed: '%{category_name} wurde erfolgreich gelöscht.'
+    features:
+      created: '%{feature_title} wurde erfolgreich erstellt.'
+      updated: '%{feature_title} wurde erfolgreich geändert.'
+      destroyed: '%{feature_title} wurde erfolgreich gelöscht.'
+      announced: '%{feature_title} wird auf der Homepage angekündigt.'
+      stopped: 'Die Ankündigung von %{feature_title} wird nicht mehr angezeigt.'
+    image:
+      destroyed: 'Dein Bild wurde erfolgreich gelöscht.'
+    comment:
+      updated: 'Kommentar wurde erfolgreich geändert.'
