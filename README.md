@@ -305,6 +305,6 @@ We are happy to answer your questions if you consider to help. All the issues ha
 
 Find further details in: https://github.com/rubymonsters/speakerinnen_liste/blob/master/CONTRIBUTING.md
 
-# Code of Conduct
+# ♥ Code of Conduct
 
-tba
+Please note that [speakerinnen](https://speakerinnen.org) has a [Contributor Code of Conduct](https://github.com/rubymonsters/speakerinnen_liste/blob/master/code-of-conduct.md) based on the [Contributor Covenant](https://www.contributor-covenant.org). By participating in this project online or at events you agree to abide by its terms.
