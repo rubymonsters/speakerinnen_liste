@@ -63,14 +63,14 @@
   <!-- Anker für Kategorien -->
   <a id="categories_anchor"></a>
 
-  <div class="container startpage-categories__list">
+  <div class="container startpage-categories__list p-0">
     <h1 class="box__bg"><%= t(:description, scope: 'pages.home') %></h1>
     <h4 class="border-vertical d-block box__bg mb-4">
       <%= t(:description_text, scope: 'pages.home') %>
     </h4>
-    <div>
+  </div>
+  <div class="container-fluid startpage-categories__list p-0">
       <%= render partial: "shared/categories", object: @categories %>
-    </div>
   </div>
 
   <section id="startpage__teaser-bg-02" class="startpage__photo-bar my-5">

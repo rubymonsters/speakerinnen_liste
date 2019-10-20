@@ -4,12 +4,6 @@
     </div>
     <div class="col-9 mb-3">
       <div class="tab-content mb-3" id="selected-category">
-        <% @categories.each do |category| %>
-          <a id="<%= "category-" + category.short_name %>"
-            class="h4 category-title<%= " d-none" unless category.id.to_s == ( params[:category_id] || @category.id.to_s ) %>" href=<%= profiles_path(category_id: category.id) %> >
-            <%= t(:title, scope: 'category', category_name: category.name).html_safe %>
-          </a>
-        <% end %>
       </div>
       <span class="h4"><%= t(:filter, scope: 'category') %></span>
     </div>
@@ -43,7 +37,7 @@
         <%= form_tag(profiles_path, method: "get") do %>
           <%= text_field_tag :tag_search, params[:tag_search], id: "hidden_tag_input", class: "form-control d-none" %>
           <span class="btn text-primary btn-link" id="clear">X Clear All</span>
-          <%= submit_tag "Find A Speaker", class: "btn btn-outline-primary", id: "search_in_topic" %>
+          <%= submit_tag "Find A Speaker", class: "btn btn-primary", id: "search_in_topic" %>
         <% end %>
       </div>
     </div>

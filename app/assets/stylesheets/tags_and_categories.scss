@@ -27,14 +27,18 @@ div#v-pills-tab a {
   color: black;
 }
 
+.tag-button {
+  border-radius: 6px;
+  font-size: 0.9rem;
+  padding: 0px 0.6em;
+}
+
 // colors of categories and tags
 $categories_dark_color: (
-  arts: $teal,
-  body: $dark_teal,
   marketing: $raspberry_red,
   politics: $red_orange,
   internet: $dark_pink,
-  miscellaneous: $bronze
+  environment: $pink,
 );
 
 @each $name, $color in $categories_dark_color {
@@ -47,14 +51,14 @@ $categories_dark_color: (
     }
   }
   a:link#v-pills-#{$name}-tab.active {
-    background: $color;
-    color: white;
+    background: none;
+    color: $color;
+    font-weight: bold;
   }
   a:link#v-pills-#{$name}-tab {
     i { color: $color; }
     &:hover {
-      background: $color;
-      color: white;
+      color: $color;
     }
   }
   #category-#{$name} {
@@ -64,10 +68,12 @@ $categories_dark_color: (
 }
 
 $categories_bright_color: (
+  miscellaneous: $bronze,
+  arts: $teal,
+  body: $dark_teal,
   career: $soft_blue,
   companies: $purple,
   diversity: $rose,
-  environment: $pink,
   science: $orange_1
 );
 
@@ -81,14 +87,14 @@ $categories_bright_color: (
     }
   }
   a:link#v-pills-#{$name}-tab.active {
-    background: $color;
-    color: black;
+    background: none;
+    color: $color;
+    font-weight: bold;
   }
   a:link#v-pills-#{$name}-tab {
     i { color: $color; }
     &:hover {
-      background: $color;
-      color: black;
+      color: $color;
     }
   }
   #category-#{$name} {
@@ -98,7 +104,7 @@ $categories_bright_color: (
 }
 
 // custom colors
-$categories_custom_color: (
+$all_categories_custom_color: (
   arts: $teal,
   body: $dark_teal,
   career: $soft_blue,
@@ -112,7 +118,7 @@ $categories_custom_color: (
   miscellaneous: $bronze
 );
 
-@each $name, $color in $categories_custom_color {
+@each $name, $color in $all_categories_custom_color {
   div.category_item_#{$name} {
     background-color: $color;
   }
@@ -133,8 +139,8 @@ $categories_custom_color: (
   }
 }
 
-// brighter colors
-$categories_brighter_color: (
+// all categories brighter colors
+$all_categories_brighter_color: (
   arts: $teal_1,
   body: $dark_teal_1,
   career: $soft_blue_1,
@@ -148,14 +154,14 @@ $categories_brighter_color: (
   miscellaneous: $bronze_1
 );
 
-@each $name, $color in $categories_brighter_color {
+@each $name, $color in $all_categories_brighter_color {
   div.category_item_#{$name}_numbers {
     background-color: $color;
   }
 }
 
-// darker colors
-$categories_darker_color: (
+// all categories darker colors
+$all_categories_darker_color: (
   arts: $teal_2,
   body: $dark_teal_2,
   career: $soft_blue_2,
@@ -169,9 +175,9 @@ $categories_darker_color: (
   miscellaneous: $bronze_2
 );
 
-@each $name, $color in $categories_darker_color {
+@each $name, $color in $all_categories_darker_color {
   div#v-pills-#{$name} {
-    background-color: $color;
+    background-color: #D8d8d8;
   }
   button.cat_#{$name} i {
     color: $color;
