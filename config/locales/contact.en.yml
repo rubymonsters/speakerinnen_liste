@@ -2,9 +2,9 @@ en:
   contact:
     form:
       title: "Send us an email:"
-      name: "Your name*"
+      name: "Your name"
       name_placeholder: ""
-      email: "Your email address*"
+      email: "Your email address"
       medialink_placeholder: "Please fill in only 21 characters"
       subject: "Subject of the email"
       send: "Send"

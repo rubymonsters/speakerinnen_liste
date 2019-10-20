@@ -24,14 +24,17 @@ The aim of the app is to provide a way for conference and event organizers to fi
 
 ## 1. Copy & Configuration
 
-**1.1 Copy `config/database_example.yml` and create your own `database.yml` file and make sure it is always set to `.gitignore`:**
+
+**1.1 Clone the repository.** `git clone git@github.com:rubymonsters/speakerinnen_liste.git`
+
+**1.2 Copy `config/database_example.yml` and rename it to `database.yml` file and make sure it is always set to `.gitignore`:**
 
 ```bash
 
 $ cp config/database_example.yml config/database.yml
 ```
 
-**1.2 Adjust the settings of that config file according to your needs and ensure you have all server environments (development, test, staging, production) configured.**
+**1.3 Adjust the settings of that config file according to your needs and ensure you have all server environments (development, test, staging, production) configured.**
 
 
 ## 2. Postgres
@@ -40,7 +43,23 @@ $ cp config/database_example.yml config/database.yml
 
 **2.2 Create a [PostgreSQL user](https://www.digitalocean.com/community/tutorials/how-to-use-roles-and-manage-grant-permissions-in-postgresql-on-a-vps--2) that is needed to log into the database (by default a `postgres` superuser is created after installation)**
 
-## 3. Elasticsearch
+_Troubleshooting:_
+- more infos: https://wiki.ubuntuusers.de/PostgreSQL/
+- `find locate pg_hba.conf`
+```
+local   all             postgres                                trust
+
+# TYPE  DATABASE        USER            ADDRESS                 METHOD
+
+# "local" is for Unix domain socket connections only
+local   all             all                                     trust
+# IPv4 local connections:
+host    all             all             127.0.0.1/32            trust
+# IPv6 local connections:
+host    all             all             ::1/128                 md5
+```
+ 
+## 3. Elasticsearch ( there is not need to do that if you don't want to test the search )
 
 **3.1 Install Elasticsearch 2.4**
 
@@ -286,6 +305,6 @@ We are happy to answer your questions if you consider to help. All the issues ha
 
 Find further details in: https://github.com/rubymonsters/speakerinnen_liste/blob/master/CONTRIBUTING.md
 
-# Code of Conduct
+# ♥ Code of Conduct
 
-tba
+Please note that [speakerinnen](https://speakerinnen.org) has a [Contributor Code of Conduct](https://github.com/rubymonsters/speakerinnen_liste/blob/master/code-of-conduct.md) based on the [Contributor Covenant](https://www.contributor-covenant.org). By participating in this project online or at events you agree to abide by its terms.
