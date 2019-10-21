@@ -170,13 +170,4 @@ class Profile < ApplicationRecord
       errors.add(:iso_languages, 'must be an array of strings')
     end
   end
-  
-  def image_variant
-    variation = ActiveStorage::Variation.new(combine_options: {
-      resize: "300x300^",
-      gravity: "center",
-      crop: "300x300+0+0",
-    })
-    ActiveStorage::Variant.new(image.blob, variation)
-  end
 end

@@ -63,6 +63,8 @@ gem 'aws-sdk-s3', require: false
 
 gem "sentry-raven"
 
+gem 'image_processing', '~> 1.2'
+
 group :development do
   gem 'better_errors'
   gem 'bullet', '~> 5.9.0'
