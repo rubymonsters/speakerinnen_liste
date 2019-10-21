@@ -108,11 +108,13 @@ class Admin::ProfilesController < Admin::BaseController
       :website_en,
       :website_2_en,
       :website_3_en,
+      :profession_en,
+      :profession_de,
       :city_de,
       :city_en,
       :image,
       feature_ids: [],
-      translations_attributes: %i[id bio main_topic twitter website website_2 website_3 city locale]
+      translations_attributes: %i[id bio main_topic twitter website website_2 website_3 profession city locale]
     )
   end
 
