@@ -1,17 +1,10 @@
 <section class="bg--white">
-  <section id="startpage__start-teaser" class="startpage__photo-bar">
-    <div class="container">
-      <h1 class="display-4 box__bg bg--white-trans mt-5"><%= t(:heading, scope: 'pages.home.search') %></h1>
-      <h4 class="startpage-subtitle box__bg bg--white-trans"><%= t(:tagline_html, scope: 'pages.home.search', root_path: root_path) %></h4><BR>
-      <div class="box__bg bg--white-trans">
-        <%= form_tag(profiles_path, method: 'get') do %>
-          <%= render partial: 'shared/search_form' %>
-          <h5><%= link_to(t(:all_categories, scope: 'pages.home'), root_path + "#categories_anchor" )%></h5>
-          <h5><%= link_to(t(:all_profiles, scope: 'search'), profiles_path ) %></h5>
-        <% end %>
-      </div>
+  <div id="startpage__start-teaser" class="startpage__photo-bar">
+    <div class="align-self-center pl-5 pb-5 container">
+      <span class="btn btn-primary btn-lg" style="font-size: 2rem"><%= link_to "Find a speaker", profiles_path, class: "text-white" %></span>
+      <span class="btn btn-light btn-lg ml-3" style="font-size: 2rem"><%= link_to "I am a speaker", profiles_path %></span>
     </div>
-  </section>
+  </div>
   <div class="copyright">
      Copyright: public domain ( modified )
   </div>
@@ -21,7 +14,7 @@
 
   <% if @features.load.any? %>
     <% @features.each do |feature| %>
-      <div class="container">
+      <div class="container text-center">
         <h1 class="box__bg"><%= feature.title %></h1>
         <h4 class="border-vertical d-block box__bg mb-4">
           <%= feature.description %>
@@ -31,12 +24,7 @@
         </div>
       </div>
     <% end %>
-    <div class="container">
-      <h4 class="border-vertical d-block box__bg mb-4">
-        <%= t(:speaker_text, scope: 'pages.home.speakers') %>
-        <%= link_to t(:speaker_index, scope: 'pages.home.speakers'), profiles_path %>
-      </h4>
-    </div>
+
   <% else %>
     <div class="container">
       <h1 class="box__bg"><%= t(:speaker_headline, scope: 'pages.home.speakers') %></h1>
@@ -50,39 +38,23 @@
     </div>
   <% end %>
 
-  <section id="startpage__teaser-bg-01" class="startpage__photo-bar">
-    <div class="container">
-      <h1 class="display-4 box__bg bg--white-trans mt-5"><%= t(:quote, scope: 'pages.home') %></h1>
-      <h4 class="startpage-subtitle box__bg bg--white-trans"><%= t(:quote_text, scope: 'pages.home') %></h4>
-    </div>
-  </section>
-  <div class="copyright">
-    Copyright by Ute Mayer
-  </div>
-
   <!-- Anker für Kategorien -->
   <a id="categories_anchor"></a>
 
-  <div class="container startpage-categories__list p-0">
-    <h1 class="box__bg"><%= t(:description, scope: 'pages.home') %></h1>
-    <h4 class="border-vertical d-block box__bg mb-4">
-      <%= t(:description_text, scope: 'pages.home') %>
-    </h4>
+  <div class="startpage-categories__list py-5 text-center">
+    <h1><%= t(:description, scope: 'pages.home') %></h1>
   </div>
   <div class="container-fluid startpage-categories__list p-0">
       <%= render partial: "shared/categories", object: @categories %>
   </div>
 
-  <section id="startpage__teaser-bg-02" class="startpage__photo-bar my-5">
-    <div class="container">
-      <h1 class="display-4 box__bg bg--white-trans mt-5"><%= t(:speaker_shoutout, scope: 'pages.home').html_safe %></h1>
-      <h4 class="box__bg bg--white"><%=link_to t(:speaker_text, scope: 'pages.home').html_safe, new_profile_registration_path %></h4>
+  <div class="container">
+    <div class="row py-5">
+      <div class="col">
+        <h2><%= t(:women, scope: 'pages.home.footer').html_safe %></h2>
+      </div>
     </div>
-  </section>
-  <div class="copyright">
-     Copyright by Tilman Vogler
   </div>
-
   <div class="container">
     <h1 class="box__bg">Speakerinnen</h1>
     <div class="row pl-4">
@@ -110,5 +82,14 @@
         </p>
       </div>
     </div>
+  </div>
+  <section id="startpage__teaser-bg-02" class="startpage__photo-bar">
+    <div class="container">
+      <h1 class="display-4 box__bg bg--white-trans mt-5"><%= t(:speaker_shoutout, scope: 'pages.home').html_safe %></h1>
+      <h4 class="box__bg bg--white"><%=link_to t(:speaker_text, scope: 'pages.home').html_safe, new_profile_registration_path %></h4>
+    </div>
+  </section>
+  <div class="copyright">
+     Copyright by Tilman Vogler
   </div>
 </section>
