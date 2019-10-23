@@ -1,16 +1,16 @@
 <div class="row">
   <div class="col-sm-12 col-md-6">
     <%= f.label :picture, t(:picture, scope: 'profiles.form').html_safe %>
-    <% if @profile.picture.present? %>
+    <!-- :image for active storage and :picture for carrierwave -->
+    <% if @profile.image.attached? && @profile.validate(:image_format_size) %>
+      <p><%= image_tag(@profile.image, class: "img-thumbnail") %></p>
+      <%= link_to t(:delete_picture, scope: 'profiles.form').html_safe, image_path(@profile.image.id), :method => :delete, data: { confirm: 'Are you sure?' } %>
+    <% elsif @profile.picture.present? %>
       <p><%= image_tag(@profile.picture_url, class: "img-thumbnail") %></p>
       <br>
       <%= f.check_box :remove_picture %>
       <%= t(:delete_picture, scope: 'profiles.form').html_safe %>
-    <% elsif @profile.image.attached? %>
-      <p><%= image_tag(@profile.image, class: "img-thumbnail") %></p>
-      <%= link_to t(:delete_picture, scope: 'profiles.form').html_safe, image_path(@profile.image.id), :method => :delete, data: { confirm: 'Are you sure?' } %>
     <% else %>
-      <!-- :picture for carrierwave and :image for active storage -->
       <p><%= f.file_field :image %></p>
       <small class="form-text text-muted">
         <%= t(:picture_info, scope: 'profiles.form').html_safe %><br>
