@@ -268,6 +268,9 @@ $ bundle exec rake db:test:clone
 
 # If tests are still failing, run:
 $ rails db:test:prepare
+
+# Run tests excluding elasticsearch specs, so without a running elasticsearch server
+$  bundle exec rspec spec --tag '~elasticsearch'
 ```
 
 # Please use Rubocop
