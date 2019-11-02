@@ -9,9 +9,6 @@
         <p class="card-text">
           <%= profile.main_topic_or_first_topic.truncate(60) if profile.main_topic_or_first_topic %>
         </p>
-        <p>
-          <%= raw topics_for_profile(profile).limit(5).map { |topic| topic_link_color(topic) }.join(' ') %>
-        </p>
       </div>
     </div>
   </div>

@@ -14,7 +14,7 @@
 
   <% if @features.load.any? %>
     <% @features.each do |feature| %>
-      <div class="container text-center">
+      <div class="container">
         <h1 class="box__bg"><%= feature.title %></h1>
         <h4 class="border-vertical d-block box__bg mb-4">
           <%= feature.description %>
