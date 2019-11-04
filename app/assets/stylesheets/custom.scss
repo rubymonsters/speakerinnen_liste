@@ -45,8 +45,13 @@ h1, h4 {
 }
 
 .bg--grey {
-  background: #D8D8D8;
+  background: $bg-grey;
 }
+
+.bg--light-grey {
+  background: $bg-light-grey;
+}
+
 .color-white {
   color: $white;
 }

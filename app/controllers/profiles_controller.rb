@@ -205,6 +205,24 @@ class ProfilesController < ApplicationController
                                   .belongs_to_category(params[:category_id])
                                   .translated_in_current_language_and_not_translated(I18n.locale)
     tag_names = @tags_in_category_published.pluck(:name)
+
+
+    @category = params[:category_id] ? Category.find(params[:category_id]) : Category.find(1)
+    Category.all.includes(:translations).each do |category|
+      instance_variable_set("@tags_#{category.short_name}",
+        ActsAsTaggableOn::Tag.belongs_to_category(category.id)
+                              .belongs_to_more_than_one_profile
+                              .with_published_profile
+                              .translated_in_current_language_and_not_translated(I18n.locale))
+    end
+    @tags_in_category_published = ActsAsTaggableOn::Tag
+                                  .with_published_profile
+                                  .belongs_to_category(params[:category_id])
+                                  .translated_in_current_language_and_not_translated(I18n.locale)
+    tag_names = @tags_in_category_published.pluck(:name)
+    @profiles = profiles_for_tag(tag_names)
+
+
     if tags_search.present?
       @tags = tags_search.split(/\s*,\s*/) if tags_search
       @profiles = profiles_for_tag(@tags)

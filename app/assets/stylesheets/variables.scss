@@ -22,15 +22,17 @@
   font-style: normal;
 }
 /* old colors */
-$white: #FFF;
+$white: #FCFCFC;
 $white-smoke: #F5F5F5;
-$light-grey: #CCC;
-$grey: #7F7F7F;
+$light-grey: #F2F2F2;
+$grey: #D8D8D8;
+$grey-stroke: #979797;
 $dark-grey: #3C3C3A;
 $black: #000;
 /* -------------*/
 
-$bg-grey: #F2F2F2;
+$bg-light-grey: $light-grey;
+$bg-grey: $grey;
 
 $beige: rgba(181, 138, 0, 0.62);
 $dark-red: #b62848;

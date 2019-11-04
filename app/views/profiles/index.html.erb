@@ -1,8 +1,21 @@
 <div class="container-fluid px-5 py-5">
   <div class="row">
+    <div class="col-12">
+      <a class="btn bg--light-grey btn-stretch py-3" data-toggle="collapse" href="#collapseFilter" role="button" aria-expanded="false" aria-controls="collapseFilter">
+          <%= t(:apply_filter, scope: 'profiles.index') %><i class='fa fa-chevron-down color-white text-right'></i>
+      </a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="collapse bg--light-grey mt-1" id="collapseFilter">
+        <%= render partial: 'categories/index' %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
     <div class="col-md-12">
       <% if params[:category_id] %> <%# when in categories scope %>
-        <%= link_to t(:back_to_filters, scope: 'profiles.index'), root_path(anchor: "categories_anchor"), class: "btn btn-outline-primary mt-3" %>
         <h1 class="text-center">
           <%= @category.name %>
         </h1>
@@ -43,7 +56,6 @@
       }
     %>
   <% end %>
-
   <a id="speakers"></a>
   <%= paginate @profiles %>
 
