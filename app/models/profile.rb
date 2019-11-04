@@ -11,6 +11,7 @@ class Profile < ApplicationRecord
 
   serialize :iso_languages, Array
   validate :iso_languages_array_has_right_format
+  validate :image_format_size
   validates :profession, length: { maximum: 60, message: "Please use less than 80 characters." }
   before_save :clean_iso_languages!
 
@@ -168,6 +169,16 @@ class Profile < ApplicationRecord
 
     if iso_languages.map(&:class).uniq != [String]
       errors.add(:iso_languages, 'must be an array of strings')
+    end
+  end
+
+  def image_format_size
+    if image.attached?
+      if image.blob.byte_size > 1.megabyte
+        errors.add(:base, :file_size_too_big)
+      elsif !image.blob.content_type.starts_with?('image/')
+        errors.add(:base, :content_type_invalid)
+      end
     end
   end
 end
