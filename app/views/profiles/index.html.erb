@@ -8,7 +8,7 @@
   </div>
   <div class="row">
     <div class="col-md-12">
-      <div class="collapse bg--light-grey mt-1" id="collapseFilter">
+      <div class="collapse bg--light-grey p-3" id="collapseFilter">
         <%= render partial: 'categories/index' %>
       </div>
     </div>
@@ -26,9 +26,6 @@
         </h4>
         <%= raw @tags.map { |tag_name| topic_link_color(ActsAsTaggableOn::Tag.where(name: tag_name).first) }.join(' ') %>
 
-        <p>
-          <%= link_to t(:back_to_filters, scope: 'profiles.index'), categories_path, class: "btn btn-outline-primary mt-3" %>
-        </p>
       <% elsif params[:search] %> <%# when in search scope %>
         <%= link_to t(:success, scope: 'search' ).html_safe +
                     t(:result, scope: 'search',
@@ -38,9 +35,6 @@
         <h4 class="pt-3"><%= t(:all_tagged_speakerinnen, scope: 'profiles.index', count: @profiles_tagged_count).html_safe + t(:tag_filter, scope: 'profiles.index', count: @tags.count).html_safe %>
         </h4>
         <%= raw @tags.map { |tag_name| topic_link_color(ActsAsTaggableOn::Tag.where(name: tag_name).first) }.join(' ') %>
-        <p>
-          <%= link_to t(:back_to_filters, scope: 'profiles.index'), categories_path(tag_search: params[:tag_search].gsub(/\s+/, "-"), anchor: "categories_anchor"), class: "btn btn-outline-primary mt-3" %>
-        </p>
       <% else %>
         <h4><%= t(:all_speakerinnen, scope: 'profiles.index', profiles_count: @profiles_count).html_safe %></h4>
       <% end %>

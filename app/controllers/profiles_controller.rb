@@ -34,11 +34,22 @@ class ProfilesController < ApplicationController
       @profiles = profiles_for_index
       @profiles_count = Profile.is_published.size
     end
-    @tags_most_used_200 = if params[:all_lang]
-                            ActsAsTaggableOn::Tag.with_published_profile.most_used(200)
-                          else
-                            ActsAsTaggableOn::Tag.with_published_profile.with_language(I18n.locale).most_used(200)
-                          end
+    # for the tags filter module that is available all the time at the profile index view
+    @category = params[:category_id] ? Category.find(params[:category_id]) : Category.find(1)
+    @categories = Category.sorted_categories
+    # is needed for the colors of the tags
+    Category.all.includes(:translations).each do |category|
+      instance_variable_set("@tags_#{category.short_name}",
+        ActsAsTaggableOn::Tag.belongs_to_category(category.id)
+                              .belongs_to_more_than_one_profile
+                              .with_published_profile
+                              .translated_in_current_language_and_not_translated(I18n.locale))
+    end
+    # is needed for the showing te correct tags in the tag_box
+    @tags_in_category_published = ActsAsTaggableOn::Tag
+                                  .with_published_profile
+                                  .belongs_to_category(params[:category_id])
+                                  .translated_in_current_language_and_not_translated(I18n.locale)
   end
 
   def show
@@ -198,7 +209,6 @@ class ProfilesController < ApplicationController
   end
 
   def profiles_for_category(category_id, tags_search=nil)
-    @categories = Category.sorted_categories
     @category = Category.find(category_id)
     @tags_in_category_published = ActsAsTaggableOn::Tag
                                   .with_published_profile
@@ -208,21 +218,6 @@ class ProfilesController < ApplicationController
 
 
     @category = params[:category_id] ? Category.find(params[:category_id]) : Category.find(1)
-    Category.all.includes(:translations).each do |category|
-      instance_variable_set("@tags_#{category.short_name}",
-        ActsAsTaggableOn::Tag.belongs_to_category(category.id)
-                              .belongs_to_more_than_one_profile
-                              .with_published_profile
-                              .translated_in_current_language_and_not_translated(I18n.locale))
-    end
-    @tags_in_category_published = ActsAsTaggableOn::Tag
-                                  .with_published_profile
-                                  .belongs_to_category(params[:category_id])
-                                  .translated_in_current_language_and_not_translated(I18n.locale)
-    tag_names = @tags_in_category_published.pluck(:name)
-    @profiles = profiles_for_tag(tag_names)
-
-
     if tags_search.present?
       @tags = tags_search.split(/\s*,\s*/) if tags_search
       @profiles = profiles_for_tag(@tags)
