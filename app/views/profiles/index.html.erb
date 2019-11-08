@@ -19,24 +19,20 @@
         <h1 class="text-center">
           <%= @category.name %>
         </h1>
-      <% elsif params[:topic] %> <%# when in single topic scope %>
-        <h4><%= t(:profiles_topics, scope: 'search',
-            profiles_count: @profiles.total_count,
-            topics_name: params[:topic]).html_safe %>
-        </h4>
-        <%= raw @tags.map { |tag_name| topic_link_color(ActsAsTaggableOn::Tag.where(name: tag_name).first) }.join(' ') %>
-
       <% elsif params[:search] %> <%# when in search scope %>
         <%= link_to t(:success, scope: 'search' ).html_safe +
                     t(:result, scope: 'search',
                     count: @profiles.total_count).html_safe,
                     '#speakers', class: 'h4' %>
       <% elsif params[:tag_search] %> <%# when in tagfilter scope %>
-        <h4 class="pt-3"><%= t(:all_tagged_speakerinnen, scope: 'profiles.index', count: @profiles_tagged_count).html_safe + t(:tag_filter, scope: 'profiles.index', count: @tags.count).html_safe %>
-        </h4>
+        <h1 class="text-center">
+          <%= t(:all_tagged_speakerinnen, scope: 'profiles.index', count: @profiles_tagged_count).html_safe + t(:tag_filter, scope: 'profiles.index', count: @tags.count).html_safe %>
+        </h1>
         <%= raw @tags.map { |tag_name| topic_link_color(ActsAsTaggableOn::Tag.where(name: tag_name).first) }.join(' ') %>
       <% else %>
-        <h4><%= t(:all_speakerinnen, scope: 'profiles.index', profiles_count: @profiles_count).html_safe %></h4>
+        <h1 class="text-center">
+          <%= t(:all_speakerinnen, scope: 'profiles.index', profiles_count: @profiles_count).html_safe %>
+        </h1>
       <% end %>
     </div>
   </div>
@@ -58,8 +54,6 @@
   </div>
 
   <%= paginate @profiles %>
-
-  <a id="tag_cloud_anchor"></a>
 
   <div class="row">
     <div class="col-12">
