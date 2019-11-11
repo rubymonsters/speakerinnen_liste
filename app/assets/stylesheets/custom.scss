@@ -16,6 +16,11 @@ body {
   }
 }*/
 
+.btn:focus{
+  outline: none;
+  box-shadow: none;
+}
+
 h1, h4 {
   font-family: $serif;
 }

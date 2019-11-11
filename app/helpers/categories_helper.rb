@@ -2,7 +2,7 @@
 
 module CategoriesHelper
   def category_link(category, options = {})
-    link_to category.name, category_path(category.id), options
+    link_to category.name, category_path(category.id), class: ""
   end
 
   def category_profiles_count(category_id)
