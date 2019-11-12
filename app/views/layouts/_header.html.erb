@@ -12,6 +12,10 @@
 
     <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
       <ul class="navbar-nav">
+        <li class="nav-item active pt-3 h4">
+          <%= link_to "<i class='fa fa-search nav-link text-white'></i>".html_safe, profiles_path(:search => "true"), class: "" %>
+        </li>
+        <span class="border-right mx-2" style="height: 77px;"></span>
         <% if profile_signed_in? %>
           <li class="nav-item active pt-3">
             <%= link_to(t(:my_profile, scope: 'layouts.application'), profile_path(current_profile), class: "nav-link")%>

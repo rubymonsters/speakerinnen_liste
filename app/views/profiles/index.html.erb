@@ -67,6 +67,7 @@
     </div>
   </div>
 </div>
+<%= render 'shared/search_form_modal' %>
 
 <%= render partial: 'layouts/footer' %>
 
@@ -85,6 +86,17 @@
     $( "#taginput" ).val('');
     $(".select-tag").removeClass( "disabled" );
   });
+
+  // toogle the close and show button on the apply filter
+  $('#collapseFilter').on('show.bs.collapse', function () {
+    $( "#icon" ).removeClass( "fa-chevron-down" );
+    $( "#icon" ).addClass( "fa-times" );
+  });
+  $('#collapseFilter').on('hide.bs.collapse', function () {
+    $( "#icon" ).removeClass( "fa-times" );
+    $( "#icon" ).addClass( "fa-chevron-down" );
+  });
+
 
   // elasticsearch search filter
   $('.expander_countries').click(function(){
