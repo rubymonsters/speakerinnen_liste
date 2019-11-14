@@ -17,6 +17,7 @@ gem 'normalize-rails'
 gem 'deadweight', require: 'deadweight/hijack/rails'
 
 gem 'kaminari'
+gem 'pagy'
 gem 'mime-types'
 
 gem 'acts-as-taggable-on', '~> 6.0'
