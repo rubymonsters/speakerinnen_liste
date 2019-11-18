@@ -4,8 +4,7 @@ desc 'migrates existing pictures from carriewave to active storage'
 task carrierwave_to_active_storage: :environment do
   Profile.find_each do |profile|
     begin
-      #if profile.picture.present? && profile.picture.file.present?
-      if profile.picture.present? && profile.picture.file.present? && profile.id == 2
+      if profile.picture.present? && profile.picture.file.present?
         profile.image.attach(io: open(profile.picture.url), filename: profile.picture.file.filename )
         # profile.picture.file.filename is for example: demosthenes_louvre.jpg
         puts profile.picture.file.filename
