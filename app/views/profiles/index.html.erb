@@ -38,6 +38,7 @@
     </div>
   </div>
   <% if params[:search] %> <%# if in search scope show aggregates %>
+    <%= render 'shared/search_form_modal' %>
     <%= render partial: 'shared/search_filter',
       locals: {
         profiles: @profiles,
@@ -46,6 +47,11 @@
         aggs_cities: @aggs_cities
       }
     %>
+    <script>
+      $(document).ready(function() {
+        $('#search_modal').modal('show');
+      });
+    </script>
   <% end %>
   <a id="speakers"></a>
   <%= paginate @profiles %>
@@ -67,7 +73,6 @@
     </div>
   </div>
 </div>
-<%= render 'shared/search_form_modal' %>
 
 <%= render partial: 'layouts/footer' %>
 
