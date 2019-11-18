@@ -6,7 +6,7 @@ task carrierwave_to_active_storage: :environment do
     begin
       #if profile.picture.present? && profile.picture.file.present?
       if profile.picture.present? && profile.picture.file.present? && profile.id == 2
-        # profile.image.attach(io: open(profile.picture.url), filename: profile.picture.file.filename )
+        profile.image.attach(io: open(profile.picture.url), filename: profile.picture.file.filename )
         # profile.picture.file.filename is for example: demosthenes_louvre.jpg
         puts profile.picture.file.filename
         # profile.picture.file.path is for example: /Users/sabrina/projects/speakerinnen_liste/public/uploads/profile/picture/498/demosthenes_louvre.jpg
