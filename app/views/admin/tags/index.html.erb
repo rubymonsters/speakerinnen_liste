@@ -3,14 +3,14 @@
 
   <div class="font-weight-bold text-center border-top pt-3">
     <% if @tags_count %>
-    <%= t(:tags_here_are, scope: 'admin.tags') + @tags.total_count.to_s + t(:tags_of, scope: 'admin.tags') + @tags_count.to_s + ' tags.' %>
+    <%= t(:tags_here_are, scope: 'admin.tags') + @pagy.count.to_s + t(:tags_of, scope: 'admin.tags') + @tags_count.to_s + ' tags.' %>
     <% else %>
-    <%= t(:tags_count, scope: 'admin.tags') + @tags.total_count.to_s + '.' %>
+    <%= t(:tags_count, scope: 'admin.tags') + @pagy.count.to_s + '.' %>
     <% end %>
   </div>
 
   <div class="text-center">
-    <%= paginate @tags %>
+    <%== pagy_bootstrap_nav(@pagy) %>
   </div>
 
   <div class="row">
@@ -73,6 +73,6 @@
   </div>
 
   <div class="text-center">
-    <%= paginate @tags %>
+    <%== pagy_bootstrap_nav(@pagy) %>
   </div>
 </div>
