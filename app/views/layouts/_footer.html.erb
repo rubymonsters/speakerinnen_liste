@@ -19,9 +19,8 @@
       <%= link_to t(:privacy, scope: 'pages.imprint'), privacy_path, class:"btn btn-link px-2" %>
     </nav>
     <p>
-    <span class="align-top">Supported by:</span>
-    <%= image_tag('BMBF_RGB_Gef_M.jpg', class:'pl-3') %>
-    <%= image_tag('travisfoundation-1.png', class: 'align-top pl-3 w-25') %>
+    <span class="">Supported by:</span>
+    <%= link_to(image_tag('inspired_logo.jpg', class:'pl-3', style: "width: 200px"), "https://www.inspired-socialmedia.com/", class: "",target: 'blank' ) %>
     </p>
   </div>
 </section>
