@@ -10,9 +10,9 @@ Rails.application.routes.draw do
               }
 
   scope '(:locale)', locale: /en|de/ do
-    
+
     delete 'image/:id/destroy', to: 'image#destroy', as: 'image'
-    
+
     namespace :admin do
       resources :tags, except: [:new, :create] do
         collection do
@@ -77,6 +77,10 @@ Rails.application.routes.draw do
     get '/', to: 'pages#home'
 
     get 'categories/:category_id', to: 'profiles#index', as: :category
+
+    get '/404', to: "errors#not_found"
+    get '/422', to: "errors#unacceptable"
+    get '/500', to: "errors#internal_error"
 
     resources :profiles, except: [:new, :create] do
       resources :medialinks
