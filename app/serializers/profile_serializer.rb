@@ -2,16 +2,12 @@
 
 class ProfileSerializer < ActiveModel::Serializer
   attributes :id, :firstname, :lastname, :city, :country, :twitter, :created_at,
-             :updated_at, :website, :website_2, :website_3, :profession, :topics, :picture, :bio, :main_topic
+             :updated_at, :website, :website_2, :website_3, :profession, :topics, :bio, :main_topic
 
   has_many :medialinks
 
   def topics
     object.topics.map(&:name)
-  end
-
-  def picture
-    object.picture.url
   end
 
   def bio

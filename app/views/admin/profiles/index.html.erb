@@ -22,7 +22,7 @@
         <th><%= sortable 'created_at', t(:created_at, scope: 'admin.profiles') %></th>
         <th><%= sortable 'updated_at', t(:updated_at, scope: 'admin.profiles') %></th>
         <th>Links</th>
-        <th>Picture</th>
+        <th>Image</th>
         <th><%= t(:roles, scope: 'admin.profiles') %></th>
         <th><%= sortable 'published', t(:visibility, scope: 'admin.profiles') %></th>
         <th><%= t(:comment, scope: 'admin.profiles') %></th>
@@ -41,7 +41,7 @@
           <td><center><%= link_to profile.medialinks.size, admin_profile_medialinks_path(profile),
               html_options = { title: t(:show, scope: 'medialinks') } %></center></td>
           <td>
-            <%= '<center><i class="fa fa-camera">&nbsp;</i></center>'.html_safe if profile.picture.present? %>
+            <%= '<center><i class="fa fa-camera">&nbsp;</i></center>'.html_safe if profile.image.attached? %>
           </td>
           <td><%= 'Admin' if profile.admin %></td>
           <td><% if profile.published %>
