@@ -85,3 +85,11 @@ de:
     imprint:
       title: "Impressum"
       privacy: "Datenschutzerklärung"
+    errors:
+      not_found: "Die Seite, die du gesucht hast, existiert nicht."
+      not_found_explain: "Möglicherweise hast du dich bei der Eingabe der Adresse vertippt oder die Seite wurde verschoben."
+      unacceptable: "Die von dir gewünschte Änderung wurde abgelehnt."
+      unacceptable_explain: "Vielleicht hast du versucht, etwas zu ändern, zu dem du keinen Zugang hattest.."
+      internal: "Es tut uns leid, aber etwas ist schief gelaufen."
+      back_home: "Geh zu Startseite: "
+      home_link: "Speakerinnen Liste"
