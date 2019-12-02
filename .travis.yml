@@ -1,7 +1,4 @@
-dist: trusty
-sudo: required
 language: ruby
-rvm: 2.6.5
 
 services:
   - docker
@@ -12,5 +9,6 @@ before_script:
   - docker-compose run web rake db:create db:migrate
   - export RECAPTCHA_SECRET_KEY=6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe
   - export RECAPTCHA_SITE_KEY=6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI
+
 script:
   - docker-compose run web bundle exec rspec spec/
