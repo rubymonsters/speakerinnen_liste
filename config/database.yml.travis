@@ -1,7 +1,27 @@
-test:
+
+default: &default
   adapter: postgresql
+  encoding: unicode
+  pool: 25
   encoding: unicode
   host: db
   username: postgres
   password:
-  database: speakerinnen_test
+
+development:
+  <<: *default
+  database: speakerinnen_development
+
+test:
+  <<: *default
+  database: speakerinnen_test 
+
+staging:
+  <<: *default
+  database: YOUR-DATABASE-NAME
+  password: YOUR-DATABASE-USERNAME-PASSWORD
+
+production:
+  <<: *default
+  database: YOUR-DATABASE-NAME
+  password: YOUR-DATABASE-USERNAME-PASSWORD
