@@ -9,23 +9,11 @@ The aim of the app is to provide a way for conference and event organizers to fi
 **Please note: Sometimes for better readability in long passages of text the term `women` is written without a star but we always mean everyone who defines herself as a woman.**
 
 
-# Technical Requirements
-
-- Ruby v2.4.2
-- Ruby on Rails, '5.2.0'
-- Elasticsearch v2.4.5 - https://www.elastic.co
-- ImageMagick - https://www.imagemagick.org
-- PostgreSQL v9.5.5 - https://www.postgresql.org
-- Bundler - https://bundler.io
-
-- we use heroku to deploy, honeycomb to show metrics, elasticsearch for search
 
 # Getting Started
 
-## 1. Copy & Configuration
-
-
-**1.1 Clone the repository.** `git clone git@github.com:rubymonsters/speakerinnen_liste.git`
+**1. Clone the repository:** `git clone git@github.com:rubymonsters/speakerinnen_liste.git` and access the folder: 
+`cd speakerinnen_liste`.
 
 **1.2 Copy `config/database_example.yml` and rename it to `database.yml` file and make sure it is always set to `.gitignore`:**
 
@@ -34,207 +22,18 @@ The aim of the app is to provide a way for conference and event organizers to fi
 $ cp config/database_example.yml config/database.yml
 ```
 
-**1.3 Adjust the settings of that config file according to your needs and ensure you have all server environments (development, test, staging, production) configured.**
+**2. Setup project locally**
+**2.1 Install Docker** If you don't have Docker installed, please download it [here](https://docs.docker.com/install/) for your operating system.
 
+**2.2 DB setup (First time only):**  
+**2.2.1** Create and migrate database: `docker-compose run web rake db:create db:migrate`
+**2.2.2** Run database seeds: `docker-compose run web rake db:seed` # this will create initial profiles that are listed in the db/seed.rb
+**2.2.3** Import the profiles into the Elasticsearch index: `docker-compose run web rake elasticsearch:import:all`
 
-## 2. Postgres
+**2.3** Run all tests: `docker-compose run web rake spec` 
+**2.4.** Run app: `docker-compose run web`
 
-**2.1 Install [PostgreSQL](http://www.postgresql.org/download/) dependent on your operating system**
-
-**2.2 Create a [PostgreSQL user](https://www.digitalocean.com/community/tutorials/how-to-use-roles-and-manage-grant-permissions-in-postgresql-on-a-vps--2) that is needed to log into the database (by default a `postgres` superuser is created after installation)**
-
-_Troubleshooting:_
-- more infos: https://wiki.ubuntuusers.de/PostgreSQL/
-- `find locate pg_hba.conf`
-```
-local   all             postgres                                trust
-
-# TYPE  DATABASE        USER            ADDRESS                 METHOD
-
-# "local" is for Unix domain socket connections only
-local   all             all                                     trust
-# IPv4 local connections:
-host    all             all             127.0.0.1/32            trust
-# IPv6 local connections:
-host    all             all             ::1/128                 md5
-```
- 
-## 3. Elasticsearch ( there is not need to do that if you don't want to test the search )
-
-**3.1 Install Elasticsearch 2.4**
-
-### Mac
-
-b) via homebrew
-
-```bash
-
-# Before Installation
-$ brew search elasticsearch # this will list all available Elasticsearch versions
-
-# Installation
-$ brew install elasticsearch@2.4
-
-# After installation
-$ echo 'export PATH="/usr/local/opt/elasticsearch@2.4/bin:$PATH"' >> ~/.zshrc # please check, if you have to replace `~/.zshrc` with any other dotfile, e.g. .bash_profile, .bashrc, etc.
-$ brew services list # check if Elasticsearch is now listed as brew services
-$ brew services start elasticsearch@2.4
-
-# Optional: Set a symlink and run Elasticsearch automatically on startup
-$ ln -sfv /usr/local/opt/elasticsearch@2.4/*.plist ~/Library/LaunchAgents
-
-# Troubleshooting:
-If you have any issues to install the old version (which is 'keg only'), try `$ brew link —force elasticsearch@2.4` to make Elasticsearch run.
-```
-
-### Ubuntu
-
-**3.2 c) Please follow the guide to install [Elasticseach 2.4.5](https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-elasticsearch-on-ubuntu-16-04) and pay attention to the version!**
-
-```bash
-
-# Installation Option 1: wget
-$ wget https://download.elastic.co/elasticsearch/elasticsearch/elasticsearch-2.4.5.deb
-$ sudo dpkg -i elasticsearch-2.4.5.deb
-$ sudo update-rc.d elasticsearch defaults
-
-# Installation Option 2: curl
-$ export ES_VERSION=2.4.5
-$ curl -sS https://download.elastic.co/elasticsearch/release/org/elasticsearch/distribution/tar/elasticsearch/${ES_VERSION}/elasticsearch-${ES_VERSION}.tar.gz | tar xz -C ./tmp
-
-# Set the test cluster command path for Elasticsearch
-$ export TEST_CLUSTER_COMMAND=./tmp/elasticsearch-2.4.5/bin/elasticsearch
-
-# Check the Elasticsearch status
-$ sudo service elasticsearch status
-
-# Start Elasticsearch
-$ sudo service elasticsearch start
-```
-
-Please note: You can either export the variables any time you need them with `$ export VARIABLE_KEY=value` or you can store them permanently in your `.env` file and load it into your current project with `$ source .env`. To verify your env variables are now set, run `$ echo $VARIABLE_KEY` or to unset run `$ unset VARIABLE_KEY`.
-
-
-### Browser Download
-
-https://www.elastic.co/downloads/past-releases/elasticsearch-2-4-5
-
-For more info, please follow the setup instructions here:
-https://www.elastic.co/guide/en/elasticsearch/reference/2.4/setup.html
-
-
-**3.3 After installation verify your Elasticsearch is working:**
-
-```json
-
-$ curl "localhost:9200/_nodes/settings?pretty=true"
-
-// You should see a response like this
-{
-  "cluster_name" : "elasticsearch_username",
-  "nodes" : {
-    "z3J_O6uhQYeLc46hAGhWaQ" : {
-      "name" : "Karolina Dean",
-      "transport_address" : "127.0.0.1:9300",
-      "host" : "127.0.0.1",
-      "ip" : "127.0.0.1",
-      "version" : "2.4.6",
-      "build" : "5376dca",
-      "http_address" : "127.0.0.1:9200",
-      "settings" : {
-        "name" : "Karolina Dean",
-        "client" : {
-          "type" : "node"
-        },
-        "cluster" : {
-          "name" : "elasticsearch_username"
-        },
-        "path" : {
-          "data" : "/usr/local/var/elasticsearch/",
-          "logs" : "/usr/local/var/log/elasticsearch",
-          "home" : "/usr/local/Cellar/elasticsearch@2.4/2.4.6/libexec"
-        },
-        "config" : {
-          "ignore_system_properties" : "true"
-        }
-      }
-    }
-  }
-}
-```
-
-## 4. Setup the project
-
-
-**4.1 Install Bundler (if you don't have it already)**
-
-  ```ruby
-
-  $  gem install bundler
-  ```
-
-**4.2. Install the gems:**
-
-  ```ruby
-
-  $ bundle install
-  ```
-
-**4.3 Create the database:**
-
-  ```ruby
-
-  $ bundle exec rake db:create
-  ```
-
-**4.4. Run the database migrations:**
-
-  ```ruby
-
-  $ bundle exec rake db:migrate
-  ```
-
-**4.5 Run the database seeds:**
-
-  ```ruby
-
-  $ bundle exec rake db:seed # this will create initial profiles that are listed in the db/seed.rb
-  ```
-
-**4.6 Import the profiles into the Elasticsearch index:**
-
-  ```ruby
-  $ bundle exec rake elasticsearch:import:all
-  ```
-
-**4.7 Before you start the rails server, make sure `Elasticsearch` is running (this is required to use the search and specs that depend on a running Elasticsearch instance)**
-
-  a) direct startup:
-
-  Start Elasticsearch with `$ elasticsearch` on port 9200 (default port)
-
-  b) via homebrew:
-
-  ```bash
-
-  $ brew services start elasticsearch@2.4
-  ```
-
-  c) via sudo service (ubuntu):
-
-  ```bash
-
-  $ sudo service elasticsearch start
-  ```
-
-**4.8 Run the app:**
-
-  ```ruby
-
-  $ bundle exec rails s
-  ```
-
-**4.9 Admin user**
+**Admin user**
 
   If you build or test some admin features you have to create an admin user (by default the admin attribute for each user is set to false) except 1 admin user is initially created by the `db/seed.rb` file.
 
@@ -297,6 +96,9 @@ We are using papertrail.
 # Report Errors
 We are using sentry.
 `heroku addons:open sentry --app speakerinnen-liste`
+
+#Deployment
+We use Heroku to deploy.
 
 # Contributing
 
