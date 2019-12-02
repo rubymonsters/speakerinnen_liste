@@ -8,6 +8,9 @@ services:
     image: elasticsearch:2.4.5
     volumes:
       - ./tmp/elastic:/usr/share/elasticsearch/data
+    ports:
+      - "9200:9200"
+      - "9300:9300"
   web:
     build: .
     command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
