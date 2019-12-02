@@ -1,4 +1,7 @@
 test:
   adapter: postgresql
-  database: travis_test
+  encoding: unicode
+  host: db
   username: postgres
+  password:
+  database: speakerinnen_test
