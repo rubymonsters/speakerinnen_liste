@@ -14,10 +14,7 @@
     <div class="tab-content mb-3" id="available-tags-box">
       <% @categories.each do |category| %>
         <div class="tab-pane fade <%= "active show" if category.id.to_s == ( params[:category_id]  || @category.id.to_s )%>" id="v-pills-<%= category.short_name %>" role="tabpanel" aria-labelledby="v-pills-<%= category.short_name %>-tab" >
-<!--             <a id="cat-<%= category.short_name %>" data-toggle="pill" href="#<%= category.id %>" role="tab" aria-controls="v-pills-<%= category.short_name %>" aria-selected="false">
-            <%= t(:title, scope: 'category', category_name: category.name).html_safe %>
-          </a>
--->            <%= render partial: "shared/tagbox", locals: { :tags => instance_variable_get("@tags_#{category.short_name}"), :category => category } %>
+          <%= render partial: "shared/tagbox", locals: { :tags => instance_variable_get("@tags_#{category.short_name}"), :category => category } %>
         </div>
       <% end %>
     </div>
@@ -71,9 +68,10 @@
     $( "#selected-tags-box .selected-tag" ).remove();
     $(".available-tag").removeClass( "disabled no-click" );
   });
+
   $(document).ready(function() {
     <% if params[:tag_filter] %>
-      <% params[:tag_filter].split(",").each do |tag_name| %>
+      <% params[:tag_filter].gsub(' ','-').split(",").each do |tag_name| %>
         $("#<%= tag_name %>").clone().appendTo($( "#selected-tags-box" )).append($("<i class='pl-2 fa fa-times-circle'></i>")).removeClass("available-tag").addClass("selected-tag");
       <% end %>
     <% end %>

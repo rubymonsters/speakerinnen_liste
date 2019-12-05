@@ -48,8 +48,8 @@
 
 <!-- Headline section -->
 <h1 class="text-center mt-5">
-  <% if params[:category_id] %> <%= @category.name %> <% end %>
-  <% if params[:search] %> <%= params[:search] %> <% end %>
+  <%= @category.name if params[:category_id] %>
+  <%= params[:search] if params[:search] %>
   <% if params[:tag_filter] %>
       <%= t(:all_tagged_speakerinnen, scope: 'profiles.index', count: @profiles_tagged_count).html_safe + t(:tag_filter, scope: 'profiles.index', count: @tags.count).html_safe %>
     <%= raw @tags.map { |tag_name| topic_link_color(ActsAsTaggableOn::Tag.where(name: tag_name).first) }.join(' ') %>
