@@ -14,11 +14,11 @@ class ProfilesController < ApplicationController
 
   def index
     if params[:topic]
-      @profiles = profiles_for_tag(params[:topic])
+      @pagy, @profiles = pagy_array(profiles_for_tag(params[:topic]), items: 24)
     elsif params[:category_id]
-      profiles_for_category
+      @pagy, @profiles = pagy_array(profiles_for_category, items: 24)
     elsif params[:search]
-      @profiles = profiles_for_search
+      @pagy, @profiles = pagy_elasticsearch_rails(profiles_for_search, items: 24)
 
       # sum of search results concerning certain attributes
       @aggs = profiles_for_search.response.aggregations
@@ -26,7 +26,7 @@ class ProfilesController < ApplicationController
       @aggs_cities = @aggs[:city][:buckets]
       @aggs_countries = @aggs[:country][:buckets]
     else
-      @profiles = profiles_for_index
+      @pagy, @profiles = pagy(profiles_for_index, items: 24)
       @profiles_count = Profile.is_published.size
     end
     @tags_most_used_200 = if params[:all_lang]
@@ -173,8 +173,6 @@ class ProfilesController < ApplicationController
            .includes(:translations)
            .main_topic_translated_in(I18n.locale)
            .random
-           .page(params[:page])
-           .per(24)
   end
 
   def profiles_for_tag(tag_names)
@@ -190,8 +188,6 @@ class ProfilesController < ApplicationController
                              )
                              .random
                              .uniq
-
-    Kaminari.paginate_array(profiles_array).page(params[:page]).per(24)
   end
 
   def profiles_for_category
@@ -207,8 +203,8 @@ class ProfilesController < ApplicationController
   def profiles_for_search
     Profile.is_published
            .includes(:taggings, :translations)
-           .search(params[:search], params[:filter_countries], params[:filter_cities], params[:filter_lang])
-           .page(params[:page]).per(24)
+           .pagy_search(params[:search])
            .records
+           
   end
 end
