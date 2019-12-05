@@ -25,7 +25,7 @@
     </div>
     <div class="form-group text-right">
       <%= form_tag(profiles_path, method: "get") do %>
-        <%= text_field_tag :tag_search, params[:tag_search], id: "hidden_tag_input", class: "form-control d-none" %>
+        <%= text_field_tag :tag_filter, params[:tag_filter], id: "hidden_tag_input", class: "form-control d-none" %>
         <span class="btn text-primary btn-link" id="clear">X Clear All</span>
         <%= submit_tag "Find A Speaker", class: "btn btn-primary", id: "search_in_topic" %>
       <% end %>
@@ -72,8 +72,8 @@
     $(".available-tag").removeClass( "disabled no-click" );
   });
   $(document).ready(function() {
-    <% if params[:tag_search] %>
-      <% params[:tag_search].split(",").each do |tag_name| %>
+    <% if params[:tag_filter] %>
+      <% params[:tag_filter].split(",").each do |tag_name| %>
         $("#<%= tag_name %>").clone().appendTo($( "#selected-tags-box" )).append($("<i class='pl-2 fa fa-times-circle'></i>")).removeClass("available-tag").addClass("selected-tag");
       <% end %>
     <% end %>

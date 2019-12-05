@@ -17,7 +17,7 @@ class ProfilesController < ApplicationController
       @tags = params[:topic].split(/\s*,\s*/)
       @profiles = profiles_for_tag(params[:topic])
     elsif params[:category_id]
-      profiles_for_category(params[:category_id], params[:tag_search])
+      profiles_for_category(params[:category_id], params[:tag_filter])
     elsif params[:search]
       @profiles = profiles_for_search
 
@@ -26,8 +26,8 @@ class ProfilesController < ApplicationController
       @aggs_languages = @aggs[:lang][:buckets]
       @aggs_cities = @aggs[:city][:buckets]
       @aggs_countries = @aggs[:country][:buckets]
-    elsif params[:tag_search]
-      @tags = params[:tag_search].split(/\s*,\s*/)
+    elsif params[:tag_filter]
+      @tags = params[:tag_filter].split(/\s*,\s*/)
       @profiles = Profile.is_published.has_tags(@tags).page(params[:page]).per(24)
       @profiles_tagged_count = @profiles.total_count
     else
@@ -208,7 +208,7 @@ class ProfilesController < ApplicationController
     Kaminari.paginate_array(profiles_array).page(params[:page]).per(24)
   end
 
-  def profiles_for_category(category_id, tags_search=nil)
+  def profiles_for_category(category_id, tags_filter=nil)
     @category = Category.find(category_id)
     @tags_in_category_published = ActsAsTaggableOn::Tag
                                   .with_published_profile
@@ -218,8 +218,8 @@ class ProfilesController < ApplicationController
 
 
     @category = params[:category_id] ? Category.find(params[:category_id]) : Category.find(1)
-    if tags_search.present?
-      @tags = tags_search.split(/\s*,\s*/) if tags_search
+    if tags_filter.present?
+      @tags = tags_filter.split(/\s*,\s*/)
       @profiles = profiles_for_tag(@tags)
     else
       @profiles = profiles_for_tag(tag_names)

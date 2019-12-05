@@ -12,8 +12,8 @@ en:
     filter: "Here you can filter the search results:"
     success: "We found"
     result: {
-      one: " <b>a</b> speakerin! <i class='fa fa-caret-down' style='font-size: 21px'></i>",
-      other: " <b>%{count}</b> speakerinnen!<i class='fa fa-caret-down' style='font-size: 21px'></i>"
+      one: " <b>a</b> speakerin!",
+      other: " <b>%{count}</b> speakerinnen!"
     }
     more_options: "<b>You didn't find any suitable speaker?</b><br> Maybe the following links can help you:"
     search_categories_html: "Have a look at our other <a href='%{root_path}/#categories_anchor'>categories</a> and <a href='#tag_cloud_anchor'>topics</a>."

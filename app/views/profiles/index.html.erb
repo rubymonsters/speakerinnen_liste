@@ -1,7 +1,36 @@
-<div class="container-fluid px-5 py-5">
+<div class="container-fluid">
+
+<!-- search scope -->
+<% if params[:search] %>
+  <div class="row bg--light-grey p-3">
+    <div class="col-12">
+      <span class="h4"><%= t(:success, scope: 'search').html_safe +
+          t(:result, scope: 'search',
+          count: @profiles.total_count).html_safe
+        %>
+      </span>
+      <%= link_to("<i class='fa fa-times float-right'></i>".html_safe, profiles_path, class: '')  %>
+    </div>
+  </div>
+  <div class="row bg--light-grey p-3">
+    <div class="col-12">
+      <%= render partial: 'shared/search_filter',
+          locals: {
+            profiles: @profiles,
+            aggs_languages: @aggs_languages,
+            aggs_countries: @aggs_countries,
+            aggs_cities: @aggs_cities
+          }
+        %>
+    </div>
+  </div>
+<% end %>
+
+<!-- only show the category filter when not in search scope -->
+<% unless params[:search] %>
   <div class="row">
     <div class="col-12">
-      <a class="btn bg--light-grey btn-stretch py-3" data-toggle="collapse" href="#collapseFilter" role="button" aria-expanded="false" aria-controls="collapseFilter">
+      <a class="btn bg--light-grey btn-stretch py-3" id="collapseFilterButton" data-toggle="collapse" href="#collapseFilter" role="button" aria-expanded="false" aria-controls="collapseFilter">
         <span><%= t(:apply_filter, scope: 'profiles.index') %></span>
         <i class='fa fa-chevron-down float-right' id="icon"></i>
       </a>
@@ -14,65 +43,28 @@
       </div>
     </div>
   </div>
-  <div class="row">
-    <div class="col-md-12">
-      <% if params[:category_id] %> <%# when in categories scope %>
-        <h1 class="text-center">
-          <%= @category.name %>
-        </h1>
-      <% elsif params[:search] %> <%# when in search scope %>
-        <%= link_to t(:success, scope: 'search' ).html_safe +
-                    t(:result, scope: 'search',
-                    count: @profiles.total_count).html_safe,
-                    '#speakers', class: 'h4' %>
-      <% elsif params[:tag_search] %> <%# when in tagfilter scope %>
-        <h1 class="text-center">
-          <%= t(:all_tagged_speakerinnen, scope: 'profiles.index', count: @profiles_tagged_count).html_safe + t(:tag_filter, scope: 'profiles.index', count: @tags.count).html_safe %>
-        </h1>
-        <%= raw @tags.map { |tag_name| topic_link_color(ActsAsTaggableOn::Tag.where(name: tag_name).first) }.join(' ') %>
-      <% else %>
-        <h1 class="text-center">
-          <%= t(:all_speakerinnen, scope: 'profiles.index', profiles_count: @profiles_count).html_safe %>
-        </h1>
-      <% end %>
-    </div>
-  </div>
-  <% if params[:search] %> <%# if in search scope show aggregates %>
-    <%= render 'shared/search_form_modal' %>
-    <%= render partial: 'shared/search_filter',
-      locals: {
-        profiles: @profiles,
-        aggs_languages: @aggs_languages,
-        aggs_countries: @aggs_countries,
-        aggs_cities: @aggs_cities
-      }
-    %>
-    <script>
-      $(document).ready(function() {
-        $('#search_modal').modal('show');
-      });
-    </script>
+<% end %>
+
+<!-- Headline section -->
+<h1 class="text-center mt-5">
+  <% if params[:category_id] %> <%= @category.name %> <% end %>
+  <% if params[:search] %> <%= params[:search] %> <% end %>
+  <% if params[:tag_filter] %>
+      <%= t(:all_tagged_speakerinnen, scope: 'profiles.index', count: @profiles_tagged_count).html_safe + t(:tag_filter, scope: 'profiles.index', count: @tags.count).html_safe %>
+    <%= raw @tags.map { |tag_name| topic_link_color(ActsAsTaggableOn::Tag.where(name: tag_name).first) }.join(' ') %>
   <% end %>
-  <a id="speakers"></a>
-  <%= paginate @profiles %>
+</h1>
 
-  <div class="row">
-    <%= render partial: 'profiles/profile', collection: @profiles, as: :profile %>
-  </div>
 
-  <%= paginate @profiles %>
+<!-- Speaker section -->
+<a id="speakers"></a>
+<%= paginate @profiles %>
 
-  <div class="row">
-    <div class="col-12">
-      <h5 class="text-center"><%= t(:more_options, scope: 'search').html_safe %></h5>
-      <p class="text-center mb-5">
-        <a href="#top"><%= t(:adapt_search, scope: 'search')%></a> <br>
-        <%= link_to(t(:all_profiles, scope: 'search'), profiles_path).html_safe %><br>
-        <%= link_to(t(:all_categories, scope: 'pages.home'), root_path + "#categories_anchor" )%>
-      </p>
-    </div>
-  </div>
+<div class="row">
+  <%= render partial: 'profiles/profile', collection: @profiles, as: :profile %>
 </div>
+
+<%= paginate @profiles %>
 
 <%= render partial: 'layouts/footer' %>
 

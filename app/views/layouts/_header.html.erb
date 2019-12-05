@@ -6,14 +6,18 @@
       <%= image_tag('logo_header_white.png', alt: 'logo', id: 'header__logo') %>
     <% end %>
 
-    <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="fa fa-bars"></span>
     </button>
 
     <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
       <ul class="navbar-nav">
         <li class="nav-item active pt-3 h4">
-          <%= link_to "<i class='fa fa-search nav-link text-white'></i>".html_safe, profiles_path(:search => "true"), class: "" %>
+          <%= form_tag(profiles_path, method: 'get', class: "form-inline my-2 my-lg-0") do %>
+              <%= text_field_tag('search', params[:search], class: 'form-control typeahead profile__search mr-sm-2',
+              type: 'text', placeholder: t(:search_text, scope: 'pages.home.search')) %>
+              <%= button_tag "<i class='fa fa-search nav-link text-white'></i>".html_safe, class: "btn btn-link" %>
+          <% end %>
         </li>
         <span class="border-right mx-2" style="height: 77px;"></span>
         <% if profile_signed_in? %>
