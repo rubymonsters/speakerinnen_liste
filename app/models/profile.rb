@@ -3,6 +3,7 @@ class Profile < ApplicationRecord
   include HasPicture
   include Searchable
   include ActiveModel::Serialization
+  extend Pagy::Search
 
   has_many :medialinks
   has_many :feature_profiles
