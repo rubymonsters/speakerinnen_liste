@@ -95,6 +95,8 @@ de:
       }
       show_more: "Mehr >>"
       show_less: "Weniger >>"
+      apply_filter: "Benutze Filter"
+      within: " in der "
       profiles_in_category: "Wir haben %{profiles_count} Speakerinnen* in der Kategorie <b>%{category_name}</b>:"
       back_to_filters: "Zurück zum Filter"
     new:
