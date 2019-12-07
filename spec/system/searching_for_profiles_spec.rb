@@ -69,7 +69,7 @@ describe 'profile search' do
     end
   end
 
-  describe 'search in admin area' do
+  describe 'search in admin area', elasticsearch: true do
     before do
       sign_in admin
     end

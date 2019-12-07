@@ -42,6 +42,7 @@ FactoryBot.define do
       website_2_de { 'wwww.ada2.de' }
       website_3_de { 'wwww.ada3.de' }
       published { true }
+      profession { 'computer scientist' }
     end
 
     factory :marie do
@@ -56,6 +57,7 @@ FactoryBot.define do
       main_topic_de { 'Radioaktivität' }
       main_topic_en { 'radioactivity' }
       published { true }
+      profession { 'chemist' }
     end
 
   end

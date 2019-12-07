@@ -19,7 +19,9 @@ en:
         The size of your photo should be<b> smaller than 1MB</b>."
       firstname: "My first name:"
       lastname: "My last name:"
-      translated_infos: "Translated Infos:"
+      translated_infos: "Translated Infos"
+      personal_infos: "Personal Infos"
+      profession: "My Profession:"
       bio: "My bio in %{language}: <i class='fa fa-info-circle' aria-hidden='true'></i>
         <br><small class='form-text text-muted'>You can use simple HTML tags to format the text. For example: <i>< i > italic < /i ></i> or <b>< b > bold < /b ></b>.</small>"
       bio_tooltip: "Here you can add a short or long bio of yourself. Please also add specific expertise and topics you feel comfortable speaking about. This will help organizers of events to understand whether you might be the person they're looking for."
@@ -45,6 +47,7 @@ en:
       lastname: 'Last name:'
       topics: "My topics:"
       languages: "My languages:"
+      profession: "My Profession:"
       media: "Examples of previous talks / appearances:"
       bio: "My bio:"
       websites: "My websites/blogs:"

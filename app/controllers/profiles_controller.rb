@@ -169,11 +169,13 @@ class ProfilesController < ApplicationController
       :website_2_en,
       :website_3_de,
       :website_3_en,
+      :profession_en,
+      :profession_de,
       :city_de,
       :city_en,
       :image,
       feature_ids: [],
-      translations_attributes: %i[id bio main_topic twitter website city locale]
+      translations_attributes: %i[id bio main_topic twitter website profession city locale]
     )
   end
 

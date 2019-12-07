@@ -2,6 +2,7 @@
 
 describe 'profile', type: :model do
   let(:profile) { FactoryBot.create(:profile) }
+  let(:profile2) { FactoryBot.create(:ada)}
 
   describe 'profile settings' do
     it 'has a valid factory' do
@@ -114,6 +115,18 @@ describe 'profile', type: :model do
       profile.city_en = 'Rom or Paris'
       profile.save!
       expect(profile.cities).to eq(%w[Rom Wien Paris])
+    end
+  end
+
+  describe 'profession' do
+    it 'returns a profession' do
+      expect(profile2.profession).to eq("computer scientist")
+    end
+
+    it 'forces 80 character limit for a profession' do
+      profile = Profile.new(profession: 'a' * 61)
+      profile.valid?
+      expect(profile.errors[:profession].size).to eq(1)
     end
   end
 end

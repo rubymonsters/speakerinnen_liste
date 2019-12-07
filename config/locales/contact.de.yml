@@ -2,10 +2,10 @@ de:
   contact:
     form:
       title: "Schreib uns eine Mail:"
-      name: "Dein Name*"
+      name: "Dein Name"
       name_placeholder: ""
       medialink_placeholder: "Bitte nur 21 Zeichen eingeben"
-      email: "Deine E-Mail-Adresse*"
+      email: "Deine E-Mail-Adresse"
       subject: "Betreff der E-Mail"
       send: "Senden"
       body: "Deine Nachricht"

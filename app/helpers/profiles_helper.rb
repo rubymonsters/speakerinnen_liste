@@ -20,10 +20,10 @@ module ProfilesHelper
   end
 
   def profile_picture_link(profile)
-    if profile.picture.present?
+    if profile.image.attached?
+      link_to(image_tag(profile.image.variant(combine_options: {resize: '300x300^', extent: '300x300', gravity: 'Center'}), class: 'photo--grey'), profile)
+    elsif profile.picture.present?
       link_to(image_tag(profile.picture.profile.url, alt: profile.fullname, class: 'photo--grey'), profile)
-    elsif profile.image.attached?
-      link_to(image_tag(profile.image_variant, class: 'photo--grey'), profile)
     else
       link_to(image_tag('avatar.jpg', alt: 'avatar', class: 'photo--grey card-img-top', alt: "Speakerinnen Picture"), profile)
     end
