@@ -1,8 +1,12 @@
 <section>
   <div id="startpage__start-teaser" class="startpage__photo-bar">
-    <div class="align-self-center pl-5 pb-5 container">
-      <span class="btn btn-primary btn-lg" style="font-size: 2rem"><%= link_to "Find a speaker", profiles_path, class: "text-white" %></span>
-      <span class="btn btn-light btn-lg ml-3" style="font-size: 2rem"><%= link_to "I am a speaker", profiles_path %></span>
+    <div class="container align-self-center">
+    <div class="row">
+      <div class="col-md-6 offset-md-1">
+        <span class="btn btn-primary px-4" style="font-size: 2rem"><%= link_to "Find a speaker", profiles_path, class: "text-white" %></span>
+        <span class="btn btn-light ml-3 px-4" style="font-size: 2rem"><%= link_to "I am a speaker", sign_up_path %></span>
+      </div>
+    </div>
     </div>
   </div>
   <div class="copyright">
@@ -14,7 +18,7 @@
 
   <% if @features.load.any? %>
     <% @features.each do |feature| %>
-      <div class="container">
+      <div class="container text-center">
         <h1 class="box__bg"><%= feature.title %></h1>
         <h4 class="border-vertical d-block box__bg mb-4">
           <%= feature.description %>
@@ -26,7 +30,7 @@
     <% end %>
 
   <% else %>
-    <div class="container">
+    <div class="container text-center">
       <h1 class="box__bg"><%= t(:speaker_headline, scope: 'pages.home.speakers') %></h1>
       <h4 class="border-vertical d-block box__bg mb-4">
         <%= t(:speaker_text, scope: 'pages.home.speakers') %>
@@ -49,17 +53,16 @@
   </div>
 
   <div class="container">
-    <div class="row py-5">
+    <div class="row pt-5">
       <div class="col">
-        <h2><%= t(:women, scope: 'pages.home.footer').html_safe %></h2>
+        <h2 class="serif"><%= t(:women, scope: 'pages.home.footer').html_safe %></h2>
       </div>
     </div>
   </div>
   <div class="container">
-    <h1 class="box__bg">Speakerinnen</h1>
-    <div class="row pl-4">
-      <div class="col-md">
-        <h4 class="border-vertical d-block py-2 mb-4 ">
+    <div class="row">
+      <div class="col-md pr-4">
+        <h4 class="border-vertical d-block py-2 mb-4 sans-serif">
           <%= link_to t(:about_title, scope: 'pages.home.footer'), about_path %>
         </h4>
         <p>
@@ -67,8 +70,8 @@
           <%= link_to t(:more, scope: 'pages.home.footer').html_safe, about_path  %>
         </p>
       </div>
-      <div class="col-md">
-        <h4 class="border-vertical d-block py-2 mb-4 ">
+      <div class="col-md pl-4">
+        <h4 class="border-vertical d-block py-2 mb-4 sans-serif">
           <%= link_to t(:blog, scope:"pages.home.footer"), 'http://blog.speakerinnen.org/', target: '_blank' %>
         </h4>
         <p>
@@ -83,13 +86,13 @@
       </div>
     </div>
   </div>
-  <section id="startpage__teaser-bg-02" class="startpage__photo-bar">
+  <section id="startpage__teaser-bg-02" class="startpage__photo-bar  align-items-center">
     <div class="container">
-      <h1 class="display-4 box__bg bg--white-trans mt-5"><%= t(:speaker_shoutout, scope: 'pages.home').html_safe %></h1>
+      <h1 class="display-4 box__bg bg--white-trans"><%= t(:speaker_shoutout, scope: 'pages.home').html_safe %></h1>
       <h4 class="box__bg bg--white"><%=link_to t(:speaker_text, scope: 'pages.home').html_safe, new_profile_registration_path %></h4>
     </div>
   </section>
-  <div class="copyright">
+  <div class="copyright pb-5">
      Copyright by Tilman Vogler
   </div>
 </section>

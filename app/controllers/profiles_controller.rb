@@ -87,7 +87,7 @@ class ProfilesController < ApplicationController
   end
 
   def render_footer?
-    false
+    true
   end
 
   def typeahead

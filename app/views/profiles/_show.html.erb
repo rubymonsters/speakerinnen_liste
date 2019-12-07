@@ -1,5 +1,5 @@
-<div class="container-fluid profile-page pt-2">
-  <div class="row my-5 p-5 bg--white">
+<div class="container-fluid profile-page pt-2 bg--light-grey">
+  <div class="row my-3 p-5 bg--white">
 
     <div class="col-md-4">
       <%= profile_picture_link(@profile) %>
@@ -9,7 +9,7 @@
     </div>
 
     <div class="col-md-4 px-3">
-      <h1 class="h3"><%= @profile.fullname %></h1>
+      <h1 class="h2"><%= @profile.fullname %></h1>
 
       <% unless @profile.fullname.present? %>
         <p class="error">
@@ -171,5 +171,6 @@
     </div>
   <% end %>
 </div>
-
+<div class="container-fluid bg--light-grey pb-5">
+</div>
 <%= render 'shared/contact_modal' %>

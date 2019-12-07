@@ -1,3 +1,7 @@
+// header
+
+
+
 /* startpage */
 #startpage__start-teaser {
   background: image-url('start-teaser.jpg') no-repeat center center;
@@ -12,6 +16,7 @@
 #startpage__teaser-bg-02 {
   background: image-url('teaser-bg-02.jpg') no-repeat center center;
   background-size: cover;
+  background-position: top;
 }
 
 .startpage__photo-bar {

@@ -1,7 +1,7 @@
 body {
   font-family: $sans-serif;
   color: $font-color;
-  margin-top: 80px;
+  margin-top: 75px;
   background-color: white;
 }
 
@@ -29,6 +29,9 @@ h1, h4 {
   font-family: $sans-serif;
 }
 
+.serif {
+  font-family: $serif;
+}
 
 /* layout */
 
@@ -97,6 +100,10 @@ h1, h4 {
   border-bottom: $border;
 }
 
+.border-upper {
+  border-top: $border;
+}
+
 .button--border {
   padding: 10px 20px 10px 20px;
   border: solid $light-grey 1px;
@@ -139,7 +146,7 @@ textarea, input {
 
 @media (min-width: 1200px) {
     .container{
-        max-width: 1400px;
+        max-width: 1600px;
     }
 }
 
