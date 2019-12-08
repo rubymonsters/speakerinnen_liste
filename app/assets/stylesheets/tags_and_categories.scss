@@ -1,16 +1,29 @@
-/* Backgrounds bright colors*/
-.bg-teal { background-color: $teal; }
-.bg-dark_teal { background-color: $dark_teal; }
-.bg-soft_blue { background-color: $soft_blue; }
-.bg-purple { background-color: $purple; }
-.bg-rose { background-color: $rose; }
-.bg-pink { background-color: $pink; }
-.bg-dark_pink { background-color: $dark_pink; }
-.bg-raspberry_red { background-color: $raspberry_red; }
-.bg-red_orange { background-color: red_orange; }
-.bg-orange { background-color: $orange; }
-.bg-bronze { background-color: $bronze; }
-.bg-dark_yellow { background-color: $dark_yellow; }
+/* Tag Backgrounds all colors*/
+.bg-arts { background-color: $arts_sec; }
+.bg-body { background-color: $body_sec; }
+.bg-career { background-color: $career_sec; }
+.bg-companies { background-color: $companies_sec; }
+.bg-diversity { background-color: $diversity_sec; }
+.bg-environment { background-color: $environment_sec; }
+.bg-marketing { background-color: $marketing_sec; }
+.bg-politics { background-color: $politics_sec; }
+.bg-internet { background-color: $internet_sec; }
+.bg-misc { background-color: $misc_sec; }
+.bg-science { background-color: $science_sec; }
+
+/* Tag icon Backgrounds all colors*/
+.bg-icon-arts { background-color: $arts; }
+.bg-icon-body { background-color: $body; }
+.bg-icon-career { background-color: $career; }
+.bg-icon-companies { background-color: $companies; }
+.bg-icon-diversity { background-color: $diversity; }
+.bg-icon-environment { background-color: $environment; }
+.bg-icon-marketing { background-color: $marketing; }
+.bg-icon-politics { background-color: $politics; }
+.bg-icon-internet { background-color: $internet; }
+.bg-icon-misc { background-color: $misc; }
+.bg-icon-science { background-color: $science; }
+
 
 // topics
 
@@ -36,10 +49,10 @@ div#v-pills-tab a {
 
 // colors of categories and tags
 $categories_dark_color: (
-  marketing: $raspberry_red,
-  politics: $red_orange,
-  internet: $dark_pink,
-  environment: $pink,
+  marketing: $marketing,
+  politics: $politics,
+  internet: $internet,
+  environment: $environment
 );
 
 @each $name, $color in $categories_dark_color {
@@ -66,16 +79,19 @@ $categories_dark_color: (
     color: $color;
     text-decoration: underline;
   }
+  .bg-#{$name} {
+    i { color: #{$color} }
+  }
 }
 
 $categories_bright_color: (
-  miscellaneous: $bronze,
-  arts: $teal,
-  body: $dark_teal,
-  career: $soft_blue,
-  companies: $purple,
-  diversity: $rose,
-  science: $orange_1
+  miscellaneous: $misc,
+  arts: $arts,
+  body: $body,
+  career: $career,
+  companies: $companies,
+  diversity: $diversity,
+  science: $science
 );
 
 @each $name, $color in $categories_bright_color {
@@ -102,21 +118,24 @@ $categories_bright_color: (
     color: $color;
     text-decoration: underline;
   }
+  .bg-#{$name} {
+    i { color: #{$color} }
+  }
 }
 
 // custom colors
 $all_categories_custom_color: (
-  arts: $teal,
-  body: $dark_teal,
-  career: $soft_blue,
-  companies: $purple,
-  diversity: $rose,
-  environment: $pink,
-  internet: $dark_pink,
-  marketing: $raspberry_red,
-  politics: $red_orange,
-  science: $orange,
-  miscellaneous: $bronze
+  arts: $arts,
+  body: $body,
+  career: $career,
+  companies: $companies,
+  diversity: $diversity,
+  environment: $environment,
+  internet: $internet,
+  marketing: $marketing,
+  politics: $politics,
+  science: $science,
+  miscellaneous: $misc
 );
 
 @each $name, $color in $all_categories_custom_color {
@@ -142,17 +161,17 @@ $all_categories_custom_color: (
 
 // all categories brighter colors
 $all_categories_brighter_color: (
-  arts: $teal_1,
-  body: $dark_teal_1,
-  career: $soft_blue_1,
-  companies: $purple_1,
-  diversity: $rose_1,
-  environment: $pink_1,
-  internet: $dark_pink_1,
-  marketing: $raspberry_red_1,
-  politics: $red_orange_1,
-  science: $orange_1,
-  miscellaneous: $bronze_1
+  arts: $arts_sec,
+  body: $body_sec,
+  career: $career_sec,
+  companies: $companies_sec,
+  diversity: $diversity_sec,
+  environment: $environment_sec,
+  internet: $internet_sec,
+  marketing: $marketing_sec,
+  politics: $politics_sec,
+  science: $science_sec,
+  miscellaneous: $misc_sec
 );
 
 @each $name, $color in $all_categories_brighter_color {
@@ -163,17 +182,17 @@ $all_categories_brighter_color: (
 
 // all categories darker colors
 $all_categories_darker_color: (
-  arts: $teal_2,
-  body: $dark_teal_2,
-  career: $soft_blue_2,
-  companies: $purple_2,
-  diversity: $rose_2,
-  environment: $pink_2,
-  internet: $dark_pink_2,
-  marketing: $raspberry_red_2,
-  politics: $red_orange_2,
-  science: $orange_2,
-  miscellaneous: $bronze_2
+  arts: $arts,
+  body: $body,
+  career: $career,
+  companies: $companies,
+  diversity: $diversity,
+  environment: $environment,
+  internet: $internet,
+  marketing: $marketing,
+  politics: $politics,
+  science: $science,
+  miscellaneous: $misc
 );
 
 @each $name, $color in $all_categories_darker_color {
