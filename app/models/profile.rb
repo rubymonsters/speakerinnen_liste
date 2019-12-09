@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 class Profile < ApplicationRecord
-  include HasPicture
   include Searchable
   include ActiveModel::Serialization
 

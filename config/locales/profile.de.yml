@@ -11,10 +11,10 @@ de:
     form:
       not_saved: "Dieses Profil konnte nicht gespeichert werden:"
       profile_from: "Profil von"
-      delete_picture: "<i class='fa fa-trash pr-2'></i>Lösche mein Foto"
+      delete_image: "<i class='fa fa-trash pr-2'></i>Lösche mein Foto"
       update: "Aktualisiere dein Profil"
       picture: "Ein Foto von mir:"
-      picture_info: "Lade bitte das Foto in <b>Farbe</b> hoch, wir zeigen es in Graustufen.
+      image_info: "Lade bitte das Foto in <b>Farbe</b> hoch, wir zeigen es in Graustufen.
         Nutze .jpg, .jpeg oder .png und achte darauf, daß Du die Rechte zu diesem Foto besitzt!
         Die Größe des Fotos sollte <b>kleiner als 1MB</b> sein."
       firstname: "Mein Vorname:"
@@ -91,5 +91,3 @@ de:
       show_less: "Weniger >>"
     new:
       new_profile: "Neues Profil"
-  error_messages:
-    picture_too_big: " ist zu groß. Bitte nicht größer als 1 MB"
