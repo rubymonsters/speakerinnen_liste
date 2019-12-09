@@ -33,6 +33,9 @@
 # Ignore database files
 *.dump
 
+#Ignore IDE files
+.idea/
+
 .ruby-version
 .ruby-gemset
 .env
