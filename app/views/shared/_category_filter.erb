@@ -73,6 +73,7 @@
     <% if params[:tag_filter] %>
       <% params[:tag_filter].gsub(' ','-').split(",").each do |tag_name| %>
         $("#<%= tag_name %>").clone().appendTo($( "#selected-tags-box" )).append($("<i class='pl-2 fa fa-times-circle'></i>")).removeClass("available-tag").addClass("selected-tag");
+        $("#<%= tag_name %>.available-tag").addClass( "disabled no-click" );
       <% end %>
     <% end %>
   });
