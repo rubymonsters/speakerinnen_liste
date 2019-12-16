@@ -5,10 +5,9 @@
 .bg-companies { background-color: $companies_sec; }
 .bg-diversity { background-color: $diversity_sec; }
 .bg-environment { background-color: $environment_sec; }
+.bg-internet { background-color: $internet_sec; }
 .bg-marketing { background-color: $marketing_sec; }
 .bg-politics { background-color: $politics_sec; }
-.bg-internet { background-color: $internet_sec; }
-.bg-misc { background-color: $misc_sec; }
 .bg-science { background-color: $science_sec; }
 
 /* Tag icon Backgrounds all colors*/
@@ -18,10 +17,9 @@
 .bg-icon-companies { background-color: $companies; }
 .bg-icon-diversity { background-color: $diversity; }
 .bg-icon-environment { background-color: $environment; }
+.bg-icon-internet { background-color: $internet; }
 .bg-icon-marketing { background-color: $marketing; }
 .bg-icon-politics { background-color: $politics; }
-.bg-icon-internet { background-color: $internet; }
-.bg-icon-misc { background-color: $misc; }
 .bg-icon-science { background-color: $science; }
 
 
@@ -30,7 +28,6 @@
 #available-tags-box {
   max-height: 300px;
   overflow: scroll;
-  background: $white-smoke;
 }
 
 #selected-tags-box {
@@ -85,7 +82,6 @@ $categories_dark_color: (
 }
 
 $categories_bright_color: (
-  miscellaneous: $misc,
   arts: $arts,
   body: $body,
   career: $career,
@@ -134,8 +130,7 @@ $all_categories_custom_color: (
   internet: $internet,
   marketing: $marketing,
   politics: $politics,
-  science: $science,
-  miscellaneous: $misc
+  science: $science
 );
 
 @each $name, $color in $all_categories_custom_color {
@@ -170,8 +165,7 @@ $all_categories_brighter_color: (
   internet: $internet_sec,
   marketing: $marketing_sec,
   politics: $politics_sec,
-  science: $science_sec,
-  miscellaneous: $misc_sec
+  science: $science_sec
 );
 
 @each $name, $color in $all_categories_brighter_color {
@@ -191,13 +185,12 @@ $all_categories_darker_color: (
   internet: $internet,
   marketing: $marketing,
   politics: $politics,
-  science: $science,
-  miscellaneous: $misc
+  science: $science
 );
 
 @each $name, $color in $all_categories_darker_color {
   div#v-pills-#{$name} {
-    background-color: #D8d8d8;
+    background-color: $grey;
   }
   button.cat_#{$name} i {
     color: $color;

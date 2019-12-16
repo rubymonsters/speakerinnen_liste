@@ -9,7 +9,7 @@ class Category < ApplicationRecord
   globalize_accessors locales: %i[en de], attributes: [:name]
 
   def self.sorted_categories
-    @_categories_without_miscellaneous = Category.all.includes(:translations).where("id <> '12'").sort_by(&:name_en)
+    @_categories_without_miscellaneous = Category.all.includes(:translations).sort_by(&:name_en)
     @_category_miscellaneous = Category.where(id: '12')
 
     @_categories_without_miscellaneous + @_category_miscellaneous
