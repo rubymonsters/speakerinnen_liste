@@ -17,8 +17,8 @@ de:
       picture_info: "Lade bitte das Foto in <b>Farbe</b> hoch, wir zeigen es in Graustufen.
         Nutze .jpg, .jpeg oder .png und achte darauf, daß Du die Rechte zu diesem Foto besitzt!
         Die Größe des Fotos sollte <b>kleiner als 1MB</b> sein."
-      firstname: "Mein Vorname:"
-      lastname: "Mein Nachname:"
+      firstname: "Vorname:"
+      lastname: "Nachname:"
       translated_infos: "Übersetzte Infos"
       personal_infos: "Persönliche Infos"
       bio: "Meine Biografie auf %{language}: <i class='fa fa-info-circle' aria-hidden='true'></i>
@@ -27,7 +27,7 @@ de:
       topic_list: "Meine Themen als Tags, wähle bitte nicht mehr als 10 Tags: <i class='fa fa-info-circle'></i>"
       topic_list_tooltip: "Bitte schaue zuerst, ob Dein Thema schon vorhanden ist."
       main_topic_title: "Themenschwerpunkt:"
-      main_topic: "Mein Themenschwerpunkt auf %{language}:
+      main_topic: "Themenschwerpunkt auf %{language}:
         <br><small class='form-text text-muted'>Es werden nur 30 Zeichen angezeigt.
         <br>Trage Dein wichtigstes Thema hier nochmal ein. Dieses Thema wird mit Deinem Namen und Bild auf der Speakerinnen-Übersichtsseite zu sehen sein.</small>"
       tag_list: "schon vorhandene Tags"
@@ -37,24 +37,24 @@ de:
       city: "Die Stadt, in der ich lebe: <i class='fa fa-info-circle' aria-hidden='true'></i>"
       city_tooltip: "Bitte gib mehrere Städte mit Komma getrennt ein, z.B. Berlin, New York."
       country: "Das Land, in dem ich lebe:"
-      twitter: "Mein Twitteraccount:"
-      email: "Meine E-Mailadresse: <i class='fa fa-info-circle' aria-hidden='true'></i>"
-      website: "Meine Webseite:"
+      twitter: "Twitteraccount:"
+      email: "E-Mailadresse: <i class='fa fa-info-circle' aria-hidden='true'></i>"
+      website: "Webseite:"
       additional_websites: "Zusätzliche Webseiten/Blogs:"
     show:
       firstname: 'Vorname:'
       lastname: 'Nachname:'
-      topics: 'Meine Themen:'
-      languages: "Meine Sprache/n:"
-      media: "Meine Vorträge / Referenzen:"
-      bio: "Meine Biografie: "
-      website: "Meine Webseite/Blog:"
-      websites: "Meine Webseiten/Blogs:"
-      profession: "Mein Beruf:"
-      city: "Meine Stadt:"
-      country: "Mein Land:"
+      topics: 'Themen:'
+      languages: "Sprache/n:"
+      media: "Vorträge / Referenzen:"
+      bio: "Biografie: "
+      website: "Webseite/Blog:"
+      websites: "Webseiten/Blogs:"
+      profession: "Beruf:"
+      city: "Stadt:"
+      country: "Land:"
       country_select: "Wähle ein Land aus:"
-      twitter: "Mein Twittername:"
+      twitter: "Twittername:"
       contact: "Kontakt"
       email_to: "E-Mail an "
       show: "Anzeigen"
