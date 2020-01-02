@@ -3,13 +3,13 @@
 
     <div class="col-md-4">
       <%= profile_picture_link(@profile) %>
-      <div class="profile-subtitle">
-        <%= @profile.main_topic_or_first_topic if @profile.main_topic_or_first_topic %>
-      </div>
     </div>
 
-    <div class="col-md-4 px-3">
+    <div class="col-md-6 px-3">
       <h1 class="h2"><%= @profile.fullname %></h1>
+      <p>
+        <%= @profile.main_topic_or_first_topic if @profile.main_topic_or_first_topic %>
+      </p>
 
       <% unless @profile.fullname.present? %>
         <p class="error">
@@ -19,15 +19,37 @@
           <%= t(:check_faq, scope: 'profiles.show').html_safe %>
         </p>
       <% end %>
-      <% if @profile.twitter.present? %>
-        <span class="font-weight-bold"><%= t(:twitter, scope: 'profiles.show') %></span>
+      <!-- only use globalize fall-back when there is no website at all in the current language scope provided -->
+
+      <% if @profile.profession.present? %>
+        <h5><%= t(:profession, scope: 'profiles.show') %></h5>
         <p class="pb-2">
-          <%=link_to '@' + @profile.twitter_name_formatted, @profile.twitter_link_formatted,
-          target: '_blank' %>
+          <%= @profile.profession %>
         </p>
       <% end %>
 
-      <!-- only use globalize fall-back when there is no website at all in the current language scope provided -->
+      <% if @profile.iso_languages.present? %>
+        <span class="font-weight-bold"><%= t(:languages, scope: 'profiles.show') %></span>
+        <p class="pb-2">
+          <% @profile.iso_languages.each do |iso|%>
+            <%= t("#{iso}", scope: 'iso_639_1').capitalize %>
+          <% end %>
+        </p>
+      <% end %>
+
+      <% if @profile.city.present? %>
+        <span class="font-weight-bold"><%= t(:city, scope: 'profiles.show') %></span>
+        <p class="pb-2">
+          <%= @profile.city %></span>
+        </p>
+      <% end %>
+
+      <% if @profile.country.present? %>
+        <span class="font-weight-bold"><%= t(:country, scope: 'profiles.show') %></span>
+        <p>
+          <%= @profile.country_name %>
+        </p>
+      <% end %>
 
       <!-- when there is at least one website in the current language provided use no fall-back for the missing additional websites -->
       <% if @profile.website_in_language_scope(I18n.locale).present? ||
@@ -88,42 +110,21 @@
         <% end %>
       <% end %>
 
-      <span class="font-weight-bold"><%= t(:topics, scope: 'profiles.show') %></span>
-      <p class="pb-2">
-        <%= raw topics_for_profile(@profile).map { |topic| topic_link_color(topic) }.join(' ') %>
-      </p>
-
-      <% if @profile.iso_languages.present? %>
-        <span class="font-weight-bold"><%= t(:languages, scope: 'profiles.show') %></span>
+      <% if @profile.twitter.present? %>
+        <span class="font-weight-bold"><%= t(:twitter, scope: 'profiles.show') %></span>
         <p class="pb-2">
-          <% @profile.iso_languages.each do |iso|%>
-            <%= t("#{iso}", scope: 'iso_639_1').capitalize %>
-          <% end %>
+          <%=link_to '@' + @profile.twitter_name_formatted, @profile.twitter_link_formatted,
+          target: '_blank' %>
         </p>
       <% end %>
-
-      <% if @profile.city.present? %>
-        <span class="font-weight-bold"><%= t(:city, scope: 'profiles.show') %></span>
-        <p class="pb-2">
-          <%= @profile.city %></span>
-        </p>
-      <% end %>
-
-      <% if @profile.country.present? %>
-        <span class="font-weight-bold"><%= t(:country, scope: 'profiles.show') %></span>
-        <p>
-          <%= @profile.country_name %>
-        </p>
-      <% end %>
-    </div>
-
-    <div class="col-md-4 border-left pl-5">
 
       <% if current_profile != @profile %>
+        <div class="pb-3">
+          <span class="font-weight-bold pr-2"><%= t(:contact, scope: 'profiles.show') %>:</span>
           <a href="#contactModal" data-toggle="modal" data-target=<%= cookies[:cookie_consent].blank? ? "#contactHint" : "#contactModal" %> >
             <i class="fa fa-envelope-o"></i>&nbsp;
-            <%= t(:contact, scope: 'profiles.show') %>
           </a>
+        </div>
       <% end %>
 
       <% if current_profile == @profile %>
@@ -132,13 +133,18 @@
         <%= link_to t(:account, scope: 'layouts.application'), edit_profile_registration_path, id: "accountSettings" %>
       <% end %>
 
+      <span class="font-weight-bold"><%= t(:topics, scope: 'profiles.show') %></span>
+      <p class="pb-2">
+        <%= raw topics_for_profile(@profile).map { |topic| topic_link_color(topic) }.join(' ') %>
+      </p>
     </div>
+
   </div>
 
   <% if @profile.bio %>
     <div class="row my-5 p-5 bg--white">
       <div class="col">
-        <span class="font-weight-bold"><%= t(:bio, scope: 'profiles.show') %></span>
+        <h4><%= t(:bio, scope: 'profiles.show') %></h4>
         <%= simple_format(@profile.bio) %>
       </div>
     </div>
@@ -147,7 +153,7 @@
   <% if @medialinks.load.any? %>
     <div class="row my-5 p-5 bg--white">
       <div class="col">
-        <span class="font-weight-bold"><%= t(:media, scope: 'profiles.show') %></span>
+        <h4><%= t(:media, scope: 'profiles.show') %></h4>
 
         <% @medialinks.each do |medialink| %>
           <br>
@@ -157,8 +163,6 @@
           <% else %>
             <%= link_to medialink.title, medialink.url, class:"font-weight-bold" %>
           <% end %>
-          <br>
-          <br>
           <%= simple_format(medialink.description) %>
           <span class="color-grey">
             <%= t(:select_language, scope: 'medialinks') + t("#{medialink.language}", scope: 'iso_639_1').capitalize if medialink.language.present? %>

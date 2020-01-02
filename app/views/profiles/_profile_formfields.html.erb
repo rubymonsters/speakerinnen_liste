@@ -9,15 +9,7 @@
       <p><%= image_tag(@profile.picture_url, class: "img-thumbnail") %></p>
       <br>
       <%= f.check_box :remove_picture %>
-<<<<<<< HEAD:app/views/profiles/_profile_formfields.html.erb
-      <%= t(:delete_picture, scope: 'profiles.form') %>
-    <% elsif @profile.image.attached? %>
-      <p><%= image_tag(@profile.image, width: 200) %></p>
-      <br>
-      <%= link_to t(:delete_picture, scope: 'profiles.form').html_safe, image_path(@profile.image.id), :method => :delete, data: { confirm: 'Are you sure?' } %>
-=======
       <%= t(:delete_picture, scope: 'profiles.form').html_safe %>
->>>>>>> master:app/views/shared/_profile_formfields.html.erb
     <% else %>
       <p><%= f.file_field :image %></p>
       <small class="form-text text-muted">
@@ -165,12 +157,6 @@
       <%= f.text_area :bio_en, as: :text, class: 'form-control mb-3', rows: 10 %>
     </div>
     </div>
-
-<<<<<<< HEAD:app/views/profiles/_profile_formfields.html.erb
-    <%= f.button :submit, t(:update, scope: 'profiles.form'), class:'btn btn-primary' %>
-=======
->>>>>>> master:app/views/shared/_profile_formfields.html.erb
-
   </div>
 </div>
 <div class="row mt-3">
