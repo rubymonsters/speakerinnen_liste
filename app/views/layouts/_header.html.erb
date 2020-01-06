@@ -12,17 +12,6 @@
 
     <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
       <ul class="navbar-nav">
-<<<<<<< Updated upstream
-=======
-        <li class="nav-item active pt-3 h4">
-          <%= form_tag(profiles_path, method: 'get', class: "form-inline my-2 my-lg-0 text-lowercase") do %>
-              <%= text_field_tag('search', params[:search], class: 'form-control typeahead profile__search mr-sm-2 ',
-              type: 'text', placeholder: t(:search_text, scope: 'pages.home.search')) %>
-              <%= button_tag "<i class='fa fa-search nav-link text-white'></i>".html_safe, class: "btn btn-link" %>
-          <% end %>
-        </li>
-        <span class="border-right mx-2" style="height: 77px;"></span>
->>>>>>> Stashed changes
         <% if profile_signed_in? %>
           <li class="nav-item pl-3">
             <%= link_to(t(:my_profile, scope: 'layouts.application'), profile_path(current_profile))%>
