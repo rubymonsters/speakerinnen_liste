@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream
 <div class="container">
   <div class="row">
     <div class="col-md-4">
@@ -24,46 +23,6 @@
       <% else %>
         <h4><%= t(:all_speakerinnen, scope: 'profiles.index', profiles_count: @profiles_count).html_safe %></h4>
       <% end %>
-=======
-<div class="container-fluid px-5 mb-5 pb-5">
-
-  <!-- search scope -->
-  <% if params[:search] %>
-    <div class="row bg--yellow p-3">
-      <div class="col-12">
-        <span class="h4">
-          <%= t(:success, scope: 'search').html_safe + t(:result, scope: 'search', count: @profiles.total_count).html_safe %>
-        </span>
-        <%= link_to("<i class='fa fa-times float-right'></i>".html_safe, profiles_path, class: '')  %>
-      </div>
-    </div>
-    <div class="row bg--light-grey p-3">
-      <div class="col-12">
-        <%= render partial: 'shared/search_filter',
-            locals: {
-              profiles: @profiles,
-              aggs_languages: @aggs_languages,
-              aggs_countries: @aggs_countries,
-              aggs_cities: @aggs_cities
-            }
-          %>
-      </div>
-    </div>
-  <% end %>
-
-  <!-- only show the category filter when not in search scope -->
-  <% unless params[:search] %>
-    <div class="row">
-      <div class="col-12">
-        <a class="btn bg--yellow btn-stretch py-3" id="collapseFilterButton" data-toggle="collapse" href="#collapseFilter" role="button" aria-expanded="false" aria-controls="collapseFilter">
-          <h4>
-            <%= t(:apply_filter, scope: 'profiles.index') %>
-            <%= t(:within, scope: 'profiles.index') + @category.name.to_s if params[:category_id] %>
-            <i class='fa fa-chevron-down float-right' id="icon"></i>
-          </h4>
-        </a>
-      </div>
->>>>>>> Stashed changes
     </div>
   </div>
   <div class="row">
@@ -72,7 +31,6 @@
     </div>
   </div>
 
-<<<<<<< Updated upstream
 
   <% if params[:search] %> <%# if in search: %>
     <%= render partial: 'shared/search_filter',
@@ -83,16 +41,6 @@
         aggs_cities: @aggs_cities
       }
     %>
-=======
-  <!-- Headline section -->
-  <h1 class="text-center mb-3 mt-5">
-    <%= @category.name if params[:category_id] %>
-    <%= params[:search] if params[:search] %>
-    <% if params[:tag_filter] %>
-      <%= t(:all_tagged_speakerinnen, scope: 'profiles.index', count: @profiles_tagged_count).html_safe + t(:tag_filter, scope: 'profiles.index', count: @tags.count).html_safe %>
-      <br>
-      <%= raw @tags.map { |tag_name| topic_link_color(ActsAsTaggableOn::Tag.where(name: tag_name).first) }.join(' ') %>
->>>>>>> Stashed changes
     <% end %>
 
 
