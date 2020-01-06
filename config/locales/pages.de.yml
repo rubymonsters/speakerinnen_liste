@@ -3,7 +3,7 @@ de:
     home:
       search:
         heading: "Mehr Frauen auf die Bühnen!"
-        tagline_html: "Finde Rednerinnen, Referentinnen & Moderatorinnen für Deine Konferenz."
+        find_speaker: "Finde Speakerinnen."
         search_text: "Namen oder Thema"
         search: "Suche"
       all_categories: "Kategorien und Themen >>"
