@@ -13,7 +13,7 @@
     <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
       <ul class="navbar-nav">
         <li class="nav-item active pt-3 h4">
-          <%= form_tag(profiles_path, method: 'get', class: "form-inline my-2 my-lg-0") do %>
+          <%= form_tag(profiles_path, method: 'get', class: "form-inline my-2 my-lg-0 text-capitalize small") do %>
               <%= text_field_tag('search', params[:search], class: 'form-control typeahead profile__search mr-sm-2',
               type: 'text', placeholder: t(:search_text, scope: 'pages.home.search')) %>
               <%= button_tag "<i class='fa fa-search nav-link text-white'></i>".html_safe, class: "btn btn-link" %>
