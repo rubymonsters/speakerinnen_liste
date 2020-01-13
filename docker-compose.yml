@@ -3,11 +3,11 @@ services:
   db:
     image: postgres:9.5
     volumes:
-      - ./tmp/db:/var/lib/postgresql/data
+      - postgres_data:/var/lib/postgresql/data
   elastic:
     image: elasticsearch:2.4.5
     volumes:
-      - ./tmp/elastic:/usr/share/elasticsearch/data
+      - elastic_data:/usr/share/elasticsearch/data
     ports:
       - "9200:9200"
       - "9300:9300"
@@ -17,9 +17,14 @@ services:
     environment:
       - SEARCHBOX_URL=elastic
     volumes:
-      - .:/myapp
+      - .:/speakerinnen_liste
+      - bundle:/bundle
     ports:
       - "3000:3000"
     depends_on:
       - db
       - elastic
+volumes:
+  bundle:
+  postgres_data:
+  elastic_data:

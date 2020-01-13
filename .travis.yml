@@ -8,8 +8,7 @@ env:
 
 before_script:
   - cp config/database.yml.travis config/database.yml
-  - docker-compose build
-  - docker-compose run web rake db:create db:schema:load
+  - make setup
 
 script:
-  - docker-compose run web bundle exec rspec spec/
+  - make test
