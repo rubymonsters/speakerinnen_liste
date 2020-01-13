@@ -7,7 +7,6 @@ env:
   - RAILS_ENV=test RECAPTCHA_SECRET_KEY=6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe RECAPTCHA_SITE_KEY=6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI
 
 before_script:
-  - cp config/database.yml.travis config/database.yml
   - make setup
 
 script:

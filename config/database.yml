@@ -1,4 +1,3 @@
-
 default: &default
   adapter: postgresql
   encoding: unicode
@@ -15,13 +14,3 @@ development:
 test:
   <<: *default
   database: speakerinnen_test 
-
-staging:
-  <<: *default
-  database: YOUR-DATABASE-NAME
-  password: YOUR-DATABASE-USERNAME-PASSWORD
-
-production:
-  <<: *default
-  database: YOUR-DATABASE-NAME
-  password: YOUR-DATABASE-USERNAME-PASSWORD

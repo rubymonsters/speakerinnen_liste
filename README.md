@@ -10,17 +10,13 @@ The aim of the app is to provide a way for conference and event organizers to fi
 
 # Getting Started
 
-**1 Clone the repository:** `git clone git@github.com:rubymonsters/speakerinnen_liste.git` and access the folder: `cd speakerinnen_liste`.
-
-**2 Copy `config/database_example.yml` and rename it to `database.yml` file and make sure it is always set to `.gitignore`:** `cp config/database_example.yml config/database.yml`
-
-**3 Install Docker** If you don't have Docker installed, please download it [here](https://docs.docker.com/install/** for your operating system.
-
-**4 Local setup** (you'll need to repeat this whenever there are new dependencies): `make setup`
+1. Clone the repository: `git clone git@github.com:rubymonsters/speakerinnen_liste.git` and access the folder: `cd speakerinnen_liste`.
+2. Install Docker. If you don't have Docker installed, please download it [here](https://docs.docker.com/install/** for your operating system.
+3. Local setup: `make setup`
 
 ## Development workflow
 
-The setup is done using Docker to provide all the dependencies and the environment. To access this enviornment you need to run `make dev` and that gets you a session where you can do all the usual things you do in a Rails app (many of them are mentioned later in this file). Some that you'll need before using the app from the first time:
+The setup is done using Docker to provide all the dependencies and the environment. To access this environment you need to run `make dev` and that gets you a session where you can do all the usual things you do in a Rails app (many of them are mentioned later in this file). Some that you'll need before using the app from the first time:
 
 * `rake db:seed`: Load some initial example profiles.
 * `rake elasticsearch:import:all`: Import the loaded profiles into the search index
