@@ -3,7 +3,7 @@ en:
     home:
       search:
         heading: "Organizers, find your speakers"
-        find_speaker: "Find speaker."
+        find_speaker: "Find speaker"
         search_text: "Search by name or topic"
         search: "Search"
       all_categories: "Categories and topics >>"
