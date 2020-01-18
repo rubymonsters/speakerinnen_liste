@@ -7,7 +7,8 @@
         <span class="h4">
           <%= t(:success, scope: 'search').html_safe + t(:result, scope: 'search', count: @profiles.total_count).html_safe %><b><%= params[:search] if params[:search] %></b>
         </span>
-        <%= link_to("<i class='fa fa-times float-right'></i>".html_safe, profiles_path, class: '')  %>
+
+        <span class="float-right"><%= link_to("<i class='fa fa-filter pr-2'></i>".html_safe + "Filter by themes", profiles_path, class: '')  %></span>
       </div>
     </div>
     <div class="row bg--light-grey p-3">
@@ -96,6 +97,7 @@
     $( "#icon" ).removeClass( "fa-chevron-up" );
     $( "#icon" ).addClass( "fa-chevron-down" );
   });
+
 
   // elasticsearch search filter
   $('.expander_countries').click(function(){

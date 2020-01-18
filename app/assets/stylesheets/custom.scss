@@ -80,9 +80,9 @@ h1, h4 {
 /* diverses */
 
 .alert {
-  color: $white;
+  color: $black;
   padding: $base-spacing-unit;
-  text-align: center;
+  text-align: left;
   position: fixed;
   z-index: 5;
   width: 100%;
@@ -93,7 +93,7 @@ h1, h4 {
 }
 
 .alert-warning {
-  background: $red;
+  background: $yellow;
 }
 
 .alert-error {
@@ -117,7 +117,7 @@ h1, h4 {
 
 
 .admin__header--color {
-  background: #ffcc00;
+  background: $yellow;
 }
 
 .no-click {
