@@ -1,17 +1,16 @@
-
 <% @categories.each do |category| %>
   <%
     bar_1 = 40 + category_profiles_ratio(category.id)
     bar_2 = 100 - bar_1
   %>
-  <div class="progress" >
+  <a href="<%= category_path(category.id) %>"class="progress">
     <span class="child">
-      <div class="category_name text-right"><%= category_link(category) %></div>
+      <div class="category_name text-right"><%= category.name %></div>
       <div class="category_count"><%= category_profiles_count(category.id) %></div>
     </span>
     <div class="progress-bar category_item_<%=category.short_name%>" role="progressbar" style="width: <%=bar_1%>%" aria-valuenow="<%=bar_1%>" aria-valuemin="0" aria-valuemax="100">
     </div>
     <div class="progress-bar category_item_<%=category.short_name%>_numbers text-right pr-3" role="progressbar" style="width: <%=bar_2%>%" aria-valuenow="<%=bar_2%>" aria-valuemin="0" aria-valuemax="100">
     </div>
-  </div>
+  </a>
 <% end %>
