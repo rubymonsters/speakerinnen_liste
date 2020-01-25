@@ -14,6 +14,7 @@ de:
       delete_image: "<i class='fa fa-trash pr-2'></i>Lösche mein Foto"
       update: "Aktualisiere dein Profil"
       picture: "Ein Foto von mir:"
+      copyright: "Foto-Copyright"
       image_info: "Lade bitte das Foto in <b>Farbe</b> hoch, wir zeigen es in Graustufen.
         Nutze .jpg, .jpeg oder .png und achte darauf, daß Du die Rechte zu diesem Foto besitzt!
         Die Größe des Fotos sollte <b>kleiner als 1MB</b> sein."

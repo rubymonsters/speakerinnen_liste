@@ -10,6 +10,8 @@
         <%= t(:image_info, scope: 'profiles.form').html_safe %><br>
       </small>
     <% end %>
+    <%= f.input :copyright, label: t(:copyright, scope: 'profiles.form'),
+    label_html: { id: "copyright" }, input_html: { class: "form-control" } %>
   </div>
 </div>
 <div class="row mt-3">

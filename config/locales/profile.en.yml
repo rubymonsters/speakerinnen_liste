@@ -14,6 +14,7 @@ en:
       delete_image: "<i class='fa fa-trash pr-2'></i>Delete my photo"
       update: "Update your profile"
       picture: "A picture of me:"
+      copyright: "Picture copyright"
       image_info: "Please upload a photo in <b>color</b>, we show it in black and white.
         Make sure you use .jpg, .jpeg or .png and that you have all copyrights for this photo.
         The size of your photo should be<b> smaller than 1MB</b>."

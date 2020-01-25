@@ -156,6 +156,7 @@ class ProfilesController < ApplicationController
       :city_de,
       :city_en,
       :image,
+      :copyright,
       feature_ids: [],
       translations_attributes: %i[id bio main_topic twitter website profession city locale]
     )
