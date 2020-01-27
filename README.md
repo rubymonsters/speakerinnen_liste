@@ -8,25 +8,22 @@ The aim of the app is to provide a way for conference and event organizers to fi
 
 **Please note: Sometimes for better readability in long passages of text the term `women` is written without a star but we always mean everyone who defines herself as a woman.**
 
-# Getting Started
+# Getting Started (Initial Setup)
 
 1. Clone the repository: `git clone git@github.com:rubymonsters/speakerinnen_liste.git` and access the folder: `cd speakerinnen_liste`.
-2. Install Docker. If you don't have Docker installed, please download it [here](https://docs.docker.com/install/** for your operating system.
-3. Local setup: `make setup`
+2. If you don't have Docker Engine installed, please download it [here](https://docs.docker.com/install) for your operating system.
+3. Run `make setup` (building images, installing gems, creating db and migrating)
+4. Run `rake db:seed` (Load some initial example profiles) and `rake elasticsearch:import:all` (Import the loaded profiles into the search index)
+5. Run `make dev`(prepares an environment in which you can start the app)
 
 ## Development workflow
 
-The setup is done using Docker to provide all the dependencies and the environment. To access this environment you need to run `make dev` and that gets you a session where you can do all the usual things you do in a Rails app (many of them are mentioned later in this file). Some that you'll need before using the app from the first time:
-
-* `rake db:seed`: Load some initial example profiles.
-* `rake elasticsearch:import:all`: Import the loaded profiles into the search index
-
-But in general, any `rake`, `bundle` or `rails` command will work inside that development session.
-
-In addition to `make dev`, which will let you run any development flow command, some shortcuts are defined for the most common tasks. Run `make usage` to get a list. But notably:
-
-* `make up`: Start the app.
-* `make test`: Run the tests.
+Start app locally: 
+1. `make dev` (starts a development session inside a Docker container)
+2. `make up` (starts the app inside this development session)
+3. `make test` (runs the tests)
+(Run `make usage` to get a list of possible commands.)
+(Also, `rake`, `bundle` or `rails` commands will work inside that development session.)
 
 ## Admin user
 
