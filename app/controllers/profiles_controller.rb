@@ -14,19 +14,20 @@ class ProfilesController < ApplicationController
 
   def index
     if params[:topic]
-      @profiles = profiles_for_tag(params[:topic])
+      @profiles = @profiles_for_pagination = profiles_for_tag(params[:topic])
     elsif params[:category_id]
       profiles_for_category
     elsif params[:search]
-      @profiles = profiles_for_search
+      @profiles_for_pagination = profiles_for_search
+      @profiles = @profiles_for_pagination.includes(:translations, :image_attachment)
 
       # sum of search results concerning certain attributes
-      @aggs = profiles_for_search.response.aggregations
+      @aggs = @profiles_for_pagination.response.aggregations
       @aggs_languages = @aggs[:lang][:buckets]
       @aggs_cities = @aggs[:city][:buckets]
       @aggs_countries = @aggs[:country][:buckets]
     else
-      @profiles = profiles_for_index
+      @profiles = @profiles_for_pagination = profiles_for_index
       @profiles_count = Profile.is_published.size
     end
     @tags_most_used_200 = if params[:all_lang]
@@ -168,7 +169,7 @@ class ProfilesController < ApplicationController
 
   def profiles_for_index
     Profile.is_published
-           .includes(:translations)
+           .includes(:translations, :image_attachment)
            .main_topic_translated_in(I18n.locale)
            .random
            .page(params[:page])
@@ -179,7 +180,7 @@ class ProfilesController < ApplicationController
     # uniq turn the relation into a array and to paginate the array we
     # need the Kaminari.paginate_array method
     profiles_array = Profile.is_published
-                             .includes(:taggings, :translations)
+                             .includes(:translations, :image_attachment)
                              .joins(:topics)
                              .where(
                                tags: {
@@ -199,12 +200,11 @@ class ProfilesController < ApplicationController
                                   .translated_in_current_language_and_not_translated(I18n.locale)
     tag_names = @tags_in_category_published.pluck(:name)
     @tags_most_used_200_in_category = @tags_in_category_published.most_used(200)
-    @profiles = profiles_for_tag(tag_names)
+    @profiles = @profiles_for_pagination = profiles_for_tag(tag_names)
   end
 
   def profiles_for_search
     Profile.is_published
-           .includes(:taggings, :translations)
            .search(params[:search], params[:filter_countries], params[:filter_cities], params[:filter_lang])
            .page(params[:page]).per(24)
            .records
