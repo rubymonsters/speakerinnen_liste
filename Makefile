@@ -22,7 +22,7 @@ build:
 bundle:
 	$(call dc-run, bundle install)
 dev:
-	$(call dc-run, bash)
+	$(call dc-run, ash)
 up:
 	$(call dc, up)
 tear-down:

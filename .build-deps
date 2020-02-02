@@ -1,0 +1,7 @@
+git
+build-base
+postgresql-dev
+libxml2-dev
+curl-dev
+nodejs
+tzdata

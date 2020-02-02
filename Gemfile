@@ -4,10 +4,6 @@ source 'https://rubygems.org'
 ruby '2.6.5'
 gem 'rails', '5.2.2.1'
 
-# Needed for Javascript Runtime
-# gem 'therubyracer'
-gem 'mini_racer'
-
 # used in the rail 5.2 version
 gem 'bootsnap', '~> 1.3'
 
@@ -86,7 +82,7 @@ end
 
 group :test do
   gem 'database_cleaner', '~> 1.7.0'
-  gem 'elasticsearch-extensions', git: 'git://github.com/elasticsearch/elasticsearch-ruby.git', ref: '2.x'
+  gem 'elasticsearch-extensions', github: 'elasticsearch/elasticsearch-ruby', ref: '2.x'
   gem 'factory_bot_rails'
   gem 'minitest', '5.11.3' # remove this after upgrading rails from 5.0.0
   gem 'poltergeist', '1.18.1'
