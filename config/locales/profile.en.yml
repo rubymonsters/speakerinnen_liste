@@ -11,10 +11,10 @@ en:
     form:
       not_saved: "This profile could not be saved: "
       profile_from: "Profile of"
-      delete_picture: "<i class='fa fa-trash pr-2'></i>Delete my photo"
+      delete_image: "<i class='fa fa-trash pr-2'></i>Delete my photo"
       update: "Update your profile"
       picture: "A picture of me:"
-      picture_info: "Please upload a photo in <b>color</b>, we show it in black and white.
+      image_info: "Please upload a photo in <b>color</b>, we show it in black and white.
         Make sure you use .jpg, .jpeg or .png and that you have all copyrights for this photo.
         The size of your photo should be<b> smaller than 1MB</b>."
       firstname: "My first name:"
@@ -92,5 +92,3 @@ en:
       show_less: "Less >>"
     new:
       new_profile: "New profile"
-  error_messages:
-    picture_too_big: " is too big. You cannot upload a file greater than 1MB."

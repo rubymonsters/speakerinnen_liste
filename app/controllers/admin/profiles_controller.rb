@@ -89,8 +89,6 @@ class Admin::ProfilesController < Admin::BaseController
       { iso_languages: [] },
       :firstname,
       :lastname,
-      :picture,
-      :remove_picture,
       :content,
       :name,
       :topic_list,
