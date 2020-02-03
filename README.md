@@ -13,17 +13,16 @@ The aim of the app is to provide a way for conference and event organizers to fi
 1. Clone the repository: `git clone git@github.com:rubymonsters/speakerinnen_liste.git` and access the folder: `cd speakerinnen_liste`.
 2. If you don't have Docker Engine installed, please download it [here](https://docs.docker.com/install) for your operating system.
 3. Run `make setup` (building images, installing gems, creating db and migrating)
-4. Run `rake db:seed` (Load some initial example profiles) and `rake elasticsearch:import:all` (Import the loaded profiles into the search index)
-5. Run `make dev`(prepares an environment in which you can start the app)
+4. Run `make dev`(opens a shell in which you can run preconfigured commands, e.g. `rake`)
+5. Run `rake db:seed` (Load some initial example profiles) and `rake elasticsearch:import:all` (Import the loaded profiles into the search index)
 
-## Development workflow
+## Development 
 
-Start app locally: 
-1. `make dev` (starts a development session inside a Docker container)
-2. `make up` (starts the app inside this development session)
-3. `make test` (runs the tests)
-(Run `make usage` to get a list of possible commands.)
-(Also, `rake`, `bundle` or `rails` commands will work inside that development session.)
+* `make dev` (opens a development shell, `rake`, `bundle` or `rails` commands will work here)
+* `make up` (starts the app directly)
+* `make test` (runs the tests)
+* `make usage` (get a list of possible commands.)
+
 
 ## Admin user
 
