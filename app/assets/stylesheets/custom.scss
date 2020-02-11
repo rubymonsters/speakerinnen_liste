@@ -21,7 +21,7 @@ body {
   box-shadow: none;
 }
 
-h1, h4 {
+h1, h3, h4 {
   font-family: $serif;
 }
 
@@ -138,7 +138,10 @@ textarea, input {
 
 .btn-primary:active, .btn-primary:hover {
   color: white;
-  background: $dark-blue;
+}
+
+.btn-secondary a{
+  color: white;
 }
 
 .btn-link:hover {

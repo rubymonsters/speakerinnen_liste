@@ -1,8 +1,20 @@
-  <%= form_tag(profiles_path, method: 'get') do %>
-    <div class="form-group pt-1">
-      <%= text_field_tag('search', params[:search], class: 'form-control typeahead profile__search',
-      type: 'text', placeholder: t(:search_text, scope: 'pages.home.search')) %>
-      <%= button_tag((t(:search, scope: 'pages.home.search')), class: 'btn btn-primary') %>
+<%= form_tag(profiles_path, method: 'get') do %>
+  <form class="form-inline">
+    <div class="row">
+      <div class="col-md-4">
+        <%= text_field_tag('search', params[:search], class: 'form-control mb-2 mr-sm-2 typeahead',
+            type: 'text', placeholder: t(:search_text, scope: 'pages.home.search')) %>
+      </div>
+      <div class="col-md-2">
+        <%= button_tag((t(:find_speaker, scope: 'pages.home.search')), class: 'btn btn-primary text-uppercase') %>
+      </div>
     </div>
-  <% end %>
-  <%= t(:search_categories_html, scope: 'search', root_path: root_path) %><br><br>
+  </form>
+
+  <div class="row">
+    <div class="col-md-2 offset-md-4">
+      <span class="btn btn-secondary text-uppercase"><%= link_to "I am a speaker", sign_up_path %></span>
+    </div>
+  </div>
+<% end %>
+

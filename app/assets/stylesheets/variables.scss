@@ -64,6 +64,7 @@ $base-spacing-unit: 24px;
 $border: 1px solid $grey;
 
 $speakerinnen-blue: #20736D;
+$speakerinnen-lila: #603D78;
 $dark-blue: darken($speakerinnen-blue, 10%);
 $font-color: $dark-grey;
 $font-color-title: $grey;
@@ -71,6 +72,7 @@ $font-color-title: $grey;
 // bootstrap variables override
 $enable-responsive-font-sizes: true;
 $primary: $speakerinnen-blue;
+$secondary: $speakerinnen-lila;
 $border-dark: $grey-stroke;
 $red: #d95270;
 .nav-link {

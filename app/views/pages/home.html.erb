@@ -1,12 +1,53 @@
 <section>
   <div id="startpage__start-teaser" class="startpage__photo-bar">
-    <div class="container align-self-center">
-    <div class="row">
-      <div class="col-md-6 offset-md-1 serif">
-        <span class="btn btn-primary px-4" style="font-size: 2rem"><%= link_to t(:find_speaker, scope: 'pages.home.search'), category_path(13) , class: "text-white" %></span>
-        <span class="btn btn-light ml-3 px-4" style="font-size: 2rem"><%= link_to "I am a speaker", sign_up_path %></span>
+    <div class="layer">
+      <div class="container align-self-center">
+        <div class="row">
+          <div class="col-md-6">
+            <h1 class="display-4 font-weight-bold py-4"><%= t(:heading, scope: 'pages.home.search') %></h1>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <h3 class="font-weight-bold pb-4"><%= t(:tagline_html, scope: 'pages.home.search') %></h3>
+          </div>
+        </div>
+        <%= render partial: 'shared/search_form' %>
+        <div class="row" style="margin-top: 150px;">
+          <div class="col-sm-3">
+            <div class="card">
+              <div class="card-body">
+                <h3 class="font-weight-bold card-title"><%= link_to("Get Inspired", profiles_path ) %></h3>
+                <p class="serif font-weight-bold h4 card-text">Browse 2000 Speakers to find your expert</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <div class="card">
+              <div class="card-body">
+                <h3 class="font-weight-bold card-title"><%= link_to("Browse by topic", root_path + "#categories_anchor" )%></h3>
+                <p class="serif font-weight-bold h4 card-text">With supporting text below as a natural lead-in to additional content.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <div class="card">
+              <div class="card-body">
+                <h3 class="font-weight-bold card-title"><%= link_to("About us", about_path )%></h3>
+                <p class="serif font-weight-bold h4 card-text">With supporting text below as a natural lead-in to additional content.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <div class="card">
+              <div class="card-body">
+                <h3 class="font-weight-bold card-title"><%= link_to("Our Blog",'https://blog.speakerinnen.org/', target: '_blank' )%></h3>
+                <p class="serif font-weight-bold h4 card-text">With supporting text below as a natural lead-in to additional content.</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
     </div>
   </div>
   <div class="copyright">
@@ -18,35 +59,32 @@
 
   <% if @features.load.any? %>
     <% @features.each do |feature| %>
-      <div class="container text-center">
-        <h1 class="box__bg"><%= feature.title %></h1>
-        <h4 class="border-vertical d-block box__bg mb-4">
+      <div class="container mt-5 text-center">
+        <h3 class="pb-5"><%= feature.title %></h3>
+        <h3 class="">
           <%= feature.description %>
-        </h4>
+        </h3>
         <div class="row">
           <%= render partial: "profiles/profile", collection: feature.profiles, as: :profile %>
         </div>
       </div>
     <% end %>
-
-  <% else %>
-    <div class="container text-center">
-      <h1 class="box__bg"><%= t(:speaker_headline, scope: 'pages.home.speakers') %></h1>
-      <h4 class="border-vertical d-block box__bg mb-4">
-        <%= t(:speaker_text, scope: 'pages.home.speakers') %>
-        <%= link_to t(:speaker_index, scope: 'pages.home.speakers'), profiles_path %>
-      </h4>
-      <div class="row">
-        <%= render partial: "profiles/profile", collection: @profiles if @profiles %>
-      </div>
-    </div>
   <% end %>
+
+<a id="newest_speaker"></a>
+  <div class="container mt-5 text-center">
+    <h3 class="pb-5">Userer neuesten Speakerinnen</h3>
+    <div class="row">
+      <%= render partial: "profiles/profile", collection: @newest_profiles %>
+    </div>
+  </div>
 
   <!-- Anker für Kategorien -->
   <a id="categories_anchor"></a>
 
-  <div class="startpage-categories__list py-5 text-center">
-    <h1><%= t(:description, scope: 'pages.home') %></h1>
+  <div class="container mt-5 text-center">
+  <!-- <div class="startpage-categories__list py-5 text-center"> -->
+    <h3><%= t(:description, scope: 'pages.home') %></h3>
   </div>
   <div class="container-fluid startpage-categories__list p-0">
       <%= render partial: "shared/categories", object: @categories %>
