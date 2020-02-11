@@ -149,8 +149,6 @@ class ProfilesController < ApplicationController
       { iso_languages: [] },
       :firstname,
       :lastname,
-      :picture,
-      :remove_picture,
       :content,
       :name,
       :topic_list,
