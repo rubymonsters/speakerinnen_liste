@@ -184,7 +184,7 @@
         <%= t(:media, scope: 'profiles.show') %>
       </p>
       <% @medialinks.each do |medialink| %>
-        <p class="h4 pt-3 serif font-weight-bold" style="color: black; text-decoration: underline">
+        <p class="h4 pt-3 serif font-weight-bold">
           <% if medialink.url =~ /youtube|vimeo/i %>
             <%= medialink.title %>
             <%= medialink.url_html if medialink.url != 'http://' %>
