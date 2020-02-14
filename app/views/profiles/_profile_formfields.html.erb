@@ -155,8 +155,12 @@
 </div>
 <div class="row mt-3">
   <div class="col">
-    <%= f.button :submit, t(:update, scope: 'profiles.form').html_safe, class:'btn btn-blue' %>
-    <%= link_to(t(:show, scope: 'profiles.edit').html_safe, profile_path, class: 'btn btn-outline-primary' ) %>
+    <p>
+    <%= f.button :submit, t(:update, scope: 'profiles.form').html_safe, class:'btn btn-primary' %>
+  </p>
+  <p>
+    <<<%= link_to(t(:show, scope: 'profiles.edit').html_safe, profile_path, class: '' ) %>
+  </p>
   </div>
 </div>
 

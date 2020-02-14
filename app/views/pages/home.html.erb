@@ -16,33 +16,41 @@
         <div class="row" style="margin-top: 150px;">
           <div class="col-sm-3">
             <div class="card">
+              <div class="card-header">
+                <h3 class="font-weight-bold card-title mb-0"><%= link_to("Get Inspired", profiles_path ) %></h3>
+              </div>
               <div class="card-body">
-                <h3 class="font-weight-bold card-title"><%= link_to("Get Inspired", profiles_path ) %></h3>
-                <p class="serif font-weight-bold h4 card-text">Browse 2000 Speakers to find your expert</p>
+                <p class="serif h4 card-text mt-2">Browse 2000 Speakers to find your expert</p>
               </div>
             </div>
           </div>
           <div class="col-sm-3">
             <div class="card">
+              <div class="card-header">
+                <h3 class="font-weight-bold card-title mb-0"><%= link_to("Browse by topic", root_path + "#categories_anchor" )%></h3>
+              </div>
               <div class="card-body">
-                <h3 class="font-weight-bold card-title"><%= link_to("Browse by topic", root_path + "#categories_anchor" )%></h3>
-                <p class="serif font-weight-bold h4 card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <p class="serif h4 card-text mt-2">With supporting text below as a natural lead-in to additional content.</p>
               </div>
             </div>
           </div>
           <div class="col-sm-3">
             <div class="card">
+              <div class="card-header">
+                <h3 class="font-weight-bold card-title mb-0"><%= link_to("About us", about_path )%></h3>
+              </div>
               <div class="card-body">
-                <h3 class="font-weight-bold card-title"><%= link_to("About us", about_path )%></h3>
-                <p class="serif font-weight-bold h4 card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <p class="serif h4 card-text mt-2">With supporting text below as a natural lead-in to additional content.</p>
               </div>
             </div>
           </div>
           <div class="col-sm-3">
             <div class="card">
+              <div class="card-header">
+                <h3 class="font-weight-bold card-title mb-0"><%= link_to("Our Blog",'https://blog.speakerinnen.org/', target: '_blank' )%></h3>
+              </div>
               <div class="card-body">
-                <h3 class="font-weight-bold card-title"><%= link_to("Our Blog",'https://blog.speakerinnen.org/', target: '_blank' )%></h3>
-                <p class="serif font-weight-bold h4 card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <p class="serif h4 card-text mt-2">With supporting text below as a natural lead-in to additional content.</p>
               </div>
             </div>
           </div>
@@ -73,7 +81,10 @@
 
 <a id="newest_speaker"></a>
   <div class="container mt-5 text-center">
-    <h3 class="pb-5">Userer neuesten Speakerinnen</h3>
+    <h3 class="pb-5">Speakerinnen* - get inspired</h3>
+    <h3 class="">
+       Welcome our 8 newest Speakerinnen - Bitte bessere Text
+    </h3>
     <div class="row">
       <%= render partial: "profiles/profile", collection: @newest_profiles %>
     </div>
@@ -85,9 +96,11 @@
   <div class="container mt-5 text-center">
   <!-- <div class="startpage-categories__list py-5 text-center"> -->
     <h3><%= t(:description, scope: 'pages.home') %></h3>
+    <h3>
+      Hier muss ein bisschen Erklärtext hin.... über Kategorien und Topics :)
   </div>
   <div class="container-fluid startpage-categories__list p-0">
-      <%= render partial: "shared/categories", object: @categories %>
+    <%= render partial: "shared/categories", object: @categories %>
   </div>
 
   <div class="container">

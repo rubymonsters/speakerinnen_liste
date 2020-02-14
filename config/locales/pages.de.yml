@@ -57,8 +57,8 @@ de:
         links_text: "Hier gibt es Links zu ähnlichen Projekten:"
         contact: "Kontakt"
         contact_link: "E-Mail"
-        twitter: "<a href='https://twitter.com/speakerinnen', target='_blank', class='btn btn-link px-2'>Twitter</a>"
-        github: "<a href='https://github.com/rubymonsters/speakerinnen_liste', target='_blank', class='btn btn-link px-2'>GitHub</a>"
+        twitter: "<a href='https://twitter.com/speakerinnen', target='_blank', class='px-2'>Twitter</a>"
+        github: "<a href='https://github.com/rubymonsters/speakerinnen_liste', target='_blank', class='px-2'>GitHub</a>"
         devblog: "<a href='http://speakerinnen.wordpress.com/', taget='_blank'>Entwicklerinnen-Blog</a>"
         faq_short: |
             <strong>Warum gibt es Thema XYZ noch nicht?</strong><br>

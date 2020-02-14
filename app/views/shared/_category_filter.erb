@@ -1,19 +1,22 @@
 <div class="row">
-  <div class="col-3">
+  <div class="col-4">
+    <% @categories.each do |category| %>
+      <%= link_to("Find all Speaker in #{category.name}", category_path(category.id, anchor: "speakers"), class: "mb-2 category-search d-none btn bg-#{category.short_name} category-search-#{category.short_name}") %>
+    <% end %>
     <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
       <% @categories.each do |category| %>
-        <a class="nav-link category-link <%= "active show" if category.id.to_s == ( params[:category_id]  || @category.id.to_s ) %>" id="v-pills-<%= category.short_name %>-tab" data-toggle="pill" href="#v-pills-<%= category.short_name %>" role="tab" aria-controls="v-pills-<%= category.short_name %>" aria-selected="false">
+        <a class="h3 serif nav-link category-link <%= "active show" if category.id.to_s == ( params[:category_id]  || @category.id.to_s ) %>" id="v-pills-<%= category.short_name %>-tab" data-toggle="pill" href="#v-pills-<%= category.short_name %>" role="tab" aria-controls="v-pills-<%= category.short_name %>" aria-selected="false">
           <i class="fa fa-circle pr-2 small" id="icon-<%= category.short_name%>"></i><%= category.name %>
         </a>
       <% end %>
     </div>
   </div>
 
-  <div class="col-9">
+  <div class="col-8">
     <h4 class="py-2"><%= t(:filter, scope: 'category') %></h4>
     <div class="tab-content mb-3" id="available-tags-box">
       <% @categories.each do |category| %>
-        <div class="tab-pane fade <%= "active show" if category.id.to_s == ( params[:category_id]  || @category.id.to_s )%>" id="v-pills-<%= category.short_name %>" role="tabpanel" aria-labelledby="v-pills-<%= category.short_name %>-tab" >
+        <div  style="min-height: 300px" class="tab-pane fade <%= "active show" if category.id.to_s == ( params[:category_id]  || @category.id.to_s )%>" id="v-pills-<%= category.short_name %>" role="tabpanel" aria-labelledby="v-pills-<%= category.short_name %>-tab" >
           <%= render partial: "shared/tagbox", locals: { :tags => instance_variable_get("@tags_#{category.short_name}"), :category => category } %>
         </div>
       <% end %>
@@ -21,10 +24,13 @@
     <div id="selected-tags-box" class="border border-dark my-3">
     </div>
     <div class="form-group text-right">
-      <%= form_tag(profiles_path, method: "get") do %>
+      <%= form_tag("/profiles#speakers", method: "get") do %>
         <%= text_field_tag :tag_filter, params[:tag_filter], id: "hidden_tag_input", class: "form-control d-none" %>
         <span class="btn text-primary btn-link" id="clear">X Clear All</span>
-        <%= submit_tag "Find A Speaker", class: "btn btn-primary", id: "search_in_topic" %>
+        <%= submit_tag "Speaker with these topics", class: "btn btn-primary", id: "search_in_topic" %>
+        <% @categories.each do |category| %>
+          <%= link_to("Find all Speaker in #{category.name}", category_path(category.id, anchor: "speakers"), class: "category-search d-none btn bg-#{category.short_name} category-search-#{category.short_name}") %>
+        <% end %>
       <% end %>
     </div>
   </div>
@@ -44,8 +50,14 @@
     category = category[2];
     $(".category-title").addClass( "d-none" );
     $("#category-" + category).removeClass( "d-none" );
-    $("#available-tags-box").css('background-color', $teal);
+    // $("#available-tags-box").css('background-color', $teal);
+    $(".category-search").addClass("d-none");
+    $(".category-search-" + category).removeClass("d-none");
   });
+  // $( ".category-search" ).click(function() {
+  //   $("#collapseFilter").removeClass("show");
+  //   $("#collapseFilter").addClass("hide");
+  // });
   $(document).on('click','.selected-tag',function() {
     var category = $(this).attr('class').split(' ')[0];
     $(this).remove();
@@ -67,6 +79,7 @@
   $( "#clear" ).click(function() {
     $( "#selected-tags-box .selected-tag" ).remove();
     $(".available-tag").removeClass( "disabled no-click" );
+    window.location = window.location.pathname;
   });
 
   $(document).ready(function() {

@@ -1,65 +1,81 @@
-<div class="container-fluid px-5 mb-5">
+<div class="container-fluid mb-5">
 
   <!-- search scope -->
   <% if params[:search] %>
-    <div class="row bg--yellow p-3">
-      <div class="col-12">
-        <span class="h4">
-          <%= t(:success, scope: 'search').html_safe + t(:result, scope: 'search', count: @profiles.total_count).html_safe %><b><%= params[:search] if params[:search] %></b>
+    <div class="row">
+      <div class="col-12 py-5">
+        <span class="h3 serif">
+          <%= t(:success, scope: 'search').html_safe + t(:result, scope: 'search', count: @profiles_for_search.count).html_safe %><b><%= params[:search] if params[:search] %></b>
         </span>
 
-        <span class="float-right"><%= link_to("<i class='fa fa-filter pr-2'></i>".html_safe + "Filter by themes", profiles_path, class: '')  %></span>
+        <span class="float-right text-uppercase"><%= link_to("<i class='fa fa-filter pr-2'></i>".html_safe + "Filter by themes", profiles_path, class: '')  %>
+        </span>
       </div>
     </div>
-    <div class="row bg--light-grey p-3">
-      <div class="col-12">
-        <%= render partial: 'shared/search_filter',
-            locals: {
-              profiles: @profiles,
-              aggs_languages: @aggs_languages,
-              aggs_countries: @aggs_countries,
-              aggs_cities: @aggs_cities
-            }
-          %>
+    <% if @profiles_for_search.count > 0 %>
+      <div class="row-3">
+        <div class="col-12">
+          <%= render partial: 'shared/search_filter',
+              locals: {
+                profiles: @profiles,
+                aggs_languages: @aggs_languages,
+                aggs_countries: @aggs_countries,
+                aggs_cities: @aggs_cities
+              }
+            %>
+        </div>
       </div>
-    </div>
+    <% else %>
+      <hr>
+      <div class="row">
+        <div class="col-12 pb-2 text-center" style="margin-top: 150px;" >
+          <h3>
+          All our speakerinnen* - get inspired ( am text muss noch gearbeitet werden! )
+          <h3>
+        </div>
+      </div>
+    <% end %>
   <% end %>
 
   <!-- only show the category filter when not in search scope -->
   <% unless params[:search] %>
-    <div class="row">
-      <div class="col-12">
-        <a class="btn bg--yellow btn-stretch py-3" id="collapseFilterButton" data-toggle="collapse" href="#collapseFilter" role="button" aria-expanded="false" aria-controls="collapseFilter">
-          <h4 class="text-left">
-            <i class='fa fa-filter' id="icon"></i>
-            <%= t(:apply_filter, scope: 'profiles.index') %>
-            <%= t(:within, scope: 'profiles.index') + @category.name.to_s if params[:category_id] %>
-            <i class='fa fa-chevron-down float-right' id="icon"></i>
-          </h4>
-        </a>
-      </div>
-    </div>
-    <div class="row mt-1">
-      <div class="col-md-12">
-        <div class="collapse bg--light-grey p-3 show" id="collapseFilter">
-          <%= render partial: 'shared/category_filter' %>
+    <div class="collapse show" id="collapseFilter">
+
+      <div class="row p-5">
+        <div class="col-md-12 p-3">
+          <h3> Which Topic would your speakerin be an expert in? </h3>
+          <h3> Choose a whole category or topics</h3>
         </div>
       </div>
-    </div>
+      <div class="row px-5">
+        <div class="col-md-12">
+          <%= render partial: 'shared/category_filter' %>
+          <a id="speakers"></a>
+        </div>
+      </div>
+
+    <hr class="mt-5">
+    </div> <!-- tag filter -->
+    <a href="#top" class="text-uppercase serif p-5"><< Up to the filter</a>
   <% end %>
 
-  <!-- Headline section -->
-  <h4 class="mb-3 mt-5">
-    <%= @category.name if params[:category_id] %>
-    <% if params[:tag_filter] %>
-      <%= t(:all_tagged_speakerinnen, scope: 'profiles.index', count: @profiles_tagged_count).html_safe + t(:tag_filter, scope: 'profiles.index', count: @tags.count).html_safe %>
-      <%= raw @tags.map { |tag_name| topic_link_color(ActsAsTaggableOn::Tag.where(name: tag_name).first) }.join('') %>
-    <% end %>
-  </h4>
+  <!-- Found speaker when in search or filter function -->
+  <div class="row m-5">
+    <div class="col-md-12 text-center pt-3">
+      <% if params[:category_id] %>
+        <h3> <%= @category.name %></h3>
+        <h3><%= 'We have ' + @profiles_count.to_s + ' ' + "speakerinnen ( bitte verbessern!)" if @profiles_count%> </h3>
+      <% elsif params[:tag_filter] %>
+        <h3>
+          <%= t(:all_tagged_speakerinnen, scope: 'profiles.index', count: @profiles_count).html_safe + t(:tag_filter, scope: 'profiles.index', count: @tags.count).html_safe %>
+        </h3>
+        <%= raw @tags.map { |tag_name| ActsAsTaggableOn::Tag.where(name: tag_name).first }.join(', ') %>
+      <% end %>
 
+    </div>
+  </div>
 
   <!-- Speaker section -->
-  <a id="speakers"></a>
   <%= paginate @profiles %>
 
   <% @profiles.in_groups_of(4).each do |group| %>
@@ -89,14 +105,14 @@
   // });
 
   // toogle the close and show button on the apply filter
-  $('#collapseFilter').on('show.bs.collapse', function () {
-    $( "#icon" ).removeClass( "fa-chevron-down" );
-    $( "#icon" ).addClass( "fa-chevron-up" );
-  });
-  $('#collapseFilter').on('hide.bs.collapse', function () {
-    $( "#icon" ).removeClass( "fa-chevron-up" );
-    $( "#icon" ).addClass( "fa-chevron-down" );
-  });
+  // $('#collapseFilter').on('show.bs.collapse', function () {
+  //   $( "#icon" ).removeClass( "fa-chevron-down" );
+  //   $( "#icon" ).addClass( "fa-chevron-up" );
+  // });
+  // $('#collapseFilter').on('hide.bs.collapse', function () {
+  //   $( "#icon" ).removeClass( "fa-chevron-up" );
+  //   $( "#icon" ).addClass( "fa-chevron-down" );
+  // });
 
 
   // elasticsearch search filter

@@ -71,8 +71,7 @@ en:
     medialinks:
       edit: "Edit previous talks"
     edit:
-      show: "Show own profile"
-      home: "Show all women speakers >>"
+      show: "<< Back to the profile"
     index:
       title: "All women speakers"
       text: "Welcome!<br>

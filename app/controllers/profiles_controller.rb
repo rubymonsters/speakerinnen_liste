@@ -18,9 +18,10 @@ class ProfilesController < ApplicationController
       @profiles = profiles_for_tag(params[:topic])
     elsif params[:category_id]
       profiles_for_category(params[:category_id], params[:tag_filter])
+      @profiles_count = @profiles.total_count
     elsif params[:search]
-      @profiles = profiles_for_search
-
+      @profiles_for_search= profiles_for_search
+      @profiles = @profiles_for_search.empty? ? profiles_for_index : @profiles_for_search
       # sum of search results concerning certain attributes
       @aggs = profiles_for_search.response.aggregations
       @aggs_languages = @aggs[:lang][:buckets]
@@ -29,13 +30,14 @@ class ProfilesController < ApplicationController
     elsif params[:tag_filter]
       @tags = params[:tag_filter].split(/\s*,\s*/)
       @profiles = Profile.is_published.has_tags(@tags).page(params[:page]).per(24)
-      @profiles_tagged_count = @profiles.total_count
+      @profiles_count = @profiles.total_count
+      # redirect_to profiles_path(:anchor => "speakers")
     else
       @profiles = profiles_for_index
       @profiles_count = Profile.is_published.size
     end
     # for the tags filter module that is available all the time at the profile index view
-    @category = params[:category_id] ? Category.find(params[:category_id]) : Category.find(1)
+    @category = params[:category_id] ? Category.find(params[:category_id]) : Category.first
     @categories = Category.sorted_categories
     # is needed for the colors of the tags
     Category.all.includes(:translations).each do |category|

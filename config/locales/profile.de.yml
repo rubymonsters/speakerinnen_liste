@@ -70,8 +70,7 @@ de:
     medialinks:
       edit: "Referenzen bearbeiten"
     edit:
-      show: "Eigenes Profil anzeigen"
-      home: "Alle Speakerinnen* anzeigen >>"
+      show: "<< Zurück zum Profil"
     index:
       title: "Speakerinnen"
       text: "Schön, dass Du hier bist. <br>

@@ -7,7 +7,7 @@
   <% if (profiles.size > 1 && (languages_to_filter || cities_to_filter || countries_to_filter)) || result_from_filter? %>
     <%= t(:filter, scope: 'search') %>
 
-    <div class="row pt-3">
+    <div class="row">
 
       <%# countries filter %>
       <% if countries_to_filter %>

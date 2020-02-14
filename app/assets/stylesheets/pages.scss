@@ -1,10 +1,8 @@
 // header
 
-
-
 /* startpage */
 #startpage__start-teaser {
-  background: image-url('start-teaser.jpg') no-repeat center center;
+  background: image-url('start-teaser.jpg') no-repeat top center;
   background-size: cover;
 }
 
@@ -21,19 +19,36 @@
 
 .startpage__photo-bar {
   box-shadow: 0 0 20px $transparent-black inset;
-  min-height: 696px;
+  min-height: 800px;
   width: 100%;
   display:flex;
   position: relative;
 }
 
 .layer {
-    background: linear-gradient(181.86deg, rgba(255, 255, 255, 0) 54.36%, #FFFFFF 97.39%), rgba(255, 255, 255, 0.4);
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+  background: linear-gradient(181.86deg, rgba(255, 255, 255, 0) 54.36%, #FFFFFF 97.39%), rgba(255, 255, 255, 0.4);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.card {
+  text-align: center;
+}
+.card-header {
+  background-color: transparent;
+  border: 0;
+}
+
+.card-header:hover {
+  border-bottom: 2px solid black;
+  text-decoration: none;
+  margin-bottom: -2px
+}
+.card-header a:hover {
+  text-decoration: none
 }
 
 .copyright {
@@ -80,19 +95,18 @@
 .child {
   font-size: 2rem;
   position: absolute;
-  left: 40px;
-  top: 10px;
-  width: 640px;
+  top: 20px;
+  width: 740px;
 }
 
 .category_name {
-  width: 500px;
+  width: 470px;
   position: absolute;
   font-family: $serif;
 }
 
 .category_count {
-  width: 100px;
+  width: auto;
   position: absolute;
   right:10px;
 }
