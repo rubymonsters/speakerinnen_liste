@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(version: 2020_02_15_141059) do
     t.string "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer "position"
+    t.integer "position", default: 0
   end
 
   create_table "categories_tags", id: :serial, force: :cascade do |t|
