@@ -5,7 +5,7 @@ default: &default
   encoding: unicode
   host: db
   username: postgres
-  password:
+  password: password
 
 development:
   <<: *default
@@ -13,4 +13,4 @@ development:
 
 test:
   <<: *default
-  database: speakerinnen_test 
+  database: speakerinnen_test
