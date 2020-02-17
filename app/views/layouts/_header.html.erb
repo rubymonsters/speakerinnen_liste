@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <header>
   <%# TODO: hidden <h1>Speakerinnen</h1>%>
-  <nav class="navbar navbar-expand-md navbar-light fixed-top p-0 px-3 border-bottom sans-serif <%= controller_path =~ /admin\// ? "admin__header--color": "header" %>" >
+  <nav class="navbar navbar-expand-md navbar-light  pt-0 <%= controller_path =~ /admin\// ? "admin__header--color": "header" %>" >
     <%= link_to(root_path, id: 'header__home-link', class: 'navbar-brand p-0') do %>
       <%= image_tag('logo_header.png', alt: 'logo', id: 'header__logo') %>
     <% end %>
@@ -11,19 +11,18 @@
     </button>
 
     <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
-      <ul class="navbar-nav">
+      <ul class="navbar-nav pr-5">
         <% unless controller_name == 'pages' %>
-          <li class="nav-item active pt-3 h4">
-            <%= form_tag(profiles_path, method: 'get', class: "form-inline my-2 my-lg-0 text-capitalize small") do %>
+          <li class="nav-item active pt-3 ">
+            <%= form_tag(profiles_path, method: 'get', class: "form-inline text-capitalize small") do %>
               <%= text_field_tag('search', params[:search], class: 'form-control typeahead profile__search mr-sm-2',
                 type: 'text', placeholder: t(:search_text, scope: 'pages.home.search')) %>
-                <%= button_tag "<i class='fa fa-search nav-link text-white'></i>".html_safe, class: "btn btn-link" %>
+                <%= button_tag "<i class='fa fa-search'></i>".html_safe, class: "btn btn-link" %>
             <% end %>
           </li>
         <% end %>
-        <span class="mx-3" style="height: 77px;"></span>
-        <li class="nav-item active dropdown pt-3">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <li class="nav-item active dropdown pt-3 pr-5">
+          <a class=" dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             More
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -33,34 +32,32 @@
             <%= link_to t(:faq, scope: 'pages.home.footer'), faq_path, class: 'dropdown-item' %>
           </div>
         </li>
-        <span class="mx-3" style="height: 77px;"></span>
-        <li class="nav-item active dropdown pt-3">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLinkLang" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <li class="nav-item active dropdown pt-3 pr-5">
+          <a class=" dropdown-toggle" href="#" id="navbarDropdownMenuLinkLang" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <%= I18n.locale == :en ? "EN" : "DE" %>
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLinkLang" id="DropdownLanguages">
             <%= I18n.locale == :de ? link_to('EN', {locale: :en}, class: "dropdown-item") : (link_to 'DE', {locale: :de}, class: "dropdown-item") %>
           </div>
         </li>
-        <span class="mx-2" style="height: 77px;"></span>
         <% if profile_signed_in? %>
           <li class="nav-item active pt-3">
-            <%= link_to(t(:my_profile, scope: 'layouts.application'), profile_path(current_profile), class: "nav-link")%>
+            <%= link_to(t(:my_profile, scope: 'layouts.application'), profile_path(current_profile), class: "")%>
           </li>
           <span class="mx-2" style="height: 77px;"></span>
           <li class="nav-item active pt-3">
-            <%= link_to(t(:logout, scope: 'layouts.application'), destroy_profile_session_path, method: :delete, class: "nav-link") %>
+            <%= link_to(t(:logout, scope: 'layouts.application'), destroy_profile_session_path, method: :delete, class: "") %>
           </li>
         <% else %>
           <li class="nav-item active pt-3">
-            <%= link_to(t(:login, scope: 'layouts.application'), new_profile_session_path, class: "nav-link") %>
+            <%= link_to(t(:login, scope: 'layouts.application'), new_profile_session_path, class: "") %>
           </li>
         <% end %>
         <% if admin?(current_profile) %>
                   <span class="mx-2" style="height: 77px;"></span>
 
           <li class="nav-item active pt-3">
-            <%= link_to 'Admin', admin_root_path, class: "nav-link" %>
+            <%= link_to 'Admin', admin_root_path, class: "" %>
           </li>
         <% end %>
       </ul>

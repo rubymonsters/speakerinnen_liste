@@ -48,11 +48,6 @@ $box-shadow-black: rgba(0,0,0,0.75);
 $serif: Georgia, serif;
 $sans-serif: "OpenSans", "Helvetica Neue", Helvetica, sans-serif;
 
-// /* link-color */
-$link-color-hover: $white-smoke;
-$link-bg-color: $white-smoke;
-$link-bg-color-hover: $dark-grey;
-
 /* variables colors */
 $body-bg-color: $white;
 $body-bg-color-grey: $white-smoke;
@@ -68,17 +63,24 @@ $speakerinnen-lila: #603D78;
 $dark-blue: darken($speakerinnen-blue, 10%);
 $font-color: $dark-grey;
 $font-color-title: $grey;
+$link-color: $speakerinnen-blue;
+
+// /* link-color */
+$link-color-hover: $white-smoke;
+$link-bg-color: $white-smoke;
+$link-bg-color-hover: $dark-grey;
 
 // bootstrap variables override
 $enable-responsive-font-sizes: true;
 $primary: $speakerinnen-blue;
 $secondary: $speakerinnen-lila;
 $border-dark: $grey-stroke;
+
 $red: #d95270;
 .nav-link {
   font-size: 1.1rem;
+  color: $link-color;
   }
-$link-color: $speakerinnen-blue;
 
 /* new category colors */
 $teal: #68D2CA;

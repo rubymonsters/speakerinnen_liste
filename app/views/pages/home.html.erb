@@ -25,11 +25,11 @@
   <% if @features.load.any? %>
     <% @features.each do |feature| %>
       <div class="container mt-5 text-center">
-        <h3 class="pb-5"><%= feature.title %></h3>
+        <h1 class=""><%= feature.title %></h3>
         <h3 class="">
           <%= feature.description %>
         </h3>
-        <div class="row">
+        <div class="row pt-5">
           <%= render partial: "profiles/profile", collection: feature.profiles, as: :profile %>
         </div>
       </div>
@@ -38,11 +38,11 @@
 
 <a id="newest_speaker"></a>
   <div class="container mt-5 text-center">
-    <h3 class="pb-5">Speakerinnen* - get inspired</h3>
+    <h1 class="">Speakerinnen* - get inspired</h3>
     <h3 class="">
        Welcome our 8 newest Speakerinnen - Bitte bessere Text
     </h3>
-    <div class="row">
+    <div class="row pt-5">
       <%= render partial: "profiles/profile", collection: @newest_profiles %>
     </div>
   </div>
@@ -52,55 +52,14 @@
 
   <div class="container mt-5 text-center">
   <!-- <div class="startpage-categories__list py-5 text-center"> -->
-    <h3><%= t(:description, scope: 'pages.home') %></h3>
-    <h3>
+    <div class="row">
+      <div class="col">
+    <h1><%= t(:description, scope: 'pages.home') %></h3>
+    <h3 class="pb-5">
       Hier muss ein bisschen Erklärtext hin.... über Kategorien und Topics :)
   </div>
   <div class="container-fluid startpage-categories__list p-0">
     <%= render partial: "shared/categories", object: @categories %>
   </div>
 
-  <div class="container">
-    <div class="row pt-5">
-      <div class="col">
-        <h2 class="serif"><%= t(:women, scope: 'pages.home.footer').html_safe %></h2>
-      </div>
-    </div>
-  </div>
-  <div class="container">
-    <div class="row">
-      <div class="col-md pr-4">
-        <h4 class="border-vertical d-block py-2 mb-4 sans-serif">
-          <%= link_to t(:about_title, scope: 'pages.home.footer'), about_path %>
-        </h4>
-        <p>
-          <%= t(:about, scope: 'pages.home.footer').html_safe %>
-          <%= link_to t(:more, scope: 'pages.home.footer').html_safe, about_path  %>
-        </p>
-      </div>
-      <div class="col-md pl-4">
-        <h4 class="border-vertical d-block py-2 mb-4 sans-serif">
-          <%= link_to t(:blog, scope:"pages.home.footer"), 'http://blog.speakerinnen.org/', target: '_blank' %>
-        </h4>
-        <p>
-          <% @blog_posts.each do |blogpost| %>
-            <strong><%= blogpost.title %></strong><br>
-            <%= strip_tags(blogpost.body).truncate(150, separator: ' ') %>
-            <%= link_to t(:more, scope: 'pages.home.footer').html_safe, blogpost.url, target: '_blank' %>
-            <br>
-            <br>
-          <% end %>
-        </p>
-      </div>
-    </div>
-  </div>
-  <section id="startpage__teaser-bg-02" class="startpage__photo-bar  align-items-center">
-    <div class="container">
-      <h1 class="display-4 box__bg bg--white-trans"><%= t(:speaker_shoutout, scope: 'pages.home').html_safe %></h1><br>
-      <h4 class="box__bg bg--white-trans"><%=link_to t(:speaker_text, scope: 'pages.home').html_safe, new_profile_registration_path %></h4>
-    </div>
-  </section>
-  <div class="copyright pb-5">
-     Copyright by Tilman Vogler
-  </div>
 </section>
