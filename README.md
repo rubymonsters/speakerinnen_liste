@@ -10,7 +10,7 @@ The aim of the app is to provide a way for conference and event organizers to fi
 
 # Getting Started (Initial Setup)
 
-1. Clone the repository: `git clone git@github.com:rubymonsters/speakerinnen_liste.git` and access the folder: `cd speakerinnen_liste`.
+1. Clone the repository: `git clone git@github.com:rubymonsters/speakerinnen_liste.git` and access the folder: `cd speakerinnen_liste`. (If you have cloned the repository before and there is still an .env file, delete it.)
 2. If you don't have Docker Engine installed, please download it [here](https://docs.docker.com/install) for your operating system.
 3. Run `make setup` (building images, installing gems, creating db and migrating)
 4. Run `make dev`(opens a shell in which you can run preconfigured commands, e.g. `rake`)
