@@ -89,7 +89,13 @@
       </div>
       <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordionExample">
         <div class="card-body">
-         <p>Yay, das ist eine super Idee! Leider können wir gerade (noch) keine Spenden annehmen, hoffen aber, dass das bald möglich sein wird.</p>
+         <p>Yay, das ist eine super Idee! Du kannst uns über Kombüse e.V. Geld überweisen. Den Spendenbetrag kannst du von der Steuer absetzen, ab 200 Euro erhältst du eine Spendenquittung.</p>
+          <ul class="list-unstyled pl-0 pb-5 mb-5 border-bottom font-weight-bold">
+            <li>Kombüse e.V.</li>
+            <li>Betreff: speakerinnen</li>
+            <li>IBAN DE54 4306 0967 2049 2233 01</li>
+            <li>SWIFT/BIC GENODEM1GLS</li>
+          </ul>
         </div>
       </div>
     </div>
@@ -97,62 +103,85 @@
       <div class="card-header" id="headingSeven">
         <h2 class="mb-0">
           <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
-            <h4>Schritte zum Anlegen eines aussagekräftigen Profils:</h4>
+            <h4>Wie erstelle ich ein möglichst aussagekräftiges Speakerinnen-Profil?</h4>
           </button>
         </h2>
       </div>
       <div id="collapseSeven" class="collapse" aria-labelledby="headingSeven" data-parent="#accordionExample">
         <div class="card-body">
-          <p><h5>Schritt 1: Als Speakerin registrieren</h5>
-          Rechts oben auf der Seite findest Du den Button „Als Speakerin registrieren“ – draufklicken und schon geht es los!
-          Zuerst musst Du Deine E-Mail-Adresse eingeben, dann ein Passwort Deiner Wahl. Dieses bitte wiederholen. Dann auf „Registrieren“ klicken.</p>
+          <div class="row">
+            <div class="col-lg-6 col-md-12">
+              <h5 class="mt-4">Schritt 1: Als Speakerin registrieren</h5>
+              <p>Rechts oben auf der Seite findest Du den Button „Als Speakerin registrieren“ – draufklicken und schon geht es los!
+              Zuerst musst Du Deine E-Mail-Adresse eingeben, dann ein Passwort Deiner Wahl. Dieses bitte wiederholen. Dann auf „Registrieren“ klicken.</p>
 
-          <p>Du erhältst nun eine E-Mail an die angegebene Adresse. Hier findest Du den Link „Bestätige meinen Account“ – draufklicken!
-          Du kommst nun wieder auf die Speakerinnen-Seite, wo Du Dich mit E-Mail-Adresse und Passwort anmelden kannst.</p>
+              <p>Du erhältst nun eine E-Mail an die angegebene Adresse. Hier findest Du den Link „Bestätige meinen Account“ – draufklicken!
+              Du kommst nun wieder auf die Speakerinnen-Seite, wo Du Dich mit E-Mail-Adresse und Passwort anmelden kannst.</p>
 
-          <p>Übrigens: Eine Registrierung funktioniert auch über Twitter. Dafür einfach auf „Über Twitter registrieren“ klicken, dann wirst Du zu Twitter weitergeleitet.
-          Hier wirst Du gefragt: „Speakerinnenliste berechtigen, Deinen Account zu nutzen?“. Wenn Du auf Anmelden klickst, geht es zurück auf die Speakerinnen-Seite. Hier musst Du nur noch eine E-Mail-Adresse eingeben.
-          Anschließend erhältst Du eine E-Mail, in der Du den Satz „Bestätige meinen Account“ findest. Draufklicken, dann wirst Du auf die Speakerinnen-Seite zurückgeleitet, wo Du Dich mit E-Mail-Adresse und Passwort anmelden kannst.</p>
+              <p>Übrigens: Eine Registrierung funktioniert auch über Twitter. Dafür einfach auf „Über Twitter registrieren“ klicken, dann wirst Du zu Twitter weitergeleitet.
+              Hier wirst Du gefragt: „Speakerinnenliste berechtigen, Deinen Account zu nutzen?“. Wenn Du auf Anmelden klickst, geht es zurück auf die Speakerinnen-Seite. Hier musst Du nur noch eine E-Mail-Adresse eingeben.
+              Anschließend erhältst Du eine E-Mail, in der Du den Satz „Bestätige meinen Account“ findest. Draufklicken, dann wirst Du auf die Speakerinnen-Seite zurückgeleitet, wo Du Dich mit E-Mail-Adresse und Passwort anmelden kannst.</p>
+            </div>
+            <div class="col-lg-6 col-md-12 mt-4">
+              <%= image_tag('faq_login_de.png', class:'border img-fluid float-md-right') %>
+            </div>
+          </div>
 
-          <p><h5>Schritt 2: Profil ausfüllen</h5>
-          Sobald Du eingeloggt bist, kommst Du auf Deine Profilseite. Hier steht nun: „Hier gib es noch nix zu sehen ¯_(ツ)_/¯.“
-          Um Dein Profil zu vervollständigen, klicke rechts auf den Button "Profil bearbeiten".
-          Auf der Seite, die sich nun öffnet – „Aktualisiere Dein Profil“ – kannst und solltest Du verschiedene Profilinformationen hinterlegen: Vorname und Nachname, das Land in dem Du wohnst und tätig bist und die Sprachen, die Du sprichst.
-          Bitte keine Programmiersprachen eingeben – sie gehören zu Deinen Themen.</p>
+          <div class="row">
+            <div class="col-lg-6 col-md-12 mt-4">
+              <%= image_tag('faq_edit_profile_de.png', class:'border img-fluid float-md-left') %>
+            </div>
+            <div class="col-lg-6 col-md-12 mt-4">
+              <h5>Schritt 2: Profil ausfüllen</h5>
+              <p>Sobald Du eingeloggt bist, kommst Du auf Deine Profilseite. Hier steht nun: „Hier gib es noch nix zu sehen ¯_(ツ)_/¯.“
+              Um Dein Profil zu vervollständigen, klicke rechts auf den Button "Profil bearbeiten".
+              Auf der Seite, die sich nun öffnet – „Aktualisiere Dein Profil“ – kannst und solltest Du verschiedene Profilinformationen hinterlegen: Vorname und Nachname, das Land in dem Du wohnst und tätig bist und die Sprachen, die Du sprichst.
+              Bitte keine Programmiersprachen eingeben – sie gehören zu Deinen Themen.</p>
 
-          <p>Ganz oben findest Du unter „Ein Foto von mir“ den Button „Durchsuchen“. Hierüber kannst Du ein Profilfoto hochladen. Bitte nutze ein jpg, jpeg oder png und achte darauf, dass Du die Rechte an diesem Foto besitzt! Die Größe des Fotos sollte kleiner als 1 MB sein.
-          Dir ist vielleicht aufgefallen, dass die Profilfotos auf unserer Seite in schwarz-weiß angezeigt werden. Wenn man mit der Maus darüber fährt, erscheint das Original. Deshalb wäre es schön, wenn Du ein farbiges Bild verwendest, damit dieser Effekt entstehen kann.</p>
+              <p>Ganz oben findest Du unter „Ein Foto von mir“ den Button „Durchsuchen“. Hierüber kannst Du ein Profilfoto hochladen. Bitte nutze ein jpg, jpeg oder png und achte darauf, dass Du die Rechte an diesem Foto besitzt! Die Größe des Fotos sollte kleiner als 1 MB sein.
+              Dir ist vielleicht aufgefallen, dass die Profilfotos auf unserer Seite in schwarz-weiß angezeigt werden. Wenn man mit der Maus darüber fährt, erscheint das Original. Deshalb wäre es schön, wenn Du ein farbiges Bild verwendest, damit dieser Effekt entstehen kann.</p>
 
-          <p>Jetzt kannst Du Tags eingeben, also die Themen, mit denen Du Dich beschäftigst. Das kann Journalismus sein, Biotechnologie oder Netzfeminismus. Bitte prüfe zuerst, ob es bereits Tags gibt, die Du nutzen kannst.
-          Du findest sie, indem Du einfach die ersten Buchstaben Deines Wunsch-Tags eingibst – dann werden Dir Begriffe vorgeschlagen. Oder Du schaust Dir auf der Speakerinnen-Seite an, welche Themen bereits eingegeben wurden.</p>
+              <p>Jetzt kannst Du Tags eingeben, also die Themen, mit denen Du Dich beschäftigst. Das kann Journalismus sein, Biotechnologie oder Netzfeminismus. Bitte prüfe zuerst, ob es bereits Tags gibt, die Du nutzen kannst.
+              Du findest sie, indem Du einfach die ersten Buchstaben Deines Wunsch-Tags eingibst – dann werden Dir Begriffe vorgeschlagen. Oder Du schaust Dir auf der Speakerinnen-Seite an, welche Themen bereits eingegeben wurden.</p>
 
-          <p>Im nächsten Schritt findest Du zwei Reiter: Deutsch und Englisch. Hier kannst Du weitere Profilinformationen jeweils in beiden Sprachen hinterlegen. Du kannst aber auch nur den deutschen bzw. nur den englischen Reiter ausfüllen. Hier gibst Du an: die Stadt, in der Du wohnst und soweit vorhanden einen Twitter-Account sowie eine oder mehrere Webseiten.
-          Als nächsten hinterlegst Du hier einen Themenschwerpunkt. Das sollte Dein Hauptthema sein – nur eins, bitte eindeutig und gut verständlich. Beispiele hierfür sind „Social Media“, „Nachhaltige Landwirtschaft“ oder auch „Human Resources“.
-          Das Hauptthema erscheint als Bildunterschrift unter Deinem Profilfoto. Wichtig: in der Übersicht der Profile wird das Hauptthema auf 31 Zeichen begrenzt.</p>
+              <p>Im nächsten Schritt findest Du zwei Reiter: Deutsch und Englisch. Hier kannst Du weitere Profilinformationen jeweils in beiden Sprachen hinterlegen. Du kannst aber auch nur den deutschen bzw. nur den englischen Reiter ausfüllen. Hier gibst Du an: die Stadt, in der Du wohnst und soweit vorhanden einen Twitter-Account sowie eine oder mehrere Webseiten.
+              Als nächsten hinterlegst Du hier einen Themenschwerpunkt. Das sollte Dein Hauptthema sein – nur eins, bitte eindeutig und gut verständlich. Beispiele hierfür sind „Social Media“, „Nachhaltige Landwirtschaft“ oder auch „Human Resources“.
+              Das Hauptthema erscheint als Bildunterschrift unter Deinem Profilfoto. Wichtig: in der Übersicht der Profile wird das Hauptthema auf 31 Zeichen begrenzt.</p>
 
-          <p>Nun auf jeden Fall das Feld „Biografie“ ausfüllen!
-          Ohne Angaben in diesem Feld können wir das Profil nicht freischalten. Du kannst das alles auf Wunsch auch auf Englisch eingeben, das ist aber keine Pflicht. Diese Angaben werden nur angezeigt, wenn man auf die englische Version der Seite (siehe oben rechts) klickt.</p>
+              <p>Nun auf jeden Fall das Feld „Biografie“ ausfüllen!
+              Ohne Angaben in diesem Feld können wir das Profil nicht freischalten. Du kannst das alles auf Wunsch auch auf Englisch eingeben, das ist aber keine Pflicht. Diese Angaben werden nur angezeigt, wenn man auf die englische Version der Seite (siehe oben rechts) klickt.</p>
 
-          <p>Abschließend einfach ganz unten auf „Aktualisiere Dein Profil“ klicken und schon siehst Du Dein Profil, wie andere es nach der Freischaltung sehen werden.
-          Bei Bedarf kannst Du Dein Profil jederzeit nachträglich bearbeiten.</p>
+              <p>Abschließend einfach ganz unten auf „Aktualisiere Dein Profil“ klicken und schon siehst Du Dein Profil, wie andere es nach der Freischaltung sehen werden.
+              Bei Bedarf kannst Du Dein Profil jederzeit nachträglich bearbeiten.</p>
+            </div>
+          </div>
 
-          <p><h5>Schritt 3: Referenzen angeben</h5>
-          Um Referenzen einzutragen, klicke bitte rechts auf den Button „Referenzen bearbeiten“. Es öffnet sich die Überblicksseite Deiner Referenzen.
-          Klicke dann auf den Link „Referenz hinzufügen“ und gib nun eine URL, wo die Referenz zu finden ist, eine Überschrift sowie eine kurze Beschreibung an. Dann gib bitte per Dropdown kurz die Sprache an, in der Dein Vortrag, Dein Diskussionsbeitrag etc. verfügbar ist. Dann auf „Referenz hinzufügen“ klicken und schon befindet sich die Referenz unter „Meine Vorträge / Referenzen“ in Deinem Profil.
-          Du kannst die Reihenfolge der Referenzen jederzeit problemlos verändern, indem Du sie einfach nach oben oder unten verschiebst.
-          Willst Du Dir Dein fertiges Profil anschauen, gehe einfach auf den Link „Eigenes Profil anzeigen“ und schon siehst Du, wie Dein fertiges Profil nach der Freischaltung aussehen wird.</p>
+          <h5 class="mt-4">Schritt 3: Referenzen angeben</h5>
+          <div class="row">
+            <div class="col-lg-6 col-md-12">
+              <p>Um Referenzen einzutragen, klicke bitte rechts auf den Button „Referenzen bearbeiten“. Es öffnet sich die Überblicksseite Deiner Referenzen.
+              Klicke dann auf den Link „Referenz hinzufügen“ und gib nun eine URL, wo die Referenz zu finden ist, eine Überschrift sowie eine kurze Beschreibung an. Dann gib bitte per Dropdown kurz die Sprache an, in der Dein Vortrag, Dein Diskussionsbeitrag etc. verfügbar ist. Dann auf „Referenz hinzufügen“ klicken und schon befindet sich die Referenz unter „Meine Vorträge / Referenzen“ in Deinem Profil.
+              Du kannst die Reihenfolge der Referenzen jederzeit problemlos verändern, indem Du sie einfach nach oben oder unten verschiebst.
+              Willst Du Dir Dein fertiges Profil anschauen, gehe einfach auf den Link „Eigenes Profil anzeigen“ und schon siehst Du, wie Dein fertiges Profil nach der Freischaltung aussehen wird.</p>
+            </div>
+            <div class="col-lg-6 col-md-12">
+              <%= image_tag('faq_add_profile_references_de.png', class:'border img-fluid float-md-right') %>
+            </div>
+          </div>
 
-          <p><h5>Schritt 4: Freischaltung</h5>
-          Das Speakerinnen-Team erhält eine Benachrichtigung bei jeder neuen AnmelDung. Wir werden Dein Profil – wenn es vollständig ist – so schnell wie möglich freischalten.
+          <h5 class="mt-4">Schritt 4: Freischaltung</h5>
+          <p>Das Speakerinnen-Team erhält eine Benachrichtigung bei jeder neuen AnmelDung. Wir werden Dein Profil – wenn es vollständig ist – so schnell wie möglich freischalten.
           Solltest Du Rückfragen haben oder Dich wundern, warum Dein Profil noch nicht sichtbar ist, wende Dich jederzeit an Christiane vom Speakerinnen-Team unter christiane[at]speakerinnen.org!
           Sobald Dein Profil für alle sichtbar ist, erhältst Du eine automatische E-Mail, die Dir sagt: Dein Profil wurde jetzt freigeschaltet!</p>
 
-          <p><h5>Tipps: Wie erstelle ich ein möglichst aussagekräftiges Speakerinnen-Profil?</h5>
-          Füge ein gutes Foto von Dir ein! Dieses kannst Du auf Wunsch jederzeit wieder austauschen.
-          Lass die Kategorie „Meine Biografie“ nicht leer! Wird sie nicht ausgefüllt, können wir das Profil in der Regel nicht freischalten.
-          Füge in der Kategorie „Meine Biografie“ keinen allzu langen Fließtext ein – übersichtlich, schnell erfassbar und aussagekräftig soll es sein!
-          Fülle möglichst auch die Kategorie „Meine Vorträge“ aus. Falls Du bisher keine Vorträge gehalten hast, beschreibe in der Biografie Deine Erfahrungen, die das wieder ausgleichen! Vielleicht gibt es ja auch eine Website, die Deine Erfahrungen veranschaulicht. Auch diese kannst Du unter „Meine Vorträge“ eintragen.
-          Die Tags dienen dazu, schnell und eindeutig zu verdeutlichen, wo Deine Kompetenzen liegen, damit die Veranstalter möglichst schnell eine passende Speakerin finden. Orientiere Dich daher an den bestehenden Tags! Wenn Du neue Tags eingibst, nutze möglichst nicht mehr als 1-2 Wörter und beschreibe Dein Kompetenzfeld eindeutig und selbsterklärend!</p>
+          <h5 class="mt-4">Tipps: Wie erstelle ich ein möglichst aussagekräftiges Speakerinnen-Profil?</h5>
+          <ul>
+            <li>Füge ein gutes Foto von Dir ein! Dieses kannst Du auf Wunsch jederzeit wieder austauschen.</li>
+            <li>Lass die Kategorie „Meine Biografie“ nicht leer! Wird sie nicht ausgefüllt, können wir das Profil in der Regel nicht freischalten.</li>
+            <li>Füge in der Kategorie „Meine Biografie“ keinen allzu langen Fließtext ein – übersichtlich, schnell erfassbar und aussagekräftig soll es sein!</li>
+            <li>Fülle möglichst auch die Kategorie „Meine Vorträge“ aus. Falls Du bisher keine Vorträge gehalten hast, beschreibe in der Biografie Deine Erfahrungen, die das wieder ausgleichen! Vielleicht gibt es ja auch eine Website, die Deine Erfahrungen veranschaulicht. Auch diese kannst Du unter „Meine Vorträge“ eintragen.</li>
+            <li>Die Tags dienen dazu, schnell und eindeutig zu verdeutlichen, wo Deine Kompetenzen liegen, damit die Veranstalter möglichst schnell eine passende Speakerin finden. Orientiere Dich daher an den bestehenden Tags! Wenn Du neue Tags eingibst, nutze möglichst nicht mehr als 1-2 Wörter und beschreibe Dein Kompetenzfeld eindeutig und selbsterklärend!</li>
+          <ul>
         </div>
       </div>
     </div>
