@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <header>
   <%# TODO: hidden <h1>Speakerinnen</h1>%>
-  <nav class="navbar navbar-expand-md navbar-dark fixed-top p-0 px-3 border-bottom sans-serif text-uppercase <%= controller_path =~ /admin\// ? "admin__header--color" : "bg-primary" %>" >
+  <nav class="navbar navbar-expand-md navbar-light fixed-top p-0 px-3 border-bottom sans-serif <%= controller_path =~ /admin\// ? "admin__header--color": "header" %>" >
     <%= link_to(root_path, id: 'header__home-link', class: 'navbar-brand p-0') do %>
-      <%= image_tag('logo_header_white.png', alt: 'logo', id: 'header__logo') %>
+      <%= image_tag('logo_header.png', alt: 'logo', id: 'header__logo') %>
     <% end %>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -21,7 +21,7 @@
             <% end %>
           </li>
         <% end %>
-        <span class="border-right mx-3" style="height: 77px;"></span>
+        <span class="mx-3" style="height: 77px;"></span>
         <li class="nav-item active dropdown pt-3">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             More
@@ -33,7 +33,7 @@
             <%= link_to t(:faq, scope: 'pages.home.footer'), faq_path, class: 'dropdown-item' %>
           </div>
         </li>
-        <span class="border-right mx-3" style="height: 77px;"></span>
+        <span class="mx-3" style="height: 77px;"></span>
         <li class="nav-item active dropdown pt-3">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLinkLang" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <%= I18n.locale == :en ? "EN" : "DE" %>
@@ -42,12 +42,12 @@
             <%= I18n.locale == :de ? link_to('EN', {locale: :en}, class: "dropdown-item") : (link_to 'DE', {locale: :de}, class: "dropdown-item") %>
           </div>
         </li>
-        <span class="border-right mx-2" style="height: 77px;"></span>
+        <span class="mx-2" style="height: 77px;"></span>
         <% if profile_signed_in? %>
           <li class="nav-item active pt-3">
             <%= link_to(t(:my_profile, scope: 'layouts.application'), profile_path(current_profile), class: "nav-link")%>
           </li>
-          <span class="border-right mx-2" style="height: 77px;"></span>
+          <span class="mx-2" style="height: 77px;"></span>
           <li class="nav-item active pt-3">
             <%= link_to(t(:logout, scope: 'layouts.application'), destroy_profile_session_path, method: :delete, class: "nav-link") %>
           </li>
@@ -57,7 +57,7 @@
           </li>
         <% end %>
         <% if admin?(current_profile) %>
-                  <span class="border-right mx-2" style="height: 77px;"></span>
+                  <span class="mx-2" style="height: 77px;"></span>
 
           <li class="nav-item active pt-3">
             <%= link_to 'Admin', admin_root_path, class: "nav-link" %>

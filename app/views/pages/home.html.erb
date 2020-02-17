@@ -1,67 +1,24 @@
-<section>
-  <div id="startpage__start-teaser" class="startpage__photo-bar">
-    <div class="layer">
-      <div class="container align-self-center">
-        <div class="row">
-          <div class="col-md-6">
-            <h1 class="display-4 font-weight-bold py-4"><%= t(:heading, scope: 'pages.home.search') %></h1>
-          </div>
+<section class="bg--white">
+  <section id="startpage__start-teaser" class="startpage__photo-bar">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <h1 class="display-4  font-weight-bold  mt-5"><%= t(:heading, scope: 'pages.home.search') %></h1>
+          <h4 class="startpage-subtitle font-weight-bold "><%= t(:tagline_html, scope: 'pages.home.search', root_path: root_path) %></h4>
         </div>
-        <div class="row">
-          <div class="col-md-6">
-            <h3 class="font-weight-bold pb-4"><%= t(:tagline_html, scope: 'pages.home.search') %></h3>
-          </div>
-        </div>
-        <%= render partial: 'shared/search_form' %>
-        <div class="row" style="margin-top: 150px;">
-          <div class="col-sm-3">
-            <div class="card">
-              <div class="card-header">
-                <h3 class="font-weight-bold card-title mb-0"><%= link_to("Get Inspired", profiles_path ) %></h3>
-              </div>
-              <div class="card-body">
-                <p class="serif h4 card-text mt-2">Browse 2000 Speakers to find your expert</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-3">
-            <div class="card">
-              <div class="card-header">
-                <h3 class="font-weight-bold card-title mb-0"><%= link_to("Browse by topic", root_path + "#categories_anchor" )%></h3>
-              </div>
-              <div class="card-body">
-                <p class="serif h4 card-text mt-2">With supporting text below as a natural lead-in to additional content.</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-3">
-            <div class="card">
-              <div class="card-header">
-                <h3 class="font-weight-bold card-title mb-0"><%= link_to("About us", about_path )%></h3>
-              </div>
-              <div class="card-body">
-                <p class="serif h4 card-text mt-2">With supporting text below as a natural lead-in to additional content.</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-3">
-            <div class="card">
-              <div class="card-header">
-                <h3 class="font-weight-bold card-title mb-0"><%= link_to("Our Blog",'https://blog.speakerinnen.org/', target: '_blank' )%></h3>
-              </div>
-              <div class="card-body">
-                <p class="serif h4 card-text mt-2">With supporting text below as a natural lead-in to additional content.</p>
-              </div>
-            </div>
-          </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <%= render partial: 'shared/search_form' %>
+          <p><%= link_to(t(:all_categories, scope: 'pages.home'), root_path + "#categories_anchor" )%></p>
+          <p><%= link_to(t(:all_profiles, scope: 'search'), profiles_path ) %></p>
         </div>
       </div>
     </div>
-  </div>
+  </section>
   <div class="copyright">
      Copyright: public domain ( modified )
   </div>
-
   <!-- anchor for features -->
   <a id="features"></a>
 

@@ -5,7 +5,7 @@ body {
   background-color: white;
 }
 
-/* a, .link, #expander {
+a, .link, #expander {
   font-family: $sans-serif;
   color: $link-color;
   text-decoration: none;
@@ -14,15 +14,11 @@ body {
   &:hover {
     text-decoration: underline;
   }
-}*/
+}
 
 .btn:focus{
   outline: none;
   box-shadow: none;
-}
-
-h1, h3, h4 {
-  font-family: $serif;
 }
 
 .sans-serif {
@@ -118,6 +114,9 @@ h1, h3, h4 {
   background: $yellow;
 }
 
+.header {
+  background: $body-bg-color-grey;
+}
 .no-click {
     pointer-events: none;
 }
@@ -146,8 +145,7 @@ textarea, input {
 
 .btn {
   border-radius: 3px;
-  text-transform: uppercase;
-  font-family: serif
+  font-family: sans-serif
 }
 
 @media (min-width: 1200px) {
