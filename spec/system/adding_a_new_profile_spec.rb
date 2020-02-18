@@ -11,7 +11,7 @@ describe 'profile adding' do
     fill_in 'profile_password', with: '12345678'
     fill_in 'profile_password_confirmation', with: '12345678'
     click_button I18n.t(:signup, scope: 'devise.registrations')
-    expect(page).to have_css('div.notice', text: I18n.t(:signed_up_but_unconfirmed, scope: 'devise.registrations'))
+    expect(page).to have_css('div.alert-info', text: I18n.t(:signed_up_but_unconfirmed, scope: 'devise.registrations'))
     Profile.last.confirm
 
     click_link I18n.t(:login, scope: 'layouts.application')
@@ -26,6 +26,7 @@ describe 'profile adding' do
     find(:css, '#profile_twitter_en').set('@Lovelace')
     find(:css, '#profile_city_en').set('Vienna')
     find(:css, '#profile_website_en').set('www.adalovelace.org')
+    find(:css, '#profile_profession_en').set('Mathematics Genius')
     find(:css, '#profile_website_2_en').set('www.mariecurie.org')
     find(:css, '#profile_website_3_en').set('www.marthanussbaum.org')
     find(:css, '#profile_twitter_de').set('@liebe')
@@ -33,6 +34,7 @@ describe 'profile adding' do
     find(:css, '#profile_website_de').set('www.adalovelace.de')
     find(:css, '#profile_website_2_de').set('www.mariecurie.de')
     find(:css, '#profile_website_3_de').set('www.marthanussbaum.de')
+    find(:css, '#profile_profession_de').set('Mathematisches Genie')
     select 'Austria', from: I18n.t(:country, scope: 'profiles.form'), match: :first
     find(:css, '#profile_iso_languages_en').set(true)
     find(:css, '#profile_iso_languages_de').set(true)
@@ -41,6 +43,7 @@ describe 'profile adding' do
 
     expect(page).to have_content('Ada')
     expect(page).to have_content('Lovelace')
+    expect(page).to have_content('Mathematics Genius')
     expect(page).to have_content('English')
     expect(page).to have_content('German')
     expect(page).to have_content('Vienna')
@@ -52,6 +55,7 @@ describe 'profile adding' do
     click_link('DE', match: :first)
     expect(page).to have_content('Ada')
     expect(page).to have_content('Lovelace')
+    expect(page).to have_content('Mathematisches Genie')
     expect(page).to have_content('Englisch')
     expect(page).to have_content('Deutsch')
     expect(page).to have_content('Wien')

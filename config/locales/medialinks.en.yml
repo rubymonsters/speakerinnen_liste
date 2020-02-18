@@ -1,0 +1,20 @@
+en:
+  medialinks:
+    edit: "Edit Previous Talk"
+    new: "Add Previous Talk"
+    delete: "Delete previous talk"
+    index: "Previous Talks"
+    show: "Show Previous Talks"
+    medialink_description: "Here you can add examples of your previous talks, panel discussions, TV shows or similar talking situations.
+It would be best not to have too many but also not too few. Add diverse examples so that event organizers can get a picture of your work as a speaker.
+Links to Youtube videos will be shown as embedded videos. Other links will be clickable. You can also list audio files and texts."
+    help: "You can change the sort order of the references per <b>drag&drop</b>."
+    url: "URL:"
+    title: "Title:"
+    description: "Description:
+      <br><small class='form-text text-muted'>You can use simple HTML tags to format the text. For example: <i>< i > italic < /i ></i> or <b>< b > bold < /b ></b>.</small>"
+    edit_link: " edit"
+    delete_link: " delete"
+    select_language: "This talk is in: "
+    language_short: "en"
+    tooltip: "Change the sort order per drag&drop."

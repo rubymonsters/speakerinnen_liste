@@ -50,7 +50,7 @@ Rails.application.configure do
   # Debug mode disables concatenation and preprocessing of assets.
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
-  config.assets.debug = true
+  config.assets.debug = false
 
   # config.action_mailer.delivery_method = :file
 
@@ -72,13 +72,5 @@ Rails.application.configure do
     Bullet.rails_logger = true
   end
 
-  config.middleware.use ExceptionNotification::Rack,
-  :email => {
-    :email_prefix => "[SPEAKERINNEN ERROR] ",
-    :sender_address => %{"notifier" <no-reply@speakerinnen.org>},
-    :exception_recipients => %w{team@speakerinnen.org}
-  }
-
   config.action_mailer.delivery_method = :letter_opener
 end
-  

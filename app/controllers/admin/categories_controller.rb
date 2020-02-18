@@ -11,7 +11,7 @@ class Admin::CategoriesController < Admin::BaseController
   def show; end
 
   def index
-    @categories = Category.order(:name).all
+    @categories = Category.all
   end
 
   def create

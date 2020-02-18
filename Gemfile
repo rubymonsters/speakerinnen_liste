@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 source 'https://rubygems.org'
-ruby '2.4.2'
-gem 'rails', '5.2.2'
+ruby '2.6.5'
+gem 'rails', '5.2.2.1'
 
 # Needed for Javascript Runtime
 # gem 'therubyracer'
@@ -21,13 +21,11 @@ gem 'mime-types'
 
 gem 'acts-as-taggable-on', '~> 6.0'
 gem 'auto_html', '~>1.6.4'
-gem 'carrierwave', '~> 1.3'
-gem 'devise', '~> 4.5'
-gem 'fog', '~> 2.1'
+gem 'devise', '~> 4.7'
 gem 'invisible_captcha'
 gem 'jquery-rails', '~> 4.3.1'
 gem 'jquery-ui-rails', '~> 6.0.1'
-gem 'mini_magick', '~> 4.9.2'
+gem 'mini_magick', '~> 4.9.5'
 gem 'omniauth-twitter'
 gem 'pg', '~> 1.1.3'
 gem 'simple_form'
@@ -37,7 +35,7 @@ gem 'country_select'
 gem 'globalize', git: 'https://github.com/globalize/globalize'
 gem 'globalize-accessors'
 
-gem 'bootstrap', '~> 4.2.1'
+gem 'bootstrap', '~> 4.3.1'
 gem 'font-awesome-rails', '~> 4.7.0.3'
 
 gem 'friendly_id'
@@ -57,8 +55,13 @@ gem 'uglifier', '>= 1.0.3'
 
 gem 'unicorn'
 
-gem 'newrelic_rpm'
 gem 'rack-piwik', '~> 0.3.0', require: 'rack/piwik'
+
+gem 'aws-sdk-s3', require: false
+
+gem "sentry-raven"
+
+gem 'image_processing', '~> 1.2'
 
 group :development do
   gem 'better_errors'
@@ -87,4 +90,3 @@ group :test do
   gem 'poltergeist', '1.18.1'
   gem 'rails-controller-testing'
 end
-

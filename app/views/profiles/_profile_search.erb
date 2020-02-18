@@ -7,31 +7,31 @@
   </div>
   <div class="row">
     <div class="col-sm-12 col-md-4">
-      <%= profile_picture_link(profile) %>
+      <%= profile_image_link(profile) %>
       <div class="profile-subtitle"><%= profile.main_topic_or_first_topic if profile.main_topic_or_first_topic %></div>
     </div>
 
     <div class="col-sm-12 col-md-8">
-     <% if profile.twitter.present? %>
-         <h5><%= t(:twitter, scope: 'profiles.show') %></h5>
-         <p class="pb-2">
-           <%=link_to '@' + profile.twitter_name_formatted, profile.twitter_link_formatted,
-           target: '_blank' %>
-         </p>
-     <% end %>
+      <% if profile.twitter.present? %>
+        <h5><%= t(:twitter, scope: 'profiles.show') %></h5>
+        <p class="pb-2">
+          <%=link_to '@' + profile.twitter_name_formatted, profile.twitter_link_formatted,
+          target: '_blank' %>
+        </p>
+      <% end %>
 
-     <% if profile.website.present? %>
-       <h5> <%= t(:website, scope: 'profiles.show') %> </h5>
-       <p class="pb-2">
-         <%= link_to profile.website, profile.website_with_protocol(profile.website),
+      <% if profile.website.present? %>
+        <h5> <%= t(:website, scope: 'profiles.show') %> </h5>
+        <p class="pb-2">
+          <%= link_to profile.website, profile.website_with_protocol(profile.website),
          target: '_blank' %>
-       </p>
-     <% end %>
+        </p>
+      <% end %>
 
-     <h5><%= t(:topics, scope: 'profiles.show') %></h5>
-     <p class="pb-2 topics-profile">
-       <%= raw topics(profile).map { |topic| topic_link(topic) }.join(' ') %>
-     </p>
+      <h5><%= t(:topics, scope: 'profiles.show') %></h5>
+      <p class="pb-2 topics-profile">
+        <%= raw topics_for_profile(profile).map { |topic| topic_link(topic) }.join(' ') %>
+      </p>
 
       <% if profile.iso_languages.present? %>
         <h5><%= t(:languages, scope: 'profiles.show') %></h5>

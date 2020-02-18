@@ -10,7 +10,9 @@ Rails.application.routes.draw do
               }
 
   scope '(:locale)', locale: /en|de/ do
-
+    
+    delete 'image/:id/destroy', to: 'image#destroy', as: 'image'
+    
     namespace :admin do
       resources :tags, except: [:new, :create] do
         collection do
@@ -24,7 +26,7 @@ Rails.application.routes.draw do
         end
       end
       resources :categories
-      resources :featured_profiles do
+      resources :features do
         member do
           post 'announce_event'
           post 'stop_event'
@@ -37,7 +39,7 @@ Rails.application.routes.draw do
         member do
           post 'publish'
           post 'unpublish'
-          post 'admin_comment'
+          post 'admin_update'
         end
       end
       root to: 'dashboard#index'

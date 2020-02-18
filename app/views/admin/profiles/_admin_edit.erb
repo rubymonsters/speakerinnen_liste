@@ -1,0 +1,36 @@
+<div class="p-3 mb-2 bg-warning text-dark">
+  <h3>Admin Aktionen</h3>
+  <%= t(:profile_status, scope: 'admin.profiles') + t(:public, scope: 'admin.profiles') + ' ' if @profile.published? %>:<br>
+  <% if @profile.published %>
+    <%= link_to t(:make_invisible, scope: 'admin.profiles'), unpublish_admin_profile_path(@profile.id),
+    method: :post, class:'btn btn-sm btn-danger mt-2', title: 'Hier kannst Du das Profile wieder unsichtbar machen.' %>
+  <% else %>
+    <%= link_to t(:make_public, scope: 'admin.profiles'), publish_admin_profile_path(@profile.id),
+    method: :post, class:'btn btn-sm btn-danger mt-2', title: 'Eine Bestätigungsmail wird verschickt.' %>
+  <% end %>
+  <br>
+  <br>
+  Interner Kommentar (nur für die Admins sichtbar) :
+  <%= form_for @profile,{ url: admin_update_admin_profile_path(@profile.id), method: 'post',html: { class: 'mt-2' } } do |f| %>
+    <%= hidden_field_tag 'page', page %>
+    <%= f.text_field 'admin_comment' %>
+    <%= f.submit t(:add_comment, scope: 'admin.profiles'), class: 'btn btn-blue btn-sm' %>
+  <% end %>
+  <br>
+  <%= t(:feature_list, scope: 'admin.profiles').html_safe %>
+  <%= simple_form_for @profile, { url: admin_update_admin_profile_path(@profile.id), method: 'post',
+      html: { class: 'mt-2' }}  do |f| %>
+      <%= f.select(:feature_ids, Feature.all.map{|feature|[feature.title, feature.id]}, { include_blank: true }, :multiple => true, id: :select_feature, class: 'select_feature') %>
+      <%= f.submit t(:assign_feature, scope: 'admin.profiles'), class: 'btn btn-blue btn-sm' %>
+  <% end  %>
+  <br>
+  E-Mail Adresse:<br>
+  <b><%= @profile.email %></b>
+</div>
+<script>
+    $(document).ready(function() {
+      $('#select_feature').select2({
+        placeholder: "Click here"
+      });
+    });
+</script>

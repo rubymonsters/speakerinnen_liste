@@ -1,0 +1,15 @@
+en:
+  contact:
+    form:
+      title: "Send us an email:"
+      name: "Your name"
+      name_placeholder: ""
+      email: "Your email address"
+      medialink_placeholder: "Please fill in only 21 characters"
+      subject: "Subject of the email"
+      send: "Send"
+      body: "Your message"
+      body_placeholder: "Please give a few details about your request: where, when, what, and other relevant information."
+      notice: "Yay! Your message was sent."
+      error: "Please fill all fields so that the speaker can have all the details she needs."
+      error_email_for_us: "Please fill all fields."

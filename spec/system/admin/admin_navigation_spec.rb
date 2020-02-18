@@ -29,7 +29,7 @@ RSpec.describe 'Navigation', type: :system do
       expect(page).to have_link('Categories', href: '/en/admin/categories')
       expect(page).to have_link('Tags', href: '/en/admin/tags/index')
       expect(page).to have_link('Profiles', href: '/en/admin/profiles')
-      expect(page).to have_link('Featured Profiles', href: '/en/admin/featured_profiles')
+      expect(page).to have_link('Features', href: '/en/admin/features')
     end
 
     context 'category' do
@@ -92,13 +92,14 @@ RSpec.describe 'Navigation', type: :system do
           expect(page).to have_link('public')
           expect(page).to have_link('invisible')
 
+          expect(page).to have_css('.table > thead > tr', text: 'ID')
           expect(page).to have_css('.table > thead > tr', text: 'Speakerinnen')
           expect(page).to have_css('.table > thead > tr', text: 'Created')
           expect(page).to have_css('.table > thead > tr', text: 'Updated')
           expect(page).to have_css('.table > thead > tr', text: 'Links')
-          expect(page).to have_css('.table > thead > tr', text: 'Picture')
+          expect(page).to have_css('.table > thead > tr', text: 'Image')
           expect(page).to have_css('.table > thead > tr', text: 'Visibility')
-          expect(page).to have_css('.table > thead > tr', text: 'Admin')
+          expect(page).to have_css('.table > thead > tr', text: 'Roles')
           expect(page).to have_css('.table > thead > tr', text: 'Comment')
 
           expect(page).to have_button('Add comment')
@@ -149,9 +150,9 @@ RSpec.describe 'Navigation', type: :system do
           expect(page).to have_css('div.profile_topic_list')
           expect(page).to have_css('form label', text: 'country')
           expect(page).to have_css('form label', text: 'picture')
-          expect(page).to have_css('form label', text: 'My main topic in German')
+          expect(page).to have_css('form label', text: 'My main focus in German')
           expect(page).to have_css('form label', text: 'My bio in German')
-          expect(page).to have_css('form label', text: 'My main topic in English')
+          expect(page).to have_css('form label', text: 'My main focus in English')
           expect(page).to have_css('form label', text: 'My bio in English')
         end
       end

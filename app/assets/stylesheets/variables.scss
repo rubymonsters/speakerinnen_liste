@@ -59,6 +59,7 @@ $link-color: $blue;
 // bootstrap variables override
 $primary: $blue;
 $red: #d95270;
+$enable-responsive-font-sizes: true;
 
 /* background-color */
 $body-bg-color: $white;
@@ -70,3 +71,55 @@ $base-spacing-unit: 24px;
 /* layout settings */
 $layout-width: 940px;
 $border: 1px solid $light-grey;
+
+
+/* new category colors */
+$teal: #68D2CA;
+$teal_1: #B2E7E3;
+$teal_2: #00978B;
+
+$dark_teal: #69B7CB;
+$dark_teal_1: #B2D9E3;
+$dark_teal_2: #53818D;
+
+$soft_blue: #8DB5E4;
+$soft_blue_1: #C5D8F0;
+$soft_blue_2: #436996;
+
+$purple: #A3A8F1;
+$purple_1: #D0D2F6;
+$purple_2: #5A5EAA;
+
+$rose: #C8ABCF;
+$rose_1: #E2D3E6;
+$rose_2: #603D78;
+
+$pink: #CB50AE;
+$pink_1: #EBC0E1;
+$pink_2: #8E3078;
+
+$dark_pink: #AC356F;
+$dark_pink_1: #D498B5;
+$dark_pink_2: #73234A;
+
+$raspberry_red: #C0374A;
+$raspberry_red_1: #DE99A3;
+$raspberry_red_2: #8F2635;
+
+$red_orange: #DA5735;
+$red_orange_1: #EBA999;
+$red_orange_2: #B2462A;
+
+$orange: #C35F0F;
+$orange_1: #DFAE86;
+$orange_2: #8C4710;
+
+$bronze: #CE820D;
+$bronze_1: #E5BF85;
+$bronze_2: #95610F;
+
+$dark_yellow: #B58A00;
+$dark_yellow_1: #CEC5A8;
+$dark_yellow_2: #725907;
+
+$beige: #CCB15C;

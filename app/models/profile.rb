@@ -1,19 +1,22 @@
 # frozen_string_literal: true
-
 class Profile < ApplicationRecord
-  include HasPicture
   include Searchable
   include ActiveModel::Serialization
 
   has_many :medialinks
+  has_many :feature_profiles
+  has_many :features, through: :feature_profiles, dependent: :destroy
+  has_one_attached :image
 
   serialize :iso_languages, Array
   validate :iso_languages_array_has_right_format
+  validate :image_format_size
+  validates :profession, length: { maximum: 60, message: "Please use less than 80 characters." }
   before_save :clean_iso_languages!
 
-  translates :bio, :main_topic, :twitter, :website, :website_2, :website_3, :city, fallbacks_for_empty_translations: true
+  translates :bio, :main_topic, :profession, :twitter, :website, :website_2, :website_3, :city, fallbacks_for_empty_translations: true
   accepts_nested_attributes_for :translations
-  globalize_accessors locales: %i[en de], attributes: %i[main_topic bio twitter website website_2 website_3 city]
+  globalize_accessors locales: %i[en de], attributes: %i[main_topic bio profession twitter website website_2 website_3 city]
 
   extend FriendlyId
   friendly_id :slug_candidate, use: :slugged
@@ -150,7 +153,7 @@ class Profile < ApplicationRecord
   # for simple admin search
   def self.admin_search(query)
     self.includes(taggings: :tag)
-    .references(:tag)    
+    .references(:tag)
     .where("firstname || ' ' || lastname || tags.name ILIKE :query", query: "%#{query}%")
   end
 
@@ -165,6 +168,16 @@ class Profile < ApplicationRecord
 
     if iso_languages.map(&:class).uniq != [String]
       errors.add(:iso_languages, 'must be an array of strings')
+    end
+  end
+
+  def image_format_size
+    if image.attached?
+      if image.blob.byte_size > 1.megabyte
+        errors.add(:base, :file_size_too_big)
+      elsif !image.blob.content_type.starts_with?('image/')
+        errors.add(:base, :content_type_invalid)
+      end
     end
   end
 end

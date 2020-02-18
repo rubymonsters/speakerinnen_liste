@@ -1,0 +1,23 @@
+<div class="container bg--white">
+
+  <h1>Administration::<%= t(:features, scope: "admin.features")%>::<%= t(:edit, scope: 'general')%></h1>
+
+  <%= render 'form' %>
+
+</div>
+
+<script type="text/javascript" charset="utf-8">
+  $('#show-de').click(function(){
+    $("#edit-de").removeClass('d-none').addClass('d-block');
+    $("#edit-en").removeClass('d-block').addClass('d-none');
+    $('#show-de').addClass('active');
+    $('#show-en').removeClass('active');
+  });
+
+  $('#show-en').click(function(){
+    $("#edit-en").removeClass('d-none').addClass('d-block');
+    $("#edit-de").removeClass('d-block').addClass('d-none');
+    $('#show-en').addClass('active');
+    $('#show-de').removeClass('active');
+  });
+</script>

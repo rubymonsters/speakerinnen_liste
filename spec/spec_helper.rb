@@ -2,6 +2,7 @@
 
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 ENV['RAILS_ENV'] ||= 'test'
+ENV['FISHY_EMAILS']="fish@email.de"
 require File.expand_path('../config/environment', __dir__)
 require 'rspec/rails'
 require 'elasticsearch/extensions/test/cluster'
@@ -50,10 +51,6 @@ RSpec.configure do |config|
   config.before do
     I18n.locale = :de
   end
-  # Start an in-memory cluster for Elasticsearch as needed
-  config.before :all, elasticsearch: true do
-    Elasticsearch::Extensions::Test::Cluster.start(port: 9250, nodes: 1, timeout: 120, path_logs: 'log')
-  end
 
   # Create indexes for all elastic searchable models
   config.before :each, elasticsearch: true do
@@ -71,11 +68,6 @@ RSpec.configure do |config|
         STDERR.puts "There was an error creating the elasticsearch index for #{model.name}: #{e.inspect}"
       end
     end
-  end
-
-  # Stop elasticsearch cluster after test run
-  config.after :suite do
-    Elasticsearch::Extensions::Test::Cluster.stop(port: 9250, nodes: 1) if Elasticsearch::Extensions::Test::Cluster.running?(on: 9250)
   end
 
   # Delete indexes for all elastic searchable models to ensure clean state between tests

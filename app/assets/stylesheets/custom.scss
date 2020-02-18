@@ -1,37 +1,33 @@
 body {
-	font-family: $sans-serif;
-	color: $font-color;
-	margin-top: 70px;
-	background-color: $white-smoke;
+  font-family: $sans-serif;
+  color: $font-color;
+  margin-top: 70px;
+  background-color: $white-smoke;
 }
 
 a, .link, #expander {
-	font-family: $sans-serif;
-	color: $link-color;
-	text-decoration: none;
+  font-family: $sans-serif;
+  color: $link-color;
+  text-decoration: none;
   cursor: pointer;
 
   &:hover {
     text-decoration: underline;
-    //background: linear-gradient($link-color, $link-color) no-repeat;
-    //background-size: 100% 1px;
-    //background-position: 0 1.15em;
-    //text-shadow: .05em 0 white, -.05em 0 white;
   }
 }
 
 h1, h4 {
-	font-family: $serif;
+  font-family: $serif;
 }
 
 .sans-serif {
-	font-family: $sans-serif;
+  font-family: $sans-serif;
 }
 
 /* layout */
 
 .container {
-	padding: 36px 36px;
+  padding: 36px 36px;
 }
 
 .box__bg {
@@ -90,17 +86,20 @@ h1, h4 {
   margin-right: 10px;
 }
 
-.startpage-categories__list-links {
-  color: $dark-grey;
-  font-size: 1.9em;
-  background-color: $link-bg-color;
-  padding: 3px 6px;
-  line-height: 2em;
+//categories
 
-  &:hover {
-    color: $link-color-hover;
-    background-color: $link-bg-color-hover;
-    text-decoration: none;
+.startpage-categories__list .progress {
+  height: 70px;
+  max-width: 100%;
+  border-radius: 0;
+  position: relative;
+}
+
+.progress-bar {
+  font-size: 2.5em;
+  color: black;
+  a {
+    color: black;
   }
 }
 
@@ -115,6 +114,7 @@ h1, h4 {
 
 /* cookie consent dialog */
 .cookie-consent-dialog {
+  height:auto !important;
   position: fixed;
   bottom: 0px;
   z-index: 1;
@@ -127,24 +127,26 @@ h1, h4 {
 }
 
 /* diverses */
-.notice {
-  background: $blue;
+
+.alert {
   color: $white;
-  font-family: $sans-serif;
   padding: $base-spacing-unit;
   text-align: center;
   position: fixed;
+  z-index: 5;
   width: 100%;
 }
 
-.alert {
+.alert-info {
+  background: $blue;
+}
+
+.alert-warning {
   background: $red;
-  color: $white;
-  font-family: $sans-serif;
-  padding: $base-spacing-unit;
-  text-align: center;
-	position: fixed;
-	width: 100%;
+}
+
+.alert-error {
+  color: $red;
 }
 
 .border-vertical {
@@ -180,7 +182,7 @@ textarea, input {
 }
 
 #admin__header--color {
-	background: #ffcc00;
+  background: #ffcc00;
 }
 
 /* profiles */
@@ -192,21 +194,21 @@ textarea, input {
 }
 
 .profile-subtitle {
-	font-weight: bold;
-	margin: 0.5rem 0;
+  font-weight: bold;
+  margin: 0.5rem 0;
 }
 
 .profile-title {
-	margin: 3rem 0;
+  margin: 3rem 0;
 }
 
 .profile-card {
-	padding: 3rem;
-	margin: 3rem 0;
+  padding: 3rem;
+  margin: 3rem 0;
 }
 
 .profile-navi {
-	text-align: right;
+  text-align: right;
 }
 
 .photo--grey {
@@ -293,7 +295,7 @@ ul#medialinks__list {
 
 .pagination {
   text-align: center;
-	display: block;
+  display: block;
 }
 
 .pagination ul {
@@ -340,7 +342,6 @@ ul#medialinks__list {
 
 // topics
 
-
 .topics-cloud a, .topics-profile a {
   background-color: #fff;
   color: $dark-grey;
@@ -383,50 +384,50 @@ ul#medialinks__list {
     font-size: 1.8rem;
   }
 
-	h4 {
+  h4 {
     font-size: 1.1rem;
-	}
+  }
 
-	h5 {
+  h5 {
     font-size: 1.0rem;
-		font-weight: bold;
-	}
+    font-weight: bold;
+  }
 
-	.container {
-		padding: 36px 12px;
-	}
+  .container {
+    padding: 36px 12px;
+  }
 
-	.startpage-categories__list-links {
+  .startpage-categories__list-links {
     font-size: 1.0rem;
-	}
+  }
 
-	.profile-box {
-		text-align: center;
-	}
+  .profile-box {
+    text-align: center;
+  }
 
-	.copyright {
-		font-size: 0.8rem;
-	}
+  .copyright {
+    font-size: 0.8rem;
+  }
 
-	.profile-card {
-		padding: 1rem;
-		margin: 1rem 0;
-	}
+  .profile-card {
+    padding: 1rem;
+    margin: 1rem 0;
+  }
 
-	.profile-subtitle {
-		margin: 0.5rem 0;
-	}
+  .profile-subtitle {
+    margin: 0.5rem 0;
+  }
 
-	.profile-card .profile-subtitle {
-		padding-bottom: 1rem;
-	  border-bottom: $border;
-	}
+  .profile-card .profile-subtitle {
+    padding-bottom: 1rem;
+    border-bottom: $border;
+  }
 
-	.profile-title {
-		margin: 1rem 0;
-	}
+  .profile-title {
+    margin: 1rem 0;
+  }
 
-	.startpage-subtitle {
-		display: none;
-	}
+  .startpage-subtitle {
+    display: none;
+  }
 }

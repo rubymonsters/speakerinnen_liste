@@ -1,11 +1,8 @@
 <% if @profile.errors.any? %>
-  <div id="error_explanation">
-    <div class="alert alert-error">
-      The form contains <%= pluralize(@profile.errors.count, "error") %> <%= t ".not_saved" %>
-    </div>
-    <ul>
+  <div id="error_explanation" class="alert-error">
+    <ul class="list-group list-group-flush">
       <% @profile.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+        <li class="list-group-item"><%= msg %></li>
       <% end %>
     </ul>
   </div>

@@ -10,7 +10,9 @@
 # Ignore the default SQLite database.
 /db/*.sqlite3
 
-# Ignore all logfiles and tempfiles.
+# Ignore all pictures, logfiles and tempfiles.
+/public/uploads
+/storage
 /log/*.log
 /tmp
 /log
@@ -19,7 +21,6 @@
 .settings/org.eclipse.wst.jsdt.ui.superType.container
 .settings/org.eclipse.wst.jsdt.ui.superType.name
 
-/config/database.yml
 /db/structure.sql
 
 # to ignore already cached file:
@@ -30,6 +31,9 @@
 
 # Ignore database files
 *.dump
+
+#Ignore IDE files
+.idea/
 
 .ruby-version
 .ruby-gemset

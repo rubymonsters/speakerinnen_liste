@@ -10,7 +10,7 @@ class PagesController < ApplicationController
                 .limit(8)
     @categories = Category.sorted_categories
     @blog_posts = BlogPost.order('created_at DESC').limit(2)
-    @featured_events = FeaturedProfile.where public: true
+    @features   = Feature.published_feature.order(:position)
   end
 
   def render_footer?

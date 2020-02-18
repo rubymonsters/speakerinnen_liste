@@ -10,26 +10,19 @@ module ProfilesHelper
     end
   end
 
-  def top_link(params)
-    link_to t(:adapt_search, scope: 'search'), profiles_path + "?utf8=✓&utf8=✓&search=#{params}&button=/#top"
-  end
-
   def topic_link(topic, options = {})
     link_to topic, topic_path(topic: topic.to_s), options
   end
 
-  def profile_picture_link(profile)
-    if profile.picture.present?
-      link_to(image_tag(profile.picture.profile.url, alt: profile.fullname, class: 'photo--grey'), profile)
+  def profile_image_link(profile)
+    if profile.image.attached?
+      link_to(image_tag(profile.image.variant(combine_options: {resize: '300x300^', extent: '300x300', gravity: 'Center'}), class: 'photo--grey'), profile)
     else
       link_to(image_tag('avatar.jpg', alt: 'avatar', class: 'photo--grey'), profile)
     end
   end
 
-  def topics(profile)
-    topics = []
-    topics << profile.topics.with_language(I18n.locale)
-    topics << profile.topics.without_language
-    topics.flatten.uniq
+  def topics_for_profile(profile)
+    profile.topics.translated_in_current_language_and_not_translated(I18n.locale)
   end
 end
