@@ -3,16 +3,17 @@
     <div class="container">
       <div class="row">
         <div class="col">
-          <h1 class="display-4  font-weight-bold  mt-5"><%= t(:heading, scope: 'pages.home.search') %></h1>
-          <h4 class="startpage-subtitle font-weight-bold "><%= t(:tagline_html, scope: 'pages.home.search', root_path: root_path) %></h4>
+          <h1 class="display-4 font-weight-bold mt-5" style="text-shadow:0px 0px 9px rgba(255, 255, 255, 1);"><%= t(:heading, scope: 'pages.home.search') %></h1>
+          <h3 class="startpage-subtitle font-weight-bold" style="text-shadow:0px 0px 9px rgba(255, 255, 255, 1);"><%= t(:tagline, scope: 'pages.home.search').html_safe %></h3>
         </div>
       </div>
-      <div class="row">
-        <div class="col">
+      <div class="row" style="margin-top: 80px;">
+        <div class="col-6">
           <%= render partial: 'shared/search_form' %>
-          <p><%= link_to(t(:all_categories, scope: 'pages.home'), root_path + "#categories_anchor" )%></p>
-          <p><%= link_to(t(:all_profiles, scope: 'search'), profiles_path ) %></p>
         </div>
+      </div>
+      <div class="row" style="margin-top: 180px;">
+        <%= render partial: 'shared/sub_menu' %>
       </div>
     </div>
   </section>

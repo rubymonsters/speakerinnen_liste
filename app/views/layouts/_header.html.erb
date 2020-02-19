@@ -22,7 +22,7 @@
           </li>
         <% end %>
         <li class="nav-item active dropdown pt-3 pr-5">
-          <a class=" dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <a class="dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             More
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -33,7 +33,7 @@
           </div>
         </li>
         <li class="nav-item active dropdown pt-3 pr-5">
-          <a class=" dropdown-toggle" href="#" id="navbarDropdownMenuLinkLang" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <a class="dropdown-toggle" href="#" id="navbarDropdownMenuLinkLang" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <%= I18n.locale == :en ? "EN" : "DE" %>
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLinkLang" id="DropdownLanguages">
@@ -54,8 +54,6 @@
           </li>
         <% end %>
         <% if admin?(current_profile) %>
-                  <span class="mx-2" style="height: 77px;"></span>
-
           <li class="nav-item active pt-3">
             <%= link_to 'Admin', admin_root_path, class: "" %>
           </li>
