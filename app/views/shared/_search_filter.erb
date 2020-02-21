@@ -17,7 +17,7 @@
             <b><%= t(:countries_agg, scope: 'search' ).html_safe%></b>
             <% aggs_countries[0..9].each do |term| %>
               <li class='pl-1 <%= 'selected' if params[:filter_countries] == term['key'] %>'>
-                <%= link_to ISO3166::Country.find_country_by_alpha2("#{term['key']}").translation(I18n.locale), {search: params[:search], filter_countries: term['key']}, 
+                <%= link_to ISO3166::Country.find_country_by_alpha2("#{term['key']}").translation(I18n.locale), {search: params[:search], filter_countries: term['key']},
                 class: "#{'bg-dark text-light' if params[:filter_countries] == term['key'] }" %>
                 <small class="pl-1"><%= term['doc_count'] %></small>
               </li>
@@ -29,8 +29,8 @@
               <% display_value = aggs_countries[10..999] == [] ? "block" : "none" %>
               <% aggs_countries[10..999].each do |term| %>
                 <li class='pl-1 rest_facet_countries <%= 'selected' if params[:filter_countries] == term['key'] %>' style='display: <%= display_value %>;'>
-                  <%= link_to ISO3166::Country.find_country_by_alpha2("#{term['key']}").translation(I18n.locale), 
-                    {search: params[:search], filter_countries: term['key']}, 
+                  <%= link_to ISO3166::Country.find_country_by_alpha2("#{term['key']}").translation(I18n.locale),
+                    {search: params[:search], filter_countries: term['key']},
                     class: "#{'bg-dark text-light' if params[:filter_countries] == term['key'] }" %>
                   <small class="pl-1"><%= term['doc_count'] %></small>
                 </li>
@@ -47,7 +47,7 @@
           <b><%=t(:cities_agg, scope: 'search' ).html_safe%></b>
             <% aggs_cities[0..9].each do |term| %>
               <li class='pl-1 <%= 'selected' if params[:filter_cities] == term['key'] %>'>
-                <%= link_to term['key'], { search: params[:search], filter_cities: term['key']}, 
+                <%= link_to term['key'], { search: params[:search], filter_cities: term['key']},
                 class: "#{'bg-dark text-light' if params[:filter_cities] == term['key'] }"  %>
                 <small class="pl-1"><%= term['doc_count'] %></small>
               </li>
@@ -59,7 +59,7 @@
               <% display_value = aggs_cities[10..999] == [] ? "block" : "none" %>
               <% aggs_cities[10..999].each do |term| %>
                 <li class='pl- rest_facet_cities <%= 'selected' if params[:filter_cities] == term['key'] %>' style='display: <%= display_value %>;'>
-                  <%= link_to term['key'],{ search: params[:search], filter_cities: term['key'] }, 
+                  <%= link_to term['key'],{ search: params[:search], filter_cities: term['key'] },
                   class: "#{'bg-dark text-light' if params[:filter_cities] == term['key'] }" %>
                   <small class="pl-1"><%= term['doc_count'] %></small>
                 </li>
@@ -78,9 +78,9 @@
             <% aggs_languages[0..9].each do |term| %>
             <li class='pl-1 <%= 'selected' if params[:filter_lang] == term['key'] %>'>
               <%= link_to t("#{term['key']}", scope: 'iso_639_1').capitalize,
-              {search: params[:search], filter_lang: term['key']}, 
+              {search: params[:search], filter_lang: term['key']},
               class: "#{'bg-dark text-light' if params[:filter_lang] == term['key'] }" %>
-              <small class="pl-1"><%= term['doc_count'] %></small>                
+              <small class="pl-1"><%= term['doc_count'] %></small>
             </li>
             <% end %>
             <% if aggs_languages.length > 10 %>
@@ -89,8 +89,8 @@
               <% display_value = aggs_languages[10..999] == [] ? "block" : "none" %>
               <% aggs_languages[10..999].each do |term| %>
                 <li class='pl- rest_facet_languages <%= 'selected' if params[:filter_cities] == term['key'] %>' style='display: <%= display_value %>;'>
-                  <%= link_to t("#{term['key']}", scope: 'iso_639_1').capitalize , 
-                  {search: params[:search], filter_lang: term['key']}, 
+                  <%= link_to t("#{term['key']}", scope: 'iso_639_1').capitalize ,
+                  {search: params[:search], filter_lang: term['key']},
                   class: "#{'bg-dark text-light' if params[:filter_lang] == term['key'] }" %>
                   <small class="pl-1"><%= term['doc_count'] %></small>
                 </li>
@@ -106,9 +106,9 @@
 
 <% elsif profiles.size < 1 %>
 
-  <% if params[:search].present? && profiles.response.response.suggest.did_you_mean_fullname.first.options.present? %>
+  <% if params[:search].present? && profiles_for_pagination.response.response.suggest.did_you_mean_fullname.first.options.present? %>
     <p class="py-5">
-      <%= t(:did_you_mean, scope: 'search', suggestions_fullname: profiles.response.response.suggest.did_you_mean_fullname.first.options.map {|sug| link_to(sug.text.capitalize, "profiles?&search=#{sug.text}")} * ", " ).html_safe %>
+      <%= t(:did_you_mean, scope: 'search', suggestions_fullname: profiles_for_pagination.response.response.suggest.did_you_mean_fullname.first.options.map {|sug| link_to(sug.text.capitalize, "profiles?&search=#{sug.text}")} * ", " ).html_safe %>
     </p>
   <% elsif params[:search].blank? %>
     <p class="py-5">

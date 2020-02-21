@@ -18,61 +18,10 @@ Category.create(name_en: "Science & Technology", name_de: "Wissenschaft & Techni
 
 puts "10 categories were created"
 
-ActsAsTaggableOn::Tag.create(name: "Career in life", ).categories << Category.find_by(name: "Marketing & PR")
-ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "en")
-ActsAsTaggableOn::Tag.create(name: "Cats").categories << Category.find_by(name: "Body & Soul")
-ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "en")
-ActsAsTaggableOn::Tag.create(name: "Dog").categories << Category.find_by(name: "Body & Soul")
-ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "en")
-ActsAsTaggableOn::Tag.create(name: "Politics in Parlament").categories << Category.find_by(name: "Politics & Society")
-ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "en")
-ActsAsTaggableOn::Tag.create(name: "Javascript").categories << Category.find_by(name: "Science & Technology")
-ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "en")
-ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "de")
-ActsAsTaggableOn::Tag.create(name: "Closure").categories << Category.find_by(name: "Science & Technology")
-ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "en")
-ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "de")
-ActsAsTaggableOn::Tag.create(name: "Latin America").categories << Category.find_by(name: "Politics & Society")
-ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "en")
-ActsAsTaggableOn::Tag.create(name: "Gender").categories << Category.find_by(name: "Diversity")
-ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "en")
-ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "de")
-ActsAsTaggableOn::Tag.create(name: "Girlsday").categories << Category.find_by(name: "Career & Education")
-ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "en")
-ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "de")
-ActsAsTaggableOn::Tag.create(name: "Klimapolitik").categories << Category.find_by(name: "Environment @ Substainablility")
-ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "de")
-ActsAsTaggableOn::Tag.create(name: "Climatejustice").categories << Category.find_by(name: "Environment @ Substainablility")
-ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "en")
-ActsAsTaggableOn::Tag.create(name: "erneuerbare Energien").categories << Category.find_by(name: "Environment @ Substainablility")
-ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "de")
-ActsAsTaggableOn::Tag.create(name: "Migration in Europe").categories << Category.find_by(name: "Politics & Society")
-ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "en")
-ActsAsTaggableOn::Tag.create(name: "Everyday Pysics").categories << Category.find_by(name: "Science & Technology")
-ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "en")
-ActsAsTaggableOn::Tag.create(name: "Social Media").categories << Category.find_by(name: "Internet & Media")
-ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "en")
-ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "de")
-ActsAsTaggableOn::Tag.create(name: "Arbeitsrecht").categories << Category.find_by(name: "Politics & Society")
-ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "de")
-ActsAsTaggableOn::Tag.create(name: "Gewerkschaft Verdi").categories << Category.find_by(name: "Politics & Society")
-ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "de")
-ActsAsTaggableOn::Tag.create(name: "Film").categories << Category.find_by(name: "Arts & Culture")
-ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "en")
-ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "de")
-ActsAsTaggableOn::Tag.create(name: "Feminismus").categories << Category.find_by(name: "Diversity")
-ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "de")
-ActsAsTaggableOn::Tag.create(name: "Suffragetten").categories << Category.find_by(name: "Diversity")
-ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "de")
-ActsAsTaggableOn::Tag.create(name: "Eigenständigkeit").categories << Category.find_by(name: "Companies & Start-ups")
-ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "de")
-
-puts "21 tags were created and assigned to Categories and languages"
-
-
 
 puts "Creating some DE profiles..."
-random_number= 1 + rand(20)
+random_number= 1 + rand(9)
+tags = ["umweltschutz","Haustiere","Aussenpolitik","Antifaschismus","Mode","Wellness","Familie","Kinder","Mutter sein","Career in life"]
 
 300.times do |i|
   Profile.create!(firstname: "Jane",
@@ -106,7 +55,7 @@ random_number= 1 + rand(20)
                            Arendt died in New York in 1975.",
                   iso_languages: ['de','en'],
                   profession: "Mein Beruf",
-                  topic_list: ActsAsTaggableOn::Tag.order("RANDOM()").limit(1 + rand(5)).to_a
+                  topic_list: tags[random_number]
   )
 
   if i % 10 == 0
@@ -117,8 +66,6 @@ random_number= 1 + rand(20)
 
   puts "#{i} german profiles created" if (i % 10 == 0)
 end
-
-puts "Creating some EN profiles..."
 
 200.times do |i|
   Profile.create!(firstname: "Claire",
@@ -141,7 +88,7 @@ puts "Creating some EN profiles..."
                           As a political theoretician, Luxemburg developed a humanitarian theory of Marxism, stressing democracy
                           and revolutionary mass action to achieve international socialism.",
                   profession: "My profession",
-                  topic_list: ActsAsTaggableOn::Tag.order("RANDOM()").limit(1 + rand(5)).to_a
+                  topic_list: tags[random_number]
                   )
   if i % 10 == 0
     Profile.last.medialinks.build(url: "http://conqueringthecommandline.com/book", description: "Unix and Linux Commands for Developers", title: "conqueringthecommandline", language: "en" ).save!
@@ -150,8 +97,61 @@ puts "Creating some EN profiles..."
 
   puts "#{i} english profiles created" if (i % 10 == 0)
 end
+# ActsAsTaggableOn::Tag.create(name: "Career in life", ).categories << Category.find_by(name: "Marketing & PR")
+# ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "en")
+# ActsAsTaggableOn::Tag.create(name: "Cats").categories << Category.find_by(name: "Body & Soul")
+# ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "en")
+# ActsAsTaggableOn::Tag.create(name: "Dog").categories << Category.find_by(name: "Body & Soul")
+# ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "en")
+# ActsAsTaggableOn::Tag.create(name: "Politics in Parlament").categories << Category.find_by(name: "Politics & Society")
+# ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "en")
+# ActsAsTaggableOn::Tag.create(name: "Javascript").categories << Category.find_by(name: "Science & Technology")
+# ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "en")
+# ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "de")
+# ActsAsTaggableOn::Tag.create(name: "Closure").categories << Category.find_by(name: "Science & Technology")
+# ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "en")
+# ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "de")
+# ActsAsTaggableOn::Tag.create(name: "Latin America").categories << Category.find_by(name: "Politics & Society")
+# ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "en")
+# ActsAsTaggableOn::Tag.create(name: "Gender").categories << Category.find_by(name: "Diversity")
+# ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "en")
+# ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "de")
+# ActsAsTaggableOn::Tag.create(name: "Girlsday").categories << Category.find_by(name: "Career & Education")
+# ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "en")
+# ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "de")
+# ActsAsTaggableOn::Tag.create(name: "Klimapolitik").categories << Category.find_by(name: "Environment @ Substainablility")
+# ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "de")
+# ActsAsTaggableOn::Tag.create(name: "Climatejustice").categories << Category.find_by(name: "Environment @ Substainablility")
+# ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "en")
+# ActsAsTaggableOn::Tag.create(name: "erneuerbare Energien").categories << Category.find_by(name: "Environment @ Substainablility")
+# ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "de")
+# ActsAsTaggableOn::Tag.create(name: "Migration in Europe").categories << Category.find_by(name: "Politics & Society")
+# ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "en")
+# ActsAsTaggableOn::Tag.create(name: "Everyday Pysics").categories << Category.find_by(name: "Science & Technology")
+# ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "en")
+# ActsAsTaggableOn::Tag.create(name: "Social Media").categories << Category.find_by(name: "Internet & Media")
+# ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "en")
+# ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "de")
+# ActsAsTaggableOn::Tag.create(name: "Arbeitsrecht").categories << Category.find_by(name: "Politics & Society")
+# ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "de")
+# ActsAsTaggableOn::Tag.create(name: "Gewerkschaft Verdi").categories << Category.find_by(name: "Politics & Society")
+# ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "de")
+# ActsAsTaggableOn::Tag.create(name: "Film").categories << Category.find_by(name: "Arts & Culture")
+# ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "en")
+# ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "de")
+# ActsAsTaggableOn::Tag.create(name: "Feminismus").categories << Category.find_by(name: "Diversity")
+# ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "de")
+# ActsAsTaggableOn::Tag.create(name: "Suffragetten").categories << Category.find_by(name: "Diversity")
+# ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "de")
+# ActsAsTaggableOn::Tag.create(name: "Eigenständigkeit").categories << Category.find_by(name: "Companies & Start-ups")
+# ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "de")
 
-puts "Creating admin profile..."
+# puts "21 tags were created and assigned to Categories and languages"
+
+
+
+
+# puts "Tags were added to profiles"
 
 Profile.create(firstname: "Karen",
                lastname: "Smith",

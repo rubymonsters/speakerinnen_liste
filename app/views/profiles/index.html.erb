@@ -7,18 +7,18 @@
       <% if params[:category_id] %> <%# when in categories scope %>
         <%= link_to t(:category, scope: 'profiles',
             category_name: @category.name,
-            profiles_count: @profiles.total_count,
+            profiles_count: @profiles_for_pagination.total_count,
             topics_count: @tags_in_category_published.size
           ).html_safe, '#speakers', class: 'h4' %>
       <% elsif params[:topic] %> <%# when in topic scope %>
         <%= link_to t(:profiles_topics, scope: 'search',
-            profiles_count: @profiles.total_count,
+            profiles_count: @profiles_for_pagination.total_count,
             topics_name: params[:topic]).html_safe,
             '#speakers', class: 'h4' %>
       <% elsif params[:search] %> <%# if in search: %>
         <%= link_to t(:success, scope: 'search' ).html_safe +
                     t(:result, scope: 'search',
-                    count: @profiles.total_count).html_safe,
+                    count: @profiles_for_pagination.total_count).html_safe,
                     '#speakers', class: 'h4' %>
       <% else %>
         <h4><%= t(:all_speakerinnen, scope: 'profiles.index', profiles_count: @profiles_count).html_safe %></h4>
@@ -36,6 +36,7 @@
     <%= render partial: 'shared/search_filter',
       locals: {
         profiles: @profiles,
+        profiles_for_pagination: @profiles_for_pagination,
         aggs_languages: @aggs_languages,
         aggs_countries: @aggs_countries,
         aggs_cities: @aggs_cities
@@ -45,11 +46,11 @@
 
 
   <a id="speakers"></a>
-  <%= paginate @profiles %>
+  <%= paginate @profiles_for_pagination %>
 
   <%= render partial: 'profiles/profile_search', collection: @profiles, as: :profile %>
 
-  <%= paginate @profiles %>
+  <%= paginate @profiles_for_pagination %>
 
   <a id="tag_cloud_anchor"></a>
   <h5 class="text-center"><%= t(:more_options, scope: 'search').html_safe %></h5>
