@@ -3,6 +3,9 @@
 <div class="row">
   <div class="col-md-3">
     <%= profile_image_link(@profile) %>
+    <% if @profile.image.attached? && !@profile.copyright.blank? %>
+      <p>&#169; <%= @profile.copyright %></p>
+    <% end %>
     <div class="profile-subtitle">
       <%= @profile.main_topic_or_first_topic if @profile.main_topic_or_first_topic %>
     </div>
@@ -156,6 +159,16 @@
   <% end %>
   </div>
 </div>
+
+
+<% if @profile.personal_note %>
+  <div class="row my-3">
+    <div class="col p-3 bg--white">
+      <h5><%= t(:personal_note, scope: 'profiles.show') %></h5>
+      <%= simple_format(@profile.personal_note) %>
+    </div>
+  </div>
+<% end %>
 
 <% if @profile.bio %>
   <div class="row my-3">

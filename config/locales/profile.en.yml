@@ -14,6 +14,7 @@ en:
       delete_image: "<i class='fa fa-trash pr-2'></i>Delete my photo"
       update: "Update your profile"
       picture: "A picture of me:"
+      copyright: "Picture copyright"
       image_info: "Please upload a photo in <b>color</b>, we show it in black and white.
         Make sure you use .jpg, .jpeg or .png and that you have all copyrights for this photo.
         The size of your photo should be<b> smaller than 1MB</b>."
@@ -22,6 +23,7 @@ en:
       translated_infos: "Translated Infos"
       personal_infos: "Personal Infos"
       profession: "My Profession:"
+      personal_note: "Personal note"
       bio: "My bio in %{language}: <i class='fa fa-info-circle' aria-hidden='true'></i>
         <br><small class='form-text text-muted'>You can use simple HTML tags to format the text. For example: <i>< i > italic < /i ></i> or <b>< b > bold < /b ></b>.</small>"
       bio_tooltip: "Here you can add a short or long bio of yourself. Please also add specific expertise and topics you feel comfortable speaking about. This will help organizers of events to understand whether you might be the person they're looking for."
@@ -49,6 +51,7 @@ en:
       languages: "My languages:"
       profession: "My Profession:"
       media: "Examples of previous talks / appearances:"
+      personal_note: "Personal note:"
       bio: "My bio:"
       websites: "My websites/blogs:"
       city: "My city:"

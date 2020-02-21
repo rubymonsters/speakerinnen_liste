@@ -94,6 +94,8 @@ class Admin::ProfilesController < Admin::BaseController
       :topic_list,
       :medialinks,
       :admin_comment,
+      :personal_note_de,
+      :personal_note_en,
       :bio_de,
       :bio_en,
       :main_topic_de,

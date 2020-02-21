@@ -14,6 +14,7 @@ de:
       delete_image: "<i class='fa fa-trash pr-2'></i>Lösche mein Foto"
       update: "Aktualisiere dein Profil"
       picture: "Ein Foto von mir:"
+      copyright: "Foto-Copyright"
       image_info: "Lade bitte das Foto in <b>Farbe</b> hoch, wir zeigen es in Graustufen.
         Nutze .jpg, .jpeg oder .png und achte darauf, daß Du die Rechte zu diesem Foto besitzt!
         Die Größe des Fotos sollte <b>kleiner als 1MB</b> sein."
@@ -21,6 +22,7 @@ de:
       lastname: "Mein Nachname:"
       translated_infos: "Übersetzte Infos"
       personal_infos: "Persönliche Infos"
+      personal_note: "Persönliche Anmerkung"
       bio: "Meine Biografie auf %{language}: <i class='fa fa-info-circle' aria-hidden='true'></i>
       <br><small class='form-text text-muted'>Du kannst einfache HTML Tags nutzen, um den Text zu formatieren. Zum Beispiel: <i>< i >italic< /i ></i> oder <b>< b > fett < /b ></b>.</small>"
       bio_tooltip: "Hier ist Platz für eine kurze oder auch längere Bio. Außerdem sollten hier Fachkenntnisse und mögliche Vortragsthemen genauer beschrieben werden. Das hilft Veranstalterinnen und Veranstaltern herauszufinden, ob Ihr die Richtigen für ihr Event sein könntet."
@@ -47,6 +49,7 @@ de:
       topics: 'Meine Themen:'
       languages: "Meine Sprache/n:"
       media: "Meine Vorträge / Referenzen:"
+      personal_note: "Persönliche Anmerkung:"
       bio: "Meine Biografie: "
       website: "Meine Webseite/Blog:"
       websites: "Meine Webseiten/Blogs:"
