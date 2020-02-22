@@ -23,7 +23,7 @@ class ProfilesController < ApplicationController
     #   @profiles_count = @profiles.total_count
     if params[:search]
       @profiles_for_search= profiles_for_search
-      @profiles = @profiles_for_search.empty? ? profiles_for_index : @profiles_for_search
+      @profiles = @profiles_for_search
       # sum of search results concerning certain attributes
       @aggs = profiles_for_search.response.aggregations
       @aggs_languages = @aggs[:lang][:buckets]

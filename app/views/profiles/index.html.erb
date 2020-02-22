@@ -4,9 +4,9 @@
   <% if params[:search] %>
     <div class="row">
       <div class="col-12 py-5">
-        <h1>
+        <span class="h1">
           <%= t(:success, scope: 'search').html_safe + t(:result, scope: 'search', count: @profiles_for_search.count).html_safe %><b><%= params[:search] if params[:search] %></b>
-        </h1>
+        </span>
         <span class="float-right"><%= link_to("<i class='fa fa-filter pr-2'></i>".html_safe + "Filter by themes", profiles_path, class: '')  %>
         </span>
       </div>
@@ -24,20 +24,16 @@
             %>
         </div>
       </div>
-    <% else %>
-      <hr>
-      <div class="row">
-        <div class="col-12 pb-2 text-center" style="margin-top: 150px;" >
-          <h1>
-          All our speakerinnen* - get inspired ( am text muss noch gearbeitet werden! )
-          <h1>
-        </div>
-      </div>
     <% end %>
   <% end %>
 
   <!-- only show the category filter when not in search scope -->
   <% unless params[:search] %>
+      <div class="row ml-5 mt-2">
+        <div class="col-md-12">
+    <%= link_to("<< All Speakerinnen", profiles_path(:anchor => "speakers_anchor"), class: "pt-3") %>
+  </div>
+</div>
     <div class="collapse show" id="collapseFilter">
 
       <div class="row p-5">

@@ -3,7 +3,7 @@
     <p id="category_explantation" class="py-2 font-weight-bold">Wähle ein Kategorie:</p>
     <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
       <% @categories.each do |category| %>
-        <a class="h5 nav-link category-link <%= "active show" if category.id.to_s == ( params[:category_id]  || @category.id.to_s ) %>" id="v-pills-<%= category.short_name %>-tab" data-toggle="pill" href="#v-pills-<%= category.short_name %>" role="tab" aria-controls="v-pills-<%= category.short_name %>" aria-selected="false">
+        <a class="h5 category-link pb-2 <%= "active show" if category.id.to_s == ( params[:category_id]  || @category.id.to_s ) %>" id="v-pills-<%= category.short_name %>-tab" data-toggle="pill" href="#v-pills-<%= category.short_name %>" role="tab" aria-controls="v-pills-<%= category.short_name %>" aria-selected="false">
           <i class="fa fa-circle pr-2 small" id="icon-<%= category.short_name%>"></i><%= category.name %>
         </a>
       <% end %>
@@ -11,10 +11,9 @@
   </div>
 
   <div class="col-8">
-    <p id="tags_explantation" class="py-2 d-none font-weight-bold"><%= t(:filter, scope: 'category') %></p>
+    <p id="tags_explantation" class="py-2 font-weight-bold <%= "d-none" unless params[:category_id] %>"><%= t(:filter, scope: 'category') %></p>
     <% @categories.each do |category| %>
-      <%# link_to("Wähle alle Tags aus #{category.name}", category_path(category.id, anchor: "speakers"), class: "mb-1 text-dark btn category-search d-none bg-#{category.short_name} category-search-#{category.short_name}") %>
-      <span id="<%= category.short_name %>" class="choose_all_tags mb-1 text-dark btn category-search d-none bg-<%=category.short_name%> category-search-<%= category.short_name %>">
+      <span id="<%= category.short_name %>" class="choose_all_tags mb-2 text-dark btn tag-button category-search bg-<%=category.short_name%> category-search-<%= category.short_name %> <%= "d-none" unless category.id.to_s ==  params[:category_id] %> ">
         <%= "Wähle alle Tags aus #{category.name}"  %>
       </span>
     <% end %>
