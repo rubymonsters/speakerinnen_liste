@@ -4,11 +4,10 @@
   <% if params[:search] %>
     <div class="row">
       <div class="col-12 py-5">
-        <span class="h3 serif">
+        <h1>
           <%= t(:success, scope: 'search').html_safe + t(:result, scope: 'search', count: @profiles_for_search.count).html_safe %><b><%= params[:search] if params[:search] %></b>
-        </span>
-
-        <span class="float-right text-uppercase"><%= link_to("<i class='fa fa-filter pr-2'></i>".html_safe + "Filter by themes", profiles_path, class: '')  %>
+        </h1>
+        <span class="float-right"><%= link_to("<i class='fa fa-filter pr-2'></i>".html_safe + "Filter by themes", profiles_path, class: '')  %>
         </span>
       </div>
     </div>
@@ -29,9 +28,9 @@
       <hr>
       <div class="row">
         <div class="col-12 pb-2 text-center" style="margin-top: 150px;" >
-          <h3>
+          <h1>
           All our speakerinnen* - get inspired ( am text muss noch gearbeitet werden! )
-          <h3>
+          <h1>
         </div>
       </div>
     <% end %>
@@ -68,7 +67,8 @@
         <h1>
           <%= t(:all_tagged_speakerinnen, scope: 'profiles.index', count: @profiles_count).html_safe + t(:tag_filter, scope: 'profiles.index', count: @tags.count).html_safe %>
         </h1>
-        <h3><%= raw @tags.map { |tag_name| ActsAsTaggableOn::Tag.where(name: tag_name).first }.join(', ') %><h3>
+
+        <h3><%# raw @tags.map { |tag_name| ActsAsTaggableOn::Tag.where(name: tag_name).first }.join(', ') %><h3>
       <% end %>
 
     </div>
@@ -89,30 +89,6 @@
 </div>
 
 <script type="text/javascript" charset="utf-8">
-  // tag filter
-  // $( ".select-tag" ).click(function() {
-  //   $(this).addClass( "disabled" );
-  //   var oldtags = $( "#taginput" ).val();
-  //   var newtag = $( this ).text();
-  //   var connector = ", "
-  //   if(oldtags.length === 0) { var connector = ""};
-  //   $( "#taginput" ).val( oldtags + connector + newtag );
-  // });
-  // $( "#clear" ).click(function() {
-  //   $( "#taginput" ).val('');
-  //   $(".select-tag").removeClass( "disabled" );
-  // });
-
-  // toogle the close and show button on the apply filter
-  // $('#collapseFilter').on('show.bs.collapse', function () {
-  //   $( "#icon" ).removeClass( "fa-chevron-down" );
-  //   $( "#icon" ).addClass( "fa-chevron-up" );
-  // });
-  // $('#collapseFilter').on('hide.bs.collapse', function () {
-  //   $( "#icon" ).removeClass( "fa-chevron-up" );
-  //   $( "#icon" ).addClass( "fa-chevron-down" );
-  // });
-
 
   // elasticsearch search filter
   $('.expander_countries').click(function(){
