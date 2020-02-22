@@ -3,9 +3,9 @@ de:
     home:
       search:
         heading: "Mehr Frauen auf die Bühnen!"
-        tagline: "Finde Rednerinnen, Referentinnen & Moderatorinnen<br> für Deine Konferenz."
-        find_speaker: "Finde Speakerinnen"
-        search_text: "Namen oder Thema"
+        tagline: "Finde Rednerinnen, Referentinnen & Moderatorinnen<br> für Deine Konferenz:"
+        find_speaker: "Finde Deine Speakerinnen"
+        search_placeholder: "Namen oder Thema"
         search_speaker: "Suche"
       all_categories: "Kategorien und Themen >>"
       all_speakers: "Alle Speakerinnen* >>"
