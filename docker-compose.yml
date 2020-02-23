@@ -4,6 +4,8 @@ services:
     image: postgres:9.5
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=password
   elastic:
     image: elasticsearch:2.4.5
     volumes:
