@@ -10,6 +10,7 @@ class PagesController < ApplicationController
     @categories = Category.sorted_categories
     @blog_posts = BlogPost.order('created_at DESC').limit(2)
     @features   = Feature.published_feature.order(:position)
+    @speakerinnen_count = Profile.is_published.size
   end
 
   def render_footer?

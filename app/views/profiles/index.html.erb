@@ -31,7 +31,7 @@
   <% unless params[:search] %>
       <div class="row ml-5 mt-2">
         <div class="col-md-12">
-    <%= link_to("<< All Speakerinnen", profiles_path(:anchor => "speakers_anchor"), class: "pt-3") %>
+    <%= link_to("All Speakerinnen", profiles_path(:anchor => "speakers_anchor"), class: "pt-3") %>
   </div>
 </div>
     <div class="collapse show" id="collapseFilter">
@@ -50,7 +50,7 @@
 
     <hr class="mt-5">
     </div> <!-- tag filter -->
-    <a href="#top" class="p-5"><< Up to the filter</a>
+    <a href="#top" class="p-5">Up to the filter  <i class='fa fa-filter pr-2'></i> </a>
   <% end %>
 
   <!-- Found speaker when in search or filter function -->

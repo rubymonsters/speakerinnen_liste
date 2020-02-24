@@ -1,11 +1,10 @@
 body {
-  font-family: $serif;
+  font-family: $sans-serif;
   color: $font-color;
   background-color: white;
 }
 
 a, .link, #expander {
-  font-family: $sans-serif;
   color: $link-color;
   text-decoration: none;
   cursor: pointer;
@@ -13,6 +12,11 @@ a, .link, #expander {
   &:hover {
     text-decoration: underline;
   }
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: $serif;
+
 }
 
 .btn:focus{
