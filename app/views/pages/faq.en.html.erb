@@ -1,102 +1,198 @@
-<div class="container bg--white">
-  <h1 class="display-4 pt-5">FAQ/How-to</h1>
-  <%= link_to '>> How-to >> Guidelines on building a user profile and become a Speakerin', '#howto_anker' %>
-
-  <h4 class="pt-4">Why is there no speaker for the topic I am looking for?</h4>
-  <p>Possibly, nobody has created a tag for this topic yet. As soon as a speaker names this topic as one of her tags, this topic becomes visible as a tag within the topic range.</p>
-  <h4 class="pt-4">Can anybody join in?</h4>
-  <p>Yes, everyone who defines herself as a woman.</p>
-  <h4 class="pt-4">Why has my profile not been activated yet?</h4>
-  <p>One of two reasons may apply:
-  <br>a.) If your profile has just been created, it might take a bit since we're not online 24/7.
-  <br>b.) We might have thought that your profile is a draft version because we might have had the impression that there is too little information so far. In case you mean to have it activtated as is, please drop us a line: team@speakerinnen.org
+<div class="container bg--white pb-5">
+  <h1 class="display-4 pt-5">FAQ</h1>
+  <p>Here we answer your most important questions about the Speakerinnen.org platform and how you can create as meaningful a profile as possible.
+  Who can register on Speakerinnen.org?:
+  The goal of Speakerinnen.org is to get more women on stages and podiums, to conferences, workshops, meetings, and into media. Hence, everybody who identifies as a women can register herself. The Speakerinnen team vets every submission for completeness before publishing it.
   </p>
 
-  <!-- Anker for donations -->
-  <a id="donate_anker"></a>
+<div class="accordion" id="accordionExample">
 
-  <a id="howto_anker"></a>
-
-  <h4 class="pt-4">How can I donate any money?</h4>
-  <p>Thank you for such a nice and cooperative idea! We will come up with a possibility to donate soon!</p>
-
-  <h1 class="display-4">How-to</h1>
-  <p class="font-weight-bold"> ... become a Speakerin: Guidelines on building a user profile ... </p>
-  <h4 class="pt-4"> General information: </h4>
-  <p> Speakerinnen is a free online platform that encourages and supports women* speakers to take conference stages and join panels, lead workshops or meetings and appear more frequently in public.
-    <br> Event organizers have the opportunity to seek out potential speakers from a growing pool of professionals with expertise in a broad range of topics, including digital business development, ocean conservation as well as gender studies. </p>
-  <p><b>Registration is free to all.</b></p>
-  <p> Albeit, the team behind Speakerinnen checks each entry for completeness before adding it to the website. The document at hand guides you through the registration process, indicates a few details you should be aware of and hopes to make this experience as smooth and enjoyable as possible. In this regard we added specific advice for the creation of a user profile. </p>
-  <p> We are looking forward to finding your application at Speakerinnen.org! </p>
-
-  <p class="py-4 font-weight-bold">There are four steps between you and your profile on Speakerinnen.org </p>
-
-  <h4> Step1: Registration</h4>
-  <div class="row">
-    <div class="col-lg-6 col-md-12">
-      <p>At the right upper corner of the website you find a button that reads "Register as a speaker" (yes it's waiting for you to click it).
-        <br> At first we ask you to enter a <b>valid email address</b> and <b>password</b> of choice. The latter you will have to enter twice. Press "Register" and off you go.</p>
-      <p>Only a short moment later, you find an email in your inbox with the following <b>confirmation link</b> "Confirm my account".
-        <br>After you click it, we redirect you back to Speakerinnen.org. Now you area already able to sign in with your email and password.</p>
-      <p>Alternatively you can <b>register using an existing twitter account</b>.
-        <br>In case you prefer this option, follow the link "Or Sign up with Twitter", which takes you to the according authorization screen. After confirming your intention to log in with twitter, you find yourself back on Speakerinnen.org.
-        <br> At this point, you still need to provide a valid email address and confirm it. It works just as described in the previous paragraph. </p>
+  <div class="card">
+    <div class="card-header" id="headingOne">
+      <h2 class="mb-0">
+        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          <h4>Who can register on Speakerinnen.org?</h4>
+        </button>
+      </h2>
     </div>
-    <div class="col-lg-6 col-md-12">
-      <%= image_tag('faq_login_en.png', class:'border img-fluid') %>
+    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+      <div class="card-body">
+        <p>The goal of Speakerinnen.org is to get more women on stages and podiums, to conferences, workshops, meetings, and into media. Hence, everybody who identifies as a women can register herself. The Speakerinnen team vets every submission for completeness before publishing it.</p>
+      </div>
     </div>
   </div>
 
-  <h4 class="pt-4">Step 2: Profile</h4>
-  <div class="row">
-    <div class="col-lg-6 col-md-12">
-      <p>After you have signed in, you are redirected to your profile. Clicking on <b>"Edit profile"</b> lets you edit your name, twitter handle, location and email address.
-        <br> Furthermore, this is where you can provide a link to your homepages, plus indicate which languages you speak.
-        <br><br><b>Attention: No programming languages allowed here, save them for later.</b> </p>
-      <p>Uploading a <b>profile picture</b> works best by clicking „Datei auswählen“, just below the section titled "Picture". jpg, jpeg or png are all supported formats, as long as you keep the size of the image under 1 MB. Please make sure you own the copyright for the image you intend to upload.
-        <br><b>You may have noticed that all images are displayed in black and white. Snap. When the mouse pointer moves over a picture, it reveals its true colors. Please consider this effect when choosing your own portrait.</b> </p>
-      <p> Next up: <b>Tags</b>.
-        <br>With tags we mean references of topics that you are familiar with or interests you would like to share. This could be anything from journalism to bio technology to network policy. Start by finding out which tags already exist.
-        <br>The easiest way to do this is to type the first letters of a word into our search mask and wait for auto-complete magic to kick in. If the suggested term matches what you had in mind, simply click on it and thus add it to your selection. Browsing through existing profiles will also give you a good overview and inspiration for your own tags.</p>
-      <p> Now it is time to pick your <b>main expertise</b>. There can only be one, therefore keep it crisp, keep it comprehensible. Good examples are "social media", "sustainable agriculture" and "human resources" amongst others.
-        <br>This main tag is the one that appears under your profile picture when scrolling through the list of Speakerinnen.<b> Note that space is limited to 30 characters only. No exceptions.</b> </p>
+  <div class="card">
+    <div class="card-header" id="headingTwo">
+      <h2 class="mb-0">
+        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+          <h4>Which topics can I choose?</h4>
+        </button>
+      </h2>
     </div>
-    <div class="col-lg-6 col-md-12">
-      <%= image_tag('faq_edit_profile_en.png', class:'border img-fluid') %>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-lg-6 col-md-12">
-      <p>Moving on to the part of the website that will contain your <b>biography</b>.
-        <br><b> Filling out this field is mandatory, we are not able to activate your account if you leave it empty.</b> You have the option to provide your biography in two languages (there is an additional input box), however, that is entirely up to you.<br> The second version of your biography is displayed when switching to the English/German version of Speakerinnen.org. The according link can be found at the top right corner of the page. </p>
-      <p>Again, please remember to save your input by clicking on „Update your profile“. Thus, you are able to review your current profile and change information anytime and as often as you like. </p>
-    </div>
-      <%= image_tag('faq_edit_profile_bio_en.png', class:'border img-fluid') %>
+    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+      <div class="card-body">
+        <p>You can freely choose your own topics. Upon entering one, you'll get suggestions of similar topics - you can choose one of them or create a new topic. Topics can be in any language. We organize topics into categories, which are then displayed on the Speakerinnen site.</p>
+      </div>
     </div>
   </div>
 
-  <h4 class="pt-4">Step 3: References</h4>
-  <div class="row">
-    <div class="col-lg-6 col-md-12">
-      <p><b>References</b> are collected and displayed on a subpage of Speakerinnen.org. On the right handside of the website you find a button <b> „Edit references“</b>, which takes you to a page with an overview of all your references.
-        <br> "Add reference" opens a form where you can add another link to the list, choose a title and describe it with a few lines. Again, remember to save your input, in this case "Add reference" does the trick. The new link is now available under the section "Examples of previous talks" in your profile.
-        <br>You can alter the order of your references by drag and drop, simply move them up or down. </p>
-      <p>Well done, you have completed your part. It is now <b>upon us to activate your account</b>. Until then, you can find the prospective setup with all contents by visiting "Show own Profile". That is exactly how your user profile is going to look.</p>
+  <div class="card">
+    <div class="card-header" id="headingThree">
+      <h2 class="mb-0">
+        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+         <h4>Which languages can I use for my profile?</h4>
+        </button>
+      </h2>
     </div>
-    <div class="col-lg-6 col-md-12">
-      <%= image_tag('faq_add_profile_references_en.png', class:'border img-fluid') %>
+    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+      <div class="card-body">
+        <p>You can create your profile in either exclusively German, exclusively English, or once in each language. If you create your profile in just one of the languages, it will only be shown in the <a href="https://speakerinnen.org/de">German</a> or <a href="https://speakerinnen.org/en">English</a> version of the site. If you create your profile in both languages, it will be shown in both language versions.</p>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" id="headingFour">
+      <h2 class="mb-0">
+        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+          <h4>Why is my profile not yet published?</h4>
+        </button>
+      </h2>
+    </div>
+    <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+      <div class="card-body">
+       <p>The Speakerinnen team consists of volunteers and is not constantly online. If you just submitted your profile, it can take a moment before it is reviewed and published. If you only provided very little information, we may assume that it's not yet complete. If you want to publish it anyways, send a mail to <a href=”mailto:team@speakerinnen.org”>team@speakerinnen.org</a>.</p>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" id="headingFive">
+      <h2 class="mb-0">
+        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+          <h4>I already have an account - how can I change mail address and/or password?</h4>
+        </button>
+      </h2>
+    </div>
+    <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
+      <div class="card-body">
+       <p>Log in under "Login" with your mail address and password. After logging in, click on "Edit user account" in the upper right corner of your profile. Here you can change your email address and/or your password. One click on "Update account" - done.</p>
+      </div>
     </div>
   </div>
 
-  <h4 class="pt-4">Step 4: Account activation</h4>
-  <div class="row">
-    <div class="col">
-      <p>As soon as we get a notification about a new registration, and more importantly a completed profile, we do our best to review it in due course.
-        <br>However, if you have any questions or concerns while you are waiting for your profile to pop up on Speakerinnen.org, please don't hesitate to get in touch with Christiane by writing an email to christiane[at]speakerinnen.org!
-        <br> Once the activation process was successful we will send you an automated email. </p>
+  <div class="card">
+    <div class="card-header" id="headingSix">
+      <h2 class="mb-0">
+        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+          <h4>How can I give you money?</h4>
+        </button>
+      </h2>
+    </div>
+    <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordionExample">
+      <div class="card-body">
+        <p>Thank you for such a nice and cooperative idea! You can donate money through the account of Kombüse e.V.: </p>
+        <ul class="list-unstyled pl-0 pb-5 mb-5 border-bottom font-weight-bold">
+          <li>Kombüse e.V.</li>
+          <li>Reference: speakerinnen</li>
+          <li>IBAN DE54 4306 0967 2049 2233 01</li>
+          <li>SWIFT/BIC GENODEM1GLS</li>
+        </ul>
+      </div>
     </div>
   </div>
 
-  <h1 class="py-5 mb-0"> Welcome to Speakerinnen.org! </h1>
+  <div class="card">
+    <div class="card-header" id="headingSeven">
+      <h2 class="mb-0">
+        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+          <h4>How do I create a speaker profile that is as meaningful as possible?</h4>
+        </button>
+      </h2>
+    </div>
+    <div id="collapseSeven" class="collapse" aria-labelledby="headingSeven" data-parent="#accordionExample">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-lg-6 col-md-12">
+            <h5 class="mt-4">Step 1: Register as Speaker</h5>
+            <p>At the top right of the page you will find the button "Register as Speaker" - click on it and off you go!
+            First you have to enter your e-mail address, then a password of your choice. Please repeat this password. Then click on "sign up".</p>
 
+            <p>You will now receive an e-mail to the address you entered. Here you will find the link "Confirm my account" - click on it!
+            You will now be taken back to the speaker's page, where you can log in with your email address and password.
+            </p>
+
+            <p>By the way: Registration also works via Twitter. Just click on "Or sign up with Twitter" and you will be forwarded to Twitter.
+            Here you will be asked: "Authorize speaker list to use your account? If you click on "Register", you will be taken back to the speaker page. Here you only need to enter an email address.
+            You will then receive an email with the sentence "Confirm my account". Clicking on it will take you back to the speaker's page, where you can log in with your email address and password.
+            </p>
+          </div>
+          <div class="col-lg-6 col-md-12 mt-4">
+            <%= image_tag('faq_login_en.png', class:'border img-fluid float-md-right') %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-6 col-md-12 mt-4">
+            <%= image_tag('faq_edit_profile_en.png', class:'border img-fluid float-md-left') %>
+          </div>
+          <div class="col-lg-6 col-md-12">
+            <h5 class="mt-4">Step 2: Fill out profile</h5>
+            <p>Once you are logged in, you will be taken to your profile page. It now says, "Nothing to see here yet ¯_(ツ)_/¯."
+            To complete your profile, click on the "Edit profile" button on the right.
+            On the page that now opens - "Update your profile" - you can and should enter various profile information: First name and last name, the country where you live and work and the languages you speak.
+            Please do not enter any programming languages - they belong to your topics.
+            </p>
+
+            <p>But first, on the very top of the page you will find the button "Browse" under "A picture of me". With this button you can upload a profile photo. Please use a jpg, jpeg or png and make sure that you own the rights to this photo! The size of the photo should be smaller than 1 MB.
+            You may have noticed that the profile photos on our site are displayed in black and white. If you move the mouse over them, the original will appear. Therefore it would be nice if you use a colored picture to create this effect.
+            </p>
+
+            <p>Now you can enter tags, i.e. the topics you are dealing with. This can be journalism, biotechnology or net feminism. Please check first if there are already tags you can use.
+            You can find them by simply entering the first few letters of your desired tag - then terms will be suggested. Or you can look at the speakers page to see which topics have already been entered.
+            </p>
+
+            <p>In the next step you will find two tabs: German and English. Here you can enter further profile information in both languages. You can also fill out only the German or only the English tab. Here you enter: the city you live in and, if available, a Twitter account and one or more websites.
+            Next, you should enter your main topic - just one, please be clear and easy to understand. Examples are "Social Media", "Sustainable Agriculture" or "Human Resources".
+            The main topic appears as a caption under your profile photo. Important: in the profile overview the main topic is limited to 31 characters.
+            </p>
+
+            <p>Now please do fill in the field "My bio in English"!
+            Without information in this field we cannot unlock the profile. This information is only displayed when you click on the German version of the page (see top right).</p>
+
+            <p>Finally, simply click on "Update your profile" at the bottom of the page and you will see your profile as others will see it after activation.
+            If necessary, you can edit your profile at any time.
+            </p>
+          </div>
+        </div>
+
+        <h5 class="mt-4">Step 3: Specify references</h5>
+        <div class="row">
+          <div class="col-lg-6 col-md-12">
+            <p>To enter references, please click on the button "Edit previous talks" on the right. The overview page of your references will open.
+            Then click on the button "Add previous talks" and enter a URL where the reference can be found, a headline and a short description. Then please use the drop-down menu to specify the language in which your presentation, your contribution to the discussion etc. is available. Then click on "Add reference" and the reference will be found in your profile under "My talks / references".
+            You can easily change the order of the references at any time by simply moving them up or down.
+            If you want to view your finished profile, just click on the link "View your profile" and you will see how your profile will look like after activation.
+            </p>
+          </div>
+          <div class="col-lg-6 col-md-12 mt-4">
+            <%= image_tag('faq_add_profile_references_en.png', class:'border img-fluid float-md-left') %>
+          </div>
+        </div>
+
+        <h5 class="mt-4">Step 4: Activation</h5>
+        <p>The team of speakers will receive a notification with every new registration. We will activate your profile - when it is complete - as soon as possible.
+        Should you have any questions or wonder why your profile is not yet visible, please contact Christiane from the Speakerinnen-Team at christiane[at]speakerinnen.org!
+        As soon as your profile is visible to everyone, you will receive an automatic email telling you: Your profile has now been activated!
+        </p>
+
+        <h5 class="mt-4">Tips: How do I create a speaker profile that is as meaningful as possible?</h5>
+        <ul>
+          <li>Insert a good photo of yourself! You can exchange this at any time if you wish.</li>
+          <li>Do not leave the category "My bio" empty! If it is not filled in, we usually cannot activate the profile.</li>
+          <li>Don't leave too much text in the category "My bio" - it should be clear, easy to understand and meaningful!</li>
+          <li>If possible, also fill in the category "Previous Talks". If you have not given any talks so far, describe your experiences in the biography that make up for this! Maybe there is also a website that illustrates your experiences. You can also enter this under "Previous Talks".</li>
+          <li>The tags serve to quickly and clearly show where your competences lie, so that the organisers can find a suitable speaker as quickly as possible. Therefore, orient yourself on the existing tags! If you enter new tags, do not use more than 1-2 words and describe your field of competence clearly and self-explanatory!</li>
+        <ul>
+      </div>
+    </div>
+  </div>
 </div>
