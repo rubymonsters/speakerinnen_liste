@@ -106,6 +106,8 @@ class Admin::ProfilesController < Admin::BaseController
       :website_en,
       :website_2_en,
       :website_3_en,
+      :profession_en,
+      :profession_de,
       :city_de,
       :city_en,
       :image,

@@ -378,6 +378,16 @@ ul#medialinks__list {
   font-size: 18px;
 }
 
+// fontawesome
+.fa-check-square {
+  color: #61bd2c;
+}
+
+.fa-times-rectangle {
+  color: #e51a1a;
+}
+
+
 // responsive
 @include media-breakpoint-down(sm) {
   h1, .display-4 {

@@ -41,8 +41,18 @@
           <% end %>
         </p>
       <% end %>
+
+      <p>
+        <i class="fa <%= profile.willing_to_travel ? 'fa-check-square' : 'fa-times-rectangle' %>">&nbsp;</i>
+        <%= t(:willing_to_travel, scope: 'profiles.show') %>
+      </p>
+
+      <p>
+        <i class="fa <%= profile.nonprofit ? 'fa-check-square' : 'fa-times-rectangle' %>">&nbsp;</i>
+        <%= t(:nonprofit, scope: 'profiles.show') %>
+      </p>
+
       <div class="text-right"><%= link_to ">>  " + t(:to_profile, scope: 'profiles.show'), profile %></div>
     </div>
-
   </div>
 </div>
