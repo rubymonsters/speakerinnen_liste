@@ -12,15 +12,13 @@
 
     <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
       <ul class="navbar-nav pr-5">
-        <% unless controller_name == 'pages' %>
-          <li class="nav-item active pt-3 ">
-            <%= form_tag(profiles_path, method: 'get', class: "form-inline text-capitalize small") do %>
-              <%= text_field_tag('search', params[:search], class: 'form-control typeahead profile__search mr-sm-2',
-                type: 'text', placeholder: t(:search_placeholder, scope: 'pages.home.search')) %>
-                <%= button_tag "<i class='fa fa-search'></i>".html_safe, class: "btn btn-link" %>
-            <% end %>
-          </li>
-        <% end %>
+        <li class="nav-item active pt-2 pr-5 ">
+          <%= form_tag(profiles_path, method: 'get', class: "form-inline text-capitalize small") do %>
+            <%= text_field_tag('search', params[:search], class: 'form-control twitter-typeahead profile__search mr-sm-2',
+              type: 'text', placeholder: t(:search_placeholder, scope: 'pages.home.search')) %>
+              <%= button_tag "<i class='fa fa-search'></i>".html_safe, class: "btn btn-link" %>
+          <% end %>
+        </li>
         <li class="nav-item active dropdown pt-3 pr-5">
           <a class="dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             More
@@ -41,16 +39,18 @@
           </div>
         </li>
         <% if profile_signed_in? %>
-          <li class="nav-item active pt-3">
+          <li class="nav-item active pt-3 pr-5">
             <%= link_to(t(:my_profile, scope: 'layouts.application'), profile_path(current_profile), class: "")%>
           </li>
-          <span class="mx-2" style="height: 77px;"></span>
           <li class="nav-item active pt-3">
             <%= link_to(t(:logout, scope: 'layouts.application'), destroy_profile_session_path, method: :delete, class: "") %>
           </li>
         <% else %>
-          <li class="nav-item active pt-3">
+          <li class="nav-item active pt-3 pr-5">
             <%= link_to(t(:login, scope: 'layouts.application'), new_profile_session_path, class: "") %>
+          </li>
+          <li class="nav-item active pt-3">
+            <%= link_to(t(:signup, scope: 'layouts.application'), sign_up_path) %>
           </li>
         <% end %>
         <% if admin?(current_profile) %>

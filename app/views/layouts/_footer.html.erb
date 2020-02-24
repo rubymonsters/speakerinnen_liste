@@ -7,7 +7,7 @@
         <%= link_to(image_tag('kombuese_logo.jpg', class:'pl-3', style: "width: 200px"), "https://www.kombuese.org/", class: "",target: 'blank' ) %>
       </div>
       <div class="col-7">
-        <nav class="py-2 nav justify-content-end text-uppercase">
+        <nav class="py-2 nav justify-content-end">
         <%= t(:twitter, scope: 'pages.home.footer').html_safe %>
         <!-- Make sure cookie consent is given -->
         <% if cookies[:cookie_consent].blank? %>
