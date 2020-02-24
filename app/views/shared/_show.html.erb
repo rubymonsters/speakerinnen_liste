@@ -6,10 +6,10 @@
     <% if @profile.image.attached? && !@profile.copyright.blank? %>
       <p>&#169; <%= @profile.copyright %></p>
     <% end %>
-    <div class="profile-subtitle">
-      <%= @profile.main_topic_or_first_topic if @profile.main_topic_or_first_topic %>
-    </div>
+  <div class="profile-subtitle">
+    <%= @profile.main_topic_or_first_topic if @profile.main_topic_or_first_topic %>
   </div>
+</div>
 
   <div class="col-md-6 p-3 mb-3 bg--white">
     <% unless @profile.fullname.present? %>
@@ -124,6 +124,19 @@
       <h5><%= t(:country, scope: 'profiles.show') %></h5>
       <p>
         <%= @profile.country_name %>
+      </p>
+    <% end %>
+
+    <% if @profile.willing_to_travel %>
+      <p>
+        <%= '<i class="fa fa-check-square-o">&nbsp;</i>'.html_safe %>
+        <%= t(:willing_to_travel, scope: 'profiles.show') %>
+      </p>
+    <% end %>
+    <% if @profile.nonprofit %>
+      <p>
+        <%= '<i class="fa fa-check-square-o">&nbsp;</i>'.html_safe %>
+        <%= t(:nonprofit, scope: 'profiles.show') %>
       </p>
     <% end %>
   </div>
