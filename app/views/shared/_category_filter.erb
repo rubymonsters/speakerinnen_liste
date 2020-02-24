@@ -13,7 +13,7 @@
   <div class="col-8">
     <p id="tags_explantation" class="py-2 font-weight-bold <%= "d-none" unless params[:category_id] %>"><%= t(:filter, scope: 'category') %></p>
     <% @categories.each do |category| %>
-      <span id="<%= category.short_name %>" class="choose_all_tags mb-2 text-dark btn tag-button category-search bg-<%=category.short_name%> category-search-<%= category.short_name %> <%= "d-none" unless category.id.to_s ==  params[:category_id] %> ">
+      <span id="<%= category.short_name %>" class="btn btn-primary choose_all_tags mb-2 category-search category-search-<%= category.short_name %> <%= "d-none" unless category.id.to_s ==  params[:category_id] %> ">
         <%= "Wähle alle Tags aus #{category.name}"  %>
       </span>
     <% end %>

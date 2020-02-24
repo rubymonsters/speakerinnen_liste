@@ -8,7 +8,6 @@
       </div>
       <div class="col-7">
         <nav class="py-2 nav justify-content-end">
-        <%= t(:twitter, scope: 'pages.home.footer').html_safe %>
         <!-- Make sure cookie consent is given -->
         <% if cookies[:cookie_consent].blank? %>
           <button type="button" class="btn btn-link px-2" data-toggle="modal" data-target="#contactHint">
@@ -19,7 +18,7 @@
         <% end %>
         <%= link_to t(:about_title, scope: 'pages.home.footer'), about_path, class: "px-3" %>
         <%= link_to t(:faq, scope: 'pages.home.footer'), faq_path, class: "px-3"  %>
-        <%= t(:github, scope: 'pages.home.footer').html_safe %>
+        <%= t(:twitter, scope: 'pages.home.footer').html_safe %>
         <%= link_to t(:title, scope: 'pages.imprint'), impressum_path, class: "px-3"%>
         <%= link_to t(:privacy, scope: 'pages.imprint'), privacy_path, class: "px-3" %>
       </nav>
