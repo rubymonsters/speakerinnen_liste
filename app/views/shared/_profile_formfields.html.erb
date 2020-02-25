@@ -125,7 +125,8 @@
       </div>
       <div class="form-group">
         <%= f.label :personal_note, t(:personal_note, scope: 'profiles.form',
-          language: t(:de, scope: 'i18n.language')).html_safe, id: "personal_note_de", class: "mt-3" %>
+          language: t(:de, scope: 'i18n.language')).html_safe, id: "personal_note_de", class: "mt-3",
+          title: t(:personal_note_tooltip, scope: 'profiles.form').html_safe %>
         <%= f.text_area :personal_note_de, as: :text, class: 'form-control', rows: 5 %>
       </div>
       <div class="form-group">
@@ -166,7 +167,8 @@
       </div>
       <div class="form-group">
         <%= f.label :personal_note, t(:personal_note, scope: 'profiles.form',
-          language: t(:en, scope: 'i18n.language')).html_safe, id: "personal_note_en", class: "mt-3" %>
+          language: t(:en, scope: 'i18n.language')).html_safe, id: "personal_note_en", class: "mt-3",
+          title: t(:personal_note_tooltip, scope: 'profiles.form').html_safe %>
         <%= f.text_area :personal_note_en, as: :text, class: 'form-control', rows: 5 %>
       </div>
       <div class="form-group">

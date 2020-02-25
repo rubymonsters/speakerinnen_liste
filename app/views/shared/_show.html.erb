@@ -3,12 +3,12 @@
 <div class="row">
   <div class="col-md-3">
     <%= profile_image_link(@profile) %>
+    <% if @profile.image.attached? && !@profile.copyright.blank? %>
+      <p><small><i>&#169;<%= @profile.copyright %></i></small></p>
+    <% end %>
     <div class="profile-subtitle">
       <%= @profile.main_topic_or_first_topic if @profile.main_topic_or_first_topic %>
     </div>
-    <% if @profile.image.attached? && !@profile.copyright.blank? %>
-      <p>&#169; <%= @profile.copyright %></p>
-    <% end %>
   </div>
 
   <div class="col-md-6 p-3 mb-3 bg--white">

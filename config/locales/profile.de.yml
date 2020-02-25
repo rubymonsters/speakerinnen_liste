@@ -24,10 +24,11 @@ de:
       nonprofit: "Bereit, für gemeinnützige Zwecke zu sprechen"
       translated_infos: "Übersetzte Infos"
       personal_infos: "Persönliche Infos"
-      personal_note: "Persönliche Anmerkung auf %{language}:"
+      personal_note: "Persönliche Anmerkung auf %{language}: <i class='fa fa-info-circle' aria-hidden='true'></i>"
+      personal_note_tooltip: "Hier kannst du Fachkenntnisse und Vortragsthemen angeben, über die du gerne sprechen möchtest oder die genauer beschrieben. Du kannst auch deine Agenda im Detail erläutern. Dies hilft den Organisatoren von Veranstaltungen, die wichtigsten Themen, über die Sie sprechen, zu verstehen."
       bio: "Meine Biografie auf %{language}: <i class='fa fa-info-circle' aria-hidden='true'></i>
       <br><small class='form-text text-muted'>Du kannst einfache HTML Tags nutzen, um den Text zu formatieren. Zum Beispiel: <i>< i >italic< /i ></i> oder <b>< b > fett < /b ></b>.</small>"
-      bio_tooltip: "Hier ist Platz für eine kurze oder auch längere Bio. Außerdem sollten hier Fachkenntnisse und mögliche Vortragsthemen genauer beschrieben werden. Das hilft Veranstalterinnen und Veranstaltern herauszufinden, ob Ihr die Richtigen für ihr Event sein könntet."
+      bio_tooltip: "Hier ist Platz für eine kurze oder auch längere Bio. Dies wird den Organisatoren von Veranstaltungen helfen, mehr über Ihre bisherigen Erfahrungen zu erfahren."
       topic_list: "Meine Themen als Tags, wähle bitte nicht mehr als 10 Tags: <i class='fa fa-info-circle'></i>"
       topic_list_tooltip: "Bitte schaue zuerst, ob Dein Thema schon vorhanden ist."
       main_topic_title: "Themenschwerpunkt:"
