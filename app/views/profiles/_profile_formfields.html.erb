@@ -1,5 +1,6 @@
 <div class="row">
   <div class="col-sm-12 col-md-6">
+    <h5 class="pb-3 font-weight-bold"> <%= t(:Your_Picture, scope: 'profiles.form').html_safe %></h5>
     <%= f.label :picture, t(:picture, scope: 'profiles.form').html_safe %>
     <% if @profile.image.attached? && @profile.validate(:image_format_size) %>
       <p><%= image_tag(@profile.image, class: "img-thumbnail") %></p>
@@ -10,13 +11,15 @@
         <%= t(:image_info, scope: 'profiles.form').html_safe %><br>
       </small>
     <% end %>
-    <%= f.input :copyright, label: t(:copyright, scope: 'profiles.form'),
-    label_html: { id: "copyright" }, input_html: { class: "form-control" } %>
+    <p>
+      <%= f.input :copyright, label: t(:copyright, scope: 'profiles.form'),
+      label_html: { id: "copyright" }, input_html: { class: "form-control" } %>
+    </p>
   </div>
 </div>
 <div class="row mt-3">
-  <div class="col-sm-12 col-md-8 col-lg-6 p-3 bg--white">
-        <h5 class="pb-3 font-weight-bold"> <%= t(:personal_infos, scope: 'profiles.form').html_safe %></h5>
+  <div class="col-sm-12 col-md-8 col-lg-6 p-3">
+    <h5 class="pb-3 font-weight-bold"> <%= t(:personal_infos, scope: 'profiles.form').html_safe %></h5>
 
     <div class="form-group">
       <%= f.input :firstname, label: t(:firstname, scope: 'profiles.form'),
@@ -51,6 +54,12 @@
         <input name="profile[iso_languages][]" value="" type="hidden">
       </div>
     </div>
+  </div>
+</div>
+<hr>
+<div class="row mt-3">
+  <div class="col-sm-12 col-md-8 col-lg-6 p-3">
+    <h5 class="pb-3 font-weight-bold"> <%= t(:talk_infos, scope: 'profiles.form').html_safe %></h5>
     <div class="form-group">
       <label name="willing_to_travel">
         <%= f.check_box :willing_to_travel %>
@@ -63,12 +72,11 @@
         <%= t(:nonprofit, scope: 'profiles.form').html_safe %>
       </label>
     </div>
-
   </div>
 </div>
-
+<hr>
 <div class="row mt-3">
-  <div class="col-sm-12 col-md-8 col-lg-6 p-3 bg--white">
+  <div class="col-sm-12 col-md-8 col-lg-6 p-3">
     <div class="form-group">
       <h5 class="pb-3 font-weight-bold">Tags </h5>
       <%= f.input :topic_list, label: t(:topic_list, scope: 'profiles.form').html_safe,
@@ -82,9 +90,11 @@
     <li><%= tag_name %></li>
   <% end %>
 </ul>
+<hr>
 
+<!-- translated fields -->
 <div class="row mt-3">
-  <div class="col-sm-12 col-md-8 col-lg-6 p-3 bg--white">
+  <div class="col-sm-12 col-md-8 col-lg-6 p-3">
     <h5 class="pb-3 font-weight-bold"> <%= t(:translated_infos, scope: 'profiles.form').html_safe %></h5>
     <ul class="nav nav-tabs">
       <li class="nav-item">
@@ -97,6 +107,10 @@
 
     <div id="edit-de" class="<%= "d-none" unless I18n.locale == :de %>" >
       <div class="form-group">
+        <%= f.label :profession, t(:profession, scope: 'profiles.show').html_safe, id: "profession_de" %>
+        <%= f.text_field :profession_de, as: :text, class: 'form-control mb-3', maxlength: 60 %>
+      </div>
+      <div class="form-group">
         <%= f.label :city, t(:city, scope: 'profiles.form').html_safe,
           id: "city_de", class: 'pt-3', title: t(:city_tooltip, scope: 'profiles.form').html_safe %>
         <%= f.text_field :city_de, as: :text, class: 'form-control mb-3', maxlength: '30' %>
@@ -108,10 +122,6 @@
       <div class="form-group">
         <%= f.label :website, t(:website, scope: 'profiles.form'), id: "website_de" %>
         <%= f.text_field :website_de, as: :text, placeholder: 'http://', class: "form-control mb-3"%>
-      </div>
-      <div class="form-group">
-        <%= f.label :profession, t(:profession, scope: 'profiles.show').html_safe, id: "profession_de" %>
-        <%= f.text_field :profession_de, as: :text, class: 'form-control mb-3', maxlength: 60 %>
       </div>
       <div class="form-group">
         <%= f.label :additional_websites, t(:additional_websites, scope: 'profiles.form'), id: "website_2_de" %>
@@ -139,6 +149,10 @@
 
     <div id="edit-en" class="form-group <%= "d-none" unless I18n.locale == :en %>" >
       <div class="form-group">
+        <%= f.label :profession, t(:profession, scope: 'profiles.form').html_safe, id: "profession_en" %>
+        <%= f.text_field :profession_en, as: :text, class: 'form-control mb-3', maxlength: 60 %>
+      </div>
+      <div class="form-group">
         <%= f.label :city, t(:city, scope: 'profiles.form').html_safe,
           id: "city_en", class: 'pt-3', title: t(:city_tooltip, scope: 'profiles.form').html_safe %>
         <%= f.text_field :city_en, as: :text, class: 'form-control mb-3', maxlength: '30' %>
@@ -150,10 +164,6 @@
       <div class="form-group">
         <%= f.label :website, t(:website, scope: 'profiles.form'), id: "website_en" %>
         <%= f.text_field :website_en, as: :text, placeholder: 'http://', class: "form-control mb-3" %>
-      </div>
-       <div class="form-group">
-        <%= f.label :profession, t(:profession, scope: 'profiles.form').html_safe, id: "profession_en" %>
-        <%= f.text_field :profession_en, as: :text, class: 'form-control mb-3', maxlength: 60 %>
       </div>
       <div class="form-group">
         <%= f.label :additional_websites, t(:additional_websites, scope: 'profiles.form'), id: "website_2_en" %>
@@ -184,9 +194,7 @@
   <div class="col">
     <p>
     <%= f.button :submit, t(:update, scope: 'profiles.form').html_safe, class:'btn btn-primary' %>
-  </p>
-  <p>
-    <<<%= link_to(t(:show, scope: 'profiles.edit').html_safe, profile_path, class: '' ) %>
+    <%= link_to(t(:show, scope: 'profiles.edit').html_safe, profile_path, class: 'btn btn-outline-primary' ) %>
   </p>
   </div>
 </div>

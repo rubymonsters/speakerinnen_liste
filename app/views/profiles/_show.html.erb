@@ -22,7 +22,7 @@
     <% if @profile.main_topic_or_first_topic %>
       <p class="h5 pt-3">
         <span class="font-weight-bold">
-          Motto:
+          Haupthema:
         </span>
         <%= @profile.main_topic_or_first_topic %>
       </p>
@@ -126,16 +126,6 @@
         <%= @profile.country_name %>
       </p>
     <% end %>
-    <!-- willing_to_travel -->
-    <p>
-      <i class="fa <%= @profile.willing_to_travel ? 'fa-check-square' : 'fa-times-rectangle' %>">&nbsp;</i>
-      <%= t(:willing_to_travel, scope: 'profiles.show') %>
-    </p>
-    <!-- willing to talk nonprofit -->
-    <p>
-      <i class="fa <%= @profile.nonprofit ? 'fa-check-square' : 'fa-times-rectangle' %>">&nbsp;</i>
-      <%= t(:nonprofit, scope: 'profiles.show') %>
-    </p>
     <!-- topics -->
     <% if topics_for_profile(@profile).present? %>
       <p class="h5 pt-3">
@@ -145,6 +135,16 @@
         <%= raw topics_for_profile(@profile).map { |topic| topic }.join(', ') %>
       </p>
     <% end %>
+    <!-- willing_to_travel -->
+    <p class="pt-3">
+      <i class="fa <%= @profile.willing_to_travel ? 'fa-check-square' : 'fa-times-rectangle' %>">&nbsp;</i>
+      <%= t(:willing_to_travel, scope: 'profiles.show') %>
+    </p>
+    <!-- willing to talk nonprofit -->
+    <p>
+      <i class="fa <%= @profile.nonprofit ? 'fa-check-square' : 'fa-times-rectangle' %>">&nbsp;</i>
+      <%= t(:nonprofit, scope: 'profiles.show') %>
+    </p>
   </div>
 
   <!-- edit action for user -->
@@ -177,7 +177,7 @@
         <span class="font-weight-bold">
           <%= t(:personal_note, scope: 'profiles.show') %>
         </span>
-        <%= simple_format(@profile.personal_note), class: 'h5' %>
+        <%= simple_format(@profile.personal_note, class: 'h5') %>
       </p>
     </div>
   </div>

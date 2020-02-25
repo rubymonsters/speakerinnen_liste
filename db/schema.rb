@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2020_02_21_081132) do
-=======
-ActiveRecord::Schema.define(version: 2020_02_15_141059) do
->>>>>>> anja-add-new-tag-filter
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
