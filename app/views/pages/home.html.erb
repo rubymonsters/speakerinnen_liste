@@ -1,114 +1,66 @@
 <section class="bg--white">
   <section id="startpage__start-teaser" class="startpage__photo-bar">
     <div class="container">
-      <h1 class="display-4 box__bg bg--white mt-5"><%= t(:heading, scope: 'pages.home.search') %></h1>
-      <h4 class="startpage-subtitle box__bg bg--white"><%= t(:tagline_html, scope: 'pages.home.search', root_path: root_path) %></h4><BR>
-      <div class="box__bg bg--white">
-        <%= form_tag(profiles_path, method: 'get') do %>
+      <div class="row">
+        <div class="col">
+          <h1 class="display-4 pt-5" style="text-shadow:0px 0px 9px rgba(255, 255, 255, 1);"><%= t(:heading, scope: 'pages.home.search') %></h1>
+          <h3 class="startpage-subtitle" style="text-shadow:0px 0px 9px rgba(255, 255, 255, 1);"><%= t(:tagline, scope: 'pages.home.search').html_safe %></h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
           <%= render partial: 'shared/search_form' %>
-          <h5><%= link_to(t(:all_categories, scope: 'pages.home'), root_path + "#categories_anchor" )%></h5>
-          <h5><%= link_to(t(:all_profiles, scope: 'search'), profiles_path ) %></h5>
-        <% end %>
+        </div>
+      </div>
+      <div class="row" style="margin-top: 290px;">
+        <%= render partial: 'shared/sub_menu' %>
       </div>
     </div>
   </section>
   <div class="copyright">
      Copyright: public domain ( modified )
   </div>
-
   <!-- anchor for features -->
   <a id="features"></a>
 
   <% if @features.load.any? %>
     <% @features.each do |feature| %>
-      <div class="container">
-        <h1 class="box__bg"><%= feature.title %></h1>
-        <h4 class="border-vertical d-block box__bg mb-4">
+      <div class="container mt-5 text-center">
+        <h1 class=""><%= feature.title %></h3>
+        <h3 class="">
           <%= feature.description %>
-        </h4>
-        <div class="row">
-          <%= render partial: "profiles/profile", collection: feature.profiles %>
+        </h3>
+        <div class="row pt-5">
+          <%= render partial: "profiles/profile", collection: feature.profiles, as: :profile %>
         </div>
       </div>
     <% end %>
-    <div class="container">
-      <h4 class="border-vertical d-block box__bg mb-4">
-        <%= t(:speaker_text, scope: 'pages.home.speakers') %>
-        <%= link_to t(:speaker_index, scope: 'pages.home.speakers'), profiles_path %>
-      </h4>
-    </div>
-  <% else %>
-    <div class="container">
-      <h1 class="box__bg"><%= t(:speaker_headline, scope: 'pages.home.speakers') %></h1>
-      <h4 class="border-vertical d-block box__bg mb-4">
-        <%= t(:speaker_text, scope: 'pages.home.speakers') %>
-        <%= link_to t(:speaker_index, scope: 'pages.home.speakers'), profiles_path %>
-      </h4>
-      <div class="row">
-        <%= render partial: "profiles/profile", collection: @profiles if @profiles %>
-      </div>
-    </div>
   <% end %>
 
-  <section id="startpage__teaser-bg-01" class="startpage__photo-bar">
-    <div class="container">
-      <h1 class="display-4 box__bg bg--white mt-5"><%= t(:quote, scope: 'pages.home') %></h1>
-      <h4 class="startpage-subtitle box__bg bg--white"><%= t(:quote_text, scope: 'pages.home') %></h4>
+<a id="newest_speaker"></a>
+  <div class="container mt-5 text-center">
+    <h1 class="">Speakerinnen* - get inspired</h3>
+    <h3 class="">
+       Welcome our 8 newest Speakerinnen - Bitte bessere Text
+    </h3>
+    <div class="row pt-5">
+      <%= render partial: "profiles/profile", collection: @newest_profiles %>
     </div>
-  </section>
-  <div class="copyright">
-    Copyright by Ute Mayer
   </div>
 
   <!-- Anker für Kategorien -->
   <a id="categories_anchor"></a>
 
-  <div class="container startpage-categories__list">
-    <h1 class="box__bg"><%= t(:description, scope: 'pages.home') %></h1>
-    <h4 class="border-vertical d-block box__bg mb-4">
-      <%= t(:description_text, scope: 'pages.home') %>
-    </h4>
-    <div>
-      <%= render partial: "shared/categories", object: @categories %>
-    </div>
+  <div class="container-fluid mt-5 text-center">
+  <!-- <div class="startpage-categories__list py-5 text-center"> -->
+    <div class="row">
+      <div class="col">
+    <h1><%= t(:description, scope: 'pages.home') %></h3>
+    <h3 class="pb-5">
+      Hier muss ein bisschen Erklärtext hin.... über Kategorien und Topics :)
+  </div>
+  <div class="container-fluid startpage-categories__list p-0">
+    <%= render partial: "shared/categories", object: @categories %>
   </div>
 
-  <section id="startpage__teaser-bg-02" class="startpage__photo-bar my-5">
-    <div class="container">
-      <h1 class="display-4 box__bg bg--white mt-5"><%= t(:speaker_shoutout, scope: 'pages.home').html_safe %></h1>
-      <h4 class="box__bg bg--white"><%=link_to t(:speaker_text, scope: 'pages.home').html_safe, new_profile_registration_path %></h4>
-    </div>
-  </section>
-  <div class="copyright">
-     Copyright by Tilman Vogler
-  </div>
-
-  <div class="container">
-    <h1 class="box__bg">Speakerinnen</h1>
-    <div class="row pl-4">
-      <div class="col-md">
-        <h4 class="border-vertical d-block py-2 mb-4 ">
-          <%= link_to t(:about_title, scope: 'pages.home.footer'), about_path %>
-        </h4>
-        <p>
-          <%= t(:about, scope: 'pages.home.footer').html_safe %>
-          <%= link_to t(:more, scope: 'pages.home.footer').html_safe, about_path  %>
-        </p>
-      </div>
-      <div class="col-md">
-        <h4 class="border-vertical d-block py-2 mb-4 ">
-          <%= link_to t(:blog, scope:"pages.home.footer"), 'http://blog.speakerinnen.org/', target: '_blank' %>
-        </h4>
-        <p>
-          <% @blog_posts.each do |blogpost| %>
-            <strong><%= blogpost.title %></strong><br>
-            <%= strip_tags(blogpost.body).truncate(150, separator: ' ') %>
-            <%= link_to t(:more, scope: 'pages.home.footer').html_safe, blogpost.url, target: '_blank' %>
-            <br>
-            <br>
-          <% end %>
-        </p>
-      </div>
-    </div>
-  </div>
 </section>

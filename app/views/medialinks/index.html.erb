@@ -1,15 +1,12 @@
 <div class="container py-5">
-  <div class="profile-navi mb-5">
-    <%= link_to(t(:home, scope: 'profiles.edit'), profiles_path) %><br>
-    <%= link_to(t(:show, scope: 'profiles.edit'), @profile) %>
-  </div>
+  <%= link_to(t(:show, scope: 'profiles.edit'), @profile, class:"text-uppercase serif") %>
 
-  <h1 class="mb-5"><%= t(:index, scope: 'medialinks')%></h1>
+  <h1 class="my-5"><%= t(:index, scope: 'medialinks')%></h1>
 
   <p class="border-bottom mb-5 pb-5"><%= t(:medialink_description, scope: 'medialinks').html_safe %></p>
 
   <%= link_to(new_profile_medialink_path(@profile)) do %>
-    <div class="btn btn-blue">
+    <div class="btn btn-primary">
       <i class="fa fa-plus-circle"></i>
       <%= t(:new, scope: 'medialinks') %>
     </div>

@@ -1,27 +1,27 @@
-<section id="main-page-footer" class="py-5">
+<footer class= "border-upper sans-serif">
   <div class="container">
-    <h5 class="border-top pt-5"><b><%= t(:women, scope: 'pages.home.footer').html_safe %></b></h5>
-
-    <nav class="border-vertical py-2 my-5">
-      <%= t(:twitter, scope: 'pages.home.footer').html_safe %> |
-      <!-- Make sure cookie consent is given -->
-      <% if cookies[:cookie_consent].blank? %>
-        <button type="button" class="btn btn-link px-2" data-toggle="modal" data-target="#contactHint">
-          <%= t(:contact_link, scope: 'pages.home.footer') %>
-        </button> |
-      <% else %>
-        <%= link_to t(:contact_link, scope: 'pages.home.footer'), contact_path, class:"btn btn-link px-2" %> |
-      <% end %>
-      <%= link_to t(:about_title, scope: 'pages.home.footer'), about_path, class: "btn btn-link px-2" %> |
-      <%= link_to t(:faq, scope: 'pages.home.footer'), faq_path, class: "btn btn-link px-2"  %> |
-      <%= t(:github, scope: 'pages.home.footer').html_safe %> |
-      <%= link_to t(:title, scope: 'pages.imprint'), impressum_path, class:"btn btn-link px-2" %> |
-      <%= link_to t(:privacy, scope: 'pages.imprint'), privacy_path, class:"btn btn-link px-2" %>
-    </nav>
-    <p>
-    <span class="">Supported by:</span>
-    <%= link_to(image_tag('kombuese_logo.jpg', class:'pl-3', style: "width: 200px"), "https://www.kombuese.org/", class: "",target: 'blank' ) %>
-    <%= link_to(image_tag('inspired_logo.jpg', class:'pl-3', style: "width: 200px"), "https://www.inspired-socialmedia.com/", class: "",target: 'blank' ) %>
-    </p>
+    <div class="row mt-2">
+      <div class="col-5">
+        <span class="align-top">Supported by:</span>
+        <%= link_to(image_tag('inspired_logo_klein.jpg', class:'pl-4', style: "width: 200px"), "https://www.inspired-socialmedia.com/", class: "",target: 'blank' ) %>
+        <%= link_to(image_tag('kombuese_logo.jpg', class:'pl-3', style: "width: 200px"), "https://www.kombuese.org/", class: "",target: 'blank' ) %>
+      </div>
+      <div class="col-7">
+        <nav class="py-2 nav justify-content-end">
+        <!-- Make sure cookie consent is given -->
+        <% if cookies[:cookie_consent].blank? %>
+          <button type="button" class="btn btn-link px-2" data-toggle="modal" data-target="#contactHint">
+            <%= t(:contact, scope: 'pages.home.footer') %>
+          </button>
+        <% else %>
+          <%= link_to t(:contact, scope: 'pages.home.footer'), contact_path, class: "px-3" %>
+        <% end %>
+        <%= link_to t(:about_title, scope: 'pages.home.footer'), about_path, class: "px-3" %>
+        <%= link_to t(:faq, scope: 'pages.home.footer'), faq_path, class: "px-3"  %>
+        <%= t(:twitter, scope: 'pages.home.footer').html_safe %>
+        <%= link_to t(:title, scope: 'pages.imprint'), impressum_path, class: "px-3"%>
+        <%= link_to t(:privacy, scope: 'pages.imprint'), privacy_path, class: "px-3" %>
+      </nav>
+    </div>
   </div>
-</section>
+</footer>

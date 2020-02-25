@@ -3,9 +3,10 @@ de:
     home:
       search:
         heading: "Mehr Frauen auf die Bühnen!"
-        tagline_html: "Finde Rednerinnen, Referentinnen & Moderatorinnen für Deine Konferenz."
-        search_text: "Namen oder Thema"
-        search: "Suche"
+        tagline: "Finde Rednerinnen, Referentinnen & Moderatorinnen<br> für Deine Konferenz:"
+        find_speaker: "Finde Deine Speakerinnen"
+        search_placeholder: "Namen oder Thema"
+        search_speaker: "Suche"
       all_categories: "Kategorien und Themen >>"
       all_speakers: "Alle Speakerinnen* >>"
       hint: "Hinweis"
@@ -56,8 +57,8 @@ de:
         links_text: "Hier gibt es Links zu ähnlichen Projekten:"
         contact: "Kontakt"
         contact_link: "E-Mail"
-        twitter: "<a href='https://twitter.com/speakerinnen', target='_blank', class='btn btn-link px-2'>Twitter</a>"
-        github: "<a href='https://github.com/rubymonsters/speakerinnen_liste', target='_blank', class='btn btn-link px-2'>GitHub</a>"
+        twitter: "<a href='https://twitter.com/speakerinnen', target='_blank', class='px-2'>Twitter</a>"
+        github: "<a href='https://github.com/rubymonsters/speakerinnen_liste', target='_blank', class='px-2'>GitHub</a>"
         devblog: "<a href='http://speakerinnen.wordpress.com/', taget='_blank'>Entwicklerinnen-Blog</a>"
         faq_short: |
             <strong>Warum gibt es Thema XYZ noch nicht?</strong><br>

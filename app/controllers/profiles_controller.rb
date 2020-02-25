@@ -13,27 +13,51 @@ class ProfilesController < ApplicationController
   respond_to :json
 
   def index
-    if params[:topic]
-      @profiles = profiles_for_tag(params[:topic])
-    elsif params[:category_id]
-      profiles_for_category
-    elsif params[:search]
-      @profiles = profiles_for_search
 
+    # since we only have search, all_speakerin and tag_filter as entry point we might not need the rest
+    # if params[:topic]
+    #   @tags = params[:topic].split(/\s*,\s*/)
+    #   @profiles = profiles_for_tag(params[:topic])
+    # elsif params[:category_id]
+    #   profiles_for_category(params[:category_id], params[:tag_filter])
+    #   @profiles_count = @profiles.total_count
+    if params[:search]
+      @profiles_for_search= profiles_for_search
+      @profiles = @profiles_for_search
       # sum of search results concerning certain attributes
       @aggs = profiles_for_search.response.aggregations
       @aggs_languages = @aggs[:lang][:buckets]
       @aggs_cities = @aggs[:city][:buckets]
       @aggs_countries = @aggs[:country][:buckets]
+    elsif params[:tag_filter]
+      @tags = params[:tag_filter].split(/\s*,\s*/)
+      @profiles = Profile.is_published.has_tags(@tags).page(params[:page]).per(24)
+      @profiles_count = @profiles.total_count
+      # redirect_to profiles_path(:anchor => "speakers")
     else
       @profiles = profiles_for_index
       @profiles_count = Profile.is_published.size
     end
-    @tags_most_used_200 = if params[:all_lang]
-                            ActsAsTaggableOn::Tag.with_published_profile.most_used(200)
-                          else
-                            ActsAsTaggableOn::Tag.with_published_profile.with_language(I18n.locale).most_used(200)
-                          end
+    # for the tags filter module that is available all the time at the profile index view
+    @category = params[:category_id] ? Category.find(params[:category_id]) : Category.first
+    @categories = Category.sorted_categories
+    # is needed for the colors of the tags
+    Category.all.includes(:translations).each do |category|
+      instance_variable_set("@tags_#{category.short_name}",
+        ActsAsTaggableOn::Tag.belongs_to_category(category.id)
+                              .belongs_to_more_than_one_profile
+                              .with_published_profile
+                              .translated_in_current_language_and_not_translated(I18n.locale))
+                              .most_used(100)
+    end
+    # is needed for the showing te correct tags in the tag_box
+    # not needed?
+    # @tags_in_category_published = ActsAsTaggableOn::Tag
+    #                               .with_published_profile
+    #                               .belongs_to_category(params[:category_id])
+    #                               .translated_in_current_language_and_not_translated(I18n.locale)
+    #                               .most_used(100)
+    #                               .order(:name)
   end
 
   def show
@@ -71,7 +95,7 @@ class ProfilesController < ApplicationController
   end
 
   def render_footer?
-    false
+    true
   end
 
   def typeahead
@@ -180,32 +204,41 @@ class ProfilesController < ApplicationController
            .per(24)
   end
 
-  def profiles_for_tag(tag_names)
-    # uniq turn the relation into a array and to paginate the array we
-    # need the Kaminari.paginate_array method
-    profiles_array = Profile.is_published
-                             .includes(:taggings, :translations)
-                             .joins(:topics)
-                             .where(
-                               tags: {
-                                 name: tag_names
-                               }
-                             )
-                             .random
-                             .uniq
+  # def profiles_for_tag(tag_names)
+  #   # uniq turn the relation into a array and to paginate the array we
+  #   # need the Kaminari.paginate_array method
+  #   profiles_array = Profile.is_published
+  #                            .includes(:taggings, :translations)
+  #                            .joins(:topics)
+  #                            .where(
+  #                              tags: {
+  #                                name: tag_names
+  #                              }
+  #                            )
+  #                            .random
+  #                            .uniq
 
-    Kaminari.paginate_array(profiles_array).page(params[:page]).per(24)
-  end
+  #   Kaminari.paginate_array(profiles_array).page(params[:page]).per(24)
+  # end
 
-  def profiles_for_category
-    @category = Category.find(params[:category_id])
-    @tags_in_category_published = ActsAsTaggableOn::Tag
-                                  .belongs_to_category(params[:category_id])
-                                  .translated_in_current_language_and_not_translated(I18n.locale)
-    tag_names = @tags_in_category_published.pluck(:name)
-    @tags_most_used_200_in_category = @tags_in_category_published.most_used(200)
-    @profiles = profiles_for_tag(tag_names)
-  end
+  # maybe not needed any more
+  # def profiles_for_category(category_id, tags_filter=nil)
+  #   @category = Category.find(category_id)
+  #   @tags_in_category_published = ActsAsTaggableOn::Tag
+  #                                 .with_published_profile
+  #                                 .belongs_to_category(params[:category_id])
+  #                                 .translated_in_current_language_and_not_translated(I18n.locale)
+  #   tag_names = @tags_in_category_published.pluck(:name)
+
+
+  #   @category = params[:category_id] ? Category.find(params[:category_id]) : Category.find(1)
+  #   if tags_filter.present?
+  #     @tags = tags_filter.split(/\s*,\s*/)
+  #     @profiles = profiles_for_tag(@tags)
+  #   else
+  #     @profiles = profiles_for_tag(tag_names)
+  #   end
+  # end
 
   def profiles_for_search
     Profile.is_published
@@ -214,4 +247,5 @@ class ProfilesController < ApplicationController
            .page(params[:page]).per(24)
            .records
   end
+
 end

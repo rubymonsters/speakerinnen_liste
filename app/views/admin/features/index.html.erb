@@ -2,7 +2,7 @@
   <h1 class="text-center mt-5 pt-5">Administration::<%= t(:features, scope: 'admin.features')%></h1>
 
   <%= link_to ('<i class="fa fa-plus-circle">&nbsp;</i>' + t(:add, scope: "general")).html_safe,
-  new_admin_feature_path, class: "btn btn-blue btn-sm my-5" %>
+  new_admin_feature_path, class: "btn btn-primary btn-sm my-5" %>
 
   <table class="table">
     <thead class="bg--lightgrey">
@@ -29,11 +29,11 @@
           <td>
             <% if feature.public %>
               <%= link_to t(:public, scope: 'admin.features'), stop_event_admin_feature_path(feature.id),
-                method: :post, class:'btn btn-blue btn-block btn-sm' %>
+                method: :post, class: 'btn btn-primary btn-block btn-sm' %>
               <% else %>
 
                 <%= link_to t(:invisible, scope: 'admin.features'), announce_event_admin_feature_path(feature.id),
-                method: :post, class:'btn btn-sm btn-block btn-light', title: 'Dieses Feature mit zugehörigen Profilen auf der Homepage ankündigen.' %>
+                method: :post, class: 'btn btn-sm btn-block btn-light', title: 'Dieses Feature mit zugehörigen Profilen auf der Homepage ankündigen.' %>
               <% end %>
           </td>
           <td>

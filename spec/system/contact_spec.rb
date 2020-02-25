@@ -7,8 +7,9 @@ describe 'contact profile' do
 
     it 'contact button should open hint modal' do
       visit profile_path(id: ada.id)
+      # save_and_open_page
 
-      find("button[data-target='#contactHint']")
+      find("a[data-target='#contactHint']")
     end
 
     it 'fill the contact form correct and not get a success message' do
@@ -29,14 +30,14 @@ describe 'contact profile' do
     it 'should open contact modal when cookie consent is set' do
       visit profile_path(id: ada.id)
       find_link(class: "cookie-consent").click
-      find("button[data-target='#contactModal']")
+      find("a[data-target='#contactModal']")
     end
 
     it 'fill the contact form correct and get a success message' do
       visit profile_path(id: ada.id)
 
       find_link(class: "cookie-consent").click
-      find("button[data-target='#contactModal']").click
+      find("a[data-target='#contactModal']").click
       fill_in I18n.t('.name', scope: 'contact.form'), with: 'Ada'
       fill_in I18n.t('.email', scope: 'contact.form'), with: 'Ada@email.de'
       fill_in I18n.t('.subject', scope: 'contact.form'), with: 'Need a speakerin'
@@ -61,7 +62,7 @@ describe 'contact profile' do
       visit profile_path(id: ada.id)
       find_link(class: "cookie-consent").click
 
-      find("button[data-target='#contactModal']").click
+      find("a[data-target='#contactModal']").click
       fill_in I18n.t('.name', scope: 'contact.form'), with: 'Ada'
       fill_in I18n.t('.email', scope: 'contact.form'), with: 'fish@email.de'
       fill_in I18n.t('.subject', scope: 'contact.form'), with: 'Need a speakerin'

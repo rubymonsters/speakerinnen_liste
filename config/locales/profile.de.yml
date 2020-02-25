@@ -18,10 +18,10 @@ de:
       image_info: "Lade bitte das Foto in <b>Farbe</b> hoch, wir zeigen es in Graustufen.
         Nutze .jpg, .jpeg oder .png und achte darauf, daß Du die Rechte zu diesem Foto besitzt!
         Die Größe des Fotos sollte <b>kleiner als 1MB</b> sein."
-      firstname: "Mein Vorname:"
-      lastname: "Mein Nachname:"
       willing_to_travel: "Bereit, für ein Gespräch zu reisen"
       nonprofit: "Bereit, für gemeinnützige Zwecke zu sprechen"
+      firstname: "Vorname:"
+      lastname: "Nachname:"
       translated_infos: "Übersetzte Infos"
       personal_infos: "Persönliche Infos"
       personal_note: "Persönliche Anmerkung auf %{language}: <i class='fa fa-info-circle' aria-hidden='true'></i>"
@@ -32,7 +32,7 @@ de:
       topic_list: "Meine Themen als Tags, wähle bitte nicht mehr als 10 Tags: <i class='fa fa-info-circle'></i>"
       topic_list_tooltip: "Bitte schaue zuerst, ob Dein Thema schon vorhanden ist."
       main_topic_title: "Themenschwerpunkt:"
-      main_topic: "Mein Themenschwerpunkt auf %{language}:
+      main_topic: "Themenschwerpunkt auf %{language}:
         <br><small class='form-text text-muted'>Es werden nur 30 Zeichen angezeigt.
         <br>Trage Dein wichtigstes Thema hier nochmal ein. Dieses Thema wird mit Deinem Namen und Bild auf der Speakerinnen-Übersichtsseite zu sehen sein.</small>"
       tag_list: "schon vorhandene Tags"
@@ -42,27 +42,29 @@ de:
       city: "Die Stadt, in der ich lebe: <i class='fa fa-info-circle' aria-hidden='true'></i>"
       city_tooltip: "Bitte gib mehrere Städte mit Komma getrennt ein, z.B. Berlin, New York."
       country: "Das Land, in dem ich lebe:"
-      twitter: "Mein Twitteraccount:"
-      email: "Meine E-Mailadresse: <i class='fa fa-info-circle' aria-hidden='true'></i>"
-      website: "Meine Webseite:"
+      twitter: "Twitteraccount:"
+      email: "E-Mailadresse: <i class='fa fa-info-circle' aria-hidden='true'></i>"
+      website: "Webseite:"
       additional_websites: "Zusätzliche Webseiten/Blogs:"
     show:
       firstname: 'Vorname:'
       lastname: 'Nachname:'
-      topics: 'Meine Themen:'
-      languages: "Meine Sprache/n:"
-      media: "Meine Vorträge / Referenzen:"
       personal_note: "Persönliche Anmerkung:"
-      bio: "Meine Biografie: "
-      website: "Meine Webseite/Blog:"
-      websites: "Meine Webseiten/Blogs:"
-      profession: "Mein Beruf:"
-      city: "Meine Stadt:"
-      country: "Mein Land:"
       country_select: "Wähle ein Land aus:"
       willing_to_travel: "Bereit, für ein Gespräch zu reisen"
       nonprofit: "Bereit, für gemeinnützige Zwecke zu sprechen"
       twitter: "Mein Twittername:"
+      topics: 'Themen:'
+      languages: "Sprache/n:"
+      media: "Vorträge / Referenzen:"
+      bio: "Biografie: "
+      website: "Webseite/Blog:"
+      websites: "Webseiten/Blogs:"
+      profession: "Beruf:"
+      city: "Stadt:"
+      country: "Land:"
+      country_select: "Wähle ein Land aus:"
+      twitter: "Twittername:"
       contact: "Kontakt"
       email_to: "E-Mail an "
       show: "Anzeigen"
@@ -78,8 +80,7 @@ de:
     medialinks:
       edit: "Referenzen bearbeiten"
     edit:
-      show: "Eigenes Profil anzeigen"
-      home: "Alle Speakerinnen* anzeigen >>"
+      show: "<< Zurück zum Profil"
     index:
       title: "Speakerinnen"
       text: "Schön, dass Du hier bist. <br>
@@ -95,7 +96,26 @@ de:
       country_search_hint: "(Achtung: Viele Speakerinnen haben kein Land eingetragen.)"
       language: "Sprache"
       all_speakerinnen: "Wir sind schon %{profiles_count} Speakerinnen!"
+      all_tagged_speakerinnen: {
+        one: "Eine Speakerin gefunden ",
+        other: " %{count} Speakerinnen gefunden "
+      }
+      tag_filter: {
+        one: "zu dem gewählten Thema.",
+        other: "zu den gewählten Themen"
+      }
       show_more: "Mehr >>"
       show_less: "Weniger >>"
+      apply_filter: "Benutze den Themen Filter"
+      within: " in der Kategorie: "
+      profiles_in_category: "Wir haben %{profiles_count} Speakerinnen* in der Kategorie <b>%{category_name}</b>:"
+      back_to_filters: "Zurück zum Filter"
     new:
       new_profile: "Neues Profil"
+  error_messages:
+    picture_too_big: " ist zu groß. Bitte nicht größer als 1 MB"
+  category:
+    title: "Schau Dir <b>alle</b> Speakerinnen* der Kategorie <b>%{category_name}</b> an oder<br>"
+    all_speakerinnen: "<b>alle</b> Speakerinnen*"
+    title_2: "der Kategorie <b>%{category_name}</b> an oder<br>"
+    filter: "Wähle einen oder mehrere Tags aus verschiedenen Kategorien:"

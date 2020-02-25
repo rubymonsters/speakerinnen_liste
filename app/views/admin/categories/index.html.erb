@@ -3,7 +3,7 @@
   <h1>Administration::<%= t(:categories, scope: "admin.categories")%></h1>
 
   <%= link_to ('<i class="fa fa-plus-circle">&nbsp;</i>' + t(:add, scope: "general")).html_safe,
-  new_admin_category_path, class: "btn btn-blue btn-sm my-5" %>
+  new_admin_category_path, class: "btn btn-primary btn-sm my-5" %>
 
   <table class="table categories">
     <thead class="bg--lightgrey">
@@ -11,6 +11,7 @@
         <th><%= t(:category_language_de, scope: "admin.categories")%></th>
         <th><%= t(:category_language_en, scope: "admin.categories")%></th>
         <th><%= t(:amount_of_tags, scope: "admin.categories")%></th>
+        <th>Position:</th>
         <th></th>
         <th></th>
       </tr>
@@ -30,6 +31,9 @@
       <% end %>
         <td>
           <%= category.tags.count %>
+        </td>
+        <td>
+          <%= category.position %>
         </td>
         <td>
           <%= link_to ('<i class="fa fa-pencil">&nbsp;</i>' + t(:edit, scope: "general")).html_safe,

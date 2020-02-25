@@ -38,14 +38,14 @@ RSpec.describe 'Navigation', type: :system do
         end
 
         it 'startpage has footer' do
-          expect(page).to have_css('#main-page-footer')
+          expect(page).to have_selector('footer')
           expect(page).to have_link('Twitter')
-          expect(page).to have_link(I18n.t(:contact_link, scope: 'pages.home.footer'))
+          expect(page).to have_link(I18n.t(:contact, scope: 'pages.home.footer'))
           expect(page).to have_link(I18n.t(:about_title, scope: 'pages.home.footer'))
         end
 
         it 'viewing the contact page' do
-          click_link I18n.t(:contact_link, scope: 'pages.home.footer')
+          click_link I18n.t(:contact, scope: 'pages.home.footer')
           expect(page).to have_css('form label', text: I18n.t(:name, scope: 'contact.form'))
           expect(page).to have_css('form label', text: I18n.t(:email, scope: 'contact.form'))
           expect(page).to have_css('form label', text: I18n.t(:body, scope: 'contact.form'))
@@ -58,13 +58,10 @@ RSpec.describe 'Navigation', type: :system do
           # header
           expect(page).to have_css('#header__logo')
           expect(page).to have_link(I18n.t('layouts.application.signup'))
-          # search
-          expect(page).to have_css('input.profile__search')
-          expect(page).to have_button(I18n.t(:search, scope: 'pages.home.search'))
           # profile
           expect(page).to have_content('2')
           expect(page).to have_link('Ada Lovelace')
-          expect(page).to have_css('.profile-card', count: 2)
+          expect(page).to have_css('.card', count: 2)
           expect(page).to have_css('.profile-subtitle', text: ada.main_topic)
           expect(page).to have_text(ada.iso_languages.first)
           # tag_cloud
@@ -79,15 +76,13 @@ RSpec.describe 'Navigation', type: :system do
           # header
           expect(page).to have_css('#header__logo')
           expect(page).to have_link(I18n.t('layouts.application.signup'))
-          # navi links
-          expect(page).to have_link I18n.t(:home, scope: 'profiles.edit')
           # profile
           expect(page).to have_css('.profile-page')
           expect(page).to have_css('.profile-subtitle', text: ada.main_topic)
           expect(page).to have_text(ada.iso_languages.first)
           expect(page).to have_text('London')
           # contact
-          expect(page).to have_button I18n.t(:contact, scope: 'profiles.show')
+          expect(page).to have_link I18n.t(:contact, scope: 'profiles.show')
           expect(page).to_not have_link I18n.t(:edit, scope: 'profiles.show')
         end
       end

@@ -4,7 +4,7 @@
   <h1 class="mb-5"><%= t(:update, scope: "profiles.form")%></h1>
 
   <%= simple_form_for(@profile, html: { multipart: true } ) do |f| %>
-    <%= render partial: "shared/profile_formfields",
+    <%= render partial: "profiles/profile_formfields",
                  locals: { form_type: :update_profile, f: f, profile: @profile } %>
   <% end %>
 

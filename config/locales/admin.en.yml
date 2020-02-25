@@ -4,7 +4,6 @@ en:
       edit_categories: "Edit Categories"
       edit_tags: "Edit Tags"
       edit_profiles: "Edit Profiles"
-      edit_profile: "Edit Profile"
     categories:
       categories: "Categories"
       category_language_de: "German:"
@@ -30,6 +29,7 @@ en:
       make_public: "Make public"
       invisible: "invisible"
       make_invisible: "Make invisible"
+      edit_profile: "Edit Profil"
       confirmed: "confirmed"
       comment: "Comment"
       add_comment: "Add comment"
@@ -63,6 +63,7 @@ en:
         select_categories: "Select tag's category/ies: "
     medialink:
       show: "Show all medialinks"
+      edit_medialink: "Edit Medialink"
       url: "URL:"
       title: "Title:"
       description: "Description:"
