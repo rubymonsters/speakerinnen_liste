@@ -114,7 +114,7 @@
         <span class="font-weight-bold">
           <%= t(:city, scope: 'profiles.show') %>
         </span>
-        <%= @profile.city %></span>
+        <%= @profile.city %>
       </p>
     <% end %>
     <!-- country  -->
@@ -133,6 +133,15 @@
           <%= t(:topics, scope: 'profiles.show') %>
         </span>
         <%= raw topics_for_profile(@profile).map { |topic| topic }.join(', ') %>
+      </p>
+    <% end %>
+    <!-- services  -->
+    <% if !@profile.services.empty? %>
+      <p class="h5 pt-3">
+        <span class="font-weight-bold">
+          <%= t(:services, scope: 'profiles.show') %>
+        </span>
+        <%= @profile.services.map{|s| t(s.name, scope: 'profiles.show') }.join(', ') %>
       </p>
     <% end %>
     <!-- willing_to_travel -->
