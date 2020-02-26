@@ -7,6 +7,7 @@ class Profile < ApplicationRecord
   has_many :feature_profiles
   has_many :features, through: :feature_profiles, dependent: :destroy
   has_one_attached :image
+  has_and_belongs_to_many :services
 
   serialize :iso_languages, Array
   validate :iso_languages_array_has_right_format
