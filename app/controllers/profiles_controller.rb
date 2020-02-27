@@ -22,10 +22,9 @@ class ProfilesController < ApplicationController
     #   profiles_for_category(params[:category_id], params[:tag_filter])
     #   @profiles_count = @profiles.total_count
     if params[:search]
-      @profiles_for_search= profiles_for_search
-      @profiles = @profiles_for_search
+      @profiles = profiles_for_search
       # sum of search results concerning certain attributes
-      @aggs = profiles_for_search.response.aggregations
+      @aggs = @profiles.response.aggregations
       @aggs_languages = @aggs[:lang][:buckets]
       @aggs_cities = @aggs[:city][:buckets]
       @aggs_countries = @aggs[:country][:buckets]
