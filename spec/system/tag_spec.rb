@@ -18,6 +18,7 @@ describe 'displaying tags' do
                                                tag_with_slash_en])
   end
   let!(:pierre) { create(:unpublished_profile, topic_list: [tag_de, tag_with_unpublished_profile]) }
+  let!(:clara) { create(:published_profile, topic_list: [tag_en, tag_with_slash_en]) }
 
   let!(:science) { FactoryBot.create(:cat_science, tags: [tag_de, tag_en]) }
   let!(:social) { FactoryBot.create(:cat_social, tags: [tag_both_languages, tag_with_slash_en, tag_with_unpublished_profile]) }
@@ -37,7 +38,7 @@ describe 'displaying tags' do
   context "in the category index page" do
 
     it 'shows all the categories to coose the tags from' do
-      visit 'de/categories'
+      visit "de/categories/#{science.id}"
       expect(page).to have_content('Wissenschaft')
       expect(page).to have_content('Soziales')
     end
@@ -46,32 +47,33 @@ describe 'displaying tags' do
       it 'shows the tags for the category you choose'
       it 'shows tags with no language'
 
-      xit 'shows only german tags' do
-        visit 'de/categories'
+      it 'shows only german tags' do
+        visit "de/categories/#{science.id}"
         within '#available-tags-box' do
           expect(page).to have_content('chemie')
           expect(page).not_to have_content('fruehling')
         end
       end
 
-      xit 'shows only english tags' do
-        visit 'en/categories'
+      it 'shows only english tags' do
+        visit "en/categories/#{science.id}"
         within '#available-tags-box' do
           expect(page).to have_content('physics')
           expect(page).not_to have_content('chemie')
         end
       end
 
-      xit 'shows with slash use %2F for the link generating' do
-        visit 'en/categories'
+      it 'shows with slash use %2F for the link generating' do
+        visit "en/categories/#{science.id}"
         within '#available-tags-box' do
-          click_link('AC/DC')
+          expect(page).to have_content('AC/DC')
+          click_button('AC/DC')
         end
         expect(page).to have_content('AC/DC')
       end
 
-      xit 'shows not tags from unpublished profiles' do
-        visit 'en/categories'
+      it 'shows not tags from unpublished profiles' do
+        visit "en/categories/#{science.id}"
         within '#available-tags-box' do
           expect(page).not_to have_content('sports')
         end

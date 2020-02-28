@@ -21,11 +21,11 @@
      Copyright: public domain ( modified )
   </div>
   <!-- anchor for features -->
-  <a id="features"></a>
+  <a id="features_anchor"></a>
 
   <% if @features.load.any? %>
     <% @features.each do |feature| %>
-      <div class="container mt-5 text-center">
+      <div class="container mt-5 text-center feature">
         <h1 class=""><%= feature.title %></h3>
         <h3 class="">
           <%= feature.description %>

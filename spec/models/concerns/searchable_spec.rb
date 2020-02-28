@@ -61,11 +61,11 @@ describe Searchable, elasticsearch: true do
     end
 
     it 'contains the attribute main_topic_de' do
-      expect(ada.as_indexed_json['main_topic_de']).to eq 'Mathematik'
+      expect(ada.as_indexed_json['main_topic_de']).to eq 'Mathematik Genie'
     end
 
     it 'contains the attribute main_topic_en' do
-      expect(ada.as_indexed_json['main_topic_en']).to eq 'math'
+      expect(ada.as_indexed_json['main_topic_en']).to eq 'math wiz'
     end
 
     # it 'contains the attribute medialinks' do
