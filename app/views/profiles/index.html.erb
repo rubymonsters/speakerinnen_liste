@@ -5,7 +5,7 @@
     <div class="row">
       <div class="col-12 py-5">
         <span class="h1">
-          <%= t(:success, scope: 'search').html_safe + t(:result, scope: 'search', count: @profiles_for_search.count).html_safe %><b><%= params[:search] if params[:search] %></b>
+          <%= t(:success, scope: 'search').html_safe + t(:result, scope: 'search', count: @profiles.total).html_safe %><b><%= params[:search] if params[:search] %></b>
         </span>
         <span class="float-right"><%= link_to("<i class='fa fa-filter pr-2'></i>".html_safe + "Filter by themes", profiles_path, class: '')  %>
         </span>
