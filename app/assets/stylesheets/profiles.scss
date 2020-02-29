@@ -14,6 +14,10 @@
   width: 100%;
 }
 
+.nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link.active {
+  background: $light-grey;
+}
+
 .photo--grey {
   border: $border;
   -webkit-transition: 1s;

@@ -17,6 +17,7 @@
     </p>
   </div>
 </div>
+<hr>
 <div class="row mt-3">
   <div class="col-sm-12 col-md-8 col-lg-6 p-3">
     <h5 class="pb-3 font-weight-bold"> <%= t(:personal_infos, scope: 'profiles.form').html_safe %></h5>
@@ -106,28 +107,28 @@
   <% end %>
 </ul>
 <hr>
-
+<a id="translated-infos-anchor"></a>
 <!-- translated fields -->
 <div class="row mt-3">
   <div class="col-sm-12 col-md-8 col-lg-6 p-3">
     <h5 class="pb-3 font-weight-bold"> <%= t(:translated_infos, scope: 'profiles.form').html_safe %></h5>
     <ul class="nav nav-tabs">
       <li class="nav-item">
-        <a id="show-de" class="nav-link <%= I18n.locale == :de ? "active" : "" %>" href="#"> <%= t(:de, scope: 'i18n.language').html_safe %></a>
+        <a id="show-de" class="nav-link <%= I18n.locale == :de ? "active" : " " %>" href="#translated-infos-anchor"> <%= t(:de, scope: 'i18n.language').html_safe %></a>
       </li>
       <li class="nav-item">
-        <a id="show-en" class="nav-link <%= I18n.locale == :en ? "active" : "" %>" href="#"> <%= t(:en, scope: 'i18n.language').html_safe %></a>
+        <a id="show-en" class="nav-link <%= I18n.locale == :en ? "active" : " " %>" href="#translated-infos-anchor"> <%= t(:en, scope: 'i18n.language').html_safe %></a>
       </li>
     </ul>
 
-    <div id="edit-de" class="<%= "d-none" unless I18n.locale == :de %>" >
+    <div id="edit-de" class="<%= "d-none" unless I18n.locale == :de %> bg--light-grey p-3" >
       <div class="form-group">
         <%= f.label :profession, t(:profession, scope: 'profiles.show').html_safe, id: "profession_de" %>
         <%= f.text_field :profession_de, as: :text, class: 'form-control mb-3', maxlength: 60 %>
       </div>
       <div class="form-group">
         <%= f.label :city, t(:city, scope: 'profiles.form').html_safe,
-          id: "city_de", class: 'pt-3', title: t(:city_tooltip, scope: 'profiles.form').html_safe %>
+          id: "city_de", class: '', title: t(:city_tooltip, scope: 'profiles.form').html_safe %>
         <%= f.text_field :city_de, as: :text, class: 'form-control mb-3', maxlength: '30' %>
       </div>
       <div class="form-group">
@@ -162,7 +163,7 @@
       </div>
     </div>
 
-    <div id="edit-en" class="form-group <%= "d-none" unless I18n.locale == :en %>" >
+    <div id="edit-en" class="form-group <%= "d-none" unless I18n.locale == :en %> bg--light-grey p-3" >
       <div class="form-group">
         <%= f.label :profession, t(:profession, scope: 'profiles.form').html_safe, id: "profession_en" %>
         <%= f.text_field :profession_en, as: :text, class: 'form-control mb-3', maxlength: 60 %>
