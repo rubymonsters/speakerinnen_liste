@@ -186,6 +186,7 @@ class ProfilesController < ApplicationController
       :willing_to_travel,
       :nonprofit,
       feature_ids: [],
+      service_ids: [],
       translations_attributes: %i[id bio main_topic twitter website profession city locale]
     )
   end
