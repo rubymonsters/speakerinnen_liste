@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_26_000000) do
+ActiveRecord::Schema.define(version: 2020_02_29_160000) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -179,8 +179,8 @@ ActiveRecord::Schema.define(version: 2020_02_26_000000) do
     t.string "iso_languages"
     t.string "copyright"
     t.string "personal_note", limit: 175
-    t.boolean "willing_to_travel"
-    t.boolean "nonprofit"
+    t.boolean "willing_to_travel", default: true
+    t.boolean "nonprofit", default: true
     t.index ["confirmation_token"], name: "index_profiles_on_confirmation_token", unique: true
     t.index ["email"], name: "index_profiles_on_email", unique: true
     t.index ["reset_password_token"], name: "index_profiles_on_reset_password_token", unique: true
