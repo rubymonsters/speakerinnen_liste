@@ -155,12 +155,9 @@ textarea, input {
   font-family: sans-serif
 }
 
-@media (min-width: 1200px) {
-    .container{
-        max-width: 1600px;
-    }
+.top-space {
+  margin-top: 290px;
 }
-
 
 // fontawesome
 .fa-check-square {
@@ -171,11 +168,16 @@ textarea, input {
   color: #e51a1a;
 }
 
+@media (min-width: 1200px) {
+    .container{
+        max-width: 1600px;
+    }
+}
 
 // responsive
 @include media-breakpoint-down(sm) {
   h1, .display-4 {
-    font-size: 1.5rem;
+    font-size: 2.5rem;
   }
 
   h4 {
@@ -201,5 +203,9 @@ textarea, input {
 
   .startpage-subtitle {
     display: none;
+  }
+
+  .top-space {
+    margin-top: 100px;
   }
 }
