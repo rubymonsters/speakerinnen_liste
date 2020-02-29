@@ -12,7 +12,22 @@
       <%# countries filter %>
       <% if countries_to_filter %>
         <div class="col-sm-12 col-md-4">
+          <div class="dropdown show">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <%= t(:countries_agg, scope: 'search' ).html_safe %>
+            </button>
 
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+              <% aggs_countries.each do |term| %>
+                <%= link_to(
+                      ISO3166::Country.find_country_by_alpha2("#{term['key']}").translation(I18n.locale),
+                      { search: params[:search], filter_countries: term['key'] },
+                      class: "dropdown-item #{'bg-dark text-light' if params[:filter_countries] == term['key'] }")
+                %>
+              <% end %>
+            </div>
+          </div>
+<!--
           <ul id="facet_countries" class="search-aggregation list-unstyled">
             <b><%= t(:countries_agg, scope: 'search' ).html_safe%></b>
             <% aggs_countries[0..9].each do |term| %>
@@ -37,6 +52,7 @@
               <% end %>
             <% end %>
           </ul>
+-->
         </div>
       <% end %>
 
