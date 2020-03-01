@@ -9,9 +9,9 @@ module Searchable
     index_name [Rails.application.engine_name, Rails.env].join('_')
 
     def self.search(query, filter_countries, filter_cities, filter_lang)
-      @filter_countries = filter_countries
-      @filter_cities = filter_cities
-      @filter_lang = filter_lang
+      @filter_countries = filter_countries == "" ? nil : filter_countries
+      @filter_cities = filter_cities == "" ? nil : filter_cities
+      @filter_lang = filter_lang == "" ? nil : filter_lang
 
       query_hash =
         {
