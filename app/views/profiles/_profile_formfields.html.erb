@@ -61,7 +61,7 @@
 <div class="row mt-3">
   <div class="col-sm-12 col-md-8 col-lg-6 p-3">
     <h5 class="pb-3 font-weight-bold"> <%= t(:talk_infos, scope: 'profiles.form').html_safe %></h5>
-    <div class="form-group">
+    <div class="form-group" id="form-group-willing-to-travel">
       <%= t(:willing_to_travel, scope: 'profiles.form').html_safe %>:
       <label name="willing_to_travel_na">
         <%= f.radio_button :willing_to_travel, "", checked: @profile.willing_to_travel.nil? %>
@@ -76,7 +76,7 @@
         <%= t(:no, scope: 'profiles.form').html_safe %>
       </label>
     </div>
-    <div class="form-group">
+    <div class="form-group" id="form-group-nonprofit">
       <%= t(:nonprofit, scope: 'profiles.form').html_safe %>:
       <label name="nonprofit_na">
         <%= f.radio_button :nonprofit, "", checked: @profile.nonprofit.nil? %>
