@@ -41,8 +41,7 @@
   <div class="container mt-5 text-center">
     <h1 class="">Speakerinnen* - get inspired</h3>
     <h3 class="">
-      A warm welcome!
-      Here you can find our latest registrations
+      <%= t(:newest_speaker, scope: 'pages.home') %>
     </h3>
     <div class="row pt-5">
       <%= render partial: "profiles/profile", collection: @newest_profiles %>
@@ -58,7 +57,7 @@
       <div class="col">
     <h1><%= t(:description, scope: 'pages.home') %></h3>
     <h3 class="pb-5">
-      Find your female speaker in 10 categories or filter by specific topics!
+      <%= t(:categories_list, scope: 'pages.home') %>
   </div>
   <div class="container-fluid startpage-categories__list p-0">
     <%= render partial: "shared/categories", object: @categories %>
