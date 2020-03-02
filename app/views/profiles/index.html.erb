@@ -29,11 +29,6 @@
 
   <!-- only show the category filter when not in search scope -->
   <% unless params[:search] %>
-      <div class="row ml-5 mt-2">
-        <div class="col-md-12">
-    <%= link_to("All Speakerinnen", profiles_path(:anchor => "speakers_anchor"), class: "pt-3") %>
-  </div>
-</div>
     <div class="collapse show" id="collapseFilter">
 
       <div class="row p-5">

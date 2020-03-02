@@ -13,5 +13,6 @@ class CreateServices < ActiveRecord::Migration[5.2]
     Service.create(name: 'Workshop management')
     Service.create(name: 'Consulting')
     Service.create(name: 'Coaching')
+    Service.create(name: 'Interview')
   end
 end
