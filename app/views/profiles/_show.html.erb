@@ -160,14 +160,14 @@
     <% if !@profile.willing_to_travel.nil? %>
       <p class="h5 pt-3">
         <i class="fa <%= @profile.willing_to_travel ? 'fa-check-square' : 'fa-times-rectangle' %>">&nbsp;</i>
-        <%= t(:willing_to_travel, scope: 'profiles.show') %>
+        <%= @profile.willing_to_travel ? t(:willing_to_travel, scope: 'profiles.show') : t(:not_willing_to_travel, scope: 'profiles.show') %>
       </p>
     <% end %>
     <!-- willing to talk nonprofit -->
     <% if !@profile.nonprofit.nil? %>
       <p class="h5">
         <i class="fa <%= @profile.nonprofit ? 'fa-check-square' : 'fa-times-rectangle' %>">&nbsp;</i>
-        <%= t(:nonprofit, scope: 'profiles.show') %>
+        <%= @profile.nonprofit ? t(:nonprofit, scope: 'profiles.show') : t(:not_nonprofit, scope: 'profiles.show') %>
       </p>
     <% end %>
 >>>>>>> eee2d74f7bba8228cadd859358977f37f52f181d

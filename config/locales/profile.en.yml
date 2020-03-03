@@ -31,7 +31,7 @@ en:
       services_i_give: "Services I Give"
       Talk: "Talk"
       Moderation: "Moderation"
-      Workshop management: "Workshop management"
+      Workshop management: "Workshop"
       Consulting: "Consulting"
       Coaching: "Coaching"
       personal_note: "Personal note in %{language}: <i class='fa fa-info-circle' aria-hidden='true'></i>"
@@ -119,16 +119,22 @@ en:
         one: "for the choosen topic.",
         other: "for the choosen topics."
       }
+      title_topic_search: "On which topic should your speakerin be an expert?"
+      up_to_filter: "Up to the topic filter"
       show_more: "More >>"
       show_less: "Less >>"
       apply_filter: "Apply tag filter"
       within: " whithin the category: "
-      profiles_in_category: "There are %{profiles_count} Speakerinnen* in the category <b>%{category_name}</b>"
+      profiles_in_category: "There are %{profiles_count} Speakerinnen in the category <b>%{category_name}</b>"
       back_to_filters: "Back to Filters"
     new:
       new_profile: "New profile"
   error_messages:
     picture_too_big: " is too big. You cannot upload a file greater than 1MB."
   category:
-    title: "Look though the all speakerinnen of the category <b>%{category_name}</b> <i class='fa fa-caret-right' style='font-size: 21px'></i>"
-    filter: "Choose one or more tags from any category:"
+    title: "Look through all the speakerinnen of the category <b>%{category_name}</b> <i class='fa fa-caret-right' style='font-size: 21px'></i>"
+    filter: "Choose one or more topics from any category:"
+    choose_all_button: "Choose all topics from %{category_name}"
+    choose_category: "Choose a category:"
+    clear_link: "X Clear all"
+    choose_button: "Speakers with these topics"
