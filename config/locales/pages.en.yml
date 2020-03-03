@@ -7,8 +7,10 @@ en:
         find_speaker: "Find speaker"
         search_placeholder: "Search by name or topic"
         search_speaker: "Search"
+      about_us: "Learn more about the Speakerinnen.org team!"
       all_categories: "Categories and topics >>"
       all_speakers: "All women speakers >>"
+      browse_by_topic: "Find the right female speaker in 10 categories!"
       hint: "Hint"
       auth_modal: "You have to <b>agree to the use of cookies</b> before using the register or login form.<br>
        Find more information about data security in our <a href='%{link}' class='link'>privacy policy</a>.<br>"
@@ -22,6 +24,7 @@ en:
       description: "Browse by categories"
       description_text: "We feel strongly about a balanced representation of men and women* on stage. We encourage women to become more visible in their profession and field of expertise."
       newest_speaker: "A warm welcome! Here you can find our latest registrations"
+      our_blog: "Find exciting interviews and lots of news!"
       speaker_shoutout: "Do you have something interesting to say?"
       speaker_text: "Get on the Speakerinnen* list >>"
       speakers:
