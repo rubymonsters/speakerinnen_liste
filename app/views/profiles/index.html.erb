@@ -36,12 +36,8 @@
           <h1><%= t(:title_topic_search, scope: 'profiles.index') %></h1>
         </div>
       </div>
-      <div class="row px-5">
-        <div class="col-md-12">
-          <%= render partial: 'shared/category_filter' %>
-          <a id="speakers_anchor"></a>
-        </div>
-      </div>
+      <%= render partial: 'shared/category_filter' %>
+      <a id="speakers_anchor"></a>
 
     <hr class="mt-5">
     </div> <!-- tag filter -->

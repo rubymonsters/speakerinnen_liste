@@ -23,7 +23,7 @@
     <% if @profile.main_topic_or_first_topic %>
       <p class="">
         <span class="font-weight-bold">
-          Haupthema:
+          <%= t(:main_topic, scope: 'profiles.show') %>
         </span>
         <%= @profile.main_topic_or_first_topic %>
       </p>
@@ -146,24 +146,15 @@
       </p>
     <% end %>
     <!-- willing_to_travel -->
-    <p class="">
-      <i class="fa <%= @profile.willing_to_travel ? 'fa-check-square' : 'fa-times-rectangle' %>">&nbsp;</i>
-      <%= t(:willing_to_travel, scope: 'profiles.show') %>
-    </p>
-    <!-- willing to talk nonprofit -->
-    <p class="">
-      <i class="fa <%= @profile.nonprofit ? 'fa-check-square' : 'fa-times-rectangle' %>">&nbsp;</i>
-      <%= t(:nonprofit, scope: 'profiles.show') %>
-    </p>
     <% if !@profile.willing_to_travel.nil? %>
-      <p class="h5 pt-3">
+      <p class="pt-3">
         <i class="fa <%= @profile.willing_to_travel ? 'fa-check-square' : 'fa-times-rectangle' %>">&nbsp;</i>
         <%= @profile.willing_to_travel ? t(:willing_to_travel, scope: 'profiles.show') : t(:not_willing_to_travel, scope: 'profiles.show') %>
       </p>
     <% end %>
     <!-- willing to talk nonprofit -->
     <% if !@profile.nonprofit.nil? %>
-      <p class="h5">
+      <p class="">
         <i class="fa <%= @profile.nonprofit ? 'fa-check-square' : 'fa-times-rectangle' %>">&nbsp;</i>
         <%= @profile.nonprofit ? t(:nonprofit, scope: 'profiles.show') : t(:not_nonprofit, scope: 'profiles.show') %>
       </p>
@@ -196,26 +187,22 @@
 <% if @profile.personal_note %>
   <div class="row my-3">
     <div class="col-md-12">
-      <p class="">
         <span class="font-weight-bold">
           <%= t(:personal_note, scope: 'profiles.show') %>
         </span>
         <%= simple_format(@profile.personal_note, class: '') %>
-      </p>
     </div>
   </div>
 <% end %>
 
 <!-- bio -->
 <% if @profile.bio %>
-  <div class="row">
+  <div class="row my-3">
     <div class="col-md-12">
-      <p class="">
         <span class="font-weight-bold">
           <%= t(:bio, scope: 'profiles.show') %>
         </span>
         <%= simple_format(@profile.bio, class: '') %>
-      </p>
     </div>
   </div>
 <% end %>
@@ -228,18 +215,20 @@
         <%= t(:media, scope: 'profiles.show') %>
       </p>
       <% @medialinks.each do |medialink| %>
-        <p class=" font-weight-bold">
-          <% if medialink.url =~ /youtube|vimeo/i %>
-            <%= medialink.title %>
-            <%= medialink.url_html if medialink.url != 'http://' %>
-          <% else %>
-            <%= link_to medialink.title, medialink.url %>
-          <% end %>
-        </p>
-        <%= simple_format(medialink.description, class: '') %>
-        <span class="color-grey">
-          <%= t(:select_language, scope: 'medialinks') + t("#{medialink.language}", scope: 'iso_639_1').capitalize if medialink.language.present? %>
-        </span>
+        <div class="mb-5">
+          <b>
+            <% if medialink.url =~ /youtube|vimeo/i %>
+              <%= medialink.title %>
+              <%= medialink.url_html if medialink.url != 'http://' %>
+            <% else %>
+              <%= link_to medialink.title, medialink.url %>
+            <% end %>
+          </b>
+          <%= simple_format(medialink.description, class: '') %>
+          <span class="color-grey">
+            <%= t(:select_language, scope: 'medialinks') + t("#{medialink.language}", scope: 'iso_639_1').capitalize if medialink.language.present? %>
+          </span>
+        </div>
       <% end %>
     </div>
   </div>

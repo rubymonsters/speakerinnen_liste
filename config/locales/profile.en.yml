@@ -13,6 +13,7 @@ en:
       profile_from: "Profile of"
       delete_image: "<i class='fa fa-trash pr-2'></i>Delete my photo"
       update: "Update your profile"
+      your_picture: "Picture"
       picture: "A picture of me:"
       copyright: "Picture copyright:"
       image_info: "Please upload a photo in <b>color</b>, we show it in black and white.
@@ -26,8 +27,8 @@ en:
       willing_to_travel: "Willing to travel for a talk"
       nonprofit: "Willing to talk for nonprofit"
       not_applicable: "Not Applicable"
-      yes: "Yes"
-      no: "No"
+      answer_yes: "Yes"
+      answer_no: "No"
       services_i_give: "Services I Give"
       Talk: "Talk"
       Moderation: "Moderation"
@@ -59,14 +60,18 @@ en:
     show:
       firstname: 'First name:'
       lastname: 'Last name:'
-      willing_to_travel: "Willing to travel for a talk"
-      nonprofit: "Willing to talk for nonprofit"
+      main_topic: 'Main focus:'
+      willing_to_travel: "Willing to travel for an event."
+      not_willing_to_travel: "I don't want to travel for an event."
+      nonprofit: "Willing to talk for nonprofit."
+      not_nonprofit: "I don't want to talk for nonprofit."
       services: "Services:"
       Talk: "Talk"
       Moderation: "Moderation"
       Workshop management: "Workshop management"
       Consulting: "Consulting"
       Coaching: "Coaching"
+      Interview: "Interview"
       media: "Examples of previous talks / appearances:"
       personal_note: "Personal note:"
       topics: "Topics:"
