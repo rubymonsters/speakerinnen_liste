@@ -21,7 +21,7 @@
         </li>
         <li class="nav-item active dropdown pt-3 pr-5">
           <a class="dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            More
+            <%= I18n.locale == :en ? "More" : "Mehr" %>
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
             <%= link_to 'Speakerinnen Blog', 'https://blog.speakerinnen.org/', target: '_blank', class: 'dropdown-item' %>

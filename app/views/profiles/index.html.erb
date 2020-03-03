@@ -33,7 +33,7 @@
 
       <div class="row p-5">
         <div class="col-md-12 text-center">
-          <h1> Which Topic would your speakerin be an expert in? </h1>
+          <h1><%= t(:title_topic_search, scope: 'profiles.index') %></h1>
         </div>
       </div>
       <div class="row px-5">
@@ -45,7 +45,7 @@
 
     <hr class="mt-5">
     </div> <!-- tag filter -->
-    <a href="#top" class="p-5">Up to the filter  <i class='fa fa-filter pr-2'></i> </a>
+    <a href="#top" class="p-5"><%= t(:up_to_filter, scope: 'profiles.index') %> <i class='fa fa-filter pr-2'></i> </a>
   <% end %>
 
   <!-- Found speaker when in search or filter function -->
