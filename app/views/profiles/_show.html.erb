@@ -200,7 +200,7 @@
         <span class="font-weight-bold">
           <%= t(:personal_note, scope: 'profiles.show') %>
         </span>
-        <%= simple_format(@profile.personal_note, class: 'serif') %>
+        <%= simple_format(@profile.personal_note, class: '') %>
       </p>
     </div>
   </div>
@@ -214,7 +214,7 @@
         <span class="font-weight-bold">
           <%= t(:bio, scope: 'profiles.show') %>
         </span>
-        <%= simple_format(@profile.bio, class: 'serif size-paragraph') %>
+        <%= simple_format(@profile.bio, class: '') %>
       </p>
     </div>
   </div>
@@ -236,7 +236,7 @@
             <%= link_to medialink.title, medialink.url %>
           <% end %>
         </p>
-        <%= simple_format(medialink.description, class: 'serif') %>
+        <%= simple_format(medialink.description, class: '') %>
         <span class="color-grey">
           <%= t(:select_language, scope: 'medialinks') + t("#{medialink.language}", scope: 'iso_639_1').capitalize if medialink.language.present? %>
         </span>
