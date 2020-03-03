@@ -9,7 +9,8 @@
   </div>
   <div class="col-md-6">
     <h1 class=""><%= @profile.fullname %></h1>
-    <h4 class=""><%= @profile.profession %></h4
+    <h3 class=""><%= @profile.profession %></h4>
+    <br>
     <% unless @profile.fullname.present? %>
       <p class="error">
         <%= t(:empty_profile, scope: 'profiles.show').html_safe %>
@@ -20,7 +21,7 @@
     <% end %>
     <!-- main topic -->
     <% if @profile.main_topic_or_first_topic %>
-      <p class="h5 pt-3">
+      <p class="">
         <span class="font-weight-bold">
           Haupthema:
         </span>
@@ -29,7 +30,7 @@
     <% end %>
       <!-- twitter -->
     <% if @profile.twitter.present? %>
-      <p class="h5 pt-3">
+      <p class="">
         <span class="font-weight-bold">
           <%= t(:twitter, scope: 'profiles.show') %>
         </span>
@@ -48,7 +49,7 @@
       <% if @profile.website_in_language_scope(I18n.locale).present? &&
            ( @profile.website_in_language_scope(I18n.locale, "2_").present? || @profile.website_in_language_scope(I18n.locale, "3_").present? ) %>
 
-        <p class="h5 pt-3">
+        <p class="">
           <span class="font-weight-bold">
             <%= t(:websites, scope: 'profiles.show') %>
           </span>
@@ -61,7 +62,7 @@
           </p>
       <!-- If profile has just one website: -->
       <% elsif @profile.website_in_language_scope(I18n.locale).present? %>
-      <p class="h5 pt-3">
+      <p class="">
         <span class="font-weight-bold">
           <%= t(:website, scope: 'profiles.show') %>
         </span>
@@ -75,7 +76,7 @@
 
       <!-- Show the view for more than one website: -->
       <% if @profile.website.present? && ( @profile.website_2.present? || @profile.website_3.present? ) %>
-        <p class="h5 pt-3">
+        <p class="">
           <span class="font-weight-bold">
             <%= t(:websites, scope: 'profiles.show') %>
           </span>
@@ -88,7 +89,7 @@
         </p>
       <!-- Show the view for just one website: -->
       <% elsif @profile.website.present? %>
-        <p class="h5 pt-3">
+        <p class="">
           <span class="font-weight-bold">
             <%= t(:websites, scope: 'profiles.show') %>
           </span>
@@ -99,7 +100,7 @@
     <% end %>
     <!-- languages  -->
     <% if @profile.iso_languages.present? %>
-      <p class="h5 pt-3">
+      <p class="">
         <span class="font-weight-bold">
           <%= t(:languages, scope: 'profiles.show') %>
         </span>
@@ -110,7 +111,7 @@
     <% end %>
     <!-- city -->
     <% if @profile.city.present? %>
-      <p class="h5 pt-3">
+      <p class="">
         <span class="font-weight-bold">
           <%= t(:city, scope: 'profiles.show') %>
         </span>
@@ -119,7 +120,7 @@
     <% end %>
     <!-- country  -->
     <% if @profile.country.present? %>
-      <p class="h5 pt-3">
+      <p class="">
         <span class="font-weight-bold">
           <%= t(:country, scope: 'profiles.show') %>
         </span>
@@ -128,7 +129,7 @@
     <% end %>
     <!-- topics -->
     <% if topics_for_profile(@profile).present? %>
-      <p class="h5 pt-3">
+      <p class="">
         <span class="font-weight-bold">
           <%= t(:topics, scope: 'profiles.show') %>
         </span>
@@ -137,7 +138,7 @@
     <% end %>
     <!-- services  -->
     <% if !@profile.services.empty? %>
-      <p class="h5 pt-3">
+      <p class="">
         <span class="font-weight-bold">
           <%= t(:services, scope: 'profiles.show') %>
         </span>
@@ -145,12 +146,12 @@
       </p>
     <% end %>
     <!-- willing_to_travel -->
-    <p class="h5 pt-3">
+    <p class="">
       <i class="fa <%= @profile.willing_to_travel ? 'fa-check-square' : 'fa-times-rectangle' %>">&nbsp;</i>
       <%= t(:willing_to_travel, scope: 'profiles.show') %>
     </p>
     <!-- willing to talk nonprofit -->
-    <p class="h5">
+    <p class="">
       <i class="fa <%= @profile.nonprofit ? 'fa-check-square' : 'fa-times-rectangle' %>">&nbsp;</i>
       <%= t(:nonprofit, scope: 'profiles.show') %>
     </p>
@@ -182,7 +183,7 @@
 <% if @profile.personal_note %>
   <div class="row my-3">
     <div class="col-md-12">
-      <p class="h4 pt-3">
+      <p class="">
         <span class="font-weight-bold">
           <%= t(:personal_note, scope: 'profiles.show') %>
         </span>
@@ -196,7 +197,7 @@
 <% if @profile.bio %>
   <div class="row">
     <div class="col-md-12">
-      <p class="h4 pt-3">
+      <p class="">
         <span class="font-weight-bold">
           <%= t(:bio, scope: 'profiles.show') %>
         </span>
@@ -210,11 +211,11 @@
 <% if @medialinks.load.any? %>
   <div class="row">
     <div class="col-md-12">
-      <p class="h4 pt-3 font-weight-bold">
+      <p class=" font-weight-bold">
         <%= t(:media, scope: 'profiles.show') %>
       </p>
       <% @medialinks.each do |medialink| %>
-        <p class="h5 pt-3 font-weight-bold">
+        <p class=" font-weight-bold">
           <% if medialink.url =~ /youtube|vimeo/i %>
             <%= medialink.title %>
             <%= medialink.url_html if medialink.url != 'http://' %>
