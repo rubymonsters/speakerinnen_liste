@@ -152,7 +152,21 @@ ul#medialinks__list {
 }
 
 /* edit form */
-
 #form-group-willing-to-travel label, #form-group-nonprofit label {
   margin-left: 0.3rem;
+}
+
+/* fontawesome for profile boolean attributes */
+.fa-check-square {
+  color: #61bd2c;
+}
+
+.fa-times-rectangle {
+  color: #e51a1a;
+}
+
+/*tooltip*/
+.profile-tooltip {
+  text-align: left;
+  font-size: 12px;
 }
