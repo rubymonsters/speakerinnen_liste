@@ -146,31 +146,19 @@
       </p>
     <% end %>
     <!-- willing_to_travel -->
-<<<<<<< HEAD
-    <p class="">
-      <i class="fa <%= @profile.willing_to_travel ? 'fa-check-square' : 'fa-times-rectangle' %>">&nbsp;</i>
-      <%= t(:willing_to_travel, scope: 'profiles.show') %>
-    </p>
-    <!-- willing to talk nonprofit -->
-    <p class="">
-      <i class="fa <%= @profile.nonprofit ? 'fa-check-square' : 'fa-times-rectangle' %>">&nbsp;</i>
-      <%= t(:nonprofit, scope: 'profiles.show') %>
-    </p>
-=======
     <% if !@profile.willing_to_travel.nil? %>
-      <p class="h5 pt-3">
+      <p>
         <i class="fa <%= @profile.willing_to_travel ? 'fa-check-square' : 'fa-times-rectangle' %>">&nbsp;</i>
         <%= t(:willing_to_travel, scope: 'profiles.show') %>
       </p>
     <% end %>
     <!-- willing to talk nonprofit -->
     <% if !@profile.nonprofit.nil? %>
-      <p class="h5">
+      <p>
         <i class="fa <%= @profile.nonprofit ? 'fa-check-square' : 'fa-times-rectangle' %>">&nbsp;</i>
         <%= t(:nonprofit, scope: 'profiles.show') %>
       </p>
     <% end %>
->>>>>>> eee2d74f7bba8228cadd859358977f37f52f181d
   </div>
 
   <!-- edit action for user -->

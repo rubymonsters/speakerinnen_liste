@@ -117,6 +117,7 @@ class Admin::ProfilesController < Admin::BaseController
       :willing_to_travel,
       :nonprofit,
       feature_ids: [],
+      service_ids: [],
       translations_attributes: %i[id bio main_topic twitter website website_2 website_3 profession city locale]
     )
   end
