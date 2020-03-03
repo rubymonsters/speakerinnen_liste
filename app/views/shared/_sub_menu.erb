@@ -11,7 +11,7 @@
 <div class="col-lg-3 mb-2">
   <div class="card pb-3 bg--white-trans">
     <div class="card-header">
-      <h3 class="font-weight-bold card-title mb-0"><%= link_to("Browse by topic", root_path + "#categories_anchor" )%></h3>
+      <h3 class="font-weight-bold card-title mb-0"><%= link_to t(:browse_title, scope: 'pages.home'), root_path + "#categories_anchor" %></h3>
     </div>
     <div class="card-body">
       <p class="serif h4 card-text mt-2"><%= t(:browse_by_topic, scope: 'pages.home') %></p>
@@ -21,7 +21,7 @@
 <div class="col-lg-3 mb-2">
   <div class="card pb-3 bg--white-trans">
     <div class="card-header">
-      <h3 class="font-weight-bold card-title mb-0"><%= link_to("About us", about_path )%></h3>
+      <h3 class="font-weight-bold card-title mb-0"><%= link_to t(:about_title, scope: 'pages.home.footer'), about_path %></h3>
     </div>
     <div class="card-body">
       <p class="serif h4 card-text mt-2"><%= t(:about_us, scope: 'pages.home') %></p>
@@ -31,7 +31,7 @@
 <div class="col-lg-3 mb-2">
   <div class="card pb-3 bg--white-trans">
     <div class="card-header">
-      <h3 class="font-weight-bold card-title mb-0"><%= link_to("Our Blog",'https://blog.speakerinnen.org/', target: '_blank' )%></h3>
+      <h3 class="font-weight-bold card-title mb-0"><%= link_to("Blog",'https://blog.speakerinnen.org/', target: '_blank' )%></h3>
     </div>
     <div class="card-body">
       <p class="serif h4 card-text mt-2"><%= t(:our_blog, scope: 'pages.home') %></p>
