@@ -150,3 +150,9 @@ ul#medialinks__list {
     background-color: $link-bg-color-hover;
     color: $link-color-hover;
 }
+
+/* edit form */
+
+#form-group-willing-to-travel label, #form-group-nonprofit label {
+  margin-left: 0.3rem;
+}

@@ -61,16 +61,34 @@
 <div class="row mt-3">
   <div class="col-sm-12 col-md-8 col-lg-6 p-3">
     <h5 class="pb-3 font-weight-bold"> <%= t(:talk_infos, scope: 'profiles.form').html_safe %></h5>
-    <div class="form-group">
-      <label name="willing_to_travel">
-        <%= f.check_box :willing_to_travel %>
-        <%= t(:willing_to_travel, scope: 'profiles.form').html_safe %>
+    <div class="form-group" id="form-group-willing-to-travel">
+      <%= t(:willing_to_travel, scope: 'profiles.form').html_safe %>:
+      <label name="willing_to_travel_na">
+        <%= f.radio_button :willing_to_travel, "", checked: @profile.willing_to_travel.nil? %>
+        <%= t(:not_applicable, scope: 'profiles.form').html_safe %>
+      </label>
+      <label name="willing_to_travel_yes">
+        <%= f.radio_button :willing_to_travel, "1", checked: @profile.willing_to_travel == true %>
+        <%= t(:yes, scope: 'profiles.form').html_safe %>
+      </label>
+      <label name="willing_to_travel_no">
+        <%= f.radio_button :willing_to_travel, "0", checked: @profile.willing_to_travel == false %>
+        <%= t(:no, scope: 'profiles.form').html_safe %>
       </label>
     </div>
-    <div class="form-group">
-      <label name="nonprofit">
-        <%= f.check_box :nonprofit %>
-        <%= t(:nonprofit, scope: 'profiles.form').html_safe %>
+    <div class="form-group" id="form-group-nonprofit">
+      <%= t(:nonprofit, scope: 'profiles.form').html_safe %>:
+      <label name="nonprofit_na">
+        <%= f.radio_button :nonprofit, "", checked: @profile.nonprofit.nil? %>
+        <%= t(:not_applicable, scope: 'profiles.form').html_safe %>
+      </label>
+      <label name="nonprofit_yes">
+        <%= f.radio_button :nonprofit, "1", checked: @profile.nonprofit == true %>
+        <%= t(:yes, scope: 'profiles.form').html_safe %>
+      </label>
+      <label name="nonprofit_no">
+        <%= f.radio_button :nonprofit, "0", checked: @profile.nonprofit == false %>
+        <%= t(:no, scope: 'profiles.form').html_safe %>
       </label>
     </div>
   </div>
