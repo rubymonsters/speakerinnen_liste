@@ -49,11 +49,11 @@ describe 'profile search' do
     end
 
     it 'shows button search' do
-      expect(page).to have_selector('#search')
+      expect(page).to have_selector('#home_search')
     end
 
     it 'shows autofill' do
-      expect(page).to have_selector('.twitter-typeahead')
+      expect(page).to have_selector('.typeahead')
     end
   end
 
@@ -65,7 +65,7 @@ describe 'profile search' do
     end
 
     it 'shows autofill' do
-      expect(page).to have_selector('.twitter-typeahead')
+      expect(page).to have_selector('.typeahead')
     end
   end
 

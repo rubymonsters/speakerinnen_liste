@@ -1,7 +1,7 @@
 <div class="row mt-5" style="margin-bottom: 100px">
   <div class="col-md-4 text-center">
     <%= profile_image_link(@profile) %>
-    <button type="button" class="btn btn-primary mt-2 px-5" data-toggle="modal"
+    <button type="button" class="btn btn-primary btn-stretch mt-2 px-5" data-toggle="modal"
     data-target=<%= cookies[:cookie_consent].blank? ? "#contactHint" : "#contactModal" %>>
       <i class="fa fa-envelope-o"></i>&nbsp;
       <%= t(:contact, scope: 'profiles.show') %>
@@ -146,7 +146,6 @@
       </p>
     <% end %>
     <!-- willing_to_travel -->
-<<<<<<< HEAD
     <p class="">
       <i class="fa <%= @profile.willing_to_travel ? 'fa-check-square' : 'fa-times-rectangle' %>">&nbsp;</i>
       <%= t(:willing_to_travel, scope: 'profiles.show') %>
@@ -156,7 +155,6 @@
       <i class="fa <%= @profile.nonprofit ? 'fa-check-square' : 'fa-times-rectangle' %>">&nbsp;</i>
       <%= t(:nonprofit, scope: 'profiles.show') %>
     </p>
-=======
     <% if !@profile.willing_to_travel.nil? %>
       <p class="h5 pt-3">
         <i class="fa <%= @profile.willing_to_travel ? 'fa-check-square' : 'fa-times-rectangle' %>">&nbsp;</i>
@@ -170,7 +168,6 @@
         <%= t(:nonprofit, scope: 'profiles.show') %>
       </p>
     <% end %>
->>>>>>> eee2d74f7bba8228cadd859358977f37f52f181d
   </div>
 
   <!-- edit action for user -->
