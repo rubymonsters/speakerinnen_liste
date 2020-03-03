@@ -76,9 +76,6 @@
   max-width: 100%;
   border-radius: 0;
   position: relative;
-  &:hover {
-    height: 80px;
-    }
 }
 
 .progress {
@@ -134,9 +131,11 @@
   .category_name {
     width: 260px;
     left: 0px;
+    font-size: 1.0rem;
   }
   .category_count {
     width: 30px;
+    display: none;
   }
 }
 
