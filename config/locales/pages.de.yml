@@ -5,10 +5,13 @@ de:
         heading: "Mehr Frauen auf die Bühnen!"
         tagline: "Finde Rednerinnen, Referentinnen & Moderatorinnen<br> für Deine Konferenz:"
         find_speaker: "Finde Deine Speakerinnen"
-        search_placeholder: "Namen oder Thema"
+        search_placeholder: "Name oder Thema"
         search_speaker: "Suche"
+      about_us: "Erfahre mehr über das Team von Speakerinnen.org!"
       all_categories: "Kategorien und Themen >>"
       all_speakers: "Alle Speakerinnen* >>"
+      browse_title: "Nach Kategorien durchsuchen"
+      browse_by_topic: "Finde die passende Speakerin in 10 Kategorien!"
       hint: "Hinweis"
       auth_modal: "Du musst der <b>Verwendung von Cookies zustimmen</b>, bevor Du Dich einloggen oder anmelden kannst.<br>
       Mehr Informationen in unserer <a href='%{link}' class='link'>Datenschutzerklärung</a>.<br>"
@@ -24,8 +27,11 @@ de:
       Software, die Matomoto heißt, um zu wissen, wie die Besucher*innen und Nutzer*innen von speakerinnen.org die Seite nutzen: Das hilft uns auch
       dabei, sie zu verbessern. Auch hierfür nutzen wir Cookies, die Du aber deaktivieren kannst. Mehr Informationen in unserer <a href='%{link}' class='link'>Datenschutzerklärung</a>."
       allow_cookies: "Ich stimme zu"
+      categories_list: "Finde deine Speakerin in 10 Kategorien oder filtere nach ganz konkreten Themen!"
       description: "Nach Kategorien durchsuchen"
       description_text: "Uns ist die Verteilung der Männer und Frauen* auf Konferenzbühnen wichtig. Wir ermutigen Frauen, in ihrem professionellen Umfeld sichtbarer zu werden."
+      newest_speaker: "Ein herzliches Willkommen! Hier findest du unsere Neuzugänge"
+      our_blog: "Hier findest du spannende Interviews und viele Neuigkeiten!"
       speaker_shoutout: "Hast Du etwas Interessantes zu erzählen?"
       speaker_text: "Registriere Dich auf speakerinnen.org >>"
       speakers:

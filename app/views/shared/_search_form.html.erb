@@ -1,8 +1,6 @@
-<div id="search">
-  <%= form_tag(profiles_path, method: 'get', class:"form-row") do %>
-    <label class="sr-only" for="inlineFormInputSearch">Search</label>
-    <%= search_field_tag('search', params[:search], d: "home_search", style:"max-width:500px", class: 'form-control mr-sm-2 twitter-typeahead mb-2',
-          type: 'text', placeholder: t(:search_placeholder, scope: 'pages.home.search') ) %>
-    <%= submit_tag((t(:search_speaker, scope: 'pages.home.search')), class: 'btn btn-primary' ) %>
-  <% end %>
-</div>
+<%= form_tag(profiles_path, method: 'get', class:"form-row") do %>
+  <label class="sr-only" for="inlineFormInputSearch">Search</label>
+  <%= search_field_tag('search', params[:search], style: "min-width:550px", id: "home_search", class: 'form-control pr-2 typeahead ',
+        type: 'text', placeholder: t(:search_placeholder, scope: 'pages.home.search') ) %>
+  <%= submit_tag((t(:search_speaker, scope: 'pages.home.search')), class: 'ml-2 btn btn-primary py-0' ) %>
+<% end %>

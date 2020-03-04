@@ -17,6 +17,7 @@ RSpec.feature 'Feature', type: :feature do
 
     it 'shows features on home page in the correct order' do
       visit root_path
+      # puts save_page
       feature_descriptions = page.all(".feature")
       feature_descriptions[0].should have_content("Description for second subject")
       feature_descriptions[1].should have_content("Description for announced event")

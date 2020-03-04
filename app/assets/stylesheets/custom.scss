@@ -4,9 +4,12 @@ body {
   background-color: white;
 }
 
+html {
+  font-size: 18px;
+}
+
 a, .link, #expander {
   color: $link-color;
-  text-decoration: none;
   cursor: pointer;
 
   &:hover {
@@ -16,7 +19,6 @@ a, .link, #expander {
 
 h1, h2, h3, h4, h5 {
   font-family: $serif;
-
 }
 
 .btn:focus{
@@ -159,15 +161,6 @@ textarea, input {
   margin-top: 290px;
 }
 
-// fontawesome
-.fa-check-square {
-  color: #61bd2c;
-}
-
-.fa-times-rectangle {
-  color: #e51a1a;
-}
-
 @media (min-width: 1200px) {
     .container{
         max-width: 1600px;
@@ -177,7 +170,7 @@ textarea, input {
 // responsive
 @include media-breakpoint-down(sm) {
   h1, .display-4 {
-    font-size: 2.5rem;
+    font-size: 2.0rem;
   }
 
   h4 {

@@ -28,11 +28,14 @@
 #available-tags-box {
   max-height: 300px;
   overflow: scroll;
+  background-color: $white-smoke;
+  border: 1px solid $grey-stroke;
 }
 
 #selected-tags-box {
   height: 100px;
   overflow: scroll;
+  border: 1px solid $grey-stroke;
 }
 
 div#v-pills-tab a {
@@ -41,9 +44,9 @@ div#v-pills-tab a {
 
 .tag-button {
   border-radius: 0.75em;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   padding: 0.2em 0.7em;
-  box-shadow: 0 0 0 0px white, 0 0.5px 0.5px gray;
+  box-shadow: 0 0 0 0px white, 0 1.5px 0.5px $grey-stroke;
 }
 
 // colors of categories and tags
@@ -192,7 +195,6 @@ $all_categories_darker_color: (
 
 @each $name, $color in $all_categories_darker_color {
   div#v-pills-#{$name} {
-    background-color: $grey;
   }
   button.cat_#{$name} i {
     color: $color;

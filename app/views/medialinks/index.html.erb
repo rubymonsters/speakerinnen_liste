@@ -1,5 +1,5 @@
 <div class="container py-5">
-  <%= link_to(t(:show, scope: 'profiles.edit'), @profile, class:"text-uppercase serif") %>
+  <%= link_to(t(:show, scope: 'profiles.edit'), @profile, class:"") %>
 
   <h1 class="my-5"><%= t(:index, scope: 'medialinks')%></h1>
 
@@ -23,7 +23,7 @@
           <b><%= medialink.title %></b>
           <%= medialink.url_html if medialink.url != 'http://' %>
         <% else %>
-          <%= link_to medialink.title, medialink.url %>
+          <b><%= link_to medialink.title, medialink.url %></b>
         <% end %>
         <%= simple_format(medialink.description) %>
         <span class="color-grey">
@@ -32,8 +32,7 @@
         <hr>
 
         <%= link_to '<i class="fa fa-pencil"></i>'.html_safe+ t(:edit_link, scope: 'medialinks'), edit_profile_medialink_path(@profile, medialink) %>
-        <%= link_to '<i class="fa fa-minus-circle"></i>'.html_safe+ t(:delete_link, scope: 'medialinks'), profile_medialink_path(@profile, medialink),
-          method: :delete, data: { confirm: 'Are you sure?'}, title: t(:delete, scope: "medialinks") %>
+        <%= link_to '<i class="fa fa-minus-circle"></i>'.html_safe+ t(:delete_link, scope: 'medialinks'), profile_medialink_path(@profile, medialink), method: :delete, data: { confirm: 'Are you sure?'}, title: t(:delete, scope: "medialinks") %>
       <% end %>
     <% end %>
   </ul>
