@@ -54,7 +54,7 @@ RSpec.describe 'Navigation', type: :system do
         end
 
         it 'viewing the speakerinnen overview page' do
-          click_link "Get Inspired"
+          click_link I18n.t(:inspire_title, scope: 'pages.home')
           # header
           expect(page).to have_css('#header__logo')
           expect(page).to have_link(I18n.t('layouts.application.signup'))
