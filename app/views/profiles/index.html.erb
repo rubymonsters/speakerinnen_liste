@@ -1,10 +1,10 @@
-<div class="container-fluid mb-5">
+<div class="container mb-5">
 
   <!-- search scope -->
   <% if params[:search] %>
     <div class="row">
-      <div class="col-12 py-5">
-        <span class="h1">
+      <div class="col-12">
+        <span class="h3 serif">
           <%= t(:success, scope: 'search').html_safe + t(:result, scope: 'search', count: @profiles_for_search.count).html_safe %><b><%= params[:search] if params[:search] %></b>
         </span>
         <span class="float-right"><%= link_to("<i class='fa fa-filter pr-2'></i>".html_safe + "Filter by themes", profiles_path, class: '')  %>
@@ -31,21 +31,17 @@
   <% unless params[:search] %>
     <div class="collapse show" id="collapseFilter">
 
-      <div class="row p-5">
+      <div class="row pb-5">
         <div class="col-md-12 text-center">
-          <h1> Which Topic would your speakerin be an expert in? </h1>
+          <h1><%= t(:title_topic_search, scope: 'profiles.index') %></h1>
         </div>
       </div>
-      <div class="row px-5">
-        <div class="col-md-12">
-          <%= render partial: 'shared/category_filter' %>
-          <a id="speakers_anchor"></a>
-        </div>
-      </div>
+      <%= render partial: 'shared/category_filter' %>
+      <a id="speakers_anchor"></a>
 
     <hr class="mt-5">
     </div> <!-- tag filter -->
-    <a href="#top" class="p-5">Up to the filter  <i class='fa fa-filter pr-2'></i> </a>
+    <a href="#top" class="p-5"><%= t(:up_to_filter, scope: 'profiles.index') %> <i class='fa fa-filter pr-2'></i> </a>
   <% end %>
 
   <!-- Found speaker when in search or filter function -->

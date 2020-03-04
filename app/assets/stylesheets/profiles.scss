@@ -43,8 +43,8 @@
   filter: grayscale(00%);
 }
 
-.size-paragraph {
-
+.card-img-top {
+  border-radius: 0px
 }
 
 /* medialinks */
@@ -122,8 +122,6 @@ ul#medialinks__list {
 
 .pagination ul > li:first-child > a, .pagination ul > li:first-child > span {
     border-left-width: 1px;
-    border-top-left-radius: $border-radius;
-    border-bottom-left-radius: $border-radius;
 }
 
 .pagination ul > li > a, .pagination ul > li > span {

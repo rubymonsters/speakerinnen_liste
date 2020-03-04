@@ -45,3 +45,10 @@
     <!-- End Piwik Code -->
   </body>
 </html>
+<script>
+  window.setTimeout(function() {
+    $(".alert-info").slideUp(900, function(){
+        $(this).remove();
+    });
+  }, 2000);
+</script>
