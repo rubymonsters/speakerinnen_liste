@@ -139,7 +139,7 @@ puts "Creating some EN profiles..."
                           Berlin, Germany), <i>Polish-born German revolutionary</i> and agitator who played a key role in the founding of the Polish
                           ocial Democratic Party and the Spartacus League, which grew into the Communist Party of Germany. <br>
                           As a political theoretician, Luxemburg developed a humanitarian theory of Marxism, stressing democracy
-                          and revolutionary mass action to achieve international socialism."
+                          and revolutionary mass action to achieve international socialism.",
                   profession: "My profession",
                   topic_list: ActsAsTaggableOn::Tag.order("RANDOM()").limit(1 + rand(5)).to_a
                   )
@@ -184,5 +184,3 @@ Feature.create(position:1, public: true, title: "Climatejustice", description: "
 Feature.last.profiles=Profile.order("RANDOM()").limit(8).to_a
 
 puts "1 feature with 8 profiles where created"
-
-

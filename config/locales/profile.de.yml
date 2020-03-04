@@ -13,21 +13,36 @@ de:
       profile_from: "Profil von"
       delete_image: "<i class='fa fa-trash pr-2'></i>Lösche mein Foto"
       update: "Aktualisiere dein Profil"
+      your_picture: "Foto"
       picture: "Ein Foto von mir:"
+      copyright: "Foto-Copyright:"
       image_info: "Lade bitte das Foto in <b>Farbe</b> hoch, wir zeigen es in Graustufen.
         Nutze .jpg, .jpeg oder .png und achte darauf, daß Du die Rechte zu diesem Foto besitzt!
         Die Größe des Fotos sollte <b>kleiner als 1MB</b> sein."
+      willing_to_travel: "Ich bin bereit, für eine Veranstaltung zu reisen"
+      nonprofit: "Ich bin bereit, für gemeinnützige Zwecke kostenfrei zu sprechen"
+      services_i_give: "Ich biete"
+      not_applicable: "Nicht zutreffend"
+      answer_yes: "Ja"
+      answer_no: "Nein"
+      Talk: "Vortrag"
+      Moderation: "Moderation"
+      Workshop management: "Workshop"
+      Consulting: "Beratung"
+      Coaching: "Training"
       firstname: "Vorname:"
       lastname: "Nachname:"
       translated_infos: "Übersetzte Infos"
       personal_infos: "Persönliche Infos"
+      personal_note: "Persönliche Anmerkung auf %{language}: <i class='fa fa-info-circle' aria-hidden='true'></i>"
+      personal_note_tooltip: "Hier kannst du Fachkenntnisse und Vortragsthemen angeben, über die du gerne sprechen möchtest oder die genauer beschrieben. Du kannst auch deine Agenda im Detail erläutern. Dies hilft den Organisatoren von Veranstaltungen, die wichtigsten Themen, über die Sie sprechen, zu verstehen."
       bio: "Meine Biografie auf %{language}: <i class='fa fa-info-circle' aria-hidden='true'></i>
       <br><small class='form-text text-muted'>Du kannst einfache HTML Tags nutzen, um den Text zu formatieren. Zum Beispiel: <i>< i >italic< /i ></i> oder <b>< b > fett < /b ></b>.</small>"
-      bio_tooltip: "Hier ist Platz für eine kurze oder auch längere Bio. Außerdem sollten hier Fachkenntnisse und mögliche Vortragsthemen genauer beschrieben werden. Das hilft Veranstalterinnen und Veranstaltern herauszufinden, ob Ihr die Richtigen für ihr Event sein könntet."
+      bio_tooltip: "Hier ist Platz für eine kurze oder auch längere Bio. Dies wird den Organisatoren von Veranstaltungen helfen, mehr über Ihre bisherigen Erfahrungen zu erfahren."
       topic_list: "Meine Themen als Tags, wähle bitte nicht mehr als 10 Tags: <i class='fa fa-info-circle'></i>"
       topic_list_tooltip: "Bitte schaue zuerst, ob Dein Thema schon vorhanden ist."
       main_topic_title: "Themenschwerpunkt:"
-      main_topic: "Themenschwerpunkt auf %{language}:
+      main_topic: "Dein Themenschwerpunkt auf %{language}:
         <br><small class='form-text text-muted'>Es werden nur 30 Zeichen angezeigt.
         <br>Trage Dein wichtigstes Thema hier nochmal ein. Dieses Thema wird mit Deinem Namen und Bild auf der Speakerinnen-Übersichtsseite zu sehen sein.</small>"
       tag_list: "schon vorhandene Tags"
@@ -44,6 +59,21 @@ de:
     show:
       firstname: 'Vorname:'
       lastname: 'Nachname:'
+      main_topic: 'Themenschwerpunkt:'
+      personal_note: "Persönliche Anmerkung:"
+      country_select: "Wähle ein Land aus:"
+      willing_to_travel: "Ich bin bereit, für eine Veranstaltung zu reisen."
+      not_willing_to_travel: "Ich bin nicht bereit, für eine Veranstaltung zu reisen."
+      nonprofit: "Ich bin bereit, für gemeinnützige Zwecke kostenfrei zu sprechen."
+      not_nonprofit: "Ich bin nicht bereit, für gemeinnützige Zwecke kostenfrei zu sprechen."
+      services: "Ich biete:"
+      Talk: "Vortrag"
+      Moderation: "Moderation"
+      Workshop management: "Seminarleitung"
+      Consulting: "Beratung"
+      Coaching: "Training"
+      Interview: "Interview"
+      twitter: "Mein Twittername:"
       topics: 'Themen:'
       languages: "Sprache/n:"
       media: "Vorträge / Referenzen:"
@@ -94,18 +124,24 @@ de:
         one: "zu dem gewählten Thema.",
         other: "zu den gewählten Themen"
       }
+      title_topic_search: "Zu welchem Thema soll die Speakerin Expertin sein?"
+      up_to_filter: "Zurück zur Themenauswahl"
       show_more: "Mehr >>"
       show_less: "Weniger >>"
       apply_filter: "Benutze den Themen Filter"
       within: " in der Kategorie: "
-      profiles_in_category: "Wir haben %{profiles_count} Speakerinnen* in der Kategorie <b>%{category_name}</b>:"
+      profiles_in_category: "Wir haben %{profiles_count} Speakerinnen in der Kategorie <b>%{category_name}</b>:"
       back_to_filters: "Zurück zum Filter"
     new:
       new_profile: "Neues Profil"
   error_messages:
     picture_too_big: " ist zu groß. Bitte nicht größer als 1 MB"
   category:
-    title: "Schau Dir <b>alle</b> Speakerinnen* der Kategorie <b>%{category_name}</b> an oder<br>"
-    all_speakerinnen: "<b>alle</b> Speakerinnen*"
+    title: "Schau Dir <b>alle</b> Speakerinnen der Kategorie <b>%{category_name}</b> an oder<br>"
+    all_speakerinnen: "<b>alle</b> Speakerinnen"
     title_2: "der Kategorie <b>%{category_name}</b> an oder<br>"
-    filter: "Wähle einen oder mehrere Tags aus verschiedenen Kategorien:"
+    filter: "Wähle ein oder mehrere Themen aus verschiedenen Kategorien:"
+    choose_all_button: "Wähle alle Themen aus %{category_name}"
+    choose_category: "Wähle eine Kategorie:"
+    clear_link: "X Auswahl entfernen"
+    choose_button: "Speakerinnen mit diesen Themen"

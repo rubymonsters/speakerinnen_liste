@@ -2,17 +2,17 @@
   <section id="startpage__start-teaser" class="startpage__photo-bar">
     <div class="container">
       <div class="row">
-        <div class="col">
+        <div class="col-12">
           <h1 class="display-4 pt-5" style="text-shadow:0px 0px 9px rgba(255, 255, 255, 1);"><%= t(:heading, scope: 'pages.home.search') %></h1>
           <h3 class="startpage-subtitle" style="text-shadow:0px 0px 9px rgba(255, 255, 255, 1);"><%= t(:tagline, scope: 'pages.home.search').html_safe %></h3>
         </div>
       </div>
       <div class="row">
-        <div class="col-6">
+        <div class="col-lg-6 col-dm-12">
           <%= render partial: 'shared/search_form' %>
         </div>
       </div>
-      <div class="row" style="margin-top: 290px;">
+      <div class="row top-space">
         <%= render partial: 'shared/sub_menu' %>
       </div>
     </div>
@@ -21,11 +21,11 @@
      Copyright: public domain ( modified )
   </div>
   <!-- anchor for features -->
-  <a id="features"></a>
+  <a id="features_anchor"></a>
 
   <% if @features.load.any? %>
     <% @features.each do |feature| %>
-      <div class="container mt-5 text-center">
+      <div class="container mt-5 text-center feature">
         <h1 class=""><%= feature.title %></h3>
         <h3 class="">
           <%= feature.description %>
@@ -37,8 +37,8 @@
     <% end %>
   <% end %>
 
-<a id="newest_speaker"></a>
-  <div class="container mt-5 text-center">
+<a id="newest_speaker_achor"></a>
+  <div id="startpage-newest_speaker" class="container mt-5 text-center">
     <h1 class="">Speakerinnen* - get inspired</h3>
     <h3 class="">
       <%= t(:newest_speaker, scope: 'pages.home') %>
@@ -59,7 +59,7 @@
     <h3 class="pb-5">
       <%= t(:categories_list, scope: 'pages.home') %>
   </div>
-  <div class="container-fluid startpage-categories__list p-0">
+  <div id="startpage-categories__list" class="container-fluid p-0">
     <%= render partial: "shared/categories", object: @categories %>
   </div>
 

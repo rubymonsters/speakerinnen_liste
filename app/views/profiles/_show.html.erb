@@ -1,7 +1,7 @@
 <div class="row mt-5" style="margin-bottom: 100px">
   <div class="col-md-4 text-center">
     <%= profile_image_link(@profile) %>
-    <button type="button" class="btn btn-primary mt-2 px-5" data-toggle="modal"
+    <button type="button" class="btn btn-primary btn-stretch mt-2 px-5" data-toggle="modal"
     data-target=<%= cookies[:cookie_consent].blank? ? "#contactHint" : "#contactModal" %>>
       <i class="fa fa-envelope-o"></i>&nbsp;
       <%= t(:contact, scope: 'profiles.show') %>
@@ -9,7 +9,8 @@
   </div>
   <div class="col-md-6">
     <h1 class=""><%= @profile.fullname %></h1>
-    <h3 class=""><%= @profile.profession %></h3>
+    <h3 class=""><%= @profile.profession %></h4>
+    <br>
     <% unless @profile.fullname.present? %>
       <p class="error">
         <%= t(:empty_profile, scope: 'profiles.show').html_safe %>
@@ -20,16 +21,16 @@
     <% end %>
     <!-- main topic -->
     <% if @profile.main_topic_or_first_topic %>
-      <p class="h5 pt-3">
+      <p class="">
         <span class="font-weight-bold">
-          Motto:
+          <%= t(:main_topic, scope: 'profiles.show') %>
         </span>
         <%= @profile.main_topic_or_first_topic %>
       </p>
     <% end %>
       <!-- twitter -->
     <% if @profile.twitter.present? %>
-      <p class="h5 pt-3">
+      <p class="">
         <span class="font-weight-bold">
           <%= t(:twitter, scope: 'profiles.show') %>
         </span>
@@ -48,20 +49,20 @@
       <% if @profile.website_in_language_scope(I18n.locale).present? &&
            ( @profile.website_in_language_scope(I18n.locale, "2_").present? || @profile.website_in_language_scope(I18n.locale, "3_").present? ) %>
 
-      <p class="h5 pt-3">
-        <span class="font-weight-bold">
-          <%= t(:websites, scope: 'profiles.show') %>
-        </span>
-        <%= link_to @profile.website_in_language_scope(I18n.locale), @profile.website_with_protocol(@profile.website_in_language_scope(I18n.locale)),
-          target: '_blank' %>
-        <%= link_to @profile.website_in_language_scope(I18n.locale, "2_"), @profile.website_with_protocol(@profile.website_in_language_scope(I18n.locale, "2_")),
-          target: '_blank' if @profile.website_in_language_scope(I18n.locale, "2_").present? %>
-        <%= link_to @profile.website_in_language_scope(I18n.locale, "3_"), @profile.website_with_protocol(@profile.website_in_language_scope(I18n.locale, "3_")),
-          target: '_blank' if @profile.website_in_language_scope(I18n.locale, "3_").present? %>
-        </p>
+        <p class="">
+          <span class="font-weight-bold">
+            <%= t(:websites, scope: 'profiles.show') %>
+          </span>
+          <%= link_to @profile.website_in_language_scope(I18n.locale), @profile.website_with_protocol(@profile.website_in_language_scope(I18n.locale)),
+            target: '_blank' %>
+          <%= link_to ", #{@profile.website_in_language_scope(I18n.locale, "2_")}", @profile.website_with_protocol(@profile.website_in_language_scope(I18n.locale, "2_")),
+            target: '_blank' if @profile.website_in_language_scope(I18n.locale, "2_").present? %>
+          <%= link_to ", #{@profile.website_in_language_scope(I18n.locale, "3_")}", @profile.website_with_protocol(@profile.website_in_language_scope(I18n.locale, "3_")),
+            target: '_blank' if @profile.website_in_language_scope(I18n.locale, "3_").present? %>
+          </p>
       <!-- If profile has just one website: -->
       <% elsif @profile.website_in_language_scope(I18n.locale).present? %>
-      <p class="h5 pt-3">
+      <p class="">
         <span class="font-weight-bold">
           <%= t(:website, scope: 'profiles.show') %>
         </span>
@@ -75,20 +76,20 @@
 
       <!-- Show the view for more than one website: -->
       <% if @profile.website.present? && ( @profile.website_2.present? || @profile.website_3.present? ) %>
-        <p class="h5 pt-3">
+        <p class="">
           <span class="font-weight-bold">
             <%= t(:websites, scope: 'profiles.show') %>
           </span>
           <%= link_to @profile.website, @profile.website_with_protocol(@profile.website),
           target: '_blank' %>
-          <%= link_to @profile.website_2, @profile.website_with_protocol(@profile.website_2),
+          <%= link_to ", #{@profile.website_2}", @profile.website_with_protocol(@profile.website_2),
           target: '_blank' if @profile.website_2.present? %>
-          <%= link_to @profile.website_3, @profile.website_with_protocol(@profile.website_3),
+          <%= link_to ", #{@profile.website_3}", @profile.website_with_protocol(@profile.website_3),
           target: '_blank' if @profile.website_3.present? %>
         </p>
       <!-- Show the view for just one website: -->
       <% elsif @profile.website.present? %>
-        <p class="h5 pt-3">
+        <p class="">
           <span class="font-weight-bold">
             <%= t(:websites, scope: 'profiles.show') %>
           </span>
@@ -99,7 +100,7 @@
     <% end %>
     <!-- languages  -->
     <% if @profile.iso_languages.present? %>
-      <p class="h5 pt-3">
+      <p class="">
         <span class="font-weight-bold">
           <%= t(:languages, scope: 'profiles.show') %>
         </span>
@@ -110,16 +111,16 @@
     <% end %>
     <!-- city -->
     <% if @profile.city.present? %>
-      <p class="h5 pt-3">
+      <p class="">
         <span class="font-weight-bold">
           <%= t(:city, scope: 'profiles.show') %>
         </span>
-        <%= @profile.city %></span>
+        <%= @profile.city %>
       </p>
     <% end %>
     <!-- country  -->
     <% if @profile.country.present? %>
-      <p class="h5 pt-3">
+      <p class="">
         <span class="font-weight-bold">
           <%= t(:country, scope: 'profiles.show') %>
         </span>
@@ -128,11 +129,34 @@
     <% end %>
     <!-- topics -->
     <% if topics_for_profile(@profile).present? %>
-      <p class="h5 pt-3">
+      <p class="">
         <span class="font-weight-bold">
           <%= t(:topics, scope: 'profiles.show') %>
         </span>
         <%= raw topics_for_profile(@profile).map { |topic| topic }.join(', ') %>
+      </p>
+    <% end %>
+    <!-- services  -->
+    <% if !@profile.services.empty? %>
+      <p class="">
+        <span class="font-weight-bold">
+          <%= t(:services, scope: 'profiles.show') %>
+        </span>
+        <%= @profile.services.map{|s| t(s.name, scope: 'profiles.show') }.join(', ') %>
+      </p>
+    <% end %>
+    <!-- willing_to_travel -->
+    <% if !@profile.willing_to_travel.nil? %>
+      <p class="pt-3">
+        <i class="fa <%= @profile.willing_to_travel ? 'fa-check-square' : 'fa-times-rectangle' %>">&nbsp;</i>
+        <%= @profile.willing_to_travel ? t(:willing_to_travel, scope: 'profiles.show') : t(:not_willing_to_travel, scope: 'profiles.show') %>
+      </p>
+    <% end %>
+    <!-- willing to talk nonprofit -->
+    <% if !@profile.nonprofit.nil? %>
+      <p class="">
+        <i class="fa <%= @profile.nonprofit ? 'fa-check-square' : 'fa-times-rectangle' %>">&nbsp;</i>
+        <%= @profile.nonprofit ? t(:nonprofit, scope: 'profiles.show') : t(:not_nonprofit, scope: 'profiles.show') %>
       </p>
     <% end %>
   </div>
@@ -159,16 +183,26 @@
   </div>
 </div>
 
+<!-- personal note -->
+<% if @profile.personal_note %>
+  <div class="row my-3">
+    <div class="col-md-12">
+        <span class="font-weight-bold">
+          <%= t(:personal_note, scope: 'profiles.show') %>
+        </span>
+        <%= simple_format(@profile.personal_note, class: '') %>
+    </div>
+  </div>
+<% end %>
+
 <!-- bio -->
 <% if @profile.bio %>
-  <div class="row">
+  <div class="row my-3">
     <div class="col-md-12">
-      <p class="h3 pt-3">
         <span class="font-weight-bold">
           <%= t(:bio, scope: 'profiles.show') %>
         </span>
-        <%= simple_format(@profile.bio, class: 'h5') %>
-      </p>
+        <%= simple_format(@profile.bio, class: '') %>
     </div>
   </div>
 <% end %>
@@ -177,22 +211,24 @@
 <% if @medialinks.load.any? %>
   <div class="row">
     <div class="col-md-12">
-      <p class="h3 pt-3 font-weight-bold">
+      <p class=" font-weight-bold">
         <%= t(:media, scope: 'profiles.show') %>
       </p>
       <% @medialinks.each do |medialink| %>
-        <p class="h5 pt-3 font-weight-bold">
-          <% if medialink.url =~ /youtube|vimeo/i %>
-            <%= medialink.title %>
-            <%= medialink.url_html if medialink.url != 'http://' %>
-          <% else %>
-            <%= link_to medialink.title, medialink.url %>
-          <% end %>
-        </p>
-        <%= simple_format(medialink.description, class: 'h5') %>
-        <span class="color-grey">
-          <%= t(:select_language, scope: 'medialinks') + t("#{medialink.language}", scope: 'iso_639_1').capitalize if medialink.language.present? %>
-        </span>
+        <div class="mb-5">
+          <b>
+            <% if medialink.url =~ /youtube|vimeo/i %>
+              <%= medialink.title %>
+              <%= medialink.url_html if medialink.url != 'http://' %>
+            <% else %>
+              <%= link_to medialink.title, medialink.url %>
+            <% end %>
+          </b>
+          <%= simple_format(medialink.description, class: '') %>
+          <span class="color-grey">
+            <%= t(:select_language, scope: 'medialinks') + t("#{medialink.language}", scope: 'iso_639_1').capitalize if medialink.language.present? %>
+          </span>
+        </div>
       <% end %>
     </div>
   </div>

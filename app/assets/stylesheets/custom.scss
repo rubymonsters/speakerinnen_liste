@@ -4,9 +4,12 @@ body {
   background-color: white;
 }
 
+html {
+  font-size: 18px;
+}
+
 a, .link, #expander {
   color: $link-color;
-  text-decoration: none;
   cursor: pointer;
 
   &:hover {
@@ -16,7 +19,6 @@ a, .link, #expander {
 
 h1, h2, h3, h4, h5 {
   font-family: $serif;
-
 }
 
 .btn:focus{
@@ -68,7 +70,7 @@ h1, h2, h3, h4, h5 {
 }
 
 .color-grey {
-  color: $font-color-title;
+  color: $font-color-grey;
 }
 
 .error {
@@ -113,6 +115,10 @@ h1, h2, h3, h4, h5 {
   text-decoration: none;
 }
 
+.form-control {
+  border-radius: 0.0rem;
+}
+
 .admin__header--color {
   background: $yellow;
 }
@@ -147,8 +153,21 @@ textarea, input {
 }
 
 .btn {
-  border-radius: 3px;
+  border-radius: 0px;
   font-family: sans-serif
+}
+
+.top-space {
+  margin-top: 290px;
+}
+
+// fontawesome
+.fa-check-square {
+  color: #61bd2c;
+}
+
+.fa-times-rectangle {
+  color: #e51a1a;
 }
 
 @media (min-width: 1200px) {
@@ -157,11 +176,10 @@ textarea, input {
     }
 }
 
-
 // responsive
 @include media-breakpoint-down(sm) {
   h1, .display-4 {
-    font-size: 1.5rem;
+    font-size: 2.0rem;
   }
 
   h4 {
@@ -187,5 +205,9 @@ textarea, input {
 
   .startpage-subtitle {
     display: none;
+  }
+
+  .top-space {
+    margin-top: 100px;
   }
 }

@@ -29,8 +29,8 @@ RSpec.describe 'Navigation', type: :system do
 
         it 'startpage has content' do
           expect(page).to have_css('#startpage__start-teaser')
-          expect(page).to have_css('#startpage__teaser-bg-01')
-          expect(page).to have_css('#startpage__teaser-bg-02')
+          expect(page).to have_css('#startpage-categories__list')
+          expect(page).to have_css('#startpage-newest_speaker')
           expect(page).to have_css('.profile-box', text: published_profile.main_topic)
           expect(page).to have_css('.profile-box', text: ada.main_topic)
           expect(page).to have_css('.category_item_science', count: 1)
@@ -54,31 +54,24 @@ RSpec.describe 'Navigation', type: :system do
         end
 
         it 'viewing the speakerinnen overview page' do
-          click_link I18n.t(:speaker_index, scope: 'pages.home.speakers')
+          click_link "Get Inspired"
           # header
           expect(page).to have_css('#header__logo')
           expect(page).to have_link(I18n.t('layouts.application.signup'))
           # profile
-          expect(page).to have_content('2')
           expect(page).to have_link('Ada Lovelace')
-          expect(page).to have_css('.card', count: 2)
+          expect(page).to have_css('.profile-box', count: 2)
           expect(page).to have_css('.profile-subtitle', text: ada.main_topic)
           expect(page).to have_text(ada.iso_languages.first)
-          # tag_cloud
-          expect(page).to have_css('.topics-cloud')
-          # link t profile
-          expect(page).to have_link I18n.t(:to_profile, scope: 'profiles.show')
         end
 
         it 'viewing a single speakerin page' do
-          click_link I18n.t(:speaker_index, scope: 'pages.home.speakers')
           click_link 'Ada Lovelace'
           # header
           expect(page).to have_css('#header__logo')
           expect(page).to have_link(I18n.t('layouts.application.signup'))
           # profile
-          expect(page).to have_css('.profile-page')
-          expect(page).to have_css('.profile-subtitle', text: ada.main_topic)
+          expect(page).to have_text(ada.firstname)
           expect(page).to have_text(ada.iso_languages.first)
           expect(page).to have_text('London')
           # contact

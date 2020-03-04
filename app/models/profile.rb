@@ -7,6 +7,7 @@ class Profile < ApplicationRecord
   has_many :feature_profiles
   has_many :features, through: :feature_profiles, dependent: :destroy
   has_one_attached :image
+  has_and_belongs_to_many :services
 
   serialize :iso_languages, Array
   validate :iso_languages_array_has_right_format
@@ -14,9 +15,9 @@ class Profile < ApplicationRecord
   validates :profession, length: { maximum: 60, message: "Please use less than 80 characters." }
   before_save :clean_iso_languages!
 
-  translates :bio, :main_topic, :profession, :twitter, :website, :website_2, :website_3, :city, fallbacks_for_empty_translations: true
+  translates :bio, :main_topic, :profession, :twitter, :website, :website_2, :website_3, :city, :personal_note, fallbacks_for_empty_translations: true
   accepts_nested_attributes_for :translations
-  globalize_accessors locales: %i[en de], attributes: %i[main_topic bio profession twitter website website_2 website_3 city]
+  globalize_accessors locales: %i[en de], attributes: %i[main_topic bio profession twitter website website_2 website_3 city personal_note]
 
   extend FriendlyId
   friendly_id :slug_candidate, use: :slugged

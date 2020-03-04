@@ -5,9 +5,6 @@
   text-align: right;
 }
 
-.profile-box {
-}
-
 .profile-subtitle {
   font-weight: bold;
 }
@@ -17,17 +14,8 @@
   width: 100%;
 }
 
-.card {
-  background: none;
-  border: none;
-}
-
-.card-title a {
-  font-family: $sans-serif;
-}
-
-.card-body {
-  padding: 0;
+.nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link.active {
+  background: $light-grey;
 }
 
 .photo--grey {
@@ -53,6 +41,10 @@
   -o-filter: grayscale(0%);
   filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'1 0 0 0 0, 0 1 0 0 0, 0 0 1 0 0, 0 0 0 1 0\'/></filter></svg>#grayscale");
   filter: grayscale(00%);
+}
+
+.card-img-top {
+  border-radius: 0px
 }
 
 /* medialinks */
@@ -82,7 +74,7 @@ ul#medialinks__list {
 }
 
 /* autocomplete in search */
-.twitter-typeahead {
+.typeahead {
   font-family: $sans-serif;
   vertical-align: middle;
 }
@@ -130,8 +122,6 @@ ul#medialinks__list {
 
 .pagination ul > li:first-child > a, .pagination ul > li:first-child > span {
     border-left-width: 1px;
-    border-top-left-radius: $border-radius;
-    border-bottom-left-radius: $border-radius;
 }
 
 .pagination ul > li > a, .pagination ul > li > span {
@@ -157,4 +147,10 @@ ul#medialinks__list {
 .pagination ul > li > a:hover, .pagination ul > li > a:focus, .pagination ul > .active > a, .pagination ul > .active > span {
     background-color: $link-bg-color-hover;
     color: $link-color-hover;
+}
+
+/* edit form */
+
+#form-group-willing-to-travel label, #form-group-nonprofit label {
+  margin-left: 0.3rem;
 }
