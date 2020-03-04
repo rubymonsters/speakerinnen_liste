@@ -28,17 +28,18 @@
               <li>
                 <a class="pl-1 expander_<%= filter[:key] %>"><%= t(:show_more, scope: 'profiles.index') %></a>
               </li>
-              <% display_value = filter[:aggregations][10..999] == [] ? "block" : "none" %>
-              <% filter[:aggregations][10..999].each do |term| %>
-                <li class="pl-1 <%= 'selected' if filter[:param_val] == term['key'] %>">
-                  <%= link_to(
-                        filter[:link_text_func].call(term['key']),
-                        { search: params[:search], filter_countries: term['key'], filter_cities: params[:filter_cities], filter_lang: params[:filter_lang] },
-                        class: "#{'bg-dark text-light' if filter[:param_val] == term['key'] }")
-                  %>
-                  <small class="pl-1"><%= term['doc_count'] %></small>
-                </li>
-              <% end %>
+              <div class="rest_facet_<%= filter[:key] %>" style="display: none">
+                <% filter[:aggregations][10..999].each do |term| %>
+                  <li class="pl-1 <%= 'selected' if filter[:param_val] == term['key'] %>">
+                    <%= link_to(
+                          filter[:link_text_func].call(term['key']),
+                          { search: params[:search], filter_countries: term['key'], filter_cities: params[:filter_cities], filter_lang: params[:filter_lang] },
+                          class: "#{'bg-dark text-light' if filter[:param_val] == term['key'] }")
+                    %>
+                    <small class="pl-1"><%= term['doc_count'] %></small>
+                  </li>
+                <% end %>
+              </div>
             <% end %>
           </ul>
         </div>
