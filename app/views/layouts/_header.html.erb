@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <header>
   <%# TODO: hidden <h1>Speakerinnen</h1>%>
-  <nav class="navbar navbar-expand-md navbar-light  pt-0 <%= controller_path =~ /admin\// ? "admin__header--color": "header" %>" >
+  <nav class="navbar navbar-expand-lg navbar-light  pt-0 <%= controller_path =~ /admin\// ? "admin__header--color": "header" %>" >
     <%= link_to(root_path, id: 'header__home-link', class: 'navbar-brand p-0') do %>
       <%= image_tag('logo_header.png', alt: 'logo', id: 'header__logo') %>
     <% end %>

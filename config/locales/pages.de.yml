@@ -10,6 +10,8 @@ de:
       about_us: "Erfahre mehr über das Team von Speakerinnen.org!"
       all_categories: "Kategorien und Themen >>"
       all_speakers: "Alle Speakerinnen* >>"
+      inspire_title: "Lass dich inspirieren!"
+      inspire_text: "Jetzt aus <b>%{count}</b> Speakerinnen auswählen!"
       browse_title: "Nach Kategorien durchsuchen"
       browse_by_topic: "Finde die passende Speakerin in 10 Kategorien!"
       hint: "Hinweis"
