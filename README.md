@@ -2,11 +2,9 @@
 
 # About speakerinnen.org
 
-speakerinnen.org is a searchable web directory designed specifically for women* conference speakers. Women* speakers are encouraged to sign up and provide professional information, including their area of expertise, any previous conferences they've presented at, contact details, etc.
+speakerinnen.org is a searchable web directory designed specifically for women conference speakers. Women speakers are encouraged to sign up and provide professional information, including their area of expertise, any previous conferences they've presented at, contact details, etc.
 
-The aim of the app is to provide a way for conference and event organizers to find and contact appropriate women* speakers. (But obviously there are many different contexts in which it can be used...)
-
-**Please note: Sometimes for better readability in long passages of text the term `women` is written without a star but we always mean everyone who defines herself as a woman.**
+The aim of the app is to provide a way for conference and event organizers to find and contact appropriate women speakers. (But obviously there are many different contexts in which it can be used...)
 
 # Getting Started (Initial Setup)
 
@@ -16,7 +14,7 @@ The aim of the app is to provide a way for conference and event organizers to fi
 4. Run `make dev`(opens a shell in which you can run preconfigured commands, e.g. `rake`)
 5. Run `rake db:seed` (Load some initial example profiles) and `rake elasticsearch:import:all` (Import the loaded profiles into the search index)
 
-## Development 
+## Development
 
 * `make dev` (opens a development shell, `rake`, `bundle` or `rails` commands will work here)
 * `make up` (starts the app directly)

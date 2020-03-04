@@ -24,7 +24,7 @@ de:
       dabei, sie zu verbessern. Auch hierfür nutzen wir Cookies, die Du aber deaktivieren kannst. Mehr Informationen in unserer <a href='%{link}' class='link'>Datenschutzerklärung</a>."
       allow_cookies: "Ich stimme zu"
       description: "Nach Kategorien durchsuchen"
-      description_text: "Uns ist die Verteilung der Männer und Frauen* auf Konferenzbühnen wichtig. Wir ermutigen Frauen, in ihrem professionellen Umfeld sichtbarer zu werden."
+      description_text: "Uns ist die Verteilung der Männer und Frauen auf Konferenzbühnen wichtig. Wir ermutigen Frauen, in ihrem professionellen Umfeld sichtbarer zu werden."
       speaker_shoutout: "Hast Du etwas Interessantes zu erzählen?"
       speaker_text: "Registriere Dich auf speakerinnen.org >>"
       speakers:
@@ -40,8 +40,8 @@ de:
       footer:
         about_title: "Über uns"
         about: |
-                Die Speakerinnen-Liste hat das Ziel, die Sichtbarkeit von Frauen* bei Konferenzen, Panels, Talkshows und überall da zu erhöhen, wo öffentlich gesprochen wird.<br>
-                Hier können Veranstalter*innen Expertinnen* finden, die kompetent über ihre Themen sprechen können und wollen.<br>
+                Die Speakerinnen-Liste hat das Ziel, die Sichtbarkeit von Frauen bei Konferenzen, Panels, Talkshows und überall da zu erhöhen, wo öffentlich gesprochen wird.<br>
+                Hier können Veranstalter*innen Expertinnen finden, die kompetent über ihre Themen sprechen können und wollen.<br>
                 Frauen können sich selbst mit ihren Themen und Referenzen in die Datenbank eintragen und so besser findbar werden.
         more: ">> mehr"
         railsgirls: |
@@ -77,7 +77,6 @@ de:
             <strong>Nicht mehr allein unter Männern</strong><br>
             <a href="https://www.taz.de/!5043737/" target="_blank" rel="noopener">taz</a>
             <br><br>
-        women: "* Mit Frauen meinen wir alle, die sich selbst als Frau verstehen (auch wenn wir den  * an manchen Stellen für die bessere Lesbarkeit weglassen)."
     about:
       title: "Über uns"
     press:
