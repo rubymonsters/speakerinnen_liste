@@ -9,7 +9,7 @@
   </div>
   <div class="col-md-6">
     <h1 class=""><%= @profile.fullname %></h1>
-    <h3 class=""><%= @profile.profession %></h4>
+    <h3 class=""><%= @profile.profession %></h3>
     <br>
     <% unless @profile.fullname.present? %>
       <p class="error">
@@ -100,13 +100,15 @@
     <% end %>
     <!-- languages  -->
     <% if @profile.iso_languages.present? %>
-      <p class="">
+      <p>
         <span class="font-weight-bold">
           <%= t(:languages, scope: 'profiles.show') %>
         </span>
+        <% languages = [] %>
         <% @profile.iso_languages.each do |iso|%>
-          <%= t("#{iso}", scope: 'iso_639_1').capitalize %>
+          <% languages << t("#{iso}", scope: 'iso_639_1').capitalize %>
         <% end %>
+        <%= languages.join(', ') %>
       </p>
     <% end %>
     <!-- city -->
@@ -154,7 +156,7 @@
     <% end %>
     <!-- willing to talk nonprofit -->
     <% if !@profile.nonprofit.nil? %>
-      <p class="">
+      <p>
         <i class="fa <%= @profile.nonprofit ? 'fa-check-square' : 'fa-times-rectangle' %>">&nbsp;</i>
         <%= @profile.nonprofit ? t(:nonprofit, scope: 'profiles.show') : t(:not_nonprofit, scope: 'profiles.show') %>
       </p>
