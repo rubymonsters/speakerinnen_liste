@@ -43,12 +43,12 @@
       <noscript><p><img src="//tyranja.cassiopeia.uberspace.de/piwik/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>
     <% end %>
     <!-- End Piwik Code -->
+    <script>
+      window.setTimeout(function() {
+        $(".alert-info").slideUp(900, function(){
+            $(this).remove();
+        });
+      }, 2000);
+    </script>
   </body>
 </html>
-<script>
-  window.setTimeout(function() {
-    $(".alert-info").slideUp(900, function(){
-        $(this).remove();
-    });
-  }, 2000);
-</script>
