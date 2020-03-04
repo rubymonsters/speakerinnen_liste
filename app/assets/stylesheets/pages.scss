@@ -70,7 +70,6 @@
 
 // categories
 
-
 #startpage-categories__list .progress {
   height: 70px;
   max-width: 100%;
@@ -101,11 +100,7 @@
 
 .category_name:hover {
   text-decoration: underline;
-
 }
-
-
-
 
 @include media-breakpoint-down(md) {
   .child {

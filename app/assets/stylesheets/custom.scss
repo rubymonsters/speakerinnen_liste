@@ -36,10 +36,6 @@ h1, h2, h3, h4, h5 {
 
 /* layout */
 
-.container {
-  padding: 36px 36px;
-}
-
 .box__bg {
   display: inline-block;
   padding: $base-spacing-unit $base-spacing-unit;
@@ -161,16 +157,28 @@ textarea, input {
   margin-top: 290px;
 }
 
+#home_search {
+    width: 550px
+  }
+
+.container {
+  padding: 0 48px;
+}
+
 @media (min-width: 1200px) {
-    .container{
-        max-width: 1600px;
-    }
+  .container {
+    max-width: 1600px;
+  }
 }
 
 // responsive
-@include media-breakpoint-down(sm) {
+@include media-breakpoint-down(md) {
   h1, .display-4 {
     font-size: 2.0rem;
+  }
+
+  .container {
+    padding: 0 24px;
   }
 
   h4 {
@@ -182,9 +190,9 @@ textarea, input {
     font-weight: bold;
   }
 
-  .container {
-    padding: 36px 12px;
-  }
+  h3 {
+    font-size: 1.2rem;
+    }
 
 	.category-links {
     font-size: 1.0rem;
@@ -195,7 +203,10 @@ textarea, input {
   }
 
   .startpage-subtitle {
-    display: none;
+  }
+
+  #home_search {
+    width: 200px
   }
 
   .top-space {

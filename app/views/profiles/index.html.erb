@@ -31,7 +31,7 @@
   <% unless params[:search] %>
     <div class="collapse show" id="collapseFilter">
 
-      <div class="row pb-5">
+      <div class="row py-5">
         <div class="col-md-12 text-center">
           <h1><%= t(:title_topic_search, scope: 'profiles.index') %></h1>
         </div>
@@ -41,7 +41,7 @@
 
     <hr class="mt-5">
     </div> <!-- tag filter -->
-    <a href="#top" class="p-5"><%= t(:up_to_filter, scope: 'profiles.index') %> <i class='fa fa-filter pr-2'></i> </a>
+    <a href="#top"><%= t(:up_to_filter, scope: 'profiles.index') %> <i class='fa fa-filter pr-2'></i> </a>
   <% end %>
 
   <!-- Found speaker when in search or filter function -->
