@@ -38,8 +38,8 @@ de:
       personal_note_tooltip: "Hier kannst du Fachkenntnisse und Vortragsthemen angeben, über die du gerne sprechen möchtest oder die genauer beschrieben. Du kannst auch deine Agenda im Detail erläutern. Dies hilft den Organisatoren von Veranstaltungen, die wichtigsten Themen, über die Sie sprechen, zu verstehen."
       bio: "Meine Biografie auf %{language}: <i class='fa fa-info-circle' aria-hidden='true'></i>
       <br><small class='form-text text-muted'>Du kannst einfache HTML Tags nutzen, um den Text zu formatieren. Zum Beispiel: <i>< i >italic< /i ></i> oder <b>< b > fett < /b ></b>.</small>"
-      bio_tooltip: "Hier ist Platz für eine kurze oder auch längere Bio. Dies wird den Organisatoren von Veranstaltungen helfen, mehr über Ihre bisherigen Erfahrungen zu erfahren."
-      topic_list: "Meine Themen als Tags, wähle bitte nicht mehr als 10 Tags: <i class='fa fa-info-circle'></i>"
+      bio_tooltip: "Hier ist Platz für eine kurze oder auch längere Bio. Außerdem sollten hier Fachkenntnisse und mögliche Vortragsthemen genauer beschrieben werden. Das hilft Veranstalterinnen und Veranstaltern herauszufinden, ob Ihr die Richtigen für ihr Event sein könntet."
+      topic_list: "Meine Themen, als Schlagworte (bitte nicht mehr als 10 auswählen): <i class='fa fa-info-circle'></i>"
       topic_list_tooltip: "Bitte schaue zuerst, ob Dein Thema schon vorhanden ist."
       main_topic_title: "Themenschwerpunkt:"
       main_topic: "Dein Themenschwerpunkt auf %{language}:
@@ -104,7 +104,7 @@ de:
     index:
       title: "Speakerinnen"
       text: "Schön, dass Du hier bist. <br>
-             Auf dieser Seite findest Du Frauen* für deine Konferenz oder Veranstaltung: als Rednerin, Panel- oder Workshopmoderatorin.
+             Auf dieser Seite findest Du Frauen für deine Konferenz oder Veranstaltung: als Rednerin, Panel- oder Workshopmoderatorin.
              <p>Du kannst entweder durch die Profile blättern, einen Einstieg über die meist verwendeten <a href='#tag_cloud_anchor', class='text__link--bg'>Themen</a> finden, oder gezielt suchen.</p>
              Viel Spaß und Erfolg dabei!"
       name: "Name"

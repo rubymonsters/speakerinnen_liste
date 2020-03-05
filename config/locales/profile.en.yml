@@ -39,8 +39,8 @@ en:
       personal_note_tooltip: "Here you can specify expertise and topics you are passionate or feel comfortable talking about, or tell more in detail about your agenda. This will help events organizers to understand the main issues you are talking about."
       bio: "My bio in %{language}: <i class='fa fa-info-circle' aria-hidden='true'></i>
         <br><small class='form-text text-muted'>You can use simple HTML tags to format the text. For example: <i>< i > italic < /i ></i> or <b>< b > bold < /b ></b>.</small>"
-      bio_tooltip: "Here you can add a short or long bio of yourself. This will help events organizers to know more about your past experience."
       topic_list: "My topics as tags, please don't choose more than 10 tags: <i class='fa fa-info-circle' aria-hidden='true'></i>"
+      bio_tooltip: "Here you can add a short or long bio of yourself. Please also add specific expertise and topics you feel comfortable speaking about. This will help organizers of events to understand whether you might be the person they're looking for."
       topic_list_tooltip: "Please have a look first, if your topic already exists."
       main_topic_title: "Main focus"
       main_topic: "Main focus in %{language}:
@@ -104,7 +104,7 @@ en:
     index:
       title: "All women speakers"
       text: "Welcome!<br>
-            Here you can find women* for your conference or your event: speakers, panel hosts, or workshop hosts.
+            Here you can find women for your conference or your event: speakers, panel hosts, or workshop hosts.
             <p>Browse individual profiles, filter via the most listed <a href='#tag_cloud_anchor', class='text__link--bg'>topics</a>, or use the search function for a specific search.</p>
             Enjoy!"
       name: "Name"

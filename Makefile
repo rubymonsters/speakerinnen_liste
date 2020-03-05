@@ -1,5 +1,6 @@
 dc=docker-compose -f docker-compose.yml $(1)
 dc-run=$(call dc, run --rm web $(1))
+dc-run-sp=$(call dc, run --service-ports --rm web $(1))
 
 usage:
 	@echo "Available targets:"
@@ -24,7 +25,7 @@ bundle:
 dev:
 	$(call dc-run, bash)
 up:
-	$(call dc, up)
+	$(call dc-run-sp)
 tear-down:
 	$(call dc, down)
 stop:
@@ -38,6 +39,6 @@ db-migrate:
 db-test-migrate:
 	$(call dc-run, bundle exec rake db:migrate RAILS_ENV=test)
 rspec:
-	$(call dc-run, bundle exec rspec)
+	$(call dc-run-sp, bundle exec rspec)
 test:
-	$(call dc-run, bundle exec rspec)
+	$(call dc-run-sp, bundle exec rspec)

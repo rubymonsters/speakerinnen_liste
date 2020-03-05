@@ -13,14 +13,6 @@ class ProfilesController < ApplicationController
   respond_to :json
 
   def index
-
-    # since we only have search, all_speakerin and tag_filter as entry point we might not need the rest
-    # if params[:topic]
-    #   @tags = params[:topic].split(/\s*,\s*/)
-    #   @profiles = profiles_for_tag(params[:topic])
-    # elsif params[:category_id]
-    #   profiles_for_category(params[:category_id], params[:tag_filter])
-    #   @profiles_count = @profiles.total_count
     if params[:search]
       @profiles = profiles_for_search
       # sum of search results concerning certain attributes
@@ -49,14 +41,6 @@ class ProfilesController < ApplicationController
                               .translated_in_current_language_and_not_translated(I18n.locale))
                               .most_used(100)
     end
-    # is needed for the showing te correct tags in the tag_box
-    # not needed?
-    # @tags_in_category_published = ActsAsTaggableOn::Tag
-    #                               .with_published_profile
-    #                               .belongs_to_category(params[:category_id])
-    #                               .translated_in_current_language_and_not_translated(I18n.locale)
-    #                               .most_used(100)
-    #                               .order(:name)
   end
 
   def show
@@ -203,42 +187,6 @@ class ProfilesController < ApplicationController
            .page(params[:page])
            .per(24)
   end
-
-  # def profiles_for_tag(tag_names)
-  #   # uniq turn the relation into a array and to paginate the array we
-  #   # need the Kaminari.paginate_array method
-  #   profiles_array = Profile.is_published
-  #                            .includes(:taggings, :translations)
-  #                            .joins(:topics)
-  #                            .where(
-  #                              tags: {
-  #                                name: tag_names
-  #                              }
-  #                            )
-  #                            .random
-  #                            .uniq
-
-  #   Kaminari.paginate_array(profiles_array).page(params[:page]).per(24)
-  # end
-
-  # maybe not needed any more
-  # def profiles_for_category(category_id, tags_filter=nil)
-  #   @category = Category.find(category_id)
-  #   @tags_in_category_published = ActsAsTaggableOn::Tag
-  #                                 .with_published_profile
-  #                                 .belongs_to_category(params[:category_id])
-  #                                 .translated_in_current_language_and_not_translated(I18n.locale)
-  #   tag_names = @tags_in_category_published.pluck(:name)
-
-
-  #   @category = params[:category_id] ? Category.find(params[:category_id]) : Category.find(1)
-  #   if tags_filter.present?
-  #     @tags = tags_filter.split(/\s*,\s*/)
-  #     @profiles = profiles_for_tag(@tags)
-  #   else
-  #     @profiles = profiles_for_tag(tag_names)
-  #   end
-  # end
 
   def profiles_for_search
     Profile.is_published

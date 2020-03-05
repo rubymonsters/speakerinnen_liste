@@ -26,6 +26,8 @@ services:
     depends_on:
       - db
       - elastic
+    tty: true
+    stdin_open: true
 volumes:
   bundle:
   postgres_data:
