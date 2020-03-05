@@ -2,10 +2,10 @@
 <div class="col-md-6 col-lg-3 mb-2">
   <div class="card pb-3 bg--white-trans">
     <div class="card-header">
-      <h3 class="card-title mb-0"><%= link_to t(:inspire_title, scope: 'pages.home'), profiles_path + "#speakers_anchor" %></h3>
+      <h3 class="card-title mb-0"><%= link_to t(:sub_menu_inspire_title, scope: 'pages.home'), profiles_path + "#speakers_anchor" %></h3>
     </div>
     <div class="card-body">
-      <p class="h5 card-text mt-2"><%= t(:inspire_text, scope: 'pages.home', count: @speakerinnen_count).html_safe %></p>
+      <p class="h5 card-text mt-2"><%= t(:sub_menu_inspire_text, scope: 'pages.home', count: @speakerinnen_count).html_safe %></p>
 
     </div>
   </div>
@@ -13,20 +13,20 @@
 <div class="col-md-6 col-lg-3 mb-2">
   <div class="card pb-3 bg--white-trans">
     <div class="card-header">
-      <h3 class="card-title mb-0"><%= link_to t(:browse_title, scope: 'pages.home'), root_path + "#categories_anchor" %></h3>
+      <h3 class="card-title mb-0"><%= link_to t(:sub_menu_categories_title, scope: 'pages.home'), root_path + "#categories_anchor" %></h3>
     </div>
     <div class="card-body">
-      <p class="h5 card-text mt-2"><%= t(:browse_by_topic, scope: 'pages.home') %></p>
+      <p class="h5 card-text mt-2"><%= t(:sub_menu_categories_text, scope: 'pages.home') %></p>
     </div>
   </div>
 </div>
 <div class="col-md-6 col-lg-3 mb-2">
   <div class="card pb-3 bg--white-trans">
     <div class="card-header">
-      <h3 class="card-title mb-0"><%= link_to t(:about_title, scope: 'pages.home.footer'), about_path %></h3>
+      <h3 class="card-title mb-0"><%= link_to t(:sub_menu_about_us_title, scope: 'pages.home'), about_path %></h3>
     </div>
     <div class="card-body">
-      <p class="h5 card-text mt-2"><%= t(:about_us, scope: 'pages.home') %></p>
+      <p class="h5 card-text mt-2"><%= t(:sub_menu_about_us_text, scope: 'pages.home') %></p>
     </div>
   </div>
 </div>
@@ -36,7 +36,7 @@
       <h3 class="card-title mb-0"><%= link_to("Blog",'https://blog.speakerinnen.org/', target: '_blank' )%></h3>
     </div>
     <div class="card-body">
-      <p class="h5 card-text mt-2"><%= t(:our_blog, scope: 'pages.home').html_safe %></p>
+      <p class="h5 card-text mt-2"><%= t(:sub_menu_our_blog_text, scope: 'pages.home').html_safe %></p>
     </div>
   </div>
 </div>

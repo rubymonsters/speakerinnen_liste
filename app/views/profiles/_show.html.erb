@@ -219,7 +219,7 @@
         <%= t(:media, scope: 'profiles.show') %>
       </p>
       <% @medialinks.each do |medialink| %>
-        <div class="mb-5">
+        <div class="mb-5 p-3 border">
           <b>
             <% if medialink.url =~ /youtube|vimeo/i %>
               <%= medialink.title %>
