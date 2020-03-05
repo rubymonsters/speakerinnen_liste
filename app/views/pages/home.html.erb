@@ -25,7 +25,7 @@
 
   <% if @features.load.any? %>
     <% @features.each do |feature| %>
-      <div class="container mt-5 text-center feature">
+      <div class="container py-5 text-center feature">
         <h1 class=""><%= feature.title %></h1>
         <h3 class="">
           <%= feature.description %>
@@ -38,7 +38,7 @@
   <% end %>
 
 <a id="newest_speaker_achor"></a>
-  <div id="startpage-newest_speaker" class="container mt-5 text-center">
+  <div id="startpage-newest_speaker" class="container py-5 text-center">
     <h1 class="">Speakerinnen* - get inspired</h1>
     <h3 class="">
       <%= t(:newest_speaker, scope: 'pages.home') %>
@@ -51,7 +51,7 @@
   <!-- Anker für Kategorien -->
   <a id="categories_anchor"></a>
 
-  <div class="container-fluid mt-5 text-center">
+  <div class="container-fluid my-5 text-center">
   <!-- <div class="startpage-categories__list py-5 text-center"> -->
     <div class="row">
       <div class="col">
