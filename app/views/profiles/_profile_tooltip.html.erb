@@ -1,4 +1,4 @@
-<div id='profile-tooltip'>
+<div id='profile-tooltip' class='text-left'>
   <% if profile.iso_languages.present? %>
     <div class='pt-1'>
       <%= t(:languages, scope: 'profiles.show') %>
@@ -18,13 +18,13 @@
   <% if !profile.willing_to_travel.nil? %>
     <div class='pt-1'>
       <i class='fa <%= profile.willing_to_travel ? 'fa-check-square' : 'fa-times-rectangle' %>'>&nbsp;</i>
-      <%= t(:willing_to_travel, scope: 'profiles.show') %>
+      <%= profile.willing_to_travel ? t(:willing_to_travel, scope: 'profiles.show') : t(:not_willing_to_travel, scope: 'profiles.show') %>
     </div>
   <% end %>
   <% if !profile.nonprofit.nil? %>
     <div class='pt-1'>
       <i class='fa <%= profile.nonprofit ? 'fa-check-square' : 'fa-times-rectangle' %>'>&nbsp;</i>
-      <%= t(:nonprofit, scope: 'profiles.show') %>
+        <%= profile.nonprofit ? t(:nonprofit, scope: 'profiles.show') : t(:not_nonprofit, scope: 'profiles.show') %>
     </div>
   <% end %>
 </div>

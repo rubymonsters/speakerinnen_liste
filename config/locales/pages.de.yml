@@ -13,8 +13,9 @@ de:
       sub_menu_inspire_text: "Jetzt aus <b>%{count}</b> Speakerinnen auswählen."
       sub_menu_about_us_title: "Über uns"
       sub_menu_about_us_text: "Erfahre mehr über das Team von Speakerinnen."
-      sub_menu_our_blog_text: "Mit spannenden Interviews und vielen Neuigkeiten."
-      sub_menu_categories_title: "Kategorien durchsuchen"
+      sub_menu_blog_title: "Unser Blog"
+      sub_menu_blog_text: "Mit spannenden Interviews und vielen Neuigkeiten."
+      sub_menu_categories_title: "Unsere Kategorien"
       sub_menu_categories_text: "Finde die passende Speakerin in 10 Kategorien."
       hint: "Hinweis"
       auth_modal: "Du musst der <b>Verwendung von Cookies zustimmen</b>, bevor Du Dich einloggen oder anmelden kannst.<br>
@@ -66,7 +67,7 @@ de:
         links_text: "Hier gibt es Links zu ähnlichen Projekten:"
         contact: "Kontakt"
         contact_link: "E-Mail"
-        twitter: "<a href='https://twitter.com/speakerinnen', target='_blank', class='px-2'>Twitter</a>"
+        twitter: "<a href='https://twitter.com/speakerinnen', target='_blank', class=''>Twitter</a>"
         github: "<a href='https://github.com/rubymonsters/speakerinnen_liste', target='_blank', class='px-2'>GitHub</a>"
         devblog: "<a href='http://speakerinnen.wordpress.com/', taget='_blank'>Entwicklerinnen-Blog</a>"
         faq_short: |
