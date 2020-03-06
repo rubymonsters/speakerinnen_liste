@@ -173,7 +173,7 @@ class Profile < ApplicationRecord
 
   def image_format_size
     if image.attached?
-      if image.blob.byte_size > 1.megabyte
+      if image.blob.byte_size > 2.megabyte
         errors.add(:base, :file_size_too_big)
       elsif !image.blob.content_type.starts_with?('image/')
         errors.add(:base, :content_type_invalid)
