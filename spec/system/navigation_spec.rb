@@ -54,15 +54,15 @@ RSpec.describe 'Navigation', type: :system do
         end
 
         it 'viewing the speakerinnen overview page' do
-          click_link I18n.t(:inspire_title, scope: 'pages.home')
+          click_link I18n.t(:sub_menu_register_title, scope: 'pages.home')
           # header
           expect(page).to have_css('#header__logo')
           expect(page).to have_link(I18n.t('layouts.application.signup'))
-          # profile
-          expect(page).to have_link('Ada Lovelace')
-          expect(page).to have_css('.profile-box', count: 2)
-          expect(page).to have_css('.profile-subtitle', text: ada.main_topic)
-          expect(page).to have_text(ada.iso_languages.first)
+          # register page
+          expect(page).to have_button(I18n.t(:signup, scope: "devise.registrations"))
+          expect(page).to have_field(I18n.t(:email, scope: "devise.registrations"))
+          expect(page).to have_field(I18n.t(:password, scope: "devise.registrations"))
+          expect(page).to have_field(I18n.t(:confirmation, scope: "devise.registrations"))
         end
 
         it 'viewing a single speakerin page' do

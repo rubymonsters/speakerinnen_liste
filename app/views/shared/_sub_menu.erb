@@ -1,10 +1,10 @@
 <div class="col-md-6 col-lg-3 mb-2">
   <div class="card pb-3 bg--white-trans">
     <div class="card-header">
-      <h3 class="card-title mb-0"><%= link_to t(:sub_menu_inspire_title, scope: 'pages.home'), profiles_path + "#speakers_anchor" %></h3>
+      <h3 class="card-title mb-0"><%= link_to t(:sub_menu_register_title, scope: 'pages.home'), sign_up_path %></h3>
     </div>
     <div class="card-body">
-      <p class="h5 card-text mt-2"><%= t(:sub_menu_inspire_text, scope: 'pages.home', count: @speakerinnen_count).html_safe %></p>
+      <p class="h5 card-text mt-2"><%= t(:sub_menu_register_text, scope: 'pages.home', count: @speakerinnen_count).html_safe %></p>
 
     </div>
   </div>
