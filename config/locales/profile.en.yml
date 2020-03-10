@@ -130,7 +130,7 @@ en:
       show_less: "Less >>"
       apply_filter: "Apply tag filter"
       within: " whithin the category: "
-      profiles_in_category: "There are %{profiles_count} Speakerinnen in the category <b>%{category_name}</b>"
+      profiles_in_category: "There are %{profiles_count} Speakerinnen"
       back_to_filters: "Back to Filters"
     new:
       new_profile: "New profile"

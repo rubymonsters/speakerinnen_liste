@@ -48,8 +48,8 @@
   <div class="row m-5">
     <div class="col-md-12 text-center pt-3">
       <% if params[:category_id] %>
-        <h1> <%= @category.name %></h1>
-        <h3><%= 'We have ' + @profiles_count.to_s + ' ' + "speakerinnen" if @profiles_count%> </h3>
+        <h1><%= @category.name %></h1>
+        <h3><%= t(:profiles_in_category, scope: 'profiles.index', count: @profiles_count).html_safe %> </h3>
       <% elsif params[:tag_filter] %>
         <h1>
           <%= t(:all_tagged_speakerinnen, scope: 'profiles.index', count: @profiles_count).html_safe + t(:tag_filter, scope: 'profiles.index', count: @tags.count).html_safe %>

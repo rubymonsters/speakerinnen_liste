@@ -130,7 +130,7 @@ de:
       show_less: "Weniger >>"
       apply_filter: "Benutze den Themen Filter"
       within: " in der Kategorie: "
-      profiles_in_category: "Wir haben %{profiles_count} Speakerinnen in der Kategorie <b>%{category_name}</b>:"
+      profiles_in_category: "Wir haben %{profiles_count} Speakerinnen in der Kategorie"
       back_to_filters: "Zurück zum Filter"
     new:
       new_profile: "Neues Profil"
