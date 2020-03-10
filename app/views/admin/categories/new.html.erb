@@ -1,4 +1,4 @@
-<div class="container bg--white">
+<div class="container">
 
   <h1>Administration::<%= t(:categories, scope: "admin.categories")%>::<%= t(:add, scope: "general")%></h1>
 
@@ -17,7 +17,8 @@
       <%= translation.text_field :name, class: 'form-control' %>
 
     <% end %>
+    <%= f.input :position, as: :integer, label: "Position:", label_html: { class: "mt-5"}, input_html: { class: 'form-control mb-3' }  %>
 
-    <%= f.submit t(:add, scope: "general"), class:"btn btn-blue btn-sm my-3" %>
+    <%= f.submit t(:add, scope: "general"), class: "btn btn-primary btn-sm my-3" %>
   <% end %>
 </div>

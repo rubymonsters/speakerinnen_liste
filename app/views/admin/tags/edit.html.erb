@@ -3,7 +3,7 @@
   <h1>Administration::<%= t(:tags, scope: "admin.tags")%>::<%= t(:edit, scope: "general")%></h1>
 
   <div class="my-3 py-3 border-vertical">
-    <%= link_to t(:show_all_tags, scope: 'admin.tags'), admin_tags_path, class:'btn btn-blue btn-sm' %>
+    <%= link_to t(:show_all_tags, scope: 'admin.tags'), admin_tags_path, class: 'btn btn-primary btn-sm' %>
   </div>
 
   <h2 class="mb-3"><%= @tag.name %></h2>
@@ -44,6 +44,6 @@
       </div>
     </div>
 
-    <%= submit_tag t(:save, scope: "general"), class: "btn btn-blue btn-sm" %>
+    <%= submit_tag t(:save, scope: "general"), class: "btn btn-primary btn-sm" %>
   <% end %>
 </div>

@@ -1,0 +1,170 @@
+
+/* profiles */
+
+.profile-navi {
+  text-align: right;
+}
+
+.profile-subtitle {
+  font-weight: bold;
+}
+
+.btn-stretch {
+  display: block;
+  width: 100%;
+}
+
+.nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link.active {
+  background: $light-grey;
+}
+
+.photo--grey {
+  border: $border;
+  -webkit-transition: 1s;
+  -moz-transition: 1s;
+  -ms-transition: 1s;
+  -o-transition: 1s;
+  transition: 1s;
+  -webkit-filter: grayscale(100%);
+  filter: gray; /* IE6-9 */
+  -ms-filter: grayscale(100%);
+  -o-filter: grayscale(100%);
+  filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale"); /* Firefox 3.5+ */
+  filter: grayscale(100%);
+  width: 100%;
+}
+
+.photo--grey:hover {
+  -webkit-filter: grayscale(0%);
+  -moz-filter: grayscale(0%);
+  -ms-filter: grayscale(0%);
+  -o-filter: grayscale(0%);
+  filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'1 0 0 0 0, 0 1 0 0 0, 0 0 1 0 0, 0 0 0 1 0\'/></filter></svg>#grayscale");
+  filter: grayscale(00%);
+}
+
+.card-img-top {
+  border-radius: 0px
+}
+
+/* medialinks */
+
+.simple_form abbr[title] {
+  border-bottom: none;
+}
+
+ul#medialinks__list {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+
+  li {
+    margin: 0 3px 35px 3px;
+    padding: 0.8em;
+    background-color: white;
+    cursor: move;
+    border: $border;
+    border-left: 24px solid $light-grey;
+
+  }
+}
+
+#medialinks__list--sort-message {
+  color: $primary;
+}
+
+/* autocomplete in search */
+.typeahead {
+  font-family: $sans-serif;
+  vertical-align: middle;
+}
+
+.tt-dropdown-menu {
+  background: white;
+  width: 100%;
+  padding: 10px;
+  color: $dark-grey;
+}
+
+.tt-suggestion {
+  margin: 0;
+  background: $transparent-white;
+  padding: halve($base-spacing-unit) $base-spacing-unit;
+
+  p {
+    margin: 0;
+  }
+
+  &:hover {
+    background-color: whitesmoke;
+    color: $primary;
+    cursor: pointer;
+  }
+}
+
+/* paginate */
+
+.pagination {
+  text-align: center;
+  display: block;
+}
+
+.pagination ul {
+    display: inline-block;
+    margin-left: 0px;
+    margin-bottom: 0px;
+    border-radius: $border-radius;
+    }
+
+.pagination ul > li {
+    display: inline;
+}
+
+.pagination ul > li:first-child > a, .pagination ul > li:first-child > span {
+    border-left-width: 1px;
+}
+
+.pagination ul > li > a, .pagination ul > li > span {
+    float: left;
+    padding: 4px 12px;
+    line-height: 20px;
+    text-decoration: none;
+    border-width: 1px 1px 1px 0px;
+    border-style: solid;
+    border-color: #DDD;
+    -moz-border-top-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    border-image: none;
+}
+
+.pagination ul > .active > a, .pagination ul > .active > span {
+    color: $link-color;
+    cursor: default;
+}
+
+.pagination ul > li > a:hover, .pagination ul > li > a:focus, .pagination ul > .active > a, .pagination ul > .active > span {
+    background-color: $link-bg-color-hover;
+    color: $link-color-hover;
+}
+
+/* edit form */
+#form-group-willing-to-travel label, #form-group-nonprofit label {
+  margin-left: 0.3rem;
+}
+
+/* fontawesome for profile boolean attributes */
+.fa-check-square {
+  color: #61bd2c;
+}
+
+.fa-times-rectangle {
+  color: #e51a1a;
+}
+
+/*tooltip*/
+.profile-tooltip {
+  text-align: left;
+  font-size: 12px;
+}

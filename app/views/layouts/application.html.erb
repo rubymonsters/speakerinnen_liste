@@ -17,6 +17,7 @@
     <%= favicon_link_tag 'favicon.ico' %>
   </head>
   <body>
+    <a id="top"></a>
     <%= render 'layouts/header' %>
     <%= render 'shared/flash', flash: flash %>
     <%= render 'shared/cookie_consent' %>
@@ -42,5 +43,12 @@
       <noscript><p><img src="//tyranja.cassiopeia.uberspace.de/piwik/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>
     <% end %>
     <!-- End Piwik Code -->
+    <script>
+      window.setTimeout(function() {
+        $(".alert-dismissible").slideUp(900, function(){
+            $(this).remove();
+        });
+      }, 2000);
+    </script>
   </body>
 </html>

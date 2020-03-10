@@ -5,8 +5,8 @@
     Administration::<%= t(:profiles, scope: 'admin.profiles')%>::<%= t(:edit, scope: 'general')%>
   </h1>
   <div class="my-3 py-3 border-vertical">
-    <%= link_to t(:show_all, scope: 'admin.profiles.edit'), admin_profiles_path, class:'btn btn-blue btn-sm' %>
-    <%= link_to t(:show, scope: 'admin.profiles.edit'), admin_profile_path(@profile), class:'btn btn-blue btn-sm' %>
+    <%= link_to t(:show_all, scope: 'admin.profiles.edit'), admin_profiles_path, class: 'btn btn-primary btn-sm' %>
+    <%= link_to t(:show, scope: 'admin.profiles.edit'), admin_profile_path(@profile), class: 'btn btn-primary btn-sm' %>
   </div>
   <%= render partial: 'admin_edit', locals: {page: "edit"} %>
   <h2 class="mb-3">
@@ -14,7 +14,7 @@
   </h2>
   <%= simple_form_for @profile, url: admin_profile_path(@profile),
                          html: { multipart: true } do |f| %>
-    <%= render partial: 'shared/profile_formfields',
+    <%= render partial: 'profiles/profile_formfields',
                  locals: { form_type: :update_profile, f: f, profile: @profile } %>
   <% end %>
 </div>

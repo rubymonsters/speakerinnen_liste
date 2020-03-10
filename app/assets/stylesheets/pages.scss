@@ -1,0 +1,162 @@
+// header
+
+/* startpage */
+#startpage__start-teaser {
+  background: image-url('start-teaser.jpg') no-repeat top center;
+  background-size: cover;
+}
+
+#startpage__teaser-bg-01 {
+  background: image-url('teaser-bg-01.jpg') no-repeat center center;
+  background-size: cover;
+}
+
+#startpage__teaser-bg-02 {
+  background: image-url('teaser-bg-02.jpg') no-repeat center center;
+  background-size: cover;
+  background-position: top;
+}
+
+.startpage__photo-bar {
+  box-shadow: 0 0 20px $transparent-black inset;
+  min-height: 800px;
+  width: 100%;
+  display:flex;
+  position: relative;
+}
+
+.layer {
+  background: linear-gradient(181.86deg, rgba(255, 255, 255, 0) 54.36%, #FFFFFF 97.39%), rgba(255, 255, 255, 0.4);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.card-header {
+  background-color: transparent;
+  border: 0;
+}
+
+.card {
+  border-radius: 0px;
+  text-align: center;
+}
+
+.card-header:hover {
+  border-bottom: 2px solid black;
+  text-decoration: none;
+  margin-bottom: -2px
+}
+
+.card-header a:hover {
+  text-decoration: none
+}
+
+.copyright {
+  text-align: right;
+  margin-right: 10px;
+}
+
+//categories filter
+
+.category_links {
+  background-color: $link-bg-color;
+  padding: 3px 6px;
+  line-height: 2em;
+  font-size: 1.3rem;
+}
+
+// categories
+
+#startpage-categories__list .progress {
+  height: 70px;
+  max-width: 100%;
+  border-radius: 0;
+  position: relative;
+}
+
+.progress {
+  position: relative;
+  color: black;
+  a {
+    color: black;
+  }
+  &:hover {
+  }
+}
+
+.progress-bar {
+  flex-direction: column;
+  justify-content: center;
+}
+
+.child {
+  position: absolute;
+  top: 20px;
+  width: 740px;
+}
+
+.category_name:hover {
+  text-decoration: underline;
+}
+
+@include media-breakpoint-down(md) {
+  .child {
+    font-size: 1.8rem;
+    left: 0px;
+    width: 490px;
+  }
+  .category_name {
+    width: 400px;
+  }
+  .category_count {
+    width: 50px;
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .child {
+    font-size: 1.2rem;
+    top: 20px;
+    left: 0px;
+    width: 310px;
+  }
+  .category_name {
+    width: 260px;
+    left: 0px;
+    font-size: 1.0rem;
+  }
+  .category_count {
+    width: 30px;
+    display: none;
+  }
+}
+
+
+/* footer */
+.footer__link {
+  padding: 0 4px;
+}
+
+.logo {
+  max-width: 120px
+}
+
+#footer_menu {
+ align_items: top;
+}
+
+/* cookie consent dialog */
+.cookie-consent-dialog {
+  height:auto !important;
+  position: fixed;
+  bottom: 0px;
+  z-index: 1;
+
+  .link {
+    color: $white;
+    text-decoration: underline;
+  }
+}

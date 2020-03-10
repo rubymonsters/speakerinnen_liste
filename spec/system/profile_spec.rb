@@ -138,8 +138,7 @@ describe 'profile navigation' do
 
     it 'directs after edit profile to the edit page' do
       expect(page).to have_content('name')
-      expect(page).to have_content('twitteraccount')
-      expect(page).to have_content('My main focus in German')
+      expect(page).to have_content('Twitteraccount')
     end
 
     it 'shows the correct tabs and the selected tab' do
@@ -147,7 +146,7 @@ describe 'profile navigation' do
     end
 
     it 'shows the correct main topic' do
-      expect(page).to have_css('.d-none', text: 'My main focus in German')
+      expect(page).to have_css('.d-none #main_topic_de')
     end
   end
 
@@ -162,7 +161,6 @@ describe 'profile navigation' do
     it 'directs after edit profile to the edit page' do
       expect(page).to have_content('Vorname')
       expect(page).to have_content('Twitteraccount')
-      expect(page).to have_content('Mein Themenschwerpunkt auf Deutsch:')
     end
 
     it 'shows the correct tabs and the selected tab' do
@@ -170,7 +168,7 @@ describe 'profile navigation' do
     end
 
     it 'shows the correct main topic' do
-      expect(page).to have_css('.d-none', text: 'Mein Themenschwerpunkt auf Englisch')
+      expect(page).to have_css('.d-none #main_topic_en')
     end
   end
 
@@ -182,18 +180,13 @@ describe 'profile navigation' do
     it 'shows list of all speakers' do
       expect(page).to have_content('Ada')
       expect(page).to have_content('Lovelace')
-      expect(page).to have_content('physics')
-      expect(page).to have_content('math')
+      expect(page).to have_content('math wiz')
     end
 
     it 'shows tags in the correct language' do
-      expect(page).to have_content('physics')
-      expect(page).not_to have_content('chemie')
+      expect(page).not_to have_content('Mathematik Genie')
     end
 
-    it 'shows tags with no language assigned' do
-      expect(page).to have_content('writer')
-    end
   end
 
   describe 'index view profiles in DE' do
@@ -201,20 +194,15 @@ describe 'profile navigation' do
       visit '/de/profiles'
     end
 
-    it 'shows list of all speakers' do
+    it 'shows list of all speakers with name and main topic' do
       expect(page).to have_content('Ada')
       expect(page).to have_content('Lovelace')
-      expect(page).to have_content('chemie')
-      expect(page).to have_content('writer')
+      expect(page).to have_content('Mathematik Genie')
     end
 
     it 'shows tags in the correct language' do
-      expect(page).to have_content('chemie')
-      expect(page).not_to have_content('physics')
+      expect(page).not_to have_content('math wiz')
     end
 
-    it 'shows tags with no language assigned' do
-      expect(page).to have_content('writer')
-    end
   end
 end

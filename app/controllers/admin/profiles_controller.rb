@@ -111,7 +111,13 @@ class Admin::ProfilesController < Admin::BaseController
       :city_de,
       :city_en,
       :image,
+      :copyright,
+      :personal_note_de,
+      :personal_note_en,
+      :willing_to_travel,
+      :nonprofit,
       feature_ids: [],
+      service_ids: [],
       translations_attributes: %i[id bio main_topic twitter website website_2 website_3 profession city locale]
     )
   end

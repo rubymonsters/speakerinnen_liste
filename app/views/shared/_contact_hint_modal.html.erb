@@ -1,4 +1,4 @@
-<!-- Modal Contact -->
+<!-- Modal contact cookie hint -->
 <div class="modal fade" id="contactHint" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -10,7 +10,7 @@
         <%= link_to(
           t(:allow_cookies, scope: 'pages.home'),
           url_for(params.permit!.merge(allow_cookies: true)),
-          class: 'mt-3 btn btn-blue'
+          class: 'mt-3 btn btn-primary'
         ) %>
         </p>
       </div>

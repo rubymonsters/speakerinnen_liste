@@ -4,15 +4,15 @@
   <h1>Admin::Medialink::Edit</h1>
 
   <div class="my-3 py-3 border-vertical">
-    <%= link_to t(:show_all, scope: 'admin.profiles.edit'), admin_profiles_path, class:'btn btn-blue btn-sm' %>
-    <%= link_to t(:show, scope: 'admin.profiles.edit'), admin_profile_path(@profile), class:'btn btn-blue btn-sm' %>
-    <%= link_to t(:show, scope: 'admin.medialink'), admin_profile_medialinks_path(@profile), class:'btn btn-blue btn-sm' %>
+    <%= link_to t(:show_all, scope: 'admin.profiles.edit'), admin_profiles_path, class: 'btn btn-primary btn-sm' %>
+    <%= link_to t(:show, scope: 'admin.profiles.edit'), admin_profile_path(@profile), class: 'btn btn-primary btn-sm' %>
+    <%= link_to t(:show, scope: 'admin.medialink'), admin_profile_medialinks_path(@profile), class: 'btn btn-primary btn-sm' %>
     <% if @profile.published %>
       <%= link_to t(:make_invisible, scope: 'admin.profiles'), unpublish_admin_profile_path(@profile.id),
-      method: :post, class:'btn btn-sm btn-danger', title: 'Hier kannst Du das Profile wieder unsichtbar machen.' %>
+      method: :post, class: 'btn btn-sm btn-danger', title: 'Hier kannst Du das Profile wieder unsichtbar machen.' %>
     <% else %>
       <%= link_to t(:make_public, scope: 'admin.profiles'), publish_admin_profile_path(@profile.id),
-      method: :post, class:'btn btn-sm btn-danger', title: 'Eine Bestätigungsmail wird verschickt.' %>
+      method: :post, class: 'btn btn-sm btn-danger', title: 'Eine Bestätigungsmail wird verschickt.' %>
     <% end %>
     <%= t(:profile_status, scope: 'admin.profiles') + t(:public, scope: 'admin.profiles') + '.' if @profile.published? %>
   </div>
@@ -28,7 +28,7 @@
     <%= f.input :language, label: t(:select_language, scope: 'medialinks'), label_html: { class: "my-3" } do %>
       <%= f.select :language, options_for_select(IsoLanguage.all_languagenames_with_iso, @medialink.language), include_blank: "..." %>
     <% end %>
-    <%= f.submit class: 'btn btn-blue btn-sm' %>
+    <%= f.submit class: 'btn btn-primary btn-sm' %>
   <% end %>
 
 </div>

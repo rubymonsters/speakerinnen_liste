@@ -21,18 +21,22 @@
   font-weight: 700;
   font-style: normal;
 }
-/* colors */
-$white: #FFF;
+/* old colors */
+$white: #FCFCFC;
 $white-smoke: #F5F5F5;
-$light-grey: #CCC;
-$grey: #7F7F7F;
+$light-grey: #F2F2F2;
+$grey: #E1DFDF;
+$grey-stroke: #979797;
 $dark-grey: #3C3C3A;
 $black: #000;
+/* -------------*/
 
-$blue: #00978b;
-$dark-blue: darken($blue, 10%);
+$bg-light-grey: $light-grey;
+$bg-grey: $grey;
 
+$beige: rgba(181, 138, 0, 0.62);
 $dark-red: #b62848;
+$tag-box-background: #DEDEDE;
 
 $transparent-black: rgba( $black, .5 );
 $transparent-white: rgba( $white, .7 );
@@ -44,24 +48,7 @@ $box-shadow-black: rgba(0,0,0,0.75);
 $serif: Georgia, serif;
 $sans-serif: "OpenSans", "Helvetica Neue", Helvetica, sans-serif;
 
-// /* link-color */
-$link-color: $blue;
-$link-color-hover: $white-smoke;
-
-$link-bg-color: $white-smoke;
-$link-bg-color-hover: $dark-grey;
-
 /* variables colors */
-$font-color: $dark-grey;
-$font-color-title: $grey;
-$link-color: $blue;
-
-// bootstrap variables override
-$primary: $blue;
-$red: #d95270;
-$enable-responsive-font-sizes: true;
-
-/* background-color */
 $body-bg-color: $white;
 $body-bg-color-grey: $white-smoke;
 
@@ -69,9 +56,27 @@ $body-bg-color-grey: $white-smoke;
 $base-spacing-unit: 24px;
 
 /* layout settings */
-$layout-width: 940px;
-$border: 1px solid $light-grey;
+$border: 1px solid $grey;
 
+$speakerinnen-blue: #20736D;
+$speakerinnen-lila: #603D78;
+$dark-blue: darken($speakerinnen-blue, 10%);
+$font-color: $dark-grey;
+$font-color-grey: $grey-stroke;
+$link-color: $speakerinnen-blue;
+
+// /* link-color */
+$link-color-hover: $white-smoke;
+$link-bg-color: $white-smoke;
+$link-bg-color-hover: $dark-grey;
+
+// bootstrap variables override
+$enable-responsive-font-sizes: true;
+$primary: $speakerinnen-blue;
+$secondary: $speakerinnen-lila;
+$border-dark: $grey-stroke;
+
+$red: #d95270;
 
 /* new category colors */
 $teal: #68D2CA;
@@ -122,4 +127,44 @@ $dark_yellow: #B58A00;
 $dark_yellow_1: #CEC5A8;
 $dark_yellow_2: #725907;
 
-$beige: #CCB15C;
+
+/* new colours */
+
+$missing_color: $grey-stroke;
+
+
+$arts: #68D2CA;
+$body: #69B7CB;
+$career: #8DB5E4;
+$companies: #A3A8F1;
+$diversity: #C8ABCF;
+$environment: #CB50AE;
+$internet: #AC356F;
+$marketing: #C0374A;
+$politics: #DA5735;
+$science: #c35F0f;
+
+
+$arts_sec: #B2E7E3;
+$body_sec: #B2D9E3;
+$career_sec: #C5D8F0;
+$companies_sec: #D0D2F6;
+$diversity_sec: #E2D3E6;
+$environment_sec: #EBC0E1;
+$internet_sec: #D498B5;
+$marketing_sec: #DE99A3;
+$politics_sec: #EBA999;
+$science_sec: #DFAE86;
+
+/*
+Arts & Culture
+Body & Soul
+Career & Education
+Companies & Start-ups
+Diversity
+Environment & Sustainability
+Internet & Media
+Marketing & PR
+Politics & Society
+Science & Technology
+*/

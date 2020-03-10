@@ -2,8 +2,8 @@
   <h1>Admin::Medialinks</h1>
 
   <div class="my-3 py-3 border-vertical">
-    <%= link_to t(:show_all, scope: 'admin.profiles.edit'), admin_profiles_path, class:'btn btn-blue btn-sm' %>
-    <%= link_to t(:show, scope: 'admin.profiles.edit'), admin_profile_path(@profile), class:'btn btn-blue btn-sm' %>
+    <%= link_to t(:show_all, scope: 'admin.profiles.edit'), admin_profiles_path, class: 'btn btn-primary btn-sm' %>
+    <%= link_to t(:show, scope: 'admin.profiles.edit'), admin_profile_path(@profile), class: 'btn btn-primary btn-sm' %>
     <% if @profile.published %>
       <%= link_to t(:make_invisible, scope: 'admin.profiles'), unpublish_admin_profile_path(@profile.id),
       method: :post, class:'btn btn-sm btn-danger', title: 'Hier kannst Du das Profile wieder unsichtbar machen.' %>

@@ -6,7 +6,6 @@
     <%= link_to t(:edit_profile, scope: "admin"), edit_admin_profile_path(@profile), class:"btn btn-blue btn-sm" %>
     <%= link_to t(:edit, scope: 'medialinks'), admin_profile_medialinks_path(@profile), class:'btn btn-blue btn-sm', title: t(:edit, scope: 'medialinks') %>
   </div>
-
   <%= render partial: 'admin_edit', locals: {page: "show"} %>
-  <%= render partial: "shared/show", object: @profile %>
+  <%= render partial: "profiles/show", object: @profile %>
 </div>

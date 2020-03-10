@@ -3,11 +3,20 @@ de:
     home:
       search:
         heading: "Mehr Frauen auf die Bühnen!"
-        tagline_html: "Finde Rednerinnen, Referentinnen & Moderatorinnen für Deine Konferenz."
-        search_text: "Namen oder Thema"
-        search: "Suche"
+        tagline: "Finde Rednerinnen, Referentinnen & Moderatorinnen<br> für Deine Konferenz:"
+        find_speaker: "Finde Deine Speakerinnen"
+        search_placeholder: "Name oder Thema"
+        search_speaker: "Suche"
       all_categories: "Kategorien und Themen >>"
       all_speakers: "Alle Speakerinnen* >>"
+      sub_menu_register_title: "Registriere Dich jetzt"
+      sub_menu_register_text: "Speakerinnen-Profil schnell und kostenfrei anlegen."
+      sub_menu_about_us_title: "Über uns"
+      sub_menu_about_us_text: "Erfahre mehr über das Team von Speakerinnen."
+      sub_menu_blog_title: "Unser Blog"
+      sub_menu_blog_text: "Mit spannenden Interviews und vielen Neuigkeiten."
+      sub_menu_categories_title: "Lass dich inspirieren"
+      sub_menu_categories_text: "Finde die passende Speakerin in 10 Kategorien."
       hint: "Hinweis"
       auth_modal: "Du musst der <b>Verwendung von Cookies zustimmen</b>, bevor Du Dich einloggen oder anmelden kannst.<br>
       Mehr Informationen in unserer <a href='%{link}' class='link'>Datenschutzerklärung</a>.<br>"
@@ -23,8 +32,10 @@ de:
       Software, die Matomoto heißt, um zu wissen, wie die Besucher*innen und Nutzer*innen von speakerinnen.org die Seite nutzen: Das hilft uns auch
       dabei, sie zu verbessern. Auch hierfür nutzen wir Cookies, die Du aber deaktivieren kannst. Mehr Informationen in unserer <a href='%{link}' class='link'>Datenschutzerklärung</a>."
       allow_cookies: "Ich stimme zu"
+      categories_list: "Finde deine Speakerin in 10 Kategorien oder filtere nach ganz konkreten Themen!"
       description: "Nach Kategorien durchsuchen"
       description_text: "Uns ist die Verteilung der Männer und Frauen auf Konferenzbühnen wichtig. Wir ermutigen Frauen, in ihrem professionellen Umfeld sichtbarer zu werden."
+      newest_speaker: "Ein herzliches Willkommen! Hier findest du unsere Neuzugänge"
       speaker_shoutout: "Hast Du etwas Interessantes zu erzählen?"
       speaker_text: "Registriere Dich auf speakerinnen.org >>"
       speakers:
@@ -56,8 +67,8 @@ de:
         links_text: "Hier gibt es Links zu ähnlichen Projekten:"
         contact: "Kontakt"
         contact_link: "E-Mail"
-        twitter: "<a href='https://twitter.com/speakerinnen', target='_blank', class='btn btn-link px-2'>Twitter</a>"
-        github: "<a href='https://github.com/rubymonsters/speakerinnen_liste', target='_blank', class='btn btn-link px-2'>GitHub</a>"
+        twitter: "<a href='https://twitter.com/speakerinnen', target='_blank', class=''>Twitter</a>"
+        github: "<a href='https://github.com/rubymonsters/speakerinnen_liste', target='_blank', class='px-2'>GitHub</a>"
         devblog: "<a href='http://speakerinnen.wordpress.com/', taget='_blank'>Entwicklerinnen-Blog</a>"
         faq_short: |
             <strong>Warum gibt es Thema XYZ noch nicht?</strong><br>

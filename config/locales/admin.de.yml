@@ -4,7 +4,6 @@ de:
       edit_categories: "Bearbeite Kategorien"
       edit_tags: "Bearbeite Tag"
       edit_profiles: "Bearbeite Profile"
-      edit_profile: "Bearbeite Profil"
     categories:
       categories: "Kategorien"
       category_language_de: "Deutsch:"
@@ -30,9 +29,10 @@ de:
       make_public: "veröffentliche"
       invisible: "unsichtbar"
       make_invisible: "Mache unsichtbar"
+      edit_profile: "Bearbeite Profil"
       confirmed: "bestätigte"
       comment: "Kommentar"
-      add_comment: "Kom. speichern"
+      add_comment: "Kommentar speichern"
       assign_feature: "Features speichern"
       feature_list: "Features zuordnen für die Startseite:"
       profile_status: "Das Profil ist "
@@ -40,7 +40,7 @@ de:
       search: "Suche nach Namen oder Topic"
       edit:
         show: "Zeige Profil"
-        show_all: "Liste aller Profile"
+        show_all: "Zurück zu allen Profilen"
     tags:
       tags: "Tags"
       current_tagname: "Bisheriger Name des Tags:"
@@ -63,6 +63,7 @@ de:
         select_categories: "Kategorie(n) des Tags auswählen: "
     medialink:
       show: "Zeige alle Referenzen"
+      edit_medialink: "Bearbeite Medialink"
       url: "URL:"
       title: "Überschrift:"
       description: "Beschreibung:"

@@ -1,0 +1,30 @@
+<div id='profile-tooltip' class='text-left'>
+  <% if profile.iso_languages.present? %>
+    <div class='pt-1'>
+      <%= t(:languages, scope: 'profiles.show') %>
+      <% languages = [] %>
+      <% profile.iso_languages.each do |iso|%>
+        <% languages << t("#{iso}", scope: 'iso_639_1').capitalize %>
+      <% end %>
+      <%= languages.join(', ') %>
+    </div>
+  <% end %>
+  <% if profile.city.present? %>
+    <div class='pt-1'>
+      <%= t(:city, scope: 'profiles.show') %>
+      <%= profile.city %>
+    </div>
+  <% end %>
+  <% if !profile.willing_to_travel.nil? %>
+    <div class='pt-1'>
+      <i class='fa <%= profile.willing_to_travel ? 'fa-check-square' : 'fa-times-rectangle' %>'>&nbsp;</i>
+      <%= profile.willing_to_travel ? t(:willing_to_travel, scope: 'profiles.show') : t(:not_willing_to_travel, scope: 'profiles.show') %>
+    </div>
+  <% end %>
+  <% if !profile.nonprofit.nil? %>
+    <div class='pt-1'>
+      <i class='fa <%= profile.nonprofit ? 'fa-check-square' : 'fa-times-rectangle' %>'>&nbsp;</i>
+        <%= profile.nonprofit ? t(:nonprofit, scope: 'profiles.show') : t(:not_nonprofit, scope: 'profiles.show') %>
+    </div>
+  <% end %>
+</div>
