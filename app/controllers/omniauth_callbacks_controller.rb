@@ -13,4 +13,8 @@ class OmniauthCallbacksController < ApplicationController
   end
 
   alias twitter all
+
+  def failure
+    redirect_to root_path
+  end
 end
