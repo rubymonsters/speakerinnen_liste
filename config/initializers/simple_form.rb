@@ -8,9 +8,10 @@ SimpleForm.setup do |config|
     b.optional :min_max
     b.optional :readonly
 
-    b.use :label_input
+    b.use :label
+    b.use :error, wrap_with: { tag: :span, class: :error }    
+    b.use :input
     b.use :hint,  wrap_with: { tag: :span }
-    b.use :error, wrap_with: { tag: :span, class: :error }
   end
 
   config.label_text = proc { |label, required| "#{label}" }
