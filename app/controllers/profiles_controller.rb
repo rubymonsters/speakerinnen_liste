@@ -26,13 +26,14 @@ class ProfilesController < ApplicationController
       @profiles_count = @profiles.total_count
       # redirect_to profiles_path(:anchor => "speakers")
     else
-      @profiles = profiles_for_index
+      @profiles = profiles_for_category
       @profiles_count = Profile.is_published.size
     end
+
     # for the tags filter module that is available all the time at the profile index view
+    # is needed for the colors of the tags
     @category = params[:category_id] ? Category.find(params[:category_id]) : Category.first
     @categories = Category.sorted_categories
-    # is needed for the colors of the tags
     Category.all.includes(:translations).each do |category|
       instance_variable_set("@tags_#{category.short_name}",
         ActsAsTaggableOn::Tag.belongs_to_category(category.id)
@@ -174,16 +175,18 @@ class ProfilesController < ApplicationController
     )
   end
 
-  def custom_params
-    permitted = Profile.globalize_attribute_names
-    params[:profile].permit(*permitted)
-  end
+  def profiles_for_category
+    tag_names = ActsAsTaggableOn::Tag
+                  .with_published_profile
+                  .belongs_to_category(params[:category_id])
+                  .translated_in_current_language_and_not_translated(I18n.locale)
+                  .pluck(:name)
 
-  def profiles_for_index
     Profile.is_published
-           .includes(:translations)
+           .includes(:taggings, :translations)
+           .joins(:topics)
            .main_topic_translated_in(I18n.locale)
-           .random
+           .where(tags: { name: tag_names })
            .page(params[:page])
            .per(24)
   end
