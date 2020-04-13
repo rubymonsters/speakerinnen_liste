@@ -24,8 +24,10 @@ class ProfilesController < ApplicationController
       @tags = params[:tag_filter].split(/\s*,\s*/)
       @profiles = Profile.is_published.has_tags(@tags).page(params[:page]).per(24)
       # redirect_to profiles_path(:anchor => "speakers")
-    else
+    elsif params[:category_id]
       @profiles = profiles_for_category
+    else
+      @profiles = profiles_for_index
     end
 
     @profiles_count = @profiles.total_count
@@ -196,6 +198,15 @@ class ProfilesController < ApplicationController
            .search(params[:search], params[:filter_countries], params[:filter_cities], params[:filter_lang])
            .page(params[:page]).per(24)
            .records
+  end
+
+  def profiles_for_index
+    Profile.is_published
+           .includes(:translations)
+           .main_topic_translated_in(I18n.locale)
+           .random
+           .page(params[:page])
+           .per(24)
   end
 
 end
