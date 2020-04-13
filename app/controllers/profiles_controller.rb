@@ -23,12 +23,12 @@ class ProfilesController < ApplicationController
     elsif params[:tag_filter]
       @tags = params[:tag_filter].split(/\s*,\s*/)
       @profiles = Profile.is_published.has_tags(@tags).page(params[:page]).per(24)
-      @profiles_count = @profiles.total_count
       # redirect_to profiles_path(:anchor => "speakers")
     else
       @profiles = profiles_for_category
-      @profiles_count = Profile.is_published.size
     end
+
+    @profiles_count = @profiles.total_count
 
     # for the tags filter module that is available all the time at the profile index view
     # is needed for the colors of the tags
@@ -185,7 +185,6 @@ class ProfilesController < ApplicationController
     Profile.is_published
            .includes(:taggings, :translations)
            .joins(:topics)
-           .main_topic_translated_in(I18n.locale)
            .where(tags: { name: tag_names })
            .page(params[:page])
            .per(24)
