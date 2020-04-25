@@ -77,6 +77,7 @@ Rails.application.routes.draw do
     get '/', to: 'pages#home'
 
     get 'categories/:category_id', to: 'profiles#index', as: :category
+    # resources :categories
 
     get '/404', to: "errors#not_found"
     get '/422', to: "errors#unacceptable"

@@ -19,37 +19,37 @@ describe 'profile search' do
     it 'displays profiles that are a partial match' do
       Profile.__elasticsearch__.refresh_index!
 
-      fill_in 'search', with: 'ada lovelace'
-      click_button(I18n.t(:search, scope: 'pages.home.search'))
+      fill_in 'header_search', with: 'ada lovelace'
+      find(:css, 'i.fa.fa-search').click
       expect(page).to have_content('Ada')
     end
 
     it 'displays profiles that are a partial match with more than one search input' do
       Profile.__elasticsearch__.refresh_index!
 
-      fill_in 'search', with: 'Marie'
-      click_button(I18n.t(:search, scope: 'pages.home.search'))
+      fill_in 'header_search', with: 'Marie'
+      find(:css, 'i.fa.fa-search').click
       expect(page).to have_content('Curie')
     end
 
     it 'displays profiles that are a partial match with utf-8 characters' do
       Profile.__elasticsearch__.refresh_index!
 
-      fill_in 'search', with: 'koenig'
-      click_button I18n.t(:search, scope: 'pages.home.search')
+      fill_in 'header_search', with: 'koenig'
+      find(:css, 'i.fa.fa-search').click
       expect(page).to have_content('Christiane')
     end
 
     it 'displays profiles that have an empty space' do
       Profile.__elasticsearch__.refresh_index!
 
-      fill_in 'search', with: 'maren meier'
-      click_button I18n.t(:search, scope: 'pages.home.search')
+      fill_in 'header_search', with: 'maren meier'
+      find(:css, 'i.fa.fa-search').click
       expect(page).to have_content('Meier')
     end
 
     it 'shows button search' do
-      expect(page).to have_selector('#search')
+      expect(page).to have_selector('#home_search')
     end
 
     it 'shows autofill' do
@@ -61,7 +61,7 @@ describe 'profile search' do
     before { visit profiles_path }
 
     it 'shows button search' do
-      expect(page).to have_selector('#search')
+      expect(page).to have_selector('#header_search')
     end
 
     it 'shows autofill' do
@@ -69,7 +69,7 @@ describe 'profile search' do
     end
   end
 
-  describe 'search in admin area' do
+  describe 'search in admin area', elasticsearch: true do
     before do
       sign_in admin
     end
@@ -79,8 +79,8 @@ describe 'profile search' do
       Profile.__elasticsearch__.refresh_index!
 
       visit admin_profiles_path
-      fill_in 'search', with: 'ada lovelace'
-      click_button I18n.t(:search, scope: 'pages.home.search')
+      fill_in 'admin_search', with: 'ada lovelace'
+      click_button I18n.t(:search_speaker, scope: 'pages.home.search')
       expect(page).to have_content('Lovelace')
     end
   end

@@ -2,6 +2,7 @@
 
 describe 'profile', type: :model do
   let(:profile) { FactoryBot.create(:profile) }
+  let(:profile2) { FactoryBot.create(:ada)}
 
   describe 'profile settings' do
     it 'has a valid factory' do
@@ -67,10 +68,10 @@ describe 'profile', type: :model do
     end
 
     it 'saves to iso_languages without the empty string in the array' do
-      p = FactoryBot.build(:profile, iso_languages: ['en', 'es', ''])
-      p.save!
-      p.reload
-      expect(p.iso_languages).to eq %w[en es]
+      profile = FactoryBot.build(:profile, iso_languages: ['en', 'es', ''])
+      profile.save!
+      profile.reload
+      expect(profile.iso_languages).to eq %w[en es]
     end
 
     context 'language string only valid when correct format' do
@@ -96,12 +97,36 @@ describe 'profile', type: :model do
     end
   end
 
+  describe 'profile tag filter' do
+    let!(:ruby_expert) { create(:published_profile, topic_list: %w[ruby algorithms]) }
+    let!(:java_expert) { create(:published_profile, topic_list: %w[java]) }
+    let!(:c_expert) { create(:published_profile, topic_list: %w[c]) }
+
+    it 'only shows the profile which is tagged' do
+      expect(Profile.has_tags("ruby").first).to eq ruby_expert
+      expect(Profile.has_tags("ruby").count).to eq 1
+      expect(Profile.has_tags("ruby, java").count).to eq 2
+    end
+  end
+
   describe 'cities' do
     it 'gets rid of additional charaters' do
       profile.city_de = 'Rom & Wien'
       profile.city_en = 'Rom or Paris'
       profile.save!
       expect(profile.cities).to eq(%w[Rom Wien Paris])
+    end
+  end
+
+  describe 'profession' do
+    it 'returns a profession' do
+      expect(profile2.profession).to eq("computer scientist")
+    end
+
+    it 'forces 80 character limit for a profession' do
+      profile = Profile.new(profession: 'a' * 61)
+      profile.valid?
+      expect(profile.errors[:profession].size).to eq(1)
     end
   end
 end

@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 class Profile < ApplicationRecord
-  include HasPicture
   include Searchable
   include ActiveModel::Serialization
 
@@ -8,14 +7,17 @@ class Profile < ApplicationRecord
   has_many :feature_profiles
   has_many :features, through: :feature_profiles, dependent: :destroy
   has_one_attached :image
+  has_and_belongs_to_many :services
 
   serialize :iso_languages, Array
   validate :iso_languages_array_has_right_format
+  validate :image_format_size
+  validates :profession, length: { maximum: 60, message: "Please use less than 80 characters." }
   before_save :clean_iso_languages!
 
-  translates :bio, :main_topic, :twitter, :website, :website_2, :website_3, :city, fallbacks_for_empty_translations: true
+  translates :bio, :main_topic, :profession, :twitter, :website, :website_2, :website_3, :city, :personal_note, fallbacks_for_empty_translations: true
   accepts_nested_attributes_for :translations
-  globalize_accessors locales: %i[en de], attributes: %i[main_topic bio twitter website website_2 website_3 city]
+  globalize_accessors locales: %i[en de], attributes: %i[main_topic bio profession twitter website website_2 website_3 city personal_note]
 
   extend FriendlyId
   friendly_id :slug_candidate, use: :slugged
@@ -57,10 +59,9 @@ class Profile < ApplicationRecord
   end
 
   scope :is_published, -> { where(published: true) }
-
   scope :is_confirmed, -> { where.not(confirmed_at: nil) }
-
   scope :no_admin, -> { where(admin: false) }
+  scope :has_tags, -> (tags) { tagged_with(tags, :any => true) }
 
   # only show profile where the main_topic is filled in in the current locale
   scope :main_topic_translated_in, ->(locale) {
@@ -169,13 +170,14 @@ class Profile < ApplicationRecord
       errors.add(:iso_languages, 'must be an array of strings')
     end
   end
-  
-  def image_variant
-    variation = ActiveStorage::Variation.new(combine_options: {
-      resize: "300x300^",
-      gravity: "center",
-      crop: "300x300+0+0",
-    })
-    ActiveStorage::Variant.new(image.blob, variation)
+
+  def image_format_size
+    if image.attached?
+      if image.blob.byte_size > 2.megabyte
+        errors.add(:base, :file_size_too_big)
+      elsif !image.blob.content_type.starts_with?('image/')
+        errors.add(:base, :content_type_invalid)
+      end
+    end
   end
 end

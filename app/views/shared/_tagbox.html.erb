@@ -1,0 +1,3 @@
+<% tags.order(:name).each do |tag| %>
+  <button id="<%= tag.name.gsub(/\s+/, "-") %>" class="category_<%= category.short_name %> bg-<%= category.short_name %> text-lowercase tag-button btn m-1 available-tag enabled" ><%= tag.name %></button>
+<% end %>

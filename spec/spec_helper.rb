@@ -51,10 +51,6 @@ RSpec.configure do |config|
   config.before do
     I18n.locale = :de
   end
-  # Start an in-memory cluster for Elasticsearch as needed
-  config.before :all, elasticsearch: true do
-    Elasticsearch::Extensions::Test::Cluster.start(port: 9250, nodes: 1, timeout: 120, path_logs: 'log')
-  end
 
   # Create indexes for all elastic searchable models
   config.before :each, elasticsearch: true do
@@ -72,11 +68,6 @@ RSpec.configure do |config|
         STDERR.puts "There was an error creating the elasticsearch index for #{model.name}: #{e.inspect}"
       end
     end
-  end
-
-  # Stop elasticsearch cluster after test run
-  config.after :suite do
-    Elasticsearch::Extensions::Test::Cluster.stop(port: 9250, nodes: 1)
   end
 
   # Delete indexes for all elastic searchable models to ensure clean state between tests

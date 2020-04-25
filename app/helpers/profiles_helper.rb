@@ -14,13 +14,16 @@ module ProfilesHelper
     link_to topic, topic_path(topic: topic.to_s), options
   end
 
-  def profile_picture_link(profile)
-    if profile.picture.present?
-      link_to(image_tag(profile.picture.profile.url, alt: profile.fullname, class: 'photo--grey'), profile)
-    elsif profile.image.attached?
-      link_to(image_tag(profile.image_variant, class: 'photo--grey'), profile)
+  def topic_link_color(topic)
+    link_to topic, topic_path(topic: topic.to_s), id: topic.name.gsub(/\s+/, "-"),
+    class: "#{"bg-" + topic.categories.first.short_name if topic.categories.first} btn btn-sm m-1 sans-serif tag-button"
+  end
+
+  def profile_image_link(profile)
+    if profile.image.attached?
+      link_to(image_tag(profile.image.variant(combine_options: {resize: '600x600^', extent: '600x600', gravity: 'Center'}), class: 'photo--grey'), profile)
     else
-      link_to(image_tag('avatar.jpg', alt: 'avatar', class: 'photo--grey'), profile)
+      link_to(image_tag('avatar.jpg', alt: 'avatar', class: 'photo--grey card-img-top', alt: "Speakerinnen Picture"), profile)
     end
   end
 

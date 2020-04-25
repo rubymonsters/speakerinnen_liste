@@ -9,9 +9,9 @@ module Searchable
     index_name [Rails.application.engine_name, Rails.env].join('_')
 
     def self.search(query, filter_countries, filter_cities, filter_lang)
-      @filter_countries = filter_countries
-      @filter_cities = filter_cities
-      @filter_lang = filter_lang
+      @filter_countries = filter_countries == "" ? nil : filter_countries
+      @filter_cities = filter_cities == "" ? nil : filter_cities
+      @filter_lang = filter_lang == "" ? nil : filter_lang
 
       query_hash =
         {
@@ -94,13 +94,14 @@ module Searchable
 
       # minimum score depends completely on the given data and query, find out what works in your case.
       # can't be integrated directly in query hash because tests fail
-      query_hash[:min_score] = 0.08 if Rails.env != 'test'
+      query_hash[:min_score] = 0.08 if Rails.env.production?
 
-      query_hash[:post_filter] = { 'term': { 'iso_languages': @filter_lang } } if @filter_lang
+      filters = []
+      filters << { "term": { "iso_languages": @filter_lang }} if @filter_lang
+      filters << { "term": { "cities.unmod": @filter_cities }} if @filter_cities
+      filters << { "term": { "country": @filter_countries }} if @filter_countries
+      query_hash[:query][:bool][:filter] = filters unless filters.empty?
 
-      query_hash[:post_filter] = { 'term': { 'cities.unmod': @filter_cities } } if @filter_cities
-
-      query_hash[:post_filter] = { 'term': { 'country': @filter_countries } } if @filter_countries
       __elasticsearch__.search(query_hash)
     end
 

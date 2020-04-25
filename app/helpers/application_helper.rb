@@ -37,7 +37,7 @@ module ApplicationHelper
       yield tag, classes[index.nan? ? 0 : index.round]
     end
   end
-  
+
   def bootstrap_class_for(flash_type)
     case flash_type
     when "success"

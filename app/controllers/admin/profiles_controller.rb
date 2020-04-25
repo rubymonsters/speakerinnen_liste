@@ -89,8 +89,6 @@ class Admin::ProfilesController < Admin::BaseController
       { iso_languages: [] },
       :firstname,
       :lastname,
-      :picture,
-      :remove_picture,
       :content,
       :name,
       :topic_list,
@@ -108,11 +106,19 @@ class Admin::ProfilesController < Admin::BaseController
       :website_en,
       :website_2_en,
       :website_3_en,
+      :profession_en,
+      :profession_de,
       :city_de,
       :city_en,
       :image,
+      :copyright,
+      :personal_note_de,
+      :personal_note_en,
+      :willing_to_travel,
+      :nonprofit,
       feature_ids: [],
-      translations_attributes: %i[id bio main_topic twitter website website_2 website_3 city locale]
+      service_ids: [],
+      translations_attributes: %i[id bio main_topic twitter website website_2 website_3 profession city locale]
     )
   end
 

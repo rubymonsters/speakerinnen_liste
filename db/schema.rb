@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_25_190039) do
+ActiveRecord::Schema.define(version: 2020_03_01_230000) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 2019_02_25_190039) do
     t.string "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer "position", default: 0
   end
 
   create_table "categories_tags", id: :serial, force: :cascade do |t|
@@ -142,6 +143,8 @@ ActiveRecord::Schema.define(version: 2019_02_25_190039) do
     t.string "city"
     t.string "website_2"
     t.string "website_3"
+    t.string "profession"
+    t.string "personal_note"
     t.index ["locale"], name: "index_profile_translations_on_locale"
     t.index ["profile_id"], name: "index_profile_translations_on_profile_id"
   end
@@ -174,10 +177,24 @@ ActiveRecord::Schema.define(version: 2019_02_25_190039) do
     t.string "slug"
     t.string "country"
     t.string "iso_languages"
+    t.string "copyright"
+    t.string "personal_note", limit: 175
+    t.boolean "willing_to_travel"
+    t.boolean "nonprofit"
     t.index ["confirmation_token"], name: "index_profiles_on_confirmation_token", unique: true
     t.index ["email"], name: "index_profiles_on_email", unique: true
     t.index ["reset_password_token"], name: "index_profiles_on_reset_password_token", unique: true
     t.index ["slug"], name: "index_profiles_on_slug", unique: true
+  end
+
+  create_table "profiles_services", id: false, force: :cascade do |t|
+    t.bigint "service_id", null: false
+    t.bigint "profile_id", null: false
+    t.index ["service_id", "profile_id"], name: "index_profiles_services_on_service_id_and_profile_id"
+  end
+
+  create_table "services", force: :cascade do |t|
+    t.string "name"
   end
 
   create_table "taggings", id: :serial, force: :cascade do |t|

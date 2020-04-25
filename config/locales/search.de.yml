@@ -2,7 +2,7 @@ de:
   search:
     any: "Alle"
     no_profile: "Zu diesem Thema haben wir leider keine Speakerin gefunden."
-    profiles_topics: "Zum dem Thema <b>%{topics_name}</b> gibt es <b>%{profiles_count}</b> Speakerinnen <i class='fa fa-caret-down' style='font-size: 21px'></i>"
+    profiles_topics: "Es gibt <b>%{profiles_count}</b> Speakerinnen zu dem Thema:"
     profiles: "%{link}"
     all_profiles: "In allen Profilen blättern >>"
     did_you_mean: "Meinst du vielleicht %{suggestions_fullname}?"
@@ -11,12 +11,15 @@ de:
     filter: "Hier kannst du die Suchergebnisse filtern:"
     success: "Wir haben"
     result: {
-      one: " eine Speakerin gefunden! <i class='fa fa-caret-down' style='font-size: 21px'></i>",
-      other: " %{count} Speakerinnen gefunden! <i class='fa fa-caret-down' style='font-size: 21px'></i>"
+      one: " <b>eine</b> Speakerin gefunden zu Deiner Suche: ",
+      other: " <b>%{count}</b> Speakerinnen gefunden zu Deiner Suche: "
     }
     more_options: "<b>Keine passende Speakerin gefunden?</b><br> Vielleicht helfen Dir diese Links weiter:"
     search_categories_html: "Du kannst auch in anderen <a href='%{root_path}/#categories_anchor'>Kategorien</a> und <a href='#tag_cloud_anchor'>Themen</a> stöbern."
     adapt_search: "Suche anpassen >>"
+    all_countries: "Alle Länder"
+    all_cities: "Alle Städte"
+    all_languages: "Alle Sprachen"
     countries_agg: "Länder:"
     cities_agg: "Städte:"
     languages_agg: "Sprachen:"

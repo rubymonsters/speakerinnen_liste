@@ -29,8 +29,8 @@ RSpec.describe 'Navigation', type: :system do
 
         it 'startpage has content' do
           expect(page).to have_css('#startpage__start-teaser')
-          expect(page).to have_css('#startpage__teaser-bg-01')
-          expect(page).to have_css('#startpage__teaser-bg-02')
+          expect(page).to have_css('#startpage-categories__list')
+          expect(page).to have_css('#startpage-newest_speaker')
           expect(page).to have_css('.profile-box', text: published_profile.main_topic)
           expect(page).to have_css('.profile-box', text: ada.main_topic)
           expect(page).to have_css('.category_item_science', count: 1)
@@ -38,14 +38,14 @@ RSpec.describe 'Navigation', type: :system do
         end
 
         it 'startpage has footer' do
-          expect(page).to have_css('#main-page-footer')
+          expect(page).to have_selector('footer')
           expect(page).to have_link('Twitter')
-          expect(page).to have_link(I18n.t(:contact_link, scope: 'pages.home.footer'))
+          expect(page).to have_link(I18n.t(:contact, scope: 'pages.home.footer'))
           expect(page).to have_link(I18n.t(:about_title, scope: 'pages.home.footer'))
         end
 
         it 'viewing the contact page' do
-          click_link I18n.t(:contact_link, scope: 'pages.home.footer')
+          click_link I18n.t(:contact, scope: 'pages.home.footer')
           expect(page).to have_css('form label', text: I18n.t(:name, scope: 'contact.form'))
           expect(page).to have_css('form label', text: I18n.t(:email, scope: 'contact.form'))
           expect(page).to have_css('form label', text: I18n.t(:body, scope: 'contact.form'))
@@ -54,40 +54,28 @@ RSpec.describe 'Navigation', type: :system do
         end
 
         it 'viewing the speakerinnen overview page' do
-          click_link I18n.t(:speaker_index, scope: 'pages.home.speakers')
+          click_link I18n.t(:sub_menu_register_title, scope: 'pages.home')
           # header
           expect(page).to have_css('#header__logo')
           expect(page).to have_link(I18n.t('layouts.application.signup'))
-          # search
-          expect(page).to have_css('input.profile__search')
-          expect(page).to have_button(I18n.t(:search, scope: 'pages.home.search'))
-          # profile
-          expect(page).to have_content('2')
-          expect(page).to have_link('Ada Lovelace')
-          expect(page).to have_css('.profile-card', count: 2)
-          expect(page).to have_css('.profile-subtitle', text: ada.main_topic)
-          expect(page).to have_text(ada.iso_languages.first)
-          # tag_cloud
-          expect(page).to have_css('.topics-cloud')
-          # link t profile
-          expect(page).to have_link I18n.t(:to_profile, scope: 'profiles.show')
+          # register page
+          expect(page).to have_button(I18n.t(:signup, scope: "devise.registrations"))
+          expect(page).to have_field(I18n.t(:email, scope: "devise.registrations"))
+          expect(page).to have_field(I18n.t(:password, scope: "devise.registrations"))
+          expect(page).to have_field(I18n.t(:confirmation, scope: "devise.registrations"))
         end
 
         it 'viewing a single speakerin page' do
-          click_link I18n.t(:speaker_index, scope: 'pages.home.speakers')
           click_link 'Ada Lovelace'
           # header
           expect(page).to have_css('#header__logo')
           expect(page).to have_link(I18n.t('layouts.application.signup'))
-          # navi links
-          expect(page).to have_link I18n.t(:home, scope: 'profiles.edit')
           # profile
-          expect(page).to have_css('.profile-page')
-          expect(page).to have_css('.profile-subtitle', text: ada.main_topic)
+          expect(page).to have_text(ada.firstname)
           expect(page).to have_text(ada.iso_languages.first)
           expect(page).to have_text('London')
           # contact
-          expect(page).to have_button I18n.t(:contact, scope: 'profiles.show')
+          expect(page).to have_link I18n.t(:contact, scope: 'profiles.show')
           expect(page).to_not have_link I18n.t(:edit, scope: 'profiles.show')
         end
       end

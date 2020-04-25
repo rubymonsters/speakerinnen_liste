@@ -9,7 +9,7 @@ de:
     - Fr
     - Sa
     abbr_month_names:
-    - 
+    -
     - Jan
     - Feb
     - Mär
@@ -35,7 +35,7 @@ de:
       long: ! '%e. %B %Y'
       short: ! '%e. %b'
     month_names:
-    - 
+    -
     - Januar
     - Februar
     - März
@@ -101,6 +101,8 @@ de:
       accepted: muss akzeptiert werden
       blank: muss ausgefüllt werden
       confirmation: stimmt nicht mit der Bestätigung überein
+      content_type_invalid: "Das Bild hat ein ungültiges Dateiformat. Es muss ein jpg, jpeg, gif oder png sein."
+      file_size_too_big: "Das Bild ist zu groß. Nur Bilder bis zu 2 MB sind erlaubt."
       empty: muss ausgefüllt werden
       equal_to: muss genau %{count} sein
       even: muss gerade sein

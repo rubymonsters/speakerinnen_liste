@@ -18,6 +18,12 @@ describe 'displaying tags' do
                                                tag_with_slash_en])
   end
   let!(:pierre) { create(:unpublished_profile, topic_list: [tag_de, tag_with_unpublished_profile]) }
+  let!(:clara) { create(:published_profile, topic_list: [tag_en, tag_with_slash_en]) }
+
+  let!(:science) { FactoryBot.create(:cat_science, tags: [tag_de, tag_en]) }
+  let!(:social) { FactoryBot.create(:cat_social, tags: [tag_both_languages, tag_with_slash_en, tag_with_unpublished_profile]) }
+
+
 
   it 'shows tagging after profile edit' do
     sign_in ada
@@ -29,42 +35,50 @@ describe 'displaying tags' do
     expect(page).to have_content('fruehling')
   end
 
-  it 'shows only german tags in topic cloud' do
-    visit 'de/profiles'
-    within '.topics-cloud' do
-      expect(page).to have_content('chemie')
-      expect(page).not_to have_content('fruehling')
-    end
-  end
+  context "in the category index page" do
 
-  it 'shows only english tags in topic cloud' do
-    visit 'en/profiles'
-    within '.topics-cloud' do
-      expect(page).to have_content('physics')
-      expect(page).not_to have_content('chemie')
+    it 'shows all the categories to coose the tags from' do
+      visit "de/categories/#{science.id}"
+      expect(page).to have_content('Wissenschaft')
+      expect(page).to have_content('Soziales')
     end
-  end
 
-  it 'shows tags with a blank' do
-    visit '/profiles'
-    assert page.has_content?('social media')
-    within '.topics-cloud' do
-      expect(page).to have_content('social media')
-    end
-  end
+    context 'in the tags box' do
+      it 'shows the tags for the category you choose'
+      it 'shows tags with no language'
 
-  it 'shows with slash use %2F for the link generating in profiles show' do
-    visit 'en/profiles'
-    within '.topics-cloud' do
-      click_link('AC/DC')
-    end
-    expect(page).to have_content('AC/DC')
-  end
+      it 'shows only german tags' do
+        visit "de/categories/#{science.id}"
+        within '#available-tags-box' do
+          expect(page).to have_content('chemie')
+          expect(page).not_to have_content('fruehling')
+        end
+      end
 
-  it 'shows not tags from unpublished profiles' do
-    visit 'en/profiles'
-    within '.topics-cloud' do
-      expect(page).not_to have_content('sports')
+      it 'shows only english tags' do
+        visit "en/categories/#{science.id}"
+        within '#available-tags-box' do
+          expect(page).to have_content('physics')
+          expect(page).not_to have_content('chemie')
+        end
+      end
+
+      it 'shows with slash use %2F for the link generating' do
+        visit "en/categories/#{science.id}"
+        within '#available-tags-box' do
+          expect(page).to have_content('AC/DC')
+          click_button('AC/DC')
+        end
+        expect(page).to have_content('AC/DC')
+      end
+
+      it 'shows not tags from unpublished profiles' do
+        visit "en/categories/#{science.id}"
+        within '#available-tags-box' do
+          expect(page).not_to have_content('sports')
+        end
+      end
+
     end
   end
 end

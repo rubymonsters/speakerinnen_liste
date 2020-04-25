@@ -1,6 +1,7 @@
 <% if profile %>
-  <div class="col-sm-6 col-md-4 col-lg-3 my-3 profile-box">  
-    <%= profile_picture_link(profile) %>
+  <div class="col-sm-6 col-md-4 col-lg-3 my-3 profile-box" data-toggle="tooltip" data-html="true"
+  title="<%= render partial: "profiles/profile_tooltip", locals: { profile: profile } %>">
+    <%= profile_image_link(profile) %>
     <div>
       <%= link_to profile.fullname, profile %>
     </div>
@@ -9,3 +10,7 @@
     </div>
   </div>
 <% end %>
+
+<script type="text/javascript" charset="utf-8">
+  $(function () { $('[data-toggle="tooltip"]').tooltip() })
+</script>

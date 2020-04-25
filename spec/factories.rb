@@ -36,12 +36,13 @@ FactoryBot.define do
       iso_languages { ['en', 'de'] }
       bio_de { 'Sie hat den ersten Algorithmus veröffentlicht.' }
       bio_en { 'She published the first algorithm for a machine.' }
-      main_topic_de { 'Mathematik' }
-      main_topic_en { 'math' }
+      main_topic_de { 'Mathematik Genie' }
+      main_topic_en { 'math wiz' }
       website_de { 'www.ada.de' }
       website_2_de { 'wwww.ada2.de' }
       website_3_de { 'wwww.ada3.de' }
       published { true }
+      profession { 'computer scientist' }
     end
 
     factory :marie do
@@ -56,6 +57,7 @@ FactoryBot.define do
       main_topic_de { 'Radioaktivität' }
       main_topic_en { 'radioactivity' }
       published { true }
+      profession { 'chemist' }
     end
 
   end

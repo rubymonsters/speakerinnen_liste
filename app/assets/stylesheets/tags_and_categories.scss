@@ -1,43 +1,64 @@
-/* Backgrounds bright colors*/
-.bg-teal { background-color: $teal; }
-.bg-dark_teal { background-color: $dark_teal; }
-.bg-soft_blue { background-color: $soft_blue; }
-.bg-purple { background-color: $purple; }
-.bg-rose { background-color: $rose; }
-.bg-pink { background-color: $pink; }
-.bg-dark_pink { background-color: $dark_pink; }
-.bg-raspberry_red { background-color: $raspberry_red; }
-.bg-red_orange { background-color: red_orange; }
-.bg-orange { background-color: $orange; }
-.bg-bronze { background-color: $bronze; }
-.bg-dark_yellow { background-color: $dark_yellow; }
+/* Tag Backgrounds all colors*/
+.bg-arts { background-color: $arts_sec; }
+.bg-body { background-color: $body_sec; }
+.bg-career { background-color: $career_sec; }
+.bg-companies { background-color: $companies_sec; }
+.bg-diversity { background-color: $diversity_sec; }
+.bg-environment { background-color: $environment_sec; }
+.bg-internet { background-color: $internet_sec; }
+.bg-marketing { background-color: $marketing_sec; }
+.bg-politics { background-color: $politics_sec; }
+.bg-science { background-color: $science_sec; }
+
+/* Tag icon Backgrounds all colors*/
+.bg-icon-arts { background-color: $arts; }
+.bg-icon-body { background-color: $body; }
+.bg-icon-career { background-color: $career; }
+.bg-icon-companies { background-color: $companies; }
+.bg-icon-diversity { background-color: $diversity; }
+.bg-icon-environment { background-color: $environment; }
+.bg-icon-internet { background-color: $internet; }
+.bg-icon-marketing { background-color: $marketing; }
+.bg-icon-politics { background-color: $politics; }
+.bg-icon-science { background-color: $science; }
+
 
 // topics
 
 #available-tags-box {
-  max-height: 400px;
+  max-height: 300px;
   overflow: scroll;
-  background: $white-smoke;
+  background-color: $white-smoke;
+  border: 1px solid $grey-stroke;
 }
 
 #selected-tags-box {
   height: 100px;
+  overflow: scroll;
+  border: 1px solid $grey-stroke;
 }
+
 div#v-pills-tab a {
   color: black;
 }
 
+.tag-button {
+  border-radius: 0.75em;
+  font-size: 0.8rem;
+  padding: 0.2em 0.7em;
+  box-shadow: 0 0 0 0px white, 0 1.5px 0.5px $grey-stroke;
+}
+
 // colors of categories and tags
 $categories_dark_color: (
-  arts: $teal,
-  body: $dark_teal,
-  marketing: $raspberry_red,
-  politics: $red_orange,
-  science: $orange_1
+  marketing: $marketing,
+  politics: $politics,
+  internet: $internet,
+  environment: $environment
 );
 
 @each $name, $color in $categories_dark_color {
-  button.cat_#{$name} {
+  .cat_#{$name} {
     background: $color;
     color: white;
     &:hover {
@@ -46,32 +67,36 @@ $categories_dark_color: (
     }
   }
   a:link#v-pills-#{$name}-tab.active {
-    background: $color;
-    color: white;
+    background: none;
+    color: $color;
+    font-weight: bold;
   }
   a:link#v-pills-#{$name}-tab {
     i { color: $color; }
     &:hover {
-      background: $color;
-      color: white;
+      color: $color;
     }
   }
-  a:link#category-#{$name} {
+  #category-#{$name} {
     color: $color;
+    text-decoration: underline;
+  }
+  .bg-#{$name} {
+    i { color: #{$color} }
   }
 }
 
 $categories_bright_color: (
-  career: $soft_blue,
-  companies: $purple,
-  diversity: $rose,
-  environment: $pink,
-  internet: $dark_pink,
-  miscellaneous: $bronze
+  arts: $arts,
+  body: $body,
+  career: $career,
+  companies: $companies,
+  diversity: $diversity,
+  science: $science
 );
 
 @each $name, $color in $categories_bright_color {
-  button.cat_#{$name} {
+  .cat_#{$name} {
     background: $color;
     color: black;
     &:hover {
@@ -80,37 +105,40 @@ $categories_bright_color: (
     }
   }
   a:link#v-pills-#{$name}-tab.active {
-    background: $color;
-    color: black;
+    background: none;
+    color: $color;
+    font-weight: bold;
   }
   a:link#v-pills-#{$name}-tab {
     i { color: $color; }
     &:hover {
-      background: $color;
-      color: black;
+      color: $color;
     }
   }
-  a:link#category-#{$name} {
+  #category-#{$name} {
     color: $color;
+    text-decoration: underline;
+  }
+  .bg-#{$name} {
+    i { color: #{$color} }
   }
 }
 
 // custom colors
-$categories_custom_color: (
-  arts: $teal,
-  body: $dark_teal,
-  career: $soft_blue,
-  companies: $purple,
-  diversity: $rose,
-  environment: $pink,
-  internet: $dark_pink,
-  marketing: $raspberry_red,
-  politics: $red_orange,
-  science: $orange,
-  miscellaneous: $bronze
+$all_categories_custom_color: (
+  arts: $arts,
+  body: $body,
+  career: $career,
+  companies: $companies,
+  diversity: $diversity,
+  environment: $environment,
+  internet: $internet,
+  marketing: $marketing,
+  politics: $politics,
+  science: $science
 );
 
-@each $name, $color in $categories_custom_color {
+@each $name, $color in $all_categories_custom_color {
   div.category_item_#{$name} {
     background-color: $color;
   }
@@ -131,45 +159,42 @@ $categories_custom_color: (
   }
 }
 
-// brighter colors
-$categories_brighter_color: (
-  arts: $teal_1,
-  body: $dark_teal_1,
-  career: $soft_blue_1,
-  companies: $purple_1,
-  diversity: $rose_1,
-  environment: $pink_1,
-  internet: $dark_pink_1,
-  marketing: $raspberry_red_1,
-  politics: $red_orange_1,
-  science: $orange_1,
-  miscellaneous: $bronze_1
+// all categories brighter colors
+$all_categories_brighter_color: (
+  arts: $arts_sec,
+  body: $body_sec,
+  career: $career_sec,
+  companies: $companies_sec,
+  diversity: $diversity_sec,
+  environment: $environment_sec,
+  internet: $internet_sec,
+  marketing: $marketing_sec,
+  politics: $politics_sec,
+  science: $science_sec
 );
 
-@each $name, $color in $categories_brighter_color {
+@each $name, $color in $all_categories_brighter_color {
   div.category_item_#{$name}_numbers {
     background-color: $color;
   }
 }
 
-// darker colors
-$categories_darker_color: (
-  arts: $teal_2,
-  body: $dark_teal_2,
-  career: $soft_blue_2,
-  companies: $purple_2,
-  diversity: $rose_2,
-  environment: $pink_2,
-  internet: $dark_pink_2,
-  marketing: $raspberry_red_2,
-  politics: $red_orange_2,
-  science: $orange_2,
-  miscellaneous: $bronze_2
+// all categories darker colors
+$all_categories_darker_color: (
+  arts: $arts,
+  body: $body,
+  career: $career,
+  companies: $companies,
+  diversity: $diversity,
+  environment: $environment,
+  internet: $internet,
+  marketing: $marketing,
+  politics: $politics,
+  science: $science
 );
 
-@each $name, $color in $categories_darker_color {
+@each $name, $color in $all_categories_darker_color {
   div#v-pills-#{$name} {
-    background-color: $color;
   }
   button.cat_#{$name} i {
     color: $color;

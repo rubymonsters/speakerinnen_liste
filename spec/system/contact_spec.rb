@@ -5,10 +5,21 @@ describe 'contact profile' do
 
   context "cookie consent is NOT set" do
 
-    it 'contact button should open hint modal' do
+    it 'contact button in profile should open hint modal' do
+      visit profile_path(id: ada.id)
+      # save_and_open_page
+      within(:css, ".single-profile") do
+        find("button[data-target='#contactHint']")
+      end
+    end
+
+    it 'contact button in footer should open hint modal' do
       visit profile_path(id: ada.id)
 
-      find("button[data-target='#contactHint']")
+      within(:css, "footer") do
+        find("button[data-target='#contactHint']")
+        expect(page).to_not have_link('Contact', href: '/en/contact')
+      end
     end
 
     it 'fill the contact form correct and not get a success message' do
@@ -26,10 +37,17 @@ describe 'contact profile' do
 
   context "cookie consent is set" do
 
-    it 'should open contact modal when cookie consent is set' do
+    it 'single profile should have a contact button when cookie consent is set' do
       visit profile_path(id: ada.id)
       find_link(class: "cookie-consent").click
       find("button[data-target='#contactModal']")
+    end
+
+    it 'footer should have a contact link when cookie consent is set' do
+      visit profile_path(id: ada.id)
+      find_link(class: "cookie-consent").click
+
+      expect(page).to have_link('Contact', href: '/en/contact')
     end
 
     it 'fill the contact form correct and get a success message' do

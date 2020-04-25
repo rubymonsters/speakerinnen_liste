@@ -38,7 +38,7 @@
         <%= f.select(:profile_ids, Profile.all.map{|p|[p.fullname, p.id]}, { include_blank: true }, :multiple => true, id: :select_profile, class: 'form-control select_profile') %>
       </div>
 
-      <%= f.button :submit, t(:save, scope: 'general'), class:'btn btn-blue' %>
+      <%= f.button :submit, t(:save, scope: 'general'), class: 'btn btn-primary' %>
 
     </div>
   </div>

@@ -1,11 +1,11 @@
 <%= simple_form_for @message, url: url, html: {id: ""} do |f| %>
-  <%= f.input :name, as: :string, required: false, label: t(".name"), input_html: { class: 'form-control mb-3' }  %>
-  <%= f.input :email, label: t(".email"), required: false, input_html: { class: 'form-control mb-3' }   %>
+  <%= f.input :name, as: :string, required: false, label: t(".name"), input_html: { class: 'form-control mb-3' }, error_html: { style: 'float:right'} %>
+  <%= f.input :email, label: t(".email"), required: false, input_html: { class: 'form-control mb-3' }, error_html: { style: 'float:right'} %>
   <%= invisible_captcha %>
-  <%= f.input :subject, label: t(".subject"), required: false, input_html: { class: 'form-control mb-3' }   %>
-  <%= f.input :body, as: :text, label: t(".body"), required: false, input_html: { class: 'form-control mb-3' }   %>
+  <%= f.input :subject, label: t(".subject"), required: false, input_html: { class: 'form-control mb-3' }, error_html: { style: 'float:right'} %>
+  <%= f.input :body, as: :text, label: t(".body"), required: false, input_html: { class: 'form-control mb-3' }, error_html: { style: 'float:right'} %>
 
   <div class="modal-footer">
-    <%= f.submit t(".send"), class:"btn btn-blue"%>
+    <%= f.submit t(".send"), class: "btn btn-primary"%>
   </div>
 <% end %>

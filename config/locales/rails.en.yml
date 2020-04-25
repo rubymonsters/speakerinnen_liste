@@ -9,7 +9,7 @@ en:
     - Fri
     - Sat
     abbr_month_names:
-    - 
+    -
     - Jan
     - Feb
     - Mar
@@ -35,7 +35,7 @@ en:
       long: ! '%B %d, %Y'
       short: ! '%b %d'
     month_names:
-    - 
+    -
     - January
     - February
     - March
@@ -101,6 +101,8 @@ en:
       accepted: must be accepted
       blank: can't be blank
       confirmation: doesn't match confirmation
+      content_type_invalid: "The image has an invalid content type. Needs to be a jpg, jpeg, gif or png."
+      file_size_too_big: "The image is too big. Only pictures up to 2 MB are allowed."
       empty: can't be empty
       equal_to: must be equal to %{count}
       even: must be even

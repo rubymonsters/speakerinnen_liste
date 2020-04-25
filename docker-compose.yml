@@ -1,0 +1,34 @@
+version: '3'
+services:
+  db:
+    image: postgres:9.5
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=password
+  elastic:
+    image: elasticsearch:2.4.5
+    volumes:
+      - elastic_data:/usr/share/elasticsearch/data
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+  web:
+    build: .
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    environment:
+      - SEARCHBOX_URL=elastic
+    volumes:
+      - .:/speakerinnen_liste
+      - bundle:/bundle
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+      - elastic
+    tty: true
+    stdin_open: true
+volumes:
+  bundle:
+  postgres_data:
+  elastic_data:

@@ -1,7 +1,3 @@
-<div class="container py-5 profile-page">
-  <div class="profile-navi mb-5">
-    <%= link_to(t(:home, scope: 'profiles.edit'), profiles_path) %>
-  </div>
-
-  <%= render partial: "shared/show", object: @profile %>
+<div class="container single-profile">
+  <%= render partial: "profiles/show", object: @profile %>
 </div>

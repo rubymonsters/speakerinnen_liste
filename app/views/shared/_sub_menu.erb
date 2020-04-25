@@ -1,0 +1,41 @@
+<div class="col-md-6 col-lg-3 mb-2">
+  <div class="card pb-3 bg--white-trans">
+    <div class="card-header">
+      <h3 class="card-title mb-0"><%= link_to t(:sub_menu_register_title, scope: 'pages.home'), sign_up_path %></h3>
+    </div>
+    <div class="card-body">
+      <p class="h5 card-text mt-2"><%= t(:sub_menu_register_text, scope: 'pages.home', count: @speakerinnen_count).html_safe %></p>
+
+    </div>
+  </div>
+</div>
+<div class="col-md-6 col-lg-3 mb-2">
+  <div class="card pb-3 bg--white-trans">
+    <div class="card-header">
+      <h3 class="card-title mb-0"><%= link_to t(:sub_menu_categories_title, scope: 'pages.home'), root_path + "#categories_anchor" %></h3>
+    </div>
+    <div class="card-body">
+      <p class="h5 card-text mt-2"><%= t(:sub_menu_categories_text, scope: 'pages.home') %></p>
+    </div>
+  </div>
+</div>
+<div class="col-md-6 col-lg-3 mb-2">
+  <div class="card pb-3 bg--white-trans">
+    <div class="card-header">
+      <h3 class="card-title mb-0"><%= link_to t(:sub_menu_about_us_title, scope: 'pages.home'), about_path %></h3>
+    </div>
+    <div class="card-body">
+      <p class="h5 card-text mt-2"><%= t(:sub_menu_about_us_text, scope: 'pages.home') %></p>
+    </div>
+  </div>
+</div>
+<div class="col-md-6 col-lg-3 mb-2">
+  <div class="card pb-3 bg--white-trans">
+    <div class="card-header">
+      <h3 class="card-title mb-0"><%= link_to t(:sub_menu_blog_title, scope: 'pages.home'), "https://blog.speakerinnen.org/", target: '_blank' %></h3>
+    </div>
+    <div class="card-body">
+      <p class="h5 card-text mt-2"><%= t(:sub_menu_blog_text, scope: 'pages.home').html_safe %></p>
+    </div>
+  </div>
+</div>

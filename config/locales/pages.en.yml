@@ -3,11 +3,20 @@ en:
     home:
       search:
         heading: "Organizers, find your speakers"
-        tagline_html: "Find women speakers & moderators for your conference."
-        search_text: "Search by name or topic"
-        search: "Search"
+        tagline: "Find women speakers & moderators for your conference:"
+        find_speaker: "Find speaker"
+        search_placeholder: "Search by name or topic"
+        search_speaker: "Search"
       all_categories: "Categories and topics >>"
       all_speakers: "All women speakers >>"
+      sub_menu_register_title: "Register now"
+      sub_menu_register_text: "Create speaker profile quickly and free of charge"
+      sub_menu_about_us_title: "About us"
+      sub_menu_about_us_text: "Learn more about the Speakerinnen.org team."
+      sub_menu_blog_title: "Our blog"
+      sub_menu_blog_text: "Find exciting interviews<br> and lots of news."
+      sub_menu_categories_title: "Get inspired"
+      sub_menu_categories_text: "Find the right women speaker in 10 categories."
       hint: "Hint"
       auth_modal: "You have to <b>agree to the use of cookies</b> before using the register or login form.<br>
        Find more information about data security in our <a href='%{link}' class='link'>privacy policy</a>.<br>"
@@ -17,13 +26,15 @@ en:
       we remember and store information about how you use it."
       cookie_consent_detail: "This is done using simple text files called cookies which sit on your computer. These cookies are completely safe and secure and will never contain any sensitive information. Important: To use the full functionality of this site (e.g. login, registration and sending mail to the speakers) you have to agree to the use of cookies. For web statistics we use Matomoto which also uses cookies. These can be deactivated separately. Find more information about data security in our <a href='%{link}' class='link'>privacy policy</a>."
       allow_cookies: "I agree"
+      categories_list: "Find your women speaker in 10 categories or filter by specific topics!"
       description: "Browse by categories"
-      description_text: "We feel strongly about a balanced representation of men and women* on stage. We encourage women to become more visible in their profession and field of expertise."
+      description_text: "We feel strongly about a balanced representation of men and women on stage. We encourage women to become more visible in their profession and field of expertise."
+      newest_speaker: "A warm welcome! Here you can find our latest registrations"
       speaker_shoutout: "Do you have something interesting to say?"
       speaker_text: "Get on the Speakerinnen* list >>"
       speakers:
         speaker_headline: "Our Speakers*"
-        speaker_text: "No more excuses for panels without women*!"
+        speaker_text: "No more excuses for panels without women!"
         speaker_index: "Browse all speakers >>"
         categories: "Categories and Topics >>"
       mission_statement:
@@ -34,7 +45,7 @@ en:
       footer:
         about_title: "About us"
         about: |
-              Speakerinnen.org aims to increase the visibility and participation of women* at (but not limited to) conferences, panels and talk shows.<br>
+              Speakerinnen.org aims to increase the visibility and participation of women at (but not limited to) conferences, panels and talk shows.<br>
               Organizers and hosts can find experts, who gladly (and competently) share their knowledge. <br>
               women can register in our database with the topics they are interested in covering, and can add references to their abilities.
         more: ">> more"
@@ -71,8 +82,6 @@ en:
             <strong>Nicht mehr allein unter Männern</strong><br>
             <a href="https://www.taz.de/!5043737/" target="_blank" rel="noopener">taz (German)</a>
             <br><br>
-
-        women: "* When we say women we mean everyone who defines herself as a woman. Please note: Sometimes for better readability in long passages of text the term 'women' is written without a star."
     about:
       title: "About us"
     press:
@@ -88,3 +97,4 @@ en:
       internal: "We're sorry, but something went wrong."
       back_home: "Go back home: "
       home_link: "Speakerinnen Liste"
+

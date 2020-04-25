@@ -31,7 +31,7 @@
         <%= image_tag('logo_header.png') %>
       </div>
 
-      <div class="p-3 login-form">
+      <div class="p-3 pb-5 login-form">
         <%= simple_form_for(resource, as: resource_name, url: @target_url, html: { class: ""}) do |f| %>
 
           <%= invisible_captcha %>
@@ -61,20 +61,20 @@
 
           <!-- Make sure cookie consent is given -->
           <% if cookies[:cookie_consent].blank? %>
-            <%= link_to(t(button, scope: "devise.registrations"), "#link", "data-role" => "button", "data-toggle" => "modal", "data-target" => "#authModal", class: 'btn btn-blue mb-3') %>
+            <%= link_to(t(button, scope: "devise.registrations"), "#link", "data-role" => "button", "data-toggle" => "modal", "data-target" => "#authModal", class: 'btn btn-primary mb-3') %>
           <% else %>
-            <%= f.submit t(button, scope: "devise.registrations"), class:'btn btn-blue mb-3' %>
+            <%= f.submit t(button, scope: "devise.registrations"), class:'btn btn-primary mb-3' %>
           <% end %>
 
           <!-- Show the "login via twitter"" button only when not redirected from twitter" -->
           <% if devise_mapping.omniauthable? && session["devise.user_attributes"].blank? %>
             <!-- Make sure cookie consent is given -->
             <% if cookies[:cookie_consent].blank? %>
-              <%= link_to(t(button+'_via', scope: "devise.registrations"), "#link", "data-role" => "button", "data-toggle" => "modal", "data-target" => "#authModal", class: 'btn btn-blue mb-3' ) %>
+              <%= link_to(t(button+'_via', scope: "devise.registrations"), "#link", "data-role" => "button", "data-toggle" => "modal", "data-target" => "#authModal", class: 'btn btn-primary mb-3' ) %>
             <% else %>
               <% Profile.omniauth_providers.each do |provider| %>
                 <%= link_to t(button+'_via', scope: "devise.registrations"), omniauth_authorize_path(:profile, provider),
-                class: 'btn btn-blue mb-3' %>
+                class: 'btn btn-primary mb-3' %>
               <% end %>
             <% end %>
           <% end %>
