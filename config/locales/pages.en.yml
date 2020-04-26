@@ -89,3 +89,12 @@ en:
     imprint:
       title: "Legal Details"
       privacy: "Privacy Policy"
+    errors:
+      not_found: "The page you were looking for doesn't exist."
+      not_found_explain: "You may have mistyped the address or the page may have moved."
+      unacceptable: "The change you wanted was rejected."
+      unacceptable_explain: "Maybe you tried to change something you didn't have access to."
+      internal: "We're sorry, but something went wrong."
+      back_home: "Go back home: "
+      home_link: "Speakerinnen Liste"
+
