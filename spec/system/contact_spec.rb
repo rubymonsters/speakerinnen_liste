@@ -3,12 +3,10 @@
 describe 'contact profile' do
   let!(:ada) { FactoryBot.create(:ada) }
 
-  context "cookie consent is NOT set" do
-
+  context 'cookie consent is NOT set' do
     it 'contact button in profile should open hint modal' do
       visit profile_path(id: ada.id)
-      # save_and_open_page
-      within(:css, ".single-profile") do
+      within(:css, '.single-profile') do
         find("button[data-target='#contactHint']")
       end
     end
@@ -16,7 +14,7 @@ describe 'contact profile' do
     it 'contact button in footer should open hint modal' do
       visit profile_path(id: ada.id)
 
-      within(:css, "footer") do
+      within(:css, 'footer') do
         find("button[data-target='#contactHint']")
         expect(page).to_not have_link('Contact', href: '/en/contact')
       end
@@ -35,17 +33,16 @@ describe 'contact profile' do
     end
   end
 
-  context "cookie consent is set" do
-
+  context 'cookie consent is set' do
     it 'single profile should have a contact button when cookie consent is set' do
       visit profile_path(id: ada.id)
-      find_link(class: "cookie-consent").click
+      find_link(class: 'cookie-consent').click
       find("button[data-target='#contactModal']")
     end
 
     it 'footer should have a contact link when cookie consent is set' do
       visit profile_path(id: ada.id)
-      find_link(class: "cookie-consent").click
+      find_link(class: 'cookie-consent').click
 
       expect(page).to have_link('Contact', href: '/en/contact')
     end
@@ -53,7 +50,7 @@ describe 'contact profile' do
     it 'fill the contact form correct and get a success message' do
       visit profile_path(id: ada.id)
 
-      find_link(class: "cookie-consent").click
+      find_link(class: 'cookie-consent').click
       find("button[data-target='#contactModal']").click
       fill_in I18n.t('.name', scope: 'contact.form'), with: 'Ada'
       fill_in I18n.t('.email', scope: 'contact.form'), with: 'Ada@email.de'
@@ -66,7 +63,7 @@ describe 'contact profile' do
 
     it 'fills the contact form only with email' do
       visit profile_path(id: ada.id)
-      find_link(class: "cookie-consent").click
+      find_link(class: 'cookie-consent').click
 
       fill_in I18n.t('.email', scope: 'contact.form'), with: 'Ada@email.de'
       click_button I18n.t('.send', scope: 'contact.form')
@@ -74,10 +71,9 @@ describe 'contact profile' do
       expect(page).to have_content(I18n.t(:error, scope: 'contact.form'))
     end
 
-
     it 'fills the contact form with spam email' do
       visit profile_path(id: ada.id)
-      find_link(class: "cookie-consent").click
+      find_link(class: 'cookie-consent').click
 
       find("button[data-target='#contactModal']").click
       fill_in I18n.t('.name', scope: 'contact.form'), with: 'Ada'
@@ -88,6 +84,5 @@ describe 'contact profile' do
 
       expect(page).to have_content(I18n.t(:error, scope: 'contact.form'))
     end
-
   end
 end
