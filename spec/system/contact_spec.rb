@@ -15,7 +15,7 @@ describe 'contact profile' do
       visit profile_path(id: ada.id)
 
       within(:css, 'footer') do
-        find("button[data-target='#contactHint']")
+        find("button[data-target='#contactHint']", match: :first)
         expect(page).to_not have_link('Contact', href: '/en/contact')
       end
     end
@@ -37,7 +37,7 @@ describe 'contact profile' do
     it 'single profile should have a contact button when cookie consent is set' do
       visit profile_path(id: ada.id)
       find_link(class: 'cookie-consent').click
-      find('#contact-button-small')
+      find("button[data-target='#contactModal']", match: :first)
     end
 
     it 'footer should have a contact link when cookie consent is set' do
