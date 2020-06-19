@@ -32,6 +32,6 @@ module ProfilesHelper
   end
 
   def disable_contact_button(profile)
-    'disabled' if profile.id == 309
+    'style=display:none' if profile.id == 309
   end
 end
