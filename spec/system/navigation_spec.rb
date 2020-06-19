@@ -40,6 +40,8 @@ RSpec.describe 'Navigation', type: :system do
         it 'startpage has footer' do
           expect(page).to have_selector('footer')
           expect(page).to have_link('Twitter')
+          expect(page).to have_link('Instagram')
+          expect(page).to have_link('Facebook')
           expect(page).to have_link(I18n.t(:contact, scope: 'pages.home.footer'))
           expect(page).to have_link(I18n.t(:about_title, scope: 'pages.home.footer'))
         end
@@ -75,7 +77,7 @@ RSpec.describe 'Navigation', type: :system do
           expect(page).to have_text(ada.iso_languages.first)
           expect(page).to have_text('London')
           # contact
-          expect(page).to have_link I18n.t(:contact, scope: 'profiles.show')
+          expect(page).to have_button I18n.t(:contact, scope: 'profiles.show')
           expect(page).to_not have_link I18n.t(:edit, scope: 'profiles.show')
         end
       end
