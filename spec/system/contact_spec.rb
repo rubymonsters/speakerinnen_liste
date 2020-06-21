@@ -7,7 +7,7 @@ describe 'contact profile' do
     it 'contact button in profile should open hint modal' do
       visit profile_path(id: ada.id)
       within(:css, '.single-profile') do
-        find("button[data-target='#contactHint']")
+        find("button[data-target='#contactHint']", match: :first)
       end
     end
 
@@ -15,7 +15,7 @@ describe 'contact profile' do
       visit profile_path(id: ada.id)
 
       within(:css, 'footer') do
-        find("button[data-target='#contactHint']")
+        find("button[data-target='#contactHint']", match: :first)
         expect(page).to_not have_link('Contact', href: '/en/contact')
       end
     end
@@ -37,7 +37,7 @@ describe 'contact profile' do
     it 'single profile should have a contact button when cookie consent is set' do
       visit profile_path(id: ada.id)
       find_link(class: 'cookie-consent').click
-      find("button[data-target='#contactModal']")
+      find("button[data-target='#contactModal']", match: :first)
     end
 
     it 'footer should have a contact link when cookie consent is set' do
@@ -51,7 +51,7 @@ describe 'contact profile' do
       visit profile_path(id: ada.id)
 
       find_link(class: 'cookie-consent').click
-      find("button[data-target='#contactModal']").click
+      find("button[data-target='#contactModal']", match: :first).click
       fill_in I18n.t('.name', scope: 'contact.form'), with: 'Ada'
       fill_in I18n.t('.email', scope: 'contact.form'), with: 'Ada@email.de'
       fill_in I18n.t('.subject', scope: 'contact.form'), with: 'Need a speakerin'
@@ -75,7 +75,7 @@ describe 'contact profile' do
       visit profile_path(id: ada.id)
       find_link(class: 'cookie-consent').click
 
-      find("button[data-target='#contactModal']").click
+      find("button[data-target='#contactModal']", match: :first).click
       fill_in I18n.t('.name', scope: 'contact.form'), with: 'Ada'
       fill_in I18n.t('.email', scope: 'contact.form'), with: 'fish@email.de'
       fill_in I18n.t('.subject', scope: 'contact.form'), with: 'Need a speakerin'

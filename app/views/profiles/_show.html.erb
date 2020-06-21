@@ -5,7 +5,7 @@
       <button type="button" class="btn btn-primary btn-stretch mt-2 px-5" data-toggle="modal"
       data-target=<%= cookies[:cookie_consent].blank? ? "#contactHint" : "#contactModal" %>>
         <i class="fa fa-envelope-o"></i>&nbsp;
-        <%= t(:contact, scope: 'profiles.show') %>
+        <%= t(:contact, scope: 'profiles.show') + ' ' + @profile.fullname %>
       </button>
     <% end %>
   </div>
@@ -237,6 +237,18 @@
     </div>
   </div>
 <% end %>
+
+<div class="col-lg-4 col-md-6 text-center pb-3">
+  <div class="row">
+    <% unless current_profile ==  @profile %>
+      <button type="button" class="btn btn-primary btn-stretch mt-2 px-5" data-toggle="modal"
+      data-target=<%= cookies[:cookie_consent].blank? ? "#contactHint" : "#contactModal" %>>
+        <i class="fa fa-envelope-o"></i>&nbsp;
+        <%= t(:contact, scope: 'profiles.show') + ' ' + @profile.fullname %>
+      </button>
+    <% end %>
+  </div>
+</div>
 
 
   <!-- Modal Contact -->

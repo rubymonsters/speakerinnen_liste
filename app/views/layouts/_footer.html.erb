@@ -9,20 +9,6 @@
       <div class="col-12 col-md-2">
         <ul class="list-unstyled">
           <li class="d-flex">
-        <!-- Make sure cookie consent is given -->
-            <% if cookies[:cookie_consent].blank? %>
-              <button type="button" class="btn btn-link px-2 pt-0" data-toggle="modal" data-target="#contactHint">
-                <%= t(:contact, scope: 'pages.home.footer') %>
-              </button>
-            <% else %>
-              <%= link_to t(:contact, scope: 'pages.home.footer'), contact_path, class: "" %>
-            <% end %>
-          </li>
-        </ul>
-      </div>
-      <div class="col-12 col-md-2">
-        <ul class="list-unstyled">
-          <li class="d-flex">
             <%= link_to t(:about_title, scope: 'pages.home.footer'), about_path, class: "" %>
           </li>
           <li class="d-flex">
@@ -40,6 +26,26 @@
         <ul class="list-unstyled">
           <li class="d-flex">
             <%= t(:twitter, scope: 'pages.home.footer').html_safe %>
+          </li>
+          <li class="d-flex">
+            <%= t(:instagram, scope: 'pages.home.footer').html_safe %>
+          </li>
+          <li class="d-flex">
+            <%= t(:facebook, scope: 'pages.home.footer').html_safe %>
+          </li>
+        </ul>
+      </div>
+      <div class="col-12 col-md-2">
+        <ul class="list-unstyled">
+          <li class="d-flex">
+        <!-- Make sure cookie consent is given -->
+            <% if cookies[:cookie_consent].blank? %>
+              <button type="button" class="btn btn-link px-2 pt-0" data-toggle="modal" data-target="#contactHint">
+                <%= t(:contact, scope: 'pages.home.footer') %>
+              </button>
+            <% else %>
+              <%= link_to t(:contact, scope: 'pages.home.footer'), contact_path, class: "" %>
+            <% end %>
           </li>
         </ul>
       </div>

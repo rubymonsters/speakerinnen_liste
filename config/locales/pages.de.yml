@@ -68,7 +68,9 @@ de:
         contact: "Kontakt"
         contact_link: "E-Mail"
         twitter: "<a href='https://twitter.com/speakerinnen', target='_blank', class=''>Twitter</a>"
+        instagram: "<a href='https://instagram.com/speakerinnen', target='_blank', class=''>Instagram</a>"
         github: "<a href='https://github.com/rubymonsters/speakerinnen_liste', target='_blank', class='px-2'>GitHub</a>"
+        facebook: "<a href='https://facebook.com/speakerinnen', target='_blank', class=''>Facebook</a>"
         devblog: "<a href='http://speakerinnen.wordpress.com/', taget='_blank'>Entwicklerinnen-Blog</a>"
         faq_short: |
             <strong>Warum gibt es Thema XYZ noch nicht?</strong><br>
