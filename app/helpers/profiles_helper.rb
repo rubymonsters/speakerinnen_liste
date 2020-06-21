@@ -30,4 +30,8 @@ module ProfilesHelper
   def topics_for_profile(profile)
     profile.topics.translated_in_current_language_and_not_translated(I18n.locale)
   end
+
+  def disable_contact_button(profile)
+    'style=display:none' if profile.id == 309
+  end
 end
