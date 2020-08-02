@@ -37,21 +37,22 @@
 .card-header {
   background-color: transparent;
   border: 0;
+  text-align: center;
 }
 
 .card {
   border-radius: 0px;
-  text-align: center;
 }
 
 .card-header:hover {
   border-bottom: 2px solid black;
   text-decoration: none;
+  text-align: center;
   margin-bottom: -2px
 }
 
 .card-header a:hover {
-  text-decoration: none
+  text-decoration: none;
 }
 
 .copyright {
