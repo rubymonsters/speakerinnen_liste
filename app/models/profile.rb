@@ -175,7 +175,7 @@ class Profile < ApplicationRecord
     if image.attached?
       if image.blob.byte_size > 2.megabyte
         errors.add(:base, :file_size_too_big)
-      elsif !image.blob.content_type.starts_with?('image/')
+      elsif !image.content_type.in?(%w(image/png image/jpg image/jpeg image/gif))
         errors.add(:base, :content_type_invalid)
       end
     end
