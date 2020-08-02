@@ -12,5 +12,13 @@
 <% end %>
 
 <script type="text/javascript" charset="utf-8">
-  $(function () { $('[data-toggle="tooltip"]').tooltip() })
+  $(function () {
+    var wideTooltipTemplate = '\
+      <div class="tooltip" role="tooltip">\
+        <div class="arrow" ></div>\
+        <div class="tooltip-inner wide" ></div>\
+      </div>\
+    '
+    $('[data-toggle="tooltip"]').tooltip({ template: wideTooltipTemplate });
+  })
 </script>
