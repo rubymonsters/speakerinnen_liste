@@ -103,6 +103,7 @@ de:
       confirmation: stimmt nicht mit der Bestätigung überein
       content_type_invalid: "Das Bild hat ein ungültiges Dateiformat. Es muss ein jpg, jpeg, gif oder png sein."
       file_size_too_big: "Das Bild ist zu groß. Nur Bilder bis zu 2 MB sind erlaubt."
+      file_size_empty: "Ups! Die Datei ist leer. Versuche es erneut."
       empty: muss ausgefüllt werden
       equal_to: muss genau %{count} sein
       even: muss gerade sein
