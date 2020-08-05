@@ -103,6 +103,7 @@ en:
       confirmation: doesn't match confirmation
       content_type_invalid: "The image has an invalid content type. Needs to be a jpg, jpeg, gif or png."
       file_size_too_big: "The image is too big. Only pictures up to 2 MB are allowed."
+      file_size_empty: "Oops! The file is empty. Try again."
       empty: can't be empty
       equal_to: must be equal to %{count}
       even: must be even
