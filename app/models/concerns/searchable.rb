@@ -73,19 +73,19 @@ module Searchable
           aggs: {
             lang: {
               terms: {
-                field: 'iso_languages',
+                field: 'iso_languages.key_word',
                 size: 999
               }
             },
             city: {
               terms: {
-                field: 'cities.unmod',
+                field: 'cities.keyword',
                 size: 999
               }
             },
             country: {
               terms: {
-                field: 'country',
+                field: 'country.key_word',
                 size: 999
               }
             }
@@ -98,7 +98,7 @@ module Searchable
 
       filters = []
       filters << { "term": { "iso_languages": @filter_lang }} if @filter_lang
-      filters << { "term": { "cities.unmod": @filter_cities }} if @filter_cities
+      filters << { "term": { "cities": @filter_cities }} if @filter_cities
       filters << { "term": { "country": @filter_countries }} if @filter_countries
       query_hash[:query][:bool][:filter] = filters unless filters.empty?
 
@@ -201,38 +201,42 @@ module Searchable
 
     settings elasticsearch_mappings do
       mappings dynamic: 'false' do
-        indexes :fullname,   type: 'string', analyzer: 'fullname_analyzer', 'norms': { 'enabled': false } do
+        indexes :fullname,   type: 'text', analyzer: 'fullname_analyzer', 'norms': false do
           indexes :suggest,  type: 'completion'
         end
-        indexes :lastname,   type: 'string', analyzer: 'fullname_analyzer', 'norms': { 'enabled': false } do
+        indexes :lastname,   type: 'text', analyzer: 'fullname_analyzer', 'norms': false do
           indexes :suggest,  type: 'completion'
         end
-        indexes :twitter_de, type: 'string', analyzer: 'twitter_analyzer', 'norms': { 'enabled': false } do
+        indexes :twitter_de, type: 'text', analyzer: 'twitter_analyzer', 'norms': false do
           indexes :suggest,  type: 'completion'
         end
-        indexes :twitter_en, type: 'string', analyzer: 'twitter_analyzer', 'norms': { 'enabled': false } do
+        indexes :twitter_en, type: 'text', analyzer: 'twitter_analyzer', 'norms': false do
           indexes :suggest,  type: 'completion'
         end
-        indexes :topic_list, type: 'string', analyzer: 'standard', 'norms': { 'enabled': false } do
+        indexes :topic_list, type: 'text', analyzer: 'standard', 'norms': false do
           indexes :suggest,  type: 'completion'
         end
         I18n.available_locales.each do |locale|
           %i[main_topic bio website].each do |name|
-            indexes :"#{name}_#{locale}", type: 'string', analyzer: "#{ANALYZERS[locale]}_without_stemming" do
+            indexes :"#{name}_#{locale}", type: 'text', analyzer: "#{ANALYZERS[locale]}_without_stemming" do
               indexes :suggest, type: 'completion' if name == :main_topic
             end
           end
         end
-        indexes :iso_languages,  type: 'string', analyzer: 'standard', 'norms': { 'enabled': false }
-        indexes :cities, fields: { unmod: { type: 'string', index: 'not_analyzed', 'norms': { 'enabled': false } }, standard: { type: 'string', analyzer: 'cities_analyzer', 'norms': { 'enabled': false } } }
-        indexes :country,    type: 'string', analyzer: 'standard', 'norms': { 'enabled': false }
+        indexes :iso_languages, fields: { keyword: { type: 'keyword', 'norms': false },
+                                standard: { type: 'text', analyzer: 'standard', 'norms': false }}
+        indexes :cities,        fields: { keyword: { type: 'text', 'norms': false },
+                                standard: { type: 'text', analyzer: 'cities_analyzer', 'norms':  false }}
+        indexes :country,       fields: { keyword: { type: 'keyword', 'norms': false },
+                                standard: { type: 'text', analyzer: 'standard', 'norms': false }}
         indexes :medialinks, type: 'nested' do
-          indexes :title, 'norms': { 'enabled': false }
-          indexes :description, 'norms': { 'enabled': false }
+          indexes :title, 'norms': false
+          indexes :description, 'norms': false
         end
       end
     end
 
+    # seems not to be used
     def autocomplete
       {
         input: input.map { |i| i.input.downcase }
@@ -240,28 +244,30 @@ module Searchable
     end
 
     def self.typeahead(q)
-      __elasticsearch__.client.suggest(index: index_name, body: {
-                                         fullname_suggest: {
-                                           text: q,
-                                           completion: { field: 'fullname.suggest' }
-                                         },
-        lastname_suggest: {
-          text: q,
-          completion: { field: 'lastname.suggest' }
-        },
-        main_topic_de_suggest: {
-          text: q,
-          completion: { field: 'main_topic_de.suggest' }
-        },
-        main_topic_en_suggest: {
-          text: q,
-          completion: { field: 'main_topic_en.suggest' }
-        },
-        topic_list_suggest: {
-          text: q,
-          completion: { field: 'topic_list.suggest' }
-        }
-                                       })
+      __elasticsearch__.client.suggest(
+        index: index_name,
+        body: {
+          fullname_suggest: {
+            text: q,
+            completion: { field: 'fullname.suggest' }
+          },
+          lastname_suggest: {
+            text: q,
+            completion: { field: 'lastname.suggest' }
+          },
+          main_topic_de_suggest: {
+            text: q,
+            completion: { field: 'main_topic_de.suggest' }
+          },
+          main_topic_en_suggest: {
+            text: q,
+            completion: { field: 'main_topic_en.suggest' }
+          },
+          topic_list_suggest: {
+            text: q,
+            completion: { field: 'topic_list.suggest' }
+          }
+      })
     end
   end
 end
