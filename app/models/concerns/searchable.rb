@@ -79,7 +79,7 @@ module Searchable
             },
             city: {
               terms: {
-                field: 'cities.keyword',
+                field: 'cities.key_word',
                 size: 999
               }
             },
@@ -106,6 +106,11 @@ module Searchable
     end
 
     def as_indexed_json(_options = {})
+      suggest = {
+        fullname_suggest: { input: fullname },
+        topic_list_suggest: { input: topic_list }
+      }
+
       output = as_json(
         autocomplete: { input: [fullname, twitter_de, twitter_en, topic_list] },
         only: %i[firstname lastname iso_languages country],
@@ -113,7 +118,8 @@ module Searchable
         include: {
           medialinks: { only: %i[title description] }
         }
-      )
+      ).merge(suggest)
+
       output.select { |_key, value| value.present? }
     end
 
@@ -225,8 +231,8 @@ module Searchable
         end
         indexes :iso_languages, fields: { keyword: { type: 'keyword', 'norms': false },
                                 standard: { type: 'text', analyzer: 'standard', 'norms': false }}
-        indexes :cities,        fields: { keyword: { type: 'text', 'norms': false },
-                                standard: { type: 'text', analyzer: 'cities_analyzer', 'norms':  false }}
+        indexes :cities,        fields: { keyword: { type: 'keyword', 'norms': false },
+                                standard: { type: 'text', analyzer: 'standard', 'norms':  false }}
         indexes :country,       fields: { keyword: { type: 'keyword', 'norms': false },
                                 standard: { type: 'text', analyzer: 'standard', 'norms': false }}
         indexes :medialinks, type: 'nested' do
