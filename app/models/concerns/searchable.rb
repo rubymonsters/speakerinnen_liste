@@ -105,24 +105,6 @@ module Searchable
       __elasticsearch__.search(query_hash)
     end
 
-    def as_indexed_json(_options = {})
-      suggest = {
-        fullname_suggest: { input: fullname },
-        topic_list_suggest: { input: topic_list }
-      }
-
-      output = as_json(
-        autocomplete: { input: [fullname, twitter_de, twitter_en, topic_list] },
-        only: %i[firstname lastname iso_languages country],
-        methods: [:fullname, :topic_list, :cities, *globalize_attribute_names],
-        include: {
-          medialinks: { only: %i[title description] }
-        }
-      ).merge(suggest)
-
-      output.select { |_key, value| value.present? }
-    end
-
     elasticsearch_mappings = {
       index: {
         number_of_shards: 1,
@@ -250,29 +232,31 @@ module Searchable
     end
 
     def self.typeahead(q)
-      __elasticsearch__.client.suggest(
+      __elasticsearch__.client.search(
         index: index_name,
         body: {
-          fullname_suggest: {
-            text: q,
-            completion: { field: 'fullname.suggest' }
-          },
-          lastname_suggest: {
-            text: q,
-            completion: { field: 'lastname.suggest' }
-          },
-          main_topic_de_suggest: {
-            text: q,
-            completion: { field: 'main_topic_de.suggest' }
-          },
-          main_topic_en_suggest: {
-            text: q,
-            completion: { field: 'main_topic_en.suggest' }
-          },
-          topic_list_suggest: {
-            text: q,
-            completion: { field: 'topic_list.suggest' }
-          }
+          suggest: {
+            fullname_suggest: {
+              text: q,
+              completion: { field: 'fullname.suggest' }
+            },
+            lastname_suggest: {
+              text: q,
+              completion: { field: 'lastname.suggest' }
+            },
+            main_topic_de_suggest: {
+              text: q,
+              completion: { field: 'main_topic_de.suggest' }
+            },
+            main_topic_en_suggest: {
+              text: q,
+              completion: { field: 'main_topic_en.suggest' }
+            },
+            topic_list_suggest: {
+              text: q,
+              completion: { field: 'topic_list.suggest' }
+            }
+         }
       })
     end
   end

@@ -14,12 +14,6 @@ namespace :elasticsearch do
       puts 'Done importing Profiles'
     end
 
-    # task :medialinks => :environment do
-    #   keyword_task = Proc.new { Indexer.perform(Article) }
-    #   invoke_task &keyword_task
-    #   puts "Done importing Keywords"
-    # end
-
     def invoke_task
       puts 'starting import...'
       yield
