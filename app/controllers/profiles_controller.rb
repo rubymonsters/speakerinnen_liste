@@ -95,31 +95,13 @@ class ProfilesController < ApplicationController
   private
 
   def suggestions_upcase(suggestions_raw)
-    sugg_upcase_complete = []
-    sugg_text = []
-    suggestions_raw.flatten.sort_by { |s| s['score'] }
-
-    sugg_upcase_complete = suggestions_raw.flatten.each do |s|
-      s['text'] = s['text'].split.map(&:capitalize).join(' ')
-      sugg_text.push(s['text'])
-    end
-
-    duplicates = sugg_text.select { |element| sugg_text.count(element) > 1 }
-    delete_duplicates(sugg_upcase_complete, duplicates)
-  end
-
-  def delete_duplicates(upcased_suggestions, dupli)
-    if dupli != []
-      dupli.uniq!.each do |x|
-        upcased_suggestions.find do |s|
-          if x == s['text']
-            upcased_suggestions.delete(s)
-            dupli.delete(x)
-          end
-        end
-      end
-    end
-    upcased_suggestions
+    suggestions_raw
+      .flatten
+      .sort_by { |s| s['score'] }
+      .map do |s|
+        s['text'] = s['text'].split.map(&:capitalize).join(' ')
+        s
+      end.uniq { |s| s['text'] }
   end
 
   # Use callbacks to share common setup or constraints between actions.

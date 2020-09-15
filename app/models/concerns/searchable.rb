@@ -224,13 +224,6 @@ module Searchable
       end
     end
 
-    # seems not to be used
-    def autocomplete
-      {
-        input: input.map { |i| i.input.downcase }
-      }
-    end
-
     def self.typeahead(q)
       __elasticsearch__.client.search(
         index: index_name,
