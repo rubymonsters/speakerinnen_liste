@@ -70,22 +70,22 @@ module Searchable
             }
           },
           # aggregations for faceted search
-          aggs: {
+          aggregations: {
             lang: {
               terms: {
-                field: 'iso_languages.key_word',
+                field: 'iso_languages.keyword',
                 size: 999
               }
             },
             city: {
               terms: {
-                field: 'cities.key_word',
+                field: 'cities.keyword',
                 size: 999
               }
             },
             country: {
               terms: {
-                field: 'country.key_word',
+                field: 'country.keyword',
                 size: 999
               }
             }
