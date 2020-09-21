@@ -105,6 +105,24 @@ module Searchable
       __elasticsearch__.search(query_hash)
     end
 
+    def as_indexed_json(_options = {})
+      suggest = {
+        fullname_suggest: { input: fullname },
+        topic_list_suggest: { input: topic_list }
+      }
+
+      output = as_json(
+        autocomplete: { input: [fullname, twitter_de, twitter_en, topic_list] },
+        only: %i[firstname lastname iso_languages country],
+        methods: [:fullname, :topic_list, :cities, *globalize_attribute_names],
+        include: {
+          medialinks: { only: %i[title description] }
+        }
+      ).merge(suggest)
+
+      output.select { |_key, value| value.present? }
+    end
+
     elasticsearch_mappings = {
       index: {
         number_of_shards: 1,
@@ -214,7 +232,7 @@ module Searchable
         indexes :iso_languages, fields: { keyword: { type: 'keyword', 'norms': false },
                                 standard: { type: 'text', analyzer: 'standard', 'norms': false }}
         indexes :cities,        fields: { keyword: { type: 'keyword', 'norms': false },
-                                standard: { type: 'text', analyzer: 'standard', 'norms':  false }}
+                                standard: { type: 'text', analyzer: 'cities_analyzer', 'norms':  false }}
         indexes :country,       fields: { keyword: { type: 'keyword', 'norms': false },
                                 standard: { type: 'text', analyzer: 'standard', 'norms': false }}
         indexes :medialinks, type: 'nested' do
