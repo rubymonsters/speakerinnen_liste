@@ -20,6 +20,8 @@ class ProfilesController < ApplicationController
       @aggs_languages = @aggs[:lang][:buckets]
       @aggs_cities = @aggs[:city][:buckets]
       @aggs_countries = @aggs[:country][:buckets]
+
+      #what if profiles is empty? do we use "did you mean?"
     elsif params[:tag_filter]
       @tags = params[:tag_filter].split(/\s*,\s*/)
       @profiles = Profile.is_published.has_tags(@tags).page(params[:page]).per(24)

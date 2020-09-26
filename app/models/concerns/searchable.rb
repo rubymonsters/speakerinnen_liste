@@ -15,7 +15,7 @@ module Searchable
 
       query_hash =
         {
-          explain: true,
+          explain: true, #consider making this env dependent?
           query: {
             bool: {
               should: [
@@ -47,8 +47,7 @@ module Searchable
                     fields: [
                       'bio_en^0.8',
                       'bio_de^0.8'
-                    ],
-                    tie_breaker: 0.3
+                    ]
                   }
                 }
               ]
@@ -79,7 +78,7 @@ module Searchable
             },
             city: {
               terms: {
-                field: 'cities.keyword',
+                field: 'cities.unmod',
                 size: 999
               }
             },
@@ -92,13 +91,16 @@ module Searchable
           }
         }
 
-      # minimum score depends completely on the given data and query, find out what works in your case.
+      # minimum score:
+      # depends completely on the given data and query, find out what works in your case.
       # can't be integrated directly in query hash because tests fail
-      query_hash[:min_score] = 0.08 if Rails.env.production?
+      # query_hash[:min_score] = 0.08 if Rails.env.production?
+      # version migration: scoring changed from 2.4.5 to 6.0, so 0.08 won't filter.
+      # if min_score stays make it higher (i.e. 3.00)
 
       filters = []
       filters << { "term": { "iso_languages": @filter_lang }} if @filter_lang
-      filters << { "term": { "cities": @filter_cities }} if @filter_cities
+      filters << { "term": { "cities.unmod": @filter_cities }} if @filter_cities
       filters << { "term": { "country": @filter_countries }} if @filter_countries
       query_hash[:query][:bool][:filter] = filters unless filters.empty?
 
@@ -231,7 +233,7 @@ module Searchable
         end
         indexes :iso_languages, fields: { keyword: { type: 'keyword', 'norms': false },
                                 standard: { type: 'text', analyzer: 'standard', 'norms': false }}
-        indexes :cities,        fields: { keyword: { type: 'keyword', 'norms': false },
+        indexes :cities,        fields: { unmod: { type: 'keyword', 'norms': false },
                                 standard: { type: 'text', analyzer: 'cities_analyzer', 'norms':  false }}
         indexes :country,       fields: { keyword: { type: 'keyword', 'norms': false },
                                 standard: { type: 'text', analyzer: 'standard', 'norms': false }}
