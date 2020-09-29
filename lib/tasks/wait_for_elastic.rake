@@ -3,7 +3,7 @@
 require 'net/http'
 
 namespace :elasticsearch do
-  desc 'waits for elastic comtainer to be ready'
+  desc 'waits for elastic container to be ready'
   task :wait_for_elastic do
 
     def is_ready
@@ -17,7 +17,7 @@ namespace :elasticsearch do
       response_code == '200'
     end
 
-    max_trials = 15
+    max_trials = 30
     trials = 0
 
   # wait until is ready
