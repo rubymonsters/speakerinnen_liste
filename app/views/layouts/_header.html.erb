@@ -35,7 +35,7 @@
             <%= I18n.locale == :en ? "EN" : "DE" %>
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLinkLang" id="DropdownLanguages">
-            <%= I18n.locale == :de ? link_to('EN', {locale: :en}, class: "dropdown-item") : (link_to 'DE', {locale: :de}, class: "dropdown-item") %>
+            <%= I18n.locale == :de ? link_to('EN', params.to_unsafe_h.merge(:locale => :en), class: "dropdown-item") : (link_to 'DE', params.to_unsafe_h.merge(:locale => :de), class: "dropdown-item") %>
           </div>
         </li>
         <% if profile_signed_in? %>
