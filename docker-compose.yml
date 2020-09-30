@@ -12,12 +12,12 @@ services:
       - "5432:5432"
   elastic:
     image: elasticsearch:6.7.2
-    environment:
-      - discovery.type=single-node
-    # we commented out the next 2 lines so version 6 could work.
+    # we commented out the next 2 lines so version 6 could work
     # TODO: find out if it's needed / how to make it work
     # volumes:
     #   - elastic_data:/usr/share/elasticsearch/data
+    environment:
+      - discovery.type=single-node
     ports:
       - "9200:9200"
       - "9300:9300"

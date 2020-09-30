@@ -15,7 +15,7 @@ module Searchable
 
       query_hash =
         {
-          explain: true, #consider making this env dependent?
+          explain: true,
           query: {
             bool: {
               should: [

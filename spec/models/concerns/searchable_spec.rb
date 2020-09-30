@@ -3,7 +3,7 @@
 require 'spec_helper'
 
 describe Searchable, elasticsearch: true do
-    let!(:ada) { FactoryBot.create(:ada, twitter_de: 'alovelace_de', topic_list: %w[ruby algorithm], email: 'info@example.com') }
+  let!(:ada) { FactoryBot.create(:ada, twitter_de: 'alovelace_de', topic_list: %w[ruby algorithm], email: 'info@example.com') }
   before do
     FactoryBot.create(:marie)
     FactoryBot.create(:unpublished_profile, firstname: 'Fred')
@@ -97,8 +97,8 @@ describe Searchable, elasticsearch: true do
 
     it 'shows results that are a partial match with more than one search input' do
       Profile.__elasticsearch__.refresh_index!
-      expect(Profile.__elasticsearch__.search('ada curie').results[0].fullname).to eq('Marie Curie')
-      expect(Profile.__elasticsearch__.search('ada curie').results[1].fullname).to eq('Ada Lovelace')
+      expect(Profile.__elasticsearch__.search('ada curie').results[1].fullname).to eq('Marie Curie')
+      expect(Profile.__elasticsearch__.search('ada curie').results[0].fullname).to eq('Ada Lovelace')
     end
 
     it 'does not return unpublished profile' do

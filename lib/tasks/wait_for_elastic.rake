@@ -8,7 +8,6 @@ namespace :elasticsearch do
 
     def is_ready
       begin
-        puts "waiting for elastic"
         uri = URI('http://elastic:9200/_cat/health?h=st')
         response_code = Net::HTTP.get_response(uri).code
       rescue
@@ -26,6 +25,7 @@ namespace :elasticsearch do
       if trials == max_trials
         raise StandardError.new "elastic is still not ready, giving up"
       end
+      puts "waiting for elastic"
       sleep(2)
     end
   end
