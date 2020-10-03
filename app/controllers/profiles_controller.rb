@@ -173,7 +173,11 @@ class ProfilesController < ApplicationController
   def profiles_for_search
     Profile.is_published
            .includes(:taggings, :translations)
-           .search(params[:search], params[:filter_countries], params[:filter_cities], params[:filter_lang])
+           .search(params[:search],
+             params[:filter_countries],
+             params[:filter_cities],
+             params[:filter_lang],
+            (!Rails.env.production? || params[:explain]) == true)
            .page(params[:page]).per(24)
            .records
   end
