@@ -53,21 +53,6 @@ module Searchable
               ]
             }
           },
-          # suggester for zero matches
-          suggest: {
-            did_you_mean_fullname: {
-              text: query,
-              term: {
-                field: 'fullname'
-              }
-            },
-            did_you_mean_main_topic_en: {
-              text: query,
-              term: {
-                field: 'main_topic_en'
-              }
-            }
-          },
           # aggregations for faceted search
           aggregations: {
             lang: {
