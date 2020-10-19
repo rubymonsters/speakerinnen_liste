@@ -21,7 +21,7 @@ class Admin::TagsController < Admin::BaseController
       redirect_to admin_tags_path(filter_params_from_session.merge(anchor: "tag_#{@tag.id}")),
                   notice: "'#{@tag.name}' was merged with the tag '#{existing_tag.name}' ."
     elsif
-      @tag.update_attributes(tag_params)
+      @tag.update(tag_params)
       set_tag_languages(params[:tag][:languages])
       set_tag_categories(params[:tag][:categories])
       redirect_to admin_tags_path(filter_params_from_session.merge(anchor: "tag_#{@tag.id}")),

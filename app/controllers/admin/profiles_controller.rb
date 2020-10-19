@@ -27,7 +27,7 @@ class Admin::ProfilesController < Admin::BaseController
   end
 
   def update
-    if @profile.update_attributes(profile_params)
+    if @profile.update(profile_params)
       redirect_to admin_profile_path(@profile), notice: I18n.t('flash.profiles.updated', profile_name: @profile.name_or_email)
     else
       render :edit
@@ -60,7 +60,7 @@ class Admin::ProfilesController < Admin::BaseController
   def admin_update
     redirects = {show: admin_profile_path(@profile), edit: edit_admin_profile_path(@profile)}
 
-    if @profile.update_attributes(profile_params)
+    if @profile.update(profile_params)
       if params[:page].present?
         redirect_to redirects[params[:page].to_sym], notice: I18n.t('flash.comment.updated')
       else

@@ -19,8 +19,8 @@ RSpec.feature 'Feature', type: :feature do
       visit root_path
       # puts save_page
       feature_descriptions = page.all(".feature")
-      feature_descriptions[0].should have_content("Description for second subject")
-      feature_descriptions[1].should have_content("Description for announced event")
+      expect(feature_descriptions[0]).to have_content("Description for second subject")
+      expect(feature_descriptions[1]).to have_content("Description for announced event")
     end
 
     it 'shows link to assigned profiles on home page' do
