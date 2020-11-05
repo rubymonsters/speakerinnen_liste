@@ -38,12 +38,14 @@ class ProfilesController < ApplicationController
     @category = params[:category_id] ? Category.find(params[:category_id]) : Category.first
     @categories = Category.sorted_categories
     Category.all.includes(:translations).each do |category|
-      instance_variable_set("@tags_#{category.short_name}",
-        ActsAsTaggableOn::Tag.belongs_to_category(category.id)
-                              .belongs_to_more_than_one_profile
-                              .with_published_profile
-                              .translated_in_current_language_and_not_translated(I18n.locale))
-                              .most_used(100)
+      instance_variable_set(
+        "@tags_#{category.short_name}",
+        ActsAsTaggableOn::Tag
+          .belongs_to_category(category.id)
+          .belongs_to_more_than_one_profile
+          .with_published_profile
+          .translated_in_current_language_and_not_translated(I18n.locale)
+      ).most_used(100)
     end
   end
 
@@ -156,39 +158,44 @@ class ProfilesController < ApplicationController
   end
 
   def profiles_for_category
-    tag_names = ActsAsTaggableOn::Tag
-                  .with_published_profile
-                  .belongs_to_category(params[:category_id])
-                  .translated_in_current_language_and_not_translated(I18n.locale)
-                  .pluck(:name)
+    tag_names =
+      ActsAsTaggableOn::Tag
+      .with_published_profile
+      .belongs_to_category(params[:category_id])
+      .translated_in_current_language_and_not_translated(I18n.locale)
+      .pluck(:name)
 
-    Profile.is_published
-           .includes(:taggings, :translations)
-           .joins(:topics)
-           .where(tags: { name: tag_names })
-           .page(params[:page])
-           .per(24)
+    Profile
+      .is_published
+      .includes(:taggings, :translations)
+      .joins(:topics)
+      .where(tags: { name: tag_names })
+      .page(params[:page])
+      .per(24)
   end
 
   def profiles_for_search
-    Profile.is_published
-           .includes(:taggings, :translations)
-           .search(params[:search],
-             params[:filter_countries],
-             params[:filter_cities],
-             params[:filter_lang],
-            (!Rails.env.production? || params[:explain]) == true)
-           .page(params[:page]).per(24)
-           .records
+    Profile
+      .is_published
+      .includes(:taggings, :translations)
+      .search(
+        params[:search],
+        params[:filter_countries],
+        params[:filter_cities],
+        params[:filter_lang],
+        (!Rails.env.production? || params[:explain]) == true
+      )
+      .page(params[:page]).per(24)
+      .records
   end
 
   def profiles_for_index
-    Profile.is_published
-           .includes(:translations)
-           .main_topic_translated_in(I18n.locale)
-           .random
-           .page(params[:page])
-           .per(24)
+    Profile
+      .is_published
+      .includes(:translations)
+      .main_topic_translated_in(I18n.locale)
+      .random
+      .page(params[:page])
+      .per(24)
   end
-
 end
