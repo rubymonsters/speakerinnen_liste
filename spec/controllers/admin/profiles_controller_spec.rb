@@ -117,6 +117,32 @@ describe Admin::ProfilesController, type: :controller do
     end
   end
 
+  describe 'PUT admin_update' do
+    before(:each) do
+      sign_in admin
+    end
+
+    it 'redirects to same page in profiles list' do
+      put :admin_update, params: { id: non_admin.id, profile: { admin_comment: "this is a comment" }, page: 2 }
+      expect(response).to redirect_to("/#{I18n.locale}/admin/profiles?page=2")
+    end
+
+    it 'redirects to first page in profiles list' do
+      put :admin_update, params: { id: non_admin.id, profile: { admin_comment: "this is a comment" } }
+      expect(response).to redirect_to("/#{I18n.locale}/admin/profiles")
+    end
+
+    it 'redirects to profile view page' do
+      put :admin_update, params: { id: non_admin.id, profile: { admin_comment: "this is a comment" }, page: 'show' }
+      expect(response).to redirect_to("/#{I18n.locale}/admin/profiles/#{non_admin.slug}")
+    end
+
+    it 'redirects to profile edit page' do
+      put :admin_update, params: { id: non_admin.id, profile: { admin_comment: "this is a comment" }, page: 'edit' }
+      expect(response).to redirect_to("/#{I18n.locale}/admin/profiles/#{non_admin.slug}/edit")
+    end
+  end
+
   describe 'PUT update' do
     context 'when user is admin' do
       before(:each) do

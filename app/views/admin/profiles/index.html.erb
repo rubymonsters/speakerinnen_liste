@@ -53,7 +53,7 @@
             <% end %>
           </td>
           <td>
-            <%= form_for profile,{ url: admin_update_admin_profile_path(profile.id), method: 'post' } do |f| %>
+            <%= form_with(model: profile, url: "#{admin_update_admin_profile_path(profile.id)}?#{request.query_string}", method: 'post') do |f| %>
               <%= f.text_field 'admin_comment' %>
               <%= f.submit t(:add_comment, scope: 'admin.profiles'), class: 'btn btn-primary btn-sm' %>
             <% end  %>

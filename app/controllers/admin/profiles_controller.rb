@@ -62,7 +62,11 @@ class Admin::ProfilesController < Admin::BaseController
 
     if @profile.update_attributes(profile_params)
       if params[:page].present?
-        redirect_to redirects[params[:page].to_sym], notice: I18n.t('flash.comment.updated')
+        if /^[0-9]+$/.match("#{params[:page]}")
+          redirect_to "#{admin_profiles_path}?page=#{params[:page]}", notice: I18n.t('flash.profiles.updated', profile_name: @profile.name_or_email)
+        else
+          redirect_to redirects[params[:page].to_sym], notice: I18n.t('flash.comment.updated')
+        end
       else
         redirect_to admin_profiles_path, notice: I18n.t('flash.profiles.updated', profile_name: @profile.name_or_email)
       end
