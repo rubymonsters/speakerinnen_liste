@@ -69,6 +69,20 @@ describe 'profile search' do
 
         expect(page).to have_content('Meier')
       end
+
+      it 'displays "Filter by themes" prominently if no results' do
+        visit profiles_path(search: 'asdfasdfasdf')
+
+        expect(page).to have_xpath(filter_by_themes_xpath('filter-themes-next-line'))
+        expect(page).to have_no_xpath(filter_by_themes_xpath('float-right'))
+      end
+
+      it 'displays "Filter by themes" discretely if results' do
+        visit profiles_path(search: 'Marie')
+
+        expect(page).to have_no_xpath(filter_by_themes_xpath('filter-themes-next-line'))
+        expect(page).to have_xpath(filter_by_themes_xpath('float-right'))
+      end
     end
   end
 
