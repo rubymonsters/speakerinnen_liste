@@ -76,12 +76,7 @@ module Searchable
           }
         }
 
-      # minimum score:
-      # depends completely on the given data and query, find out what works in your case.
-      # can't be integrated directly in query hash because tests fail
       query_hash[:min_score] = 3.00 if Rails.env.production?
-      # version migration: scoring changed from 2.4.5 to 6.0, so 0.08 won't filter.
-      # if min_score stays make it higher (i.e. 3.00)
 
       filters = []
       filters << { "term": { "iso_languages": @filter_lang }} if @filter_lang
