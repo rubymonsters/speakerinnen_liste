@@ -7,7 +7,9 @@
         <span class="h3 serif">
           <%= t(:success, scope: 'search').html_safe + t(:result, scope: 'search', count: @profiles_count).html_safe %><b><%= params[:search] if params[:search] %></b>
         </span>
-        <span class="float-right"><%= link_to("<i class='fa fa-filter pr-2'></i>".html_safe + "Filter by themes", profiles_path, class: '')  %>
+        <% filter_element_class = @profiles.count <= 0 ? "filter-themes-next-line" : "float-right"%>
+        <span class=<%=filter_element_class%>>
+          <%= link_to("<i class='fa fa-filter pr-2'></i>".html_safe + "Filter by themes", profiles_path, class: '')  %>
         </span>
       </div>
     </div>
@@ -104,5 +106,7 @@
       $('.rest_facet_languages').css('display','none');
       $('.expander_languages').html('<%= t(:show_more, scope: 'profiles.index')%>');
     }});
+
+    $('.filter-themes-next-line').css('display', 'block').css('margin-top', '1em');
 
 </script>
