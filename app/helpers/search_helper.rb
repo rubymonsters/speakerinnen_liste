@@ -15,7 +15,7 @@ module SearchHelper
         param_val: params[:filter_countries],
         all_text: :all_countries,
         filter_params_all: filter_params.merge(filter_countries: nil),
-        filter_params_func: ->(term_key) { filter_params.merge(filter_countries: term_key) },
+        filter_params_func: ->(term_key) { filter_params.merge(filter_countries: term_key.downcase) },
         aggregations: aggs_countries,
         link_text_func: ->(term_key) { ISO3166::Country.find_country_by_alpha2(term_key).translation(I18n.locale) }
       },
