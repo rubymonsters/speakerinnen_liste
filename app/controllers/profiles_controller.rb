@@ -20,6 +20,7 @@ class ProfilesController < ApplicationController
       @aggs_languages = @aggs[:lang][:buckets]
       @aggs_cities = @aggs[:city][:buckets]
       @aggs_countries = @aggs[:country][:buckets]
+
     elsif params[:tag_filter]
       @tags = params[:tag_filter].split(/\s*,\s*/)
       @profiles = Profile.is_published.has_tags(@tags).page(params[:page]).per(24)
@@ -37,12 +38,14 @@ class ProfilesController < ApplicationController
     @category = params[:category_id] ? Category.find(params[:category_id]) : Category.first
     @categories = Category.sorted_categories
     Category.all.includes(:translations).each do |category|
-      instance_variable_set("@tags_#{category.short_name}",
-        ActsAsTaggableOn::Tag.belongs_to_category(category.id)
-                              .belongs_to_more_than_one_profile
-                              .with_published_profile
-                              .translated_in_current_language_and_not_translated(I18n.locale))
-                              .most_used(100)
+      instance_variable_set(
+        "@tags_#{category.short_name}",
+        ActsAsTaggableOn::Tag
+          .belongs_to_category(category.id)
+          .belongs_to_more_than_one_profile
+          .with_published_profile
+          .translated_in_current_language_and_not_translated(I18n.locale)
+      ).most_used(100)
     end
   end
 
@@ -85,14 +88,9 @@ class ProfilesController < ApplicationController
   end
 
   def typeahead
-    suggester_fields  = []
     suggester_options = []
-    suggestions = Profile.typeahead(params[:q])
-                         .select { |key, _value| key.to_s.match(/.*_suggest/) }
-    suggestions.each do |s|
-      suggester_fields.push(s)
-    end
-    suggester_fields.map { |s| suggester_options.push(s[1].first['options']) }
+    suggestions = Profile.typeahead(params[:q])['suggest']
+    suggestions.map { |s| suggester_options.push(s[1][0]['options']) }
     suggestions_ordered = suggestions_upcase(suggester_options)
     respond_with(suggestions_ordered)
   end
@@ -100,31 +98,13 @@ class ProfilesController < ApplicationController
   private
 
   def suggestions_upcase(suggestions_raw)
-    sugg_upcase_complete = []
-    sugg_text = []
-    suggestions_raw.flatten.sort_by { |s| s['score'] }
-
-    sugg_upcase_complete = suggestions_raw.flatten.each do |s|
-      s['text'] = s['text'].split.map(&:capitalize).join(' ')
-      sugg_text.push(s['text'])
-    end
-
-    duplicates = sugg_text.select { |element| sugg_text.count(element) > 1 }
-    delete_duplicates(sugg_upcase_complete, duplicates)
-  end
-
-  def delete_duplicates(upcased_suggestions, dupli)
-    if dupli != []
-      dupli.uniq!.each do |x|
-        upcased_suggestions.find do |s|
-          if x == s['text']
-            upcased_suggestions.delete(s)
-            dupli.delete(x)
-          end
-        end
-      end
-    end
-    upcased_suggestions
+    suggestions_raw
+      .flatten
+      .sort_by { |s| s['score'] }
+      .map do |s|
+        s['text'] = s['text'].split.map(&:capitalize).join(' ')
+        s
+      end.uniq { |s| s['text'] }
   end
 
   # Use callbacks to share common setup or constraints between actions.
@@ -178,35 +158,44 @@ class ProfilesController < ApplicationController
   end
 
   def profiles_for_category
-    tag_names = ActsAsTaggableOn::Tag
-                  .with_published_profile
-                  .belongs_to_category(params[:category_id])
-                  .translated_in_current_language_and_not_translated(I18n.locale)
-                  .pluck(:name)
+    tag_names =
+      ActsAsTaggableOn::Tag
+      .with_published_profile
+      .belongs_to_category(params[:category_id])
+      .translated_in_current_language_and_not_translated(I18n.locale)
+      .pluck(:name)
 
-    Profile.is_published
-           .includes(:taggings, :translations)
-           .joins(:topics)
-           .where(tags: { name: tag_names })
-           .page(params[:page])
-           .per(24)
+    Profile
+      .is_published
+      .includes(:taggings, :translations)
+      .joins(:topics)
+      .where(tags: { name: tag_names })
+      .page(params[:page])
+      .per(24)
   end
 
   def profiles_for_search
-    Profile.is_published
-           .includes(:taggings, :translations)
-           .search(params[:search], params[:filter_countries], params[:filter_cities], params[:filter_lang])
-           .page(params[:page]).per(24)
-           .records
+    Profile
+      .is_published
+      .includes(:taggings, :translations)
+      .search(
+        params[:search],
+        params[:filter_countries],
+        params[:filter_cities],
+        params[:filter_lang],
+        (!Rails.env.production? || params[:explain]) == true
+      )
+      .page(params[:page]).per(24)
+      .records
   end
 
   def profiles_for_index
-    Profile.is_published
-           .includes(:translations)
-           .main_topic_translated_in(I18n.locale)
-           .random
-           .page(params[:page])
-           .per(24)
+    Profile
+      .is_published
+      .includes(:translations)
+      .main_topic_translated_in(I18n.locale)
+      .random
+      .page(params[:page])
+      .per(24)
   end
-
 end

@@ -8,14 +8,14 @@ module Searchable
 
     index_name [Rails.application.engine_name, Rails.env].join('_')
 
-    def self.search(query, filter_countries, filter_cities, filter_lang)
+    def self.search(query, filter_countries, filter_cities, filter_lang, with_explain)
       @filter_countries = filter_countries == "" ? nil : filter_countries
       @filter_cities = filter_cities == "" ? nil : filter_cities
       @filter_lang = filter_lang == "" ? nil : filter_lang
 
       query_hash =
         {
-          explain: true,
+          explain: with_explain,
           query: {
             bool: {
               should: [
@@ -47,33 +47,17 @@ module Searchable
                     fields: [
                       'bio_en^0.8',
                       'bio_de^0.8'
-                    ],
-                    tie_breaker: 0.3
+                    ]
                   }
                 }
               ]
             }
           },
-          # suggester for zero matches
-          suggest: {
-            did_you_mean_fullname: {
-              text: query,
-              term: {
-                field: 'fullname'
-              }
-            },
-            did_you_mean_main_topic_en: {
-              text: query,
-              term: {
-                field: 'main_topic_en'
-              }
-            }
-          },
           # aggregations for faceted search
-          aggs: {
+          aggregations: {
             lang: {
               terms: {
-                field: 'iso_languages',
+                field: 'iso_languages.keyword',
                 size: 999
               }
             },
@@ -85,16 +69,14 @@ module Searchable
             },
             country: {
               terms: {
-                field: 'country',
+                field: 'country.keyword',
                 size: 999
               }
             }
           }
         }
 
-      # minimum score depends completely on the given data and query, find out what works in your case.
-      # can't be integrated directly in query hash because tests fail
-      query_hash[:min_score] = 0.08 if Rails.env.production?
+      query_hash[:min_score] = 3.00 if Rails.env.production?
 
       filters = []
       filters << { "term": { "iso_languages": @filter_lang }} if @filter_lang
@@ -106,6 +88,11 @@ module Searchable
     end
 
     def as_indexed_json(_options = {})
+      suggest = {
+        fullname_suggest: { input: fullname },
+        topic_list_suggest: { input: topic_list }
+      }
+
       output = as_json(
         autocomplete: { input: [fullname, twitter_de, twitter_en, topic_list] },
         only: %i[firstname lastname iso_languages country],
@@ -113,7 +100,8 @@ module Searchable
         include: {
           medialinks: { only: %i[title description] }
         }
-      )
+      ).merge(suggest)
+
       output.select { |_key, value| value.present? }
     end
 
@@ -201,67 +189,68 @@ module Searchable
 
     settings elasticsearch_mappings do
       mappings dynamic: 'false' do
-        indexes :fullname,   type: 'string', analyzer: 'fullname_analyzer', 'norms': { 'enabled': false } do
+        indexes :fullname,   type: 'text', analyzer: 'fullname_analyzer', 'norms': false do
           indexes :suggest,  type: 'completion'
         end
-        indexes :lastname,   type: 'string', analyzer: 'fullname_analyzer', 'norms': { 'enabled': false } do
+        indexes :lastname,   type: 'text', analyzer: 'fullname_analyzer', 'norms': false do
           indexes :suggest,  type: 'completion'
         end
-        indexes :twitter_de, type: 'string', analyzer: 'twitter_analyzer', 'norms': { 'enabled': false } do
+        indexes :twitter_de, type: 'text', analyzer: 'twitter_analyzer', 'norms': false do
           indexes :suggest,  type: 'completion'
         end
-        indexes :twitter_en, type: 'string', analyzer: 'twitter_analyzer', 'norms': { 'enabled': false } do
+        indexes :twitter_en, type: 'text', analyzer: 'twitter_analyzer', 'norms': false do
           indexes :suggest,  type: 'completion'
         end
-        indexes :topic_list, type: 'string', analyzer: 'standard', 'norms': { 'enabled': false } do
+        indexes :topic_list, type: 'text', analyzer: 'standard', 'norms': false do
           indexes :suggest,  type: 'completion'
         end
         I18n.available_locales.each do |locale|
           %i[main_topic bio website].each do |name|
-            indexes :"#{name}_#{locale}", type: 'string', analyzer: "#{ANALYZERS[locale]}_without_stemming" do
+            indexes :"#{name}_#{locale}", type: 'text', analyzer: "#{ANALYZERS[locale]}_without_stemming" do
               indexes :suggest, type: 'completion' if name == :main_topic
             end
           end
         end
-        indexes :iso_languages,  type: 'string', analyzer: 'standard', 'norms': { 'enabled': false }
-        indexes :cities, fields: { unmod: { type: 'string', index: 'not_analyzed', 'norms': { 'enabled': false } }, standard: { type: 'string', analyzer: 'cities_analyzer', 'norms': { 'enabled': false } } }
-        indexes :country,    type: 'string', analyzer: 'standard', 'norms': { 'enabled': false }
+        indexes :iso_languages, fields: { keyword: { type: 'keyword', 'norms': false },
+                                standard: { type: 'text', analyzer: 'standard', 'norms': false }}
+        indexes :cities,        fields: { unmod: { type: 'keyword', 'norms': false },
+                                standard: { type: 'text', analyzer: 'cities_analyzer', 'norms':  false }}
+        indexes :country,       fields: { keyword: { type: 'keyword', 'norms': false },
+                                standard: { type: 'text', analyzer: 'standard', 'norms': false }}
         indexes :medialinks, type: 'nested' do
-          indexes :title, 'norms': { 'enabled': false }
-          indexes :description, 'norms': { 'enabled': false }
+          indexes :title, 'norms': false
+          indexes :description, 'norms': false
         end
       end
     end
 
-    def autocomplete
-      {
-        input: input.map { |i| i.input.downcase }
-      }
-    end
-
     def self.typeahead(q)
-      __elasticsearch__.client.suggest(index: index_name, body: {
-                                         fullname_suggest: {
-                                           text: q,
-                                           completion: { field: 'fullname.suggest' }
-                                         },
-        lastname_suggest: {
-          text: q,
-          completion: { field: 'lastname.suggest' }
-        },
-        main_topic_de_suggest: {
-          text: q,
-          completion: { field: 'main_topic_de.suggest' }
-        },
-        main_topic_en_suggest: {
-          text: q,
-          completion: { field: 'main_topic_en.suggest' }
-        },
-        topic_list_suggest: {
-          text: q,
-          completion: { field: 'topic_list.suggest' }
-        }
-                                       })
+      __elasticsearch__.client.search(
+        index: index_name,
+        body: {
+          suggest: {
+            fullname_suggest: {
+              text: q,
+              completion: { field: 'fullname.suggest' }
+            },
+            lastname_suggest: {
+              text: q,
+              completion: { field: 'lastname.suggest' }
+            },
+            main_topic_de_suggest: {
+              text: q,
+              completion: { field: 'main_topic_de.suggest' }
+            },
+            main_topic_en_suggest: {
+              text: q,
+              completion: { field: 'main_topic_en.suggest' }
+            },
+            topic_list_suggest: {
+              text: q,
+              completion: { field: 'topic_list.suggest' }
+            }
+         }
+      })
     end
   end
 end

@@ -41,4 +41,4 @@ db-test-migrate:
 rspec:
 	$(call dc-run-sp, bundle exec rspec)
 test:
-	$(call dc-run-sp, bundle exec rspec)
+	$(call dc-run-sp, sh -c 'bundle exec rake elasticsearch:wait_for_elastic && bundle exec rspec')
