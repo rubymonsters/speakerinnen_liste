@@ -50,7 +50,7 @@ The aim of the app is to provide a way for conference and event organizers to fi
 First, open a dev shell by running `make dev`.
 
 ```
-# Run all tests of the project
+# Run all tests of the project (same as running `make test`)
 $ bundle exec rspec spec
 
 # If the tests are still failing, run:
