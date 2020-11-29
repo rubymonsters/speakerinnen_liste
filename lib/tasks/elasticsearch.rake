@@ -6,8 +6,10 @@ namespace :elasticsearch do
   namespace :import do
     CLIENT = Elasticsearch::Model.client
 
+    desc 'Index everything in ElasticSearch'
     task all: [:profiles]
 
+    desc 'Index all profiles in ElasticSearch'
     task profiles: :environment do
       profile_task = proc { Indexer.perform(Profile) }
       invoke_task &profile_task
