@@ -60,6 +60,21 @@ FactoryBot.define do
       profession { 'chemist' }
     end
 
+    factory :phantom_of_the_opera do
+      firstname { 'Phantom' }
+      lastname { 'of the Opera' }
+      twitter_en { 'phantom_of_the_opera' }
+      city_en { }
+      country { }
+      iso_languages { }
+      bio_de { 'unknown' }
+      bio_en { 'unknown' }
+      main_topic_de { }
+      main_topic_en { }
+      published { true }
+      profession { }
+    end
+
   end
 
   factory :feature do

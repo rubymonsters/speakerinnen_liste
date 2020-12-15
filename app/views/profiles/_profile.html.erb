@@ -1,6 +1,12 @@
 <% if profile %>
-  <div class="col-sm-6 col-md-4 col-lg-3 my-3 profile-box" data-toggle="tooltip" data-html="true"
-  title="<%= render partial: "profiles/profile_tooltip", locals: { profile: profile } %>">
+  <% tooltip_empty = !profile.iso_languages.present? && profile.city.nil? && profile.willing_to_travel.nil? && profile.nonprofit.nil? %>
+  <% title = render partial: "profiles/profile_tooltip", locals: { profile: profile } %>
+  <div
+    class="col-sm-6 col-md-4 col-lg-3 my-3 profile-box"
+    data-html="true"
+    data-toggle="<%= tooltip_empty ? "" : "tooltip" %>"
+    title="<%= tooltip_empty ? "" : title %>"
+  >
     <%= profile_image_link(profile) %>
     <div>
       <%= link_to profile.fullname, profile %>
