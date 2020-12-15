@@ -35,7 +35,16 @@ class ProfilesController < ApplicationController
 
     # for the tags filter module that is available all the time at the profile index view
     # is needed for the colors of the tags
-    @category = params[:category_id] ? Category.find(params[:category_id]) : Category.first
+    @category = 
+      if params[:category_id] 
+        Category.find(params[:category_id]) 
+      elsif params[:tag_filter]
+        last_tag = params[:tag_filter].split(/\s*,\s*/).last
+        last_tag_id = ActsAsTaggableOn::Tag.where(name: last_tag).last.id
+        Category.select{|cat| cat.tag_ids.include?(last_tag_id)}.last
+      else    
+        Category.first
+      end
     @categories = Category.sorted_categories
     Category.all.includes(:translations).each do |category|
       instance_variable_set(
