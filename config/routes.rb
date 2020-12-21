@@ -73,6 +73,7 @@ Rails.application.routes.draw do
     get 'links' => 'pages#links'
     get 'faq' => 'pages#faq'
     get 'press' => 'pages#press'
+    get 'code_of_conduct' => 'pages#code_of_conduct'
 
     get '/', to: 'pages#home'
 

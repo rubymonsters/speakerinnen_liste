@@ -15,10 +15,7 @@
             <%= link_to t(:faq, scope: 'pages.home.footer'), faq_path, class: ""  %>
           </li>
           <li class="d-flex">
-            <%= link_to t(:title, scope: 'pages.imprint'), impressum_path, class: ""%>
-          </li>
-          <li class="d-flex">
-            <%= link_to t(:privacy, scope: 'pages.imprint'), privacy_path, class: "" %>
+            <%= link_to t(:code_of_conduct, scope: 'pages.home.footer'), code_of_conduct_path, class: ""  %>
           </li>
         </ul>
       </div>
@@ -46,6 +43,12 @@
             <% else %>
               <%= link_to t(:contact, scope: 'pages.home.footer'), contact_path, class: "" %>
             <% end %>
+          </li>
+          <li class="d-flex">
+            <%= link_to t(:title, scope: 'pages.imprint'), impressum_path, class: ""%>
+          </li>
+          <li class="d-flex">
+            <%= link_to t(:privacy, scope: 'pages.imprint'), privacy_path, class: "" %>
           </li>
         </ul>
       </div>
