@@ -102,10 +102,6 @@ Rails.application.configure do
       :exception_recipients => %w{devops@speakerinnen.org}
   }
 
-  # piwik data collection and analytics
-  config.gem 'rack-piwik', lib: 'rack/piwik'
-  config.middleware.use Rack::Piwik, piwik_url: 'tyranja.uber.space/piwik/', piwik_id: '1', disable_cookies: false
-
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
 
