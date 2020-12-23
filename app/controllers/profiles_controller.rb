@@ -166,6 +166,7 @@ class ProfilesController < ApplicationController
       .pluck(:name)
 
     Profile
+      .with_attached_image
       .is_published
       .includes(:taggings, :translations)
       .joins(:topics)
@@ -176,6 +177,7 @@ class ProfilesController < ApplicationController
 
   def profiles_for_search
     Profile
+      .with_attached_image
       .is_published
       .includes(:taggings, :translations)
       .search(
@@ -191,6 +193,7 @@ class ProfilesController < ApplicationController
 
   def profiles_for_index
     Profile
+      .with_attached_image
       .is_published
       .includes(:translations)
       .main_topic_translated_in(I18n.locale)
