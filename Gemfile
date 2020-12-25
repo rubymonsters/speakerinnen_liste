@@ -48,7 +48,7 @@ gem 'record_tag_helper', '~> 1.0'
 gem 'exception_notification'
 gem 'honeycomb-beeline'
 
-gem 'coffee-rails'
+gem 'coffee-rails', '~> 5.0.0'
 gem 'sassc-rails'
 
 gem 'uglifier', '>= 1.0.3'
