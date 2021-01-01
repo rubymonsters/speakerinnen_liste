@@ -9,7 +9,7 @@ Bundler.require(*Rails.groups)
 module SpeakerinnenListe
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 5.0
+    config.load_defaults 5.2
 
 
   # globlalize fallback
