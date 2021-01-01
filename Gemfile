@@ -9,7 +9,7 @@ gem 'rails', '6.0.3.4'
 gem 'mini_racer'
 
 # used in the rail 5.2 version
-gem 'bootsnap', '~> 1.3'
+gem 'bootsnap', '~> 1.4.2'
 
 gem 'faker', '1.9.1'
 gem 'normalize-rails'
