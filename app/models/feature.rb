@@ -6,5 +6,5 @@ class Feature < ApplicationRecord
   translates :title, :description
   globalize_accessors :locales => [:de, :en], :attributes => [:title, :description]
 
-  scope :published_feature, -> { includes({ profiles: :translations }, { profiles: :taggings }, :translations).where(public: true) }
+  scope :published_feature, -> { includes({ profiles: [:translations, :image_attachment] }, :translations).where(public: true) }
 end

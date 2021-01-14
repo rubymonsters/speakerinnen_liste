@@ -23,7 +23,7 @@ module ProfilesHelper
     if profile.image.attached?
       link_to(image_tag(profile.image.variant(combine_options: {resize: '600x600^', extent: '600x600', gravity: 'Center'}), class: 'photo--grey'), profile)
     else
-      link_to(image_tag('avatar.jpg', alt: 'avatar', class: 'photo--grey card-img-top', alt: "Speakerinnen Picture"), profile)
+      link_to(image_tag('avatar.jpg', alt: 'avatar', class: 'photo--grey card-img-top'), profile)
     end
   end
 
