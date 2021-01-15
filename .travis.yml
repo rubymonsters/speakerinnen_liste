@@ -1,13 +1,28 @@
-language: minimal
+dist: bionic
+language: ruby
+rvm: 2.6.5
+cache:
+  bundler: true
+  directories:
+    - downloads
 
 services:
-  - docker
+  - postgresql
+  - elasticsearch
 
-env:
-  - RAILS_ENV=test RECAPTCHA_SECRET_KEY=6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe RECAPTCHA_SITE_KEY=6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI
+addons:
+  postgresql: '9.5'
+
+env: RECAPTCHA_SECRET_KEY=6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe RECAPTCHA_SITE_KEY=6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI DATABASE_URL=postgres://postgres@127.0.0.1/ SEARCHBOX_URL=http://127.0.0.1:9200/
+
+before_install:
+  # from https://docs.travis-ci.com/user/database-setup/#elasticsearch
+  - mkdir -p downloads
+  - test -e downloads/elasticsearch-6.7.2.deb || curl https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.7.2.deb -o downloads/elasticsearch-6.7.2.deb
+  - sudo dpkg -i --force-confnew downloads/elasticsearch-6.7.2.deb
+  - sudo chown -R elasticsearch:elasticsearch /etc/default/elasticsearch
+  - sudo service elasticsearch restart
 
 before_script:
-  - make setup
-
-script:
-  - make test
+  - psql -c 'create database speakerinnen_test;' -U postgres
+  - sleep 10
