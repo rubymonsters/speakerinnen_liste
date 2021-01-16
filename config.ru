@@ -4,9 +4,10 @@
 
 require 'honeycomb-beeline'
 
-Honeycomb.init(
-  sample_rate: 5
-)
+Honeycomb.configure do |config|
+  config.write_key = "{writekey}"
+  config.dataset = "{dataset}"
+end
 
 require ::File.expand_path('../config/environment', __FILE__)
 

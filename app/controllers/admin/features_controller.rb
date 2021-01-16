@@ -23,7 +23,7 @@ class Admin::FeaturesController < Admin::BaseController
   end
 
   def update
-    if @feature.update_attributes(feature_params)
+    if @feature.update(feature_params)
       redirect_to admin_features_path, notice: I18n.t('flash.features.updated', feature_title: @feature.title)
     else
       render action: 'edit'

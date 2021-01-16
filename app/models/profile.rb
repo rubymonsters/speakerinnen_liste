@@ -27,7 +27,7 @@ class Profile < ApplicationRecord
 
   acts_as_taggable_on :topics
 
-  before_save(on: %i[create update]) do
+  before_save(prepend: %i[create update]) do
     twitter&.gsub(%r{^@|https:|http:|:|//|www.|twitter.com/}, '')
     firstname&.strip!
     lastname&.strip!
