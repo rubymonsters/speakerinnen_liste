@@ -22,7 +22,7 @@ setup: build bundle db-create db-migrate db-test-migrate
 build:
 	$(call dc, build)
 bundle:
-	$(call dc-run, bundle update rails, bundle install)
+	$(call dc-run, bundle install)
 dev:
 	$(call dc-run, bash)
 up:
