@@ -21,7 +21,7 @@ class ProfilesController < ApplicationController
       @aggs_cities = @aggs[:city][:buckets]
       @aggs_countries = @aggs[:country][:buckets]
 
-    elsif params[:tag_filter]
+    elsif params[:tag_filter]&.present?
       @tags = params[:tag_filter].split(/\s*,\s*/)
       @profiles = Profile.is_published.has_tags(@tags).page(params[:page]).per(24)
       # redirect_to profiles_path(:anchor => "speakers")
