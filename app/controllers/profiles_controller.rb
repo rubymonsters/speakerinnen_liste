@@ -73,7 +73,7 @@ class ProfilesController < ApplicationController
   end
 
   def update
-    if @profile.update_attributes(profile_params)
+    if @profile.update(profile_params)
       redirect_to @profile, notice: I18n.t('flash.profiles.updated', profile_name: @profile.name_or_email)
     elsif current_profile
       build_missing_translations(@profile)
@@ -175,6 +175,7 @@ class ProfilesController < ApplicationController
       .pluck(:name)
 
     Profile
+      .with_attached_image
       .is_published
       .includes(:taggings, :translations)
       .joins(:topics)
@@ -185,6 +186,7 @@ class ProfilesController < ApplicationController
 
   def profiles_for_search
     Profile
+      .with_attached_image
       .is_published
       .includes(:taggings, :translations)
       .search(
@@ -200,6 +202,7 @@ class ProfilesController < ApplicationController
 
   def profiles_for_index
     Profile
+      .with_attached_image
       .is_published
       .includes(:translations)
       .main_topic_translated_in(I18n.locale)

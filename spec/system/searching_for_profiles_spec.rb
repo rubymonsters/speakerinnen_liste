@@ -14,6 +14,7 @@ describe 'profile search' do
   let!(:algorithm) { create(:tag_algorithm, locale_languages: [locale_language_en]) }
   let!(:ada) { create(:ada, topic_list: [algorithm]) }
   let!(:marie) { create(:marie, topic_list: [physics]) }
+  let!(:phantom_of_the_opera) { create(:phantom_of_the_opera, topic_list: []) }
   let!(:profile2) { create(:published_profile, firstname: 'Christiane', lastname: 'König', main_topic_en: 'Blogs') }
   let!(:profile3) { create(:published_profile, firstname: 'Maren ', lastname: 'Meier', main_topic_en: 'Big Data') }
   let!(:profile_not_matched) { create(:published_profile, firstname: 'Angela', main_topic_en: 'rassism' ) }
@@ -82,6 +83,18 @@ describe 'profile search' do
 
         expect(page).to have_no_xpath(filter_by_themes_xpath('filter-themes-next-line'))
         expect(page).to have_xpath(filter_by_themes_xpath('float-right'))
+      end
+
+      it 'shows a tooltip when profile has data' do
+        visit profiles_path(search: 'Marie')
+
+        expect(page).to have_selector('[data-toggle="tooltip"]')
+      end
+
+      it 'shows no tooltip when profile has no data' do
+        visit profiles_path(search: 'Phantom')
+
+        expect(page).to have_no_selector('[data-toggle="tooltip"]')
       end
     end
   end
