@@ -113,8 +113,17 @@ When she is not at work she is most likely at her desk drawing something spooky.
   There are lots of ways in which you can support the speakerinnen.org project:
   <ul style="list-style-type:  '*'; padding: 10px;">
     <li>tell other women about it</li>
-    <li>create your own profile</li>
-    <li>send us an email with a link to networks and communities that deal with specific topics</li>
+    <li><%= link_to "create your own profile", sign_up_path %></li>
+    <li>send us an 
+      <% if cookies[:cookie_consent].blank? %>
+        <button type="button" class="btn btn-link p-0" data-toggle="modal" data-target="#contactHint">
+          <%= "email" %>
+        </button>
+      <% else %>
+        <%= link_to "email", contact_path, class: "" %>
+      <% end %>
+      with a link to networks and communities that deal with specific topics
+    </li>
     <li>build with us! If you're good at web design or programming, help us  complete the ongoing issues. There's a list <a href="https://github.com/rubymonsters/speakerinnen_liste/issues/216" target="_blank">here.</a></li>
     <li><a href="faq#donate_anker">donate to support our work!</a></li>
   </ul>

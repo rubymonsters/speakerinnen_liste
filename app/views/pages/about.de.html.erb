@@ -109,8 +109,16 @@ When she is not at work she is most likely at her desk drawing something spooky.
   Es gibt viele Möglichkeiten, das Projekt Speakerinnen-Liste zu unterstützen:
   <ul style="list-style-type:  '*'; padding: 10px;">
     <li>erzählt anderen Frauen davon</li>
-    <li>legt selbst ein Profil an</li>
-    <li>schickt eine Mail mit einem Hinweis an Netzwerke und Communities, die sich mit spezifischen Themen beschäftigen</li>
+    <li><%= link_to "legt selbst ein Profil an", sign_up_path %></li>
+    <li>schickt eine
+     <% if cookies[:cookie_consent].blank? %>
+          <button type="button" class="btn btn-link p-0" data-toggle="modal" data-target="#contactHint">
+            <%= "Mail" %>
+          </button>
+        <% else %>
+          <%= link_to "Mail", contact_path, class: "" %>
+      <% end %>
+      mit einem Hinweis an Netzwerke und Communities, die sich mit spezifischen Themen beschäftigen</li>
     <li>baut mit! Wenn ihr euch mit Webdesign oder Programmierung auskennt, helft uns bei der Umsetzung der offenen Wünsche. Eine Liste gibt es <a href="https://github.com/rubymonsters/speakerinnen_liste/issues/216" target="_blank">hier.</a></li>
     <li><a href="faq#donate_anker">spendet an uns, um unsere Arbeit zu unterstützen!</a></li>
   </ul>
