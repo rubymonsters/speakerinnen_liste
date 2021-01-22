@@ -2,14 +2,14 @@
 
 source 'https://rubygems.org'
 ruby '2.6.5'
-gem 'rails', '5.2.2.1'
+gem 'rails', '6.0.3.4'
 
 # Needed for Javascript Runtime
 # gem 'therubyracer'
 gem 'mini_racer'
 
 # used in the rail 5.2 version
-gem 'bootsnap', '~> 1.3'
+gem 'bootsnap', '~> 1.4.2'
 
 gem 'faker', '1.9.1'
 gem 'normalize-rails'
@@ -48,7 +48,7 @@ gem 'record_tag_helper', '~> 1.0'
 gem 'exception_notification'
 gem 'honeycomb-beeline'
 
-gem 'coffee-rails', '~> 4.2.2'
+gem 'coffee-rails', '~> 5.0.0'
 gem 'sassc-rails'
 
 gem 'uglifier', '>= 1.0.3'
@@ -66,7 +66,7 @@ gem 'rack-timeout'
 
 group :development do
   gem 'better_errors'
-  gem 'bullet', '~> 5.9.0'
+  gem 'bullet'
   gem 'derailed_benchmarks'
   gem 'letter_opener'
   gem 'stackprof'
@@ -78,7 +78,7 @@ group :development, :test do
   gem 'guard'
   gem 'guard-rspec'
   gem 'pry'
-  gem 'rspec-rails', '~> 3.8.1'
+  gem 'rspec-rails'
   gem 'rubocop', '~> 0.62.0'
   gem 'selenium-webdriver', '3.141.0'
 end

@@ -28,7 +28,7 @@ class Admin::CategoriesController < Admin::BaseController
   end
 
   def update
-    if @category.update_attributes(category_params)
+    if @category.update(category_params)
       redirect_to admin_categories_path, notice: I18n.t('flash.categories.updated', category_name: @category.name)
     else
       render action: 'edit'
