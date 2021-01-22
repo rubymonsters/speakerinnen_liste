@@ -30,6 +30,7 @@
       <%= form_tag("/profiles#speakers_anchor", method: "get") do %>
         <%= text_field_tag :tag_filter, params[:tag_filter], id: "hidden_tag_input", class: "form-control d-none" %>
         <span class="btn text-primary btn-link" id="clear"><%= t(:clear_link, scope: 'category') %></span>
+        <%= hidden_field_tag "locale", params[:locale] %> 
         <%= submit_tag t(:choose_button, scope: 'category'), class: "btn btn-primary", id: "search_in_topic" %>
       <% end %>
     </div>
