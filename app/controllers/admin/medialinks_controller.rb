@@ -16,7 +16,7 @@ class Admin::MedialinksController < Admin::BaseController
   def edit; end
 
   def update
-    if @medialink.update_attributes(medialink_params)
+    if @medialink.update(medialink_params)
       redirect_to admin_profile_medialinks_path(@profile), notice: I18n.t('flash.medialink.updated')
     else
       render action: 'edit'

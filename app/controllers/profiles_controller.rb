@@ -21,7 +21,7 @@ class ProfilesController < ApplicationController
       @aggs_cities = @aggs[:city][:buckets]
       @aggs_countries = @aggs[:country][:buckets]
 
-    elsif params[:tag_filter]
+    elsif params[:tag_filter]&.present?
       @tags = params[:tag_filter].split(/\s*,\s*/)
       @profiles = Profile.is_published.has_tags(@tags).page(params[:page]).per(24)
       # redirect_to profiles_path(:anchor => "speakers")
@@ -35,7 +35,16 @@ class ProfilesController < ApplicationController
 
     # for the tags filter module that is available all the time at the profile index view
     # is needed for the colors of the tags
-    @category = params[:category_id] ? Category.find(params[:category_id]) : Category.first
+    @category = 
+      if params[:category_id] 
+        Category.find(params[:category_id]) 
+      elsif params[:tag_filter]
+        last_tag = params[:tag_filter].split(/\s*,\s*/).last
+        last_tag_id = ActsAsTaggableOn::Tag.where(name: last_tag).last.id
+        Category.select{|cat| cat.tag_ids.include?(last_tag_id)}.last
+      else    
+        Category.first
+      end
     @categories = Category.sorted_categories
     Category.all.includes(:translations).each do |category|
       instance_variable_set(
@@ -64,7 +73,7 @@ class ProfilesController < ApplicationController
   end
 
   def update
-    if @profile.update_attributes(profile_params)
+    if @profile.update(profile_params)
       redirect_to @profile, notice: I18n.t('flash.profiles.updated', profile_name: @profile.name_or_email)
     elsif current_profile
       build_missing_translations(@profile)
