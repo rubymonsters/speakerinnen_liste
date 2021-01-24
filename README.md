@@ -29,10 +29,12 @@ This command for example runs the tests directly on your machine using the local
 ```$ DATABASE_URL=postgres://127.0.0.1/ SEARCHBOX_URL=http://127.0.0.1:9200/ bundle exec rspec```
 
 This matches our settings in config/database.yml, but if you have different user, password or db name you can put all that in DATABASE_URL as explained here: https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNSTRING.
+Or you comment out `host`, `username` and `password` in your config/database.yml.
 
 Issues you might run into:
 1) Docker might create files in tmp that the process in your machine can't overwrite. Do ```sudo rm -rf tmp``` to delete.
 2) Rails can't write to log/test.log and might print to screen instead. To delete do: ``` sudo rm -rf log/ ```
+3) If you have problem with `bundle install`, throw away the Gemfile.lock and re-run the command.
 
 
 ## Admin user
