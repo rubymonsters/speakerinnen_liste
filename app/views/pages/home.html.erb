@@ -45,6 +45,15 @@
     </h3>
     <div class="row pt-5">
       <%= render partial: "profiles/profile", collection: @newest_profiles %>
+      <div class="col-sm-6 col-md-4 col-lg-3 my-3" >
+        <div class="h-100 p-3 align-middle border border-primary">
+          <h4><b>We need more woman on stages</b></h4>
+          <p>
+            If you are a professional speaker in any topic, register here, quick and free
+          </p>
+         <%= link_to "Register as a speaker", sign_up_path, class: "btn btn-primary" %> 
+        </div> 
+      </div>
     </div>
   </div>
 
