@@ -79,6 +79,9 @@ Rails.application.routes.draw do
 
     get 'categories/:category_id', to: 'profiles#index', as: :category
     # resources :categories
+    get 'favourites', to: 'favourites#index'
+    post 'favourites/:profile_id', to: 'favourites#new'
+    delete 'favourites/:profile_id/destroy', to: 'favourites#destroy'
 
     get '/404', to: "errors#not_found"
     get '/422', to: "errors#unacceptable"

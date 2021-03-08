@@ -1,0 +1,13 @@
+<div class="container">
+
+<a id="speakers"></a>
+
+<% if @profiles.blank? %>
+  <h3> No favourites yet :) </h3>
+<% else %>
+  <%= render partial: 'profiles/profile_search', collection: @profiles, as: :profile %>
+<% end %>
+
+<%= render partial: 'layouts/footer' %>
+
+</div>
