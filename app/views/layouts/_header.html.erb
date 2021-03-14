@@ -12,13 +12,15 @@
 
     <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
       <ul class="navbar-nav pr-5">
-        <li class="nav-item active pt-2 pr-5 ">
-          <%= form_tag(profiles_path, method: 'get', class: "form-inline text-capitalize small") do %>
-            <%= text_field_tag('search', params[:search], id: 'header_search',class: 'form-control typeahead mr-sm-2',
-              type: 'text', placeholder: t(:search_placeholder, scope: 'pages.home.search')) %>
-              <%= button_tag "<i class='fa fa-search'></i>".html_safe, class: "btn btn-link" %>
-          <% end %>
-        </li>
+        <% unless current_page?(root_path) %>
+          <li class="nav-item active pt-2 pr-5 ">
+            <%= form_tag(profiles_path, method: 'get', class: "form-inline text-capitalize small") do %>
+              <%= text_field_tag('search', params[:search], id: 'header_search',class: 'form-control typeahead mr-sm-2',
+                type: 'text', placeholder: t(:search_placeholder, scope: 'pages.home.search')) %>
+                <%= button_tag "<i class='fa fa-search'></i>".html_safe, class: "btn btn-link" %>
+            <% end %>
+          </li>
+        <% end %>
         <li class="nav-item active dropdown pt-3 pr-5">
           <a class="dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <%= I18n.locale == :en ? "More" : "Mehr" %>
