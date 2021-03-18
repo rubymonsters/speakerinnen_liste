@@ -43,6 +43,73 @@
   filter: grayscale(00%);
 }
 
+.profile-box.register {
+  box-sizing: border-box;
+  text-align: left;
+  position: relative;
+  overflow: hidden;
+  color: $primary;
+  cursor: pointer;
+
+  .fit-height {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    padding: inherit;
+  }
+
+  .border.border-primary {
+    padding: 2rem;
+    overflow: hidden;
+  }
+
+  h4, p {
+    text-align: left;
+  }
+
+  .outer {
+    text-align: left;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .stretch {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    
+    .profile-subtitle {
+      overflow: hidden;
+      max-height: 3rem;
+    }
+
+    a.btn {
+      width: 100%;
+      max-height: 3.7rem;
+    }
+
+    .top {
+      display: flex;
+      align-items: flex-end;
+    }
+
+    .middle {
+      overflow: hidden;
+    }
+
+    .bottom {
+      display: flex;
+      align-items: flex-start;
+    }
+  }
+
+  .bottom-padding {
+    min-height: 1.5rem;
+  }
+}
+
 .card-img-top {
   border-radius: 0px
 }
