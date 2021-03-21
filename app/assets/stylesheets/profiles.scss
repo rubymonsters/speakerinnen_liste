@@ -51,11 +51,14 @@
   color: $primary;
   cursor: pointer;
 
-  .fit-height {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    padding: inherit;
+  /* only use same size as other items in multi column setup */
+  @media all and (min-width: 576px) {
+    .fit-height {
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      padding: inherit;
+    }
   }
 
   .border.border-primary {
