@@ -102,7 +102,22 @@
       overflow: hidden;
     }
 
-    @media all and (max-width: 1200px) {
+    .bottom {
+      display: flex;
+      align-items: flex-start;
+    }
+
+    @media all and (min-width: 1200px) and (max-width: 1423px) {
+      .top {
+        margin-bottom: 0.8rem;
+      }
+      .middle {
+        display: none;
+      }
+    }
+
+    /* multi-column small screens */
+    @media all and (min-width: 576px) and (max-width: 1199px) {
       .top {
         display: none;
       }
@@ -112,11 +127,6 @@
       .btn.btn-primary {
         max-height: none;
       }
-    }
-
-    .bottom {
-      display: flex;
-      align-items: flex-start;
     }
   }
 
