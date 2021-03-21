@@ -99,6 +99,18 @@
       overflow: hidden;
     }
 
+    @media all and (max-width: 1200px) {
+      .top {
+        display: none;
+      }
+      .middle {
+        display: none;
+      }
+      .btn.btn-primary {
+        max-height: none;
+      }
+    }
+
     .bottom {
       display: flex;
       align-items: flex-start;
