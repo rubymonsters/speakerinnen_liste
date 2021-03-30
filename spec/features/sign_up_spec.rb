@@ -8,7 +8,7 @@ describe 'signup' do
     it 'sends out confirmation link' do
       visit root_path
       expect(page).to have_content('Register')
-      click_link('Register as a speaker')
+      click_link('Register as a speaker', match: :first)
       fill_in('profile[email]', with: 'barbara@mail.de')
       fill_in('profile[password]', with: 'Testpassword')
       fill_in('profile[password_confirmation]', with: 'Testpassword')
@@ -20,7 +20,7 @@ describe 'signup' do
     it "doesn't work when email is already been taken" do
       visit root_path
       expect(page).to have_content('Register')
-      click_link('Register as a speaker')
+      click_link('Register as a speaker', match: :first)
       fill_in('profile[email]', with: 'ada@mail.de')
       fill_in('profile[password]', with: 'Testpassword')
       fill_in('profile[password_confirmation]', with: 'Testpassword')
@@ -42,7 +42,7 @@ describe 'signup' do
       )
 
       visit root_path
-      click_link('Register as a speaker')
+      click_link('Register as a speaker', match: :first)
       click_link('Or sign up with Twitter')
       expect(page).to have_button('Sign up')
       find_field('profile_email')
