@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 source 'https://rubygems.org'
-ruby '2.6.5'
-gem 'rails', '6.0.3.4'
+ruby '2.7.2'
+gem 'rails', '6.0.3.6'
 
 # Needed for Javascript Runtime
 # gem 'therubyracer'

@@ -19,8 +19,7 @@ a, .link, #expander {
 
 ul {
   list-style: none;
-
- vertical-align: top;
+  vertical-align: top;
 }
 
 h1, h2, h3, h4, h5 {
@@ -91,9 +90,6 @@ h1, h2, h3, h4, h5 {
   background: $yellow;
 }
 
-.alert-info {
-}
-
 .alert-warning {
   background: $yellow;
 }
@@ -132,7 +128,6 @@ h1, h2, h3, h4, h5 {
     pointer-events: none;
 }
 
-
 // overwrite bootstrap
 
 textarea, input {
@@ -146,7 +141,7 @@ textarea, input {
   color: white;
 }
 
-.btn-secondary a{
+.btn-secondary a {
   color: white;
 }
 
