@@ -106,14 +106,10 @@
 @include media-breakpoint-down(md) {
   .child {
     font-size: 1.8rem;
-    left: 0px;
     width: 490px;
   }
   .category_name {
     width: 400px;
-  }
-  .category_count {
-    width: 50px;
   }
 }
 
@@ -130,7 +126,6 @@
     font-size: 1.0rem;
   }
   .category_count {
-    width: 30px;
     display: none;
   }
 }
