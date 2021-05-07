@@ -23,3 +23,6 @@ de:
     countries_agg: "Länder:"
     cities_agg: "Städte:"
     languages_agg: "Sprachen:"
+    filter_by: "Filter nach Kategorien" 
+    random_categories: "Oder suche in unseren beliebtesten Kategorien:" 
+

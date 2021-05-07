@@ -24,3 +24,5 @@ en:
     countries_agg: "Countries:"
     cities_agg: "Cities:"
     languages_agg: "Languages:"
+    filter_by: "Filter by categories" 
+    random_categories: "Or search in our favourite categories:" 
