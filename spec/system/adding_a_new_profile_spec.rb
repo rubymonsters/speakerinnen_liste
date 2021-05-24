@@ -6,7 +6,7 @@ describe 'profile adding' do
     visit root_path
     page.driver.browser.set_cookie("cookie_consent=true")
 
-    click_link I18n.t(:signup, scope: 'layouts.application')
+    click_link I18n.t(:signup, scope: 'layouts.application'), match: :first
     fill_in 'E-Mail', with: 'test@test.de'
     fill_in 'profile_password', with: '12345678'
     fill_in 'profile_password_confirmation', with: '12345678'
