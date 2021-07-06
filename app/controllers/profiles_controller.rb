@@ -39,9 +39,14 @@ class ProfilesController < ApplicationController
       if params[:category_id] 
         Category.find(params[:category_id]) 
       elsif params[:tag_filter]
-        last_tag = params[:tag_filter].split(/\s*,\s*/).last
-        last_tag_id = ActsAsTaggableOn::Tag.where(name: last_tag).last.id
-        Category.select{|cat| cat.tag_ids.include?(last_tag_id)}.last
+        # binding.pry
+        if params[:tag_filter].empty?
+          redirect_to profiles_url(anchor: "top"), notice: I18n.t('flash.profiles.no_tags_selected')
+        else
+          last_tag = params[:tag_filter].split(/\s*,\s*/).last
+          last_tag_id = ActsAsTaggableOn::Tag.where(name: last_tag).last.id
+          Category.select{|cat| cat.tag_ids.include?(last_tag_id)}.last
+        end
       else    
         Category.first
       end
