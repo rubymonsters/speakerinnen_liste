@@ -9,10 +9,10 @@ de:
     or_did_you_mean: "Oder %{suggestions_topic}?"
     empty_search: "Du hast das Suchfeld leider leer gelassen. Versuch es doch noch einmal :)"
     filter: "Hier kannst du die Suchergebnisse filtern:"
-    success: "Wir haben"
     result: {
-      one: " <b>eine</b> Speakerin gefunden zu Deiner Suche: ",
-      other: " <b>%{count}</b> Speakerinnen gefunden zu Deiner Suche: "
+      zero: "Leider haben wir keine Speakerin zum Suchwort: ",
+      one: "Wir haben <b>eine</b> Speakerin gefunden zu Deiner Suche: ",
+      other: "Wir haben <b>%{count}</b> Speakerinnen gefunden zu Deiner Suche: "
     }
     more_options: "<b>Keine passende Speakerin gefunden?</b><br> Vielleicht helfen Dir diese Links weiter:"
     search_categories_html: "Du kannst auch in anderen <a href='%{root_path}/#categories_anchor'>Kategorien</a> und <a href='#tag_cloud_anchor'>Themen</a> stöbern."
@@ -25,6 +25,6 @@ de:
     languages_agg: "Filter via Sprachen:"
     filter_by: "Suche via Kategorien" 
     random_categories: "Zum Beispiel hier:" 
-    filter_by_cats: "Um noch mehr Speakerinnen zu finden, kannst Du auch bei den <a href='%{category_link}'>Kategorien</a> suchen."
+    filter_by_cats: "Um noch mehr Speakerinnen zu finden, guck doch mal bei den <a href='%{category_link}'>Kategorien</a>."
     filter_explanation: "Hier kannst Du noch mehr filtern und damit die Suche eingrenzen."
 
