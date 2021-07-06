@@ -1,23 +1,27 @@
 <% if @profiles.count > 0 %>
+  <p>
+    <%= t(:filter_explanation, scope: 'search') %>
+  </p>
   <div class="row row-cols-4">
     <% filters_hash(aggs_countries, aggs_cities, aggs_languages).each do |filter| %>
       <div class="col-12 col-sm-6 col-md-3">
         <ul id="facet_<%= filter[:key] %>" class="search-aggregation list-unstyled">
-          <%= t(filter[:title], scope: 'search' ).html_safe %><br><br>
+          <%# t(filter[:title], scope: 'search' ).html_safe %>
           <li class="<%= 'selected' if !filter[:param_val] %>">
             <%= link_to(
                   t(filter[:all_text], scope: 'search'),
                   filter[:filter_params_all],
                   class: "#{'bg-dark text-light' if !filter[:param_val] }")
             %>
-            <!-- <span class="pl-1"><%# filter[:aggregations].first["doc_count"] %></span> -->
+            <span class="pl-1"><%= filter[:aggregations].first["doc_count"] %></span>
           </li>
           <% filter[:aggregations][0..9].each do |term| %>
-            <li class="pl-1 <%= 'selected' if filter[:param_val] == term['key'] %>">
+          <%# binding.pry %> 
+            <li class=" <%= 'selected' if filter[:param_val]&.downcase == term['key'].downcase %>">
               <%= link_to(
                     filter[:link_text_func].call(term['key']),
                     filter[:filter_params_func].call(term['key']),
-                    class: "#{'bg-dark text-light' if filter[:param_val] == term['key'] }")
+                    class: "#{'bg-dark text-light' if filter[:param_val]&.downcase == term['key'].downcase }")
               %>
               <span class="pl-1"><%= term['doc_count'] %></span>
             </li>
@@ -47,14 +51,6 @@
       <span>
         <%= t(:filter_by_cats, scope: 'search', category_link: profiles_path).html_safe %>
       </span>
-      <ul class="list-unstyled">
-        <%= t(:random_categories, scope: 'search' ).html_safe %><br><br>
-        <% @three_sample_categories.each do |cat| %>
-          <li class="pl-1">
-            <%= category_link(cat) %>
-          </li>
-        <% end %>
-      </ul>
     </div>
   </div>
 <% else %>

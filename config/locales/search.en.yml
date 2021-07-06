@@ -27,3 +27,4 @@ en:
     filter_by: "Filter by categories" 
     random_categories: "Or search in our favourite categories:" 
     filter_by_cats: "Um noch mehr Speakerinnen zu finden, kannst Du auch bei den <a href='%{category_link}'>Kategorien</a> suchen."
+    filter_explanation: "Hier kannst Du noch mehr filtern und damit die Suche eingrenzen."
