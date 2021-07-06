@@ -23,6 +23,7 @@ de:
     countries_agg: "Länder:"
     cities_agg: "Städte:"
     languages_agg: "Sprachen:"
-    filter_by: "Filter nach Kategorien" 
-    random_categories: "Oder suche in unseren beliebtesten Kategorien:" 
+    filter_by: "Suche via Kategorien" 
+    random_categories: "Zum Beispiel hier:" 
+    filter_by_cats: "Um noch mehr Speakerinnen zu finden, kannst Du auch bei den <a href='%{category_link}'>Kategorien</a> suchen."
 

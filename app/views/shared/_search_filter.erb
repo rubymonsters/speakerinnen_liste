@@ -10,6 +10,7 @@
                   filter[:filter_params_all],
                   class: "#{'bg-dark text-light' if !filter[:param_val] }")
             %>
+            <!-- <span class="pl-1"><%# filter[:aggregations].first["doc_count"] %></span> -->
           </li>
           <% filter[:aggregations][0..9].each do |term| %>
             <li class="pl-1 <%= 'selected' if filter[:param_val] == term['key'] %>">
@@ -43,6 +44,9 @@
       </div>
     <% end %>
     <div class="col-12 col-sm-6 col-md-3">
+      <span>
+        <%= t(:filter_by_cats, scope: 'search', category_link: profiles_path).html_safe %>
+      </span>
       <ul class="list-unstyled">
         <%= t(:random_categories, scope: 'search' ).html_safe %><br><br>
         <% @three_sample_categories.each do |cat| %>
@@ -51,14 +55,15 @@
           </li>
         <% end %>
       </ul>
-      <span>
-        <%= link_to("<i class='fa fa-filter pr-2'></i>".html_safe + t(:filter_by, scope: 'search' ), profiles_path, class: 'd-block px-3 py-2 border border-primary')  %>
-      </span>
     </div>
   </div>
 <% else %>
   <div class="row">
     <div class="col-md-4">
+      <span>
+        <%= t(:filter_by_cats, scope: 'search', category_link: profiles_path).html_safe %>
+      </span>
+      <br><br>
       <ul class="list-unstyled">
         <%= t(:random_categories, scope: 'search' ).html_safe %><br>
         <% @three_sample_categories.each do |cat| %>
@@ -67,9 +72,6 @@
           </li>
         <% end %>
       </ul>
-      <span>
-        <%= link_to("<i class='fa fa-filter pr-2'></i>".html_safe + t(:filter_by, scope: 'search' ), profiles_path, class: 'd-block px-3 py-2 border border-primary')  %>
-      </span>
     </div>
   </div>
 <% end %>

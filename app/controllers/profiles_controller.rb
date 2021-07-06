@@ -20,7 +20,7 @@ class ProfilesController < ApplicationController
       @aggs_languages = @aggs[:lang][:buckets]
       @aggs_cities = @aggs[:city][:buckets]
       @aggs_countries = @aggs[:country][:buckets]
-      @three_sample_categories = Category.first(3)
+      @three_sample_categories = Category.all.sample(3)
     elsif params[:tag_filter]&.present?
       @tags = params[:tag_filter].split(/\s*,\s*/)
       @profiles = Profile.is_published.has_tags(@tags).page(params[:page]).per(24)
