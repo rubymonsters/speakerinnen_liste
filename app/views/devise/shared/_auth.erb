@@ -73,7 +73,7 @@
               <%= link_to(t(button+'_via', scope: "devise.registrations"), "#link", "data-role" => "button", "data-toggle" => "modal", "data-target" => "#authModal", class: 'btn btn-primary mb-3' ) %>
             <% else %>
               <% Profile.omniauth_providers.each do |provider| %>
-                <%= link_to t(button+'_via', scope: "devise.registrations"), omniauth_authorize_path(:profile, provider),
+                <%= link_to t(button+'_via', scope: "devise.registrations"), omniauth_authorize_path(:profile, provider), method: :post,
                 class: 'btn btn-primary mb-3' %>
               <% end %>
             <% end %>
