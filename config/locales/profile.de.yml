@@ -56,6 +56,8 @@ de:
       email: "E-Mailadresse: <i class='fa fa-info-circle' aria-hidden='true'></i>"
       website: "Webseite:"
       additional_websites: "Zusätzliche Webseiten/Blogs:"
+      inactive_label: "<b>Spezielle Funktion:</b> <br>Ich möchte zwar sichtbar auf der Speakerinnen Liste sein,<br> aber im Moment <b>nicht</b> kontaktiert werden." 
+      inactive: "Bin gerade nicht aktiv"
     show:
       firstname: 'Vorname:'
       lastname: 'Nachname:'
@@ -86,6 +88,7 @@ de:
       country_select: "Wähle ein Land aus:"
       twitter: "Twittername:"
       contact: "Kontaktiere"
+      no_contact: "Kein Kontakt"
       email_to: "E-Mail an "
       show: "Anzeigen"
       edit: "Profil bearbeiten"
@@ -97,6 +100,8 @@ de:
       check_faq: "Fülle bitte die Felder via 'Edit Profile' aus!. <BR> Für mehr Informationen, wie Du am besten dein Profil angelegst, kannst Du hier nach schauen: <a href='https://speakerinnen.org/de/faq'>FAQ</a>"
       profile_from: "Profil von"
       to_profile: "Zum Profil"
+      inactive_profile: "Im Moment bist zu gerade nicht kontaktierbar über unserer Seite<br>
+        weil du dich auf <b>inaktive</b> gesetzt hast."
     medialinks:
       edit: "Referenzen bearbeiten"
     edit:

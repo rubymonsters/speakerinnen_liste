@@ -224,6 +224,15 @@
     </div>
   </div>
 </div>
+
+<div class="row mt-3">
+  <div class="col-sm-12 col-md-8 col-lg-6 p-3 alert-warning">
+    <p><%= t(:inactive_label, scope: 'profiles.form').html_safe %></p>
+    <%= f.label t(:inactive, scope: 'profiles.form') %>
+    <%= f.check_box :inactive %>
+  </div>
+</div>
+
 <div class="row mt-3">
   <div class="col">
     <p>
