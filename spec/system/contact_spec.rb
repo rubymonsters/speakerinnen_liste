@@ -35,7 +35,7 @@ describe 'contact profile' do
 
   context 'profile is inactive' do
     it 'contact button in profile should be renamed' do
-      ada.update!(inactive?: true)
+      ada.update!(inactive: true)
       visit profile_path(id: ada.id)
       within(:css, '.single-profile') do
         expect(page).to have_button(I18n.t(:no_contact, scope: 'profiles.show') + " " + ada.fullname)

@@ -13,7 +13,7 @@ describe ContactController, type: :controller do
     end
 
     it 'when profile inactive' do
-      ada.update!(inactive?: true)
+      ada.update!(inactive: true)
       get :create, params: { id: ada.id, message: { name: "Maxi"} }
       expect(response).not_to be_successful
       expect(response.response_code).to eq(302)
