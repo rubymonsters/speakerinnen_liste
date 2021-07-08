@@ -224,12 +224,18 @@
     </div>
   </div>
 </div>
-
+<a id="inactive_anchor"></a>
 <div class="row mt-3">
   <div class="col-sm-12 col-md-8 col-lg-6 p-3 alert-warning">
-    <p><%= t(:inactive_label, scope: 'profiles.form').html_safe %></p>
-    <%= f.label t(:inactive, scope: 'profiles.form') %>
-    <%= f.check_box :inactive %>
+  <div class="custom-control custom-switch">
+      <%= f.check_box :inactive, class: "custom-control-input" , id: "profile_inactive" %>
+      <% if @profile.inactive? %>
+        <%= f.label t(:inactive, scope: 'profiles.form'), class: "custom-control-label", for: "profile_inactive" %>
+      <% else %>
+        <%= f.label t(:active, scope: 'profiles.form'), class: "custom-control-label", for: "profile_inactive" %>
+      <% end %>
+      <p class="small"><%= t(:inactive_label, scope: 'profiles.form').html_safe %></p>
+    </div>
   </div>
 </div>
 

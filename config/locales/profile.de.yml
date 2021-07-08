@@ -56,8 +56,9 @@ de:
       email: "E-Mailadresse: <i class='fa fa-info-circle' aria-hidden='true'></i>"
       website: "Webseite:"
       additional_websites: "Zusätzliche Webseiten/Blogs:"
-      inactive_label: "<b>Spezielle Funktion:</b> <br>Ich möchte zwar sichtbar auf der Speakerinnen Liste sein,<br> aber im Moment <b>nicht</b> kontaktiert werden." 
-      inactive: "Bin gerade nicht aktiv"
+      inactive_label: "Hier kannst Du Deine Erreichbarkeit einstellen." 
+      inactive: "Ich kann gerade nicht kontaktiert werden"
+      active: "Ich kann kontaktiert werden"
     show:
       firstname: 'Vorname:'
       lastname: 'Nachname:'
@@ -101,7 +102,8 @@ de:
       profile_from: "Profil von"
       to_profile: "Zum Profil"
       inactive_profile: "Im Moment bist zu gerade nicht kontaktierbar über unserer Seite<br>
-        weil du dich auf <b>inaktive</b> gesetzt hast."
+        weil du dich auf <b>inaktive</b> gesetzt hast. "
+      activate_profile: "Aktiviere Dein Profil"
     medialinks:
       edit: "Referenzen bearbeiten"
     edit:

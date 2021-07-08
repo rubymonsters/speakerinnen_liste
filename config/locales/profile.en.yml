@@ -57,8 +57,9 @@ en:
       email: "Email address: <i class='fa fa-info-circle' aria-hidden='true'></i>"
       website: "Website:"
       additional_websites: "Additional websites/blogs:"
-      inactive_label: "Ich möchte zwar sichtbar auf der Speakerinnen Liste sein,<br> aber im Moment nicht kontaktiert werden" 
-      inactive: "Nicht aktiviert"
+      inactive_label: "Hier kannst Du Deine Erreichbarkeit einstellen." 
+      inactive: "Ich kann nicht kontaktiert werden"
+      active: "Ich kann kontaktiert werden"
     show:
       firstname: 'First name:'
       lastname: 'Last name:'
@@ -101,7 +102,8 @@ en:
       topics: "Topics:"
       to_profile: "To the profile"
       inactive_profile: "Im Moment bist zu gerade nicht kontaktierbar über unserer Seite<br>
-        weil du dich auf <b>inaktive</b> gesetzt hast."
+        weil du dich auf <b>inaktive</b> gesetzt hast. "
+      activate_profile: "Aktiviere Dein Profil"
     medialinks:
       edit: "Edit previous talks"
     edit:
