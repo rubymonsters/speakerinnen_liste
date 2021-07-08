@@ -3,7 +3,7 @@
     bar_1 = 40 + category_profiles_ratio(category.id)
     bar_2 = 105 - bar_1
   %>
-  <a href="<%= category_path(category.id) %>"class="progress">
+  <a href="<%= category_path(category.id, anchor: "speakers_anchor") %>"class="progress">
     <span class="child">
       <div class="h4 category_name text-left pl-5 sans-serif"><%= category.name %></div>
     </span>

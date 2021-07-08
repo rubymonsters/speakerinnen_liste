@@ -34,13 +34,12 @@
       <%= render partial: 'shared/category_filter' %>
       <a id="speakers_anchor"></a>
 
-    <hr class="mt-5">
     </div> <!-- tag filter -->
-    <a href="#top"><%= t(:up_to_filter, scope: 'profiles.index') %> <i class='fa fa-filter pr-2'></i> </a>
+    <!-- <a href="#top"><%= t(:up_to_filter, scope: 'profiles.index') %> <i class='fa fa-filter pr-2'></i> </a> -->
   <% end %>
-
+  <hr class="mt-5"> 
   <!-- Found speaker when in search or filter function -->
-  <div class="row m-5">
+  <div class="row m-4">
     <div class="col-md-12 text-center pt-3">
       <% if params[:category_id] %>
         <h1><%= @category.name %></h1>
@@ -49,8 +48,6 @@
         <h1>
           <%= t(:all_tagged_speakerinnen, scope: 'profiles.index', count: @profiles_count).html_safe + t(:tag_filter, scope: 'profiles.index', count: @tags.count).html_safe %>
         </h1>
-
-        <h3><%# raw @tags.map { |tag_name| ActsAsTaggableOn::Tag.where(name: tag_name).first }.join(', ') %><h3>
       <% end %>
 
     </div>

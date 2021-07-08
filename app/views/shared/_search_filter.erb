@@ -1,19 +1,16 @@
 <% if @profiles.count > 0 %>
-  <p>
-    <%= t(:filter_explanation, scope: 'search') %>
-  </p>
   <div class="row row-cols-4">
     <% filters_hash(aggs_countries, aggs_cities, aggs_languages).each do |filter| %>
       <div class="col-12 col-sm-6 col-md-3">
         <ul id="facet_<%= filter[:key] %>" class="search-aggregation list-unstyled">
-          <%# t(filter[:title], scope: 'search' ).html_safe %>
+          <b><%= t(filter[:title], scope: 'search' ).html_safe %></b>
           <li class="<%= 'selected' if !filter[:param_val] %>">
             <%= link_to(
                   t(filter[:all_text], scope: 'search'),
                   filter[:filter_params_all],
                   class: "#{'bg-dark text-light' if !filter[:param_val] }")
             %>
-            <span class="pl-1"><%= filter[:aggregations].first["doc_count"] %></span>
+            <span class="pl-1"><%# filter[:aggregations].first["doc_count"] %></span>
           </li>
           <% filter[:aggregations][0..9].each do |term| %>
           <%# binding.pry %> 
@@ -47,11 +44,6 @@
         </ul>
       </div>
     <% end %>
-    <div class="col-12 col-sm-6 col-md-3">
-      <span>
-        <%= t(:filter_by_cats, scope: 'search', category_link: profiles_path).html_safe %>
-      </span>
-    </div>
   </div>
 <% else %>
   <div class="row">
@@ -64,7 +56,7 @@
         <%= t(:random_categories, scope: 'search' ).html_safe %><br>
         <% @three_sample_categories.each do |cat| %>
           <li>
-            <%= category_link(cat) %>
+            <%= category_link(cat, "speakers_anchor") %>
           </li>
         <% end %>
       </ul>
