@@ -2,10 +2,6 @@
 
 require 'spec_helper'
 
-def filter_by_themes_xpath(class_name)
-  "//span[@class='#{class_name}'][*[contains(text(),'Filter by themes')]]"
-end
-
 form_selector = 'form[action="/en/profiles"][method="get"]'
 
 describe 'profile search' do
@@ -71,18 +67,10 @@ describe 'profile search' do
         expect(page).to have_content('Meier')
       end
 
-      it 'displays "Filter by themes" prominently if no results' do
+      it 'displays link to the "Filter by themes" prominently if no results' do
         visit profiles_path(search: 'asdfasdfasdf')
 
-        expect(page).to have_xpath(filter_by_themes_xpath('filter-themes-next-line'))
-        expect(page).to have_no_xpath(filter_by_themes_xpath('float-right'))
-      end
-
-      it 'displays "Filter by themes" discretely if results' do
-        visit profiles_path(search: 'Marie')
-
-        expect(page).to have_no_xpath(filter_by_themes_xpath('filter-themes-next-line'))
-        expect(page).to have_xpath(filter_by_themes_xpath('float-right'))
+        expect(page).to have_link(href: /profiles/)
       end
 
       it 'shows a tooltip when profile has data' do
