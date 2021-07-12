@@ -92,6 +92,8 @@ h1, h2, h3, h4, h5 {
 
 .alert-warning {
   background: $yellow;
+  color: $black;
+  padding: $base-spacing-unit;
 }
 
 .alert-error {

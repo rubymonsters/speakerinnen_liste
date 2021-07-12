@@ -1,5 +1,5 @@
 <div class="p-3 mb-2 bg-warning text-dark">
-  <h3>Admin Aktionen</h3>
+  <h4>Admin Aktionen</h4>
   <%= @profile.published? ? t(:profile_status, scope: 'admin.profiles') + t(:public, scope: 'admin.profiles') + ' ' : "Profile is not public" %>:<br>
   <% if @profile.published %>
     <%= link_to t(:make_invisible, scope: 'admin.profiles'), unpublish_admin_profile_path(@profile.id),
@@ -24,8 +24,16 @@
       <%= f.submit t(:assign_feature, scope: 'admin.profiles'), class: 'btn btn-primary' %>
   <% end  %>
   <br>
-  E-Mail Adresse:<br>
-  <b><%= @profile.email %></b>
+  <hr>
+  <h4>Admin Infos</h4>
+  <p>
+    E-Mail Adresse:<br>
+    <b><%= @profile.email %></b>
+  </p>
+  <p>
+    Speakerin kann kontaktiert werden:<br>
+    <b><%= @profile.inactive ? "Nein" : "Ja" %></b>
+  </p>
 </div>
 <script>
     $(document).ready(function() {
