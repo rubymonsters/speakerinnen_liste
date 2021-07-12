@@ -11,9 +11,9 @@ en:
     any: "Any"
     filter: "Here you can filter the search results:"
     result: {
-      zero: "Unfortuantely we found no speakerin for your search: ",
-      one: " We found <b>a</b> speakerin for your search: ",
-      other: "We found <b>%{count}</b> speakerinnen for your search: "
+      zero: "Unfortuantely we have found no speakerin matching your search: ",
+      one: " We have found <b>a</b> speakerin matching your search: ",
+      other: "We have found <b>%{count}</b> speakerinnen matching your search: "
     }
     more_options: "<b>You didn't find any suitable speaker?</b><br> Maybe the following links can help you:"
     search_categories_html: "Have a look at our other <a href='%{root_path}/#categories_anchor'>categories</a> and <a href='#tag_cloud_anchor'>topics</a>."
