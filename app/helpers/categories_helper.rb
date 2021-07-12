@@ -1,8 +1,12 @@
 # frozen_string_literal: true
 
 module CategoriesHelper
-  def category_link(category, options = {})
-    link_to category.name, category_path(category.id), class: ""
+  def category_link(category, anchor = nil)
+    if anchor
+      link_to category.name, category_path(category.id, anchor: anchor), class: ""
+    else
+      link_to category.name, category_path(category.id), class: ""
+    end
   end
 
   def category_profiles_count(category_id)
