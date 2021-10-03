@@ -13,6 +13,8 @@ en:
       profile_from: "Profile of"
       delete_image: "<i class='fa fa-trash pr-2'></i>Delete my photo"
       update: "Update your profile"
+      accept_the: "I accept the"
+      code_of_conduct: "Code of Conduct"
       your_picture: "Picture"
       picture: "A picture of me:"
       copyright: "Picture copyright:"

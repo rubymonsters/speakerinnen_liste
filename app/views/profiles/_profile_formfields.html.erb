@@ -226,8 +226,13 @@
 </div>
 <div class="row mt-3">
   <div class="col">
+    <div class="accept_code_of_conduct">
+      <%= check_box("code_of_conduct", "accepted") %>
+      <%= label("code_of_conduct", "accepted", t(:accept_the, scope: "profiles.form")) %>
+      <%= link_to t(:code_of_conduct, scope: "profiles.form"), code_of_conduct_path, target: "_blank" %>
+    </div>
     <p>
-    <%= f.button :submit, t(:update, scope: 'profiles.form').html_safe, class:'btn btn-primary' %>
+    <%= f.button :submit, t(:update, scope: 'profiles.form').html_safe, class:'btn btn-primary', id: "update_profile_submit", disabled: true %>
     <%= link_to(t(:show, scope: 'profiles.edit').html_safe, profile_path, class: 'btn btn-outline-primary' ) %>
   </p>
   </div>
@@ -257,5 +262,16 @@ $('#show-en').click(function(){
     $('#show-en').addClass('active');
     $('#show-de').removeClass('active');
   });
+
+$('#code_of_conduct_accepted').click(function () {
+  var checked = $(this)[0].checked;
+  var submitButton = $('#update_profile_submit');
+
+  if (checked) {
+    submitButton.removeAttr("disabled");
+  } else {
+    submitButton.attr("disabled","disabled");
+  }
+})
 
 </script>

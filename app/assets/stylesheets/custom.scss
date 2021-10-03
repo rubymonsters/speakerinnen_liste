@@ -128,6 +128,15 @@ h1, h2, h3, h4, h5 {
     pointer-events: none;
 }
 
+.accept_code_of_conduct {
+  a {
+    color: red;
+    text-decoration: underline;
+  }
+  font-size: smaller;
+  color: red
+}
+
 // overwrite bootstrap
 
 textarea, input {
