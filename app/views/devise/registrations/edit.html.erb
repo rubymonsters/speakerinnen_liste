@@ -70,11 +70,27 @@
       </div>
     <% end %>
   <% end %>
+  <a id="inactive_anchor"></a>
+  <%= simple_form_for(@profile, html: { multipart: true } ) do |f| %>
+    <div class="p-3 mb-5 bg--white">
+      <h4><%= t(:password_change, scope: "devise.registrations.edit") %></h3>
+      <div class="mt-5">
+        <%= f.radio_button :inactive, false, class: "", id: "" %>
+        <%= f.label "Deine Profil ist aktiv" %>
+      </div>
+      <div>
+        <%= f.radio_button :inactive, true, class: "", id: "" %>
+        <%= f.label "Deine Profil ist nicht aktiv" %>
+      </div>
+    </div>
+    <%= f.button :submit, t(:update, scope: 'profiles.form').html_safe, class:'btn btn-primary' %>
+  <% end %>
+
 
   <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name),
     html: { method: :put }) do |f| %>
 
-    <div class="p-3 mb-5 bg--white">
+    <div class="p-3 my-5 bg--yellow">
 
       <p><b><%= t(:delete_account, scope: "devise.registrations.edit") %></b></p>
       <p><%= t(:unhappy, scope: "devise.registrations.edit") %></p>
