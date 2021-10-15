@@ -48,7 +48,7 @@
 
       <div class="p-3 mb-5 bg--white">
 
-        <p><b><%= t(:password_change, scope: "devise.registrations.edit") %></b></p>
+        <h4><%= t(:password_change, scope: "devise.registrations.edit") %></h4>
 
         <%= f.input :current_password, placeholder: t(:password_current_placeholder,
           scope: "devise.registrations.edit"),
@@ -70,22 +70,22 @@
       </div>
     <% end %>
   <% end %>
-  <a id="inactive_anchor"></a>
-  <%= simple_form_for(@profile, html: { multipart: true } ) do |f| %>
-    <div class="p-3 mb-5 bg--white">
-      <h4><%= t(:password_change, scope: "devise.registrations.edit") %></h3>
+
+  <div class="p-3 mb-5 bg--white">
+    <%= simple_form_for(@profile, html: { multipart: true } ) do |f| %>
+      <h4><%= t(:set_active_or_inactive, scope: "devise.registrations.edit") %></h4>
       <div class="mt-5">
         <%= f.radio_button :inactive, false, class: "", id: "" %>
-        <%= f.label "Deine Profil ist aktiv" %>
+        <%= f.label :inactive, t(:active_label ,scope: "devise.registrations.edit").html_safe %>
       </div>
       <div>
         <%= f.radio_button :inactive, true, class: "", id: "" %>
-        <%= f.label "Deine Profil ist nicht aktiv" %>
+        <%= f.label :incative, t(:inactive_label, scope: "devise.registrations.edit").html_safe %>
       </div>
-    </div>
-    <%= f.button :submit, t(:update, scope: 'profiles.form').html_safe, class:'btn btn-primary' %>
-  <% end %>
-
+      <%= f.button :submit, t(:update, scope: 'profiles.form').html_safe, class:'btn btn-primary' %>
+    <% end %>
+  </div>
+  <a id="inactive_anchor"></a>
 
   <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name),
     html: { method: :put }) do |f| %>

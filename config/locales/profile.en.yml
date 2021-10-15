@@ -101,9 +101,9 @@ en:
       check_faq: "To get started please fill out the formular via 'Edit Profile'!<BR> For more information how to fill in your profile, check here: <a href='https://speakerinnen.org/de/faq'>FAQ</a>"
       topics: "Topics:"
       to_profile: "To the profile"
-      inactive_profile: "Im Moment bist zu gerade nicht kontaktierbar über unserer Seite<br>
-        weil du dich auf <b>inaktive</b> gesetzt hast. "
-      activate_profile: "Aktiviere Dein Profil"
+      inactive_profile: "At the moment you cannot be contacted via our website.<br>
+        because you set yourself <b>inactive</b>. "
+      activate_profile: "Activate your profile "
     medialinks:
       edit: "Edit previous talks"
     edit:

@@ -61,11 +61,11 @@ de:
       resend_instructions: "Bestätigungsmail schicken"
       edit:
         account_from: "Account von "
-        change_email: "<b>Hier kannst Du Deine Email Adresse ändern.</b>
-        <br> Gebe die neue Email Adresse ein und Dein aktuelles Passwort."
+        change_email: "<h4>Hier kannst Du Deine Email Adresse ändern</h4>
+        <br> Gib die neue Email Adresse ein und Dein aktuelles Passwort."
         password_current: "Aktuelles Passwort:"
         password_current_placeholder: "Aktuelles Passwort"
-        password_change: "Hier kannst Du Dein Passwort ändern."
+        password_change: "Hier kannst Du Dein Passwort ändern"
         password_blank: "Bitte leer lassen, wenn das Passwort nicht geändert werden soll."
         password_placeholder: "Passwort"
         password: "Passwort:
@@ -82,6 +82,9 @@ de:
         email: "E-Mail:
           <br><small class='form-text text-muted'>Deine E-Mailadresse wird nirgendwo veröffentlicht, sondern nur dazu genutzt,
           dass Interessentinnen und Interessenten Kontakt zu Dir aufnehmen können.</small>"
+        set_active_or_inactive: "Deaktiviere Deinen Account"
+        active_label: "Dein Profil ist <b>aktiv</b>. Das heißt, Du bist sichtbar auf unserer Webseite und kannst kontaktiert werden"
+        inactive_label: "Dein Profil ist <b>nicht aktiv</b>. Das heißt, Du bist sichtbar auf unserer Webseite, kannst aber nicht kontaktiert werden"
       new:
         sign_up: "Registrieren"
         password: "Passwort"

@@ -20,7 +20,7 @@
   <div class="col-lg-6 col-md-6 ">
     <% if current_profile == @profile && @profile.inactive? %>
       <p class="alert-warning">
-        <%= t(:inactive_profile, scope: 'profiles.show').html_safe %><%= link_to t(:activate_profile, scope: 'profiles.show'), edit_profile_path(@profile, anchor: "inactive_anchor") %> 
+        <%= t(:inactive_profile, scope: 'profiles.show').html_safe %><%= link_to t(:activate_profile, scope: 'profiles.show'), edit_profile_registration_path(anchor: "inactive_anchor") %>
       </p>
     <% end %>
     <h1 class=""><%= @profile.fullname %></h1>
