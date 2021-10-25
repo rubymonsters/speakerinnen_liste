@@ -6,6 +6,7 @@ en:
       destroyed: '%{profile_name} was successfully deleted.'
       no_permission: "You don’t have permission to edit the profile."
       show_no_permission: "You don’t have permission to see the profile."
+      no_tags_selected: "You must select at least one topic to search for speakers."
     medialink:
       created: "Your previous talk was successfully created."
       updated: 'Your previous talk was successfully updated.'

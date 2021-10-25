@@ -6,6 +6,7 @@ de:
       destroyed: '%{profile_name} wurde erfolgreich gelöscht.'
       no_permission: "Du hast nicht die Rechte, das Profil zu bearbeiten."
       show_no_permission: "Du hast nicht die Rechte, das Profil anzuschauen."
+      no_tags_selected: "Du musst mindestens ein Thema auswählen, um nach Speakerinnen zu suchen."
     medialink:
       created: "Referenz wurde erfolgreich erstellt."
       updated: "Referenz wurde erfolgreich geändert."

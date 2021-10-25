@@ -20,7 +20,7 @@ class ProfilesController < ApplicationController
       @aggs_languages = @aggs[:lang][:buckets]
       @aggs_cities = @aggs[:city][:buckets]
       @aggs_countries = @aggs[:country][:buckets]
-
+      @three_sample_categories = Category.all.sample(3)
     elsif params[:tag_filter]&.present?
       @tags = params[:tag_filter].split(/\s*,\s*/)
       @profiles = Profile.is_published.has_tags(@tags).page(params[:page]).per(24)
@@ -39,6 +39,10 @@ class ProfilesController < ApplicationController
       if params[:category_id] 
         Category.find(params[:category_id]) 
       elsif params[:tag_filter]
+        if params[:tag_filter].empty?
+          redirect_to profiles_url(anchor: "top"), notice: I18n.t('flash.profiles.no_tags_selected') 
+          return
+        end
         last_tag = params[:tag_filter].split(/\s*,\s*/).last
         last_tag_id = ActsAsTaggableOn::Tag.where(name: last_tag).last.id
         Category.select{|cat| cat.tag_ids.include?(last_tag_id)}.last
