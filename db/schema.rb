@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_01_154505) do
+ActiveRecord::Schema.define(version: 2021_10_30_131725) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 2021_01_01_154505) do
     t.text "body"
     t.string "url"
     t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "uodated_at"
   end
 
   create_table "categories", id: :serial, force: :cascade do |t|
@@ -181,6 +181,7 @@ ActiveRecord::Schema.define(version: 2021_01_01_154505) do
     t.string "personal_note", limit: 175
     t.boolean "willing_to_travel"
     t.boolean "nonprofit"
+    t.string "state"
     t.index ["confirmation_token"], name: "index_profiles_on_confirmation_token", unique: true
     t.index ["email"], name: "index_profiles_on_email", unique: true
     t.index ["reset_password_token"], name: "index_profiles_on_reset_password_token", unique: true
