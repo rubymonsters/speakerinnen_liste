@@ -56,12 +56,12 @@ de:
       email: "E-Mailadresse: <i class='fa fa-info-circle' aria-hidden='true'></i>"
       website: "Webseite:"
       additional_websites: "Zusätzliche Webseiten/Blogs:"
+      please_select: "Bitte auswählen"
     show:
       firstname: 'Vorname:'
       lastname: 'Nachname:'
       main_topic: 'Themenschwerpunkt:'
       personal_note: "Persönliche Anmerkung:"
-      country_select: "Wähle ein Land aus:"
       willing_to_travel: "Ich bin bereit, für eine Veranstaltung zu reisen."
       not_willing_to_travel: "Ich bin nicht bereit, für eine Veranstaltung zu reisen."
       nonprofit: "Ich bin bereit, für gemeinnützige Zwecke kostenfrei zu sprechen."
@@ -83,7 +83,6 @@ de:
       profession: "Beruf:"
       city: "Stadt:"
       country: "Land:"
-      country_select: "Wähle ein Land aus:"
       twitter: "Twittername:"
       contact: "Kontaktiere"
       email_to: "E-Mail an "

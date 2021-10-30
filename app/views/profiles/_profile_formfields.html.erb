@@ -31,11 +31,40 @@
         label_html: { id: "lastname" }, input_html: { class: "form-control" } %>
     </div>
     <div class="form-group">
-      <%= f.label :country, label: t(:country, scope: 'profiles.form')  %>
+      <%= f.label :country, label: t(:country, scope: 'profiles.form') %>
       <%= f.country_select :country, label: t(:country, scope: 'profiles.form').html_safe,
           label_html: { id: "country"} ,
-          priority_countries: ["DE", "FR", "GB"], include_blank: t(:country_select, scope: 'profiles.show') %>
+          priority_countries: ["DE", "AT", "CH"], include_blank: t(:please_select, scope: 'profiles.form') %>
     </div>
+    <% t(:states).each do |key, value| %>
+      <div id="profile_states_group-<%= key %>" class="form-group profile_states_group" <%= 'style="display: none;"'.html_safe if key.to_s != @profile.country.downcase %>>
+        <label for="profile_states-<%= key %>">
+          <%= t(:"state.#{key}") %>:
+        </label>
+        <select id="profile_states-<%= key %>">
+          <option value=""><%= t(:please_select, scope: 'profiles.form') %></option>
+          <% value.each do |key, value| %>
+            <option value="<%= key %>" <%= 'selected="selected"' if key.to_s == @profile.state %>>
+              <%= value %>
+            </option>
+          <% end %>
+        </select>
+      </div>
+    <% end %>
+    <script>
+      var updateStateSelects = function(country) {
+        $(".profile_states_group").hide();
+        $("#profile_states_group-" + country).show();
+
+        $(".profile_states_group select").removeAttr("name");
+        $("#profile_states_group-" + country + " select").attr("name", "profile[state]");
+      };
+      $(document).ready(function() {
+        $("#profile_country").change(function() {
+          updateStateSelects(this.value.toLowerCase());
+        });
+      });
+    </script>
     <div class="form-group">
       <div class="profile_iso_languages mt-3">
         <label class="form-check-label pb-2">
