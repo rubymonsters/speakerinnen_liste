@@ -60,6 +60,7 @@
         $("#profile_states_group-" + country + " select").attr("name", "profile[state]");
       };
       $(document).ready(function() {
+        updateStateSelects("<%= @profile.country.downcase %>");
         $("#profile_country").change(function() {
           updateStateSelects(this.value.toLowerCase());
         });
