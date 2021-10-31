@@ -17,7 +17,7 @@ de:
       picture: "Ein Foto von mir:"
       copyright: "Foto-Copyright:"
       image_info: "Lade bitte das Foto in <b>Farbe</b> hoch, wir zeigen es in Graustufen.
-        Nutze .jpg, .jpeg, .gif oder .png und achte darauf, daß Du die Rechte zu diesem Foto besitzt!
+        Nutze .jpg, .jpeg, .gif oder .png und achte darauf, dass du die Rechte zu diesem Foto besitzt!
         Die Größe des Fotos sollte <b>kleiner als 1MB</b> sein."
       willing_to_travel: "Ich bin bereit, für eine Veranstaltung zu reisen"
       nonprofit: "Ich bin bereit, für gemeinnützige Zwecke kostenfrei zu sprechen"
@@ -35,16 +35,16 @@ de:
       translated_infos: "Übersetzte Infos"
       personal_infos: "Persönliche Infos"
       personal_note: "Persönliche Anmerkung auf %{language}: <i class='fa fa-info-circle' aria-hidden='true'></i>"
-      personal_note_tooltip: "Hier kannst du Fachkenntnisse und Vortragsthemen angeben, über die du gerne sprechen möchtest oder die genauer beschrieben. Du kannst auch deine Agenda im Detail erläutern. Dies hilft den Organisatoren von Veranstaltungen, die wichtigsten Themen, über die Sie sprechen, zu verstehen."
+      personal_note_tooltip: "Hier kannst du Fachkenntnisse und Vortragsthemen angeben, über die du gerne sprechen möchtest oder die du genauer beschreiben möchtest. Du kannst hier deine Agenda im Detail erläutern. Das hilft den Organisatoren von Veranstaltungen, die wichtigsten Themen, über die du sprichst, zu verstehen."
       bio: "Meine Biografie auf %{language}: <i class='fa fa-info-circle' aria-hidden='true'></i>
       <br><small class='form-text text-muted'>Du kannst einfache HTML Tags nutzen, um den Text zu formatieren. Zum Beispiel: <i>< i >italic< /i ></i> oder <b>< b > fett < /b ></b>.</small>"
-      bio_tooltip: "Hier ist Platz für eine kurze oder auch längere Bio. Außerdem sollten hier Fachkenntnisse und mögliche Vortragsthemen genauer beschrieben werden. Das hilft Veranstalterinnen und Veranstaltern herauszufinden, ob Ihr die Richtigen für ihr Event sein könntet."
+      bio_tooltip: "Hier ist Platz für eine kurze oder auch längere Biografie. Außerdem sollten hier Fachkenntnisse und mögliche Vortragsthemen genauer beschrieben werden. Das hilft Veranstalterinnen und Veranstaltern herauszufinden, ob du die Richtige für ihr Event bist."
       topic_list: "Meine Themen, als Schlagworte (bitte nicht mehr als 10 auswählen): <i class='fa fa-info-circle'></i>"
-      topic_list_tooltip: "Bitte schaue zuerst, ob Dein Thema schon vorhanden ist."
+      topic_list_tooltip: "Bitte schaue zuerst, ob dein Thema schon vorhanden ist."
       main_topic_title: "Themenschwerpunkt:"
       main_topic: "Dein Themenschwerpunkt auf %{language}:
         <br><small class='form-text text-muted'>Es werden nur 30 Zeichen angezeigt.
-        <br>Trage Dein wichtigstes Thema hier nochmal ein. Dieses Thema wird mit Deinem Namen und Bild auf der Speakerinnen-Übersichtsseite zu sehen sein.</small>"
+        <br>Trage dein wichtigstes Thema hier nochmal ein. Dieses Thema wird mit deinem Namen und Bild auf der Speakerinnen-Übersichtsseite zu sehen sein.</small>"
       tag_list: "schon vorhandene Tags"
       languages: "Ich spreche:"
       show_more_languages: "Noch mehr Sprachen"
@@ -89,11 +89,11 @@ de:
       show: "Anzeigen"
       edit: "Profil bearbeiten"
       destroy: "Löschen"
-      sure: "Bist Du sicher?"
+      sure: "Bist du sicher?"
       link: "Bitte 'http://' davor schreiben."
       email: "E-Mail:"
       empty_profile: "Hier gib es noch nix zu sehen ¯\\_(ツ)_/¯."
-      check_faq: "Fülle bitte die Felder via 'Edit Profile' aus!. <BR> Für mehr Informationen, wie Du am besten dein Profil angelegst, kannst Du hier nach schauen: <a href='https://speakerinnen.org/de/faq'>FAQ</a>"
+      check_faq: "Fülle bitte die Felder via 'Profil bearbeiten' aus. <BR> Für mehr Informationen, wie du am besten dein Profil angelegst, kannst du hier nach schauen: <a href='https://speakerinnen.org/de/faq'>FAQ</a>"
       profile_from: "Profil von"
       to_profile: "Zum Profil"
     medialinks:
@@ -102,8 +102,8 @@ de:
       show: "<< Zurück zum Profil"
     index:
       title: "Speakerinnen"
-      text: "Schön, dass Du hier bist. <br>
-             Auf dieser Seite findest Du Frauen für deine Konferenz oder Veranstaltung: als Rednerin, Panel- oder Workshopmoderatorin.
+      text: "Schön, dass du hier bist. <br>
+             Auf dieser Seite findest du Frauen für deine Konferenz oder Veranstaltung: als Rednerin, Panel- oder Workshopmoderatorin.
              <p>Du kannst entweder durch die Profile blättern, einen Einstieg über die meist verwendeten <a href='#tag_cloud_anchor', class='text__link--bg'>Themen</a> finden, oder gezielt suchen.</p>
              Viel Spaß und Erfolg dabei!"
       name: "Name"
