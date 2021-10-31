@@ -37,7 +37,7 @@
           priority_countries: ["DE", "AT", "CH"], include_blank: t(:please_select, scope: 'profiles.form') %>
     </div>
     <% t(:states).each do |key, value| %>
-      <div id="profile_states_group-<%= key %>" class="form-group profile_states_group" <%= 'style="display: none;"'.html_safe if key.to_s != @profile.country.downcase %>>
+      <div id="profile_states_group-<%= key %>" class="form-group profile_states_group" <%= 'style="display: none;"'.html_safe if key.to_s != @profile.country&.downcase %>>
         <label for="profile_states-<%= key %>">
           <%= t(:"state.#{key}") %>:
         </label>
@@ -60,7 +60,7 @@
         $("#profile_states_group-" + country + " select").attr("name", "profile[state]");
       };
       $(document).ready(function() {
-        updateStateSelects("<%= @profile.country.downcase %>");
+        updateStateSelects("<%= @profile.country&.downcase %>");
         $("#profile_country").change(function() {
           updateStateSelects(this.value.toLowerCase());
         });
