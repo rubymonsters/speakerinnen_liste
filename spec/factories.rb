@@ -32,7 +32,8 @@ FactoryBot.define do
       lastname { 'Lovelace' }
       twitter_en { 'alovelace' }
       city_en { 'London' }
-      country { 'GB' }
+      state { 'carinthia' }
+      country { 'AT' }
       iso_languages { ['en', 'de'] }
       bio_de { 'Sie hat den ersten Algorithmus veröffentlicht.' }
       bio_en { 'She published the first algorithm for a machine.' }

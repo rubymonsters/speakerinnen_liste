@@ -49,7 +49,7 @@ describe Searchable, elasticsearch: true do
     end
 
     it 'contains the attribute country' do
-      expect(ada.as_indexed_json['country']).to eq 'GB'
+      expect(ada.as_indexed_json['country']).to eq 'AT'
     end
 
     it 'contains the attribute bio_de' do
