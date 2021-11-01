@@ -7,5 +7,6 @@ RSpec.configure do |config|
 
   config.before(:each, type: :system, js: true) do
     driven_by :selenium_chrome_headless
+    page.driver.resize_window 1200, 800
   end
 end

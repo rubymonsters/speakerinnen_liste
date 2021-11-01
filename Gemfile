@@ -27,7 +27,7 @@ gem 'jquery-rails', '~> 4.4.0'
 gem 'jquery-ui-rails', '~> 6.0.1'
 gem 'mini_magick', '~> 4.9.5'
 gem 'omniauth-twitter', '~> 1.4'
-gem 'omniauth-rails_csrf_protection', '~> 1.0' 
+gem 'omniauth-rails_csrf_protection', '~> 1.0'
 gem 'pg', '~> 1.1.3'
 gem 'simple_form'
 
@@ -85,6 +85,7 @@ group :development, :test do
 end
 
 group :test do
+  gem 'puma'
   gem 'database_cleaner', '~> 1.7.0'
   gem 'elasticsearch-extensions', git: 'git://github.com/elasticsearch/elasticsearch-ruby.git', ref: '6.x'
   gem 'factory_bot_rails'
