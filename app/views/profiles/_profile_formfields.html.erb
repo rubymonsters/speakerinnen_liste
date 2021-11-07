@@ -36,6 +36,7 @@
           label_html: { id: "country"} ,
           priority_countries: ["DE", "AT", "CH"], include_blank: t(:please_select, scope: 'profiles.form') %>
     </div>
+    <%= f.hidden_field :state, value: nil %>
     <% t(:states).each do |key, value| %>
       <div id="profile_states_group-<%= key %>" class="form-group profile_states_group" <%= 'style="display: none;"'.html_safe if key.to_s != @profile.country&.downcase %>>
         <label for="profile_states-<%= key %>">
