@@ -73,4 +73,5 @@ Rails.application.configure do
   end
 
   config.action_mailer.delivery_method = :letter_opener
+  config.hosts << /(\w+\.)?speakerinnen.local/
 end
