@@ -39,6 +39,10 @@ class Profile < ApplicationRecord
     AdminMailer.new_profile_confirmed(self).deliver
   end
 
+  def self.by_region(region)
+  	region ? where('country = ? OR state = ?', region, region) : all
+  end
+
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |profile|
       profile.provider = auth.provider
