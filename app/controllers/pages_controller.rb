@@ -7,6 +7,7 @@ class PagesController < ApplicationController
                 .with_attached_image
                 .includes(:translations)
                 .is_published
+                .by_region(current_region)
                 .main_topic_translated_in(I18n.locale)
                 .last 7
     @categories = Category.sorted_categories

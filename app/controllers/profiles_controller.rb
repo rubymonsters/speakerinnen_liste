@@ -182,6 +182,7 @@ class ProfilesController < ApplicationController
     Profile
       .with_attached_image
       .is_published
+      .by_region(current_region)
       .includes(:taggings, :translations)
       .joins(:topics)
       .where(tags: { name: tag_names })
@@ -193,6 +194,7 @@ class ProfilesController < ApplicationController
     Profile
       .with_attached_image
       .is_published
+      .by_region(current_region)
       .includes(:taggings, :translations)
       .search(
         params[:search],
@@ -209,6 +211,7 @@ class ProfilesController < ApplicationController
     Profile
       .with_attached_image
       .is_published
+      .by_region(current_region)
       .includes(:translations)
       .main_topic_translated_in(I18n.locale)
       .random
