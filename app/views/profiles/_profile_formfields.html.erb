@@ -33,8 +33,7 @@
     <div class="form-group">
       <%= f.label :country, label: t(:country, scope: 'profiles.form') %>
       <%= f.country_select :country,
-          {},
-          priority_countries: ["DE", "AT", "CH"],
+          { priority_countries: ["DE", "AT", "CH"] },
           include_blank: t(:please_select, scope: 'profiles.form'),
           class: 'form-control'
       %>
