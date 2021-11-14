@@ -84,6 +84,10 @@ class Profile < ApplicationRecord
     (cities_de << cities_en).flatten!.uniq
   end
 
+  def region
+    [country, state].join(' ').downcase
+  end
+
   def name_or_email
     fullname.present? ? fullname : email
   end
