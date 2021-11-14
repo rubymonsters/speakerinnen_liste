@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 2021_10_30_131725) do
     t.text "body"
     t.string "url"
     t.datetime "created_at"
-    t.datetime "uodated_at"
+    t.datetime "updated_at"
   end
 
   create_table "categories", id: :serial, force: :cascade do |t|
