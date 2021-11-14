@@ -5,7 +5,7 @@ class CreateBlogPosts < ActiveRecord::Migration[4.2]
       t.text :body
       t.string :url
       t.datetime :created_at
-      t.datetime :uodated_at
+      t.datetime :updated_at
     end
   end
 end
