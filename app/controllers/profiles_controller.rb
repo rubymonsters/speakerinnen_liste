@@ -35,18 +35,18 @@ class ProfilesController < ApplicationController
 
     # for the tags filter module that is available all the time at the profile index view
     # is needed for the colors of the tags
-    @category = 
-      if params[:category_id] 
-        Category.find(params[:category_id]) 
+    @category =
+      if params[:category_id]
+        Category.find(params[:category_id])
       elsif params[:tag_filter]
         if params[:tag_filter].empty?
-          redirect_to profiles_url(anchor: "top"), notice: I18n.t('flash.profiles.no_tags_selected') 
+          redirect_to profiles_url(anchor: "top"), notice: I18n.t('flash.profiles.no_tags_selected')
           return
         end
         last_tag = params[:tag_filter].split(/\s*,\s*/).last
         last_tag_id = ActsAsTaggableOn::Tag.where(name: last_tag).last.id
         Category.select{|cat| cat.tag_ids.include?(last_tag_id)}.last
-      else    
+      else
         Category.first
       end
     @categories = Category.sorted_categories
@@ -133,6 +133,7 @@ class ProfilesController < ApplicationController
       :password_confirmation,
       :remember_me,
       :country,
+      :state,
       { iso_languages: [] },
       :firstname,
       :lastname,
@@ -181,6 +182,7 @@ class ProfilesController < ApplicationController
     Profile
       .with_attached_image
       .is_published
+      .by_region(current_region)
       .includes(:taggings, :translations)
       .joins(:topics)
       .where(tags: { name: tag_names })
@@ -192,6 +194,7 @@ class ProfilesController < ApplicationController
     Profile
       .with_attached_image
       .is_published
+      .by_region(current_region)
       .includes(:taggings, :translations)
       .search(
         params[:search],
@@ -208,6 +211,7 @@ class ProfilesController < ApplicationController
     Profile
       .with_attached_image
       .is_published
+      .by_region(current_region)
       .includes(:translations)
       .main_topic_translated_in(I18n.locale)
       .random
