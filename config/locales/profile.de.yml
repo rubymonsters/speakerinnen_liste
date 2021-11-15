@@ -101,9 +101,8 @@ de:
       check_faq: "Fülle bitte die Felder via 'Edit Profile' aus!. <BR> Für mehr Informationen, wie Du am besten dein Profil angelegst, kannst Du hier nach schauen: <a href='https://speakerinnen.org/de/faq'>FAQ</a>"
       profile_from: "Profil von"
       to_profile: "Zum Profil"
-      inactive_profile: "Im Moment bist zu gerade nicht kontaktierbar über unserer Seite<br>
-        weil du dich auf <b>inaktive</b> gesetzt hast. "
-      activate_profile: "Aktiviere Dein Profil"
+      inactive_profile: "Du hast Dein Profil 'inaktiv' geschaltet. Deshalb kannst Du im Moment <b>nicht</b> per Mail kontaktiert werden. "
+      activate_profile: "Profil wieder aktivieren."
     medialinks:
       edit: "Referenzen bearbeiten"
     edit:
