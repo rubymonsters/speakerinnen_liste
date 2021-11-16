@@ -19,6 +19,7 @@ class ProfilesController < ApplicationController
       @aggs = @profiles.response.aggregations
       @aggs_languages = @aggs[:lang][:buckets]
       @aggs_cities = @aggs[:city][:buckets]
+      @aggs_states = @aggs[:state][:buckets]
       @aggs_countries = @aggs[:country][:buckets]
       @three_sample_categories = Category.all.sample(3)
     elsif params[:tag_filter]&.present?
@@ -198,7 +199,9 @@ class ProfilesController < ApplicationController
       .includes(:taggings, :translations)
       .search(
         params[:search],
-        params[:filter_countries] || current_region,
+        # params[:filter_countries] || current_region,
+        params[:filter_countries],
+        params[:filter_states],
         params[:filter_cities],
         params[:filter_lang],
         (!Rails.env.production? || params[:explain]) == true

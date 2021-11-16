@@ -48,8 +48,8 @@ describe Searchable, elasticsearch: true do
       expect(ada.as_indexed_json['cities']).to eq ['London']
     end
 
-    it 'contains the attribute region' do
-      expect(ada.as_indexed_json['region']).to eq 'at carinthia'
+    it 'contains the attribute state' do
+      expect(ada.as_indexed_json['state']).to eq 'carinthia'
     end
 
     it 'contains the attribute bio_de' do
