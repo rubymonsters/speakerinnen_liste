@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   before_action :set_locale
+  before_action :set_request_host
   before_action :set_current_region
   before_action :check_cookie_consent
 
@@ -21,6 +22,15 @@ class ApplicationController < ActionController::Base
     false
   end
   helper_method(:render_footer?)
+
+  def set_request_host
+    Thread.current[:request_host] = request.host
+  end
+
+  def request_host
+    Thread.current[:request_host]
+  end
+  helper_method :request_host
 
   def set_current_region
     @current_region = validate_region($1.to_sym) if request.host =~ %r((.+)\.#{current_domain})

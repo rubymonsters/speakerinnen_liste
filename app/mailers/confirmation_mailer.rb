@@ -16,4 +16,13 @@ class ConfirmationMailer < Devise::Mailer
     end
     super
   end
+
+  def request_host
+    Thread.current[:request_host]
+  end
+  helper_method :request_host
+
+  def url_options
+    default_url_options.merge(host: Thread.current[:request_host])
+  end
 end
