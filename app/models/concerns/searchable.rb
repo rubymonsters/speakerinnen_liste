@@ -84,7 +84,7 @@ module Searchable
           }
         }
 
-      query_hash[:min_score] = 3.00 if Rails.env.production?
+      query_hash[:min_score] = 3.00 unless Rails.env.test?
 
       filters = []
       filters << { "term": { "iso_languages": @filter_lang } } if @filter_lang
