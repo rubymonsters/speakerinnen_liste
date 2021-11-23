@@ -27,7 +27,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_domain
-    ENV['DOMAIN'] || Rails.env.development? ? 'speakerinnen.local' : 'speakerinnen.org'
+    ENV['DOMAIN'] or Rails.env.development? ? 'speakerinnen.local' : 'speakerinnen.org'
   end
 
   def validate_region(region)
