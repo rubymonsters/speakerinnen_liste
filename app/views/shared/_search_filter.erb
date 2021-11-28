@@ -13,7 +13,6 @@
             <span class="pl-1"><%# filter[:aggregations].first["doc_count"] %></span>
           </li>
           <% filter[:aggregations][0..9].each do |term| %>
-          <%# binding.pry %>
             <li class=" <%= 'selected' if filter[:param_val]&.downcase == term['key'].downcase %>">
               <%= link_to(
                     filter[:link_text_func].call(term['key']),

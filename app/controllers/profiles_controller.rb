@@ -199,7 +199,6 @@ class ProfilesController < ApplicationController
       .includes(:taggings, :translations)
       .search(
         params[:search],
-        # params[:filter_countries] || current_region,
         params[:filter_countries],
         params[:filter_states],
         params[:filter_cities],
