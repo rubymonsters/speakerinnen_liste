@@ -5,7 +5,7 @@
 <p>Bitte bestätige die Änderung durch einen Klick auf diesen Link:
 <%= link_to 'Bestätigung der Änderung', confirmation_url(@resource, locale: I18n.locale, confirmation_token: @token) %>.</p>
 
-<p>Melde dich gerne bei uns, wenn du Fragen hast! Und natürlich freuen wir uns jederzeit über dein Feedback zu Speakerinnen.org.</p>
+<p>Melde dich gerne bei uns, wenn du Fragen hast! Und natürlich freuen wir uns jederzeit über dein Feedback zu <%= request_host.capitalize || "Speakerinnen.org" %>.</p>
 
 <p>Danke,<br>
 
