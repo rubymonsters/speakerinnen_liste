@@ -10,7 +10,6 @@
                   filter[:filter_params_all],
                   class: "#{'bg-dark text-light' if !filter[:param_val] }")
             %>
-            <span class="pl-1"><%# filter[:aggregations].first["doc_count"] %></span>
           </li>
           <% filter[:aggregations][0..9].each do |term| %>
             <li class=" <%= 'selected' if filter[:param_val]&.downcase == term['key'].downcase %>">
