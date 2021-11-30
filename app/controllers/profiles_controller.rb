@@ -52,14 +52,13 @@ class ProfilesController < ApplicationController
       end
     @categories = Category.sorted_categories
     Category.all.includes(:translations).each do |category|
-      instance_variable_set(
-        "@tags_#{category.short_name}",
-        ActsAsTaggableOn::Tag
-          .belongs_to_category(category.id)
-          .belongs_to_more_than_one_profile
-          .with_published_profile
-          .translated_in_current_language_and_not_translated(I18n.locale)
-      ).most_used(100)
+      tags = ActsAsTaggableOn::Tag
+        .belongs_to_category(category.id)
+        .with_published_profile
+        .with_regional_profile(current_region)
+        .translated_in_current_language_and_not_translated(I18n.locale)
+      tags = tags.belongs_to_more_than_one_profile unless current_region
+      instance_variable_set("@tags_#{category.short_name}", tags).most_used(100)
     end
   end
 
