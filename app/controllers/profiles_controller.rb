@@ -24,7 +24,7 @@ class ProfilesController < ApplicationController
       @three_sample_categories = Category.all.sample(3)
     elsif params[:tag_filter]&.present?
       @tags = params[:tag_filter].split(/\s*,\s*/)
-      @profiles = Profile.is_published.has_tags(@tags).page(params[:page]).per(24)
+      @profiles = profiles_with_tags
       # redirect_to profiles_path(:anchor => "speakers")
     elsif params[:category_id]
       @profiles = profiles_for_category
@@ -207,6 +207,14 @@ class ProfilesController < ApplicationController
       )
       .page(params[:page]).per(24)
       .records
+  end
+
+  def profiles_with_tags
+    Profile
+      .is_published
+      .by_region(current_region)
+      .has_tags(@tags)
+      .page(params[:page]).per(24)
   end
 
   def profiles_for_index
