@@ -1,9 +1,9 @@
 <% if @profiles.count > 0 %>
   <div class="row row-cols-4">
-    <% filters_hash(aggs_countries, aggs_cities, aggs_languages).each do |filter| %>
+    <% filters_hash(aggs_countries, aggs_states, aggs_cities, aggs_languages).each do |filter| %>
       <div class="col-12 col-sm-6 col-md-3">
         <ul id="facet_<%= filter[:key] %>" class="search-aggregation list-unstyled">
-          <b><%= t(filter[:title], scope: 'search' ).html_safe %></b>
+          <li><b><%= t(filter[:title], scope: 'search' ).html_safe %></b></li>
           <li class="<%= 'selected' if !filter[:param_val] %>">
             <%= link_to(
                   t(filter[:all_text], scope: 'search'),
@@ -13,7 +13,6 @@
             <span class="pl-1"><%# filter[:aggregations].first["doc_count"] %></span>
           </li>
           <% filter[:aggregations][0..9].each do |term| %>
-          <%# binding.pry %> 
             <li class=" <%= 'selected' if filter[:param_val]&.downcase == term['key'].downcase %>">
               <%= link_to(
                     filter[:link_text_func].call(term['key']),
