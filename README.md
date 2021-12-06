@@ -125,6 +125,23 @@ We are happy to answer your questions if you consider to help. All the issues ha
 
 Find further details in [CONTRIBUTING.md](CONTRIBUTING.md).
 
+#Troubleshooting
+
+## Docker
+
+### Use upgraded postgres version in Docker
+If Postgres got upgraded in the docker-compose file, you need to delete all processes, images 
+and volumes that still use the olde version:
+1. Use ```make tear-down``` to delete all processes and images
+2. Delete your local Postgres database inside Docker as well. (Otherwise you will get a DB connection error)
+Check for your Postgres DB in Docker:
+``` docker volume ls ```
+Ouput will be a list of volumes, pick the speakerinnen one and delete it (adjust the name if yours is 
+different):
+``` docker volume rm speakerinnen_liste_postgres_data ```
+3. ```make setup``` to recreate all images, processes and volumes.
+
+
 # ♥ Code of Conduct
 
 Please note that [speakerinnen](https://speakerinnen.org) has a [Contributor Code of Conduct](https://github.com/rubymonsters/speakerinnen_liste/blob/master/code-of-conduct.md) based on the [Contributor Covenant](https://www.contributor-covenant.org). By participating in this project online or at events you agree to abide by its terms.
