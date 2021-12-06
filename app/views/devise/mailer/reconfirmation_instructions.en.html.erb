@@ -5,7 +5,7 @@
 <p>To complete the change of the email adress please click the following link:
 <%= link_to 'Reconfirm my account', confirmation_url(@resource, locale: I18n.locale, confirmation_token: @token) %></p>
 
-<p>Please don’t hesitate to contact us if you have any further questions – or if you have any feedback regarding Speakerinnen.org!</p>
+<p>Please don’t hesitate to contact us if you have any further questions – or if you have any feedback regarding <%= request_host.capitalize || "Speakerinnen.org" %>!</p>
 
 <p>Thank you,<br>
 
