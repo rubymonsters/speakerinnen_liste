@@ -4,6 +4,9 @@
 # or operating system, you probably want to add a global ignore instead:
 #   git config --global core.excludesfile ~/.gitignore_global
 
+# Ignore database.yml config
+/config/database.yml
+
 # Ignore bundler config
 /.bundle
 
@@ -20,6 +23,8 @@
 .project
 .settings/org.eclipse.wst.jsdt.ui.superType.container
 .settings/org.eclipse.wst.jsdt.ui.superType.name
+
+.byebug_history
 
 /db/structure.sql
 

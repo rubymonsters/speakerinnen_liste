@@ -40,6 +40,7 @@ describe ProfilesController, type: :controller do
       expect(assigns(:aggs)).to have_key(:city)
       expect(assigns(:aggs)).to have_key(:lang)
       expect(assigns(:aggs)).to have_key(:country)
+      expect(assigns(:aggs)).to have_key(:state)
     end
   end
 

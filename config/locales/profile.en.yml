@@ -57,6 +57,7 @@ en:
       email: "Email address: <i class='fa fa-info-circle' aria-hidden='true'></i>"
       website: "Website:"
       additional_websites: "Additional websites/blogs:"
+      please_select: "Please select"
     show:
       firstname: 'First name:'
       lastname: 'Last name:'
@@ -82,7 +83,6 @@ en:
       websites: "Websites/blogs:"
       city: "City:"
       country: "Country:"
-      country_select: "Select a country:"
       twitter: "Twitter handle:"
       website: "Website/blog:"
       contact: "Contact"
