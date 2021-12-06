@@ -8,7 +8,8 @@ module Searchable
 
     index_name [Rails.application.engine_name, Rails.env].join('_')
 
-    def self.search(query, filter_countries, filter_states, filter_cities, filter_lang, with_explain)
+    def self.search(query, filter_regions, filter_countries, filter_states, filter_cities, filter_lang, with_explain)
+      @filter_regions = filter_regions == "" ? nil : filter_regions
       @filter_countries = filter_countries == "" ? nil : filter_countries
       @filter_states = filter_states == "" ? nil : filter_states
       @filter_cities = filter_cities == "" ? nil : filter_cities
@@ -17,6 +18,7 @@ module Searchable
       query_hash =
         {
           explain: with_explain,
+          min_score: 0.8,
           query: {
             bool: {
               should: [
@@ -84,13 +86,12 @@ module Searchable
           }
         }
 
-      query_hash[:min_score] = 3.00 unless Rails.env.test?
-
       filters = []
       filters << { "term": { "iso_languages": @filter_lang } } if @filter_lang
       filters << { "term": { "cities.unmod": @filter_cities } } if @filter_cities
       filters << { "term": { "state": @filter_states } } if @filter_states
       filters << { "term": { "country": @filter_countries } } if @filter_countries
+      filters << { "term": { "region": @filter_regions } } if @filter_regions
       query_hash[:query][:bool][:filter] = filters unless filters.empty?
 
       __elasticsearch__.search(query_hash)
@@ -105,7 +106,7 @@ module Searchable
       output = as_json(
         autocomplete: { input: [fullname, twitter_de, twitter_en, topic_list] },
         only: %i[firstname lastname iso_languages country state],
-        methods: [:fullname, :topic_list, :cities, *globalize_attribute_names],
+        methods: [:fullname, :topic_list, :region, :cities, *globalize_attribute_names],
         include: {
           medialinks: { only: %i[title description] }
         }
@@ -227,6 +228,8 @@ module Searchable
         indexes :state,         fields: { keyword: { type: 'keyword', 'norms': false },
                                 standard: { type: 'text', analyzer: 'standard', 'norms': false }}
         indexes :country,       fields: { keyword: { type: 'keyword', 'norms': false },
+                                standard: { type: 'text', analyzer: 'standard', 'norms': false }}
+        indexes :region,        fields: { keyword: { type: 'keyword', 'norms': false },
                                 standard: { type: 'text', analyzer: 'standard', 'norms': false }}
         indexes :medialinks, type: 'nested' do
           indexes :title, 'norms': false
