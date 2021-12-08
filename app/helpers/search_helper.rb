@@ -10,13 +10,15 @@ module SearchHelper
   end
 
   def filters_hash(aggs_countries, aggs_states, aggs_cities, aggs_languages)
-    filter_params = { search: params[:search],
-                      filter_countries: params[:filter_countries],
-                      filter_cities: params[:filter_cities],
-                      filter_lang: params[:filter_lang],
-                      filter_states: params[:filter_states] }
+    filter_params = {
+      search: params[:search],
+      filter_countries: params[:filter_countries],
+      filter_cities: params[:filter_cities],
+      filter_lang: params[:filter_lang],
+      filter_states: params[:filter_states]
+    }
 
-    [
+    hashes = [
       {
         key: 'countries',
         title: :countries_agg,
@@ -58,5 +60,9 @@ module SearchHelper
         link_text_func: ->(term_key) { t(term_key, scope: 'iso_639_1').capitalize }
       }
     ]
+
+    hashes.reject do |hash|
+      (hash[:key] == 'countries' || hash[:key] == 'states') && !current_region.nil?
+    end
   end
 end
