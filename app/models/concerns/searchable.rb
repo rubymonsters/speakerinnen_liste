@@ -240,10 +240,8 @@ module Searchable
 
     def self.typeahead(q, current_region)
       contexts = {}
-      if current_region
-        p "KEKKSEEEE"
-        contexts[:state] = [current_region]
-      end
+      contexts[:state] = current_region if current_region
+
       __elasticsearch__.client.search(
         index: index_name,
         body: {
