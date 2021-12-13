@@ -200,24 +200,24 @@ module Searchable
     settings elasticsearch_mappings do
       mappings dynamic: 'false' do
         indexes :fullname,   type: 'text', analyzer: 'fullname_analyzer', 'norms': false do
-          indexes :suggest,  type: 'completion'
+          indexes :suggest,  type: 'completion', contexts: [{name: 'state', type: 'category', path: 'state'}]
         end
         indexes :lastname,   type: 'text', analyzer: 'fullname_analyzer', 'norms': false do
-          indexes :suggest,  type: 'completion'
+          indexes :suggest,  type: 'completion', contexts: [{name: 'state', type: 'category', path: 'state'}]
         end
         indexes :twitter_de, type: 'text', analyzer: 'twitter_analyzer', 'norms': false do
-          indexes :suggest,  type: 'completion'
+          indexes :suggest,  type: 'completion', contexts: [{name: 'state', type: 'category', path: 'state'}]
         end
         indexes :twitter_en, type: 'text', analyzer: 'twitter_analyzer', 'norms': false do
-          indexes :suggest,  type: 'completion'
+          indexes :suggest,  type: 'completion', contexts: [{name: 'state', type: 'category', path: 'state'}]
         end
         indexes :topic_list, type: 'text', analyzer: 'standard', 'norms': false do
-          indexes :suggest,  type: 'completion'
+          indexes :suggest,  type: 'completion', contexts: [{name: 'state', type: 'category', path: 'state'}]
         end
         I18n.available_locales.each do |locale|
           %i[main_topic bio website].each do |name|
             indexes :"#{name}_#{locale}", type: 'text', analyzer: "#{ANALYZERS[locale]}_without_stemming" do
-              indexes :suggest, type: 'completion' if name == :main_topic
+              indexes :suggest, type: 'completion', contexts: [{name: 'state', type: 'category', path: 'state'}] if name == :main_topic
             end
           end
         end
@@ -238,30 +238,35 @@ module Searchable
       end
     end
 
-    def self.typeahead(q)
+    def self.typeahead(q, current_region)
+      contexts = {}
+      if current_region
+        p "KEKKSEEEE"
+        contexts[:state] = [current_region]
+      end
       __elasticsearch__.client.search(
         index: index_name,
         body: {
           suggest: {
             fullname_suggest: {
               text: q,
-              completion: { field: 'fullname.suggest' }
+              completion: { field: 'fullname.suggest', contexts: contexts }
             },
             lastname_suggest: {
               text: q,
-              completion: { field: 'lastname.suggest' }
+              completion: { field: 'lastname.suggest', contexts: contexts }
             },
             main_topic_de_suggest: {
               text: q,
-              completion: { field: 'main_topic_de.suggest' }
+              completion: { field: 'main_topic_de.suggest', contexts: contexts }
             },
             main_topic_en_suggest: {
               text: q,
-              completion: { field: 'main_topic_en.suggest' }
+              completion: { field: 'main_topic_en.suggest', contexts: contexts }
             },
             topic_list_suggest: {
               text: q,
-              completion: { field: 'topic_list.suggest' }
+              completion: { field: 'topic_list.suggest', contexts: contexts }
             }
          }
       })
