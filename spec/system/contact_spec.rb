@@ -38,7 +38,7 @@ describe 'contact profile' do
       ada.update!(inactive: true)
       visit profile_path(id: ada.id)
       within(:css, '.single-profile') do
-        expect(page).to have_button(I18n.t(:no_contact, scope: 'profiles.show') + " " + ada.fullname)
+        expect(page).to have_button(ada.fullname + I18n.t(:no_contact, scope: 'profiles.show'))
       end
     end
   end
