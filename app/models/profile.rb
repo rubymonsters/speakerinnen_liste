@@ -39,6 +39,10 @@ class Profile < ApplicationRecord
     AdminMailer.new_profile_confirmed(self).deliver
   end
 
+  def self.by_region(region)
+  	region ? where('country = ? OR state = ?', region, region) : all
+  end
+
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |profile|
       profile.provider = auth.provider
@@ -78,6 +82,10 @@ class Profile < ApplicationRecord
     cities_de = city_de.to_s.gsub(/(,|\/|&|\*|\|| - | or )/, "!@\#$%ˆ&*").split("!@\#$%ˆ&*").map(&:strip)
     cities_en = city_en.to_s.gsub(/(,|\/|&|\*|\|| - | or )/, "!@\#$%ˆ&*").split("!@\#$%ˆ&*").map(&:strip)
     (cities_de << cities_en).flatten!.uniq
+  end
+
+  def region
+    [country, state].join(' ').downcase
   end
 
   def name_or_email

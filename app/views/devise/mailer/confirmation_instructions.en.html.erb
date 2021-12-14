@@ -1,18 +1,19 @@
-<p>Welcome to Speakerinnen.org!</p>
+<p>Welcome to <%= request_host.capitalize || "Speakerinnen.org" %>!</p>
 
 <p>We are delighted that you have registered with us.</p>
 
-<p>To complete the registration process please click the following link: <%= link_to 'Confirm my account', confirmation_url(@resource, :locale => I18n.locale, :confirmation_token => @token) %></p>
+<p>To complete the registration process please click the following link:
+<%= link_to 'Confirm my account', confirmation_url(@resource, locale: I18n.locale, confirmation_token: @token) %></p>
 
-<p>Every Speakerinnen.org profile will be checked and activated as soon as it is complete. Please ensure that your profile includes information in both the My Bio and Examples of Previous Talks sections. This is crucial for activation of your profile.</p>
+<p>Every profile will be checked and activated as soon as it is complete. Please ensure that your profile includes information in both the My Bio and Examples of Previous Talks sections. This is crucial for activation of your profile.</p>
 
-<p>You’ll find more information about what we value in a profile in our<a href="http://speakerinnen.org/en/faq#howto_anker"> How-to Guide.</a></p>
+<p>You’ll find more information about what we value in a profile in our <a href="<%= url_for(controller: :pages, action: :faq, only_path: false) %>">FAQ</a>.</p>
 
-<p>Please don’t hesitate to contact us if you have any further questions – or if you have any feedback regarding Speakerinnen.org!</p>
+<p>Please don’t hesitate to contact us if you have any further questions – or if you have any feedback regarding <%= request_host.capitalize || "Speakerinnen.org" %>!</p>
 
 <p>Thank you,<br>
 
-Anja, Anne, Christiane, Mandy and Maren<br>
+Anja, Christiane, Mandy and Maren<br>
 (the team of Speakerinnen.org)</p>
 
 <p>If you recieve that e-mail without having signed in, please contact us: <a href="mailto:team@speakerinnen.org">team@speakerinnen.org</a>.</p>

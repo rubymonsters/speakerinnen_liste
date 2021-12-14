@@ -1,22 +1,19 @@
-<p>Willkommen bei Speakerinnen.org!</p>
+<p>Willkommen bei <%= request_host.capitalize || "Speakerinnen.org" %>!</p>
 
 <p>Wir freuen uns, dass du dich registriert hast. Du kannst den Anmeldeprozess abschließen, wenn du auf den folgenden Link klickst:
-<%= link_to 'Bestätige meinen Account', confirmation_url(@resource, :locale => I18n.locale, :confirmation_token => @token) %></p>
+<%= link_to 'Bestätige meinen Account', confirmation_url(@resource, locale: I18n.locale, confirmation_token: @token) %></p>
 
 <p>Wichtig für dich zu wissen: Alle neuen Profile werden von uns geprüft und erst dann freigeschaltet, wenn sie die notwendigen Anforderungen erfüllen – das geht manchmal ganz schnell, kann aber auch wenige Tage dauern.</p>
 
 <p>Bitte achte darauf, dass neben den allgemeinen Angaben auf jeden Fall die Felder „Meine Biographie“ und „Meine Vorträge“ ausgefüllt sind. Wir können das Profil leider erst freischalten, wenn eines der beiden Felder Informationen enthält. Am besten ist es natürlich, wenn du Angaben in beiden Bereichen machst.</p>
 
-<p>Mehr darüber, was uns bei einem Speakerinnen-Profil wichtig ist, findest du im Guide:<a href="http://speakerinnen.org/de/faq#howto_anker"> How to become a speakerin</a></p>
+<p>Mehr darüber, was uns bei einem Speakerinnen-Profil wichtig ist, findest du in den <a href="<%= url_for(controller: :pages, action: :faq, only_path: false) %>">FAQ</a>.</p>
 
-<p>Melde dich gerne bei uns, wenn du Fragen hast! Und natürlich freuen wir uns jederzeit über dein Feedback zu Speakerinnen.org.</p>
-
-
+<p>Melde dich gerne bei uns, wenn du Fragen hast! Und natürlich freuen wir uns jederzeit über dein Feedback zu <%= request_host.capitalize || "Speakerinnen.org" %>.</p>
 
 <p>Danke,<br>
 
-Anja, Anne, Christiane, Mandy und Maren<br>
-(das Speakerinnen-Team)
-</p>
+Anja, Christiane, Mandy und Maren<br>
+(das Speakerinnen-Team)</p>
 
-<p>Solltest Du diese E-Mail bekommen, ohne Dich angemeldet zu haben, sag uns bitte Bescheid: <a href="mailto:team@speakerinnen.org">team@speakerinnen.org</a>.</p>
+<p>Solltest du diese E-Mail bekommen, ohne dich angemeldet zu haben, sag uns bitte Bescheid: <a href="mailto:team@speakerinnen.org">team@speakerinnen.org</a>.</p>

@@ -1,13 +1,15 @@
-<p>Hallo<%= " #{@resource.firstname}" if @resource.firstname %>!</p>
+<p>Hallo <%= "#{@resource.firstname}" if @resource.firstname %>!</p>
 
-<p>Dein Wunsch zur Änderung deiner E-Mail-Adresse ist bei uns eingetroffen. </p>
+<p>Dein Wunsch zur Änderung deiner E-Mail-Adresse ist bei uns eingetroffen.</p>
+
 <p>Bitte bestätige die Änderung durch einen Klick auf diesen Link:
-<%= link_to 'Bestätigung der Änderung.', confirmation_url(@resource, :locale => I18n.locale, :confirmation_token => @token) %></p>
+<%= link_to 'Bestätigung der Änderung', confirmation_url(@resource, locale: I18n.locale, confirmation_token: @token) %>.</p>
 
-<p>Melde dich gerne bei uns, wenn du Fragen hast! Und natürlich freuen wir uns jederzeit über dein Feedback zu Speakerinnen.org.</p>
+<p>Melde dich gerne bei uns, wenn du Fragen hast! Und natürlich freuen wir uns jederzeit über dein Feedback zu <%= request_host.capitalize || "Speakerinnen.org" %>.</p>
 
 <p>Danke,<br>
 
-Anja, Anne, Christiane, Mandy und Maren<br>
-(Das Speakerinnen-Team)
-</p>
+Anja, Christiane, Mandy und Maren<br>
+(Das Speakerinnen-Team)</p>
+
+<p>Falls du keine Änderung deiner E-Mail-Adresse veranlasst hast, kannst du diese E-Mail ignorieren und uns Bescheid sagen: <a href="mailto:team@speakerinnen.org">team@speakerinnen.org</a></p>

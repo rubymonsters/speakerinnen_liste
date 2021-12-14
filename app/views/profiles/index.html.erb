@@ -4,31 +4,25 @@
   <% if params[:search] %>
     <div class="row">
       <div class="col-12 py-5">
-        <span class="h3 serif">
-          <%= t(:success, scope: 'search').html_safe + t(:result, scope: 'search', count: @profiles_count).html_safe %><b><%= params[:search] if params[:search] %></b>
-        </span>
-        <% filter_element_class = @profiles.count <= 0 ? "filter-themes-next-line" : "float-right"%>
-        <span class=<%=filter_element_class%>>
-          <%= link_to("<i class='fa fa-filter pr-2'></i>".html_safe + "Filter by themes", profiles_path, class: '')  %>
+        <span class="h4 serif">
+          <%= t(:result, scope: 'search', count: @profiles_count).html_safe %><b><%= params[:search] if params[:search] %></b>
         </span>
       </div>
     </div>
-    <% if @profiles.count > 0 %>
-      <div class="row-3">
-        <div class="col-12">
-          <%= render partial: 'shared/search_filter',
-              locals: {
-                profiles: @profiles,
-                aggs_languages: @aggs_languages,
-                aggs_countries: @aggs_countries,
-                aggs_cities: @aggs_cities
-              }
-            %>
-        </div>
+    <div class="row">
+      <div class="col-12">
+        <%= render partial: 'shared/search_filter',
+            locals: {
+              profiles: @profiles,
+              aggs_languages: @aggs_languages,
+              aggs_countries: @aggs_countries,
+              aggs_states: @aggs_states,
+              aggs_cities: @aggs_cities
+            }
+          %>
       </div>
-    <% end %>
+    </div>
   <% end %>
-
   <!-- only show the category filter when not in search scope -->
   <% unless params[:search] %>
     <div class="collapse show" id="collapseFilter">
@@ -41,13 +35,12 @@
       <%= render partial: 'shared/category_filter' %>
       <a id="speakers_anchor"></a>
 
-    <hr class="mt-5">
     </div> <!-- tag filter -->
-    <a href="#top"><%= t(:up_to_filter, scope: 'profiles.index') %> <i class='fa fa-filter pr-2'></i> </a>
+    <!-- <a href="#top"><%= t(:up_to_filter, scope: 'profiles.index') %> <i class='fa fa-filter pr-2'></i> </a> -->
   <% end %>
-
+  <hr class="mt-5">
   <!-- Found speaker when in search or filter function -->
-  <div class="row m-5">
+  <div class="row m-4">
     <div class="col-md-12 text-center pt-3">
       <% if params[:category_id] %>
         <h1><%= @category.name %></h1>
@@ -56,8 +49,6 @@
         <h1>
           <%= t(:all_tagged_speakerinnen, scope: 'profiles.index', count: @profiles_count).html_safe + t(:tag_filter, scope: 'profiles.index', count: @tags.count).html_safe %>
         </h1>
-
-        <h3><%# raw @tags.map { |tag_name| ActsAsTaggableOn::Tag.where(name: tag_name).first }.join(', ') %><h3>
       <% end %>
 
     </div>

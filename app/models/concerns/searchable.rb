@@ -8,14 +8,17 @@ module Searchable
 
     index_name [Rails.application.engine_name, Rails.env].join('_')
 
-    def self.search(query, filter_countries, filter_cities, filter_lang, with_explain)
+    def self.search(query, filter_regions, filter_countries, filter_states, filter_cities, filter_lang, with_explain)
+      @filter_regions = filter_regions == "" ? nil : filter_regions
       @filter_countries = filter_countries == "" ? nil : filter_countries
+      @filter_states = filter_states == "" ? nil : filter_states
       @filter_cities = filter_cities == "" ? nil : filter_cities
       @filter_lang = filter_lang == "" ? nil : filter_lang
 
       query_hash =
         {
           explain: with_explain,
+          min_score: 0.8,
           query: {
             bool: {
               should: [
@@ -31,6 +34,7 @@ module Searchable
                       'iso_languages',
                       'cities.standard^1.3',
                       'country',
+                      'state',
                       'topic_list^1.4',
                       'main_topic_en^1.6',
                       'main_topic_de^1.6'
@@ -67,6 +71,12 @@ module Searchable
                 size: 999
               }
             },
+            state: {
+              terms: {
+                field: 'state.keyword',
+                size: 999
+              }
+            },
             country: {
               terms: {
                 field: 'country.keyword',
@@ -76,12 +86,12 @@ module Searchable
           }
         }
 
-      query_hash[:min_score] = 3.00 if Rails.env.production?
-
       filters = []
-      filters << { "term": { "iso_languages": @filter_lang }} if @filter_lang
-      filters << { "term": { "cities.unmod": @filter_cities }} if @filter_cities
-      filters << { "term": { "country": @filter_countries }} if @filter_countries
+      filters << { "term": { "iso_languages": @filter_lang } } if @filter_lang
+      filters << { "term": { "cities.unmod": @filter_cities } } if @filter_cities
+      filters << { "term": { "state": @filter_states } } if @filter_states
+      filters << { "term": { "country": @filter_countries } } if @filter_countries
+      filters << { "term": { "region": @filter_regions } } if @filter_regions
       query_hash[:query][:bool][:filter] = filters unless filters.empty?
 
       __elasticsearch__.search(query_hash)
@@ -95,8 +105,8 @@ module Searchable
 
       output = as_json(
         autocomplete: { input: [fullname, twitter_de, twitter_en, topic_list] },
-        only: %i[firstname lastname iso_languages country],
-        methods: [:fullname, :topic_list, :cities, *globalize_attribute_names],
+        only: %i[firstname lastname iso_languages country state],
+        methods: [:fullname, :topic_list, :region, :cities, *globalize_attribute_names],
         include: {
           medialinks: { only: %i[title description] }
         }
@@ -215,7 +225,11 @@ module Searchable
                                 standard: { type: 'text', analyzer: 'standard', 'norms': false }}
         indexes :cities,        fields: { unmod: { type: 'keyword', 'norms': false },
                                 standard: { type: 'text', analyzer: 'cities_analyzer', 'norms':  false }}
+        indexes :state,         fields: { keyword: { type: 'keyword', 'norms': false },
+                                standard: { type: 'text', analyzer: 'standard', 'norms': false }}
         indexes :country,       fields: { keyword: { type: 'keyword', 'norms': false },
+                                standard: { type: 'text', analyzer: 'standard', 'norms': false }}
+        indexes :region,        fields: { keyword: { type: 'keyword', 'norms': false },
                                 standard: { type: 'text', analyzer: 'standard', 'norms': false }}
         indexes :medialinks, type: 'nested' do
           indexes :title, 'norms': false

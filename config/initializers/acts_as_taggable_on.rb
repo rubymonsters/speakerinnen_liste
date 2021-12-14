@@ -28,6 +28,8 @@ ActsAsTaggableOn::Tag.class_eval do
 
   scope :belongs_to_category, -> (cat_id) { self.joins(:categories).where(:categories => { :id => cat_id }).distinct }
 
+  scope :with_regional_profile, -> (region) { region ? self.joins(:profiles).where(profiles: { state: region }).distinct : self }
+
   scope :belongs_to_more_than_one_profile, -> { self.joins(:taggings).where("taggings_count > ?", 1) }
 
   def merge(wrong_tag)

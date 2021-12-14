@@ -32,7 +32,8 @@ FactoryBot.define do
       lastname { 'Lovelace' }
       twitter_en { 'alovelace' }
       city_en { 'London' }
-      country { 'GB' }
+      state { 'carinthia' }
+      country { 'AT' }
       iso_languages { ['en', 'de'] }
       bio_de { 'Sie hat den ersten Algorithmus veröffentlicht.' }
       bio_en { 'She published the first algorithm for a machine.' }
@@ -58,6 +59,24 @@ FactoryBot.define do
       main_topic_en { 'radioactivity' }
       published { true }
       profession { 'chemist' }
+    end
+
+    factory :laura do
+      firstname { 'Laura' }
+      country { 'AT' }
+      state { :vorarlberg }
+      iso_languages { ['de', 'en'] }
+      main_topic_de { 'Umwelt' }
+      published { true }
+    end
+
+    factory :paula do
+      firstname { 'Paula' }
+      country { 'AT' }
+      state { :vorarlberg }
+      iso_languages { ['de', 'pl'] }
+      main_topic_de { 'Spiele' }
+      published { true }
     end
 
     factory :phantom_of_the_opera do

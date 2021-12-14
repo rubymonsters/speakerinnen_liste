@@ -1,12 +1,15 @@
-<p>Hallo<%= " #{@resource.firstname}" if @resource.firstname %>!</p>
+<p>Hello <%= "#{@resource.firstname}" if @resource.firstname %>!</p>
 
-<p>You have requested to change your email.</p>
+<p>You have requested to change your email address.</p>
 
-<p>To complete the change of the email adress please click the following link: <%= link_to 'Reconfirm my account', confirmation_url(@resource, :locale => I18n.locale, :confirmation_token => @token) %></p>
+<p>To complete the change of the email adress please click the following link:
+<%= link_to 'Reconfirm my account', confirmation_url(@resource, locale: I18n.locale, confirmation_token: @token) %></p>
 
-<p>Please don’t hesitate to contact us if you have any further questions – or if you have any feedback regarding Speakerinnen.org!</p>
+<p>Please don’t hesitate to contact us if you have any further questions – or if you have any feedback regarding <%= request_host.capitalize || "Speakerinnen.org" %>!</p>
 
 <p>Thank you,<br>
 
-Anja, Anne, Christiane, Mandy and Maren<br>
-(the team of Speakerinnen.org)
+Anja, Christiane, Mandy and Maren<br>
+(the team of Speakerinnen.org)</p>
+
+<p>If you have not changed your email address, you can ignore this email, please contact us: <a href="mailto:team@speakerinnen.org">team@speakerinnen.org</a>.</p>

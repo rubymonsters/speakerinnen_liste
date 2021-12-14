@@ -135,6 +135,15 @@
         <%= @profile.city %>
       </p>
     <% end %>
+    <!-- state  -->
+    <% if @profile.state.present? %>
+      <p class="">
+        <span class="font-weight-bold">
+          <%= t(:"state.#{@profile.country.downcase}") %>:
+        </span>
+        <%= t(:"states.#{@profile.country.downcase}.#{@profile.state}") %>
+      </p>
+    <% end %>
     <!-- country  -->
     <% if @profile.country.present? %>
       <p class="">

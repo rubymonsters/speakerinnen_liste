@@ -10,17 +10,23 @@ en:
     empty_search: "The search field was empty. Do you want to try again :)"
     any: "Any"
     filter: "Here you can filter the search results:"
-    success: "We found"
     result: {
-      one: " <b>a</b> speakerin for your search: ",
-      other: " <b>%{count}</b> speakerinnen for your search: "
+      zero: "Unfortuantely we have found no speakerin matching your search: ",
+      one: " We have found <b>a</b> speakerin matching your search: ",
+      other: "We have found <b>%{count}</b> speakerinnen matching your search: "
     }
     more_options: "<b>You didn't find any suitable speaker?</b><br> Maybe the following links can help you:"
     search_categories_html: "Have a look at our other <a href='%{root_path}/#categories_anchor'>categories</a> and <a href='#tag_cloud_anchor'>topics</a>."
     adapt_search: "Adapt your search >> "
-    all_countries: "All Countries"
-    all_cities: "All Cities"
-    all_languages: "All Languages"
+    all_countries: "Select all"
+    all_states: "Select all"
+    all_cities: "Select all"
+    all_languages: "Select all"
     countries_agg: "Countries:"
+    states_agg: "States/Cantons:"
     cities_agg: "Cities:"
     languages_agg: "Languages:"
+    filter_by: "Search via categories"
+    random_categories: "For example, here:"
+    filter_by_cats: "To find even more speakers, have a look at the <a href='%{category_link}'>categories</a>."
+    filter_explanation: "Here you can filter even more and thus narrow down the search."

@@ -90,6 +90,7 @@ class Admin::ProfilesController < Admin::BaseController
       :password_confirmation,
       :remember_me,
       :country,
+      :state,
       { iso_languages: [] },
       :firstname,
       :lastname,

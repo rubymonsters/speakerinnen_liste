@@ -19,11 +19,12 @@ class ProfilesController < ApplicationController
       @aggs = @profiles.response.aggregations
       @aggs_languages = @aggs[:lang][:buckets]
       @aggs_cities = @aggs[:city][:buckets]
+      @aggs_states = @aggs[:state][:buckets]
       @aggs_countries = @aggs[:country][:buckets]
-
+      @three_sample_categories = Category.all.sample(3)
     elsif params[:tag_filter]&.present?
       @tags = params[:tag_filter].split(/\s*,\s*/)
-      @profiles = Profile.is_published.has_tags(@tags).page(params[:page]).per(24)
+      @profiles = profiles_with_tags
       # redirect_to profiles_path(:anchor => "speakers")
     elsif params[:category_id]
       @profiles = profiles_for_category
@@ -35,26 +36,29 @@ class ProfilesController < ApplicationController
 
     # for the tags filter module that is available all the time at the profile index view
     # is needed for the colors of the tags
-    @category = 
-      if params[:category_id] 
-        Category.find(params[:category_id]) 
+    @category =
+      if params[:category_id]
+        Category.find(params[:category_id])
       elsif params[:tag_filter]
+        if params[:tag_filter].empty?
+          redirect_to profiles_url(anchor: "top"), notice: I18n.t('flash.profiles.no_tags_selected')
+          return
+        end
         last_tag = params[:tag_filter].split(/\s*,\s*/).last
         last_tag_id = ActsAsTaggableOn::Tag.where(name: last_tag).last.id
         Category.select{|cat| cat.tag_ids.include?(last_tag_id)}.last
-      else    
+      else
         Category.first
       end
     @categories = Category.sorted_categories
     Category.all.includes(:translations).each do |category|
-      instance_variable_set(
-        "@tags_#{category.short_name}",
-        ActsAsTaggableOn::Tag
-          .belongs_to_category(category.id)
-          .belongs_to_more_than_one_profile
-          .with_published_profile
-          .translated_in_current_language_and_not_translated(I18n.locale)
-      ).most_used(100)
+      tags = ActsAsTaggableOn::Tag
+        .belongs_to_category(category.id)
+        .with_published_profile
+        .with_regional_profile(current_region)
+        .translated_in_current_language_and_not_translated(I18n.locale)
+      tags = tags.belongs_to_more_than_one_profile unless current_region
+      instance_variable_set("@tags_#{category.short_name}", tags).most_used(100)
     end
   end
 
@@ -129,6 +133,7 @@ class ProfilesController < ApplicationController
       :password_confirmation,
       :remember_me,
       :country,
+      :state,
       { iso_languages: [] },
       :firstname,
       :lastname,
@@ -178,8 +183,8 @@ class ProfilesController < ApplicationController
     Profile
       .with_attached_image
       .is_published
-      .includes(:taggings, :translations)
-      .joins(:topics)
+      .by_region(current_region)
+      .includes(:taggings, :translations, :topics)
       .where(tags: { name: tag_names })
       .page(params[:page])
       .per(24)
@@ -189,10 +194,13 @@ class ProfilesController < ApplicationController
     Profile
       .with_attached_image
       .is_published
+      .by_region(current_region)
       .includes(:taggings, :translations)
       .search(
         params[:search],
+        current_region,
         params[:filter_countries],
+        params[:filter_states],
         params[:filter_cities],
         params[:filter_lang],
         (!Rails.env.production? || params[:explain]) == true
@@ -201,10 +209,19 @@ class ProfilesController < ApplicationController
       .records
   end
 
+  def profiles_with_tags
+    Profile
+      .is_published
+      .by_region(current_region)
+      .has_tags(@tags)
+      .page(params[:page]).per(24)
+  end
+
   def profiles_for_index
     Profile
       .with_attached_image
       .is_published
+      .by_region(current_region)
       .includes(:translations)
       .main_topic_translated_in(I18n.locale)
       .random
