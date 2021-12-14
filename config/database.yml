@@ -1,0 +1,15 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 25
+  host: db
+  username: postgres
+  password: password
+
+development:
+  <<: *default
+  database: speakerinnen_development
+
+test:
+  <<: *default
+  database: speakerinnen_test
