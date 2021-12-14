@@ -85,6 +85,7 @@ de:
       country: "Land:"
       twitter: "Twittername:"
       contact: "Kontaktiere"
+      no_contact: " möchte derzeit nicht kontaktiert werden."
       email_to: "E-Mail an "
       show: "Anzeigen"
       edit: "Profil bearbeiten"
@@ -96,6 +97,8 @@ de:
       check_faq: "Fülle bitte die Felder via 'Profil bearbeiten' aus. <BR> Für mehr Informationen, wie du am besten dein Profil angelegst, kannst du hier nach schauen: <a href='https://speakerinnen.org/de/faq'>FAQ</a>"
       profile_from: "Profil von"
       to_profile: "Zum Profil"
+      inactive_profile: "Du hast Dein Profil <b>inaktiv</b> geschaltet. <br>Deshalb kannst Du im Moment <b>nicht</b> per Mail kontaktiert werden.<br>"
+      activate_profile: "Hier kannst Du Dein Profil wieder aktivieren."
     medialinks:
       edit: "Referenzen bearbeiten"
     edit:

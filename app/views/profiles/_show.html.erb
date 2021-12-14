@@ -2,15 +2,27 @@
   <div class="col-lg-4 col-md-6 text-center pb-3">
     <%= profile_image_link(@profile) %>
     <% unless current_profile ==  @profile %>
-      <button type="button" class="btn btn-primary btn-stretch mt-2 px-5" data-toggle="modal"
-      data-target=<%= cookies[:cookie_consent].blank? ? "#contactHint" : "#contactModal" %>
-      <%= disable_contact_button(@profile) %>>
-        <i class="fa fa-envelope-o"></i>&nbsp;
-        <%= t(:contact, scope: 'profiles.show') + ' ' + @profile.fullname %>
-      </button>
+      <% if @profile.inactive? %>
+        <button type="button" class="btn btn-primary btn-stretch mt-2 px-5 disabled" %>
+          <i class="fa fa-times"></i>&nbsp;
+          <%= @profile.fullname + t(:no_contact, scope: 'profiles.show') %>
+        </button>
+      <% else %>
+        <button type="button" class="btn btn-primary btn-stretch mt-2 px-5" data-toggle="modal"
+        data-target=<%= cookies[:cookie_consent].blank? ? "#contactHint" : "#contactModal" %>
+        <%= disable_contact_button(@profile) %> >
+          <i class="fa fa-envelope-o"></i>&nbsp;
+          <%= t(:contact, scope: 'profiles.show') + ' ' + @profile.fullname %>
+        </button>
+      <% end %>
     <% end %>
   </div>
   <div class="col-lg-6 col-md-6 ">
+    <% if current_profile == @profile && @profile.inactive? %>
+      <p class="alert-warning">
+        <%= t(:inactive_profile, scope: 'profiles.show').html_safe %><%= link_to t(:activate_profile, scope: 'profiles.show'), edit_profile_registration_path(anchor: "inactive_anchor") %>
+      </p>
+    <% end %>
     <h1 class=""><%= @profile.fullname %></h1>
     <h3 class=""><%= @profile.profession %></h3>
     <br>
@@ -248,15 +260,18 @@
   </div>
 <% end %>
 
-<div class="col-lg-4 col-md-6 text-center pb-3">
-  <div class="row">
-    <% unless current_profile ==  @profile %>
-      <button type="button" class="btn btn-primary btn-stretch mt-2 px-5" data-toggle="modal"
-      data-target=<%= cookies[:cookie_consent].blank? ? "#contactHint" : "#contactModal" %>
-      <%= disable_contact_button(@profile) %> >
-        <i class="fa fa-envelope-o"></i>&nbsp;
-        <%= t(:contact, scope: 'profiles.show') + ' ' + @profile.fullname %>
-      </button>
+<div class="row">
+  <div class="col-lg-4 col-md-6 text-center pb-3">
+    <% unless current_profile == @profile %>
+    <%# don't show the second contact button at all when the profile is not active %>
+      <% unless @profile.inactive? %>
+        <button type="button" class="btn btn-primary btn-stretch mt-2 px-5" data-toggle="modal"
+        data-target=<%= cookies[:cookie_consent].blank? ? "#contactHint" : "#contactModal" %>
+        <%= disable_contact_button(@profile) %> >
+          <i class="fa fa-envelope-o"></i>&nbsp;
+          <%= t(:contact, scope: 'profiles.show') + ' ' + @profile.fullname %>
+        </button>
+      <% end %>
     <% end %>
   </div>
 </div>

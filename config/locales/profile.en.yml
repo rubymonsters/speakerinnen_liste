@@ -86,6 +86,7 @@ en:
       twitter: "Twitter handle:"
       website: "Website/blog:"
       contact: "Contact"
+      no_contact: " does not wish to be contacted at the moment."
       email_to: "Email to "
       show: "Show"
       edit: "Edit profile"
@@ -97,6 +98,8 @@ en:
       check_faq: "To get started please fill out the formular via 'Edit Profile'!<BR> For more information how to fill in your profile, check here: <a href='https://speakerinnen.org/de/faq'>FAQ</a>"
       topics: "Topics:"
       to_profile: "To the profile"
+      inactive_profile: "You have set your profile to <b>inactive</b>.<br>Therefore, you <b>cannot</b> be contacted by mail at the moment.<br> "
+      activate_profile: "You can reactivate your profile here."
     medialinks:
       edit: "Edit previous talks"
     edit:
