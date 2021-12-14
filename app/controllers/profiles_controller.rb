@@ -65,7 +65,7 @@ class ProfilesController < ApplicationController
   def show
     if @profile.published? || can_edit_profile?(current_profile, @profile)
       @message = Message.new
-      @medialinks = @profile.medialinks.order(:position)
+      @medialinks = @profile.medialinks.order(:position).order(created_at: :asc)
     else
       redirect_to profiles_url, notice: I18n.t('flash.profiles.show_no_permission')
     end

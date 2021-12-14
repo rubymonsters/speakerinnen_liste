@@ -6,7 +6,7 @@ class Admin::MedialinksController < Admin::BaseController
   before_action :set_medialink, only: %i[edit update destroy]
 
   def index
-    @medialinks = @profile.medialinks.order(:position)
+    @medialinks = @profile.medialinks.order(:position).order(created_at: :asc)
   end
 
   def new

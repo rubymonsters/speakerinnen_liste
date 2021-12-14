@@ -18,7 +18,7 @@ class Admin::ProfilesController < Admin::BaseController
   def create; end
 
   def show
-    @medialinks = @profile.medialinks.order(:position)
+    @medialinks = @profile.medialinks.order(:position).order(created_at: :asc)
     @message = Message.new
   end
 
