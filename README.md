@@ -129,17 +129,21 @@ Find further details in [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Docker
 
-### Use upgraded postgres version in Docker
-If Postgres got upgraded in the docker-compose file, you need to delete all processes, images 
+### Use upgraded Postgres or Elasticsearch version in Docker
+If Postgres or Elasticsearch got upgraded in the docker-compose file, you need to delete all processes, images 
 and volumes that still use the olde version:
 1. Use ```make tear-down``` to delete all processes and images
-2. Delete your local Postgres database inside Docker as well. (Otherwise you will get a DB connection error)
-Check for your Postgres DB in Docker:
+2. Delete all your local volumes inside Docker as well. (Otherwise you will get a DB connection error)
+Check for your speakerinnen volumes in Docker:
 ``` docker volume ls ```
-Ouput will be a list of volumes, pick the speakerinnen one and delete it (adjust the name if yours is 
+Ouput will be a list of volumes, pick all the speakerinnen ones (Postgres, Elasticsearch, Bundle) and delete them (adjust the name if yours is 
 different):
 ``` docker volume rm speakerinnen_liste_postgres_data ```
-3. ```make setup``` to recreate all images, processes and volumes.
+```docker volume rm speakerinnen_liste_bundle```
+```docker volume rm speakerinnen_liste_elastic_data```
+
+4. ```make setup``` to recreate all images, processes and volumes.
+5. ```make seed``` to populate the volumes.
 
 
 # ♥ Code of Conduct
