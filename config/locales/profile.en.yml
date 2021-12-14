@@ -57,7 +57,7 @@ en:
       email: "Email address: <i class='fa fa-info-circle' aria-hidden='true'></i>"
       website: "Website:"
       additional_websites: "Additional websites/blogs:"
-      inactive_label: "Hier kannst Du Deine Erreichbarkeit einstellen." 
+      inactive_label: "Hier kannst Du Deine Erreichbarkeit einstellen."
       inactive: "Ich kann nicht kontaktiert werden"
       active: "Ich kann kontaktiert werden"
     show:
@@ -89,7 +89,7 @@ en:
       twitter: "Twitter handle:"
       website: "Website/blog:"
       contact: "Contact"
-      no_contact: "No Contact"
+      no_contact: " does not wish to be contacted at the moment."
       email_to: "Email to "
       show: "Show"
       edit: "Edit profile"
@@ -101,8 +101,8 @@ en:
       check_faq: "To get started please fill out the formular via 'Edit Profile'!<BR> For more information how to fill in your profile, check here: <a href='https://speakerinnen.org/de/faq'>FAQ</a>"
       topics: "Topics:"
       to_profile: "To the profile"
-      inactive_profile: "You have set your profile to 'inactive'. Therefore you <b>cannot</b> be contacted by mail at the moment. "
-      activate_profile: "Activate your profile again."
+      inactive_profile: "You have set your profile to <b>inactive</b>.<br>Therefore, you <b>cannot</b> be contacted by mail at the moment.<br> "
+      activate_profile: "You can reactivate your profile here."
     medialinks:
       edit: "Edit previous talks"
     edit:

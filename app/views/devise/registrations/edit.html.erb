@@ -72,8 +72,12 @@
   <% end %>
 
   <div class="p-3 mb-5 bg--white">
+    <% if @profile.inactive? %>
+      <h4><%= t(:set_active, scope: "devise.registrations.edit") %></h4>
+    <% else %>
+      <h4><%= t(:set_inactive, scope: "devise.registrations.edit") %></h4>
+    <% end %>
     <%= simple_form_for(@profile, html: { multipart: true } ) do |f| %>
-      <h4><%= t(:set_active_or_inactive, scope: "devise.registrations.edit") %></h4>
       <div class="mt-5">
         <%= f.radio_button :inactive, false, class: "", id: "" %>
         <%= f.label :inactive, t(:active_label ,scope: "devise.registrations.edit").html_safe %>
@@ -82,6 +86,7 @@
         <%= f.radio_button :inactive, true, class: "", id: "" %>
         <%= f.label :incative, t(:inactive_label, scope: "devise.registrations.edit").html_safe %>
       </div>
+      <br>
       <%= f.button :submit, t(:update, scope: 'profiles.form').html_safe, class:'btn btn-primary' %>
     <% end %>
   </div>

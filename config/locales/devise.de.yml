@@ -82,9 +82,10 @@ de:
         email: "E-Mail:
           <br><small class='form-text text-muted'>Deine E-Mailadresse wird nirgendwo veröffentlicht, sondern nur dazu genutzt,
           dass Interessentinnen und Interessenten Kontakt zu Dir aufnehmen können.</small>"
-        set_active_or_inactive: "Deaktiviere Deinen Account"
-        active_label: "Dein Profil ist <b>aktiv</b>. Das heißt, Du bist sichtbar auf unserer Webseite und kannst kontaktiert werden"
-        inactive_label: "Dein Profil ist <b>nicht aktiv</b>. Das heißt, Du bist sichtbar auf unserer Webseite, kannst aber nicht kontaktiert werden"
+        set_inactive: "Deaktiviere Deinen Account"
+        set_active: "Aktiviere Deinen Account"
+        active_label: "Dein Profil ist <b>aktiv</b>. Das heißt, Du bist sichtbar auf unserer Webseite und kannst kontaktiert werden."
+        inactive_label: "Dein Profil ist <b>nicht aktiv</b>. Das heißt, Du bist sichtbar auf unserer Webseite, kannst aber <b>nicht kontaktiert</b> werden."
       new:
         sign_up: "Registrieren"
         password: "Passwort"

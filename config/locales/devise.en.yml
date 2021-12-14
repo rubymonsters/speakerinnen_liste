@@ -82,9 +82,10 @@ en:
         email: "New email:
           <br><small class='form-text text-muted'>Your email address will not be published.
           It is only used for getting in contact if an event organizer is interested in your profile.</small>"
-        set_active_or_inactive: "Deactivate your Account"
-        active_label: "Your profile is <b>active</b>. That means you are visible on the website and can be contacted."
-        inactive_label: "Your profile is <b>not active</b>. That means you are visible on our website but you cannot be contacted."
+        set_inactive: "Deactivate your account"
+        set_active: "Activate your account"
+        active_label: "Your profile is <b>active</b>. This means you are visible on our website and can be contacted."
+        inactive_label: "Your profile is <b>not active</b>. This means you are visible on our website, but you <b>cannot be contacted</b>."
       new:
         sign_up: "Register"
         password: "Password"
