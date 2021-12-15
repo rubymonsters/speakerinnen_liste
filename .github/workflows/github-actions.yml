@@ -1,0 +1,17 @@
+name: Build
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env: RECAPTCHA_SECRET_KEY=6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe RECAPTCHA_SITE_KEY=6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI DATABASE_URL=postgres://postgres@127.0.0.1/ SEARCHBOX_URL=http://127.0.0.1:9200/
+    services:
+      postgres:
+        image: postgres:9.5
+
+      elasticsearch:
