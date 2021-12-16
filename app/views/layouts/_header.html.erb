@@ -15,7 +15,7 @@
         <li class="nav-item active pt-2 pr-5 ">
           <%= form_tag(profiles_path, method: 'get', class: "form-inline text-capitalize small") do %>
             <%= text_field_tag('search', params[:search], id: 'header_search',class: 'form-control typeahead mr-sm-2',
-              type: 'text', placeholder: t(:search_placeholder, scope: 'pages.home.search')) %>
+              type: 'text', placeholder: t(:search_placeholder, scope: 'pages.home')) %>
               <%= button_tag "<i class='fa fa-search'></i>".html_safe, class: "btn btn-link" %>
           <% end %>
         </li>
