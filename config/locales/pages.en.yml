@@ -37,17 +37,22 @@ en:
       welcome_title_vab: "Welcome."
       welcome_text: "A warm welcome! Here you can find our latest registrations"
       welcome_text_vab: "Our newcomers from Vorarlberg:"
-      intro_title_vab: ""
+      intro_title_vab: "We make female experts visible."
       intro_text_vab: |
-        vorarlberg.speakerinnen.org is a project to prevent "manels",
-        i.e. podiums, committees or panels that are predominantly occupied by men.
-        Through the cooperation with <a href='https://speakerinnen.org', target='_blank'>speakerinnen.org</a>
-        Vorarlberg women* become visible as experts, speakers and representatives of this region.
-        They can be found both locally and internationally.</br></br>
-        The project is made possible by the
-        <a href='https://vorarlberg.at/frauen', target='_blank'>Funktionsbereich Frauen und Gleichstellung im Amt der Vorarlberger Landesregierung</a>
-        and the <a href='https://www.vorarlberg-chancenreich.at/', target='_blank'>Marke Vorarlberg</a>.</br></br>
-        More about us.
+        <p>
+          vorarlberg.speakerinnen.org is a project to prevent "manels",
+          i.e. podiums, committees or panels that are predominantly occupied by men.
+          Through the cooperation with <a href='https://speakerinnen.org', target='_blank'>speakerinnen.org</a>
+          Vorarlberg women* become visible as experts, speakers and representatives of this region.
+          They can be found both locally and internationally.
+        </p>
+        <p>
+          The project is made possible by the <a href='https://vorarlberg.at/frauen', target='_blank'>Funktionsbereich Frauen und Gleichstellung</a>
+          im Amt der Vorarlberger Landesregierung and the <a href='https://www.vorarlberg-chancenreich.at/', target='_blank'>Marke Vorarlberg</a>.
+        </p>
+        <p>
+          More information about us can be found <a href="/about_vorarlberg">here</a>.
+        </p>
       footer:
         about_title: "About us"
         about: |
