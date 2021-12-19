@@ -7,11 +7,12 @@ class ConfirmationsController < Devise::ConfirmationsController
   def after_confirmation_path_for(resource_name, resource)
     path = profile_path(resource.id)
     if signed_in?
+      flash[:notice] = I18n.t(:updated, scope: 'devise.registrations')
       path
     else
       scope = Devise::Mapping.find_scope!(resource)
       session["#{scope}_return_to"] = path
-      flash[:notice] = I18n.t(:updated, scope: 'devise.registrations')
+      flash[:notice] = I18n.t(:confirmed, scope: 'devise.confirmations')
       new_session_path(resource_name)
     end
   end
