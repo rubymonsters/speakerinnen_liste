@@ -18,6 +18,7 @@ The aim of the app is to provide a way for conference and event organizers to fi
 
 * `make dev` (opens a development shell, `rake`, `bundle` or `rails` commands will work here)
 * `make up` (starts the app directly)
+* `make stop` (stops the container)
 * `make test` (runs all the tests)
 * `make usage` (get a list of possible commands)
 
