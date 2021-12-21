@@ -7,7 +7,7 @@ de:
       tagline_vab: "Nutze eine der größten Datenbanken für weibliche Kompetenz in Vorarlberg und dem deutschsprachigen Raum."
       search_placeholder: "Name oder Thema"
       search_speaker: "Suche"
-      sub_menu_register_title: "Registriere dich jetzt"
+      sub_menu_register_title: "Registriere dich"
       sub_menu_register_text: "Speakerinnen-Profil schnell und kostenfrei anlegen."
       sub_menu_register_text_vab: "Expertinnen-Profil schnell und kostenfrei anlegen."
       sub_menu_about_us_title: "Über uns"
@@ -59,33 +59,16 @@ de:
         <p>
           Mehr Informationen über uns gibt es <a href="/about_vorarlberg">hier</a>.
         </p>
-      footer:
-        about_title: "Über uns"
-        about: |
-                Die Speakerinnen-Liste hat das Ziel, die Sichtbarkeit von Frauen bei Konferenzen, Panels, Talkshows und überall da zu erhöhen, wo öffentlich gesprochen wird.<br>
-                Hier können Veranstalter*innen Expertinnen finden, die kompetent über ihre Themen sprechen können und wollen.<br>
-                Frauen können sich selbst mit ihren Themen und Referenzen in die Datenbank eintragen und so besser findbar werden.
-        more: ">> mehr"
-        press: "Wir in den Medien"
-        blog: "Unser Blog"
-        faq: "FAQs"
-        links: "Links"
-        links_text: "Hier gibt es Links zu ähnlichen Projekten:"
-        code_of_conduct: "Code of Conduct"
-        contact: "Kontakt"
-        contact_link: "E-Mail"
-        twitter: "<a href='https://twitter.com/speakerinnen', target='_blank', class=''>Twitter</a>"
-        instagram: "<a href='https://instagram.com/speakerinnen', target='_blank', class=''>Instagram</a>"
-        github: "<a href='https://github.com/rubymonsters/speakerinnen_liste', target='_blank', class='px-2'>GitHub</a>"
-        facebook: "<a href='https://facebook.com/speakerinnen', target='_blank', class=''>Facebook</a>"
-        devblog: "<a href='http://speakerinnen.wordpress.com/', taget='_blank'>Entwicklerinnen-Blog</a>"
-    about:
-      title: "Über uns"
-    press:
-      title: "Medien über uns"
-    imprint:
-      title: "Impressum"
+      about: "Über uns"
+      faq: "FAQs"
+      code_of_conduct: "Code of Conduct"
+    footer:
+      contact: "Kontakt"
+      imprint: "Impressum"
       privacy: "Datenschutzerklärung"
+      twitter: "<a href='https://twitter.com/speakerinnen', target='_blank', class=''>Twitter</a>"
+      instagram: "<a href='https://instagram.com/speakerinnen', target='_blank', class=''>Instagram</a>"
+      facebook: "<a href='https://facebook.com/speakerinnen', target='_blank', class=''>Facebook</a>"
     errors:
       not_found: "Sorry, die Seite, die du gesucht hast, existiert nicht."
       not_found_explain: "Möglicherweise hast du dich bei der Eingabe der Webadresse vertippt oder die Seite wurde verschoben."

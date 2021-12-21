@@ -2,9 +2,9 @@ en:
   pages:
     home:
       heading: "Organizers, find your speakers"
-      heading_vab: ""
+      heading_vab: "Find women experts, speakers and professionals."
       tagline: "Find women speakers & moderators for your conference:"
-      tagline_vab: ""
+      tagline_vab: "Take advantage of one of the largest databases for female competence in Vorarlberg and the German-speaking region."
       search_placeholder: "Search by name or topic"
       search_speaker: "Search"
       sub_menu_register_title: "Register now"
@@ -32,7 +32,7 @@ en:
       allow_cookies: "I agree"
       speakerinnen: "Speakers"
       category_search_title: "Browse by categories"
-      ategory_search_text: "Find your women speaker in 10 categories or filter by specific topics:"
+      category_search_text: "Find your women speaker in 10 categories or filter by specific topics:"
       welcome_title: "Speakerinnen* - get inspired"
       welcome_title_vab: "Welcome."
       welcome_text: "A warm welcome! Here you can find our latest registrations"
@@ -53,34 +53,16 @@ en:
         <p>
           More information about us can be found <a href="/about_vorarlberg">here</a>.
         </p>
-      footer:
-        about_title: "About us"
-        about: |
-              Speakerinnen.org aims to increase the visibility and participation of women at (but not limited to) conferences, panels and talk shows.<br>
-              Organizers and hosts can find experts, who gladly (and competently) share their knowledge. <br>
-              women can register in our database with the topics they are interested in covering, and can add references to their abilities.
-        more: ">> more"
-        press: "Media Coverage"
-        blog: "Our blog"
-        faq: "FAQs"
-        links: "Links"
-        links_text: "Here you find links to similar projects:"
-        more: ">> more"
-        code_of_conduct: "Code of Conduct"
-        contact: "Contact"
-        contact_link: "Email"
-        twitter: "<a href='https://twitter.com/speakerinnen', target='_blank', class='pv-'>Twitter</a>"
-        instagram: "<a href='https://instagram.com/speakerinnen', target='_blank', class=''>Instagram</a>"
-        github: "<a href='https://github.com/rubymonsters/speakerinnen_liste' target='_blank', class='pv-'>GitHub</a>"
-        facebook: "<a href='https://facebook.com/speakerinnen', target='_blank', class=''>Facebook</a>"
-        devblog: "<a href='http://speakerinnen.wordpress.com/', target='_blank>Developer Blog</a>"
-    about:
-      title: "About us"
-    press:
-      title: "Press about us"
-    imprint:
-      title: "Legal Details"
+      about: "About us"
+      faq: "FAQs"
+      code_of_conduct: "Code of Conduct"
+    footer:
+      contact: "Contact"
+      imprint: "Legal Details"
       privacy: "Privacy Policy"
+      twitter: "<a href='https://twitter.com/speakerinnen', target='_blank', class='pv-'>Twitter</a>"
+      instagram: "<a href='https://instagram.com/speakerinnen', target='_blank', class=''>Instagram</a>"
+      facebook: "<a href='https://facebook.com/speakerinnen', target='_blank', class=''>Facebook</a>"
     errors:
       not_found: "The page you were looking for doesn't exist."
       not_found_explain: "You may have mistyped the address or the page may have moved."
