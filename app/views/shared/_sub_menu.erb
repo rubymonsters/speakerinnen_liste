@@ -61,7 +61,7 @@
       </div>
     <% else %>
       <div class="card-header">
-        <h3 class="card-title mb-0"><%= link_to t(:sub_menu_all_title_vab, scope: 'pages.home'), profiles_path %></h3>
+        <h3 class="card-title mb-0"><%= link_to t(:sub_menu_all_title_vab, scope: 'pages.home'), profiles_path(:anchor => "speakers_anchor") %></h3>
       </div>
       <div class="card-body">
         <p class="h5 card-text mt-2"><%= t(:sub_menu_all_text_vab, scope: 'pages.home').html_safe %></p>

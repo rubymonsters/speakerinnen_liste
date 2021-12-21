@@ -26,22 +26,20 @@
   <!-- only show the category filter when not in search scope -->
   <% unless params[:search] %>
     <div class="collapse show" id="collapseFilter">
-
       <div class="row py-5">
         <div class="col-md-12 text-center">
           <h1><%= t(:title_topic_search, scope: 'profiles.index') %></h1>
         </div>
       </div>
       <%= render partial: 'shared/category_filter' %>
-      <a id="speakers_anchor"></a>
-
     </div> <!-- tag filter -->
     <!-- <a href="#top"><%= t(:up_to_filter, scope: 'profiles.index') %> <i class='fa fa-filter pr-2'></i> </a> -->
   <% end %>
   <hr class="mt-5">
-  <!-- Found speaker when in search or filter function -->
+
   <div class="row m-4">
     <div class="col-md-12 text-center pt-3">
+      <a id="speakers_anchor"></a>
       <% if params[:category_id] %>
         <h1><%= @category.name %></h1>
         <h3><%= t(:profiles_in_category, scope: 'profiles.index', count: @profiles_count).html_safe %> </h3>
@@ -49,8 +47,9 @@
         <h1>
           <%= t(:all_tagged_speakerinnen, scope: 'profiles.index', count: @profiles_count).html_safe + t(:tag_filter, scope: 'profiles.index', count: @tags.count).html_safe %>
         </h1>
+      <% else %>
+        <h1><%= t(:all_profiles, scope: 'profiles.index') %></h1>
       <% end %>
-
     </div>
   </div>
 
