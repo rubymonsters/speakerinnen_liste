@@ -5,7 +5,8 @@
   <%= f.input :subject, label: t(".subject"), required: false, input_html: { class: 'form-control mb-3' }, error_html: { style: 'float:right'} %>
   <%= f.input :body, as: :text, label: t(".body"), required: false, input_html: { class: 'form-control mb-3' }, error_html: { style: 'float:right'} %>
 
-  <div class="modal-footer">
+  <div class="modal-footer contact">
+    <%= link_to t(".read_code_of_conduct"), code_of_conduct_path, target: "_blank", class: 'code_of_conduct_link' %>
     <%= f.submit t(".send"), class: "btn btn-primary"%>
   </div>
 <% end %>

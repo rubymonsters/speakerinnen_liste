@@ -23,7 +23,7 @@
   <!-- anchor for features -->
   <a id="features"></a>
 
-  <% if @features.load.any? %>
+  <% if current_region == nil && @features.load.any?%>
     <% @features.each do |feature| %>
       <div class="container py-5 text-center feature">
         <h1 class=""><%= feature.title %></h1>

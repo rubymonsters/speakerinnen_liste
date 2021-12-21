@@ -92,6 +92,8 @@ h1, h2, h3, h4, h5 {
 
 .alert-warning {
   background: $yellow;
+  color: $black;
+  padding: $base-spacing-unit;
 }
 
 .alert-error {
@@ -127,6 +129,25 @@ h1, h2, h3, h4, h5 {
 .no-click {
     pointer-events: none;
 }
+
+.modal-footer.contact {
+  align-items: flex-start;
+  padding-left: 0rem;
+  padding-top: 0rem;
+  padding-bottom: 1rem;
+  padding-right: 1rem;
+
+  .btn {
+    margin-top: 1rem;
+  }
+  .code_of_conduct_link {
+    flex: 1;
+    font-size: small;
+    padding-top: 0.3rem;
+    color: red;
+  }
+}
+
 
 // overwrite bootstrap
 

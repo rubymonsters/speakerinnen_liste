@@ -24,7 +24,7 @@ class ProfilesController < ApplicationController
       @three_sample_categories = Category.all.sample(3)
     elsif params[:tag_filter]&.present?
       @tags = params[:tag_filter].split(/\s*,\s*/)
-      @profiles = Profile.is_published.has_tags(@tags).page(params[:page]).per(24)
+      @profiles = profiles_with_tags
       # redirect_to profiles_path(:anchor => "speakers")
     elsif params[:category_id]
       @profiles = profiles_for_category
@@ -52,14 +52,13 @@ class ProfilesController < ApplicationController
       end
     @categories = Category.sorted_categories
     Category.all.includes(:translations).each do |category|
-      instance_variable_set(
-        "@tags_#{category.short_name}",
-        ActsAsTaggableOn::Tag
-          .belongs_to_category(category.id)
-          .belongs_to_more_than_one_profile
-          .with_published_profile
-          .translated_in_current_language_and_not_translated(I18n.locale)
-      ).most_used(100)
+      tags = ActsAsTaggableOn::Tag
+        .belongs_to_category(category.id)
+        .with_published_profile
+        .with_regional_profile(current_region)
+        .translated_in_current_language_and_not_translated(I18n.locale)
+      tags = tags.belongs_to_more_than_one_profile unless current_region
+      instance_variable_set("@tags_#{category.short_name}", tags).most_used(100)
     end
   end
 
@@ -166,6 +165,7 @@ class ProfilesController < ApplicationController
       :personal_note_en,
       :willing_to_travel,
       :nonprofit,
+      :inactive,
       feature_ids: [],
       service_ids: [],
       translations_attributes: %i[id bio main_topic twitter website profession city locale]
@@ -184,8 +184,7 @@ class ProfilesController < ApplicationController
       .with_attached_image
       .is_published
       .by_region(current_region)
-      .includes(:taggings, :translations)
-      .joins(:topics)
+      .includes(:taggings, :translations, :topics)
       .where(tags: { name: tag_names })
       .page(params[:page])
       .per(24)
@@ -199,6 +198,7 @@ class ProfilesController < ApplicationController
       .includes(:taggings, :translations)
       .search(
         params[:search],
+        current_region,
         params[:filter_countries],
         params[:filter_states],
         params[:filter_cities],
@@ -207,6 +207,14 @@ class ProfilesController < ApplicationController
       )
       .page(params[:page]).per(24)
       .records
+  end
+
+  def profiles_with_tags
+    Profile
+      .is_published
+      .by_region(current_region)
+      .has_tags(@tags)
+      .page(params[:page]).per(24)
   end
 
   def profiles_for_index

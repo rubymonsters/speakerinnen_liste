@@ -10,23 +10,28 @@ class ContactController < ApplicationController
 
   def create
     @profile = Profile.friendly.find(params[:id]) if params[:id]
-    @message = Message.new(message_params)
-    @spam_emails = ENV['FISHY_EMAILS'].present? ? ENV.fetch('FISHY_EMAILS').split(',') : ''
 
-    if @message.valid? && @spam_emails.exclude?(@message.email)
-      NotificationsMailer.new_message(@message, @profile && @profile.email).deliver
-      if @profile.present?
-        redirect_to(profile_path(@profile), notice: t(:notice, scope: 'contact.form'))
-      else
-        redirect_to(root_path, notice: t(:notice, scope: 'contact.form'))
-      end
+    if @profile.inactive? || @profile.published == false
+      redirect_to profiles_url, notice: I18n.t('flash.profiles.show_no_permission')
     else
-      flash.now.alert = if @profile.present?
-                          t(:error, scope: 'contact.form')
-                        else
-                          t(:error_email_for_us, scope: 'contact.form')
-                        end
-      render :new
+      @message = Message.new(message_params)
+      @spam_emails = ENV['FISHY_EMAILS'].present? ? ENV.fetch('FISHY_EMAILS').split(',') : ''
+
+      if @message.valid? && @spam_emails.exclude?(@message.email)
+        NotificationsMailer.new_message(@message, @profile && @profile.email).deliver
+        if @profile.present?
+          redirect_to(profile_path(@profile), notice: t(:notice, scope: 'contact.form'))
+        else
+          redirect_to(root_path, notice: t(:notice, scope: 'contact.form'))
+        end
+      else
+        flash.now.alert = if @profile.present?
+                            t(:error, scope: 'contact.form')
+                          else
+                            t(:error_email_for_us, scope: 'contact.form')
+                          end
+        render :new
+      end
     end
   end
 
