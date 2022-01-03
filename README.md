@@ -126,6 +126,32 @@ We are happy to answer your questions if you consider to help. All the issues ha
 
 Find further details in [CONTRIBUTING.md](CONTRIBUTING.md).
 
+#Troubleshooting
+
+## Docker
+
+### Use upgraded Postgres or Elasticsearch version in Docker
+If Postgres or Elasticsearch got upgraded in the docker-compose file, you need to delete all processes, images 
+and volumes that still use the olde version:
+1. Use ```make tear-down``` to delete all processes and images
+
+2. Delete all your local volumes inside Docker as well. (Otherwise you will get a DB connection error)
+Check for your speakerinnen volumes in Docker:
+``` docker volume ls ```
+Ouput will be a list of volumes, pick all the speakerinnen ones (Postgres, Elasticsearch, Bundle) and delete them (adjust the name if yours is 
+different):
+
+    ``` docker volume rm speakerinnen_liste_postgres_data ```
+
+    ```docker volume rm speakerinnen_liste_bundle```
+
+    ```docker volume rm speakerinnen_liste_elastic_data```
+
+3. ```make setup``` to recreate all images, processes and volumes.
+
+4. ```make seed``` to populate the volumes.
+
+
 # ♥ Code of Conduct
 
 Please note that [speakerinnen](https://speakerinnen.org) has a [Contributor Code of Conduct](https://github.com/rubymonsters/speakerinnen_liste/blob/master/code-of-conduct.md) based on the [Contributor Covenant](https://www.contributor-covenant.org). By participating in this project online or at events you agree to abide by its terms.

@@ -1,7 +1,7 @@
 version: '3'
 services:
   db:
-    image: postgres:9.5
+    image: postgres:9.6
     volumes:
       - postgres_data:/var/lib/postgresql/data
     environment:
@@ -9,7 +9,7 @@ services:
     ports:
       - "5432:5432"
   elastic:
-    image: elasticsearch:6.7.2
+    image: elasticsearch:6.8.22
     volumes:
       - elastic_data:/usr/share/elasticsearch/data
     environment:
