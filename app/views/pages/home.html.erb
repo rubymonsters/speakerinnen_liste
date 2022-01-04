@@ -2,7 +2,7 @@
   <section id="startpage__start-teaser" class="start-teaser startpage__photo-bar">
     <div class="container">
       <div class="row">
-        <% if current_region == nil %>
+        <% if current_region.nil? %>
           <div class="col-12">
             <h1 class="display-4 pt-5" style="text-shadow:0px 0px 9px rgba(255, 255, 255, 1);">
               <%= t(:heading, scope: 'pages.home') %>
@@ -29,11 +29,11 @@
     </div>
   </section>
 
-  <% if current_region == nil %>
+  <% if current_region.nil? %>
     <div class="copyright">Copyright: public domain ( modified )</div>
   <% end %>
 
-  <% if current_region == nil && @features.load.any?%>
+  <% if current_region.nil? && @features.load.any?%>
     <a id="features"></a>
     <% @features.each do |feature| %>
       <div class="container py-5 text-center feature">
@@ -48,7 +48,7 @@
 
   <a id="newest_speaker_achor"></a>
   <div id="startpage-newest_speaker" class="container py-5 text-center">
-    <% if current_region == nil %>
+    <% if current_region.nil? %>
       <h1 class=""><%= t(:welcome_title, scope: 'pages.home') %></h1>
       <h3 class=""><%= t(:welcome_text, scope: 'pages.home') %></h3>
     <% else %>

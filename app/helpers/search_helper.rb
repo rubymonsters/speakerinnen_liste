@@ -62,7 +62,7 @@ module SearchHelper
     ]
 
     hashes.reject do |hash|
-      (hash[:key] == 'countries' || hash[:key] == 'states') && !current_region.nil?
+      (hash[:key] == 'countries' || hash[:key] == 'states') && current_region
     end
   end
 end

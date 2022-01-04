@@ -24,7 +24,7 @@
             <%= I18n.locale == :en ? "More" : "Mehr" %>
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <% if current_region == nil %>
+            <% if current_region.nil? %>
               <%= link_to 'Speakerinnen Blog', 'https://blog.speakerinnen.org/', target: '_blank', class: 'dropdown-item' %>
               <%= link_to 'Fiftypercent', 'https://50prozent.speakerinnen.org/', target: '_blank', class: 'dropdown-item'%>
               <%= link_to t(:about, scope: 'pages.home'), about_path, class: 'dropdown-item' %>

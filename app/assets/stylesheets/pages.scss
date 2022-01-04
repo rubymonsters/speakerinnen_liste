@@ -95,6 +95,12 @@
   font-size: smaller;
 }
 
+@media (max-width: 768px) {
+  .vorarlberg footer figcaption {
+    margin-bottom: 20px;
+  }
+}
+
 .card-header {
   background-color: transparent;
   border: 0;

@@ -46,7 +46,7 @@
 <% else %>
   <div class="row">
     <div class="col-md-12">
-      <% if current_region == nil %>
+      <% if current_region.nil? %>
         <span>
           <%= t(:filter_by_cats, scope: 'search', category_link: profiles_path).html_safe %>
         </span>
@@ -62,7 +62,7 @@
       <% else %>
         <p><%= t(:expand_search, scope: 'search') %></p>
         <p>
-          <%= t(:search_on, scope: 'search') %> 
+          <%= t(:search_on, scope: 'search') %>
           <a href="<%= profiles_url(search: params[:search], host: Rails.env.development? ? 'localhost' : 'speakerinnen.org') %>">speakerinnen.org</a>
         </p>
       <% end %>

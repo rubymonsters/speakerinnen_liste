@@ -1,7 +1,7 @@
 <footer id="footer" class="border-upper mt-5 pt-5">
   <div class="container">
     <div class="row mt-2">
-      <% if current_region == nil %>
+      <% if current_region.nil? %>
         <div class="col-12 col-md-6 pb-3">
           <span class="">Supported by:</span>
           <%= link_to(image_tag('inspired_logo_klein.jpg', class:'pl-sm-4', style: "width: 150px"), "https://www.inspired-socialmedia.com/", class: "",target: 'blank' ) %>
@@ -57,21 +57,13 @@
         <div class="col-12 col-md-3 pr-5">
           <figure>
             <%= link_to(image_tag('logo_marke_vorarlberg.png', class:'logo-1'), "https://www.vorarlberg-chancenreich.at/",target: 'blank' ) %>
-            <figcaption class="pt-4">
-              vorarlberg.speakerinnen.org macht Vorarlberg #chancenreich<br>
-              <a href="https://www.facebook.com/MarkeVorarlberg/", target='_blank'>Facebook: @markevorarlberg</a><br>
-              <a href="https://www.instagram.com/marke_vorarlberg/?hl=de", target='_blank'>Instagram: @marke_vorarlberg</a>
-            </figcaption>
+            <figcaption class="pt-4"><%= t(:caption_vorarlberg, scope: 'pages.footer').html_safe %></figcaption>
           </figure>
         </div>
         <div class="col-12 col-md-3 pl-3">
           <figure>
             <%= link_to(image_tag('logo_gleichstellung.png', class:'logo-2'), "https://vorarlberg.at/frauen",target: 'blank' ) %>
-            <figcaption class="pt-4">
-              vorarlberg.speakerinnen.org wird unterstützt vom
-              <a href="https://vorarlberg.at/frauen", target='_blank'>Funktionsbereich Frauen und Gleichstellung</a>
-              im Amt der Vorarlberger Landesregierung.
-            </figcaption>
+            <figcaption class="pt-4"> <%= t(:caption_gleichstellung, scope: 'pages.footer').html_safe %></figcaption>
           </figure>
         </div>
         <div class="row col-12 col-md-4 offset-md-2">
@@ -108,11 +100,7 @@
             </ul>
           </div>
           <div class="credits col-12 col-md-12">
-            <p>
-              Bildachweis: Architektin Adelheid Gnaiger, Fotografie: Walter Gnaiger, siehe auch:
-              <a href="http://www.ingridholzschuh.at/publikationen/2014", target='_blank'>Adelheid Gnaiger (1916 &mdash; 1991).
-              Die erste Architektin Vorarlbergs</a>, Ingrid Holzschuh (Hrsg.)
-            </p>
+            <%= t(:photo_credit_vab, scope: 'pages.footer').html_safe %>
           </div>
         </div>
       <% end %>

@@ -39,7 +39,7 @@ de:
       speakerinnen: "Speakerinnen"
       category_search_title: "Nach Kategorien durchsuchen"
       category_search_text: "Finde deine Speakerin in 10 Kategorien oder filtere nach ganz konkreten Themen:"
-      welcome_title: "Speakerinnen* - get inspired"
+      welcome_title: "Speakerinnen - get inspired"
       welcome_title_vab: "Herzlich willkommen."
       welcome_text: "Ein herzliches Willkommen! Hier findest du unsere Neuzugänge"
       welcome_text_vab: "Unsere Neuzugänge aus Vorarlberg:"
@@ -49,7 +49,7 @@ de:
           vorarlberg.speakerinnen.org ist ein Projekt zur Verhinderung von 'manels',
           also Podien, Gremien oder Panels, die vornehmlich mit Männern besetzt sind.
           Durch die Kooperation mit <a href="https://speakerinnen.org", target="_blank">speakerinnen.org</a>
-          werden Vorarlberger Frauen* sowohl lokal wie international als Expertinnen, Rednerinnen und
+          werden Vorarlberger Frauen sowohl lokal wie international als Expertinnen, Rednerinnen und
           Repräsentantinnen dieser Region sichtbar gemacht und können gefunden werden.
         </p>
         <p>
@@ -69,6 +69,20 @@ de:
       twitter: "<a href='https://twitter.com/speakerinnen', target='_blank', class=''>Twitter</a>"
       instagram: "<a href='https://instagram.com/speakerinnen', target='_blank', class=''>Instagram</a>"
       facebook: "<a href='https://facebook.com/speakerinnen', target='_blank', class=''>Facebook</a>"
+      caption_vorarlberg: |
+        vorarlberg.speakerinnen.org macht Vorarlberg #chancenreich<br>
+        <a href="https://www.facebook.com/MarkeVorarlberg/", target="_blank">Facebook: @markevorarlberg</a><br>
+        <a href="https://www.instagram.com/marke_vorarlberg/?hl=de", target="_blank">Instagram: @marke_vorarlberg</a>
+      caption_gleichstellung: |
+        vorarlberg.speakerinnen.org wird unterstützt vom
+        <a href="https://vorarlberg.at/frauen", target="_blank">Funktionsbereich Frauen und Gleichstellung</a>
+        im Amt der Vorarlberger Landesregierung.
+      photo_credit_vab: |
+        <p>
+          Bildachweis: Architektin Adelheid Gnaiger, Fotografie: Walter Gnaiger, siehe auch:
+          <a href="http://www.ingridholzschuh.at/publikationen/2014", target='_blank'>Adelheid Gnaiger (1916 &mdash; 1991).
+          Die erste Architektin Vorarlbergs</a>, Ingrid Holzschuh (Hrsg.)
+        </p>
     errors:
       not_found: "Sorry, die Seite, die du gesucht hast, existiert nicht."
       not_found_explain: "Möglicherweise hast du dich bei der Eingabe der Webadresse vertippt oder die Seite wurde verschoben."

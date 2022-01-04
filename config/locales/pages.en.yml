@@ -33,7 +33,7 @@ en:
       speakerinnen: "Speakers"
       category_search_title: "Browse by categories"
       category_search_text: "Find your women speaker in 10 categories or filter by specific topics:"
-      welcome_title: "Speakerinnen* - get inspired"
+      welcome_title: "Speakerinnen - get inspired"
       welcome_title_vab: "Welcome."
       welcome_text: "A warm welcome! Here you can find our latest registrations"
       welcome_text_vab: "Our newcomers from Vorarlberg:"
@@ -63,6 +63,20 @@ en:
       twitter: "<a href='https://twitter.com/speakerinnen', target='_blank', class='pv-'>Twitter</a>"
       instagram: "<a href='https://instagram.com/speakerinnen', target='_blank', class=''>Instagram</a>"
       facebook: "<a href='https://facebook.com/speakerinnen', target='_blank', class=''>Facebook</a>"
+      caption_vorarlberg: |
+        vorarlberg.speakerinnen.org makes Vorarlberg #chancenreich<br>
+        <a href="https://www.facebook.com/MarkeVorarlberg/", target="_blank">Facebook: @markevorarlberg</a><br>
+        <a href="https://www.instagram.com/marke_vorarlberg/?hl=de", target="_blank">Instagram: @marke_vorarlberg</a>
+      caption_gleichstellung: |
+        vorarlberg.speakerinnen.org is supported by
+        <a href="https://vorarlberg.at/frauen", target="_blank">Funktionsbereich Frauen und Gleichstellung</a>
+        im Amt der Vorarlberger Landesregierung.
+      photo_credit_vab: |
+        <p>
+          Photo credit: Architect Adelheid Gnaiger, Photo: Walter Gnaiger, see also:
+          <a href="http://www.ingridholzschuh.at/publikationen/2014", target="_blank">Adelheid Gnaiger (1916 &mdash; 1991).
+          Die erste Architektin Vorarlbergs</a>, Ingrid Holzschuh (Hrsg.)
+        </p>
     errors:
       not_found: "The page you were looking for doesn't exist."
       not_found_explain: "You may have mistyped the address or the page may have moved."
