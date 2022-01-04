@@ -11,7 +11,9 @@ class ContactController < ApplicationController
   def create
     @profile = Profile.friendly.find(params[:id]) if params[:id]
 
-    if @profile.inactive? || @profile.published == false
+    # this controller is also used when someone contacts the speakerinnen team
+    # in that case we have no profile
+    if @profile && ( @profile.inactive? || @profile.published == false )
       redirect_to profiles_url, notice: I18n.t('flash.profiles.show_no_permission')
     else
       @message = Message.new(message_params)
