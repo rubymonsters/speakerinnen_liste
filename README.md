@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/rubymonsters/speakerinnen_liste.png)](https://travis-ci.org/rubymonsters/speakerinnen_liste) [![Code Climate](https://codeclimate.com/github/rubymonsters/speakerinnen_liste.png)](https://codeclimate.com/github/rubymonsters/speakerinnen_liste)
+![Build Status](https://github.com/rubymonsters/speakerinnen_liste/actions/workflows/docker_ci.yml/badge.svg) [![Code Climate](https://codeclimate.com/github/rubymonsters/speakerinnen_liste.png)](https://codeclimate.com/github/rubymonsters/speakerinnen_liste)
 
 # About speakerinnen.org
 
