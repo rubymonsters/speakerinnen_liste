@@ -15,16 +15,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Build the Docker image
+    - name: Build speakerinnen Docker image
       run: make setup
-
-  test:
-
-    runs-on: ubuntu-latest
-
-    steps:
-    - uses: build
     - name: Run all tests
       run: make test
+
+
 
 
