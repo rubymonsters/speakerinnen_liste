@@ -18,3 +18,11 @@ jobs:
     - name: Build the Docker image
       run: make setup
 
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: build
+      - name: Run all tests
+        run: make test
+
+
