@@ -42,12 +42,12 @@ RSpec.describe 'Navigation', type: :system do
           expect(page).to have_link('Twitter')
           expect(page).to have_link('Instagram')
           expect(page).to have_link('Facebook')
-          expect(page).to have_link(I18n.t(:contact, scope: 'pages.home.footer'))
-          expect(page).to have_link(I18n.t(:about_title, scope: 'pages.home.footer'))
+          expect(page).to have_link(I18n.t(:contact, scope: 'pages.footer'))
+          expect(page).to have_link(I18n.t(:about, scope: 'pages.home'))
         end
 
         it 'viewing the contact page' do
-          click_link I18n.t(:contact, scope: 'pages.home.footer')
+          click_link I18n.t(:contact, scope: 'pages.footer')
           expect(page).to have_css('form label', text: I18n.t(:name, scope: 'contact.form'))
           expect(page).to have_css('form label', text: I18n.t(:email, scope: 'contact.form'))
           expect(page).to have_css('form label', text: I18n.t(:body, scope: 'contact.form'))

@@ -105,6 +105,7 @@ en:
     edit:
       show: "<< Back to the profile"
     index:
+      all_profiles: "All female experts"
       title: "All women speakers"
       text: "Welcome!<br>
             Here you can find women for your conference or your event: speakers, panel hosts, or workshop hosts.

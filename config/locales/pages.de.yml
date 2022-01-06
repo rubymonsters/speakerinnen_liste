@@ -1,23 +1,27 @@
 de:
   pages:
     home:
-      search:
-        heading: "Mehr Frauen auf die Bühnen!"
-        tagline: "Finde Rednerinnen, Referentinnen & Moderatorinnen<br> für Deine Konferenz:"
-        find_speaker: "Finde Deine Speakerinnen"
-        search_placeholder: "Name oder Thema"
-        search_speaker: "Suche"
-      all_categories: "Kategorien und Themen >>"
-      all_speakers: "Alle Speakerinnen* >>"
-      sub_menu_register_title: "Registriere Dich jetzt"
+      heading: "Mehr Frauen auf die Bühnen!"
+      heading_vab: "Finde Expertinnen, Rednerinnen und Fachfrauen."
+      tagline: "Finde Rednerinnen, Referentinnen & Moderatorinnen<br> für Deine Konferenz:"
+      tagline_vab: "Nutze eine der größten Datenbanken für weibliche Kompetenz in Vorarlberg und dem deutschsprachigen Raum."
+      search_placeholder: "Name oder Thema"
+      search_speaker: "Suche"
+      sub_menu_register_title: "Registriere dich"
       sub_menu_register_text: "Speakerinnen-Profil schnell und kostenfrei anlegen."
+      sub_menu_register_text_vab: "Expertinnen-Profil schnell und kostenfrei anlegen."
       sub_menu_about_us_title: "Über uns"
+      sub_menu_about_us_title_vab: "Über das Projekt"
       sub_menu_about_us_text: "Erfahre mehr über das Team von Speakerinnen."
+      sub_menu_about_us_text_vab: "Erfahre mehr über uns und dieses Projekt."
       sub_menu_blog_title: "Unser Blog"
       sub_menu_blog_text: "Mit spannenden Interviews und vielen Neuigkeiten."
+      sub_menu_all_title_vab: "Alle Expertinnen"
+      sub_menu_all_text_vab: "Mache weibliche Kompetenz in Vorarlberg sichtbar."
       sub_menu_categories_title: "Lass dich inspirieren"
+      sub_menu_categories_title_vab: "Erweiterte Suche"
       sub_menu_categories_text: "Finde die passende Speakerin in 10 Kategorien."
-      hint: "Hinweis"
+      sub_menu_categories_text_vab: "Finde die passende Expertin in 10 Kategorien."
       auth_modal: "Du musst der <b>Verwendung von Cookies zustimmen</b>, bevor Du Dich einloggen oder anmelden kannst.<br>
       Mehr Informationen in unserer <a href='%{link}' class='link'>Datenschutzerklärung</a>.<br>"
       contact_modal: "Du musst der <b>Verwendung von Cookies zustimmen</b>, bevor Du das Kontaktformular benutzen kannst.<br>
@@ -32,73 +36,53 @@ de:
       Software, die Matomoto heißt, um zu wissen, wie die Besucher*innen und Nutzer*innen von speakerinnen.org die Seite nutzen: Das hilft uns auch
       dabei, sie zu verbessern. Auch hierfür nutzen wir Cookies, die Du aber deaktivieren kannst. Mehr Informationen in unserer <a href='%{link}' class='link'>Datenschutzerklärung</a>."
       allow_cookies: "Ich stimme zu"
-      categories_list: "Finde deine Speakerin in 10 Kategorien oder filtere nach ganz konkreten Themen!"
       speakerinnen: "Speakerinnen"
-      description: "Nach Kategorien durchsuchen"
-      description_text: "Uns ist die Verteilung der Männer und Frauen auf Konferenzbühnen wichtig. Wir ermutigen Frauen, in ihrem professionellen Umfeld sichtbarer zu werden."
-      newest_speaker: "Ein herzliches Willkommen! Hier findest du unsere Neuzugänge"
-      speaker_shoutout: "Hast Du etwas Interessantes zu erzählen?"
-      speaker_text: "Registriere Dich auf speakerinnen.org >>"
-      speakers:
-        speaker_headline: "Unsere Speakerinnen"
-        speaker_text: "Keine Ausreden mehr für Panels ohne Frauen!"
-        speaker_index: "Alle Speakerinnen anschauen >>"
-        categories: "Kategorien und Themen >>"
-      mission_statement:
-        heading: "Unsere Vision"
-        content: "<p>Wir finden, dass Speakerinnen für Event-Organisator*innen einfacher zu finden sein sollen.</p><p>Wir finden auch, dass Konferenzen die besten Speaker und Speakerinnen auf ihren Bühnen haben sollten, egal von welchem Geschlecht.</p><p>Wir glauben an Kollaboration und nicht an Wettbewerb. Wir ermutigen unsere Speakerinnen und Event-Organisatoren sich gegenseitig zu unterstützen.</p>"
-      quote: "Wir glauben an Kollaboration - nicht an Wettbewerb."
-      quote_text: "So ermutigen wir unsere Speakerinnen und Event-Organisator*innen, sich gegenseitig zu unterstützen."
-      footer:
-        about_title: "Über uns"
-        about: |
-                Die Speakerinnen-Liste hat das Ziel, die Sichtbarkeit von Frauen bei Konferenzen, Panels, Talkshows und überall da zu erhöhen, wo öffentlich gesprochen wird.<br>
-                Hier können Veranstalter*innen Expertinnen finden, die kompetent über ihre Themen sprechen können und wollen.<br>
-                Frauen können sich selbst mit ihren Themen und Referenzen in die Datenbank eintragen und so besser findbar werden.
-        more: ">> mehr"
-        railsgirls: |
-                Die Speakerinnen-Liste wurde von 8 Frauen mit der Unterstützung von 4 Coaches als Lernprojekt der Rails Girls Berlin gebaut.<br><br>
-                Die <a href='http://railsgirlsberlin.de', target='_blank'>Rails Girls</a> sind eine internationale Non-Profit-Gruppe, die Frauen motiviert,
-                sich mit dem Programmieren zu beschäftigen. Das Ganze über wunderbare Workshops, Lerngruppen, Stipendien und eine angenehme Lern-Community.
-        # about: "Wir wollen genauso viele weibliche wie männliche Speaker und Speakerinnen auf den Konferenzen, auf die wir gehen. Die meisten Konferenzen zu Tech-Themen, Marketing, Digital Media aber auch in anderen Bereichen haben leider meistens viel mehr männliche Referenten, Moderatoren oder Trainer (s. hier einige Beispiele http://50prozent.noblogs.org). Wir arbeiten auf eine ausgeglichene Verteilung hin und möchten Event-Organisatoren helfen, weibliche Speakerinnen für ihre Konferenzen zu finden. Außerdem wollen wir weibliche Speakerinnen, Moderatorinnen und Coaches im Web sichtbarer machen."
-        press: "Wir in den Medien"
-        blog: "Unser Blog"
-        faq: "FAQs"
-        links: "Links"
-        links_text: "Hier gibt es Links zu ähnlichen Projekten:"
-        code_of_conduct: "Code of Conduct"
-        contact: "Kontakt"
-        contact_link: "E-Mail"
-        twitter: "<a href='https://twitter.com/speakerinnen', target='_blank', class=''>Twitter</a>"
-        instagram: "<a href='https://instagram.com/speakerinnen', target='_blank', class=''>Instagram</a>"
-        github: "<a href='https://github.com/rubymonsters/speakerinnen_liste', target='_blank', class='px-2'>GitHub</a>"
-        facebook: "<a href='https://facebook.com/speakerinnen', target='_blank', class=''>Facebook</a>"
-        devblog: "<a href='http://speakerinnen.wordpress.com/', taget='_blank'>Entwicklerinnen-Blog</a>"
-        faq_short: |
-            <strong>Warum gibt es Thema XYZ noch nicht?</strong><br>
-            Weil es noch niemand angelegt hat. Alle Themen, die in der Speakerinnen-Liste zu sehen sind, wurden von mindestens einer Speakerin in ihrem Profil als Tags eingegeben. Daraus entstehen automatisch auf der Seite die für alle sichtbaren Themen.<br>
-            <br><strong>Können sich alle einfach eintragen?</strong><br>
-            Ja.
-        press_short: |
-            <strong>Speakerinnen.org verhilft zu Expertise auf der Bühne</strong><br>
-            <a href="https://www.focus.de/digital/computer/technik-speakerinnen-org-verhilft-zu-expertise-auf-der-buehne_id_6004519.html" target="_blank" rel="noopener">Focus</a>
-            <br><br>
-            <strong>Rauf auf die Podien: Weibliche Redner sind immer noch selten</strong><br>
-            <a href="https://www.sueddeutsche.de/news/karriere/arbeit-rauf-auf-die-podien-weibliche-redner-sind-immer-noch-selten-dpa.urn-newsml-dpa-com-20090101-160302-99-61792" target="_blank" rel="noopener">Süddeutsche Zeitung</a>
-            <br><br>
-            <strong>Die Hälfte der Macht den Speakerinnen</strong><br>
-            <a href="https://newthinking.de/de/haelfte-macht-den-speakerinnen" target="_blank" rel="noopener">Newthinking Blog</a>
-            <br><br>
-            <strong>Nicht mehr allein unter Männern</strong><br>
-            <a href="https://www.taz.de/!5043737/" target="_blank" rel="noopener">taz</a>
-            <br><br>
-    about:
-      title: "Über uns"
-    press:
-      title: "Medien über uns"
-    imprint:
-      title: "Impressum"
+      category_search_title: "Nach Kategorien durchsuchen"
+      category_search_text: "Finde deine Speakerin in 10 Kategorien oder filtere nach ganz konkreten Themen:"
+      welcome_title: "Speakerinnen - get inspired"
+      welcome_title_vab: "Herzlich willkommen."
+      welcome_text: "Ein herzliches Willkommen! Hier findest du unsere Neuzugänge"
+      welcome_text_vab: "Unsere Neuzugänge aus Vorarlberg:"
+      intro_title_vab: "Wir machen Expertinnen sichtbar."
+      intro_text_vab: |
+        <p>
+          vorarlberg.speakerinnen.org ist ein Projekt zur Verhinderung von 'manels',
+          also Podien, Gremien oder Panels, die vornehmlich mit Männern besetzt sind.
+          Durch die Kooperation mit <a href="https://speakerinnen.org", target="_blank">speakerinnen.org</a>
+          werden Vorarlberger Frauen sowohl lokal wie international als Expertinnen, Rednerinnen und
+          Repräsentantinnen dieser Region sichtbar gemacht und können gefunden werden.
+        </p>
+        <p>
+          Ermöglicht wird das Projekt vom <a href="https://vorarlberg.at/frauen", target="_blank">Funktionsbereich Frauen und Gleichstellung</a>
+          im Amt der Vorarlberger Landesregierung und der <a href="https://www.vorarlberg-chancenreich.at/", target="_blank">Marke Vorarlberg</a>.
+        </p>
+        <p>
+          Mehr Informationen über uns gibt es <a href="/about_vorarlberg">hier</a>.
+        </p>
+      about: "Über uns"
+      faq: "FAQs"
+      code_of_conduct: "Code of Conduct"
+    footer:
+      contact: "Kontakt"
+      imprint: "Impressum"
       privacy: "Datenschutzerklärung"
+      twitter: "<a href='https://twitter.com/speakerinnen', target='_blank', class=''>Twitter</a>"
+      instagram: "<a href='https://instagram.com/speakerinnen', target='_blank', class=''>Instagram</a>"
+      facebook: "<a href='https://facebook.com/speakerinnen', target='_blank', class=''>Facebook</a>"
+      caption_vorarlberg: |
+        vorarlberg.speakerinnen.org macht Vorarlberg #chancenreich<br>
+        <a href="https://www.facebook.com/MarkeVorarlberg/", target="_blank">Facebook: @markevorarlberg</a><br>
+        <a href="https://www.instagram.com/marke_vorarlberg/?hl=de", target="_blank">Instagram: @marke_vorarlberg</a>
+      caption_gleichstellung: |
+        vorarlberg.speakerinnen.org wird unterstützt vom
+        <a href="https://vorarlberg.at/frauen", target="_blank">Funktionsbereich Frauen und Gleichstellung</a>
+        im Amt der Vorarlberger Landesregierung.
+      photo_credit_vab: |
+        <p>
+          Bildachweis: Architektin Adelheid Gnaiger, Fotografie: Walter Gnaiger, siehe auch:
+          <a href="http://www.ingridholzschuh.at/publikationen/2014", target='_blank'>Adelheid Gnaiger (1916 &mdash; 1991).
+          Die erste Architektin Vorarlbergs</a>, Ingrid Holzschuh (Hrsg.)
+        </p>
     errors:
       not_found: "Sorry, die Seite, die du gesucht hast, existiert nicht."
       not_found_explain: "Möglicherweise hast du dich bei der Eingabe der Webadresse vertippt oder die Seite wurde verschoben."

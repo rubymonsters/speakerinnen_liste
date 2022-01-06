@@ -74,6 +74,7 @@ Rails.application.routes.draw do
     get 'faq' => 'pages#faq'
     get 'press' => 'pages#press'
     get 'code_of_conduct' => 'pages#code_of_conduct'
+    get 'about_vorarlberg' => 'pages#about_vorarlberg'
 
     get '/', to: 'pages#home'
 

@@ -43,6 +43,18 @@ describe 'profile search' do
     describe 'searching', elasticsearch: true do
       before { Profile.__elasticsearch__.refresh_index! }
 
+      it 'displays profiles with searched topic' do
+        visit profiles_path(search: 'physics')
+
+        expect(page).to have_content('Marie')
+      end
+
+      it 'displays profiles with searched main topic' do
+        visit profiles_path(search: 'Big Data')
+
+        expect(page).to have_content('Maren')
+      end
+
       it 'displays profiles that are a partial match' do
         visit profiles_path(search: 'ada lovelace')
 
@@ -87,13 +99,10 @@ describe 'profile search' do
     end
   end
 
-  describe 'admin area search', elasticsearch: true do
+  describe 'admin area search' do
     let(:admin) { FactoryBot.create(:admin) }
 
-    before do
-      sign_in admin
-      Profile.__elasticsearch__.refresh_index!
-    end
+    before { sign_in admin }
 
     it 'finds the correct profile' do
       visit admin_profiles_path(search: 'ada lovelace')

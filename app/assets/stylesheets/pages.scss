@@ -6,15 +6,8 @@
   background-size: cover;
 }
 
-#startpage__teaser-bg-01 {
-  background: image-url('teaser-bg-01.jpg') no-repeat center center;
-  background-size: cover;
-}
-
-#startpage__teaser-bg-02 {
-  background: image-url('teaser-bg-02.jpg') no-repeat center center;
-  background-size: cover;
-  background-position: top;
+.vorarlberg .home #startpage__start-teaser {
+  background-image: image-url('start-teaser-vab.jpg');
 }
 
 .startpage__photo-bar {
@@ -32,6 +25,80 @@
   left: 0;
   width: 100%;
   height: 100%;
+}
+
+.vorarlberg .home .start-teaser h1 {
+  margin-bottom: 1.25rem;
+  line-height: 1.25;
+  color: white;
+}
+
+.vorarlberg .home .start-teaser .startpage-subtitle {
+  margin: 0 0 3rem 0;
+  line-height: 1.5;
+  font-size: 1.3rem;
+  color: white;
+}
+
+.sub-menu {
+  margin-top: 290px;
+}
+
+.vorarlberg .home .sub-menu {
+  margin-top: 210px;
+  margin-bottom: 1em;
+}
+
+.vorarlberg .home .intro-text {
+  background-color: #619b97;
+  width: 100%;
+}
+
+.vorarlberg .home .intro-text h1 {
+   color: white;
+}
+
+.vorarlberg .home .intro-text p {
+  line-height: 1.5;
+  font-size: 1.3rem;
+  color: white;
+}
+
+.vorarlberg .home .intro-text a {
+  text-decoration: underline;
+  color: white;
+}
+
+.vorarlberg footer {
+  padding-bottom: 3rem;
+}
+
+.vorarlberg footer figure {
+  margin: 0;
+}
+
+.vorarlberg footer .logo-1 {
+  width: 180px;
+  margin-bottom: 4px;
+}
+
+.vorarlberg footer .logo-2 {
+  width: 240px;
+}
+
+.vorarlberg footer figcaption {
+  font-size: smaller;
+}
+
+.vorarlberg footer .credits {
+  margin-top: 3px;
+  font-size: smaller;
+}
+
+@media (max-width: 768px) {
+  .vorarlberg footer figcaption {
+    margin-bottom: 20px;
+  }
 }
 
 .card-header {

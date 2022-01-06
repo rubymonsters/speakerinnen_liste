@@ -1,35 +1,44 @@
-<section class="bg--white">
-  <section id="startpage__start-teaser" class="startpage__photo-bar">
+<section class="home bg--white">
+  <section id="startpage__start-teaser" class="start-teaser startpage__photo-bar">
     <div class="container">
       <div class="row">
-        <div class="col-12">
-          <h1 class="display-4 pt-5" style="text-shadow:0px 0px 9px rgba(255, 255, 255, 1);"><%= t(:heading, scope: 'pages.home.search') %></h1>
-          <h3 class="startpage-subtitle pb-3" style="text-shadow:0px 0px 9px rgba(255, 255, 255, 1);"><%= t(:tagline, scope: 'pages.home.search').html_safe %></h3>
-        </div>
+        <% if current_region.nil? %>
+          <div class="col-12">
+            <h1 class="display-4 pt-5" style="text-shadow:0px 0px 9px rgba(255, 255, 255, 1);">
+              <%= t(:heading, scope: 'pages.home') %>
+            </h1>
+            <h3 class="startpage-subtitle pb-3" style="text-shadow:0px 0px 9px rgba(255, 255, 255, 1);">
+              <%= t(:tagline, scope: 'pages.home').html_safe %>
+            </h3>
+          </div>
+        <% else %>
+          <div class="col-5">
+            <h1 class="display-4 pt-5"><%= t(:heading_vab, scope: 'pages.home') %></h1>
+            <p class="startpage-subtitle"><%= t(:tagline_vab, scope: 'pages.home') %></p>
+          </div>
+        <% end %>
       </div>
       <div class="row">
         <div class="col-md-6 col-md-12 ml-2">
           <%= render partial: 'shared/search_form' %>
         </div>
       </div>
-      <div class="row top-space">
+      <div class="row sub-menu">
         <%= render partial: 'shared/sub_menu' %>
       </div>
     </div>
   </section>
-  <div class="copyright">
-     Copyright: public domain ( modified )
-  </div>
-  <!-- anchor for features -->
-  <a id="features"></a>
 
-  <% if current_region == nil && @features.load.any?%>
+  <% if current_region.nil? %>
+    <div class="copyright">Copyright: public domain ( modified )</div>
+  <% end %>
+
+  <% if current_region.nil? && @features.load.any?%>
+    <a id="features"></a>
     <% @features.each do |feature| %>
       <div class="container py-5 text-center feature">
         <h1 class=""><%= feature.title %></h1>
-        <h3 class="">
-          <%= feature.description %>
-        </h3>
+        <h3 class=""><%= feature.description %></h3>
         <div class="row pt-5">
           <%= render partial: "profiles/profile", collection: feature.profiles, as: :profile %>
         </div>
@@ -37,31 +46,36 @@
     <% end %>
   <% end %>
 
-<a id="newest_speaker_achor"></a>
+  <a id="newest_speaker_achor"></a>
   <div id="startpage-newest_speaker" class="container py-5 text-center">
-    <h1 class="">Speakerinnen* - get inspired</h1>
-    <h3 class="">
-      <%= t(:newest_speaker, scope: 'pages.home') %>
-    </h3>
+    <% if current_region.nil? %>
+      <h1 class=""><%= t(:welcome_title, scope: 'pages.home') %></h1>
+      <h3 class=""><%= t(:welcome_text, scope: 'pages.home') %></h3>
+    <% else %>
+      <h1 class=""><%= t(:welcome_title_vab, scope: 'pages.home') %></h1>
+      <h3 class=""><%= t(:welcome_text_vab, scope: 'pages.home') %></h3>
+    <% end %>
     <div class="row pt-5">
       <%= render partial: "profiles/profile", collection: @newest_profiles %>
       <%= render partial: "profiles/register" %>
     </div>
   </div>
 
-  <!-- Anker für Kategorien -->
-  <a id="categories_anchor"></a>
+  <% if current_region %>
+    <div class="intro-text container-fluid">
+      <div class="row p-5 text-left">
+        <h1><%= t(:intro_title_vab, scope: 'pages.home') %></h1>
+        <%= t(:intro_text_vab, scope: 'pages.home').html_safe %>
+      </div>
+    </div>
+  <% end %>
 
-  <div class="container-fluid my-5 text-center">
-  <!-- <div class="startpage-categories__list py-5 text-center"> -->
-    <div class="row">
-      <div class="col">
-    <h1><%= t(:description, scope: 'pages.home') %></h1>
-    <h3 class="pb-5">
-      <%= t(:categories_list, scope: 'pages.home') %>
+  <a id="categories_anchor"></a>
+  <div class="container-fluid p-5 text-center">
+    <h1 class=""><%= t(:category_search_title, scope: 'pages.home') %></h1>
+    <h3 class=""><%= t(:category_search_text, scope: 'pages.home') %></h3>
   </div>
   <div id="startpage-categories__list" class="container-fluid p-0">
     <%= render partial: "shared/categories", object: @categories %>
   </div>
-
 </section>

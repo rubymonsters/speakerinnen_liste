@@ -30,3 +30,5 @@ en:
     random_categories: "For example, here:"
     filter_by_cats: "To find even more speakers, have a look at the <a href='%{category_link}'>categories</a>."
     filter_explanation: "Here you can filter even more and thus narrow down the search."
+    expand_search: "Your search had no results. Do you want to expand the search to German-speaking countries or internationally?"
+    search_on: "Search on: "

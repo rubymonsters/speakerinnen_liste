@@ -1,23 +1,27 @@
 en:
   pages:
     home:
-      search:
-        heading: "Organizers, find your speakers"
-        tagline: "Find women speakers & moderators for your conference:"
-        find_speaker: "Find speaker"
-        search_placeholder: "Search by name or topic"
-        search_speaker: "Search"
-      all_categories: "Categories and topics >>"
-      all_speakers: "All women speakers >>"
+      heading: "Organizers, find your speakers"
+      heading_vab: "Find women experts, speakers and professionals."
+      tagline: "Find women speakers & moderators for your conference:"
+      tagline_vab: "Take advantage of one of the largest databases for female competence in Vorarlberg and the German-speaking region."
+      search_placeholder: "Search by name or topic"
+      search_speaker: "Search"
       sub_menu_register_title: "Register now"
-      sub_menu_register_text: "Create speaker profile quickly and free of charge"
+      sub_menu_register_text: "Create speaker profile quickly and free of charge."
+      sub_menu_register_text_vab: "Create expert profile quickly and free of charge."
       sub_menu_about_us_title: "About us"
+      sub_menu_about_us_title_vab: "About the project"
       sub_menu_about_us_text: "Learn more about the Speakerinnen.org team."
+      sub_menu_about_us_text_vab: "Learn more about us and this project."
       sub_menu_blog_title: "Our blog"
       sub_menu_blog_text: "Find exciting interviews<br> and lots of news."
+      sub_menu_all_title_vab: "All female experts"
+      sub_menu_all_text_vab: "Make female competence visible in Vorarlberg."
       sub_menu_categories_title: "Get inspired"
+      sub_menu_categories_title_vab: "Advanced search"
       sub_menu_categories_text: "Find the right women speaker in 10 categories."
-      hint: "Hint"
+      sub_menu_categories_text_vab: "Find the right women expert in 10 categories."
       auth_modal: "You have to <b>agree to the use of cookies</b> before using the register or login form.<br>
        Find more information about data security in our <a href='%{link}' class='link'>privacy policy</a>.<br>"
       contact_modal: "You have to <b>agree to the use of cookies</b>. before using the contact form.<br>
@@ -26,73 +30,53 @@ en:
       we remember and store information about how you use it."
       cookie_consent_detail: "This is done using simple text files called cookies which sit on your computer. These cookies are completely safe and secure and will never contain any sensitive information. Important: To use the full functionality of this site (e.g. login, registration and sending mail to the speakers) you have to agree to the use of cookies. For web statistics we use Matomoto which also uses cookies. These can be deactivated separately. Find more information about data security in our <a href='%{link}' class='link'>privacy policy</a>."
       allow_cookies: "I agree"
-      categories_list: "Find your women speaker in 10 categories or filter by specific topics!"
       speakerinnen: "Speakers"
-      description: "Browse by categories"
-      description_text: "We feel strongly about a balanced representation of men and women on stage. We encourage women to become more visible in their profession and field of expertise."
-      newest_speaker: "A warm welcome! Here you can find our latest registrations"
-      speaker_shoutout: "Do you have something interesting to say?"
-      speaker_text: "Get on the Speakerinnen* list >>"
-      speakers:
-        speaker_headline: "Our Speakers*"
-        speaker_text: "No more excuses for panels without women!"
-        speaker_index: "Browse all speakers >>"
-        categories: "Categories and Topics >>"
-      mission_statement:
-        heading: "Our Vision"
-        content: "<p>We believe that women speakers should be easier to find for event organizers.</p><p>We believe that event organizers should have the best speakers at their events, regardless of the speakers’ gender identification.</p><p>We believe in collaboration and not competition, so we encourage our speakers and event organizers to support each other and help speakers speak better.</p>"
-      quote: "We believe in collaboration — not competition"
-      quote_text: "So we encourage our speakers and event organizers to support each other and help speakers to improve their performance."
-      footer:
-        about_title: "About us"
-        about: |
-              Speakerinnen.org aims to increase the visibility and participation of women at (but not limited to) conferences, panels and talk shows.<br>
-              Organizers and hosts can find experts, who gladly (and competently) share their knowledge. <br>
-              women can register in our database with the topics they are interested in covering, and can add references to their abilities.
-        more: ">> more"
-        railsgirls: |
-              8 women supported by 4 coaches coded this web application as a Rails Girls Berlin learning project.<br><br>
-              <a href='http://railsgirlsberlin.de', target='_blank'>Rails Girls</a> is an international not-for-profit group that aims to get women into programming
-              with workshops, scholarships, and a safe learning community.
-        press: "Media Coverage"
-        blog: "Our blog"
-        faq: "FAQs"
-        links: "Links"
-        links_text: "Here you find links to similar projects:"
-        more: ">> more"
-        code_of_conduct: "Code of Conduct"
-        contact: "Contact"
-        contact_link: "Email"
-        twitter: "<a href='https://twitter.com/speakerinnen', target='_blank', class='pv-'>Twitter</a>"
-        instagram: "<a href='https://instagram.com/speakerinnen', target='_blank', class=''>Instagram</a>"
-        github: "<a href='https://github.com/rubymonsters/speakerinnen_liste' target='_blank', class='pv-'>GitHub</a>"
-        facebook: "<a href='https://facebook.com/speakerinnen', target='_blank', class=''>Facebook</a>"
-        devblog: "<a href='http://speakerinnen.wordpress.com/', target='_blank>Developer Blog</a>"
-        faq_short: |
-                <strong>Why is there no speaker for the topic I am looking for?</strong><br>
-                Possibly, nobody has created a tag for this topic yet. As soon as a speaker names this topic as one of her tags, this topic becomes visible as a tag within the topic range.<br>
-                <br><strong>Can anybody join in?</strong><br>
-                Yes.
-        press_short: |
-            <strong>Speakerinnen.org verhilft zu Expertise auf der Bühne</strong><br>
-            <a href="https://www.focus.de/digital/computer/technik-speakerinnen-org-verhilft-zu-expertise-auf-der-buehne_id_6004519.html" target="_blank" rel="noopener">Focus (German)</a>
-            <br><br>
-            <strong>Rauf auf die Podien: Weibliche Redner sind immer noch selten</strong><br>
-            <a href="https://www.sueddeutsche.de/news/karriere/arbeit-rauf-auf-die-podien-weibliche-redner-sind-immer-noch-selten-dpa.urn-newsml-dpa-com-20090101-160302-99-61792" target="_blank" rel="noopener">Süddeutsche Zeitung (German)</a>
-            <br><br>
-            <strong>Die Hälfte der Macht den Speakerinnen</strong><br>
-            <a href="https://newthinking.de/de/haelfte-macht-den-speakerinnen" target="_blank" rel="noopener">Newthinking Blog (German)</a>
-            <br><br>
-            <strong>Nicht mehr allein unter Männern</strong><br>
-            <a href="https://www.taz.de/!5043737/" target="_blank" rel="noopener">taz (German)</a>
-            <br><br>
-    about:
-      title: "About us"
-    press:
-      title: "Press about us"
-    imprint:
-      title: "Legal Details"
+      category_search_title: "Browse by categories"
+      category_search_text: "Find your women speaker in 10 categories or filter by specific topics:"
+      welcome_title: "Speakerinnen - get inspired"
+      welcome_title_vab: "Welcome."
+      welcome_text: "A warm welcome! Here you can find our latest registrations"
+      welcome_text_vab: "Our newcomers from Vorarlberg:"
+      intro_title_vab: "We make female experts visible."
+      intro_text_vab: |
+        <p>
+          vorarlberg.speakerinnen.org is a project to prevent "manels",
+          i.e. podiums, committees or panels that are predominantly occupied by men.
+          Through the cooperation with <a href='https://speakerinnen.org', target='_blank'>speakerinnen.org</a>
+          Vorarlberg women* become visible as experts, speakers and representatives of this region.
+          They can be found both locally and internationally.
+        </p>
+        <p>
+          The project is made possible by the <a href='https://vorarlberg.at/frauen', target='_blank'>Funktionsbereich Frauen und Gleichstellung</a>
+          im Amt der Vorarlberger Landesregierung and the <a href='https://www.vorarlberg-chancenreich.at/', target='_blank'>Marke Vorarlberg</a>.
+        </p>
+        <p>
+          More information about us can be found <a href="/about_vorarlberg">here</a>.
+        </p>
+      about: "About us"
+      faq: "FAQs"
+      code_of_conduct: "Code of Conduct"
+    footer:
+      contact: "Contact"
+      imprint: "Legal Details"
       privacy: "Privacy Policy"
+      twitter: "<a href='https://twitter.com/speakerinnen', target='_blank', class='pv-'>Twitter</a>"
+      instagram: "<a href='https://instagram.com/speakerinnen', target='_blank', class=''>Instagram</a>"
+      facebook: "<a href='https://facebook.com/speakerinnen', target='_blank', class=''>Facebook</a>"
+      caption_vorarlberg: |
+        vorarlberg.speakerinnen.org makes Vorarlberg #chancenreich<br>
+        <a href="https://www.facebook.com/MarkeVorarlberg/", target="_blank">Facebook: @markevorarlberg</a><br>
+        <a href="https://www.instagram.com/marke_vorarlberg/?hl=de", target="_blank">Instagram: @marke_vorarlberg</a>
+      caption_gleichstellung: |
+        vorarlberg.speakerinnen.org is supported by
+        <a href="https://vorarlberg.at/frauen", target="_blank">Funktionsbereich Frauen und Gleichstellung</a>
+        im Amt der Vorarlberger Landesregierung.
+      photo_credit_vab: |
+        <p>
+          Photo credit: Architect Adelheid Gnaiger, Photo: Walter Gnaiger, see also:
+          <a href="http://www.ingridholzschuh.at/publikationen/2014", target="_blank">Adelheid Gnaiger (1916 &mdash; 1991).
+          Die erste Architektin Vorarlbergs</a>, Ingrid Holzschuh (Hrsg.)
+        </p>
     errors:
       not_found: "The page you were looking for doesn't exist."
       not_found_explain: "You may have mistyped the address or the page may have moved."
@@ -101,4 +85,3 @@ en:
       internal: "We're sorry, but something went wrong."
       back_home: "Go back home: "
       home_link: "Speakerinnen Liste"
-

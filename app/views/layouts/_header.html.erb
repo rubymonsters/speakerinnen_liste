@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <header>
   <%# TODO: hidden <h1>Speakerinnen</h1>%>
-  <nav class="navbar navbar-expand-lg navbar-light  pt-0 <%= controller_path =~ /admin\// ? "admin__header--color": "header" %>" >
+  <nav class="navbar navbar-expand-lg navbar-light py-0 <%= controller_path =~ /admin\// ? "admin__header--color": "header" %>" >
     <%= link_to(root_path, id: 'header__home-link', class: 'navbar-brand p-0') do %>
-      <%= image_tag('logo_header.png', alt: 'logo', id: 'header__logo') %>
+      <%= image_tag("logo_header#{'_vab' if current_region}.png", alt: 'logo', id: 'header__logo') %>
     <% end %>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -15,7 +15,7 @@
         <li class="nav-item active pt-2 pr-5 ">
           <%= form_tag(profiles_path, method: 'get', class: "form-inline text-capitalize small") do %>
             <%= text_field_tag('search', params[:search], id: 'header_search',class: 'form-control typeahead mr-sm-2',
-              type: 'text', placeholder: t(:search_placeholder, scope: 'pages.home.search')) %>
+              type: 'text', placeholder: t(:search_placeholder, scope: 'pages.home')) %>
               <%= button_tag "<i class='fa fa-search'></i>".html_safe, class: "btn btn-link" %>
           <% end %>
         </li>
@@ -24,11 +24,19 @@
             <%= I18n.locale == :en ? "More" : "Mehr" %>
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <%= link_to 'Speakerinnen Blog', 'https://blog.speakerinnen.org/', target: '_blank', class: 'dropdown-item' %>
-            <%= link_to 'Fiftypercent', 'https://50prozent.speakerinnen.org/', target: '_blank', class: 'dropdown-item'%>
-            <%= link_to t(:about_title, scope: 'pages.home.footer'), about_path, class: 'dropdown-item' %>
-            <%= link_to t(:faq, scope: 'pages.home.footer'), faq_path, class: 'dropdown-item' %>
-            <%= link_to t(:code_of_conduct, scope: 'pages.home.footer'), code_of_conduct_path, class: 'dropdown-item' %>
+            <% if current_region.nil? %>
+              <%= link_to 'Speakerinnen Blog', 'https://blog.speakerinnen.org/', target: '_blank', class: 'dropdown-item' %>
+              <%= link_to 'Fiftypercent', 'https://50prozent.speakerinnen.org/', target: '_blank', class: 'dropdown-item'%>
+              <%= link_to t(:about, scope: 'pages.home'), about_path, class: 'dropdown-item' %>
+              <%= link_to t(:faq, scope: 'pages.home'), faq_path, class: 'dropdown-item' %>
+              <%= link_to t(:code_of_conduct, scope: 'pages.home'), code_of_conduct_path, class: 'dropdown-item' %>
+            <% else %>
+              <%= link_to t(:about, scope: 'pages.home'), about_vorarlberg_path, class: 'dropdown-item' %>
+              <%= link_to t(:faq, scope: 'pages.home'), faq_path, class: 'dropdown-item' %>
+              <%= link_to t(:code_of_conduct, scope: 'pages.home'), code_of_conduct_path, class: 'dropdown-item' %>
+              <%= link_to 'Speakerinnen', 'https://speakerinnen.org/', target: '_blank', class: 'dropdown-item' %>
+              <%= link_to '#Xipertinnen', 'https://www.instagram.com/xipertinnen/?hl=de', target: '_blank', class: 'dropdown-item'%>
+            <% end %>
           </div>
         </li>
         <li class="nav-item active dropdown pt-3 pr-5">

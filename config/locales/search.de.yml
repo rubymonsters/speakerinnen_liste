@@ -29,3 +29,5 @@ de:
     random_categories: "Zum Beispiel hier:"
     filter_by_cats: "Um noch mehr Speakerinnen zu finden, guck doch mal bei den <a href='%{category_link}'>Kategorien</a>."
     filter_explanation: "Hier kannst Du noch mehr filtern und damit die Suche eingrenzen."
+    expand_search: "Deine Suche hatte keine Ergebnisse. Möchtest du die Suche auf den deutschsprachigen Raum oder international ausweiten?"
+    search_on: "Suche auf: "
