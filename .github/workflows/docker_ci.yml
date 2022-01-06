@@ -1,4 +1,4 @@
-name: Docker Image CI
+name: Run Build and Tests
 
 on:
   push:
@@ -8,7 +8,7 @@ on:
 
 jobs:
 
-  build:
+  build-test:
 
     #Gitrunner hosted by Github
     runs-on: ubuntu-latest
