@@ -1,4 +1,4 @@
-<%= form_tag(profiles_path, method: 'get', class:"form-row") do %>
+<%= form_tag(profiles_path, method: 'get', class:"form-row home-search") do %>
   <label class="sr-only" for="inlineFormInputSearch">Search</label>
   <%= search_field_tag('search', params[:search], id: "home_search", class: 'form-control pr-2 typeahead ',
         type: 'text', placeholder: t(:search_placeholder, scope: 'pages.home') ) %>
