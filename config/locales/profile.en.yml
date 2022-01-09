@@ -1,5 +1,9 @@
 en:
   profiles:
+    register_box:
+      title: "<b>We need more women on stages</b>"
+      text: "<p>If you are a professional speaker in any topic, register here, quick and for free</p>"
+      button: "Register as a speaker"
     category: "We have <b>%{profiles_count}</b> speakerinnen and <b>%{topics_count}</b> topics in category <b>%{category_name}</b> <i class='fa fa-caret-down' style='font-size: 21px'></i>"
     tag:
       top_topics: "The 200 most popular topics"
