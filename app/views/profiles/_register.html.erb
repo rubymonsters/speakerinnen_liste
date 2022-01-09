@@ -2,13 +2,11 @@
   <div class="outer fit-height">
     <div class="border border-primary stretch outer">
       <div class="stretch top">
-        <div class="profile-subtitle"><b>We need more women on stages</b></div>
+        <div class="profile-subtitle"><%= t(:title, scope: 'profiles.register_box').html_safe %></div>
       </div>
-      <div class="middle">
-        <p>If you are a professional speaker in any topic, register here, quick and free</p>
-      </div>
+      <div class="middle"><%= t(:text, scope: 'profiles.register_box').html_safe %></div>
       <div class="stretch bottom">
-        <%= link_to "Register as a speaker", sign_up_path, class: "btn btn-primary" %>
+        <%= link_to t(:button, scope: 'profiles.register_box'), sign_up_path, class: "btn btn-primary" %>
       </div>
     </div>
   </div>

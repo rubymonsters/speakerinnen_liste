@@ -41,6 +41,12 @@
         <% if params[:category_id] %>
           <h1><%= @category.name %></h1>
           <h3><%= t(:profiles_in_category, scope: 'profiles.index', count: @profiles_count).html_safe %> </h3>
+          <% if current_region %>
+            <p>
+              <%= t(:expand_search, scope: 'search') %>
+              <a href="<%= category_url(params[:category_id], host: Rails.env.development? ? 'localhost' : 'speakerinnen.org', anchor:"speakers_anchor") %>" target="_blank">speakerinnen.org</a>
+            </p>
+          <% end %>
         <% elsif params[:tag_filter] %>
           <h1>
             <%= t(:all_tagged_speakerinnen, scope: 'profiles.index', count: @profiles_count).html_safe + t(:tag_filter, scope: 'profiles.index', count: @tags.count).html_safe %>
@@ -64,6 +70,13 @@
   <% end %>
 
   <%= paginate @profiles %>
+
+  <% if current_region && params[:search] %>
+    <p>
+      <%= t(:expand_search, scope: 'search') %>
+      <a href="<%= profiles_url(search: params[:search], host: Rails.env.development? ? 'localhost' : 'speakerinnen.org') %>" target="_blank">speakerinnen.org</a>
+    </p>
+  <% end %>
 </div>
 
 <script type="text/javascript" charset="utf-8">
