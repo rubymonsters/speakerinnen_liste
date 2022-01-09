@@ -15,11 +15,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    - name: Copy database.yml
+      run: cp config/database.yml.sample config/database.yml
     - name: Build speakerinnen Docker image
       run: make setup
     - name: Run all tests
       run: make test
-
-
-
-
