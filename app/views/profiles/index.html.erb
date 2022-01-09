@@ -64,6 +64,13 @@
   <% end %>
 
   <%= paginate @profiles %>
+
+  <% if current_region %>
+    <p>
+      <%= t(:expand_search, scope: 'search') %>
+      <a href="<%= profiles_url(search: params[:search], host: Rails.env.development? ? 'localhost' : 'speakerinnen.org') %>" target="_blank">speakerinnen.org</a>
+    </p>
+  <% end %>
 </div>
 
 <script type="text/javascript" charset="utf-8">

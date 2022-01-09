@@ -60,11 +60,7 @@
           <% end %>
         </ul>
       <% else %>
-        <p><%= t(:expand_search, scope: 'search') %></p>
-        <p>
-          <%= t(:search_on, scope: 'search') %>
-          <a href="<%= profiles_url(search: params[:search], host: Rails.env.development? ? 'localhost' : 'speakerinnen.org') %>">speakerinnen.org</a>
-        </p>
+        <p><%= t(:no_results, scope: 'search') %></p>
       <% end %>
     </div>
   </div>
