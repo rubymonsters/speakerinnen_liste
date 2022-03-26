@@ -163,11 +163,18 @@
 .child {
   position: absolute;
   top: 20px;
-  width: 740px;
+  width: 100%;
 }
 
-.category_name:hover {
+.category_name {
+  text-align: right;
+}
+
+.category_name {
+  a:hover {
   text-decoration: underline;
+  color: white;
+}
 }
 
 @include media-breakpoint-down(md) {
