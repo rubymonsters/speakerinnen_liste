@@ -1,7 +1,7 @@
 body {
   font-family: $sans-serif;
   color: $font-color;
-  background-color: white;
+  background-color: $bg-light-grey;
 }
 
 html {
@@ -28,7 +28,7 @@ h1 {
 }
 
 h1,h3 {
-  padding: 0.5em;
+  padding: 15px;
 }
 
 .btn:focus{
