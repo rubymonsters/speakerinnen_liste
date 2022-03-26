@@ -36,7 +36,7 @@
     <div class="copyright">Copyright: public domain ( modified )</div>
   <% end %>
 
-  <%# Hit Topic %>
+  <%# Hot Topic %>
 
   <% if @is_global_speakerinnen && @features.load.any?%>
     <a id="features"></a>
@@ -46,6 +46,7 @@
         <h3 class=""><%= feature.description %></h3>
         <div class="row pt-5">
           <%= render partial: "profiles/profile", collection: feature.profiles, as: :profile %>
+          <%= render partial: "profiles/register" %>
         </div>
       </div>
     <% end %>
