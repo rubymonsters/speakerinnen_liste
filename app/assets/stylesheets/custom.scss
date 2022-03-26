@@ -183,15 +183,9 @@ textarea, input {
 }
 
 .home .home-search {
-  display: flex;
-
   .twitter-typeahead {
-    flex: fit-content;
+    display: block !important;
   }
-}
-
-#home_search {
-  // width: 700px
 }
 
 .container {
