@@ -29,10 +29,6 @@
           </h3>
         </div>
       </div>
-      <%# Action Cards %>
-      <div class="row sub-menu">
-        <%= render partial: 'shared/sub_menu' %>
-      </div>
     </div>
   </section>
 
@@ -45,7 +41,7 @@
   <% if @is_global_speakerinnen && @features.load.any?%>
     <a id="features"></a>
     <% @features.each do |feature| %>
-      <div class="container py-5 text-center feature">
+      <div class="container py-5 feature">
         <h1 class=""><%= feature.title %></h1>
         <h3 class=""><%= feature.description %></h3>
         <div class="row pt-5">
@@ -58,7 +54,7 @@
   <%# New Speakers %>
 
   <a id="newest_speaker_achor"></a>
-  <div id="startpage-newest_speaker" class="container py-5 text-center">
+  <div id="startpage-newest_speaker" class="container py-5">
     <% if @is_global_speakerinnen %>
       <h1 class=""><%= t(:welcome_title, scope: 'pages.home') %></h1>
       <h3 class=""><%= t(:welcome_text, scope: 'pages.home') %></h3>
@@ -92,5 +88,10 @@
   </div>
   <div id="startpage-categories__list" class="container-fluid p-0">
     <%= render partial: "shared/categories", object: @categories %>
+  </div>
+
+  <%# Action Cards %>
+  <div class="row sub-menu">
+    <%= render partial: 'shared/sub_menu' %>
   </div>
 </section>
