@@ -28,7 +28,7 @@ $light-grey: #F2F2F2;
 $grey: #E1DFDF;
 $grey-stroke: #979797;
 $dark-grey: #3C3C3A;
-$very-dark-grey: #050505;
+$very-dark-grey: #221F20;
 $black: #000;
 /* -------------*/
 
@@ -40,6 +40,7 @@ $dark-red: #b62848;
 $tag-box-background: #DEDEDE;
 
 $transparent-black: rgba( $black, .5 );
+$transparent-grey: rgba( $very-dark-grey, .5 );
 $transparent-white: rgba( $white, .7 );
 
 /* colors for login sign */

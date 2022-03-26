@@ -1,5 +1,7 @@
 de:
   pages:
+    header:
+      about_speakerinnen_list: "Über Speakerinnen"
     home:
       heading: "Mehr Frauen auf die Bühnen!"
       heading_vab: "Finde Expertinnen, Rednerinnen und Fachfrauen."
