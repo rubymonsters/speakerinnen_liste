@@ -58,20 +58,20 @@
   </div>
 </div>
 
-<%# About Us %>
+<%# Fifty Percent %>
 
 <div class="col">
   <div class="card bg--white-trans">
     <% if current_region.nil? %>
       <div class="card-header">
         <h1 class="action_icon"><i class="fa fa-comment"></i></h1>
-        <h1 class="card-title text-left mb-0"><%=t(:sub_menu_about_us_title, scope: 'pages.home')%></h1>
+        <h1 class="card-title text-left mb-0"><%=t(:sub_menu_fifty_percent_title, scope: 'pages.home')%></h1>
       </div>
       <div class="card-body">
-        <p class="h5 card-text"><%= t(:sub_menu_about_us_text, scope: 'pages.home') %></p>
+        <p class="h5 card-text"><%= t(:sub_menu_fifty_percent_text, scope: 'pages.home') %></p>
       </div>
       <div class="card-body bottom">
-        <%= link_to t(:sub_menu_about_us_link_text, scope: 'pages.home').html_safe, about_path %>
+        <%= link_to t(:sub_menu_fifty_percent_link_text, scope: 'pages.home').html_safe, "https://50prozent.speakerinnen.org/" %>
       </div>
     <% else %>
       <div class="card-header">
