@@ -1,7 +1,7 @@
 <div class="container py-5">
   <%= render 'shared/error_messages' %>
 
-  <%= link_to(t(:show, scope: 'profiles.edit'), @profile, class:"text-uppercase serif") %>
+  <%= link_to(t(:show, scope: 'profiles.edit'), @profile, class:"text-uppercase") %>
 
   <h1 class="my-5">
     <%= t(:account_from, scope: "devise.registrations.edit") %> <%= @profile.fullname %>:

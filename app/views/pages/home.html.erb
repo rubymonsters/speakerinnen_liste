@@ -1,42 +1,47 @@
-<section class="home bg--white">
-  <section id="startpage__start-teaser" class="start-teaser startpage__photo-bar">
+<% @is_global_speakerinnen = current_region.nil? %>
+<% @is_voralberg = !@is_global_speakerinnen %>
+
+<%# Hero %>
+
+<section class="home">
+  <section id="startpage__start-teaser" class="start-teaser startpage__photo-bar bg--dark">
     <div class="container">
-      <div class="row">
-        <% if current_region.nil? %>
-          <div class="col-12">
-            <h1 class="display-4 pt-5" style="text-shadow:0px 0px 9px rgba(255, 255, 255, 1);">
+      <%# Headline %>
+      <div class="row hero-headline" >
+        <div class="col-7">
+          <% if @is_global_speakerinnen %>
+            <h1>
               <%= t(:heading, scope: 'pages.home') %>
             </h1>
-            <h3 class="startpage-subtitle pb-3" style="text-shadow:0px 0px 9px rgba(255, 255, 255, 1);">
-              <%= t(:tagline, scope: 'pages.home').html_safe %>
-            </h3>
-          </div>
-        <% else %>
-          <div class="col-5">
-            <h1 class="display-4 pt-5"><%= t(:heading_vab, scope: 'pages.home') %></h1>
+          <% else %>
+            <h1><%= t(:heading_vab, scope: 'pages.home') %></h1>
             <p class="startpage-subtitle"><%= t(:tagline_vab, scope: 'pages.home') %></p>
-          </div>
-        <% end %>
-      </div>
-      <div class="row">
-        <div class="col-md-6 col-md-12 ml-2">
-          <%= render partial: 'shared/search_form' %>
+          <% end %>
         </div>
       </div>
-      <div class="row sub-menu">
-        <%= render partial: 'shared/sub_menu' %>
+      <%# search %>
+      <%= render partial: 'shared/search_form' %>
+      <%# subtitle %>
+      <div class="row">
+        <div class="col-7">
+          <h3 class="startpage-subtitle pb-3">
+            <%= t(:tagline, scope: 'pages.home').html_safe %>
+          </h3>
+        </div>
       </div>
     </div>
   </section>
 
-  <% if current_region.nil? %>
+  <% if @is_global_speakerinnen %>
     <div class="copyright">Copyright: public domain ( modified )</div>
   <% end %>
 
-  <% if current_region.nil? && @features.load.any?%>
+  <%# Hit Topic %>
+
+  <% if @is_global_speakerinnen && @features.load.any?%>
     <a id="features"></a>
     <% @features.each do |feature| %>
-      <div class="container py-5 text-center feature">
+      <div class="container py-5 feature">
         <h1 class=""><%= feature.title %></h1>
         <h3 class=""><%= feature.description %></h3>
         <div class="row pt-5">
@@ -46,9 +51,11 @@
     <% end %>
   <% end %>
 
+  <%# New Speakers %>
+
   <a id="newest_speaker_achor"></a>
-  <div id="startpage-newest_speaker" class="container py-5 text-center">
-    <% if current_region.nil? %>
+  <div id="startpage-newest_speaker" class="container py-5">
+    <% if @is_global_speakerinnen %>
       <h1 class=""><%= t(:welcome_title, scope: 'pages.home') %></h1>
       <h3 class=""><%= t(:welcome_text, scope: 'pages.home') %></h3>
     <% else %>
@@ -61,7 +68,9 @@
     </div>
   </div>
 
-  <% if current_region %>
+  <%# Intro Voralberg %>
+
+  <% if @is_voralberg %>
     <div class="intro-text container-fluid">
       <div class="row p-5 text-left">
         <h1><%= t(:intro_title_vab, scope: 'pages.home') %></h1>
@@ -70,6 +79,8 @@
     </div>
   <% end %>
 
+  <%# Categories %>
+
   <a id="categories_anchor"></a>
   <div class="container-fluid p-5 text-center">
     <h1 class=""><%= t(:category_search_title, scope: 'pages.home') %></h1>
@@ -77,5 +88,10 @@
   </div>
   <div id="startpage-categories__list" class="container-fluid p-0">
     <%= render partial: "shared/categories", object: @categories %>
+  </div>
+
+  <%# Action Cards %>
+  <div class="row sub-menu">
+    <%= render partial: 'shared/sub_menu' %>
   </div>
 </section>
