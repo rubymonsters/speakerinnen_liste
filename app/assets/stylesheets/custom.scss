@@ -22,8 +22,9 @@ ul {
   vertical-align: top;
 }
 
-h1, h2, h3, h4, h5 {
-  font-family: $serif;
+h1 {
+  text-transform: uppercase;
+  font-weight: bold;
 }
 
 .btn:focus{
@@ -33,10 +34,6 @@ h1, h2, h3, h4, h5 {
 
 .sans-serif {
   font-family: $sans-serif;
-}
-
-.serif {
-  font-family: $serif;
 }
 
 /* layout */
@@ -124,8 +121,18 @@ h1, h2, h3, h4, h5 {
 }
 
 .header {
-  background: $body-bg-color-grey;
+  background: $header-grey;
 }
+
+.hero-headline {
+  margin-top: 20em;
+  h1 {
+  background-color: black;
+  padding: 0.5em;
+  color: white;
+}
+}
+
 .no-click {
     pointer-events: none;
 }
@@ -176,11 +183,15 @@ textarea, input {
 }
 
 .home .home-search {
-  margin-left: -8px;
+  display: flex;
+
+  .twitter-typeahead {
+    flex: fit-content;
+  }
 }
 
 #home_search {
-  width: 350px
+  // width: 700px
 }
 
 .container {
@@ -228,7 +239,7 @@ textarea, input {
   }
 
   #home_search {
-    width: 200px
+    // width: 700px
   }
 
   .top-space {
