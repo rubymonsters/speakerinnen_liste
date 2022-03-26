@@ -58,7 +58,7 @@
     width: 100%;
   }
 
-  .border.border-primary {
+  .border {
     padding: 2rem;
     overflow: hidden;
     position: absolute;
@@ -125,7 +125,7 @@
       .middle {
         display: none;
       }
-      .btn.btn-primary {
+      a.btn {
         max-height: none;
       }
     }
