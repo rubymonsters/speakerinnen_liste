@@ -1,5 +1,16 @@
 GIT
-  remote: git://github.com/elasticsearch/elasticsearch-ruby.git
+  remote: https://github.com/elastic/elasticsearch-rails.git
+  revision: 606f3482e298fab0afc5a083468f23ec7464b0d3
+  branch: 6.x
+  specs:
+    elasticsearch-model (6.1.0)
+      activesupport (> 3)
+      elasticsearch (~> 6)
+      hashie
+    elasticsearch-rails (6.1.0)
+
+GIT
+  remote: https://github.com/elasticsearch/elasticsearch-ruby.git
   revision: faaee26ab54a35c6e2b72b8e7d34dcd886b83a58
   ref: 6.x
   specs:
@@ -14,17 +25,6 @@ GIT
     elasticsearch-transport (6.8.2)
       faraday (~> 1)
       multi_json
-
-GIT
-  remote: https://github.com/elastic/elasticsearch-rails.git
-  revision: 606f3482e298fab0afc5a083468f23ec7464b0d3
-  branch: 6.x
-  specs:
-    elasticsearch-model (6.1.0)
-      activesupport (> 3)
-      elasticsearch (~> 6)
-      hashie
-    elasticsearch-rails (6.1.0)
 
 GIT
   remote: https://github.com/globalize/globalize
