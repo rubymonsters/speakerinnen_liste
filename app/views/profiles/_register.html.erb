@@ -1,12 +1,12 @@
 <div class="col-sm-6 col-md-4 col-lg-3 my-3 profile-box register">
   <div class="outer fit-height">
-    <div class="border border-primary stretch outer">
+    <div class="border stretch outer bg--dark">
       <div class="stretch top">
         <div class="profile-subtitle"><%= t(:title, scope: 'profiles.register_box').html_safe %></div>
       </div>
       <div class="middle"><%= t(:text, scope: 'profiles.register_box').html_safe %></div>
       <div class="stretch bottom">
-        <%= link_to t(:button, scope: 'profiles.register_box'), sign_up_path, class: "btn btn-primary" %>
+        <%= link_to t(:button, scope: 'profiles.register_box'), sign_up_path, class: "btn btn-secondary" %>
       </div>
     </div>
   </div>

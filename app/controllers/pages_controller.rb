@@ -10,6 +10,8 @@ class PagesController < ApplicationController
                 .by_region(current_region)
                 .main_topic_translated_in(I18n.locale)
                 .last 7
+    @profiles_count = Profile.is_published.count
+    @tags_count = ActsAsTaggableOn::Tag.count
     @categories = Category.sorted_categories
     @features   = Feature.published_feature.order(:position) if !current_region
   end

@@ -3,16 +3,23 @@
   <% title = render partial: "profiles/profile_tooltip", locals: { profile: profile } %>
   <div
     class="col-sm-6 col-md-4 col-lg-3 my-3 profile-box"
-    data-html="true"
-    data-toggle="<%= tooltip_empty ? "" : "tooltip" %>"
-    title="<%= tooltip_empty ? "" : title %>"
   >
     <%= profile_image_link(profile) %>
-    <div>
-      <%= link_to profile.fullname, profile %>
-    </div>
-    <div class="profile-subtitle">
-      <%= profile.main_topic_or_first_topic.truncate(60) if profile.main_topic_or_first_topic %>
+    <div class="bg--white caption">
+      <div class="profile-title">
+        <%= profile.main_topic_or_first_topic.truncate(60) if profile.main_topic_or_first_topic %>
+      </div>
+      <div class="profile-subtitle">
+        <p>
+          <%= link_to profile.fullname, profile %>
+        </p>
+        <div
+          class="profile-tooltip"
+          data-html="true"
+          data-toggle="<%= tooltip_empty ? "" : "tooltip" %>"
+          title="<%= tooltip_empty ? "" : title %>"
+        ><i class="fa fa-info-circle fa-lg"></i></div>
+      </div>
     </div>
   </div>
 <% end %>

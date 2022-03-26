@@ -1,12 +1,43 @@
 
 /* profiles */
 
+.profile-box {
+  display: flex;
+  flex-direction: column;
+}
+
 .profile-navi {
   text-align: right;
 }
 
-.profile-subtitle {
+.profile-title {
   font-weight: bold;
+}
+
+.caption {
+  padding: 0.5em;
+  display: flex;
+  flex-direction: column;
+  flex: auto;
+}
+
+.profile-subtitle {
+  display: flex;
+  flex: auto;
+
+  .profile-tooltip {
+    align-self: flex-end;
+
+  }
+
+  a {
+    color: $font-color;
+  }
+
+  p {
+    flex: auto;
+    margin-bottom: 0rem;
+  }
 }
 
 .btn-stretch {
@@ -48,7 +79,7 @@
   text-align: left;
   position: relative;
   overflow: hidden;
-  color: $primary;
+  color: $secondary;
   cursor: pointer;
 
   .fit-height {
@@ -56,9 +87,10 @@
     padding: inherit;
     padding-top: 100%;
     width: 100%;
+    flex: auto;
   }
 
-  .border.border-primary {
+  .border {
     padding: 2rem;
     overflow: hidden;
     position: absolute;
@@ -76,6 +108,10 @@
     text-align: left;
     display: flex;
     flex-direction: column;
+  }
+
+  .btn {
+    text-align: left;
   }
 
   .stretch {
@@ -125,7 +161,7 @@
       .middle {
         display: none;
       }
-      .btn.btn-primary {
+      a.btn {
         max-height: none;
       }
     }

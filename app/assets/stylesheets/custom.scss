@@ -1,7 +1,7 @@
 body {
   font-family: $sans-serif;
   color: $font-color;
-  background-color: white;
+  background-color: $bg-light-grey;
 }
 
 html {
@@ -17,6 +17,14 @@ a, .link, #expander {
   }
 }
 
+.container.divider {
+  padding-top: 1em;
+  padding-bottom: 1em;
+  a {
+    margin-left: 15px;
+  }
+}
+
 ul {
   list-style: none;
   vertical-align: top;
@@ -28,7 +36,7 @@ h1 {
 }
 
 h1,h3 {
-  padding: 0.5em;
+  padding: 15px;
 }
 
 .btn:focus{

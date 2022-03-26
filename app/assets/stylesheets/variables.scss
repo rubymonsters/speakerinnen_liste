@@ -62,7 +62,7 @@ $base-spacing-unit: 24px;
 $border: 1px solid $grey;
 
 $speakerinnen-green: #43E89C;
-$speakerinnen-lila: #7311f6;
+$speakerinnen-purple: #7311f6;
 $dark-blue: darken($speakerinnen-green, 10%);
 $font-color: $dark-grey;
 $font-color-grey: $grey-stroke;
@@ -76,7 +76,7 @@ $link-bg-color-hover: $dark-grey;
 // bootstrap variables override
 $enable-responsive-font-sizes: true;
 $primary: $speakerinnen-green;
-$secondary: $speakerinnen-lila;
+$secondary: $speakerinnen-purple;
 $border-dark: $grey-stroke;
 
 $red: #d95270;
