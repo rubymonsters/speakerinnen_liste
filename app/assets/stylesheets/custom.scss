@@ -19,7 +19,7 @@ a, .link, #expander {
 
 .container.divider {
   padding-top: 1em;
-  padding-bottom: 1em;
+  padding-bottom: 2em;
   a {
     margin-left: 15px;
   }
@@ -271,5 +271,30 @@ textarea, input {
 
   .top-space {
     margin-top: 100px;
+  }
+}
+
+.sub-menu {
+  .col {
+    display: flex;
+  }
+  .card {
+    .card-body.bottom {
+      display: flex;
+      align-items: end;
+    }
+    .action_icon {
+      color: $primary;
+      margin-bottom: 0.75em;
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    h1 {
+      padding: 0;
+    }
+    a {
+      color: $font-color;
+    }
   }
 }
