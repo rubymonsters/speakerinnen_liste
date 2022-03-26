@@ -63,6 +63,10 @@ h1 {
   background: $yellow;
 }
 
+.bg--dark {
+  background-color: $very-dark-grey;
+}
+
 .color-white {
   color: $white;
 }
@@ -124,13 +128,17 @@ h1 {
   background: $header-grey;
 }
 
-.hero-headline {
-  margin-top: 20em;
-  h1 {
-  background-color: black;
-  padding: 0.5em;
+.bg--dark {
   color: white;
 }
+
+.hero-headline {
+  margin-top: 20em;
+
+  h1 {
+    background-color: $very-dark-grey;
+    padding: 0.5em;
+  }
 }
 
 .no-click {
@@ -184,6 +192,10 @@ textarea, input {
 
 .home .home-search .twitter-typeahead {
   display: block !important;
+}
+
+.startpage-subtitle {
+  margin-top: 3em;
 }
 
 .container {
