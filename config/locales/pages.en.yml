@@ -16,14 +16,17 @@ en:
       sub_menu_about_us_title_vab: "About the project"
       sub_menu_about_us_text: "Learn more about the Speakerinnen.org team."
       sub_menu_about_us_text_vab: "Learn more about us and this project."
-      sub_menu_blog_title: "Our blog"
+      sub_menu_about_us_link_text: "Go to Fifty Percent>>"
+      sub_menu_blog_title: "Speakerinnen blog"
       sub_menu_blog_text: "Find exciting interviews<br> and lots of news."
+      sub_menu_blog_link_text: "Go to our Blog>>"
       sub_menu_all_title_vab: "All female experts"
       sub_menu_all_text_vab: "Make female competence visible in Vorarlberg."
       sub_menu_categories_title: "Get inspired"
       sub_menu_categories_title_vab: "Advanced search"
       sub_menu_categories_text: "Find the right women speaker in 10 categories."
       sub_menu_categories_text_vab: "Find the right women expert in 10 categories."
+      sub_menu_categories_link_text: "Go to new Speakerinnen>>"
       auth_modal: "You have to <b>agree to the use of cookies</b> before using the register or login form.<br>
        Find more information about data security in our <a href='%{link}' class='link'>privacy policy</a>.<br>"
       contact_modal: "You have to <b>agree to the use of cookies</b>. before using the contact form.<br>
