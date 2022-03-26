@@ -17,6 +17,14 @@ a, .link, #expander {
   }
 }
 
+.container.divider {
+  padding-top: 1em;
+  padding-bottom: 1em;
+  a {
+    margin-left: 15px;
+  }
+}
+
 ul {
   list-style: none;
   vertical-align: top;

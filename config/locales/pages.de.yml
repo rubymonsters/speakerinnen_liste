@@ -38,10 +38,11 @@ de:
       Software, die Matomoto heißt, um zu wissen, wie die Besucher*innen und Nutzer*innen von speakerinnen.org die Seite nutzen: Das hilft uns auch
       dabei, sie zu verbessern. Auch hierfür nutzen wir Cookies, die Du aber deaktivieren kannst. Mehr Informationen in unserer <a href='%{link}' class='link'>Datenschutzerklärung</a>."
       allow_cookies: "Ich stimme zu"
-      speakerinnen: "Speakerinnen"
       category_search_title: "Nach Kategorien durchsuchen"
       category_search_text: "Finde deine Speakerin in 10 Kategorien oder filtere nach ganz konkreten Themen:"
-      welcome_title: "Speakerinnen - get inspired"
+      get_inspired: "Get inspired"
+      get_inspired_text: "Bei uns findest du %{count_profiles} Speakerinnen für %{count_topics} Themen"
+      welcome_title: "Speakerinnen"
       welcome_title_vab: "Herzlich willkommen."
       welcome_text: "Ein herzliches Willkommen! Hier findest du unsere Neuzugänge"
       welcome_text_vab: "Unsere Neuzugänge aus Vorarlberg:"

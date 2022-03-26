@@ -1,5 +1,6 @@
 <% @is_global_speakerinnen = current_region.nil? %>
 <% @is_voralberg = !@is_global_speakerinnen %>
+<% @has_hot_topic = false && @is_global_speakerinnen && @features.load.any?%>
 
 <%# Hero %>
 
@@ -36,10 +37,11 @@
     <div class="copyright">Copyright: public domain ( modified )</div>
   <% end %>
 
-  <%# Hot Topic %>
+  <%# Hot Topic or New Speakers %>
 
-  <% if @is_global_speakerinnen && @features.load.any?%>
-    <a id="features"></a>
+  <a id="features"></a>
+  <a id="newest_speaker_achor"></a>
+  <% if @has_hot_topic %>
     <% @features.each do |feature| %>
       <div class="container py-5 feature">
         <h1 class=""><%= feature.title %></h1>
@@ -50,23 +52,29 @@
         </div>
       </div>
     <% end %>
+  <% else %>
+    <div id="startpage-newest_speaker" class="container py-5">
+      <% if @is_global_speakerinnen %>
+        <h1 class=""><%= t(:welcome_title, scope: 'pages.home') %></h1>
+        <h3 class=""><%= t(:welcome_text, scope: 'pages.home') %></h3>
+      <% else %>
+        <h1 class=""><%= t(:welcome_title_vab, scope: 'pages.home') %></h1>
+        <h3 class=""><%= t(:welcome_text_vab, scope: 'pages.home') %></h3>
+      <% end %>
+      <div class="row pt-5">
+        <%= render partial: "profiles/profile", collection: @newest_profiles %>
+        <%= render partial: "profiles/register" %>
+      </div>
+    </div>
   <% end %>
 
-  <%# New Speakers %>
+  <%# Get inspired divider %>
 
-  <a id="newest_speaker_achor"></a>
-  <div id="startpage-newest_speaker" class="container py-5">
-    <% if @is_global_speakerinnen %>
-      <h1 class=""><%= t(:welcome_title, scope: 'pages.home') %></h1>
-      <h3 class=""><%= t(:welcome_text, scope: 'pages.home') %></h3>
-    <% else %>
-      <h1 class=""><%= t(:welcome_title_vab, scope: 'pages.home') %></h1>
-      <h3 class=""><%= t(:welcome_text_vab, scope: 'pages.home') %></h3>
-    <% end %>
-    <div class="row pt-5">
-      <%= render partial: "profiles/profile", collection: @newest_profiles %>
-      <%= render partial: "profiles/register" %>
-    </div>
+  <a id="get_inspired"></a>
+  <div class="bg--dark container divider">
+    <h1 class=""><%= t(:get_inspired, scope: 'pages.home') %></h1>
+    <h3><%= t(:get_inspired_text, scope: 'pages.home', count_profiles: @profiles_count, count_topics: @tags_count) %></h3>
+    <%= link_to('Search', profiles_path, class: "btn btn-primary", type: "button") %>
   </div>
 
   <%# Intro Voralberg %>
