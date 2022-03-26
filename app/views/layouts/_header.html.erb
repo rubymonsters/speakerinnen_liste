@@ -5,14 +5,13 @@
     <%= link_to(root_path, id: 'header__home-link', class: 'navbar-brand p-0') do %>
       <%= image_tag("logo_header#{'_vab' if current_region}.png", alt: 'logo', id: 'header__logo') %>
     <% end %>
-
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="fa fa-bars"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active dropdown pt-3 pr-5">
-          <a class="dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <a class="dropdown-toggle" href=<%= about_path %> id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <%= t(:about_speakerinnen_list, scope: 'pages.header') %>
           </a>
           <div class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdownMenuLink">
@@ -32,7 +31,7 @@
             <% end %>
           </div>
         </li>
-        <% unless current_page?(:controller => 'pages', :action => 'home') %>
+        <% unless params[:controller] == 'pages' %>
           <li class="nav-item active pt-2 pr-5 ">
             <%= form_tag(profiles_path, method: 'get', class: "form-inline text-capitalize small") do %>
               <%= text_field_tag('search', params[:search], id: 'header_search',class: 'form-control typeahead mr-sm-2',
@@ -55,12 +54,12 @@
           </li>
         <% else %>
           <li class="nav-item nav active dropdown pt-3 pr-5 ">
-            <a class="dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="dropdown-toggle" href=<%= profile_session_path %> id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <%= ('<i class="fa fa-user">&nbsp;&nbsp;</i>' + t(:login, scope: 'pages.header')).html_safe %>
             </a>
             <div class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdownMenuLink">
-              <%= link_to t(:login, scope: 'layouts.application'), new_profile_session_path, class: "dropdowm-item" %>
-              <%= link_to t(:signup, scope: 'layouts.application'), sign_up_path, class: "dropdowm-item" %>
+              <%= link_to t(:login, scope: 'layouts.application'), new_profile_session_path, class: "dropdown-item" %>
+              <%= link_to t(:signup, scope: 'layouts.application'), sign_up_path, class: "dropdown-item" %>
             </div>
           </li>
         <% end %>
