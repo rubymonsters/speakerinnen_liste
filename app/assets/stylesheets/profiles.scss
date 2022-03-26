@@ -5,8 +5,15 @@
   text-align: right;
 }
 
-.profile-subtitle {
+.profile-title {
   font-weight: bold;
+  a {
+    color: $font-color;
+  }
+}
+
+.caption {
+  padding: 0.5em;
 }
 
 .btn-stretch {
