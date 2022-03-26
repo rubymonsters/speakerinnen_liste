@@ -1,6 +1,11 @@
 
 /* profiles */
 
+.profile-box {
+  display: flex;
+  flex-direction: column;
+}
+
 .profile-navi {
   text-align: right;
 }
@@ -14,6 +19,23 @@
 
 .caption {
   padding: 0.5em;
+  display: flex;
+  flex-direction: column;
+  flex: auto;
+}
+
+.profile-subtitle {
+  display: flex;
+  flex: auto;
+
+  .profile-tooltip {
+    align-self: flex-end;
+  }
+
+  p {
+    flex: auto;
+    margin-bottom: 0rem;
+  }
 }
 
 .btn-stretch {
@@ -63,6 +85,7 @@
     padding: inherit;
     padding-top: 100%;
     width: 100%;
+    flex: auto;
   }
 
   .border {
@@ -83,6 +106,10 @@
     text-align: left;
     display: flex;
     flex-direction: column;
+  }
+
+  .btn {
+    text-align: left;
   }
 
   .stretch {
