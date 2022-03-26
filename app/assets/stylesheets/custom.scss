@@ -182,10 +182,8 @@ textarea, input {
   font-family: sans-serif
 }
 
-.home .home-search {
-  .twitter-typeahead {
-    display: block !important;
-  }
+.home .home-search .twitter-typeahead {
+  display: block !important;
 }
 
 .container {
