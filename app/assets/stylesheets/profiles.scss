@@ -12,9 +12,6 @@
 
 .profile-title {
   font-weight: bold;
-  a {
-    color: $font-color;
-  }
 }
 
 .caption {
@@ -30,6 +27,10 @@
 
   .profile-tooltip {
     align-self: flex-end;
+  }
+
+  a {
+    color: $font-color;
   }
 
   p {

@@ -7,11 +7,11 @@
     <%= profile_image_link(profile) %>
     <div class="bg--white caption">
       <div class="profile-title">
-        <%= link_to profile.fullname, profile %>
+        <%= profile.main_topic_or_first_topic.truncate(60) if profile.main_topic_or_first_topic %>
       </div>
       <div class="profile-subtitle">
         <p>
-          <%= profile.main_topic_or_first_topic.truncate(60) if profile.main_topic_or_first_topic %>
+          <%= link_to profile.fullname, profile %>
         </p>
         <div
           class="profile-tooltip"
