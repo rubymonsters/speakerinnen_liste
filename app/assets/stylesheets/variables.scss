@@ -28,7 +28,6 @@ $light-grey: #F2F2F2;
 $grey: #E1DFDF;
 $grey-stroke: #979797;
 $dark-grey: #3C3C3A;
-$very-dark-grey: #221F20;
 $black: #000;
 /* -------------*/
 
@@ -40,7 +39,6 @@ $dark-red: #b62848;
 $tag-box-background: #DEDEDE;
 
 $transparent-black: rgba( $black, .5 );
-$transparent-grey: rgba( $very-dark-grey, .5 );
 $transparent-white: rgba( $white, .7 );
 
 /* colors for login sign */
@@ -48,12 +46,11 @@ $box-shadow-black: rgba(0,0,0,0.75);
 
 /* font */
 $serif: Georgia, serif;
-$sans-serif: "Helvetica Neue", Helvetica, sans-serif;
+$sans-serif: "OpenSans", "Helvetica Neue", Helvetica, sans-serif;
 
 /* variables colors */
 $body-bg-color: $white;
 $body-bg-color-grey: $white-smoke;
-$header-grey: $very-dark-grey;
 
 /* units */
 $base-spacing-unit: 24px;
@@ -61,12 +58,12 @@ $base-spacing-unit: 24px;
 /* layout settings */
 $border: 1px solid $grey;
 
-$speakerinnen-green: #43E89C;
-$speakerinnen-lila: #7311f6;
-$dark-blue: darken($speakerinnen-green, 10%);
+$speakerinnen-blue: #20736D;
+$speakerinnen-lila: #603D78;
+$dark-blue: darken($speakerinnen-blue, 10%);
 $font-color: $dark-grey;
 $font-color-grey: $grey-stroke;
-$link-color: $speakerinnen-green;
+$link-color: $speakerinnen-blue;
 
 // /* link-color */
 $link-color-hover: $white-smoke;
@@ -75,7 +72,7 @@ $link-bg-color-hover: $dark-grey;
 
 // bootstrap variables override
 $enable-responsive-font-sizes: true;
-$primary: $speakerinnen-green;
+$primary: $speakerinnen-blue;
 $secondary: $speakerinnen-lila;
 $border-dark: $grey-stroke;
 
