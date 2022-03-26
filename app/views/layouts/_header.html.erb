@@ -43,7 +43,7 @@
       </ul>
       <ul class="navbar-nav" >
         <li class="nav-item active dropdown pt-3 pr-5 ">
-            <%= I18n.locale == :de ? link_to('En', params.to_unsafe_h.merge(:locale => :en)) : (link_to 'De', params.to_unsafe_h.merge(:locale => :de)) %>
+            <%= I18n.locale == :de ? link_to('DE→EN', params.to_unsafe_h.merge(:locale => :en)) : (link_to 'EN→DE', params.to_unsafe_h.merge(:locale => :de)) %>
         </li>
         <% if profile_signed_in? %>
           <li class="nav-item active pt-3 pr-5">
