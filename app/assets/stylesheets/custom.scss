@@ -130,6 +130,12 @@ h1,h3 {
 
 .header {
   background: $header-grey;
+    a {
+    color: white;
+  }
+}
+.dropdown-menu-dark {
+  background-color: $transparent-grey;
 }
 
 .bg--dark {
@@ -138,7 +144,7 @@ h1,h3 {
 
 .hero-headline {
   margin-top: 17em;
-  
+
   h1 {
     background-color: $very-dark-grey;
   }
@@ -201,6 +207,10 @@ textarea, input {
   margin-top: 3em;
   padding: 0em;
 }
+
+#header__logo {
+  width: 300px;
+  }
 
 
 .container {
