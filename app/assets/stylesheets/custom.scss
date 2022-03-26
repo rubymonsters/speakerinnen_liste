@@ -22,13 +22,8 @@ ul {
   vertical-align: top;
 }
 
-h1 {
-  text-transform: uppercase;
-  font-weight: bold;
-}
-
-h1,h3 {
-  padding: 0.5em;
+h1, h2, h3, h4, h5 {
+  font-family: $serif;
 }
 
 .btn:focus{
@@ -38,6 +33,10 @@ h1,h3 {
 
 .sans-serif {
   font-family: $sans-serif;
+}
+
+.serif {
+  font-family: $serif;
 }
 
 /* layout */
@@ -65,10 +64,6 @@ h1,h3 {
 
 .bg--yellow {
   background: $yellow;
-}
-
-.bg--dark {
-  background-color: $very-dark-grey;
 }
 
 .color-white {
@@ -129,27 +124,8 @@ h1,h3 {
 }
 
 .header {
-  background: $header-grey;
-    a {
-    color: white;
-  }
+  background: $body-bg-color-grey;
 }
-.dropdown-menu-dark {
-  background-color: $transparent-grey;
-}
-
-.bg--dark {
-  color: white;
-}
-
-.hero-headline {
-  margin-top: 17em;
-
-  h1 {
-    background-color: $very-dark-grey;
-  }
-}
-
 .no-click {
     pointer-events: none;
 }
@@ -199,19 +175,13 @@ textarea, input {
   font-family: sans-serif
 }
 
-.home .home-search .twitter-typeahead {
-  display: block !important;
+.home .home-search {
+  margin-left: -8px;
 }
 
-.startpage-subtitle {
-  margin-top: 3em;
-  padding: 0em;
+#home_search {
+  width: 350px
 }
-
-#header__logo {
-  width: 300px;
-  }
-
 
 .container {
   padding: 0 48px;
@@ -258,7 +228,7 @@ textarea, input {
   }
 
   #home_search {
-    // width: 700px
+    width: 200px
   }
 
   .top-space {

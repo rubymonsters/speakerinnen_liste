@@ -1,14 +1,12 @@
 de:
   pages:
-    header:
-      about_speakerinnen_list: "Über Speakerinnen"
     home:
       heading: "Mehr Frauen auf die Bühnen!"
       heading_vab: "Finde Expertinnen, Rednerinnen und Fachfrauen."
       tagline: "Finde Rednerinnen, Referentinnen & Moderatorinnen<br> für Deine Konferenz:"
       tagline_vab: "Nutze eine der größten Datenbanken für weibliche Kompetenz in Vorarlberg und dem deutschsprachigen Raum."
       search_placeholder: "Name oder Thema"
-      search_speaker: "Finde deine Speakerin"
+      search_speaker: "Suche"
       sub_menu_register_title: "Registriere dich"
       sub_menu_register_text: "Speakerinnen-Profil schnell und kostenfrei anlegen."
       sub_menu_register_text_vab: "Expertinnen-Profil schnell und kostenfrei anlegen."
