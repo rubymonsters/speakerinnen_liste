@@ -1,6 +1,6 @@
 <% @is_global_speakerinnen = current_region.nil? %>
 <% @is_voralberg = !@is_global_speakerinnen %>
-<% @has_hot_topic = false && @is_global_speakerinnen && @features.load.any?%>
+<% @has_hot_topic = @is_global_speakerinnen && @features.load.any?%>
 
 <%# Hero %>
 
