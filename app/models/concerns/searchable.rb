@@ -203,7 +203,7 @@ module Searchable
           indexes :suggest,  type: 'completion'#, contexts: [{name: 'state', type: 'category', path: 'state'}]
         end
         indexes :lastname,   type: 'text', analyzer: 'fullname_analyzer', 'norms': false do
-          indexes :suggest,  type: 'completion'#, contexts: [{name: 'state', type: 'category', path: 'state'}]
+          indexes :suggest,  type: 'completion', contexts: [{name: 'region', type: 'category', path: 'region'}]
         end
         indexes :twitter_de, type: 'text', analyzer: 'twitter_analyzer', 'norms': false do
           indexes :suggest,  type: 'completion'#, contexts: [{name: 'state', type: 'category', path: 'state'}]
@@ -239,8 +239,17 @@ module Searchable
     end
 
     def self.typeahead(q, current_region)
-      # contexts = {}
-      # contexts[:state] = current_region if current_region
+      contexts = {}
+      # domain =
+      #   if current_region == :vorarlberg
+      #     :vorarlberg
+      #   else
+      #     :other
+      #   end
+      p '------'
+      p current_region
+      p '------'
+      contexts[:region] = current_region if current_region
 
       __elasticsearch__.client.search(
         index: index_name,
@@ -252,7 +261,7 @@ module Searchable
             },
             lastname_suggest: {
               text: q,
-              completion: { field: 'lastname.suggest' }#, contexts: contexts }
+              completion: { field: 'lastname.suggest', contexts: contexts }
             },
             main_topic_de_suggest: {
               text: q,
