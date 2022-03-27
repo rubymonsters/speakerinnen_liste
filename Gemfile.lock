@@ -1,17 +1,17 @@
 GIT
   remote: https://github.com/elasticsearch/elasticsearch-ruby.git
-  revision: ebad5bdbd4087eb41b579ba6c1a153d36a8ed42e
-  ref: 6.x
+  revision: 947cbce1849136e6c80803a7ff61d0146080f8c1
+  ref: 7.17
   specs:
-    elasticsearch (6.8.2)
-      elasticsearch-api (= 6.8.2)
-      elasticsearch-transport (= 6.8.2)
-    elasticsearch-api (6.8.2)
+    elasticsearch (7.17.2)
+      elasticsearch-api (= 7.17.2)
+      elasticsearch-transport (= 7.17.2)
+    elasticsearch-api (7.17.2)
       multi_json
     elasticsearch-extensions (0.0.31)
       ansi
       elasticsearch
-    elasticsearch-transport (6.8.2)
+    elasticsearch-transport (7.17.2)
       faraday (~> 1)
       multi_json
 
