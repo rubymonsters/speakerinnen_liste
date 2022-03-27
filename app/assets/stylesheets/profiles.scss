@@ -284,11 +284,11 @@ ul#medialinks__list {
 
 /* fontawesome for profile boolean attributes */
 .fa-check-square {
-  color: #61bd2c;
+  color: $primary;
 }
 
 .fa-times-rectangle {
-  color: #e51a1a;
+  color: $error
 }
 
 /*tooltip*/

@@ -100,7 +100,7 @@ h1 {
 }
 
 .error {
-  color: $red;
+  color: $error;
 }
 
 /* diverses */
@@ -112,17 +112,17 @@ h1 {
   position: fixed;
   z-index: 5;
   width: 100%;
-  background: $yellow;
+  background: $info;
 }
 
 .alert-warning {
-  background: $yellow;
+  background: $info;
   color: $black;
   padding: $base-spacing-unit;
 }
 
 .alert-error {
-  color: $red;
+  color: $error;
 }
 
 .border-vertical {
@@ -145,7 +145,7 @@ h1 {
 }
 
 .admin__header--color {
-  background: $yellow;
+  background: $info;
 }
 
 .header, #footer {
