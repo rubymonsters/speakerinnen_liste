@@ -102,21 +102,14 @@
   }
 }
 
-.card-header {
-  background-color: transparent;
-  border: 0;
-  text-align: center;
-}
 
 .card {
   border-radius: 0px;
 }
 
 .card-header:hover {
-  border-bottom: 2px solid black;
   text-decoration: none;
-  text-align: center;
-  margin-bottom: -2px
+  background-color: $grey ;
 }
 
 .card-header a:hover {
@@ -127,6 +120,12 @@
   text-align: right;
 }
 
+.card.btn-link {
+  h4:hover
+ {
+  text-decoration: none;
+ }
+}
 //categories filter
 
 .category_links {
