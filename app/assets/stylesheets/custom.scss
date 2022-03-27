@@ -9,15 +9,15 @@ html {
 }
 
 a, .link, #expander {
-  color: $link-color;
   cursor: pointer;
+  text-decoration: underline;
 
   &:hover {
-    text-decoration: underline;
+    color: $link-color;
   }
 }
 
-.container.divider {
+.home .container.divider {
   padding-top: 1em;
   padding-bottom: 2em;
   a {
@@ -136,18 +136,26 @@ h1,h3 {
   background: $yellow;
 }
 
-.header {
+.header, #footer {
   background: $header-grey;
-    a {
-    color: white;
+  color: $white;
+
+  a, .link, #expander {
+    text-decoration: none;
+    color: $white;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }
+
 .dropdown-menu-dark {
   background-color: $transparent-grey;
 }
 
 .bg--dark {
-  color: white;
+  color: $white;
 }
 
 .hero-headline {
