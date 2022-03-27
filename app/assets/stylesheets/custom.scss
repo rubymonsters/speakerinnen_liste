@@ -11,9 +11,19 @@ html {
 a, .link, #expander {
   cursor: pointer;
   text-decoration: underline;
+  color: $font-color;
 
   &:hover {
     color: $link-color;
+  }
+}
+
+.home {
+  a, .link, #expander {
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }
 
@@ -35,8 +45,10 @@ h1 {
   font-weight: bold;
 }
 
-h1,h3 {
-  padding: 15px;
+.home {
+  h1,h3 {
+    padding: 15px;
+  }
 }
 
 .btn:focus{
