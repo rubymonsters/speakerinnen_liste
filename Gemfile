@@ -2,7 +2,7 @@
 
 source 'https://rubygems.org'
 ruby '2.7.2'
-gem 'rails', '6.0.3.6'
+gem 'rails', '6.1.4'
 
 # Needed for Javascript Runtime
 # gem 'therubyracer'
@@ -19,7 +19,7 @@ gem 'deadweight', require: 'deadweight/hijack/rails'
 gem 'kaminari'
 gem 'mime-types'
 
-gem 'acts-as-taggable-on', '~> 6.0'
+gem 'acts-as-taggable-on', '~> 9.0', '>= 9.0.1'
 gem 'auto_html', '~>1.6.4'
 gem 'devise', '~> 4.7'
 gem 'invisible_captcha'
@@ -27,7 +27,7 @@ gem 'jquery-rails', '~> 4.4.0'
 gem 'jquery-ui-rails', '~> 6.0.1'
 gem 'mini_magick', '~> 4.9.5'
 gem 'omniauth-twitter', '~> 1.4'
-gem 'omniauth-rails_csrf_protection', '~> 1.0' 
+gem 'omniauth-rails_csrf_protection', '~> 1.0'
 gem 'pg', '~> 1.1.3'
 gem 'simple_form'
 
@@ -75,7 +75,7 @@ end
 
 group :development, :test do
   gem 'byebug'
-  gem 'capybara', '~> 3.12.0'
+  gem 'capybara', '~> 3.36'
   gem 'guard'
   gem 'guard-rspec'
   gem 'pry'
