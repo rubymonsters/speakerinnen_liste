@@ -1,28 +1,17 @@
 GIT
-  remote: https://github.com/elastic/elasticsearch-rails.git
-  revision: 606f3482e298fab0afc5a083468f23ec7464b0d3
-  branch: 6.x
-  specs:
-    elasticsearch-model (6.1.0)
-      activesupport (> 3)
-      elasticsearch (~> 6)
-      hashie
-    elasticsearch-rails (6.1.0)
-
-GIT
   remote: https://github.com/elasticsearch/elasticsearch-ruby.git
-  revision: faaee26ab54a35c6e2b72b8e7d34dcd886b83a58
-  ref: 6.x
+  revision: 947cbce1849136e6c80803a7ff61d0146080f8c1
+  ref: 7.17
   specs:
-    elasticsearch (6.8.2)
-      elasticsearch-api (= 6.8.2)
-      elasticsearch-transport (= 6.8.2)
-    elasticsearch-api (6.8.2)
+    elasticsearch (7.17.2)
+      elasticsearch-api (= 7.17.2)
+      elasticsearch-transport (= 7.17.2)
+    elasticsearch-api (7.17.2)
       multi_json
     elasticsearch-extensions (0.0.31)
       ansi
       elasticsearch
-    elasticsearch-transport (6.8.2)
+    elasticsearch-transport (7.17.2)
       faraday (~> 1)
       multi_json
 
@@ -200,6 +189,11 @@ GEM
     diff-lcs (1.4.4)
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
+    elasticsearch-model (7.1.1)
+      activesupport (> 3)
+      elasticsearch (> 1)
+      hashie
+    elasticsearch-rails (7.2.0)
     erubi (1.10.0)
     exception_notification (4.4.3)
       actionmailer (>= 4.0, < 7)
@@ -550,8 +544,8 @@ DEPENDENCIES
   derailed_benchmarks
   devise (~> 4.7)
   elasticsearch-extensions!
-  elasticsearch-model!
-  elasticsearch-rails!
+  elasticsearch-model
+  elasticsearch-rails
   exception_notification
   factory_bot_rails
   faker (= 1.9.1)
