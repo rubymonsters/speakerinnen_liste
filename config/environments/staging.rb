@@ -97,7 +97,7 @@ SpeakerinnenListe::Application.configure do
   # }
 
   # search box --> heroku elasticsearch add-on
-  Elasticsearch::Model.client = Elasticsearch::Client.new host: ENV['SEARCHBOX_URL']
+  # Elasticsearch::Model.client = Elasticsearch::Client.new host: ENV['SEARCHBOX_URL']
 
   config.action_mailer.delivery_method = :smtp
 

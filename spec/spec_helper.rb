@@ -5,7 +5,7 @@ ENV['RAILS_ENV'] ||= 'test'
 ENV['FISHY_EMAILS']="fish@email.de"
 require File.expand_path('../config/environment', __dir__)
 require 'rspec/rails'
-require 'elasticsearch/extensions/test/cluster'
+# require 'elasticsearch/extensions/test/cluster'
 require 'capybara/poltergeist'
 Capybara.javascript_driver = :poltergeist
 Capybara.default_max_wait_time = 10
@@ -52,38 +52,38 @@ RSpec.configure do |config|
     I18n.locale = :de
   end
 
-  # Create indexes for all elastic searchable models
-  config.before :each, elasticsearch: true do
-    ActiveRecord::Base.descendants.each do |model|
-      next unless model.respond_to?(:__elasticsearch__)
-      begin
-        model.__elasticsearch__.create_index!
-        model.__elasticsearch__.refresh_index!
-      # rescue => Elasticsearch::Transport::Transport::Errors::NotFound
-      rescue Elasticsearch::Transport::Transport::Error => e
-        puts e
-        # This kills "Index does not exist" errors being written to console
-        # by this: https://github.com/elastic/elasticsearch-rails/blob/738c63efacc167b6e8faae3b01a1a0135cfc8bbb/elasticsearch-model/lib/elasticsearch/model/indexing.rb#L268
-      rescue StandardError => e
-        STDERR.puts "There was an error creating the elasticsearch index for #{model.name}: #{e.inspect}"
-      end
-    end
-  end
+  # # Create indexes for all elastic searchable models
+  # config.before :each, elasticsearch: true do
+  #   ActiveRecord::Base.descendants.each do |model|
+  #     next unless model.respond_to?(:__elasticsearch__)
+  #     begin
+  #       model.__elasticsearch__.create_index!
+  #       model.__elasticsearch__.refresh_index!
+  #     # rescue => Elasticsearch::Transport::Transport::Errors::NotFound
+  #     rescue Elasticsearch::Transport::Transport::Error => e
+  #       puts e
+  #       # This kills "Index does not exist" errors being written to console
+  #       # by this: https://github.com/elastic/elasticsearch-rails/blob/738c63efacc167b6e8faae3b01a1a0135cfc8bbb/elasticsearch-model/lib/elasticsearch/model/indexing.rb#L268
+  #     rescue StandardError => e
+  #       STDERR.puts "There was an error creating the elasticsearch index for #{model.name}: #{e.inspect}"
+  #     end
+  #   end
+  # end
 
-  # Delete indexes for all elastic searchable models to ensure clean state between tests
-  config.after :each, elasticsearch: true do
-    ActiveRecord::Base.descendants.each do |model|
-      next unless model.respond_to?(:__elasticsearch__)
-      begin
-        model.__elasticsearch__.delete_index!
-      rescue StandardError => Elasticsearch::Transport::Transport::Errors::NotFound
-        # This kills "Index does not exist" errors being written to console
-        # by this: https://github.com/elastic/elasticsearch-rails/blob/738c63efacc167b6e8faae3b01a1a0135cfc8bbb/elasticsearch-model/lib/elasticsearch/model/indexing.rb#L268
-      rescue StandardError => e
-        STDERR.puts "There was an error removing the elasticsearch index for #{model.name}: #{e.inspect}"
-      end
-    end
-  end
+  # # Delete indexes for all elastic searchable models to ensure clean state between tests
+  # config.after :each, elasticsearch: true do
+  #   ActiveRecord::Base.descendants.each do |model|
+  #     next unless model.respond_to?(:__elasticsearch__)
+  #     begin
+  #       model.__elasticsearch__.delete_index!
+  #     rescue StandardError => Elasticsearch::Transport::Transport::Errors::NotFound
+  #       # This kills "Index does not exist" errors being written to console
+  #       # by this: https://github.com/elastic/elasticsearch-rails/blob/738c63efacc167b6e8faae3b01a1a0135cfc8bbb/elasticsearch-model/lib/elasticsearch/model/indexing.rb#L268
+  #     rescue StandardError => e
+  #       STDERR.puts "There was an error removing the elasticsearch index for #{model.name}: #{e.inspect}"
+  #     end
+  #   end
+  # end
 end
 
 require 'byebug'

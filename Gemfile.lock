@@ -1,21 +1,4 @@
 GIT
-  remote: https://github.com/elasticsearch/elasticsearch-ruby.git
-  revision: 947cbce1849136e6c80803a7ff61d0146080f8c1
-  ref: 7.17
-  specs:
-    elasticsearch (7.17.2)
-      elasticsearch-api (= 7.17.2)
-      elasticsearch-transport (= 7.17.2)
-    elasticsearch-api (7.17.2)
-      multi_json
-    elasticsearch-extensions (0.0.31)
-      ansi
-      elasticsearch
-    elasticsearch-transport (7.17.2)
-      faraday (~> 1)
-      multi_json
-
-GIT
   remote: https://github.com/globalize/globalize
   revision: 0ca7b7ccc6e3b226acac317c1325f28f41be76d3
   specs:
@@ -91,7 +74,6 @@ GEM
       activerecord (>= 5.0, < 6.1)
     addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
-    ansi (1.5.0)
     ast (2.4.2)
     auto_html (1.6.4)
       redcarpet (~> 3.1)
@@ -189,11 +171,6 @@ GEM
     diff-lcs (1.4.4)
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
-    elasticsearch-model (7.1.1)
-      activesupport (> 3)
-      elasticsearch (> 1)
-      hashie
-    elasticsearch-rails (7.2.0)
     erubi (1.10.0)
     exception_notification (4.4.3)
       actionmailer (>= 4.0, < 7)
@@ -335,7 +312,6 @@ GEM
       libv8-node (~> 15.14.0.0)
     minitest (5.11.3)
     msgpack (1.4.2)
-    multi_json (1.15.0)
     multipart-post (2.1.1)
     nenv (0.3.0)
     nio4r (2.5.7)
@@ -547,9 +523,6 @@ DEPENDENCIES
   deadweight
   derailed_benchmarks
   devise (~> 4.7)
-  elasticsearch-extensions!
-  elasticsearch-model
-  elasticsearch-rails
   exception_notification
   factory_bot_rails
   faker

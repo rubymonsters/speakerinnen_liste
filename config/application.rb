@@ -25,7 +25,7 @@ module SpeakerinnenListe
     config.active_support.escape_html_entities_in_json = true
 
     # search box --> heroku elasticsearch add-on; set this variable in test and development pointing to the local elasticsearch server
-    Elasticsearch::Model.client = Elasticsearch::Client.new host: ENV['SEARCHBOX_URL'], log: Rails.env.development?
+    # Elasticsearch::Model.client = Elasticsearch::Client.new host: ENV['SEARCHBOX_URL'], log: Rails.env.development?
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers

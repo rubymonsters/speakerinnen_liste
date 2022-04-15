@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 class Profile < ApplicationRecord
-  include Searchable
+  # include Searchable
   include ActiveModel::Serialization
 
   has_many :medialinks
@@ -33,7 +33,7 @@ class Profile < ApplicationRecord
     lastname&.strip!
   end
 
-  after_save :update_or_remove_index
+  # after_save :update_or_remove_index
 
   def after_confirmation
     AdminMailer.new_profile_confirmed(self).deliver
@@ -139,12 +139,12 @@ class Profile < ApplicationRecord
     order(Arel.sql('random()'))
   end
 
-  def update_or_remove_index
-    published ? __elasticsearch__.index_document : __elasticsearch__.delete_document
-  rescue StandardError
-    nil
-    # rescue a deleted document if not indexed
-  end
+  # def update_or_remove_index
+  #   published ? __elasticsearch__.index_document : __elasticsearch__.delete_document
+  # rescue StandardError
+  #   nil
+  #   # rescue a deleted document if not indexed
+  # end
 
   def password_required?
     super && provider.blank?
