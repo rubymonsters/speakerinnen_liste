@@ -1,7 +1,10 @@
 # frozen_string_literal: true
 class Profile < ApplicationRecord
   # include Searchable
+  include PgSearch::Model
   include ActiveModel::Serialization
+
+  pg_search_scope :search, against: :firstname
 
   has_many :medialinks
   has_many :feature_profiles

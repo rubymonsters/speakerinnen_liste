@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 describe 'profile', type: :model do
-  let(:profile) { FactoryBot.create(:profile) }
-  let(:profile2) { FactoryBot.create(:ada) }
-  let(:profile3) { FactoryBot.create(:laura) }
+  let!(:profile) { FactoryBot.create(:profile) }
+  let!(:profile2) { FactoryBot.create(:ada) }
+  let!(:profile3) { FactoryBot.create(:laura) }
 
   describe 'profile settings' do
     it 'has a valid factory' do
@@ -145,5 +145,11 @@ describe 'profile', type: :model do
     it { expect(Profile.by_region('berlin').count).to eq 1 }
     it { expect(Profile.by_region('hamburg').count).to eq 0 }
     it { expect(Profile.by_region(nil).count).to eq 4 }
+  end
+
+  describe 'search' do
+    it 'returns a profile by firstname' do
+      expect(Profile.search('Ada').count).to eq 1
+    end
   end
 end
