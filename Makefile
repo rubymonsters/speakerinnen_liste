@@ -9,7 +9,7 @@ usage:
 	@echo "  * bundle                 - Install missing gems"
 	@echo "  * db-migrate             - Runs the migrations for dev database"
 	@echo "  * db-test-migrate        - Runs the migrations for test database"
-	@echo "  * seed                   - Seeds dev database with example profiles, and indexes them in Elasticsearch"
+	@echo "  * seed                   - Seeds dev database with example profiles"
 	@echo "  * dev                    - Fires a shell inside your container"
 	@echo "  * up                     - Runs the development server"
 	@echo "  * tear-down              - Removes all the containers and tears down the setup"
@@ -40,6 +40,6 @@ db-migrate:
 db-test-migrate:
 	$(call dc-run, bundle exec rake db:migrate RAILS_ENV=test)
 seed:
-	$(call dc-run, sh -c 'rake db:seed && rake elasticsearch:import:all')
+	$(call dc-run, sh -c 'rake db:seed')
 test:
-	$(call dc-run-sp, sh -c 'bundle exec rake elasticsearch:wait_for_elastic && bundle exec rspec')
+	$(call dc-run-sp, sh -c 'bundle exec rspec')
