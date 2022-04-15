@@ -28,6 +28,7 @@ gem 'mini_magick', '~> 4.9.5'
 gem 'omniauth-twitter', '~> 1.4'
 gem 'omniauth-rails_csrf_protection', '~> 1.0'
 gem 'pg', '~> 1.1.3'
+gem 'pg_search'
 gem 'simple_form'
 
 gem 'country_select'
