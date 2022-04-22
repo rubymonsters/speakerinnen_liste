@@ -21,6 +21,24 @@
   font-weight: 700;
   font-style: normal;
 }
+@font-face {
+  font-family: 'Fira-Sans';
+  src: font_url('fira/FiraSans-BoldItalic.ttf') format('truetype'),
+}
+@font-face {
+  font-family: 'Bree';
+  src: font_url('bree/BreeSerif-Regular.ttf') format('truetype'),
+}
+
+@font-face {
+  font-family: 'Raleway';
+  src: font_url('raleway/Raleway-BoldItalic.ttf') format('truetype'),
+}
+
+@font-face {
+  font-family: 'SpaceMono';
+  src: font_url('spacemono/SpaceMono-BoldItalic.ttf') format('truetype'),
+}
 /* old colors */
 $white: #FCFCFC;
 $white-smoke: #F5F5F5;
@@ -48,7 +66,7 @@ $box-shadow-black: rgba(0,0,0,0.75);
 
 /* font */
 $serif: Georgia, serif;
-$sans-serif: "Helvetica Neue", Helvetica, sans-serif;
+$sans-serif: Raleway, SpaceMono, Bree, Fira-Sans, Helvetica, sans-serif;
 
 /* variables colors */
 $body-bg-color: $white;
