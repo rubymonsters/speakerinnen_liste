@@ -151,5 +151,45 @@ describe 'profile', type: :model do
     it 'returns a profile by firstname' do
       expect(Profile.search('Ada').count).to eq 1
     end
+
+    it 'returns a profile by lastname' do
+      expect(Profile.search('Lovelace').count).to eq 1
+    end
+
+    it 'returns a profile by fullname' do
+      expect(Profile.search('Ada Lovelace').count).to eq 1
+    end
+
+    it 'returns a profile by twitter_de handle' do
+      expect(Profile.search('alovelace_de').count).to eq 1
+    end
+
+    it 'returns a profile by twitter_en handle' do
+      expect(Profile.search('alovelace_en').count).to eq 1
+    end
+
+    it 'returns a profile by bio_de' do
+      expect(Profile.search('Algorithmus').count).to eq 1
+    end
+
+    it 'returns a profile by bio_en' do
+      expect(Profile.search('algorithm').count).to eq 1
+    end
+
+    it 'returns a profile by main_topic_de' do
+      expect(Profile.search('Mathematik Genie').count).to eq 1
+    end
+
+    it 'returns a profile by main_topic_en' do
+      expect(Profile.search('math wiz').count).to eq 1
+    end
+
+    it 'returns a profile by city_en' do
+      expect(Profile.search('London').count).to eq 1
+    end
+
+    it 'returns a profile by state' do
+      expect(Profile.search('carinthia').count).to eq 1
+    end
   end
 end

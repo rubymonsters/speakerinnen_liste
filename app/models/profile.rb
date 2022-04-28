@@ -4,7 +4,10 @@ class Profile < ApplicationRecord
   include PgSearch::Model
   include ActiveModel::Serialization
 
-  pg_search_scope :search, against: :firstname
+  pg_search_scope :search, against: [:firstname, :lastname, :state],
+    associated_against: {
+      translations: [:bio, :city, :main_topic, :twitter]
+    }
 
   has_many :medialinks
   has_many :feature_profiles
