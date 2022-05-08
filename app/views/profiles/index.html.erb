@@ -11,14 +11,14 @@
     </div>
     <div class="row">
       <div class="col-12">
-        <%= render partial: 'shared/search_filter',
-            locals: {
-              profiles: @profiles,
-              aggs_languages: @aggs_languages,
-              aggs_countries: @aggs_countries,
-              aggs_states: @aggs_states,
-              aggs_cities: @aggs_cities
-            }
+        <%= # render partial: 'shared/search_filter',
+            #locals: {
+            #  profiles: @profiles,
+            #  aggs_languages: @aggs_languages,
+            #  aggs_countries: @aggs_countries,
+            #  aggs_states: @aggs_states,
+            #  aggs_cities: @aggs_cities
+            # }
           %>
       </div>
     </div>
@@ -60,7 +60,7 @@
 
   <!-- Speaker section -->
   <%= paginate @profiles %>
-
+  <%= @aggs_languages %>
   <% @profiles.in_groups_of(4).each do |group| %>
     <div class="row">
       <% group.each do |profile| %>

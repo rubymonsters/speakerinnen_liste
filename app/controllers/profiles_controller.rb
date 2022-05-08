@@ -16,11 +16,11 @@ class ProfilesController < ApplicationController
     if params[:search]
       @profiles = profiles_for_search
       # sum of search results concerning certain attributes
-      @aggs = @profiles.response.aggregations
-      @aggs_languages = @aggs[:lang][:buckets]
-      @aggs_cities = @aggs[:city][:buckets]
-      @aggs_states = @aggs[:state][:buckets]
-      @aggs_countries = @aggs[:country][:buckets]
+      # @aggs = @profiles.response.aggregations
+      @aggs_languages = aggregate_by_language(@profiles)
+      # @aggs_cities = @aggs[:city][:buckets]
+      # @aggs_states = @aggs[:state][:buckets]
+      # @aggs_countries = @aggs[:country][:buckets]
       @three_sample_categories = Category.all.sample(3)
     elsif params[:tag_filter]&.present?
       @tags = params[:tag_filter].split(/\s*,\s*/)
@@ -110,6 +110,14 @@ class ProfilesController < ApplicationController
 
   private
 
+  def aggregate_by_language(profiles)
+    languages_in_profiles = profiles.pluck(:iso_languages).flatten.uniq
+
+    languages_in_profiles.each_with_object({}) do |language, memo|
+      memo[language] = languages_in_profiles.count(language)
+    end
+  end
+
   def suggestions_upcase(suggestions_raw)
     suggestions_raw
       .flatten
@@ -196,17 +204,16 @@ class ProfilesController < ApplicationController
       .is_published
       .by_region(current_region)
       .includes(:taggings, :translations)
-      .search(
-        params[:search],
-        current_region,
-        params[:filter_countries],
-        params[:filter_states],
-        params[:filter_cities],
-        params[:filter_lang],
-        (!Rails.env.production? || params[:explain]) == true
-      )
+      .search(params[:search])
+        # current_region,
+        # params[:filter_countries],
+        # params[:filter_states],
+        # params[:filter_cities],
+        # params[:filter_lang],
+        # (!Rails.env.production? || params[:explain]) == true
+      # )
       .page(params[:page]).per(24)
-      .records
+      # .records
   end
 
   def profiles_with_tags
