@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 source 'https://rubygems.org'
-ruby '2.7.2'
+ruby '2.7.6'
 # gem 'rails', '6.1.6'
 gem 'rails', '~> 7.0', '>= 7.0.3'
 
@@ -23,6 +23,7 @@ gem 'mime-types'
 gem 'acts-as-taggable-on', '~> 9.0', '>= 9.0.1'
 gem 'auto_html', '~>1.6.4'
 gem 'devise', '~> 4.7'
+gem "net-http"
 gem 'invisible_captcha'
 gem 'jquery-rails', '~> 4.4.0'
 gem 'jquery-ui-rails', '~> 6.0.1'
