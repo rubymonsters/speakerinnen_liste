@@ -533,6 +533,7 @@ GEM
     zeitwerk (2.5.4)
 
 PLATFORMS
+  ruby
   x86_64-linux
 
 DEPENDENCIES
@@ -583,7 +584,7 @@ DEPENDENCIES
   pry
   rack-piwik (~> 0.3.0)
   rack-timeout
-  rails (~> 7.0)
+  rails (~> 7.0, >= 7.0.3)
   rails-controller-testing
   record_tag_helper (~> 1.0)
   rspec-rails
