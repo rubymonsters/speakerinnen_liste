@@ -6,7 +6,8 @@ class Profile < ApplicationRecord
 
   pg_search_scope :search, against: [:firstname, :lastname, :state],
     associated_against: {
-      translations: [:bio, :city, :main_topic, :twitter]
+      translations: [:bio, :city, :main_topic, :twitter],
+      topics: [:name]
     }
 
   has_many :medialinks
