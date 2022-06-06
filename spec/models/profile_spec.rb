@@ -133,9 +133,9 @@ describe 'profile', type: :model do
 
   describe 'by_region' do
     before do
-      create(:published_profile, country: 'AT', state: 'vorarlberg')
-      create(:published_profile, country: 'AT', state: 'vorarlberg')
-      create(:published_profile, country: 'DE', state: 'berlin')
+      profile.update(country: 'AT', state: 'vorarlberg')
+      profile2.update(country: 'AT', state: 'vorarlberg')
+      profile3.update(country: 'DE', state: 'berlin')
       create(:published_profile, state: nil)
     end
 
