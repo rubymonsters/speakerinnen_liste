@@ -191,5 +191,28 @@ describe 'profile', type: :model do
     it 'returns a profile by state' do
       expect(Profile.search('carinthia').count).to eq 1
     end
+
+    context 'facets' do
+      let!(:french_profile) do
+        create(
+          :ada,
+          iso_languages: ['fr'],
+          country: 'FR',
+          city: 'Paris'
+        )
+      end
+
+      it 'scopes the search results by language' do
+        expect(Profile.by_language('fr').count).to eq 1
+      end
+
+      it 'scopes the search results by country' do
+        expect(Profile.by_country('FR').count).to eq 1
+      end
+
+      it 'scopes the search results by city' do
+        expect(Profile.by_city('Paris').count).to eq 1
+      end
+    end
   end
 end

@@ -8,7 +8,13 @@ class Profile < ApplicationRecord
     associated_against: {
       translations: [:bio, :city, :main_topic, :twitter],
       topics: [:name]
+      # :ignoring => :accents
     }
+
+  pg_search_scope :by_language, against: [:iso_languages]
+  pg_search_scope :by_country, against: [:country]
+  pg_search_scope :by_city, associated_against: { translations: [:city] }
+  pg_search_scope :by_state, against: [:state]
 
   has_many :medialinks
   has_many :feature_profiles

@@ -15,12 +15,7 @@ class ProfilesController < ApplicationController
   def index
     if params[:search]
       @profiles = profiles_for_search
-      # sum of search results concerning certain attributes
-      # @aggs = @profiles.response.aggregations
-      @aggs_languages = aggregate_by_language(@profiles)
-      # @aggs_cities = @aggs[:city][:buckets]
-      # @aggs_states = @aggs[:state][:buckets]
-      # @aggs_countries = @aggs[:country][:buckets]
+      @aggs = aggregations_hash(@profiles)
       @three_sample_categories = Category.all.sample(3)
     elsif params[:tag_filter]&.present?
       @tags = params[:tag_filter].split(/\s*,\s*/)
@@ -110,11 +105,40 @@ class ProfilesController < ApplicationController
 
   private
 
+  def aggregate_by_countries(profiles)
+    countries_in_profiles = profiles.pluck(:country).flatten.uniq
+
+    countries_in_profiles.each_with_object({}) do |country, memo|
+      profiles_by_country = profiles.by_country(country)
+      memo[country] = profiles_by_country.count
+    end
+  end
+
+  def aggregate_by_cities(profiles)
+    cities_in_profiles = profiles
+      .map(&:city)
+      .uniq
+
+    cities_in_profiles.each_with_object({}) do |city, memo|
+      profiles_by_city = profiles.by_city(city)
+      memo[city] = profiles_by_city.count
+    end
+  end
+
   def aggregate_by_language(profiles)
     languages_in_profiles = profiles.pluck(:iso_languages).flatten.uniq
 
     languages_in_profiles.each_with_object({}) do |language, memo|
       memo[language] = languages_in_profiles.count(language)
+    end
+  end
+
+  def aggregate_by_states(profiles)
+    states_in_profiles = profiles.pluck(:state).flatten.uniq
+
+    states_in_profiles.each_with_object({}) do |state, memo|
+      profiles_by_state = profiles.by_state(state)
+      memo[state] = profiles_by_state.count
     end
   end
 
@@ -234,5 +258,14 @@ class ProfilesController < ApplicationController
       .random
       .page(params[:page])
       .per(24)
+  end
+
+  def aggregations_hash(profiles)
+    @aggs = {
+      languages: aggregate_by_language(profiles),
+      countries: aggregate_by_countries(profiles),
+      cities: aggregate_by_cities(profiles),
+      states: aggregate_by_states(profiles)
+    }
   end
 end

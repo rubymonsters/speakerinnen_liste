@@ -37,10 +37,10 @@ describe ProfilesController, type: :controller do
 
     it 'should store aggregations in aggs variable' do
       get :index, params: { search: 'ruby' }
-      expect(assigns(:aggs)).to have_key(:city)
-      expect(assigns(:aggs)).to have_key(:lang)
-      expect(assigns(:aggs)).to have_key(:country)
-      expect(assigns(:aggs)).to have_key(:state)
+      expect(assigns(:aggs)).to have_key(:cities)
+      expect(assigns(:aggs)).to have_key(:languages)
+      expect(assigns(:aggs)).to have_key(:countries)
+      expect(assigns(:aggs)).to have_key(:states)
     end
   end
 
