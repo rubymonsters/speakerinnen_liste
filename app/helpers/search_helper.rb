@@ -9,6 +9,16 @@ module SearchHelper
     t(:states).map(&:last).inject(&:merge)
   end
 
+  def filter_params
+    filter_params = {
+      search: params[:search],
+      filter_countries: params[:filter_countries],
+      filter_cities: params[:filter_cities],
+      filter_lang: params[:filter_lang],
+      filter_states: params[:filter_states]
+    }
+  end
+
   def filters_hash(aggs_countries, aggs_states, aggs_cities, aggs_languages)
     filter_params = {
       search: params[:search],

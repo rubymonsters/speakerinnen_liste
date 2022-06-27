@@ -1,67 +1,99 @@
 <% if @profiles.count > 0 %>
   <div class="row row-cols-4">
-    <% filters_hash(aggs_countries, aggs_states, aggs_cities, aggs_languages).each do |filter| %>
-      <div class="col-12 col-sm-6 col-md-3">
-        <ul id="facet_<%= filter[:key] %>" class="search-aggregation list-unstyled">
-          <li><b><%= t(filter[:title], scope: 'search' ).html_safe %></b></li>
-          <li class="<%= 'selected' if !filter[:param_val] %>">
+    <div class="col-12 col-sm-6 col-md-3">
+      <ul id="facet_languages" class="search-aggregation list-unstyled">
+        <li><b><%= t(:languages_agg, scope: 'search' ).html_safe %></b></li>
+        <li class="<%= 'selected' if !params[:filter_lang] %>">
+          <%= link_to(
+                t(:all_languages, scope: 'search'),
+                filter_params.merge(filter_lang: nil),
+                class: "#{'bg-dark text-light' if !params[:filter_lang] }")
+          %>
+        </li>
+        <% aggs_languages.each do |term| %>
+          <li>
             <%= link_to(
-                  t(filter[:all_text], scope: 'search'),
-                  filter[:filter_params_all],
-                  class: "#{'bg-dark text-light' if !filter[:param_val] }")
+                  t(term.first, scope: 'iso_639_1').capitalize,
+                  filter_params.merge(filter_lang: term.first),
+                  class: "#{'bg-dark text-light' if params[:filter_lang]&.downcase == term.first.downcase }")
             %>
+            <span class="pl-1"><%= term.last %></span>
           </li>
-          <% filter[:aggregations][0..9].each do |term| %>
-            <li class=" <%= 'selected' if filter[:param_val]&.downcase == term['key'].downcase %>">
+        <% end %>
+      </ul>
+    </div>
+    <div class="col-12 col-sm-6 col-md-3">
+      <ul id="facet_countries" class="search-aggregation list-unstyled">
+        <li><b><%= t(:countries_agg, scope: 'search' ).html_safe %></b></li>
+        <li class="<%= 'selected' if !params[:filter_countries] %>">
+          <%= link_to(
+                t(:all_countries, scope: 'search'),
+                filter_params.merge(filter_countries: nil),
+                class: "#{'bg-dark text-light' if !params[:filter_coutries] }")
+          %>
+        </li>
+        <% if aggs_countries.present? %>
+          <% aggs_countries.each do |term| %>
+            <li>
               <%= link_to(
-                    filter[:link_text_func].call(term['key']),
-                    filter[:filter_params_func].call(term['key']),
-                    class: "#{'bg-dark text-light' if filter[:param_val]&.downcase == term['key'].downcase }")
+                    ISO3166::Country.find_country_by_alpha2(term.first).translation(I18n.locale),
+                    filter_params.merge(filter_countries: term.first),
+                    class: "#{'bg-dark text-light' if params[:filter_countries]&.downcase == term.first.downcase }")
               %>
-              <span class="pl-1"><%= term['doc_count'] %></span>
+              <span class="pl-1"><%= term.last %></span>
             </li>
           <% end %>
-          <% if filter[:aggregations].length > 10 %>
+        <% end %>
+      </ul>
+    </div>
+    <div class="col-12 col-sm-6 col-md-3">
+      <ul id="facet_states" class="search-aggregation list-unstyled">
+        <li><b><%= t(:states_agg, scope: 'search' ).html_safe %></b></li>
+        <li class="<%= 'selected' if !params[:filter_states] %>">
+          <%= link_to(
+                t(:all_states, scope: 'search'),
+                filter_params.merge(filter_states: nil),
+                class: "#{'bg-dark text-light' if !params[:filter_states] }")
+          %>
+        </li>
+        <% if aggs_states.present? %>
+          <% aggs_states.each do |term| %>
             <li>
-              <a class="pl-1 expander_<%= filter[:key] %>"><%= t(:show_more, scope: 'profiles.index') %></a>
+              <%= link_to(
+                    all_states[term.first&.to_sym],
+                    filter_params.merge(filter_lang: term.first),
+                    class: "#{'bg-dark text-light' if params[:filter_lang]&.downcase == term.first.downcase }")
+              %>
+              <span class="pl-1"><%= term.last %></span>
             </li>
-            <div class="rest_facet_<%= filter[:key] %>" style="display: none">
-              <% filter[:aggregations][10..999].each do |term| %>
-                <li class="pl-1 <%= 'selected' if filter[:param_val] == term['key'] %>">
-                  <%= link_to(
-                      filter[:link_text_func].call(term['key']),
-                      filter[:filter_params_func].call(term['key']),
-                      class: "#{'bg-dark text-light' if filter[:param_val] == term['key'] }")
-                  %>
-                  <small class="pl-1"><%= term['doc_count'] %></small>
-                </li>
-
-              <% end %>
-            </div>
           <% end %>
-        </ul>
-      </div>
-    <% end %>
-  </div>
-<% else %>
-  <div class="row">
-    <div class="col-md-12">
-      <% if current_region.nil? %>
-        <span>
-          <%= t(:filter_by_cats, scope: 'search', category_link: profiles_path).html_safe %>
-        </span>
-        <br><br>
-        <ul class="list-unstyled">
-          <%= t(:random_categories, scope: 'search' ).html_safe %><br>
-          <% @three_sample_categories.each do |cat| %>
+        <% end %>
+      </ul>
+    </div>
+    <div class="col-12 col-sm-6 col-md-3">
+      <ul id="facet_cities" class="search-aggregation list-unstyled">
+        <li><b><%= t(:cities_agg, scope: 'search' ).html_safe %></b></li>
+        <li class="<%= 'selected' if !params[:filter_cities] %>">
+          <%= link_to(
+                t(:all_cities, scope: 'search'),
+                filter_params.merge(filter_cities: nil),
+                class: "#{'bg-dark text-light' if !params[:filter_cities] }")
+          %>
+        </li>
+        <% if aggs_cities.present? %>
+          <% aggs_cities.each do |term| %>
             <li>
-              <%= category_link(cat, "speakers_anchor") %>
+              <%= link_to(
+                    term.first,
+                    filter_params.merge(filter_cities: term.first),
+                    class: "#{'bg-dark text-light' if params[:filter_cities]&.downcase == term.first.downcase }")
+              %>
+              <span class="pl-1"><%= term.last %></span>
             </li>
           <% end %>
-        </ul>
-      <% else %>
-        <p><%= t(:no_results, scope: 'search') %></p>
-      <% end %>
+        <% end %>
+      </ul>
     </div>
   </div>
 <% end %>
+

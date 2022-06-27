@@ -14,6 +14,9 @@ class ProfilesController < ApplicationController
 
   def index
     if params[:search]
+      p '------'
+      p params
+      p '------'
       @profiles = profiles_for_search
       @aggs = aggregations_hash(@profiles)
       @three_sample_categories = Category.all.sample(3)
@@ -106,7 +109,9 @@ class ProfilesController < ApplicationController
   private
 
   def aggregate_by_countries(profiles)
-    countries_in_profiles = profiles.pluck(:country).flatten.uniq
+    return unless profiles
+
+    countries_in_profiles = profiles.pluck(:country).flatten.uniq.reject(&:blank?)
 
     countries_in_profiles.each_with_object({}) do |country, memo|
       profiles_by_country = profiles.by_country(country)
@@ -115,9 +120,12 @@ class ProfilesController < ApplicationController
   end
 
   def aggregate_by_cities(profiles)
+    return unless profiles
+
     cities_in_profiles = profiles
       .map(&:city)
       .uniq
+      .reject(&:blank?)
 
     cities_in_profiles.each_with_object({}) do |city, memo|
       profiles_by_city = profiles.by_city(city)
@@ -126,19 +134,22 @@ class ProfilesController < ApplicationController
   end
 
   def aggregate_by_language(profiles)
+    return unless profiles
+
     languages_in_profiles = profiles.pluck(:iso_languages).flatten.uniq
 
     languages_in_profiles.each_with_object({}) do |language, memo|
-      memo[language] = languages_in_profiles.count(language)
+      memo[language] = profiles.by_language(language).count
     end
   end
 
   def aggregate_by_states(profiles)
-    states_in_profiles = profiles.pluck(:state).flatten.uniq
+    return unless profiles
+
+    states_in_profiles = profiles.pluck(:state).flatten.uniq.reject(&:blank?)
 
     states_in_profiles.each_with_object({}) do |state, memo|
-      profiles_by_state = profiles.by_state(state)
-      memo[state] = profiles_by_state.count
+      memo[state] = profiles.by_state(state).count
     end
   end
 
@@ -223,21 +234,39 @@ class ProfilesController < ApplicationController
   end
 
   def profiles_for_search
-    Profile
+    chain = Profile
       .with_attached_image
       .is_published
       .by_region(current_region)
       .includes(:taggings, :translations)
       .search(params[:search])
-        # current_region,
-        # params[:filter_countries],
-        # params[:filter_states],
-        # params[:filter_cities],
-        # params[:filter_lang],
-        # (!Rails.env.production? || params[:explain]) == true
-      # )
       .page(params[:page]).per(24)
-      # .records
+
+    # if params[:filter_cities]
+    #  chain += chain.by_city(params[:filter_cities])
+    #end
+
+    # if params[:filter_countries]
+    #   chain += chain.by_country(params[:filter_countries])
+    # end
+
+    #if params[:filter_language]
+    #  chain += chain.by_lang(params[:filter_lang])
+    #end
+
+    #chain
+  end
+
+  def filter_by_city(chain)
+    chain.by_city(params[:filter_cities])
+  end
+
+  def filter_by_country(chain)
+    chain.by_country(params[:filter_country])
+  end
+
+  def filter_by_language(chain)
+    chain.by_language(params[:filter_lang])
   end
 
   def profiles_with_tags

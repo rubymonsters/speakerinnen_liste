@@ -11,14 +11,14 @@
     </div>
     <div class="row">
       <div class="col-12">
-        <%= # render partial: 'shared/search_filter',
-            #locals: {
-            #  profiles: @profiles,
-            #  aggs_languages: @aggs_languages,
-            #  aggs_countries: @aggs_countries,
-            #  aggs_states: @aggs_states,
-            #  aggs_cities: @aggs_cities
-            # }
+        <%= render partial: 'shared/search_filter',
+            locals: {
+              profiles: @profiles,
+              aggs_languages: @aggs[:languages],
+              aggs_countries: @aggs[:countries],
+              aggs_states: @aggs[:states],
+              aggs_cities: @aggs[:cities]
+             }
           %>
       </div>
     </div>

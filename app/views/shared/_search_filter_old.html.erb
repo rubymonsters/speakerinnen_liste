@@ -1,0 +1,67 @@
+<% if @profiles.count > 0 %>
+  <div class="row row-cols-4">
+    <% filters_hash(aggs_countries, aggs_states, aggs_cities, aggs_languages).each do |filter| %>
+      <div class="col-12 col-sm-6 col-md-3">
+        <ul id="facet_<%= filter[:key] %>" class="search-aggregation list-unstyled">
+          <li><b><%= t(filter[:title], scope: 'search' ).html_safe %></b></li>
+          <li class="<%= 'selected' if !filter[:param_val] %>">
+            <%= link_to(
+                  t(:all_languages, scope: 'search'),
+                  filter[:filter_params_all],
+                  class: "#{'bg-dark text-light' if !filter[:param_val] }")
+            %>
+          </li>
+          <% filter[:aggregations][0..9].each do |term| %>
+            <li class=" <%= 'selected' if filter[:param_val]&.downcase == term['key'].downcase %>">
+              <%= link_to(
+                    filter[:link_text_func].call(term['key']),
+                    filter[:filter_params_func].call(term['key']),
+                    class: "#{'bg-dark text-light' if filter[:param_val]&.downcase == term['key'].downcase }")
+              %>
+              <span class="pl-1"><%= term['doc_count'] %></span>
+            </li>
+          <% end %>
+          <% if filter[:aggregations].length > 10 %>
+            <li>
+              <a class="pl-1 expander_<%= filter[:key] %>"><%= t(:show_more, scope: 'profiles.index') %></a>
+            </li>
+            <div class="rest_facet_<%= filter[:key] %>" style="display: none">
+              <% filter[:aggregations][10..999].each do |term| %>
+                <li class="pl-1 <%= 'selected' if filter[:param_val] == term['key'] %>">
+                  <%= link_to(
+                      filter[:link_text_func].call(term['key']),
+                      filter[:filter_params_func].call(term['key']),
+                      class: "#{'bg-dark text-light' if filter[:param_val] == term['key'] }")
+                  %>
+                  <small class="pl-1"><%= term['doc_count'] %></small>
+                </li>
+
+              <% end %>
+            </div>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  </div>
+<% else %>
+  <div class="row">
+    <div class="col-md-12">
+      <% if current_region.nil? %>
+        <span>
+          <%= t(:filter_by_cats, scope: 'search', category_link: profiles_path).html_safe %>
+        </span>
+        <br><br>
+        <ul class="list-unstyled">
+          <%= t(:random_categories, scope: 'search' ).html_safe %><br>
+          <% @three_sample_categories.each do |cat| %>
+            <li>
+              <%= category_link(cat, "speakers_anchor") %>
+            </li>
+          <% end %>
+        </ul>
+      <% else %>
+        <p><%= t(:no_results, scope: 'search') %></p>
+      <% end %>
+    </div>
+  </div>
+<% end %>
