@@ -14,9 +14,6 @@ class ProfilesController < ApplicationController
 
   def index
     if params[:search]
-      p '------'
-      p params
-      p '------'
       @profiles = profiles_for_search
       @aggs = aggregations_hash(@profiles)
       @three_sample_categories = Category.all.sample(3)
@@ -234,7 +231,7 @@ class ProfilesController < ApplicationController
   end
 
   def profiles_for_search
-    chain = Profile
+    relation = Profile
       .with_attached_image
       .is_published
       .by_region(current_region)
@@ -242,19 +239,19 @@ class ProfilesController < ApplicationController
       .search(params[:search])
       .page(params[:page]).per(24)
 
-    # if params[:filter_cities]
-    #  chain += chain.by_city(params[:filter_cities])
-    #end
+    if params[:filter_cities]
+     relation = relation.by_city(params[:filter_cities])
+    end
 
-    # if params[:filter_countries]
-    #   chain += chain.by_country(params[:filter_countries])
-    # end
+    if params[:filter_countries]
+      relation = relation.by_country(params[:filter_countries])
+    end
 
-    #if params[:filter_language]
-    #  chain += chain.by_lang(params[:filter_lang])
-    #end
+    if params[:filter_language]
+     relation = relation.by_lang(params[:filter_lang])
+    end
 
-    #chain
+    relation
   end
 
   def filter_by_city(chain)
