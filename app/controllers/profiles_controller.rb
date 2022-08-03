@@ -239,31 +239,19 @@ class ProfilesController < ApplicationController
       .search(params[:search])
       .page(params[:page]).per(24)
 
-    if params[:filter_cities]
-     relation = relation.by_city(params[:filter_cities])
+    if params[:filter_city]
+      relation = relation.by_city(params[:filter_city])
     end
 
-    if params[:filter_countries]
-      relation = relation.by_country(params[:filter_countries])
+    if params[:filter_country]
+      relation = relation.by_country(params[:filter_country])
     end
 
     if params[:filter_language]
-     relation = relation.by_lang(params[:filter_lang])
+      relation = relation.by_language(params[:filter_language])
     end
 
     relation
-  end
-
-  def filter_by_city(chain)
-    chain.by_city(params[:filter_cities])
-  end
-
-  def filter_by_country(chain)
-    chain.by_country(params[:filter_country])
-  end
-
-  def filter_by_language(chain)
-    chain.by_language(params[:filter_lang])
   end
 
   def profiles_with_tags

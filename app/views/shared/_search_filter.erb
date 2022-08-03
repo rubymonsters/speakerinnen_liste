@@ -3,19 +3,19 @@
     <div class="col-12 col-sm-6 col-md-3">
       <ul id="facet_languages" class="search-aggregation list-unstyled">
         <li><b><%= t(:languages_agg, scope: 'search' ).html_safe %></b></li>
-        <li class="<%= 'selected' if !params[:filter_lang] %>">
+        <li class="<%= 'selected' if !params[:filter_language] %>">
           <%= link_to(
                 t(:all_languages, scope: 'search'),
-                filter_params.merge(filter_lang: nil),
-                class: "#{'bg-dark text-light' if !params[:filter_lang] }")
+                filter_params.merge(filter_language: nil),
+                class: "#{'bg-dark text-light' if !params[:filter_language] }")
           %>
         </li>
         <% aggs_languages.each do |term| %>
           <li>
             <%= link_to(
                   t(term.first, scope: 'iso_639_1').capitalize,
-                  filter_params.merge(filter_lang: term.first),
-                  class: "#{'bg-dark text-light' if params[:filter_lang]&.downcase == term.first.downcase }")
+                  filter_params.merge(filter_language: term.first),
+                  class: "#{'bg-dark text-light' if params[:filter_language]&.downcase == term.first.downcase }")
             %>
             <span class="pl-1"><%= term.last %></span>
           </li>
@@ -25,11 +25,11 @@
     <div class="col-12 col-sm-6 col-md-3">
       <ul id="facet_countries" class="search-aggregation list-unstyled">
         <li><b><%= t(:countries_agg, scope: 'search' ).html_safe %></b></li>
-        <li class="<%= 'selected' if !params[:filter_countries] %>">
+        <li class="<%= 'selected' if !params[:filter_country] %>">
           <%= link_to(
                 t(:all_countries, scope: 'search'),
-                filter_params.merge(filter_countries: nil),
-                class: "#{'bg-dark text-light' if !params[:filter_coutries] }")
+                filter_params.merge(filter_country: nil),
+                class: "#{'bg-dark text-light' if !params[:filter_country] }")
           %>
         </li>
         <% if aggs_countries.present? %>
@@ -37,8 +37,8 @@
             <li>
               <%= link_to(
                     ISO3166::Country.find_country_by_alpha2(term.first).translation(I18n.locale),
-                    filter_params.merge(filter_countries: term.first),
-                    class: "#{'bg-dark text-light' if params[:filter_countries]&.downcase == term.first.downcase }")
+                    filter_params.merge(filter_country: term.first),
+                    class: "#{'bg-dark text-light' if params[:filter_country]&.downcase == term.first.downcase }")
               %>
               <span class="pl-1"><%= term.last %></span>
             </li>
@@ -49,11 +49,11 @@
     <div class="col-12 col-sm-6 col-md-3">
       <ul id="facet_states" class="search-aggregation list-unstyled">
         <li><b><%= t(:states_agg, scope: 'search' ).html_safe %></b></li>
-        <li class="<%= 'selected' if !params[:filter_states] %>">
+        <li class="<%= 'selected' if !params[:filter_state] %>">
           <%= link_to(
                 t(:all_states, scope: 'search'),
-                filter_params.merge(filter_states: nil),
-                class: "#{'bg-dark text-light' if !params[:filter_states] }")
+                filter_params.merge(filter_state: nil),
+                class: "#{'bg-dark text-light' if !params[:filter_state] }")
           %>
         </li>
         <% if aggs_states.present? %>
@@ -61,8 +61,8 @@
             <li>
               <%= link_to(
                     all_states[term.first&.to_sym],
-                    filter_params.merge(filter_lang: term.first),
-                    class: "#{'bg-dark text-light' if params[:filter_lang]&.downcase == term.first.downcase }")
+                    filter_params.merge(filter_state: term.first),
+                    class: "#{'bg-dark text-light' if params[:filter_state]&.downcase == term.first.downcase }")
               %>
               <span class="pl-1"><%= term.last %></span>
             </li>
@@ -73,11 +73,11 @@
     <div class="col-12 col-sm-6 col-md-3">
       <ul id="facet_cities" class="search-aggregation list-unstyled">
         <li><b><%= t(:cities_agg, scope: 'search' ).html_safe %></b></li>
-        <li class="<%= 'selected' if !params[:filter_cities] %>">
+        <li class="<%= 'selected' if !params[:filter_city] %>">
           <%= link_to(
                 t(:all_cities, scope: 'search'),
-                filter_params.merge(filter_cities: nil),
-                class: "#{'bg-dark text-light' if !params[:filter_cities] }")
+                filter_params.merge(filter_city: nil),
+                class: "#{'bg-dark text-light' if !params[:filter_city] }")
           %>
         </li>
         <% if aggs_cities.present? %>
@@ -85,8 +85,8 @@
             <li>
               <%= link_to(
                     term.first,
-                    filter_params.merge(filter_cities: term.first),
-                    class: "#{'bg-dark text-light' if params[:filter_cities]&.downcase == term.first.downcase }")
+                    filter_params.merge(filter_city: term.first),
+                    class: "#{'bg-dark text-light' if params[:filter_city]&.downcase == term.first.downcase }")
               %>
               <span class="pl-1"><%= term.last %></span>
             </li>
