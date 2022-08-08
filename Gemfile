@@ -11,7 +11,6 @@ gem 'mini_racer'
 # used in the rail 5.2 version
 gem 'bootsnap', '~> 1.4.2'
 
-gem 'faker', '1.9.1'
 gem 'normalize-rails'
 
 gem 'deadweight', require: 'deadweight/hijack/rails'
@@ -69,6 +68,7 @@ group :development do
   gem 'better_errors'
   gem 'bullet'
   gem 'derailed_benchmarks'
+  gem 'faker'
   gem 'letter_opener'
   gem 'stackprof'
 end
