@@ -3,10 +3,21 @@ class Profile < ApplicationRecord
   include PgSearch::Model
   include ActiveModel::Serialization
 
-  pg_search_scope :search, against: [:firstname, :lastname, :state],
+  pg_search_scope :search,
+    against: [
+      [:firstname, 'A'],
+      [:lastname, 'A'],
+      [:state, 'C'],
+      [:country, 'C']
+    ],
     associated_against: {
-      translations: [:bio, :city, :main_topic, :twitter],
-      topics: [:name]
+      translations: [
+        [:bio, 'C'],
+        [:city, 'B'],
+        [:main_topic, 'A'],
+        [:twitter, 'D']
+      ],
+      topics: [[:name, 'A']]
       # :ignoring => :accents
     }
 
