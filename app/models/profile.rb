@@ -18,7 +18,9 @@ class Profile < ApplicationRecord
         [:twitter, 'D']
       ],
       topics: [[:name, 'A']]
-      # :ignoring => :accents
+    },
+    using: {
+      tsearch: { prefix: true }
     }
 
   pg_search_scope :by_language, against: [:iso_languages]

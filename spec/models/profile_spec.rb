@@ -192,6 +192,10 @@ describe 'profile', type: :model do
       expect(Profile.search('carinthia').count).to eq 1
     end
 
+    it 'returns partial matches of a word' do
+      expect(Profile.search('Love').count).to eq 1
+    end
+
     context 'facets' do
       let!(:french_profile) do
         create(
