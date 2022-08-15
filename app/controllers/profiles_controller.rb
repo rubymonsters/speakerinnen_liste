@@ -97,8 +97,9 @@ class ProfilesController < ApplicationController
 
   def typeahead
     suggestions = Profile.typeahead(params[:q])
-    p suggestions
-    respond_with(suggestions)
+    suggestions_hash = {'text': suggestions.join(' ')}
+    suggestions_array = [suggestions_hash, "_source": {}]
+    respond_with(suggestions_array)
   end
 
   private
@@ -146,16 +147,6 @@ class ProfilesController < ApplicationController
     states_in_profiles.each_with_object({}) do |state, memo|
       memo[state] = profiles.by_state(state).count
     end
-  end
-
-  def suggestions_upcase(suggestions_raw)
-    suggestions_raw
-      .flatten
-      .sort_by { |s| s['score'] }
-      .map do |s|
-        s['text'] = s['text'].split.map(&:capitalize).join(' ')
-        s
-      end.uniq { |s| s['text'] }
   end
 
   # Use callbacks to share common setup or constraints between actions.
