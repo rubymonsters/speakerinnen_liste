@@ -27,6 +27,17 @@ class Profile < ApplicationRecord
   pg_search_scope :by_country, against: [:country]
   pg_search_scope :by_city, associated_against: { translations: [:city] }
   pg_search_scope :by_state, against: [:state]
+  # pg_search_scope :typeahead_name,
+  #   against: [:firstname, :lastname],
+  #   using: {
+  #     tsearch: { prefix: true }
+  #   }
+
+  # pg_search_scope :typeahead_tags,
+  #   associated_against: [topics: :name],
+  #   using: {
+  #     tsearch: { prefix: true }
+  #   }
 
   has_many :medialinks
   has_many :feature_profiles
@@ -96,6 +107,25 @@ class Profile < ApplicationRecord
       .where('profile_translations.locale' => locale)
       .where.not('profile_translations.main_topic' => [nil, ''])
   }
+
+  def self.typeahead(term)
+    connection.select_values sanitize_sql_array([<<~sql, term: "#{term}%"])
+      select distinct firstname as str from profiles where published = true
+      AND firstname ilike :term
+      union
+      select distinct lastname as str from profiles where published = true
+      AND lastname ilike :term
+      union
+      select distinct name as str from tags where name ilike :term
+      union
+      select distinct main_topic as str from profile_translations where main_topic ilike :term
+    sql
+
+    # {
+    #   text: term,
+    #   completion: sql
+    # }
+  end
 
   def fullname
     "#{firstname} #{lastname}".strip

@@ -25,9 +25,8 @@ $(document).ready(function() {
   $('#profile_topic_list').tagit({availableTags: topics});
 });
 
-
-
 $(document).ready(function(){
+  console.log('Hello')
   var stuffSuggest = new Bloodhound({
     datumTokenizer: Bloodhound.tokenizers.whitespace('value'),
     queryTokenizer: Bloodhound.tokenizers.whitespace,
@@ -36,6 +35,8 @@ $(document).ready(function(){
         wildcard: '%QUERY'
       },
   });
+
+  console.log(stuffSuggest)
 
   $('.typeahead').typeahead({
     hint: true,
