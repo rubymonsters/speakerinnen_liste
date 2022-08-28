@@ -96,7 +96,7 @@ class ProfilesController < ApplicationController
   end
 
   def typeahead
-    suggestions = Profile.typeahead(params[:q])
+    suggestions = Profile.typeahead(params[:q], region: current_region.to_s)
     suggestions_hash = {'text': suggestions.join(' ')}
     suggestions_array = [suggestions_hash, "_source": {}]
     respond_with(suggestions_array)
