@@ -121,6 +121,10 @@ h1 {
   padding: $base-spacing-unit;
 }
 
+.alert-info {
+  background: $info;
+}
+
 .alert-error {
   color: $error;
 }
