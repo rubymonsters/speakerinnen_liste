@@ -1,4 +1,4 @@
-FROM ruby:2.7.2
+FROM ruby:3.1.2
 RUN apt-get update -qq && apt-get install -y nodejs postgresql-client
 RUN mkdir /speakerinnen_liste
 WORKDIR /speakerinnen_liste
