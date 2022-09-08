@@ -86,10 +86,6 @@ h1 {
   background: $bg-light-grey;
 }
 
-.bg--yellow {
-  background: $yellow;
-}
-
 .color-white {
   color: $white;
 }
@@ -199,7 +195,7 @@ h1 {
     flex: 1;
     font-size: small;
     padding-top: 0.3rem;
-    color: red;
+    color: $red;
   }
 }
 

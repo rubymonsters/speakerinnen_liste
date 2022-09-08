@@ -76,11 +76,12 @@ $primary: $speakerinnen-green;
 $secondary: $speakerinnen-purple;
 $border-dark: $grey-stroke;
 
-$yellow: #ffc107;
 $red: #d95270;
+$light_green: #B1EFCB;
+$light_red: #FF9C9C;
 
-$error: $red;
-$info: $yellow;
+$error: $light_red;
+$info: $light_green;
 
 /* new category colors */
 $teal: #68D2CA;
