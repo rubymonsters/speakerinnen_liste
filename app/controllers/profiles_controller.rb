@@ -102,7 +102,7 @@ class ProfilesController < ApplicationController
 
   def typeahead
     suggester_options = []
-    suggestions = Profile.typeahead(params[:q], current_region)['suggest']
+    suggestions = Profile.typeahead(params[:q])['suggest']
     suggestions.map { |s| suggester_options.push(s[1][0]['options']) }
     suggestions_ordered = suggestions_upcase(suggester_options)
     respond_with(suggestions_ordered)

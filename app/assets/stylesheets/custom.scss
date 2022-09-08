@@ -50,7 +50,6 @@ h1 {
     padding: 15px;
   }
 }
-
 .btn:focus{
   outline: none;
   box-shadow: none;
@@ -58,6 +57,10 @@ h1 {
 
 .sans-serif {
   font-family: $sans-serif;
+}
+
+.serif {
+  font-family: $serif;
 }
 
 /* layout */
@@ -85,10 +88,6 @@ h1 {
 
 .bg--yellow {
   background: $yellow;
-}
-
-.bg--dark {
-  background-color: $very-dark-grey;
 }
 
 .color-white {
@@ -231,19 +230,13 @@ textarea, input {
   font-family: sans-serif
 }
 
-.home .home-search .twitter-typeahead {
-  display: block !important;
+.home .home-search {
+  margin-left: -8px;
 }
 
-.startpage-subtitle {
-  margin-top: 3em;
-  padding: 0em;
+#home_search {
+  width: 350px
 }
-
-#header__logo {
-  width: 300px;
-  }
-
 
 .container {
   padding: 0 48px;
@@ -290,7 +283,7 @@ textarea, input {
   }
 
   #home_search {
-    // width: 700px
+    width: 200px
   }
 
   .top-space {

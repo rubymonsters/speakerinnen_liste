@@ -9,7 +9,7 @@ services:
     ports:
       - "5432:5432"
   elastic:
-    image: elasticsearch:6.8.22
+    image: elasticsearch:7.17.0
     volumes:
       - elastic_data:/usr/share/elasticsearch/data
     environment:

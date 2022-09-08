@@ -6,28 +6,30 @@
 <section class="home">
   <section id="startpage__start-teaser" class="start-teaser startpage__photo-bar bg--dark">
     <div class="container">
-      <%# Headline %>
-      <div class="row hero-headline" >
-        <div class="col-7">
-          <% if @is_global_speakerinnen %>
-            <h1>
+      <div class="row">
+        <% if current_region.nil? %>
+          <div class="col-12">
+            <h1 class="display-4 pt-5" style="text-shadow:0px 0px 9px rgba(255, 255, 255, 1);">
               <%= t(:heading, scope: 'pages.home') %>
             </h1>
-          <% else %>
-            <h1><%= t(:heading_vab, scope: 'pages.home') %></h1>
+            <h3 class="startpage-subtitle pb-3" style="text-shadow:0px 0px 9px rgba(255, 255, 255, 1);">
+              <%= t(:tagline, scope: 'pages.home').html_safe %>
+            </h3>
+          </div>
+        <% else %>
+          <div class="col-5">
+            <h1 class="display-4 pt-5"><%= t(:heading_vab, scope: 'pages.home') %></h1>
             <p class="startpage-subtitle"><%= t(:tagline_vab, scope: 'pages.home') %></p>
-          <% end %>
+          </div>
+        <% end %>
+      </div>
+      <div class="row">
+        <div class="col-md-6 col-md-12 ml-2">
+          <%= render partial: 'shared/search_form' %>
         </div>
       </div>
-      <%# search %>
-      <%= render partial: 'shared/search_form' %>
-      <%# subtitle %>
-      <div class="row">
-        <div class="col-7">
-          <h3 class="startpage-subtitle pb-3">
-            <%= t(:tagline, scope: 'pages.home').html_safe %>
-          </h3>
-        </div>
+      <div class="row sub-menu">
+        <%= render partial: 'shared/sub_menu' %>
       </div>
     </div>
   </section>
@@ -85,8 +87,6 @@
     </div>
   <% end %>
 
-  <%# Categories %>
-
   <a id="categories_anchor"></a>
   <div class="container bg--light-grey py-5">
     <h1 class=""><%= t(:category_search_title, scope: 'pages.home') %></h1>
@@ -95,7 +95,6 @@
   <div id="startpage-categories__list" class="container p-0">
     <%= render partial: "shared/categories", object: @categories %>
   </div>
-
   <%# Action Cards %>
   <div class="container bg--light-grey">
     <div class="row sub-menu">

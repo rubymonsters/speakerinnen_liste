@@ -20,42 +20,28 @@ puts "10 categories were created"
 
 
 puts "Creating some DE profiles..."
-random_number= 1 + rand(9)
-tags = ["umweltschutz","Haustiere","Aussenpolitik","Antifaschismus","Mode","Wellness","Familie","Kinder","Mutter sein","Career in life"]
+main_topics = %w[Ruby Rails Gender Netpolitics Opensource Encryption Batman]
+tags = ['Umweltschutz', 'Haustiere', 'Aussenpolitik', 'Antifaschismus', 'Mode', 'Wellness', 'Ruby', 'Social Media', 'Career in life']
+states = %w[Vorarlberg Berlin Bayern]
 
 300.times do |i|
-  Profile.create!(firstname: "Jane",
-                  lastname: "Doe#{i}",
+  Profile.create!(firstname: Faker::Name.first_name,
+                  lastname: Faker::Name.last_name,
                   email: "jane_doe#{i}@example.com",
-                  password: "jane_doe",
-                  city_de: "Berlin",
-                  country: 'DE',
-                  twitter_de: "@janedoe##{i}",
+                  password: "password",
+                  city_de: Faker::Address.city,
+                  country: Faker::Address.country_code,
+                  twitter_de: Faker::Twitter.screen_name,
                   website_de: "https://speakerinnen.org",
                   website_2_de: "www.kraftfuttermischwerk.de",
                   website_3_de: "heise.com",
                   confirmed_at: DateTime.now,
                   published: true,
-                  main_topic_de: "Frauen* in Führungspositionen",
-                  bio_de: "Arendt, geboren 1906 in <b>Linden bei Hannover,</b> aufgewachsen in Königsberg, studierte Philosophie,
-                          griechische Philologie und protestantische Theologie bei <i>Heidegger, Bultmann, Hartmann, Husserl und Jaspers </i>
-                          und promovierte 1928 bei Jaspers in Philosophie. <br>Aufgrund der politischen Lage in Deutschland begann Arendt,
-                          sich praktisch zu engagieren; emigrierte 1933 nach Paris und von dort aus 1941 nach New York. In den Vereinigten
-                          Staaten von Amerika als staatenloser Flüchtling geduldet, erhielt sie 1951 die amerikanische Staatsbürgerschaft.<br>
-                          Die politischen Ereignisse sowie ihre eigenen Erlebnisse führten dazu, dass sie sich mit politischer Theorie befasste.<br>
-                          Arendt starb 1975 in New York.",
-                  bio_en:"The life story of the German-Jewish-American philosopher and political theorist <b>Hannah Arendt </b>
-                          reads like a parable of the 20th century[i]. Arendt, born in 1906 in Linden near Hanover, grew up in
-                           Königsberg, studied philosophy, Greek philology and Protestant theology with <i>Heidegger, Bultmann</i>,
-                           Hartmann, Husserl and Jaspers and received her doctorate in philosophy from Jaspers in 1928.
-                           Due to the political situation in Germany, Arendt began to engage in practical work;
-                           emigrated to Paris in 1933 and from there to New York in 1941. Tolerated in the United States of
-                           America as a stateless refugee, she received American citizenship in 1951. The p
-                           olitical events as well as her own experiences led her to study political theory.
-                           Arendt died in New York in 1975.",
+                  main_topic_de: main_topics[rand(1..7)],
+                  bio_de: Faker::Lorem.paragraph,
+                  bio_en: Faker::Lorem.paragraph,
                   iso_languages: ['de','en'],
-                  profession: "Mein Beruf",
-                  topic_list: tags[random_number]
+                  topic_list: tags.sample(rand(1..3)).join(', ')
   )
 
   if i % 10 == 0
@@ -68,27 +54,22 @@ tags = ["umweltschutz","Haustiere","Aussenpolitik","Antifaschismus","Mode","Well
 end
 
 200.times do |i|
-  Profile.create!(firstname: "Claire",
-                  lastname: "Miller##{i}",
+  Profile.create!(firstname: Faker::Name.first_name,
+                  lastname: Faker::Name.last_name,
                   email: "claire_miller#{i}@example.com",
-                  password: "claire_miller",
-                  city_en: "London",
-                  country: 'GB',
-                  twitter_en: "@clairemiller##{i}",
+                  password: "password",
+                  city_en: Faker::Address.city,
+                  country: Faker::Address.country_code,
+                  twitter_en: Faker::Twitter.screen_name,
                   website_en: "https://speakerinnen.org",
                   website_de: "wwww.heise.de",
                   website_2_en: "www.guardian.com",
                   confirmed_at: DateTime.now,
                   published: true,
-                  main_topic_en: "Women* in Tech",
+                  main_topic_en: main_topics[rand(1..7)],
                   iso_languages: ['en'],
-                  bio_en: "<b>Rosa Luxemburg</b>, (born March 5, 1871, Zamość, Poland, Russian Empire [now in Poland]—died January 15, 1919,
-                          Berlin, Germany), <i>Polish-born German revolutionary</i> and agitator who played a key role in the founding of the Polish
-                          ocial Democratic Party and the Spartacus League, which grew into the Communist Party of Germany. <br>
-                          As a political theoretician, Luxemburg developed a humanitarian theory of Marxism, stressing democracy
-                          and revolutionary mass action to achieve international socialism.",
-                  profession: "My profession",
-                  topic_list: tags[random_number]
+                  bio_en: Faker::Lorem.paragraph,
+                  topic_list: tags.sample(rand(1..3)).join(', ')
                   )
   if i % 10 == 0
     Profile.last.medialinks.build(url: "http://conqueringthecommandline.com/book", description: "Unix and Linux Commands for Developers", title: "conqueringthecommandline", language: "en" ).save!
@@ -97,62 +78,8 @@ end
 
   puts "#{i} english profiles created" if (i % 10 == 0)
 end
-# ActsAsTaggableOn::Tag.create(name: "Career in life", ).categories << Category.find_by(name: "Marketing & PR")
-# ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "en")
-# ActsAsTaggableOn::Tag.create(name: "Cats").categories << Category.find_by(name: "Body & Soul")
-# ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "en")
-# ActsAsTaggableOn::Tag.create(name: "Dog").categories << Category.find_by(name: "Body & Soul")
-# ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "en")
-# ActsAsTaggableOn::Tag.create(name: "Politics in Parlament").categories << Category.find_by(name: "Politics & Society")
-# ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "en")
-# ActsAsTaggableOn::Tag.create(name: "Javascript").categories << Category.find_by(name: "Science & Technology")
-# ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "en")
-# ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "de")
-# ActsAsTaggableOn::Tag.create(name: "Closure").categories << Category.find_by(name: "Science & Technology")
-# ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "en")
-# ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "de")
-# ActsAsTaggableOn::Tag.create(name: "Latin America").categories << Category.find_by(name: "Politics & Society")
-# ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "en")
-# ActsAsTaggableOn::Tag.create(name: "Gender").categories << Category.find_by(name: "Diversity")
-# ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "en")
-# ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "de")
-# ActsAsTaggableOn::Tag.create(name: "Girlsday").categories << Category.find_by(name: "Career & Education")
-# ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "en")
-# ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "de")
-# ActsAsTaggableOn::Tag.create(name: "Klimapolitik").categories << Category.find_by(name: "Environment @ Substainablility")
-# ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "de")
-# ActsAsTaggableOn::Tag.create(name: "Climatejustice").categories << Category.find_by(name: "Environment @ Substainablility")
-# ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "en")
-# ActsAsTaggableOn::Tag.create(name: "erneuerbare Energien").categories << Category.find_by(name: "Environment @ Substainablility")
-# ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "de")
-# ActsAsTaggableOn::Tag.create(name: "Migration in Europe").categories << Category.find_by(name: "Politics & Society")
-# ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "en")
-# ActsAsTaggableOn::Tag.create(name: "Everyday Pysics").categories << Category.find_by(name: "Science & Technology")
-# ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "en")
-# ActsAsTaggableOn::Tag.create(name: "Social Media").categories << Category.find_by(name: "Internet & Media")
-# ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "en")
-# ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "de")
-# ActsAsTaggableOn::Tag.create(name: "Arbeitsrecht").categories << Category.find_by(name: "Politics & Society")
-# ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "de")
-# ActsAsTaggableOn::Tag.create(name: "Gewerkschaft Verdi").categories << Category.find_by(name: "Politics & Society")
-# ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "de")
-# ActsAsTaggableOn::Tag.create(name: "Film").categories << Category.find_by(name: "Arts & Culture")
-# ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "en")
-# ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "de")
-# ActsAsTaggableOn::Tag.create(name: "Feminismus").categories << Category.find_by(name: "Diversity")
-# ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "de")
-# ActsAsTaggableOn::Tag.create(name: "Suffragetten").categories << Category.find_by(name: "Diversity")
-# ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "de")
-# ActsAsTaggableOn::Tag.create(name: "Eigenständigkeit").categories << Category.find_by(name: "Companies & Start-ups")
-# ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "de")
 
-# puts "21 tags were created and assigned to Categories and languages"
-
-
-
-
-# puts "Tags were added to profiles"
-
+# Admin user
 Profile.create(firstname: "Karen",
                lastname: "Smith",
                email: "karen@example.com",
@@ -179,6 +106,9 @@ Profile.create(firstname: "Karen",
 )
 
 puts "1 admin profile created"
+
+dach_profiles = Profile.where(country: %w[DE AT CH])
+dach_profiles.update(state: states[rand(0..2)])
 
 Feature.create(position:1, public: true, title: "Climatejustice", description: "how the poor pay for the rich")
 Feature.last.profiles=Profile.order("RANDOM()").limit(8).to_a
