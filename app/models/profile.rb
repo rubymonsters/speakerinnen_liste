@@ -113,27 +113,31 @@ class Profile < ApplicationRecord
       @profiles ||=
         Profile
             .is_published
+            .with_attached_image
+            .includes(:taggings, :topics, :translations)
             .where(state: region)
             .distinct
       firstnames = @profiles.where('firstname ILIKE ?', "%#{term}%").pluck(:firstname)
       lastnames = @profiles.where('lastname ILIKE ?', "%#{term}%").pluck(:lastname)
       tags = @profiles.tag_counts_on(:topics).where('name ILIKE ?', "%#{term}%").pluck(:name)
-      # hier weiter --> wie bekomme ich die Main-Topics der ausgewählten Profile?
-      # main_topics = @profiles.pluck(:main_topic).compact.where('main_topic ILIKE ?', "%#{term}%")
+      main_topics = @profiles.where('main_topic ILIKE ?', "%#{term}%").pluck(:main_topic)
 
-      firstnames + lastnames + tags #+ main_topics
+      suggestions = firstnames + lastnames + tags + main_topics
+      suggestions.map { |s| s.downcase }.uniq
     else
-      connection.select_values sanitize_sql_array([<<~sql, term: "#{term}%"])
-        select distinct firstname as str from profiles where published = true
-        AND firstname ilike :term
-        union
-        select distinct lastname as str from profiles where published = true
-        AND lastname ilike :term
-        union
-        select distinct name as str from tags where name ilike :term
-        union
-        select distinct main_topic as str from profile_translations where main_topic ilike :term
-      sql
+      @profiles ||=
+        Profile
+            .is_published
+            .with_attached_image
+            .includes(:taggings, :topics, :translations)
+            .distinct
+      firstnames = @profiles.where('firstname ILIKE ?', "%#{term}%").pluck(:firstname)
+      lastnames = @profiles.where('lastname ILIKE ?', "%#{term}%").pluck(:lastname)
+      tags = @profiles.tag_counts_on(:topics).where('name ILIKE ?', "%#{term}%").pluck(:name)
+      main_topics = @profiles.where('main_topic ILIKE ?', "%#{term}%").pluck(:main_topic)
+
+      suggestions = firstnames + lastnames + tags + main_topics
+      suggestions.map { |s| s.downcase }.uniq
     end
   end
 
