@@ -226,7 +226,7 @@ class ProfilesController < ApplicationController
       .with_attached_image
       .is_published
       .by_region(current_region)
-      .includes(:taggings, :translations)
+      .includes(:translations)
       .search(params[:search])
       .page(params[:page]).per(24)
 
