@@ -112,8 +112,8 @@ class ProfilesController < ApplicationController
     countries_in_profiles = profiles.pluck(:country).flatten.uniq.reject(&:blank?)
 
     countries_in_profiles.each_with_object({}) do |country, memo|
-      profiles_by_country = profiles.by_country(country)
-      memo[country] = profiles_by_country.count
+      memo[country] = profiles.by_country(country).count
+      # memo[country] = 1
     end
   end
 
@@ -121,33 +121,42 @@ class ProfilesController < ApplicationController
     return unless profiles
 
     cities_in_profiles = profiles
-      .map(&:city)
+      .map(&:cities)
+      .flatten
       .uniq
-      .reject(&:blank?)
 
     cities_in_profiles.each_with_object({}) do |city, memo|
-      profiles_by_city = profiles.by_city(city)
-      memo[city] = profiles_by_city.count
+      memo[city] = profiles.by_city(city).count
+      # memo[city] = 1
     end
   end
 
   def aggregate_by_language(profiles)
     return unless profiles
 
-    languages_in_profiles = profiles.pluck(:iso_languages).flatten.uniq
+    languages_in_profiles = profiles
+      .pluck(:iso_languages)
+      .flatten
+      .uniq
 
     languages_in_profiles.each_with_object({}) do |language, memo|
       memo[language] = profiles.by_language(language).count
+      # memo[language] = 1
     end
   end
 
   def aggregate_by_states(profiles)
     return unless profiles
 
-    states_in_profiles = profiles.pluck(:state).flatten.uniq.reject(&:blank?)
+    states_in_profiles = profiles
+      .pluck(:state)
+      .flatten
+      .uniq
+      .reject(&:blank?)
 
     states_in_profiles.each_with_object({}) do |state, memo|
-      memo[state] = profiles.by_state(state).count
+      memo[state] = profiles.where(state: state).count
+      # memo[state] = 1
     end
   end
 
@@ -228,7 +237,8 @@ class ProfilesController < ApplicationController
       .by_region(current_region)
       .includes(:translations)
       .search(params[:search])
-      .page(params[:page]).per(24)
+      .page(params[:page])
+      .per(24)
 
     if params[:filter_city]
       relation = relation.by_city(params[:filter_city])
@@ -266,11 +276,23 @@ class ProfilesController < ApplicationController
   end
 
   def aggregations_hash(profiles)
+    # @aggs = {
+    #   languages: [],
+    #   countries: [],
+    #   cities: [],
+    #   states: group_by_states(profiles)
+    # }
+
     @aggs = {
       languages: aggregate_by_language(profiles),
       countries: aggregate_by_countries(profiles),
       cities: aggregate_by_cities(profiles),
       states: aggregate_by_states(profiles)
     }
+  end
+
+  def group_by_states(profiles)
+    # hier weiter: wie geht das mit dem gruppieren?
+    profiles.group(:state, :rank, :id)
   end
 end
