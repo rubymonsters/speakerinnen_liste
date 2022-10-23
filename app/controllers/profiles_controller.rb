@@ -14,8 +14,9 @@ class ProfilesController < ApplicationController
 
   def index
     if params[:search]
-      @profiles = profiles_for_search
-      @aggs = aggregations_hash(@profiles)
+      @search = Search.new(params[:search])
+      @profiles = @search.profiles
+      @aggs = @search.aggregations_hash
       @three_sample_categories = Category.all.sample(3)
     elsif params[:tag_filter]&.present?
       @tags = params[:tag_filter].split(/\s*,\s*/)
@@ -27,7 +28,8 @@ class ProfilesController < ApplicationController
       @profiles = profiles_for_index
     end
 
-    @profiles_count = @profiles.total_count
+    @profiles_count = @profiles.size
+    @profiles = @profiles.page(params[:page]).per(24)
 
     # for the tags filter module that is available all the time at the profile index view
     # is needed for the colors of the tags
@@ -105,60 +107,6 @@ class ProfilesController < ApplicationController
   end
 
   private
-
-  def aggregate_by_countries(profiles)
-    return unless profiles
-
-    countries_in_profiles = profiles.pluck(:country).flatten.uniq.reject(&:blank?)
-
-    countries_in_profiles.each_with_object({}) do |country, memo|
-      memo[country] = profiles.by_country(country).count
-      # memo[country] = 1
-    end
-  end
-
-  def aggregate_by_cities(profiles)
-    return unless profiles
-
-    cities_in_profiles = profiles
-      .map(&:cities)
-      .flatten
-      .uniq
-
-    cities_in_profiles.each_with_object({}) do |city, memo|
-      memo[city] = profiles.by_city(city).count
-      # memo[city] = 1
-    end
-  end
-
-  def aggregate_by_language(profiles)
-    return unless profiles
-
-    languages_in_profiles = profiles
-      .pluck(:iso_languages)
-      .flatten
-      .uniq
-
-    languages_in_profiles.each_with_object({}) do |language, memo|
-      memo[language] = profiles.by_language(language).count
-      # memo[language] = 1
-    end
-  end
-
-  def aggregate_by_states(profiles)
-    return unless profiles
-
-    states_in_profiles = profiles
-      .pluck(:state)
-      .flatten
-      .uniq
-      .reject(&:blank?)
-
-    states_in_profiles.each_with_object({}) do |state, memo|
-      memo[state] = profiles.where(state: state).count
-      # memo[state] = 1
-    end
-  end
 
   # Use callbacks to share common setup or constraints between actions.
   def set_profile
@@ -260,7 +208,6 @@ class ProfilesController < ApplicationController
       .is_published
       .by_region(current_region)
       .has_tags(@tags)
-      .page(params[:page]).per(24)
   end
 
   def profiles_for_index
@@ -271,28 +218,5 @@ class ProfilesController < ApplicationController
       .includes(:translations)
       .main_topic_translated_in(I18n.locale)
       .random
-      .page(params[:page])
-      .per(24)
-  end
-
-  def aggregations_hash(profiles)
-    # @aggs = {
-    #   languages: [],
-    #   countries: [],
-    #   cities: [],
-    #   states: group_by_states(profiles)
-    # }
-
-    @aggs = {
-      languages: aggregate_by_language(profiles),
-      countries: aggregate_by_countries(profiles),
-      cities: aggregate_by_cities(profiles),
-      states: aggregate_by_states(profiles)
-    }
-  end
-
-  def group_by_states(profiles)
-    # hier weiter: wie geht das mit dem gruppieren?
-    profiles.group(:state, :rank, :id)
   end
 end
