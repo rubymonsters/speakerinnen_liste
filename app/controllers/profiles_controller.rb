@@ -14,8 +14,9 @@ class ProfilesController < ApplicationController
 
   def index
     if params[:search]
-      @profiles = profiles_for_search
-      @aggs = aggregations_hash(@profiles)
+      @search = Search.new(params[:search])
+      @profiles = @search.profiles
+      @aggs = @search.aggregations_hash
       @three_sample_categories = Category.all.sample(3)
     elsif params[:tag_filter]&.present?
       @tags = params[:tag_filter].split(/\s*,\s*/)
@@ -27,7 +28,8 @@ class ProfilesController < ApplicationController
       @profiles = profiles_for_index
     end
 
-    @profiles_count = @profiles.total_count
+    @profiles_count = @profiles.size
+    @profiles = @profiles.page(params[:page]).per(24)
 
     # for the tags filter module that is available all the time at the profile index view
     # is needed for the colors of the tags
@@ -230,30 +232,30 @@ class ProfilesController < ApplicationController
       .per(24)
   end
 
-  def profiles_for_search
-    relation = Profile
-      .with_attached_image
-      .is_published
-      .by_region(current_region)
-      .includes(:translations)
-      .search(params[:search])
-      .page(params[:page])
-      .per(24)
+  # def profiles_for_search
+  #   relation = Profile
+  #     .with_attached_image
+  #     .is_published
+  #     .by_region(current_region)
+  #     .includes(:translations)
+  #     .search(params[:search])
+  #     .page(params[:page])
+  #     .per(24)
 
-    if params[:filter_city]
-      relation = relation.by_city(params[:filter_city])
-    end
+  #   if params[:filter_city]
+  #     relation = relation.by_city(params[:filter_city])
+  #   end
 
-    if params[:filter_country]
-      relation = relation.by_country(params[:filter_country])
-    end
+  #   if params[:filter_country]
+  #     relation = relation.by_country(params[:filter_country])
+  #   end
 
-    if params[:filter_language]
-      relation = relation.by_language(params[:filter_language])
-    end
+  #   if params[:filter_language]
+  #     relation = relation.by_language(params[:filter_language])
+  #   end
 
-    relation
-  end
+  #   relation
+  # end
 
   def profiles_with_tags
     Profile
@@ -271,28 +273,5 @@ class ProfilesController < ApplicationController
       .includes(:translations)
       .main_topic_translated_in(I18n.locale)
       .random
-      .page(params[:page])
-      .per(24)
-  end
-
-  def aggregations_hash(profiles)
-    # @aggs = {
-    #   languages: [],
-    #   countries: [],
-    #   cities: [],
-    #   states: group_by_states(profiles)
-    # }
-
-    @aggs = {
-      languages: aggregate_by_language(profiles),
-      countries: aggregate_by_countries(profiles),
-      cities: aggregate_by_cities(profiles),
-      states: aggregate_by_states(profiles)
-    }
-  end
-
-  def group_by_states(profiles)
-    # hier weiter: wie geht das mit dem gruppieren?
-    profiles.group(:state, :rank, :id)
   end
 end
