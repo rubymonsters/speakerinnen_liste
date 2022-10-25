@@ -237,34 +237,5 @@ module Searchable
         end
       end
     end
-
-    def self.typeahead(q)
-      __elasticsearch__.client.search(
-        index: index_name,
-        body: {
-          suggest: {
-            fullname_suggest: {
-              text: q,
-              completion: { field: 'fullname.suggest' }
-            },
-            lastname_suggest: {
-              text: q,
-              completion: { field: 'lastname.suggest' }
-            },
-            main_topic_de_suggest: {
-              text: q,
-              completion: { field: 'main_topic_de.suggest' }
-            },
-            main_topic_en_suggest: {
-              text: q,
-              completion: { field: 'main_topic_en.suggest' }
-            },
-            topic_list_suggest: {
-              text: q,
-              completion: { field: 'topic_list.suggest' }
-            }
-         }
-      })
-    end
   end
 end

@@ -74,6 +74,33 @@ class Profile < ApplicationRecord
       .where.not('profile_translations.main_topic' => [nil, ''])
   }
 
+  def self.typeahead(term, region: nil)
+    if region.present?
+      @profiles ||=
+        Profile
+            .is_published
+            .with_attached_image
+            .includes(:taggings, :topics, :translations)
+            .where(state: region)
+            .distinct
+    else
+      @profiles ||=
+        Profile
+            .is_published
+            .with_attached_image
+            .includes(:taggings, :topics, :translations)
+            .distinct
+    end
+
+    firstnames = @profiles.where('firstname ILIKE ?', "%#{term}%").map(&:fullname)
+    lastnames = @profiles.where('lastname ILIKE ?', "%#{term}%").map(&:fullname)
+    tags = @profiles.tag_counts_on(:topics).where('name ILIKE ?', "%#{term}%").pluck(:name)
+    main_topics = @profiles.where('main_topic ILIKE ?', "%#{term}%").pluck(:main_topic)
+
+    suggestions = firstnames + lastnames + tags + main_topics
+    suggestions.map { |s| s.downcase }.uniq
+  end
+
   def fullname
     "#{firstname} #{lastname}".strip
   end
