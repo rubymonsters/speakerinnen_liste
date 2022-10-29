@@ -69,6 +69,17 @@ describe Search do
         )
       end
 
+      let!(:profile_without_facet_attributes) do
+        create(
+          :published_profile,
+          firstname: 'Ada',
+          iso_languages: [],
+          country: nil,
+          city: '',
+          state: nil
+        )
+      end
+
       before do
         @aggs = described_class.new('Ada').aggregations_hash
       end

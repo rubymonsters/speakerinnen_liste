@@ -50,6 +50,8 @@ class Search
 
   def group_by_countries
     profiles.group_by(&:country).each_with_object({}) do |(country, profiles), memo|
+      next unless country
+
       memo[country] = profiles.size
     end
   end
@@ -72,6 +74,7 @@ class Search
       .map(&:city)
       .flatten
       .uniq
+      .reject(&:blank?)
 
     cities_in_profiles.each_with_object({}) do |city, memo|
       memo[city] = profiles
