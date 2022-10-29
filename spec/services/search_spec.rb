@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 describe Search do
-  let!(:profile) { FactoryBot.create(:profile) }
+  let!(:profile) { FactoryBot.create(:published_profile, topic_list: ['physics']) }
   let!(:profile2) { FactoryBot.create(:ada) }
   let!(:profile3) { FactoryBot.create(:laura) }
 
@@ -52,6 +52,10 @@ describe Search do
 
     it 'returns partial matches of a word' do
       expect(described_class.new('Love').profiles.count).to eq 1
+    end
+
+    it 'returns a profile by topics' do
+      expect(described_class.new('physics').profiles.count).to eq 1
     end
 
     context 'facets' do

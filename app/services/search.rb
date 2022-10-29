@@ -20,7 +20,7 @@ class Search
         (main_topic ILIKE :query) OR
         (city ILIKE :query) OR
         (state ILIKE :query) OR
-        ('tags.name' ILIKE :query)
+        (tags.name ILIKE :query)
       )
     sql
   end

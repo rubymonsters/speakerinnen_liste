@@ -109,10 +109,16 @@ describe 'profile search' do
 
     before { sign_in admin }
 
-    it 'finds the correct profile' do
+    it 'finds the correct profile by fullname' do
       visit admin_profiles_path(search: 'ada lovelace')
 
       expect(page).to have_content('Lovelace')
+    end
+
+    it 'finds the correct profile by topic' do
+      visit admin_profiles_path(search: 'physics')
+
+      expect(page).to have_content('Marie')
     end
   end
 end
