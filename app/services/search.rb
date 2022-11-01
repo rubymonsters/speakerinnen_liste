@@ -45,7 +45,7 @@ class Search
     languages_in_profiles.each_with_object({}) do |language, memo|
       memo[language] = profiles
         .select{ |profile| profile.iso_languages.include?(language) }.size
-    end
+    end.sort_by{|k,v| -v}.to_h
   end
 
   def group_by_countries
@@ -53,7 +53,7 @@ class Search
       next unless country
 
       memo[country] = profiles.size
-    end
+    end.sort_by{|k,v| -v}.to_h
   end
 
   def group_by_states
@@ -66,7 +66,7 @@ class Search
     states_in_profiles.each_with_object({}) do |state, memo|
       memo[state] = profiles
         .select { |profile| profile.state.include?(state) if profile.state.present? }.size
-    end
+    end.sort_by{|k,v| -v}.to_h
   end
 
   def group_by_cities
@@ -83,7 +83,7 @@ class Search
             profile.city.include?(city)
           end
         end.size
-    end
+    end.sort_by{|k,v| -v}.to_h
   end
 
 end
