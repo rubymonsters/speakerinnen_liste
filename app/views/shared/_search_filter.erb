@@ -10,7 +10,7 @@
                 class: "#{'bg-dark text-light' if !params[:filter_language] }")
           %>
         </li>
-        <% aggs_languages.each do |term| %>
+        <% aggs_languages.first(5).each do |term| %>
           <li>
             <%= link_to(
                   t(term.first, scope: 'iso_639_1').capitalize,
@@ -19,6 +19,23 @@
             %>
             <span class="pl-1"><%= term.last %></span>
           </li>
+        <% end %>
+        <% if aggs_languages.length > 3 %>
+          <li>
+            <a class="pl-1 expander_languages"><%= t(:show_more, scope: 'profiles.index') %></a>
+          </li>
+          <div class="rest_facet_languages" style="display: none">
+            <% aggs_languages.to_a.last(aggs_languages.length - 5).each do |term| %>
+              <li class="pl-1 <%= 'selected' if !params[:filter_language] %>">
+                <%= link_to(
+                    t(term.first, scope: 'iso_639_1').capitalize,
+                    filter_params.merge(filter_language: term.first),
+                    class: "#{'bg-dark text-light' if !params[:filter_language]&.downcase == term.first.downcase }")
+                %>
+                <small class="pl-1"><%= term.last %></small>
+              </li>
+            <% end %>
+          </div>
         <% end %>
       </ul>
     </div>
@@ -96,4 +113,3 @@
     </div>
   </div>
 <% end %>
-
