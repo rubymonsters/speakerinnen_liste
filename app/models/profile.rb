@@ -76,7 +76,6 @@ class Profile < ApplicationRecord
       @profiles ||=
         Profile
             .is_published
-            .with_attached_image
             .includes(:taggings, :topics, :translations)
             .where(state: region)
             .distinct
@@ -91,7 +90,6 @@ class Profile < ApplicationRecord
       @profiles ||=
         Profile
             .is_published
-            .with_attached_image
             .includes(:taggings, :topics, :translations)
             .distinct
       firstnames = @profiles.where('firstname ILIKE ?', "%#{term}%").pluck(:firstname)

@@ -7,7 +7,7 @@ class Search
     @profiles = Profile
       .includes(:translations, taggings: :tag)
       .is_published
-      .references(:tag)
+      .references(:translations, taggings: :tag)
       .where(fields_to_search, query: "%#{query}%")
   end
 
@@ -41,6 +41,7 @@ class Search
       .map(&:iso_languages)
       .flatten
       .uniq
+      .reject(&:blank?)
 
     languages_in_profiles.each_with_object({}) do |language, memo|
       memo[language] = profiles
@@ -50,7 +51,7 @@ class Search
 
   def group_by_countries
     profiles.group_by(&:country).each_with_object({}) do |(country, profiles), memo|
-      next unless country
+      next unless country.present?
 
       memo[country] = profiles.size
     end.sort_by{|k,v| -v}.to_h
