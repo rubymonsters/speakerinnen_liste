@@ -14,7 +14,15 @@ class ProfilesController < ApplicationController
 
   def index
     if params[:search]
-      @search = Search.new(params[:search])
+      @search = Search.new(
+        params[:search],
+        {
+          filter_city: params[:filter_city],
+          filter_language: params[:filter_language],
+          filter_country: params[:filter_country],
+          filter_state: params[:filter_state]
+        }
+      )
       @profiles = @search.profiles
       @aggs = @search.aggregations_hash
       @three_sample_categories = Category.all.sample(3)
