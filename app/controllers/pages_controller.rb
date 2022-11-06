@@ -4,7 +4,6 @@ class PagesController < ApplicationController
   def home
     # we take the seven newest profiles and keep one as an empty example
     @newest_profiles = Profile
-                .with_attached_image
                 .includes(:translations)
                 .is_published
                 .by_region(current_region)
