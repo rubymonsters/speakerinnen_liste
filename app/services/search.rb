@@ -35,7 +35,7 @@ class Search
       chain = chain
         .includes(:translations, taggings: :tag)
         .references(:translations, taggings: :tag)
-        .where(state: filter_params[:filter_country])
+        .where(country: filter_params[:filter_country])
     end
 
     @profiles = chain
