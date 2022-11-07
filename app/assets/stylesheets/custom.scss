@@ -18,6 +18,10 @@ a, .link, #expander {
   }
 }
 
+a.button_link {
+  text-decoration: none;
+}
+
 .home {
   a, .link, #expander {
     text-decoration: none;
@@ -26,6 +30,7 @@ a, .link, #expander {
     }
   }
 }
+
 
 .home .container.divider {
   padding-top: 1em;
@@ -83,10 +88,6 @@ h1 {
   background: $bg-light-grey;
 }
 
-.bg--yellow {
-  background: $yellow;
-}
-
 .bg--dark {
   background-color: $very-dark-grey;
 }
@@ -113,10 +114,11 @@ h1 {
   z-index: 5;
   width: 100%;
   background: $info;
+  border-radius: 0;
 }
 
 .alert-warning {
-  background: $info;
+  background: $error_background;
   color: $black;
   padding: $base-spacing-unit;
 }
@@ -127,6 +129,10 @@ h1 {
 
 .alert-error {
   color: $error;
+}
+
+.alert_danger {
+  background: $yellow;
 }
 
 .border-vertical {
@@ -200,7 +206,7 @@ h1 {
     flex: 1;
     font-size: small;
     padding-top: 0.3rem;
-    color: red;
+    color: $red;
   }
 }
 
@@ -228,7 +234,8 @@ textarea, input {
 
 .btn {
   border-radius: 0px;
-  font-family: sans-serif
+  font-family: sans-serif;
+  text-decoration: none;
 }
 
 .home .home-search .twitter-typeahead {

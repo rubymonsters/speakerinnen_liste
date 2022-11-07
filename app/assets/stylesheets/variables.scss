@@ -81,9 +81,12 @@ $border-dark: $grey-stroke;
 
 $yellow: #ffc107;
 $red: #d95270;
+$light_green: #B1EFCB;
+$light_red: #FF9C9C;
 
+$error_background: $light_red;
 $error: $red;
-$info: $yellow;
+$info: $light_green;
 
 /* new category colors */
 $teal: #68D2CA;
