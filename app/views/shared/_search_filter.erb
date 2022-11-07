@@ -1,4 +1,4 @@
-<% if @profiles.size > 0 %>
+<% if profiles_count > 0 %>
   <div class="row row-cols-4">
     <div class="col-12 col-sm-6 col-md-3">
       <ul id="facet_languages" class="search-aggregation list-unstyled">
@@ -36,7 +36,7 @@
           <% aggs_countries.each do |term| %>
             <li>
               <%= link_to(
-                    ISO3166::Country.find_country_by_alpha2(term.first).translation(I18n.locale),
+                    ISO3166::Country.find_country_by_alpha2(term.first)&.translation(I18n.locale),
                     filter_params.merge(filter_country: term.first),
                     class: "#{'bg-dark text-light' if params[:filter_country]&.downcase == term.first.downcase }")
               %>

@@ -25,7 +25,6 @@ class ProfilesController < ApplicationController
       )
       @profiles = @search.profiles
       @aggs = @search.aggregations_hash
-      @three_sample_categories = Category.all.sample(3)
     elsif params[:tag_filter]&.present?
       @tags = params[:tag_filter].split(/\s*,\s*/)
       @profiles = profiles_with_tags

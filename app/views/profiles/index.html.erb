@@ -14,6 +14,7 @@
         <%= render partial: 'shared/search_filter',
             locals: {
               profiles: @profiles,
+              profiles_count: @profiles_count,
               aggs_languages: @aggs[:languages],
               aggs_countries: @aggs[:countries],
               aggs_states: @aggs[:states],
@@ -60,7 +61,6 @@
 
   <!-- Speaker section -->
   <%= paginate @profiles %>
-  <%= @aggs_languages %>
   <% @profiles.in_groups_of(4).each do |group| %>
     <div class="row">
       <% group.each do |profile| %>
