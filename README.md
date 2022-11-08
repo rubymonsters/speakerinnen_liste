@@ -102,11 +102,6 @@ Our database schema looks like that:
 For seeing our metrics we use the free community edition of honeyycomb ( https://ui.honeycomb.io/login )
 More infos how to use this: https://docs.honeycomb.io/beeline/ruby/
 
-# Logging
-
-We are using papertrail.
-`heroku addons:open papertrail --app speakerinnen-liste`
-
 # Report Errors
 
 We are using sentry.

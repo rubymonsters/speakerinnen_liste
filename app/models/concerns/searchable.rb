@@ -237,37 +237,5 @@ module Searchable
         end
       end
     end
-
-    def self.typeahead(q, current_region)
-      contexts = {}
-      contexts[:state] = current_region if current_region
-
-      __elasticsearch__.client.search(
-        index: index_name,
-        body: {
-          suggest: {
-            fullname_suggest: {
-              text: q,
-              completion: { field: 'fullname.suggest', contexts: contexts }
-            },
-            lastname_suggest: {
-              text: q,
-              completion: { field: 'lastname.suggest', contexts: contexts }
-            },
-            main_topic_de_suggest: {
-              text: q,
-              completion: { field: 'main_topic_de.suggest', contexts: contexts }
-            },
-            main_topic_en_suggest: {
-              text: q,
-              completion: { field: 'main_topic_en.suggest', contexts: contexts }
-            },
-            topic_list_suggest: {
-              text: q,
-              completion: { field: 'topic_list.suggest', contexts: contexts }
-            }
-         }
-      })
-    end
   end
 end
