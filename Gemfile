@@ -85,6 +85,7 @@ group :development, :test do
 end
 
 group :test do
+  gem 'puma'
   gem 'database_cleaner', '~> 1.7.0'
   gem 'elasticsearch-extensions', git: 'https://github.com/elasticsearch/elasticsearch-ruby.git', ref: '7.17'
   gem 'factory_bot_rails'
