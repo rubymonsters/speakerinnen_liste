@@ -11,7 +11,7 @@ The aim of the app is to provide a way for conference and event organizers to fi
 1. Clone the repository: `git clone git@github.com:rubymonsters/speakerinnen_liste.git` and access the folder: `cd speakerinnen_liste`. (If you have cloned the repository before and there is still an .env file, delete it.)
 2. Copy the file `database.yml.sample` and name it `database.yml` inside the config folder. (The sample-file is a placeholder showing the standard usecase. The file `database.yml` is for individual usage and changes and is ignored by git.)
 3. If you don't have Docker Engine installed, please download it [here](https://docs.docker.com/install) for your operating system.
-4. Run `make setup` (builds images, installs gems, creates and migrates the datasase).
+4. Run `make setup` (builds images, installs gems, creates and migrates the database).
 5. Run `make seed` (seeds database with example profiles and indexes them in Elasticsearch).
 
 ## Local development with Docker (default)
@@ -127,7 +127,7 @@ Find further details in [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ### Use upgraded Postgres or Elasticsearch version in Docker
 If Postgres or Elasticsearch got upgraded in the docker-compose file, you need to delete all processes, images 
-and volumes that still use the olde version:
+and volumes that still use the older version:
 1. Use ```make tear-down``` to delete all processes and images
 
 2. Delete all your local volumes inside Docker as well. (Otherwise you will get a DB connection error)
@@ -146,6 +146,25 @@ different):
 
 4. ```make seed``` to populate the volumes.
 
+## Developing on a Mac with Apple Silicon chip
+
+To be able to run the project on a Silicon chip, please make the following adjustments:
+
+1. In `docker-compose.yml`, use an ARM specific image of postgres for the database, e.g.
+```yaml
+services:
+  db:
+    image: arm64v8/postgres:13.5
+```
+2. In `docker-compose.yml`, add the platform specification to the `web` environment
+```yaml
+  web:
+    platform: linux/amd64
+```
+3. In `config/environments/development.rb`, exclude the following line by using a comment
+```rb
+# config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+```
 
 # ♥ Code of Conduct
 
