@@ -7,6 +7,7 @@ class ConfirmationsController < Devise::ConfirmationsController
   def after_confirmation_path_for(resource_name, resource)
     path = profile_path(resource.id)
     if signed_in?
+      flash[:notice] = I18n.t(:updated, scope: 'devise.registrations')
       path
     else
       scope = Devise::Mapping.find_scope!(resource)
