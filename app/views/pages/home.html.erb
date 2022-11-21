@@ -4,10 +4,10 @@
 <%# Hero %>
 
 <section class="home">
-  <section id="startpage__start-teaser" class="start-teaser startpage__photo-bar bg--dark">
+  <section id="startpage__start-teaser" class="start-teaser startpage__photo-bar">
     <div class="container">
       <%# Headline %>
-      <div class="row hero-headline" >
+      <div class="row hero-headline color-white" >
         <div class="col-7">
           <% if @is_global_speakerinnen %>
             <h1>
@@ -24,9 +24,9 @@
       <%# subtitle %>
       <div class="row">
         <div class="col-7">
-          <h3 class="startpage-subtitle pb-3">
+          <h2 class="startpage-subtitle pb-3">
             <%= t(:tagline, scope: 'pages.home').html_safe %>
-          </h3>
+          </h2>
         </div>
       </div>
     </div>

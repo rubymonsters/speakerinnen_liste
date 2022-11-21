@@ -176,10 +176,6 @@ h1 {
   background-color: $transparent-grey;
 }
 
-.bg--dark {
-  color: $white;
-}
-
 .hero-headline {
   margin-top: 17em;
 
@@ -243,7 +239,7 @@ textarea, input {
 }
 
 .startpage-subtitle {
-  margin-top: 3em;
+  margin-top: 1em;
   padding: 0em;
 }
 
@@ -281,7 +277,7 @@ textarea, input {
     font-weight: bold;
   }
 
-  h3 {
+  h2 {
     font-size: 1.2rem;
     }
 
@@ -291,9 +287,6 @@ textarea, input {
 
   .copyright {
     font-size: 0.8rem;
-  }
-
-  .startpage-subtitle {
   }
 
   #home_search {
