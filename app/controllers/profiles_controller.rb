@@ -101,24 +101,15 @@ class ProfilesController < ApplicationController
   end
 
   def typeahead
-    suggester_options = []
-    suggestions = Profile.typeahead(params[:q], current_region)['suggest']
-    suggestions.map { |s| suggester_options.push(s[1][0]['options']) }
-    suggestions_ordered = suggestions_upcase(suggester_options)
-    respond_with(suggestions_ordered)
+    suggestions = Profile.typeahead(params[:q], region: current_region.to_s)
+    suggestions_array = suggestions.map do |suggestion|
+      {'text': suggestion.titleize}
+    end
+    suggestions_array.push('_source': {})
+    respond_with(suggestions_array)
   end
 
   private
-
-  def suggestions_upcase(suggestions_raw)
-    suggestions_raw
-      .flatten
-      .sort_by { |s| s['score'] }
-      .map do |s|
-        s['text'] = s['text'].split.map(&:capitalize).join(' ')
-        s
-      end.uniq { |s| s['text'] }
-  end
 
   # Use callbacks to share common setup or constraints between actions.
   def set_profile
