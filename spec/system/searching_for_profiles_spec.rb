@@ -28,18 +28,6 @@ describe 'profile search' do
       end
     end
 
-    context 'header form' do
-      before { visit root_path }
-
-      it 'shows autofill search input' do
-        expect(page).to have_selector(".navbar #{form_selector} input#header_search.typeahead[type='text']")
-      end
-
-      it 'shows search button' do
-        expect(page).to have_selector(".navbar #{form_selector} button[type='submit']")
-      end
-    end
-
     describe 'searching', elasticsearch: true do
       before { Profile.__elasticsearch__.refresh_index! }
 
