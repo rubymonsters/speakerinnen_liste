@@ -10,35 +10,28 @@ class Search
       .references(:translations, taggings: :tag)
       .where(fields_to_search, query: "%#{query}%")
 
+    # Idee: Filter als Structs
     if filter_params[:filter_language]
       chain = chain
-        .includes(:translations, taggings: :tag)
-        .references(:translations, taggings: :tag)
         .where('iso_languages LIKE ?', "%#{filter_params[:filter_language]}%")
     end
 
     if filter_params[:filter_city]
       chain = chain
-        .includes(:translations, taggings: :tag)
-        .references(:translations, taggings: :tag)
         .where('city ILIKE ?', "%#{filter_params[:filter_city]}%")
     end
 
     if filter_params[:filter_state]
       chain = chain
-        .includes(:translations, taggings: :tag)
-        .references(:translations, taggings: :tag)
         .where(state: filter_params[:filter_state])
     end
 
     if filter_params[:filter_country]
       chain = chain
-        .includes(:translations, taggings: :tag)
-        .references(:translations, taggings: :tag)
         .where(country: filter_params[:filter_country])
     end
 
-    @profiles = chain
+    @profiles ||= chain
   end
 
   def fields_to_search
