@@ -115,60 +115,6 @@ class ProfilesController < ApplicationController
 
   private
 
-  def aggregate_by_countries(profiles)
-    return unless profiles
-
-    countries_in_profiles = profiles.pluck(:country).flatten.uniq.reject(&:blank?)
-
-    countries_in_profiles.each_with_object({}) do |country, memo|
-      memo[country] = profiles.by_country(country).count
-      # memo[country] = 1
-    end
-  end
-
-  def aggregate_by_cities(profiles)
-    return unless profiles
-
-    cities_in_profiles = profiles
-      .map(&:cities)
-      .flatten
-      .uniq
-
-    cities_in_profiles.each_with_object({}) do |city, memo|
-      memo[city] = profiles.by_city(city).count
-      # memo[city] = 1
-    end
-  end
-
-  def aggregate_by_language(profiles)
-    return unless profiles
-
-    languages_in_profiles = profiles
-      .pluck(:iso_languages)
-      .flatten
-      .uniq
-
-    languages_in_profiles.each_with_object({}) do |language, memo|
-      memo[language] = profiles.by_language(language).count
-      # memo[language] = 1
-    end
-  end
-
-  def aggregate_by_states(profiles)
-    return unless profiles
-
-    states_in_profiles = profiles
-      .pluck(:state)
-      .flatten
-      .uniq
-      .reject(&:blank?)
-
-    states_in_profiles.each_with_object({}) do |state, memo|
-      memo[state] = profiles.where(state: state).count
-      # memo[state] = 1
-    end
-  end
-
   # Use callbacks to share common setup or constraints between actions.
   def set_profile
     @profile = Profile.friendly.find(params[:id])
