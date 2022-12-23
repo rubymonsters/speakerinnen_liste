@@ -60,7 +60,7 @@
   <% end %>
 
   <!-- Speaker section -->
-  <%= paginate @profiles %>
+  <%== pagy_nav(@pagy) %>
   <% @profiles.in_groups_of(4).each do |group| %>
     <div class="row">
       <% group.each do |profile| %>
@@ -69,8 +69,7 @@
     </div>
   <% end %>
 
-  <%= paginate @profiles %>
-
+  <%== pagy_nav(@pagy) %>
   <% if current_region && params[:search] %>
     <p>
       <%= t(:expand_search, scope: 'search') %>

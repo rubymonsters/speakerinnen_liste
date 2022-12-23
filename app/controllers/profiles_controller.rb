@@ -36,7 +36,7 @@ class ProfilesController < ApplicationController
     end
 
     @profiles_count = @profiles.size
-    @profiles = @profiles.page(params[:page]).per(24)
+    @pagy, @profiles = pagy(@profiles)
 
     # for the tags filter module that is available all the time at the profile index view
     # is needed for the colors of the tags
@@ -235,41 +235,13 @@ class ProfilesController < ApplicationController
       .by_region(current_region)
       .includes(:taggings, :translations, :topics)
       .where(tags: { name: tag_names })
-      .page(params[:page])
-      .per(24)
   end
-
-  # def profiles_for_search
-  #   relation = Profile
-  #     .with_attached_image
-  #     .is_published
-  #     .by_region(current_region)
-  #     .includes(:translations)
-  #     .search(params[:search])
-  #     .page(params[:page])
-  #     .per(24)
-
-  #   if params[:filter_city]
-  #     relation = relation.by_city(params[:filter_city])
-  #   end
-
-  #   if params[:filter_country]
-  #     relation = relation.by_country(params[:filter_country])
-  #   end
-
-  #   if params[:filter_language]
-  #     relation = relation.by_language(params[:filter_language])
-  #   end
-
-  #   relation
-  # end
 
   def profiles_with_tags
     Profile
       .is_published
       .by_region(current_region)
       .has_tags(@tags)
-      .page(params[:page]).per(24)
   end
 
   def profiles_for_index

@@ -15,11 +15,11 @@ gem 'normalize-rails'
 
 gem 'deadweight', require: 'deadweight/hijack/rails'
 
-gem 'kaminari'
 gem 'mime-types'
 
 gem 'acts-as-taggable-on', '~> 6.0'
 gem 'auto_html', '~>1.6.4'
+gem 'pagy'
 gem 'devise', '~> 4.7'
 gem 'invisible_captcha'
 gem 'jquery-rails', '~> 4.4.0'

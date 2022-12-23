@@ -12,7 +12,7 @@
     <%= submit_tag t(:search, scope: 'general'), class: 'btn btn-primary' %>
   <% end %>
 
-  <%= paginate @profiles %>
+  <%== pagy_nav(@pagy) %>
 
   <table class="table">
     <thead class="bg--lightgrey">
@@ -67,6 +67,5 @@
       <% end %>
     </tbody>
   </table>
-
-  <%= paginate @profiles %>
+  <%== pagy_nav(@pagy) %>
 </div>

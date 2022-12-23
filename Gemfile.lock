@@ -264,18 +264,6 @@ GEM
     jquery-ui-rails (6.0.1)
       railties (>= 3.2.16)
     jsonapi-renderer (0.2.2)
-    kaminari (1.2.1)
-      activesupport (>= 4.1.0)
-      kaminari-actionview (= 1.2.1)
-      kaminari-activerecord (= 1.2.1)
-      kaminari-core (= 1.2.1)
-    kaminari-actionview (1.2.1)
-      actionview
-      kaminari-core (= 1.2.1)
-    kaminari-activerecord (1.2.1)
-      activerecord
-      kaminari-core (= 1.2.1)
-    kaminari-core (1.2.1)
     kgio (2.11.4)
     launchy (2.5.0)
       addressable (~> 2.7)
@@ -343,6 +331,8 @@ GEM
       omniauth-oauth (~> 1.1)
       rack
     orm_adapter (0.5.0)
+    pagy (5.10.1)
+      activesupport
     parallel (1.20.1)
     parser (3.0.1.1)
       ast (~> 2.4.1)
@@ -537,7 +527,6 @@ DEPENDENCIES
   invisible_captcha
   jquery-rails (~> 4.4.0)
   jquery-ui-rails (~> 6.0.1)
-  kaminari
   letter_opener
   mime-types
   mini_magick (~> 4.9.5)
@@ -546,6 +535,7 @@ DEPENDENCIES
   normalize-rails
   omniauth-rails_csrf_protection (~> 1.0)
   omniauth-twitter (~> 1.4)
+  pagy
   pg (~> 1.1.3)
   poltergeist (= 1.18.1)
   pry
