@@ -3,7 +3,8 @@
   <%# TODO: hidden <h1>Speakerinnen</h1>%>
   <nav class="navbar navbar-expand-lg py-0 navbar-dark <%= controller_path =~ /admin\// ? "admin__header--color": "header" %>" >
     <%= link_to(root_path, id: 'header__home-link', class: 'navbar-brand p-0') do %>
-      <%= image_tag("logo_header#{'_vab' if current_region}.png", alt: 'logo', id: 'header__logo') %>
+      <%= image_tag("logo_header#{'_' + current_region.to_s if current_region}.png",
+        alt: 'speakerinnen logo', id: "header__logo#{'_' + current_region.to_s if current_region}") %>
     <% end %>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="fa fa-bars"></span>
