@@ -121,7 +121,7 @@ class Profile < ApplicationRecord
   end
 
   def main_topic_or_first_topic
-    main_topic.present? ? main_topic : taggings.map { |tagging| tagging.tag.name }.first
+    main_topic.present? ? main_topic : taggings.includes([:tag]).map { |tagging| tagging.tag.name }.first
   end
 
   # Try building a slug based on the following fields in
