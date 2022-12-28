@@ -90,6 +90,7 @@ h1 {
 
 .bg--dark {
   background-color: $very-dark-grey;
+  color: $white;
 }
 
 .color-white {
@@ -158,7 +159,7 @@ h1 {
   background: $info;
 }
 
-.header, #footer {
+.header {
   background: $header-grey;
   color: $white;
 
@@ -170,6 +171,11 @@ h1 {
       text-decoration: underline;
     }
   }
+}
+
+#footer {
+  color: $header-grey;
+  background: $white;
 }
 
 .dropdown-menu-dark {

@@ -29,14 +29,19 @@
           </h2>
         </div>
       </div>
+      <% if @is_global_speakerinnen %>
+        <div class="row align-items-end">
+          <div class="col align-self-end">
+            <p class="copyright">Copyright: public domain ( modified )</p>
+          </div>
+        </div>
+      <% end %>
     </div>
   </section>
 
-  <div class="container bg--light-grey">
-    <% if @is_global_speakerinnen %>
-      <div class="copyright">Copyright: public domain ( modified )</div>
-    <% end %>
-  </div>
+  <%# Divider: get inspired %>
+
+  <%= render partial: "shared/get_inspired" %>
 
   <%# Hot Topic%>
 
@@ -52,7 +57,6 @@
         </div>
       </div>
     <% end %>
-    <%= render partial: "shared/get_inspired" %>
   <% end %>
 
   <%# Hot New Speakers %>
@@ -70,9 +74,6 @@
       <%= render partial: "profiles/register" %>
     </div>
   </div>
-  <% if !@has_hot_topic %>
-    <%= render partial: "shared/get_inspired" %>
-  <% end %>
 
   <%# Intro Voralberg %>
 
