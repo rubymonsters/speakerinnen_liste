@@ -49,8 +49,8 @@ en:
       welcome_title_vab: "Welcome."
       welcome_text: "A warm welcome! Here you can find our latest registrations"
       welcome_text_vab: "Our newcomers from Vorarlberg:"
-      intro_title_vab: "We make female experts visible."
-      intro_text_vab: |
+      intro_title_vorarlberg: "We make female experts visible."
+      intro_text_vorarlberg: |
         <p>
           vorarlberg.speakerinnen.org is a project to prevent "manels",
           i.e. podiums, committees or panels that are predominantly occupied by men.
@@ -64,6 +64,14 @@ en:
         </p>
         <p>
           More information about us can be found <a href="/about_vorarlberg">here</a>.
+        </p>
+      intro_title_ooe: "We make female experts visible."
+      intro_text_ooe: |
+        <p>
+          Podiums are frequently occupied largely by men. It is time for women to become
+          active in order to change this. Via the platform ooe.speakerinnen.org, Upper
+          Austrian women are made visible both locally and internationally as experts,
+          speakers and ambassadors.
         </p>
       about: "About us"
       faq: "FAQs"
