@@ -158,10 +158,6 @@ h1 {
   a, .link, #expander {
     text-decoration: none;
     color: $white;
-
-    &:hover {
-      text-decoration: underline;
-    }
   }
 }
 
@@ -171,7 +167,12 @@ h1 {
 }
 
 .dropdown-menu-dark {
-  background-color: $transparent-grey;
+  background-color: $dropdown-background;
+}
+
+.dropdown-item:hover {
+  background-color: $dropdown-hover-background;
+  color: $speakerinnen-green;
 }
 
 .hero-headline {
