@@ -33,11 +33,8 @@ a.button_link {
 
 
 .home .container.divider {
-  padding-top: 1em;
-  padding-bottom: 2em;
-  a {
-    margin-left: 15px;
-  }
+  padding-top: 4em;
+  padding-bottom: 5em;
 }
 
 ul {
@@ -50,11 +47,6 @@ h1 {
   font-weight: bold;
 }
 
-.home {
-  h1,h3 {
-    padding: 15px;
-  }
-}
 
 .btn:focus{
   outline: none;
@@ -186,6 +178,7 @@ h1 {
   margin-top: 17em;
 
   h1 {
+    padding: 15px;
     background-color: $very-dark-grey;
   }
 }
