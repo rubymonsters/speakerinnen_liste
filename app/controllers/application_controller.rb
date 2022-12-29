@@ -41,8 +41,7 @@ class ApplicationController < ActionController::Base
   end
 
   def validate_region(region)
-    region if region == :vorarlberg
-    # countries.include?(region) || states.include?(region)
+    region if region == :vorarlberg || region == :ooe
   end
 
   attr_reader :current_region

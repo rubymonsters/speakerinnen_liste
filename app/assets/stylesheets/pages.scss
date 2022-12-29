@@ -44,27 +44,22 @@
   padding-bottom: 100px;
 }
 
-.vorarlberg .home .sub-menu {
-  margin-top: 210px;
-  margin-bottom: 1em;
-}
-
-.vorarlberg .home .intro-text {
-  background-color: #619b97;
+.home .intro-text {
+  background-color: #343A40;
   width: 100%;
 }
 
-.vorarlberg .home .intro-text h1 {
+.home .intro-text h1 {
    color: white;
 }
 
-.vorarlberg .home .intro-text p {
+.home .intro-text p {
   line-height: 1.5;
   font-size: 1.3rem;
   color: white;
 }
 
-.vorarlberg .home .intro-text a {
+.home .intro-text a {
   text-decoration: underline;
   color: white;
 }
@@ -99,6 +94,16 @@
   .vorarlberg footer figcaption {
     margin-bottom: 20px;
   }
+}
+
+.ooe footer .logo-1 {
+  width: 200px;
+  margin-bottom: 4px;
+}
+
+.ooe footer .logo-2 {
+  width: 100px;
+  margin-bottom: 4px;
 }
 
 .card-header {
