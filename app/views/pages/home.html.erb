@@ -75,13 +75,13 @@
     </div>
   </div>
 
-  <%# Intro Voralberg %>
+  <%# Intro Vorarlberg & Oberösterreich %>
 
   <% if !@is_global_speakerinnen %>
     <div class="intro-text container">
       <div class="row p-5 text-left">
-        <h1><%= t(:intro_title_vab, scope: 'pages.home') %></h1>
-        <%= t(:intro_text_vab, scope: 'pages.home').html_safe %>
+        <h1><%= t(:"intro_title_#{current_region}", scope: 'pages.home') %></h1>
+        <%= t(:"intro_text_#{current_region}", scope: 'pages.home').html_safe %>
       </div>
     </div>
   <% end %>

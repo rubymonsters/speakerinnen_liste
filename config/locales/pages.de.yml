@@ -54,8 +54,8 @@ de:
       welcome_title_vab: "Herzlich willkommen."
       welcome_text: "Willkommen an Bord! Hier findest du unsere Neuzugänge"
       welcome_text_vab: "Unsere Neuzugänge aus Vorarlberg:"
-      intro_title_vab: "Wir machen Expertinnen sichtbar."
-      intro_text_vab: |
+      intro_title_vorarlberg: "Wir machen Expertinnen sichtbar."
+      intro_text_vorarlberg: |
         <p>
           vorarlberg.speakerinnen.org ist ein Projekt zur Verhinderung von „manels“,
           also Podien, Gremien oder Panels, die vornehmlich mit Männern besetzt sind.
@@ -69,6 +69,13 @@ de:
         </p>
         <p>
           Mehr Informationen über uns gibt es <a href="/about_vorarlberg">hier</a>.
+        </p>
+      intro_title_ooe: "Wir machen Expertinnen sichtbar."
+      intro_text_ooe: |
+        <p>
+          Oftmals sind Podien vornehmlich mit Männern besetzt. Es ist Zeit, dass Frauen aktiv werden,
+          um das zu ändern. Durch ooe.speakerinnen.org werden oberösterreichische Frauen sowohl lokal
+          wie international als Expertinnen, Rednerinnen und Repräsentantinnen sichtbar gemacht.
         </p>
       about: "Über uns"
       faq: "FAQ"
