@@ -33,11 +33,8 @@ a.button_link {
 
 
 .home .container.divider {
-  padding-top: 1em;
-  padding-bottom: 2em;
-  a {
-    margin-left: 15px;
-  }
+  padding-top: 4em;
+  padding-bottom: 5em;
 }
 
 ul {
@@ -50,11 +47,6 @@ h1 {
   font-weight: bold;
 }
 
-.home {
-  h1,h3 {
-    padding: 15px;
-  }
-}
 
 .btn:focus{
   outline: none;
@@ -166,10 +158,6 @@ h1 {
   a, .link, #expander {
     text-decoration: none;
     color: $white;
-
-    &:hover {
-      text-decoration: underline;
-    }
   }
 }
 
@@ -179,13 +167,19 @@ h1 {
 }
 
 .dropdown-menu-dark {
-  background-color: $transparent-grey;
+  background-color: $dropdown-background;
+}
+
+.dropdown-item:hover {
+  background-color: $dropdown-hover-background;
+  color: $speakerinnen-green;
 }
 
 .hero-headline {
   margin-top: 17em;
 
   h1 {
+    padding: 15px;
     background-color: $very-dark-grey;
   }
 }

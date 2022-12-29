@@ -1,11 +1,11 @@
 de:
   pages:
     header:
-      about_speakerinnen_list: "Über Speakerinnen"
+      about_speakerinnen_list: "Über uns"
     home:
       heading: "Mehr Frauen auf die Bühnen!"
       heading_vab: "Finde Expertinnen, Rednerinnen und Fachfrauen."
-      tagline: "Finde Rednerinnen, Referentinnen & Moderatorinnen<br> für Deine Konferenz"
+      tagline: "Finde Rednerinnen, Referentinnen & Moderatorinnen für Deine Konferenz"
       tagline_vab: "Nutze eine der größten Datenbanken für weibliche Kompetenz in Vorarlberg und dem deutschsprachigen Raum."
       search_placeholder: "Name oder Thema"
       search_speaker: "Finde deine Speakerin"
@@ -19,12 +19,12 @@ de:
       sub_menu_about_us_link_text: "Zum Projekt>>"
       sub_menu_fifty_percent_title: "Fifty Percent"
       sub_menu_fifty_percent_title_vab: "Fifty Percent"
-      sub_menu_fifty_percent_text: "50 Percent dokumentiert, wie stark unterrepresentiert SprecherInnen sind - auf Konferenzen, Podien, Talk Shows, ..."
-      sub_menu_fifty_percent_text_vab: "50 Percent dokumentiert, wie stark unterrepresentiert SprecherInnen sind - auf Konferenzen, Podien, Talk Shows, ..."
-      sub_menu_fifty_percent_link_text: "Zu Fifty Percent>>"
+      sub_menu_fifty_percent_text: "Männer oder Frauen – wer steht häufiger auf der Bühne?"
+      sub_menu_fifty_percent_text_vab: "Männer oder Frauen – wer steht häufiger auf der Bühne?"
+      sub_menu_fifty_percent_link_text: ">> Zu Fifty Percent"
       sub_menu_blog_title: "Unser Blog"
-      sub_menu_blog_text: "Mit spannenden Interviews und vielen Neuigkeiten."
-      sub_menu_blog_link_text: "Zu unserem Blog>>"
+      sub_menu_blog_text: "Mit spannenden Interviews und Neuigkeiten."
+      sub_menu_blog_link_text: ">> Zum Speakerinnen-Blog"
       sub_menu_all_title_vab: "Alle Expertinnen"
       sub_menu_all_text_vab: "Mache weibliche Kompetenz in Vorarlberg sichtbar."
       sub_menu_categories_title: "Lass dich inspirieren"
@@ -46,13 +46,13 @@ de:
       Software, die Matomoto heißt, um zu wissen, wie die Besucher*innen und Nutzer*innen von speakerinnen.org die Seite nutzen: Das hilft uns auch
       dabei, sie zu verbessern. Auch hierfür nutzen wir Cookies, die Du aber deaktivieren kannst. Mehr Informationen in unserer <a href='%{link}' class='link'>Datenschutzerklärung</a>."
       allow_cookies: "Ich stimme zu"
-      category_search_title: "Nach Kategorien durchsuchen"
-      category_search_text: "Finde deine Speakerin in 10 Kategorien oder filtere nach ganz konkreten Themen:"
-      get_inspired: "Get inspired"
-      get_inspired_text: "Bei uns findest du %{count_profiles} Speakerinnen für %{count_topics} Themen"
+      category_search_title: "Gezielter suchen!"
+      category_search_text: "Finde deine Speakerin in 10 Kategorien oder filtere nach ganz konkreten Themen"
+      get_inspired: "Get inspired!"
+      get_inspired_text: "Hier findest du %{count_profiles} Speakerinnen für %{count_topics} Themen"
       welcome_title: "Speakerinnen"
       welcome_title_vab: "Herzlich willkommen."
-      welcome_text: "Ein herzliches Willkommen! Hier findest du unsere Neuzugänge"
+      welcome_text: "Willkommen an Bord! Hier findest du unsere Neuzugänge"
       welcome_text_vab: "Unsere Neuzugänge aus Vorarlberg:"
       intro_title_vorarlberg: "Wir machen Expertinnen sichtbar."
       intro_text_vorarlberg: |
@@ -78,7 +78,7 @@ de:
           wie international als Expertinnen, Rednerinnen und Repräsentantinnen sichtbar gemacht.
         </p>
       about: "Über uns"
-      faq: "FAQs"
+      faq: "FAQ"
       code_of_conduct: "Code of Conduct"
     footer:
       contact: "Kontakt"
