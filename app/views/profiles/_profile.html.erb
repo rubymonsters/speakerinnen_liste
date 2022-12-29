@@ -6,12 +6,12 @@
   >
     <%= profile_image_link(profile) %>
     <div class="bg--white caption">
-      <div class="profile-title">
-        <%= profile.main_topic_or_first_topic.truncate(60) if profile.main_topic_or_first_topic %>
+      <div class="profile-name">
+        <%= link_to profile.fullname, profile %>
       </div>
       <div class="profile-subtitle">
         <p>
-          <%= link_to profile.fullname, profile %>
+          <%= profile.main_topic_or_first_topic.truncate(60) if profile.main_topic_or_first_topic %>
         </p>
         <div
           class="profile-tooltip"

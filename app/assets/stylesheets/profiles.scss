@@ -10,12 +10,25 @@
   text-align: right;
 }
 
-.profile-title {
-  font-weight: bold;
+.profile-name {
+  a {
+    // padding: 0.5em;
+    font-weight: bold;
+    color: $link-color;
+    display: block;
+    width: 100%;
+    padding: 0.25rem 1.5rem;
+    clear: both;
+    white-space: nowrap;
+    background-color: transparent;
+    border: 0;
+    &:hover {
+      background-color: $dropdown-hover-background;
+    }
+  }
 }
 
 .caption {
-  padding: 0.5em;
   display: flex;
   flex-direction: column;
   flex: auto;
@@ -24,16 +37,12 @@
 .profile-subtitle {
   display: flex;
   flex: auto;
+  padding: 0.25rem 1.5rem;
 
   .profile-tooltip {
     align-self: flex-end;
 
   }
-
-  a {
-    color: $font-color;
-  }
-
   p {
     flex: auto;
     margin-bottom: 0rem;
