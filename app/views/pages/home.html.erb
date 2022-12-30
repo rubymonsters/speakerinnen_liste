@@ -55,13 +55,8 @@
   <%# Hot New Speakers %>
 
   <div id="startpage-newest_speaker" class="container py-5 bg--light-grey">
-    <% if @is_global_speakerinnen %>
-      <h1 class=""><%= t(:welcome_title, scope: 'pages.home') %></h1>
-      <h3 class=""><%= t(:welcome_text, scope: 'pages.home') %></h3>
-    <% else %>
-      <h1 class=""><%= t(:welcome_title_vab, scope: 'pages.home') %></h1>
-      <h3 class=""><%= t(:welcome_text_vab, scope: 'pages.home') %></h3>
-    <% end %>
+    <h1 class=""><%= t(:"welcome_title#{'_' + current_region.to_s if current_region}", scope: 'pages.home') %></h1>
+    <h3 class=""><%= t(:"welcome_text#{'_' + current_region.to_s if current_region}", scope: 'pages.home') %></h3>
     <div class="row pt-5">
       <%= render partial: "profiles/profile", collection: @newest_profiles %>
       <%= render partial: "profiles/register" %>
