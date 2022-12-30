@@ -9,14 +9,7 @@
       <%# Headline %>
       <div class="row hero-headline color-white" >
         <div class="col-7">
-          <% if @is_global_speakerinnen %>
-            <h1>
-              <%= t(:heading, scope: 'pages.home') %>
-            </h1>
-          <% else %>
-            <h1><%= t(:heading_vab, scope: 'pages.home') %></h1>
-            <p class="startpage-subtitle"><%= t(:tagline_vab, scope: 'pages.home') %></p>
-          <% end %>
+          <h1><%= t(:"heading#{'_' + current_region.to_s if current_region}", scope: 'pages.home') %></h1>
         </div>
       </div>
       <%# search %>
@@ -25,7 +18,7 @@
       <div class="row">
         <div class="col-7">
           <h2 class="startpage-subtitle pb-3">
-            <%= t(:tagline, scope: 'pages.home').html_safe %>
+            <%= t(:"tagline#{'_' + current_region.to_s if current_region}", scope: 'pages.home').html_safe %>
           </h2>
         </div>
       </div>
