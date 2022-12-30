@@ -331,14 +331,24 @@ textarea, input {
   .card {
     .action_icon {
       color: $primary;
-      margin-bottom: 0.75em;
+      margin-bottom: 1.5em;
+      font-size: 4rem;
       display: flex;
       justify-content: flex-end;
+    }
+
+    .card-title {
+      min-height: 6rem;
     }
 
     h1 {
       padding: 0;
     }
+
+    .card-body p {
+      margin-bottom: 3em;
+    }
+
     a {
       color: $font-color;
     }
