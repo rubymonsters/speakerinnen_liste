@@ -252,6 +252,21 @@ textarea, input {
   text-decoration: underline;
 }
 
+.card-header.hover-activated {
+  .btn-link {
+    color: $font-color;
+    text-decoration: none;
+  }
+}
+
+.card-header.hover-activated:hover {
+  border-bottom-color: $primary;
+
+  .btn-link {
+    color: $primary;
+  }
+}
+
 .btn {
   border-radius: 0px;
   font-family: sans-serif;
