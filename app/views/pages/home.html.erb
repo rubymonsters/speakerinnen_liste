@@ -76,8 +76,8 @@
 
   <a id="categories_anchor"></a>
   <div class="container bg--light-grey py-5">
-    <h1 class=""><%= t(:category_search_title, scope: 'pages.home') %></h1>
-    <h3 class=""><%= t(:category_search_text, scope: 'pages.home') %></h3>
+    <h1 class=""><%= t(:"category_search_title#{'_' + current_region.to_s if current_region}", scope: 'pages.home') %></h1>
+    <h3 class=""><%= t(:"category_search_text#{'_' + current_region.to_s if current_region}", scope: 'pages.home') %></h3>
   </div>
   <div id="startpage-categories__list" class="container p-0">
     <%= render partial: "shared/categories", object: @categories %>
