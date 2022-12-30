@@ -329,10 +329,6 @@ textarea, input {
     display: flex;
   }
   .card {
-    .card-body.bottom {
-      display: flex;
-      align-items: end;
-    }
     .action_icon {
       color: $primary;
       margin-bottom: 0.75em;
@@ -346,5 +342,11 @@ textarea, input {
     a {
       color: $font-color;
     }
+
+    .card-body.bottom {
+      display: flex;
+      align-items: end;
+    }
+
   }
 }
