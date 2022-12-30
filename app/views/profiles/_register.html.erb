@@ -2,9 +2,9 @@
   <div class="outer fit-height">
     <div class="border stretch outer bg--white">
       <div class="stretch top">
-        <div class="profile-subtitle"><%= t(:title, scope: 'profiles.register_box').html_safe %></div>
+        <div class="profile-subtitle"><h2><%= t(:title, scope: 'profiles.register_box').html_safe %></h2></div>
       </div>
-      <div class="middle"><%= t(:text, scope: 'profiles.register_box').html_safe %></div>
+      <div class="middle"><h4><%= t(:text, scope: 'profiles.register_box').html_safe %></h4></div>
       <div class="stretch bottom">
         <%= link_to t(:button, scope: 'profiles.register_box'), sign_up_path, class: "btn btn-secondary" %>
       </div>
