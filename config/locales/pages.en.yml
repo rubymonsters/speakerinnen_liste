@@ -98,12 +98,6 @@ en:
         vorarlberg.speakerinnen.org is supported by
         <a href="https://vorarlberg.at/frauen", target="_blank">Funktionsbereich Frauen und Gleichstellung</a>
         im Amt der Vorarlberger Landesregierung.
-      photo_credit_vab: |
-        <p>
-          Photo credit Homepage: Architect Adelheid Gnaiger, Photo: Walter Gnaiger, see also:
-          <a href="http://www.ingridholzschuh.at/publikationen/2014", target="_blank">Adelheid Gnaiger (1916 &mdash; 1991).
-          Die erste Architektin Vorarlbergs</a>, Ingrid Holzschuh (Hrsg.)
-        </p>
     errors:
       not_found: "The page you were looking for doesn't exist."
       not_found_explain: "You may have mistyped the address or the page may have moved."
