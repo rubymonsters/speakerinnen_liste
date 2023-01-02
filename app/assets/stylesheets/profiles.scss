@@ -41,6 +41,10 @@
   flex: auto;
   padding: 0.25rem 1.5rem;
 
+  .fa {
+    font-size: 2.6em;
+  }
+
   .profile-tooltip {
     align-self: flex-end;
 
@@ -91,7 +95,7 @@
   position: relative;
   overflow: hidden;
   color: $secondary;
-  cursor: pointer;
+  cursor: default;
 
   .fit-height {
     position: relative;
@@ -134,6 +138,7 @@
     .profile-subtitle {
       overflow: hidden;
       max-height: 3rem;
+      padding: 0rem;
     }
 
     a.btn {
@@ -155,6 +160,15 @@
       align-items: flex-start;
     }
 
+    /* override headline sizes so our media breakpoint for them doesn't apply on register card */
+    h2 {
+      font-size: 2rem; // bootstrap default
+    }
+    h4 {
+      font-size: 1.5rem; // bootstrap default
+    }
+
+    /* multi-column medium screens - don't show middle part */
     @media all and (min-width: 1200px) and (max-width: 1423px) {
       .top {
         margin-bottom: 0.8rem;
@@ -164,7 +178,7 @@
       }
     }
 
-    /* multi-column small screens */
+    /* multi-column small screens - show only button */
     @media all and (min-width: 576px) and (max-width: 1199px) {
       .top {
         display: none;

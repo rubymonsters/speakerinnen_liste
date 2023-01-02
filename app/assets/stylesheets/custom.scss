@@ -252,6 +252,21 @@ textarea, input {
   text-decoration: underline;
 }
 
+.card-header.hover-activated {
+  .btn-link {
+    color: $font-color;
+    text-decoration: none;
+  }
+}
+
+.card-header.hover-activated:hover {
+  border-bottom-color: $primary;
+
+  .btn-link {
+    color: $primary;
+  }
+}
+
 .btn {
   border-radius: 0px;
   font-family: sans-serif;
@@ -329,22 +344,34 @@ textarea, input {
     display: flex;
   }
   .card {
-    .card-body.bottom {
-      display: flex;
-      align-items: end;
-    }
     .action_icon {
       color: $primary;
-      margin-bottom: 0.75em;
+      margin-bottom: 1.5em;
+      font-size: 80px;
       display: flex;
       justify-content: flex-end;
+    }
+
+    .card-title {
+      min-height: 6rem;
     }
 
     h1 {
       padding: 0;
     }
+
+    .card-body p {
+      margin-bottom: 3em;
+    }
+
     a {
       color: $font-color;
     }
+
+    .card-body.bottom {
+      display: flex;
+      align-items: end;
+    }
+
   }
 }
