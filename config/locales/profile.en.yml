@@ -2,8 +2,14 @@ en:
   profiles:
     register_box:
       title: "<b>Be part of it!</b>"
-      text: "<p>If you are a professional speaker in any topic, register here, quick and for free</p>"
+      title_vorarlberg: "<b>Be part of it!</b>"
+      title_ooe: "<b>Be part of it!</b>"
+      text: "<p>If you are a professional speaker in any topic, register here, quick and for free.</p>"
+      text_vorarlberg: "<p>If you are an expert in any topic, register here, quick and for free.</p>"
+      text_ooe: "<p>If you are a professional speaker in any topic, register here, quick and for free.</p>"
       button: "Register as a speaker"
+      button_vorarlberg: "Register as an expert"
+      button_ooe: "Register as a speaker"
     category: "We have <b>%{profiles_count}</b> speakerinnen and <b>%{topics_count}</b> topics in category <b>%{category_name}</b> <i class='fa fa-caret-down' style='font-size: 21px'></i>"
     tag:
       top_topics: "The 200 most popular topics"

@@ -4,11 +4,15 @@ en:
       about_speakerinnen_list: "About us"
     home:
       heading: "Organizers, find your speakers"
-      heading_vab: "Find women experts, speakers and professionals."
+      heading_vorarlberg: "Organizers, find your speakers"
+      heading_ooe: "Organizers, find your speakers"
       tagline: "Find women speakers & moderators for your conference"
-      tagline_vab: "Take advantage of one of the largest databases for female competence in Vorarlberg and the German-speaking region."
+      tagline_vorarlberg: "Find women experts, speakers and professionals in Vorarlberg"
+      tagline_ooe: "Find women experts, speakers and professionals in Upper Austria"
       search_placeholder: "Search by name or topic"
-      search_speaker: "Find your speakerin"
+      search_speaker: "Find your speaker"
+      search_speaker_vorarlberg: "Find your expert"
+      search_speaker_ooe: "Find your speaker"
       sub_menu_register_title: "Register now"
       sub_menu_register_text: "Create speaker profile quickly and free of charge."
       sub_menu_register_text_vab: "Create expert profile quickly and free of charge."
@@ -42,13 +46,19 @@ en:
       allow_cookies: "I agree"
       speakerinnen: "Speakers"
       category_search_title: "Search more targeted!"
+      category_search_title_vorarlberg: "Search more targeted!"
+      category_search_title_ooe: "Search more targeted!"
       category_search_text: "Find your women speakers in 10 categories or filter by specific topics:"
-      welcome_title: "Speakerinnen"
+      category_search_text_vorarlberg: "Find your women experts in 10 categories or filter by specific topics:"
+      category_search_text_ooe: "Find your women speakers in 10 categories or filter by specific topics:"
       get_inspired: "Get inspired!"
       get_inspired_text: "Here you can find %{count_profiles} women speakers in %{count_topics} topics"
-      welcome_title_vab: "Welcome."
+      welcome_title: "Speakerinnen"
+      welcome_title_vorarlberg: "Welcome."
+      welcome_title_ooe: "Welcome."
       welcome_text: "Welcome aboard! Here you can find our latest registrations"
-      welcome_text_vab: "Our newcomers from Vorarlberg:"
+      welcome_text_vorarlberg: "Our newcomers from Vorarlberg:"
+      welcome_text_ooe: "Our newcomers from Upper Austria:"
       intro_title_vorarlberg: "We make female experts visible."
       intro_text_vorarlberg: |
         <p>
@@ -92,12 +102,6 @@ en:
         vorarlberg.speakerinnen.org is supported by
         <a href="https://vorarlberg.at/frauen", target="_blank">Funktionsbereich Frauen und Gleichstellung</a>
         im Amt der Vorarlberger Landesregierung.
-      photo_credit_vab: |
-        <p>
-          Photo credit Homepage: Architect Adelheid Gnaiger, Photo: Walter Gnaiger, see also:
-          <a href="http://www.ingridholzschuh.at/publikationen/2014", target="_blank">Adelheid Gnaiger (1916 &mdash; 1991).
-          Die erste Architektin Vorarlbergs</a>, Ingrid Holzschuh (Hrsg.)
-        </p>
     errors:
       not_found: "The page you were looking for doesn't exist."
       not_found_explain: "You may have mistyped the address or the page may have moved."

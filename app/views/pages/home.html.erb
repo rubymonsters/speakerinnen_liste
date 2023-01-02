@@ -9,14 +9,7 @@
       <%# Headline %>
       <div class="row hero-headline color-white" >
         <div class="col-7">
-          <% if @is_global_speakerinnen %>
-            <h1>
-              <%= t(:heading, scope: 'pages.home') %>
-            </h1>
-          <% else %>
-            <h1><%= t(:heading_vab, scope: 'pages.home') %></h1>
-            <p class="startpage-subtitle"><%= t(:tagline_vab, scope: 'pages.home') %></p>
-          <% end %>
+          <h1><%= t(:"heading#{'_' + current_region.to_s if current_region}", scope: 'pages.home') %></h1>
         </div>
       </div>
       <%# search %>
@@ -25,7 +18,7 @@
       <div class="row">
         <div class="col-7">
           <h2 class="startpage-subtitle pb-3">
-            <%= t(:tagline, scope: 'pages.home').html_safe %>
+            <%= t(:"tagline#{'_' + current_region.to_s if current_region}", scope: 'pages.home').html_safe %>
           </h2>
         </div>
       </div>
@@ -39,9 +32,18 @@
     </div>
   </section>
 
-  <%# Divider: get inspired %>
+  <%# EITHER divider: get inspired OR intro: subdomains %>
 
-  <%= render partial: "shared/get_inspired" %>
+  <% if @is_global_speakerinnen %>
+    <%= render partial: "shared/get_inspired" %>
+  <% else %>
+    <div class="intro-text container">
+      <div class="row p-5 text-left">
+        <h1><%= t(:"intro_title_#{current_region}", scope: 'pages.home') %></h1>
+        <%= t(:"intro_text_#{current_region}", scope: 'pages.home').html_safe %>
+      </div>
+    </div>
+  <% end %>
 
   <%# Hot Topic%>
 
@@ -62,36 +64,20 @@
   <%# Hot New Speakers %>
 
   <div id="startpage-newest_speaker" class="container py-5 bg--light-grey">
-    <% if @is_global_speakerinnen %>
-      <h1 class=""><%= t(:welcome_title, scope: 'pages.home') %></h1>
-      <h3 class=""><%= t(:welcome_text, scope: 'pages.home') %></h3>
-    <% else %>
-      <h1 class=""><%= t(:welcome_title_vab, scope: 'pages.home') %></h1>
-      <h3 class=""><%= t(:welcome_text_vab, scope: 'pages.home') %></h3>
-    <% end %>
+    <h1 class=""><%= t(:"welcome_title#{'_' + current_region.to_s if current_region}", scope: 'pages.home') %></h1>
+    <h3 class=""><%= t(:"welcome_text#{'_' + current_region.to_s if current_region}", scope: 'pages.home') %></h3>
     <div class="row pt-5">
       <%= render partial: "profiles/profile", collection: @newest_profiles %>
       <%= render partial: "profiles/register" %>
     </div>
   </div>
 
-  <%# Intro Vorarlberg & Oberösterreich %>
-
-  <% if !@is_global_speakerinnen %>
-    <div class="intro-text container">
-      <div class="row p-5 text-left">
-        <h1><%= t(:"intro_title_#{current_region}", scope: 'pages.home') %></h1>
-        <%= t(:"intro_text_#{current_region}", scope: 'pages.home').html_safe %>
-      </div>
-    </div>
-  <% end %>
-
   <%# Categories %>
 
   <a id="categories_anchor"></a>
   <div class="container bg--light-grey py-5">
-    <h1 class=""><%= t(:category_search_title, scope: 'pages.home') %></h1>
-    <h3 class=""><%= t(:category_search_text, scope: 'pages.home') %></h3>
+    <h1 class=""><%= t(:"category_search_title#{'_' + current_region.to_s if current_region}", scope: 'pages.home') %></h1>
+    <h3 class=""><%= t(:"category_search_text#{'_' + current_region.to_s if current_region}", scope: 'pages.home') %></h3>
   </div>
   <div id="startpage-categories__list" class="container p-0">
     <%= render partial: "shared/categories", object: @categories %>

@@ -5,7 +5,7 @@
             type: 'text') %>
     </div>
     <div>
-      <%= submit_tag((t(:search_speaker, scope: 'pages.home')), class: 'btn btn-primary' ) %>
+      <%= submit_tag(t(:"search_speaker#{'_' + current_region.to_s if current_region}", scope: 'pages.home'), class: 'btn btn-primary' ) %>
     </div>
   <% end %>
 <label><%=t(:search_placeholder, scope: 'pages.home')%></label>
