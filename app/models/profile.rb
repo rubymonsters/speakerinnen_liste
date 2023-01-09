@@ -40,6 +40,7 @@ class Profile < ApplicationRecord
   end
 
   def self.by_region(region)
+    region = :'upper-austria' if region == :ooe
   	region ? where('country = ? OR state = ?', region, region) : all
   end
 
