@@ -135,7 +135,7 @@ describe 'profile', type: :model do
     before do
       create(:published_profile, country: 'AT', state: 'vorarlberg')
       create(:published_profile, country: 'AT', state: 'vorarlberg')
-      create(:published_profile, country: 'AT', state: 'upper-austria')
+      create(:published_profile, country: 'AT', state: 'upper_austria')
       create(:published_profile, country: 'DE', state: 'berlin')
       create(:published_profile, state: nil)
     end
