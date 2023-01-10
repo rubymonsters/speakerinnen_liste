@@ -5,11 +5,11 @@ de:
       title_vorarlberg: "<b>Sei dabei!</b>"
       title_ooe: "<b>Sei dabei!</b>"
       text: "<p>Registriere dich schnell und kostenlos, wenn du zu einem Thema öffentlich sprechen willst.</p>"
-      text_vorarlberg: "<p>Registriere dich schnell und kostenlos, wenn du Fachfrau für ein Thema bist.</p>"
-      text_ooe: "<p>Registriere dich schnell und kostenlos, wenn du zu einem Thema öffentlich sprechen willst.</p>"
+      text_vorarlberg: "<p>Registriere dich schnell und kostenlos, wenn du zu einem Thema öffentlich Auskunft geben willst.</p>"
+      text_ooe: "<p>Registriere dich schnell und kostenlos, wenn du Fachfrau für ein Thema bist.</p>"
       button: "Als Speakerin registrieren"
-      button_vorarlberg: "Als Expertin registrieren"
-      button_ooe: "Als Speakerin registrieren"
+      button_vorarlberg: "Als Fachfrau registrieren"
+      button_ooe: "Als Expertin registrieren"
     category: "Wir haben <b>%{profiles_count}</b> Speakerinnen und <b>%{topics_count}</b> Themen in der Kategorie <b>%{category_name}</b> gelistet <i class='fa fa-caret-down' style='font-size: 21px'></i>"
     tag:
       top_topics: "Die 200 Top-Themen"
@@ -143,7 +143,18 @@ de:
       show_less: "Weniger >>"
       apply_filter: "Benutze den Themen Filter"
       within: " in der Kategorie: "
-      profiles_in_category: "Wir haben %{count} Speakerinnen in der Kategorie"
+      profiles_in_category: {
+        one: "Wir haben eine Speakerin in der Kategorie",
+        other: "Wir haben %{count} Speakerinnen in der Kategorie"
+      }
+      profiles_in_category_vorarlberg: {
+        one: "Wir haben eine Expertin in der Kategorie",
+        other: "Wir haben %{count} Expertinnen in der Kategorie"
+      }
+      profiles_in_category_ooe: {
+        one: "Wir haben eine Expertin in der Kategorie",
+        other: "Wir haben %{count} Expertinnen in der Kategorie"
+      }
       back_to_filters: "Zurück zum Filter"
     new:
       new_profile: "Neues Profil"
@@ -158,3 +169,5 @@ de:
     choose_category: "Wähle eine Kategorie:"
     clear_link: "X Auswahl entfernen"
     choose_button: "Speakerinnen mit diesen Themen"
+    choose_button_vorarlberg: "Expertinnen mit diesen Themen"
+    choose_button_ooe: "Expertinnen mit diesen Themen"
