@@ -63,11 +63,11 @@ de:
       get_inspired: "Get inspired!"
       get_inspired_text: "Hier findest du %{count_profiles} Speakerinnen für %{count_topics} Themen"
       welcome_title: "Speakerinnen"
-      welcome_title_vorarlberg: "Herzlich willkommen."
-      welcome_title_ooe: "Herzlich willkommen."
+      welcome_title_vorarlberg: "Herzlich willkommen!"
+      welcome_title_ooe: "Herzlich willkommen!"
       welcome_text: "Willkommen an Bord! Hier findest du unsere Neuzugänge"
-      welcome_text_vorarlberg: "Unsere Neuzugänge aus Vorarlberg:"
-      welcome_text_ooe: "Unsere Neuzugänge aus Oberösterreich:"
+      welcome_text_vorarlberg: "Hier findest du unsere Neuzugänge"
+      welcome_text_ooe: "Unsere Neuzugänge aus Oberösterreich"
       intro_title_vorarlberg: "Wir machen Expertinnen sichtbar."
       intro_text_vorarlberg: |
         <p>

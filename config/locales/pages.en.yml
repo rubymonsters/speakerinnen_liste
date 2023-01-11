@@ -58,11 +58,11 @@ en:
       get_inspired: "Get inspired!"
       get_inspired_text: "Here you can find %{count_profiles} women speakers in %{count_topics} topics"
       welcome_title: "Speakerinnen"
-      welcome_title_vorarlberg: "Welcome."
-      welcome_title_ooe: "Welcome."
+      welcome_title_vorarlberg: "Welcome!"
+      welcome_title_ooe: "Welcome!"
       welcome_text: "Welcome aboard! Here you can find our latest registrations"
-      welcome_text_vorarlberg: "Our newcomers from Vorarlberg:"
-      welcome_text_ooe: "Our newcomers from Upper Austria:"
+      welcome_text_vorarlberg: "Here you can find our latest registrations."
+      welcome_text_ooe: "Our newcomers from Upper Austria"
       intro_title_vorarlberg: "We make female experts visible."
       intro_text_vorarlberg: |
         <p>
