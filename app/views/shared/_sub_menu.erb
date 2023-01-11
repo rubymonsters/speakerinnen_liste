@@ -2,29 +2,16 @@
 
 <div class="col">
   <div class="card bg--white-trans">
-    <% if current_region.nil? %>
-      <div class="card-header">
-      <h1 class="action_icon"><i class="fa fa-star-o"></i></h1>
-        <h1 class="card-title text-left mb-0"><%=t(:sub_menu_categories_title, scope: 'pages.home')%></h1>
-      </div>
-      <div class="card-body">
-        <p class="h5 card-text"><%= t(:sub_menu_categories_text, scope: 'pages.home') %></p>
-      </div>
-      <div class="card-body bottom">
-        <%=link_to t(:sub_menu_categories_link_text, scope: 'pages.home').html_safe, root_path + "#categories_anchor" %>
-      </div>
-    <% else %>
-      <div class="card-header">
-      <h1 class="action_icon"><i class="fa fa-star-o"></i></h1>
-        <h1 class="card-title text-left mb-0"><%=t(:sub_menu_categories_title_vab, scope: 'pages.home')%></h1>
-      </div>
-      <div class="card-body">
-        <p class="h5 card-text"><%= t(:sub_menu_categories_text_vab, scope: 'pages.home') %></p>
-      </div>
-      <div class="card-body bottom">
-        <%=link_to t(:sub_menu_categories_link_text, scope: 'pages.home').html_safe, root_path + "#categories_anchor" %>
-      </div>
-    <% end %>
+    <div class="card-header">
+    <h1 class="action_icon"><i class="fa fa-star-o"></i></h1>
+      <h1 class="card-title text-left mb-0"><%= t(:"sub_menu_left_title#{'_' + current_region.to_s if current_region}", scope: 'pages.home')%></h1>
+    </div>
+    <div class="card-body">
+      <p class="h5 card-text"><%= t(:"sub_menu_left_text#{'_' + current_region.to_s if current_region}", scope: 'pages.home') %></p>
+    </div>
+    <div class="card-body bottom">
+      <%= t(:"sub_menu_left_link#{'_' + current_region.to_s if current_region}", scope: 'pages.home').html_safe %>
+    </div>
   </div>
 </div>
 
@@ -32,29 +19,16 @@
 
 <div class="col">
   <div class="card bg--white-trans">
-    <% if current_region.nil? %>
-      <div class="card-header">
-        <h1 class="action_icon"><i class="fa fa-pencil"></i></h1>
-        <h1 class="card-title text-left mb-0"><%=t(:sub_menu_blog_title, scope: 'pages.home')%></h1>
-      </div>
-      <div class="card-body">
-        <p class="h5 card-text"><%= t(:sub_menu_blog_text, scope: 'pages.home').html_safe %></p>
-      </div>
-      <div class="card-body bottom">
-        <%= link_to t(:sub_menu_blog_link_text, scope: 'pages.home').html_safe, "https://blog.speakerinnen.org/", target: '_blank' %>
-      </div>
-    <% else %>
-      <div class="card-header">
-        <h1 class="action_icon"><i class="fa fa-pencil"></i></h1>
-        <h1 class="card-title text-left mb-0"><%=t(:sub_menu_all_title_vab, scope: 'pages.home')%></h1>
-      </div>
-      <div class="card-body">
-        <p class="h5 card-text"><%= t(:sub_menu_all_text_vab, scope: 'pages.home').html_safe %></p>
-      </div>
-      <div class="card-body bottom">
-        <%= link_to t(:sub_menu_blog_link_text, scope: 'pages.home').html_safe, profiles_path(:anchor => "speakers_anchor") %>
-      </div>
-    <% end %>
+    <div class="card-header">
+      <h1 class="action_icon"><i class="fa fa-pencil"></i></h1>
+      <h1 class="card-title text-left mb-0"><%= t(:"sub_menu_middle_title#{'_' + current_region.to_s if current_region}", scope: 'pages.home')%></h1>
+    </div>
+    <div class="card-body">
+      <p class="h5 card-text"><%= t(:"sub_menu_middle_text#{'_' + current_region.to_s if current_region}", scope: 'pages.home') %></p>
+    </div>
+    <div class="card-body bottom">
+      <%= t(:"sub_menu_middle_link#{'_' + current_region.to_s if current_region}", scope: 'pages.home').html_safe %>
+    </div>
   </div>
 </div>
 
@@ -62,28 +36,15 @@
 
 <div class="col">
   <div class="card bg--white-trans">
-    <% if current_region.nil? %>
-      <div class="card-header">
-        <h1 class="action_icon"><i class="fa fa-comment-o"></i></h1>
-        <h1 class="card-title text-left mb-0"><%=t(:sub_menu_fifty_percent_title, scope: 'pages.home')%></h1>
-      </div>
-      <div class="card-body">
-        <p class="h5 card-text"><%= t(:sub_menu_fifty_percent_text, scope: 'pages.home') %></p>
-      </div>
-      <div class="card-body bottom">
-        <%= link_to t(:sub_menu_fifty_percent_link_text, scope: 'pages.home').html_safe, "https://50prozent.speakerinnen.org/" %>
-      </div>
-    <% else %>
-      <div class="card-header">
-        <h1 class="action_icon"><i class="fa fa-comment-o"></i></h1>
-        <h1 class="card-title text-left mb-0"><%=t(:sub_menu_about_us_title_vab, scope: 'pages.home')%></h1>
-      </div>
-      <div class="card-body">
-        <p class="h5 card-text"><%= t(:sub_menu_about_us_text_vab, scope: 'pages.home') %></p>
-      </div>
-      <div class="card-body bottom">
-        <%= link_to t(:sub_menu_about_us_link_text, scope: 'pages.home').html_safe, about_vorarlberg_path %>
-      </div>
-    <% end %>
+    <div class="card-header">
+      <h1 class="action_icon"><i class="fa fa-comment-o"></i></h1>
+      <h1 class="card-title text-left mb-0"><%= t(:"sub_menu_right_title#{'_' + current_region.to_s if current_region}", scope: 'pages.home')%></h1>
+    </div>
+    <div class="card-body">
+      <p class="h5 card-text"><%= t(:"sub_menu_right_text#{'_' + current_region.to_s if current_region}", scope: 'pages.home') %></p>
+    </div>
+    <div class="card-body bottom">
+      <%= t(:"sub_menu_right_link#{'_' + current_region.to_s if current_region}", scope: 'pages.home').html_safe %>
+    </div>
   </div>
 </div>
