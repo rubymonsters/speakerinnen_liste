@@ -1,10 +1,12 @@
-<%# Git Inspired %>
+<%# Get Inspired %>
 
 <div class="col">
   <div class="card bg--white-trans">
     <% if current_region.nil? %>
       <div class="card-header">
-      <h1 class="action_icon"><i class="fa fa-star-o"></i></h1>
+        <h1 class="action_icon pt-2">
+          <%= bootstrap_icon "star", width: 70, height: 70, fill: "#43E89C" %>
+        </h1>
         <h1 class="card-title text-left mb-0"><%=t(:sub_menu_categories_title, scope: 'pages.home')%></h1>
       </div>
       <div class="card-body">
@@ -15,7 +17,9 @@
       </div>
     <% else %>
       <div class="card-header">
-      <h1 class="action_icon"><i class="fa fa-star-o"></i></h1>
+        <h1 class="action_icon pt-2">
+          <%= bootstrap_icon "star", width: 70, height: 70, fill: "#43E89C" %>
+        </h1>
         <h1 class="card-title text-left mb-0"><%=t(:sub_menu_categories_title_vab, scope: 'pages.home')%></h1>
       </div>
       <div class="card-body">
@@ -34,7 +38,9 @@
   <div class="card bg--white-trans">
     <% if current_region.nil? %>
       <div class="card-header">
-        <h1 class="action_icon"><i class="fa fa-pencil"></i></h1>
+        <h1 class="action_icon pt-2">
+          <%= bootstrap_icon "pencil", width: 70, height: 70, fill: "#43E89C" %>
+        </h1>
         <h1 class="card-title text-left mb-0"><%=t(:sub_menu_blog_title, scope: 'pages.home')%></h1>
       </div>
       <div class="card-body">
@@ -45,7 +51,9 @@
       </div>
     <% else %>
       <div class="card-header">
-        <h1 class="action_icon"><i class="fa fa-pencil"></i></h1>
+        <h1 class="action_icon pt-2">
+          <%= bootstrap_icon "pencil", width: 70, height: 70, fill: "#43E89C" %>
+        </h1>
         <h1 class="card-title text-left mb-0"><%=t(:sub_menu_all_title_vab, scope: 'pages.home')%></h1>
       </div>
       <div class="card-body">
@@ -64,7 +72,9 @@
   <div class="card bg--white-trans">
     <% if current_region.nil? %>
       <div class="card-header">
-        <h1 class="action_icon"><i class="fa fa-comment-o"></i></h1>
+        <h1 class="action_icon pt-2">
+          <%= bootstrap_icon "chat", width: 70, height: 70, fill: "#43E89C" %>
+        </h1>
         <h1 class="card-title text-left mb-0"><%=t(:sub_menu_fifty_percent_title, scope: 'pages.home')%></h1>
       </div>
       <div class="card-body">
@@ -75,7 +85,9 @@
       </div>
     <% else %>
       <div class="card-header">
-        <h1 class="action_icon"><i class="fa fa-comment-o"></i></h1>
+        <h1 class="action_icon pt-2">
+          <%= bootstrap_icon "chat", width: 70, height: 70, fill: "#43E89C" %>
+        </h1>
         <h1 class="card-title text-left mb-0"><%=t(:sub_menu_about_us_title_vab, scope: 'pages.home')%></h1>
       </div>
       <div class="card-body">
