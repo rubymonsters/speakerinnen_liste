@@ -6,6 +6,11 @@
   background-size: cover;
 }
 
+.ooe .home #startpage__start-teaser {
+  background: image-url('header_ooe.jpg') no-repeat top center;
+  background-size: cover;
+}
+
 .startpage__photo-bar {
   min-height: 800px;
   width: 100%;
@@ -27,22 +32,23 @@
   padding-bottom: 100px;
 }
 
-.home .intro-text {
+.home .intro-subdomain {
+  padding-top: 4em;
   background-color: #343A40;
   width: 100%;
 }
 
-.home .intro-text h1 {
+.home .intro-subdomain h1 {
    color: white;
 }
 
-.home .intro-text p {
+.home .intro-subdomain p {
   line-height: 1.5;
-  font-size: 1.3rem;
+  font-size: 1rem;
   color: white;
 }
 
-.home .intro-text a {
+.home .intro-subdomain a {
   text-decoration: underline;
   color: white;
 }

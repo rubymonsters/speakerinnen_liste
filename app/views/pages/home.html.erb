@@ -37,8 +37,8 @@
   <% if @is_global_speakerinnen %>
     <%= render partial: "shared/get_inspired" %>
   <% else %>
-    <div class="intro-text container">
-      <div class="row p-5 text-left">
+    <div class="intro-subdomain container">
+      <div class="row p-3 text-left">
         <h1><%= t(:"intro_title_#{current_region}", scope: 'pages.home') %></h1>
         <%= t(:"intro_text_#{current_region}", scope: 'pages.home').html_safe %>
       </div>

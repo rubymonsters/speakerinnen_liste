@@ -14,6 +14,16 @@ de:
       one: "Wir haben <b>eine</b> Speakerin gefunden zu Deiner Suche: ",
       other: "Wir haben <b>%{count}</b> Speakerinnen gefunden zu Deiner Suche: "
     }
+    result_vorarlberg: {
+      zero: "Leider haben wir keine Expertin zum Suchwort: ",
+      one: "Wir haben <b>eine</b> Expertin gefunden zu Deiner Suche: ",
+      other: "Wir haben <b>%{count}</b> Expertinnen gefunden zu Deiner Suche: "
+    }
+    result_ooe: {
+      zero: "Leider haben wir keine Expertin zum Suchwort: ",
+      one: "Wir haben <b>eine</b> Expertin gefunden zu Deiner Suche: ",
+      other: "Wir haben <b>%{count}</b> Expertinnen gefunden zu Deiner Suche: "
+    }
     more_options: "<b>Keine passende Speakerin gefunden?</b><br> Vielleicht helfen Dir diese Links weiter:"
     search_categories_html: "Du kannst auch in anderen <a href='%{root_path}/#categories_anchor'>Kategorien</a> und <a href='#tag_cloud_anchor'>Themen</a> stöbern."
     adapt_search: "Suche anpassen >>"

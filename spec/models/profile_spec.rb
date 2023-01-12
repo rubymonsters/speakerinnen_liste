@@ -135,15 +135,17 @@ describe 'profile', type: :model do
     before do
       create(:published_profile, country: 'AT', state: 'vorarlberg')
       create(:published_profile, country: 'AT', state: 'vorarlberg')
+      create(:published_profile, country: 'AT', state: 'upper_austria')
       create(:published_profile, country: 'DE', state: 'berlin')
       create(:published_profile, state: nil)
     end
 
-    it { expect(Profile.by_region('AT').count).to eq 2 }
+    it { expect(Profile.by_region('AT').count).to eq 3 }
     it { expect(Profile.by_region('DE').count).to eq 1 }
-    it { expect(Profile.by_region('vorarlberg').count).to eq 2 }
+    it { expect(Profile.by_region(:'vorarlberg').count).to eq 2 }
+    it { expect(Profile.by_region(:ooe).count).to eq 1 }
     it { expect(Profile.by_region('berlin').count).to eq 1 }
     it { expect(Profile.by_region('hamburg').count).to eq 0 }
-    it { expect(Profile.by_region(nil).count).to eq 4 }
+    it { expect(Profile.by_region(nil).count).to eq 5 }
   end
 end

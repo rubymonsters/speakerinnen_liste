@@ -8,7 +8,7 @@ de:
       burgenland: "Burgenland"
       carinthia: "Kärnten"
       lower-austria: "Niederösterreich"
-      upper-austria: "Oberösterreich"
+      upper_austria: "Oberösterreich"
       salzburg: "Salzburg"
       styria: "Steiermark"
       tyrol: "Tirol"

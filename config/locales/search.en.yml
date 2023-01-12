@@ -15,6 +15,16 @@ en:
       one: " We have found <b>a</b> speakerin matching your search: ",
       other: "We have found <b>%{count}</b> speakerinnen matching your search: "
     }
+    result_vorarlberg: {
+      zero: "Unfortuantely we have found no female expert matching your search: ",
+      one: " We have found <b>a</b> female expert matching your search: ",
+      other: "We have found <b>%{count}</b> female experts matching your search: "
+    }
+    result_ooe: {
+      zero: "Unfortuantely we have found no female expert matching your search: ",
+      one: " We have found <b>a</b> female expert matching your search: ",
+      other: "We have found <b>%{count}</b> female experts matching your search: "
+    }
     more_options: "<b>You didn't find any suitable speaker?</b><br> Maybe the following links can help you:"
     search_categories_html: "Have a look at our other <a href='%{root_path}/#categories_anchor'>categories</a> and <a href='#tag_cloud_anchor'>topics</a>."
     adapt_search: "Adapt your search >> "
