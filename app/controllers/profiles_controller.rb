@@ -101,7 +101,7 @@ class ProfilesController < ApplicationController
   end
 
   def typeahead
-    suggestions = Profile.typeahead(params[:q], region: current_region.to_s)
+    suggestions = Profile.typeahead(params[:q], region: current_region)
     suggestions_array = suggestions.map do |suggestion|
       {'text': suggestion.titleize}
     end

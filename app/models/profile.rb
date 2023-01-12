@@ -76,23 +76,13 @@ class Profile < ApplicationRecord
   }
 
   def self.typeahead(term, region: nil)
-    if region.present?
-      region = 'upper_austria' if region == 'ooe'
-      profiles =
-        Profile
-            .is_published
-            .with_attached_image
-            .includes(:taggings, :topics, :translations)
-            .where(state: region)
-            .distinct
-    else
-      profiles =
-        Profile
-            .is_published
-            .with_attached_image
-            .includes(:taggings, :topics, :translations)
-            .distinct
-    end
+    profiles =
+      Profile
+          .by_region(region)
+          .is_published
+          .with_attached_image
+          .includes(:taggings, :topics, :translations)
+          .distinct
 
     firstnames = profiles.where('firstname ILIKE ?', "%#{term}%").map(&:fullname)
     lastnames = profiles.where('lastname ILIKE ?', "%#{term}%").map(&:fullname)
