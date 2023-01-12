@@ -27,7 +27,7 @@ gem 'jquery-rails', '~> 4.4.0'
 gem 'jquery-ui-rails', '~> 6.0.1'
 gem 'mini_magick', '~> 4.9.5'
 gem 'omniauth-twitter', '~> 1.4'
-gem 'omniauth-rails_csrf_protection', '~> 1.0' 
+gem 'omniauth-rails_csrf_protection', '~> 1.0'
 gem 'pg', '~> 1.1.3'
 gem 'simple_form'
 
@@ -38,6 +38,7 @@ gem 'globalize-accessors'
 
 gem 'bootstrap', '~> 4.3.1'
 gem 'font-awesome-rails', '~> 4.7.0.3'
+gem 'bootstrap-icons-helper'
 
 gem 'friendly_id'
 

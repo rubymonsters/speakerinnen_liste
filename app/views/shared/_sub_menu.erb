@@ -1,9 +1,11 @@
-<%# Git Inspired %>
+<%# Get Inspired %>
 
 <div class="col">
   <div class="card bg--white-trans">
     <div class="card-header">
-    <h1 class="action_icon"><i class="fa fa-star-o"></i></h1>
+      <h1 class="action_icon pt-2">
+        <%= bootstrap_icon "star", width: 70, height: 70, fill: "#43E89C" %>
+       </h1>
       <h1 class="card-title text-left mb-0"><%= t(:"sub_menu_left_title#{'_' + current_region.to_s if current_region}", scope: 'pages.home')%></h1>
     </div>
     <div class="card-body">
@@ -20,7 +22,9 @@
 <div class="col">
   <div class="card bg--white-trans">
     <div class="card-header">
-      <h1 class="action_icon"><i class="fa fa-pencil"></i></h1>
+      <h1 class="action_icon pt-2">
+        <%= bootstrap_icon "pencil", width: 70, height: 70, fill: "#43E89C" %>
+      </h1>
       <h1 class="card-title text-left mb-0"><%= t(:"sub_menu_middle_title#{'_' + current_region.to_s if current_region}", scope: 'pages.home')%></h1>
     </div>
     <div class="card-body">
@@ -37,7 +41,9 @@
 <div class="col">
   <div class="card bg--white-trans">
     <div class="card-header">
-      <h1 class="action_icon"><i class="fa fa-comment-o"></i></h1>
+      <h1 class="action_icon pt-2">
+        <%= bootstrap_icon "chat", width: 70, height: 70, fill: "#43E89C" %>
+      </h1>
       <h1 class="card-title text-left mb-0"><%= t(:"sub_menu_right_title#{'_' + current_region.to_s if current_region}", scope: 'pages.home')%></h1>
     </div>
     <div class="card-body">
