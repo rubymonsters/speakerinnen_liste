@@ -55,7 +55,7 @@ class ProfilesController < ApplicationController
       tags = ActsAsTaggableOn::Tag
         .belongs_to_category(category.id)
         .with_published_profile
-        .with_regional_profile(current_region)
+        .with_regional_profile(search_region)
         .translated_in_current_language_and_not_translated(I18n.locale)
       tags = tags.belongs_to_more_than_one_profile unless current_region
       instance_variable_set("@tags_#{category.short_name}", tags).most_used(100)
@@ -101,7 +101,7 @@ class ProfilesController < ApplicationController
   end
 
   def typeahead
-    suggestions = Profile.typeahead(params[:q], region: current_region.to_s)
+    suggestions = Profile.typeahead(params[:q], region: current_region)
     suggestions_array = suggestions.map do |suggestion|
       {'text': suggestion.titleize}
     end
@@ -189,7 +189,7 @@ class ProfilesController < ApplicationController
       .includes(:taggings, :translations)
       .search(
         params[:search],
-        current_region,
+        search_region,
         params[:filter_countries],
         params[:filter_states],
         params[:filter_cities],

@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   before_action :set_locale
   before_action :set_request_host
   before_action :set_current_region
+  before_action :set_search_region
   before_action :check_cookie_consent
 
   def authenticate_admin!
@@ -36,6 +37,11 @@ class ApplicationController < ActionController::Base
     @current_region = validate_region($1.to_sym) if request.host =~ %r((.+)\.#{current_domain})
   end
 
+  def set_search_region
+    @search_region = validate_region($1.to_sym) if request.host =~ %r((.+)\.#{current_domain})
+    @search_region = :'upper_austria' if @search_region == :ooe
+  end
+
   def current_domain
     ENV['DOMAIN'] or Rails.env.development? ? 'speakerinnen.local' : 'speakerinnen.org'
   end
@@ -46,6 +52,8 @@ class ApplicationController < ActionController::Base
 
   attr_reader :current_region
   helper_method :current_region
+  attr_reader :search_region
+  helper_method :search_region
 
   private
 

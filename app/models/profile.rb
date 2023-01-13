@@ -40,6 +40,7 @@ class Profile < ApplicationRecord
   end
 
   def self.by_region(region)
+    region = :'upper_austria' if region == :ooe
   	region ? where('country = ? OR state = ?', region, region) : all
   end
 
@@ -75,22 +76,13 @@ class Profile < ApplicationRecord
   }
 
   def self.typeahead(term, region: nil)
-    if region.present?
-      profiles =
-        Profile
-            .is_published
-            .with_attached_image
-            .includes(:taggings, :topics, :translations)
-            .where(state: region)
-            .distinct
-    else
-      profiles =
-        Profile
-            .is_published
-            .with_attached_image
-            .includes(:taggings, :topics, :translations)
-            .distinct
-    end
+    profiles =
+      Profile
+          .by_region(region)
+          .is_published
+          .with_attached_image
+          .includes(:taggings, :topics, :translations)
+          .distinct
 
     firstnames = profiles.where('firstname ILIKE ?', "%#{term}%").map(&:fullname)
     lastnames = profiles.where('lastname ILIKE ?', "%#{term}%").map(&:fullname)
