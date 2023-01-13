@@ -22,13 +22,15 @@ RSpec.describe 'Navigation', type: :system do
           expect(page).to have_css('#header__logo')
           expect(page).to have_link(I18n.t('layouts.application.signup'))
           expect(page).to have_link(I18n.t('layouts.application.login'))
-          expect(page).to have_link('DE')
-          expect(page).to have_link('EN')
+          expect(page).to have_link('EN') if language == 'de'
+          expect(page).to have_link('DE') if language == 'en'
+          expect(page).to have_no_link('DE') if language == 'de'
+          expect(page).to have_no_link('EN') if language == 'en'
           expect(page).to have_no_link('Admin')
         end
 
         it 'startpage has content' do
-          expect(page).to have_css('#startpage__start-teaser')
+          expect(page).to have_css('.startpage__photo-bar')
           expect(page).to have_css('#startpage-categories__list')
           expect(page).to have_css('#startpage-newest_speaker')
           expect(page).to have_css('.profile-box', text: published_profile.main_topic)
@@ -98,7 +100,7 @@ RSpec.describe 'Navigation', type: :system do
             expect(page).to have_css('#header__logo')
             expect(page).to have_link(I18n.t(:my_profile, scope: 'layouts.application'))
             expect(page).to have_link(I18n.t('layouts.application.logout'))
-            expect(page).to have_link('DE')
+            # print page.html
             expect(page).to_not have_link('Admin')
           end
         end

@@ -14,7 +14,7 @@ describe 'Changing the language' do
     click_on(class: 'choose-en')
 
     expect(page).to have_link('Log in')
-    expect(page).to have_button('Find your speakerin')
+    expect(page).to have_button('Find your speaker')
   end
 
   it 'stays on profile page' do
