@@ -41,10 +41,10 @@
         </li>
         <% if profile_signed_in? %>
           <li class="nav-item active pt-3 pr-5">
-            <%= link_to(t(:my_profile, scope: 'layouts.application'), profile_path(current_profile), class: "")%>
+            <%= link_to(t(:my_profile, scope: 'layouts.application'), profile_path(current_profile), class: "dropdown-item")%>
           </li>
           <li class="nav-item active pt-3">
-            <%= link_to(t(:logout, scope: 'layouts.application'), destroy_profile_session_path, method: :delete, class: "") %>
+            <%= link_to(t(:logout, scope: 'layouts.application'), destroy_profile_session_path, method: :delete, class: "dropdown-item") %>
           </li>
         <% else %>
           <li class="nav-item active pt-3">
@@ -57,7 +57,7 @@
 
         <% if admin?(current_profile) %>
           <li class="nav-item active pt-3 pl-5">
-            <%= link_to 'Admin', admin_root_path, class: "" %>
+            <%= link_to 'Admin', admin_root_path, class: "dropdown-item" %>
           </li>
         <% end %>
       </ul>
