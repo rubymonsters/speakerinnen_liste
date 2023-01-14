@@ -10,10 +10,12 @@ html {
 
 a, .link, #expander {
   cursor: pointer;
-  text-decoration: none;
+  text-decoration: underline;
   color: $font-color;
+  padding: 0.2em;
 
   &:hover {
+    background-color: $dropdown-hover-background;
     color: $link-color;
     text-decoration: none;
   }
@@ -29,7 +31,7 @@ a.button_link {
 
 .home {
   a, .link, #expander {
-    text-decoration: none;
+    // text-decoration: none;
     &:hover {
     }
   }
@@ -160,7 +162,7 @@ h1 {
   color: $white;
 
   a, .link, #expander {
-    text-decoration: none;
+    // text-decoration: none;
     color: $white;
   }
 }
@@ -171,11 +173,11 @@ h1 {
 
 .single-profile, #footer {
   a {
-    text-decoration: none;
+    // text-decoration: none;
     cursor: pointer;
     padding: 0.2em;
     font-weight: bold;
-    color: $link-color;
+    // color: $link-color;
     &:hover {
       background-color: $dropdown-hover-background;
       text-decoration: none;
@@ -364,7 +366,7 @@ textarea, input {
     }
 
     a {
-      color: $font-color;
+      // color: $font-color;
     }
 
     .card-body.bottom {

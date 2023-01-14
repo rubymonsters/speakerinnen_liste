@@ -21,9 +21,9 @@ module ProfilesHelper
 
   def profile_image_link(profile)
     if profile.image.attached?
-      link_to(image_tag(profile.image.variant(combine_options: {resize: '600x600^', extent: '600x600', gravity: 'Center'}), class: 'photo--grey'), profile)
+      link_to(image_tag(profile.image.variant(combine_options: {resize: '600x600^', extent: '600x600', gravity: 'Center'}), class: 'photo--grey'), profile, class: "p-0")
     else
-      link_to(image_tag('avatar.jpg', alt: 'avatar', class: 'photo--grey card-img-top'), profile, class: "noHover")
+      link_to(image_tag('avatar.jpg', alt: 'avatar', class: 'photo--grey card-img-top'), profile, class: "p-0")
     end
   end
 
