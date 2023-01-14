@@ -95,7 +95,7 @@
   <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name),
     html: { method: :put }) do |f| %>
 
-    <div class="p-3 my-5 alert_danger">
+    <div class="p-3 my-5 alert-warning">
 
       <p><b><%= t(:delete_account, scope: "devise.registrations.edit") %></b></p>
       <p><%= t(:unhappy, scope: "devise.registrations.edit") %></p>
