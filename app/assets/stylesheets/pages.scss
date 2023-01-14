@@ -165,38 +165,43 @@
 
 .category_name {
   a:hover {
-  text-decoration: underline;
-  color: white;
-}
-}
-
-@include media-breakpoint-down(md) {
-  .child {
-    font-size: 1.8rem;
-    width: 490px;
-  }
-  .category_name {
-    width: 400px;
+    text-decoration: underline;
+    color: white;
   }
 }
 
-@include media-breakpoint-down(sm) {
-  .child {
-    font-size: 1.2rem;
-    top: 20px;
-    left: 0px;
-    width: 310px;
+@include media-breakpoint-up(xl) {
+  .category_count_short {
+    display: none;
   }
-  .category_name {
-    width: 260px;
-    left: 0px;
-    font-size: 1.0rem;
+}
+
+@include media-breakpoint-down(lg) {
+  .child {
+    .h4 {
+      font-size: 1.2rem;
+    }
   }
   .category_count {
     display: none;
   }
 }
 
+@include media-breakpoint-down(md) {
+  .child {
+    top: 28px;
+    left: 0px;
+    width: 100%;
+
+    .h4 {
+      font-size: 0.8rem;
+    }
+  }
+  .category_name {
+    width: 100%;
+    left: 0px;
+  }
+}
 
 /* footer */
 .footer__link {
