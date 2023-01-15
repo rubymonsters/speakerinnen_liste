@@ -40,7 +40,7 @@ class Profile < ApplicationRecord
   end
 
   def self.by_region(region)
-    region = :'upper_austria' if region == :ooe
+    region = :'upper-austria' if region == :ooe
   	region ? where('country = ? OR state = ?', region, region) : all
   end
 
@@ -104,7 +104,7 @@ class Profile < ApplicationRecord
   end
 
   def region
-    [country, state].join(' ').downcase
+    state
   end
 
   def name_or_email
