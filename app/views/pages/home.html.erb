@@ -8,13 +8,13 @@
     <div class="container">
       <%# Headline %>
       <div class="row hero-headline" >
-        <div class="col-5">
+        <div class="col-sm-5">
           <h1><%= t(:"heading#{'_' + current_region.to_s if current_region}", scope: 'pages.home') %></h1>
         </div>
       </div>
       <%# subtitle %>
       <div class="row">
-        <div class="col-5">
+        <div class="col-sm-5">
           <h2 class="startpage-subtitle pb-3">
             <%= t(:"tagline#{'_' + current_region.to_s if current_region}", scope: 'pages.home').html_safe %>
           </h2>

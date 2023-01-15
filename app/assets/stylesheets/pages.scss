@@ -18,6 +18,15 @@
   position: relative;
 
   /* multi-column small screens - show only button */
+  @media all and (max-width: 576px) {
+    padding-top: 10px;
+
+    .btn-primary {
+      margin-top: 10px;
+    }
+  }
+
+  /* everywhere but phonesize, bottom-align header text */
   @media all and (min-width: 576px) {
     align-items: end;
   }
