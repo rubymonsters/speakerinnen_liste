@@ -29,6 +29,18 @@ a.button_link {
   }
 }
 
+.home {
+
+  .start-teaser .container {
+    display: flex;
+    flex-flow: column;
+
+    .align-items-end {
+      margin-top: auto;
+    }
+  }
+}
+
 .home .container.divider {
   padding-top: 4em;
   padding-bottom: 5em;
@@ -187,15 +199,6 @@ h1 {
   color: $speakerinnen-green;
 }
 
-.hero-headline {
-  margin-top: 17em;
-
-  h1 {
-    padding: 15px;
-    background-color: $very-dark-grey;
-  }
-}
-
 .no-click {
   pointer-events: none;
 }
@@ -265,8 +268,11 @@ textarea, input {
   display: block !important;
 }
 
+.home-search .btn-primary {
+  width: 100%
+}
+
 .startpage-subtitle {
-  margin-top: 1em;
   padding: 0em;
 }
 
