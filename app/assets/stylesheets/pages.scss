@@ -4,11 +4,21 @@
 #startpage__start-teaser_0 {
   background: image-url('header_0.png') no-repeat top center;
   background-size: cover;
+
+  @media (max-width: 576px) {
+    background: image-url('header_0.png') no-repeat top 100px center;
+    background-size: cover;
+  }
 }
 
 .ooe .home #startpage__start-teaser {
   background: image-url('header_ooe.jpg') no-repeat top center;
   background-size: cover;
+
+  @media (max-width: 576px) {
+    background: image-url('header_0.png') no-repeat top 100px center;
+    background-size: cover;
+  }
 }
 
 .startpage__photo-bar {
