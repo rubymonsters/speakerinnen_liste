@@ -1,9 +1,10 @@
 de:
   medialinks:
     edit: "Bearbeite Referenz"
-    new: "Referenz hinzufügen"
+    new: "<i class='fa fa-plus-circle'></i> Referenz hinzufügen"
     show: "Referenz anzeigen"
     delete: "Referenz löschen"
+    save: "Referenz speichern"
     index: "Bisherige Vorträge"
     medialink_description: "Hier ist Platz für Beispiele von bereits gehaltenen Vorträgen, Podiumsdiskussionen, Fernsehauftritten uvm.<br>
     Am besten nicht zu viele - aber auch nicht zu wenige - möglichst verschiedene Referenzen:

@@ -1,7 +1,6 @@
 <div class="container py-5">
-  <%= link_to(t(:show, scope: 'profiles.edit'), @profile, class:"") %>
 
-  <h1 class="my-5"><%= t(:new, scope: 'medialinks')%></h1>
+  <h1 class="my-5"><%= t(:new, scope: 'medialinks').html_safe %></h1>
 
   <%= simple_form_for [@profile, @medialink], html: {class: 'p-3 bg--white'} do |f| %>
 
@@ -17,7 +16,8 @@
       @medialink.language), include_blank: "..." %>
     <% end %>
 
-    <%= f.button :submit, t(:new, scope: 'medialinks'), class: 'btn btn-primary mt-3' %>
+    <%= f.button :submit, t(:save, scope: 'medialinks').html_safe, class: 'btn btn-primary mt-3' %>
+    <%= link_to(t(:show, scope: 'profiles.edit').html_safe, @profile, class: 'btn btn-outline-primary mt-3' ) %>
 
   <% end %>
 </div>

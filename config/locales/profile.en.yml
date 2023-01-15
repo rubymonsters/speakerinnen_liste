@@ -113,7 +113,7 @@ en:
     medialinks:
       edit: "Edit previous talks"
     edit:
-      show: "<< Back to the profile"
+      show: "X Cancel"
     index:
       all_profiles: "All female experts"
       title: "All women speakers"

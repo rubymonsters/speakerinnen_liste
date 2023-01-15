@@ -3,6 +3,7 @@ en:
     edit: "Edit Previous Talk"
     new: "Add Previous Talk"
     delete: "Delete previous talk"
+    save: "Save talk"
     index: "Previous Talks"
     show: "Show Previous Talks"
     medialink_description: "Here you can add examples of your previous talks, panel discussions, TV shows or similar talking situations.

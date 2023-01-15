@@ -112,7 +112,7 @@ de:
     medialinks:
       edit: "Referenzen bearbeiten"
     edit:
-      show: "<< Zurück zum Profil"
+      show: "X Abbrechen"
     index:
       all_profiles: "Alle Expertinnen"
       title: "Speakerinnen"
