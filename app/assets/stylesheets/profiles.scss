@@ -104,7 +104,7 @@
   }
 
   .border {
-    padding: 2rem;
+    // padding: 2rem;
     overflow: hidden;
     position: absolute;
     top: 0;
@@ -135,7 +135,7 @@
 
     .profile-subtitle {
       overflow: hidden;
-      max-height: 3rem;
+      // max-height: 3rem;
       padding: 0rem;
     }
 
@@ -147,9 +147,13 @@
     .top {
       display: flex;
       align-items: flex-end;
+      padding-left: 1rem;
+      padding-right: 1rem;
     }
 
     .middle {
+      padding-left: 1rem;
+      padding-right: 1rem;
       overflow: hidden;
     }
 
@@ -169,20 +173,27 @@
     /* multi-column medium screens - don't show middle part */
     @media all and (min-width: 1200px) and (max-width: 1423px) {
       .top {
-        margin-bottom: 0.8rem;
+        // margin-bottom: 0.8rem;
       }
       .middle {
-        display: none;
+        h4 {
+          font-size: 1.2rem; // bootstrap default
+        }
       }
     }
 
     /* multi-column small screens - show only button */
     @media all and (min-width: 576px) and (max-width: 1199px) {
       .top {
-        display: none;
+        h2 {
+          font-size: 1.5rem; // bootstrap default
+        }
+        // display: none;
       }
       .middle {
-        display: none;
+        h4 {
+          font-size: 1.1rem; // bootstrap default
+        }
       }
       a.btn {
         max-height: none;
