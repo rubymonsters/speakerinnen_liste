@@ -21,11 +21,6 @@ a, .link, #expander {
   }
 }
 
-.submenu, a {
-  padding: 0;
-  text-decoration: none;
-}
-
 a.button_link {
   text-decoration: none;
   &:hover {
@@ -358,13 +353,13 @@ textarea, input {
     }
 
     a {
-      // color: $font-color;
+      padding: 0;
+      text-decoration: none;
     }
 
     .card-body.bottom {
       display: flex;
       align-items: end;
     }
-
   }
 }
