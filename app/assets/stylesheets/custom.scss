@@ -21,6 +21,11 @@ a, .link, #expander {
   }
 }
 
+.submenu, a {
+  padding: 0;
+  text-decoration: none;
+}
+
 a.button_link {
   text-decoration: none;
   &:hover {
@@ -28,15 +33,6 @@ a.button_link {
     text-decoration: none;
   }
 }
-
-.home {
-  a, .link, #expander {
-    // text-decoration: none;
-    &:hover {
-    }
-  }
-}
-
 
 .home .container.divider {
   padding-top: 4em;
