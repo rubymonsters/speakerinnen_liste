@@ -2,10 +2,9 @@
     <div class="col-4">
       <label class="sr-only" for="inlineFormInputSearch"><%=t(:search_placeholder, scope: 'pages.home')%></label>
       <%= search_field_tag('search', params[:search], id: "home_search", class: 'form-control typeahead ',
-            type: 'text') %>
+            type: 'text', placeholder: t(:search_placeholder, scope: 'pages.home')) %>
     </div>
     <div class="col-2">
       <%= submit_tag(t(:"search_speaker#{'_' + current_region.to_s if current_region}", scope: 'pages.home'), class: 'btn btn-primary' ) %>
     </div>
   <% end %>
-<label><%=t(:search_placeholder, scope: 'pages.home')%></label>
