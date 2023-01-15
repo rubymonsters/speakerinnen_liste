@@ -29,6 +29,18 @@ a.button_link {
   }
 }
 
+.home {
+
+  .start-teaser .container {
+    display: flex;
+    flex-flow: column;
+
+    .align-items-end {
+      margin-top: auto;
+    }
+  }
+}
+
 .home .container.divider {
   padding-top: 4em;
   padding-bottom: 5em;

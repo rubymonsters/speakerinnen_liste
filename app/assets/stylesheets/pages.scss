@@ -16,7 +16,11 @@
   width: 100%;
   display:flex;
   position: relative;
-  align-items: end;
+
+  /* multi-column small screens - show only button */
+  @media all and (min-width: 576px) {
+    align-items: end;
+  }
 }
 
 .layer {
