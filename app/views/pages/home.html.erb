@@ -12,8 +12,6 @@
           <h1><%= t(:"heading#{'_' + current_region.to_s if current_region}", scope: 'pages.home') %></h1>
         </div>
       </div>
-      <%# search %>
-      <%= render partial: 'shared/search_form' %>
       <%# subtitle %>
       <div class="row">
         <div class="col-5">
@@ -22,6 +20,8 @@
           </h2>
         </div>
       </div>
+      <%# search %>
+      <%= render partial: 'shared/search_form' %>
       <% if @is_global_speakerinnen %>
         <div class="row align-items-end">
           <div class="col align-self-end">
