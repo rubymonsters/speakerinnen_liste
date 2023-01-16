@@ -22,13 +22,16 @@
       </div>
       <%# search %>
       <%= render partial: 'shared/search_form' %>
-      <% if @is_global_speakerinnen %>
-        <div class="row align-items-end">
-          <div class="col align-self-end">
+      <%# copyright %>
+      <div class="row align-items-end">
+        <div class="col align-self-end">
+          <% if current_region == :ooe %>
+            <p class="copyright">Copyright: iStock-1395588195_<a href="https://www.kompass-ooe.at" target="_blank">KOMPASS</a></p>
+          <% else %>
             <p class="copyright">Copyright: Malwine - <a href="https://malweene.com/" target="_blank">malweene.com</a></p>
-          </div>
+          <% end %>
         </div>
-      <% end %>
+      </div>
     </div>
   </section>
 
