@@ -16,7 +16,7 @@
   background-size: cover;
 
   @media (max-width: 576px) {
-    background: image-url('header_0.png') no-repeat top 100px center;
+    background: image-url('header_ooe.jpg') no-repeat top 100px center;
     background-size: cover;
   }
 }
@@ -62,8 +62,8 @@
 }
 
 .home .intro-subdomain {
-  padding-top: 4em;
-  background-color: #343A40;
+  padding-top: 3em;
+  background-color: #221F20;
   width: 100%;
 }
 
@@ -142,6 +142,11 @@
 
 .copyright {
   text-align: right;
+}
+
+.copyright-ooe {
+  text-align: right;
+  color: white;
 }
 
 //categories filter

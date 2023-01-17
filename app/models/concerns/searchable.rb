@@ -225,12 +225,12 @@ module Searchable
                                 standard: { type: 'text', analyzer: 'standard', 'norms': false }}
         indexes :cities,        fields: { unmod: { type: 'keyword', 'norms': false },
                                 standard: { type: 'text', analyzer: 'cities_analyzer', 'norms':  false }}
-        indexes :state,         fields: { keyword: { type: 'keyword', 'norms': false },
-                                standard: { type: 'text', analyzer: 'standard', 'norms': false }}
+        indexes :state,         analyzer: 'keyword',
+                                fields: { keyword: { type: 'keyword', 'norms': false }}
         indexes :country,       fields: { keyword: { type: 'keyword', 'norms': false },
                                 standard: { type: 'text', analyzer: 'standard', 'norms': false }}
-        indexes :region,        fields: { keyword: { type: 'keyword', 'norms': false },
-                                standard: { type: 'text', analyzer: 'standard', 'norms': false }}
+        indexes :region,        analyzer: 'keyword',
+                                fields: { keyword: { type: 'keyword', 'norms': false }}
         indexes :medialinks, type: 'nested' do
           indexes :title, 'norms': false
           indexes :description, 'norms': false

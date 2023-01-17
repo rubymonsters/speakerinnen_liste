@@ -39,7 +39,7 @@ class ApplicationController < ActionController::Base
 
   def set_search_region
     @search_region = validate_region($1.to_sym) if request.host =~ %r((.+)\.#{current_domain})
-    @search_region = :'upper_austria' if @search_region == :ooe
+    @search_region = :'upper-austria' if @search_region == :ooe
   end
 
   def current_domain
