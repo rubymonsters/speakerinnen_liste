@@ -1,13 +1,18 @@
 // header
 
 /* startpage */
-#startpage__start-teaser_0 {
-  background: image-url('header_0.png') no-repeat top center;
-  background-size: cover;
 
-  @media (max-width: 576px) {
-    background: image-url('header_0.png') no-repeat top 100px center;
+$header_nums: 0, 1, 2, 3, 4;
+
+@each $header_num in $header_nums {
+  #startpage__start-teaser_#{$header_num} {
+    background: image-url("header_#{$header_num}.png") no-repeat top center;
     background-size: cover;
+
+    @media (max-width: 576px) {
+      background: image-url("header_#{$header_num}.png") no-repeat top 100px center;
+      background-size: cover;
+    }
   }
 }
 
