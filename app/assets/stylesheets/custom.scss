@@ -161,7 +161,7 @@ h1 {
   color: $white;
 
   a, .link, #expander {
-    // text-decoration: none;
+    text-decoration: none;
     color: $white;
   }
 }
@@ -172,7 +172,7 @@ h1 {
 
 .single-profile, #footer {
   a {
-    // text-decoration: none;
+    text-decoration: none;
     cursor: pointer;
     padding: 0.2em;
     font-weight: bold;
