@@ -50,7 +50,7 @@
 
   <%# Hot Topic%>
 
-  <a hidden id="features"></a>
+  <a id="features" class="anchor"></a>
   <% if @has_hot_topic %>
     <% @features.each do |feature| %>
       <div class="container py-5 feature bg--light-grey">
@@ -65,7 +65,7 @@
 
   <%# Hot New Speakers %>
 
-  <a hidden id="newest_speaker_achor"></a>
+  <a id="newest_speaker_achor" class="anchor"></a>
   <div id="startpage-newest_speaker" class="container py-5 bg--light-grey">
     <h1 class=""><%= t(:"welcome_title#{'_' + current_region.to_s if current_region}", scope: 'pages.home') %></h1>
     <h3 class=""><%= t(:"welcome_text#{'_' + current_region.to_s if current_region}", scope: 'pages.home') %></h3>
@@ -77,7 +77,7 @@
 
   <%# Categories %>
 
-  <a hidden id="categories_anchor"></a>
+  <a id="categories_anchor" class="anchor"></a>
   <div class="container bg--light-grey py-5">
     <h1 class=""><%= t(:"category_search_title#{'_' + current_region.to_s if current_region}", scope: 'pages.home') %></h1>
     <h3 class=""><%= t(:"category_search_text#{'_' + current_region.to_s if current_region}", scope: 'pages.home') %></h3>

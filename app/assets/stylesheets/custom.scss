@@ -21,6 +21,10 @@ a, .link, #expander {
   }
 }
 
+a.anchor {
+  padding: 0;
+}
+
 a.button_link {
   text-decoration: none;
   &:hover {
