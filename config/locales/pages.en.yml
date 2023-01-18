@@ -20,8 +20,8 @@ en:
       sub_menu_rigth_text_vorarlberg: "Learn more about us and this project."
       sub_menu_rigth_text_ooe: "Learn more about us and this project."
       sub_menu_right_link: "<a href='https://50prozent.speakerinnen.org/', target='_blank'> >> Go to Fifty Percent</a>"
-      sub_menu_right_link_vorarlberg: "<a href='https://vorarlberg.speakerinnen.org/en/about_vorarlberg', target='_blank'> >> About us</a>"
-      sub_menu_right_link_ooe: "<a href='https://ooe.speakerinnen.org/en/about_ooe', target='_blank'> >> About us</a>"
+      sub_menu_right_link_vorarlberg: "<a href='en/about_vorarlberg', target='_blank'> >> About us</a>"
+      sub_menu_right_link_ooe: "<a href='en/about_ooe', target='_blank'> >> About us</a>"
       sub_menu_middle_title: "Our blog"
       sub_menu_middle_title_vorarlberg: "Extended search"
       sub_menu_middle_title_ooe: "Extended search"
@@ -38,8 +38,8 @@ en:
       sub_menu_left_text_vorarlberg: "Make female competence visible in Vorarlberg."
       sub_menu_left_text_ooe: "Make female competence visible in Upper Austria."
       sub_menu_left_link: "<a href='#categories_anchor'> >> Go to the Category Search</a>"
-      sub_menu_left_link_vorarlberg: "<a href='https://vorarlberg.speakerinnen.org/en/profiles#speakers_anchor'> >> Go to all female experts</a>"
-      sub_menu_left_link_ooe: "<a href='https://ooe.speakerinnen.org/en/profiles#speakers_anchor'> >> Go to all female experts</a>"
+      sub_menu_left_link_vorarlberg: "<a href='en/profiles#speakers_anchor'> >> Go to all female experts</a>"
+      sub_menu_left_link_ooe: "<a href='en/profiles#speakers_anchor'> >> Go to all female experts</a>"
       auth_modal: "You have to <b>agree to the use of cookies</b> before using the register or login form.<br>
        Find more information about data security in our <a href='%{link}' class='link'>privacy policy</a>.<br>"
       contact_modal: "You have to <b>agree to the use of cookies</b>. before using the contact form.<br>
