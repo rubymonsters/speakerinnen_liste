@@ -9,6 +9,11 @@ $header_nums: 0, 1, 2, 3, 4;
     background: image-url("header_#{$header_num}.png") no-repeat top center;
     background-size: cover;
 
+    .hero-headline h1,h2 {
+      // not $bg-color-white or $white as we need to match the hero header background color
+      background-color: white;
+    }
+
     @media (max-width: 576px) {
       background: image-url("header_#{$header_num}.png") no-repeat top 100px center;
       background-size: cover;
