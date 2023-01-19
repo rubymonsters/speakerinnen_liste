@@ -5,10 +5,10 @@
     <div class="card-header">
       <h1 class="action_icon pt-2">
         <%= bootstrap_icon "star", width: 70, height: 70, fill: "#43E89C" %>
-       </h1>
-      <a href="<%= t(:"sub_menu_left_link#{'_' + current_region.to_s if current_region}", scope: 'pages.home').html_safe %>">
-        <h1 class="card-title text-left mb-0"><%= t(:"sub_menu_left_title#{'_' + current_region.to_s if current_region}", scope: 'pages.home')%></h1>
-      </a>
+      </h1>
+      <h1 class="card-title text-left mb-0">
+        <%= t(:"sub_menu_left_title#{'_' + current_region.to_s if current_region}", scope: 'pages.home')%>
+      </h1>
     </div>
     <div class="card-body">
       <p class="h5 card-text"><%= t(:"sub_menu_left_text#{'_' + current_region.to_s if current_region}", scope: 'pages.home') %></p>
@@ -27,9 +27,9 @@
       <h1 class="action_icon pt-2">
         <%= bootstrap_icon "pencil", width: 70, height: 70, fill: "#43E89C" %>
       </h1>
-      <a href="<%= t(:"sub_menu_middle_link#{'_' + current_region.to_s if current_region}", scope: 'pages.home').html_safe %>">
-        <h1 class="card-title text-left mb-0"><%= t(:"sub_menu_middle_title#{'_' + current_region.to_s if current_region}", scope: 'pages.home')%></h1>
-      </a>
+      <h1 class="card-title text-left mb-0">
+        <%= t(:"sub_menu_middle_title#{'_' + current_region.to_s if current_region}", scope: 'pages.home').html_safe %>
+      </h1>
     </div>
     <div class="card-body">
       <p class="h5 card-text"><%= t(:"sub_menu_middle_text#{'_' + current_region.to_s if current_region}", scope: 'pages.home') %></p>
@@ -48,9 +48,9 @@
       <h1 class="action_icon pt-2">
         <%= bootstrap_icon "chat", width: 70, height: 70, fill: "#43E89C" %>
       </h1>
-      <a href="<%= t(:"sub_menu_right_link#{'_' + current_region.to_s if current_region}", scope: 'pages.home').html_safe %>">
-        <h1 class="card-title text-left mb-0"><%= t(:"sub_menu_right_title#{'_' + current_region.to_s if current_region}", scope: 'pages.home')%></h1>
-      </a>
+      <h1 class="card-title text-left mb-0">
+        <%= t(:"sub_menu_right_title#{'_' + current_region.to_s if current_region}", scope: 'pages.home')%>
+      </h1>
     </div>
     <div class="card-body">
       <p class="h5 card-text"><%= t(:"sub_menu_right_text#{'_' + current_region.to_s if current_region}", scope: 'pages.home') %></p>
