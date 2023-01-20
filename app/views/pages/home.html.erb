@@ -4,7 +4,7 @@
 <%# Hero %>
 
 <section class="home">
-  <section id='startpage__start-teaser<%= "_#{rand(5)}" unless current_region == :ooe %>' class="start-teaser startpage__photo-bar">
+  <section id='startpage__start-teaser<%= "_#{[0,2,3,4].sample}" unless current_region == :ooe %>' class="start-teaser startpage__photo-bar">
     <div class="container">
       <%# Headline %>
       <div class="row hero-headline" >
