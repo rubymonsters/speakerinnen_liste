@@ -153,7 +153,7 @@ h1 {
 }
 
 .form-control {
-  border-radius: 0.0rem;
+  border-radius: 4px;
 }
 
 .admin__header--color {
@@ -263,7 +263,7 @@ textarea, input {
 }
 
 .btn {
-  border-radius: 0px;
+  border-radius: 4px;
   font-family: sans-serif;
   text-decoration: none;
 }
@@ -353,6 +353,7 @@ textarea, input {
       font-size: 80px;
       display: flex;
       justify-content: flex-end;
+      border-radius: 4px;
     }
 
     .card-title {
