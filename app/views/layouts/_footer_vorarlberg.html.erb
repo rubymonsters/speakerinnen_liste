@@ -1,0 +1,52 @@
+<footer id="footer" class="pt-5">
+  <div class="container">
+    <div class="row mt-2">
+      <div class="col-12 col-md-3 pr-5">
+        <figure>
+          <%= link_to(image_tag('logo_marke_vorarlberg.png', class:'logo-1'), "https://www.vorarlberg-chancenreich.at/", class: "noHover", target: 'blank' ) %>
+          <figcaption class="pt-4"><%= t(:caption_vorarlberg, scope: 'pages.footer').html_safe %></figcaption>
+        </figure>
+      </div>
+      <div class="col-12 col-md-3 pl-3">
+        <figure>
+          <%= link_to(image_tag('logo_gleichstellung.png', class:'logo-2'), "https://vorarlberg.at/frauen", class: "noHover", target: 'blank' ) %>
+          <figcaption class="pt-4"> <%= t(:caption_gleichstellung, scope: 'pages.footer').html_safe %></figcaption>
+        </figure>
+      </div>
+      <div class="row col-12 col-md-4 offset-md-2">
+        <div class="col-12 col-md-6">
+          <ul class="list-unstyled">
+            <li class="d-flex">
+              <%= link_to t(:about, scope: 'pages.home'), about_vorarlberg_path %>
+            </li>
+            <li class="d-flex">
+              <%= link_to t(:faq, scope: 'pages.home'), faq_path %>
+            </li>
+            <li class="d-flex">
+              <%= link_to t(:code_of_conduct, scope: 'pages.home'), code_of_conduct_path %>
+            </li>
+          </ul>
+        </div>
+        <div class="col-12 col-md-6">
+          <ul class="list-unstyled">
+            <li class="d-flex">
+              <% if cookies[:cookie_consent].blank? %>
+                <button type="button" class="btn btn-link px-2 pt-0" data-toggle="modal" data-target="#contactHint">
+                  <%= t(:contact, scope: 'pages.footer') %>
+                </button>
+              <% else %>
+                <%= link_to t(:contact, scope: 'pages.footer'), contact_path %>
+              <% end %>
+            </li>
+            <li class="d-flex">
+              <%= link_to t(:imprint, scope: 'pages.footer'), impressum_path %>
+            </li>
+            <li class="d-flex">
+              <%= link_to t(:privacy, scope: 'pages.footer'), privacy_path %>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

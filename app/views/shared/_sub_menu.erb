@@ -1,71 +1,62 @@
-<div class="col-md-6 col-lg-3 mb-2">
-  <div class="card pb-3 bg--white-trans">
+<%# Get Inspired %>
+
+<div class="col-md-12 col-lg-4 my-3">
+  <div class="card bg--white-trans h-100">
     <div class="card-header">
-      <h3 class="card-title mb-0"><%= link_to t(:sub_menu_register_title, scope: 'pages.home'), sign_up_path %></h3>
+      <h1 class="action_icon pt-2">
+        <%= bootstrap_icon "star", width: 70, height: 70, fill: "#43E89C" %>
+      </h1>
+      <h1 class="card-title text-left mb-0">
+        <%= t(:"sub_menu_left_title#{'_' + current_region.to_s if current_region}", scope: 'pages.home')%>
+      </h1>
     </div>
     <div class="card-body">
-      <% if current_region.nil? %>
-        <p class="h5 card-text mt-2"><%= t(:sub_menu_register_text, scope: 'pages.home').html_safe %></p>
-      <% else %>
-        <p class="h5 card-text mt-2"><%= t(:sub_menu_register_text_vab, scope: 'pages.home').html_safe %></p>
-      <% end %>
+      <p class="h5 card-text"><%= t(:"sub_menu_left_text#{'_' + current_region.to_s if current_region}", scope: 'pages.home') %></p>
+    </div>
+    <div class="card-body bottom">
+      <%= t(:"sub_menu_left_link#{'_' + current_region.to_s if current_region}", scope: 'pages.home').html_safe %>
     </div>
   </div>
 </div>
-<div class="col-md-6 col-lg-3 mb-2">
-  <div class="card pb-3 bg--white-trans">
-    <% if current_region.nil? %>
-      <div class="card-header">
-        <h3 class="card-title mb-0"><%= link_to t(:sub_menu_categories_title, scope: 'pages.home'), root_path + "#categories_anchor" %></h3>
-      </div>
-      <div class="card-body">
-        <p class="h5 card-text mt-2"><%= t(:sub_menu_categories_text, scope: 'pages.home') %></p>
-      </div>
-    <% else %>
-      <div class="card-header">
-        <h3 class="card-title mb-0"><%= link_to t(:sub_menu_categories_title_vab, scope: 'pages.home'), root_path + "#categories_anchor" %></h3>
-      </div>
-      <div class="card-body">
-        <p class="h5 card-text mt-2"><%= t(:sub_menu_categories_text_vab, scope: 'pages.home') %></p>
-      </div>
-    <% end %>
+
+<%# Blog %>
+
+<div class="col-md-12 col-lg-4 my-3">
+  <div class="card bg--white-transhite-trans h-100">
+    <div class="card-header">
+      <h1 class="action_icon pt-2">
+        <%= bootstrap_icon "pencil", width: 70, height: 70, fill: "#43E89C" %>
+      </h1>
+      <h1 class="card-title text-left mb-0">
+        <%= t(:"sub_menu_middle_title#{'_' + current_region.to_s if current_region}", scope: 'pages.home').html_safe %>
+      </h1>
+    </div>
+    <div class="card-body">
+      <p class="h5 card-text"><%= t(:"sub_menu_middle_text#{'_' + current_region.to_s if current_region}", scope: 'pages.home') %></p>
+    </div>
+    <div class="card-body bottom">
+      <%= t(:"sub_menu_middle_link#{'_' + current_region.to_s if current_region}", scope: 'pages.home').html_safe %>
+    </div>
   </div>
 </div>
-<div class="col-md-6 col-lg-3 mb-2">
-  <div class="card pb-3 bg--white-trans">
-    <% if current_region.nil? %>
-      <div class="card-header">
-        <h3 class="card-title mb-0"><%= link_to t(:sub_menu_about_us_title, scope: 'pages.home'), about_path %></h3>
-      </div>
-      <div class="card-body">
-        <p class="h5 card-text mt-2"><%= t(:sub_menu_about_us_text, scope: 'pages.home') %></p>
-      </div>
-    <% else %>
-      <div class="card-header">
-        <h3 class="card-title mb-0"><%= link_to t(:sub_menu_about_us_title_vab, scope: 'pages.home'), about_vorarlberg_path %></h3>
-      </div>
-      <div class="card-body">
-        <p class="h5 card-text mt-2"><%= t(:sub_menu_about_us_text_vab, scope: 'pages.home') %></p>
-      </div>
-    <% end %>
-  </div>
-</div>
-<div class="col-md-6 col-lg-3 mb-2">
-  <div class="card pb-3 bg--white-trans">
-    <% if current_region.nil? %>
-      <div class="card-header">
-        <h3 class="card-title mb-0"><%= link_to t(:sub_menu_blog_title, scope: 'pages.home'), "https://blog.speakerinnen.org/", target: '_blank' %></h3>
-      </div>
-      <div class="card-body">
-        <p class="h5 card-text mt-2"><%= t(:sub_menu_blog_text, scope: 'pages.home').html_safe %></p>
-      </div>
-    <% else %>
-      <div class="card-header">
-        <h3 class="card-title mb-0"><%= link_to t(:sub_menu_all_title_vab, scope: 'pages.home'), profiles_path(:anchor => "speakers_anchor") %></h3>
-      </div>
-      <div class="card-body">
-        <p class="h5 card-text mt-2"><%= t(:sub_menu_all_text_vab, scope: 'pages.home').html_safe %></p>
-      </div>
-    <% end %>
+
+<%# Fifty Percent %>
+
+<div class="col-md-12 col-lg-4 my-3">
+  <div class="card bg--white-trans h-100">
+    <div class="card-header">
+      <h1 class="action_icon pt-2">
+        <%= bootstrap_icon "chat", width: 70, height: 70, fill: "#43E89C" %>
+      </h1>
+      <h1 class="card-title text-left mb-0">
+        <%= t(:"sub_menu_right_title#{'_' + current_region.to_s if current_region}", scope: 'pages.home')%>
+      </h1>
+    </div>
+    <div class="card-body">
+      <p class="h5 card-text"><%= t(:"sub_menu_right_text#{'_' + current_region.to_s if current_region}", scope: 'pages.home') %></p>
+    </div>
+    <div class="card-body bottom">
+      <%= t(:"sub_menu_right_link#{'_' + current_region.to_s if current_region}", scope: 'pages.home').html_safe %>
+    </div>
   </div>
 </div>

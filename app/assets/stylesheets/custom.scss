@@ -9,12 +9,49 @@ html {
 }
 
 a, .link, #expander {
-  color: $link-color;
   cursor: pointer;
+  text-decoration: underline;
+  color: $font-color;
+  padding: 0.2em;
 
   &:hover {
-    text-decoration: underline;
+    background-color: $dropdown-hover-background;
+    color: $link-color;
+    text-decoration: none;
   }
+}
+
+a.anchor {
+  padding: 0;
+}
+
+a.button_link {
+  text-decoration: none;
+  &:hover {
+    background-color: transparent;
+    text-decoration: none;
+  }
+}
+
+.home {
+
+  .start-teaser .container {
+    display: flex;
+    flex-flow: column;
+
+    .align-items-end {
+      margin-top: auto;
+    }
+  }
+}
+
+.home .container.divider {
+  padding-top: 4em;
+  padding-bottom: 5em;
+}
+
+.home .container.divider-vorarlberg {
+  height: 72px;
 }
 
 ul {
@@ -22,9 +59,11 @@ ul {
   vertical-align: top;
 }
 
-h1, h2, h3, h4, h5 {
-  font-family: $serif;
+h1 {
+  text-transform: uppercase;
+  font-weight: bold;
 }
+
 
 .btn:focus{
   outline: none;
@@ -33,10 +72,6 @@ h1, h2, h3, h4, h5 {
 
 .sans-serif {
   font-family: $sans-serif;
-}
-
-.serif {
-  font-family: $serif;
 }
 
 /* layout */
@@ -62,8 +97,9 @@ h1, h2, h3, h4, h5 {
   background: $bg-light-grey;
 }
 
-.bg--yellow {
-  background: $yellow;
+.bg--dark {
+  background-color: $very-dark-grey;
+  color: $white;
 }
 
 .color-white {
@@ -75,7 +111,7 @@ h1, h2, h3, h4, h5 {
 }
 
 .error {
-  color: $red;
+  color: $error;
 }
 
 /* diverses */
@@ -87,17 +123,22 @@ h1, h2, h3, h4, h5 {
   position: fixed;
   z-index: 5;
   width: 100%;
-  background: $yellow;
+  background: $info;
+  border-radius: 0;
 }
 
 .alert-warning {
-  background: $yellow;
+  background: $error_background;
   color: $black;
   padding: $base-spacing-unit;
 }
 
+.alert-info {
+  background: $info;
+}
+
 .alert-error {
-  color: $red;
+  color: $error;
 }
 
 .border-vertical {
@@ -116,18 +157,58 @@ h1, h2, h3, h4, h5 {
 }
 
 .form-control {
-  border-radius: 0.0rem;
+  border-radius: 4px;
 }
 
 .admin__header--color {
-  background: $yellow;
+  background: $info;
 }
 
 .header {
-  background: $body-bg-color-grey;
+  background: $header-grey;
+  color: $white;
+
+  a, .link, #expander {
+    text-decoration: none;
+    color: $white;
+  }
 }
+
+#footer {
+  color: $header-grey;
+}
+
+.single-profile, #footer {
+  a {
+    text-decoration: none;
+    cursor: pointer;
+    padding: 0.2em;
+    font-weight: bold;
+    // color: $link-color;
+    &:hover {
+      background-color: $dropdown-hover-background;
+      text-decoration: none;
+    }
+  }
+}
+
+#footer, .single-profile {
+  .noHover:hover {
+    background-color: transparent;
+  }
+}
+
+.dropdown-menu-dark {
+  background-color: $dropdown-background;
+}
+
+.dropdown-item:hover {
+  background-color: $dropdown-hover-background;
+  color: $speakerinnen-green;
+}
+
 .no-click {
-    pointer-events: none;
+  pointer-events: none;
 }
 
 .modal-footer.contact {
@@ -144,7 +225,7 @@ h1, h2, h3, h4, h5 {
     flex: 1;
     font-size: small;
     padding-top: 0.3rem;
-    color: red;
+    color: $red;
   }
 }
 
@@ -170,18 +251,50 @@ textarea, input {
   text-decoration: underline;
 }
 
+.card-header.hover-activated {
+  .btn-link {
+    color: $font-color;
+    text-decoration: none;
+  }
+}
+
+.card-header.hover-activated:hover {
+  border-bottom-color: $primary;
+
+  .btn-link {
+    color: $primary;
+  }
+}
+
 .btn {
-  border-radius: 0px;
-  font-family: sans-serif
+  border-radius: 4px;
+  font-family: sans-serif;
+  text-decoration: none;
 }
 
-.home .home-search {
-  margin-left: -8px;
+.home .home-search .twitter-typeahead {
+  display: block !important;
 }
 
-#home_search {
-  width: 350px
+.home-search {
+  .btn-primary {
+    width: 100%;
+  }
+  .col-sm-2 {
+    max-width: none;
+  }
 }
+
+.startpage-subtitle {
+  padding: 0em;
+}
+
+#header__logo {
+  width: 300px;
+  }
+
+#header__logo_vorarlberg, #header__logo_ooe {
+  }
 
 .container {
   padding: 0 48px;
@@ -212,7 +325,7 @@ textarea, input {
     font-weight: bold;
   }
 
-  h3 {
+  h2 {
     font-size: 1.2rem;
     }
 
@@ -224,14 +337,49 @@ textarea, input {
     font-size: 0.8rem;
   }
 
-  .startpage-subtitle {
-  }
-
   #home_search {
-    width: 200px
+    // width: 700px
   }
 
   .top-space {
     margin-top: 100px;
+  }
+}
+
+.sub-menu {
+  .col {
+    display: flex;
+  }
+  .card {
+    .action_icon {
+      color: $primary;
+      margin-bottom: 1.5em;
+      font-size: 80px;
+      display: flex;
+      justify-content: flex-end;
+      border-radius: 4px;
+    }
+
+    .card-title {
+      min-height: 6rem;
+    }
+
+    h1 {
+      padding: 0;
+    }
+
+    .card-body p {
+      margin-bottom: 3em;
+    }
+
+    a {
+      padding: 0;
+      text-decoration: none;
+    }
+
+    .card-body.bottom {
+      display: flex;
+      align-items: end;
+    }
   }
 }

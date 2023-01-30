@@ -11,6 +11,7 @@ gem 'mini_racer'
 # used in the rail 5.2 version
 gem 'bootsnap', '~> 1.4.2'
 
+gem 'faker', '1.9.1'
 gem 'normalize-rails'
 
 gem 'deadweight', require: 'deadweight/hijack/rails'
@@ -37,13 +38,14 @@ gem 'globalize-accessors'
 
 gem 'bootstrap', '~> 4.3.1'
 gem 'font-awesome-rails', '~> 4.7.0.3'
+gem 'bootstrap-icons-helper'
 
 gem 'friendly_id'
 
 gem 'active_model_serializers'
 
-gem 'elasticsearch-model'
-gem 'elasticsearch-rails'
+gem 'elasticsearch-model', github: 'elastic/elasticsearch-rails', branch: '6.x'
+gem 'elasticsearch-rails', github: 'elastic/elasticsearch-rails', branch: '6.x'
 gem 'record_tag_helper', '~> 1.0'
 gem 'exception_notification'
 gem 'honeycomb-beeline'
@@ -61,14 +63,13 @@ gem 'aws-sdk-s3', require: false
 
 gem "sentry-raven"
 
-gem 'image_processing', '~> 1.12'
+gem 'image_processing', '~> 1.2'
 gem 'rack-timeout'
 
 group :development do
   gem 'better_errors'
   gem 'bullet'
   gem 'derailed_benchmarks'
-  gem 'faker'
   gem 'letter_opener'
   gem 'stackprof'
 end
@@ -86,7 +87,7 @@ end
 
 group :test do
   gem 'database_cleaner', '~> 1.7.0'
-  gem 'elasticsearch-extensions', git: 'https://github.com/elasticsearch/elasticsearch-ruby.git', ref: '7.17'
+  gem 'elasticsearch-extensions', git: 'https://github.com/elasticsearch/elasticsearch-ruby.git', ref: '6.x'
   gem 'factory_bot_rails'
   gem 'minitest', '5.11.3' # remove this after upgrading rails from 5.0.0
   gem 'poltergeist', '1.18.1'

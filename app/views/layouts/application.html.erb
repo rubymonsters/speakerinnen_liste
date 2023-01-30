@@ -17,14 +17,14 @@
     <%= favicon_link_tag 'favicon.ico' %>
   </head>
   <body class="<%= current_region %>">
-    <a id="top"></a>
+    <a id="top" style="display: none;"></a>
     <%= render 'layouts/header' %>
     <%= render 'shared/flash', flash: flash %>
     <%= render 'shared/cookie_consent' %>
     <%= render 'shared/contact_hint_modal' %>
     <%= render 'shared/auth_hint_modal' %>
     <%= yield %>
-    <%= render 'layouts/footer' if render_footer? %>
+    <%= render "layouts/footer#{'_' + current_region.to_s if current_region}" if render_footer? %>
 
     <script>
       window.setTimeout(function() {

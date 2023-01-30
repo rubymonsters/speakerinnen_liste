@@ -200,24 +200,24 @@ module Searchable
     settings elasticsearch_mappings do
       mappings dynamic: 'false' do
         indexes :fullname,   type: 'text', analyzer: 'fullname_analyzer', 'norms': false do
-          indexes :suggest,  type: 'completion'
+          indexes :suggest,  type: 'completion', contexts: [{name: 'state', type: 'category', path: 'state'}]
         end
         indexes :lastname,   type: 'text', analyzer: 'fullname_analyzer', 'norms': false do
-          indexes :suggest,  type: 'completion'
+          indexes :suggest,  type: 'completion', contexts: [{name: 'state', type: 'category', path: 'state'}]
         end
         indexes :twitter_de, type: 'text', analyzer: 'twitter_analyzer', 'norms': false do
-          indexes :suggest,  type: 'completion'
+          indexes :suggest,  type: 'completion', contexts: [{name: 'state', type: 'category', path: 'state'}]
         end
         indexes :twitter_en, type: 'text', analyzer: 'twitter_analyzer', 'norms': false do
-          indexes :suggest,  type: 'completion'
+          indexes :suggest,  type: 'completion', contexts: [{name: 'state', type: 'category', path: 'state'}]
         end
         indexes :topic_list, type: 'text', analyzer: 'standard', 'norms': false do
-          indexes :suggest,  type: 'completion'
+          indexes :suggest,  type: 'completion', contexts: [{name: 'state', type: 'category', path: 'state'}]
         end
         I18n.available_locales.each do |locale|
           %i[main_topic bio website].each do |name|
             indexes :"#{name}_#{locale}", type: 'text', analyzer: "#{ANALYZERS[locale]}_without_stemming" do
-              indexes :suggest, type: 'completion' if name == :main_topic
+              indexes :suggest, type: 'completion', contexts: [{name: 'state', type: 'category', path: 'state'}] if name == :main_topic
             end
           end
         end
@@ -225,12 +225,12 @@ module Searchable
                                 standard: { type: 'text', analyzer: 'standard', 'norms': false }}
         indexes :cities,        fields: { unmod: { type: 'keyword', 'norms': false },
                                 standard: { type: 'text', analyzer: 'cities_analyzer', 'norms':  false }}
-        indexes :state,         fields: { keyword: { type: 'keyword', 'norms': false },
-                                standard: { type: 'text', analyzer: 'standard', 'norms': false }}
+        indexes :state,         analyzer: 'keyword',
+                                fields: { keyword: { type: 'keyword', 'norms': false }}
         indexes :country,       fields: { keyword: { type: 'keyword', 'norms': false },
                                 standard: { type: 'text', analyzer: 'standard', 'norms': false }}
-        indexes :region,        fields: { keyword: { type: 'keyword', 'norms': false },
-                                standard: { type: 'text', analyzer: 'standard', 'norms': false }}
+        indexes :region,        analyzer: 'keyword',
+                                fields: { keyword: { type: 'keyword', 'norms': false }}
         indexes :medialinks, type: 'nested' do
           indexes :title, 'norms': false
           indexes :description, 'norms': false

@@ -1,9 +1,15 @@
 en:
   profiles:
     register_box:
-      title: "<b>We need more women on stages</b>"
-      text: "<p>If you are a professional speaker in any topic, register here, quick and for free</p>"
+      title: "<b>Be part of it!</b>"
+      title_vorarlberg: "<b>Be part of it!</b>"
+      title_ooe: "<b>Be part of it!</b>"
+      text: "<p>If you are a professional speaker in any topic, register here, quick and for free.</p>"
+      text_vorarlberg: "<p>If you want to provide public information on a topic, register here, quick and for free.</p>"
+      text_ooe: "<p>If you are an expert in any topic, register here, quick and for free.</p>"
       button: "Register as a speaker"
+      button_vorarlberg: "Register as an expert"
+      button_ooe: "Register as an expert"
     category: "We have <b>%{profiles_count}</b> speakerinnen and <b>%{topics_count}</b> topics in category <b>%{category_name}</b> <i class='fa fa-caret-down' style='font-size: 21px'></i>"
     tag:
       top_topics: "The 200 most popular topics"
@@ -107,7 +113,7 @@ en:
     medialinks:
       edit: "Edit previous talks"
     edit:
-      show: "<< Back to the profile"
+      show: "X Cancel"
     index:
       all_profiles: "All female experts"
       title: "All women speakers"
@@ -138,7 +144,18 @@ en:
       show_less: "Less >>"
       apply_filter: "Apply tag filter"
       within: " whithin the category: "
-      profiles_in_category: "There are %{count} Speakerinnen"
+      profiles_in_category: {
+        one: "There is one Speakerin in this category",
+        other: "There are %{count} Speakerinnen in this category"
+      }
+      profiles_in_category_vorarlberg: {
+        one: "There is one female expert in this category",
+        other: "There are %{count} female experts in this category"
+      }
+      profiles_in_category_ooe: {
+        one: "There is one female expert in this category",
+        other: "There are %{count} female experts in this category"
+      }
       back_to_filters: "Back to Filters"
     new:
       new_profile: "New profile"
@@ -151,3 +168,5 @@ en:
     choose_category: "Choose a category:"
     clear_link: "X Clear all"
     choose_button: "Speakers with these topics"
+    choose_button_vorarlberg: "Experts with these topics"
+    choose_button_ooe: "Experts with these topics"

@@ -28,6 +28,7 @@ $light-grey: #F2F2F2;
 $grey: #E1DFDF;
 $grey-stroke: #979797;
 $dark-grey: #3C3C3A;
+$very-dark-grey: #221F20;
 $black: #000;
 /* -------------*/
 
@@ -39,6 +40,7 @@ $dark-red: #b62848;
 $tag-box-background: #DEDEDE;
 
 $transparent-black: rgba( $black, .5 );
+$transparent-grey: rgba( $very-dark-grey, .5 );
 $transparent-white: rgba( $white, .7 );
 
 /* colors for login sign */
@@ -46,11 +48,12 @@ $box-shadow-black: rgba(0,0,0,0.75);
 
 /* font */
 $serif: Georgia, serif;
-$sans-serif: "OpenSans", "Helvetica Neue", Helvetica, sans-serif;
+$sans-serif: "Helvetica Neue", Helvetica, sans-serif;
 
 /* variables colors */
 $body-bg-color: $white;
 $body-bg-color-grey: $white-smoke;
+$header-grey: $very-dark-grey;
 
 /* units */
 $base-spacing-unit: 24px;
@@ -58,12 +61,12 @@ $base-spacing-unit: 24px;
 /* layout settings */
 $border: 1px solid $grey;
 
-$speakerinnen-blue: #20736D;
-$speakerinnen-lila: #603D78;
-$dark-blue: darken($speakerinnen-blue, 10%);
+$speakerinnen-green: #43E89C;
+$speakerinnen-purple: #7311f6;
+$dark-blue: darken($speakerinnen-green, 10%);
 $font-color: $dark-grey;
 $font-color-grey: $grey-stroke;
-$link-color: $speakerinnen-blue;
+$link-color: $speakerinnen-green;
 
 // /* link-color */
 $link-color-hover: $white-smoke;
@@ -72,11 +75,22 @@ $link-bg-color-hover: $dark-grey;
 
 // bootstrap variables override
 $enable-responsive-font-sizes: true;
-$primary: $speakerinnen-blue;
-$secondary: $speakerinnen-lila;
+$primary: $speakerinnen-green;
+$secondary: $speakerinnen-purple;
 $border-dark: $grey-stroke;
 
+// dropdown
+$dropdown-background: #343A40;
+$dropdown-hover-background: #52585D;
+
+$yellow: #ffc107;
 $red: #d95270;
+$light_green: #B1EFCB;
+$light_red: #FF9C9C;
+
+$error_background: $light_red;
+$error: $red;
+$info: $light_green;
 
 /* new category colors */
 $teal: #68D2CA;
@@ -86,14 +100,6 @@ $teal_2: #00978B;
 $dark_teal: #69B7CB;
 $dark_teal_1: #B2D9E3;
 $dark_teal_2: #53818D;
-
-$soft_blue: #8DB5E4;
-$soft_blue_1: #C5D8F0;
-$soft_blue_2: #436996;
-
-$purple: #A3A8F1;
-$purple_1: #D0D2F6;
-$purple_2: #5A5EAA;
 
 $rose: #C8ABCF;
 $rose_1: #E2D3E6;

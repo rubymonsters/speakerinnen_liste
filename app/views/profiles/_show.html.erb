@@ -190,17 +190,17 @@
   <!-- edit action for user -->
   <div class="col-md-2">
     <% if current_profile == @profile %>
-      <%= link_to(edit_profile_path(@profile)) do %>
+      <%= link_to(edit_profile_path(@profile), class: 'button_link noHover') do %>
         <div class='btn btn-primary buttons-modals btn-block'>
           <%= t(:edit, scope: 'profiles.show') %>
          </div>
       <% end %>
-      <%= link_to(profile_medialinks_path(@profile)) do %>
+      <%= link_to(profile_medialinks_path(@profile), class: 'button_link noHover') do %>
         <div class='btn btn-primary buttons-modals mt-3 btn-block'>
           <%= t(:edit, scope: 'profiles.medialinks') %>
         </div>
       <% end %>
-      <%= link_to(edit_profile_registration_path) do %>
+      <%= link_to(edit_profile_registration_path, class: 'button_link noHover') do %>
         <div id='accountSettings', class='btn btn-primary buttons-modals btn-block mt-3'>
           <%= t(:account, scope: 'layouts.application') %>
         </div>

@@ -1,12 +1,56 @@
 
 /* profiles */
 
+.profile-box {
+  display: flex;
+  flex-direction: column;
+}
+
 .profile-navi {
   text-align: right;
 }
 
+.profile-name {
+  a {
+    font-weight: bold;
+    display: block;
+    width: 100%;
+    padding: 0.25rem 1.5rem;
+    clear: both;
+    white-space: nowrap;
+    background-color: transparent;
+    border: 0;
+    &:hover {
+      background-color: $dropdown-hover-background;
+    }
+  }
+}
+
+.caption {
+  display: flex;
+  flex-direction: column;
+  flex: auto;
+  padding-top: 0.3rem;
+  padding-bottom: 0.3rem;
+}
+
 .profile-subtitle {
-  font-weight: bold;
+  display: flex;
+  flex: auto;
+  padding: 0.25rem 1.5rem;
+
+  .fa {
+    font-size: 2.6em;
+  }
+
+  .profile-tooltip {
+    align-self: flex-end;
+
+  }
+  p {
+    flex: auto;
+    margin-bottom: 0rem;
+  }
 }
 
 .btn-stretch {
@@ -48,18 +92,19 @@
   text-align: left;
   position: relative;
   overflow: hidden;
-  color: $primary;
-  cursor: pointer;
+  color: $secondary;
+  cursor: default;
 
   .fit-height {
     position: relative;
     padding: inherit;
     padding-top: 100%;
     width: 100%;
+    flex: auto;
   }
 
-  .border.border-primary {
-    padding: 2rem;
+  .border {
+    // padding: 2rem;
     overflow: hidden;
     position: absolute;
     top: 0;
@@ -78,15 +123,20 @@
     flex-direction: column;
   }
 
+  .btn {
+    text-align: left;
+  }
+
   .stretch {
     flex: 1;
     display: flex;
     align-items: center;
     width: 100%;
-    
+
     .profile-subtitle {
       overflow: hidden;
-      max-height: 3rem;
+      // max-height: 3rem;
+      padding: 0rem;
     }
 
     a.btn {
@@ -97,35 +147,57 @@
     .top {
       display: flex;
       align-items: flex-end;
+      padding-left: 1rem;
+      padding-right: 1rem;
     }
 
     .middle {
+      padding-left: 1rem;
+      padding-right: 1rem;
       overflow: hidden;
     }
 
     .bottom {
       display: flex;
+      padding-left: 1rem;
+      padding-right: 1rem;
       align-items: flex-start;
     }
 
+    /* override headline sizes so our media breakpoint for them doesn't apply on register card */
+    h2 {
+      font-size: 2rem; // bootstrap default
+    }
+    h4 {
+      font-size: 1.5rem; // bootstrap default
+    }
+
+    /* multi-column medium screens - don't show middle part */
     @media all and (min-width: 1200px) and (max-width: 1423px) {
       .top {
-        margin-bottom: 0.8rem;
+        // margin-bottom: 0.8rem;
       }
       .middle {
-        display: none;
+        h4 {
+          font-size: 1.2rem; // bootstrap default
+        }
       }
     }
 
-    /* multi-column small screens */
+    /* multi-column small screens - show only button */
     @media all and (min-width: 576px) and (max-width: 1199px) {
       .top {
-        display: none;
+        h2 {
+          font-size: 1.5rem; // bootstrap default
+        }
+        // display: none;
       }
       .middle {
-        display: none;
+        h4 {
+          font-size: 1.1rem; // bootstrap default
+        }
       }
-      .btn.btn-primary {
+      a.btn {
         max-height: none;
       }
     }
@@ -248,11 +320,11 @@ ul#medialinks__list {
 
 /* fontawesome for profile boolean attributes */
 .fa-check-square {
-  color: #61bd2c;
+  color: $primary;
 }
 
 .fa-times-rectangle {
-  color: #e51a1a;
+  color: $error
 }
 
 /*tooltip*/

@@ -42,10 +42,21 @@ div#v-pills-tab a {
 }
 
 .tag-button {
-  border-radius: 0.75em;
   font-size: 0.8rem;
   padding: 0.2em 0.7em;
   box-shadow: 0 0 0 0px white, 0 1.5px 0.5px $grey-stroke;
+}
+
+#startpage-categories__list {
+  display: flex;
+  flex-direction: row;
+
+  .progress_bar_part {
+    flex: auto;
+  }
+  a:hover {
+    color: white;
+  }
 }
 
 // colors of categories and tags

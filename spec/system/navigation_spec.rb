@@ -22,18 +22,21 @@ RSpec.describe 'Navigation', type: :system do
           expect(page).to have_css('#header__logo')
           expect(page).to have_link(I18n.t('layouts.application.signup'))
           expect(page).to have_link(I18n.t('layouts.application.login'))
-          expect(page).to have_link('DE')
-          expect(page).to have_link('EN')
+          expect(page).to have_link('EN') if language == 'de'
+          expect(page).to have_link('DE') if language == 'en'
+          expect(page).to have_no_link('DE') if language == 'de'
+          expect(page).to have_no_link('EN') if language == 'en'
           expect(page).to have_no_link('Admin')
         end
 
         it 'startpage has content' do
-          expect(page).to have_css('#startpage__start-teaser')
+          expect(page).to have_css('.startpage__photo-bar')
           expect(page).to have_css('#startpage-categories__list')
           expect(page).to have_css('#startpage-newest_speaker')
           expect(page).to have_css('.profile-box', text: published_profile.main_topic)
           expect(page).to have_css('.profile-box', text: ada.main_topic)
-          expect(page).to have_css('.category_item_science', count: 1)
+          # we have each category bar twice, once for the name and one for the progress bar
+          expect(page).to have_css('.category_item_science', count: 2)
           expect(page).to have_link(science.name)
         end
 
@@ -56,7 +59,7 @@ RSpec.describe 'Navigation', type: :system do
         end
 
         it 'viewing the speakerinnen overview page' do
-          click_link I18n.t(:sub_menu_register_title, scope: 'pages.home')
+          click_link I18n.t(:signup, scope: 'layouts.application')
           # header
           expect(page).to have_css('#header__logo')
           expect(page).to have_link(I18n.t('layouts.application.signup'))
@@ -97,7 +100,7 @@ RSpec.describe 'Navigation', type: :system do
             expect(page).to have_css('#header__logo')
             expect(page).to have_link(I18n.t(:my_profile, scope: 'layouts.application'))
             expect(page).to have_link(I18n.t('layouts.application.logout'))
-            expect(page).to have_link('DE')
+            # print page.html
             expect(page).to_not have_link('Admin')
           end
         end

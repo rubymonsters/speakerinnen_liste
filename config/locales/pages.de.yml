@@ -1,27 +1,45 @@
 de:
   pages:
+    header:
+      about_speakerinnen_list: "Über uns"
     home:
       heading: "Mehr Frauen auf die Bühnen!"
-      heading_vab: "Finde Expertinnen, Rednerinnen und Fachfrauen."
-      tagline: "Finde Rednerinnen, Referentinnen & Moderatorinnen<br> für Deine Konferenz:"
-      tagline_vab: "Nutze eine der größten Datenbanken für weibliche Kompetenz in Vorarlberg und dem deutschsprachigen Raum."
+      heading_vorarlberg: "Mehr Frauen auf die Bühnen!"
+      heading_ooe: "Mehr Frauen auf die Bühnen!"
+      tagline: "Finde Rednerinnen, Referentinnen & Moderatorinnen für Deine Konferenz"
+      tagline_vorarlberg: "Finde Expertinnen, Rednerinnen & Fachfrauen in Vorarlberg"
+      tagline_ooe: "Finde Expertinnen, Rednerinnen & Fachfrauen in Oberösterreich"
       search_placeholder: "Name oder Thema"
-      search_speaker: "Suche"
-      sub_menu_register_title: "Registriere dich"
-      sub_menu_register_text: "Speakerinnen-Profil schnell und kostenfrei anlegen."
-      sub_menu_register_text_vab: "Expertinnen-Profil schnell und kostenfrei anlegen."
-      sub_menu_about_us_title: "Über uns"
-      sub_menu_about_us_title_vab: "Über das Projekt"
-      sub_menu_about_us_text: "Erfahre mehr über das Team von Speakerinnen."
-      sub_menu_about_us_text_vab: "Erfahre mehr über uns und dieses Projekt."
-      sub_menu_blog_title: "Unser Blog"
-      sub_menu_blog_text: "Mit spannenden Interviews und vielen Neuigkeiten."
-      sub_menu_all_title_vab: "Alle Expertinnen"
-      sub_menu_all_text_vab: "Mache weibliche Kompetenz in Vorarlberg sichtbar."
-      sub_menu_categories_title: "Lass dich inspirieren"
-      sub_menu_categories_title_vab: "Erweiterte Suche"
-      sub_menu_categories_text: "Finde die passende Speakerin in 10 Kategorien."
-      sub_menu_categories_text_vab: "Finde die passende Expertin in 10 Kategorien."
+      search_speaker: "Finde deine Speakerin"
+      search_speaker_vorarlberg: "Finde deine Expertin"
+      search_speaker_ooe: "Finde deine Expertin"
+      sub_menu_right_title: "Fifty Percent"
+      sub_menu_right_title_vorarlberg: "Über das Projekt"
+      sub_menu_right_title_ooe: "Über das Projekt"
+      sub_menu_right_text: "Männer oder Frauen – wer steht häufiger auf der Bühne?"
+      sub_menu_right_text_vorarlberg: "Erfahre mehr über uns und dieses Projekt."
+      sub_menu_right_text_ooe: "Erfahre mehr über uns und dieses Projekt."
+      sub_menu_right_link: "<a href='https://50prozent.speakerinnen.org', class='stretched-link', target='_blank'>Zu Fifty Percent >></a>"
+      sub_menu_right_link_vorarlberg: "<a href='de/about_vorarlberg', class='stretched-link', target='_blank'>Über uns >></a>"
+      sub_menu_right_link_ooe: "<a href='de/about_ooe', class='stretched-link', target='_blank'>Über uns >></a>"
+      sub_menu_middle_title: "Unser Blog"
+      sub_menu_middle_title_vorarlberg: "Erweiterte Suche"
+      sub_menu_middle_title_ooe: "Erweiterte Suche"
+      sub_menu_middle_text: "Mit spannenden Interviews und Neuigkeiten."
+      sub_menu_middle_text_vorarlberg: "Keine Expertin aus Vorarlberg gefunden? Erweitere deine Suche auf den deutschsprachigen Raum."
+      sub_menu_middle_text_ooe: "Keine Expertin aus Oberösterreich gefunden? Erweitere deine Suche auf den deutschsprachigen Raum."
+      sub_menu_middle_link: "<a href='https://blog.speakerinnen.org', class='stretched-link', target='_blank'>Zum Speakerinnen-Blog >></a>"
+      sub_menu_middle_link_vorarlberg: "<a href='https://speakerinnen.org', class='stretched-link', target='_blank'>Zu speakerinnen.org >></a>"
+      sub_menu_middle_link_ooe: "<a href='https://speakerinnen.org', class='stretched-link', target='_blank'>Zu speakerinnen.org >></a>"
+      sub_menu_left_title: "Lass dich inspirieren"
+      sub_menu_left_title_vorarlberg: "Alle Expertinnen"
+      sub_menu_left_title_ooe: "Alle Expertinnen"
+      sub_menu_left_text: "Finde die passende Speakerin in 10 Kategorien."
+      sub_menu_left_text_vorarlberg: "Mache weibliche Kompetenz in Vorarlberg sichtbar."
+      sub_menu_left_text_ooe: "Mache weibliche Kompetenz in Oberösterreich sichtbar."
+      sub_menu_left_link: "<a href='/de#categories_anchor', class='stretched-link'>Zur Kategorien Suche >></a>"
+      sub_menu_left_link_vorarlberg: "<a href='de/profiles#speakers_anchor', class='stretched-link'>Zu allen Expertinnen >></a>"
+      sub_menu_left_link_ooe: "<a href='de/profiles#speakers_anchor', class='stretched-link'>Zu allen Expertinnen >></a>"
       auth_modal: "Du musst der <b>Verwendung von Cookies zustimmen</b>, bevor Du Dich einloggen oder anmelden kannst.<br>
       Mehr Informationen in unserer <a href='%{link}' class='link'>Datenschutzerklärung</a>.<br>"
       contact_modal: "Du musst der <b>Verwendung von Cookies zustimmen</b>, bevor Du das Kontaktformular benutzen kannst.<br>
@@ -36,15 +54,22 @@ de:
       Software, die Matomoto heißt, um zu wissen, wie die Besucher*innen und Nutzer*innen von speakerinnen.org die Seite nutzen: Das hilft uns auch
       dabei, sie zu verbessern. Auch hierfür nutzen wir Cookies, die Du aber deaktivieren kannst. Mehr Informationen in unserer <a href='%{link}' class='link'>Datenschutzerklärung</a>."
       allow_cookies: "Ich stimme zu"
-      speakerinnen: "Speakerinnen"
-      category_search_title: "Nach Kategorien durchsuchen"
-      category_search_text: "Finde deine Speakerin in 10 Kategorien oder filtere nach ganz konkreten Themen:"
-      welcome_title: "Speakerinnen - get inspired"
-      welcome_title_vab: "Herzlich willkommen."
-      welcome_text: "Ein herzliches Willkommen! Hier findest du unsere Neuzugänge"
-      welcome_text_vab: "Unsere Neuzugänge aus Vorarlberg:"
-      intro_title_vab: "Wir machen Expertinnen sichtbar."
-      intro_text_vab: |
+      category_search_title: "Gezielter suchen!"
+      category_search_title_vorarlberg: "Gezielter suchen!"
+      category_search_title_ooe: "Gezielter suchen!"
+      category_search_text: "Finde deine Speakerin in 10 Kategorien oder filtere nach ganz konkreten Themen"
+      category_search_text_vorarlberg: "Finde deine Fachfrau in 10 Kategorien oder filtere nach ganz konkreten Themen"
+      category_search_text_ooe: "Finde deine Fachfrau in 10 Kategorien oder filtere nach ganz konkreten Themen"
+      get_inspired: "Get inspired!"
+      get_inspired_text: "Hier findest du %{count_profiles} Speakerinnen für %{count_topics} Themen"
+      welcome_title: "Speakerinnen"
+      welcome_title_vorarlberg: "Herzlich willkommen!"
+      welcome_title_ooe: "Herzlich willkommen!"
+      welcome_text: "Willkommen an Bord! Hier findest du unsere Neuzugänge"
+      welcome_text_vorarlberg: "Hier findest du unsere Neuzugänge"
+      welcome_text_ooe: "Unsere Neuzugänge aus Oberösterreich"
+      intro_title_vorarlberg: "Wir machen Expertinnen sichtbar."
+      intro_text_vorarlberg: |
         <p>
           vorarlberg.speakerinnen.org ist ein Projekt zur Verhinderung von „manels“,
           also Podien, Gremien oder Panels, die vornehmlich mit Männern besetzt sind.
@@ -59,13 +84,21 @@ de:
         <p>
           Mehr Informationen über uns gibt es <a href="/about_vorarlberg">hier</a>.
         </p>
+      intro_title_ooe: "Wir machen Expertinnen sichtbar."
+      intro_text_ooe: |
+        <p>
+          Oftmals sind Podien vornehmlich mit Männern besetzt. Es ist Zeit, dass Frauen aktiv werden,
+          um das zu ändern. Durch ooe.speakerinnen.org werden oberösterreichische Frauen sowohl lokal
+          wie international als Expertinnen, Rednerinnen und Repräsentantinnen sichtbar gemacht.
+        </p>
       about: "Über uns"
-      faq: "FAQs"
+      faq: "FAQ"
       code_of_conduct: "Code of Conduct"
     footer:
       contact: "Kontakt"
       imprint: "Impressum"
       privacy: "Datenschutzerklärung"
+      supported_by: "Unterstützt von:"
       twitter: "<a href='https://twitter.com/speakerinnen', target='_blank', class=''>Twitter</a>"
       instagram: "<a href='https://instagram.com/speakerinnen', target='_blank', class=''>Instagram</a>"
       facebook: "<a href='https://facebook.com/speakerinnen', target='_blank', class=''>Facebook</a>"
@@ -77,12 +110,6 @@ de:
         vorarlberg.speakerinnen.org wird unterstützt vom
         <a href="https://vorarlberg.at/frauen", target="_blank">Funktionsbereich Frauen und Gleichstellung</a>
         im Amt der Vorarlberger Landesregierung.
-      photo_credit_vab: |
-        <p>
-          Bildnachweis Startseite: Architektin Adelheid Gnaiger, Fotografie: Walter Gnaiger, siehe auch:
-          <a href="http://www.ingridholzschuh.at/publikationen/2014", target='_blank'>Adelheid Gnaiger (1916 &mdash; 1991).
-          Die erste Architektin Vorarlbergs</a>, Ingrid Holzschuh (Hrsg.)
-        </p>
     errors:
       not_found: "Sorry, die Seite, die du gesucht hast, existiert nicht."
       not_found_explain: "Möglicherweise hast du dich bei der Eingabe der Webadresse vertippt oder die Seite wurde verschoben."
