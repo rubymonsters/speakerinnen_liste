@@ -122,12 +122,24 @@ $header_nums: 0, 1, 2, 3, 4;
 
 .ooe footer .logo-1 {
   width: 200px;
-  margin-bottom: 4px;
+  padding-bottom: 3rem;
 }
 
 .ooe footer .logo-2 {
   width: 100px;
-  margin-bottom: 4px;
+  padding-bottom: 3rem;
+}
+
+.ooe footer .logo-wko {
+  width: 180px;
+  padding-top: 1rem;
+  padding-bottom: 3rem;
+}
+
+.ooe footer .logo-kompass {
+  width: 200px;
+  padding-top: 1rem;
+  padding-bottom: 3rem;
 }
 
 .card-header {
@@ -158,8 +170,9 @@ $header_nums: 0, 1, 2, 3, 4;
 }
 
 .copyright-ooe {
+  font-size: 0.6rem;
   text-align: right;
-  color: white;
+  color: #7F8183;
 }
 
 //categories filter
