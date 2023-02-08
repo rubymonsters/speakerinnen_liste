@@ -200,24 +200,24 @@ module Searchable
     settings elasticsearch_mappings do
       mappings dynamic: 'false' do
         indexes :fullname,   type: 'text', analyzer: 'fullname_analyzer', 'norms': false do
-          indexes :suggest,  type: 'completion', contexts: [{name: 'state', type: 'category', path: 'state'}]
+          indexes :suggest,  type: 'completion'
         end
         indexes :lastname,   type: 'text', analyzer: 'fullname_analyzer', 'norms': false do
-          indexes :suggest,  type: 'completion', contexts: [{name: 'state', type: 'category', path: 'state'}]
+          indexes :suggest,  type: 'completion'
         end
         indexes :twitter_de, type: 'text', analyzer: 'twitter_analyzer', 'norms': false do
-          indexes :suggest,  type: 'completion', contexts: [{name: 'state', type: 'category', path: 'state'}]
+          indexes :suggest,  type: 'completion'
         end
         indexes :twitter_en, type: 'text', analyzer: 'twitter_analyzer', 'norms': false do
-          indexes :suggest,  type: 'completion', contexts: [{name: 'state', type: 'category', path: 'state'}]
+          indexes :suggest,  type: 'completion'
         end
         indexes :topic_list, type: 'text', analyzer: 'standard', 'norms': false do
-          indexes :suggest,  type: 'completion', contexts: [{name: 'state', type: 'category', path: 'state'}]
+          indexes :suggest,  type: 'completion'
         end
         I18n.available_locales.each do |locale|
           %i[main_topic bio website].each do |name|
             indexes :"#{name}_#{locale}", type: 'text', analyzer: "#{ANALYZERS[locale]}_without_stemming" do
-              indexes :suggest, type: 'completion', contexts: [{name: 'state', type: 'category', path: 'state'}] if name == :main_topic
+              indexes :suggest, type: 'completion'
             end
           end
         end
