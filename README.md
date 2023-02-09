@@ -14,7 +14,7 @@ The aim of the app is to provide a way for conference and event organizers to fi
 4. Run `make setup` (builds images, installs gems, creates and migrates the database).
 5. Run `make seed` (seeds database with example profiles and indexes them in Elasticsearch).
 
-## Local development with Docker (default)
+## Local development with Docker (default) -> at the moment this doesn't work on Apple Silicon chips, we are working on a fix.
 
 * `make dev` (opens a development shell, `rake`, `bundle` or `rails` commands will work here)
 * `make up` (starts the app directly)
@@ -146,25 +146,6 @@ different):
 
 4. ```make seed``` to populate the volumes.
 
-## Developing on a Mac with Apple Silicon chip
-
-To be able to run the project on a Silicon chip, please make the following adjustments:
-
-1. In `docker-compose.yml`, use an ARM specific image of postgres for the database, e.g.
-```yaml
-services:
-  db:
-    image: arm64v8/postgres:13.5
-```
-2. In `docker-compose.yml`, add the platform specification to the `web` environment
-```yaml
-  web:
-    platform: linux/amd64
-```
-3. In `config/environments/development.rb`, exclude the following line by using a comment
-```rb
-# config.file_watcher = ActiveSupport::EventedFileUpdateChecker
-```
 
 # ♥ Code of Conduct
 
