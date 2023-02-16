@@ -16,11 +16,11 @@ class ProfilesController < ApplicationController
     if params[:search]
       @profiles = profiles_for_search
       # sum of search results concerning certain attributes
-      @aggs = @profiles.response.aggregations
-      @aggs_languages = @aggs[:lang][:buckets]
-      @aggs_cities = @aggs[:city][:buckets]
-      @aggs_states = @aggs[:state][:buckets]
-      @aggs_countries = @aggs[:country][:buckets]
+      aggs = @profiles.response.aggregations
+      @aggs_languages = aggs[:lang][:buckets]
+      @aggs_cities = aggs[:city][:buckets]
+      @aggs_states = aggs[:state][:buckets]
+      @aggs_countries = aggs[:country][:buckets]
     elsif params[:tag_filter]&.present?
       @tags = params[:tag_filter].split(/\s*,\s*/)
       @profiles = profiles_with_tags
