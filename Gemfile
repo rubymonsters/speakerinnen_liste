@@ -44,8 +44,8 @@ gem 'friendly_id'
 
 gem 'active_model_serializers'
 
-gem 'elasticsearch-model'
-gem 'elasticsearch-rails'
+gem 'elasticsearch-model', '~> 7.1.1'
+gem 'elasticsearch-rails', '~> 7.1.1'
 gem 'record_tag_helper', '~> 1.0'
 gem 'exception_notification'
 gem 'honeycomb-beeline'
