@@ -26,6 +26,13 @@ describe ProfilesController, type: :controller do
     it 'does not include unpublished profiles' do
       expect(assigns(:profiles)).not_to include(profile_unpublished)
     end
+
+    it 'store the correct category when params has category id' do
+      category = FactoryBot.create(:category, name: 'Seasons', name_en: 'Seasons')
+      get :index, params: { category_id: category.id }
+      expect(assigns(:category)).to eq(category)
+
+    end
   end
 
   describe 'search action', elasticsearch: true do
@@ -35,12 +42,12 @@ describe ProfilesController, type: :controller do
       expect(response).to be_successful
     end
 
-    it 'should store aggregations in aggs variable' do
+    it 'should store aggregations in aggs variables' do
       get :index, params: { search: 'ruby' }
-      expect(assigns(:aggs)).to have_key(:city)
-      expect(assigns(:aggs)).to have_key(:lang)
-      expect(assigns(:aggs)).to have_key(:country)
-      expect(assigns(:aggs)).to have_key(:state)
+      expect(assigns(:aggs_cities)).to eq([])
+      expect(assigns(:aggs_languages)).to eq([])
+      expect(assigns(:aggs_countries)).to eq([])
+      expect(assigns(:aggs_states)).to eq([])
     end
   end
 
