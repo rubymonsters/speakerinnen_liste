@@ -600,7 +600,7 @@ DEPENDENCIES
   unicorn
 
 RUBY VERSION
-   ruby 2.7.2p137
+   ruby 2.7.7p221
 
 BUNDLED WITH
    2.2.29
