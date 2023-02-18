@@ -26,6 +26,7 @@ class ProfilesController < ApplicationController
     end
 
     @profiles_count = @profiles.total_count
+    # consider move only to relevant branches of the if
     @categories = Category.sorted_categories
     build_tags_for_tags_filter
   end
