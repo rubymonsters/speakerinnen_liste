@@ -53,7 +53,7 @@
         <br><br>
         <ul class="list-unstyled">
           <%= t(:random_categories, scope: 'search' ).html_safe %><br>
-          <% @three_sample_categories.each do |cat| %>
+          <% Category.all.sample(3).each do |cat| %>
             <li>
               <%= category_link(cat, "speakers_anchor") %>
             </li>

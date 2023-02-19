@@ -21,7 +21,6 @@ class ProfilesController < ApplicationController
       @aggs_cities = @aggs[:city][:buckets]
       @aggs_states = @aggs[:state][:buckets]
       @aggs_countries = @aggs[:country][:buckets]
-      @three_sample_categories = Category.all.sample(3)
     elsif params[:tag_filter]&.present?
       @tags = params[:tag_filter].split(/\s*,\s*/)
       @profiles = profiles_with_tags
