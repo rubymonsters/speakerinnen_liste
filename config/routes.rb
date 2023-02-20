@@ -76,6 +76,7 @@ Rails.application.routes.draw do
     get 'code_of_conduct' => 'pages#code_of_conduct'
     get 'about_vorarlberg' => 'pages#about_vorarlberg'
     get 'about_ooe' => 'pages#about_ooe'
+    get 'frauentag2023' => 'pages#frauentag_2023'
 
     get '/', to: 'pages#home'
 
