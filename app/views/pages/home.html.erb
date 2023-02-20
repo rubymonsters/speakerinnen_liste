@@ -65,6 +65,19 @@
     <% end %>
   <% end %>
 
+  <%# Special doctors %>
+  <% if @is_global_speakerinnen %>
+    <a id="special_speaker_achor" class="anchor"></a>
+    <div id="startpage-special" class="container py-5 bg--light-grey">
+      <h1 class=""><%= t(:special_doctors_title, scope: 'pages.home') %></h1>
+      <h3 class=""><%= t(:special_doctors_intro, scope: 'pages.home').html_safe %></h3>
+      <div class="row pt-5">
+        <%= render partial: "profiles/profile", collection: @newest_profiles %>
+        <%= render partial: "profiles/register_special" %>
+      </div>
+    </div>
+  <% end %>
+
   <%# Hot New Speakers %>
 
   <a id="newest_speaker_achor" class="anchor"></a>
