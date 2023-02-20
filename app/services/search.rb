@@ -47,6 +47,7 @@ class Search
     sql
   end
 
+  # https://pganalyze.com/blog/full-text-search-ruby-rails-postgres
   def aggregations_hash
     initial_agg_hash = {
       states: {},
