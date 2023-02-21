@@ -48,6 +48,33 @@ class Search
   end
 
   # https://pganalyze.com/blog/full-text-search-ruby-rails-postgres
+#   SELECT country, state, count(*)
+# FROM profiles
+# GROUP BY grouping sets( (country), (state), () )
+# ORDER BY COUNT(country) DESC, COUNT(state) DESC;
+  def aggregations_hash_group
+    initial_agg_hash = {
+      states: profiles.group(:state).size,
+      languages: {},
+      cities: {},
+      countries: profiles.group(:country).size
+    }
+
+    raw_aggs = profiles.each_with_object(initial_agg_hash) do |profile, memo|
+      memo[:states][profile.state] = memo[:states][profile.state].present? ? memo[:states][profile.state] + 1 : 1
+      profile.iso_languages.each do |language|
+       memo[:languages][language] = memo[:languages][language].present? ? memo[:languages][language] + 1 : 1
+      end
+      profile.cities.each do |city|
+        memo[:cities][city] = memo[:cities][city].present? ? memo[:cities][city] + 1 : 1
+      end
+    end
+
+    raw_aggs.each_with_object({}) do |(key, value), memo|
+      memo[key] = value.except(nil, '').sort_by{|k,v| -v}.to_h
+    end
+  end
+
   def aggregations_hash
     initial_agg_hash = {
       states: {},
