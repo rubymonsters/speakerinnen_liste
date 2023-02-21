@@ -26,12 +26,20 @@ describe ProfilesController, type: :controller do
     it 'does not include unpublished profiles' do
       expect(assigns(:profiles)).not_to include(profile_unpublished)
     end
+  end
 
+  describe 'category id search' do
     it 'store the correct category when params has category id' do
       category = FactoryBot.create(:category, name: 'Seasons', name_en: 'Seasons')
       get :index, params: { category_id: category.id }
       expect(assigns(:category)).to eq(category)
+    end
+  end
 
+  describe 'tag filter search' do
+    it 'redirects to profile index when tags filter is empty' do
+      get :index, params: { tag_filter: "" }
+      expect(response).to redirect_to("/#{I18n.locale}/profiles#top")
     end
   end
 

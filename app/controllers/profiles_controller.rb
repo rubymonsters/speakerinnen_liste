@@ -16,6 +16,10 @@ class ProfilesController < ApplicationController
     if params[:search]
       handle_search
     elsif params[:tag_filter]
+      unless params[:tag_filter].present?
+        redirect_to profiles_url(anchor: "top"), notice: I18n.t('flash.profiles.no_tags_selected')
+        return
+      end
       handle_tags 
     elsif params[:category_id]
       @profiles = profiles_for_category
@@ -200,17 +204,11 @@ class ProfilesController < ApplicationController
   end
 
   def handle_tags
-    tags = params[:tag_filter]
-    if tags.present?
-      @profiles = profiles_with_tags
-      @tags = tags.split(/\s*,\s*/)
-      last_tag = @tags.last
-      last_tag_id = ActsAsTaggableOn::Tag.where(name: last_tag).last.id
-      @category =  Category.select{|cat| cat.tag_ids.include?(last_tag_id)}.last
-    else
-      redirect_to profiles_url(anchor: "top"), notice: I18n.t('flash.profiles.no_tags_selected')
-      return
-    end
+    @tags = params[:tag_filter].split(/\s*,\s*/)
+    last_tag = @tags.last
+    last_tag_id = ActsAsTaggableOn::Tag.where(name: last_tag).last.id
+    @profiles = profiles_with_tags
+    @category =  Category.select{|cat| cat.tag_ids.include?(last_tag_id)}.last
   end
 
   def build_tags_for_tags_filter

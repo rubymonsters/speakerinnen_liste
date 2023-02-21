@@ -84,6 +84,19 @@ describe 'profile search' do
 
         expect(page).to have_no_selector('[data-toggle="tooltip"]')
       end
+
+      #display filters acoording to aggregations
+      #display profiles that are belonging to category
+        #number of profiles
+        #spefic expected profile
+        #expected category is highlited
+      #display profiles that are belonging to tag
+        #number of profiles
+        #spefic expected profile
+        #tag is in the selected box
+        #all checks for 2 cases:
+          #with one tag
+          #with 2 tags from 2 ctagories
     end
   end
 
