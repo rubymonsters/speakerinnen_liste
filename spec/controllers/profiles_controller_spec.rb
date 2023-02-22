@@ -29,7 +29,7 @@ describe ProfilesController, type: :controller do
   end
 
   describe 'category id search' do
-    it 'store the correct category when params has category id' do
+    it 'stores the correct category when params has category id' do
       category = FactoryBot.create(:category, name: 'Seasons', name_en: 'Seasons')
       get :index, params: { category_id: category.id }
       expect(assigns(:category)).to eq(category)

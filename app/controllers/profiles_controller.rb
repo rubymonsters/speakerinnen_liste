@@ -195,7 +195,7 @@ class ProfilesController < ApplicationController
 
   def handle_search
     @profiles = profiles_for_search
-    # sum of search results concerning certain attributes
+    #search results aggrigated according to certain attributes to display as filters
     aggs = @profiles.response.aggregations
     @aggs_languages = aggs[:lang][:buckets]
     @aggs_cities = aggs[:city][:buckets]
@@ -219,7 +219,7 @@ class ProfilesController < ApplicationController
         .with_regional_profile(search_region)
         .translated_in_current_language_and_not_translated(I18n.locale)
       tags = tags.belongs_to_more_than_one_profile unless current_region
-      tags = tags.most_used(100)
+      tags = tags.most_used(100) #if we have this why we need the "belong to more then one profile?"
       instance_variable_set("@tags_#{category.short_name}", tags)
     end
   end
