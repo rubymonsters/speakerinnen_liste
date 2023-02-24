@@ -87,7 +87,22 @@ describe 'profile search' do
         expect(page).to have_no_selector('[data-toggle="tooltip"]')
       end
 
-      # it 'displays aggrigated filters'
+      it 'displays correct data in aggrigated filters' do
+        visit profiles_path(search:  'physics')
+
+        expect(page).to have_selector('#facet_states')
+        within '#facet_countries' do
+          expect(page).to have_content('France')
+        end
+        within '#facet_cities' do
+          expect(page).to have_content('Paris')
+        end
+        within '#facet_languages' do
+          expect(page).to have_content('English')
+          expect(page).to have_content('Polish')
+        end
+      end
+
     end
   end
 
@@ -102,7 +117,13 @@ describe 'profile search' do
       expect(page).to have_no_content('Maren')
     end
 
-    # it 'highlights the expected category' do
+    it 'highlights the expexted category' do
+      physics.categories << science
+      algorithm.categories << science
+      visit profiles_path(category_id: science.id)
+
+      expect(page).to have_selector('#v-pills-science-tab.active')
+    end
   end
 
   describe 'search by tags' do #why has to be related to category??
