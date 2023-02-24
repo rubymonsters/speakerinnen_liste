@@ -165,7 +165,8 @@ class ProfilesController < ApplicationController
       @profiles = profiles_for_index
       @category = Category.first
     end
-    # get categories and tags for the tags filter
+    # together with setting the @category above, this is used for the tags filter module 
+    # gets the categories and tags and sets their colors
     @categories = Category.sorted_categories
     build_tags_for_tags_filter
   end
@@ -224,7 +225,7 @@ class ProfilesController < ApplicationController
         .with_regional_profile(search_region)
         .translated_in_current_language_and_not_translated(I18n.locale)
       tags = tags.belongs_to_more_than_one_profile unless current_region
-      tags = tags.most_used(100) #if we have this why we need the "belong to more then one profile?"
+      tags = tags.most_used(100)
       instance_variable_set("@tags_#{category.short_name}", tags)
     end
   end

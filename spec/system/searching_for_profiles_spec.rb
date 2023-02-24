@@ -126,7 +126,7 @@ describe 'profile search' do
     end
   end
 
-  describe 'search by tags' do #why has to be related to category??
+  describe 'search by tags' do
     it 'shows the correct profiles per tag with one tag' do
       algorithm.categories << science
       physics.categories << social
