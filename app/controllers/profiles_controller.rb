@@ -14,25 +14,15 @@ class ProfilesController < ApplicationController
 
   def index
     if params[:search]
-      handle_search
-    elsif params[:tag_filter]
-      unless params[:tag_filter].present?
-        redirect_to profiles_url(anchor: "top"), notice: I18n.t('flash.profiles.no_tags_selected')
-        return
-      end
-      handle_tags 
-    elsif params[:category_id]
-      @profiles = profiles_for_category
-      @category = Category.find(params[:category_id])
+      search_with_search_params
     else
-      @profiles = profiles_for_index
-      @category = Category.first
-    end
-
+      if params[:tag_filter]&.empty? 
+        redirect_to profiles_url(anchor: "top"), notice: I18n.t('flash.profiles.no_tags_selected')
+        return 
+      end
+      search_with_categories_and_tags
+    end  
     @profiles_count = @profiles.total_count
-    # consider move only to relevant branches of the if
-    @categories = Category.sorted_categories
-    build_tags_for_tags_filter
   end
 
   def show
@@ -136,22 +126,14 @@ class ProfilesController < ApplicationController
     )
   end
 
-  def profiles_for_category
-    tag_names =
-      ActsAsTaggableOn::Tag
-      .with_published_profile
-      .belongs_to_category(params[:category_id])
-      .translated_in_current_language_and_not_translated(I18n.locale)
-      .pluck(:name)
-
-    Profile
-      .with_attached_image
-      .is_published
-      .by_region(current_region)
-      .includes(:taggings, :translations, :topics)
-      .where(tags: { name: tag_names })
-      .page(params[:page])
-      .per(24)
+  def search_with_search_params
+    @profiles = profiles_for_search
+    #search results aggrigated according to certain attributes to display as filters
+    aggs = @profiles.response.aggregations
+    @aggs_languages = aggs[:lang][:buckets]
+    @aggs_cities = aggs[:city][:buckets]
+    @aggs_states = aggs[:state][:buckets]
+    @aggs_countries = aggs[:country][:buckets]
   end
 
   def profiles_for_search
@@ -173,12 +155,53 @@ class ProfilesController < ApplicationController
       .records
   end
 
+  def search_with_categories_and_tags
+    if params[:tag_filter]
+      search_with_tags 
+    elsif params[:category_id]
+      @profiles = profiles_for_category
+      @category = Category.find(params[:category_id])
+    else
+      @profiles = profiles_for_index
+      @category = Category.first
+    end
+    # get categories and tags for the tags filter
+    @categories = Category.sorted_categories
+    build_tags_for_tags_filter
+  end
+
+  def search_with_tags
+    @tags = params[:tag_filter].split(/\s*,\s*/)
+    last_tag = @tags.last
+    last_tag_id = ActsAsTaggableOn::Tag.where(name: last_tag).last.id
+    @profiles = profiles_with_tags
+    @category =  Category.select{|cat| cat.tag_ids.include?(last_tag_id)}.last
+  end
+
   def profiles_with_tags
     Profile
       .is_published
       .by_region(current_region)
       .has_tags(@tags)
       .page(params[:page]).per(24)
+  end
+
+  def profiles_for_category
+    tag_names =
+      ActsAsTaggableOn::Tag
+      .with_published_profile
+      .belongs_to_category(params[:category_id])
+      .translated_in_current_language_and_not_translated(I18n.locale)
+      .pluck(:name)
+
+    Profile
+      .with_attached_image
+      .is_published
+      .by_region(current_region)
+      .includes(:taggings, :translations, :topics)
+      .where(tags: { name: tag_names })
+      .page(params[:page])
+      .per(24)
   end
 
   def profiles_for_index
@@ -191,24 +214,6 @@ class ProfilesController < ApplicationController
       .random
       .page(params[:page])
       .per(24)
-  end
-
-  def handle_search
-    @profiles = profiles_for_search
-    #search results aggrigated according to certain attributes to display as filters
-    aggs = @profiles.response.aggregations
-    @aggs_languages = aggs[:lang][:buckets]
-    @aggs_cities = aggs[:city][:buckets]
-    @aggs_states = aggs[:state][:buckets]
-    @aggs_countries = aggs[:country][:buckets]
-  end
-
-  def handle_tags
-    @tags = params[:tag_filter].split(/\s*,\s*/)
-    last_tag = @tags.last
-    last_tag_id = ActsAsTaggableOn::Tag.where(name: last_tag).last.id
-    @profiles = profiles_with_tags
-    @category =  Category.select{|cat| cat.tag_ids.include?(last_tag_id)}.last
   end
 
   def build_tags_for_tags_filter
