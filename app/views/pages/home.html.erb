@@ -72,7 +72,7 @@
       <h1 class=""><%= t(:special_doctors_title, scope: 'pages.home') %></h1>
       <h3 class=""><%= t(:special_doctors_intro, scope: 'pages.home').html_safe %></h3>
       <div class="row pt-5">
-        <%= render partial: "profiles/profile", collection: @newest_profiles %>
+        <%= render partial: "profiles/profile", collection: @special_profiles %>
         <%= render partial: "profiles/register_special" %>
       </div>
     </div>
