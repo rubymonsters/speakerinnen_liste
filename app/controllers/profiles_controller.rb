@@ -15,12 +15,16 @@ class ProfilesController < ApplicationController
   def index
     if params[:search]
       search_with_search_params
-    else
-      if params[:tag_filter]&.empty? 
+    elsif params[:category_id]
+      search_with_category_id
+    elsif params[:tag_filter]
+      if params[:tag_filter].empty? 
         redirect_to profiles_url(anchor: "top"), notice: I18n.t('flash.profiles.no_tags_selected')
         return 
       end
-      search_with_categories_and_tags
+      search_with_tags
+    else
+      search_without_params
     end  
     @profiles_count = @profiles.total_count
   end
@@ -155,36 +159,10 @@ class ProfilesController < ApplicationController
       .records
   end
 
-  def search_with_categories_and_tags
-    if params[:tag_filter]
-      search_with_tags 
-    elsif params[:category_id]
-      @profiles = profiles_for_category
-      @category = Category.find(params[:category_id])
-    else
-      @profiles = profiles_for_index
-      @category = Category.first
-    end
-    # together with setting the @category above, this is used for the tags filter module 
-    # gets the categories and tags and sets their colors
-    @categories = Category.sorted_categories
-    build_tags_for_tags_filter
-  end
-
-  def search_with_tags
-    @tags = params[:tag_filter].split(/\s*,\s*/)
-    last_tag = @tags.last
-    last_tag_id = ActsAsTaggableOn::Tag.where(name: last_tag).last.id
-    @profiles = profiles_with_tags
-    @category =  Category.select{|cat| cat.tag_ids.include?(last_tag_id)}.last
-  end
-
-  def profiles_with_tags
-    Profile
-      .is_published
-      .by_region(current_region)
-      .has_tags(@tags)
-      .page(params[:page]).per(24)
+  def search_with_category_id
+    @profiles = profiles_for_category
+    @category = Category.find(params[:category_id])
+    build_categories_and_tags_for_tags_filter
   end
 
   def profiles_for_category
@@ -205,6 +183,29 @@ class ProfilesController < ApplicationController
       .per(24)
   end
 
+  def search_with_tags
+    @tags = params[:tag_filter].split(/\s*,\s*/)
+    last_tag = @tags.last
+    last_tag_id = ActsAsTaggableOn::Tag.where(name: last_tag).last.id
+    @profiles = profiles_with_tags
+    @category =  Category.select{|cat| cat.tag_ids.include?(last_tag_id)}.last
+    build_categories_and_tags_for_tags_filter
+  end
+
+  def profiles_with_tags
+    Profile
+      .is_published
+      .by_region(current_region)
+      .has_tags(@tags)
+      .page(params[:page]).per(24)
+  end
+
+  def search_without_params
+    @profiles = profiles_for_index
+    @category = Category.first
+    build_categories_and_tags_for_tags_filter
+  end
+
   def profiles_for_index
     Profile
       .with_attached_image
@@ -217,7 +218,8 @@ class ProfilesController < ApplicationController
       .per(24)
   end
 
-  def build_tags_for_tags_filter
+  def build_categories_and_tags_for_tags_filter
+    @categories = Category.sorted_categories
     Category.all.includes(:translations).each do |category|
       tags = ActsAsTaggableOn::Tag
         .belongs_to_category(category.id)
