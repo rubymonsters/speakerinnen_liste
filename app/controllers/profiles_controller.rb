@@ -132,7 +132,7 @@ class ProfilesController < ApplicationController
 
   def search_with_search_params
     @profiles = profiles_for_search
-    #search results aggrigated according to certain attributes to display as filters
+    # search results aggregated according to certain attributes to display as filters
     aggs = @profiles.response.aggregations
     @aggs_languages = aggs[:lang][:buckets]
     @aggs_cities = aggs[:city][:buckets]
@@ -187,16 +187,16 @@ class ProfilesController < ApplicationController
     @tags = params[:tag_filter].split(/\s*,\s*/)
     last_tag = @tags.last
     last_tag_id = ActsAsTaggableOn::Tag.where(name: last_tag).last.id
-    @profiles = profiles_with_tags
+    @profiles = profiles_with_tags(@tags)
     @category =  Category.select{|cat| cat.tag_ids.include?(last_tag_id)}.last
     build_categories_and_tags_for_tags_filter
   end
 
-  def profiles_with_tags
+  def profiles_with_tags(tags)
     Profile
       .is_published
       .by_region(current_region)
-      .has_tags(@tags)
+      .has_tags(tags)
       .page(params[:page]).per(24)
   end
 
