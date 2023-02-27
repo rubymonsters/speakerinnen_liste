@@ -1,29 +1,109 @@
+#Data
+languages = { en: "en", de: "de" }
+categories = {
+  1: { name_en: "Marketing & PR", name_de: "Marketing & PR"},
+  2: { name_en: "Diversity", name_de: "Diversität" },
+  3: { name_en: "Body & Soul", name_de: "Körper & Geist" },
+  4: { name_en: "Arts & Culture", name_de: "Kunst & Kultur" },
+  5: { name_en: "Environment & Substainablility", name_de: "Umwelt & Nachhaltigkeit" },
+  6: { name_en: "Internet & Media", name_de: "Internet & Medien" },
+  7: { name_en: "Politics & Society", name_de: "Politics & Society" },
+  8: { name_en: "Companies & Start-ups", name_de: "Unternehmen & Gründungen" },
+  9: { name_en: "Career & Education", name_de:"Career & Education" },
+  10: { name_en: "Science & technology", name_de: "Wissenschaft & Technik" }
+}
+
+# TODO: edit tags!!!
+
+tags = {
+  "en": [
+  "Career in life",
+  "Presentations"
+  "Cats",
+  "Dogs",
+  "Spirtuality",
+  "Religion",
+  "Latin Americe",
+  "Modern art",
+  "Climate justice",
+  "Climate Activism",
+  "Social Media",
+  "User exxperience",
+  "Feminism",
+  "Migration in Europe",
+  "Gender",
+  "Investment"  
+  "Career counseling"
+  "Career change"
+  "Everyday Pysics",
+  "Tach"
+  ],
+  "de": [
+  "Eigenwerbung",
+  "Marketing",
+  "Diversität",
+  "Feminismus",
+  "Wellness",
+  "Haustiere",
+  "Kunst",
+  "Kultur",
+  "Klimapolitik",
+  "Umweltschutz",
+  "Twitter",
+  "TikTok",
+  "Arbeitsrecht",
+  "Aussenpolitik",
+  "Eigenständigkeit",
+  "Unternehmen"
+  "Antifaschismus",  
+  "Kinder",
+  "Wissenschaft",
+  "Computers"
+]
+
+tags_en_de [
+  "Crowd speaking",
+  "Queer",
+  "Sauna",
+  "Film",
+  "Environment",
+  "Facebook",
+  "Politics",
+  "Startup",
+  "Career",
+  "Microservices"
+]
+
+# Seed the db
 puts "Seeding the database..."
 
-LocaleLanguage.create(iso_code: "de")
-LocaleLanguage.create(iso_code: "en")
-
+languages.each { |key, value| LocaleLanguage.create(iso_code: languages[key]) }
 puts "2 languages were created"
 
-Category.create(name_en: "Marketing & PR", name_de:  "Marketing & PR")
-Category.create(name_en: "Diversity", name_de: "Diversität")
-Category.create(name_en: "Body & Soul", name_de: "Körper & Geist")
-Category.create(name_en: "Arts & Culture", name_de: "Kunst & Kultur")
-Category.create(name_en: "Environment @ Substainablility", name_de: "Umwelt & Nachhaltigkeit")
-Category.create(name_en: "Internet & Media", name_de: "Internet & Medien")
-Category.create(name_en: "Politics & Society", name_de: "Politik & Gesellschaft ")
-Category.create(name_en: "Companies & Start-ups", name_de: "Unternehmen & Gründungen")
-Category.create(name_en: "Career & Education", name_de: "Beruf & Bildung")
-Category.create(name_en: "Science & Technology", name_de: "Wissenschaft & Technik")
-
+for i in 1..10 do 
+  names = categories[i]
+  Category.create(name_en: names[:name_en], names[:name_de])
+end
 puts "10 categories were created"
 
+create_tags_with_one_language("en")
+puts "English tags were created and assigned to Categories and Languages"
+
+create_tags_with_one_language("de")
+puts "German tags were created and assigned to Categories and Languages"
+
+for i in 1..10 do  
+  tag = ActsAsTaggableOn::Tag.create(name(tags_en[i]))
+  tag.categories << Category.find_by(name: categories[i][:name_en])
+  tag.locale_languages << LocaleLanguage.find_by(iso_code: language["en"])
+  tag.locale_languages << LocaleLanguage.find_by(iso_code: language["de"])
+end
+puts "Tags with both languages were created"
 
 puts "Creating some DE profiles..."
-random_number= 1 + rand(9)
-tags = ["umweltschutz","Haustiere","Aussenpolitik","Antifaschismus","Mode","Wellness","Familie","Kinder","Mutter sein","Career in life"]
 
-300.times do |i|
+100.times do |i|
+  random_number = 1 + rand(9)
   Profile.create!(firstname: "Jane",
                   lastname: "Doe#{i}",
                   email: "jane_doe#{i}@example.com",
@@ -67,7 +147,9 @@ tags = ["umweltschutz","Haustiere","Aussenpolitik","Antifaschismus","Mode","Well
   puts "#{i} german profiles created" if (i % 10 == 0)
 end
 
-200.times do |i|
+puts "Creating some EN profiles..."
+100.times do |i|
+  random_number = 1 + rand(9)
   Profile.create!(firstname: "Claire",
                   lastname: "Miller##{i}",
                   email: "claire_miller#{i}@example.com",
@@ -97,61 +179,7 @@ end
 
   puts "#{i} english profiles created" if (i % 10 == 0)
 end
-# ActsAsTaggableOn::Tag.create(name: "Career in life", ).categories << Category.find_by(name: "Marketing & PR")
-# ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "en")
-# ActsAsTaggableOn::Tag.create(name: "Cats").categories << Category.find_by(name: "Body & Soul")
-# ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "en")
-# ActsAsTaggableOn::Tag.create(name: "Dog").categories << Category.find_by(name: "Body & Soul")
-# ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "en")
-# ActsAsTaggableOn::Tag.create(name: "Politics in Parlament").categories << Category.find_by(name: "Politics & Society")
-# ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "en")
-# ActsAsTaggableOn::Tag.create(name: "Javascript").categories << Category.find_by(name: "Science & Technology")
-# ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "en")
-# ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "de")
-# ActsAsTaggableOn::Tag.create(name: "Closure").categories << Category.find_by(name: "Science & Technology")
-# ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "en")
-# ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "de")
-# ActsAsTaggableOn::Tag.create(name: "Latin America").categories << Category.find_by(name: "Politics & Society")
-# ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "en")
-# ActsAsTaggableOn::Tag.create(name: "Gender").categories << Category.find_by(name: "Diversity")
-# ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "en")
-# ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "de")
-# ActsAsTaggableOn::Tag.create(name: "Girlsday").categories << Category.find_by(name: "Career & Education")
-# ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "en")
-# ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "de")
-# ActsAsTaggableOn::Tag.create(name: "Klimapolitik").categories << Category.find_by(name: "Environment @ Substainablility")
-# ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "de")
-# ActsAsTaggableOn::Tag.create(name: "Climatejustice").categories << Category.find_by(name: "Environment @ Substainablility")
-# ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "en")
-# ActsAsTaggableOn::Tag.create(name: "erneuerbare Energien").categories << Category.find_by(name: "Environment @ Substainablility")
-# ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "de")
-# ActsAsTaggableOn::Tag.create(name: "Migration in Europe").categories << Category.find_by(name: "Politics & Society")
-# ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "en")
-# ActsAsTaggableOn::Tag.create(name: "Everyday Pysics").categories << Category.find_by(name: "Science & Technology")
-# ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "en")
-# ActsAsTaggableOn::Tag.create(name: "Social Media").categories << Category.find_by(name: "Internet & Media")
-# ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "en")
-# ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "de")
-# ActsAsTaggableOn::Tag.create(name: "Arbeitsrecht").categories << Category.find_by(name: "Politics & Society")
-# ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "de")
-# ActsAsTaggableOn::Tag.create(name: "Gewerkschaft Verdi").categories << Category.find_by(name: "Politics & Society")
-# ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "de")
-# ActsAsTaggableOn::Tag.create(name: "Film").categories << Category.find_by(name: "Arts & Culture")
-# ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "en")
-# ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "de")
-# ActsAsTaggableOn::Tag.create(name: "Feminismus").categories << Category.find_by(name: "Diversity")
-# ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "de")
-# ActsAsTaggableOn::Tag.create(name: "Suffragetten").categories << Category.find_by(name: "Diversity")
-# ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "de")
-# ActsAsTaggableOn::Tag.create(name: "Eigenständigkeit").categories << Category.find_by(name: "Companies & Start-ups")
-# ActsAsTaggableOn::Tag.last.locale_languages << LocaleLanguage.find_by(iso_code: "de")
 
-# puts "21 tags were created and assigned to Categories and languages"
-
-
-
-
-# puts "Tags were added to profiles"
 
 Profile.create(firstname: "Karen",
                lastname: "Smith",
@@ -184,3 +212,17 @@ Feature.create(position:1, public: true, title: "Climatejustice", description: "
 Feature.last.profiles=Profile.order("RANDOM()").limit(8).to_a
 
 puts "1 feature with 8 profiles where created"
+
+def create_tags_with_one_language(lang)
+  for i in 1..10 do 
+    category = Category.find_by(name: categories[i][:name_en])
+    language = LocaleLanguage.find_by(iso_code: languages[lang])
+    tag_1 = ActsAsTaggableOn::Tag.create(name(tags[lang][i*2-1]))
+    tag_1.categories << category
+    tag_1.locale_languages << language
+    tags_2 = ActsAsTaggableOn::Tag.create(name(tags[lang][i*2]))
+    tags_2.categories << category
+    tags_2.languages << language
+    #add line to assign some tags also to more then 1 category
+  end
+end
