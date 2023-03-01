@@ -36,6 +36,6 @@ class PagesController < ApplicationController
                         .includes(:translations)
                         .is_published
                         .where(id: selected_profile_ids)
-                        .sort_by(&:updated_at)
+                        .order(updated_at: :desc)
   end
 end
