@@ -14,7 +14,8 @@ class PagesController < ApplicationController
                 .with_attached_image
                 .includes(:translations)
                 .is_published
-                .where(id: [1, 2, 3]) #selected ids for medicin people
+                .where(id: [9380, 3356, 5290, 4421, 9495, 4943, 4533])
+                # selected ids for healthcare/medicine people
 
     @profiles_count = Profile.is_published.count
     @tags_count = ActsAsTaggableOn::Tag.count
