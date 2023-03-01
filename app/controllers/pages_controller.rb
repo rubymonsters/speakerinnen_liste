@@ -10,12 +10,8 @@ class PagesController < ApplicationController
                 .by_region(current_region)
                 .main_topic_translated_in(I18n.locale)
                 .last 7
-    @special_profiles = Profile
-                .with_attached_image
-                .includes(:translations)
-                .is_published
-                .where(id: [9380, 3356, 5290, 4421, 9495, 4943, 4533])
-                # selected ids for healthcare/medicine people
+
+    select_special_medicine_profiles
 
     @profiles_count = Profile.is_published.count
     @tags_count = ActsAsTaggableOn::Tag.count
@@ -23,8 +19,21 @@ class PagesController < ApplicationController
     @features   = Feature.published_feature.order(:position) if !current_region
   end
 
+  def frauentag_2023
+    select_special_medicine_profiles
+  end
+
   def render_footer?
     true
   end
 
+  private
+
+  def select_special_medicine_profiles
+    @special_profiles = Profile
+                        .with_attached_image
+                        .includes(:translations)
+                        .is_published
+                        .where(id: [9380, 3356, 5290, 4421, 9495, 4943, 4533])
+  end
 end
