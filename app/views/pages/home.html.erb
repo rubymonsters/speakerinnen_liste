@@ -71,6 +71,7 @@
     <div id="startpage-special" class="container py-5 bg--light-grey">
       <h1 class=""><%= t(:special_doctors_title, scope: 'pages.home') %></h1>
       <h3 class=""><%= t(:special_doctors_intro, scope: 'pages.home').html_safe %></h3>
+      <h3 class=""><%= t(:special_doctors_details, scope: 'pages.home').html_safe %></h3>
       <div class="row pt-5">
         <%= render partial: "profiles/profile", collection: @special_profiles %>
         <%= render partial: "profiles/register_special" %>
