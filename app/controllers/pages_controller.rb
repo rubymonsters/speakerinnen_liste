@@ -30,10 +30,12 @@ class PagesController < ApplicationController
   private
 
   def select_special_medicine_profiles
+    selected_profile_ids = [9380, 6507, 5290, 4421, 9495, 4943, 4533]
     @special_profiles = Profile
                         .with_attached_image
                         .includes(:translations)
                         .is_published
-                        .where(id: [9380, 3356, 5290, 4421, 9495, 4943, 4533])
+                        .where(id: selected_profile_ids)
+                        .sort_by(&:updated_at)
   end
 end
