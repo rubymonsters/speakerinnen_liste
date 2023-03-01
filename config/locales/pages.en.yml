@@ -90,6 +90,13 @@ en:
       about: "About us"
       faq: "FAQ"
       code_of_conduct: "Code of Conduct"
+      special_doctors_title: "For Women's Day: Women doctors on stage!"
+      special_doctors_intro: 'Women doctors of all disciplines - register now as a speaker!'
+      special_doctors_details: <a href="/de/frauentag2023">All information about the campaign</a>
+      special_doctors_register:
+        title: <b>You are a doctor?</b>
+        text: <p>Register now to be found as an expert.</p>
+        button: Register as a speaker
     footer:
       contact: "Contact"
       imprint: "Legal Details"

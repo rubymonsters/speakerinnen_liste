@@ -1,0 +1,50 @@
+<div class="container bg--white pb-5">
+  <h1 class="display-4 py-5">ZUM FRAUENTAG: ÄRZTINNEN AUF DIE BÜHNE!</h1>
+  <p>Deutscher Zahnärztetag 2022: 27 Männer, 9 Frauen. Jahrestagung der Deutschen Gesellschaft für Immunologie 2022: 26 Männer, 14 Frauen. Keynote Speaker beim Deutschen Krebskongress 2022: 17 Männer, 2 Frauen.
+  </p>
+  <p>
+    Wie in vielen Branchen sind auch bei medizinischen Kongressen und Konferenzen Frauen in der Minderheit – zumindest was ihre Präsenz auf der Bühne angeht. Dabei sind sie in allen medizinischen Berufsständen mit ihrer Expertise vertreten, inzwischen sogar in der Mehrheit. Als Grund der geringeren Präsenz auf den Bühnen geben Kongress-Veranstalter*innen auch hier häufig an, „keine Frau fürs Podium, Workshops oder Trainingslabore gefunden zu haben“.
+  </p>
+  <p>
+    Damit Chirurginnen, Zahnärztinnen, Gynäkologinnen, Psychologinnen, Allgemeinmedizinerinnen und alle weiteren Vertreterinnen von Heilberufen und Organisationen künftig besser von Event-Organisator*innen oder Journalist*innen gefunden werden können, rufen wir zum diesjährigen Frauentag alle Medizinerinnen und Frauen im Gesundheitswesen dazu auf: <a href="/de/sign_up" target="_blank">Registriert Euch mit Eurer Expertise bei Speakerinnen.org!</a>
+  </p>
+  <%# Special medicine and healtcare %>
+  <div id="startpage-special" class="container py-5 bg--light-grey mt-5">
+    <h1 class=""><%= t(:special_doctors_title, scope: 'pages.home') %></h1>
+    <h3 class=""><%= t(:special_doctors_intro, scope: 'pages.home').html_safe %></h3>
+    <div class="row pt-5">
+      <%= render partial: "profiles/profile", collection: @special_profiles %>
+      <%= render partial: "profiles/register_special" %>
+    </div>
+  </div>
+  <h2 class="mt-5">Mehr Sichtbarkeit für Frauen im Gesundheitswesen</h2>
+  <p>
+    Speakerinnen.org, Prof. Dr. Mandy Mangler und der Runde Tisch „Frauen im Gesundheitswesen“ appellieren zum diesjährigen Frauentag an alle Expertinnen in Medizin und Gesundheitswesen, sich bei Speakerinnen.org zu registrieren. Sie wollen damit die Sichtbarkeit von Ärztinnen und anderen Expertinnen im Gesundheitsbereich stärken.
+  </p>
+  <p>
+    So weist der Runde Tisch „Frauen im Gesundheitswesen“ darauf hin, dass der Frauenanteil im Gesundheitswesen konstant bei 75 Prozent liegt. Dennoch seien Frauen in Führungspositionen sowie in ihrer öffentlichen Sichtbarkeit deutlich unterrepräsentiert. <a href="https://www.pwc.de/de/gesundheitswesen-und-pharma/pwc-frauen-in-der-gesundheitswirtschaft-2020.pdf" target="_blank" rel="noopener">Studien</a> zeigen, dass nur rund ein Fünftel der Positionen des Topmanagements in Krankenhäusern von Frauen besetzt sind, Tendenz zuletzt sinkend. Das gilt für fast alle anderen Bereiche des Gesundheitssystems, inklusive Kassen(zahn)ärztliche Vereinigungen, Krankenkassen und Gesundheitswirtschaftsunternehmen.
+  </p>
+  <p>
+    „Studien zeigen, dass eine geschlechtergerechte Besetzung von Führungspositionen in der Medizin zu einer erfolgreicheren Behandlung führt“, sagt Prof. Dr. Mandy Mangler, Chefärztin der Klinik für Gynäkologie am Auguste-Viktoria-Klinikum in Berlin. „Der Deutsche Ärztinnenbund hat den Anteil von Frauen in Führungspositionen an medizinischen Fakultäten staatlicher Universitäten analysiert – er beträgt weiterhin lediglich 13 Prozent. Wenn mehr Frauen in Führungspositionen sind, können sie bestehende Regeln mitbestimmen und wir können eine gerechtere Gesellschaft formen.“
+  </p>
+  <p>
+    „Als Vertreterinnen von insgesamt 13 Frauen-Netzwerken und Organisationen im Gesundheitswesen setzen wir uns dafür ein, dass Frauen nicht nur ihren Anteil im gesellschaftlichen Kontext leisten, sondern auch gleichberechtigt mitbestimmen und gestalten“, betonen Cornelia Wanke, Vorständin bei den Healthcare Frauen e.V. und Co-Vorsitzende der Spitzenfrauen Gesundheit e.V. sowie Dr. Rebecca Otto, Präsidentin von Dentista e.V. „Gemeinsam tragen wir dazu bei, die vielen exzellenten Frauen im Gesundheitswesen sichtbarer zu machen und ihnen eine Plattform zu geben.“
+  </p>
+  <h2 class="mt-5">Weitere Informationen</h2>
+  <p><a href="/de/faq" target="_blank">Ein aussagekräftiges Profil anlegen</a></p>
+  <p><a href="https://podcasts.apple.com/de/podcast/gyncast-der-gyn%C3%A4kologie-podcast-des-tagesspiegels/id1509255500" target="_blank" rel="noopener">Gyncast – der Gynäkologie-Podcast mit Prof. Dr. Mandy Mangler</a></p>
+  <p>Der Runde Tisch „Frauen im Gesundheitswesen“ besteht aus insgesamt 13 Frauen-Netzwerken und Organisationen.
+    Er engagiert sich für die Sichtbarkeit von Frauen in allen Bereichen des Gesundheitswesens und in der Politik.
+    Mitglied des Runden Tischs sind:
+    <a href="https://dentista.de/" target="_blank" rel="noopener">Dentista e.V. – Verband der ZahnÄrztinnen</a>,
+    <a href="https://www.aerztinnenbund.de/" target="_blank" rel="noopener">Deutscher Ärztinnenbund e.V.</a>,
+    <a href="https://www.fidar.de/" target="_blank" rel="noopener">FidAR – Frauen in die Aufsichtsräte e.V.</a>,
+    <a href="https://www.healthcare-frauen.de/" target="_blank" rel="noopener">Healthcare Frauen e.V.</a>,
+    <a href="https://www.bundeskongress-gender-gesundheit.de/" target="_blank" rel="noopener">Institut für Gender-Gesundheit e.V.</a>,
+    <a href="https://pro-quote-medizin.de/" target="_blank" rel="noopener">Pro Quote Medizin</a>,
+    <a href="https://www.shehealth.org/" target="_blank" rel="noopener">#SheHealth – Women in digital Health</a>,
+    <a href="https://spitzenfrauengesundheit.de/" target="_blank" rel="noopener">Spitzenfrauen Gesundheit e.V.</a>,
+    <a href="https://www.vzaeplus.de/" target="_blank" rel="noopener">Verband der ZahnÄrztinnen plus e.V.</a>
+  </p>
+</div>
+
