@@ -4,7 +4,7 @@
 <%# Hero %>
 
 <section class="home">
-  <section id='startpage__start-teaser<%= "_#{[0,2,3,4].sample}" unless current_region == :ooe %>' class="start-teaser startpage__photo-bar">
+  <section id='startpage__start-teaser<%= "_#{[0,2,3,4].sample}" unless (current_region == :ooe || current_region == :vorarlberg) %>' class="start-teaser startpage__photo-bar">
     <div class="container">
       <%# Headline %>
       <div class="row hero-headline" >
@@ -27,6 +27,8 @@
         <div class="col align-self-end">
           <% if current_region == :ooe %>
             <p class="copyright-ooe">Copyright: iStock-1395588195_KOMPASS</p>
+          <% elsif current_region == :vorarlberg %>
+            <p class="copyright">Copyright: Marcella Merholz</p>
           <% else %>
             <p class="copyright">Copyright: Malwine - <a href="https://malweene.com/" target="_blank">malweene.com</a></p>
           <% end %>
