@@ -34,7 +34,7 @@ class Seeds
         "Career counseling",
         "Career change",
         "Everyday Pysics",
-        "Tach"
+        "Tech"
       ],
       "de" => [
         "Eigenwerbung",
@@ -214,20 +214,25 @@ class Seeds
       tags_2 = ActsAsTaggableOn::Tag.create(name: @tags[lang][i*2])
       tags_2.categories << category
       tags_2.locale_languages << language
-      #TODO: add line to assign some tags also to more then 1 category?
+      #TODO: assign some tags to more then 1 category
     end
   end
 
   def build_tags_for_profile(i, lang)
     tags_bank = @tags[lang]
     selected_tags = []
+    j = i % 10
+    k = (i % 10) + 10
     if i % 2 == 0
-      5.times do |j|
-        selected_tags << tags_bank[((i + j) * 2) % @tags.length]
+      8.times do
+        selected_tags << tags_bank[j]
+        j = j + 1
       end
     else
-      5.times do |j|
-        selected_tags << tags_bank[((i + j) * 3) % @tags.length]
+      7.times do
+        selected_tags << tags_bank[k]
+        k = k + 1
+        break if k >= tags_bank.length
       end
     end
     selected_tags
