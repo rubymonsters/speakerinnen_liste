@@ -57,6 +57,7 @@ en:
       category_search_text_ooe: "Find your women experts in 10 categories or filter by specific topics:"
       get_inspired: "Get inspired!"
       get_inspired_text: "Here you can find %{count_profiles} women speakers in %{count_topics} topics"
+      get_inspired_button: "Search"
       welcome_title: "Speakerinnen"
       welcome_title_vorarlberg: "Welcome!"
       welcome_title_ooe: "Welcome!"
