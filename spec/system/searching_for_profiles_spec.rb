@@ -10,6 +10,8 @@ describe 'profile search' do
   let!(:algorithm) { create(:tag_algorithm, locale_languages: [locale_language_en]) }
   let!(:ada) { create(:ada, topic_list: [algorithm]) }
   let!(:marie) { create(:marie, topic_list: [physics]) }
+  let!(:science) {create(:cat_science)}
+  let!(:social) {create(:cat_social)}
   let!(:phantom_of_the_opera) { create(:phantom_of_the_opera, topic_list: []) }
   let!(:profile2) { create(:published_profile, firstname: 'Christiane', lastname: 'König', main_topic_en: 'Blogs') }
   let!(:profile3) { create(:published_profile, firstname: 'Maren ', lastname: 'Meier', main_topic_en: 'Big Data') }
@@ -84,6 +86,72 @@ describe 'profile search' do
 
         expect(page).to have_no_selector('[data-toggle="tooltip"]')
       end
+
+      it 'displays correct data in aggrigated filters' do
+        visit profiles_path(search:  'physics')
+
+        expect(page).to have_selector('#facet_states')
+        within '#facet_countries' do
+          expect(page).to have_content('France')
+        end
+        within '#facet_cities' do
+          expect(page).to have_content('Paris')
+        end
+        within '#facet_languages' do
+          expect(page).to have_content('English')
+          expect(page).to have_content('Polish')
+        end
+      end
+
+    end
+  end
+
+  describe 'search by category' do
+    it 'shows the correct profiles per category' do
+      physics.categories << science
+      algorithm.categories << science
+      visit profiles_path(category_id: science.id)
+
+      expect(page).to have_content('Marie')
+      expect(page).to have_content('Ada')
+      expect(page).to have_no_content('Maren')
+    end
+
+    it 'highlights the expexted category' do
+      physics.categories << science
+      algorithm.categories << science
+      visit profiles_path(category_id: science.id)
+
+      expect(page).to have_selector('#v-pills-science-tab.active')
+    end
+  end
+
+  describe 'search by tags' do
+    it 'shows the correct profiles per tag with one tag' do
+      algorithm.categories << science
+      physics.categories << social
+      visit profiles_path(tag_filter: algorithm.name)
+
+      expect(page).to have_content('Ada')
+      expect(page).to_not have_content('Marie')
+    end
+
+    it 'shows the correct profiles per tag with two tags' do
+      algorithm.categories << science
+      physics.categories << science
+      visit profiles_path(tag_filter: "#{algorithm.name},#{physics.name}")
+
+      expect(page).to have_content('Marie')
+      expect(page).to have_content('Ada')
+    end
+
+    it 'shows the correct profiles per tag with two tags from 2 different categories' do
+      algorithm.categories << science
+      physics.categories << social
+      visit profiles_path(tag_filter: "#{algorithm.name},#{physics.name}")
+
+      expect(page).to have_content('Marie')
+      expect(page).to have_content('Ada')
     end
   end
 

@@ -5,7 +5,7 @@ dc-run-sp=$(call dc, run --service-ports --rm web $(1))
 usage:
 	@echo "Available targets:"
 	@echo "  * setup                  - Initiates everything (building images, installing gems, creating db and migrating"
-	@echo "  * building               - Build image"
+	@echo "  * build                  - Build image"
 	@echo "  * bundle                 - Install missing gems"
 	@echo "  * db-migrate             - Runs the migrations for dev database"
 	@echo "  * db-test-migrate        - Runs the migrations for test database"

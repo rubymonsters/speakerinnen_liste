@@ -14,51 +14,19 @@ class ProfilesController < ApplicationController
 
   def index
     if params[:search]
-      @profiles = profiles_for_search
-      # sum of search results concerning certain attributes
-      @aggs = @profiles.response.aggregations
-      @aggs_languages = @aggs[:lang][:buckets]
-      @aggs_cities = @aggs[:city][:buckets]
-      @aggs_states = @aggs[:state][:buckets]
-      @aggs_countries = @aggs[:country][:buckets]
-    elsif params[:tag_filter]&.present?
-      @tags = params[:tag_filter].split(/\s*,\s*/)
-      @profiles = profiles_with_tags
-      # redirect_to profiles_path(:anchor => "speakers")
+      search_with_search_params
     elsif params[:category_id]
-      @profiles = profiles_for_category
-    else
-      @profiles = profiles_for_index
-    end
-
-    @profiles_count = @profiles.total_count
-
-    # for the tags filter module that is available all the time at the profile index view
-    # is needed for the colors of the tags
-    @category =
-      if params[:category_id]
-        Category.find(params[:category_id])
-      elsif params[:tag_filter]
-        if params[:tag_filter].empty?
-          redirect_to profiles_url(anchor: "top"), notice: I18n.t('flash.profiles.no_tags_selected')
-          return
-        end
-        last_tag = params[:tag_filter].split(/\s*,\s*/).last
-        last_tag_id = ActsAsTaggableOn::Tag.where(name: last_tag).last.id
-        Category.select{|cat| cat.tag_ids.include?(last_tag_id)}.last
-      else
-        Category.first
+      search_with_category_id
+    elsif params[:tag_filter]
+      if params[:tag_filter].empty? 
+        redirect_to profiles_url(anchor: "top"), notice: I18n.t('flash.profiles.no_tags_selected')
+        return 
       end
-    @categories = Category.sorted_categories
-    Category.all.includes(:translations).each do |category|
-      tags = ActsAsTaggableOn::Tag
-        .belongs_to_category(category.id)
-        .with_published_profile
-        .with_regional_profile(search_region)
-        .translated_in_current_language_and_not_translated(I18n.locale)
-      tags = tags.belongs_to_more_than_one_profile unless current_region
-      instance_variable_set("@tags_#{category.short_name}", tags).most_used(100)
-    end
+      search_with_tags
+    else
+      search_without_params
+    end  
+    @profiles_count = @profiles.total_count
   end
 
   def show
@@ -162,22 +130,14 @@ class ProfilesController < ApplicationController
     )
   end
 
-  def profiles_for_category
-    tag_names =
-      ActsAsTaggableOn::Tag
-      .with_published_profile
-      .belongs_to_category(params[:category_id])
-      .translated_in_current_language_and_not_translated(I18n.locale)
-      .pluck(:name)
-
-    Profile
-      .with_attached_image
-      .is_published
-      .by_region(current_region)
-      .includes(:taggings, :translations, :topics)
-      .where(tags: { name: tag_names })
-      .page(params[:page])
-      .per(24)
+  def search_with_search_params
+    @profiles = profiles_for_search
+    # search results aggregated according to certain attributes to display as filters
+    aggs = @profiles.response.aggregations
+    @aggs_languages = aggs[:lang][:buckets]
+    @aggs_cities = aggs[:city][:buckets]
+    @aggs_states = aggs[:state][:buckets]
+    @aggs_countries = aggs[:country][:buckets]
   end
 
   def profiles_for_search
@@ -199,12 +159,51 @@ class ProfilesController < ApplicationController
       .records
   end
 
-  def profiles_with_tags
+  def search_with_category_id
+    @profiles = profiles_for_category
+    @category = Category.find(params[:category_id])
+    build_categories_and_tags_for_tags_filter
+  end
+
+  def profiles_for_category
+    tag_names =
+      ActsAsTaggableOn::Tag
+      .with_published_profile
+      .belongs_to_category(params[:category_id])
+      .translated_in_current_language_and_not_translated(I18n.locale)
+      .pluck(:name)
+
+    Profile
+      .with_attached_image
+      .is_published
+      .by_region(current_region)
+      .includes(:taggings, :translations, :topics)
+      .where(tags: { name: tag_names })
+      .page(params[:page])
+      .per(24)
+  end
+
+  def search_with_tags
+    @tags = params[:tag_filter].split(/\s*,\s*/)
+    last_tag = @tags.last
+    last_tag_id = ActsAsTaggableOn::Tag.where(name: last_tag).last.id
+    @profiles = profiles_with_tags(@tags)
+    @category =  Category.select{|cat| cat.tag_ids.include?(last_tag_id)}.last
+    build_categories_and_tags_for_tags_filter
+  end
+
+  def profiles_with_tags(tags)
     Profile
       .is_published
       .by_region(current_region)
-      .has_tags(@tags)
+      .has_tags(tags)
       .page(params[:page]).per(24)
+  end
+
+  def search_without_params
+    @profiles = profiles_for_index
+    @category = Category.first
+    build_categories_and_tags_for_tags_filter
   end
 
   def profiles_for_index
@@ -217,5 +216,19 @@ class ProfilesController < ApplicationController
       .random
       .page(params[:page])
       .per(24)
+  end
+
+  def build_categories_and_tags_for_tags_filter
+    @categories = Category.sorted_categories
+    Category.all.includes(:translations).each do |category|
+      tags = ActsAsTaggableOn::Tag
+        .belongs_to_category(category.id)
+        .with_published_profile
+        .with_regional_profile(search_region)
+        .translated_in_current_language_and_not_translated(I18n.locale)
+      tags = tags.belongs_to_more_than_one_profile unless current_region
+      tags = tags.most_used(100)
+      instance_variable_set("@tags_#{category.short_name}", tags)
+    end
   end
 end
