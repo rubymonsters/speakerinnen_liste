@@ -319,7 +319,6 @@ GEM
       addressable (~> 2.0)
       excon
       http (>= 2.0, < 5.0)
-    libv8-node (15.14.0.1)
     libv8-node (15.14.0.1-aarch64-linux)
     libv8-node (15.14.0.1-arm64-darwin-20)
     libv8-node (15.14.0.1-x86_64-linux)
@@ -389,7 +388,7 @@ GEM
       method_source (~> 1.0)
     public_suffix (4.0.6)
     racc (1.6.2)
-    rack (2.2.4)
+    rack (2.2.6.4)
     rack-piwik (0.3.0)
     rack-protection (2.1.0)
       rack
@@ -534,7 +533,6 @@ GEM
 PLATFORMS
   aarch64-linux
   arm64-darwin-20
-  ruby
   x86_64-linux
 
 DEPENDENCIES
