@@ -62,6 +62,7 @@ de:
       category_search_text_ooe: "Finde deine Fachfrau in 10 Kategorien oder filtere nach ganz konkreten Themen"
       get_inspired: "Get inspired!"
       get_inspired_text: "Hier findest du %{count_profiles} Speakerinnen für %{count_topics} Themen"
+      get_inspired_button: "Los!"
       welcome_title: "Speakerinnen"
       welcome_title_vorarlberg: "Herzlich willkommen!"
       welcome_title_ooe: "Herzlich willkommen!"
