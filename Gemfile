@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 source 'https://rubygems.org'
-ruby '2.7.7'
+ruby '3.1.1'
 gem 'rails', '6.0.3.6'
 
 # Needed for Javascript Runtime
@@ -11,7 +11,7 @@ gem 'mini_racer'
 # used in the rail 5.2 version
 gem 'bootsnap', '~> 1.4.2'
 
-gem 'faker', '1.9.1'
+gem 'faker', '~> 3.1', '>= 3.1.1'
 gem 'normalize-rails'
 
 gem 'deadweight', require: 'deadweight/hijack/rails'
@@ -76,7 +76,7 @@ end
 
 group :development, :test do
   gem 'byebug'
-  gem 'capybara', '~> 3.12.0'
+  gem 'capybara', '~> 3.38'
   gem 'guard'
   gem 'guard-rspec'
   gem 'pry'
