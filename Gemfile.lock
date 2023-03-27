@@ -203,13 +203,10 @@ GEM
       responders
       warden (~> 1.2.3)
     diff-lcs (1.5.0)
-    domain_name (0.5.20190701)
-      unf (>= 0.0.5, < 1.0.0)
     erubi (1.12.0)
     exception_notification (4.5.0)
       actionmailer (>= 5.2, < 8)
       activesupport (>= 5.2, < 8)
-    excon (0.99.0)
     execjs (2.8.1)
     factory_bot (6.2.1)
       activesupport (>= 5.0.0)
@@ -242,9 +239,6 @@ GEM
     faraday-rack (1.0.0)
     faraday-retry (1.0.3)
     ffi (1.15.5)
-    ffi-compiler (1.0.1)
-      ffi (>= 1.0.0)
-      rake
     font-awesome-rails (4.7.0.8)
       railties (>= 3.2, < 8.0)
     formatador (1.1.0)
@@ -273,16 +267,6 @@ GEM
     hashie (5.0.0)
     heapy (0.2.0)
       thor
-    honeycomb-beeline (2.11.0)
-      libhoney (>= 1.14.2)
-    http (5.1.1)
-      addressable (~> 2.8)
-      http-cookie (~> 1.0)
-      http-form_data (~> 2.2)
-      llhttp-ffi (~> 0.4.0)
-    http-cookie (1.0.5)
-      domain_name (~> 0.5)
-    http-form_data (2.3.0)
     i18n (1.12.0)
       concurrent-ruby (~> 1.0)
     image_processing (1.12.2)
@@ -316,17 +300,10 @@ GEM
       addressable (~> 2.8)
     letter_opener (1.8.1)
       launchy (>= 2.2, < 3)
-    libhoney (2.2.0)
-      addressable (~> 2.0)
-      excon
-      http (>= 2.0, < 6.0)
     libv8-node (16.10.0.0-x86_64-linux)
     listen (3.8.0)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
-    llhttp-ffi (0.4.0)
-      ffi-compiler (~> 1.0)
-      rake (~> 13.0)
     loofah (2.19.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -534,9 +511,6 @@ GEM
     uglifier (4.2.0)
       execjs (>= 0.3.0, < 3)
     unaccent (0.4.0)
-    unf (0.1.4)
-      unf_ext
-    unf_ext (0.0.8.2)
     unicode-display_width (1.4.1)
     unicorn (6.1.0)
       kgio (~> 2.6)
@@ -585,7 +559,6 @@ DEPENDENCIES
   globalize-accessors
   guard
   guard-rspec
-  honeycomb-beeline
   image_processing (~> 1.2)
   invisible_captcha
   jquery-rails (~> 4.4.0)

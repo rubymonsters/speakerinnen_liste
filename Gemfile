@@ -48,7 +48,6 @@ gem 'elasticsearch-model', github: 'elastic/elasticsearch-rails', branch: '6.x'
 gem 'elasticsearch-rails', github: 'elastic/elasticsearch-rails', branch: '6.x'
 gem 'record_tag_helper', '~> 1.0'
 gem 'exception_notification'
-gem 'honeycomb-beeline'
 
 gem 'coffee-rails', '~> 5.0.0'
 gem 'sassc-rails'
