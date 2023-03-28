@@ -98,8 +98,8 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
       zeitwerk (~> 2.2, >= 2.2.2)
-    acts-as-taggable-on (6.5.0)
-      activerecord (>= 5.0, < 6.1)
+    acts-as-taggable-on (9.0.1)
+      activerecord (>= 6.0, < 7.1)
     addressable (2.8.1)
       public_suffix (>= 2.0.2, < 6.0)
     ansi (1.5.0)
@@ -531,7 +531,7 @@ PLATFORMS
 
 DEPENDENCIES
   active_model_serializers
-  acts-as-taggable-on (~> 6.0)
+  acts-as-taggable-on (~> 9.0, >= 9.0.1)
   auto_html (~> 1.6.4)
   aws-sdk-s3
   better_errors
