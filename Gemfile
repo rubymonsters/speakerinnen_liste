@@ -11,6 +11,9 @@ gem 'mini_racer'
 # used in the rail 5.2 version
 gem 'bootsnap', '~> 1.4.2'
 
+# rexml gem is a bundled gem since Ruby 3.0.0.
+gem 'rexml', '~> 3.2.4'
+
 gem 'faker', '~> 3.1', '>= 3.1.1'
 gem 'normalize-rails'
 
