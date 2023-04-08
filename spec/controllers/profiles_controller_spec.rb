@@ -43,7 +43,7 @@ describe ProfilesController, type: :controller do
     end
   end
 
-  describe 'search action', elasticsearch: true do
+  describe 'search action' do
     it 'displays search results if search term is present' do
       sleep 1
       get :index, params: {  search: 'ruby' }

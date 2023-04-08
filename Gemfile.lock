@@ -1,32 +1,4 @@
 GIT
-  remote: https://github.com/elastic/elasticsearch-rails.git
-  revision: d6c88cefb929ebdf997794dc4c46c1f1f247cf9b
-  branch: 6.x
-  specs:
-    elasticsearch-model (6.1.2)
-      activesupport (> 3)
-      elasticsearch (~> 6)
-      hashie
-    elasticsearch-rails (6.1.2)
-
-GIT
-  remote: https://github.com/elasticsearch/elasticsearch-ruby.git
-  revision: ebad5bdbd4087eb41b579ba6c1a153d36a8ed42e
-  ref: 6.x
-  specs:
-    elasticsearch (6.8.2)
-      elasticsearch-api (= 6.8.2)
-      elasticsearch-transport (= 6.8.2)
-    elasticsearch-api (6.8.2)
-      multi_json
-    elasticsearch-extensions (0.0.31)
-      ansi
-      elasticsearch
-    elasticsearch-transport (6.8.2)
-      faraday (~> 1)
-      multi_json
-
-GIT
   remote: https://github.com/globalize/globalize
   revision: 3c146abbba4200aed1bbdbf3e63d5729a9dd95a1
   specs:
@@ -324,6 +296,7 @@ GEM
     mime-types-data (3.2023.0218.1)
     mini_histogram (0.3.1)
     mini_magick (4.9.5)
+<<<<<<< HEAD
     mini_mime (1.1.2)
     mini_racer (0.6.3)
       libv8-node (~> 16.10.0.0)
@@ -343,6 +316,8 @@ GEM
       net-protocol
     nio4r (2.5.9)
     nokogiri (1.14.2-arm64-darwin)
+    mini_portile2 (2.8.1)
+    nio4r (2.5.7)
       racc (~> 1.4)
     nokogiri (1.14.2-x86_64-linux)
       racc (~> 1.4)
@@ -547,9 +522,6 @@ DEPENDENCIES
   deadweight
   derailed_benchmarks
   devise (~> 4.7)
-  elasticsearch-extensions!
-  elasticsearch-model!
-  elasticsearch-rails!
   exception_notification
   factory_bot_rails
   faker (~> 3.1, >= 3.1.1)
