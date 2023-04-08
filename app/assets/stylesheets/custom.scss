@@ -59,6 +59,14 @@ ul {
   vertical-align: top;
 }
 
+.code-of-conduct ul {
+  list-style: disc;
+
+  li::marker {
+    color: $primary;
+  }
+}
+
 h1 {
   text-transform: uppercase;
   font-weight: bold;
