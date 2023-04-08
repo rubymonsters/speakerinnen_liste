@@ -280,8 +280,12 @@ textarea, input {
   .btn-primary {
     width: 100%;
   }
-  .col-sm-2 {
-    max-width: none;
+  div {
+    width: 100%;
+
+    @media (min-width: 576px) {
+      width: auto;
+    }
   }
 }
 
