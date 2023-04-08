@@ -26,7 +26,7 @@ class ProfilesController < ApplicationController
     else
       search_without_params
     end  
-    @profiles_count = @profiles.total_count
+    @profiles_count = @profiles.size
   end
 
   def show
@@ -133,30 +133,35 @@ class ProfilesController < ApplicationController
   def search_with_search_params
     @profiles = profiles_for_search
     # search results aggregated according to certain attributes to display as filters
-    aggs = @profiles.response.aggregations
-    @aggs_languages = aggs[:lang][:buckets]
-    @aggs_cities = aggs[:city][:buckets]
-    @aggs_states = aggs[:state][:buckets]
-    @aggs_countries = aggs[:country][:buckets]
+    # aggs = @profiles.response.aggregations
+    # @aggs_languages = aggs[:lang][:buckets]
+    # @aggs_cities = aggs[:city][:buckets]
+    # @aggs_states = aggs[:state][:buckets]
+    # @aggs_countries = aggs[:country][:buckets]
   end
 
   def profiles_for_search
-    Profile
-      .with_attached_image
-      .is_published
-      .by_region(current_region)
-      .includes(:taggings, :translations)
-      .search(
-        params[:search],
-        search_region,
-        params[:filter_countries],
-        params[:filter_states],
-        params[:filter_cities],
-        params[:filter_lang],
-        (!Rails.env.production? || params[:explain]) == true
-      )
-      .page(params[:page]).per(24)
-      .records
+    @profiles = Search
+      .new(params[:search])
+      .profiles
+      .page(params[:page])
+      .per(24)
+    # Profile
+    #   .with_attached_image
+    #   .is_published
+    #   .by_region(current_region)
+    #   .includes(:taggings, :translations)
+    #   .search(
+    #     params[:search],
+    #     search_region,
+    #     params[:filter_countries],
+    #     params[:filter_states],
+    #     params[:filter_cities],
+    #     params[:filter_lang],
+    #     (!Rails.env.production? || params[:explain]) == true
+    #   )
+    #   .page(params[:page]).per(24)
+    #   .records
   end
 
   def search_with_category_id
