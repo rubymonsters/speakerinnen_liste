@@ -211,24 +211,29 @@ h1 {
   pointer-events: none;
 }
 
+.code_of_conduct_box {
+  // flex: 1;
+  // font-size: small;
+  // padding-top: 0.3rem;
+  // color: $green;
+  border: 1px solid $primary;
+  border-radius: 4px;
+  padding: 0.375rem 0.75rem;
+  cursor: pointer;
+}
+
 .modal-footer.contact {
   align-items: flex-start;
   padding-left: 0rem;
   padding-top: 0rem;
   padding-bottom: 1rem;
   padding-right: 1rem;
+  border-top: none;
 
   .btn {
     margin-top: 1rem;
   }
-  .code_of_conduct_link {
-    flex: 1;
-    font-size: small;
-    padding-top: 0.3rem;
-    color: $red;
-  }
 }
-
 
 // overwrite bootstrap
 
