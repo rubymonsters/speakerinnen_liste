@@ -30,9 +30,7 @@ describe 'profile search' do
       end
     end
 
-    describe 'searching', elasticsearch: true do
-      before { Profile.__elasticsearch__.refresh_index! }
-
+    describe 'searching' do
       it 'displays profiles with searched topic' do
         visit profiles_path(search: 'physics')
 

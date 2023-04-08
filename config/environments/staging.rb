@@ -96,9 +96,6 @@ SpeakerinnenListe::Application.configure do
   #   enable_starttls_auto: true,
   # }
 
-  # search box --> heroku elasticsearch add-on
-  Elasticsearch::Model.client = Elasticsearch::Client.new host: ENV['SEARCHBOX_URL']
-
   config.action_mailer.delivery_method = :smtp
 
   config.action_mailer.smtp_settings = {
