@@ -131,21 +131,20 @@ class ProfilesController < ApplicationController
   end
 
   def search_with_search_params
-    @profiles = profiles_for_search
-    # search results aggregated according to certain attributes to display as filters
-    # aggs = @profiles.response.aggregations
-    # @aggs_languages = aggs[:lang][:buckets]
-    # @aggs_cities = aggs[:city][:buckets]
-    # @aggs_states = aggs[:state][:buckets]
-    # @aggs_countries = aggs[:country][:buckets]
-  end
-
-  def profiles_for_search
-    @profiles = Search
-      .new(params[:search])
-      .profiles
+    @profiles = matching_profiles
       .page(params[:page])
       .per(24)
+    # search results aggregated according to certain attributes to display as filters
+    aggs = ProfileGrouper.new(params[:locale], matching_profiles.ids).agg_hash
+    @aggs_languages = aggs[:languages]
+    @aggs_cities = aggs[:cities]
+    @aggs_states = aggs[:states]
+    @aggs_countries = aggs[:countries]
+  end
+
+  def matching_profiles
+    @matching_profiles ||= Search.new(params[:search]).profiles
+
     # Profile
     #   .with_attached_image
     #   .is_published
