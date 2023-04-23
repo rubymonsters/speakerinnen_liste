@@ -3,12 +3,34 @@
 class Search
   attr_reader :profiles
 
-  def initialize(query)
-    @profiles = Profile
+  def initialize(query, filter_params = {})
+    chain = Profile
       .includes(:translations, taggings: :tag)
       .is_published
       .references(:tag)
       .where(fields_to_search, query: "%#{query}%")
+
+    if filter_params[:filter_language]
+      chain = chain
+        .where('iso_languages LIKE ?', "%#{filter_params[:filter_language]}%")
+    end
+
+    if filter_params[:filter_city]
+      chain = chain
+        .where('city ILIKE ?', "%#{filter_params[:filter_city]}%")
+    end
+
+    if filter_params[:filter_state]
+      chain = chain
+        .where(state: filter_params[:filter_state])
+    end
+
+    if filter_params[:filter_country]
+      chain = chain
+        .where(country: filter_params[:filter_country])
+    end
+
+    @profiles ||= chain
   end
 
   def fields_to_search

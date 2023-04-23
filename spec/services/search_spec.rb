@@ -58,47 +58,47 @@ describe Search do
       expect(described_class.new('physics').profiles.count).to eq 1
     end
 
-  #   context 'facets' do
-  #     let!(:french_profile) do
-  #       create(
-  #         :ada,
-  #         iso_languages: ['fr'],
-  #         country: 'DE',
-  #         city: 'Berlin',
-  #         state: 'Berlin'
-  #       )
-  #     end
+    # context 'facets' do
+    #   let!(:french_profile) do
+    #     create(
+    #       :ada,
+    #       iso_languages: ['fr'],
+    #       country: 'DE',
+    #       city: 'Berlin',
+    #       state: 'Berlin'
+    #     )
+    #   end
 
-  #     let!(:profile_without_facet_attributes) do
-  #       create(
-  #         :published_profile,
-  #         firstname: 'Ada',
-  #         iso_languages: [],
-  #         country: nil,
-  #         city: '',
-  #         state: nil
-  #       )
-  #     end
+    #   let!(:profile_without_facet_attributes) do
+    #     create(
+    #       :published_profile,
+    #       firstname: 'Ada',
+    #       iso_languages: [],
+    #       country: nil,
+    #       city: '',
+    #       state: nil
+    #     )
+    #   end
 
-  #     before do
-  #       @aggs = described_class.new('Ada').aggregations_hash
-  #     end
+    #   before do
+    #     @aggs = described_class.new('Ada').aggregations_hash
+    #   end
 
-  #     it 'scopes the search results by language' do
-  #       expect(@aggs[:languages].fetch('fr')).to eq 1
-  #     end
+    #   it 'scopes the search results by language' do
+    #     expect(@aggs[:languages].fetch('fr')).to eq 1
+    #   end
 
-  #     it 'scopes the search results by country' do
-  #       expect(@aggs[:countries].fetch('DE')).to eq 1
-  #     end
+    #   it 'scopes the search results by country' do
+    #     expect(@aggs[:countries].fetch('DE')).to eq 1
+    #   end
 
-  #     it 'scopes the search results by city' do
-  #       expect(@aggs[:cities].fetch('Berlin')).to eq 1
-  #     end
+    #   it 'scopes the search results by city' do
+    #     expect(@aggs[:cities].fetch('Berlin')).to eq 1
+    #   end
 
-  #     it 'scopes the search results by state' do
-  #       expect(@aggs[:states].fetch('Berlin')).to eq 1
-  #     end
-  #   end
+    #   it 'scopes the search results by state' do
+    #     expect(@aggs[:states].fetch('Berlin')).to eq 1
+    #   end
+    # end
   end
 end

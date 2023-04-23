@@ -143,7 +143,15 @@ class ProfilesController < ApplicationController
   end
 
   def matching_profiles
-    @matching_profiles ||= Search.new(params[:search]).profiles
+    @matching_profiles ||= Search.new(
+        params[:search],
+        {
+          filter_city: params[:filter_city],
+          filter_language: params[:filter_language],
+          filter_country: params[:filter_country],
+          filter_state: params[:filter_state]
+        }
+      ).profiles
 
     # Profile
     #   .with_attached_image
