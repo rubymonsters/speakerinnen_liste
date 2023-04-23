@@ -65,6 +65,7 @@ FactoryBot.define do
       firstname { 'Laura' }
       country { 'AT' }
       state { :vorarlberg }
+      twitter_de { 'laurastwitter' }
       iso_languages { ['de', 'en'] }
       main_topic_de { 'Umwelt' }
       published { true }
