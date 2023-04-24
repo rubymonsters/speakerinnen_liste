@@ -46,16 +46,16 @@ describe ProfilesController, type: :controller do
   describe 'search action' do
     it 'displays search results if search term is present' do
       sleep 1
-      get :index, params: {  search: 'ruby' }
+      get :index, params: { search: 'ruby' }
       expect(response).to be_successful
     end
 
     it 'should store aggregations in aggs variables' do
       get :index, params: { search: 'ruby' }
-      expect(assigns(:aggs_cities)).to eq([])
-      expect(assigns(:aggs_languages)).to eq([])
-      expect(assigns(:aggs_countries)).to eq([])
-      expect(assigns(:aggs_states)).to eq([])
+      expect(assigns(:aggs_cities)).to eq({})
+      expect(assigns(:aggs_languages)).to eq({})
+      expect(assigns(:aggs_countries)).to eq nil
+      expect(assigns(:aggs_states)).to eq nil
     end
   end
 
