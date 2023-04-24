@@ -1,6 +1,32 @@
 # frozen_string_literal: true
 class Profile < ApplicationRecord
+  include PgSearch::Model
   include ActiveModel::Serialization
+
+  pg_search_scope :search,
+    against: [
+      [:firstname, 'A'],
+      [:lastname, 'A'],
+      [:state, 'C'],
+      [:country, 'C']
+    ],
+    associated_against: {
+      translations: [
+        [:bio, 'C'],
+        [:city, 'B'],
+        [:main_topic, 'A'],
+        [:twitter, 'D']
+      ],
+      topics: [[:name, 'A']]
+    },
+    using: {
+      tsearch: { prefix: true }
+    }
+
+  pg_search_scope :by_language, against: [:iso_languages]
+  pg_search_scope :by_country, against: [:country]
+  pg_search_scope :by_city, associated_against: { translations: [:city] }
+  pg_search_scope :by_state, against: [:state]
 
   has_many :medialinks
   has_many :feature_profiles
