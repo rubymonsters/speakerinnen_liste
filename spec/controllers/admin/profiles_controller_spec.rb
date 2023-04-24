@@ -33,7 +33,7 @@ describe Admin::ProfilesController, type: :controller do
       end
 
       it 'should contain queried results' do
-        expect(assigns(:profiles)).to_not include(@profile1)
+        expect(assigns(:paginated_profiles)).to_not include(@profile1)
       end
     end
 
@@ -49,8 +49,8 @@ describe Admin::ProfilesController, type: :controller do
       end
 
       it 'should contain all results' do
-        expect(assigns(:profiles)).to include(@profile)
-        expect(assigns(:profiles)).to include(@profile1)
+        expect(assigns(:paginated_profiles)).to include(@profile)
+        expect(assigns(:paginated_profiles)).to include(@profile1)
       end
     end
   end
