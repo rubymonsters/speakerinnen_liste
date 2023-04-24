@@ -25,7 +25,8 @@ class ProfilesController < ApplicationController
       search_with_tags
     else
       search_without_params
-    end  
+    end
+    @paginated_profiles = @profiles.page(params[:page]).per(24)
     @profiles_count = @profiles.size
   end
 
@@ -132,8 +133,7 @@ class ProfilesController < ApplicationController
 
   def search_with_search_params
     @profiles = matching_profiles
-      .page(params[:page])
-      .per(24)
+
     # search results aggregated according to certain attributes to display as filters
     aggs = ProfileGrouper.new(params[:locale], matching_profiles.ids).agg_hash
     @aggs_languages = aggs[:languages]
@@ -191,8 +191,6 @@ class ProfilesController < ApplicationController
       .by_region(current_region)
       .includes(:taggings, :translations, :topics)
       .where(tags: { name: tag_names })
-      .page(params[:page])
-      .per(24)
   end
 
   def search_with_tags
@@ -209,7 +207,6 @@ class ProfilesController < ApplicationController
       .is_published
       .by_region(current_region)
       .has_tags(tags)
-      .page(params[:page]).per(24)
   end
 
   def search_without_params
@@ -226,8 +223,6 @@ class ProfilesController < ApplicationController
       .includes(:translations)
       .main_topic_translated_in(I18n.locale)
       .random
-      .page(params[:page])
-      .per(24)
   end
 
   def build_categories_and_tags_for_tags_filter

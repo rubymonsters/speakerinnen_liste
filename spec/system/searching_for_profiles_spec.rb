@@ -86,8 +86,8 @@ describe 'profile search' do
         expect(page).to have_no_selector('[data-toggle="tooltip"]')
       end
 
-      it 'displays correct data in aggrigated filters' do
-        visit profiles_path(search:  'physics')
+      it 'displays correct data in aggregated filters' do
+        visit profiles_path(search: 'physics')
 
         expect(page).to have_selector('#facet_states')
         within '#facet_countries' do

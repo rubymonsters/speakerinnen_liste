@@ -6,11 +6,12 @@ class Admin::ProfilesController < Admin::BaseController
   before_action :set_profile, only: %i[show edit update destroy publish unpublish admin_update]
 
   def index
-    @profiles = if params[:search]
-                  Profile.is_confirmed.admin_search(params[:search]).order('profiles.created_at DESC').page(params[:page]).per(100)
-                else
-                  Profile.is_confirmed.order(sort_column + ' ' + sort_direction).order('created_at DESC').page(params[:page]).per(100)
-                end
+    @paginated_profiles =
+      if params[:search]
+        Profile.is_confirmed.admin_search(params[:search]).order('profiles.created_at DESC').page(params[:page]).per(100)
+      else
+        Profile.is_confirmed.order(sort_column + ' ' + sort_direction).order('created_at DESC').page(params[:page]).per(100)
+      end
   end
 
   def new; end
