@@ -143,32 +143,30 @@ class ProfilesController < ApplicationController
   end
 
   def matching_profiles
-    @matching_profiles ||= Search.new(
-        params[:search],
-        {
-          filter_city: params[:filter_city],
-          filter_language: params[:filter_language],
-          filter_country: params[:filter_country],
-          filter_state: params[:filter_state]
-        }
-      ).profiles
+    chain ||= Profile
+      .with_attached_image
+      .is_published
+      .by_region(current_region)
+      .includes(:taggings, :translations)
+      .search(params[:search])
 
-    # Profile
-    #   .with_attached_image
-    #   .is_published
-    #   .by_region(current_region)
-    #   .includes(:taggings, :translations)
-    #   .search(
-    #     params[:search],
-    #     search_region,
-    #     params[:filter_countries],
-    #     params[:filter_states],
-    #     params[:filter_cities],
-    #     params[:filter_lang],
-    #     (!Rails.env.production? || params[:explain]) == true
-    #   )
-    #   .page(params[:page]).per(24)
-    #   .records
+    if params[:filter_city]
+      chain = chain.by_city(params[:filter_city])
+    end
+
+    if params[:filter_country]
+      chain = chain.by_country(params[:filter_country])
+    end
+
+    if params[:filter_language]
+      chain = chain.by_language(params[:filter_language])
+    end
+
+    if params[:filter_states]
+      chain = chain.by_states(params[:filter_states])
+    end
+
+    @matching_profiles = chain
   end
 
   def search_with_category_id
