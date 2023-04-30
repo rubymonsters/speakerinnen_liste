@@ -30,7 +30,7 @@ FactoryBot.define do
     factory :ada do
       firstname { 'Ada' }
       lastname { 'Lovelace' }
-      twitter_en { 'alovelace' }
+      twitter_en { 'alovelace_en' }
       city_en { 'London' }
       state { 'carinthia' }
       country { 'AT' }
