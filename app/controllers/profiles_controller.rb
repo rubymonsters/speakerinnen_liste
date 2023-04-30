@@ -147,7 +147,6 @@ class ProfilesController < ApplicationController
       .with_attached_image
       .is_published
       .by_region(current_region)
-      .includes(:taggings, :translations)
       .search(params[:search])
 
     if params[:filter_city]
