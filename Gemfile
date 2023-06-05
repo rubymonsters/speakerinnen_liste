@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 source 'https://rubygems.org'
-ruby '2.7.7'
+ruby '3.1.1'
 gem 'rails', '6.0.3.6'
 
 # Needed for Javascript Runtime
@@ -11,7 +11,10 @@ gem 'mini_racer'
 # used in the rail 5.2 version
 gem 'bootsnap', '~> 1.4.2'
 
-gem 'faker', '1.9.1'
+# rexml gem is a bundled gem since Ruby 3.0.0.
+gem 'rexml', '~> 3.2.4'
+
+gem 'faker', '~> 3.1', '>= 3.1.1'
 gem 'normalize-rails'
 
 gem 'deadweight', require: 'deadweight/hijack/rails'
@@ -19,7 +22,8 @@ gem 'deadweight', require: 'deadweight/hijack/rails'
 gem 'kaminari'
 gem 'mime-types'
 
-gem 'acts-as-taggable-on', '~> 6.0'
+# gem 'acts-as-taggable-on', '~> 6.0'
+gem 'acts-as-taggable-on', '~> 9.0', '>= 9.0.1'
 gem 'auto_html', '~>1.6.4'
 gem 'devise', '~> 4.7'
 gem 'invisible_captcha'
@@ -48,7 +52,6 @@ gem 'elasticsearch-model', github: 'elastic/elasticsearch-rails', branch: '6.x'
 gem 'elasticsearch-rails', github: 'elastic/elasticsearch-rails', branch: '6.x'
 gem 'record_tag_helper', '~> 1.0'
 gem 'exception_notification'
-gem 'honeycomb-beeline'
 
 gem 'coffee-rails', '~> 5.0.0'
 gem 'sassc-rails'
@@ -66,6 +69,9 @@ gem "sentry-raven"
 gem 'image_processing', '~> 1.2'
 gem 'rack-timeout'
 
+# downgrade gem to solve parsing error https://stackoverflow.com/questions/74725359/ruby-on-rails-legacy-application-update-generates-gem-psych-alias-error-psychb
+gem 'psych', '< 4.0'
+
 group :development do
   gem 'better_errors'
   gem 'bullet'
@@ -76,7 +82,7 @@ end
 
 group :development, :test do
   gem 'byebug'
-  gem 'capybara', '~> 3.12.0'
+  gem 'capybara', '~> 3.38'
   gem 'guard'
   gem 'guard-rspec'
   gem 'pry'
