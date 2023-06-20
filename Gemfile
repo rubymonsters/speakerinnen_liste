@@ -89,6 +89,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'rubocop', '~> 0.62.0'
   gem 'selenium-webdriver', '3.141.0'
+  gem 'webrick', '~> 1.7'
 end
 
 group :test do
