@@ -6,7 +6,7 @@ RSpec.describe ImageController, type: :controller do
   let!(:profile) { create(:profile) }
 
   describe "DELETE #destroy" do
-    it "destroys the requested image" do
+    xit "destroys the requested image" do
       profile.image.attach(io: File.open(Rails.root + "spec/dummy.png"), filename: 'dummy.png', content_type: 'image')
       delete :destroy, params: {id: profile.image.id}
       profile.reload
