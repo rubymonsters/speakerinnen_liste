@@ -161,8 +161,8 @@ class ProfilesController < ApplicationController
       chain = chain.by_language(params[:filter_language])
     end
 
-    if params[:filter_states]
-      chain = chain.by_states(params[:filter_states])
+    if params[:filter_state]
+      chain = chain.by_state(params[:filter_state])
     end
 
     @matching_profiles = chain
