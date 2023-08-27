@@ -17,7 +17,7 @@ class ProfileGrouper
               )
             ) AS normalized_city
             FROM profile_translations
-            WHERE profile_id = ANY($1::int[])
+            WHERE profile_id = ANY($1::int[]) AND locale = $2
         )
       SELECT normalized_city, COUNT(profile_id)
         FROM normalized_cities_table
@@ -58,7 +58,8 @@ class ProfileGrouper
 
   def grouped_cities
     binds = [
-      ActiveRecord::Relation::QueryAttribute.new("profile_id", ids_for_sql, ActiveRecord::Type::String.new)
+      ActiveRecord::Relation::QueryAttribute.new("profile_id", ids_for_sql, ActiveRecord::Type::String.new),
+      ActiveRecord::Relation::QueryAttribute.new("locale", locale, ActiveRecord::Type::String.new)
     ]
     @grouped_cities ||= ActiveRecord::Base.connection.exec_query(CITY_QUERY, 'sql', binds).rows
   end
