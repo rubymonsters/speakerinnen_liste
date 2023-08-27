@@ -22,6 +22,7 @@ class ProfileGrouper
       SELECT normalized_city, COUNT(profile_id)
         FROM normalized_cities_table
         GROUP BY normalized_city
+        ORDER BY COUNT(profile_id) DESC
     HEREDOC
 
   LANGUAGE_QUERY =
@@ -35,6 +36,7 @@ class ProfileGrouper
         FROM profiles
         WHERE id = ANY($1::int[])
         GROUP BY iso_language
+        ORDER BY COUNT(id) DESC
     HEREDOC
 
   REST_QUERY =
@@ -46,6 +48,7 @@ class ProfileGrouper
       FROM profiles
       WHERE id = ANY($1::int[])
       GROUP BY GROUPING SETS (country, state)
+      ORDER BY COUNT(id) DESC
     HEREDOC
 
   attr_reader :ids, :locale
@@ -55,6 +58,17 @@ class ProfileGrouper
     @locale = locale
     @ids = ids
   end
+
+  def agg_hash
+    {
+      languages: grouped_languages.to_h,
+      cities: grouped_cities.to_h,
+      countries: grouped_rest.map { |row| {row["country"] => row["count"]} if row["country"].present? }.compact.inject(:merge!),
+      states: grouped_rest.map { |row| {row["state"] => row["count"]} if row["state"].present? }.compact.inject(:merge!)
+    }
+  end
+
+  private
 
   def grouped_cities
     binds = [
@@ -77,17 +91,6 @@ class ProfileGrouper
     ]
     @grouped_rest ||= ActiveRecord::Base.connection.exec_query(REST_QUERY, 'sql', binds)
   end
-
-  def agg_hash
-    {
-      languages: grouped_languages.to_h,
-      cities: grouped_cities.to_h,
-      countries: grouped_rest.map { |row| {row["country"] => row["count"]} if row["country"].present? }.compact.inject(:merge!),
-      states: grouped_rest.map { |row| {row["state"] => row["count"]} if row["state"].present? }.compact.inject(:merge!)
-    }
-  end
-
-  private
 
   def ids_for_sql
     ids.to_s.sub("[", "{").sub("]", "}")
