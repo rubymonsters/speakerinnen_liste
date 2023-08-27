@@ -22,7 +22,6 @@ gem 'deadweight', require: 'deadweight/hijack/rails'
 gem 'kaminari'
 gem 'mime-types'
 
-# gem 'acts-as-taggable-on', '~> 6.0'
 gem 'acts-as-taggable-on', '~> 9.0', '>= 9.0.1'
 gem 'auto_html', '~>1.6.4'
 gem 'devise', '~> 4.7'
