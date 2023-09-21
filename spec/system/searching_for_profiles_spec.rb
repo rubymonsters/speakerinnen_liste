@@ -26,7 +26,7 @@ describe 'profile search' do
       end
 
       it 'shows button search' do
-        expect(page).to have_selector(".container #{form_selector} input[type='submit']")
+        expect(page).to have_selector(".container #{form_selector} button[type='submit']")
       end
     end
 
