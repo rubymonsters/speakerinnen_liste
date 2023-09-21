@@ -4,7 +4,7 @@
 <%# Hero %>
 
 <section class="home">
-  <section id='startpage__start-teaser<%= "_#{[0,2,3,4].sample}" unless (current_region == :ooe || current_region == :vorarlberg) %>' class="start-teaser startpage__photo-bar">
+  <section id='startpage__start-teaser<%= "_#{[0,2,3,4].sample}" unless (current_region == :ooe) %>' class="start-teaser startpage__photo-bar">
     <div class="container">
       <%# Headline %>
       <div class="row hero-headline" >
@@ -27,8 +27,6 @@
         <div class="col align-self-end">
           <% if current_region == :ooe %>
             <p class="copyright-ooe">Copyright: iStock-1395588195_KOMPASS</p>
-          <% elsif current_region == :vorarlberg %>
-            <p class="copyright">Copyright: Marcella Merholz</p>
           <% else %>
             <p class="copyright">Copyright: Malwine - <a href="https://malweene.com/" target="_blank">malweene.com</a></p>
           <% end %>
@@ -67,19 +65,6 @@
     <% end %>
   <% end %>
 
-  <%# Special medicine and healtcare %>
-  <% if @is_global_speakerinnen %>
-    <a id="special_speaker_achor" class="anchor"></a>
-    <div id="startpage-special" class="container py-5 bg--light-grey">
-      <h1 class=""><%= t(:special_doctors_title, scope: 'pages.home') %></h1>
-      <h3 class=""><%= t(:special_doctors_intro, scope: 'pages.home').html_safe %></h3>
-      <h3 class=""><%= t(:special_doctors_details, scope: 'pages.home').html_safe %></h3>
-      <div class="row pt-5">
-        <%= render partial: "profiles/profile", collection: @special_profiles %>
-        <%= render partial: "profiles/register_special" %>
-      </div>
-    </div>
-  <% end %>
 
   <%# Hot New Speakers %>
 
