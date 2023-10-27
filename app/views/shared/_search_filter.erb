@@ -102,9 +102,9 @@
             </li>
           <% end %>
         </ul>
-      </div>
-    <% end %>
-  <div class="col-12 col-sm-6 col-md-3">
+      <% end %>
+    </div>
+    <div class="col-12 col-sm-6 col-md-3">
       <ul id="facet_cities" class="search-aggregation list-unstyled">
         <li><b><%= t(:cities_agg, scope: 'search' ).html_safe %></b></li>
         <li class="<%= 'selected' if !params[:filter_city] %>">
