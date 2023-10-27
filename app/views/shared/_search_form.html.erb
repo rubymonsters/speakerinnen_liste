@@ -4,7 +4,10 @@
       <%= search_field_tag('search', params[:search], id: "home_search", class: 'form-control typeahead ',
             type: 'text', placeholder: t(:search_placeholder, scope: 'pages.home')) %>
     </div>
-    <div class="col-sm-2">
-      <%= submit_tag(t(:"search_speaker#{'_' + current_region.to_s if current_region}", scope: 'pages.home'), class: 'btn btn-primary' ) %>
+    <div class="col-s-4 col-lm-2">
+      <button type="submit" class="btn btn-primary">
+        <i class="fa fa-search"></i>
+        <%=t(:"search_speaker#{'_' + current_region.to_s if current_region}", scope: 'pages.home')%>
+      </button>
     </div>
   <% end %>

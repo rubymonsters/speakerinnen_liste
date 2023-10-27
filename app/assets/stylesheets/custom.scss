@@ -59,6 +59,14 @@ ul {
   vertical-align: top;
 }
 
+.code-of-conduct ul {
+  list-style: disc;
+
+  li::marker {
+    color: $primary;
+  }
+}
+
 h1 {
   text-transform: uppercase;
   font-weight: bold;
@@ -211,24 +219,29 @@ h1 {
   pointer-events: none;
 }
 
+.code_of_conduct_box {
+  // flex: 1;
+  // font-size: small;
+  // padding-top: 0.3rem;
+  // color: $green;
+  border: 1px solid $primary;
+  border-radius: 4px;
+  padding: 0.375rem 0.75rem;
+  cursor: pointer;
+}
+
 .modal-footer.contact {
   align-items: flex-start;
   padding-left: 0rem;
   padding-top: 0rem;
   padding-bottom: 1rem;
-  padding-right: 1rem;
+  padding-right: 0rem;
+  border-top: none;
 
   .btn {
     margin-top: 1rem;
   }
-  .code_of_conduct_link {
-    flex: 1;
-    font-size: small;
-    padding-top: 0.3rem;
-    color: $red;
-  }
 }
-
 
 // overwrite bootstrap
 
@@ -280,8 +293,12 @@ textarea, input {
   .btn-primary {
     width: 100%;
   }
-  .col-sm-2 {
-    max-width: none;
+  div {
+    width: 100%;
+
+    @media (min-width: 576px) {
+      width: auto;
+    }
   }
 }
 
