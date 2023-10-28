@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
+  include Pagy::Backend
   protect_from_forgery
 
   before_action :set_locale
@@ -8,6 +9,7 @@ class ApplicationController < ActionController::Base
   before_action :set_current_region
   before_action :set_search_region
   before_action :check_cookie_consent
+
 
   def authenticate_admin!
     return if current_profile&.admin?

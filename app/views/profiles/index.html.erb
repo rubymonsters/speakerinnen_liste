@@ -59,9 +59,9 @@
   <% end %>
 
   <!-- Speaker section -->
-  <%= paginate @paginated_profiles %>
+  <%== pagy_nav @pagy %>
 
-  <% @paginated_profiles.in_groups_of(4).each do |group| %>
+  <% @records.in_groups_of(4).each do |group| %>
     <div class="row">
       <% group.each do |profile| %>
         <%= render partial: 'profiles/profile', object: profile %>
@@ -69,7 +69,7 @@
     </div>
   <% end %>
 
-  <%= paginate @paginated_profiles %>
+  <%== pagy_nav @pagy %>
 
   <% if current_region && params[:search] %>
     <p>
