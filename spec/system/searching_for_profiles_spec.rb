@@ -87,7 +87,7 @@ describe 'profile search' do
       end
 
       it 'displays correct data in aggregated filters' do
-        visit profiles_path(search: 'physics')
+        visit profiles_path(search: 'physics', locale: 'en')
 
         expect(page).to have_selector('#facet_states')
         within '#facet_countries' do
