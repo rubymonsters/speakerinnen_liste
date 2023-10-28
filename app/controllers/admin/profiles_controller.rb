@@ -8,9 +8,22 @@ class Admin::ProfilesController < Admin::BaseController
   def index
     @paginated_profiles =
       if params[:search]
-        Profile.is_confirmed.admin_search(params[:search]).order('profiles.created_at DESC').page(params[:page]).per(100)
+        @pagy, @records = pagy(
+          Profile
+            .is_confirmed
+            .admin_search(params[:search])
+            .order('profiles.created_at DESC'),
+          items: 100
+          )
+
       else
-        Profile.is_confirmed.order(sort_column + ' ' + sort_direction).order('created_at DESC').page(params[:page]).per(100)
+        @pagy, @records = pagy(
+          Profile
+            .is_confirmed
+            .order(sort_column + ' ' + sort_direction)
+            .order('created_at DESC'),
+          items: 100
+          )
       end
   end
 
