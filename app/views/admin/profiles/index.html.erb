@@ -12,7 +12,7 @@
     <%= submit_tag t(:search, scope: 'general'), class: 'btn btn-primary' %>
   <% end %>
 
-  <%= paginate @paginated_profiles %>
+  <%== pagy_nav @pagy %>
 
   <table class="table">
     <thead class="bg--lightgrey">
@@ -31,7 +31,7 @@
       </tr>
     </thead>
     <tbody>
-      <% @paginated_profiles.each do |profile|  %>
+      <% @records.each do |profile|  %>
         <tr>
           <td><%= profile.id %></td>
           <td><%= link_to profile.name_or_email, admin_profile_path(profile),
@@ -68,5 +68,5 @@
     </tbody>
   </table>
 
-  <%= paginate @paginated_profiles %>
+  <%== pagy_nav @pagy %>
 </div>

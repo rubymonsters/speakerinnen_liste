@@ -27,7 +27,6 @@ class ProfilesController < ApplicationController
       search_without_params
     end
     @pagy, @records = pagy(@profiles)
-    # @paginated_profiles = @profiles.page(params[:page]).per(24)
     @profiles_count = @profiles.size
   end
 
