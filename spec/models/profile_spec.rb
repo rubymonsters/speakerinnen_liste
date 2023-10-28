@@ -38,6 +38,16 @@ describe 'profile', type: :model do
     end
   end
 
+describe 'admin_search' do
+  context 'admin searches for profile by email address' do
+    let!(:profile) { create(:profile, email: 'anna.meier@example.org') }
+
+    it 'searches for email address' do
+      expect(Profile.admin_search("anna.meier@example.org").count).to eq(1)
+    end
+  end
+end
+
   describe '#name_or_email' do
     context 'user has no name information only email adress' do
       let(:profile) { create(:profile, firstname: nil, lastname: nil, email: 'factorygirl@test.de') }
