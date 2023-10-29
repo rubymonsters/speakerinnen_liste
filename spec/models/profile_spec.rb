@@ -43,7 +43,7 @@ describe 'admin_search' do
     let!(:profile) { create(:profile, email: 'anna.meier@example.org') }
 
     it 'searches for email address' do
-      expect(Profile.admin_search("anna.meier@example.org").count).to eq(1)
+      expect(Profile.admin_search("anna.meier@example.org")).to eq [profile]
     end
   end
 end
