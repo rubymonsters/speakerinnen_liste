@@ -24,7 +24,7 @@ describe 'medialink', type: :model do
 
     it 'creates a image url' do
       medialink.url = "www.youtu.be/276d?si=xx"
-      youtube_url = "https://img.youtube.com/vi/276d/default.jpg"
+      youtube_url = "https://img.youtube.com/vi/276d/mqdefault.jpg"
       expect(medialink.youtube_thumbnail_url).to eq(youtube_url)
     end
   end

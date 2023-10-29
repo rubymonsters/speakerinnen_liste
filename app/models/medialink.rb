@@ -6,7 +6,7 @@ class Medialink < ApplicationRecord
   validates :title, :url, presence: true
 
   def youtube_thumbnail_url
-    "https://img.youtube.com/vi/" + find_youtube_id + "/default.jpg"
+    "https://img.youtube.com/vi/" + find_youtube_id + "/mqdefault.jpg"
   end
 
   def find_youtube_id
