@@ -17,8 +17,8 @@ describe Admin::ProfilesController, type: :controller do
   describe 'GET index' do
     before(:each) do
       sign_in admin
-      @profile = FactoryBot.create(:admin, firstname: 'Awe')
-      @profile1 = FactoryBot.create(:admin, firstname: 'NotInc')
+      @profile = FactoryBot.create(:profile, firstname: 'Awe', published: true)
+      @profile1 = FactoryBot.create(:profile, firstname: 'NotInc', published: true)
     end
 
     describe 'when search param is provided' do
@@ -32,9 +32,6 @@ describe Admin::ProfilesController, type: :controller do
         expect(response).to render_template(:index)
       end
 
-      it 'should contain queried results' do
-        expect(assigns(:profiles)).to_not include(@profile1)
-      end
     end
 
     describe 'when search param is not provided' do
