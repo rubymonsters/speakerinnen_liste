@@ -133,7 +133,7 @@ class Profile < ApplicationRecord
     if profile_website =~ %r{^https?://}
       profile_website
     else
-      'http://' + profile_website
+      'https://' + profile_website
     end
   end
 
@@ -146,7 +146,7 @@ class Profile < ApplicationRecord
   end
 
   def twitter_link_formatted
-    'http://twitter.com/' + twitter.gsub(%r{^@|https:|http:|:|//|www.|twitter.com/}, '')
+    'https://twitter.com/' + twitter.gsub(%r{^@|https:|http:|:|//|www.|twitter.com/}, '')
   end
 
   def country_name
