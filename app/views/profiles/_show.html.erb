@@ -63,16 +63,15 @@
       <!-- If profile has more than one website: -->
       <% if @profile.website_in_language_scope(I18n.locale).present? &&
            ( @profile.website_in_language_scope(I18n.locale, "2_").present? || @profile.website_in_language_scope(I18n.locale, "3_").present? ) %>
-
         <p class="">
           <span class="font-weight-bold">
             <%= t(:websites, scope: 'profiles.show') %>
           </span>
-          <%= link_to @profile.website_in_language_scope(I18n.locale), @profile.website_with_protocol(@profile.website_in_language_scope(I18n.locale)),
+          <%= link_to @profile.website_in_language_scope(I18n.locale), url_with_protocol(@profile.website_in_language_scope(I18n.locale)),
             target: '_blank' %>
-          <%= link_to ", #{@profile.website_in_language_scope(I18n.locale, "2_")}", @profile.website_with_protocol(@profile.website_in_language_scope(I18n.locale, "2_")),
+          <%= link_to ", #{@profile.website_in_language_scope(I18n.locale, "2_")}", url_with_protocol(@profile.website_in_language_scope(I18n.locale, "2_")),
             target: '_blank' if @profile.website_in_language_scope(I18n.locale, "2_").present? %>
-          <%= link_to ", #{@profile.website_in_language_scope(I18n.locale, "3_")}", @profile.website_with_protocol(@profile.website_in_language_scope(I18n.locale, "3_")),
+          <%= link_to ", #{@profile.website_in_language_scope(I18n.locale, "3_")}", url_with_protocol(@profile.website_in_language_scope(I18n.locale, "3_")),
             target: '_blank' if @profile.website_in_language_scope(I18n.locale, "3_").present? %>
           </p>
       <!-- If profile has just one website: -->
@@ -81,7 +80,7 @@
         <span class="font-weight-bold">
           <%= t(:website, scope: 'profiles.show') %>
         </span>
-        <%= link_to @profile.website_in_language_scope(I18n.locale), @profile.website_with_protocol(@profile.website_in_language_scope(I18n.locale)),
+        <%= link_to @profile.website_in_language_scope(I18n.locale), url_with_protocol(@profile.website_in_language_scope(I18n.locale)),
           target: '_blank' %>
       </p>
       <% end %>
@@ -95,11 +94,11 @@
           <span class="font-weight-bold">
             <%= t(:websites, scope: 'profiles.show') %>
           </span>
-          <%= link_to @profile.website, @profile.website_with_protocol(@profile.website),
+          <%= link_to @profile.website, url_with_protocol(@profile.website),
           target: '_blank' %>
-          <%= link_to ", #{@profile.website_2}", @profile.website_with_protocol(@profile.website_2),
+          <%= link_to ", #{@profile.website_2}", url_with_protocol(@profile.website_2),
           target: '_blank' if @profile.website_2.present? %>
-          <%= link_to ", #{@profile.website_3}", @profile.website_with_protocol(@profile.website_3),
+          <%= link_to ", #{@profile.website_3}", url_with_protocol(@profile.website_3),
           target: '_blank' if @profile.website_3.present? %>
         </p>
       <!-- Show the view for just one website: -->
@@ -108,7 +107,7 @@
           <span class="font-weight-bold">
             <%= t(:websites, scope: 'profiles.show') %>
           </span>
-          <%= link_to @profile.website, @profile.website_with_protocol(@profile.website),
+          <%= link_to @profile.website, url_with_protocol(@profile.website),
           target: '_blank' %>
         </p>
       <% end %>
@@ -244,7 +243,7 @@
         <div class="mb-5 p-3 border">
           <h3 style="text-decoration: underline"><%= link_to medialink.title, url_with_protocol(medialink.url) %></h3>
           <% if medialink.url =~ /youtube|youtu.be/i %>
-            <img src=<%= medialink.youtube_thumbnail_url %> alt="xxx">
+            <img src=<%= medialink.youtube_thumbnail_url %> alt="Video Thumbnail">
           <% end %>
           <p>
             <%= simple_format(medialink.description, class: '') %>

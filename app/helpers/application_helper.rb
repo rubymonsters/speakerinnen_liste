@@ -53,4 +53,8 @@ module ApplicationHelper
     end
   end
 
+  def url_with_protocol(url)
+    url.start_with?('https://') ? url : 'https://' + url
+  end
+
 end
