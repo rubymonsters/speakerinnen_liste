@@ -10,6 +10,6 @@ class Medialink < ApplicationRecord
   end
 
   def find_youtube_id
-    url.match(/((?<=v=)|(?<=youtu.be\/))\w+/)[0]
+    url.match(/((?<=v=)|(?<=youtu.be\/)).+/)[0].split(/(\?|&)/).first
   end
 end

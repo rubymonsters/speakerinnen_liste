@@ -12,9 +12,9 @@ describe 'medialink', type: :model do
       expect(medialink.find_youtube_id).to eq("276d")
     end
 
-    xit 'in www.youtu.be/27-6d?si=xx' do
+    it 'in www.youtu.be/27-6d?si=xx' do
       medialink.url = "www.youtu.be/27-6d?si=xx"
-      expect(medialink.find_youtube_id).to eq("276d")
+      expect(medialink.find_youtube_id).to eq("27-6d")
     end
 
     it 'in https://www.youtube.com/watch?v=3Q8D4' do
