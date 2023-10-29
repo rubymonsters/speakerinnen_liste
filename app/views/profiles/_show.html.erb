@@ -241,8 +241,10 @@
         <%= t(:media, scope: 'profiles.show') %>
       </p>
       <% @medialinks.each do |medialink| %>
+
+        sdfkjdfk
         <div class="mb-5 p-3 border">
-          <h3 style="text-decoration: underline"><%= link_to medialink.title, medialink.url %></h3>
+}        <h3 style="text-decoration: underline"><%= link_to medialink.title, url_with_protocol(medialink.url) %></h3>
           <% if medialink.url =~ /youtube|youtu.be/i %>
             <img src=<%= medialink.youtube_thumbnail_url %> alt="xxx">
           <% end %>

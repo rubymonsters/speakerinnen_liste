@@ -29,9 +29,9 @@
   <ul id="medialinks__list" data-update-url="<%= sort_admin_profile_medialinks_url%>" class="<%= t(:language_short, scope: 'medialinks')%>">
     <% @medialinks.each do |medialink| %>
       <%= content_tag_for(:li, medialink, nil, {'title' => t(:tooltip, scope: 'medialinks')}) do %>
-        <h3 style="text-decoration: underline"><%= link_to medialink.title, medialink.url %></h3>
-        <% if medialink.url =~ /youtube|youtu.be/i %>
-          <img src=<%= medialink.youtube_thumbnail_url %> alt="xxx">
+        <h3 style="text-decoration: underline"><%= link_to medialink.title, url_with_protocol(medialink.url) %></h3>
+        <% if medialink.url =~ /youtube|youtu.be/i and medialink.youtube_thumbnail_url%>
+          <img src=<%= medialink.youtube_thumbnail_url %> alt="Video Thumbnail">
         <% end %>
         <p>
           <%= simple_format(medialink.description, class: '') %>
