@@ -29,13 +29,13 @@
   <ul id="medialinks__list" data-update-url="<%= sort_admin_profile_medialinks_url%>" class="<%= t(:language_short, scope: 'medialinks')%>">
     <% @medialinks.each do |medialink| %>
       <%= content_tag_for(:li, medialink, nil, {'title' => t(:tooltip, scope: 'medialinks')}) do %>
-        <% if medialink.url =~ /youtube|vimeo/i %>
-          <b><%= medialink.title %></b>
-          <%= medialink.url_html if medialink.url != 'http://' %>
-        <% else %>
-          <%= link_to medialink.title, medialink.url %>
+        <h3 style="text-decoration: underline"><%= link_to medialink.title, medialink.url %></h3>
+        <% if medialink.url =~ /youtube|youtu.be/i %>
+          <img src=<%= medialink.youtube_thumbnail_url %> alt="xxx">
         <% end %>
-        <%= simple_format(medialink.description) %>
+        <p>
+          <%= simple_format(medialink.description, class: '') %>
+        </p>
         <span class="color-grey">
           <%= t(:select_language, scope: 'medialinks') + t("#{medialink.language}", scope: 'iso_639_1').capitalize if medialink.language.present? %>
         </span>

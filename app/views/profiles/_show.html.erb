@@ -242,15 +242,13 @@
       </p>
       <% @medialinks.each do |medialink| %>
         <div class="mb-5 p-3 border">
-          <b>
-            <% if medialink.url =~ /youtube|vimeo/i %>
-              <%= medialink.title %>
-              <%= medialink.url_html if medialink.url != 'http://' %>
-            <% else %>
-              <%= link_to medialink.title, medialink.url %>
-            <% end %>
-          </b>
-          <%= simple_format(medialink.description, class: '') %>
+          <h3 style="text-decoration: underline"><%= link_to medialink.title, medialink.url %></h3>
+          <% if medialink.url =~ /youtube|youtu.be/i %>
+            <img src=<%= medialink.youtube_thumbnail_url %> alt="xxx">
+          <% end %>
+          <p>
+            <%= simple_format(medialink.description, class: '') %>
+          </p>
           <span class="color-grey">
             <%= t(:select_language, scope: 'medialinks') + t("#{medialink.language}", scope: 'iso_639_1').capitalize if medialink.language.present? %>
           </span>

@@ -1,18 +1,15 @@
 # frozen_string_literal: true
 
 class Medialink < ApplicationRecord
-  include AutoHtml
-
   belongs_to :profile
 
   validates :title, :url, presence: true
 
-  auto_html_for :url do
-    html_escape
-    image
-    youtube width: 400, height: 250
-    vimeo width: 400, height: 250
-    simple_format
-    link target: '_blank', rel: 'nofollow'
+  def youtube_thumbnail_url
+    "https://img.youtube.com/vi/" + find_youtube_id + "/default.jpg"
+  end
+
+  def find_youtube_id
+    url.match(/((?<=v=)|(?<=youtu.be\/))\w+/)[0]
   end
 end
