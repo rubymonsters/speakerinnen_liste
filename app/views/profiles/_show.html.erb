@@ -239,20 +239,8 @@
       <p class=" font-weight-bold">
         <%= t(:media, scope: 'profiles.show') %>
       </p>
-      <% @medialinks.each do |medialink| %>
-        <div class="mb-5 p-3 border">
-          <h3 style="text-decoration: underline"><%= link_to medialink.title, url_with_protocol(medialink.url) %></h3>
-          <% if medialink.url =~ /youtube|youtu.be/i %>
-            <img src=<%= medialink.youtube_thumbnail_url %> alt="Video Thumbnail">
-          <% end %>
-          <p>
-            <%= simple_format(medialink.description, class: '') %>
-          </p>
-          <span class="color-grey">
-            <%= t(:select_language, scope: 'medialinks') + t("#{medialink.language}", scope: 'iso_639_1').capitalize if medialink.language.present? %>
-          </span>
-        </div>
-      <% end %>
+    <%= render partial: 'medialink', collection: @medialinks %>
+
     </div>
   </div>
 <% end %>
