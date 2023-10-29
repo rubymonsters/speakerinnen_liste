@@ -129,14 +129,6 @@ class Profile < ApplicationRecord
     slug.blank? || firstname_changed? || lastname_changed?
   end
 
-  def website_with_protocol(profile_website)
-    if profile_website =~ %r{^https?://}
-      profile_website
-    else
-      'https://' + profile_website
-    end
-  end
-
   def website_in_language_scope(lang, number = '')
     send(('website_' + number + lang.to_s).to_sym)
   end
