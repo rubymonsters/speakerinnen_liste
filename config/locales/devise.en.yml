@@ -25,9 +25,6 @@ en:
         subject: "Unlock Instructions"
       published:
         subject: "Your are now published on the Speakerinnen-Website"
-    omniauth_callbacks:
-      failure: "Could not authenticate you from %{kind} because \"%{reason}\"."
-      success: "Successfully authenticated from %{kind} account."
     passwords:
       no_token: "You can't access this page without coming from a password reset email. If you do come from a password reset email, please make sure you used the full URL provided."
       send_instructions: "You will receive an email with instructions about how to reset your password in a few minutes."
@@ -51,8 +48,6 @@ en:
       confirmation: "Re-enter password"
       signup: "Sign up"
       signin: "Sign in"
-      signup_via: "Or sign up with Twitter"
-      signin_via: "Or sign in with Twitter"
       no_confirmation: "Didn't receive confirmation instructions?"
       forgot_password: "Forgot your password?"
       remember: "Remember me"
@@ -70,7 +65,6 @@ en:
         password: "Password"
         password: "Password:
         <br><small class='form-text text-muted'>We need your password in order to change your email.</small>"
-        no_password: "You cannot change your email address here since you are logged in via twitter and use the same email address as on twitter."
         update: "Update Account"
         delete_account: "Here you can delete your account"
         unhappy: "Unhappy?"
