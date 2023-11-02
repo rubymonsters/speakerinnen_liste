@@ -26,8 +26,8 @@ class ProfilesController < ApplicationController
     else
       search_without_params
     end
-    @pagy, @records = pagy(@profiles)
-    @profiles_count = @profiles.size
+    @pagy, @records = pagy_array(@profiles)
+    @profiles_count = @pagy.count
   end
 
   def show
@@ -132,10 +132,21 @@ class ProfilesController < ApplicationController
   end
 
   def search_with_search_params
-    @profiles = matching_profiles
+    @profiles = []
+    matching_profiles.each do |profile|
+      @profiles << {
+                      id: profile.id,
+                      fullname: profile.fullname,
+                      iso_languages: profile.iso_languages,
+                      city: profile.city,
+                      willing_to_travel: profile.willing_to_travel,
+                      nonprofit: profile.nonprofit,
+                      main_topic_or_first_topic: profile.main_topic_or_first_topic,
+                    }
+    end
 
     # search results aggregated according to certain attributes to display as filters
-    aggs = ProfileGrouper.new(params[:locale], matching_profiles.ids).agg_hash
+    aggs = ProfileGrouper.new(params[:locale], @profiles.map { |hash| hash[:id] }).agg_hash
     @aggs_languages = aggs[:languages]
     @aggs_cities = aggs[:cities]
     @aggs_states = aggs[:states]
