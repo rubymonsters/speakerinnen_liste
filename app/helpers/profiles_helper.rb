@@ -20,11 +20,11 @@ module ProfilesHelper
   end
 
   def profile_image_link(profile)
-    if profile.image.attached?
-      link_to(image_tag(profile.image.variant(combine_options: {resize: '600x600^', extent: '600x600', gravity: 'Center'}), class: 'photo--grey'), profile, class: "p-0")
-    else
-      link_to(image_tag('avatar.png', alt: 'avatar', class: 'photo--grey card-img-top'), profile, class: "p-0")
-    end
+      # if profile.image.attached?
+      #   link_to(image_tag(profile.image.variant(combine_options: {resize: '600x600^', extent: '600x600', gravity: 'Center'}), class: 'photo--grey'), profile, class: "p-0")
+      # else
+      # end
+    link_to(image_tag('avatar.png', alt: 'avatar', class: 'photo--grey card-img-top'), profile, class: "p-0")
   end
 
   def topics_for_profile(profile)
