@@ -2,7 +2,7 @@
 
 source 'https://rubygems.org'
 ruby '3.1.1'
-gem 'rails', '6.0.3.6'
+gem 'rails', '6.1.7.6'
 
 # Needed for Javascript Runtime
 # gem 'therubyracer'
@@ -22,9 +22,7 @@ gem 'deadweight', require: 'deadweight/hijack/rails'
 gem 'kaminari'
 gem 'mime-types'
 
-# gem 'acts-as-taggable-on', '~> 6.0'
 gem 'acts-as-taggable-on', '~> 9.0', '>= 9.0.1'
-gem 'auto_html', '~>1.6.4'
 gem 'devise', '~> 4.7'
 gem 'invisible_captcha'
 gem 'jquery-rails', '~> 4.4.0'

@@ -27,26 +27,6 @@
   <p id="medialinks__list--sort-message"></p>
 
   <ul id="medialinks__list" data-update-url="<%= sort_admin_profile_medialinks_url%>" class="<%= t(:language_short, scope: 'medialinks')%>">
-    <% @medialinks.each do |medialink| %>
-      <%= content_tag_for(:li, medialink, nil, {'title' => t(:tooltip, scope: 'medialinks')}) do %>
-        <% if medialink.url =~ /youtube|vimeo/i %>
-          <b><%= medialink.title %></b>
-          <%= medialink.url_html if medialink.url != 'http://' %>
-        <% else %>
-          <%= link_to medialink.title, medialink.url %>
-        <% end %>
-        <%= simple_format(medialink.description) %>
-        <span class="color-grey">
-          <%= t(:select_language, scope: 'medialinks') + t("#{medialink.language}", scope: 'iso_639_1').capitalize if medialink.language.present? %>
-        </span>
-        <hr>
-
-        <%= link_to '<i class="fa fa-pencil"></i>'.html_safe+ t(:edit_link, scope: 'medialinks'),
-            edit_admin_profile_medialink_path(@profile, medialink) %>
-        <%= link_to '<i class="fa fa-minus-circle"></i>'.html_safe+ t(:delete_link, scope: 'medialinks'),
-            admin_profile_medialink_path(@profile, medialink),
-            method: :delete, data: { confirm: 'Are you sure?'}, title: t(:delete, scope: "medialinks") %>
-      <% end %>
-    <% end %>
+    <%= render partial: 'medialinks/medialink', collection: @medialinks %>
   </ul>
 </div>
