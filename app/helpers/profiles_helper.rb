@@ -25,7 +25,6 @@ module ProfilesHelper
     else
       link_to(image_tag('avatar.png', alt: 'avatar', class: 'photo--grey card-img-top'), profile, class: "p-0")
     end
-
   end
 
   def topics_for_profile(profile)

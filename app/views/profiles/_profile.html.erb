@@ -5,7 +5,7 @@
     <%= profile_image_link(profile) %>
     <div class="bg--white caption">
       <div class="profile-name">
-        <%= link_to profile[:fullname], Profile.find(profile[:id]) %>
+        <%= link_to profile[:fullname], profile_path(profile[:id]) %>
       </div>
       <div class="profile-subtitle">
         <p>

@@ -1,5 +1,5 @@
 <% @is_global_speakerinnen = current_region.nil? %>
-<% @has_hot_topic = @is_global_speakerinnen && @features.load.any?%>
+<% @has_hot_topic = @is_global_speakerinnen && @features.present? %>
 
 <%# Hero %>
 
@@ -56,10 +56,10 @@
   <% if @has_hot_topic %>
     <% @features.each do |feature| %>
       <div class="container py-5 feature bg--light-grey">
-        <h1 class=""><%= feature.title %></h1>
-        <h3 class=""><%= feature.description %></h3>
+        <h1 class=""><%= feature[:title] %></h1>
+        <h3 class=""><%= feature[:description] %></h3>
         <div class="row pt-5">
-          <%= render partial: "profiles/profile", collection: feature.profiles, as: :profile %>
+          <%= render partial: "profiles/profile", collection: feature[:profiles], as: :profile %>
         </div>
       </div>
     <% end %>

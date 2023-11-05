@@ -141,7 +141,7 @@ class ProfilesController < ApplicationController
                       city: profile.city,
                       willing_to_travel: profile.willing_to_travel,
                       nonprofit: profile.nonprofit,
-                      main_topic_or_first_topic: profile.main_topic_or_first_topic,
+                      main_topic_or_first_topic: profile.main_topic_or_first_topic
                     }
     end
 
@@ -180,7 +180,18 @@ class ProfilesController < ApplicationController
   end
 
   def search_with_category_id
-    @profiles = profiles_for_category
+    @profiles = []
+      profiles_for_category.each do |profile|
+        @profiles << {
+                        id: profile.id,
+                        fullname: profile.fullname,
+                        iso_languages: profile.iso_languages,
+                        city: profile.city,
+                        willing_to_travel: profile.willing_to_travel,
+                        nonprofit: profile.nonprofit,
+                        main_topic_or_first_topic: profile.main_topic_or_first_topic
+                      }
+      end
     @category = Category.find(params[:category_id])
     build_categories_and_tags_for_tags_filter
   end
@@ -205,7 +216,18 @@ class ProfilesController < ApplicationController
     @tags = params[:tag_filter].split(/\s*,\s*/)
     last_tag = @tags.last
     last_tag_id = ActsAsTaggableOn::Tag.where(name: last_tag).last.id
-    @profiles = profiles_with_tags(@tags)
+    @profiles = []
+    profiles_with_tags(@tags).each do |profile|
+      @profiles << {
+                      id: profile.id,
+                      fullname: profile.fullname,
+                      iso_languages: profile.iso_languages,
+                      city: profile.city,
+                      willing_to_travel: profile.willing_to_travel,
+                      nonprofit: profile.nonprofit,
+                      main_topic_or_first_topic: profile.main_topic_or_first_topic
+                    }
+    end
     @category =  Category.select{|cat| cat.tag_ids.include?(last_tag_id)}.last
     build_categories_and_tags_for_tags_filter
   end
@@ -218,7 +240,18 @@ class ProfilesController < ApplicationController
   end
 
   def search_without_params
-    @profiles = profiles_for_index
+    @profiles = []
+    profiles_for_index.each do |profile|
+      @profiles << {
+                      id: profile.id,
+                      fullname: profile.fullname,
+                      iso_languages: profile.iso_languages,
+                      city: profile.city,
+                      willing_to_travel: profile.willing_to_travel,
+                      nonprofit: profile.nonprofit,
+                      main_topic_or_first_topic: profile.main_topic_or_first_topic
+                    }
+    end
     @category = Category.first
     build_categories_and_tags_for_tags_filter
   end
