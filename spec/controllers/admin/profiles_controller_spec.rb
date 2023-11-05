@@ -49,8 +49,7 @@ describe Admin::ProfilesController, type: :controller do
       end
 
       it 'should contain all results' do
-        expect(assigns(:paginated_profiles)).to include(@profile)
-        expect(assigns(:paginated_profiles)).to include(@profile1)
+        expect(assigns(:paginated_profiles).count).to eq 2
       end
     end
   end

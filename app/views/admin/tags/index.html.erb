@@ -9,8 +9,8 @@
     <% end %>
   </div>
 
-  <div class="text-center">
-    <%== pagy_nav @pagy %>
+  <div class="d-flex justify-content-center py-3">
+    <%== pagy_bootstrap_nav @pagy if @pagy.pages > 1 %>
   </div>
 
   <div class="row">
@@ -72,7 +72,7 @@
     </div>
   </div>
 
-  <div class="text-center">
-    <%== pagy_nav @pagy %>
+  <div class="d-flex justify-content-center py-3">
+    <%== pagy_bootstrap_nav @pagy if @pagy.pages > 1 %>
   </div>
 </div>
