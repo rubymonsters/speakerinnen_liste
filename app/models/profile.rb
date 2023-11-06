@@ -116,6 +116,18 @@ class Profile < ApplicationRecord
     suggestions.map { |s| s.downcase }.uniq
   end
 
+  def to_card_hash
+    {
+      id: id,
+      fullname: fullname,
+      iso_languages: iso_languages,
+      city: city,
+      willing_to_travel: willing_to_travel,
+      nonprofit: nonprofit,
+      main_topic_or_first_topic: main_topic_or_first_topic
+    }
+  end
+
   def fullname
     "#{firstname} #{lastname}".strip
   end
