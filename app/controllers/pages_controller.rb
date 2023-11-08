@@ -21,7 +21,7 @@ class PagesController < ApplicationController
     @profiles_count = Profile.is_published.count
     @tags_count = ActsAsTaggableOn::Tag.count
     @categories = Category.sorted_categories
-    @features   = features_and_profiles
+    @features   = features_and_profiles unless current_region
   end
 
   def frauentag_2023
@@ -35,7 +35,7 @@ class PagesController < ApplicationController
   private
 
   def features_and_profiles
-    feature_records = Feature.published_feature.order(:position) if !current_region
+    feature_records = Feature.published_feature.order(:position)
 
     results_array = []
     feature_records.each do |feature|
