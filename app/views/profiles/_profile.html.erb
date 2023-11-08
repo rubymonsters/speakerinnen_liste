@@ -2,7 +2,7 @@
   <% tooltip_empty = !profile[:iso_languages].present? && profile[:city].nil? && profile[:willing_to_travel].nil? && profile[:nonprofit].nil? %>
   <% title = render partial: "profiles/profile_tooltip", locals: { profile: profile } %>
   <div class="col-sm-6 col-md-6 col-lg-3 my-3 profile-box">
-    <%= profile_image_link(profile) %>
+    <%= profile_image_link(Profile.find(profile[:id])) %>
     <div class="bg--white caption">
       <div class="profile-name">
         <%= link_to profile[:fullname], profile_path(profile[:id]) %>
