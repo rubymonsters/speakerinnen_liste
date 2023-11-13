@@ -10,7 +10,6 @@ class ApplicationController < ActionController::Base
   before_action :set_search_region
   before_action :check_cookie_consent
 
-
   def authenticate_admin!
     return if current_profile&.admin?
 

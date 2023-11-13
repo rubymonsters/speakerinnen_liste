@@ -135,7 +135,7 @@ class ProfilesController < ApplicationController
     @profiles = matching_profiles.map(&:to_card_hash)
 
     # search results aggregated according to certain attributes to display as filters
-    aggs = ProfileGrouper.new(params[:locale], @profiles.map { |hash| hash[:id] }).agg_hash
+    aggs = ProfileGrouper.new(params[:locale], @profiles.map { |profile| profile[:id] }).agg_hash
     @aggs_languages = aggs[:languages]
     @aggs_cities = aggs[:cities]
     @aggs_states = aggs[:states]
