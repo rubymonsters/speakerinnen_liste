@@ -1,6 +1,7 @@
 class Seeds 
   def initialize
     @languages = ["en", "de"]
+    @cities = %w[Berlin London Paris Rome Hamburg]
     @categories = [
       { name_en: "Marketing & PR", name_de: "Marketing & PR"},
       { name_en: "Diversity", name_de: "Diversität" },
@@ -100,7 +101,7 @@ class Seeds
                       lastname: "Doe#{i}",
                       email: "jane_doe#{i}@example.com",
                       password: "jane_doe",
-                      city_de: "Berlin",
+                      city_de: @cities.sample,
                       country: 'DE',
                       twitter_de: "@janedoe##{i}",
                       website_de: "https://speakerinnen.org",
@@ -145,7 +146,7 @@ class Seeds
                       lastname: "Miller##{i}",
                       email: "claire_miller#{i}@example.com",
                       password: "claire_miller",
-                      city_en: "London",
+                      city_en: @cities.sample,
                       country: 'GB',
                       twitter_en: "@clairemiller##{i}",
                       website_en: "https://speakerinnen.org",

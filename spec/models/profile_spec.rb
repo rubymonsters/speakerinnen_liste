@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 describe 'profile', type: :model do
-  let(:profile) { FactoryBot.create(:profile) }
-  let(:profile2) { FactoryBot.create(:ada) }
-  let(:profile3) { FactoryBot.create(:laura) }
+  let!(:profile) { FactoryBot.create(:profile) }
+  let!(:profile2) { FactoryBot.create(:ada) }
+  let!(:profile3) { FactoryBot.create(:laura) }
 
   describe 'profile settings' do
     it 'has a valid factory' do
@@ -150,12 +150,62 @@ end
       create(:published_profile, state: nil)
     end
 
-    it { expect(Profile.by_region('AT').count).to eq 3 }
+    it { expect(Profile.by_region('AT').count).to eq 5 }
     it { expect(Profile.by_region('DE').count).to eq 1 }
-    it { expect(Profile.by_region(:'vorarlberg').count).to eq 2 }
+    it { expect(Profile.by_region(:'vorarlberg').count).to eq 3 }
     it { expect(Profile.by_region(:ooe).count).to eq 1 }
     it { expect(Profile.by_region('berlin').count).to eq 1 }
     it { expect(Profile.by_region('hamburg').count).to eq 0 }
-    it { expect(Profile.by_region(nil).count).to eq 5 }
+    it { expect(Profile.by_region(nil).count).to eq 8 }
+  end
+
+  describe 'search' do
+    it 'returns a profile by firstname' do
+      expect(Profile.search('Ada').count).to eq 1
+    end
+
+    it 'returns a profile by lastname' do
+      expect(Profile.search('Lovelace').count).to eq 1
+    end
+
+    it 'returns a profile by fullname' do
+      expect(Profile.search('Ada Lovelace').count).to eq 1
+    end
+
+    it 'returns a profile by twitter_de handle' do
+      expect(Profile.search('alovelace_de').count).to eq 1
+    end
+
+    it 'returns a profile by twitter_en handle' do
+      expect(Profile.search('alovelace_en').count).to eq 1
+    end
+
+    it 'returns a profile by bio_de' do
+      expect(Profile.search('Algorithmus').count).to eq 1
+    end
+
+    it 'returns a profile by bio_en' do
+      expect(Profile.search('algorithm').count).to eq 1
+    end
+
+    it 'returns a profile by main_topic_de' do
+      expect(Profile.search('Mathematik Genie').count).to eq 1
+    end
+
+    it 'returns a profile by main_topic_en' do
+      expect(Profile.search('math wiz').count).to eq 1
+    end
+
+    it 'returns a profile by city_en' do
+      expect(Profile.search('London').count).to eq 1
+    end
+
+    it 'returns a profile by state' do
+      expect(Profile.search('carinthia').count).to eq 1
+    end
+
+    it 'returns partial matches of a word' do
+      expect(Profile.search('Love').count).to eq 1
+    end
   end
 end

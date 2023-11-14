@@ -16,6 +16,7 @@ describe 'profile search' do
   let!(:profile2) { create(:published_profile, firstname: 'Christiane', lastname: 'König', main_topic_en: 'Blogs') }
   let!(:profile3) { create(:published_profile, firstname: 'Maren ', lastname: 'Meier', main_topic_en: 'Big Data') }
   let!(:profile_not_matched) { create(:published_profile, firstname: 'Angela', main_topic_en: 'rassism' ) }
+  let!(:unpublished_profile) { create(:unpublished_profile, firstname: 'May', main_topic_en: 'poetry' ) }
 
   describe 'public search' do
     context 'home page search form' do
@@ -30,9 +31,7 @@ describe 'profile search' do
       end
     end
 
-    describe 'searching', elasticsearch: true do
-      before { Profile.__elasticsearch__.refresh_index! }
-
+    describe 'searching' do
       it 'displays profiles with searched topic' do
         visit profiles_path(search: 'physics')
 
@@ -87,8 +86,8 @@ describe 'profile search' do
         expect(page).to have_no_selector('[data-toggle="tooltip"]')
       end
 
-      it 'displays correct data in aggrigated filters' do
-        visit profiles_path(search:  'physics')
+      it 'displays correct data in aggregated filters' do
+        visit profiles_path(search: 'physics', locale: 'en')
 
         expect(page).to have_selector('#facet_states')
         within '#facet_countries' do
@@ -103,6 +102,11 @@ describe 'profile search' do
         end
       end
 
+      it 'does not return unpublished profiles' do
+        visit profiles_path(search: 'poetry')
+
+        expect(page).to have_content('Unfortuantely we have found no speakerin matching your search')
+      end
     end
   end
 

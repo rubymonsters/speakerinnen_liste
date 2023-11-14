@@ -13,7 +13,6 @@
       <div class="col-12">
         <%= render partial: 'shared/search_filter',
             locals: {
-              profiles: @profiles,
               aggs_languages: @aggs_languages,
               aggs_countries: @aggs_countries,
               aggs_states: @aggs_states,
@@ -59,9 +58,11 @@
   <% end %>
 
   <!-- Speaker section -->
-  <%= paginate @profiles %>
+  <div class="d-flex justify-content-center py-3">
+    <%== pagy_bootstrap_nav @pagy if @pagy.pages > 1 %>
+  </div>
 
-  <% @profiles.in_groups_of(4).each do |group| %>
+  <% @records.in_groups_of(4).each do |group| %>
     <div class="row">
       <% group.each do |profile| %>
         <%= render partial: 'profiles/profile', object: profile %>
@@ -69,7 +70,9 @@
     </div>
   <% end %>
 
-  <%= paginate @profiles %>
+  <div class="d-flex justify-content-center py-3">
+    <%== pagy_bootstrap_nav @pagy if @pagy.pages > 1 %>
+  </div>
 
   <% if current_region && params[:search] %>
     <p>

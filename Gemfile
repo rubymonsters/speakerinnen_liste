@@ -19,7 +19,7 @@ gem 'normalize-rails'
 
 gem 'deadweight', require: 'deadweight/hijack/rails'
 
-gem 'kaminari'
+gem 'pagy'
 gem 'mime-types'
 
 gem 'acts-as-taggable-on', '~> 9.0', '>= 9.0.1'
@@ -46,8 +46,6 @@ gem 'friendly_id'
 
 gem 'active_model_serializers'
 
-gem 'elasticsearch-model', github: 'elastic/elasticsearch-rails', branch: '6.x'
-gem 'elasticsearch-rails', github: 'elastic/elasticsearch-rails', branch: '6.x'
 gem 'record_tag_helper', '~> 1.0'
 gem 'exception_notification'
 
@@ -66,6 +64,7 @@ gem "sentry-raven"
 
 gem 'image_processing', '~> 1.2'
 gem 'rack-timeout'
+gem 'pg_search'
 
 # downgrade gem to solve parsing error https://stackoverflow.com/questions/74725359/ruby-on-rails-legacy-application-update-generates-gem-psych-alias-error-psychb
 gem 'psych', '< 4.0'
@@ -92,7 +91,6 @@ end
 
 group :test do
   gem 'database_cleaner', '~> 1.7.0'
-  gem 'elasticsearch-extensions', git: 'https://github.com/elasticsearch/elasticsearch-ruby.git', ref: '6.x'
   gem 'factory_bot_rails'
   gem 'minitest', '5.11.3' # remove this after upgrading rails from 5.0.0
   gem 'poltergeist', '1.18.1'

@@ -30,7 +30,8 @@ FactoryBot.define do
     factory :ada do
       firstname { 'Ada' }
       lastname { 'Lovelace' }
-      twitter_en { 'alovelace' }
+      twitter_de { 'alovelace_de' }
+      twitter_en { 'alovelace_en' }
       city_en { 'London' }
       state { 'carinthia' }
       country { 'AT' }
@@ -50,6 +51,7 @@ FactoryBot.define do
       firstname { 'Marie' }
       lastname { 'Curie' }
       twitter_en { 'curie' }
+      city_de { 'Paris' }
       city_en { 'Paris' }
       country { 'FR' }
       iso_languages { ['en', 'pl'] }
@@ -65,6 +67,7 @@ FactoryBot.define do
       firstname { 'Laura' }
       country { 'AT' }
       state { :vorarlberg }
+      twitter_de { 'laurastwitter' }
       iso_languages { ['de', 'en'] }
       main_topic_de { 'Umwelt' }
       published { true }

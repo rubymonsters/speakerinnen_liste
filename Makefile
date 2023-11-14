@@ -40,6 +40,6 @@ db-migrate:
 db-test-migrate:
 	$(call dc-run, bundle exec rake db:migrate RAILS_ENV=test)
 seed:
-	$(call dc-run, sh -c 'rake db:seed && rake elasticsearch:import:all')
+	$(call dc-run, sh -c 'rake db:seed')
 test:
-	$(call dc-run-sp, sh -c 'bundle exec rake elasticsearch:wait_for_elastic && bundle exec rspec')
+	$(call dc-run-sp, sh -c 'bundle exec rspec')

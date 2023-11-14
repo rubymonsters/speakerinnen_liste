@@ -25,8 +25,9 @@ class ProfilesController < ApplicationController
       search_with_tags
     else
       search_without_params
-    end  
-    @profiles_count = @profiles.total_count
+    end
+    @pagy, @records = pagy_array(@profiles)
+    @profiles_count = @pagy.count
   end
 
   def show
@@ -131,36 +132,45 @@ class ProfilesController < ApplicationController
   end
 
   def search_with_search_params
-    @profiles = profiles_for_search
+    @profiles = matching_profiles.map(&:profile_card_details)
+
     # search results aggregated according to certain attributes to display as filters
-    aggs = @profiles.response.aggregations
-    @aggs_languages = aggs[:lang][:buckets]
-    @aggs_cities = aggs[:city][:buckets]
-    @aggs_states = aggs[:state][:buckets]
-    @aggs_countries = aggs[:country][:buckets]
+    aggs = ProfileGrouper.new(params[:locale], @profiles.map { |profile| profile[:id] }).agg_hash
+    @aggs_languages = aggs[:languages]
+    @aggs_cities = aggs[:cities]
+    @aggs_states = aggs[:states]
+    @aggs_countries = aggs[:countries]
   end
 
-  def profiles_for_search
-    Profile
+  def matching_profiles
+    chain ||= Profile
+      .includes(:translations)
       .with_attached_image
       .is_published
       .by_region(current_region)
-      .includes(:taggings, :translations)
-      .search(
-        params[:search],
-        search_region,
-        params[:filter_countries],
-        params[:filter_states],
-        params[:filter_cities],
-        params[:filter_lang],
-        (!Rails.env.production? || params[:explain]) == true
-      )
-      .page(params[:page]).per(24)
-      .records
+      .search(params[:search])
+
+    if params[:filter_city]
+      chain = chain.by_city(params[:filter_city])
+    end
+
+    if params[:filter_country]
+      chain = chain.by_country(params[:filter_country])
+    end
+
+    if params[:filter_language]
+      chain = chain.by_language(params[:filter_language])
+    end
+
+    if params[:filter_state]
+      chain = chain.by_state(params[:filter_state])
+    end
+
+    @matching_profiles = chain
   end
 
   def search_with_category_id
-    @profiles = profiles_for_category
+    @profiles = profiles_for_category.map(&:profile_card_details)
     @category = Category.find(params[:category_id])
     build_categories_and_tags_for_tags_filter
   end
@@ -179,15 +189,13 @@ class ProfilesController < ApplicationController
       .by_region(current_region)
       .includes(:taggings, :translations, :topics)
       .where(tags: { name: tag_names })
-      .page(params[:page])
-      .per(24)
   end
 
   def search_with_tags
     @tags = params[:tag_filter].split(/\s*,\s*/)
     last_tag = @tags.last
     last_tag_id = ActsAsTaggableOn::Tag.where(name: last_tag).last.id
-    @profiles = profiles_with_tags(@tags)
+    @profiles = profiles_with_tags(@tags).map(&:profile_card_details)
     @category =  Category.select{|cat| cat.tag_ids.include?(last_tag_id)}.last
     build_categories_and_tags_for_tags_filter
   end
@@ -197,11 +205,10 @@ class ProfilesController < ApplicationController
       .is_published
       .by_region(current_region)
       .has_tags(tags)
-      .page(params[:page]).per(24)
   end
 
   def search_without_params
-    @profiles = profiles_for_index
+    @profiles = profiles_for_index.map(&:profile_card_details)
     @category = Category.first
     build_categories_and_tags_for_tags_filter
   end
@@ -214,8 +221,6 @@ class ProfilesController < ApplicationController
       .includes(:translations)
       .main_topic_translated_in(I18n.locale)
       .random
-      .page(params[:page])
-      .per(24)
   end
 
   def build_categories_and_tags_for_tags_filter
