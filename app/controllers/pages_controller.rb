@@ -37,31 +37,13 @@ class PagesController < ApplicationController
   def features_and_profiles
     feature_records = Feature.published_feature.order(:position)
 
-    results_array = []
-    feature_records.each do |feature|
-      results_array << {
-                      title: feature.title,
-                      description: feature.description,
-                      profiles: profiles_array(feature.profiles)
-                    }
-    end
-    results_array
-  end
-
-  def profiles_array(profiles)
-    profiles_array = []
-    profiles.each do |profile|
-      profiles_array << {
-        id: profile.id,
-        fullname: profile.fullname,
-        iso_languages: profile.iso_languages,
-        city: profile.city,
-        willing_to_travel: profile.willing_to_travel,
-        nonprofit: profile.nonprofit,
-        main_topic_or_first_topic: profile.main_topic_or_first_topic
+    feature_records.map do |feature|
+      {
+        title: feature.title,
+        description: feature.description,
+        profiles: feature.profiles.map(&:profile_card_details)
       }
     end
-    profiles_array
   end
 
   def last_seven_profiles

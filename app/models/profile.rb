@@ -116,7 +116,7 @@ class Profile < ApplicationRecord
     suggestions.map { |s| s.downcase }.uniq
   end
 
-  def to_card_hash
+  def profile_card_details
     {
       id: id,
       fullname: fullname,

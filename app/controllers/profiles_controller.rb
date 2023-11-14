@@ -132,7 +132,7 @@ class ProfilesController < ApplicationController
   end
 
   def search_with_search_params
-    @profiles = matching_profiles.map(&:to_card_hash)
+    @profiles = matching_profiles.map(&:profile_card_details)
 
     # search results aggregated according to certain attributes to display as filters
     aggs = ProfileGrouper.new(params[:locale], @profiles.map { |profile| profile[:id] }).agg_hash
@@ -170,7 +170,7 @@ class ProfilesController < ApplicationController
   end
 
   def search_with_category_id
-    @profiles = profiles_for_category.map(&:to_card_hash)
+    @profiles = profiles_for_category.map(&:profile_card_details)
     @category = Category.find(params[:category_id])
     build_categories_and_tags_for_tags_filter
   end
@@ -195,7 +195,7 @@ class ProfilesController < ApplicationController
     @tags = params[:tag_filter].split(/\s*,\s*/)
     last_tag = @tags.last
     last_tag_id = ActsAsTaggableOn::Tag.where(name: last_tag).last.id
-    @profiles = profiles_with_tags(@tags).map(&:to_card_hash)
+    @profiles = profiles_with_tags(@tags).map(&:profile_card_details)
     @category =  Category.select{|cat| cat.tag_ids.include?(last_tag_id)}.last
     build_categories_and_tags_for_tags_filter
   end
@@ -208,7 +208,7 @@ class ProfilesController < ApplicationController
   end
 
   def search_without_params
-    @profiles = profiles_for_index.map(&:to_card_hash)
+    @profiles = profiles_for_index.map(&:profile_card_details)
     @category = Category.first
     build_categories_and_tags_for_tags_filter
   end
