@@ -3,14 +3,14 @@
 
   <div class="font-weight-bold text-center border-top pt-3">
     <% if @tags_count %>
-    <%= t(:tags_here_are, scope: 'admin.tags') + @tags.total_count.to_s + t(:tags_of, scope: 'admin.tags') + @tags_count.to_s + ' tags.' %>
+    <%= t(:tags_here_are, scope: 'admin.tags') + @pagy.count.to_s + t(:tags_of, scope: 'admin.tags') + @tags_count.to_s + ' tags.' %>
     <% else %>
-    <%= t(:tags_count, scope: 'admin.tags') + @tags.total_count.to_s + '.' %>
+    <%= t(:tags_count, scope: 'admin.tags') + @pagy.count.to_s + '.' %>
     <% end %>
   </div>
 
-  <div class="text-center">
-    <%= paginate @tags %>
+  <div class="d-flex justify-content-center py-3">
+    <%== pagy_bootstrap_nav @pagy if @pagy.pages > 1 %>
   </div>
 
   <div class="row">
@@ -31,7 +31,7 @@
           </tr>
         </thead>
         <tbody>
-          <% @tags.each do |tag| %>
+          <% @records.each do |tag| %>
           <tr>
             <td>
               <b><%= link_to tag.name, edit_admin_tag_path(tag.id, page: params[:page]), id: "tag_#{tag.id}",
@@ -72,7 +72,7 @@
     </div>
   </div>
 
-  <div class="text-center">
-    <%= paginate @tags %>
+  <div class="d-flex justify-content-center py-3">
+    <%== pagy_bootstrap_nav @pagy if @pagy.pages > 1 %>
   </div>
 </div>

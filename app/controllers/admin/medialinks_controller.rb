@@ -10,7 +10,7 @@ class Admin::MedialinksController < Admin::BaseController
   end
 
   def new
-    @medialink = Medialink.new(url: 'http://')
+    @medialink = Medialink.new(url: 'https://')
   end
 
   def edit; end

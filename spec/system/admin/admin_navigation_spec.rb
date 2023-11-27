@@ -125,7 +125,7 @@ RSpec.describe 'Navigation', type: :system do
           expect(page).to have_content('algorithm')
           expect(page).to have_content('English')
           expect(page).to have_content('German')
-          expect(page).to have_link('Ada and the computer', href: 'www.adalovelace.de')
+          expect(page).to have_link('Ada and the computer', href: 'https://www.adalovelace.de')
           expect(page).to have_content('How to programm')
         end
       end

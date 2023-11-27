@@ -1,7 +1,32 @@
 # frozen_string_literal: true
 class Profile < ApplicationRecord
-  include Searchable
+  include PgSearch::Model
   include ActiveModel::Serialization
+
+  pg_search_scope :search,
+    against: [
+      [:firstname, 'A'],
+      [:lastname, 'A'],
+      [:state, 'C'],
+      [:country, 'C']
+    ],
+    associated_against: {
+      translations: [
+        [:bio, 'C'],
+        [:city, 'B'],
+        [:main_topic, 'A'],
+        [:twitter, 'D']
+      ],
+      topics: [[:name, 'A']]
+    },
+    using: {
+      tsearch: { prefix: true }
+    }
+
+  pg_search_scope :by_language, against: [:iso_languages]
+  pg_search_scope :by_country, against: [:country]
+  pg_search_scope :by_city, associated_against: { translations: [:city] }
+  pg_search_scope :by_state, against: [:state]
 
   has_many :medialinks
   has_many :feature_profiles
@@ -32,8 +57,6 @@ class Profile < ApplicationRecord
     firstname&.strip!
     lastname&.strip!
   end
-
-  after_save :update_or_remove_index
 
   def after_confirmation
     AdminMailer.new_profile_confirmed(self).deliver
@@ -85,6 +108,18 @@ class Profile < ApplicationRecord
     suggestions.map { |s| s.downcase }.uniq
   end
 
+  def profile_card_details
+    {
+      id: id,
+      fullname: fullname,
+      iso_languages: iso_languages,
+      city: city,
+      willing_to_travel: willing_to_travel,
+      nonprofit: nonprofit,
+      main_topic_or_first_topic: main_topic_or_first_topic
+    }
+  end
+
   def fullname
     "#{firstname} #{lastname}".strip
   end
@@ -104,7 +139,7 @@ class Profile < ApplicationRecord
   end
 
   def main_topic_or_first_topic
-    main_topic.present? ? main_topic : topic_list.first
+    main_topic.present? ? main_topic : taggings.map { |tagging| tagging.tag.name }.first
   end
 
   # Try building a slug based on the following fields in
@@ -121,14 +156,6 @@ class Profile < ApplicationRecord
     slug.blank? || firstname_changed? || lastname_changed?
   end
 
-  def website_with_protocol(profile_website)
-    if profile_website =~ %r{^https?://}
-      profile_website
-    else
-      'http://' + profile_website
-    end
-  end
-
   def website_in_language_scope(lang, number = '')
     send(('website_' + number + lang.to_s).to_sym)
   end
@@ -138,7 +165,7 @@ class Profile < ApplicationRecord
   end
 
   def twitter_link_formatted
-    'http://twitter.com/' + twitter.gsub(%r{^@|https:|http:|:|//|www.|twitter.com/}, '')
+    'https://twitter.com/' + twitter.gsub(%r{^@|https:|http:|:|//|www.|twitter.com/}, '')
   end
 
   def country_name
@@ -148,13 +175,6 @@ class Profile < ApplicationRecord
 
   def self.random
     order(Arel.sql('random()'))
-  end
-
-  def update_or_remove_index
-    published ? __elasticsearch__.index_document : __elasticsearch__.delete_document
-  rescue StandardError
-    nil
-    # rescue a deleted document if not indexed
   end
 
   def password_required?

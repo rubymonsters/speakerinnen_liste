@@ -40,11 +40,12 @@ class Admin::TagsController < Admin::BaseController
   def index
     @categories = Category.all.includes(:translations)
     @tags_count = ActsAsTaggableOn::Tag.count
-    @tags = TagFilter.new(ActsAsTaggableOn::Tag.all.includes(:tags_locale_languages, :actsastaggableon_tags_categories, :taggings), filter_params)
-                     .filter
-                     .order(sort_column + ' ' + sort_direction)
-                     .page(params[:page])
-                     .per(20)
+    @pagy, @records = pagy(
+      TagFilter
+        .new(ActsAsTaggableOn::Tag.all.includes(:tags_locale_languages, :actsastaggableon_tags_categories, :taggings), filter_params)
+        .filter
+        .order(sort_column + ' ' + sort_direction)
+      )
     session[:filter_params] = filter_params
   end
 
