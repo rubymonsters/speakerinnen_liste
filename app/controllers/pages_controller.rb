@@ -3,18 +3,7 @@
 class PagesController < ApplicationController
   def home
     # we take the seven newest profiles and keep one as an empty example
-    @newest_profiles = []
-    last_seven_profiles.each do |profile|
-      @newest_profiles << {
-                      id: profile.id,
-                      fullname: profile.fullname,
-                      iso_languages: profile.iso_languages,
-                      city: profile.city,
-                      willing_to_travel: profile.willing_to_travel,
-                      nonprofit: profile.nonprofit,
-                      main_topic_or_first_topic: profile.main_topic_or_first_topic
-                    }
-    end
+    @newest_profiles = last_seven_profiles
 
     select_special_medicine_profiles
 
@@ -41,7 +30,7 @@ class PagesController < ApplicationController
       {
         title: feature.title,
         description: feature.description,
-        profiles: feature.profiles.map(&:profile_card_details)
+        profiles: feature.profiles
       }
     end
   end

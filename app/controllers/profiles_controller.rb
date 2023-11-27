@@ -26,8 +26,6 @@ class ProfilesController < ApplicationController
     else
       search_without_params
     end
-    @pagy, @records = pagy_array(@profiles)
-    @profiles_count = @pagy.count
   end
 
   def show
@@ -133,7 +131,7 @@ class ProfilesController < ApplicationController
 
   def search_with_search_params
     @profiles = matching_profiles.map(&:profile_card_details)
-
+    @pagy, @records = pagy_array(@profiles)
     # search results aggregated according to certain attributes to display as filters
     aggs = ProfileGrouper.new(params[:locale], @profiles.map { |profile| profile[:id] }).agg_hash
     @aggs_languages = aggs[:languages]
@@ -170,7 +168,7 @@ class ProfilesController < ApplicationController
   end
 
   def search_with_category_id
-    @profiles = profiles_for_category.map(&:profile_card_details)
+    @profiles = profiles_for_category
     @category = Category.find(params[:category_id])
     build_categories_and_tags_for_tags_filter
   end
@@ -183,44 +181,50 @@ class ProfilesController < ApplicationController
       .translated_in_current_language_and_not_translated(I18n.locale)
       .pluck(:name)
 
-    Profile
-      .with_attached_image
-      .is_published
-      .by_region(current_region)
-      .includes(:taggings, :translations, :topics)
-      .where(tags: { name: tag_names })
+    @pagy, @records = pagy(
+      Profile
+        .with_attached_image
+        .is_published
+        .by_region(current_region)
+        .includes(:topics)
+        .where(tags: { name: tag_names })
+      )
   end
 
   def search_with_tags
     @tags = params[:tag_filter].split(/\s*,\s*/)
     last_tag = @tags.last
     last_tag_id = ActsAsTaggableOn::Tag.where(name: last_tag).last.id
-    @profiles = profiles_with_tags(@tags).map(&:profile_card_details)
+    @profiles = profiles_with_tags(@tags)
     @category =  Category.select{|cat| cat.tag_ids.include?(last_tag_id)}.last
     build_categories_and_tags_for_tags_filter
   end
 
   def profiles_with_tags(tags)
-    Profile
-      .is_published
-      .by_region(current_region)
-      .has_tags(tags)
+    @pagy, @records = pagy(
+      Profile
+        .is_published
+        .by_region(current_region)
+        .has_tags(tags)
+      )
   end
 
   def search_without_params
-    @profiles = profiles_for_index.map(&:profile_card_details)
+    @profiles = profiles_for_index
     @category = Category.first
     build_categories_and_tags_for_tags_filter
   end
 
   def profiles_for_index
-    Profile
-      .with_attached_image
-      .is_published
-      .by_region(current_region)
-      .includes(:translations)
-      .main_topic_translated_in(I18n.locale)
-      .random
+    @pagy, @records = pagy(
+      Profile
+        .with_attached_image
+        .is_published
+        .by_region(current_region)
+        .includes(:translations)
+        .main_topic_translated_in(I18n.locale)
+        .random
+      )
   end
 
   def build_categories_and_tags_for_tags_filter

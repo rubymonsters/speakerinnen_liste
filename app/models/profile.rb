@@ -116,16 +116,28 @@ class Profile < ApplicationRecord
     suggestions.map { |s| s.downcase }.uniq
   end
 
+  Struct.new(
+    'ProfileCardDetails',
+    :id,
+    :fullname,
+    :iso_languages,
+    :city,
+    :willing_to_travel,
+    :nonprofit,
+    :main_topic_or_first_topic,
+    keyword_init: true
+  )
+
   def profile_card_details
-    {
+    Struct::ProfileCardDetails.new(
       id: id,
       fullname: fullname,
       iso_languages: iso_languages,
       city: city,
       willing_to_travel: willing_to_travel,
       nonprofit: nonprofit,
-      main_topic_or_first_topic: main_topic_or_first_topic
-    }
+      main_topic_or_first_topic: main_topic_or_first_topic,
+    )
   end
 
   def fullname

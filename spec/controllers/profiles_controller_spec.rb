@@ -20,7 +20,7 @@ describe ProfilesController, type: :controller do
     end
 
     it 'displays published profiles' do
-      expect(assigns(:profiles).map { |hash| hash[:id] }).to eq ([ada.id])
+      expect(assigns(:records).pluck(:id)).to eq ([ada.id])
     end
 
     it 'does not include unpublished profiles' do
