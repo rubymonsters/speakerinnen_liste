@@ -5,7 +5,7 @@
     <div class="row">
       <div class="col-12 py-5">
         <span class="h4">
-          <%= t(:"result#{'_' + current_region.to_s if current_region}", scope: 'search', count: @profiles_count).html_safe %><b><%= params[:search] %></b>
+          <%= t(:"result#{'_' + current_region.to_s if current_region}", scope: 'search', count: @pagy.count).html_safe %><b><%= params[:search] %></b>
         </span>
       </div>
     </div>
@@ -39,7 +39,7 @@
         <a id="speakers_anchor"></a>
         <% if params[:category_id] %>
           <h1><%= @category.name %></h1>
-          <h3><%= t(:"profiles_in_category#{'_' + current_region.to_s if current_region}", scope: 'profiles.index', count: @profiles_count).html_safe %> </h3>
+          <h3><%= t(:"profiles_in_category#{'_' + current_region.to_s if current_region}", scope: 'profiles.index', count: @pagy.count).html_safe %> </h3>
           <% if current_region %>
             <p>
               <%= t(:expand_search, scope: 'search') %>
@@ -48,7 +48,7 @@
           <% end %>
         <% elsif params[:tag_filter] %>
           <h1>
-            <%= t(:all_tagged_speakerinnen, scope: 'profiles.index', count: @profiles_count).html_safe + t(:tag_filter, scope: 'profiles.index', count: @tags.count).html_safe %>
+            <%= t(:all_tagged_speakerinnen, scope: 'profiles.index', count: @pagy.count).html_safe + t(:tag_filter, scope: 'profiles.index', count: @tags.count).html_safe %>
           </h1>
         <% else %>
           <h1><%= t(:all_profiles, scope: 'profiles.index') %></h1>
