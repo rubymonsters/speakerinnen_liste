@@ -62,7 +62,7 @@ class ApplicationController < ActionController::Base
     return if Rails.env.test?
     return unless request.is_crawler?
 
-    logger.info "Crawler #{request.crawler_name} was here!"
+    logger.warn "Crawler #{request.crawler_name} was here!"
   end
 
   def build_missing_translations(object)
