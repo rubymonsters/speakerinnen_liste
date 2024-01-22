@@ -3,3 +3,12 @@
 # To ban all spiders from the entire site uncomment the next two lines:
 User-Agent: SemrushBot
 Disallow: /
+
+User-Agent: bingbot
+Disallow: /
+
+User-Agent: AhrefsBot
+Disallow: /
+
+User-Agent: Bytespider
+Disallow: /
