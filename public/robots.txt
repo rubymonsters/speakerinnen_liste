@@ -12,3 +12,18 @@ Disallow: /
 
 User-Agent: Bytespider
 Disallow: /
+
+User-Agent: DotBot
+Disallow: /
+
+User-Agent: ImagesiftBot
+Disallow: /
+
+User-Agent: GPTBot
+Disallow: /
+
+User-Agent: PetalBot
+Disallow: /
+
+User-Agent: PhxBot
+Disallow: /
