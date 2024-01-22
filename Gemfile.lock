@@ -147,6 +147,8 @@ GEM
     country_select (8.0.1)
       countries (~> 5.0)
     crass (1.0.6)
+    crawler_detect (1.2.3)
+      qonfig (~> 0.24)
     css_parser (1.2.6)
       addressable
       rdoc
@@ -347,6 +349,7 @@ GEM
       method_source (~> 1.0)
     psych (3.3.3)
     public_suffix (5.0.1)
+    qonfig (0.28.0)
     racc (1.7.1)
     rack (2.2.6.4)
     rack-piwik (0.3.0)
@@ -505,6 +508,7 @@ DEPENDENCIES
   capybara (~> 3.38)
   coffee-rails (~> 5.0.0)
   country_select
+  crawler_detect
   database_cleaner (~> 1.7.0)
   deadweight
   derailed_benchmarks
