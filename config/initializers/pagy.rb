@@ -180,7 +180,7 @@ require 'pagy/extras/bootstrap'
 # Overflow extra: Allow for easy handling of overflowing pages
 # See https://ddnexus.github.io/pagy/docs/extras/overflow
 require 'pagy/extras/overflow'
-Pagy::DEFAULT[:overflow] = :last_page    # (other options: :empty_page and :exception)
+Pagy::DEFAULT[:overflow] = :empty_page    # (other options: :last_page, :empty_page and :exception)
 
 # Support extra: Extra support for features like: incremental, infinite, auto-scroll pagination
 # See https://ddnexus.github.io/pagy/docs/extras/support
