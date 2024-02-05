@@ -6,6 +6,7 @@ ENV['FISHY_EMAILS']="fish@email.de"
 require File.expand_path('../config/environment', __dir__)
 require 'rspec/rails'
 require 'capybara/poltergeist'
+Rack::Attack.enabled = false
 Capybara.javascript_driver = :poltergeist
 Capybara.default_max_wait_time = 10
 # Requires supporting ruby files with custom matchers and macros, etc,
