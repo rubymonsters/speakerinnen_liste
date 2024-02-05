@@ -1,10 +1,8 @@
 Rails.application.routes.draw do
 
-  # for production I have to add devise routes here
+  # for production devise routes
   devise_for :profiles,
-              only: :omniauth_callbacks,
               controllers: {
-                omniauth_callbacks: :omniauth_callbacks,
                 confirmations: :confirmations,
                 registrations: :registrations
               }
@@ -51,14 +49,7 @@ Rails.application.routes.draw do
       end
     end
 
-  # for localhost I have to add devise routes here
-    devise_for :profiles,
-      skip: :omniauth_callbacks,
-      controllers: {
-        omniauth_callbacks: :omniauth_callbacks,
-        confirmations: :confirmations,
-        registrations: :registrations
-      }
+
 
     get 'profiles_typeahead' => 'profiles#typeahead'
 
@@ -79,7 +70,6 @@ Rails.application.routes.draw do
     get '/', to: 'pages#home'
 
     get 'categories/:category_id', to: 'profiles#index', as: :category
-    # resources :categories
 
     get '/404', to: "errors#not_found"
     get '/422', to: "errors#unacceptable"

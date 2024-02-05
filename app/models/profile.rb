@@ -47,8 +47,8 @@ class Profile < ApplicationRecord
   extend FriendlyId
   friendly_id :slug_candidate, use: :slugged
 
-  devise :database_authenticatable, :registerable, :omniauthable,
-         :recoverable, :rememberable, :trackable, :validatable, :confirmable
+  devise :database_authenticatable, :registerable, :recoverable,
+         :rememberable, :trackable, :validatable, :confirmable
 
   acts_as_taggable_on :topics
 
@@ -65,14 +65,6 @@ class Profile < ApplicationRecord
   def self.by_region(region)
     region = :'upper-austria' if region == :ooe
   	region ? where('country = ? OR state = ?', region, region) : all
-  end
-
-  def self.from_omniauth(auth)
-    where(provider: auth.provider, uid: auth.uid).first_or_create do |profile|
-      profile.provider = auth.provider
-      profile.uid = auth.uid
-      profile.twitter = auth.info.nickname
-    end
   end
 
   def self.new_with_session(params, session)

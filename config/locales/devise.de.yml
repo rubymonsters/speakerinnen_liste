@@ -25,9 +25,6 @@ de:
         subject: 'Anleitung, um Deinen Account freizuschalten'
       published:
         subject: "Dein Profil auf Speakerinnen.org wurde jetzt freigeschaltet."
-    omniauth_callbacks:
-      success: 'Du hast Dich erfolgreich mit Deinem %{kind}-Account angemeldet.'
-      failure: 'Du konntest nicht mit Deinem %{kind}-Account angemeldet werden, weil "%{reason}".'
     passwords:
       no_token: "Du kannst diese Seite nur von dem Link aus einer E-Mail zum Passwort-Zurücksetzen aufrufen. Wenn Du einen solchen Link aufgerufen hast, stelle bitte sicher, dass Du die vollständige Adresse aufrufst."
       send_instructions: 'Du erhältst in wenigen Minuten eine E-Mail mit der Anleitung, wie Du Dein Passwort zurücksetzen kannst.'
@@ -51,8 +48,6 @@ de:
       confirmation: "Bestätige Dein Passwort"
       signup: "Registrieren"
       signin: "Anmelden"
-      signup_via: "Über Twitter registrieren"
-      signin_via: "Über Twitter anmelden"
       no_confirmation: "Keine Bestätigungsmail erhalten?"
       forgot_password: "Passwort vergessen?"
       remember: "Angemeldet bleiben"
@@ -70,7 +65,6 @@ de:
         password_placeholder: "Passwort"
         password: "Passwort:
         <br><small class='form-text text-muted'>Wir brauchen dein Passwort, um deine E-Mail Adresse ändern zu können.</small>"
-        no_password: "Du kannst deine E-Mail-Adresse hier nicht ändern, weil du über Twitter eingeloggt bist und die dortige E-Mail benutzt wird."
         update: "Aktualisiere Account"
         delete_account: "Hier kannst Du Deinen Account löschen!"
         unhappy: "Unglücklich?"
