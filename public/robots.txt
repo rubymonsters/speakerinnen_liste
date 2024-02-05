@@ -2,7 +2,7 @@
 #
 # To ban all spiders from the entire site uncomment the next two lines:
 User-Agent: *
-Disallow: /topics/
+Disallow: /topics
 
 User-Agent: SemrushBot
 Disallow: /
@@ -26,4 +26,25 @@ User-Agent: PetalBot
 Disallow: /
 
 User-Agent: PhxBot
+Disallow: /
+
+User-Agent: Mojeek
+Disallow: /
+
+User-Agent: serpstatbot
+Disallow: /
+
+User-Agent: ClaudeBot
+Disallow: /
+
+User-Agent: Yandex
+Disallow: /
+
+User-Agent: Go-http-client
+Disallow: /
+
+User-Agent: http.rb/
+Disallow: /
+
+User-Agent: XoviOnpageCrawl
 Disallow: /
