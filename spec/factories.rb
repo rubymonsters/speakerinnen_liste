@@ -10,6 +10,7 @@ FactoryBot.define do
     password { '123foobar' }
     password_confirmation { '123foobar' }
     confirmed_at { Time.now }
+    main_topic_en { 'math' }
 
     factory :admin do
       admin { true }

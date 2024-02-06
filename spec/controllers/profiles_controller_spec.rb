@@ -3,10 +3,10 @@
 describe ProfilesController, type: :controller do
   include AuthHelper
 
-  let!(:profile_published) { create(:published_profile, topic_list: %w[ruby algorithms]) }
-  let!(:profile_unpublished) { create(:unpublished_profile) }
-  let!(:ada) { create(:published_profile, email: "ada@mail.org", main_topic_en: 'math') }
-  let!(:admin) { create(:admin) }
+  # let!(:profile_published) { create(:published_profile, topic_list: %w[ruby algorithms]) }
+  # let!(:profile_unpublished) { create(:unpublished_profile) }
+  # let!(:ada) { create(:published_profile, email: "ada@mail.org", main_topic_en: 'math') }
+  # let!(:admin) { create(:admin) }
 
   describe 'test index action' do
     before do
@@ -25,6 +25,21 @@ describe ProfilesController, type: :controller do
 
     it 'does not include unpublished profiles' do
       expect(assigns(:profiles)).not_to include(profile_unpublished)
+    end
+  end
+
+  context "pagination" do
+    let!(:ada) { create(:published_profile, email: "ada@mail.org", main_topic_en: 'math') }
+    it 'displays index page 2' do
+      create_list(:published_profile, 23)
+
+      get :index, params: { page: 1 }
+      # byebug
+      expect(assigns(:records).count).to eq 24
+      expect(assigns(:records)).to include ada
+      get :index, params: { page: 2 }
+      expect(assigns(:records)).not_to include ada
+      expect(assigns(:records).count).to eq 0
     end
   end
 
