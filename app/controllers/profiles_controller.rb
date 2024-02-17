@@ -223,6 +223,7 @@ class ProfilesController < ApplicationController
         .by_region(current_region)
         .includes(:translations)
         .main_topic_translated_in(I18n.locale)
+        .order(created_at: :desc)
       )
   end
 
