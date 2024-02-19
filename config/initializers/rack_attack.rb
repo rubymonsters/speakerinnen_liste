@@ -24,7 +24,7 @@ class Rack::Attack
   # Throttle all requests by IP (60rpm)
   #
   # Key: "rack::attack:#{Time.now.to_i/:period}:req/ip:#{req.ip}"
-  throttle('req/ip', limit: 300, period: 3.minutes) do |req|
+  throttle('req/ip', limit: 60, period: 60.seconds) do |req|
     req.ip # unless req.path.start_with?('/assets')
   end
 
