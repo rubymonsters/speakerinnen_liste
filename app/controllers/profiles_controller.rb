@@ -18,9 +18,9 @@ class ProfilesController < ApplicationController
     elsif params[:category_id]
       search_with_category_id
     elsif params[:tag_filter]
-      if params[:tag_filter].empty? 
+      if params[:tag_filter].empty?
         redirect_to profiles_url(anchor: "top"), notice: I18n.t('flash.profiles.no_tags_selected')
-        return 
+        return
       end
       search_with_tags
     else
@@ -223,7 +223,7 @@ class ProfilesController < ApplicationController
         .by_region(current_region)
         .includes(:translations)
         .main_topic_translated_in(I18n.locale)
-        .random
+        .order(created_at: :desc)
       )
   end
 
