@@ -22,23 +22,10 @@ The aim of the app is to provide a way for conference and event organizers to fi
 * `make test` (runs all the tests)
 * `make usage` (get a list of possible commands)
 
-### Local development without Docker (this is a workaround)
+### Local development without Docker
 
-You need to define DATABASE_URL to point to your local Postgres and SEARCHBOX_URL to point to your local Elastic (Make sure those are set up with the right versions, etc.):  
-
-This command for example runs the tests directly on your machine using the local postgres and elastic:
-
-```
-$ DATABASE_URL=postgres://127.0.0.1/ SEARCHBOX_URL=http://127.0.0.1:9200/ bundle exec rspec
-```
-
-This matches our settings in config/database.yml, but if you have different user, password or db name you can put all that in DATABASE_URL as explained here: https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNSTRING.
-Or you comment out `host`, `username` and `password` in your config/database.yml.
-
-Issues you might run into:
-1. Docker might create files in tmp that the process in your machine can't overwrite. Do ```sudo rm -rf tmp``` to delete.
-2. Rails can't write to log/test.log and might print to screen instead. To delete do: ``` sudo rm -rf log/ ```
-3. If you have problem with `bundle install`, throw away the Gemfile.lock and re-run the command.
+In your `database.yml`: make sure `host: db` `username: postgres` and `password: password` are commented out.
+You can start a server or run the tests as usual.
 
 ## Admin user
 
@@ -125,22 +112,20 @@ Find further details in [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Docker
 
-### Use upgraded Postgres or Elasticsearch version in Docker
-If Postgres or Elasticsearch got upgraded in the docker-compose file, you need to delete all processes, images 
+### Use upgraded Postgres version in Docker
+If Postgres got upgraded in the docker-compose file, you need to delete all processes, images
 and volumes that still use the older version:
 1. Use ```make tear-down``` to delete all processes and images
 
 2. Delete all your local volumes inside Docker as well. (Otherwise you will get a DB connection error)
 Check for your speakerinnen volumes in Docker:
 ``` docker volume ls ```
-Ouput will be a list of volumes, pick all the speakerinnen ones (Postgres, Elasticsearch, Bundle) and delete them (adjust the name if yours is 
+Ouput will be a list of volumes, pick all the speakerinnen ones (Postgres, Bundle) and delete them (adjust the name if yours is
 different):
 
     ``` docker volume rm speakerinnen_liste_postgres_data ```
 
     ```docker volume rm speakerinnen_liste_bundle```
-
-    ```docker volume rm speakerinnen_liste_elastic_data```
 
 3. ```make setup``` to recreate all images, processes and volumes.
 
