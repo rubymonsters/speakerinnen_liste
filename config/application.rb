@@ -30,6 +30,5 @@ module SpeakerinnenListe
     # the framework and any gems in your application.
 
     config.exceptions_app = self.routes
-    config.middleware.use Rack::CrawlerDetect
   end
 end
