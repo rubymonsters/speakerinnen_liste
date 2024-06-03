@@ -99,21 +99,14 @@ SpeakerinnenListe::Application.configure do
   config.action_mailer.delivery_method = :smtp
 
   config.action_mailer.smtp_settings = {
-    address:              'mail.so36.net',
+    address:              'smtp.postmarkapp.com',
     port:                 587,
     domain:               'staging-speakerinnen-liste.heroku.com',
-    user_name:            'team@speakerinnen.org',
-    password:             ENV['TEAM_MAIL_PASSWORD'],
+    user_name:            ENV['POSTMARK_API_TOKEN'],
+    password:             ENV['POSTMARK_API_TOKEN'],
     authentication:       'plain',
-    enable_starttls_auto: true  }
-  #config.action_mailer.smtp_settings = {
-    #:address => ENV['POSTMARK_SMTP_SERVER'],
-    #:port => '25', # or 2525
-    #:domain => 'staging-speakerinnen-liste.heroku.com',
-    #:user_name => ENV['POSTMARK_API_TOKEN'],
-    #:password => ENV['POSTMARK_API_TOKEN'],
-    #:authentication => :plain
-  #}
+    enable_starttls_auto: true
+  }
 
   # Store uploaded files on the local file system (see config/storage.yml for options)
   config.active_storage.service = :staging
