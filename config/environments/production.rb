@@ -85,12 +85,13 @@ Rails.application.configure do
   config.action_mailer.default charset: "utf-8"
 
   config.action_mailer.delivery_method = :smtp
+
   config.action_mailer.smtp_settings = {
-    address:              'mail.so36.net',
+    address:              'smtp.postmarkapp.com',
     port:                 587,
     domain:               'speakerinnen.org',
-    user_name:            'team@speakerinnen.org',
-    password:             ENV['TEAM_MAIL_PASSWORD'],
+    user_name:            ENV['POSTMARK_API_TOKEN'],
+    password:             ENV['POSTMARK_API_TOKEN'],
     authentication:       'plain',
     enable_starttls_auto: true  }
 
