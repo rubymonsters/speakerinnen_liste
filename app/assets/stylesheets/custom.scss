@@ -59,7 +59,8 @@ ul {
   vertical-align: top;
 }
 
-.code-of-conduct ul {
+.code-of-conduct ul,
+#privacy ul {
   list-style: disc;
 
   li::marker {
