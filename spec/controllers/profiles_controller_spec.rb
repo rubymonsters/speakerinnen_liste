@@ -6,6 +6,7 @@ describe ProfilesController, type: :controller do
   let!(:profile_unpublished) { create(:unpublished_profile) }
   let!(:ada) { create(:published_profile, email: "ada@mail.org", main_topic_en: 'math') }
   let!(:admin) { create(:admin) }
+  let!(:category) { create(:cat_science) }
 
   describe 'index' do
     before do
@@ -23,13 +24,12 @@ describe ProfilesController, type: :controller do
     end
 
     it 'does not include unpublished profiles' do
-      expect(assigns(:profiles)).not_to include(profile_unpublished)
+      expect(assigns(:records)).not_to include(profile_unpublished)
     end
   end
 
   describe '#search_with_category_id' do
     it 'stores the correct category when params has category id' do
-      category = FactoryBot.create(:category, name: 'Seasons', name_en: 'Seasons')
       get :index, params: { category_id: category.id }
       expect(assigns(:category)).to eq(category)
     end
@@ -39,6 +39,11 @@ describe ProfilesController, type: :controller do
     it 'redirects to profile index when tags filter is empty' do
       get :index, params: { tag_filter: "" }
       expect(response).to redirect_to("/#{I18n.locale}/profiles#top")
+    end
+
+    it 'redirects to profile index when tags filter is empty' do
+      get :index, params: { tag_filter: "ruby" }
+      expect(assigns(:records).pluck(:id)).to eq ([profile_published.id])
     end
   end
 
