@@ -49,7 +49,7 @@ Rails.application.routes.draw do
       end
     end
 
-
+    get 'topics', to: 'profiles#index', as: :topic
 
     get 'profiles_typeahead' => 'profiles#typeahead'
 
