@@ -113,6 +113,7 @@ class ProfilesController < ApplicationController
     if result.success?
       profiles = result.profiles
       @category = result.category
+      @tags = result.tags
       @pagy, @records = pagy_array(profiles)
       build_categories_and_tags_for_tags_filter
     else

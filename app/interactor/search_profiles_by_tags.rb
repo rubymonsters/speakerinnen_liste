@@ -6,6 +6,7 @@ class SearchProfilesByTags
     @tags = context.tags.split(/\s*,\s*/)
     last_tag = @tags.last
     last_tag_id = ActsAsTaggableOn::Tag.where(name: last_tag).last.id
+    context.tags = @tags
     context.profiles = profiles_with_tags(@tags)
     context.category = Category.select{|cat| cat.tag_ids.include?(last_tag_id)}.last
   end
