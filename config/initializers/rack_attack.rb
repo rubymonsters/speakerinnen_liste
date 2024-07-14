@@ -75,7 +75,7 @@ class Rack::Attack
   #    {},   # headers
   #    ['']] # body
   # end
-
+  Rack::Attack.cache.store = ActiveSupport::Cache::MemoryStore.new
   blocklist('block all access to deprecated paths') do |request|
     # Requests are blocked if the return value is truthy
     request.path.start_with?("/topics")
