@@ -10,9 +10,6 @@ class ApplicationController < ActionController::Base
   before_action :set_search_region
   before_action :check_cookie_consent
 
-  rescue_from ActiveRecord::RecordNotFound, with: :render_404
-  rescue_from ActionController::RoutingError, with: :render_404
-
   def authenticate_admin!
     return if current_profile&.admin?
 
