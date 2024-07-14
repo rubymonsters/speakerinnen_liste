@@ -75,12 +75,6 @@ class Rack::Attack
   #    {},   # headers
   #    ['']] # body
   # end
-  Rack::Attack.cache.store = ActiveSupport::Cache::MemoryStore.new
-  blocklist('block all access to deprecated paths') do |request|
-    # Requests are blocked if the return value is truthy
-    request.path.start_with?("/topics")
-  end
-  Rack::Attack.enabled = ENV['ENABLE_RACK_ATTACK'] || Rails.env.production?
 # # Fallback to memory if we don't have Redis present or we're in test mode
   if !ENV['REDIS_URL'] || Rails.env.test?
     Rack::Attack.cache.store = ActiveSupport::Cache::MemoryStore.new

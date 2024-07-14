@@ -10,6 +10,9 @@ class ApplicationController < ActionController::Base
   before_action :set_search_region
   before_action :check_cookie_consent
 
+  rescue_from ActiveRecord::RecordNotFound, with: :render_404
+  rescue_from ActionController::RoutingError, with: :render_404
+
   def authenticate_admin!
     return if current_profile&.admin?
 
@@ -49,6 +52,18 @@ class ApplicationController < ActionController::Base
 
   def validate_region(region)
     region if region == :vorarlberg || region == :ooe
+  end
+
+  def route_not_found
+    render_404
+  end
+
+  def render_404
+    respond_to do |format|
+      format.html { render file: "#{Rails.root}/views/errors/not_found.html", status: :not_found }
+      format.json { render json: { error: 'Not Found' }, status: :not_found }
+      format.all { render nothing: true, status: :not_found }
+    end
   end
 
   attr_reader :current_region

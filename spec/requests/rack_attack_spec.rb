@@ -13,14 +13,6 @@ RSpec.describe "Rack::Attack", type: :request do
     Rack::Attack.enabled = false
   end
 
-  describe "get /topics" do
-    it "blocks" do
-      get topic_path
-      expect(response.body).to include("Forbidden")
-      expect(response).to have_http_status(:forbidden)
-    end
-  end
-
   describe "get /profiles" do
     it "successful for 10 requests, then blocks the user nicely" do
       300.times do
