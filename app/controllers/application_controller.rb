@@ -60,7 +60,7 @@ class ApplicationController < ActionController::Base
 
   def render_404
     respond_to do |format|
-      format.html { render file: "#{Rails.root}/views/errors/not_found.html", status: :not_found }
+      format.html { render file: "#{Rails.root}/views/errors/not_found.html.erb", status: :not_found }
       format.json { render json: { error: 'Not Found' }, status: :not_found }
       format.all { render nothing: true, status: :not_found }
     end
