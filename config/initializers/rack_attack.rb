@@ -76,7 +76,7 @@ class Rack::Attack
   #    ['']] # body
   # end
 
-  Rack::Attack.blocklist('block all access to deprecated paths') do |request|
+  blocklist('block all access to deprecated paths') do |request|
     # Requests are blocked if the return value is truthy
     request.path.start_with?("/de/topics")
     request.path.start_with?("/en/topics")

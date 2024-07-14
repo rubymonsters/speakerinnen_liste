@@ -49,8 +49,6 @@ Rails.application.routes.draw do
       end
     end
 
-    get 'topics', to: 'profiles#index', as: :topic
-
     get 'profiles_typeahead' => 'profiles#typeahead'
 
     get  'contact' => 'contact#new',    as: 'contact'
