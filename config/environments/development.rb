@@ -72,6 +72,8 @@ Rails.application.configure do
     Bullet.rails_logger = true
   end
 
+  config.middleware.use Rack::Attack
+
   # config.action_mailer.delivery_method = :letter_opener
   config.hosts << /(\w+\.)?speakerinnen.local/
 end
