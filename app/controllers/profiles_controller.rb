@@ -124,7 +124,7 @@ class ProfilesController < ApplicationController
   def get_all_profiles
     cache_key = [:get_all_profiles, current_region]
     result = Rails.cache.fetch(cache_key, expires_in: 12.hours) do
-      DefaultSearchProfiles.call(region: current_region)
+      GetAllProfiles.call(region: current_region)
     end
     if result.success?
       profiles = result.profiles
