@@ -49,8 +49,6 @@ Rails.application.routes.draw do
       end
     end
 
-    get 'topics', to: 'profiles#index', as: :topic
-
     get 'profiles_typeahead' => 'profiles#typeahead'
 
     get  'contact' => 'contact#new',    as: 'contact'
@@ -71,6 +69,7 @@ Rails.application.routes.draw do
 
     get 'categories/:category_id', to: 'profiles#index', as: :category
 
+    get '/400', to: "errors#bad_request"
     get '/404', to: "errors#not_found"
     get '/422', to: "errors#unacceptable"
     get '/500', to: "errors#internal_error"

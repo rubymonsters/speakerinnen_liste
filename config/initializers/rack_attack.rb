@@ -24,7 +24,7 @@ class Rack::Attack
   # Throttle all requests by IP (60rpm)
   #
   # Key: "rack::attack:#{Time.now.to_i/:period}:req/ip:#{req.ip}"
-  throttle('req/ip', limit: 60, period: 60.seconds) do |req|
+  throttle('req/ip', limit: 300, period: 5.minutes) do |req|
     req.ip # unless req.path.start_with?('/assets')
   end
 
@@ -75,11 +75,8 @@ class Rack::Attack
   #    {},   # headers
   #    ['']] # body
   # end
-
-  blocklist('block all access to deprecated paths') do |request|
-    # Requests are blocked if the return value is truthy
-    request.path.start_with?("/de/topics")
-    request.path.start_with?("/en/topics")
-    request.path.start_with?("/topics")
+# # Fallback to memory if we don't have Redis present or we're in test mode
+  if !ENV['REDIS_URL'] || Rails.env.test?
+    Rack::Attack.cache.store = ActiveSupport::Cache::MemoryStore.new
   end
 end
