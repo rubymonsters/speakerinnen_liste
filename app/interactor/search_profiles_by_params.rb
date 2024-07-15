@@ -1,8 +1,6 @@
 class SearchProfilesByParams
   include Interactor
 
-  requires :params
-
   def call
     chain = Profile
               .includes(:translations)

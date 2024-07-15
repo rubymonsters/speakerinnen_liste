@@ -1,6 +1,5 @@
 class SearchProfilesByCategory
   include Interactor
-  requires :category_id
 
   def call
     category = Category.find_by(id: context.category_id)
