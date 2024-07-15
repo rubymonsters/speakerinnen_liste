@@ -7,7 +7,6 @@ class ErrorsController < ApplicationController
     render status: :bad_request
   end
 
-
   def unacceptable
     render status: :unprocessable_entity
   end
