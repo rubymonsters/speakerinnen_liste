@@ -1,21 +1,14 @@
-# encoding: utf-8
-
 class ErrorsController < ApplicationController
-
   def not_found
     render status: :not_found
   end
 
   def unacceptable
-    respond_to do |format|
-      format.html.erb { render status: 422 }
-    end
+    render status: :unprocessable_entity
   end
 
   def internal_error
-    respond_to do |format|
-      format.html.erb { render status: 500 }
-    end
+    render status: :internal_server_error
   end
 
   def render_footer?
