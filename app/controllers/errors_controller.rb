@@ -3,6 +3,11 @@ class ErrorsController < ApplicationController
     render status: :not_found
   end
 
+  def bad_request
+    render status: :bad_request
+  end
+
+
   def unacceptable
     render status: :unprocessable_entity
   end
