@@ -122,7 +122,10 @@ class ProfilesController < ApplicationController
   end
 
   def get_all_profiles
-    result = GetAllProfiles.call(region: current_region)
+    cache_key = [:get_all_profiles, current_region]
+    result = Rails.cache.fetch(cache_key, expires_in: 12.hours) do
+      DefaultSearchProfiles.call(region: current_region)
+    end
     if result.success?
       profiles = result.profiles
       @category = Category.first
