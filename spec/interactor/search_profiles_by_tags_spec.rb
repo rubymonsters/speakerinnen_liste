@@ -8,7 +8,7 @@ describe SearchProfilesByTags do
     create(:profile, topic_list: ["other tags"], published: true )
   end
 
-  it 'only shpws published profiles with the correct tags' do
+  it 'only shows published profiles with the correct tags' do
     result = described_class.call(context)
     expect(result.success?).to be true
     expect(result.profiles).to eq([ada])
