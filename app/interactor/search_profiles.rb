@@ -1,5 +1,7 @@
-class SearchProfiles
+class SearchProfilesByParams
   include Interactor
+
+  requires :params
 
   def call
     chain = Profile

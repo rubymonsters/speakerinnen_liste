@@ -20,7 +20,7 @@ class ProfilesController < ApplicationController
     elsif params[:tag_filter]
       handle_tag_filter
     else
-      search_without_params
+      get_all_profiles
     end
   end
 
@@ -86,7 +86,7 @@ class ProfilesController < ApplicationController
   end
 
   def search_with_search_params
-    result = SearchProfiles.call(params: params, region: current_region)
+    result = SearchProfilesByParams.call(params: params, region: current_region)
     if result.success?
       profiles = result.profiles
       @pagy, @records = pagy_array(profiles)
@@ -121,8 +121,8 @@ class ProfilesController < ApplicationController
     end
   end
 
-  def search_without_params
-    result = DefaultSearchProfiles.call(region: current_region)
+  def get_all_profiles
+    result = GetAllProfiles.call(region: current_region)
     if result.success?
       profiles = result.profiles
       @category = Category.first

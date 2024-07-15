@@ -1,6 +1,7 @@
 
 class SearchProfilesByTags
   include Interactor
+  requires :tags
 
   def call
     @tags = context.tags.split(/\s*,\s*/)
