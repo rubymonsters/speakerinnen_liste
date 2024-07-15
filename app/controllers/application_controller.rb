@@ -51,18 +51,6 @@ class ApplicationController < ActionController::Base
     region if region == :vorarlberg || region == :ooe
   end
 
-  def route_not_found
-    render_404
-  end
-
-  def render_404
-    respond_to do |format|
-      format.html { render template: 'errors/not_found', status: :not_found, layout: 'application' }
-      format.json { render json: { error: 'Not Found' }, status: :not_found }
-      format.all { render nothing: true, status: :not_found }
-    end
-  end
-
   attr_reader :current_region
   helper_method :current_region
   attr_reader :search_region

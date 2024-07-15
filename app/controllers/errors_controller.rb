@@ -3,9 +3,7 @@
 class ErrorsController < ApplicationController
 
   def not_found
-    respond_to do |format|
-      format.html.erb { render status: 404 }
-    end
+    render status: :not_found
   end
 
   def unacceptable
