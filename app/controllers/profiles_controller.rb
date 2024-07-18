@@ -229,6 +229,7 @@ class ProfilesController < ApplicationController
 
   def build_categories_and_tags_for_tags_filter
     @categories = Category.sorted_categories
+    # builds variables like @tags_internet
     Category.all.includes(:translations).each do |category|
       tags = ActsAsTaggableOn::Tag
         .belongs_to_category(category.id)
