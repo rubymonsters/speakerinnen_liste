@@ -22,8 +22,8 @@ development_environments:
 # revision: null
 
 # Enable verbose debug logging (useful for troubleshooting).
-debug: true
+debug: false
 
 # Enable Honeybadger Insights
 insights:
-  enabled: true
+  enabled: false
