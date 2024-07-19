@@ -503,7 +503,7 @@ DEPENDENCIES
   webrick (~> 1.7)
 
 RUBY VERSION
-   ruby 3.1.1p18
+   ruby 3.1.6p260
 
 BUNDLED WITH
    2.4.10
