@@ -18,7 +18,9 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
     <%= csrf_meta_tags %>
-    <%= favicon_link_tag 'favicon.ico' %>
+    <%= favicon_link_tag 'favicon.ico', type: 'image/png', rel: 'apple-touch-icon-precomposed', size: '72x72' %>
+    <%= favicon_link_tag 'apple-touch-icon-precomposed.png', type: 'image/png', rel: 'apple-touch-icon-precomposed', size: '72x72' %>
+    <%= favicon_link_tag 'apple-touch-icon.png', type: 'image/png', rel: 'apple-touch-icon-precomposed', size: '72x72' %>
   </head>
   <body class="<%= current_region %>">
     <a id="top" style="display: none;"></a>
