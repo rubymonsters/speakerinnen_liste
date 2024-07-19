@@ -91,8 +91,7 @@ More infos how to use this: https://docs.honeycomb.io/beeline/ruby/
 
 # Report Errors
 
-We are using sentry.
-`heroku addons:open sentry --app speakerinnen-liste`
+We are using honeybadger.
 
 # Deployment
 

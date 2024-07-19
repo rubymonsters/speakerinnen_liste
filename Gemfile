@@ -58,8 +58,6 @@ gem 'rack-piwik', '~> 0.3.0', require: 'rack/piwik'
 
 gem 'aws-sdk-s3', require: false
 
-gem "sentry-raven"
-
 gem 'image_processing', '~> 1.2'
 gem 'rack-timeout'
 gem 'pg_search'
