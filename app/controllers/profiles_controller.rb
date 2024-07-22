@@ -5,7 +5,6 @@ class ProfilesController < ApplicationController
   include CategoriesHelper
   include ActsAsTaggableOn::TagsHelper
   include SearchHelper
-  include Pagy::Backend
 
   before_action :set_profile, only: %i[show edit update destroy require_permission]
   before_action :require_permission, only: %i[edit destroy update]
