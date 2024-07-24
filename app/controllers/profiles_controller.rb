@@ -187,6 +187,7 @@ class ProfilesController < ApplicationController
         .is_published
         .by_region(current_region)
         .includes(:topics)
+        .includes(:translations)
         .where(tags: { name: tag_names })
       )
   end
