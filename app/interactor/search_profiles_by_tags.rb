@@ -16,6 +16,7 @@ class SearchProfilesByTags
   def profiles_with_tags(tags)
     Profile.is_published
            .by_region(context.current_region)
+           .includes([:translations])
            .has_tags(tags)
   end
 end

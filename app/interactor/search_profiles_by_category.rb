@@ -24,7 +24,9 @@ class SearchProfilesByCategory
     Profile.with_attached_image
            .is_published
            .by_region(context.region)
+           .includes(:translations)
            .includes(:topics)
            .where(tags: { name: tag_names })
+
   end
 end
