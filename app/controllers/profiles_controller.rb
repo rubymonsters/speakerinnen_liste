@@ -156,16 +156,21 @@ class ProfilesController < ApplicationController
   end
 
   def build_categories_and_tags_for_tags_filter
-    @categories = Category.sorted_categories
+    @categories = Rails.cache.fetch("sorted_categories", expires_in: 12.hours) do
+      Category.sorted_categories
+    end
     # builds variables like @tags_internet
     Category.includes(:translations).find_each do |category|
-      tags = ActsAsTaggableOn::Tag
-               .belongs_to_category(category.id)
-               .with_published_profile
-               .with_regional_profile(search_region)
-               .translated_in_current_language_and_not_translated(I18n.locale)
-               .tap { |tags| tags.belongs_to_more_than_one_profile unless current_region }
-               .most_used(100)
+      tags_cache_key = "tags_#{category.short_name}_#{search_region}_#{I18n.locale}_#{current_region}"
+      tags = Rails.cache.fetch(tags_cache_key, expires_in: 12.hours) do
+        ActsAsTaggableOn::Tag
+          .belongs_to_category(category.id)
+          .with_published_profile
+          .with_regional_profile(search_region)
+          .translated_in_current_language_and_not_translated(I18n.locale)
+          .tap { |tags| tags.belongs_to_more_than_one_profile unless current_region }
+          .most_used(100)
+      end
       instance_variable_set("@tags_#{category.short_name}", tags)
     end
   end
