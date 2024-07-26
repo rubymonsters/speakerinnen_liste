@@ -130,7 +130,7 @@ class ProfilesController < ApplicationController
   end
 
   def search_with_search_params
-    @profiles = matching_profiles
+    @profiles = matching_profiles.map(&:profile_card_details)
     @pagy, @records = pagy_array(@profiles)
     # search results aggregated according to certain attributes to display as filters
     aggs = ProfileGrouper.new(params[:locale], @profiles.map { |profile| profile[:id] }).agg_hash

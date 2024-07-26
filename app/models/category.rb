@@ -10,6 +10,7 @@ class Category < ApplicationRecord
 
   def self.sorted_categories
     Category.all.includes(:translations).order(:position)
+
   end
 
   def short_name
