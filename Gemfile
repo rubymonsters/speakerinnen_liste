@@ -53,7 +53,7 @@ gem 'sassc-rails'
 
 gem 'uglifier', '>= 1.0.3'
 
-gem 'puma'
+gem 'unicorn'
 
 gem 'rack-piwik', '~> 0.3.0', require: 'rack/piwik'
 
