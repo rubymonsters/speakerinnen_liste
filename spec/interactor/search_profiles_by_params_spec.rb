@@ -11,6 +11,6 @@ describe SearchProfilesByParams do
   it 'only shows published profiles with the correct params' do
     result = described_class.call(context)
     expect(result.success?).to be true
-    expect(result.profiles).to eq([profile])
+    expect(result.profiles).to eq([profile.profile_card_details])
   end
 end
