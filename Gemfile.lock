@@ -150,6 +150,7 @@ GEM
     css_parser (1.2.6)
       addressable
       rdoc
+    dalli (3.2.8)
     database_cleaner (1.7.0)
     date (3.3.3)
     dead_end (4.0.0)
@@ -456,6 +457,7 @@ DEPENDENCIES
   capybara (~> 3.38)
   coffee-rails (~> 5.0.0)
   country_select
+  dalli
   database_cleaner (~> 1.7.0)
   deadweight
   derailed_benchmarks
