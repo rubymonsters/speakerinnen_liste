@@ -93,7 +93,6 @@ class ProfilesController < ApplicationController
       set_aggregations(profiles)
     else
       handle_search_failure(result)
-    end
   end
 
   def search_with_category_id
