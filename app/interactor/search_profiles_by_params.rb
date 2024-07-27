@@ -14,6 +14,6 @@ class SearchProfilesByParams
     chain = chain.by_language(context.params[:filter_language]) if context.params[:filter_language]
     chain = chain.by_state(context.params[:filter_state]) if context.params[:filter_state]
 
-    context.profiles = chain
+    context.profiles = chain.map(&:profile_card_details)
   end
 end

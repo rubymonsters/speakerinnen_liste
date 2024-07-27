@@ -85,10 +85,11 @@ class ProfilesController < ApplicationController
   end
 
   def search_with_search_params
+    # these profiles we get back are just an array of hashes, not actual Profile objects!
     result = SearchProfilesByParams.call(params: params, region: current_region)
     if result.success?
       profiles = result.profiles
-      @pagy, @records = pagy(profiles)
+      @pagy, @records = pagy_array(profiles)
       set_aggregations(profiles)
     else
       handle_search_failure(result)
