@@ -307,7 +307,7 @@ GEM
     psych (3.3.3)
     public_suffix (5.0.1)
     racc (1.7.1)
-    rack (2.2.6.4)
+    rack (2.2.8.1)
     rack-attack (6.7.0)
       rack (>= 1.0, < 4)
     rack-piwik (0.3.0)
