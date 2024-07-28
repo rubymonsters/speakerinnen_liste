@@ -16,6 +16,7 @@ gem 'rexml', '~> 3.2.4'
 
 gem 'faker', '~> 3.1', '>= 3.1.1'
 gem 'normalize-rails'
+gem 'interactor'
 
 gem 'deadweight', require: 'deadweight/hijack/rails'
 
@@ -52,7 +53,8 @@ gem 'sassc-rails'
 
 gem 'uglifier', '>= 1.0.3'
 
-gem 'puma'
+gem 'unicorn'
+gem 'dalli'
 
 gem 'rack-piwik', '~> 0.3.0', require: 'rack/piwik'
 
