@@ -97,7 +97,10 @@ class ProfilesController < ApplicationController
   end
 
   def search_with_category_id
-    result = SearchProfilesByCategory.call(category_id: params[:category_id], region: current_region)
+    cache_key = ["category_#{params[:category_id]}_#{I18n.locale}_#{current_region}"]
+    result = Rails.cache.fetch(cache_key, expires_in: 1.hours) do
+      SearchProfilesByCategory.call(category_id: params[:category_id], region: current_region)
+    end
     if result.success?
       profiles = result.profiles
       @category = result.category
@@ -123,7 +126,7 @@ class ProfilesController < ApplicationController
 
   def get_all_profiles
     cache_key = [:get_all_profiles, current_region]
-    result = Rails.cache.fetch(cache_key, expires_in: 2.hours) do
+    result = Rails.cache.fetch(cache_key, expires_in: 1.hours) do
       GetAllProfiles.call(region: current_region)
     end
     if result.success?
@@ -157,9 +160,7 @@ class ProfilesController < ApplicationController
   end
 
   def build_categories_and_tags_for_tags_filter
-    @categories = Rails.cache.fetch("sorted_categories", expires_in: 12.hours) do
-      Category.sorted_categories
-    end
+    Category.sorted_categories
     # builds variables like @tags_internet that contain the most used tags for each category
     @categories.each do |category|
       tags =
