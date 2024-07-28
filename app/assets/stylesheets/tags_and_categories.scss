@@ -85,6 +85,8 @@ $categories_dark_color: (
     i { color: $color; }
     &:hover {
       color: $color;
+      background: none;
+      font-weight: bold;
     }
   }
   #category-#{$name} {
@@ -123,11 +125,12 @@ $categories_bright_color: (
     i { color: $color; }
     &:hover {
       color: $color;
+      background: none;
+      font-weight: bold;
     }
   }
   #category-#{$name} {
     color: $color;
-    text-decoration: underline;
   }
   .bg-#{$name} {
     i { color: #{$color} }
