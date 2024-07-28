@@ -69,10 +69,10 @@ Rails.application.routes.draw do
 
     get 'categories/:category_id', to: 'profiles#index', as: :category
 
+    match "/404(.:format)", to: "errors#not_found", via: :all
+    match "/500(.:format)", to: "errors#internal_error", via: :all
     get '/400', to: "errors#bad_request"
-    get '/404', to: "errors#not_found"
     get '/422', to: "errors#unacceptable"
-    get '/500', to: "errors#internal_error"
 
     resources :profiles, except: [:new, :create] do
       resources :medialinks
