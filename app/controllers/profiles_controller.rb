@@ -160,7 +160,7 @@ class ProfilesController < ApplicationController
   end
 
   def build_categories_and_tags_for_tags_filter
-    Category.sorted_categories
+    @categories = Category.sorted_categories
     # builds variables like @tags_internet that contain the most used tags for each category
     @categories.each do |category|
       tags =
