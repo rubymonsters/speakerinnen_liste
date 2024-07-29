@@ -62,6 +62,12 @@ class Rack::Attack
     end
   end
 
+  blocklist('block all access to deprecated paths') do |request|
+    # Requests are blocked if the return value is truthy
+    request.path.start_with?("/de/topics")
+    request.path.start_with?("/en/topics")
+  end
+
   ### Custom Throttle Response ###
 
   # By default, Rack::Attack returns an HTTP 429 for throttled responses,
