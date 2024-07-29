@@ -12,9 +12,10 @@ gem 'mini_racer'
 gem 'bootsnap', '~> 1.4.2'
 
 # rexml gem is a bundled gem since Ruby 3.0.0.
-gem 'rexml', '~> 3.2.4'
+gem 'rexml', '~> 3.3.2'
 
 gem 'normalize-rails'
+gem 'interactor'
 
 gem 'pagy'
 gem 'mime-types'
@@ -48,7 +49,8 @@ gem 'sassc-rails'
 
 gem 'uglifier', '>= 1.0.3'
 
-gem 'unicorn', '~> 5.1'
+gem 'unicorn'
+gem 'dalli'
 
 gem 'rack-piwik', '~> 0.3.0', require: 'rack/piwik'
 
