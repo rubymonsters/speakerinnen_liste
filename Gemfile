@@ -14,11 +14,8 @@ gem 'bootsnap', '~> 1.4.2'
 # rexml gem is a bundled gem since Ruby 3.0.0.
 gem 'rexml', '~> 3.3.2'
 
-gem 'faker', '~> 3.1', '>= 3.1.1'
 gem 'normalize-rails'
 gem 'interactor'
-
-gem 'deadweight', require: 'deadweight/hijack/rails'
 
 gem 'pagy'
 gem 'mime-types'
@@ -48,7 +45,6 @@ gem 'active_model_serializers'
 gem 'record_tag_helper', '~> 1.0'
 gem 'exception_notification'
 
-gem 'coffee-rails', '~> 5.0.0'
 gem 'sassc-rails'
 
 gem 'uglifier', '>= 1.0.3'
@@ -72,6 +68,7 @@ gem 'psych', '< 4.0'
 group :development do
   gem 'better_errors'
   gem 'bullet'
+  gem 'faker', '~> 3.1', '>= 3.1.1'
   gem 'derailed_benchmarks'
   gem 'letter_opener'
   gem 'stackprof'
