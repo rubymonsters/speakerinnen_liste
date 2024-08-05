@@ -1,4 +1,4 @@
-dc=docker-compose -f docker-compose.yml $(1)
+dc=docker compose -f docker-compose.yml $(1)
 dc-run=$(call dc, run --rm web $(1))
 dc-run-sp=$(call dc, run --service-ports --rm web $(1))
 
