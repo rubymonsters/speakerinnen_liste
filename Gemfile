@@ -12,7 +12,7 @@ gem 'mini_racer'
 gem 'bootsnap', '~> 1.4.2'
 
 # rexml gem is a bundled gem since Ruby 3.0.0.
-gem 'rexml', '~> 3.3.2'
+gem 'rexml', '~> 3.3.3'
 
 gem 'normalize-rails'
 gem 'interactor'
