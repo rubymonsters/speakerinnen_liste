@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 source 'https://rubygems.org'
-ruby '3.1.6'
+ruby '3.2.2'
 gem 'rails', '6.1.7.6'
 
 # Needed for Javascript Runtime
@@ -26,7 +26,7 @@ gem 'invisible_captcha'
 gem 'jquery-rails', '~> 4.4.0'
 gem 'jquery-ui-rails', '~> 7.0.0'
 gem 'mini_magick', '~> 4.9.5'
-gem 'pg', '~> 1.1.3'
+gem 'pg', '~> 1.5.9'
 gem 'simple_form'
 
 gem 'country_select'
