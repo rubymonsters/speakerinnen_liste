@@ -97,13 +97,13 @@ Rails.application.configure do
     authentication:       'plain',
     enable_starttls_auto: true  }
 
-  config.middleware.use ExceptionNotification::Rack,
-    :ignore_crawlers => %w{Googlebot bingbot MJ12bot Seekport},
-    :email => {
-      :email_prefix => "[SPEAKERINNEN ERROR PRODUCTION] ",
-      :sender_address => %{"Team" <team@speakerinnen.org>},
-      :exception_recipients => %w{devops@speakerinnen.org}
-  }
+  # config.middleware.use ExceptionNotification::Rack,
+  #   :ignore_crawlers => %w{Googlebot bingbot MJ12bot Seekport},
+  #   :email => {
+  #     :email_prefix => "[SPEAKERINNEN ERROR PRODUCTION] ",
+  #     :sender_address => %{"Team" <team@speakerinnen.org>},
+  #     :exception_recipients => %w{devops@speakerinnen.org}
+  # }
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
