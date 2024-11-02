@@ -22,7 +22,7 @@ gem 'mime-types'
 
 gem 'acts-as-taggable-on', '~> 9.0', '>= 9.0.1'
 gem 'devise', '~> 4.7'
-gem 'invisible_captcha'
+gem 'invisible_captcha', '2.3'
 gem 'jquery-rails', '~> 4.4.0'
 gem 'jquery-ui-rails', '~> 7.0.0'
 gem 'mini_magick', '~> 4.9.5'

@@ -485,7 +485,7 @@ DEPENDENCIES
   honeybadger (~> 5.14)
   image_processing (~> 1.2)
   interactor
-  invisible_captcha
+  invisible_captcha (= 2.3)
   jquery-rails (~> 4.4.0)
   jquery-ui-rails (~> 7.0.0)
   letter_opener
