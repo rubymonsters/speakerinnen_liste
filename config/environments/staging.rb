@@ -114,7 +114,7 @@ SpeakerinnenListe::Application.configure do
   config.middleware.use ExceptionNotification::Rack,
   :email => {
     :email_prefix => "[SPEAKERINNEN ERROR STAGING] ",
-    :sender_address => %{"notifier" <no-reply@speakerinnen.org>},
+    :sender_address => %{"notifier" <team@speakerinnen.org>},
     :exception_recipients => %w{devops@speakerinnen.org}
   }
 end

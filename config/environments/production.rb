@@ -101,7 +101,7 @@ Rails.application.configure do
     :ignore_crawlers => %w{Googlebot bingbot MJ12bot Seekport},
     :email => {
       :email_prefix => "[SPEAKERINNEN ERROR PRODUCTION] ",
-      :sender_address => %{"Team" <no-reply@speakerinnen.org>},
+      :sender_address => %{"Team" <team@speakerinnen.org>},
       :exception_recipients => %w{devops@speakerinnen.org}
   }
 
