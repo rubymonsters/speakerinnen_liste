@@ -3,7 +3,7 @@
 class BlogPost < ApplicationRecord
   def self.update
     # JSON holen
-    response = Net::HTTP.get_response(URI.parse('http://blog.speakerinnen.org/export.json'))
+    response = Net::HTTP.get_response(URI.parse('https://blog.speakerinnen.org/export.json'))
     # parsen
     imported_posts = JSON.parse(response.body)
 
