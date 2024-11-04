@@ -4,6 +4,9 @@
 User-Agent: *
 Disallow: /topics
 
+User-Agent: Amazonbot
+Disallow: /
+
 User-Agent: Seobility
 Disallow: /
 
