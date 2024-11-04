@@ -4,6 +4,15 @@
 User-Agent: *
 Disallow: /topics
 
+User-Agent: Seobility
+Disallow: /
+
+User-Agent: crawl
+Disallow: /
+
+User-Agent: MJ12bot
+Disallow: /
+
 User-Agent: SemrushBot
 Disallow: /
 
