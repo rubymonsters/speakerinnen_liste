@@ -9,6 +9,7 @@ class ApplicationController < ActionController::Base
   before_action :set_current_region
   before_action :set_search_region
   before_action :check_cookie_consent
+  before_action :log_bot_activity
 
   def authenticate_admin!
     return if current_profile&.admin?
@@ -57,6 +58,13 @@ class ApplicationController < ActionController::Base
   helper_method :search_region
 
   private
+  def log_bot_activity
+    return if Rails.env.test?
+    return unless request.is_crawler?
+
+    logger.warn "Crawler was here: #{request.crawler_name}"
+  end
+
   def build_missing_translations(object)
     I18n.available_locales.each do |locale|
       object.translations.build(locale: locale) unless object.translated_locales.include?(locale)

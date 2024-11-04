@@ -60,6 +60,7 @@ gem 'image_processing', '~> 1.2'
 gem 'rack-timeout'
 gem 'pg_search'
 
+gem 'crawler_detect'
 gem 'rack-attack'
 
 # downgrade gem to solve parsing error https://stackoverflow.com/questions/74725359/ruby-on-rails-legacy-application-update-generates-gem-psych-alias-error-psychb
