@@ -24,6 +24,10 @@ class Rack::Attack
   # Throttle all requests by IP (60rpm)
   #
   # Key: "rack::attack:#{Time.now.to_i/:period}:req/ip:#{req.ip}"
+  throttle('req/user_agent', limit: 10, period: 5.minutes) do |req|
+    req.user_agent == 'OAI-SearchBot'
+  end
+
   throttle('req/ip', limit: 100, period: 5.minutes) do |req|
     req.ip
   end
