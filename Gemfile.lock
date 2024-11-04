@@ -142,6 +142,8 @@ GEM
     country_select (10.0.0)
       countries (> 5.0, < 8.0)
     crass (1.0.6)
+    crawler_detect (1.2.4)
+      qonfig (>= 0.24)
     dalli (3.2.8)
     database_cleaner (1.7.0)
     date (3.4.0)
@@ -313,6 +315,7 @@ GEM
       method_source (~> 1.0)
     psych (3.3.4)
     public_suffix (6.0.1)
+    qonfig (0.29.0)
     racc (1.8.1)
     rack (2.2.10)
     rack-attack (6.7.0)
@@ -469,6 +472,7 @@ DEPENDENCIES
   byebug
   capybara (~> 3.38)
   country_select
+  crawler_detect
   dalli
   database_cleaner (~> 1.7.0)
   derailed_benchmarks
