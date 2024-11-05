@@ -25,7 +25,7 @@ class Rack::Attack
   #
   # Key: "rack::attack:#{Time.now.to_i/:period}:req/ip:#{req.ip}"
   throttle('req/user_agent', limit: 10, period: 5.minutes) do |req|
-    req.user_agent == 'OAI-SearchBot'
+    req.user_agent if req.user_agent.present? && req.user_agent.match(/OAI-SearchBot/i)
   end
 
   throttle('req/ip', limit: 100, period: 5.minutes) do |req|
