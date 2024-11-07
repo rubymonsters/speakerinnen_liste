@@ -105,8 +105,8 @@ GEM
       rack (>= 0.9.0)
       rouge (>= 1.0.0)
     bigdecimal (3.1.8)
-    bootsnap (1.4.9)
-      msgpack (~> 1.0)
+    bootsnap (1.18.4)
+      msgpack (~> 1.2)
     bootstrap (4.3.1)
       autoprefixer-rails (>= 9.1.0)
       popper_js (>= 1.14.3, < 2)
@@ -462,7 +462,7 @@ DEPENDENCIES
   acts-as-taggable-on (~> 9.0, >= 9.0.1)
   aws-sdk-s3
   better_errors
-  bootsnap (~> 1.4.2)
+  bootsnap (~> 1.18.4)
   bootstrap (~> 4.3.1)
   bootstrap-icons-helper
   bullet

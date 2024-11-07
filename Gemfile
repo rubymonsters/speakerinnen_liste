@@ -8,8 +8,8 @@ gem 'rails', '6.1.7.6'
 # gem 'therubyracer'
 gem 'mini_racer'
 
-# used in the rail 5.2 version
-gem 'bootsnap', '~> 1.4.2'
+# Bootsnap improves Rails boot time
+gem 'bootsnap', '~> 1.18.4'
 
 # rexml gem is a bundled gem since Ruby 3.0.0.
 gem 'rexml', '~> 3.3.9'
