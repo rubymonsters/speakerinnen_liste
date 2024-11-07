@@ -107,10 +107,9 @@ GEM
     bigdecimal (3.1.8)
     bootsnap (1.18.4)
       msgpack (~> 1.2)
-    bootstrap (4.3.1)
+    bootstrap (4.6.2.1)
       autoprefixer-rails (>= 9.1.0)
-      popper_js (>= 1.14.3, < 2)
-      sassc-rails (>= 2.0.0)
+      popper_js (>= 1.16.1, < 2)
     bootstrap-icons (1.0.14)
       nokogiri (~> 1)
     bootstrap-icons-helper (2.0.1)
@@ -466,7 +465,7 @@ DEPENDENCIES
   aws-sdk-s3
   better_errors
   bootsnap (~> 1.18.4)
-  bootstrap (~> 4.3.1)
+  bootstrap (~> 4.6.2)
   bootstrap-icons-helper
   bullet
   byebug
