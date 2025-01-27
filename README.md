@@ -130,6 +130,14 @@ different):
 
 4. ```make seed``` to populate the volumes.
 
+# Export emails:
+
+connect to heroku and the console
+use the rake task: profiles_to_csv
+then the firstname, lastname and email address of all published and not exported profiles is outputed
+copy and past in numbers
+
+it also set the exported_at field to the current date
 
 # ♥ Code of Conduct
 
