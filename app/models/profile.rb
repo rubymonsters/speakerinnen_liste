@@ -82,6 +82,7 @@ class Profile < ApplicationRecord
   scope :is_confirmed, -> { where.not(confirmed_at: nil) }
   scope :no_admin, -> { where(admin: false) }
   scope :has_tags, -> (tags) { tagged_with(tags, :any => true) }
+  scope :not_exported, -> { where(exported_at: nil) }
 
   # only show profile where the main_topic is filled in in the current locale
   scope :main_topic_translated_in, ->(locale) {
