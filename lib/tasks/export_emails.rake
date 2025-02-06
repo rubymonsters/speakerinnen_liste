@@ -8,7 +8,7 @@ namespace :export do
         # Write the header row
         csv << ["Firstname", "Lastname", "Email Address"]
 
-        Profile.not_exported.not_published.find_each do |profile|
+        Profile.not_exported.is_published.find_each do |profile|
           csv << [profile.firstname, profile.lastname, profile.email]
           profile.update_column(:exported_at, Time.current)
         end
