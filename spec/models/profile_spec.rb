@@ -149,14 +149,13 @@ end
       expect(Profile.is_published).to eq [profile2, profile3]
     end
 
-    it 'returns onlu profile that are not exported' do
+    it 'returns only profile that were not exported' do
       profile.update(exported_at: Time.current)
       profile2.update(exported_at: nil)
       profile3.update(exported_at: nil)
       expect(Profile.not_exported).to eq [profile2, profile3]
     end
   end
-
 
   describe 'by_region' do
     before do
