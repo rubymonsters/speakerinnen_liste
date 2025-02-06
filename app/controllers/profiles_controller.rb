@@ -38,7 +38,6 @@ class ProfilesController < ApplicationController
 
   def update
     if email_changed?
-      byebug
       @profile.exported_at = nil
     end
 
@@ -79,6 +78,7 @@ class ProfilesController < ApplicationController
   end
 
   def email_changed?
+    return false if profile_params[:email].blank?
     @profile.email != profile_params[:email]
   end
 
