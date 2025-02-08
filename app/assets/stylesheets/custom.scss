@@ -25,7 +25,7 @@ a.anchor {
   padding: 0;
 }
 
-a.button_link {
+.single-profile .button_link {
   text-decoration: none;
   &:hover {
     background-color: transparent;
@@ -189,10 +189,10 @@ h1 {
 
 .single-profile, #footer {
   a {
-    text-decoration: none;
+    text-decoration: underline;
     cursor: pointer;
     padding: 0.2em;
-    font-weight: bold;
+    // font-weight: bold;
     // color: $link-color;
     &:hover {
       background-color: $dropdown-hover-background;
@@ -200,6 +200,7 @@ h1 {
     }
   }
 }
+
 
 #footer, .single-profile {
   .noHover:hover {
