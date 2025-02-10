@@ -139,6 +139,30 @@ different):
 
 - this also sets the exported_at field to the current date so we only export each profile once
 
+- or use this code:
+```
+require 'csv'
+
+batches = []
+total_profiles = Profile.is_published.count
+batch_size = (total_profiles / 10.0).ceil # Ensure we cover all records
+
+Profile.is_published.find_in_batches(batch_size: batch_size).with_index do |profiles, index|
+  csv_data = CSV.generate(headers: true) do |csv|
+    csv << ["Firstname", "Lastname", "Email Address"] # Header
+
+    profiles.each do |profile|
+      csv << [profile.firstname, profile.lastname, profile.email]
+      profile.update_column(:exported_at, Time.current)
+    end
+  end
+
+  batches[index] = csv_data # Store CSV batch in an array
+end
+
+# Now you have 10 CSV batches stored in `batches[0]` to `batches[9]`
+```
+
 # ♥ Code of Conduct
 
 Please note that [speakerinnen](https://speakerinnen.org) has a [Contributor Code of Conduct](https://github.com/rubymonsters/speakerinnen_liste/blob/master/code-of-conduct.md) based on the [Contributor Covenant](https://www.contributor-covenant.org). By participating in this project online or at events you agree to abide by its terms.
