@@ -190,7 +190,7 @@ describe ProfilesController, type: :controller do
         expect(ada.exported_at).to eq nil
       end
 
-      it 'is not changed when email is unchanged' do
+      it 'leaves exported_at as it is when email is unchanged' do
         ada.update_columns(exported_at: 1.day.ago)
         sign_in ada
         put :update, params: { id: ada.id, profile: { email: ada.email } }
