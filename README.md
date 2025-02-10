@@ -137,7 +137,7 @@ different):
 - this prints the firstname, lastname and email address of all published and not exported profiles
 - copy that and paste in numbers ( or any other spreadsheet app )
 
-- this also sets the exported_at field to the current date so we conlyy export each profile once
+- this also sets the exported_at field to the current date so we only export each profile once
 
 # ♥ Code of Conduct
 
