@@ -141,7 +141,7 @@ end
     end
   end
 
-  describe 'scope' do
+  describe 'scopes' do
     it 'returns only published profiles' do
       profile.update(published: false)
       profile2.update(published: true)
