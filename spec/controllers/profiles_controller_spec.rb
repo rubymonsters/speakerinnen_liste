@@ -181,7 +181,7 @@ describe ProfilesController, type: :controller do
         expect(response).to redirect_to("/#{I18n.locale}/profiles/marie-curie")
       end
     end
-    context 'exported_at' do
+    context 'when exporting email csv' do
       it 'is set to nil when the email is changed' do
         ada.update_columns(exported_at: 1.day.ago)
         sign_in ada
