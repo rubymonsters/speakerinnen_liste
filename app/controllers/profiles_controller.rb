@@ -38,7 +38,7 @@ class ProfilesController < ApplicationController
 
   def update
     if email_changed?
-      @profile.exported_at = nil
+      @profile.update_column(:exported_at, nil)
     end
 
     if @profile.update(profile_params)
