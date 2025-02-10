@@ -182,7 +182,7 @@ describe ProfilesController, type: :controller do
       end
     end
     context 'when exporting email csv' do
-      it 'is set to nil when the email is changed' do
+      it 'sets exported_at to nil when the email is changed' do
         ada.update_columns(exported_at: 1.day.ago)
         sign_in ada
         put :update, params: { id: ada.id, profile: { email: 'xada@mail.de' } }
