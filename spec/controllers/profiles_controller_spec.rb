@@ -181,6 +181,31 @@ describe ProfilesController, type: :controller do
         expect(response).to redirect_to("/#{I18n.locale}/profiles/marie-curie")
       end
     end
+    context 'when exporting email csv' do
+      it 'sets exported_at to nil when the email is changed' do
+        ada.update_columns(exported_at: 1.day.ago)
+        sign_in ada
+        put :update, params: { id: ada.id, profile: { email: 'xada@mail.de' } }
+        ada.reload
+        expect(ada.exported_at).to eq nil
+      end
+
+      it 'leaves exported_at as it is when email is unchanged' do
+        ada.update_columns(exported_at: 1.day.ago)
+        sign_in ada
+        put :update, params: { id: ada.id, profile: { email: ada.email } }
+        ada.reload
+        expect(ada.exported_at).to_not eq nil
+      end
+
+      it 'leaves exported_at unchanged when email params is empty' do
+        ada.update_columns(exported_at: 1.day.ago)
+        sign_in ada
+        put :update, params: { id: ada.id, profile: { firstname: 'Xada' } }
+        ada.reload
+        expect(ada.exported_at).to_not eq nil
+      end
+    end
 
     context 'with invalid params' do
       before do
