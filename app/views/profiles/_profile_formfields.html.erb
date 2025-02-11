@@ -182,7 +182,7 @@
         <%= f.text_field :city_de, as: :text, class: 'form-control mb-3', maxlength: '30' %>
       </div>
       <%# Only show twitter field if user already has a twitter account %>
-      <% if @profile.twitter? %>
+      <% if @profile.twitter_in_language_scope(I18n.locale).present? %>
         <div class="form-group">
           <%= f.label :twitter, t(:twitter, scope: 'profiles.form').html_safe, id: "twitter_de" %>
           <%= f.text_field :twitter_de, as: :text, placeholder: '@', class: "form-control mb-3", maxlength: 30 %>
