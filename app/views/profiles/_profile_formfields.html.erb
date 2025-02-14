@@ -182,7 +182,7 @@
         <%= f.text_field :city_de, as: :text, class: 'form-control mb-3', maxlength: '30' %>
       </div>
       <%# Only show twitter field if user already has a twitter account %>
-      <% if @profile.twitter_in_language_scope(I18n.locale).present? %>
+      <% if @profile.twitter.present? %>
         <div class="form-group">
           <%= f.label :twitter, t(:twitter, scope: 'profiles.form').html_safe, id: "twitter_de" %>
           <%= f.text_field :twitter_de, as: :text, placeholder: '@', class: "form-control mb-3", maxlength: 30 %>
@@ -226,10 +226,12 @@
           id: "city_en", class: 'pt-3', title: t(:city_tooltip, scope: 'profiles.form').html_safe %>
         <%= f.text_field :city_en, as: :text, class: 'form-control mb-3', maxlength: '30' %>
       </div>
-      <div class="form-group">
-        <%= f.label :twitter, t(:twitter, scope: 'profiles.form'), id: "twitter_en" %>
-        <%= f.text_field :twitter_en, as: :text, placeholder: '@', class: "form-control mb-3", maxlength: 30 %>
-      </div>
+      <% if @profile.twitter.present? %>
+        <div class="form-group">
+          <%= f.label :twitter, t(:twitter, scope: 'profiles.form'), id: "twitter_en" %>
+          <%= f.text_field :twitter_en, as: :text, placeholder: '@', class: "form-control mb-3", maxlength: 30 %>
+        </div>
+      <% end %>
       <div class="form-group">
         <%= f.label :website, t(:website, scope: 'profiles.form'), id: "website_en" %>
         <%= f.text_field :website_en, as: :text, placeholder: 'https://', class: "form-control mb-3" %>
