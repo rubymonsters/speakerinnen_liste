@@ -23,13 +23,11 @@ describe 'profile adding' do
 
     fill_in I18n.t(:firstname, scope: 'profiles.form'), with: 'Ada'
     fill_in I18n.t(:lastname, scope: 'profiles.form'), with: 'Lovelace'
-    find(:css, '#profile_twitter_en').set('@Lovelace')
     find(:css, '#profile_city_en').set('Vienna')
     find(:css, '#profile_website_en').set('www.adalovelace.org')
     find(:css, '#profile_profession_en').set('Mathematics Genius')
     find(:css, '#profile_website_2_en').set('www.mariecurie.org')
     find(:css, '#profile_website_3_en').set('www.marthanussbaum.org')
-    find(:css, '#profile_twitter_de').set('@liebe')
     find(:css, '#profile_city_de').set('Wien')
     find(:css, '#profile_website_de').set('www.adalovelace.de')
     find(:css, '#profile_website_2_de').set('www.mariecurie.de')

@@ -14,8 +14,7 @@ class Profile < ApplicationRecord
       translations: [
         [:bio, 'C'],
         [:city, 'B'],
-        [:main_topic, 'A'],
-        [:twitter, 'D']
+        [:main_topic, 'A']
       ],
       topics: [[:name, 'A']]
     },

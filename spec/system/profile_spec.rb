@@ -140,7 +140,6 @@ describe 'profile navigation' do
 
     it 'directs after edit profile to the edit page' do
       expect(page).to have_content('name')
-      expect(page).to have_content('Twitteraccount')
     end
 
     it 'shows the correct tabs and the selected tab' do
@@ -162,7 +161,6 @@ describe 'profile navigation' do
 
     it 'directs after edit profile to the edit page' do
       expect(page).to have_content('Vorname')
-      expect(page).to have_content('Twitteraccount')
     end
 
     it 'shows the correct tabs and the selected tab' do

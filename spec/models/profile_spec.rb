@@ -172,14 +172,6 @@ end
       expect(Profile.search('Ada Lovelace').count).to eq 1
     end
 
-    it 'returns a profile by twitter_de handle' do
-      expect(Profile.search('alovelace_de').count).to eq 1
-    end
-
-    it 'returns a profile by twitter_en handle' do
-      expect(Profile.search('alovelace_en').count).to eq 1
-    end
-
     it 'returns a profile by bio_de' do
       expect(Profile.search('Algorithmus').count).to eq 1
     end
