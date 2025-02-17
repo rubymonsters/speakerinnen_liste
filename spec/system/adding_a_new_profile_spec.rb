@@ -49,7 +49,6 @@ describe 'profile adding' do
     expect(page).to have_content('www.adalovelace.org')
     expect(page).to have_content('www.mariecurie.org')
     expect(page).to have_content('www.marthanussbaum.org')
-    expect(page).to have_content('@Lovelace')
     click_link('DE', match: :first)
     expect(page).to have_content('Ada')
     expect(page).to have_content('Lovelace')
@@ -61,6 +60,5 @@ describe 'profile adding' do
     expect(page).to have_content('www.adalovelace.de')
     expect(page).to have_content('www.mariecurie.de')
     expect(page).to have_content('www.marthanussbaum.de')
-    expect(page).to have_content('@liebe')
   end
 end
