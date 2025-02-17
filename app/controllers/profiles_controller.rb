@@ -37,6 +37,10 @@ class ProfilesController < ApplicationController
   end
 
   def update
+    if email_changed?
+      @profile.update_column(:exported_at, nil)
+    end
+
     if @profile.update(profile_params)
       redirect_to @profile, notice: I18n.t('flash.profiles.updated', profile_name: @profile.name_or_email)
     else
@@ -71,6 +75,11 @@ class ProfilesController < ApplicationController
 
   def set_profile
     @profile = Profile.friendly.find(params[:id])
+  end
+
+  def email_changed?
+    return false if profile_params[:email].blank?
+    @profile.email != profile_params[:email]
   end
 
   def profile_params

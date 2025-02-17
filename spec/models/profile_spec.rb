@@ -141,6 +141,22 @@ end
     end
   end
 
+  describe 'scopes' do
+    it 'returns only published profiles' do
+      profile.update(published: false)
+      profile2.update(published: true)
+      profile3.update(published: true)
+      expect(Profile.is_published).to eq [profile2, profile3]
+    end
+
+    it 'returns only profile that were not exported' do
+      profile.update(exported_at: Time.current)
+      profile2.update(exported_at: nil)
+      profile3.update(exported_at: nil)
+      expect(Profile.not_exported).to eq [profile2, profile3]
+    end
+  end
+
   describe 'by_region' do
     before do
       create(:published_profile, country: 'AT', state: 'vorarlberg')
