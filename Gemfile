@@ -32,6 +32,7 @@ gem 'simple_form'
 gem 'country_select'
 
 gem 'globalize', '~> 7.0'
+gem 'globalize-accessors'
 
 gem 'bootstrap', '~> 4.6.2'
 gem 'font-awesome-rails', '~> 4.7.0.3'

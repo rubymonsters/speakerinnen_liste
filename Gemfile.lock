@@ -218,6 +218,8 @@ GEM
       activerecord (>= 7.0, < 8.1)
       activesupport (>= 7.0, < 8.1)
       request_store (~> 1.0)
+    globalize-accessors (0.3.0)
+      globalize (>= 5.0.0)
     guard (2.19.0)
       formatador (>= 0.2.4)
       listen (>= 2.7, < 4.0)
@@ -520,6 +522,7 @@ DEPENDENCIES
   font-awesome-rails (~> 4.7.0.3)
   friendly_id
   globalize (~> 7.0)
+  globalize-accessors
   guard
   guard-rspec
   honeybadger (~> 5.14)

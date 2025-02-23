@@ -6,6 +6,7 @@ class Category < ApplicationRecord
   validates :name, presence: true
   translates :name, touch: true, fallbacks_for_empty_translations: true
   accepts_nested_attributes_for :translations
+  globalize_accessors locales: %i[en de], attributes: [:name]
 
   def self.sorted_categories
     Category.all.includes(:translations).order(:position)
