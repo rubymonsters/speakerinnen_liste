@@ -65,7 +65,7 @@ de:
       twitter: "Twitteraccount:"
       email: "E-Mailadresse: <i class='fa fa-info-circle' aria-hidden='true'></i>"
       website: "Webseite:"
-      additional_websites: "Zusätzliche Webseiten,Blogs oder Soziale Medien Accounts:"
+      additional_websites: "Zusätzliche Webseiten, Blogs oder Soziale Medien:"
       please_select: "Bitte auswählen"
     show:
       firstname: 'Vorname:'
