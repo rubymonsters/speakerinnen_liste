@@ -118,7 +118,6 @@ RSpec.describe 'Navigation', type: :system do
 
           expect(page).to have_content('Ada')
           expect(page).to have_content('Lovelace')
-          expect(page).to have_content('@alove')
           expect(page).to have_content('London')
           expect(page).to have_content('She published the first algorithm for a machine.')
           expect(page).to have_content('math')
@@ -141,7 +140,6 @@ RSpec.describe 'Navigation', type: :system do
 
           expect(page).to have_css('div.profile_firstname')
           expect(page).to have_css('div.profile_lastname')
-          expect(page).to have_css('#twitter_en')
           expect(page).to have_css('#city_en')
           expect(page).to have_css('div.profile_iso_languages')
           expect(page).to have_css('#profile_website_de')

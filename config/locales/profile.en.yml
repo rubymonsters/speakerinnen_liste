@@ -66,7 +66,7 @@ en:
       twitter: "Twitteraccount:"
       email: "Email address: <i class='fa fa-info-circle' aria-hidden='true'></i>"
       website: "Website:"
-      additional_websites: "Additional websites/blogs:"
+      additional_websites: "Additional websites, blogs or social media accounts:"
       please_select: "Please select"
     show:
       firstname: 'First name:'
@@ -90,11 +90,11 @@ en:
       profession: "Profession:"
       media: "Examples of previous talks / appearances:"
       bio: "Bio:"
-      websites: "Websites/blogs:"
+      websites: "Websites/Blogs/Social Media Accounts:"
       city: "City:"
       country: "Country:"
       twitter: "Twitter handle:"
-      website: "Website/blog:"
+      website: "Website/Blog/Social Media:"
       contact: "Contact"
       no_contact: " does not wish to be contacted at the moment."
       email_to: "Email to "

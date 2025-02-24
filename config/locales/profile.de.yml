@@ -65,7 +65,7 @@ de:
       twitter: "Twitteraccount:"
       email: "E-Mailadresse: <i class='fa fa-info-circle' aria-hidden='true'></i>"
       website: "Webseite:"
-      additional_websites: "Zusätzliche Webseiten/Blogs:"
+      additional_websites: "Zusätzliche Webseiten, Blogs oder Soziale Medien:"
       please_select: "Bitte auswählen"
     show:
       firstname: 'Vorname:'
@@ -88,8 +88,8 @@ de:
       languages: "Sprache/n:"
       media: "Vorträge / Referenzen:"
       bio: "Biografie: "
-      website: "Webseite/Blog:"
-      websites: "Webseiten/Blogs:"
+      website: "Webseite/Blog/Soziale Medien:"
+      websites: "Webseiten/Blogs/Soziale Medien:"
       profession: "Beruf:"
       city: "Stadt:"
       country: "Land:"

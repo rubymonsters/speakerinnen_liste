@@ -61,56 +61,41 @@
           @profile.website_in_language_scope(I18n.locale, "3_").present? %>
 
       <!-- If profile has more than one website: -->
-      <% if @profile.website_in_language_scope(I18n.locale).present? &&
-           ( @profile.website_in_language_scope(I18n.locale, "2_").present? || @profile.website_in_language_scope(I18n.locale, "3_").present? ) %>
         <p class="">
           <span class="font-weight-bold">
             <%= t(:websites, scope: 'profiles.show') %>
           </span>
-          <%= link_to @profile.website_in_language_scope(I18n.locale), url_with_protocol(@profile.website_in_language_scope(I18n.locale)),
+          <% if @profile.website_in_language_scope(I18n.locale).present?%>
+            <%= link_to @profile.website_in_language_scope(I18n.locale), url_with_protocol(@profile.website_in_language_scope(I18n.locale)),
+             target: '_blank' %><br>
+          <% end %>
+          <% if @profile.website_in_language_scope(I18n.locale, "2_").present? %>
+            <%= link_to "#{@profile.website_in_language_scope(I18n.locale, "2_")}", url_with_protocol(@profile.website_in_language_scope(I18n.locale, "2_")),
+            target: '_blank' %><br>
+          <% end %>
+          <% if @profile.website_in_language_scope(I18n.locale, "3_").present? %>
+            <%= link_to "#{@profile.website_in_language_scope(I18n.locale, "3_")}", url_with_protocol(@profile.website_in_language_scope(I18n.locale, "3_")),
             target: '_blank' %>
-          <%= link_to ", #{@profile.website_in_language_scope(I18n.locale, "2_")}", url_with_protocol(@profile.website_in_language_scope(I18n.locale, "2_")),
-            target: '_blank' if @profile.website_in_language_scope(I18n.locale, "2_").present? %>
-          <%= link_to ", #{@profile.website_in_language_scope(I18n.locale, "3_")}", url_with_protocol(@profile.website_in_language_scope(I18n.locale, "3_")),
-            target: '_blank' if @profile.website_in_language_scope(I18n.locale, "3_").present? %>
+          <% end %>
           </p>
-      <!-- If profile has just one website: -->
-      <% elsif @profile.website_in_language_scope(I18n.locale).present? %>
-      <p class="">
-        <span class="font-weight-bold">
-          <%= t(:website, scope: 'profiles.show') %>
-        </span>
-        <%= link_to @profile.website_in_language_scope(I18n.locale), url_with_protocol(@profile.website_in_language_scope(I18n.locale)),
-          target: '_blank' %>
       </p>
-      <% end %>
 
     <!-- if there is no website in the current language use the globalize fall-back option for all websites -->
     <% else %>
-
-      <!-- Show the view for more than one website: -->
-      <% if @profile.website.present? && ( @profile.website_2.present? || @profile.website_3.present? ) %>
         <p class="">
           <span class="font-weight-bold">
             <%= t(:websites, scope: 'profiles.show') %>
           </span>
-          <%= link_to @profile.website, url_with_protocol(@profile.website),
-          target: '_blank' %>
-          <%= link_to ", #{@profile.website_2}", url_with_protocol(@profile.website_2),
-          target: '_blank' if @profile.website_2.present? %>
-          <%= link_to ", #{@profile.website_3}", url_with_protocol(@profile.website_3),
-          target: '_blank' if @profile.website_3.present? %>
+          <% if @profile.website.present? %>
+            <%= link_to @profile.website, url_with_protocol(@profile.website), target: '_blank' %><br>
+          <% end %>
+          <% if @profile.website_2.present? %>
+            <%= link_to "#{@profile.website_2}", url_with_protocol(@profile.website_2), target: '_blank' %><br>
+          <% end %>
+          <% if @profile.website_3.present? %>
+            <%= link_to "#{@profile.website_3}", url_with_protocol(@profile.website_3), target: '_blank' %>
+          <% end %>
         </p>
-      <!-- Show the view for just one website: -->
-      <% elsif @profile.website.present? %>
-        <p class="">
-          <span class="font-weight-bold">
-            <%= t(:websites, scope: 'profiles.show') %>
-          </span>
-          <%= link_to @profile.website, url_with_protocol(@profile.website),
-          target: '_blank' %>
-        </p>
-      <% end %>
     <% end %>
     <!-- languages  -->
     <% if @profile.iso_languages.present? %>
