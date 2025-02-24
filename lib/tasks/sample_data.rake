@@ -19,6 +19,7 @@ namespace :db do
                       city: Faker::Address.city,
                       topic_list: all_topics.sample(rand(1..4)).join(', '),
                       languages: all_languages.sample(rand(1..3)).join(', '),
+                      website: Faker::Internet.url,
                       talks: all_talks.sample(rand(4)). join(', '))
       user = Profile.where(email: email).first
       user.admin = n.zero?
