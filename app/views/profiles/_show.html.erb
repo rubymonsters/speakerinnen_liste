@@ -56,8 +56,8 @@
    <!-- Check if any website is available in the current language -->
 <% translated_websites = [
   @profile.website_in_language_scope(I18n.locale),
-  @profile.website_in_language_scope(I18n.locale, "2_"),
-  @profile.website_in_language_scope(I18n.locale, "3_")
+  @profile.website_in_language_scope(I18n.locale, "2"),
+  @profile.website_in_language_scope(I18n.locale, "3")
 ].compact %>
 
 <% if translated_websites.any? %>
