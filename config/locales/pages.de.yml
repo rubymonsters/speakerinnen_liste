@@ -108,7 +108,8 @@ de:
       privacy: "Datenschutzerklärung"
       supported_by: "Unterstützt von:"
       instagram: "<a href='https://instagram.com/speakerinnen', target='_blank', class=''>Instagram</a>"
-      facebook: "<a href='https://facebook.com/speakerinnen', target='_blank', class=''>Facebook</a>"
+      bluesky: "<a href='https://bsky.app/profile/speakerinnen.bsky.social', target='_blank', class=''>Bluesky</a>"
+      linkedin: "<a href='https://www.linkedin.com/company/speakerinnen-org/', target='_blank', class=''>LinkedIn</a>"
       caption_vorarlberg: |
         vorarlberg.speakerinnen.org macht Vorarlberg #chancenreich<br>
         <a href="https://www.facebook.com/MarkeVorarlberg/", target="_blank">Facebook: @markevorarlberg</a><br>
