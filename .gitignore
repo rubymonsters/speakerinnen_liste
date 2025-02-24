@@ -39,6 +39,7 @@
 
 #Ignore IDE files
 .idea/
+notes/
 
 .ruby-version
 .ruby-gemset

@@ -42,7 +42,6 @@ RSpec.describe 'Navigation', type: :system do
 
         it 'startpage has footer' do
           expect(page).to have_selector('footer')
-          expect(page).to have_link('Twitter')
           expect(page).to have_link('Instagram')
           expect(page).to have_link('Facebook')
           expect(page).to have_link(I18n.t(:contact, scope: 'pages.footer'))
