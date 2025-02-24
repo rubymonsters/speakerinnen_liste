@@ -53,56 +53,38 @@
         target: '_blank' %>
       </p>
     <% end %>
-    <!-- website -->
-    <!-- only use globalize fall-back when there is no website at all in the current language scope provided -->
-    <!-- when there is at least one website in the current language provided use no fall-back for the missing additional websites -->
-    <% if @profile.website_in_language_scope(I18n.locale).present? ||
-          @profile.website_in_language_scope(I18n.locale, "2_").present? ||
-          @profile.website_in_language_scope(I18n.locale, "3_").present? %>
+   <!-- Check if any website is available in the current language -->
+<% translated_websites = [
+  @profile.website_in_language_scope(I18n.locale),
+  @profile.website_in_language_scope(I18n.locale, "2_"),
+  @profile.website_in_language_scope(I18n.locale, "3_")
+].compact %>
 
-      <!-- If profile has more than one website: -->
-        <p class="">
-          <span class="font-weight-bold">
-            <%= t(:websites, scope: 'profiles.show') %>
-          </span>
-          <% if @profile.website_in_language_scope(I18n.locale).present?%>
-            <%= link_to @profile.website_in_language_scope(I18n.locale), url_with_protocol(@profile.website_in_language_scope(I18n.locale)),
-             target: '_blank' %><br>
-          <% end %>
-          <% if @profile.website_in_language_scope(I18n.locale, "2_").present? %>
-            <%= link_to "#{@profile.website_in_language_scope(I18n.locale, "2_")}", url_with_protocol(@profile.website_in_language_scope(I18n.locale, "2_")),
-            target: '_blank' %><br>
-          <% end %>
-          <% if @profile.website_in_language_scope(I18n.locale, "3_").present? %>
-            <%= link_to "#{@profile.website_in_language_scope(I18n.locale, "3_")}", url_with_protocol(@profile.website_in_language_scope(I18n.locale, "3_")),
-            target: '_blank' %>
-          <% end %>
-          </p>
-      </p>
-
-    <!-- if there is no website in the current language use the globalize fall-back option for all websites -->
-    <% else %>
-        <p class="">
-          <% if @profile.website.present? %>
-            <span class="font-weight-bold">
-              <%= t(:websites, scope: 'profiles.show') %>
-            </span>
-            <%= link_to @profile.website, url_with_protocol(@profile.website), target: '_blank' %><br>
-          <% end %>
-          <% if @profile.website_2.present? %>
-            <span class="font-weight-bold">
-              <%= t(:websites, scope: 'profiles.show') %>
-            </span>
-            <%= link_to "#{@profile.website_2}", url_with_protocol(@profile.website_2), target: '_blank' %><br>
-          <% end %>
-          <% if @profile.website_3.present? %>
-            <span class="font-weight-bold">
-              <%= t(:websites, scope: 'profiles.show') %>
-            </span>
-            <%= link_to "#{@profile.website_3}", url_with_protocol(@profile.website_3), target: '_blank' %>
-          <% end %>
-        </p>
+<% if translated_websites.any? %>
+  <!-- If at least one website is translated, show only translated websites -->
+  <p>
+    <span class="font-weight-bold">
+      <%= t(:websites, scope: 'profiles.show') %>
+    </span>
+    <% translated_websites.each do |website| %>
+      <%= link_to website, url_with_protocol(website), target: '_blank' %><br>
     <% end %>
+  </p>
+<% else %>
+  <!-- If no websites are translated, show all websites with fallback -->
+  <% fallback_websites = [@profile.website, @profile.website_2, @profile.website_3].compact %>
+  <% if fallback_websites.any? %>
+    <p>
+      <span class="font-weight-bold">
+        <%= t(:websites, scope: 'profiles.show') %>
+      </span>
+      <% fallback_websites.each do |website| %>
+        <%= link_to website, url_with_protocol(website), target: '_blank' %><br>
+      <% end %>
+    </p>
+  <% end %>
+<% end %>
+
     <!-- languages  -->
     <% if @profile.iso_languages.present? %>
       <p>
