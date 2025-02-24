@@ -83,16 +83,22 @@
     <!-- if there is no website in the current language use the globalize fall-back option for all websites -->
     <% else %>
         <p class="">
-          <span class="font-weight-bold">
-            <%= t(:websites, scope: 'profiles.show') %>
-          </span>
           <% if @profile.website.present? %>
+            <span class="font-weight-bold">
+              <%= t(:websites, scope: 'profiles.show') %>
+            </span>
             <%= link_to @profile.website, url_with_protocol(@profile.website), target: '_blank' %><br>
           <% end %>
           <% if @profile.website_2.present? %>
+            <span class="font-weight-bold">
+              <%= t(:websites, scope: 'profiles.show') %>
+            </span>
             <%= link_to "#{@profile.website_2}", url_with_protocol(@profile.website_2), target: '_blank' %><br>
           <% end %>
           <% if @profile.website_3.present? %>
+            <span class="font-weight-bold">
+              <%= t(:websites, scope: 'profiles.show') %>
+            </span>
             <%= link_to "#{@profile.website_3}", url_with_protocol(@profile.website_3), target: '_blank' %>
           <% end %>
         </p>
