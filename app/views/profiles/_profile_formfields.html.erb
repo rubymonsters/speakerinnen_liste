@@ -92,6 +92,32 @@
 <hr>
 <div class="row mt-3">
   <div class="col-sm-12 col-md-8 col-lg-6 p-3">
+    <h5 class="pb-3 font-weight-bold"> <%= t(:social_media_accouts, scope: 'profiles.form').html_safe %></h5>
+
+    <div class="form-group">
+      <%= f.input :instagram, label: t(:instagram, scope: 'profiles.form'),
+          label_html: { id: "instagram" }, input_html: { class: "form-control" }, placeholder: "https://instagram.com/yourprofile" %>
+      <%# f.label :instagram, input_html: { class: "form-control" } %>
+      <%# f.text_field :instagram, placeholder: "https://instagram.com/yourprofile" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :linkedin %>
+      <%= f.text_field :linkedin, placeholder: "https://linkedin.com/in/yourprofile" %>
+    </div>   
+    <div class="form-group">
+      <%= f.label :bluesky %>
+      <%= f.text_field :bluesky, placeholder: "https://bsky.app/profile/yourhandle" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :mastodon %>
+      <%= f.text_field :mastodon, placeholder: "https://mastodon.social/@yourhandle" %>
+    </div>
+  </div>
+</div>
+
+<hr>
+<div class="row mt-3">
+  <div class="col-sm-12 col-md-8 col-lg-6 p-3">
     <h5 class="pb-3 font-weight-bold"> <%= t(:talk_infos, scope: 'profiles.form').html_safe %></h5>
     <div class="form-group" id="form-group-willing-to-travel">
       <p><%= t(:willing_to_travel, scope: 'profiles.form').html_safe %>:</p>
