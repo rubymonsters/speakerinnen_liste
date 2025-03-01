@@ -44,8 +44,8 @@ module SpeakerinnenListe
     # the framework and any gems in your application.
 
     config.exceptions_app = self.routes
-    config.middleware.use Rack::CrawlerDetect
 
-
+    config.add_autoload_paths_to_load_path = false
+    # config.active_support.cache_format_version = 7.1
   end
 end
