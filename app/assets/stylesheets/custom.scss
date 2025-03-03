@@ -199,6 +199,15 @@ h1 {
   }
 }
 
+.social-icon i {
+  font-size: 32px; /* Increase icon size */
+  color: $speakerinnen-green;
+}
+
+.social-icon:hover i {
+}
+
+
 #footer, .single-profile {
   .noHover:hover {
     background-color: transparent;
