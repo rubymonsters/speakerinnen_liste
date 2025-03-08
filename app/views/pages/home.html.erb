@@ -38,7 +38,8 @@
   <%# EITHER divider: get inspired OR intro: subdomains %>
 
   <% if @is_global_speakerinnen %>
-    <%= render partial: "shared/get_inspired" %>
+    <%# %= render partial: "shared/get_inspired" %>
+    <%= render partial: "shared/donation_campaign" %>
   <% elsif current_region == :vorarlberg %>
     <div class="bg--dark container divider-vorarlberg"></div>
   <% else %>
