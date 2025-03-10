@@ -260,7 +260,6 @@ GEM
     jquery-ui-rails (7.0.0)
       railties (>= 3.2.16)
     jsonapi-renderer (0.2.2)
-    kgio (2.11.4)
     launchy (2.5.2)
       addressable (~> 2.8)
     letter_opener (1.10.0)
@@ -343,6 +342,8 @@ GEM
       method_source (~> 1.0)
     psych (3.3.4)
     public_suffix (6.0.1)
+    puma (6.6.0)
+      nio4r (~> 2.0)
     qonfig (0.29.0)
     racc (1.8.1)
     rack (3.1.10)
@@ -391,7 +392,6 @@ GEM
       thor (~> 1.0, >= 1.2.2)
       zeitwerk (~> 2.6)
     rainbow (3.1.1)
-    raindrops (0.20.1)
     rake (13.2.1)
     rb-fsevent (0.11.2)
     rb-inotify (0.11.1)
@@ -480,9 +480,6 @@ GEM
       execjs (>= 0.3.0, < 3)
     unaccent (0.4.0)
     unicode-display_width (1.4.1)
-    unicorn (6.1.0)
-      kgio (~> 2.6)
-      raindrops (~> 0.7)
     uniform_notifier (1.16.0)
     warden (1.2.9)
       rack (>= 2.0.9)
@@ -545,6 +542,7 @@ DEPENDENCIES
   poltergeist (= 1.18.1)
   pry
   psych (< 4.0)
+  puma (~> 6.6)
   rack-attack
   rack-piwik (~> 0.3.0)
   rack-timeout
@@ -560,7 +558,6 @@ DEPENDENCIES
   stackprof
   terser (~> 1.2)
   uglifier (>= 1.0.3)
-  unicorn
   webrick (~> 1.7)
 
 RUBY VERSION
