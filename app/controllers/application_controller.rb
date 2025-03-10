@@ -84,8 +84,10 @@ class ApplicationController < ActionController::Base
 
   def cookie_consent_given?
     puts "-----------------------"
+    puts "cookie[:cookie_consent]:"
     puts cookies[:cookie_consent]
     puts "-----------------------"
+    puts "cookies"
     puts cookies
     # cookies[:cookie_consent]
     puts "-----------------------"
@@ -94,7 +96,7 @@ class ApplicationController < ActionController::Base
   def check_cookie_consent
     if params[:allow_cookies] == 'true'
       cookies[:cookie_consent] = {
-        value: "true",
+        value: true,
         expires: 1.year.from_now,
       }
       reset_session
