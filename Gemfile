@@ -96,3 +96,5 @@ group :test do
 end
 
 gem "honeybadger", "~> 5.14"
+
+gem "terser", "~> 1.2"
