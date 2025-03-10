@@ -8,7 +8,6 @@ class ApplicationController < ActionController::Base
   before_action :set_request_host
   before_action :set_current_region
   before_action :set_search_region
-  before_action :check_cookie_consent
   before_action :log_bot_activity
 
   def authenticate_admin!
@@ -83,14 +82,7 @@ class ApplicationController < ActionController::Base
   end
 
   def cookie_consent_given?
-    puts "-----------------------"
-    puts "cookie[:cookie_consent]:"
-    puts cookies[:cookie_consent]
-    puts "-----------------------"
-    puts "cookies"
-    puts cookies
-    # cookies[:cookie_consent]
-    puts "-----------------------"
+    cookies[:cookie_consent]
   end
 
   def check_cookie_consent
