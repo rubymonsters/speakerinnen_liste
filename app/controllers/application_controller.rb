@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
   before_action :set_request_host
   before_action :set_current_region
   before_action :set_search_region
+  before_action :check_cookie_consent
   before_action :log_bot_activity
 
   def authenticate_admin!
@@ -89,7 +90,7 @@ class ApplicationController < ActionController::Base
     if params[:allow_cookies] == 'true'
       cookies[:cookie_consent] = {
         value: true,
-        expires: 1.year.from_now,
+        expires: 1.year.from_now
       }
       reset_session
       redirect_back(fallback_location: root_path)
