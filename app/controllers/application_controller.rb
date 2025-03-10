@@ -83,7 +83,12 @@ class ApplicationController < ActionController::Base
   end
 
   def cookie_consent_given?
-    cookies[:cookie_consent]
+    puts "-----------------------"
+    puts cookies[:cookie_consent]
+    puts "-----------------------"
+    puts cookies
+    # cookies[:cookie_consent]
+    puts "-----------------------"
   end
 
   def check_cookie_consent
