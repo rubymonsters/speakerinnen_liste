@@ -60,6 +60,7 @@ ul {
 }
 
 .code-of-conduct ul,
+.donations ul,
 #privacy ul {
   list-style: disc;
 
@@ -96,6 +97,11 @@ h1 {
 
 .bg--white {
   background: $white;
+}
+
+.bg--purple {
+  background: $speakerinnen-purple;
+  color: $white;
 }
 
 .bg--grey {

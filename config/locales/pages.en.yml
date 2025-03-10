@@ -55,6 +55,9 @@ en:
       category_search_text: "Find your women speakers in 10 categories or filter by specific topics:"
       category_search_text_vorarlberg: "Find your women experts in 10 categories or filter by specific topics:"
       category_search_text_ooe: "Find your women experts in 10 categories or filter by specific topics:"
+      donate: "Fundraising campaign for Women's Day"
+      donate_text: "We ask for your support!"
+      donate_button: "Donate now!"
       get_inspired: "Get inspired!"
       get_inspired_text: "Here you can find %{count_profiles} women speakers in %{count_topics} topics"
       get_inspired_button: "Search"
@@ -104,7 +107,8 @@ en:
       privacy: "Privacy Policy"
       supported_by: "Supported by:"
       instagram: "<a href='https://instagram.com/speakerinnen', target='_blank', class=''>Instagram</a>"
-      facebook: "<a href='https://facebook.com/speakerinnen', target='_blank', class=''>Facebook</a>"
+      bluesky: "<a href='https://bsky.app/profile/speakerinnen.bsky.social', target='_blank', class=''>Bluesky</a>"
+      linkedin: "<a href='https://www.linkedin.com/company/speakerinnen-org/', target='_blank', class=''>LinkedIn</a>"
       caption_vorarlberg: |
         vorarlberg.speakerinnen.org makes Vorarlberg #chancenreich<br>
         <a href="https://www.facebook.com/MarkeVorarlberg/", target="_blank">Facebook: @markevorarlberg</a><br>
