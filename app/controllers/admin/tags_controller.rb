@@ -3,7 +3,7 @@
 class Admin::TagsController < Admin::BaseController
   helper_method :sort_column, :sort_direction
 
-  before_action :set_tag, only: %i[edit update destroy find_tag_and_category]
+  before_action :set_tag, only: %i[edit update destroy]
 
   def new; end
 
@@ -20,15 +20,12 @@ class Admin::TagsController < Admin::BaseController
       set_tag_categories(params[:tag][:categories])
       redirect_to admin_tags_path(filter_params_from_session.merge(anchor: "tag_#{@tag.id}")),
                   notice: "'#{@tag.name}' was merged with the tag '#{existing_tag.name}' ."
-    elsif
+    else
       @tag.update(tag_params)
       set_tag_languages(params[:tag][:languages])
       set_tag_categories(params[:tag][:categories])
       redirect_to admin_tags_path(filter_params_from_session.merge(anchor: "tag_#{@tag.id}")),
-                  notice: "'#{@tag.name}' was updated."
-    else
-      render action: 'edit'
-    end
+                  notice: "'#{@tag.name}' was updated."    end
   end
 
   def destroy

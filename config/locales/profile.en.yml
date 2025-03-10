@@ -29,8 +29,8 @@ en:
       image_info: "Please upload a photo in <b>color</b>, we show it in black and white.
         Make sure you use .jpg, .jpeg, .gif or .png and that you have all copyrights for this photo.
         The size of your photo should be<b> smaller than 1MB</b>."
-      firstname: "first name:"
-      lastname: "last name:"
+      firstname: "First name:"
+      lastname: "Last name:"
       translated_infos: "Translated Infos"
       personal_infos: "Personal Infos"
       profession: "Profession:"

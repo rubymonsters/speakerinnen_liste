@@ -33,7 +33,7 @@ class Profile < ApplicationRecord
   has_one_attached :image
   has_and_belongs_to_many :services
 
-  serialize :iso_languages, Array
+  serialize :iso_languages, type: Array, coder: YAML
   validate :iso_languages_array_has_right_format
   validate :image_format_size
   validates :profession, length: { maximum: 60, message: "Please use less than 80 characters." }

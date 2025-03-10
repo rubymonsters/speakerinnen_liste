@@ -71,7 +71,7 @@
         <% end %>
       </p>
     <% else %>
-      <!-- If no websites in the current language is translated, show websites in other language if existing -->
+      <!-- If no websites are translated, show all websites with fallback -->
       <% fallback_websites = [@profile.website, @profile.website_2, @profile.website_3].compact %>
       <% if fallback_websites.any? %>
         <p>

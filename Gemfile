@@ -2,7 +2,7 @@
 
 source 'https://rubygems.org'
 ruby '3.2.2'
-gem 'rails', '6.1.7.6'
+gem 'rails', '~> 7.1.3' # Use the latest stable version of Rails 7.1
 
 # Needed for Javascript Runtime
 # gem 'therubyracer'
@@ -20,7 +20,7 @@ gem 'interactor'
 gem 'pagy'
 gem 'mime-types'
 
-gem 'acts-as-taggable-on', '~> 9.0', '>= 9.0.1'
+gem 'acts-as-taggable-on', '~> 10.0'
 gem 'devise', '~> 4.7'
 gem 'invisible_captcha', '2.3'
 gem 'jquery-rails', '~> 4.4.0'
@@ -31,7 +31,7 @@ gem 'simple_form'
 
 gem 'country_select'
 
-gem 'globalize', git: 'https://github.com/globalize/globalize'
+gem 'globalize', '~> 7.0'
 gem 'globalize-accessors'
 
 gem 'bootstrap', '~> 4.6.2'
@@ -88,7 +88,7 @@ group :development, :test do
 end
 
 group :test do
-  gem 'database_cleaner', '~> 1.7.0'
+  gem 'database_cleaner', '~> 2.0', '>= 2.0.2'
   gem 'factory_bot_rails'
   gem 'minitest', '5.11.3' # remove this after upgrading rails from 5.0.0
   gem 'poltergeist', '1.18.1'
