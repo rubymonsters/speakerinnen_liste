@@ -49,7 +49,6 @@ gem 'sassc-rails'
 
 gem 'uglifier', '>= 1.0.3'
 
-gem 'unicorn'
 gem 'dalli'
 
 gem 'rack-piwik', '~> 0.3.0', require: 'rack/piwik'
@@ -98,3 +97,5 @@ end
 gem "honeybadger", "~> 5.14"
 
 gem "terser", "~> 1.2"
+
+gem "puma", "~> 6.6"
