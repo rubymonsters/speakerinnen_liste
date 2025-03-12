@@ -175,6 +175,12 @@ h1 {
   border-radius: 4px;
 }
 
+.form-control::placeholder {
+  color: lightgrey; 
+  opacity: 1; // Ensure full opacity in some browsers
+}
+
+
 .admin__header--color {
   background: $info;
 }
