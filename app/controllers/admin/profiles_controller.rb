@@ -36,7 +36,6 @@ class Admin::ProfilesController < Admin::BaseController
   end
 
   def edit
-    build_missing_translations(@profile)
   end
 
   def update
