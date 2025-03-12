@@ -90,8 +90,7 @@ class ApplicationController < ActionController::Base
     if params[:allow_cookies] == 'true'
       cookies[:cookie_consent] = {
         value: true,
-        expires: 1.year.from_now,
-        domain: (Rails.env.staging? ? nil : :all)
+        expires: 1.year.from_now
       }
       reset_session
       redirect_back(fallback_location: root_path)
