@@ -203,15 +203,27 @@ h1 {
       text-decoration: none;
     }
   }
-}
 
-.social-icon i {
-  font-size: 32px; /* Increase icon size */
-  color: $speakerinnen-green;
-}
+  /* Social media icons */
+  a.social-icon {
+    text-decoration: none; // Remove underline from icons
 
-.social-icon:hover i {
+    &:hover {
+      background-color: transparent; // Ensure no background color appears
+    }
+
+    i {
+      font-size: 28px; // Increase icon size
+      color: $speakerinnen-green;
+      transition: color 0.3s ease; // Smooth transition effect
+
+      &:hover {
+        color: $speakerinnen-purple;
+      }
+    }
+  }
 }
+  
 
 
 #footer, .single-profile {
