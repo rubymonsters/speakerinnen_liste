@@ -45,6 +45,10 @@ de:
       translated_infos: "Übersetzte Infos"
       personal_infos: "Persönliche Infos"
       social_media_accouts: "Soziale Medien"
+      instagram: "Auf Instagram:"
+      bluesky: "Auf Bluesky:"
+      linkedin: "Auf LinkedIn:"
+      mastodon: "Auf Mastodon:"
       personal_note: "Persönliche Anmerkung auf %{language}: <i class='fa fa-info-circle' aria-hidden='true'></i>"
       personal_note_tooltip: "Hier kannst du Fachkenntnisse und Vortragsthemen angeben, über die du gerne sprechen möchtest oder die du genauer beschreiben möchtest. Du kannst hier deine Agenda im Detail erläutern. Das hilft den Organisatoren von Veranstaltungen, die wichtigsten Themen, über die du sprichst, zu verstehen."
       bio: "Meine Biografie auf %{language}: <i class='fa fa-info-circle' aria-hidden='true'></i>
