@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class ApplicationController < ActionController::Base
   include Pagy::Backend
   protect_from_forgery
@@ -63,12 +61,6 @@ class ApplicationController < ActionController::Base
     return unless request.is_crawler?
 
     logger.warn "Crawler was here: #{request.crawler_name}"
-  end
-
-  def build_missing_translations(object)
-    I18n.available_locales.each do |locale|
-      object.translations.build(locale: locale) unless object.translated_locales.include?(locale)
-    end
   end
 
   def set_locale

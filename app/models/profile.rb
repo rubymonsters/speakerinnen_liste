@@ -1,4 +1,3 @@
-# frozen_string_literal: true
 class Profile < ApplicationRecord
   include PgSearch::Model
   include ActiveModel::Serialization
@@ -39,9 +38,8 @@ class Profile < ApplicationRecord
   validates :profession, length: { maximum: 60, message: "Please use less than 80 characters." }
   before_save :clean_iso_languages!
 
-  translates :bio, :main_topic, :profession, :twitter, :website, :website_2, :website_3, :city, :personal_note, fallbacks_for_empty_translations: true
-  accepts_nested_attributes_for :translations
-  globalize_accessors locales: %i[en de], attributes: %i[main_topic bio profession twitter website website_2 website_3 city personal_note]
+  extend Mobility
+  translates :bio, :main_topic, :profession, :twitter, :website, :website_2, :website_3, :city, :personal_note
 
   extend FriendlyId
   friendly_id :slug_candidate, use: :slugged
