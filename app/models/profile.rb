@@ -37,6 +37,7 @@ class Profile < ApplicationRecord
   validate :iso_languages_array_has_right_format
   validate :image_format_size
   validates :profession, length: { maximum: 60, message: "Please use less than 80 characters." }
+  validates :instagram, :linkedin, :bluesky, :mastodon, format: { with: URI::DEFAULT_PARSER.make_regexp, message: "must be a valid URL" }, allow_blank: true
   before_save :clean_iso_languages!
 
   translates :bio, :main_topic, :profession, :twitter, :website, :website_2, :website_3, :city, :personal_note, fallbacks_for_empty_translations: true

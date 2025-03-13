@@ -85,6 +85,44 @@
       <% end %>
     <% end %>
 
+<% if [@profile.instagram, @profile.bluesky, @profile.mastodon, @profile.linkedin].any?(&:present?) %>
+  <p><strong>Social Media:</strong></p>
+
+  <ul class="list-unstyled d-flex gap-3">
+    <% if @profile.instagram.present? %>
+      <li>
+        <%= link_to @profile.instagram, target: "_blank", rel: "noopener", class: "social-icon" do %>
+          <i class="fa-brands fa-instagram"></i>
+        <% end %>
+      </li>
+    <% end %>
+
+    <% if @profile.linkedin.present? %>
+      <li>
+        <%= link_to @profile.linkedin, target: "_blank", rel: "noopener", class: "social-icon" do %>
+          <i class="fa-brands fa-linkedin"></i>
+        <% end %>
+      </li>
+    <% end %>
+
+    <% if @profile.bluesky.present? %>
+      <li>
+        <%= link_to @profile.bluesky, target: "_blank", rel: "noopener", class: "social-icon" do %>
+          <i class="fa-solid fa-cloud"></i> <%# Bluesky has no official icon yet %>
+        <% end %>
+      </li>
+    <% end %>
+
+    <% if @profile.mastodon.present? %>
+      <li>
+        <%= link_to @profile.mastodon, target: "_blank", rel: "noopener", class: "social-icon" do %>
+          <i class="fa-brands fa-mastodon"></i>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
     <!-- languages  -->
     <% if @profile.iso_languages.present? %>
       <p>
