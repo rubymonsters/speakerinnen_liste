@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 FactoryBot.define do
   factory :profile do
     firstname { 'Susi' }
@@ -90,57 +88,6 @@ FactoryBot.define do
       main_topic_en { }
       published { true }
       profession { }
-    end
-
-  end
-
-  factory :feature do
-    title  { New Event }
-  end
-
-  factory :category do
-    factory :cat_science do
-      name_en { 'Science' }
-      name_de { 'Wissenschaft' }
-    end
-    factory :cat_social do
-      name_en { 'Social' }
-      name_de { 'Soziales' }
-    end
-  end
-
-  factory :locale_language do
-    factory :locale_language_de do
-      iso_code { 'de' }
-    end
-
-    factory :locale_language_en do
-      iso_code { 'en' }
-    end
-  end
-
-  factory :medialink do
-    profile_id { 1 }
-    url { 'http://www.somesite.com/profile' }
-    title { 'thisTitle' }
-    description { 'lorep ipsum...' }
-  end
-
-  factory :tag, class: ActsAsTaggableOn::Tag do
-    factory :tag_chemie do
-      name { 'chemie' }
-    end
-
-    factory :tag_physics do
-      name { 'physics' }
-    end
-
-    factory :tag_social_media do
-      name { 'social media' }
-    end
-
-    factory :tag_algorithm do
-      name { 'algorithm' }
     end
   end
 end
