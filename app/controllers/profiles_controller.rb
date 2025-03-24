@@ -88,7 +88,7 @@ class ProfilesController < ApplicationController
       :firstname, :lastname, :content, :name, :topic_list, :medialinks, :slug, :admin_comment, :main_topic_en,
       :main_topic_de, :bio_en, :bio_de, :twitter_de, :twitter_en, :website_de, :website_en, :website_2_de,
       :website_2_en, :website_3_de, :website_3_en, :profession_en, :profession_de, :city_de, :city_en, :image,
-      :copyright, :personal_note_de, :personal_note_en, :willing_to_travel, :nonprofit, :inactive,
+      :copyright, :personal_note_de, :personal_note_en, :willing_to_travel, :nonprofit, :inactive, :instagram, :mastodon, :linkedin, :bluesky,
       feature_ids: [], service_ids: [], translations_attributes: %i[id bio main_topic twitter website profession city locale]
     )
   end
