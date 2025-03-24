@@ -65,7 +65,7 @@ RSpec.describe NotificationsMailer, type: :mailer do
         expect(mail.body.encoded).to include("The sender's mail address: #{message.email}")
         expect(mail.body.encoded).to include("The subject: #{message.subject}")
         expect(mail.body.encoded).to include("The message: #{message.body}")
-        expect(mail.body.encoded).to include("To donate to speakerinnen.org click to the following link >>> #{donate_url}!")
+        expect(mail.body.encoded).to include("To donate to speakerinnen.org click to the following link >>> #{donate_url} !")
       end
     end
 
@@ -79,7 +79,7 @@ RSpec.describe NotificationsMailer, type: :mailer do
         expect(mail.body.encoded).to include("Mailadresse: #{message.email}")
         expect(mail.body.encoded).to include("Der Betreff: #{message.subject}")
         expect(mail.body.encoded).to include("Die Nachricht: #{message.body}")
-        expect(mail.body.encoded).to include("Spende gerne an speakerinnen.org! >>> #{donate_url}!")
+        expect(mail.body.encoded).to include("Spende gerne an speakerinnen.org! >>> #{donate_url} !")
       end
     end
   end

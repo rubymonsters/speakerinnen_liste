@@ -44,15 +44,8 @@ de:
       Mehr Informationen in unserer <a href='%{link}' class='link'>Datenschutzerklärung</a>.<br>"
       contact_modal: "Du musst der <b>Verwendung von Cookies zustimmen</b>, bevor Du das Kontaktformular benutzen kannst.<br>
       Mehr Informationen in unserer <a href='%{link}' class='link'>Datenschutzerklärung</a>.<br>"
-      cookie_consent_summary: "Um unsere Seite nutzer*innenfreundlich zu gestalten und weiter
-      verbessern zu können, speichern wir einzelne Informationen darüber, wie sie genutzt wird."
-      cookie_consent_detail: "Das geschieht, indem wir einfache Textdateien, auch
-      Cookies genannt, durch das Aufrufen der Seite auf deinem Computer
-      ablegen, wo sie dann gespeichert werden.
-      <br> Wichtig: Bestimmte Funktionen können nur genutzt werden, wenn Du die
-      Cookies akzeptiertst: Log-In, Registrierung, Kontaktaufnahme. Die Suche funktioniert auch ohne Cookies. Außerdem benutzen wir eine
-      Software, die Matomoto heißt, um zu wissen, wie die Besucher*innen und Nutzer*innen von speakerinnen.org die Seite nutzen: Das hilft uns auch
-      dabei, sie zu verbessern. Auch hierfür nutzen wir Cookies, die Du aber deaktivieren kannst. Mehr Informationen in unserer <a href='%{link}' class='link'>Datenschutzerklärung</a>."
+      cookie_consent_summary: "Bestimmte Funktionen können nur genutzt werden, wenn Du die essenziellen
+      Cookies akzeptiertst: Log-In, Registrierung, Kontaktaufnahme. Die Suche funktioniert auch ohne Cookies."
       allow_cookies: "Ich stimme zu"
       category_search_title: "Gezielter suchen!"
       category_search_title_vorarlberg: "Gezielter suchen!"
