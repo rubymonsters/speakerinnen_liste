@@ -1,6 +1,7 @@
 class Profile < ApplicationRecord
   include PgSearch::Model
   include ActiveModel::Serialization
+  include TranslationHelper
 
   pg_search_scope :search,
     against: [

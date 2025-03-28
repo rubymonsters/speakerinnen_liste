@@ -202,17 +202,27 @@
     </div>
 
     <div class="form-group">
-      <%= f.label "main_topic_#{locale}", t(:main_topic, scope: 'profiles.form') %>
+      <%= f.label "website_2_#{locale}", t(:website, scope: 'profiles.form') %>
+      <%= f.text_field "website_2_#{locale}", class: "form-control mb-3", placeholder: 'https://' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label "website_3_#{locale}", t(:website, scope: 'profiles.form') %>
+      <%= f.text_field "website_3_#{locale}", class: "form-control mb-3", placeholder: 'https://' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label "main_topic_#{locale}", t(:main_topic, scope: 'profiles.form', language: t(locale, scope: 'i18n.language')) %>
       <%= f.text_field "main_topic_#{locale}", class: 'form-control mb-3', maxlength: 30 %>
     </div>
 
     <div class="form-group">
-      <%= f.label "personal_note_#{locale}", t(:personal_note, scope: 'profiles.form') %>
+      <%= f.label "personal_note_#{locale}", t(:personal_note, scope: 'profiles.form', language: t(locale, scope: 'i18n.language')) %>
       <%= f.text_area "personal_note_#{locale}", class: 'form-control', rows: 5 %>
     </div>
 
     <div class="form-group">
-      <%= f.label "bio_#{locale}", t(:bio, scope: 'profiles.form') %>
+      <%= f.label "bio_#{locale}", t(:bio, scope: 'profiles.form', language: t(locale, scope: 'i18n.language')) %>
       <%= f.text_area "bio_#{locale}", class: 'form-control mb-3', rows: 10 %>
     </div>
   </div>

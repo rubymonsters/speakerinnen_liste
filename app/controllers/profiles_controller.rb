@@ -31,6 +31,7 @@ class ProfilesController < ApplicationController
   end
 
   def edit
+    @profile.build_missing_translations
   end
 
   def update
@@ -41,6 +42,7 @@ class ProfilesController < ApplicationController
     if @profile.update(profile_params)
       redirect_to @profile, notice: I18n.t('flash.profiles.updated', profile_name: @profile.name_or_email)
     else
+      @profile.build_missing_translations
       render action: 'edit'
     end
   end

@@ -145,7 +145,7 @@ describe 'profile navigation' do
     end
 
     it 'shows the correct main topic' do
-      expect(page).to have_css('.d-none #main_topic_de')
+      expect(page).to have_css('.d-none #edit-de')
     end
   end
 
@@ -166,7 +166,7 @@ describe 'profile navigation' do
     end
 
     it 'shows the correct main topic' do
-      expect(page).to have_css('.d-none #main_topic_en')
+      expect(page).to have_css('.d-none #edit-en')
     end
   end
 

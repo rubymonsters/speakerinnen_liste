@@ -7,5 +7,7 @@ class Feature < ApplicationRecord
   extend Mobility
   translates :title, :description
 
+  include TranslationHelper
+
   scope :published_feature, -> { includes({ profiles: [:translations, :image_attachment] }, :translations).where(public: true) }
 end

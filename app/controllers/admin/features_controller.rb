@@ -7,6 +7,7 @@ class Admin::FeaturesController < Admin::BaseController
 
   def new
     @feature = Feature.new()
+    @feature.build_missing_translations
   end
 
   def create
@@ -20,6 +21,7 @@ class Admin::FeaturesController < Admin::BaseController
   end
 
   def edit
+    @feature.build_missing_translations
   end
 
   def update
