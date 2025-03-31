@@ -4,9 +4,7 @@ class Category < ApplicationRecord
   validates :name, presence: true
   extend Mobility
   translates :name
-
-  include TranslationHelper
-
+  
   def self.sorted_categories
     Category.all.includes(:translations).order(:position)
   end

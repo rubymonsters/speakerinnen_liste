@@ -3,7 +3,6 @@ class Admin::CategoriesController < Admin::BaseController
 
   def new
     @category = Category.new
-    @category.build_missing_translations
   end
 
   def show; end
@@ -22,7 +21,6 @@ class Admin::CategoriesController < Admin::BaseController
   end
 
   def edit
-    @category.build_missing_translations
   end
 
   def update
