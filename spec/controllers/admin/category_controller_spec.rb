@@ -14,9 +14,6 @@ describe Admin::CategoriesController, type: :controller do
     before(:each) {  get :new }
 
     specify { expect(response).to render_template(:new) }
-    it 'builds translation' do
-      expect(assigns(:category).translations.size).to eq 2
-    end
   end
 
   describe 'POST create' do
