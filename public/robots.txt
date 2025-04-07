@@ -60,3 +60,6 @@ Disallow: /
 
 User-Agent: XoviOnpageCrawl
 Disallow: /
+
+User-Agent: Bingbot
+Crawl-delay: 20
