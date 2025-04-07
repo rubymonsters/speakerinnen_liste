@@ -19,8 +19,8 @@
 
     <% @categories.each do |category| %>
       <tr>
-        <td> <%= category.name_de %> </td>
-        <td> <%= category.name_en %> </td>
+        <td> <%= category.name_de if category.name_de %> </td>
+        <td> <%= category.name_en if category.name_en %> </td>
         <td> <%= category.tags.count %> </td>
         <td> <%= category.position %> </td>
         <td>
