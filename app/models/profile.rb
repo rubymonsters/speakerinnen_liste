@@ -135,9 +135,17 @@ class Profile < ApplicationRecord
   end
 
   def cities
-    cities_de = city_de.to_s.gsub(/(,|\/|&|\*|\|| - | or )/, "!@\#$%ˆ&*").split("!@\#$%ˆ&*").map(&:strip)
-    cities_en = city_en.to_s.gsub(/(,|\/|&|\*|\|| - | or )/, "!@\#$%ˆ&*").split("!@\#$%ˆ&*").map(&:strip)
-    (cities_de << cities_en).flatten!.uniq
+    cities_de = Mobility.with_locale(:de) { city.to_s }
+      .gsub(/(,|\/|&|\*|\|| - | or )/, "!@\#$%ˆ&*")
+      .split("!@\#$%ˆ&*")
+      .map(&:strip)
+  
+    cities_en = Mobility.with_locale(:en) { city.to_s }
+      .gsub(/(,|\/|&|\*|\|| - | or )/, "!@\#$%ˆ&*")
+      .split("!@\#$%ˆ&*")
+      .map(&:strip)
+  
+    (cities_de + cities_en).uniq
   end
 
   def region
