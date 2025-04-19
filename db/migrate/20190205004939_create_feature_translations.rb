@@ -1,4 +1,4 @@
-class CreateFeatureTranslations < ActiveRecord::Migration[5.2]
+class CreateFeatureTranslations < ActiveRecord::Migration[7.1]
   def change
     create_table :feature_translations do |t|
       t.references :feature, null: false, foreign_key: true
