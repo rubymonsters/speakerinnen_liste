@@ -6,7 +6,7 @@ RSpec.feature 'Cookie consent', type: :feature do
     visit original_path
 
     within(:css, 'div.cookie-consent-dialog') do
-      expect(page).to have_text('you have to agree to the use of cookies')
+      expect(page).to have_text('you have to agree to the use of essential cookies')
       click_link 'I agree'
     end
 

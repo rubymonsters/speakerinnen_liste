@@ -34,7 +34,7 @@ gem 'country_select'
 gem "mobility"
 
 gem 'bootstrap', '~> 4.6.2'
-gem 'font-awesome-rails', '~> 4.7.0.3'
+gem 'font-awesome-sass', '~> 6.1'
 gem 'bootstrap-icons-helper'
 
 gem 'friendly_id'

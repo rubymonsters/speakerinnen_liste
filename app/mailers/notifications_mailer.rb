@@ -1,12 +1,10 @@
-# frozen_string_literal: true
-
 class NotificationsMailer < ApplicationMailer
   default from: 'team@speakerinnen.org'
   default to: 'team@speakerinnen.org'
 
   def new_message(message, to)
     @message = message
-    @url = 'https://www.speakerinnen.org/faq#donate_anker'
+    @url = donate_url
     mail_parameters = { subject: "[Speakerinnen-Liste] #{message.subject}" }
     if to
       mail_parameters[:to] = 'no-reply@speakerinnen.org'
