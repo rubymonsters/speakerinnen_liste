@@ -1,13 +1,14 @@
-class CreateCategoryTranslations < ActiveRecord::Migration[4.2]
-  def up
-    Category.create_translation_table!({
-      name: :string,
-    }, {
-      migrate_data: true
-    })
-  end
+class CreateCategoryTranslations < ActiveRecord::Migration[7.1]
+  def change
+    create_table :category_translations do |t|
+      t.references :category, null: false, foreign_key: true
+      t.string :locale, null: false
 
-  def down
-    Category.drop_translation_table! migrate_data: true
+      t.string :name
+
+      t.timestamps
+    end
+
+    add_index :category_translations, [:category_id, :locale], unique: true
   end
 end

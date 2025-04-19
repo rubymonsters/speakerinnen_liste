@@ -1,19 +1,15 @@
 class CreateFeatureTranslations < ActiveRecord::Migration[5.2]
   def change
-    reversible do |dir|
-      dir.up do
-        Feature.create_translation_table!({
-          :title => :string,
-          :description => :text
-        }, {
-          :migrate_data => true,
-          :remove_source_columns => true
-        })
-      end
-    
-      dir.down do
-        Feature.drop_translation_table! :migrate_data => true
-      end
+    create_table :feature_translations do |t|
+      t.references :feature, null: false, foreign_key: true
+      t.string :locale, null: false
+
+      t.text :title
+      t.text :description
+
+      t.timestamps
     end
+
+    add_index :feature_translations, [:feature_id, :locale], unique: true
   end
 end

@@ -1,15 +1,15 @@
-class AddTranslationTableToProfile < ActiveRecord::Migration[4.2]
-  def up
-		Profile.create_translation_table!({
-			:main_topic => :string, 
-			:bio => :text
-		}, {
-			:migrate_data => true
-		})
-  end
-	
-	def down
-		Profile.drop_translation_table! :migrate_data => true
-	end
+class AddProfileTranslations < ActiveRecord::Migration[7.1]
+  def change
+    create_table :profile_translations do |t|
+      t.references :profile, null: false, foreign_key: true
+      t.string :locale, null: false
 
+      t.string :main_topic
+      t.text :bio
+
+      t.timestamps
+    end
+
+    add_index :profile_translations, [:profile_id, :locale], unique: true
+  end
 end
