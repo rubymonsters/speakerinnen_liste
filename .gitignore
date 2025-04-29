@@ -44,3 +44,7 @@ notes/
 .ruby-version
 .ruby-gemset
 .env
+
+/config/master.key
+
+/config/credentials/*.key
