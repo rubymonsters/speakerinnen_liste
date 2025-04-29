@@ -86,6 +86,7 @@ class ProfilesController < ApplicationController
       :profession_en, :profession_de, :city, :city_en, :city_de, :website_en, :website_de, :website_2_en, :website_2_de, 
       :website_3_en, :website_3_de,
       :main_topic_en, :main_topic_de, :bio_en, :bio_de, :twitter_en, :twitter_de, :personal_note_en, :personal_note_de,
+      :instagram, :mastodon, :linkedin, :bluesky,
       :image, :copyright, :personal_note, :willing_to_travel, :nonprofit, :inactive,
       feature_ids: [], service_ids: [])
   end
