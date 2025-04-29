@@ -28,6 +28,7 @@ class Rack::Attack
     req.user_agent if req.user_agent.present? && req.user_agent.match(/OAI-SearchBot/i)
     req.user_agent if req.user_agent.present? && req.user_agent.match(/bingbot/i)
     req.user_agent if req.user_agent.present? && req.user_agent.match(/meta-externalagent/i)
+    req.user_agent if req.user_agent.present? && req.user_agent.match(/Barkrowler/i)
   end
 
   throttle('req/ip', limit: 20, period: 1.minutes) do |req|
