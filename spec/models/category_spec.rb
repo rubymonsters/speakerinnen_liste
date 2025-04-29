@@ -1,15 +1,76 @@
-# frozen_string_literal: true
+require 'rails_helper'
 
-describe 'category', type: :model do
-  let!(:category_sonstiges) { FactoryBot.create(:category, name_en: 'Miscellaneous', position:2) }
-  let!(:category_A) { FactoryBot.create(:category, name_en: 'Art', position: 3) }
-  let!(:category_B) { FactoryBot.create(:category, name_en: 'Career', position: 1) }
+RSpec.describe Category, type: :model do
+  describe "#translations" do
+    let(:category) { Category.new }
+
+    it "creates for translation :en" do
+      I18n.locale = :en
+      category.name = "English Name"
+      category.save
+      expect(category.name).to eq "English Name"
+      expect(category.translations.size).to eq(1)
+      expect(category.translations.first.locale).to eq('en')
+      expect(category.translations.first.name).to eq("English Name")
+      expect(category.name_en).to eq("English Name")
+      I18n.locale = :de
+      expect(category.name).to eq "English Name" # fallback to en
+    end
+
+    it "creates for translation :de" do
+      I18n.locale = :de
+      category.name = "German Name"
+      category.save
+      expect(category.name).to eq "German Name"
+      expect(category.translations.size).to eq(1)
+      expect(category.translations.first.locale).to eq('de')
+      expect(category.translations.first.name).to eq("German Name")
+      expect(category.name_de).to eq("German Name")
+      I18n.locale = :en
+      expect(category.name).to eq "German Name" 
+    end
+
+    it "creates for translation :de and :en" do
+      I18n.locale = :de
+      category.name = "German Name"
+      category.save
+      expect(category.name).to eq "German Name"
+      expect(category.translations.size).to eq(1)
+      expect(category.translations.first.locale).to eq('de')
+      expect(category.translations.first.name).to eq("German Name")
+      expect(category.name_de).to eq("German Name")
+      I18n.locale = :en
+      expect(category.name).to eq "German Name" 
+      category.name = "English Name"
+      category.save
+      expect(category.name).to eq "English Name"
+      expect(category.translations.size).to eq(2)
+    end
+  end
 
   describe 'category order' do
     it "orders via the position field" do
+      Category.create(name: "Art", position: 2)
+      Category.create(name: "Career", position: 1)
       categories = Category.sorted_categories
       expect(categories.first.name).to eq 'Career'
       expect(categories.last.name).to eq 'Art'
+    end
+  end
+
+  describe 'category short_name' do
+    it "returns the first word of the english name in lowercase" do
+      I18n.locale = :en
+      category = Category.create(name: "Test Category")
+      I18n.locale = :de
+      category.name = "Deutsche Category"
+      category.save
+      expect(category.short_name).to eq 'test'
+    end
+
+    it "handles names with multiple words" do
+      category = Category.create(name: "Another Test Category")
+      expect(category.short_name).to eq 'another'
     end
   end
 end

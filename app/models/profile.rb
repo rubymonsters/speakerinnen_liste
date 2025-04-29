@@ -1,4 +1,3 @@
-# frozen_string_literal: true
 class Profile < ApplicationRecord
   include PgSearch::Model
   include ActiveModel::Serialization
@@ -40,9 +39,8 @@ class Profile < ApplicationRecord
   validates :instagram, :linkedin, :bluesky, :mastodon, format: { with: URI::DEFAULT_PARSER.make_regexp, message: "must be a valid URL" }, allow_blank: true
   before_save :clean_iso_languages!
 
-  translates :bio, :main_topic, :profession, :twitter, :website, :website_2, :website_3, :city, :personal_note, fallbacks_for_empty_translations: true
-  accepts_nested_attributes_for :translations
-  globalize_accessors locales: %i[en de], attributes: %i[main_topic bio profession twitter website website_2 website_3 city personal_note]
+  extend Mobility
+  translates :bio, :main_topic, :profession, :twitter, :website, :website_2, :website_3, :city, :personal_note
 
   extend FriendlyId
   friendly_id :slug_candidate, use: :slugged
@@ -138,9 +136,17 @@ class Profile < ApplicationRecord
   end
 
   def cities
-    cities_de = city_de.to_s.gsub(/(,|\/|&|\*|\|| - | or )/, "!@\#$%ˆ&*").split("!@\#$%ˆ&*").map(&:strip)
-    cities_en = city_en.to_s.gsub(/(,|\/|&|\*|\|| - | or )/, "!@\#$%ˆ&*").split("!@\#$%ˆ&*").map(&:strip)
-    (cities_de << cities_en).flatten!.uniq
+    cities_de = Mobility.with_locale(:de) { city.to_s }
+      .gsub(/(,|\/|&|\*|\|| - | or )/, "!@\#$%ˆ&*")
+      .split("!@\#$%ˆ&*")
+      .map(&:strip)
+  
+    cities_en = Mobility.with_locale(:en) { city.to_s }
+      .gsub(/(,|\/|&|\*|\|| - | or )/, "!@\#$%ˆ&*")
+      .split("!@\#$%ˆ&*")
+      .map(&:strip)
+  
+    (cities_de + cities_en).uniq
   end
 
   def region

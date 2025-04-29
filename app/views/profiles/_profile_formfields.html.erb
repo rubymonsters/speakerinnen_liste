@@ -187,109 +187,78 @@
     <h5 class="pb-3 font-weight-bold"> <%= t(:translated_infos, scope: 'profiles.form').html_safe %></h5>
     <ul class="nav nav-tabs">
       <li class="nav-item">
-        <a id="show-de" class="nav-link <%= I18n.locale == :de ? "active" : " " %>" href="#translated-infos-anchor"> <%= t(:de, scope: 'i18n.language').html_safe %></a>
+        <a id="show-de" class="nav-link <%= I18n.locale == :de ? "active" : "" %>" href="#translated-infos-anchor">
+          <%= t(:de, scope: 'i18n.language').html_safe %>
+        </a>
       </li>
       <li class="nav-item">
-        <a id="show-en" class="nav-link <%= I18n.locale == :en ? "active" : " " %>" href="#translated-infos-anchor"> <%= t(:en, scope: 'i18n.language').html_safe %></a>
+        <a id="show-en" class="nav-link <%= I18n.locale == :en ? "active" : "" %>" href="#translated-infos-anchor">
+          <%= t(:en, scope: 'i18n.language').html_safe %>
+        </a>
       </li>
     </ul>
 
-    <div id="edit-de" class="<%= "d-none" unless I18n.locale == :de %> bg--light-grey p-3" >
-      <div class="form-group">
-        <%= f.label :profession, t(:profession, scope: 'profiles.show').html_safe, id: "profession_de" %>
-        <%= f.text_field :profession_de, as: :text, class: 'form-control mb-3', maxlength: 60 %>
-      </div>
-      <div class="form-group">
-        <%= f.label :city, t(:city, scope: 'profiles.form').html_safe,
-          id: "city_de", class: '', title: t(:city_tooltip, scope: 'profiles.form').html_safe %>
-        <%= f.text_field :city_de, as: :text, class: 'form-control mb-3', maxlength: '30' %>
-      </div>
-      <%# Only show twitter field if user already has a twitter account %>
-      <% if @profile.twitter.present? %>
-        <div class="form-group">
-          <%= f.label :twitter, t(:twitter, scope: 'profiles.form').html_safe, id: "twitter_de" %>
-          <%= f.text_field :twitter_de, as: :text, placeholder: '@', class: "form-control mb-3", maxlength: 30 %>
-        </div>
-      <% end %>
-      <div class="form-group">
-        <%= f.label :website, t(:website, scope: 'profiles.form'), id: "website_de" %>
-        <%= f.text_field :website_de, as: :text, placeholder: 'https://', class: "form-control mb-3"%>
-      </div>
-      <div class="form-group">
-        <%= f.label :additional_websites, t(:additional_websites, scope: 'profiles.form'), id: "website_2_de" %>
-        <%= f.text_field :website_2_de, as: :text, placeholder: 'https://', class: "form-control mb-3"%>
-        <%= f.text_field :website_3_de, as: :text, placeholder: 'https://', class: "form-control mb-3"%>
-      </div>
-      <div class="form-group">
-        <%= f.label :main_topic, t(:main_topic, scope: 'profiles.form',
-          language: t(:de, scope: 'i18n.language')).html_safe, id: "main_topic_de", class: "mt-2" %>
-        <%= f.text_field :main_topic_de, as: :text, class: 'form-control', maxlength: '30' %>
-      </div>
-      <div class="form-group">
-        <%= f.label :personal_note, t(:personal_note, scope: 'profiles.form',
-          language: t(:de, scope: 'i18n.language')).html_safe, id: "personal_note_de", class: "mt-3",
-          title: t(:personal_note_tooltip, scope: 'profiles.form').html_safe %>
-        <%= f.text_area :personal_note_de, as: :text, class: 'form-control', rows: 5 %>
-      </div>
-      <div class="form-group">
-        <%= f.label :bio, t(:bio, scope: 'profiles.form',
-          language: t(:de, scope: 'i18n.language')).html_safe, id: "bio_de", class: "mt-3",
-          title: t(:bio_tooltip, scope: 'profiles.form').html_safe %>
-        <%= f.text_area :bio_de, as: :text, class: 'form-control', rows: 10 %>
-      </div>
+<% ["de", "en"].each do |locale| %>
+  <div id="edit-<%= locale %>" class="bg--light-grey p-3 <%= 'd-none' unless I18n.locale.to_s == locale %>">
+    <h5><%= t(:translated_infos, scope: 'profiles.form') %> (<%= t(locale, scope: 'i18n.language') %>)</h5>
+
+    <div class="form-group">
+      <%= f.label "profession_#{locale}", t(:profession, scope: 'profiles.form') %>
+      <%= f.text_field "profession_#{locale}", class: 'form-control mb-3', maxlength: 60 %>
     </div>
 
-    <div id="edit-en" class="form-group <%= "d-none" unless I18n.locale == :en %> bg--light-grey p-3" >
-      <div class="form-group">
-        <%= f.label :profession, t(:profession, scope: 'profiles.form').html_safe, id: "profession_en" %>
-        <%= f.text_field :profession_en, as: :text, class: 'form-control mb-3', maxlength: 60 %>
-      </div>
-      <div class="form-group">
-        <%= f.label :city, t(:city, scope: 'profiles.form').html_safe,
-          id: "city_en", class: 'pt-3', title: t(:city_tooltip, scope: 'profiles.form').html_safe %>
-        <%= f.text_field :city_en, as: :text, class: 'form-control mb-3', maxlength: '30' %>
-      </div>
-      <% if @profile.twitter.present? %>
-        <div class="form-group">
-          <%= f.label :twitter, t(:twitter, scope: 'profiles.form'), id: "twitter_en" %>
-          <%= f.text_field :twitter_en, as: :text, placeholder: '@', class: "form-control mb-3", maxlength: 30 %>
-        </div>
-      <% end %>
-      <div class="form-group">
-        <%= f.label :website, t(:website, scope: 'profiles.form'), id: "website_en" %>
-        <%= f.text_field :website_en, as: :text, placeholder: 'https://', class: "form-control mb-3" %>
-      </div>
-      <div class="form-group">
-        <%= f.label :additional_websites, t(:additional_websites, scope: 'profiles.form'), id: "website_2_en" %>
-        <%= f.text_field :website_2_en, as: :text, placeholder: 'https://', class: "form-control mb-3" %>
-        <%= f.text_field :website_3_en, as: :text, placeholder: 'https://', class: "form-control mb-3" %>
-      </div>
-      <div class="form-group">
-        <%= f.label :main_topic, t(:main_topic, scope: 'profiles.form',
-          language: t(:en, scope: 'i18n.language')).html_safe, id: "main_topic_en", class: "mt-3" %>
-        <%= f.text_field :main_topic_en, as: :text, class: 'form-control mb-3', maxlength: '30' %>
-      </div>
-      <div class="form-group">
-        <%= f.label :personal_note, t(:personal_note, scope: 'profiles.form',
-          language: t(:en, scope: 'i18n.language')).html_safe, id: "personal_note_en", class: "mt-3",
-          title: t(:personal_note_tooltip, scope: 'profiles.form').html_safe %>
-        <%= f.text_area :personal_note_en, as: :text, class: 'form-control', rows: 5 %>
-      </div>
-      <div class="form-group">
-      <%= f.label :bio, t(:bio, scope: 'profiles.form',
-        language: t(:en, scope: 'i18n.language')).html_safe, id: "bio_en", class: "mt-3",
-        title: t(:bio_tooltip, scope: 'profiles.form').html_safe %>
-      <%= f.text_area :bio_en, as: :text, class: 'form-control mb-3', rows: 10 %>
+    <div class="form-group">
+      <%= f.label "city_#{locale}", t(:city, scope: 'profiles.form').html_safe,
+          id: "city_#{locale}", class: 'pt-3', title: t(:city_tooltip, scope: 'profiles.form').html_safe %>
+      <%= f.text_field "city_#{locale}", class: 'form-control mb-3', maxlength: 30 %>
     </div>
+
+    <% if @profile.twitter.present? %>
+      <div class="form-group">
+        <%= f.label "twitter_#{locale}", t(:twitter, scope: 'profiles.form') %>
+        <%= f.text_field "twitter_#{locale}", class: 'form-control mb-3', placeholder: '@', maxlength: 30 %>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= f.label "website_#{locale}", t(:website, scope: 'profiles.form') %>
+      <%= f.text_field "website_#{locale}", class: "form-control mb-3", placeholder: 'https://' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label "website_2_#{locale}", t(:website, scope: 'profiles.form') %>
+      <%= f.text_field "website_2_#{locale}", class: "form-control mb-3", placeholder: 'https://' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label "website_3_#{locale}", t(:website, scope: 'profiles.form') %>
+      <%= f.text_field "website_3_#{locale}", class: "form-control mb-3", placeholder: 'https://' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label "main_topic_#{locale}", t(:main_topic, scope: 'profiles.form', language: t(locale, scope: 'i18n.language')).html_safe %>
+      <%= f.text_field "main_topic_#{locale}", class: 'form-control mb-3', maxlength: 30 %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label "personal_note_#{locale}", t(:personal_note, scope: 'profiles.form', language: t(locale, scope: 'i18n.language')).html_safe, 
+        id: "personal_note_#{locale}", class: "mt-3", title: t(:personal_note_tooltip, scope: 'profiles.form').html_safe %>
+      <%= f.text_area "personal_note_#{locale}", class: 'form-control', rows: 5 %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label "bio_#{locale}", t(:bio, scope: 'profiles.form', language: t(locale, scope: 'i18n.language')).html_safe, 
+        id: "bio_#{locale}", class: "mt-3", title: t(:bio_tooltip, scope: 'profiles.form').html_safe %>
+      <%= f.text_area "bio_#{locale}", class: 'form-control mb-3', rows: 10 %>
     </div>
   </div>
-</div>
+<% end %>
 <div class="row mt-3">
   <div class="col">
     <p>
-    <%= f.button :submit, t(:update, scope: 'profiles.form').html_safe, class:'btn btn-primary' %>
-    <%= link_to(t(:show, scope: 'profiles.edit').html_safe, profile_path, class: 'btn btn-outline-primary' ) %>
-  </p>
+      <%= f.button :submit, t(:update, scope: 'profiles.form').html_safe, class:'btn btn-primary' %>
+      <%= link_to(t(:show, scope: 'profiles.edit').html_safe, profile_path, class: 'btn btn-outline-primary' ) %>
+   </p>
   </div>
 </div>
 

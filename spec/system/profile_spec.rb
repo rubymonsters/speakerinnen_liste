@@ -144,8 +144,8 @@ describe 'profile navigation' do
       expect(page).to have_css('.active', text: 'English')
     end
 
-    it 'shows the correct main topic' do
-      expect(page).to have_css('.d-none #main_topic_de')
+    it 'does not show the edit for german' do
+      expect(page).to have_css('#edit-de.d-none')
     end
   end
 
@@ -165,8 +165,8 @@ describe 'profile navigation' do
       expect(page).to have_css('.active', text: 'Deutsch')
     end
 
-    it 'shows the correct main topic' do
-      expect(page).to have_css('.d-none #main_topic_en')
+    it 'does not show the edit for english' do
+      expect(page).to have_css('#edit-en.d-none')
     end
   end
 

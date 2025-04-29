@@ -19,22 +19,10 @@
 
     <% @categories.each do |category| %>
       <tr>
-      <% Globalize.with_locale(:de) do %>
-        <td>
-          <%= category.name %>
-        </td>
-      <% end %>
-      <% Globalize.with_locale(:en) do %>
-        <td>
-          <%= category.name %>
-        </td>
-      <% end %>
-        <td>
-          <%= category.tags.count %>
-        </td>
-        <td>
-          <%= category.position %>
-        </td>
+        <td> <%= category.name_de if category.name_de %> </td>
+        <td> <%= category.name_en if category.name_en %> </td>
+        <td> <%= category.tags.count %> </td>
+        <td> <%= category.position %> </td>
         <td>
           <%= link_to ('<i class="fa fa-pencil">&nbsp;</i>' + t(:edit, scope: "general")).html_safe,
               edit_admin_category_path(category.id) %>

@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 RSpec.describe 'Navigation', type: :system do
   context 'logged in as an admin' do
     let!(:admin) { FactoryBot.create(:admin) }
@@ -140,7 +138,7 @@ RSpec.describe 'Navigation', type: :system do
 
           expect(page).to have_css('div.profile_firstname')
           expect(page).to have_css('div.profile_lastname')
-          expect(page).to have_css('#city_en')
+          expect(page).to have_css('#profile_city_de')
           expect(page).to have_css('div.profile_iso_languages')
           expect(page).to have_css('#profile_website_de')
           expect(page).to have_css('#profile_website_2_de')

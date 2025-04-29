@@ -137,32 +137,6 @@ describe ProfilesController, type: :controller do
         expect(response).to redirect_to("/#{I18n.locale}/profiles")
       end
     end
-
-    xit "doesn't create extra translations" do
-      de_translation = ada.translations.create!('locale' => 'de', 'main_topic' => 'Hauptthema')
-      en_translation = ada.translations.create!('locale' => 'en', 'main_topic' => 'Main topic')
-
-      profile_params = {
-        translations_attributes:
-          { '0':
-            {
-              'locale':       'de',
-              'main_topic':   'Algorithmen',
-              'bio':          'Deutsche Biografie',
-              'id':           de_translation.id
-            },
-          '1':
-            {
-              'locale':       'en',
-              'main_topic':   'algorithms',
-              'bio':          'English Bio',
-              'id':           en_translation.id
-            } }
-      }
-      patch :update, params: { id: ada.id }.merge(profile: profile_params)
-
-      expect(ada.reload.translations.size).to eq(2)
-    end
   end
 
   describe '#update' do
