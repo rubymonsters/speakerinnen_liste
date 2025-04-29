@@ -63,3 +63,6 @@ Disallow: /
 
 User-Agent: Bingbot
 Crawl-delay: 20
+
+User-Agent: SEOkicks
+Disallow: /
