@@ -115,7 +115,7 @@ class Profile < ApplicationRecord
     :city,
     :willing_to_travel,
     :nonprofit,
-    :main_topic_or_first_topic,
+    :main_topic,
     keyword_init: true
   )
 
@@ -127,7 +127,7 @@ class Profile < ApplicationRecord
       city: city,
       willing_to_travel: willing_to_travel,
       nonprofit: nonprofit,
-      main_topic_or_first_topic: main_topic_or_first_topic,
+      main_topic: main_topic,
     )
   end
 
@@ -155,12 +155,6 @@ class Profile < ApplicationRecord
 
   def name_or_email
     fullname.present? ? fullname : email
-  end
-
-  def main_topic_or_first_topic
-    return nil unless main_topic
-
-    main_topic
   end
 
   # Try building a slug based on the following fields in
