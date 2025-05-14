@@ -35,12 +35,12 @@
       </p>
     <% end %>
     <!-- main topic -->
-    <% if @profile.main_topic_or_first_topic %>
+    <% if @profile.main_topic %>
       <p class="">
         <span class="font-weight-bold">
           <%= t(:main_topic, scope: 'profiles.show') %>
         </span>
-        <%= @profile.main_topic_or_first_topic %>
+        <%= @profile.main_topic %>
       </p>
     <% end %>
       <!-- twitter -->
