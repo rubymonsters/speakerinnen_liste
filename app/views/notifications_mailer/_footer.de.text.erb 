@@ -1,0 +1,15 @@
+---
+
+Über Speakerinnen.org
+Speakerinnen.org möchte mehr Frauen und nicht-binäre Personen auf Bühnen bringen!
+Wenn du unsere gemeinnützige Arbeit unterstützen möchtest, freuen wir uns über eine Spende:
+<%= @url %>
+
+Folge uns auf Social Media:
+Instagram: https://www.instagram.com/speakerinnen
+Bluesky: https://bsky.app/profile/speakerinnen.bsky.social
+LinkedIn: https://www.linkedin.com/company/speakerinnen-org/
+
+Impressum:
+Angaben zum Impressum findest du unter:
+<%= @imprint %>

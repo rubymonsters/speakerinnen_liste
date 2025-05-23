@@ -1,17 +1,29 @@
 class NotificationsMailer < ApplicationMailer
   default from: 'team@speakerinnen.org'
-  default to: 'team@speakerinnen.org'
 
-  def new_message(message, to)
+  def speakerin_message(message, speakerinnen_email)
     @message = message
     @url = donate_url
-    mail_parameters = { subject: "[Speakerinnen-Liste] #{message.subject}" }
-    if to
-      mail_parameters[:to] = 'no-reply@speakerinnen.org'
-      mail_parameters[:reply_to] = @message.email
-      mail_parameters[:cc] = @message.email
-      mail_parameters[:bcc] = to
-    end
-    mail(mail_parameters)
+    @imprint = impressum_url
+
+    mail(
+      to: 'no-reply@speakerinnen.org',
+      reply_to: @message.email,
+      bcc: speakerinnen_email,
+      subject: I18n.t(:subject, scope: 'email')
+    )
+  end
+
+  def sender_message(message)
+    @message = message
+    @url = donate_url
+    @imprint = impressum_url
+
+    mail(
+      to: @message.email,
+      subject: I18n.t(:subject_sender, scope: 'email')
+    )
   end
 end
+
+

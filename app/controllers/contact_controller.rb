@@ -20,7 +20,12 @@ class ContactController < ApplicationController
       @spam_emails = ENV['FISHY_EMAILS'].present? ? ENV.fetch('FISHY_EMAILS').split(',') : ''
 
       if @message.valid? && @spam_emails.exclude?(@message.email)
-        NotificationsMailer.new_message(@message, @profile && @profile.email).deliver
+        # we have no profile, so we send the message to the team 
+        receiver_email = @profile.present? ? @profile.email : 'team@speakerinnen.org'
+        NotificationsMailer.speakerin_message(@message, receiver_email).deliver
+        
+        # send a copy to the sender if the email is sent via the speakerinnen contact form
+        NotificationsMailer.sender_message(@message).deliver unless @profile.nil?
         if @profile.present?
           redirect_to(profile_path(@profile), notice: t(:notice, scope: 'contact.form'))
         else
