@@ -19,3 +19,13 @@ de:
   email:
     subject: "Neue Anfrage über Speakerinnen.org"
     sender_subject: "Kopie deiner Nachricht an Speakerinnen.org"
+    footer:
+      about: "Über Speakerinnen.org"
+      mission: "Speakerinnen.org möchte mehr Frauen und nicht-binäre Personen auf Bühnen bringen!"
+      donate: "Wenn du unsere gemeinnützige Arbeit unterstützen möchtest, freuen wir uns über eine Spende:"
+      social: "Folge uns auf Social Media:"
+      instagram: "Instagram: https://www.instagram.com/speakerinnen"
+      bluesky: "Bluesky: https://bsky.app/profile/speakerinnen.bsky.social"
+      linkedin: "LinkedIn: https://www.linkedin.com/company/speakerinnen-org/"
+      legal_title: "Impressum:"
+      legal_text: "Angaben zum Impressum findest du unter:"
