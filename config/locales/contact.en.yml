@@ -16,7 +16,7 @@ en:
       notice: "Yay! Your message was sent."
       error: "Please fill all fields so that the speaker can have all the details she needs."
       error_email_for_us: "Please fill all fields."
-  email:
+  mail:
     subject: "New request via Speakerinnen.org"
     sender_subject: "Copy of your message to Speakerinnen.org"
     footer:

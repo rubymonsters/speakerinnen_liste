@@ -10,7 +10,7 @@ class NotificationsMailer < ApplicationMailer
       to: 'no-reply@speakerinnen.org',
       reply_to: @message.email,
       bcc: speakerinnen_email,
-      subject: I18n.t(:subject, scope: 'email')
+      subject: I18n.t(:subject, scope: 'mail')
     )
   end
 
@@ -21,7 +21,7 @@ class NotificationsMailer < ApplicationMailer
 
     mail(
       to: @message.email,
-      subject: I18n.t(:subject_sender, scope: 'email')
+      subject: I18n.t(:sender_subject, scope: 'mail')
     )
   end
 end
