@@ -1,5 +1,5 @@
 class NotificationsMailer < ApplicationMailer
-  default from: 'ranja@web.de'
+  default from: 'team@speakerinnen.org'
 
   def speakerin_message(message, speakerinnen_email, locale)
       Rails.logger.debug "CURRENT I18N LOCALE: #{I18n.locale} in NotificationsMailer#speakerin_message"
