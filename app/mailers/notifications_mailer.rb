@@ -7,7 +7,7 @@ class NotificationsMailer < ApplicationMailer
       @url = donate_url
       @imprint = impressum_url
       mail(
-        to: speakerinnen_email,
+        to: 'no-reply@speakerinnen.org',
         bcc: speakerinnen_email,
         reply_to: @message.email,
         subject: t("mail.subject")
