@@ -22,7 +22,7 @@ class ContactController < ApplicationController
       if @message.valid? && @spam_emails.exclude?(@message.email)
         # we have no profile, so we send the message to the team 
         receiver_email = @profile.present? ? @profile.email : 'team@speakerinnen.org'
-        NotificationsMailer.speakerin_message(@message, receiver_email).deliver
+        NotificationsMailer.speakerin_message(@message, receiver_email, I18n.locale)).deliver
         
         # send a copy to the sender if the email is sent via the speakerinnen contact form
         NotificationsMailer.sender_message(@message).deliver unless @profile.nil?

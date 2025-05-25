@@ -1,18 +1,19 @@
 class NotificationsMailer < ApplicationMailer
   default from: 'team@speakerinnen.org'
 
-  def speakerin_message(message, speakerinnen_email)
-    Rails.logger.debug "CURRENT I18N LOCALE: #{I18n.locale} in NotificationsMailer#speakerin_message"
-    @message = message
-    @url = donate_url
-    @imprint = impressum_url
+  def speakerin_message(message, speakerinnen_email, locale)
+    I18n.with_locale(locale) do
+      Rails.logger.debug "CURRENT I18N LOCALE: #{I18n.locale} in NotificationsMailer#speakerin_message"
+      @message = message
+      @url = donate_url
+      @imprint = impressum_url
 
-    mail(
-      to: 'no-reply@speakerinnen.org',
-      reply_to: @message.email,
-      bcc: speakerinnen_email,
-      subject: t(:subject, scope: 'mail')
-    )
+      mail(
+        to: speakerinnen_email,
+        reply_to: @message.email,
+        subject: t(:subject, scope: 'mail')
+      )
+    end
   end
 
   def sender_message(message)
@@ -22,12 +23,9 @@ class NotificationsMailer < ApplicationMailer
     @imprint = impressum_url
 
     mail(
-      to: 'no-reply@speakerinnen.org',
-      reply_to: @message.email,
-      cc: @message.email,
+      to: @message.email,
+      reply_to: 'no-reply@speakerinnen.org',
       subject: t(:sender_subject, scope: 'mail')
     )
   end
 end
-
-
