@@ -7,6 +7,7 @@ The sender's mail address: <%= @message.email %>
 subject: <%= @message.subject %>
 message: 
 <%= @message.body %>
+<%= Rails.logger.debug "CURRENT I18N LOCALE: #{I18n.locale}" %>
 
 ---
 <%= render "footer" %>
