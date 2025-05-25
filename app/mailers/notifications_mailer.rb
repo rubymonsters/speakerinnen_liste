@@ -10,7 +10,6 @@ class NotificationsMailer < ApplicationMailer
     mail(
       to: 'no-reply@speakerinnen.org',
       reply_to: @message.email,
-      cc: @message.email,
       bcc: speakerinnen_email,
       subject: t(:subject, scope: 'mail')
     )
