@@ -1,5 +1,5 @@
 class NotificationsMailer < ApplicationMailer
-  default from: 'team@speakerinnen.org'
+  default from: 'ranja@web.de'
 
   def speakerin_message(message, speakerinnen_email, locale)
       Rails.logger.debug "CURRENT I18N LOCALE: #{I18n.locale} in NotificationsMailer#speakerin_message"
@@ -7,12 +7,9 @@ class NotificationsMailer < ApplicationMailer
       @url = donate_url
       @imprint = impressum_url
       mail(
-        to: 'no-reply@speakerinnen.org',
-        bcc: speakerinnen_email,
+        to: speakerinnen_email,
         reply_to: @message.email,
-        cc: @message.email,
         subject: t("mail.subject")
-
       )
   end
 
