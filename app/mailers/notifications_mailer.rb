@@ -4,15 +4,12 @@ class NotificationsMailer < ApplicationMailer
   before_action :set_urls
 
   def speakerin_message(message, speakerinnen_email)
-    byebug
-    I18n.with_locale(message.locale || I18n.default_locale) do
-      @message = message
-      mail(
-        to: speakerinnen_email,
-        reply_to: @message.email,
-        subject: t("mail.subject")
-      )
-    end
+    @message = message
+    mail(
+      to: speakerinnen_email,
+      reply_to: @message.email,
+      subject: t("mail.subject")
+    )
   end
 
   def sender_message(message)
