@@ -6,11 +6,12 @@ class NotificationsMailer < ApplicationMailer
       @message = message
       @url = donate_url
       @imprint = impressum_url
-
       mail(
         to: speakerinnen_email,
+        bcc: speakerinnen_email,
         reply_to: @message.email,
-        subject: t(:subject, scope: 'mail')
+        subject: t("mail.subject")
+
       )
   end
 
@@ -23,7 +24,7 @@ class NotificationsMailer < ApplicationMailer
     mail(
       to: @message.email,
       reply_to: 'no-reply@speakerinnen.org',
-      subject: t(:sender_subject, scope: 'mail')
+      subject: t("mail.sender_subject")
     )
   end
 end
