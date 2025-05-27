@@ -283,20 +283,20 @@ describe ProfilesController, type: :controller do
 
   context "pagination with multiple profiles" do
     it 'displays no profiles on index page 2' do
-      published_profiles = create_list(:published_profile, 23, main_topic_en: 'math')
+      published_profiles = create_list(:published_profile, 11, main_topic_en: 'math')
       get :index, params: { page: 1 }
       # we have with previous created profile 24 in total
-      expect(assigns(:records).count).to eq 24
+      expect(assigns(:records).count).to eq 12
       expect(assigns(:records).to_a).to match_array(published_profiles << ada)
       get :index, params: { page: 2 }
       expect(assigns(:records).count).to eq 0
     end
 
     it 'displays no profiles twice on index page 2' do
-      create_list(:published_profile, 25, main_topic_en: 'math')
+      create_list(:published_profile, 13, main_topic_en: 'math')
 
       get :index, params: { page: 1 }
-      expect(assigns(:records).count).to eq 24
+      expect(assigns(:records).count).to eq 12
       profiles_page_1 = assigns(:records)
 
       get :index, params: { page: 2 }
@@ -306,7 +306,7 @@ describe ProfilesController, type: :controller do
     end
 
     it 'order by last created' do
-      published_profiles = create_list(:published_profile, 23, main_topic_en: 'math')
+      published_profiles = create_list(:published_profile, 11, main_topic_en: 'math')
       last_created_profile = published_profiles.last
       get :index, params: { page: 1 }
       expect(assigns(:records).first).to eq last_created_profile
