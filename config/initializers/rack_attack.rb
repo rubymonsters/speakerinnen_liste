@@ -32,7 +32,7 @@ class Rack::Attack
     req.user_agent if req.user_agent.present? && req.user_agent.match(/BLEXBot/i)
   end
 
-  throttle('req/ip', limit: 20, period: 1.minutes) do |req|
+  throttle('req/ip', limit: 100, period: 1.minutes) do |req|
     req.ip
   end
 
