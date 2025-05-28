@@ -15,7 +15,7 @@ RSpec.describe "Rack::Attack", type: :request do
 
   describe "get /profiles" do
     it "successful for 20 requests, then blocks the user nicely" do
-      20.times do
+      100.times do
         get profiles_path
         expect(response).to have_http_status(:ok)
       end
