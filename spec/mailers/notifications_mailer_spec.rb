@@ -11,9 +11,9 @@ RSpec.describe NotificationsMailer, type: :mailer do
       )
     end
 
-    describe "speakerin_message" do
+    describe "contact_message" do
       it 'sends a message to the speakerin in German' do
-        mail = NotificationsMailer.speakerin_message(message, "speakerin@example.org")
+        mail = NotificationsMailer.contact_message(message, "speakerin@example.org")
         expect(mail.subject).to eq("Neue Anfrage über Speakerinnen.org")
         expect(mail.from).to eq(["team@speakerinnen.org"])
         expect(mail.to).to eq(["speakerin@example.org"])
@@ -29,7 +29,7 @@ RSpec.describe NotificationsMailer, type: :mailer do
 
       it 'sends a message to the speakerin in English' do
         I18n.locale = :en
-        mail = NotificationsMailer.speakerin_message(message, "speakerin@example.org")
+        mail = NotificationsMailer.contact_message(message, "speakerin@example.org")
         expect(mail.subject).to eq("New request via Speakerinnen.org")
         expect(mail.from).to eq(["team@speakerinnen.org"])
         expect(mail.to).to eq(["speakerin@example.org"])
@@ -44,7 +44,7 @@ RSpec.describe NotificationsMailer, type: :mailer do
       end
 
       it 'sends the message to the team@speakerinnen.org when the speakerin email is nil' do
-        mail = NotificationsMailer.speakerin_message(message, "team@speakerinnen.org")
+        mail = NotificationsMailer.contact_message(message, "team@speakerinnen.org")
         expect(mail.subject).to eq("Neue Anfrage über Speakerinnen.org")
         expect(mail.from).to eq(["team@speakerinnen.org"])
         expect(mail.to).to eq(["team@speakerinnen.org"])
@@ -52,9 +52,9 @@ RSpec.describe NotificationsMailer, type: :mailer do
       end
     end
 
-    describe "sender_message" do
+    describe "copy_to_sender" do
       it 'sents a copy to the sender in german' do
-        mail = NotificationsMailer.sender_message(message)
+        mail = NotificationsMailer.copy_to_sender(message)
         expect(mail.subject).to eq("Kopie deiner Nachricht an Speakerinnen.org")
         expect(mail.from).to eq(["team@speakerinnen.org"])
         expect(mail.to).to eq(["ada@example.org"])
@@ -69,7 +69,7 @@ RSpec.describe NotificationsMailer, type: :mailer do
 
       it 'sends a copy to the sender in English' do
         I18n.locale = :en
-        mail = NotificationsMailer.sender_message(message)
+        mail = NotificationsMailer.copy_to_sender(message)
         expect(mail.subject).to eq("Copy of your message to Speakerinnen.org")
         expect(mail.from).to eq(["team@speakerinnen.org"])
         expect(mail.to).to eq(["ada@example.org"])

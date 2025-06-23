@@ -5,15 +5,15 @@ module ContactForm
     include Interactor
 
     def call
-      context.message = Message.new(context.params)
+      message = Message.new(context.params)
 
-      if context.message.valid?
-        if spam_email?(context.message.email)
+      if message.valid?
+        if spam_email?(message.email)
           # Pretend success but don't send emails
           context.skip_delivery = true
         else
-          send_to_speakerin(context.message, context.profile)
-          send_copy_to_sender(context.message) if context.profile.present?
+          send_contact_email(message, context.profile)
+          NotificationsMailer.copy_to_sender(message, context.profile.fullname).deliver if context.profile.present?
         end
       else
         context.fail!(error: error_message(context.profile))
@@ -30,13 +30,9 @@ module ContactForm
       ENV.fetch('FISHY_EMAILS', '').split(',')
     end
 
-    def send_to_speakerin(message, profile)
-      recipient = profile&.email || 'team@speakerinnen.org'
-      NotificationsMailer.speakerin_message(message, recipient).deliver
-    end
-
-    def send_copy_to_sender(message)
-      NotificationsMailer.sender_message(message).deliver
+    def send_contact_email(message, profile)
+      recipient_email = profile&.email || 'team@speakerinnen.org'
+      NotificationsMailer.contact_message(message, recipient_email).deliver
     end
 
     def error_message(profile)

@@ -1,7 +1,8 @@
 Hi <%= @message.name %>,
 
-You have sent a new contact request via Speakerinnen.org. Here is the message:
+You have sent a new contact request to <%= @speakerinnen_fullname %> via Speakerinnen.org. 
 
+Here is the message:
 The name of the sender: <%= @message.name %>
 The sender's mail address: <%= @message.email %>
 subject: <%= @message.subject %>

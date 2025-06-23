@@ -3,16 +3,18 @@ class NotificationsMailer < ApplicationMailer
 
   before_action :set_urls
 
-  def speakerin_message(message, speakerinnen_email)
+  # contact_email can be a profile's email or a general team email
+  def contact_message(message, contact_email)
     @message = message
     mail(
-      to: speakerinnen_email,
+      to: contact_email,
       reply_to: @message.email,
-      subject: t("mail.subject")
+      subject: t("mail.subject"),
+      bcc: 'no-reply@speakerinnen.org'
     )
   end
 
-  def sender_message(message)
+  def copy_to_sender(message, speakerinnen_fullname)
     @message = message
     mail(
       to: @message.email,
