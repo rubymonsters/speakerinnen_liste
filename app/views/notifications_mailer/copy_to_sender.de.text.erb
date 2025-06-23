@@ -1,0 +1,13 @@
+Hallo <%= @message.name %>,
+
+du hast eine neue Kontaktanfrage an <%= @profile_fullname %> über Speakerinnen.org gesendet. 
+
+Dies ist der Inhalt:
+Absender_in: <%= @message.name %>
+Mailadresse: <%= @message.email %>
+Betreff: <%= @message.subject %>
+Nachricht: 
+<%= @message.body %>
+
+---
+<%= render "footer" %>
