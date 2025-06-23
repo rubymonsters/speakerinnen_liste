@@ -70,7 +70,7 @@ RSpec.describe "ContactController", type: :request do
 
       it "does not send mail and behaves like it did sent the email" do
         expect {
-          post contact_path, params: valid_params
+          post contact_path, params: valid_params.merge(id: profile.slug)
         }.not_to change { ActionMailer::Base.deliveries.count }
 
         expect(response).to redirect_to(profile_path(profile))
@@ -79,7 +79,7 @@ RSpec.describe "ContactController", type: :request do
 
     context "with invalid message params" do
       it "re-renders the form with errors" do
-        post contact_path, params: { message: { name: "", email: "", subject: "", body: "" } }
+        post contact_path, params: {:message=>{:name=>"", :email=>"alice@example.org", :subject=>"Hello", :body=>"Test message"} }
 
         expect(response).to render_template(:new)
         expect(response.body).to include(I18n.t('contact.form.error_email_for_us'))
@@ -108,12 +108,12 @@ RSpec.describe "ContactController", type: :request do
     context "cookie consent" do
       it 'does not show contact button without cookie consent' do
         visit profile_path(id: profile.slug)
-        expect(page).not_to have_button(I18n.t('contact.form.open_modal', scope: 'contact'))
+        expect(page).not_to have_button(I18n.t('contact.form.send'))
       end
       it 'shows contact button with cookie consent' do
         visit profile_path(id: profile.slug)
         find_link(class: 'cookie-consent').click
-        expect(page).to have_button(I18n.t('contact.form.open_modal', scope: 'contact'))
+        expect(page).to have_button(I18n.t('contact.form.send'))
       end
       it 'opens contact modal when cookie consent is given' do
         visit profile_path(id: profile.slug)

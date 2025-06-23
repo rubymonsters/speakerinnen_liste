@@ -16,6 +16,7 @@ module ContactForm
           NotificationsMailer.copy_to_sender(message, context.profile.fullname).deliver if context.profile.present?
         end
       else
+        context.message = message
         context.fail!(error: error_message(context.profile))
       end
     end
