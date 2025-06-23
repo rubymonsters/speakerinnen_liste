@@ -14,8 +14,9 @@ class NotificationsMailer < ApplicationMailer
     )
   end
 
-  def copy_to_sender(message, speakerinnen_fullname)
+  def copy_to_sender(message, profile_fullname)
     @message = message
+    @profile_fullname = profile_fullname
     mail(
       to: @message.email,
       reply_to: 'no-reply@speakerinnen.org',

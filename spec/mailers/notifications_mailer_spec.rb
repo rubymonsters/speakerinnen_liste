@@ -5,9 +5,9 @@ RSpec.describe NotificationsMailer, type: :mailer do
     let(:message) do
       Message.new(
         subject: "Test Subject",
-        email: "ada@example.org",
+        email: "radio@example.org",
         body: "This is a test message.",
-        name: "Ada Lovelace"
+        name: "Frau Radiosprecherin"
       )
     end
 
@@ -17,10 +17,10 @@ RSpec.describe NotificationsMailer, type: :mailer do
         expect(mail.subject).to eq("Neue Anfrage über Speakerinnen.org")
         expect(mail.from).to eq(["team@speakerinnen.org"])
         expect(mail.to).to eq(["speakerin@example.org"])
-        expect(mail.reply_to).to eq(["ada@example.org"])
-        expect(mail.body.encoded).to include("du hast eine neue Kontaktanfrage über Speakerinnen.org erhalten")
-        expect(mail.body.encoded).to include("Absender_in: Ada Lovelace")
-        expect(mail.body.encoded).to include("Mailadresse: ada@example.org")
+        expect(mail.reply_to).to eq(["radio@example.org"])
+        expect(mail.body.encoded).to include("du hast eine neue Kontaktanfrage von Frau Radiosprecherin über Speakerinnen.org erhalten")
+        expect(mail.body.encoded).to include("Absender_in: Frau Radiosprecherin")
+        expect(mail.body.encoded).to include("Mailadresse: radio@example.org")
         expect(mail.body.encoded).to include("Betreff: Test Subject")
         expect(mail.body.encoded).to include("This is a test message.")
         expect(mail.body.encoded).to include("Wenn du unsere gemeinnützige Arbeit unterstützen möchtest, freuen wir uns über eine Spende:")
@@ -33,10 +33,10 @@ RSpec.describe NotificationsMailer, type: :mailer do
         expect(mail.subject).to eq("New request via Speakerinnen.org")
         expect(mail.from).to eq(["team@speakerinnen.org"])
         expect(mail.to).to eq(["speakerin@example.org"])
-        expect(mail.reply_to).to eq(["ada@example.org"])
-        expect(mail.body.encoded).to include("you've received a new contact request through Speakerinnen.org:")
-        expect(mail.body.encoded).to include("The name of the sender: Ada Lovelace")
-        expect(mail.body.encoded).to include("The sender's mail address: ada@example.org")
+        expect(mail.reply_to).to eq(["radio@example.org"])
+        expect(mail.body.encoded).to include("you've received a new contact request from Frau Radiosprecherin through Speakerinnen.org:")
+        expect(mail.body.encoded).to include("The name of the sender: Frau Radiosprecherin")
+        expect(mail.body.encoded).to include("The sender's mail address: radio@example.org")
         expect(mail.body.encoded).to include("subject: Test Subject")
         expect(mail.body.encoded).to include("This is a test message.")
         expect(mail.body.encoded).to include("If you’d like to support our non-profit work, we appreciate your donation:")
@@ -48,19 +48,21 @@ RSpec.describe NotificationsMailer, type: :mailer do
         expect(mail.subject).to eq("Neue Anfrage über Speakerinnen.org")
         expect(mail.from).to eq(["team@speakerinnen.org"])
         expect(mail.to).to eq(["team@speakerinnen.org"])
-        expect(mail.reply_to).to eq(["ada@example.org"])
+        expect(mail.reply_to).to eq(["radio@example.org"])
+        expect(mail.body.encoded).to include("du hast eine neue Kontaktanfrage von Frau Radiosprecherin über Speakerinnen.org erhalten")
+
       end
     end
 
     describe "copy_to_sender" do
       it 'sents a copy to the sender in german' do
-        mail = NotificationsMailer.copy_to_sender(message)
+        mail = NotificationsMailer.copy_to_sender(message, "Ada Lovelace")
         expect(mail.subject).to eq("Kopie deiner Nachricht an Speakerinnen.org")
         expect(mail.from).to eq(["team@speakerinnen.org"])
-        expect(mail.to).to eq(["ada@example.org"])
-        expect(mail.body.encoded).to include("du hast eine neue Kontaktanfrage über Speakerinnen.org gesendet.")
-        expect(mail.body.encoded).to include("Absender_in: Ada Lovelace")
-        expect(mail.body.encoded).to include("Mailadresse: ada@example.org")
+        expect(mail.to).to eq(["radio@example.org"])
+        expect(mail.body.encoded).to include("du hast eine neue Kontaktanfrage an Ada Lovelace über Speakerinnen.org gesendet.")
+        expect(mail.body.encoded).to include("Absender_in: Frau Radiosprecherin")
+        expect(mail.body.encoded).to include("Mailadresse: radio@example.org")
         expect(mail.body.encoded).to include("Betreff: Test Subject")
         expect(mail.body.encoded).to include("This is a test message.")
         expect(mail.body.encoded).to include("Wenn du unsere gemeinnützige Arbeit unterstützen möchtest, freuen wir uns über eine Spende")
@@ -69,13 +71,13 @@ RSpec.describe NotificationsMailer, type: :mailer do
 
       it 'sends a copy to the sender in English' do
         I18n.locale = :en
-        mail = NotificationsMailer.copy_to_sender(message)
+        mail = NotificationsMailer.copy_to_sender(message, "Ada Lovelace")
         expect(mail.subject).to eq("Copy of your message to Speakerinnen.org")
         expect(mail.from).to eq(["team@speakerinnen.org"])
-        expect(mail.to).to eq(["ada@example.org"])
-        expect(mail.body.encoded).to include("You have sent a new contact request via Speakerinnen.org. Here is the message:")
-        expect(mail.body.encoded).to include("The name of the sender: Ada Lovelace")
-        expect(mail.body.encoded).to include("The sender's mail address: ada@example.org")
+        expect(mail.to).to eq(["radio@example.org"])
+        expect(mail.body.encoded).to include("You have sent a new contact request to Ada Lovelace via Speakerinnen.org.")
+        expect(mail.body.encoded).to include("The name of the sender: Frau Radiosprecherin")
+        expect(mail.body.encoded).to include("The sender's mail address: radio@example.org")
         expect(mail.body.encoded).to include("subject: Test Subject")
         expect(mail.body.encoded).to include("This is a test message.")
         expect(mail.body.encoded).to include("If you’d like to support our non-profit work, we appreciate your donation:")
