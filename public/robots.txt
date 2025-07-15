@@ -55,9 +55,6 @@ Disallow: /
 User-Agent: Go-http-client
 Disallow: /
 
-User-Agent: http.rb/
-Disallow: /
-
 User-Agent: XoviOnpageCrawl
 Disallow: /
 
