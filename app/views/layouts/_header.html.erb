@@ -2,36 +2,40 @@
 <header>
   <%# TODO: hidden <h1>Speakerinnen</h1>%>
   <nav class="navbar navbar-expand-lg py-0 navbar-dark <%= controller_path =~ /admin\// ? "admin__header--color": "header" %>" >
-    <%= link_to(root_path, id: 'header__home-link', class: 'navbar-brand p-0') do %>
-      <%= image_tag("logo_header#{'_' + current_region.to_s if current_region}.png",
-        alt: 'speakerinnen logo', id: "header__logo#{'_' + current_region.to_s if current_region}") %>
-    <% end %>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="fa fa-bars"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active dropdown pt-3 pr-5">
-          <a class="dropdown-toggle dropdown-item" href=<%= about_path %> id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <%= t(:about_speakerinnen_list, scope: 'pages.header') %>
-          </a>
-          <div class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdownMenuLink">
-            <%= render "layouts/header_links#{'_' + current_region.to_s if current_region}" %>
-          </div>
-        </li>
-        <% unless params[:controller] == 'pages' %>
-          <li class="nav-item active pt-2 pr-5 ">
-            <%= form_tag(profiles_path, method: 'get', class: "form-inline text-capitalize small") do %>
-              <%= text_field_tag('search', params[:search], id: 'header_search',class: 'form-control typeahead mr-sm-2',
-                type: 'text', placeholder: t(:search_placeholder, scope: 'pages.home')) %>
-                <%= button_tag "<i class='fa fa-search'></i>".html_safe, class: "btn btn-link" %>
-            <% end %>
+    <div class="container-fluid">
+      <%= link_to(root_path, id: 'header__home-link', class: 'navbar-brand p-0') do %>
+        <%= image_tag("logo_header#{'_' + current_region.to_s if current_region}.png",
+          alt: 'speakerinnen logo', id: "header__logo#{'_' + current_region.to_s if current_region}") %>
+      <% end %>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="fa fa-bars"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active dropdown pt-3 pr-5">
+            <a class="dropdown-toggle dropdown-item px-4" href=<%= about_path %> id="navbarDropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <%= t(:about_speakerinnen_list, scope: 'pages.header') %>
+            </a>
+            <div class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdownMenuLink">
+              <%= render "layouts/header_links#{'_' + current_region.to_s if current_region}" %>
+            </div>
           </li>
-        <% end %>
-      </ul>
-      <ul class="navbar-nav" >
+          <% unless params[:controller] == 'pages' %>
+            <li class="nav-item active pt-2 pr-5 ">
+              <%= form_tag(profiles_path, method: 'get', class: "form-inline text-capitalize small") do %>
+                <%= text_field_tag('search', params[:search], id: 'header_search',class: 'form-control typeahead mr-sm-2',
+                  type: 'text', placeholder: t(:search_placeholder, scope: 'pages.home')) %>
+                  <%= button_tag "<i class='fa fa-search'></i>".html_safe, class: "btn btn-link" %>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+    <div class="container-fluid justify-content-end">
+      <ul class="navbar-nav">
         <li class="nav-item nav active dropdown pt-3">
-            <a class="dropdown-toggle dropdown-item" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="dropdown-toggle dropdown-item px-4" id="navbarDropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <%= I18n.locale == :de ? 'DE' : 'EN' %>
             </a>
             <div class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdownMenuLink">
@@ -40,28 +44,27 @@
             </div>
         </li>
         <% if profile_signed_in? %>
-          <li class="nav-item active pt-3 pr-5">
+          <li class="nav-item active px-4 pt-3">
             <%= link_to(t(:my_profile, scope: 'layouts.application'), profile_path(current_profile), class: "dropdown-item")%>
           </li>
-          <li class="nav-item active pt-3">
+          <li class="nav-item active px-4 pt-3">
             <%= link_to(t(:logout, scope: 'layouts.application'), destroy_profile_session_path, method: :delete, class: "dropdown-item") %>
           </li>
         <% else %>
-          <li class="nav-item active pt-3">
+          <li class="nav-item active px-4 pt-3">
             <%= link_to t(:login, scope: 'layouts.application'), new_profile_session_path, class: "dropdown-item" %>
           </li>
-          <li class="nav-item active pt-3">
+          <li class="nav-item active px-4 pt-3">
             <%= link_to t(:signup, scope: 'layouts.application'), sign_up_path, class: "dropdown-item" %>
           </li>
         <% end %>
 
         <% if admin?(current_profile) %>
-          <li class="nav-item active pt-3 pl-5">
+          <li class="nav-item active px-4">
             <%= link_to 'Admin', admin_root_path, class: "dropdown-item" %>
           </li>
         <% end %>
       </ul>
     </div>
   </nav>
-
 </header>

@@ -33,7 +33,7 @@ gem 'country_select'
 
 gem "mobility"
 
-gem 'bootstrap', '~> 4.6.2'
+gem 'bootstrap', '~> 5.3.3'
 gem 'font-awesome-sass', '~> 6.1'
 gem 'bootstrap-icons-helper'
 
