@@ -106,9 +106,12 @@ RSpec.describe "ContactController", type: :request do
     end
 
     context "cookie consent" do
-      it 'does not show contact button without cookie consent' do
+      it 'shows a hint instead of the contact form without cookie consent' do
         visit profile_path(id: profile.slug)
-        expect(page).not_to have_button(I18n.t('contact.form.send'))
+        expect(page).to have_button(I18n.t('contact.form.send'))
+        within(:css, '.single-profile') do
+          find("button[data-target='#contactHint']", match: :first)
+        end
       end
       it 'shows contact button with cookie consent' do
         visit profile_path(id: profile.slug)
