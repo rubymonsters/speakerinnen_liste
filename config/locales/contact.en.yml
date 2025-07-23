@@ -16,3 +16,16 @@ en:
       notice: "Yay! Your message was sent."
       error: "Please fill all fields so that the speaker can have all the details she needs."
       error_email_for_us: "Please fill all fields."
+  mail:
+    subject: "New request via Speakerinnen.org"
+    sender_subject: "Copy of your message to Speakerinnen.org"
+    footer:
+      about: "About Speakerinnen.org"
+      mission: "Speakerinnen.org is committed to bringing more women and non-binary people on stage!"
+      donate: "If you’d like to support our non-profit work, we appreciate your donation:"
+      social: "Follow us on social media:"
+      instagram: "Instagram: https://www.instagram.com/speakerinnen"
+      bluesky: "Bluesky: https://bsky.app/profile/speakerinnen.bsky.social"
+      linkedin: "LinkedIn: https://www.linkedin.com/company/speakerinnen-org/"
+      legal_title: "Legal notice:"
+      legal_text: "You can find our legal notice here:"

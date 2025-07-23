@@ -25,6 +25,10 @@ FactoryBot.define do
       confirmed_at { nil }
     end
 
+    factory :inactive do
+      inactive { true}
+    end
+
     factory :ada do
       firstname { 'Ada' }
       lastname { 'Lovelace' }

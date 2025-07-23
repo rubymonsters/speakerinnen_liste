@@ -1,17 +1,33 @@
 class NotificationsMailer < ApplicationMailer
   default from: 'team@speakerinnen.org'
-  default to: 'team@speakerinnen.org'
 
-  def new_message(message, to)
+  before_action :set_urls
+
+  # contact_email can be a profile's email or a general team email
+  def contact_message(message, contact_email)
     @message = message
+    mail(
+      to: contact_email,
+      reply_to: @message.email,
+      subject: t("mail.subject"),
+      bcc: 'no-reply@speakerinnen.org'
+    )
+  end
+
+  def copy_to_sender(message, profile_fullname)
+    @message = message
+    @profile_fullname = profile_fullname
+    mail(
+      to: @message.email,
+      reply_to: 'no-reply@speakerinnen.org',
+      subject: t("mail.sender_subject")
+    )
+  end
+
+  private
+
+  def set_urls
     @url = donate_url
-    mail_parameters = { subject: "[Speakerinnen-Liste] #{message.subject}" }
-    if to
-      mail_parameters[:to] = 'no-reply@speakerinnen.org'
-      mail_parameters[:reply_to] = @message.email
-      mail_parameters[:cc] = @message.email
-      mail_parameters[:bcc] = to
-    end
-    mail(mail_parameters)
+    @imprint = impressum_url
   end
 end
