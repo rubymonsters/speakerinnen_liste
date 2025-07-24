@@ -24,6 +24,8 @@ Rails.application.routes.draw do
         end
       end
       resources :categories
+      resources :offensive_terms
+      resources :blocked_emails, only: [:index, :show]
       resources :features do
         member do
           post 'announce_event'

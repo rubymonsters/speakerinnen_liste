@@ -238,6 +238,10 @@ class Seeds
     end
     selected_tags
   end
+
+  ['fuck', 'shit', 'ass', 'nazi'].each do |word|
+    OffensiveTerm.find_or_create_by!(word: word.downcase)
+  end
 end
 
 Seeds.new.run
