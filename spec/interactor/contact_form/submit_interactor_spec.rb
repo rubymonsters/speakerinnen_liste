@@ -17,4 +17,17 @@ RSpec.describe ContactForm::SubmitInteractor do
       expect(result.skip_delivery).to be true
     }.not_to change { ActionMailer::Base.deliveries.count }
   end
+
+  it 'pretends success for messages containing offensive terms without sending mail' do
+    offensive_term = 'fuck'
+    OffensiveTerm.create!(word: offensive_term)
+
+    expect {
+      result = described_class.call(params: valid_params.merge(body: "This is a test message with #{offensive_term}."), profile: nil)
+      expect(result).to be_success
+      expect(result.skip_delivery).to be true
+    }.not_to change { ActionMailer::Base.deliveries.count }
+
+    expect(BlockedEmail.count).to eq(1)
+  end
 end
