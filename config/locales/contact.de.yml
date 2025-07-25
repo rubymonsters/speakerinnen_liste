@@ -17,7 +17,7 @@ de:
       error: "Bitte fülle alle Felder aus, damit die Speakerin alle Informationen bekommt, die sie benötigt."
       error_email_for_us: "Bitte fülle alle Felder aus."
   mail:
-    subject: "Neue Anfrage über Speakerinnen.org"
+    subject: "Neue Anfrage über Speakerinnen.org: %{subject}"
     sender_subject: "Kopie deiner Nachricht an Speakerinnen.org"
     footer:
       about: "Über Speakerinnen.org"
