@@ -20,7 +20,7 @@ class NotificationsMailer < ApplicationMailer
     mail(
       to: @message.email,
       reply_to: 'no-reply@speakerinnen.org',
-      subject: t("mail.sender_subject")
+      subject: t("mail.sender_subject", subject: @message.subject)
     )
   end
 
