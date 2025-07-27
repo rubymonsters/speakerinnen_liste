@@ -18,7 +18,7 @@ de:
       error_email_for_us: "Bitte fülle alle Felder aus."
   mail:
     subject: "Neue Anfrage über Speakerinnen.org: %{subject}"
-    sender_subject: "Kopie deiner Nachricht an Speakerinnen.org"
+    sender_subject: "Bestätigung: Deine Anfrage an %{profile_name}"
     footer:
       about: "Über Speakerinnen.org"
       mission: "Speakerinnen.org möchte mehr Frauen und nicht-binäre Personen auf Bühnen bringen!"
