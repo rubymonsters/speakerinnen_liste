@@ -21,7 +21,7 @@ en:
     form:
       not_saved: "This profile could not be saved: "
       profile_from: "Profile of"
-      delete_image: "<i class='fa fa-trash pr-2'></i>Delete my photo"
+      delete_image: "<i class='fa fa-trash pe-2'></i>Delete my photo"
       update: "Update your profile"
       your_picture: "Picture"
       picture: "A picture of me:"

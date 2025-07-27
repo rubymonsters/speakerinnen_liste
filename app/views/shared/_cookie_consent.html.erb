@@ -5,7 +5,7 @@
       <%= link_to(
         t(:allow_cookies, scope: 'pages.home'),
         url_for(params.permit!.merge(allow_cookies: true)),
-        class: 'float-right btn btn-light btn-sm ml-3 cookie-consent'
+        class: 'float-end btn btn-light btn-sm ms-3 cookie-consent'
       ) %>
     </div>
   </div>

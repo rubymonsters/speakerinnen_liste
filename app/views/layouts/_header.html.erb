@@ -12,7 +12,7 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active dropdown pt-3 pr-5">
+          <li class="nav-item active dropdown pt-3 pe-5">
             <a class="dropdown-toggle dropdown-item px-4" href=<%= about_path %> id="navbarDropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <%= t(:about_speakerinnen_list, scope: 'pages.header') %>
             </a>
@@ -21,9 +21,9 @@
             </div>
           </li>
           <% unless params[:controller] == 'pages' %>
-            <li class="nav-item active pt-2 pr-5 ">
+            <li class="nav-item active pt-2 pe-5 ">
               <%= form_tag(profiles_path, method: 'get', class: "form-inline text-capitalize small") do %>
-                <%= text_field_tag('search', params[:search], id: 'header_search',class: 'form-control typeahead mr-sm-2',
+                <%= text_field_tag('search', params[:search], id: 'header_search',class: 'form-control typeahead me-sm-2',
                   type: 'text', placeholder: t(:search_placeholder, scope: 'pages.home')) %>
                   <%= button_tag "<i class='fa fa-search'></i>".html_safe, class: "btn btn-link" %>
               <% end %>

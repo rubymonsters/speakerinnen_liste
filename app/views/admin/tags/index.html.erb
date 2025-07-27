@@ -1,7 +1,7 @@
 <div class="container pt-5">
   <h1 class="text-center mb-3">Administration::<%= t(:tags, scope: 'admin.tags')%></h1>
 
-  <div class="font-weight-bold text-center border-top pt-3">
+  <div class="fw-bold text-center border-top pt-3">
     <% if @tags_count %>
     <%= t(:tags_here_are, scope: 'admin.tags') + @pagy.count.to_s + t(:tags_of, scope: 'admin.tags') + @tags_count.to_s + ' tags.' %>
     <% else %>

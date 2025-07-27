@@ -37,7 +37,7 @@
     <!-- main topic -->
     <% if @profile.main_topic %>
       <p class="">
-        <span class="font-weight-bold">
+        <span class="fw-bold">
           <%= t(:main_topic, scope: 'profiles.show') %>
         </span>
         <%= @profile.main_topic %>
@@ -46,7 +46,7 @@
       <!-- twitter -->
     <% if @profile.twitter.present? %>
       <p class="">
-        <span class="font-weight-bold">
+        <span class="fw-bold">
           <%= t(:twitter, scope: 'profiles.show') %>
         </span>
         <%=link_to '@' + @profile.twitter_name_formatted, @profile.twitter_link_formatted,
@@ -63,7 +63,7 @@
     <% if translated_websites.any? %>
       <!-- If at least one website is translated, show only translated websites -->
       <p>
-        <span class="font-weight-bold">
+        <span class="fw-bold">
           <%= t(:websites, scope: 'profiles.show') %>
         </span>
         <% translated_websites.each do |website| %>
@@ -75,7 +75,7 @@
       <% fallback_websites = [@profile.website, @profile.website_2, @profile.website_3].compact %>
       <% if fallback_websites.any? %>
         <p>
-          <span class="font-weight-bold">
+          <span class="fw-bold">
             <%= t(:websites, scope: 'profiles.show') %>
           </span>
           <% fallback_websites.each do |website| %>
@@ -126,7 +126,7 @@
     <!-- languages  -->
     <% if @profile.iso_languages.present? %>
       <p>
-        <span class="font-weight-bold">
+        <span class="fw-bold">
           <%= t(:languages, scope: 'profiles.show') %>
         </span>
         <% languages = [] %>
@@ -139,7 +139,7 @@
     <!-- city -->
     <% if @profile.city.present? %>
       <p class="">
-        <span class="font-weight-bold">
+        <span class="fw-bold">
           <%= t(:city, scope: 'profiles.show') %>
         </span>
         <%= @profile.city %>
@@ -148,7 +148,7 @@
     <!-- state  -->
     <% if @profile.state.present? %>
       <p class="">
-        <span class="font-weight-bold">
+        <span class="fw-bold">
           <%= t(:"state.#{@profile.country.downcase}") %>:
         </span>
         <%= t(:"states.#{@profile.country.downcase}.#{@profile.state}") %>
@@ -157,7 +157,7 @@
     <!-- country  -->
     <% if @profile.country.present? %>
       <p class="">
-        <span class="font-weight-bold">
+        <span class="fw-bold">
           <%= t(:country, scope: 'profiles.show') %>
         </span>
         <%= @profile.country_name %>
@@ -166,7 +166,7 @@
     <!-- topics -->
     <% if topics_for_profile(@profile).present? %>
       <p class="">
-        <span class="font-weight-bold">
+        <span class="fw-bold">
           <%= t(:topics, scope: 'profiles.show') %>
         </span>
         <%= raw topics_for_profile(@profile).map { |topic| topic }.join(', ') %>
@@ -175,7 +175,7 @@
     <!-- services  -->
     <% if !@profile.services.empty? %>
       <p class="">
-        <span class="font-weight-bold">
+        <span class="fw-bold">
           <%= t(:services, scope: 'profiles.show') %>
         </span>
         <%= @profile.services.map{|s| t(s.name, scope: 'profiles.show') }.join(', ') %>
@@ -223,7 +223,7 @@
 <% if @profile.personal_note %>
   <div class="row my-3">
     <div class="col-md-12">
-        <span class="font-weight-bold">
+        <span class="fw-bold">
           <%= t(:personal_note, scope: 'profiles.show') %>
         </span>
         <%= simple_format(@profile.personal_note, class: '') %>
@@ -235,7 +235,7 @@
 <% if @profile.bio %>
   <div class="row my-3">
     <div class="col-md-12">
-        <span class="font-weight-bold">
+        <span class="fw-bold">
           <%= t(:bio, scope: 'profiles.show') %>
         </span>
         <%= simple_format(@profile.bio, class: '') %>
@@ -247,7 +247,7 @@
 <% if @medialinks.load.any? %>
   <div class="row">
     <div class="col-md-12">
-      <p class=" font-weight-bold">
+      <p class=" fw-bold">
         <%= t(:media, scope: 'profiles.show') %>
       </p>
     <%= render partial: 'profiles/medialink', collection: @medialinks %>
