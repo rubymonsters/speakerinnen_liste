@@ -145,7 +145,7 @@ When she is not at work she is most likely at her desk drawing something spooky.
     <li><%= link_to "create your own profile", sign_up_path %></li>
     <li>send us an
       <% if cookies[:cookie_consent].blank? %>
-        <button type="button" class="btn btn-link p-0" data-toggle="modal" data-target="#contactHint">
+        <button type="button" class="btn btn-link p-0" data-bs-toggle="modal" data-bs-target="#contactHint">
           <%= "email" %>
         </button>
       <% else %>

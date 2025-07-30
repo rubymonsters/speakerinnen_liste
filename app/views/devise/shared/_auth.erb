@@ -61,14 +61,14 @@
 
           <!-- Make sure cookie consent is given -->
           <% if cookies[:cookie_consent].blank? %>
-            <%= link_to(t(button, scope: "devise.registrations"), "#link", "data-role" => "button", "data-toggle" => "modal", "data-target" => "#authModal", class: 'btn btn-primary mb-3') %>
+            <%= link_to(t(button, scope: "devise.registrations"), "#link", "data-role" => "button", "data-bs-toggle" => "modal", "data-bs-target" => "#authModal", class: 'btn btn-primary mb-3') %>
           <% else %>
             <%= f.submit t(button, scope: "devise.registrations"), class:'btn btn-primary mb-3' %>
           <% end %>
 
           <% if !@signup && devise_mapping.recoverable? && controller_name != 'passwords' %>
             <% if cookies[:cookie_consent].blank? %>
-              <%= link_to(t(:forgot_password, scope: "devise.registrations"), "#link", "data-role" => "button", "data-toggle" => "modal", "data-target" => "#authModal", class: "mb-3" ) %>
+              <%= link_to(t(:forgot_password, scope: "devise.registrations"), "#link", "data-role" => "button", "data-bs-toggle" => "modal", "data-bs-target" => "#authModal", class: "mb-3" ) %>
             <% else %>
               <%= link_to t(:forgot_password, scope: "devise.registrations"), new_password_path(resource_name), class:"mb-3" %>
             <% end %>

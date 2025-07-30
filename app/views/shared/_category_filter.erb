@@ -3,7 +3,7 @@
     <p id="category_explantation" class="py-2 fw-bold"><%= t(:choose_category, scope: 'category') %></p>
     <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
       <% @categories.each do |category| %>
-        <a class="h5 category-link pb-2 <%= "active show" if category.id.to_s == @category.id.to_s %>" id="v-pills-<%= category.short_name %>-tab" data-toggle="pill" href="#v-pills-<%= category.short_name %>" role="tab" aria-controls="v-pills-<%= category.short_name %>" aria-selected="false">
+        <a class="h5 category-link pb-2 <%= "active show" if category.id.to_s == @category.id.to_s %>" id="v-pills-<%= category.short_name %>-tab" data-bs-toggle="pill" href="#v-pills-<%= category.short_name %>" role="tab" aria-controls="v-pills-<%= category.short_name %>" aria-selected="false">
           <i class="fa fa-circle pe-2 small" id="icon-<%= category.short_name%>"></i><%= category.name %>
         </a>
       <% end %>

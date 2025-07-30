@@ -36,7 +36,7 @@
           <li class="d-flex">
         <!-- Make sure cookie consent is given -->
             <% if cookies[:cookie_consent].blank? %>
-              <button type="button" class="btn btn-link px-2 pt-0" data-toggle="modal" data-target="#contactHint">
+              <button type="button" class="btn btn-link px-2 pt-0" data-bs-toggle="modal" data-bs-target="#contactHint">
                 <%= t(:contact, scope: 'pages.footer') %>
               </button>
             <% else %>

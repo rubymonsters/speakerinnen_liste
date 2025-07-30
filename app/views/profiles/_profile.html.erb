@@ -17,8 +17,8 @@
         </p>
         <div
           class="profile-tooltip"
-          data-html="true"
-          data-toggle="<%= tooltip_empty ? "" : "tooltip" %>"
+          data-bs-html="true"
+          data-bs-toggle="<%= tooltip_empty ? "" : "tooltip" %>"
           title="<%= tooltip_empty ? "" : title %>"
         >
           <%= bootstrap_icon "info-circle", width: 30, height: 30, fill: "black" %>
@@ -36,6 +36,6 @@
         <div class="tooltip-inner wide" ></div>\
       </div>\
     '
-    $('[data-toggle="tooltip"]').tooltip({ template: wideTooltipTemplate });
+    $('[data-bs-toggle="tooltip"]').tooltip({ template: wideTooltipTemplate });
   })
 </script>
