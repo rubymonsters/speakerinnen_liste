@@ -99,7 +99,7 @@ de:
       city: "Stadt:"
       country: "Land:"
       twitter: "Twittername:"
-      contact: "Speakerinnen-Anfrage an %{profile}"
+      contact: "%{profile} als Speakerin anfragen"
       no_contact: " möchte derzeit nicht kontaktiert werden."
       email_to: "E-Mail an "
       show: "Anzeigen"
