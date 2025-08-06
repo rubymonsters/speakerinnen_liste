@@ -80,7 +80,7 @@ RSpec.describe 'Navigation', type: :system do
           expect(page).to have_text(ada.iso_languages.first)
           expect(page).to have_text('London')
           # contact
-          expect(page).to have_button I18n.t(:contact, scope: 'profiles.show')
+          expect(page).to have_button I18n.t(:contact, scope: 'profiles.show', profile: ada.fullname)
           expect(page).to_not have_link I18n.t(:edit, scope: 'profiles.show')
         end
       end
