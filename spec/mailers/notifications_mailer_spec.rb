@@ -31,7 +31,7 @@ RSpec.describe NotificationsMailer, type: :mailer do
       it 'sends a message to the speakerin in English' do
         I18n.locale = :en
         mail = NotificationsMailer.contact_message(message, "speakerin@example.org")
-        expect(mail.subject).to eq("New request via Speakerinnen.org")
+        expect(mail.subject).to eq("New request via Speakerinnen.org: #{message.subject}")
         expect(mail.from).to eq(["team@speakerinnen.org"])
         expect(mail.to).to eq(["speakerin@example.org"])
         expect(mail.reply_to).to eq(["radio@example.org"])
