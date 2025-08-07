@@ -19,11 +19,11 @@ describe 'Changing the language' do
 
   it 'stays on profile page' do
     visit profile_path(id: ada.id)
-    expect(page).to have_content('Contact Ada')
+    expect(page).to have_content('Request Ada Lovelace as a Speaker')
 
     click_on(class: 'choose-de')
 
-    expect(page).to have_content('Kontaktiere Ada')
+    expect(page).to have_content('Ada Lovelace als Speakerin anfragen')
   end
 
   it 'keeps search results' do
