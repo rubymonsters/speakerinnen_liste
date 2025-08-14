@@ -296,17 +296,21 @@ textarea, input {
   text-decoration: underline;
 }
 
-.card-header.hover-activated {
-  .btn-link {
+.accordion-item {
+  .accordion-button {
     color: $font-color;
     text-decoration: none;
+
+    &:not(.collapsed) {
+      background-color: white;
+    }
   }
 }
 
-.card-header.hover-activated:hover {
+.accordion-item:hover {
   border-bottom-color: $primary;
 
-  .btn-link {
+  .accordion-button {
     color: $primary;
   }
 }
