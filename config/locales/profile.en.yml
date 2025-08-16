@@ -168,8 +168,7 @@ en:
     picture_too_big: " is too big. You cannot upload a file greater than 1MB."
   category:
     title: "Look through all the speakerinnen of the category <b>%{category_name}</b> <i class='fa fa-caret-right' style='font-size: 21px'></i>"
-    filter: "Choose one or more topics from any category:"
-    choose_all_button: "Choose all topics from %{category_name}"
+    filter: "Choose one or more topics from the category: %{category_name}"
     choose_category: "Choose a category:"
     clear_link: "X Clear all"
     choose_button: "Speakers with these topics"
