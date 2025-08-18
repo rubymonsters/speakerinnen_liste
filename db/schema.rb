@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_03_01_195244) do
+ActiveRecord::Schema[7.1].define(version: 2025_07_24_185852) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -45,6 +45,15 @@ ActiveRecord::Schema[7.1].define(version: 2025_03_01_195244) do
   create_table "api_tokens", id: :serial, force: :cascade do |t|
     t.string "name"
     t.string "token"
+  end
+
+  create_table "blocked_emails", force: :cascade do |t|
+    t.string "email"
+    t.string "subject"
+    t.text "body"
+    t.string "reason"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "blog_posts", id: :serial, force: :cascade do |t|
@@ -135,6 +144,12 @@ ActiveRecord::Schema[7.1].define(version: 2025_03_01_195244) do
     t.integer "position"
     t.string "language"
     t.index ["profile_id"], name: "index_medialinks_on_profile_id"
+  end
+
+  create_table "offensive_terms", force: :cascade do |t|
+    t.string "word"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "profile_translations", force: :cascade do |t|

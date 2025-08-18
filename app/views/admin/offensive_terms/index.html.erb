@@ -1,0 +1,23 @@
+<h1>Forbidden Words</h1>
+
+<%= link_to 'Add New Word', new_admin_offensive_term_path, class: 'button' %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Word</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @offensive_terms.each do |offensive_term| %>
+      <tr>
+        <td><%= offensive_term.word %></td>
+        <td>
+          <%= link_to 'Edit', edit_admin_offensive_term_path(offensive_term) %> |
+          <%= link_to 'Delete', admin_offensive_term_path(offensive_term), method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
