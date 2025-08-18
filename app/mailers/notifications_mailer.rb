@@ -9,7 +9,7 @@ class NotificationsMailer < ApplicationMailer
     mail(
       to: contact_email,
       reply_to: @message.email,
-      subject: t("mail.subject"),
+      subject: t("mail.subject", subject: @message.subject),
       bcc: 'no-reply@speakerinnen.org'
     )
   end
@@ -20,7 +20,7 @@ class NotificationsMailer < ApplicationMailer
     mail(
       to: @message.email,
       reply_to: 'no-reply@speakerinnen.org',
-      subject: t("mail.sender_subject")
+      subject: t("mail.sender_subject", profile_name: @profile_fullname)
     )
   end
 
