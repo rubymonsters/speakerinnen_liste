@@ -346,7 +346,7 @@ GEM
     rack-attack (6.7.0)
       rack (>= 1.0, < 4)
     rack-piwik (0.3.0)
-    rack-session (2.1.0)
+    rack-session (2.1.1)
       base64 (>= 0.1.0)
       rack (>= 3.0.0)
     rack-test (2.2.0)
