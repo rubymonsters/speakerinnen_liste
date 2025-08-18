@@ -39,8 +39,8 @@
     </div>
     <%= f.hidden_field :state, value: nil %>
     <% t(:states).each do |key, value| %>
-      <div id="profile_states_group-<%= key %>" class="form-group profile_states_group" <%= 'style="display: none;"'.html_safe if key.to_s != @profile.country&.downcase %>>
-        <label class="form-label" for="profile_states-<%= key %>">
+      <div id="profile_states_group-<%= key %>" class="mb-3 profile_states_group" <%= 'style="display: none;"'.html_safe if key.to_s != @profile.country&.downcase %>>
+        <label class="form-label mb-2" for="profile_states-<%= key %>">
           <%= t(:"state.#{key}") %>:
         </label>
         <select class="form-control" id="profile_states-<%= key %>">

@@ -12,29 +12,29 @@
 
   <div class="row mb-5">
     <div class="col-12 p-3 bg--white">
-      <div id="edit-de" class="form-group <%= "d-none" unless I18n.locale == :de %>" >
-        <%= f.label :title, t(:title, scope: 'admin.features').html_safe, id: "title_de" %>
+      <div id="edit-de" class="mb-3 <%= "d-none" unless I18n.locale == :de %>" >
+        <%= f.label :title, t(:title, scope: 'admin.features').html_safe, id: "title_de", class: "mb-2" %>
         <%= f.text_field :title_de, as: :text, class: "form-control mb-3" %>
 
-        <%= f.label :description, t(:description, scope: 'admin.features'), id: "description_de" %>
+        <%= f.label :description, t(:description, scope: 'admin.features'), id: "description_de", class: "mb-2" %>
         <%= f.text_area :description_de, as: :text, class: "form-control mb-3"%>
       </div>
 
-      <div id="edit-en" class="form-group <%= "d-none" unless I18n.locale == :en %>" >
-        <%= f.label :title, t(:title, scope: 'admin.features'), id: "title_en" %>
+      <div id="edit-en" class="mb-3 <%= "d-none" unless I18n.locale == :en %>" >
+        <%= f.label :title, t(:title, scope: 'admin.features'), id: "title_en", class: "mb-2" %>
         <%= f.text_field :title_en, as: :text, class: "form-control mb-3" %>
 
-        <%= f.label :description, t(:description, scope: 'admin.features'), id: "description_en" %>
+        <%= f.label :description, t(:description, scope: 'admin.features'), id: "description_en", class: "mb-2" %>
         <%= f.text_area :description_en, as: :text, class: "form-control mb-3" %>
       </div>
 
-      <div class="form-group">
-        <%= f.label t(:position, scope: 'admin.features').html_safe %>
+      <div class="mb-3">
+        <%= f.label t(:position, scope: 'admin.features').html_safe, class: "mb-2" %>
         <%= f.text_field :position, class: "form-control mb-3" %>
       </div>
 
-      <div class="form-group">
-        <%= f.label t(:profiles, scope: 'admin.features').html_safe %>
+      <div class="mb-3">
+        <%= f.label t(:profiles, scope: 'admin.features').html_safe, class: "mb-2" %>
         <%= f.select(:profile_ids, Profile.all.map{|p|[p.fullname, p.id]}, { include_blank: true }, :multiple => true, id: :select_profile, class: 'form-control select_profile') %>
       </div>
 
