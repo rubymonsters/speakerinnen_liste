@@ -14,7 +14,7 @@ module ContactForm
           log_blocked_message(message)
         else
           send_contact_email(message, context.profile)
-          NotificationsMailer.copy_to_sender(message, context.profile.fullname).deliver if context.profile.present?
+          NotificationsMailer.copy_to_sender(message, context.profile.fullname).deliver_now if context.profile.present?
         end
       else
         context.message = message
@@ -34,7 +34,7 @@ module ContactForm
 
     def send_contact_email(message, profile)
       recipient_email = profile&.email || 'team@speakerinnen.org'
-      NotificationsMailer.contact_message(message, recipient_email).deliver
+      NotificationsMailer.contact_message(message, recipient_email).deliver_now
     end
 
     def log_blocked_message(message)
