@@ -100,7 +100,7 @@ en:
       country: "Country:"
       twitter: "Twitter handle:"
       website: "Website/Blog/Social Media:"
-      contact: "Contact"
+      contact: "Request %{profile} as a Speaker"
       no_contact: " does not wish to be contacted at the moment."
       email_to: "Email to "
       show: "Show"
