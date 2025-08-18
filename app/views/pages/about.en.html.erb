@@ -1,4 +1,4 @@
-<div class="container bg--white pb-5">
+<div class="container bg--white pb-5 underline_links">
   <h1 class="display-4 py-5">About us</h1>
 
   <h4>Our aim:</h4>
@@ -140,7 +140,7 @@ When she is not at work she is most likely at her desk drawing something spooky.
 
   <h4 class="mt-5">How can you support us:</h4>
   There are lots of ways in which you can support the speakerinnen.org project:
-  <ul style="list-style-type:  '*'; padding: 10px;">
+  <ul style="list-style-type: disc; padding-top: 10px;">
     <li>tell other women about it</li>
     <li><%= link_to "create your own profile", sign_up_path %></li>
     <li>send us an
@@ -156,4 +156,17 @@ When she is not at work she is most likely at her desk drawing something spooky.
     <li>build with us! If you're good at web design or programming, help us  complete the ongoing issues. There's a list <a href="https://github.com/rubymonsters/speakerinnen_liste/issues/216" target="_blank">here.</a></li>
     <li><a href="faq#donate_anker">donate to support our work!</a></li>
   </ul>
+  
+  <h4 class="mt-5">Your message to us:</h4>
+  <p>
+    Do you have a question or idea? Send us an email - we'll reply as quickly as possible.
+  </p>
+  <!-- Make sure cookie consent is given -->
+  <% if cookies[:cookie_consent].blank? %>
+    <button type="button" class="btn btn-link px-2 pt-0" data-toggle="modal" data-target="#contactHint">
+      <%= t(:contact, scope: 'pages.footer') %>
+    </button>
+  <% else %>
+    <i class="fas fa-envelope"></i><%= link_to t(:contact, scope: 'pages.footer'), contact_path %>
+  <% end %>
 </div>
