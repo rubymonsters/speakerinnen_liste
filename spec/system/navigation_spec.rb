@@ -45,11 +45,11 @@ RSpec.describe 'Navigation', type: :system do
           expect(page).to have_link('Instagram')
           expect(page).to have_link('Bluesky')
           expect(page).to have_link('LinkedIn')
-          expect(page).to have_link(I18n.t(:contact, scope: 'pages.footer'))
           expect(page).to have_link(I18n.t(:about, scope: 'pages.home'))
         end
 
         it 'viewing the contact page' do
+          all(:link, I18n.t(:about, scope: 'pages.home')).last.click
           click_link I18n.t(:contact, scope: 'pages.footer')
           expect(page).to have_css('form label', text: I18n.t(:name, scope: 'contact.form'))
           expect(page).to have_css('form label', text: I18n.t(:email, scope: 'contact.form'))
