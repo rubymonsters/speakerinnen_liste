@@ -10,7 +10,7 @@
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="fa fa-bars"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <div class="collapse navbar-collapse d-lg-flex justify-content-between" id="navbarNavDropdown">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active dropdown pt-3 pe-5">
             <a class="dropdown-toggle dropdown-item px-4" href=<%= about_path %> id="navbarDropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -30,41 +30,39 @@
             </li>
           <% end %>
         </ul>
-      </div>
-    </div>
-    <div class="container-fluid justify-content-end">
-      <ul class="navbar-nav">
-        <li class="nav-item nav active dropdown pt-3">
-            <a class="dropdown-toggle dropdown-item px-4" id="navbarDropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <%= I18n.locale == :de ? 'DE' : 'EN' %>
-            </a>
-            <div class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdownMenuLink">
-            <%= I18n.locale == :de ? link_to('EN', params.to_unsafe_h.merge(:locale => :en), class: "choose-en dropdown-item") :
-              (link_to 'DE', params.to_unsafe_h.merge(:locale => :de), class: "choose-de dropdown-item") %>
-            </div>
-        </li>
-        <% if profile_signed_in? %>
-          <li class="nav-item active px-4 pt-3">
-            <%= link_to(t(:my_profile, scope: 'layouts.application'), profile_path(current_profile), class: "dropdown-item")%>
+        <ul class="navbar-nav">
+          <li class="nav-item nav active dropdown pt-3">
+              <a class="dropdown-toggle dropdown-item px-4" id="navbarDropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <%= I18n.locale == :de ? 'DE' : 'EN' %>
+              </a>
+              <div class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdownMenuLink">
+              <%= I18n.locale == :de ? link_to('EN', params.to_unsafe_h.merge(:locale => :en), class: "choose-en dropdown-item") :
+                (link_to 'DE', params.to_unsafe_h.merge(:locale => :de), class: "choose-de dropdown-item") %>
+              </div>
           </li>
-          <li class="nav-item active px-4 pt-3">
-            <%= link_to(t(:logout, scope: 'layouts.application'), destroy_profile_session_path, method: :delete, class: "dropdown-item") %>
-          </li>
-        <% else %>
-          <li class="nav-item active px-4 pt-3">
-            <%= link_to t(:login, scope: 'layouts.application'), new_profile_session_path, class: "dropdown-item" %>
-          </li>
-          <li class="nav-item active px-4 pt-3">
-            <%= link_to t(:signup, scope: 'layouts.application'), sign_up_path, class: "dropdown-item" %>
-          </li>
-        <% end %>
+          <% if profile_signed_in? %>
+            <li class="nav-item active px-4 pt-3">
+              <%= link_to(t(:my_profile, scope: 'layouts.application'), profile_path(current_profile), class: "dropdown-item")%>
+            </li>
+            <li class="nav-item active px-4 pt-3">
+              <%= link_to(t(:logout, scope: 'layouts.application'), destroy_profile_session_path, method: :delete, class: "dropdown-item") %>
+            </li>
+          <% else %>
+            <li class="nav-item active px-4 pt-3">
+              <%= link_to t(:login, scope: 'layouts.application'), new_profile_session_path, class: "dropdown-item" %>
+            </li>
+            <li class="nav-item active px-4 pt-3">
+              <%= link_to t(:signup, scope: 'layouts.application'), sign_up_path, class: "dropdown-item" %>
+            </li>
+          <% end %>
 
-        <% if admin?(current_profile) %>
-          <li class="nav-item active px-4 pt-3">
-            <%= link_to 'Admin', admin_root_path, class: "dropdown-item" %>
-          </li>
-        <% end %>
-      </ul>
+          <% if admin?(current_profile) %>
+            <li class="nav-item active px-4 pt-3">
+              <%= link_to 'Admin', admin_root_path, class: "dropdown-item" %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
     </div>
   </nav>
 </header>
