@@ -22,7 +22,7 @@
           </li>
           <% unless params[:controller] == 'pages' %>
             <li class="nav-item active pt-2 pe-5 ">
-              <%= form_tag(profiles_path, method: 'get', class: "form-inline text-capitalize small") do %>
+              <%= form_tag(profiles_path, method: 'get', class: "text-capitalize small") do %>
                 <%= text_field_tag('search', params[:search], id: 'header_search',class: 'form-control typeahead me-sm-2',
                   type: 'text', placeholder: t(:search_placeholder, scope: 'pages.home')) %>
                   <%= button_tag "<i class='fa fa-search'></i>".html_safe, class: "btn btn-link" %>
