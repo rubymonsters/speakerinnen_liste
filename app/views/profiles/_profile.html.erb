@@ -18,8 +18,8 @@
         <div
           class="profile-tooltip"
           data-bs-html="true"
-          data-bs-toggle="<%= tooltip_empty ? "" : "tooltip" %>"
-          title="<%= tooltip_empty ? "" : title %>"
+          data-bs-toggle="<%= tooltip_empty ? '' : 'tooltip' %>"
+          title="<%= tooltip_empty ? '' : title %>"
         >
           <%= bootstrap_icon "info-circle", width: 30, height: 30, fill: "black" %>
         </div>
@@ -29,13 +29,8 @@
 <% end %>
 
 <script type="text/javascript" charset="utf-8">
-  $(function () {
-    var wideTooltipTemplate = '\
-      <div class="tooltip" role="tooltip">\
-        <div class="arrow" ></div>\
-        <div class="tooltip-inner wide" ></div>\
-      </div>\
-    '
-    $('[data-bs-toggle="tooltip"]').tooltip({ template: wideTooltipTemplate });
+  var tooltipTriggerList = [].slice.call(document.querySelectorAll('[class="profile-tooltip"]'))
+  var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+    return new bootstrap.Tooltip(tooltipTriggerEl)
   })
 </script>
