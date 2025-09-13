@@ -325,19 +325,6 @@ textarea, input {
   display: block !important;
 }
 
-.home-search {
-  .btn-primary {
-    width: 100%;
-  }
-  div {
-    width: 100%;
-
-    @media (min-width: 576px) {
-      width: auto;
-    }
-  }
-}
-
 .startpage-subtitle {
   padding: 0em;
 }
