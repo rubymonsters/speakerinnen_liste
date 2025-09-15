@@ -53,6 +53,12 @@ $header_nums: 0, 1, 2, 3, 4;
   }
 }
 
+.underline_links {
+  a {
+    text-decoration: underline;
+  }
+}
+
 .layer {
   background: linear-gradient(181.86deg, rgba(255, 255, 255, 0) 54.36%, #FFFFFF 97.39%), rgba(255, 255, 255, 0.4);
   position: absolute;
