@@ -25,7 +25,11 @@ Rails.application.routes.draw do
       end
       resources :categories
       resources :offensive_terms
-      resources :blocked_emails, only: [:index, :show]
+      resources :blocked_emails, only: [:index, :show] do
+        member do
+          post :send_email   # send a single blocked email
+        end
+      end
       resources :features do
         member do
           post 'announce_event'
