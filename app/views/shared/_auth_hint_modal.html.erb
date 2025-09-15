@@ -2,9 +2,7 @@
 <div class="modal fade" id="authModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <button type="button" class="close text-right pr-2 pt-2" data-dismiss="modal" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
+      <button type="button" class="btn-close text-end pe-2 pt-2" data-bs-dismiss="modal" aria-label="Close"></button>
       <div class="modal-body">
         <p><%= t(:auth_modal, scope: 'pages.home', link: privacy_path).html_safe %>
         <%= link_to(

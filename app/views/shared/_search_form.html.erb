@@ -1,10 +1,10 @@
-  <%= form_tag(profiles_path, method: 'get', class:"row no-gutters home-search") do %>
+  <%= form_tag(profiles_path, method: 'get', class:"row g-0 home-search") do %>
     <div class="col-sm-3">
-      <label class="sr-only" for="inlineFormInputSearch"><%=t(:search_placeholder, scope: 'pages.home')%></label>
-      <%= search_field_tag('search', params[:search], id: "home_search", class: 'form-control typeahead ',
+      <label class="visually-hidden" title="Searchfield" for="inlineFormInputSearch"><%=t(:search_placeholder, scope: 'pages.home')%></label>
+      <%= search_field_tag('search', params[:search], id: "home_search", class: 'form-control typeahead',
             type: 'text', placeholder: t(:search_placeholder, scope: 'pages.home')) %>
     </div>
-    <div class="col-s-4 col-lm-2">
+    <div class="col-sm-6 col-lm-2">
       <button type="submit" class="btn btn-primary">
         <i class="fa fa-search"></i>
         <%=t(:"search_speaker#{'_' + current_region.to_s if current_region}", scope: 'pages.home')%>

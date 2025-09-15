@@ -8,12 +8,13 @@
       <div class="mt-5">
         <%= f.label "name_#{locale}", t(:new_name,
           scope: 'admin.categories',
-          language: t(locale, scope: 'i18n.language')).html_safe %>
+          language: t(locale, scope: 'i18n.language')).html_safe,
+          class: "mb-2" %>
         <%= f.text_field "name_#{locale}", value:  Mobility.with_locale(locale) { @category.name }, class: 'form-control' %>
       </div>
     <% end %>
 
-    <%= f.input :position, as: :integer, label: "Position:", label_html: { class: "mt-5"}, input_html: { class: 'form-control mb-3' }  %>
+    <%= f.input :position, as: :integer, label: "Position:", label_html: { class: "mt-5 mb-2"}, input_html: { class: 'form-control mb-3' }  %>
 
     <%= f.button :submit, t(:save, scope: 'general'), class: 'btn btn-primary btn-sm my-3' %>
 

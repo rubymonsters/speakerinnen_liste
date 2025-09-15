@@ -1,17 +1,17 @@
 <div class="row">
   <div class="col-md-4">
-    <p id="category_explantation" class="py-2 font-weight-bold"><%= t(:choose_category, scope: 'category') %></p>
+    <p id="category_explantation" class="py-2 fw-bold"><%= t(:choose_category, scope: 'category') %></p>
     <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
       <% @categories.each do |category| %>
-        <a class="h5 category-link pb-2 <%= "active show" if category.id.to_s == @category.id.to_s %>" id="v-pills-<%= category.short_name %>-tab" data-toggle="pill" href="#v-pills-<%= category.short_name %>" role="tab" aria-controls="v-pills-<%= category.short_name %>" aria-selected="false">
-          <i class="fa fa-circle pr-2 small" id="icon-<%= category.short_name%>"></i><%= category.name %>
+        <a class="h5 category-link pb-2 <%= "active show" if category.id.to_s == @category.id.to_s %>" id="v-pills-<%= category.short_name %>-tab" data-bs-toggle="pill" href="#v-pills-<%= category.short_name %>" role="tab" aria-controls="v-pills-<%= category.short_name %>" aria-selected="false">
+          <i class="fa fa-circle pe-2 small" id="icon-<%= category.short_name%>"></i><%= category.name %>
         </a>
       <% end %>
     </div>
   </div>
 
   <div class="col-md-8">
-    <p id="tags_explantation" class="py-2 font-weight-bold <%= "d-none" unless params[:category_id] %>"><%= t(:filter, scope: 'category') %></p>
+    <p id="tags_explantation" class="py-2 fw-bold <%= "d-none" unless params[:category_id] %>"><%= t(:filter, scope: 'category') %></p>
     <% @categories.each do |category| %>
         <span id="<%= category.short_name %>" class="btn btn-primary choose_all_tags mb-2 category-search category-search-<%= category.short_name %> <%= "d-none" unless category.id.to_s ==  params[:category_id] %> ">
           <%= t(:choose_all_button, scope: 'category', category_name: category.name ).html_safe %>
@@ -28,7 +28,7 @@
     </div>
     <div id="selected-tags-box" class="my-3">
     </div>
-    <div class="form-group text-right">
+    <div class="mb-3 text-end">
       <%= form_tag("/profiles#speakers_anchor", method: "get") do %>
         <%= text_field_tag :tag_filter, params[:tag_filter], id: "hidden_tag_input", class: "form-control d-none" %>
         <span class="btn text-primary btn-link" id="clear"><%= t(:clear_link, scope: 'category') %></span>
@@ -55,7 +55,7 @@
 
   // move tags from tagbox to the selecetd tag box and set the css class to disabled in the tagbox
   $( "#available-tags-box .available-tag" ).click(function() {
-    $(this).clone().appendTo( "#selected-tags-box" ).append("<i class='pl-2 fa fa-times-circle'></i>").removeClass("available-tag").addClass("selected-tag");
+    $(this).clone().appendTo( "#selected-tags-box" ).append("<i class='ps-2 fa fa-times-circle'></i>").removeClass("available-tag").addClass("selected-tag");
     $(this).addClass( "disabled no-click" );
     $(this).removeClass( "enabled" );
     var category = $(this).attr('class').split(' ')[0];
@@ -97,7 +97,7 @@
   // choose all tags from a category
   $( ".choose_all_tags" ).click(function() {
     var category = $(this).attr('id');
-    $("#available-tags-box .enabled.category_" + category).clone().appendTo( "#selected-tags-box" ).append("<i class='pl-2 fa fa-times-circle'></i>").removeClass("available-tag").addClass("selected-tag");
+    $("#available-tags-box .enabled.category_" + category).clone().appendTo( "#selected-tags-box" ).append("<i class='ps-2 fa fa-times-circle'></i>").removeClass("available-tag").addClass("selected-tag");
     $("#available-tags-box .category_" + category).addClass( "disabled no-click" );
     $("#available-tags-box .category_" + category).removeClass( "enabled" );
   });
@@ -106,7 +106,7 @@
   $(document).ready(function() {
     <% if params[:tag_filter] %>
       <% params[:tag_filter].gsub(' ','-').split(",").each do |tag_name| %>
-        $("#<%= tag_name %>").clone().appendTo($( "#selected-tags-box" )).append($("<i class='pl-2 fa fa-times-circle'></i>")).removeClass("available-tag").addClass("selected-tag");
+        $("#<%= tag_name %>").clone().appendTo($( "#selected-tags-box" )).append($("<i class='ps-2 fa fa-times-circle'></i>")).removeClass("available-tag").addClass("selected-tag");
         $("#<%= tag_name %>.available-tag").addClass( "disabled no-click" );
       <% end %>
     <% end %>

@@ -77,13 +77,13 @@ describe 'profile search' do
       it 'shows a tooltip when profile has data' do
         visit profiles_path(search: 'Marie')
 
-        expect(page).to have_selector('[data-toggle="tooltip"]')
+        expect(page).to have_selector('[data-bs-toggle="tooltip"]')
       end
 
       it 'shows no tooltip when profile has no data' do
         visit profiles_path(search: 'Phantom')
 
-        expect(page).to have_no_selector('[data-toggle="tooltip"]')
+        expect(page).to have_no_selector('[data-bs-toggle="tooltip"]')
       end
 
       it 'displays correct data in aggregated filters' do

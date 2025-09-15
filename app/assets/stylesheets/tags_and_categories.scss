@@ -1,6 +1,6 @@
 /* Tag Backgrounds all colors*/
 .bg-arts { background-color: $arts_sec; }
-.bg-body { background-color: $body_sec; }
+.bg-soul { background-color: $soul_sec; }
 .bg-career { background-color: $career_sec; }
 .bg-companies { background-color: $companies_sec; }
 .bg-diversity { background-color: $diversity_sec; }
@@ -12,7 +12,7 @@
 
 /* Tag icon Backgrounds all colors*/
 .bg-icon-arts { background-color: $arts; }
-.bg-icon-body { background-color: $body; }
+.bg-icon-soul { background-color: $soul; }
 .bg-icon-career { background-color: $career; }
 .bg-icon-companies { background-color: $companies; }
 .bg-icon-diversity { background-color: $diversity; }
@@ -100,7 +100,7 @@ $categories_dark_color: (
 
 $categories_bright_color: (
   arts: $arts,
-  body: $body,
+  soul: $soul,
   career: $career,
   companies: $companies,
   diversity: $diversity,
@@ -140,7 +140,7 @@ $categories_bright_color: (
 // custom colors
 $all_categories_custom_color: (
   arts: $arts,
-  body: $body,
+  soul: $soul,
   career: $career,
   companies: $companies,
   diversity: $diversity,
@@ -175,7 +175,7 @@ $all_categories_custom_color: (
 // all categories brighter colors
 $all_categories_brighter_color: (
   arts: $arts_sec,
-  body: $body_sec,
+  soul: $soul_sec,
   career: $career_sec,
   companies: $companies_sec,
   diversity: $diversity_sec,
@@ -195,7 +195,7 @@ $all_categories_brighter_color: (
 // all categories darker colors
 $all_categories_darker_color: (
   arts: $arts,
-  body: $body,
+  soul: $soul,
   career: $career,
   companies: $companies,
   diversity: $diversity,

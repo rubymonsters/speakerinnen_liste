@@ -8,28 +8,28 @@
 
       <div id='login'>
         <%= form_for(Profile.new) do |f| %>
-          <div class='control-group'>
-            <div class='controls'>
+          <div>
+            <div>
               <%= f.email_field :email, autofocus: true, class:'input-xlarge', placeholder: 'Email' %>
             </div>
           </div>
 
           <% if f.object.password_required? %>
-            <div class='control-group'>
-              <div class='controls'>
+            <div>
+              <div>
                 <%= f.password_field :password, class:'input-xlarge',
                 placeholder: t(:password, scope: 'devise.registrations.new') %>
               </div>
             </div>
 
-            <div class='control-group'>
-              <div class='controls'>
+            <div>
+              <div>
                 <%= f.password_field :password_confirmation, class:'input-xlarge',
                 placeholder: 'Password Confirmation' %>
               </div>
             </div>
 
-            <div class='control-group'>
+            <div>
               <%= f.submit('Sign up', class: 'btn')%>
             </div>
 

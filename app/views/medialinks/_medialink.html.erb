@@ -1,4 +1,4 @@
-<%= content_tag_for(:li, medialink, nil, {'title' => t(:tooltip, scope: 'medialinks')}) do %>
+<%= content_tag_for(:li, medialink, nil, {class:"medialink-tooltip", 'data-bs-toggle': "tooltip", 'title' => t(:tooltip, scope: 'medialinks')}) do %>
   <b style="text-decoration: underline">
     <%= link_to medialink.title, url_with_protocol(medialink.url) %>
   </b><br>

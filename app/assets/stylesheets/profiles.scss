@@ -58,6 +58,15 @@
   width: 100%;
 }
 
+.nav-link {
+  color: $dark-grey;
+
+  &:hover {
+    color: $speakerinnen-green;
+    background: none;
+  }
+}
+
 .nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link.active {
   background: $light-grey;
 }
