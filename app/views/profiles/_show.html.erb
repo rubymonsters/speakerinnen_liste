@@ -12,7 +12,7 @@
         data-bs-target=<%= cookies[:cookie_consent].blank? ? "#contactHint" : "#contactModal" %>
         <%= disable_contact_button(@profile) %> >
           <i class="fa fa-envelope-o"></i>&nbsp;
-          <%= t(:contact, scope: 'profiles.show') + ' ' + @profile.fullname %>
+          <%= t(:contact, scope: 'profiles.show', profile: @profile.fullname) %>
         </button>
       <% end %>
     <% end %>
@@ -267,7 +267,7 @@
         data-bs-target=<%= cookies[:cookie_consent].blank? ? "#contactHint" : "#contactModal" %>
         <%= disable_contact_button(@profile) %> >
           <i class="fa fa-envelope-o"></i>&nbsp;
-          <%= t(:contact, scope: 'profiles.show') + ' ' + @profile.fullname %>
+          <%= t(:contact, scope: 'profiles.show', profile: @profile.fullname) %>
         </button>
       <% end %>
     <% end %>

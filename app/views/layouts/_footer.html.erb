@@ -34,16 +34,6 @@
       <div class="col-12 col-md-2">
         <ul class="list-unstyled">
           <li class="d-flex">
-        <!-- Make sure cookie consent is given -->
-            <% if cookies[:cookie_consent].blank? %>
-              <button type="button" class="btn btn-link px-2 pt-0" data-bs-toggle="modal" data-bs-target="#contactHint">
-                <%= t(:contact, scope: 'pages.footer') %>
-              </button>
-            <% else %>
-              <%= link_to t(:contact, scope: 'pages.footer'), contact_path, class: "" %>
-            <% end %>
-          </li>
-          <li class="d-flex">
             <%= link_to t(:imprint, scope: 'pages.footer'), impressum_path, class: ""%>
           </li>
           <li class="d-flex">
