@@ -40,6 +40,8 @@ module ContactForm
     def log_blocked_message(message)
       Rails.logger.warn("Blocked message from: #{message.email}, subject: #{message.subject}")
       BlockedEmail.create!(
+        message: message,
+        firstname: message.firstname,
         email: message.email,
         subject: message.subject,
         body: message.body,
