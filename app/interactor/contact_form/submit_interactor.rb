@@ -8,12 +8,13 @@ module ContactForm
       message = Message.new(context.params)
 
       if message.valid?
-        if spam_email?(message.email)
+        if spam_email?(message.email) || contains_exactly_forbidden_terms?(message)
           # Pretend success but don't send emails
           context.skip_delivery = true
+          log_blocked_message(message)
         else
           send_contact_email(message, context.profile)
-          NotificationsMailer.copy_to_sender(message, context.profile.fullname).deliver if context.profile.present?
+          NotificationsMailer.copy_to_sender(message, context.profile.fullname).deliver_now if context.profile.present?
         end
       else
         context.message = message
@@ -33,7 +34,28 @@ module ContactForm
 
     def send_contact_email(message, profile)
       recipient_email = profile&.email || 'team@speakerinnen.org'
-      NotificationsMailer.contact_message(message, recipient_email).deliver
+      NotificationsMailer.contact_message(message, recipient_email).deliver_now
+    end
+
+    def log_blocked_message(message)
+      Rails.logger.warn("Blocked message from: #{message.email}, subject: #{message.subject}")
+      BlockedEmail.create!(
+        message: message,
+        firstname: message.firstname,
+        email: message.email,
+        subject: message.subject,
+        body: message.body,
+        reason: 'Offensive content'
+      )
+    end
+
+    def contains_exactly_forbidden_terms?(message)
+      text = message.body.downcase
+
+      OffensiveTerm.pluck(:word).any? do |term|
+        pattern = /\b#{Regexp.escape(term.downcase)}\b/
+        text.match?(pattern)
+      end
     end
 
     def error_message(profile)

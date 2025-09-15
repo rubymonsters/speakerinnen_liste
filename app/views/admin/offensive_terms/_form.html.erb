@@ -1,0 +1,21 @@
+<%= form_with(model: [:admin, @offensive_term]) do |form| %>
+  <% if @offensive_term.errors.any? %>
+    <div class="errors">
+      <h2><%= pluralize(@offensive_term.errors.count, "error") %> prohibited this word from being saved:</h2>
+      <ul>
+        <% @offensive_term.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :word %><br>
+    <%= form.text_field :word %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
