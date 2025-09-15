@@ -60,7 +60,7 @@
           </td>
           <td><center><%= link_to '<i class="fa fa-pencil">&nbsp;</i>'.html_safe, edit_admin_profile_path(profile),
               html_options = { title: t(:edit, scope: 'general') } %></center></td>
-          <td><center><%= link_to '<i class="fa fa-trash-o">&nbsp;</i>'.html_safe, admin_profile_path(profile),
+          <td><center><%= link_to '<i class="fa fa-trash">&nbsp;</i>'.html_safe, admin_profile_path(profile),
               method: :delete, data: { confirm: 'Are you sure?' }, remote: true,
               class: 'delete_profile', title: t(:delete, scope: 'general') %></center></td>
         </tr>

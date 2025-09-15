@@ -61,7 +61,7 @@
               <% end %>
             </td>
             <td>
-              <%= link_to ('<i class="fa fa-trash-o">&nbsp;</i>').html_safe, admin_tag_path(tag.id),
+              <%= link_to ('<i class="fa fa-trash">&nbsp;</i>').html_safe, admin_tag_path(tag.id),
               method: :delete, data: { confirm: 'Are you sure?', 'bs-toggle': 'tooltip', placement: 'left' },
               class: 'btn btn-danger btn-sm', title: 'Delete'%>
             </td>
