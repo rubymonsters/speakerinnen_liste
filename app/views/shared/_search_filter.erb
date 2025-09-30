@@ -147,37 +147,16 @@
     </div>
   </div>
 <% else %>
-  <div class="row">
+  <div class="row underline_links">
     <div class="col-md-12">
       <% if current_region.nil? %>
         <span>
-          <%= t(:filter_by_cats, scope: 'search', category_link: profiles_path).html_safe %>
+          <%= t('search.filter_by_cats', link: link_to('Kategorien', profiles_path)).html_safe %>
         </span>
-        <br><br>
-        <ul class="list-unstyled">
-          <%= t(:random_categories, scope: 'search' ).html_safe %><br>
+          <%= t(:random_categories, scope: 'search' ).html_safe %>
           <% Category.all.sample(3).each do |cat| %>
-            <% if aggs_states.present? %>
-              <% if aggs_states.length > 5 %>
-                <li>
-                  <a class="pl-1 expander_states"><%= t(:show_more, scope: 'profiles.index') %></a>
-                </li>
-                <div class="rest_facet_states" style="display: none">
-                  <% aggs_states.to_a.last(aggs_states.length - 5).each do |term| %>
-                    <li class="pl-1 <%= 'selected' if !params[:filter_state] %>">
-                      <%= link_to(
-                            all_states[term.first&.to_sym],
-                            filter_params.merge(filter_state: term.first),
-                            class: "#{'bg-dark text-light' if params[:filter_state]&.downcase == term.first.downcase }")
-                      %>
-                      <small class="pl-1"><%= term.last %></small>
-                    </li>
-                  <% end %>
-              </div>
-              <% end %>
-            <% end %>
-          <% end %>
-        </ul>
+            <%= category_link(cat)%>
+        <% end %>
       </div>
   <% end %>
 <% end %>
