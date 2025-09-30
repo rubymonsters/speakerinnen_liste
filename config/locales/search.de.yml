@@ -38,6 +38,7 @@ de:
     filter_by             : "Suche via Kategorien"
     random_categories     : "Zum Beispiel hier:"
     filter_by_cats        : "Um noch mehr Speakerinnen zu finden, guck doch mal bei den %{link}."
+    categories            : "Kategorien"
     filter_explanation    : "Hier kannst Du noch mehr filtern und damit die Suche eingrenzen."
     no_results            : "Deine Suche hatte keine Ergebnisse."
     expand_search         : "Um deine Suche auf den deutschsprachigen Raum oder international auszuweiten, suche auf: "
