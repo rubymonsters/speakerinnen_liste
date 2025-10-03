@@ -1,11 +1,11 @@
-class Seeds 
+class Seeds
   def initialize
     @languages = ["en", "de"]
     @cities = %w[Berlin London Paris Rome Hamburg]
     @categories = [
       { name_en: "Marketing & PR", name_de: "Marketing & PR"},
       { name_en: "Diversity", name_de: "Diversität" },
-      { name_en: "Body & Soul", name_de: "Körper & Geist" },
+      { name_en: "Soul & Body", name_de: "Körper & Geist" },
       { name_en: "Arts & Culture", name_de: "Kunst & Kultur" },
       { name_en: "Environment & Substainablility", name_de: "Umwelt & Nachhaltigkeit" },
       { name_en: "Internet & Media", name_de: "Internet & Medien" },
@@ -31,7 +31,7 @@ class Seeds
         "Feminism",
         "Migration in Europe",
         "Gender",
-        "Investment", 
+        "Investment",
         "Career counseling",
         "Career change",
         "Everyday Pysics",
@@ -54,7 +54,7 @@ class Seeds
         "Aussenpolitik",
         "Eigenständigkeit",
         "Unternehmen",
-        "Antifaschismus",  
+        "Antifaschismus",
         "Kinder",
         "Wissenschaft",
         "Computers"
@@ -74,18 +74,22 @@ class Seeds
       "Microservices"
     ]
   end
-  
+
   def run
     puts "Seeding the database..."
 
-    @languages.each { |value| LocaleLanguage.create(iso_code: value) }
+    @languages.each { |value| LocaleLanguage.find_or_create_by(iso_code: value) }
     puts "2 languages were created"
 
-    for i in 0...@categories.length do 
-      names = @categories[i]
-      Category.create(name_en: names[:name_en], name_de: names[:name_de])
+    unless Category.exists?
+      for i in 0...@categories.length do
+        names = @categories[i]
+        Category.create(name_en: names[:name_en], name_de: names[:name_de])
+      end
+        puts "10 categories were created"
+    else
+      puts "Categories already exist, skipping creation"
     end
-    puts "10 categories were created"
 
     create_tags_with_one_language("en")
     puts "English tags were created and assigned to Categories and Languages"
@@ -95,15 +99,14 @@ class Seeds
 
     #TODO: create tags with both languages
 
-    puts "Creating some DE profiles..."
-    100.times do |i|
-      Profile.create!(firstname: "Jane",
+    puts "Creating 10 DE profiles..."
+    10.times do |i|
+      Profile.create(firstname: "Jane",
                       lastname: "Doe#{i}",
                       email: "jane_doe#{i}@example.com",
                       password: "jane_doe",
                       city_de: @cities.sample,
                       country: 'DE',
-                      twitter_de: "@janedoe##{i}",
                       website_de: "https://speakerinnen.org",
                       website_2_de: "www.kraftfuttermischwerk.de",
                       website_3_de: "heise.com",
@@ -131,24 +134,22 @@ class Seeds
                       topic_list: build_tags_for_profile(i, "de")
       )
 
-      if i % 10 == 0
+      if i % 2 == 0
         Profile.last.medialinks.build(url: "https://www.hacksplaining.com", description: "Security Training for Developers", title: "hacksplaining", language: 'en').save!
         Profile.last.medialinks.build(url: "https://x-hain.de", description: "Das ist eine toller Hackspace in Friedrichshain", title: "X-Hain").save!
         Profile.last.medialinks.build(url: "https://www.klimafakten.de/", description: "klimafakten.de bietet zuverlässige Fakten zum Klimawandel und seinen Folgen. Und wir zeigen, wie man darüber ins Gespräch kommt.", title: "X-klimafakten").save!
       end
 
-      puts "#{i} german profiles created" if (i % 10 == 0)
     end
 
-    puts "Creating some EN profiles..."
-    100.times do |i|
-      Profile.create!(firstname: "Claire",
+    puts "Creating 10 EN profiles..."
+    10.times do |i|
+      Profile.create(firstname: "Claire",
                       lastname: "Miller##{i}",
                       email: "claire_miller#{i}@example.com",
                       password: "claire_miller",
                       city_en: @cities.sample,
                       country: 'GB',
-                      twitter_en: "@clairemiller##{i}",
                       website_en: "https://speakerinnen.org",
                       website_de: "wwww.heise.de",
                       website_2_en: "www.guardian.com",
@@ -164,12 +165,10 @@ class Seeds
                       profession: "My profession",
                       topic_list: build_tags_for_profile(i, "en")
                       )
-      if i % 10 == 0
+      if i % 2 == 0
         Profile.last.medialinks.build(url: "http://conqueringthecommandline.com/book", description: "Unix and Linux Commands for Developers", title: "conqueringthecommandline", language: "en" ).save!
         Profile.last.medialinks.build(url: "https://linuxjourney.com/", description: "Learn linux for free", title: "linuxjourney", language: "en" ).save!
       end
-
-      puts "#{i} english profiles created" if (i % 10 == 0)
     end
 
     Profile.create(firstname: "Karen",
@@ -178,7 +177,6 @@ class Seeds
                   password: "password",
                   city_en: "London",
                   country: 'GB',
-                  twitter_en: "@karensmith",
                   website_en: "https://speakerinnen.org",
                   website_2_en: "www.guardian.com",
                   confirmed_at: DateTime.now,
@@ -206,17 +204,17 @@ class Seeds
   end
 
   def create_tags_with_one_language(lang)
-    for i in 0...@categories.length do 
-      category = Category.find_by(name: @categories[i][:name_en])
-      language = LocaleLanguage.find_by(iso_code: lang)
-      tag_1 = ActsAsTaggableOn::Tag.create(name: @tags[lang][i*2-1])
-      tag_1.categories << category
-      tag_1.locale_languages << language
-      tags_2 = ActsAsTaggableOn::Tag.create(name: @tags[lang][i*2])
-      tags_2.categories << category
-      tags_2.locale_languages << language
-      #TODO: assign some tags to more then 1 category
-    end
+        for i in 0...@categories.length do
+          category =  Category.all.sample
+          language = LocaleLanguage.find_by(iso_code: lang)
+          tag_1    = ActsAsTaggableOn::Tag.create(name: @tags[lang][i*2-1])
+          tag_1.categories << category
+          tag_1.locale_languages << language
+          tags_2 = ActsAsTaggableOn::Tag.create(name: @tags[lang][i*2])
+          tags_2.categories << category
+          tags_2.locale_languages << language
+          #TODO: assign some tags to more then 1 category
+        end
   end
 
   def build_tags_for_profile(i, lang)
@@ -242,6 +240,8 @@ class Seeds
   ['fuck', 'shit', 'ass', 'nazi'].each do |word|
     OffensiveTerm.find_or_create_by!(word: word.downcase)
   end
+
+  put 'Offensive Terms where created'
 end
 
 Seeds.new.run
