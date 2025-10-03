@@ -4,7 +4,9 @@ de:
       edit_categories: "Bearbeite Kategorien"
       edit_tags: "Bearbeite Tag"
       edit_profiles: "Bearbeite Profile"
-      offensive_terms: "Gesperrte Begriffe (Offensive Terms) "
+      categories: "Kategorien"
+      offensive_terms: "Gesperrte Begriffe (Offensive Terms)"
+      blocked_emails: "Blockierte E-Mails"
     categories:
       categories: "Kategorien"
       category_language_de: "Deutsch:"
