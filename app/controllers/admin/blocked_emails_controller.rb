@@ -9,10 +9,9 @@ class Admin::BlockedEmailsController < Admin::BaseController
 
   def send_email
     blocked_email = BlockedEmail.find(params[:id])
-    byebug
 
-    NotificationsMailer.copy_to_sender(blocked_email.message, blocked_email.context.profile.fullname).deliver_now
-    NotificationsMailer.contact_message(blocked_email.message, blocked_email.recipient_email).deliver_now
+    NotificationsMailer.copy_to_sender(blocked_email, blocked_email.contacted_profile_email).deliver_now
+    NotificationsMailer.contact_message(blocked_email, blocked_email.contacted_profile_email).deliver_now
 
     redirect_to admin_blocked_email_path(blocked_email), notice: "Email has been sent."
   end
