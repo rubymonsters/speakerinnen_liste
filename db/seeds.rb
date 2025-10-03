@@ -1,7 +1,7 @@
 class Seeds
   def initialize
     @languages = ["en", "de"]
-    @cities = %w[Berlin London Paris Rome Hamburg]
+      @cities = %w[Berlin London Stuttgart Leipzig Hamburg Dresden]
     @categories = [
       { name_en: "Marketing & PR", name_de: "Marketing & PR"},
       { name_en: "Diversity", name_de: "Diversität" },
@@ -101,15 +101,19 @@ class Seeds
 
     puts "Creating 10 DE profiles..."
     10.times do |i|
-      Profile.create(firstname: "Jane",
+      Profile.create!(firstname: "Jane",
                       lastname: "Doe#{i}",
                       email: "jane_doe#{i}@example.com",
                       password: "jane_doe",
                       city_de: @cities.sample,
                       country: 'DE',
                       website_de: "https://speakerinnen.org",
-                      website_2_de: "www.kraftfuttermischwerk.de",
-                      website_3_de: "heise.com",
+                      website_2_de: "https://www.kraftfuttermischwerk.de",
+                      website_3_de: "https://heise.com",
+                      instagram: "https://www.instagram.com/jane_doe#{i}",
+                      mastodon: "https://www.mastodon.com/jane_doe#{i}",
+                      linkedin: "https://www.linkedin.com/in/jane_doe#{i}",
+                      bluesky: "https://www.bluesky.com/jane_doe#{i}",
                       confirmed_at: DateTime.now,
                       published: true,
                       main_topic_de: "Frauen* in Führungspositionen",
@@ -144,15 +148,19 @@ class Seeds
 
     puts "Creating 10 EN profiles..."
     10.times do |i|
-      Profile.create(firstname: "Claire",
+      Profile.create!(firstname: "Claire",
                       lastname: "Miller##{i}",
                       email: "claire_miller#{i}@example.com",
                       password: "claire_miller",
                       city_en: @cities.sample,
                       country: 'GB',
                       website_en: "https://speakerinnen.org",
-                      website_de: "wwww.heise.de",
-                      website_2_en: "www.guardian.com",
+                      website_de: "https://www.heise.de",
+                      website_2_en: "https://www.guardian.com",
+                      instagram: "https://www.instagram.com/claire_miller#{i}",
+                      mastodon: "https://www.mastodon.com/claire_miller#{i}",
+                      linkedin: "https://www.linkedin.com/claire_miller#{i}",
+                      bluesky: "https://www.bluesky.com/claire_miller#{i}",
                       confirmed_at: DateTime.now,
                       published: true,
                       main_topic_en: "Women* in Tech",
@@ -241,7 +249,7 @@ class Seeds
     OffensiveTerm.find_or_create_by!(word: word.downcase)
   end
 
-  put 'Offensive Terms where created'
+  puts 'Offensive Terms where created'
 end
 
 Seeds.new.run
