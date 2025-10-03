@@ -48,9 +48,11 @@ ActiveRecord::Schema[7.1].define(version: 2025_07_24_185852) do
   end
 
   create_table "blocked_emails", force: :cascade do |t|
+    t.string "name"
     t.string "email"
     t.string "subject"
     t.text "body"
+    t.string "contacted_profile_email"
     t.string "reason"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -80,13 +82,13 @@ ActiveRecord::Schema[7.1].define(version: 2025_07_24_185852) do
   end
 
   create_table "category_translations", force: :cascade do |t|
-    t.integer "category_id", null: false
+    t.bigint "category_id", null: false
     t.string "locale", null: false
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "name"
+    t.index ["category_id", "locale"], name: "index_category_translations_on_category_id_and_locale", unique: true
     t.index ["category_id"], name: "index_category_translations_on_category_id"
-    t.index ["locale"], name: "index_category_translations_on_locale"
   end
 
   create_table "feature_profiles", force: :cascade do |t|
@@ -101,12 +103,12 @@ ActiveRecord::Schema[7.1].define(version: 2025_07_24_185852) do
   create_table "feature_translations", force: :cascade do |t|
     t.bigint "feature_id", null: false
     t.string "locale", null: false
+    t.text "title"
+    t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "title"
-    t.text "description"
+    t.index ["feature_id", "locale"], name: "index_feature_translations_on_feature_id_and_locale", unique: true
     t.index ["feature_id"], name: "index_feature_translations_on_feature_id"
-    t.index ["locale"], name: "index_feature_translations_on_locale"
   end
 
   create_table "features", force: :cascade do |t|
@@ -153,12 +155,12 @@ ActiveRecord::Schema[7.1].define(version: 2025_07_24_185852) do
   end
 
   create_table "profile_translations", force: :cascade do |t|
-    t.integer "profile_id", null: false
+    t.bigint "profile_id", null: false
     t.string "locale", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.string "main_topic"
     t.text "bio"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "twitter"
     t.string "website"
     t.string "city"
@@ -166,7 +168,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_07_24_185852) do
     t.string "website_3"
     t.string "profession"
     t.string "personal_note"
-    t.index ["locale"], name: "index_profile_translations_on_locale"
+    t.index ["profile_id", "locale"], name: "index_profile_translations_on_profile_id_and_locale", unique: true
     t.index ["profile_id"], name: "index_profile_translations_on_profile_id"
   end
 
@@ -259,6 +261,9 @@ ActiveRecord::Schema[7.1].define(version: 2025_07_24_185852) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "category_translations", "categories"
   add_foreign_key "feature_profiles", "features"
   add_foreign_key "feature_profiles", "profiles"
+  add_foreign_key "feature_translations", "features"
+  add_foreign_key "profile_translations", "profiles"
 end
