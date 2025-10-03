@@ -5,7 +5,7 @@ describe ProfilesController, type: :controller do
   let!(:profile_published) { create(:published_profile, topic_list: %w[ruby algorithms]) }
   let!(:profile_unpublished) { create(:unpublished_profile) }
   let!(:ada) { create(:published_profile, email: "ada@mail.org", main_topic_en: 'math') }
-  let!(:admin) { create(:admin) }
+  let(:admin) { create(:profile, :admin) }
   let!(:category) { create(:cat_science) }
 
   describe 'index' do
