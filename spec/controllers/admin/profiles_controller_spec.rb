@@ -3,7 +3,7 @@
 describe Admin::ProfilesController, type: :controller do
   include AuthHelper
 
-  let!(:admin) { FactoryBot.create(:admin) }
+  let(:admin) { create(:profile, :admin) }
   let!(:admin_medialink) { FactoryBot.create(:medialink, profile_id: admin.id) }
   let!(:non_admin) { FactoryBot.create(:published_profile) }
   let!(:non_admin_medialink) do

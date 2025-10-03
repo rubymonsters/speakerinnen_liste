@@ -3,7 +3,7 @@
 describe Admin::CategoriesController, type: :controller do
   include AuthHelper
 
-  let!(:admin) { FactoryBot.create(:admin) }
+  let(:admin) { create(:profile, :admin) }
   let!(:category) { FactoryBot.create(:cat_science) }
 
   before(:each) do
@@ -82,23 +82,23 @@ describe Admin::CategoriesController, type: :controller do
   context 'translations' do
     before(:each) do
       category.update(name_de: 'Wissenschaft', name_en: 'Science')
-  
+
       category_params = {
         name_de: 'Kunst',
         name_en: 'Art'
       }
-  
+
       patch :update, params: { id: category.id, category: category_params }
     end
-  
+
     it "shows the updated German translation" do
       I18n.locale = :de
       expect(assigns(:category).name).to eq 'Kunst'
     end
-  
+
     it "shows the updated English translation" do
       I18n.locale = :en
       expect(assigns(:category).name).to eq 'Art'
     end
-  end  
+  end
 end

@@ -1,6 +1,6 @@
 RSpec.describe 'Navigation', type: :system do
   context 'logged in as an admin' do
-    let!(:admin) { FactoryBot.create(:admin) }
+    let(:admin) { create(:profile, :admin) }
 
     before do
       sign_in admin
