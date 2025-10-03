@@ -54,6 +54,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_07_24_185852) do
     t.text "body"
     t.string "contacted_profile_email"
     t.string "reason"
+    t.datetime "sent_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

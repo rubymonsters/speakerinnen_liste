@@ -3,7 +3,7 @@
 describe Admin::TagsController, type: :controller do
   include AuthHelper
 
-  let(:admin) { FactoryBot.create(:admin) }
+  let(:admin) { create(:profile, :admin) }
   let!(:ada) { FactoryBot.create(:ada, topic_list: %w[algebra algorithm computer]) }
   let!(:marie) { FactoryBot.create(:marie, topic_list: ['radioactive', 'x-ray']) }
 

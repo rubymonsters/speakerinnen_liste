@@ -7,6 +7,7 @@ class CreateBlockedEmails < ActiveRecord::Migration[7.1]
       t.text :body
       t.string :contacted_profile_email
       t.string :reason
+      t.datetime :sent_at
 
       t.timestamps
     end

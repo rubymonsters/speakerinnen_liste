@@ -9,6 +9,7 @@ class Admin::BlockedEmailsController < Admin::BaseController
 
   def send_email
     blocked_email = BlockedEmail.find(params[:id])
+    blocked_email.update(sent_at: Time.current)
 
     NotificationsMailer.copy_to_sender(blocked_email, blocked_email.contacted_profile_email).deliver_now
     NotificationsMailer.contact_message(blocked_email, blocked_email.contacted_profile_email).deliver_now

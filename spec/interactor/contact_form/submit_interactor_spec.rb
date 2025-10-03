@@ -2,6 +2,7 @@ RSpec.describe ContactForm::SubmitInteractor do
   let(:valid_params) do
     { name: 'Test', email: 'horst@example.org', subject: 'Hi', body: 'Message' }
   end
+  let!(:ada) { create(:profile, email: "ada@mail.org") }
 
   it 'succeeds with valid data' do
     result = described_class.call(params: valid_params, profile: nil)
@@ -54,6 +55,8 @@ RSpec.describe ContactForm::SubmitInteractor do
       expect(result.skip_delivery).to be true
     }.not_to change { ActionMailer::Base.deliveries.count }
     expect(BlockedEmail.count).to eq(1)
+    expect(BlockedEmail.last.body).to include('Esel')
+    expect(BlockedEmail.last.contacted_profile_email).to eq('team@speakerinnen.org')
   end
 
   it 'checks the subject' do
@@ -65,5 +68,19 @@ RSpec.describe ContactForm::SubmitInteractor do
       expect(result.skip_delivery).to be true
     }.not_to change { ActionMailer::Base.deliveries.count }
     expect(BlockedEmail.count).to eq(1)
+  end
+
+  it 'creates blocked email with correct contacted_profile_email when profile is given' do
+    offensive_term = 'Dummkopf'
+    OffensiveTerm.create!(word: offensive_term)
+
+    expect {
+      result = described_class.call(params: valid_params.merge(subject: "#{offensive_term}"), profile: ada)
+      expect(result).to be_success
+      expect(result.skip_delivery).to be true
+    }.not_to change { ActionMailer::Base.deliveries.count }
+
+    expect(BlockedEmail.count).to eq(1)
+    expect(BlockedEmail.last.contacted_profile_email).to eq(ada.email)
   end
 end

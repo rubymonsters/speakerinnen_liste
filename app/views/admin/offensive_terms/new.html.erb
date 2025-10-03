@@ -1,9 +1,6 @@
 
-<div class = "m-5">
-
-<h1>Add Offensive Term</h1>
-
-<%= render 'form', offensive_term: @offensive_term %>
-
-<%= link_to 'Back', admin_offensive_terms_path %>
+<div class = "m-4 bg--white p-4">
+  <h2>Füge neue beleidigende Begriffe / Wörter hinzu</h2>
+  <%= render 'form', offensive_term: @offensive_term %>
 </div>
+<%= link_to 'Zurück', admin_offensive_terms_path, class: 'btn btn-primary m-4' %>

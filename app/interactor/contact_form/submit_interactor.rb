@@ -45,7 +45,8 @@ module ContactForm
         email: message.email,
         subject: message.subject,
         body: message.body,
-        reason: 'Offensive content'
+        contacted_profile_email: context.profile&.email || 'team@speakerinnen.org',
+        reason: 'Offensive content',
       )
     end
 

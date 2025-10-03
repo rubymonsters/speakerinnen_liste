@@ -1,15 +1,16 @@
-<div class = "m-5">
+<div class="m-4 bg--white p-4">
+  <h2>Blockierte Email</h2>
+  <br>
+  <p><strong>Email Senderin:</strong> <%= @blocked_email.email %></p>
+  <p><strong>Betreff:</strong> <%= @blocked_email.subject %></p>
+  <p><strong>Inhalt:</strong></p>
+                      <pre><%= @blocked_email.body %></pre>
+  <p><strong>Email Empfängerin:</strong> <%= @blocked_email.contacted_profile_email %></p>
+  <p><strong>Blocked Reason:</strong> <%= @blocked_email.reason %></p>
+  <p><strong>Erstellt am:</strong> <%= @blocked_email.created_at.strftime("%d.%m.%Y %H:%M") %></p>
+  <p><strong>Gesendet am:</strong> <%= @blocked_email.sent_at&.strftime("%d.%m.%Y %H:%M") %></p>
+</p>
 
-<h1>Blocked Email</h1>
-
-<p><strong>From:</strong> <%= @blocked_email.email %></p>
-<p><strong>Subject:</strong> <%= @blocked_email.subject %></p>
-<p><strong>Body:</strong></p>
-<pre><%= @blocked_email.body %></pre>
-<p><strong>Blocked Reason:</strong> <%= @blocked_email.reason %></p>
-<p><strong>Created at:</strong> <%= @blocked_email.created_at.strftime("%Y-%m-%d %H:%M") %></p>
-
-
-<%= button_to 'Send Email', send_email_admin_blocked_email_path(@blocked_email), method: :post, data: { confirm: "Are you sure you want to send this email?" } %>
-<%= link_to 'Back to list', admin_blocked_emails_path %>
+  <%= button_to 'Sende die Email trotzdem', send_email_admin_blocked_email_path(@blocked_email), class: 'btn btn-primary btn-sm', method: :post, data: { confirm: "Are you sure you want to send this email?" } %>
 </div>
+  <%= link_to '<< Zurück zur Liste', admin_blocked_emails_path, class: 'btn btn-primary m-4' %>

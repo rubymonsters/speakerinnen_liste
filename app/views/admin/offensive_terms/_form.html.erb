@@ -1,13 +1,9 @@
-<div class="m-5">
-     <%= simple_form_for [:admin, @offensive_term] do |f| %>
+<%= simple_form_for [:admin, @offensive_term] do |f| %>
+  <%= f.error_notification %>
+  <%= f.input :word, label: "Begriff", input_html: { class: 'form-control mb-3' } %>
 
-    <%= f.error_notification %>
+  <div class="actions">
+    <%= f.button :submit, "Begriff speichern", class: 'btn btn-primary btn-sm' %>
+  </div>
 
-    <%= f.input :word, input_html: { class: 'form-control mb-3' } %>
-
-    <div class="actions">
-      <%= f.button :submit, class: 'btn btn-primary btn-sm' %>
-    </div>
-
-  <% end %>
-</div>
+<% end %>
