@@ -1,23 +1,26 @@
-<h1>Forbidden Words</h1>
+<div class="m-5">
+  <h1>Forbidden Words</h1>
 
-<%= link_to 'Add New Word', new_admin_offensive_term_path, class: 'button' %>
+    <%= link_to ('<i class="fa fa-plus-circle">&nbsp;</i>' + 'Add a New Word').html_safe,
+  new_admin_offensive_term_path, class: "btn btn-primary btn-sm my-5" %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Word</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @offensive_terms.each do |offensive_term| %>
+  <table class="table categories">
+    <thead class="bg--lightgrey">
       <tr>
-        <td><%= offensive_term.word %></td>
-        <td>
-          <%= link_to 'Edit', edit_admin_offensive_term_path(offensive_term) %> |
-          <%= link_to 'Delete', admin_offensive_term_path(offensive_term), method: :delete, data: { confirm: 'Are you sure?' } %>
-        </td>
+        <th>Word</th>
+        <th>Actions</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @offensive_terms.each do |offensive_term| %>
+        <tr>
+          <td><%= offensive_term.word %></td>
+          <td>
+            <%= link_to 'Edit', edit_admin_offensive_term_path(offensive_term) %> |
+            <%= link_to 'Delete', admin_offensive_term_path(offensive_term), method: :delete, data: { confirm: 'Are you sure?' } %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

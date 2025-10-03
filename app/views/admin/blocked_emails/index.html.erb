@@ -1,22 +1,25 @@
-<h1>Blocked Emails</h1>
+<div class = "m-5">
 
-<table>
-  <thead>
-    <tr>
-      <th>Email</th>
-      <th>Subject</th>
-      <th>Created At</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @blocked_emails.each do |email| %>
+  <h1>Blocked Emails</h1>
+
+  <table class="table blocked-emails">
+    <thead class="bg--lightgrey">
       <tr>
-        <td><%= email.email %></td>
-        <td><%= truncate(email.subject, length: 60) %></td>
-        <td><%= email.created_at.strftime("%Y-%m-%d %H:%M") %></td>
-        <td><%= link_to 'View', admin_blocked_email_path(email) %></td>
+        <th>Email</th>
+        <th>Subject</th>
+        <th>Created At</th>
+        <th></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @blocked_emails.each do |email| %>
+        <tr>
+          <td><%= email.email %></td>
+          <td><%= truncate(email.subject, length: 60) %></td>
+          <td><%= email.created_at.strftime("%Y-%m-%d %H:%M") %></td>
+          <td><%= link_to 'View', admin_blocked_email_path(email) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

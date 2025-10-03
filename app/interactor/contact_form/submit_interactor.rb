@@ -50,8 +50,10 @@ module ContactForm
     end
 
     def contains_exactly_forbidden_terms?(message)
-      text = message.body.downcase
+      # combine subject and body, downcase everything
+      text = "#{message.subject} #{message.body}".downcase
 
+      # check if any forbidden term appears as a whole word
       OffensiveTerm.pluck(:word).any? do |term|
         pattern = /\b#{Regexp.escape(term.downcase)}\b/
         text.match?(pattern)

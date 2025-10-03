@@ -1,3 +1,5 @@
+<div class = "m-5">
+
 <h1>Blocked Email</h1>
 
 <p><strong>From:</strong> <%= @blocked_email.email %></p>
@@ -10,3 +12,4 @@
 
 <%= button_to 'Send Email', send_email_admin_blocked_email_path(@blocked_email), method: :post, data: { confirm: "Are you sure you want to send this email?" } %>
 <%= link_to 'Back to list', admin_blocked_emails_path %>
+</div>
