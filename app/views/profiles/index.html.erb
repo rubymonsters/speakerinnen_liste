@@ -30,7 +30,7 @@
           <h1><%= t(:title_topic_search, scope: 'profiles.index') %></h1>
         </div>
       </div>
-      <%= render partial: 'shared/category_filter' %>
+      <%= render partial: 'shared/category_filter', category: @category %>
     </div> <!-- tag filter -->
     <!-- <a href="#top"><%= t(:up_to_filter, scope: 'profiles.index') %> <i class='fa fa-filter pr-2'></i> </a> -->
     <hr class="mt-5">
