@@ -14,6 +14,6 @@ class Admin::BlockedEmailsController < Admin::BaseController
     NotificationsMailer.copy_to_sender(blocked_email, blocked_email.contacted_profile_email).deliver_now
     NotificationsMailer.contact_message(blocked_email, blocked_email.contacted_profile_email).deliver_now
 
-    redirect_to admin_blocked_email_path(blocked_email), notice: "Email has been sent."
+    redirect_to admin_blocked_email_path(blocked_email), notice: I18n.t('contact.form.notice')
   end
 end
