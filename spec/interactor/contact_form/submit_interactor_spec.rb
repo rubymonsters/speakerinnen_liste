@@ -32,7 +32,7 @@ RSpec.describe ContactForm::SubmitInteractor do
     expect(BlockedEmail.count).to eq(1)
   end
 
-  it 'when just one word of the offensive term is used the mail gets send' do
+  it 'when just one word of the offensive term is used the mail gets sent' do
     offensive_term = 'du Nazi'
     OffensiveTerm.create!(word: offensive_term)
 
