@@ -54,12 +54,15 @@ module ContactForm
       text = "#{message.subject} #{message.body}".downcase
 
       # check if any forbidden term appears as a whole word
-      OffensiveTerm.pluck(:word).any? do |term|
+      forbidden_terms.any? do |term|
         pattern = /\b#{Regexp.escape(term.downcase)}\b/
         text.match?(pattern)
       end
     end
 
+    def forbidden_terms
+      @forbidden_terms ||= OffensiveTerm.pluck(:word)
+    end
     def error_message(profile)
       if profile.present?
         I18n.t(:error, scope: 'contact.form')
