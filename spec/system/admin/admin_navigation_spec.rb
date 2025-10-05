@@ -1,6 +1,6 @@
 RSpec.describe 'Navigation', type: :system do
   context 'logged in as an admin' do
-    let!(:admin) { FactoryBot.create(:admin) }
+    let(:admin) { create(:profile, :admin) }
 
     before do
       sign_in admin
@@ -24,10 +24,10 @@ RSpec.describe 'Navigation', type: :system do
       click_link 'Admin'
       expect(page).to have_text('Administration')
 
-      expect(page).to have_link('Categories', href: '/en/admin/categories')
-      expect(page).to have_link('Tags', href: '/en/admin/tags/index')
-      expect(page).to have_link('Profiles', href: '/en/admin/profiles')
-      expect(page).to have_link('Features', href: '/en/admin/features')
+      expect(page).to have_link(I18n.t('admin.dashboard.categories'), href: '/en/admin/categories')
+      expect(page).to have_link(I18n.t('admin.dashboard.tags'), href: '/en/admin/tags/index')
+      expect(page).to have_link(I18n.t('admin.dashboard.profiles'), href: '/en/admin/profiles')
+      expect(page).to have_link(I18n.t('admin.dashboard.features'), href: '/en/admin/features')
     end
 
     context 'category' do
