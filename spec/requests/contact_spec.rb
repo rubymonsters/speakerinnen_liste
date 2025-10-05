@@ -110,7 +110,7 @@ RSpec.describe "ContactController", type: :request do
         visit profile_path(id: profile.slug)
         expect(page).to have_button(I18n.t('contact.form.send'))
         within(:css, '.single-profile') do
-          find("button[data-target='#contactHint']", match: :first)
+          find("button[data-bs-target='#contactHint']", match: :first)
         end
       end
       it 'shows contact button with cookie consent' do
@@ -121,7 +121,7 @@ RSpec.describe "ContactController", type: :request do
       it 'opens contact modal when cookie consent is given' do
         visit profile_path(id: profile.slug)
         find_link(class: 'cookie-consent').click
-        find("button[data-target='#contactModal']", match: :first).click
+        find("button[data-bs-target='#contactModal']", match: :first).click
         expect(page).to have_selector('#contactModal', visible: true)
       end
     end

@@ -8,8 +8,8 @@
           <%= @profile.fullname + t(:no_contact, scope: 'profiles.show') %>
         </button>
       <% else %>
-        <button type="button" class="btn btn-primary btn-stretch mt-2 px-5" data-toggle="modal"
-        data-target=<%= cookies[:cookie_consent].blank? ? "#contactHint" : "#contactModal" %>
+        <button type="button" class="btn btn-primary btn-stretch mt-2 px-5" data-bs-toggle="modal"
+        data-bs-target=<%= cookies[:cookie_consent].blank? ? "#contactHint" : "#contactModal" %>
         <%= disable_contact_button(@profile) %> >
           <i class="fa fa-envelope-o"></i>&nbsp;
           <%= t(:contact, scope: 'profiles.show', profile: @profile.fullname) %>
@@ -37,7 +37,7 @@
     <!-- main topic -->
     <% if @profile.main_topic %>
       <p class="">
-        <span class="font-weight-bold">
+        <span class="fw-bold">
           <%= t(:main_topic, scope: 'profiles.show') %>
         </span>
         <%= @profile.main_topic %>
@@ -46,7 +46,7 @@
       <!-- twitter -->
     <% if @profile.twitter.present? %>
       <p class="">
-        <span class="font-weight-bold">
+        <span class="fw-bold">
           <%= t(:twitter, scope: 'profiles.show') %>
         </span>
         <%=link_to '@' + @profile.twitter_name_formatted, @profile.twitter_link_formatted,
@@ -63,7 +63,7 @@
     <% if translated_websites.any? %>
       <!-- If at least one website is translated, show only translated websites -->
       <p>
-        <span class="font-weight-bold">
+        <span class="fw-bold">
           <%= t(:websites, scope: 'profiles.show') %>
         </span>
         <% translated_websites.each do |website| %>
@@ -75,7 +75,7 @@
       <% fallback_websites = [@profile.website, @profile.website_2, @profile.website_3].compact %>
       <% if fallback_websites.any? %>
         <p>
-          <span class="font-weight-bold">
+          <span class="fw-bold">
             <%= t(:websites, scope: 'profiles.show') %>
           </span>
           <% fallback_websites.each do |website| %>
@@ -126,7 +126,7 @@
     <!-- languages  -->
     <% if @profile.iso_languages.present? %>
       <p>
-        <span class="font-weight-bold">
+        <span class="fw-bold">
           <%= t(:languages, scope: 'profiles.show') %>
         </span>
         <% languages = [] %>
@@ -139,7 +139,7 @@
     <!-- city -->
     <% if @profile.city.present? %>
       <p class="">
-        <span class="font-weight-bold">
+        <span class="fw-bold">
           <%= t(:city, scope: 'profiles.show') %>
         </span>
         <%= @profile.city %>
@@ -148,7 +148,7 @@
     <!-- state  -->
     <% if @profile.state.present? %>
       <p class="">
-        <span class="font-weight-bold">
+        <span class="fw-bold">
           <%= t(:"state.#{@profile.country.downcase}") %>:
         </span>
         <%= t(:"states.#{@profile.country.downcase}.#{@profile.state}") %>
@@ -157,7 +157,7 @@
     <!-- country  -->
     <% if @profile.country.present? %>
       <p class="">
-        <span class="font-weight-bold">
+        <span class="fw-bold">
           <%= t(:country, scope: 'profiles.show') %>
         </span>
         <%= @profile.country_name %>
@@ -166,7 +166,7 @@
     <!-- topics -->
     <% if topics_for_profile(@profile).present? %>
       <p class="">
-        <span class="font-weight-bold">
+        <span class="fw-bold">
           <%= t(:topics, scope: 'profiles.show') %>
         </span>
         <%= raw topics_for_profile(@profile).map { |topic| topic }.join(', ') %>
@@ -175,7 +175,7 @@
     <!-- services  -->
     <% if !@profile.services.empty? %>
       <p class="">
-        <span class="font-weight-bold">
+        <span class="fw-bold">
           <%= t(:services, scope: 'profiles.show') %>
         </span>
         <%= @profile.services.map{|s| t(s.name, scope: 'profiles.show') }.join(', ') %>
@@ -200,21 +200,23 @@
   <!-- edit action for user -->
   <div class="col-md-2">
     <% if current_profile == @profile %>
-      <%= link_to(edit_profile_path(@profile), class: 'button_link noHover') do %>
-        <div class='btn btn-primary buttons-modals btn-block'>
-          <%= t(:edit, scope: 'profiles.show') %>
-         </div>
-      <% end %>
-      <%= link_to(profile_medialinks_path(@profile), class: 'button_link noHover') do %>
-        <div class='btn btn-primary buttons-modals mt-3 btn-block'>
-          <%= t(:edit, scope: 'profiles.medialinks') %>
-        </div>
-      <% end %>
-      <%= link_to(edit_profile_registration_path, class: 'button_link noHover') do %>
-        <div id='accountSettings', class='btn btn-primary buttons-modals btn-block mt-3'>
-          <%= t(:account, scope: 'layouts.application') %>
-        </div>
-      <% end %>
+      <div class=" d-grid gap-4">
+        <%= link_to(edit_profile_path(@profile), class: 'button_link noHover') do %>
+          <div class='btn btn-primary d-block'>
+            <%= t(:edit, scope: 'profiles.show') %>
+           </div>
+        <% end %>
+        <%= link_to(profile_medialinks_path(@profile), class: 'button_link noHover') do %>
+          <div class='btn btn-primary d-block'>
+            <%= t(:edit, scope: 'profiles.medialinks') %>
+          </div>
+        <% end %>
+        <%= link_to(edit_profile_registration_path, class: 'button_link noHover') do %>
+          <div id='accountSettings', class='btn btn-primary d-block'>
+            <%= t(:account, scope: 'layouts.application') %>
+          </div>
+        <% end %>
+      </div>
     <% end %>
   </div>
 </div>
@@ -223,7 +225,7 @@
 <% if @profile.personal_note %>
   <div class="row my-3">
     <div class="col-md-12">
-        <span class="font-weight-bold">
+        <span class="fw-bold">
           <%= t(:personal_note, scope: 'profiles.show') %>
         </span>
         <%= simple_format(@profile.personal_note, class: '') %>
@@ -235,7 +237,7 @@
 <% if @profile.bio %>
   <div class="row my-3">
     <div class="col-md-12">
-        <span class="font-weight-bold">
+        <span class="fw-bold">
           <%= t(:bio, scope: 'profiles.show') %>
         </span>
         <%= simple_format(@profile.bio, class: '') %>
@@ -247,7 +249,7 @@
 <% if @medialinks.load.any? %>
   <div class="row">
     <div class="col-md-12">
-      <p class=" font-weight-bold">
+      <p class=" fw-bold">
         <%= t(:media, scope: 'profiles.show') %>
       </p>
     <%= render partial: 'profiles/medialink', collection: @medialinks %>
@@ -261,8 +263,8 @@
     <% unless current_profile == @profile %>
     <%# don't show the second contact button at all when the profile is not active %>
       <% unless @profile.inactive? %>
-        <button type="button" class="btn btn-primary btn-stretch mt-2 px-5" data-toggle="modal"
-        data-target=<%= cookies[:cookie_consent].blank? ? "#contactHint" : "#contactModal" %>
+        <button type="button" class="btn btn-primary btn-stretch mt-2 px-5" data-bs-toggle="modal"
+        data-bs-target=<%= cookies[:cookie_consent].blank? ? "#contactHint" : "#contactModal" %>
         <%= disable_contact_button(@profile) %> >
           <i class="fa fa-envelope-o"></i>&nbsp;
           <%= t(:contact, scope: 'profiles.show', profile: @profile.fullname) %>
@@ -272,21 +274,20 @@
   </div>
 </div>
 
-  <!-- Modal Contact -->
-  <div class="modal fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="ModalLabel">
-            <%= "#{t(:email_to, scope: 'profiles.show' )} #{@profile.fullname}:"%>
-          </h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <%= render partial: 'contact/form', locals: {url: contact_profile_path(@profile)} %>
-        </div>
+
+<!-- Modal Contact -->
+<div class="modal fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="ModalLabel">
+          <%= "#{t(:email_to, scope: 'profiles.show' )} #{@profile.fullname}:"%>
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <%= render partial: 'contact/form', locals: {url: contact_profile_path(@profile)} %>
       </div>
     </div>
-  </div><!-- Modal -->
+  </div>
+</div><!-- Modal -->
