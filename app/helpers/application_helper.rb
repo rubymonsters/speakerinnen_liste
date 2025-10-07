@@ -26,7 +26,7 @@ module ApplicationHelper
 
     direction = column == sort_column && sort_direction == 'desc' ? 'asc' : 'desc'
     arrow = column == sort_column ? "<i class='fa fa-arrow-#{icon_direction}'>&nbsp;</i>".html_safe : ""
-    link_to(arrow + title, filter_params.merge( sort: column, direction: direction ), data: { toggle: 'tooltip', placement: 'left' }, title: tooltip)
+    link_to(arrow + title, filter_params.merge( sort: column, direction: direction ), data: { 'bs-toggle': 'tooltip', placement: 'left' }, title: tooltip)
   end
 
   def custom_tag_cloud(tags, classes)

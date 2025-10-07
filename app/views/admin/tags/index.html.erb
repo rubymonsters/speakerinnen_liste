@@ -1,7 +1,7 @@
 <div class="container pt-5">
   <h1 class="text-center mb-3">Administration::<%= t(:tags, scope: 'admin.tags')%></h1>
 
-  <div class="font-weight-bold text-center border-top pt-3">
+  <div class="fw-bold text-center border-top pt-3">
     <% if @tags_count %>
     <%= t(:tags_here_are, scope: 'admin.tags') + @pagy.count.to_s + t(:tags_of, scope: 'admin.tags') + @tags_count.to_s + ' tags.' %>
     <% else %>
@@ -35,9 +35,9 @@
           <tr>
             <td>
               <b><%= link_to tag.name, edit_admin_tag_path(tag.id, page: params[:page]), id: "tag_#{tag.id}",
-              data: { toggle: 'tooltip', placement: 'left' }, title: 'Edit' %></b></b>
+              data: { 'bs-toggle': 'tooltip', placement: 'left' }, title: 'Edit' %></b></b>
               <%= link_to '<i class="fa fa-pencil">&nbsp;</i>'.html_safe, edit_admin_tag_path(tag.id, page: params[:page]),
-              data: { toggle: 'tooltip', placement: 'left' }, title: 'Edit' %>
+              data: { 'bs-toggle': 'tooltip', placement: 'left' }, title: 'Edit' %>
             </td>
             <td>
               <% tag.categories.pluck(:name).each do |name| %>
@@ -61,8 +61,8 @@
               <% end %>
             </td>
             <td>
-              <%= link_to ('<i class="fa fa-trash-o">&nbsp;</i>').html_safe, admin_tag_path(tag.id),
-              method: :delete, data: { confirm: 'Are you sure?',toggle: 'tooltip', placement: 'left' },
+              <%= link_to ('<i class="fa fa-trash">&nbsp;</i>').html_safe, admin_tag_path(tag.id),
+              method: :delete, data: { confirm: 'Are you sure?', 'bs-toggle': 'tooltip', placement: 'left' },
               class: 'btn btn-danger btn-sm', title: 'Delete'%>
             </td>
           </tr>

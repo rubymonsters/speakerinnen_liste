@@ -17,22 +17,22 @@
                   filter_params.merge(filter_language: term.first),
                   class: "#{'bg-dark text-light' if params[:filter_language]&.downcase == term.first.downcase }")
             %>
-            <span class="pl-1"><%= term.last %></span>
+            <span class="ps-1"><%= term.last %></span>
           </li>
         <% end %>
         <% if aggs_languages.length > 5 %>
           <li>
-            <a class="pl-1 expander_languages"><%= t(:show_more, scope: 'profiles.index') %></a>
+            <a class="ps-1 expander_languages"><%= t(:show_more, scope: 'profiles.index') %></a>
           </li>
           <div class="rest_facet_languages" style="display: none">
             <% aggs_languages.to_a.last(aggs_languages.length - 5).each do |term| %>
-              <li class="pl-1 <%= 'selected' if !params[:filter_language] %>">
+              <li class="ps-1 <%= 'selected' if !params[:filter_language] %>">
                 <%= link_to(
                     t(term.first, scope: 'iso_639_1').capitalize,
                     filter_params.merge(filter_language: term.first),
                     class: "#{'bg-dark text-light' if !params[:filter_language]&.downcase == term.first.downcase }")
                 %>
-                <small class="pl-1"><%= term.last %></small>
+                <small class="ps-1"><%= term.last %></small>
               </li>
             <% end %>
           </div>
@@ -57,22 +57,22 @@
                     filter_params.merge(filter_country: term.first),
                     class: "#{'bg-dark text-light' if params[:filter_country]&.downcase == term.first.downcase }")
               %>
-              <span class="pl-1"><%= term.last %></span>
+              <span class="ps-1"><%= term.last %></span>
             </li>
           <% end %>
           <% if aggs_countries.length > 5 %>
             <li>
-              <a class="pl-1 expander_countries"><%= t(:show_more, scope: 'profiles.index') %></a>
+              <a class="ps-1 expander_countries"><%= t(:show_more, scope: 'profiles.index') %></a>
             </li>
             <div class="rest_facet_countries" style="display: none">
               <% aggs_countries.to_a.last(aggs_countries.length - 5).each do |term| %>
-                <li class="pl-1 <%= 'selected' if !params[:filter_country] %>">
+                <li class="ps-1 <%= 'selected' if !params[:filter_country] %>">
                   <%= link_to(
                       ISO3166::Country.find_country_by_alpha2(term.first)&.translation(I18n.locale),
                       filter_params.merge(filter_country: term.first),
                       class: "#{'bg-dark text-light' if params[:filter_country]&.downcase == term.first.downcase }")
                   %>
-                  <small class="pl-1"><%= term.last %></small>
+                  <small class="ps-1"><%= term.last %></small>
                 </li>
               <% end %>
             </div>
@@ -98,7 +98,7 @@
                     filter_params.merge(filter_state: term.first),
                     class: "#{'bg-dark text-light' if params[:filter_state]&.downcase == term.first.downcase }")
               %>
-              <span class="pl-1"><%= term.last %></span>
+              <span class="ps-1"><%= term.last %></span>
             </li>
           <% end %>
         </ul>
@@ -122,22 +122,22 @@
                     filter_params.merge(filter_city: term.first),
                     class: "#{'bg-dark text-light' if params[:filter_state]&.downcase == term.first.downcase }")
               %>
-              <span class="pl-1"><%= term.last %></span>
+              <span class="ps-1"><%= term.last %></span>
             </li>
           <% end %>
           <% if aggs_cities.length > 5 %>
             <li>
-              <a class="pl-1 expander_cities"><%= t(:show_more, scope: 'profiles.index') %></a>
+              <a class="ps-1 expander_cities"><%= t(:show_more, scope: 'profiles.index') %></a>
             </li>
             <div class="rest_facet_cities" style="display: none">
               <% aggs_cities.to_a.last(aggs_cities.length - 5).each do |term| %>
-                <li class="pl-1 <%= 'selected' if !params[:filter_city] %>">
+                <li class="ps-1 <%= 'selected' if !params[:filter_city] %>">
                   <%= link_to(
                         term.first,
                         filter_params.merge(filter_city: term.first),
                         class: "#{'bg-dark text-light' if params[:filter_city]&.downcase == term.first.downcase }")
                   %>
-                  <small class="pl-1"><%= term.last %></small>
+                  <small class="ps-1"><%= term.last %></small>
                 </li>
               <% end %>
             </div>
