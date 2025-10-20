@@ -8,7 +8,7 @@ module ContactForm
       message = Message.new(context.params)
 
       if message.valid?
-        if spam_email?(message.email) || contains_exactly_forbidden_terms?(message)
+        if spam_email?(message.email) || contains_exactly_offensive_terms?(message)
           # Pretend success but don't send emails
           context.skip_delivery = true
           log_blocked_message(message)
@@ -49,11 +49,11 @@ module ContactForm
       )
     end
 
-    def contains_exactly_forbidden_terms?(message)
+    def contains_exactly_offensive_terms?(message)
       # combine subject and body, downcase everything
       text = "#{message.subject} #{message.body}".downcase
 
-      # check if any forbidden term appears as a whole word
+      # check if any offensive term appears as a whole word
       OffensiveTerm.pluck(:word).any? do |term|
         pattern = /\b#{Regexp.escape(term.downcase)}\b/
         text.match?(pattern)
