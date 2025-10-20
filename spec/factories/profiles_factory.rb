@@ -9,7 +9,7 @@ FactoryBot.define do
     password_confirmation { '123foobar' }
     confirmed_at { Time.now }
 
-    factory :admin do
+    trait :admin do
       admin { true }
     end
 

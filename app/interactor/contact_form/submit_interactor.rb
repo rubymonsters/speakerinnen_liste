@@ -8,12 +8,13 @@ module ContactForm
       message = Message.new(context.params)
 
       if message.valid?
-        if spam_email?(message.email)
+        if spam_email?(message.email) || contains_exactly_offensive_terms?(message)
           # Pretend success but don't send emails
           context.skip_delivery = true
+          log_blocked_message(message)
         else
           send_contact_email(message, context.profile)
-          NotificationsMailer.copy_to_sender(message, context.profile.fullname).deliver if context.profile.present?
+          NotificationsMailer.copy_to_sender(message, context.profile.fullname).deliver_now if context.profile.present?
         end
       else
         context.message = message
@@ -33,9 +34,36 @@ module ContactForm
 
     def send_contact_email(message, profile)
       recipient_email = profile&.email || 'team@speakerinnen.org'
-      NotificationsMailer.contact_message(message, recipient_email).deliver
+      NotificationsMailer.contact_message(message, recipient_email).deliver_now
     end
 
+    def log_blocked_message(message)
+      Rails.logger.warn("Blocked message from: #{message.email}, subject: #{message.subject}")
+      BlockedEmail.create!(
+        name: message.name,
+        email: message.email,
+        subject: message.subject,
+        body: message.body,
+        contacted_profile_email: context.profile&.email || 'team@speakerinnen.org',
+        reason: 'Offensive content',
+      )
+    end
+
+    def contains_exactly_offensive_terms?(message)
+      # combine subject and body, downcase everything
+      text = "#{message.subject} #{message.body}".downcase
+
+      # check if any offensive term appears as a whole word
+      offensive_terms.any? do |term|
+        pattern = /\b#{Regexp.escape(term.downcase)}\b/
+        text.match?(pattern)
+      end
+    end
+
+    def offensive_terms
+      @offensive_terms ||= OffensiveTerm.pluck(:word)
+    end
+    
     def error_message(profile)
       if profile.present?
         I18n.t(:error, scope: 'contact.form')

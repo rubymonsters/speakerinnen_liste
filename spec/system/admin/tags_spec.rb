@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 describe 'in tags' do
-  let!(:admin) { FactoryBot.create(:admin) }
+  let(:admin) { create(:profile, :admin) }
 
   let!(:locale_language_de) { FactoryBot.create(:locale_language_de) }
   let!(:locale_language_en) { FactoryBot.create(:locale_language_en) }
