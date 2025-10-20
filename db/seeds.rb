@@ -249,7 +249,7 @@ class Seeds
     OffensiveTerm.find_or_create_by!(word: word.downcase)
   end
 
-  puts 'Offensive Terms where created'
+  puts 'Offensive Terms were created'
 end
 
 Seeds.new.run
