@@ -63,6 +63,7 @@ module ContactForm
     def offensive_terms
       @offensive_terms ||= OffensiveTerm.pluck(:word)
     end
+    
     def error_message(profile)
       if profile.present?
         I18n.t(:error, scope: 'contact.form')

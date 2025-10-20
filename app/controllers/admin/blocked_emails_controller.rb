@@ -18,4 +18,5 @@ class Admin::BlockedEmailsController < Admin::BaseController
     rescue => e
       redirect_to admin_blocked_email_path(blocked_email), alert: I18n.t('contact.form.error', error: e.message)
     end
+  end
 end
