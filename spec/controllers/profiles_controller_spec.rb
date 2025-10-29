@@ -33,6 +33,16 @@ describe ProfilesController, type: :controller do
       get :index, params: { category_id: category.id }
       expect(assigns(:category)).to eq(category)
     end
+    
+    it "caches the search result" do
+      allow(SearchProfilesByCategory).to receive(:call).and_call_original
+      get :index, params: { category_id: category.id }
+      expect(SearchProfilesByCategory).to have_received(:call).once
+
+      # Second call should not trigger the service again (cache hit)
+      get :index, params: { category_id: category.id }
+      expect(SearchProfilesByCategory).to have_received(:call).once
+    end
   end
 
   describe '#search_with_tags' do
