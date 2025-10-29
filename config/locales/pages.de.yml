@@ -44,15 +44,8 @@ de:
       Mehr Informationen in unserer <a href='%{link}' class='link'>Datenschutzerklärung</a>.<br>"
       contact_modal: "Du musst der <b>Verwendung von Cookies zustimmen</b>, bevor Du das Kontaktformular benutzen kannst.<br>
       Mehr Informationen in unserer <a href='%{link}' class='link'>Datenschutzerklärung</a>.<br>"
-      cookie_consent_summary: "Um unsere Seite nutzer*innenfreundlich zu gestalten und weiter
-      verbessern zu können, speichern wir einzelne Informationen darüber, wie sie genutzt wird."
-      cookie_consent_detail: "Das geschieht, indem wir einfache Textdateien, auch
-      Cookies genannt, durch das Aufrufen der Seite auf deinem Computer
-      ablegen, wo sie dann gespeichert werden.
-      <br> Wichtig: Bestimmte Funktionen können nur genutzt werden, wenn Du die
-      Cookies akzeptiertst: Log-In, Registrierung, Kontaktaufnahme. Die Suche funktioniert auch ohne Cookies. Außerdem benutzen wir eine
-      Software, die Matomoto heißt, um zu wissen, wie die Besucher*innen und Nutzer*innen von speakerinnen.org die Seite nutzen: Das hilft uns auch
-      dabei, sie zu verbessern. Auch hierfür nutzen wir Cookies, die Du aber deaktivieren kannst. Mehr Informationen in unserer <a href='%{link}' class='link'>Datenschutzerklärung</a>."
+      cookie_consent_summary: "Bestimmte Funktionen können nur genutzt werden, wenn Du die essenziellen
+      Cookies akzeptiertst: Log-In, Registrierung, Kontaktaufnahme. Die Suche funktioniert auch ohne Cookies."
       allow_cookies: "Ich stimme zu"
       category_search_title: "Gezielter suchen!"
       category_search_title_vorarlberg: "Gezielter suchen!"
@@ -60,6 +53,9 @@ de:
       category_search_text: "Finde deine Speakerin in 10 Kategorien oder filtere nach ganz konkreten Themen"
       category_search_text_vorarlberg: "Finde deine Fachfrau in 10 Kategorien oder filtere nach ganz konkreten Themen"
       category_search_text_ooe: "Finde deine Fachfrau in 10 Kategorien oder filtere nach ganz konkreten Themen"
+      donate: "Eure Spende für speakerinnen.org"
+      donate_text: "Wir bitten um eure Unterstützung!"
+      donate_button: "Jetzt spenden!"
       get_inspired: "Get inspired!"
       get_inspired_text: "Hier findest du %{count_profiles} Speakerinnen für %{count_topics} Themen"
       get_inspired_button: "Los!"
@@ -107,9 +103,9 @@ de:
       imprint: "Impressum"
       privacy: "Datenschutzerklärung"
       supported_by: "Unterstützt von:"
-      twitter: "<a href='https://twitter.com/speakerinnen', target='_blank', class=''>Twitter</a>"
       instagram: "<a href='https://instagram.com/speakerinnen', target='_blank', class=''>Instagram</a>"
-      facebook: "<a href='https://facebook.com/speakerinnen', target='_blank', class=''>Facebook</a>"
+      bluesky: "<a href='https://bsky.app/profile/speakerinnen.bsky.social', target='_blank', class=''>Bluesky</a>"
+      linkedin: "<a href='https://www.linkedin.com/company/speakerinnen-org/', target='_blank', class=''>LinkedIn</a>"
       caption_vorarlberg: |
         vorarlberg.speakerinnen.org macht Vorarlberg #chancenreich<br>
         <a href="https://www.facebook.com/MarkeVorarlberg/", target="_blank">Facebook: @markevorarlberg</a><br>

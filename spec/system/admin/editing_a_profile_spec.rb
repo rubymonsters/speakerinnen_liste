@@ -16,12 +16,10 @@ RSpec.feature 'Editing a profile', type: :system do
 
       fill_in I18n.t(:firstname, scope: 'profiles.form'), with: 'Ada'
       fill_in I18n.t(:lastname, scope: 'profiles.form'), with: 'Lovelace'
-      find(:css, '#profile_twitter_en').set('@Lovelace')
       find(:css, '#profile_city_en').set('Vienna')
       find(:css, '#profile_website_en').set('www.adalovelace.org')
       find(:css, '#profile_website_2_en').set('www.mariecurie.org')
       find(:css, '#profile_website_3_en').set('www.marthanussbaum.org')
-      find(:css, '#profile_twitter_de').set('@liebe')
       find(:css, '#profile_city_de').set('Wien')
       find(:css, '#profile_website_de').set('www.adalovelace.de')
       find(:css, '#profile_website_2_de').set('www.mariecurie.de')
@@ -41,7 +39,6 @@ RSpec.feature 'Editing a profile', type: :system do
       expect(page).to have_content('www.adalovelace.org')
       expect(page).to have_content('www.mariecurie.org')
       expect(page).to have_content('www.marthanussbaum.org')
-      expect(page).to have_content('@Lovelace')
       click_link('DE', match: :first)
       expect(page).to have_content('Ada')
       expect(page).to have_content('Lovelace')
@@ -52,7 +49,6 @@ RSpec.feature 'Editing a profile', type: :system do
       expect(page).to have_content('www.adalovelace.de')
       expect(page).to have_content('www.mariecurie.de')
       expect(page).to have_content('www.marthanussbaum.de')
-      expect(page).to have_content('@liebe')
     end
   end
 end

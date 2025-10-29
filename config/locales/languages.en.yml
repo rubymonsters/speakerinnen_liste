@@ -45,7 +45,6 @@ en:
     ja: "japanese"
     jv: "javanese"
     ka: "georgian"
-    kg: "kongo"
     ko: "korean"
     ku: "kurdish"
     kw: "cornish"
@@ -70,6 +69,7 @@ en:
     rm: "romansh"
     ro: "romanian"
     ru: "russian"
+    rw: "kinyarwanda"
     sa: "sanskrit"
     sc: "sardinian"
     se: "northern sami"
@@ -91,5 +91,9 @@ en:
     vo: "volapuk"
     yi: "yiddish"
     zh: "chinese"
-    wen: "sorbian"                #   iso_639_2:
-    sgn: "sign languages"         #   iso_639_2:
+    wen: "sorbian"                 # iso_639_2:
+    we: "sorbisch"                 # no real iso_639_1 code but needed for the language search https://github.com/rubymonsters/speakerinnen_liste/blob/ee24b53537e777e796f5ce6173b77377023f9dc8/app/services/profile_grouper.rb#L32
+    sgn: "sign languages"          # iso_639_2:
+    sg: "sign languages"           # no real iso_639_1 code but needed for the language search
+    nds: "low german"              # iso_639_3:
+    nd: "low german"               # no real iso_639_1 code but needed for the language search

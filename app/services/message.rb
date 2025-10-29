@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class Message
   include ActiveModel::Validations
   include ActiveModel::Conversion

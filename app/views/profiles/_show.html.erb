@@ -8,11 +8,11 @@
           <%= @profile.fullname + t(:no_contact, scope: 'profiles.show') %>
         </button>
       <% else %>
-        <button type="button" class="btn btn-primary btn-stretch mt-2 px-5" data-toggle="modal"
-        data-target=<%= cookies[:cookie_consent].blank? ? "#contactHint" : "#contactModal" %>
+        <button type="button" class="btn btn-primary btn-stretch mt-2 px-5" data-bs-toggle="modal"
+        data-bs-target=<%= cookies[:cookie_consent].blank? ? "#contactHint" : "#contactModal" %>
         <%= disable_contact_button(@profile) %> >
           <i class="fa fa-envelope-o"></i>&nbsp;
-          <%= t(:contact, scope: 'profiles.show') + ' ' + @profile.fullname %>
+          <%= t(:contact, scope: 'profiles.show', profile: @profile.fullname) %>
         </button>
       <% end %>
     <% end %>
@@ -35,87 +35,98 @@
       </p>
     <% end %>
     <!-- main topic -->
-    <% if @profile.main_topic_or_first_topic %>
+    <% if @profile.main_topic %>
       <p class="">
-        <span class="font-weight-bold">
+        <span class="fw-bold">
           <%= t(:main_topic, scope: 'profiles.show') %>
         </span>
-        <%= @profile.main_topic_or_first_topic %>
+        <%= @profile.main_topic %>
       </p>
     <% end %>
       <!-- twitter -->
     <% if @profile.twitter.present? %>
       <p class="">
-        <span class="font-weight-bold">
+        <span class="fw-bold">
           <%= t(:twitter, scope: 'profiles.show') %>
         </span>
         <%=link_to '@' + @profile.twitter_name_formatted, @profile.twitter_link_formatted,
         target: '_blank' %>
       </p>
     <% end %>
-    <!-- website -->
-    <!-- only use globalize fall-back when there is no website at all in the current language scope provided -->
-    <!-- when there is at least one website in the current language provided use no fall-back for the missing additional websites -->
-    <% if @profile.website_in_language_scope(I18n.locale).present? ||
-          @profile.website_in_language_scope(I18n.locale, "2_").present? ||
-          @profile.website_in_language_scope(I18n.locale, "3_").present? %>
+   <!-- Check if any website is available in the current language -->
+    <% translated_websites = [
+      @profile.website_in_language_scope(I18n.locale),
+      @profile.website_in_language_scope(I18n.locale, "2_"),
+      @profile.website_in_language_scope(I18n.locale, "3_")
+    ].reject(&:blank?) %>
 
-      <!-- If profile has more than one website: -->
-      <% if @profile.website_in_language_scope(I18n.locale).present? &&
-           ( @profile.website_in_language_scope(I18n.locale, "2_").present? || @profile.website_in_language_scope(I18n.locale, "3_").present? ) %>
-        <p class="">
-          <span class="font-weight-bold">
-            <%= t(:websites, scope: 'profiles.show') %>
-          </span>
-          <%= link_to @profile.website_in_language_scope(I18n.locale), url_with_protocol(@profile.website_in_language_scope(I18n.locale)),
-            target: '_blank' %>
-          <%= link_to ", #{@profile.website_in_language_scope(I18n.locale, "2_")}", url_with_protocol(@profile.website_in_language_scope(I18n.locale, "2_")),
-            target: '_blank' if @profile.website_in_language_scope(I18n.locale, "2_").present? %>
-          <%= link_to ", #{@profile.website_in_language_scope(I18n.locale, "3_")}", url_with_protocol(@profile.website_in_language_scope(I18n.locale, "3_")),
-            target: '_blank' if @profile.website_in_language_scope(I18n.locale, "3_").present? %>
-          </p>
-      <!-- If profile has just one website: -->
-      <% elsif @profile.website_in_language_scope(I18n.locale).present? %>
-      <p class="">
-        <span class="font-weight-bold">
-          <%= t(:website, scope: 'profiles.show') %>
+    <% if translated_websites.any? %>
+      <!-- If at least one website is translated, show only translated websites -->
+      <p>
+        <span class="fw-bold">
+          <%= t(:websites, scope: 'profiles.show') %>
         </span>
-        <%= link_to @profile.website_in_language_scope(I18n.locale), url_with_protocol(@profile.website_in_language_scope(I18n.locale)),
-          target: '_blank' %>
+        <% translated_websites.each do |website| %>
+          <%= link_to website, url_with_protocol(website), target: '_blank' %><br>
+        <% end %>
       </p>
-      <% end %>
-
-    <!-- if there is no website in the current language use the globalize fall-back option for all websites -->
     <% else %>
-
-      <!-- Show the view for more than one website: -->
-      <% if @profile.website.present? && ( @profile.website_2.present? || @profile.website_3.present? ) %>
-        <p class="">
-          <span class="font-weight-bold">
+      <!-- If no websites are translated, show all websites with fallback -->
+      <% fallback_websites = [@profile.website, @profile.website_2, @profile.website_3].compact %>
+      <% if fallback_websites.any? %>
+        <p>
+          <span class="fw-bold">
             <%= t(:websites, scope: 'profiles.show') %>
           </span>
-          <%= link_to @profile.website, url_with_protocol(@profile.website),
-          target: '_blank' %>
-          <%= link_to ", #{@profile.website_2}", url_with_protocol(@profile.website_2),
-          target: '_blank' if @profile.website_2.present? %>
-          <%= link_to ", #{@profile.website_3}", url_with_protocol(@profile.website_3),
-          target: '_blank' if @profile.website_3.present? %>
-        </p>
-      <!-- Show the view for just one website: -->
-      <% elsif @profile.website.present? %>
-        <p class="">
-          <span class="font-weight-bold">
-            <%= t(:websites, scope: 'profiles.show') %>
-          </span>
-          <%= link_to @profile.website, url_with_protocol(@profile.website),
-          target: '_blank' %>
+          <% fallback_websites.each do |website| %>
+            <%= link_to website, url_with_protocol(website), target: '_blank' %><br>
+          <% end %>
         </p>
       <% end %>
     <% end %>
+
+<% if [@profile.instagram, @profile.bluesky, @profile.mastodon, @profile.linkedin].any?(&:present?) %>
+  <p><strong>Social Media:</strong></p>
+
+  <ul class="list-unstyled d-flex gap-3">
+    <% if @profile.instagram.present? %>
+      <li>
+        <%= link_to @profile.instagram, target: "_blank", rel: "noopener", class: "social-icon" do %>
+          <i class="fa-brands fa-instagram"></i>
+        <% end %>
+      </li>
+    <% end %>
+
+    <% if @profile.linkedin.present? %>
+      <li>
+        <%= link_to @profile.linkedin, target: "_blank", rel: "noopener", class: "social-icon" do %>
+          <i class="fa-brands fa-linkedin"></i>
+        <% end %>
+      </li>
+    <% end %>
+
+    <% if @profile.bluesky.present? %>
+      <li>
+        <%= link_to @profile.bluesky, target: "_blank", rel: "noopener", class: "social-icon" do %>
+          <i class="fa-solid fa-cloud"></i> <%# Bluesky has no official icon yet %>
+        <% end %>
+      </li>
+    <% end %>
+
+    <% if @profile.mastodon.present? %>
+      <li>
+        <%= link_to @profile.mastodon, target: "_blank", rel: "noopener", class: "social-icon" do %>
+          <i class="fa-brands fa-mastodon"></i>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
     <!-- languages  -->
     <% if @profile.iso_languages.present? %>
       <p>
-        <span class="font-weight-bold">
+        <span class="fw-bold">
           <%= t(:languages, scope: 'profiles.show') %>
         </span>
         <% languages = [] %>
@@ -128,7 +139,7 @@
     <!-- city -->
     <% if @profile.city.present? %>
       <p class="">
-        <span class="font-weight-bold">
+        <span class="fw-bold">
           <%= t(:city, scope: 'profiles.show') %>
         </span>
         <%= @profile.city %>
@@ -137,7 +148,7 @@
     <!-- state  -->
     <% if @profile.state.present? %>
       <p class="">
-        <span class="font-weight-bold">
+        <span class="fw-bold">
           <%= t(:"state.#{@profile.country.downcase}") %>:
         </span>
         <%= t(:"states.#{@profile.country.downcase}.#{@profile.state}") %>
@@ -146,7 +157,7 @@
     <!-- country  -->
     <% if @profile.country.present? %>
       <p class="">
-        <span class="font-weight-bold">
+        <span class="fw-bold">
           <%= t(:country, scope: 'profiles.show') %>
         </span>
         <%= @profile.country_name %>
@@ -155,7 +166,7 @@
     <!-- topics -->
     <% if topics_for_profile(@profile).present? %>
       <p class="">
-        <span class="font-weight-bold">
+        <span class="fw-bold">
           <%= t(:topics, scope: 'profiles.show') %>
         </span>
         <%= raw topics_for_profile(@profile).map { |topic| topic }.join(', ') %>
@@ -164,7 +175,7 @@
     <!-- services  -->
     <% if !@profile.services.empty? %>
       <p class="">
-        <span class="font-weight-bold">
+        <span class="fw-bold">
           <%= t(:services, scope: 'profiles.show') %>
         </span>
         <%= @profile.services.map{|s| t(s.name, scope: 'profiles.show') }.join(', ') %>
@@ -189,21 +200,23 @@
   <!-- edit action for user -->
   <div class="col-md-2">
     <% if current_profile == @profile %>
-      <%= link_to(edit_profile_path(@profile), class: 'button_link noHover') do %>
-        <div class='btn btn-primary buttons-modals btn-block'>
-          <%= t(:edit, scope: 'profiles.show') %>
-         </div>
-      <% end %>
-      <%= link_to(profile_medialinks_path(@profile), class: 'button_link noHover') do %>
-        <div class='btn btn-primary buttons-modals mt-3 btn-block'>
-          <%= t(:edit, scope: 'profiles.medialinks') %>
-        </div>
-      <% end %>
-      <%= link_to(edit_profile_registration_path, class: 'button_link noHover') do %>
-        <div id='accountSettings', class='btn btn-primary buttons-modals btn-block mt-3'>
-          <%= t(:account, scope: 'layouts.application') %>
-        </div>
-      <% end %>
+      <div class=" d-grid gap-4">
+        <%= link_to(edit_profile_path(@profile), class: 'button_link noHover') do %>
+          <div class='btn btn-primary d-block'>
+            <%= t(:edit, scope: 'profiles.show') %>
+           </div>
+        <% end %>
+        <%= link_to(profile_medialinks_path(@profile), class: 'button_link noHover') do %>
+          <div class='btn btn-primary d-block'>
+            <%= t(:edit, scope: 'profiles.medialinks') %>
+          </div>
+        <% end %>
+        <%= link_to(edit_profile_registration_path, class: 'button_link noHover') do %>
+          <div id='accountSettings', class='btn btn-primary d-block'>
+            <%= t(:account, scope: 'layouts.application') %>
+          </div>
+        <% end %>
+      </div>
     <% end %>
   </div>
 </div>
@@ -212,7 +225,7 @@
 <% if @profile.personal_note %>
   <div class="row my-3">
     <div class="col-md-12">
-        <span class="font-weight-bold">
+        <span class="fw-bold">
           <%= t(:personal_note, scope: 'profiles.show') %>
         </span>
         <%= simple_format(@profile.personal_note, class: '') %>
@@ -224,7 +237,7 @@
 <% if @profile.bio %>
   <div class="row my-3">
     <div class="col-md-12">
-        <span class="font-weight-bold">
+        <span class="fw-bold">
           <%= t(:bio, scope: 'profiles.show') %>
         </span>
         <%= simple_format(@profile.bio, class: '') %>
@@ -236,7 +249,7 @@
 <% if @medialinks.load.any? %>
   <div class="row">
     <div class="col-md-12">
-      <p class=" font-weight-bold">
+      <p class=" fw-bold">
         <%= t(:media, scope: 'profiles.show') %>
       </p>
     <%= render partial: 'profiles/medialink', collection: @medialinks %>
@@ -250,32 +263,31 @@
     <% unless current_profile == @profile %>
     <%# don't show the second contact button at all when the profile is not active %>
       <% unless @profile.inactive? %>
-        <button type="button" class="btn btn-primary btn-stretch mt-2 px-5" data-toggle="modal"
-        data-target=<%= cookies[:cookie_consent].blank? ? "#contactHint" : "#contactModal" %>
+        <button type="button" class="btn btn-primary btn-stretch mt-2 px-5" data-bs-toggle="modal"
+        data-bs-target=<%= cookies[:cookie_consent].blank? ? "#contactHint" : "#contactModal" %>
         <%= disable_contact_button(@profile) %> >
           <i class="fa fa-envelope-o"></i>&nbsp;
-          <%= t(:contact, scope: 'profiles.show') + ' ' + @profile.fullname %>
+          <%= t(:contact, scope: 'profiles.show', profile: @profile.fullname) %>
         </button>
       <% end %>
     <% end %>
   </div>
 </div>
 
-  <!-- Modal Contact -->
-  <div class="modal fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="ModalLabel">
-            <%= "#{t(:email_to, scope: 'profiles.show' )} #{@profile.fullname}:"%>
-          </h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <%= render partial: 'contact/form', locals: {url: contact_profile_path(@profile)} %>
-        </div>
+
+<!-- Modal Contact -->
+<div class="modal fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="ModalLabel">
+          <%= "#{t(:email_to, scope: 'profiles.show' )} #{@profile.fullname}:"%>
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <%= render partial: 'contact/form', locals: {url: contact_profile_path(@profile)} %>
       </div>
     </div>
-  </div><!-- Modal -->
+  </div>
+</div><!-- Modal -->

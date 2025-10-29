@@ -28,7 +28,6 @@ describe 'profile navigation' do
     it 'directs after signin to the own profile page' do
       expect(page).to have_content('Ada')
       expect(page).to have_content('Lovelace')
-      expect(page).to have_content('@alove')
       expect(page).to have_content('London')
       expect(page).to have_content('Carinthia')
       expect(page).to have_content('Austria')
@@ -69,7 +68,6 @@ describe 'profile navigation' do
     it 'directs after signin to the own profile page' do
       expect(page).to have_content('Ada')
       expect(page).to have_content('Lovelace')
-      expect(page).to have_content('@alove')
       expect(page).to have_content('London')
       expect(page).to have_content('Kärnten')
       expect(page).to have_content('Österreich')
@@ -140,15 +138,14 @@ describe 'profile navigation' do
 
     it 'directs after edit profile to the edit page' do
       expect(page).to have_content('name')
-      expect(page).to have_content('Twitteraccount')
     end
 
     it 'shows the correct tabs and the selected tab' do
       expect(page).to have_css('.active', text: 'English')
     end
 
-    it 'shows the correct main topic' do
-      expect(page).to have_css('.d-none #main_topic_de')
+    it 'does not show the edit for german' do
+      expect(page).to have_css('#edit-de.d-none')
     end
   end
 
@@ -162,15 +159,14 @@ describe 'profile navigation' do
 
     it 'directs after edit profile to the edit page' do
       expect(page).to have_content('Vorname')
-      expect(page).to have_content('Twitteraccount')
     end
 
     it 'shows the correct tabs and the selected tab' do
       expect(page).to have_css('.active', text: 'Deutsch')
     end
 
-    it 'shows the correct main topic' do
-      expect(page).to have_css('.d-none #main_topic_en')
+    it 'does not show the edit for english' do
+      expect(page).to have_css('#edit-en.d-none')
     end
   end
 
@@ -206,5 +202,70 @@ describe 'profile navigation' do
       expect(page).not_to have_content('math wiz')
     end
 
+  end
+
+  context 'user has already existing twitter account' do
+    describe 'show view' do
+      before do
+        ada.twitter_en = 'twitteradalovelace_en'
+        ada.twitter_de = 'twitteradalovelace_de'
+        ada.save!
+        sign_in ada
+        click_on 'EN', match: :first
+      end
+
+      it 'visible in the profile show' do
+        expect(page).to have_content('twitteradalovelace_en')
+        expect(page).to have_content('Twitter')
+        click_on 'DE', match: :first
+        expect(page).to have_content('twitteradalovelace_de')
+        expect(page).to have_content('Twitter')
+      end
+    end
+
+    describe 'edit view' do
+      before do
+        ada.twitter_de = 'twitteradalovelace_de'
+        ada.save
+        sign_in ada
+        click_on 'EN', match: :first
+        click_on 'Edit profile'
+      end
+
+      it 'visible in the profile edit' do
+        expect(page).to have_content('Twitter')
+        click_on 'DE', match: :first
+        expect(page).to have_content('Twitter')
+      end
+    end
+  end
+
+  context 'user has no existing twitter account' do
+    describe 'show view' do
+      before do
+        sign_in ada
+        click_on 'EN', match: :first
+      end
+
+      it 'not visible in the profile show' do
+        expect(page).not_to have_content('Twitter')
+        click_on 'DE', match: :first
+        expect(page).not_to have_content('Twitter')
+      end
+    end
+
+    describe 'edit view' do
+      before do
+        sign_in ada
+        click_on 'EN', match: :first
+        click_on 'Edit profile'
+      end
+
+      it 'not visible in the profile edit' do
+        expect(page).not_to have_content('Twitter')
+        click_on 'DE', match: :first
+        expect(page).not_to have_content('Twitter')
+      end
+    end
   end
 end

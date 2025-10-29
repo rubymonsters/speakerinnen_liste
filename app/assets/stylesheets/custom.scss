@@ -25,7 +25,7 @@ a.anchor {
   padding: 0;
 }
 
-a.button_link {
+.single-profile .button_link {
   text-decoration: none;
   &:hover {
     background-color: transparent;
@@ -60,6 +60,7 @@ ul {
 }
 
 .code-of-conduct ul,
+.donations ul,
 #privacy ul {
   list-style: disc;
 
@@ -96,6 +97,11 @@ h1 {
 
 .bg--white {
   background: $white;
+}
+
+.bg--purple {
+  background: $speakerinnen-purple;
+  color: $white;
 }
 
 .bg--grey {
@@ -169,6 +175,12 @@ h1 {
   border-radius: 4px;
 }
 
+.form-control::placeholder {
+  color: lightgrey; 
+  opacity: 1; // Ensure full opacity in some browsers
+}
+
+
 .admin__header--color {
   background: $info;
 }
@@ -187,19 +199,38 @@ h1 {
   color: $header-grey;
 }
 
-.single-profile, #footer {
+.single-profile {
   a {
-    text-decoration: none;
+    text-decoration: underline;
     cursor: pointer;
     padding: 0.2em;
-    font-weight: bold;
-    // color: $link-color;
     &:hover {
       background-color: $dropdown-hover-background;
       text-decoration: none;
     }
   }
+
+  /* Social media icons */
+  a.social-icon {
+    text-decoration: none; // Remove underline from icons
+
+    &:hover {
+      background-color: transparent; // Ensure no background color appears
+    }
+
+    i {
+      font-size: 28px; // Increase icon size
+      color: $speakerinnen-green;
+      transition: color 0.3s ease; // Smooth transition effect
+
+      &:hover {
+        color: $speakerinnen-purple;
+      }
+    }
+  }
 }
+  
+
 
 #footer, .single-profile {
   .noHover:hover {
@@ -265,17 +296,21 @@ textarea, input {
   text-decoration: underline;
 }
 
-.card-header.hover-activated {
-  .btn-link {
+.accordion-item {
+  .accordion-button {
     color: $font-color;
     text-decoration: none;
+
+    &:not(.collapsed) {
+      background-color: white;
+    }
   }
 }
 
-.card-header.hover-activated:hover {
+.accordion-item:hover {
   border-bottom-color: $primary;
 
-  .btn-link {
+  .accordion-button {
     color: $primary;
   }
 }
@@ -288,19 +323,6 @@ textarea, input {
 
 .home .home-search .twitter-typeahead {
   display: block !important;
-}
-
-.home-search {
-  .btn-primary {
-    width: 100%;
-  }
-  div {
-    width: 100%;
-
-    @media (min-width: 576px) {
-      width: auto;
-    }
-  }
 }
 
 .startpage-subtitle {
@@ -353,10 +375,6 @@ textarea, input {
 
   .copyright {
     font-size: 0.8rem;
-  }
-
-  #home_search {
-    // width: 700px
   }
 
   .top-space {

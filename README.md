@@ -130,6 +130,40 @@ different):
 
 4. ```make seed``` to populate the volumes.
 
+# Export emails:
+
+- connect to heroku and the console
+- use the rake task: profiles_to_csv
+- this prints the firstname, lastname and email address of all published and not exported profiles
+- copy that and paste in numbers ( or any other spreadsheet app )
+
+- this also sets the exported_at field to the current date so we only export each profile once
+
+- or use this code:
+```
+require 'csv'
+
+batches = []
+total_profiles = Profile.is_published.count
+batch_size = (total_profiles / 10.0).ceil # Ensure we cover all records
+
+Profile.is_published.find_in_batches(batch_size: batch_size).with_index do |profiles, index|
+  csv_data = CSV.generate(headers: true) do |csv|
+    csv << ["Firstname", "Lastname", "Email Address"] # Header
+
+    profiles.each do |profile|
+      csv << [profile.firstname, profile.lastname, profile.email]
+      profile.update_column(:exported_at, Time.current)
+    end
+  end
+
+  batches[index] = csv_data # Store CSV batch in an array
+end
+
+# Now you have 10 CSV batches stored in `batches[0]` to `batches[9]`
+```
+
+you need to ```puts ``` the batches than you can copy and paste them in numbers
 
 # ♥ Code of Conduct
 

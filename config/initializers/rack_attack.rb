@@ -24,7 +24,15 @@ class Rack::Attack
   # Throttle all requests by IP (60rpm)
   #
   # Key: "rack::attack:#{Time.now.to_i/:period}:req/ip:#{req.ip}"
-  throttle('req/ip', limit: 100, period: 5.minutes) do |req|
+  throttle('req/user_agent', limit: 10, period: 5.minutes) do |req|
+    req.user_agent if req.user_agent.present? && req.user_agent.match(/OAI-SearchBot/i)
+    req.user_agent if req.user_agent.present? && req.user_agent.match(/bingbot/i)
+    req.user_agent if req.user_agent.present? && req.user_agent.match(/meta-externalagent/i)
+    req.user_agent if req.user_agent.present? && req.user_agent.match(/Barkrowler/i)
+    req.user_agent if req.user_agent.present? && req.user_agent.match(/BLEXBot/i)
+  end
+
+  throttle('req/ip', limit: 100, period: 1.minutes) do |req|
     req.ip
   end
 
@@ -60,6 +68,12 @@ class Rack::Attack
       # protect against rate limit bypasses. Return the normalized email if present, nil otherwise.
       req.params['email'].to_s.downcase.gsub(/\s+/, "").presence
     end
+  end
+
+  blocklist('block all access to deprecated paths') do |request|
+    # Requests are blocked if the return value is truthy
+    request.path.start_with?("/de/topics")
+    request.path.start_with?("/en/topics")
   end
 
   ### Custom Throttle Response ###

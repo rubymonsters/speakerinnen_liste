@@ -9,24 +9,24 @@
 
   <div class="filter_categories">
     <h5 class="mt-3 mb-3"><%= t(:categories, scope: 'admin.categories') %>:&nbsp</h5>
-    <%= label_tag 'category_id_all', class: 'radio' do %>
+    <%= label_tag 'category_id_all', class: 'radio mb-2' do %>
       <%= radio_button_tag( 'category_id', '', params[:category_id].blank? ) %>
       <%= t(:tags_filter_default, scope: 'admin.tags') %>
     <% end %>
     <br>
-    <%= label_tag 'category_id_empty', class: 'radio' do %>
+    <%= label_tag 'category_id_empty', class: 'radio mb-2' do %>
       <%= radio_button_tag( 'category_id', 'uncategorized', params[:category_id] == 'uncategorized' )%>
       <%= t(:tags_filter_uncategorized, scope: 'admin.tags') %>
     <% end %>
     <br>
-    <%= label_tag 'category_id_present', class: 'radio' do %>
+    <%= label_tag 'category_id_present', class: 'radio mb-2' do %>
       <%= radio_button_tag( 'category_id', 'categorized', params[:category_id] == 'categorized' )%>
       <%= t(:tags_filter_categorized, scope: 'admin.tags') %>
     <% end %>
     <br>
     <br>
     <% @categories.each do |category| %>
-      <%= label_tag 'category_id_#{category.id}', class: 'radio' do %>
+      <%= label_tag 'category_id_#{category.id}', class: 'radio mb-2' do %>
         <%= radio_button_tag( 'category_id', category.id, params[:category_id] == category.id.to_s ) %>
         <%= category.name %>
       <% end %>

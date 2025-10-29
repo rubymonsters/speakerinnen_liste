@@ -2,18 +2,11 @@
   <div class="cookie-consent-dialog alert clearfix">
     <div>
       <%= t(:cookie_consent_summary, scope: 'pages.home', link: privacy_path).html_safe %>
-      <a class="text-decoration-none" data-toggle="collapse" href="#collapseCookieDetail" role="button" aria-expanded="false" aria-controls="collapseCookieDetail">
-        <i class="fa fa-caret-down ml-3" style="font-size: 21px;"></i>
-      </a>
       <%= link_to(
         t(:allow_cookies, scope: 'pages.home'),
         url_for(params.permit!.merge(allow_cookies: true)),
-        class: 'float-right btn btn-light btn-sm ml-3 cookie-consent'
+        class: 'float-end btn btn-light btn-sm ms-3 cookie-consent'
       ) %>
-    </div>
-    <div class="collapse" id="collapseCookieDetail">
-      <hr>
-      <%= t(:cookie_consent_detail, scope: 'pages.home', link: privacy_path).html_safe %>
     </div>
   </div>
 <% end %>

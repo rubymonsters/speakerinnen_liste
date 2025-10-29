@@ -4,6 +4,18 @@
 User-Agent: *
 Disallow: /topics
 
+User-Agent: Amazonbot
+Disallow: /
+
+User-Agent: Seobility
+Disallow: /
+
+User-Agent: crawl
+Disallow: /
+
+User-Agent: MJ12bot
+Disallow: /
+
 User-Agent: SemrushBot
 Disallow: /
 
@@ -43,8 +55,11 @@ Disallow: /
 User-Agent: Go-http-client
 Disallow: /
 
-User-Agent: http.rb/
+User-Agent: XoviOnpageCrawl
 Disallow: /
 
-User-Agent: XoviOnpageCrawl
+User-Agent: Bingbot
+Crawl-delay: 20
+
+User-Agent: SEOkicks
 Disallow: /

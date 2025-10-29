@@ -44,9 +44,7 @@ en:
        Find more information about data security in our <a href='%{link}' class='link'>privacy policy</a>.<br>"
       contact_modal: "You have to <b>agree to the use of cookies</b>. before using the contact form.<br>
        Find more information about data security in our <a href='%{link}' class='link'>privacy policy</a>.<br>"
-      cookie_consent_summary: "In order to deliver a personalised, responsive service and to improve the site,
-      we remember and store information about how you use it."
-      cookie_consent_detail: "This is done using simple text files called cookies which sit on your computer. These cookies are completely safe and secure and will never contain any sensitive information. Important: To use the full functionality of this site (e.g. login, registration and sending mail to the speakers) you have to agree to the use of cookies. For web statistics we use Matomoto which also uses cookies. These can be deactivated separately. Find more information about data security in our <a href='%{link}' class='link'>privacy policy</a>."
+      cookie_consent_summary: "To use the full functionality of this site (e.g. login, registration and sending mail to the speakers) you have to agree to the use of essential cookies. Our search works without these cookies."
       allow_cookies: "I agree"
       speakerinnen: "Speakers"
       category_search_title: "Search more targeted!"
@@ -55,6 +53,9 @@ en:
       category_search_text: "Find your women speakers in 10 categories or filter by specific topics:"
       category_search_text_vorarlberg: "Find your women experts in 10 categories or filter by specific topics:"
       category_search_text_ooe: "Find your women experts in 10 categories or filter by specific topics:"
+      donate: "Your donation to speakerinnen.org"
+      donate_text: "We ask for your support!"
+      donate_button: "Donate now!"
       get_inspired: "Get inspired!"
       get_inspired_text: "Here you can find %{count_profiles} women speakers in %{count_topics} topics"
       get_inspired_button: "Search"
@@ -103,9 +104,9 @@ en:
       imprint: "Legal Details"
       privacy: "Privacy Policy"
       supported_by: "Supported by:"
-      twitter: "<a href='https://twitter.com/speakerinnen', target='_blank', class='pv-'>Twitter</a>"
       instagram: "<a href='https://instagram.com/speakerinnen', target='_blank', class=''>Instagram</a>"
-      facebook: "<a href='https://facebook.com/speakerinnen', target='_blank', class=''>Facebook</a>"
+      bluesky: "<a href='https://bsky.app/profile/speakerinnen.bsky.social', target='_blank', class=''>Bluesky</a>"
+      linkedin: "<a href='https://www.linkedin.com/company/speakerinnen-org/', target='_blank', class=''>LinkedIn</a>"
       caption_vorarlberg: |
         vorarlberg.speakerinnen.org makes Vorarlberg #chancenreich<br>
         <a href="https://www.facebook.com/MarkeVorarlberg/", target="_blank">Facebook: @markevorarlberg</a><br>

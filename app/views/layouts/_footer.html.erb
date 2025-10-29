@@ -3,7 +3,7 @@
     <div class="row mt-2">
       <div class="col-12 col-md-6 pb-3 order-last order-md-first">
         <span class=""><%=t(:supported_by, scope: 'pages.footer').html_safe%></span>
-        <%= link_to(image_tag('kombuese_logo.png', class:'pl-sm-3', style: "width: 150px"), "https://www.kombuese.org/", class: "noHover",target: 'blank' ) %>
+        <%= link_to(image_tag('kombuese_logo.png', class:'ps-sm-3', style: "width: 150px"), "https://www.kombuese.org/", class: "noHover",target: 'blank' ) %>
       </div>
       <div class="col-12 col-md-2">
         <ul class="list-unstyled">
@@ -21,28 +21,18 @@
       <div class="col-12 col-md-2">
         <ul class="list-unstyled">
           <li class="d-flex">
-            <%= t(:twitter, scope: 'pages.footer').html_safe %>
-          </li>
-          <li class="d-flex">
             <%= t(:instagram, scope: 'pages.footer').html_safe %>
           </li>
           <li class="d-flex">
-            <%= t(:facebook, scope: 'pages.footer').html_safe %>
+            <%= t(:bluesky, scope: 'pages.footer').html_safe %>
+          </li>
+          <li class="d-flex">
+            <%= t(:linkedin, scope: 'pages.footer').html_safe %>
           </li>
         </ul>
       </div>
       <div class="col-12 col-md-2">
         <ul class="list-unstyled">
-          <li class="d-flex">
-        <!-- Make sure cookie consent is given -->
-            <% if cookies[:cookie_consent].blank? %>
-              <button type="button" class="btn btn-link px-2 pt-0" data-toggle="modal" data-target="#contactHint">
-                <%= t(:contact, scope: 'pages.footer') %>
-              </button>
-            <% else %>
-              <%= link_to t(:contact, scope: 'pages.footer'), contact_path, class: "" %>
-            <% end %>
-          </li>
           <li class="d-flex">
             <%= link_to t(:imprint, scope: 'pages.footer'), impressum_path, class: ""%>
           </li>

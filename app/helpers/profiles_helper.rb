@@ -20,6 +20,10 @@ module ProfilesHelper
   end
 
   def profile_image_link(profile)
+    if Rails.env.development?
+      return link_to(image_tag('avatar.png', alt: 'avatar', class: 'photo--grey card-img-top'), profile, class: "p-0")
+    end
+
     if profile.image.attached?
       link_to(image_tag(profile.image.variant(resize_to_fill: [600, 600]), class: 'photo--grey'), profile, class: "p-0")
     else

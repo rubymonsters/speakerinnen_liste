@@ -39,7 +39,12 @@
 
 #Ignore IDE files
 .idea/
+notes/
 
 .ruby-version
 .ruby-gemset
 .env
+
+/config/master.key
+
+/config/credentials/*.key

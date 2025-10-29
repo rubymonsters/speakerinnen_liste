@@ -60,10 +60,6 @@ SpeakerinnenListe::Application.configure do
   # Enable threaded mode
   # config.threadsafe!
 
-  # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
-  # the I18n.default_locale when a translation can not be found)
-  config.i18n.fallbacks = [I18n.default_locale]
-
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
 
@@ -114,7 +110,7 @@ SpeakerinnenListe::Application.configure do
   config.middleware.use ExceptionNotification::Rack,
   :email => {
     :email_prefix => "[SPEAKERINNEN ERROR STAGING] ",
-    :sender_address => %{"notifier" <no-reply@speakerinnen.org>},
+    :sender_address => %{"notifier" <team@speakerinnen.org>},
     :exception_recipients => %w{devops@speakerinnen.org}
   }
 end

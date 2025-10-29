@@ -1,11 +1,8 @@
-# frozen_string_literal: true
-
 class Admin::CategoriesController < Admin::BaseController
   before_action :set_category, only: %i[show edit update destroy]
 
   def new
     @category = Category.new
-    build_missing_translations(@category)
   end
 
   def show; end
@@ -24,7 +21,6 @@ class Admin::CategoriesController < Admin::BaseController
   end
 
   def edit
-    build_missing_translations(@category)
   end
 
   def update
@@ -47,6 +43,6 @@ class Admin::CategoriesController < Admin::BaseController
   end
 
   def category_params
-    params.require(:category).permit(:name, :position, translations_attributes: %i[id name locale])
+    params.require(:category).permit(:name, :name_en, :name_de, :position)
   end
 end

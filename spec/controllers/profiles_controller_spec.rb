@@ -137,32 +137,6 @@ describe ProfilesController, type: :controller do
         expect(response).to redirect_to("/#{I18n.locale}/profiles")
       end
     end
-
-    xit "doesn't create extra translations" do
-      de_translation = ada.translations.create!('locale' => 'de', 'main_topic' => 'Hauptthema')
-      en_translation = ada.translations.create!('locale' => 'en', 'main_topic' => 'Main topic')
-
-      profile_params = {
-        translations_attributes:
-          { '0':
-            {
-              'locale':       'de',
-              'main_topic':   'Algorithmen',
-              'bio':          'Deutsche Biografie',
-              'id':           de_translation.id
-            },
-          '1':
-            {
-              'locale':       'en',
-              'main_topic':   'algorithms',
-              'bio':          'English Bio',
-              'id':           en_translation.id
-            } }
-      }
-      patch :update, params: { id: ada.id }.merge(profile: profile_params)
-
-      expect(ada.reload.translations.size).to eq(2)
-    end
   end
 
   describe '#update' do
@@ -179,6 +153,31 @@ describe ProfilesController, type: :controller do
 
       it 'redirects to the updated profile' do
         expect(response).to redirect_to("/#{I18n.locale}/profiles/marie-curie")
+      end
+    end
+    context 'when exporting email csv' do
+      it 'sets exported_at to nil when the email is changed' do
+        ada.update_columns(exported_at: 1.day.ago)
+        sign_in ada
+        put :update, params: { id: ada.id, profile: { email: 'xada@mail.de' } }
+        ada.reload
+        expect(ada.exported_at).to eq nil
+      end
+
+      it 'leaves exported_at as it is when email is unchanged' do
+        ada.update_columns(exported_at: 1.day.ago)
+        sign_in ada
+        put :update, params: { id: ada.id, profile: { email: ada.email } }
+        ada.reload
+        expect(ada.exported_at).to_not eq nil
+      end
+
+      it 'leaves exported_at unchanged when email params is empty' do
+        ada.update_columns(exported_at: 1.day.ago)
+        sign_in ada
+        put :update, params: { id: ada.id, profile: { firstname: 'Xada' } }
+        ada.reload
+        expect(ada.exported_at).to_not eq nil
       end
     end
 
@@ -284,20 +283,20 @@ describe ProfilesController, type: :controller do
 
   context "pagination with multiple profiles" do
     it 'displays no profiles on index page 2' do
-      published_profiles = create_list(:published_profile, 23, main_topic_en: 'math')
+      published_profiles = create_list(:published_profile, 11, main_topic_en: 'math')
       get :index, params: { page: 1 }
       # we have with previous created profile 24 in total
-      expect(assigns(:records).count).to eq 24
+      expect(assigns(:records).count).to eq 12
       expect(assigns(:records).to_a).to match_array(published_profiles << ada)
       get :index, params: { page: 2 }
       expect(assigns(:records).count).to eq 0
     end
 
     it 'displays no profiles twice on index page 2' do
-      create_list(:published_profile, 25, main_topic_en: 'math')
+      create_list(:published_profile, 13, main_topic_en: 'math')
 
       get :index, params: { page: 1 }
-      expect(assigns(:records).count).to eq 24
+      expect(assigns(:records).count).to eq 12
       profiles_page_1 = assigns(:records)
 
       get :index, params: { page: 2 }
@@ -307,7 +306,7 @@ describe ProfilesController, type: :controller do
     end
 
     it 'order by last created' do
-      published_profiles = create_list(:published_profile, 23, main_topic_en: 'math')
+      published_profiles = create_list(:published_profile, 11, main_topic_en: 'math')
       last_created_profile = published_profiles.last
       get :index, params: { page: 1 }
       expect(assigns(:records).first).to eq last_created_profile

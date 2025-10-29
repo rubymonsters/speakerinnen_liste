@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class ApplicationController < ActionController::Base
   include Pagy::Backend
   protect_from_forgery
@@ -9,6 +7,7 @@ class ApplicationController < ActionController::Base
   before_action :set_current_region
   before_action :set_search_region
   before_action :check_cookie_consent
+  before_action :log_bot_activity
 
   def authenticate_admin!
     return if current_profile&.admin?
@@ -57,10 +56,12 @@ class ApplicationController < ActionController::Base
   helper_method :search_region
 
   private
-  def build_missing_translations(object)
-    I18n.available_locales.each do |locale|
-      object.translations.build(locale: locale) unless object.translated_locales.include?(locale)
-    end
+  def log_bot_activity
+    return if Rails.env.test?
+    return unless request.is_crawler?
+    user_agent = request.user_agent.present? ? request.user_agent : ""
+
+    logger.warn "Crawler was here: #{request.crawler_name} #{user_agent}"
   end
 
   def set_locale
@@ -82,8 +83,7 @@ class ApplicationController < ActionController::Base
     if params[:allow_cookies] == 'true'
       cookies[:cookie_consent] = {
         value: true,
-        expires: 1.year.from_now,
-        domain: (Rails.env.staging? ? nil : :all)
+        expires: 1.year.from_now
       }
       reset_session
       redirect_back(fallback_location: root_path)

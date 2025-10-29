@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 FactoryBot.define do
   factory :profile do
     firstname { 'Susi' }
@@ -27,11 +25,13 @@ FactoryBot.define do
       confirmed_at { nil }
     end
 
+    factory :inactive do
+      inactive { true}
+    end
+
     factory :ada do
       firstname { 'Ada' }
       lastname { 'Lovelace' }
-      twitter_de { 'alovelace_de' }
-      twitter_en { 'alovelace_en' }
       city_en { 'London' }
       state { 'carinthia' }
       country { 'AT' }
@@ -50,7 +50,6 @@ FactoryBot.define do
     factory :marie do
       firstname { 'Marie' }
       lastname { 'Curie' }
-      twitter_en { 'curie' }
       city_de { 'Paris' }
       city_en { 'Paris' }
       country { 'FR' }
@@ -67,7 +66,6 @@ FactoryBot.define do
       firstname { 'Laura' }
       country { 'AT' }
       state { :vorarlberg }
-      twitter_de { 'laurastwitter' }
       iso_languages { ['de', 'en'] }
       main_topic_de { 'Umwelt' }
       published { true }
@@ -85,7 +83,6 @@ FactoryBot.define do
     factory :phantom_of_the_opera do
       firstname { 'Phantom' }
       lastname { 'of the Opera' }
-      twitter_en { 'phantom_of_the_opera' }
       city_en { }
       country { }
       iso_languages { }
@@ -95,57 +92,6 @@ FactoryBot.define do
       main_topic_en { }
       published { true }
       profession { }
-    end
-
-  end
-
-  factory :feature do
-    title  { New Event }
-  end
-
-  factory :category do
-    factory :cat_science do
-      name_en { 'Science' }
-      name_de { 'Wissenschaft' }
-    end
-    factory :cat_social do
-      name_en { 'Social' }
-      name_de { 'Soziales' }
-    end
-  end
-
-  factory :locale_language do
-    factory :locale_language_de do
-      iso_code { 'de' }
-    end
-
-    factory :locale_language_en do
-      iso_code { 'en' }
-    end
-  end
-
-  factory :medialink do
-    profile_id { 1 }
-    url { 'http://www.somesite.com/profile' }
-    title { 'thisTitle' }
-    description { 'lorep ipsum...' }
-  end
-
-  factory :tag, class: ActsAsTaggableOn::Tag do
-    factory :tag_chemie do
-      name { 'chemie' }
-    end
-
-    factory :tag_physics do
-      name { 'physics' }
-    end
-
-    factory :tag_social_media do
-      name { 'social media' }
-    end
-
-    factory :tag_algorithm do
-      name { 'algorithm' }
     end
   end
 end

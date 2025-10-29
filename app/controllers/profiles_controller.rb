@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class ProfilesController < ApplicationController
   include ProfilesHelper
   include CategoriesHelper
@@ -33,14 +31,16 @@ class ProfilesController < ApplicationController
   end
 
   def edit
-    build_missing_translations(@profile)
   end
 
   def update
+    if email_changed?
+      @profile.update_column(:exported_at, nil)
+    end
+
     if @profile.update(profile_params)
       redirect_to @profile, notice: I18n.t('flash.profiles.updated', profile_name: @profile.name_or_email)
     else
-      build_missing_translations(@profile)
       render action: 'edit'
     end
   end
@@ -73,15 +73,22 @@ class ProfilesController < ApplicationController
     @profile = Profile.friendly.find(params[:id])
   end
 
+  def email_changed?
+    return false if profile_params[:email].blank?
+    @profile.email != profile_params[:email]
+  end
+
   def profile_params
     params.require(:profile).permit(
       :email, :password, :password_confirmation, :remember_me, :country, :state, { iso_languages: [] },
-      :firstname, :lastname, :content, :name, :topic_list, :medialinks, :slug, :admin_comment, :main_topic_en,
-      :main_topic_de, :bio_en, :bio_de, :twitter_de, :twitter_en, :website_de, :website_en, :website_2_de,
-      :website_2_en, :website_3_de, :website_3_en, :profession_en, :profession_de, :city_de, :city_en, :image,
-      :copyright, :personal_note_de, :personal_note_en, :willing_to_travel, :nonprofit, :inactive,
-      feature_ids: [], service_ids: [], translations_attributes: %i[id bio main_topic twitter website profession city locale]
-    )
+      :firstname, :lastname, :content, :name, :topic_list, :medialinks, :slug, :admin_comment,
+      :main_topic, :bio, :twitter, :website, :website_2, :website_3, :profession, 
+      :profession_en, :profession_de, :city, :city_en, :city_de, :website_en, :website_de, :website_2_en, :website_2_de, 
+      :website_3_en, :website_3_de,
+      :main_topic_en, :main_topic_de, :bio_en, :bio_de, :twitter_en, :twitter_de, :personal_note_en, :personal_note_de,
+      :instagram, :mastodon, :linkedin, :bluesky,
+      :image, :copyright, :personal_note, :willing_to_travel, :nonprofit, :inactive,
+      feature_ids: [], service_ids: [])
   end
 
   def search_with_search_params

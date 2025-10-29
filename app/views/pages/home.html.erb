@@ -38,12 +38,13 @@
   <%# EITHER divider: get inspired OR intro: subdomains %>
 
   <% if @is_global_speakerinnen %>
-    <%= render partial: "shared/get_inspired" %>
+    <%# %= render partial: "shared/get_inspired" %>
+    <%= render partial: "shared/donation_campaign" %>
   <% elsif current_region == :vorarlberg %>
     <div class="bg--dark container divider-vorarlberg"></div>
   <% else %>
     <div class="intro-subdomain container">
-      <div class="row p-3 text-left">
+      <div class="row p-3 text-start">
         <h1><%= t(:"intro_title_#{current_region}", scope: 'pages.home') %></h1>
         <%= t(:"intro_text_#{current_region}", scope: 'pages.home').html_safe %>
       </div>
@@ -80,7 +81,7 @@
 
   <% if current_region == :vorarlberg %>
     <div class="intro-subdomain container">
-      <div class="row p-3 text-left">
+      <div class="row p-3 text-start">
         <h1><%= t(:"intro_title_#{current_region}", scope: 'pages.home') %></h1>
           <%= t(:"intro_text_#{current_region}", scope: 'pages.home').html_safe %>
       </div>

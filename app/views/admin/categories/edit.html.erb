@@ -1,23 +1,20 @@
 <div class="container">
 
-  <h1>Administration::<%= t(:categories, scope: "admin.categories")%>::<%= t(:edit, scope: "general")%></h1>
+  <h1>Administration::<%= t(:categories, scope: "admin.categories") %>::<%= t(:edit, scope: "general") %></h1>
 
   <%= simple_form_for [:admin, @category] do |f| %>
-    <%= f.fields_for :translations, @category.translations.sort_by(&:locale) do |translation| %>
-
-      <%= translation.hidden_field :locale %>
-
-      <p class="mt-5">
-        <%= translation.label :category, t(:new_name,
+    
+    <% I18n.available_locales.each do |locale| %>
+      <div class="mt-5">
+        <%= f.label "name_#{locale}", t(:new_name,
           scope: 'admin.categories',
-          language:  t(translation.object.locale, scope: 'i18n.language')).html_safe %>
-      </p>
-
-      <%= translation.text_field :name, class: 'form-control' %>
-
+          language: t(locale, scope: 'i18n.language')).html_safe,
+          class: "mb-2" %>
+        <%= f.text_field "name_#{locale}", value:  Mobility.with_locale(locale) { @category.name }, class: 'form-control' %>
+      </div>
     <% end %>
 
-    <%= f.input :position, as: :integer, label: "Position:", label_html: { class: "mt-5"}, input_html: { class: 'form-control mb-3' }  %>
+    <%= f.input :position, as: :integer, label: "Position:", label_html: { class: "mt-5 mb-2"}, input_html: { class: 'form-control mb-3' }  %>
 
     <%= f.button :submit, t(:save, scope: 'general'), class: 'btn btn-primary btn-sm my-3' %>
 

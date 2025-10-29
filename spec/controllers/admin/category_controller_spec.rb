@@ -14,9 +14,6 @@ describe Admin::CategoriesController, type: :controller do
     before(:each) {  get :new }
 
     specify { expect(response).to render_template(:new) }
-    it 'builds translation' do
-      expect(assigns(:category).translations.size).to eq 2
-    end
   end
 
   describe 'POST create' do
@@ -84,39 +81,24 @@ describe Admin::CategoriesController, type: :controller do
 
   context 'translations' do
     before(:each) do
-      de_factory_translation = category.translations.find_by('locale' => 'de')
-      en_translation = category.translations.create!('locale' => 'en')
-
+      category.update(name_de: 'Wissenschaft', name_en: 'Science')
+  
       category_params = {
-        translations_attributes:
-          { '0':
-            {
-              'locale':       'de',
-              'name_de':         'Kunst',
-              'id':           de_factory_translation.id
-            },
-          '1':
-            {
-              'locale':       'en',
-              'name_en':         'Art',
-              'id':           en_translation.id
-            } }
+        name_de: 'Kunst',
+        name_en: 'Art'
       }
-      patch :update, params: { id: category.id }.merge(category: category_params)
+  
+      patch :update, params: { id: category.id, category: category_params }
     end
-
-    xit "doesn't create extra translations" do
-      expect(category.reload.translations.size).to eq(2)
+  
+    it "shows the updated German translation" do
+      I18n.locale = :de
+      expect(assigns(:category).name).to eq 'Kunst'
     end
-
-    it "show the correct translation when 'I18n.locale :de'" do
-      I18n.locale = 'de'
-      expect(assigns(:category).name).to eq 'Wissenschaft'
+  
+    it "shows the updated English translation" do
+      I18n.locale = :en
+      expect(assigns(:category).name).to eq 'Art'
     end
-
-    it "show the correct translation when 'I18n.locale :en'" do
-      I18n.locale = 'en'
-      expect(assigns(:category).name).to eq 'Science'
-    end
-  end
+  end  
 end

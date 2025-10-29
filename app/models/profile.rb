@@ -1,4 +1,3 @@
-# frozen_string_literal: true
 class Profile < ApplicationRecord
   include PgSearch::Model
   include ActiveModel::Serialization
@@ -14,8 +13,7 @@ class Profile < ApplicationRecord
       translations: [
         [:bio, 'C'],
         [:city, 'B'],
-        [:main_topic, 'A'],
-        [:twitter, 'D']
+        [:main_topic, 'A']
       ],
       topics: [[:name, 'A']]
     },
@@ -34,15 +32,15 @@ class Profile < ApplicationRecord
   has_one_attached :image
   has_and_belongs_to_many :services
 
-  serialize :iso_languages, Array
+  serialize :iso_languages, type: Array, coder: YAML
   validate :iso_languages_array_has_right_format
   validate :image_format_size
   validates :profession, length: { maximum: 60, message: "Please use less than 80 characters." }
+  validates :instagram, :linkedin, :bluesky, :mastodon, format: { with: URI::DEFAULT_PARSER.make_regexp, message: "must be a valid URL" }, allow_blank: true
   before_save :clean_iso_languages!
 
-  translates :bio, :main_topic, :profession, :twitter, :website, :website_2, :website_3, :city, :personal_note, fallbacks_for_empty_translations: true
-  accepts_nested_attributes_for :translations
-  globalize_accessors locales: %i[en de], attributes: %i[main_topic bio profession twitter website website_2 website_3 city personal_note]
+  extend Mobility
+  translates :bio, :main_topic, :profession, :twitter, :website, :website_2, :website_3, :city, :personal_note
 
   extend FriendlyId
   friendly_id :slug_candidate, use: :slugged
@@ -82,6 +80,7 @@ class Profile < ApplicationRecord
   scope :is_confirmed, -> { where.not(confirmed_at: nil) }
   scope :no_admin, -> { where(admin: false) }
   scope :has_tags, -> (tags) { tagged_with(tags, :any => true) }
+  scope :not_exported, -> { where(exported_at: nil) }
 
   # only show profile where the main_topic is filled in in the current locale
   scope :main_topic_translated_in, ->(locale) {
@@ -116,7 +115,7 @@ class Profile < ApplicationRecord
     :city,
     :willing_to_travel,
     :nonprofit,
-    :main_topic_or_first_topic,
+    :main_topic,
     keyword_init: true
   )
 
@@ -128,7 +127,7 @@ class Profile < ApplicationRecord
       city: city,
       willing_to_travel: willing_to_travel,
       nonprofit: nonprofit,
-      main_topic_or_first_topic: main_topic_or_first_topic,
+      main_topic: main_topic,
     )
   end
 
@@ -137,9 +136,17 @@ class Profile < ApplicationRecord
   end
 
   def cities
-    cities_de = city_de.to_s.gsub(/(,|\/|&|\*|\|| - | or )/, "!@\#$%ˆ&*").split("!@\#$%ˆ&*").map(&:strip)
-    cities_en = city_en.to_s.gsub(/(,|\/|&|\*|\|| - | or )/, "!@\#$%ˆ&*").split("!@\#$%ˆ&*").map(&:strip)
-    (cities_de << cities_en).flatten!.uniq
+    cities_de = Mobility.with_locale(:de) { city.to_s }
+      .gsub(/(,|\/|&|\*|\|| - | or )/, "!@\#$%ˆ&*")
+      .split("!@\#$%ˆ&*")
+      .map(&:strip)
+  
+    cities_en = Mobility.with_locale(:en) { city.to_s }
+      .gsub(/(,|\/|&|\*|\|| - | or )/, "!@\#$%ˆ&*")
+      .split("!@\#$%ˆ&*")
+      .map(&:strip)
+  
+    (cities_de + cities_en).uniq
   end
 
   def region
@@ -148,12 +155,6 @@ class Profile < ApplicationRecord
 
   def name_or_email
     fullname.present? ? fullname : email
-  end
-
-  def main_topic_or_first_topic
-    return nil unless main_topic
-
-    main_topic
   end
 
   # Try building a slug based on the following fields in
