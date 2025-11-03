@@ -83,13 +83,13 @@ ActiveRecord::Schema[7.1].define(version: 2025_07_24_185852) do
   end
 
   create_table "category_translations", force: :cascade do |t|
-    t.bigint "category_id", null: false
+    t.integer "category_id", null: false
     t.string "locale", null: false
-    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["category_id", "locale"], name: "index_category_translations_on_category_id_and_locale", unique: true
+    t.string "name"
     t.index ["category_id"], name: "index_category_translations_on_category_id"
+    t.index ["locale"], name: "index_category_translations_on_locale"
   end
 
   create_table "feature_profiles", force: :cascade do |t|
@@ -104,12 +104,12 @@ ActiveRecord::Schema[7.1].define(version: 2025_07_24_185852) do
   create_table "feature_translations", force: :cascade do |t|
     t.bigint "feature_id", null: false
     t.string "locale", null: false
-    t.text "title"
-    t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["feature_id", "locale"], name: "index_feature_translations_on_feature_id_and_locale", unique: true
+    t.string "title"
+    t.text "description"
     t.index ["feature_id"], name: "index_feature_translations_on_feature_id"
+    t.index ["locale"], name: "index_feature_translations_on_locale"
   end
 
   create_table "features", force: :cascade do |t|
