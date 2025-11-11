@@ -160,10 +160,8 @@ describe 'profile search' do
   end
 
   describe 'admin area search' do
-    let(:admin) { FactoryBot.create(:admin) }
-
+    let(:admin) { create(:profile, :admin) }
     before { sign_in admin }
-
     it 'finds the correct profile' do
       visit admin_profiles_path(search: 'ada lovelace')
 

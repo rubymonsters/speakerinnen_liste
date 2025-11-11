@@ -4,6 +4,11 @@ en:
       edit_categories: "Edit Categories"
       edit_tags: "Edit Tags"
       edit_profiles: "Edit Profiles"
+      offensive_terms: "Offensive Terms"
+      categories: "Categories"
+      tags: 'Tags'
+      profiles: 'Profiles'
+      features: 'Features'
     categories:
       categories: "Categories"
       category_language_de: "German:"
