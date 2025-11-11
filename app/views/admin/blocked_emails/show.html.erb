@@ -6,7 +6,7 @@
   <p><strong>Inhalt:</strong></p>
                       <pre><%= @blocked_email.body %></pre>
   <p><strong>Email Empfängerin:</strong> <%= @blocked_email.contacted_profile_email %></p>
-  <p><strong>Blocked Reason:</strong> <%= @blocked_email.reason %></p>
+  <p><strong>Grund für die Blockierung:</strong> <%= @blocked_email.reason %></p>
   <p><strong>Erstellt am:</strong> <%= @blocked_email.created_at.strftime("%d.%m.%Y %H:%M") %></p>
   <p><strong>Gesendet am:</strong> <%= @blocked_email.sent_at&.strftime("%d.%m.%Y %H:%M") %></p>
 </p>
