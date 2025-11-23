@@ -20,7 +20,7 @@ gem 'interactor'
 gem 'pagy'
 gem 'mime-types'
 
-gem 'acts-as-taggable-on', '~> 12.0'
+gem "acts-as-taggable-on", "~> 13.0"
 gem 'devise', '~> 4.7'
 gem 'invisible_captcha', '2.3'
 gem 'jquery-rails', '~> 4.4.0'
