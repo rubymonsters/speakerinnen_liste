@@ -1,54 +1,67 @@
-Documentation:
+# Rails 8 / Ruby 3.2-compatible config
+
+Style/Documentation:
   Enabled: false
-Layout/AlignHash:
+
+Layout/HashAlignment:
   Enabled: false
-Metrics/BlockLength:
-  ExcludedMethods: ['describe', 'context']
-Metrics/ModuleLength:
-  Exclude:
-    - "**/*_spec.rb"
-    - "spec/*.rb"
 
 Metrics/BlockLength:
+  ExcludedMethods: ['describe', 'context']
   Exclude:
     - "**/*_spec.rb"
     - "spec/*.rb"
     - "spec/**/*.rb"
 
-Metrics/LineLength:
+Metrics/ModuleLength:
+  Exclude:
+    - "**/*_spec.rb"
+    - "spec/*.rb"
+
+Layout/LineLength:
   Enabled: false
+
 Metrics/MethodLength:
   Enabled: false
+
 Naming/FileName:
   Enabled: false
+
 Metrics/ClassLength:
   Enabled: false
+
 Metrics/AbcSize:
   Enabled: false
+
 Metrics/PerceivedComplexity:
   Enabled: false
+
 Style/RegexpLiteral:
   Enabled: false
+
 Style/ClassAndModuleChildren:
   Enabled: false
+
 Style/GuardClause:
   Enabled: false
+
 Style/Lambda:
   Enabled: false
-Naming/UncommunicativeMethodParamName:
+
+Naming/MethodParameterName:
   Enabled: false
+
 Naming/VariableNumber:
   Enabled: false
+
 Lint/UselessAssignment:
   Enabled: false
+
 Lint/AssignmentInCondition:
   Enabled: false
 
-
 AllCops:
-  Include:
-    - '**/Rakefile'
-    - '**/config.ru'
+  TargetRubyVersion: 3.2
   Exclude:
     - 'db/**/*'
     - 'config/**/*'

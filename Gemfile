@@ -2,7 +2,7 @@
 
 source 'https://rubygems.org'
 ruby '3.2.2'
-gem "rails", "~> 8.0.0"
+gem 'rails', '~> 8.0.0'
 
 # Needed for Javascript Runtime
 # gem 'therubyracer'
@@ -14,11 +14,11 @@ gem 'bootsnap', '~> 1.18.4'
 # rexml gem is a bundled gem since Ruby 3.0.0.
 gem 'rexml', '~> 3.4.2'
 
-gem 'normalize-rails'
 gem 'interactor'
+gem 'normalize-rails'
 
-gem 'pagy'
 gem 'mime-types'
+gem 'pagy'
 
 gem 'acts-as-taggable-on', '~> 12.0'
 gem 'devise', '~> 4.7'
@@ -31,18 +31,18 @@ gem 'simple_form'
 
 gem 'country_select'
 
-gem "mobility"
+gem 'mobility'
 
 gem 'bootstrap', '~> 5.3.3'
-gem 'font-awesome-sass', '~> 6.1'
 gem 'bootstrap-icons-helper'
+gem 'font-awesome-sass', '~> 6.1'
 
 gem 'friendly_id'
 
 gem 'active_model_serializers'
 
-gem 'record_tag_helper', '~> 1.0'
 gem 'exception_notification'
+gem 'record_tag_helper', '~> 1.0'
 
 gem 'sassc-rails'
 
@@ -55,8 +55,8 @@ gem 'rack-piwik', '~> 0.3.0', require: 'rack/piwik'
 gem 'aws-sdk-s3', require: false
 
 gem 'image_processing', '~> 1.2'
-gem 'rack-timeout'
 gem 'pg_search'
+gem 'rack-timeout'
 
 gem 'crawler_detect'
 gem 'rack-attack'
@@ -67,8 +67,8 @@ gem 'psych', '< 4.0'
 group :development do
   gem 'better_errors'
   gem 'bullet', '~> 8.1.0'
-  gem 'faker', '~> 3.1', '>= 3.1.1'
   gem 'derailed_benchmarks'
+  gem 'faker', '~> 3.1', '>= 3.1.1'
   gem 'letter_opener'
   gem 'stackprof'
 end
@@ -80,7 +80,8 @@ group :development, :test do
   gem 'guard-rspec'
   gem 'pry'
   gem 'rspec-rails'
-  gem 'rubocop', '~> 0.62.0'
+  gem 'rubocop', '~> 1.65', require: false # supports Ruby 3.2
+  gem 'rubocop-rails', '~> 2.33', require: false
   gem 'selenium-webdriver', '3.141.0'
   gem 'webrick', '~> 1.7'
 end
@@ -93,8 +94,8 @@ group :test do
   gem 'rails-controller-testing'
 end
 
-gem "honeybadger", "~> 5.14"
+gem 'honeybadger', '~> 5.14'
 
-gem "terser", "~> 1.2"
+gem 'terser', '~> 1.2'
 
-gem "puma", "~> 6.6"
+gem 'puma', '~> 6.6'
