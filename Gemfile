@@ -2,7 +2,7 @@
 
 source 'https://rubygems.org'
 ruby '3.2.2'
-gem "rails", "~> 7.2.0"
+gem "rails", "~> 8.0.0"
 
 # Needed for Javascript Runtime
 # gem 'therubyracer'
@@ -20,7 +20,7 @@ gem 'interactor'
 gem 'pagy'
 gem 'mime-types'
 
-gem 'acts-as-taggable-on', '~> 11.0'
+gem 'acts-as-taggable-on', '~> 12.0'
 gem 'devise', '~> 4.7'
 gem 'invisible_captcha', '2.3'
 gem 'jquery-rails', '~> 4.4.0'
@@ -66,7 +66,7 @@ gem 'psych', '< 4.0'
 
 group :development do
   gem 'better_errors'
-  gem 'bullet'
+  gem 'bullet', '~> 8.1.0'
   gem 'faker', '~> 3.1', '>= 3.1.1'
   gem 'derailed_benchmarks'
   gem 'letter_opener'
