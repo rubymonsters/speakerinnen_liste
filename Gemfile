@@ -2,7 +2,7 @@
 
 source 'https://rubygems.org'
 ruby '3.2.2'
-gem 'rails', '~> 7.1.3' # Use the latest stable version of Rails 7.1
+gem "rails", "~> 7.2.0"
 
 # Needed for Javascript Runtime
 # gem 'therubyracer'
@@ -20,7 +20,7 @@ gem 'interactor'
 gem 'pagy'
 gem 'mime-types'
 
-gem 'acts-as-taggable-on', '~> 10.0'
+gem 'acts-as-taggable-on', '~> 11.0'
 gem 'devise', '~> 4.7'
 gem 'invisible_captcha', '2.3'
 gem 'jquery-rails', '~> 4.4.0'
