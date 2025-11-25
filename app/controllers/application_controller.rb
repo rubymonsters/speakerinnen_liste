@@ -59,9 +59,8 @@ class ApplicationController < ActionController::Base
   def log_bot_activity
     return if Rails.env.test?
     return unless request.is_crawler?
-    user_agent = request.user_agent.present? ? request.user_agent : ""
 
-    logger.warn "Crawler was here: #{request.crawler_name} #{user_agent}"
+    logger.warn "Crawler was here: #{request.crawler_name}"
   end
 
   def set_locale
