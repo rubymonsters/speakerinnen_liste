@@ -57,7 +57,7 @@ class Profile < ApplicationRecord
   end
 
   def after_confirmation
-    AdminMailer.new_profile_confirmed(self).deliver
+    AdminMailer.new_profile_confirmed(self).deliver_now
   end
 
   def self.by_region(region)

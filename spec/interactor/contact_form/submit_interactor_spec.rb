@@ -2,6 +2,7 @@ RSpec.describe ContactForm::SubmitInteractor do
   let(:valid_params) do
     { name: 'Test', email: 'horst@example.org', subject: 'Hi', body: 'Message' }
   end
+  let!(:ada) { create(:profile, email: "ada@mail.org") }
 
   it 'succeeds with valid data' do
     result = described_class.call(params: valid_params, profile: nil)
@@ -16,5 +17,70 @@ RSpec.describe ContactForm::SubmitInteractor do
       expect(result).to be_success
       expect(result.skip_delivery).to be true
     }.not_to change { ActionMailer::Base.deliveries.count }
+  end
+
+  it 'pretends success for messages containing offensive terms without sending mail' do
+    offensive_term = 'du Nazi'
+    OffensiveTerm.create!(word: offensive_term)
+
+    expect {
+      result = described_class.call(params: valid_params.merge(body: "This is a test message with #{offensive_term}."), profile: nil)
+      expect(result).to be_success
+      expect(result.skip_delivery).to be true
+    }.not_to change { ActionMailer::Base.deliveries.count }
+
+    expect(BlockedEmail.count).to eq(1)
+  end
+
+  it 'when just one word of the offensive term is used the mail gets sent' do
+    offensive_term = 'du Nazi'
+    OffensiveTerm.create!(word: offensive_term)
+
+    expect {
+      result = described_class.call(params: valid_params.merge(body: "This is a test message with Nazi."), profile: nil)
+      expect(result).to be_success
+      expect(result.skip_delivery).to be nil
+    }.to change { ActionMailer::Base.deliveries.count }
+
+    expect(BlockedEmail.count).to eq(0)
+
+  end
+
+  it 'checks the body' do
+    offensive_term = 'Esel'
+    OffensiveTerm.create!(word: offensive_term)
+    expect {
+      result = described_class.call(params: valid_params.merge(body: "This is a test message with Esel."), profile: nil)
+      expect(result).to be_success
+      expect(result.skip_delivery).to be true
+    }.not_to change { ActionMailer::Base.deliveries.count }
+    expect(BlockedEmail.count).to eq(1)
+    expect(BlockedEmail.last.body).to include('Esel')
+    expect(BlockedEmail.last.contacted_profile_email).to eq('team@speakerinnen.org')
+  end
+
+  it 'checks the subject' do
+    offensive_term = 'Esel'
+    OffensiveTerm.create!(word: offensive_term)
+    expect {
+      result = described_class.call(params: valid_params.merge(subject: "This is a test message with Esel."), profile: nil)
+      expect(result).to be_success
+      expect(result.skip_delivery).to be true
+    }.not_to change { ActionMailer::Base.deliveries.count }
+    expect(BlockedEmail.count).to eq(1)
+  end
+
+  it 'creates blocked email with correct contacted_profile_email when profile is given' do
+    offensive_term = 'Dummkopf'
+    OffensiveTerm.create!(word: offensive_term)
+
+    expect {
+      result = described_class.call(params: valid_params.merge(subject: "#{offensive_term}"), profile: ada)
+      expect(result).to be_success
+      expect(result.skip_delivery).to be true
+    }.not_to change { ActionMailer::Base.deliveries.count }
+
+    expect(BlockedEmail.count).to eq(1)
+    expect(BlockedEmail.last.contacted_profile_email).to eq(ada.email)
   end
 end

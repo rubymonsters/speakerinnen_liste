@@ -2,7 +2,7 @@
 
 RSpec.feature 'Editing a profile', type: :system do
   context 'logged in as an admin' do
-    let!(:admin) { create(:admin) }
+    let(:admin) { create(:profile, :admin) }
     let!(:user) { create(:published_profile) }
 
     before do

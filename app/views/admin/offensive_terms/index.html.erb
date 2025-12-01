@@ -1,0 +1,33 @@
+<div class="m-5 underline_links">
+  <h2>beleidigende Begriffe / Wörter</h2>
+  <p>
+    Hier kannst du die Liste der beleidigenden Wörter verwalten, die den Spam-Schutz auslösen.
+<br>
+    Wenn eine Email im <b>Subject</b> oder <b>Body</b> eines dieser Wörter enthält, wird die <b>Email blockiert</b> und nicht weitergeleitet.<br><br>
+    Du kannst auch <b>ganze Phrasen</b> hinzufügen, z.B. "du Nazi". Dann wird nur die Email blockiert, die im Betreff oder im Body diese exakte Phrase enthält.
+    Bei den <%= link_to 'Blocked Emails', admin_blocked_emails_path %> kannst du dir anschauen, welche Emails blockiert wurden und gegebenenfalls weiterleiten.
+  </p>
+
+  <%= link_to ('<i class="fa fa-plus-circle">&nbsp;</i>' + 'Neues Wort hinzufügen').html_safe,
+  new_admin_offensive_term_path, class: "btn btn-primary btn-sm my-5" %>
+
+  <table class="table categories">
+    <thead class="bg--white">
+      <tr>
+        <th>Begriff</th>
+        <th>Aktionen</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @offensive_terms.each do |offensive_term| %>
+        <tr>
+          <td><%= offensive_term.word %></td>
+          <td>
+            <%= link_to 'Edit', edit_admin_offensive_term_path(offensive_term) %> |
+            <%= link_to 'Delete', admin_offensive_term_path(offensive_term), method: :delete, data: { confirm: 'Are you sure?' } %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

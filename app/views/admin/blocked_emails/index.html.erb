@@ -1,0 +1,35 @@
+<div class="m-5 underline_links">
+
+  <h2>Blockierte Emails</h2>
+  <p>
+  Die Emails sind blockiert, weil sie im <b>Subjekt</b> oder im <b>Body</b> beleidigende Begriffe enthalten haben. </BR>
+Du kannst die Email anschauen und entscheiden, ob du sie trotzdem senden möchtest. <br>
+Wenn du die Email trotzdem senden möchtest, klicke auf <b>"Sende die Email trotzdem".</b> <br>
+Die Email wird dann an die angegebene Adresse gesendet. <br>
+Hier ist die Liste der Begriffe: <%= link_to 'Beleidigende Begriffe', admin_offensive_terms_path %>
+  </p>
+  <table class="table blocked-emails">
+    <thead class="bg--white">
+      <tr>
+        <th>Email Empfängerin</th>
+        <th>Email Senderin</th>
+        <th>Betreff</th>
+        <th>Erstellt am</th>
+        <th>Gesendet am</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @blocked_emails.each do |email| %>
+        <tr>
+          <td><%= email.contacted_profile_email %></td>
+          <td><%= email.email %></td>
+          <td><%= truncate(email.subject, length: 60) %></td>
+          <td><%= email.created_at.strftime("%d.%m.%Y %H:%M") %></td>
+          <td><%= email.sent_at&.strftime("%d.%m.%Y %H:%M") %></td>
+          <td><%= link_to 'Ansehen', admin_blocked_email_path(email) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

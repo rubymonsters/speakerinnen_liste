@@ -3,9 +3,9 @@
 module CategoriesHelper
   def category_link(category, anchor = nil)
     if anchor
-      link_to category.name, category_path(category.id, anchor: anchor), class: ""
+      link_to category.name, category_path(category.id, anchor: anchor), class: ''
     else
-      link_to category.name, category_path(category.id), class: ""
+      link_to category.name, category_path(category.id), class: ''
     end
   end
 
@@ -15,7 +15,7 @@ module CategoriesHelper
   end
 
   def category_profiles_ratio(category_id)
-    category_profiles_count(category_id).to_f/profiles_count*100
+    category_profiles_count(category_id).to_f / profiles_count * 100
   end
 
   private
@@ -26,18 +26,22 @@ module CategoriesHelper
 
   def categories_profiles_counts
     Rails.cache.fetch("categories_profiles_counts.#{current_region || 'all'}", expires_in: 1.hours) do
-      sql = <<~sql
+      sql = <<~SQL
         SELECT c.id, COUNT(DISTINCT p.id)
         FROM categories c
         JOIN categories_tags ct ON c.id = ct.category_id
         JOIN taggings t ON ct.tag_id = t.tag_id
         JOIN profiles p ON t.taggable_id = p.id
-        WHERE p.published = true #{"AND state = ?" if current_region}
+        WHERE p.published = true #{'AND state = ?' if current_region}
         GROUP BY (c.id)
-      sql
-      sql = ActiveRecord::Base.sanitize_sql([sql, current_region]) if current_region
-      res = ActiveRecord::Base.connection.execute(sql)
-      res.values
+      SQL
+
+      sql = ActiveRecord::Base.send(:sanitize_sql_array, [sql, current_region]) if current_region
+
+      ActiveRecord::Base.connection_pool.with_connection do |conn|
+        res = conn.exec_query(sql)
+        res.rows
+      end
     end
   end
 end
