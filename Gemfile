@@ -97,4 +97,4 @@ gem "honeybadger", "~> 5.14"
 
 gem "terser", "~> 1.2"
 
-gem "puma", "~> 6.6"
+gem "puma", "~> 7.1"
