@@ -58,19 +58,4 @@ RSpec.describe Category, type: :model do
     end
   end
 
-  describe 'category short_name' do
-    it "returns the first word of the english name in lowercase" do
-      I18n.locale = :en
-      category = Category.create(name: "Test Category")
-      I18n.locale = :de
-      category.name = "Deutsche Category"
-      category.save
-      expect(category.short_name).to eq 'test'
-    end
-
-    it "handles names with multiple words" do
-      category = Category.create(name: "Another Test Category")
-      expect(category.short_name).to eq 'another'
-    end
-  end
 end

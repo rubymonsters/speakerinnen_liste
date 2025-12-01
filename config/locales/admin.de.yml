@@ -6,6 +6,7 @@ de:
       edit_profiles: "Bearbeite Profile"
     categories:
       categories: "Kategorien"
+      category_slug: "Slug:"
       category_language_de: "Deutsch:"
       category_language_en: "Englisch:"
       amount_of_tags: "Anzahl der Tags:"

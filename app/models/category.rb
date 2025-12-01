@@ -9,9 +9,4 @@ class Category < ApplicationRecord
     Category.all.includes(:translations).order(:position)
   end
 
-  def short_name
-    Mobility.with_locale(:en) do
-      self.name.split.first.downcase
-    end
-  end
 end

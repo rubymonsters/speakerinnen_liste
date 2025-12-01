@@ -5,6 +5,7 @@ en:
       edit_tags: "Edit Tags"
       edit_profiles: "Edit Profiles"
     categories:
+      category_slug: "Slug:"
       categories: "Categories"
       category_language_de: "German:"
       category_language_en: "English:"
