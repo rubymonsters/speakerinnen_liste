@@ -20,7 +20,7 @@ gem 'normalize-rails'
 gem 'mime-types'
 gem 'pagy'
 
-gem 'acts-as-taggable-on', '~> 12.0'
+gem "acts-as-taggable-on", "~> 13.0"
 gem 'devise', '~> 4.7'
 gem 'invisible_captcha', '2.3'
 gem 'jquery-rails', '~> 4.4.0'
@@ -98,4 +98,4 @@ gem 'honeybadger', '~> 5.14'
 
 gem 'terser', '~> 1.2'
 
-gem 'puma', '~> 6.6'
+gem "puma", "~> 7.1"

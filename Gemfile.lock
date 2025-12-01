@@ -77,8 +77,8 @@ GEM
       securerandom (>= 0.3)
       tzinfo (~> 2.0, >= 2.0.5)
       uri (>= 0.13.1)
-    acts-as-taggable-on (12.0.0)
-      activerecord (>= 7.1, < 8.1)
+    acts-as-taggable-on (13.0.0)
+      activerecord (>= 7.1, < 8.2)
       zeitwerk (>= 2.4, < 3.0)
     addressable (2.8.7)
       public_suffix (>= 2.0.2, < 7.0)
@@ -333,7 +333,7 @@ GEM
       method_source (~> 1.0)
     psych (3.3.4)
     public_suffix (6.0.1)
-    puma (6.6.0)
+    puma (7.1.0)
       nio4r (~> 2.0)
     qonfig (0.29.0)
     racc (1.8.1)
@@ -509,7 +509,7 @@ PLATFORMS
 
 DEPENDENCIES
   active_model_serializers
-  acts-as-taggable-on (~> 12.0)
+  acts-as-taggable-on (~> 13.0)
   aws-sdk-s3
   better_errors
   bootsnap (~> 1.18.4)
@@ -550,7 +550,7 @@ DEPENDENCIES
   poltergeist (= 1.18.1)
   pry
   psych (< 4.0)
-  puma (~> 6.6)
+  puma (~> 7.1)
   rack-attack
   rack-piwik (~> 0.3.0)
   rack-timeout
