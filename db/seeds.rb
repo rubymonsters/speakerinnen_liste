@@ -5,7 +5,7 @@ class Seeds
     @categories = [
       { slug: "marketing", name_en: "Marketing & PR", name_de: "Marketing & PR"},
       { slug: "diversity", name_en: "Diversity", name_de: "Diversität" },
-      { slug: "body", name_en: "Body & Soul", name_de: "Körper & Geist" },
+      { slug: "soul", name_en: "Body & Soul", name_de: "Körper & Geist" },
       { slug: "arts", name_en: "Arts & Culture", name_de: "Kunst & Kultur" },
       { slug: "environment", name_en: "Environment & Substainablility", name_de: "Umwelt & Nachhaltigkeit" },
       { slug: "internet", name_en: "Internet & Media", name_de: "Internet & Medien" },
