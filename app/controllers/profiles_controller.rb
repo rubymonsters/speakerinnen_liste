@@ -177,7 +177,7 @@ class ProfilesController < ApplicationController
           .translated_in_current_language_and_not_translated(I18n.locale)
           .tap { |tags| tags.belongs_to_more_than_one_profile unless current_region }
           .most_used(100)
-      instance_variable_set("@tags_#{category.short_name}", tags)
+      instance_variable_set("@tags_#{category.slug}", tags)
     end
   end
 end

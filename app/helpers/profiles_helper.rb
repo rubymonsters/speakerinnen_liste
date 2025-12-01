@@ -16,7 +16,7 @@ module ProfilesHelper
 
   def topic_link_color(topic)
     link_to topic, topic_path(topic: topic.to_s), id: topic.name.gsub(/\s+/, "-"),
-    class: "#{"bg-" + topic.categories.first.short_name if topic.categories.first} btn btn-sm m-1 sans-serif tag-button"
+    class: "#{"bg-" + topic.categories.first.slug if topic.categories.first} btn btn-sm m-1 sans-serif tag-button"
   end
 
   def profile_image_link(profile)

@@ -13,6 +13,7 @@
         <%= f.text_field "name_#{locale}", value:  Mobility.with_locale(locale) { @category.name }, class: 'form-control' %>
       </div>
     <% end %>
+    <%= f.input :slug, label: t(:category_slug, scope: "admin.categories"), label_html: { class: "mt-5 mb-2"}, input_html: { class: 'form-control mb-3' }  %>
 
     <%= f.input :position, as: :integer, label: "Position:", label_html: { class: "mt-5 mb-2"}, input_html: { class: 'form-control mb-3' }  %>
 

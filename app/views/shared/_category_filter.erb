@@ -3,8 +3,8 @@
     <p id="category_explantation" class="py-2 fw-bold"><%= t(:choose_category, scope: 'category') %></p>
     <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
       <% @categories.each do |category| %>
-        <a class="h5 category-link pb-2 <%= "active show" if category.id.to_s == @category.id.to_s %>" id="v-pills-<%= category.short_name %>-tab" data-bs-toggle="pill" href="#v-pills-<%= category.short_name %>" role="tab" aria-controls="v-pills-<%= category.short_name %>" aria-selected="false">
-          <i class="fa fa-circle pe-2 small" id="icon-<%= category.short_name%>"></i><%= category.name %>
+        <a class="h5 category-link pb-2 <%= "active show" if category.id.to_s == @category.id.to_s %>" id="v-pills-<%= category.slug %>-tab" data-bs-toggle="pill" href="#v-pills-<%= category.slug %>" role="tab" aria-controls="v-pills-<%= category.slug %>" aria-selected="false">
+          <i class="fa fa-circle pe-2 small" id="icon-<%= category.slug%>"></i><%= category.name %>
         </a>
       <% end %>
     </div>
@@ -13,15 +13,15 @@
   <div class="col-md-8">
     <p id="tags_explantation" class="py-2 fw-bold <%= "d-none" unless params[:category_id] %>"><%= t(:filter, scope: 'category') %></p>
     <% @categories.each do |category| %>
-        <span id="<%= category.short_name %>" class="btn btn-primary choose_all_tags mb-2 category-search category-search-<%= category.short_name %> <%= "d-none" unless category.id.to_s ==  params[:category_id] %> ">
+        <span id="<%= category.slug %>" class="btn btn-primary choose_all_tags mb-2 category-search category-search-<%= category.slug %> <%= "d-none" unless category.id.to_s ==  params[:category_id] %> ">
           <%= t(:choose_all_button, scope: 'category', category_name: category.name ).html_safe %>
         </span>
     <% end %>
     <div class="tab-content mb-3" id="available-tags-box">
       <% @categories.each do |category| %>
         <% cache category, expires_in: 1.hour do %>
-          <div style="min-height: 300px" class="tab-pane fade <%= "active show" if category.id.to_s == ( params[:category_id]  || @category.id.to_s )%>" id="v-pills-<%= category.short_name %>" role="tabpanel" aria-labelledby="v-pills-<%= category.short_name %>-tab" >
-            <%= render partial: "shared/tagbox", locals: { :tags => instance_variable_get("@tags_#{category.short_name}"), :category => category } %>
+          <div style="min-height: 300px" class="tab-pane fade <%= "active show" if category.id.to_s == ( params[:category_id]  || @category.id.to_s )%>" id="v-pills-<%= category.slug %>" role="tabpanel" aria-labelledby="v-pills-<%= category.slug %>-tab" >
+            <%= render partial: "shared/tagbox", locals: { :tags => instance_variable_get("@tags_#{category.slug}"), :category => category } %>
           </div>
         <% end %>
       <% end %>

@@ -14,7 +14,7 @@
           </div>
         </span>
         <div
-          class="progress-bar category_item_<%=category.short_name%>"
+          class="progress-bar category_item_<%=category.slug%>"
           role="progressbar"
           style="width: 100%"
           aria-valuenow="100"
@@ -32,9 +32,9 @@
         bar_2 = 200 - bar_1
       %>
       <a href="<%= category_path(category.id, anchor: "speakers_anchor") %>"class="progress">
-        <div class="progress-bar category_item_<%=category.short_name%>" role="progressbar" style="width: <%=bar_1%>%" aria-valuenow="<%=bar_1%>" aria-valuemin="0" aria-valuemax="100">
+        <div class="progress-bar category_item_<%=category.slug%>" role="progressbar" style="width: <%=bar_1%>%" aria-valuenow="<%=bar_1%>" aria-valuemin="0" aria-valuemax="100">
         </div>
-        <div class="category_item_<%=category.short_name%>_numbers pe-5" role="progressbar" style="width: <%=bar_2%>%" aria-valuenow="<%=bar_2%>" aria-valuemin="0" aria-valuemax="100">
+        <div class="category_item_<%=category.slug%>_numbers pe-5" role="progressbar" style="width: <%=bar_2%>%" aria-valuenow="<%=bar_2%>" aria-valuemin="0" aria-valuemax="100">
         </div>
       </a>
     <% end %>
@@ -48,7 +48,7 @@
             <%= category.name %>
           </div>
         </span>
-        <div class="category_item_<%=category.short_name%>" style="width:100%"></div>
+        <div class="category_item_<%=category.slug%>" style="width:100%"></div>
       </a>
     <% end %>
   </div>

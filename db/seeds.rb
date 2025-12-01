@@ -3,16 +3,16 @@ class Seeds
     @languages = ["en", "de"]
       @cities = %w[Berlin London Stuttgart Leipzig Hamburg Dresden]
     @categories = [
-      { name_en: "Marketing & PR", name_de: "Marketing & PR"},
-      { name_en: "Diversity", name_de: "Diversität" },
-      { name_en: "Body & Soul", name_de: "Körper & Geist" },
-      { name_en: "Arts & Culture", name_de: "Kunst & Kultur" },
-      { name_en: "Environment & Substainablility", name_de: "Umwelt & Nachhaltigkeit" },
-      { name_en: "Internet & Media", name_de: "Internet & Medien" },
-      { name_en: "Politics & Society", name_de: "Politics & Society" },
-      { name_en: "Companies & Start-ups", name_de: "Unternehmen & Gründungen" },
-      { name_en: "Career & Education", name_de:"Career & Education" },
-      { name_en: "Science & technology", name_de: "Wissenschaft & Technik" }
+      { slug: "marketing", name_en: "Marketing & PR", name_de: "Marketing & PR"},
+      { slug: "diversity", name_en: "Diversity", name_de: "Diversität" },
+      { slug: "soul", name_en: "Body & Soul", name_de: "Körper & Geist" },
+      { slug: "arts", name_en: "Arts & Culture", name_de: "Kunst & Kultur" },
+      { slug: "environment", name_en: "Environment & Sustainability", name_de: "Umwelt & Nachhaltigkeit" },
+      { slug: "internet", name_en: "Internet & Media", name_de: "Internet & Medien" },
+      { slug: "politics", name_en: "Politics & Society", name_de: "Politics & Society" },
+      { slug: "companies", name_en: "Companies & Start-ups", name_de: "Unternehmen & Gründungen" },
+      { slug: "career", name_en: "Career & Education", name_de:"Career & Education" },
+      { slug: "science", name_en: "Science & technology", name_de: "Wissenschaft & Technik" }
     ]
     @tags = {
       "en" => [
@@ -81,14 +81,8 @@ class Seeds
     @languages.each { |value| LocaleLanguage.find_or_create_by(iso_code: value) }
     puts "2 languages were created"
 
-    unless Category.exists?
-      for i in 0...@categories.length do
-        names = @categories[i]
-        Category.create(name_en: names[:name_en], name_de: names[:name_de])
-      end
-        puts "10 categories were created"
-    else
-      puts "Categories already exist, skipping creation"
+    @categories.each do |names|
+      Category.create(slug: names[:slug], name_en: names[:name_en], name_de: names[:name_de])
     end
 
     create_tags_with_one_language("en")

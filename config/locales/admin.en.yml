@@ -10,6 +10,7 @@ en:
       profiles: 'Profiles'
       features: 'Features'
     categories:
+      category_slug: "Slug:"
       categories: "Categories"
       category_language_de: "German:"
       category_language_en: "English:"

@@ -8,6 +8,7 @@
   <table class="table categories">
     <thead class="bg--lightgrey">
       <tr>
+        <th><%= t(:category_slug, scope: "admin.categories")%></th>
         <th><%= t(:category_language_de, scope: "admin.categories")%></th>
         <th><%= t(:category_language_en, scope: "admin.categories")%></th>
         <th><%= t(:amount_of_tags, scope: "admin.categories")%></th>
@@ -19,6 +20,7 @@
 
     <% @categories.each do |category| %>
       <tr>
+        <td> <%= category.slug %> </td>
         <td> <%= category.name_de if category.name_de %> </td>
         <td> <%= category.name_en if category.name_en %> </td>
         <td> <%= category.tags.count %> </td>
