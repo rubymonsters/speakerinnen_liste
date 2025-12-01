@@ -81,8 +81,7 @@ class Seeds
     @languages.each { |value| LocaleLanguage.find_or_create_by(iso_code: value) }
     puts "2 languages were created"
 
-    for i in 0...@categories.length do 
-      names = @categories[i]
+    @categories.each do |names|
       Category.create(slug: names[:slug], name_en: names[:name_en], name_de: names[:name_de])
     end
 
