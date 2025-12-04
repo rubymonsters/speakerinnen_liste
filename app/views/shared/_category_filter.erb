@@ -19,11 +19,9 @@
     <% end %>
     <div class="tab-content mb-3" id="available-tags-box">
       <% @categories.each do |category| %>
-        <% cache category, expires_in: 1.hour do %>
-          <div style="min-height: 300px" class="tab-pane fade <%= "active show" if category.id.to_s == ( params[:category_id]  || @category.id.to_s )%>" id="v-pills-<%= category.slug %>" role="tabpanel" aria-labelledby="v-pills-<%= category.slug %>-tab" >
-            <%= render partial: "shared/tagbox", locals: { :tags => instance_variable_get("@tags_#{category.slug}"), :category => category } %>
-          </div>
-        <% end %>
+        <div style="min-height: 300px" class="tab-pane fade <%= "active show" if category.id.to_s == ( params[:category_id]  || @category.id.to_s )%>" id="v-pills-<%= category.slug %>" role="tabpanel" aria-labelledby="v-pills-<%= category.slug %>-tab" >
+          <%= render partial: "shared/tagbox", locals: { :tags => instance_variable_get("@tags_#{category.slug}"), :category => category } %>
+        </div>
       <% end %>
     </div>
     <div id="selected-tags-box" class="my-3">
