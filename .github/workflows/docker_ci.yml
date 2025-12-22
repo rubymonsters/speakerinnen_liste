@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v5
     - name: Copy database.yml
       run: cp config/database.yml.sample config/database.yml
     - name: Build speakerinnen Docker image
