@@ -14,22 +14,26 @@ RUN apt-get update -qq && apt-get install -y \
 
 WORKDIR /speakerinnen_liste
 
-# Install Bundler 2.4 in system gems
-RUN gem install bundler -v '~> 2.4'
-
-# Configure app-specific gem path
+# Set app-specific gem path
 ENV BUNDLE_PATH=/bundle \
     BUNDLE_BIN=/bundle/bin \
     GEM_HOME=/bundle
 ENV PATH="${BUNDLE_BIN}:${PATH}"
 
-# Copy Gemfiles first
+# Update RubyGems
+RUN gem update --system
+
+# Install Bundler 2.4 directly into /bundle
+RUN gem install bundler -v '~> 2.4' --install-dir /bundle --bindir /bundle/bin
+
+# Copy Gemfiles first (for caching)
 COPY Gemfile* ./
 
-# Install app gems
+# Install gems using Bundler 2.4
 RUN bundle _2.4_ install
 
 # Copy the rest of the app
 COPY . .
 
+# Default command
 CMD ["bash"]
