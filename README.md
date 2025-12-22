@@ -84,6 +84,19 @@ Our database schema looks like that:
 
 ![db](https://user-images.githubusercontent.com/1218914/43900439-368fa600-9be5-11e8-8f9c-d209784de1ef.jpg)
 
+after upgrading the database in the docker-compose.yml:
+
+```
+docker compose down -v
+docker compose up -d db
+docker compose exec db psql -U postgres -c "DROP DATABASE IF EXISTS speakerinnen_development; CREATE DATABASE speakerinnen_development;"
+cat latest.dump | docker compose exec -T db pg_restore -U postgres -d speakerinnen_development --clean --if-exists --no-owner
+```
+
+
+
+-  
+
 # Metrics
 
 For seeing our metrics we use the free community edition of honeyycomb ( https://ui.honeycomb.io/login )
