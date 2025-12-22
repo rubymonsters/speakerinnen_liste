@@ -3,6 +3,7 @@ FROM ruby:3.2.2
 # System dependencies
 RUN apt-get update -qq && apt-get install -y \
     nodejs \
+    yarn \
     postgresql-client \
     build-essential \
     libpq-dev \
@@ -14,25 +15,18 @@ RUN apt-get update -qq && apt-get install -y \
 
 WORKDIR /speakerinnen_liste
 
-# Set app-specific gem path
-ENV BUNDLE_PATH=/bundle \
-    BUNDLE_BIN=/bundle/bin \
-    GEM_HOME=/bundle
-ENV PATH="${BUNDLE_BIN}:${PATH}"
-
-# Update RubyGems
+# 1️⃣ Install Bundler 2.4 in system gems (default GEM_HOME)
 RUN gem update --system
+RUN gem install bundler -v '~> 2.4'
 
-# Install Bundler 2.4 directly into /bundle
-RUN gem install bundler -v '~> 2.4' --install-dir /bundle --bindir /bundle/bin
-
-# Copy Gemfiles first (for caching)
+# 2️⃣ Copy Gemfiles first (for caching)
 COPY Gemfile* ./
 
-# Install gems using Bundler 2.4
-RUN bundle _2.4_ install
+# 3️⃣ Install gems into /bundle, but use system Bundler
+ENV BUNDLE_PATH=/bundle
+RUN bundle install
 
-# Copy the rest of the app
+# 4️⃣ Copy the rest of the app
 COPY . .
 
 # Default command
