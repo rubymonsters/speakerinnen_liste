@@ -45,6 +45,8 @@ test:
 	$(call dc-run-sp, sh -c 'bundle exec rspec')
 # Restore local DB from latest.dump
 restore-db:
+	@echo "Stopping DB container..."
+	docker compose down -v
 	@echo "Starting DB container..."
 	docker compose up -d db
 	@echo "Dropping and creating development database..."
