@@ -4,7 +4,7 @@ describe ProfilesController, type: :controller do
   include AuthHelper
   let!(:profile_published) { create(:published_profile, topic_list: %w[ruby algorithms]) }
   let!(:profile_unpublished) { create(:unpublished_profile) }
-  let!(:ada) { create(:published_profile, email: 'ada@example.org', main_topic_en: 'math') }
+  let!(:ada) { create(:published_profile, email: "ada@mail.org", main_topic_en: 'math') }
   let(:admin) { create(:profile, :admin) }
   let!(:category) { create(:cat_science) }
 
@@ -20,7 +20,7 @@ describe ProfilesController, type: :controller do
     end
 
     it 'displays published profiles' do
-      expect(assigns(:records).pluck(:id)).to eq([ada.id])
+      expect(assigns(:records).pluck(:id)).to eq ([ada.id])
     end
 
     it 'does not include unpublished profiles' do
@@ -37,13 +37,13 @@ describe ProfilesController, type: :controller do
 
   describe '#search_with_tags' do
     it 'redirects to profile index when tags filter is empty' do
-      get :index, params: { tag_filter: '' }
+      get :index, params: { tag_filter: "" }
       expect(response).to redirect_to("/#{I18n.locale}/profiles#top")
     end
 
     it 'redirects to profile index when tags filter is empty' do
-      get :index, params: { tag_filter: 'ruby' }
-      expect(assigns(:records).pluck(:id)).to eq([profile_published.id])
+      get :index, params: { tag_filter: "ruby" }
+      expect(assigns(:records).pluck(:id)).to eq ([profile_published.id])
     end
   end
 
@@ -188,7 +188,7 @@ describe ProfilesController, type: :controller do
       end
 
       it 'does not update the requested Profile' do
-        expect(ada.email).to eq('ada@example.org')
+        expect(ada.email).to eq('ada@mail.org')
       end
 
       it 'renders the edit template' do
@@ -281,7 +281,7 @@ describe ProfilesController, type: :controller do
     end
   end
 
-  context 'pagination with multiple profiles' do
+  context "pagination with multiple profiles" do
     it 'displays no profiles on index page 2' do
       published_profiles = create_list(:published_profile, 11, main_topic_en: 'math')
       get :index, params: { page: 1 }
