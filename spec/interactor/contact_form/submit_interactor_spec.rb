@@ -25,7 +25,7 @@ RSpec.describe ContactForm::SubmitInteractor do
       stub_const('ENV', ENV.to_hash.merge('FISHY_EMAILS' => 'spam@example.com'))
 
       expect do
-        result = described_class.call(params: valid_params.merge(email: 'spam@example.com'), profile: nil)
+        result = described_class.call(params: valid_params.merge(email: 'spam@example.com'), profile: ada)
         expect(result).to be_success
         expect(result.skip_delivery).to be true
       end.not_to(change { ActionMailer::Base.deliveries.count })
@@ -40,7 +40,7 @@ RSpec.describe ContactForm::SubmitInteractor do
       OffensiveTerm.create!(word: offensive_term)
 
       expect do
-        result = described_class.call(params: valid_params.merge(body: 'This is a test message with Nazi.'), profile: nil)
+        result = described_class.call(params: valid_params.merge(body: 'This is a test message with Nazi.'), profile: ada)
         expect(result).to be_success
         expect(result.skip_delivery).to be nil
       end.to(change { ActionMailer::Base.deliveries.count })
@@ -55,7 +55,7 @@ RSpec.describe ContactForm::SubmitInteractor do
           OffensiveTerm.create!(word: offensive_term)
 
           expect do
-            result = described_class.call(params: valid_params.merge(body: "This is a test message with #{offensive_term}."), profile: nil)
+            result = described_class.call(params: valid_params.merge(body: "This is a test message with #{offensive_term}."), profile: ada)
             expect(result).to be_success
             expect(result.skip_delivery).to be true
           end.not_to(change { ActionMailer::Base.deliveries.count })
@@ -63,17 +63,32 @@ RSpec.describe ContactForm::SubmitInteractor do
           expect(BlockedEmail.count).to eq(1)
         end
 
+        it 'creates blocked email with correct contacted_profile_email when NO speakerin profile is given' do
+          offensive_term = 'Dummkopf'
+          OffensiveTerm.create!(word: offensive_term)
+
+          expect do
+            result = described_class.call(params: valid_params.merge(subject: offensive_term.to_s), profile: nil)
+            expect(result).to be_success
+            expect(result.skip_delivery).to be true
+          end.not_to(change { ActionMailer::Base.deliveries.count })
+
+          expect(BlockedEmail.count).to eq(1)
+          expect(BlockedEmail.last.contacted_profile_email).to eq('team@speakerinnen.org')
+          expect(BlockedEmail.last.reason).to eq('Offensive content')
+        end
+
         it 'offensive term in the body' do
           offensive_term = 'Esel'
           OffensiveTerm.create!(word: offensive_term)
           expect do
-            result = described_class.call(params: valid_params.merge(body: 'This is a test message with Esel.'), profile: nil)
+            result = described_class.call(params: valid_params.merge(body: 'This is a test message with Esel.'), profile: ada)
             expect(result).to be_success
             expect(result.skip_delivery).to be true
           end.not_to(change { ActionMailer::Base.deliveries.count })
           expect(BlockedEmail.count).to eq(1)
           expect(BlockedEmail.last.body).to include('Esel')
-          expect(BlockedEmail.last.contacted_profile_email).to eq('team@speakerinnen.org')
+          expect(BlockedEmail.last.contacted_profile_email).to eq(ada.email)
           expect(BlockedEmail.last.reason).to eq('Offensive content')
         end
 
@@ -81,7 +96,7 @@ RSpec.describe ContactForm::SubmitInteractor do
           offensive_term = 'Esel'
           OffensiveTerm.create!(word: offensive_term)
           expect do
-            result = described_class.call(params: valid_params.merge(subject: "This is a test message with #{offensive_term}."), profile: nil)
+            result = described_class.call(params: valid_params.merge(subject: "This is a test message with #{offensive_term}."), profile: ada)
             expect(result).to be_success
             expect(result.skip_delivery).to be true
           end.not_to(change { ActionMailer::Base.deliveries.count })
@@ -89,23 +104,6 @@ RSpec.describe ContactForm::SubmitInteractor do
           expect(BlockedEmail.last.reason).to eq('Offensive content')
         end
       end
-    end
-  end
-
-  context 'contact speakerin form' do
-    it 'creates blocked email with correct contacted_profile_email when speakerin profile is given' do
-      offensive_term = 'Dummkopf'
-      OffensiveTerm.create!(word: offensive_term)
-
-      expect do
-        result = described_class.call(params: valid_params.merge(subject: offensive_term.to_s), profile: ada)
-        expect(result).to be_success
-        expect(result.skip_delivery).to be true
-      end.not_to(change { ActionMailer::Base.deliveries.count })
-
-      expect(BlockedEmail.count).to eq(1)
-      expect(BlockedEmail.last.contacted_profile_email).to eq(ada.email)
-      expect(BlockedEmail.last.reason).to eq('Offensive content')
     end
   end
 
@@ -118,6 +116,17 @@ RSpec.describe ContactForm::SubmitInteractor do
       end.not_to(change { ActionMailer::Base.deliveries.count })
       expect(BlockedEmail.count).to eq(1)
       expect(BlockedEmail.last.reason).to eq('Suspicious content')
+    end
+  end
+  context 'with invalid params' do
+    it 'fails the context' do
+      result = described_class.call(
+        params: valid_params.merge(email: ''),
+        profile: ada
+      )
+
+      expect(result).to be_a_failure
+      expect(result.error).to be_present
     end
   end
 end

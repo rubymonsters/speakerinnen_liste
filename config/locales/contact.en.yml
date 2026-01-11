@@ -14,8 +14,7 @@ en:
       read_code_of_conduct_link: "code of conduct"
       read_code_of_conduct_suffix: "? Thank you for a respectful and friendly communication!"
       notice: "Yay! Your message was sent."
-      error: "Please fill all fields so that the speaker can have all the details she needs."
-      error_email_for_us: "Please fill all fields."
+      error: "Please fill all fields."
   mail:
     subject: "New request via Speakerinnen.org: %{subject}"
     sender_subject: "Copy of your message to Speakerinnen.org"

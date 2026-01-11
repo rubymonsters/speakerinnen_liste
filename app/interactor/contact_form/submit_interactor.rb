@@ -22,7 +22,7 @@ module ContactForm
         end
       else
         context.message = message
-        context.fail!(error: error_message(context.profile))
+        context.fail!(error: I18n.t(:error, scope: 'contact.form'))
       end
     end
 
