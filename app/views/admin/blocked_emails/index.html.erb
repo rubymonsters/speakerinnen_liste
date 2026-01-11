@@ -1,23 +1,29 @@
 <div class="m-5 underline_links">
 
-  <h2>Blockierte Emails</h2>
-  <i>Es gibt 3 Gründe warum Emails blockiert werden:</i>
-  <h3>1. Grund: Spam Email Adressen</h3>
+  <h2>Blockierte E-Mails</h2>
+  <i>Es gibt drei Gründe, warum E-Mails blockiert werden:</i>
+
+  <h6>1. Grund: Spam-E-Mail-Adressen</h6>
   <p>
-  Die Emails sind blockiert, weil die Absenderin eine <b>Spam Email Adresse</b> verwendet hat. </BR>
-  Eingetrageen werden die Spam Email per Hand in der Umgebungsvariable <b>FISHY_EMAILS</b> auf Heroku vom Admin. </BR>
-  <h3>2. Grund: Verdächtiger Inhalt</h3>
+  Die E-Mails wurden blockiert, weil die Absenderin eine <b>Spam-E-Mail-Adresse</b> verwendet hat.<br>
+  Die Spam-E-Mail-Adressen werden vom Admin manuell in der Umgebungsvariable <b>FISHY_EMAILS</b> auf Heroku eingetragen.
+  </p>
+
+  <h6>2. Grund: Verdächtiger Inhalt</h6>
   <p>
-  Die Emails sind blockiert, weil sie <b>verdächtige Inhalte</b> enthalten haben, die auf Spam hindeuten. </BR>
-  Zum beispiel nur ein Wort im Body oder der Text ist ohne Umlaute.
-  <h3>3. Grund: Beleidigende Begriffe</h3>
+  Die E-Mails wurden blockiert, weil sie <b>verdächtige Inhalte</b> enthalten, die auf Spam hindeuten.<br>
+  Zum Beispiel nur ein einzelnes Wort im Text oder ein Text ohne Umlaute.
+  </p>
+
+  <h6>3. Grund: Beleidigende Begriffe</h6>
   <p>
-  Die Emails sind blockiert, weil sie im <b>Subjekt</b> oder im <b>Body</b> beleidigende Begriffe enthalten haben. </BR>
+  Die E-Mails wurden blockiert, weil sie im <b>Betreff</b> oder im <b>Text</b> beleidigende Begriffe enthalten.<br>
   Hier ist die Liste der Begriffe: <%= link_to 'Beleidigende Begriffe', admin_offensive_terms_path %>
+  </p>
 
-
-Wenn du die Email trotzdem senden möchtest, klicke auf die jeweilige Email und dann <b>"Sende die Email trotzdem".</b> <br>
-Die Email wird dann an die angegebene Adresse gesendet. <br>
+  <p>
+  Wenn du die E-Mail trotzdem senden möchtest, klicke auf die jeweilige E-Mail und dann auf <b>"E-Mail trotzdem senden"</b>.<br>
+  Die E-Mail wird anschließend an die angegebene Adresse versendet.
   </p>
   <table class="table blocked-emails">
     <thead class="bg--white">
