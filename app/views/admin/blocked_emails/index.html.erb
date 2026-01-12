@@ -1,7 +1,7 @@
-<div class="m-5 underline_links">
+<div class="p-5 bg--grey underline_links">
 
-  <h2>Blockierte E-Mails</h2>
-  <i>Es gibt drei Gründe, warum E-Mails blockiert werden:</i>
+  <h1>Blockierte E-Mails</h1>
+  <i>Es gibt drei Gründe, warum E-Mails blockiert werden:</i><br><br>
 
   <h6>1. Grund: Spam-E-Mail-Adressen</h6>
   <p>
@@ -33,6 +33,7 @@
         <th>Betreff</th>
         <th>Erstellt am</th>
         <th>Gesendet am</th>
+        <th>Überprüft</th>
         <th></th>
       </tr>
     </thead>
@@ -44,6 +45,7 @@
           <td><%= truncate(email.subject, length: 60) %></td>
           <td><%= email.created_at.strftime("%d.%m.%Y %H:%M") %></td>
           <td><%= email.sent_at&.strftime("%d.%m.%Y %H:%M") %></td>
+          <td><%= email.reviewed ? 'Ja' : 'Nein' %></td>
           <td><%= link_to 'Ansehen', admin_blocked_email_path(email) %></td>
         </tr>
       <% end %>
