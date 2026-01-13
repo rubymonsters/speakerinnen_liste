@@ -34,11 +34,13 @@ class ApplicationController < ActionController::Base
   helper_method :request_host
 
   def set_current_region
-    @current_region = validate_region($1.to_sym) if request.host =~ %r((.+)\.#{current_domain})
+    @current_region = validate_region(::Regexp.last_match(1).to_sym) if request.host =~ %r{(.+)\.#{current_domain}}
+    # for testing purposes only
+    # @current_region = 'vorarlberg'
   end
 
   def set_search_region
-    @search_region = validate_region($1.to_sym) if request.host =~ %r((.+)\.#{current_domain})
+    @search_region = validate_region(::Regexp.last_match(1).to_sym) if request.host =~ %r{(.+)\.#{current_domain}}
     @search_region = :'upper-austria' if @search_region == :ooe
   end
 
@@ -47,15 +49,18 @@ class ApplicationController < ActionController::Base
   end
 
   def validate_region(region)
-    region if region == :vorarlberg || region == :ooe
+    region if %i[vorarlberg ooe].include?(region)
   end
 
   attr_reader :current_region
+
   helper_method :current_region
   attr_reader :search_region
+
   helper_method :search_region
 
   private
+
   def log_bot_activity
     return if Rails.env.test?
     return unless request.is_crawler?
@@ -90,5 +95,4 @@ class ApplicationController < ActionController::Base
       request.session_options[:skip] = true
     end
   end
-
 end
