@@ -96,7 +96,11 @@
     <h3 class=""><%= t(:"category_search_text#{'_' + current_region.to_s if current_region}", scope: 'pages.home') %></h3>
   </div>
   <div id="startpage-categories__list" class="container p-0">
-    <%= render partial: "shared/categories", object: @categories %>
+    <%= render "shared/categories",
+      categories: @categories,
+      profiles_count: @profiles_count,
+      categories_profiles_counts: @categories_profiles_counts %>
+
   </div>
 
   <%# Action Cards %>

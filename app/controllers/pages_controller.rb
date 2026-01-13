@@ -8,6 +8,12 @@ class PagesController < ApplicationController
     @tags_count = ActsAsTaggableOn::Tag.count
     @categories = Category.sorted_categories
     @features   = features_and_profiles unless current_region
+
+    stats = CategoriesProfilesStats.call(region: current_region)
+
+    @categories = Category.all
+    @profiles_count = stats.profiles_count
+    @categories_profiles_counts = stats.categories_profiles_counts
   end
 
   def render_footer?
