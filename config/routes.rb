@@ -28,6 +28,7 @@ Rails.application.routes.draw do
       resources :blocked_emails, only: [:index, :show] do
         member do
           post :send_email   # send a single blocked email
+          patch :mark_reviewed
         end
       end
       resources :features do

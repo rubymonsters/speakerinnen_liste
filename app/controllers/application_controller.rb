@@ -59,6 +59,10 @@ class ApplicationController < ActionController::Base
 
   helper_method :search_region
 
+  def spam_callback_method
+    redirect_to root_path and return
+  end
+
   private
 
   def log_bot_activity

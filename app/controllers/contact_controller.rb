@@ -3,7 +3,7 @@
 class ContactController < ApplicationController
   invisible_captcha only: [:create], on_spam: :spam_callback_method
 
-  before_action :load_profile, only: [:new, :create]
+  before_action :load_profile, only: %i[new create]
   before_action :reject_inactive_profile, only: [:create]
 
   def new
@@ -39,7 +39,7 @@ class ContactController < ApplicationController
 
     redirect_to profiles_url, notice: I18n.t('flash.profiles.show_no_permission')
   end
-  
+
   def message_params
     params.require(:message).permit(:name, :email, :subject, :body)
   end
