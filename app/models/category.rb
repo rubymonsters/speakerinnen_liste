@@ -4,9 +4,9 @@ class Category < ApplicationRecord
   validates :name, presence: true
   extend Mobility
   translates :name
-  
-  def self.sorted_categories
-    Category.all.includes(:translations).order(:position)
-  end
 
+  # Returns all categories sorted by position with translations preloaded
+  def self.sorted_categories
+    includes(:translations).order(:position)
+  end
 end
