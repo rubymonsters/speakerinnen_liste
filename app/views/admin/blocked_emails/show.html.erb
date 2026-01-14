@@ -11,6 +11,16 @@
   <p><strong>Gesendet am:</strong> <%= @blocked_email.sent_at&.strftime("%d.%m.%Y %H:%M") %></p>
 </p>
 
+  <% unless @blocked_email.reviewed? %>
+    <%= button_to 'Als geprüft markieren',
+        mark_reviewed_admin_blocked_email_path(@blocked_email),
+        method: :patch,
+        class: 'btn btn-secondary btn-sm',
+        data: { confirm: "Möchtest du diese E-Mail als geprüft markieren?" } %>
+  <% else %>
+    <p class="text-success"><strong>Diese E-Mail wurde bereits geprüft.</strong></p>
+  <% end %>
+  <br>
   <%= button_to 'Sende die Email trotzdem', send_email_admin_blocked_email_path(@blocked_email), class: 'btn btn-primary btn-sm', method: :post, data: { confirm: "Are you sure you want to send this email?" } %>
 </div>
   <%= link_to '<< Zurück zur Liste', admin_blocked_emails_path, class: 'btn btn-primary m-4' %>
