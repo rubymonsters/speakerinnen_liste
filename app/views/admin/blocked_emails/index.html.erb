@@ -1,12 +1,29 @@
-<div class="m-5 underline_links">
+<div class="p-5 bg--grey underline_links">
 
-  <h2>Blockierte Emails</h2>
+  <h1>Blockierte E-Mails</h1>
+  <i>Es gibt drei Gründe, warum E-Mails blockiert werden:</i><br><br>
+
+  <h6>1. Grund: Spam-E-Mail-Adressen</h6>
   <p>
-  Die Emails sind blockiert, weil sie im <b>Subjekt</b> oder im <b>Body</b> beleidigende Begriffe enthalten haben. </BR>
-Du kannst die Email anschauen und entscheiden, ob du sie trotzdem senden möchtest. <br>
-Wenn du die Email trotzdem senden möchtest, klicke auf <b>"Sende die Email trotzdem".</b> <br>
-Die Email wird dann an die angegebene Adresse gesendet. <br>
-Hier ist die Liste der Begriffe: <%= link_to 'Beleidigende Begriffe', admin_offensive_terms_path %>
+  Die E-Mails wurden blockiert, weil die Absenderin eine <b>Spam-E-Mail-Adresse</b> verwendet hat.<br>
+  Die Spam-E-Mail-Adressen werden vom Admin manuell in der Umgebungsvariable <b>FISHY_EMAILS</b> auf Heroku eingetragen.
+  </p>
+
+  <h6>2. Grund: Verdächtiger Inhalt</h6>
+  <p>
+  Die E-Mails wurden blockiert, weil sie <b>verdächtige Inhalte</b> enthalten, die auf Spam hindeuten.<br>
+  Zum Beispiel nur ein einzelnes Wort im Text oder ein Text ohne Umlaute.
+  </p>
+
+  <h6>3. Grund: Beleidigende Begriffe</h6>
+  <p>
+  Die E-Mails wurden blockiert, weil sie im <b>Betreff</b> oder im <b>Text</b> beleidigende Begriffe enthalten.<br>
+  Hier ist die Liste der Begriffe: <%= link_to 'Beleidigende Begriffe', admin_offensive_terms_path %>
+  </p>
+
+  <p>
+  Wenn du die E-Mail trotzdem senden möchtest, klicke auf die jeweilige E-Mail und dann auf <b>"E-Mail trotzdem senden"</b>.<br>
+  Die E-Mail wird anschließend an die angegebene Adresse versendet.
   </p>
   <table class="table blocked-emails">
     <thead class="bg--white">
@@ -16,6 +33,7 @@ Hier ist die Liste der Begriffe: <%= link_to 'Beleidigende Begriffe', admin_offe
         <th>Betreff</th>
         <th>Erstellt am</th>
         <th>Gesendet am</th>
+        <th>Überprüft</th>
         <th></th>
       </tr>
     </thead>
@@ -27,6 +45,7 @@ Hier ist die Liste der Begriffe: <%= link_to 'Beleidigende Begriffe', admin_offe
           <td><%= truncate(email.subject, length: 60) %></td>
           <td><%= email.created_at.strftime("%d.%m.%Y %H:%M") %></td>
           <td><%= email.sent_at&.strftime("%d.%m.%Y %H:%M") %></td>
+          <td><%= email.reviewed ? 'Ja' : 'Nein' %></td>
           <td><%= link_to 'Ansehen', admin_blocked_email_path(email) %></td>
         </tr>
       <% end %>

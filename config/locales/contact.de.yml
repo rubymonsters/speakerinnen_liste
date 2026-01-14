@@ -14,8 +14,7 @@ de:
       read_code_of_conduct_link: "Verhaltenscodex"
       read_code_of_conduct_suffix: "? Danke für eine wertschätzende und freundliche Kommunikation!"
       notice: "Yay! Deine E-Mail wurde gesendet."
-      error: "Bitte fülle alle Felder aus, damit die Speakerin alle Informationen bekommt, die sie benötigt."
-      error_email_for_us: "Bitte fülle alle Felder aus."
+      error: "Bitte fülle alle Felder aus."
   mail:
     subject: "Neue Anfrage über Speakerinnen.org: %{subject}"
     sender_subject: "Bestätigung: Deine Anfrage an %{profile_name}"

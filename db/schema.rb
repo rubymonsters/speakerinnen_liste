@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_12_01_180109) do
+ActiveRecord::Schema[8.0].define(version: 2026_01_11_181333) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
   enable_extension "pg_stat_statements"
@@ -58,6 +58,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_12_01_180109) do
     t.datetime "sent_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "reviewed", default: false, null: false
   end
 
   create_table "blog_posts", id: :serial, force: :cascade do |t|
