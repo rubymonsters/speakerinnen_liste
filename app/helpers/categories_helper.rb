@@ -9,39 +9,20 @@ module CategoriesHelper
     end
   end
 
+  def category_bar_widths(category_id)
+    ratio = category_profiles_ratio(category_id)
+    bar_1 = 40 + ratio
+    bar_2 = 200 - bar_1
+    [bar_1.round(2), bar_2.round(2)]
+  end
+
   def category_profiles_count(category_id)
-    category_profiles = categories_profiles_counts.select { |e| e[0] == category_id }
-    category_profiles.empty? ? 0 : category_profiles.first[1]
+    @categories_profiles_counts[category_id] || 0
   end
 
   def category_profiles_ratio(category_id)
-    category_profiles_count(category_id).to_f / profiles_count * 100
-  end
+    return 0 if @profiles_count.zero?
 
-  private
-
-  def profiles_count
-    @profiles_count ||= Profile.count
-  end
-
-  def categories_profiles_counts
-    Rails.cache.fetch("categories_profiles_counts.#{current_region || 'all'}", expires_in: 1.hours) do
-      sql = <<~SQL
-        SELECT c.id, COUNT(DISTINCT p.id)
-        FROM categories c
-        JOIN categories_tags ct ON c.id = ct.category_id
-        JOIN taggings t ON ct.tag_id = t.tag_id
-        JOIN profiles p ON t.taggable_id = p.id
-        WHERE p.published = true #{'AND state = ?' if current_region}
-        GROUP BY (c.id)
-      SQL
-
-      sql = ActiveRecord::Base.send(:sanitize_sql_array, [sql, current_region]) if current_region
-
-      ActiveRecord::Base.connection_pool.with_connection do |conn|
-        res = conn.exec_query(sql)
-        res.rows
-      end
-    end
+    (category_profiles_count(category_id).to_f / @profiles_count) * 100
   end
 end

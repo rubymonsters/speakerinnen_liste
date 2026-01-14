@@ -1,56 +1,75 @@
-require "rails_helper"
+require 'rails_helper'
 
-describe CategoriesHelper, type: :helper do
-  let!(:tag_spring) { FactoryBot.create(:tag, name: 'spring') }
-  let!(:tag_winter) { FactoryBot.create(:tag, name: 'winter') }
-
-  let!(:category_seasons) { FactoryBot.create(:category, name: 'Seasons') }
-  let!(:category_got) { FactoryBot.create(:category, name: 'Game of Thrones') }
-  let!(:category_c) { FactoryBot.create(:category, name: 'C') }
-
-  let!(:ada) { FactoryBot.create(:ada, topic_list: ['spring', 'winter']) }
-  let!(:marie) { FactoryBot.create(:marie, topic_list: ['spring']) }
-  let!(:laura) { FactoryBot.create(:laura, topic_list: ['spring', 'winter']) }
-  let!(:paula) { FactoryBot.create(:paula, topic_list: ['spring']) }
+RSpec.describe CategoriesHelper, type: :helper do
+  let(:category) { double(id: 1, name: 'Food') }
 
   before do
-    tag_spring.categories << category_seasons
-    tag_winter.categories << category_seasons
-    tag_winter.categories << category_got
-    tag_spring.save!
-    tag_winter.save!
-    allow(helper).to receive(:current_region).and_return(current_region)
-    Rails.cache.delete('categories_profiles_counts.all')
-    Rails.cache.delete("categories_profiles_counts.#{current_region}")
+    # stub Rails URL helpers
+    allow(helper).to receive(:category_path).and_return('/categories/1')
+    allow(helper).to receive(:link_to) { |name, path, options| "#{name} -> #{path}" }
   end
 
-  describe 'on speakerinnen.org' do
-    let(:current_region) { nil }
+  describe '#category_link' do
+    it 'creates a link without anchor' do
+      result = helper.category_link(category)
 
-    it "counts the number of profiles per category" do
-      expect(helper.category_profiles_count(category_seasons.id)).to eq 4
-      expect(helper.category_profiles_count(category_got.id)).to eq 2
-      expect(helper.category_profiles_count(category_c.id)).to eq 0
+      expect(result).to eq('Food -> /categories/1')
+      expect(helper).to have_received(:category_path).with(category.id)
     end
 
-    it "calculates the correct profiles ratios per category" do
-      expect(helper.category_profiles_ratio(category_seasons.id)).to eq 100.0
-      expect(helper.category_profiles_ratio(category_got.id)).to eq 50.0
+    it 'creates a link with anchor' do
+      allow(helper).to receive(:category_path).and_return('/categories/1#section')
+
+      result = helper.category_link(category, 'section')
+
+      expect(result).to eq('Food -> /categories/1#section')
+      expect(helper).to have_received(:category_path).with(category.id, anchor: 'section')
     end
   end
 
-  describe 'on vorarlberg.speakerinnen.org' do
-    let(:current_region) { 'vorarlberg' }
-
-    it "counts the number of profiles per category" do
-      expect(helper.category_profiles_count(category_seasons.id)).to eq 2
-      expect(helper.category_profiles_count(category_got.id)).to eq 1
-      expect(helper.category_profiles_count(category_c.id)).to eq 0
+  describe '#category_profiles_count' do
+    before do
+      helper.instance_variable_set(:@categories_profiles_counts, { 1 => 7 })
     end
 
-    it "calculates the correct profiles ratios per category" do
-      expect(helper.category_profiles_ratio(category_seasons.id)).to eq 50.0
-      expect(helper.category_profiles_ratio(category_got.id)).to eq 25.0
+    it 'returns the count for a category' do
+      expect(helper.category_profiles_count(1)).to eq(7)
+    end
+
+    it 'returns 0 if category is missing' do
+      expect(helper.category_profiles_count(999)).to eq(0)
+    end
+  end
+
+  describe '#category_profiles_ratio' do
+    before do
+      helper.instance_variable_set(:@categories_profiles_counts, { 1 => 25 })
+      helper.instance_variable_set(:@profiles_count, 100)
+    end
+
+    it 'calculates the correct ratio' do
+      expect(helper.category_profiles_ratio(1)).to eq(25.0)
+    end
+
+    it 'returns 0 when profiles_count is zero' do
+      helper.instance_variable_set(:@profiles_count, 0)
+
+      expect(helper.category_profiles_ratio(1)).to eq(0)
+    end
+  end
+
+  describe '#category_bar_widths' do
+    before do
+      helper.instance_variable_set(:@categories_profiles_counts, { 1 => 25 })
+      helper.instance_variable_set(:@profiles_count, 100)
+    end
+
+    it 'returns correct bar widths' do
+      # ratio = 25%
+      # bar_1 = 40 + 25 = 65
+      # bar_2 = 200 - 65 = 135
+
+      expect(helper.category_bar_widths(1)).to eq([65.0, 135.0])
     end
   end
 end
