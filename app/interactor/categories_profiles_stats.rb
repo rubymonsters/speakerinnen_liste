@@ -3,7 +3,7 @@ class CategoriesProfilesStats
 
   def call
     region = context.region
-    region = 'upper-austria' if region == 'ooe'
+    region = :'upper-austria' if region == :ooe
 
     # count all published profiles (optionally filtered by region)
     context.profiles_count = Rails.cache.fetch(profiles_count_cache_key(region), expires_in: 12.hour) do
