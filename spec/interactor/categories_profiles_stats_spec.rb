@@ -58,4 +58,25 @@ describe CategoriesProfilesStats do
       expect(result.profiles_count).to eq 2
     end
   end
+
+  describe 'on upper-austria.speakerinnen.org' do
+    let(:current_region) { 'ooe' }
+    before do
+      ada.update(state: 'upper-austria')
+      marie.update(state: 'upper-austria')
+      laura.update(state: 'salzburg')
+    end
+    it 'calculates the correct number of published profiles per category' do
+      result = CategoriesProfilesStats.call(region: current_region)
+      expect(result.categories_profiles_counts[category_seasons.id]).to eq 2
+      expect(result.categories_profiles_counts[category_got.id]).to eq 1
+      expect(result.categories_profiles_counts[category_c.id]).to be_nil
+    end
+
+    it 'calculates the correct total number of published profiles' do
+      marie.update(published: false)
+      result = CategoriesProfilesStats.call(region: current_region)
+      expect(result.profiles_count).to eq 1
+    end
+  end
 end
