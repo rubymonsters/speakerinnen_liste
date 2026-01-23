@@ -35,6 +35,8 @@ class ApplicationController < ActionController::Base
 
   def set_current_region
     @current_region = validate_region(::Regexp.last_match(1).to_sym) if request.host =~ %r{(.+)\.#{current_domain}}
+    # for testing purposes only
+    # @current_region = 'vorarlberg'
   end
 
   def set_search_region
