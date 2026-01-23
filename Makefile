@@ -43,3 +43,16 @@ seed:
 	$(call dc-run, sh -c 'rake db:seed')
 test:
 	$(call dc-run-sp, sh -c 'bundle exec rspec')
+# Restore local DB from latest.dump
+restore-db:
+	@echo "Stopping DB container..."
+	docker compose down -v
+	@echo "Starting DB container..."
+	docker compose up -d db
+	@echo "Dropping and creating development database..."
+	docker compose exec db psql -U postgres -c "DROP DATABASE IF EXISTS speakerinnen_development;"
+	docker compose exec db psql -U postgres -c "CREATE DATABASE speakerinnen_development;"
+	@echo "Restoring latest.dump..."
+	cat latest.dump | docker compose exec -T db pg_restore -U postgres -d speakerinnen_development --clean --if-exists --no-owner
+	@echo "Database restore complete!"
+
