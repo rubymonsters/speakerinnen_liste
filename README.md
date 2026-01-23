@@ -89,11 +89,10 @@ after upgrading the database in the docker-compose.yml:
 ```
 docker compose down -v
 docker compose up -d db
-docker compose exec db psql -U postgres -c "DROP DATABASE IF EXISTS speakerinnen_development; CREATE DATABASE speakerinnen_development;"
+docker compose exec db psql -U postgres -c "DROP DATABASE IF EXISTS speakerinnen_development;"
+docker compose exec db psql -U postgres -c "CREATE DATABASE speakerinnen_development;"
 cat latest.dump | docker compose exec -T db pg_restore -U postgres -d speakerinnen_development --clean --if-exists --no-owner
 ```
-
-
 
 -  
 

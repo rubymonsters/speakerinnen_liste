@@ -56,8 +56,3 @@ restore-db:
 	cat latest.dump | docker compose exec -T db pg_restore -U postgres -d speakerinnen_development --clean --if-exists --no-owner
 	@echo "Database restore complete!"
 
-
-
-
-
-	
