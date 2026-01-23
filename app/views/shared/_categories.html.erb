@@ -5,10 +5,10 @@
         <div class="h4 category_name">
           <%= category.name %>
           <span class="h4 category_count ps-5">
-            <%= categories_profiles_counts[category.id] %> <%= t(:speakerinnen, scope: 'pages.home') %>
+            <%= category_profiles_count(category.id) %> <%= t(:speakerinnen, scope: 'pages.home') %>
           </span>
           <span class="h4 category_count_short ps-2">
-            <%= categories_profiles_counts[category.id] %>
+            <%= category_profiles_count(category.id) %>
           </span>
         </div>
       </span>
@@ -26,12 +26,28 @@
 </div>
 <div class="progress_bar_part">
   <% @categories.each do |category| %>
-    <% bar_1, bar_2 = category_bar_widths(category.id) %>
-    <a href="<%= category_path(category.id, anchor: "speakers_anchor") %>"class="progress">
-      <div class="progress-bar category_item_<%=category.slug%>" role="progressbar" style="width: <%=bar_1%>%" aria-valuenow="<%=bar_1%>" aria-valuemin="0" aria-valuemax="100">
-      </div>
-      <div class="category_item_<%=category.slug%>_numbers pe-5" role="progressbar" style="width: <%=bar_2%>%" aria-valuenow="<%=bar_2%>" aria-valuemin="0" aria-valuemax="100">
-      </div>
-    </a>
+  <% bar_1, bar_2 = category_bar_widths(category.id) %>
+
+  <%= link_to category_path(category.id, anchor: "speakers_anchor"),
+              class: "progress" do %>
+
+    <div class="progress-bar category_item_<%= category.slug %>"
+         role="progressbar"
+         style="width: <%= bar_1 %>%"
+         aria-valuenow="<%= bar_1 %>"
+         aria-valuemin="0"
+         aria-valuemax="100">
+    </div>
+
+    <div class="category_item_<%= category.slug %>_numbers pe-5"
+         role="progressbar"
+         style="width: <%= bar_2 %>%"
+         aria-valuenow="<%= bar_2 %>"
+         aria-valuemin="0"
+         aria-valuemax="100">
+    </div>
+
   <% end %>
+<% end %>
+
 </div>
