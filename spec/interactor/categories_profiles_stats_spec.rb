@@ -48,7 +48,7 @@ describe CategoriesProfilesStats do
     end
   end
 
-  context 'in regions with default locale :de' do
+  context 'with regions and locale :de' do
     let!(:category_c) { create(:category, name: 'C') }
 
     let!(:laura) { create(:published_profile, topic_list: %w[spring winter]) }
