@@ -5,18 +5,18 @@ require 'spec_helper'
 form_selector = 'form[action="/en/profiles"][method="get"]'
 
 describe 'profile search' do
-  let!(:locale_language_en) { create(:locale_language_en) }
+  let!(:locale_language_en) { create(:locale_language, :en) }
   let!(:physics) { create(:tag_physics, locale_languages: [locale_language_en]) }
   let!(:algorithm) { create(:tag_algorithm, locale_languages: [locale_language_en]) }
   let!(:ada) { create(:ada, topic_list: [algorithm]) }
   let!(:marie) { create(:marie, topic_list: [physics]) }
-  let!(:science) {create(:cat_science)}
-  let!(:social) {create(:cat_social)}
+  let!(:science) { create(:cat_science) }
+  let!(:social) { create(:cat_social) }
   let!(:phantom_of_the_opera) { create(:phantom_of_the_opera, topic_list: []) }
   let!(:profile2) { create(:published_profile, firstname: 'Christiane', lastname: 'König', main_topic_en: 'Blogs') }
   let!(:profile3) { create(:published_profile, firstname: 'Maren ', lastname: 'Meier', main_topic_en: 'Big Data') }
-  let!(:profile_not_matched) { create(:published_profile, firstname: 'Angela', main_topic_en: 'rassism' ) }
-  let!(:unpublished_profile) { create(:unpublished_profile, firstname: 'May', main_topic_en: 'poetry' ) }
+  let!(:profile_not_matched) { create(:published_profile, firstname: 'Angela', main_topic_en: 'rassism') }
+  let!(:unpublished_profile) { create(:unpublished_profile, firstname: 'May', main_topic_en: 'poetry') }
 
   describe 'public search' do
     context 'home page search form' do
