@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 source 'https://rubygems.org'
-ruby '3.3.0'
+ruby '3.3.10'
 gem 'rails', '~> 8.0.0'
 
 # Needed for Javascript Runtime
