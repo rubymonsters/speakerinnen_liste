@@ -11,8 +11,6 @@ class Profiles::IndexInteractor
       profiles_by_category
     elsif context.params[:tag_filter].present?
       profiles_by_tags
-    else
-      all_profiles
     end
 
     build_result if context.success?
@@ -37,14 +35,6 @@ class Profiles::IndexInteractor
       result = SearchProfilesByTags.call(tags: context.params[:tag_filter], region: context.region)
       handle_result(result)
     end
-  end
-
-  def all_profiles
-    cache_key = [:get_all_profiles, context.region]
-    result = Rails.cache.fetch(cache_key, expires_in: 2.hours) do
-      GetAllProfiles.call(region: context.region)
-    end
-    handle_result(result)
   end
 
   def handle_result(result)

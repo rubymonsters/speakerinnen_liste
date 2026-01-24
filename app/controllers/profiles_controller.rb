@@ -10,6 +10,8 @@ class ProfilesController < ApplicationController
   respond_to :json
 
   def index
+    raise ActionController::RoutingError, 'Not Found' unless params[:category_id] || params[:search].present? || params[:tag_filter].present?
+
     result = Profiles::IndexInteractor.call(params: params, region: current_region)
     if result.success?
       if result.records.is_a?(Array)
