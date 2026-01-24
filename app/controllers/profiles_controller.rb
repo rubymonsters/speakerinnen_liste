@@ -11,7 +11,6 @@ class ProfilesController < ApplicationController
 
   def index
     result = Profiles::IndexInteractor.call(params: params, region: current_region)
-
     if result.success?
       if result.records.is_a?(Array)
         @pagy, @records = pagy_array(result.records)

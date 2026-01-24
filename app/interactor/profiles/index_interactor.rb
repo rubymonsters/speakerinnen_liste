@@ -74,12 +74,12 @@ class Profiles::IndexInteractor
   end
 
   def build_aggregations(profiles)
-    aggs = ProfileGrouper.new(context.params[:locale], profiles.map { |p| p[:id] }).agg_hash
+    aggs = ProfileGrouper.new(context.params[:locale], profiles.map(&:id)).agg_hash
     {
-      languages: aggs[:languages],
-      cities: aggs[:cities],
-      states: aggs[:states],
-      countries: aggs[:countries]
+      languages: aggs[:languages] || [],
+      cities: aggs[:cities] || [],
+      states: aggs[:states] || [],
+      countries: aggs[:countries] || []
     }
   end
 
