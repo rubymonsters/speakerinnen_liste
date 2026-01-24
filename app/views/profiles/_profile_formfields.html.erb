@@ -167,9 +167,14 @@
 <div class="row mt-3">
   <div class="col-sm-12 col-md-8 col-lg-6 p-3">
     <div class="mb-3">
-      <h5 class="pb-3 fw-bold">Topics / Themen </h5>
-      <%= f.input :topic_list, label: t(:topic_list, scope: 'profiles.form').html_safe,
-          label_html: { id: "topic_list", class: "", title: t(:topic_list_tooltip, scope: 'profiles.form').html_safe },
+      <h5 class="pb-3 fw-bold">Topics / Themen</h5>
+      <%= f.input :topic_list,
+          label: t(:topic_list, scope: 'profiles.form').html_safe,
+          label_html: {
+            id: "topic_list",
+            class: "",
+            title: t(:topic_list_tooltip, scope: 'profiles.form').html_safe
+          },
           input_html: { value: @profile.topic_list.to_s, class: "form-control" } %>
     </div>
   </div>
