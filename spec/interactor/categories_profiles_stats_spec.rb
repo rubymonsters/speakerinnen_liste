@@ -1,16 +1,19 @@
+# frozen_string_literal: true
+
 describe CategoriesProfilesStats do
-  let!(:tag_spring) { create(:tag, name: 'spring') }
-  let!(:tag_winter) { create(:tag, name: 'winter') }
+  let(:current_region) { nil }
+
+  let(:en_locale) { create(:locale_language, :en) }
+  let(:de_locale) { create(:locale_language, :de) }
+
+  let!(:tag_spring) { create(:tag_spring, locales: [en_locale]) }
+  let!(:tag_winter) { create(:tag_winter, locales: [en_locale, de_locale]) }
 
   let!(:category_seasons) { create(:category, name: 'Seasons') }
   let!(:category_got) { create(:category, name: 'Game of Thrones') }
-  let!(:category_c) { create(:category, name: 'C') }
 
   let!(:ada) { create(:ada, topic_list: %w[spring winter]) }
   let!(:marie) { create(:marie, topic_list: ['spring']) }
-  let!(:laura) { create(:laura, topic_list: %w[spring winter]) }
-  let!(:paula) { create(:paula, topic_list: ['spring']) }
-
   before do
     tag_spring.categories << category_seasons
     tag_winter.categories << category_seasons
@@ -21,63 +24,98 @@ describe CategoriesProfilesStats do
     Rails.cache.delete("categories_profiles_counts.#{current_region}")
   end
 
-  describe 'on speakerinnen.org' do
-    let(:current_region) { nil }
-
-    it 'calculates the correct number of published profiles per category' do
+  context 'in locale de with no region' do
+    it 'one profile has an german tag ( winter_tag )' do
+      I18n.locale = :de
       result = CategoriesProfilesStats.call(region: current_region)
-      # byebug
-      expect(result.categories_profiles_counts[category_seasons.id]).to eq 4
-      expect(result.categories_profiles_counts[category_got.id]).to eq 2
-      expect(result.categories_profiles_counts[category_c.id]).to be_nil
-    end
 
-    it 'calculates the correct total number of published profiles' do
-      ada.update(published: false)
-      result = CategoriesProfilesStats.call(region: current_region)
-      expect(result.profiles_count).to eq 3
+      expect(result.categories_profiles_counts[category_seasons.id]).to eq 1
+      expect(result.categories_profiles_counts[category_got.id]).to eq 1
+      expect(result.profiles_count).to eq 1
     end
   end
-
-  describe 'on vorarlberg.speakerinnen.org' do
-    let(:current_region) { 'vorarlberg' }
-    before do
-      ada.update(state: 'vorarlberg')
-      marie.update(state: 'vorarlberg')
-      laura.update(state: 'salzburg')
-    end
-    it 'calculates the correct number of published profiles per category' do
+  context 'in locale en with no region' do
+    it '2 profiles have english tags ( winter_tag and spring_tag)' do
+      I18n.locale = :en
       result = CategoriesProfilesStats.call(region: current_region)
-      expect(result.categories_profiles_counts[category_seasons.id]).to eq 3
+      expect(result.categories_profiles_counts[category_seasons.id]).to eq 2
       expect(result.categories_profiles_counts[category_got.id]).to eq 1
-      expect(result.categories_profiles_counts[category_c.id]).to be_nil
-    end
-
-    it 'calculates the correct total number of published profiles' do
-      marie.update(published: false)
-      result = CategoriesProfilesStats.call(region: current_region)
       expect(result.profiles_count).to eq 2
     end
   end
 
-  describe 'on upper-austria.speakerinnen.org' do
-    let(:current_region) { :ooe }
-    before do
-      ada.update(state: 'upper-austria')
-      marie.update(state: 'upper-austria')
-      laura.update(state: 'salzburg')
-    end
-    it 'calculates the correct number of published profiles per category' do
-      result = CategoriesProfilesStats.call(region: current_region)
-      expect(result.categories_profiles_counts[category_seasons.id]).to eq 2
-      expect(result.categories_profiles_counts[category_got.id]).to eq 1
-      expect(result.categories_profiles_counts[category_c.id]).to be_nil
+  context 'in regions with default locale :de' do
+    let!(:category_c) { create(:category, name: 'C') }
+
+    let!(:laura) { create(:laura, topic_list: %w[spring winter]) }
+    let!(:paula) { create(:paula, topic_list: %w[spring winter]) }
+    describe 'on speakerinnen.org' do
+      let(:current_region) { nil }
+
+      it 'calculates the correct number of published profiles per category' do
+        # laura and ada have german tags so are counted
+        result = CategoriesProfilesStats.call(region: current_region)
+        expect(result.categories_profiles_counts[category_seasons.id]).to eq 3
+        expect(result.categories_profiles_counts[category_got.id]).to eq 3
+        expect(result.categories_profiles_counts[category_c.id]).to be_nil
+        expect(result.profiles_count).to eq 3
+      end
+
+      it 'calculates the correct total number of published profiles' do
+        # laura and ada have german tags so are counted
+        ada.update(published: false)
+        result = CategoriesProfilesStats.call(region: current_region)
+        expect(result.profiles_count).to eq 2
+      end
     end
 
-    it 'calculates the correct total number of published profiles' do
-      marie.update(published: false)
-      result = CategoriesProfilesStats.call(region: current_region)
-      expect(result.profiles_count).to eq 1
+    describe 'on vorarlberg.speakerinnen.org' do
+      let(:current_region) { 'vorarlberg' }
+      before do
+        ada.update(state: 'vorarlberg')
+        marie.update(state: 'vorarlberg')
+        paula.update(state: 'vorarlberg')
+        laura.update(state: 'salzburg')
+      end
+      it 'calculates the correct number of published profiles per category' do
+        # laura is in salzburg so not counted even though she has german tags
+        # ada is in vorarlberg and has a german tag so is counted
+        # both are in the category seasons and category got
+        result = CategoriesProfilesStats.call(region: current_region)
+        expect(result.categories_profiles_counts[category_seasons.id]).to eq 2
+        expect(result.categories_profiles_counts[category_got.id]).to eq 2
+        expect(result.categories_profiles_counts[category_c.id]).to be_nil
+        expect(result.profiles_count).to eq 2
+      end
+
+      it 'calculates the correct total number of published profiles' do
+        ada.update(published: false)
+        result = CategoriesProfilesStats.call(region: current_region)
+        expect(result.profiles_count).to eq 1
+      end
+    end
+
+    describe 'on upper-austria.speakerinnen.org' do
+      let(:current_region) { :ooe }
+      before do
+        ada.update(state: 'upper-austria')
+        marie.update(state: 'upper-austria')
+        paula.update(state: 'upper-austria')
+        laura.update(state: 'salzburg')
+      end
+      it 'calculates the correct number of published profiles per category' do
+        result = CategoriesProfilesStats.call(region: current_region)
+        expect(result.categories_profiles_counts[category_seasons.id]).to eq 2
+        expect(result.categories_profiles_counts[category_got.id]).to eq 2
+        expect(result.categories_profiles_counts[category_c.id]).to be_nil
+        expect(result.profiles_count).to eq 2
+      end
+
+      it 'calculates the correct total number of published profiles' do
+        ada.update(published: false)
+        result = CategoriesProfilesStats.call(region: current_region)
+        expect(result.profiles_count).to eq 1
+      end
     end
   end
 end

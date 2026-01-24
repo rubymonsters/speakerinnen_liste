@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CategoriesProfilesStats
   include Interactor
 
@@ -6,30 +8,37 @@ class CategoriesProfilesStats
     region = :'upper-austria' if region == :ooe
 
     # count all published profiles (optionally filtered by region)
-    context.profiles_count = Rails.cache.fetch(profiles_count_cache_key(region), expires_in: 12.hour) do
-      if region.present?
-        Profile.is_published.where(state: region).count
-      else
-        Profile.is_published.count
-      end
+    # filter by locale language via tags
+    context.profiles_count = Rails.cache.fetch(profiles_count_cache_key(region), expires_in: 12.hours) do
+      query = Profile.is_published
+                     .joins("INNER JOIN taggings ON taggings.taggable_id = profiles.id AND taggings.taggable_type = 'Profile'")
+                     .joins('INNER JOIN tags ON tags.id = taggings.tag_id')
+                     .joins('INNER JOIN tags_locale_languages tll ON tll.tag_id = tags.id')
+                     .joins('INNER JOIN locale_languages ll ON ll.id = tll.locale_language_id')
+                     .where('ll.iso_code = ?', I18n.locale.to_s)
+
+      query = query.where(state: region) if region.present?
+
+      query.distinct.count
     end
 
     # creates a hash of category_id => published profiles count
     # e.g. { 1 => 254, 2 => 100, 3 => 324 }
     # for the given region (or all regions if none given)
-    # to create the category bars on the view of the homepage
-    context.categories_profiles_counts = Rails.cache.fetch(cache_key(region), expires_in: 12.hour) do
-      query = Category
-              .joins(categories_tags: { tag: :taggings })
-              .joins("INNER JOIN profiles p ON p.id = taggings.taggable_id AND taggings.taggable_type = 'Profile'")
-
-      # apply region filter if present
-      query = query.where('p.state = ?', region) if region.present?
-      query = query.where('p.published = TRUE')
-
-      query.group('categories.id')
-           .distinct
-           .count('p.id')
+    # filtered by locale language via tags
+    # for all categories that have at least one published profile
+    # is use in the category bars home view helper
+    context.categories_profiles_counts = Rails.cache.fetch(cache_key(region), expires_in: 12.hours) do
+      # Start with Category
+      Category
+        .joins(categories_tags: { tag: %i[taggings locale_languages] }) # join tags → taggings → locale_languages
+        .joins("INNER JOIN profiles p ON p.id = taggings.taggable_id AND taggings.taggable_type = 'Profile'")
+        .where(locale_languages: { iso_code: I18n.locale.to_s }) # filter by current locale
+        .where('p.published = TRUE')                             # only published profiles
+        .then { |q| region.present? ? q.where('p.state = ?', region) : q } # region filter
+        .group('categories.id')
+        .distinct
+        .count('p.id')
     end
   end
 

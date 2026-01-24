@@ -1,14 +1,14 @@
 # frozen_string_literal: true
 
 describe 'displaying tags' do
-  let!(:locale_language_de) { create(:locale_language, :de) }
-  let!(:locale_language_en) { create(:locale_language, :en) }
+  let(:en_locale) { create(:locale_language, :en) }
+  let(:de_locale) { create(:locale_language, :de) }
 
-  let!(:tag_both_languages) { create(:tag_social_media, locale_languages: [locale_language_en, locale_language_de]) }
-  let!(:tag_with_slash_en) { create(:tag, name: 'AC/DC', locale_languages: [locale_language_en]) }
+  let!(:tag_both_languages) { create(:tag_social_media, locales: [en_locale, de_locale]) }
+  let!(:tag_with_slash_en) { create(:tag, name: 'AC/DC', locales: [en_locale]) }
 
-  let!(:tag_de) { create(:tag_chemie, locale_languages: [locale_language_de]) }
-  let!(:tag_en) { create(:tag_physics, locale_languages: [locale_language_en]) }
+  let!(:tag_de) { create(:tag_chemie, locales: [de_locale]) }
+  let!(:tag_en) { create(:tag_physics, locales: [en_locale]) }
   let!(:tag_with_unpublished_profile) { create(:tag, name: 'sports') }
 
   let!(:ada) do

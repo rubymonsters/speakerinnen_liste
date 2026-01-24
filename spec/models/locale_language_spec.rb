@@ -1,16 +1,16 @@
 # frozen_string_literal: true
 
 describe LocaleLanguage, type: :model do
-  let!(:locale_language_de) { create(:locale_language, :de) }
-  let!(:locale_language_en) { create(:locale_language, :en) }
+  let(:en_locale) { create(:locale_language, :en) }
+  let(:de_locale) { create(:locale_language, :de) }
 
-  let!(:tag_de) { create(:tag_chemie, locale_languages: [locale_language_de]) }
-  let!(:tag_en) { create(:tag_physics, locale_languages: [locale_language_en]) }
+  let!(:tag_de) { create(:tag_chemie, locales: [de_locale]) }
+  let!(:tag_en) { create(:tag_physics, locales: [en_locale]) }
   let!(:tag_no_language) { create(:tag, name: 'mathematic') }
   let!(:tag_with_unpublished_profile) { create(:tag, name: 'sports') }
   let!(:tag_both_languages) do
     create(:tag_social_media,
-           locale_languages: [locale_language_en, locale_language_de])
+           locales: [en_locale, de_locale])
   end
 
   let!(:cat_1) { create(:cat_science, id: 1, tags: [tag_de, tag_en]) }
@@ -21,11 +21,11 @@ describe LocaleLanguage, type: :model do
   let!(:susi) { create(:unpublished_profile, topic_list: [tag_de, tag_with_unpublished_profile]) }
 
   it 'finds associated language of the tag' do
-    expect(tag_de.locale_languages).to match_array([locale_language_de])
+    expect(tag_de.locale_languages).to match_array([de_locale])
   end
 
   it 'finds associated tags for a language' do
-    expect(locale_language_de.tags).to match_array([tag_de, tag_both_languages])
+    expect(de_locale.tags).to match_array([tag_de, tag_both_languages])
   end
 
   it 'adds a language to the existing tag' do

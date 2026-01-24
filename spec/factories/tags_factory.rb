@@ -1,16 +1,12 @@
 FactoryBot.define do
   factory :tag, class: ActsAsTaggableOn::Tag do
     transient do
-      locale_language { nil }
+      locales { [] } # default: empty array → no languages
     end
 
     after(:create) do |tag, evaluator|
-      if evaluator.locale_language
-        create(
-          :tags_locale_language,
-          tag: tag,
-          locale_language: evaluator.locale_language
-        )
+      evaluator.locales.each do |locale|
+        create(:tags_locale_language, tag: tag, locale_language: locale)
       end
     end
 
@@ -28,6 +24,14 @@ FactoryBot.define do
 
     factory :tag_algorithm do
       name { 'algorithm' }
+    end
+
+    factory :tag_winter do
+      name { 'winter' }
+    end
+
+    factory :tag_spring do
+      name { 'spring' }
     end
   end
 end
