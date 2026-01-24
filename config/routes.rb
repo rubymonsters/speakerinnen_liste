@@ -81,7 +81,7 @@ Rails.application.routes.draw do
     get '/422', to: "errors#unacceptable"
     get '/500', to: "errors#internal_error"
 
-    resources :profiles, except: [:new, :create, :index] do
+    resources :profiles, except: [:new, :create] do
       resources :medialinks
         get  'contact' => 'contact#new', as: 'contact', on: :member
         post 'contact' => 'contact#create', on: :member
