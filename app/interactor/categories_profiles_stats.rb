@@ -37,7 +37,7 @@ class CategoriesProfilesStats
     # e.g. { 1 => 254, 2 => 100, 3 => 324 }
     # for the given region (or all regions if none given)
     # filtered by locale language via tags
-    # also take the the tags that are not translated at all
+    # also include the the tags that are not translated at all
     # for all categories that have at least one published profile
     # is use in the category bars home view helper
     context.categories_profiles_counts = Rails.cache.fetch(
