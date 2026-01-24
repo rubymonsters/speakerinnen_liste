@@ -39,7 +39,7 @@ class CategoriesProfilesStats
     # filtered by locale language via tags
     # also include the the tags that are not translated at all
     # for all categories that have at least one published profile
-    # is use in the category bars home view helper
+    # is used in the category bars home view helper
     context.categories_profiles_counts = Rails.cache.fetch(
       cache_key(region),
       expires_in: 12.hours
