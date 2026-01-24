@@ -1,10 +1,12 @@
 FactoryBot.define do
   factory :locale_language do
-    factory :locale_language_de do
+    iso_code { 'en' }
+
+    trait :de do
       iso_code { 'de' }
     end
 
-    factory :locale_language_en do
+    trait :en do
       iso_code { 'en' }
     end
   end

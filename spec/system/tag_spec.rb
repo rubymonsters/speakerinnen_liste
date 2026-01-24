@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 describe 'displaying tags' do
-  let!(:locale_language_de) { create(:locale_language_de) }
-  let!(:locale_language_en) { create(:locale_language_en) }
+  let!(:locale_language_de) { create(:locale_language, :de) }
+  let!(:locale_language_en) { create(:locale_language, :en) }
 
-  let!(:tag_both_languages){ create(:tag_social_media, locale_languages: [locale_language_en, locale_language_de]) }
+  let!(:tag_both_languages) { create(:tag_social_media, locale_languages: [locale_language_en, locale_language_de]) }
   let!(:tag_with_slash_en) { create(:tag, name: 'AC/DC', locale_languages: [locale_language_en]) }
 
   let!(:tag_de) { create(:tag_chemie, locale_languages: [locale_language_de]) }
@@ -13,17 +13,15 @@ describe 'displaying tags' do
 
   let!(:ada) do
     create(:published_profile, topic_list: [tag_en,
-                                               tag_both_languages,
-                                               tag_de,
-                                               tag_with_slash_en])
+                                            tag_both_languages,
+                                            tag_de,
+                                            tag_with_slash_en])
   end
   let!(:pierre) { create(:unpublished_profile, topic_list: [tag_de, tag_with_unpublished_profile]) }
   let!(:clara) { create(:published_profile, topic_list: [tag_en, tag_with_slash_en]) }
 
   let!(:science) { FactoryBot.create(:cat_science, tags: [tag_de, tag_en]) }
   let!(:social) { FactoryBot.create(:cat_social, tags: [tag_both_languages, tag_with_slash_en, tag_with_unpublished_profile]) }
-
-
 
   it 'shows tagging after profile edit' do
     sign_in ada
@@ -35,8 +33,7 @@ describe 'displaying tags' do
     expect(page).to have_content('fruehling')
   end
 
-  context "in the category index page" do
-
+  context 'in the category index page' do
     it 'shows all the categories to coose the tags from' do
       visit "de/categories/#{science.id}"
       expect(page).to have_content('Wissenschaft')
@@ -78,7 +75,6 @@ describe 'displaying tags' do
           expect(page).not_to have_content('sports')
         end
       end
-
     end
   end
 end

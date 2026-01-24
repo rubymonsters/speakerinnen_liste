@@ -3,12 +3,12 @@
 describe 'in tags' do
   let(:admin) { create(:profile, :admin) }
 
-  let!(:locale_language_de) { FactoryBot.create(:locale_language_de) }
-  let!(:locale_language_en) { FactoryBot.create(:locale_language_en) }
+  let!(:locale_language_de) { create(:locale_language, :de) }
+  let!(:locale_language_en) { create(:locale_language, :en) }
 
-  let(:category) { FactoryBot.create(:cat_science, id: 999) }
-  let!(:tag_chemie) { FactoryBot.create(:tag_chemie) }
-  let!(:tag_physics) { FactoryBot.create(:tag_physics, categories: [category]) }
+  let(:category) { create(:cat_science, id: 999) }
+  let!(:tag_chemie) { create(:tag_chemie) }
+  let!(:tag_physics) { create(:tag_physics, categories: [category]) }
   let!(:tag_with_slash_en) { create(:tag, name: 'AC/DC', locale_languages: [locale_language_en]) }
 
   before do
@@ -81,7 +81,6 @@ describe 'in tags' do
 
       expect(page).to have_content('physics')
       expect(page).not_to have_content('chemie')
-
     end
 
     it 'shows section to filter languages' do

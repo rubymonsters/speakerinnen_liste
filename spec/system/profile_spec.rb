@@ -3,8 +3,8 @@
 describe 'profile navigation' do
   include AuthHelper
 
-  let!(:locale_language_de) { create(:locale_language_de) }
-  let!(:locale_language_en) { create(:locale_language_en) }
+  let!(:locale_language_de) { create(:locale_language, :de) }
+  let!(:locale_language_en) { create(:locale_language, :en) }
 
   let!(:tag_de) { create(:tag_chemie, locale_languages: [locale_language_de]) }
   let!(:tag_en) { create(:tag_physics, locale_languages: [locale_language_en]) }
@@ -184,7 +184,6 @@ describe 'profile navigation' do
     it 'shows tags in the correct language' do
       expect(page).not_to have_content('Mathematik Genie')
     end
-
   end
 
   describe 'index view profiles in DE' do
@@ -201,7 +200,6 @@ describe 'profile navigation' do
     it 'shows tags in the correct language' do
       expect(page).not_to have_content('math wiz')
     end
-
   end
 
   context 'user has already existing twitter account' do

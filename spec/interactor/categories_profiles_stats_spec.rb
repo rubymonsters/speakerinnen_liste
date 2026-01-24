@@ -1,15 +1,15 @@
 describe CategoriesProfilesStats do
-  let!(:tag_spring) { FactoryBot.create(:tag, name: 'spring') }
-  let!(:tag_winter) { FactoryBot.create(:tag, name: 'winter') }
+  let!(:tag_spring) { create(:tag, name: 'spring') }
+  let!(:tag_winter) { create(:tag, name: 'winter') }
 
-  let!(:category_seasons) { FactoryBot.create(:category, name: 'Seasons') }
-  let!(:category_got) { FactoryBot.create(:category, name: 'Game of Thrones') }
-  let!(:category_c) { FactoryBot.create(:category, name: 'C') }
+  let!(:category_seasons) { create(:category, name: 'Seasons') }
+  let!(:category_got) { create(:category, name: 'Game of Thrones') }
+  let!(:category_c) { create(:category, name: 'C') }
 
-  let!(:ada) { FactoryBot.create(:ada, topic_list: %w[spring winter]) }
-  let!(:marie) { FactoryBot.create(:marie, topic_list: ['spring']) }
-  let!(:laura) { FactoryBot.create(:laura, topic_list: %w[spring winter]) }
-  let!(:paula) { FactoryBot.create(:paula, topic_list: ['spring']) }
+  let!(:ada) { create(:ada, topic_list: %w[spring winter]) }
+  let!(:marie) { create(:marie, topic_list: ['spring']) }
+  let!(:laura) { create(:laura, topic_list: %w[spring winter]) }
+  let!(:paula) { create(:paula, topic_list: ['spring']) }
 
   before do
     tag_spring.categories << category_seasons
@@ -26,6 +26,7 @@ describe CategoriesProfilesStats do
 
     it 'calculates the correct number of published profiles per category' do
       result = CategoriesProfilesStats.call(region: current_region)
+      # byebug
       expect(result.categories_profiles_counts[category_seasons.id]).to eq 4
       expect(result.categories_profiles_counts[category_got.id]).to eq 2
       expect(result.categories_profiles_counts[category_c.id]).to be_nil

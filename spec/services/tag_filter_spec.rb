@@ -3,8 +3,8 @@
 describe TagFilter do
   subject(:tag_filter) { described_class.new(ActsAsTaggableOn::Tag.all, filter_params).filter }
 
-  let!(:locale_language_de) { FactoryBot.create(:locale_language_de) }
-  let!(:locale_language_en) { FactoryBot.create(:locale_language_en) }
+  let!(:locale_language_de) { FactoryBot.create(:locale_language, :de) }
+  let!(:locale_language_en) { FactoryBot.create(:locale_language, :en) }
 
   let!(:tag_de) { FactoryBot.create(:tag_chemie, locale_languages: [locale_language_de]) }
   let!(:tag_en) { FactoryBot.create(:tag_physics, locale_languages: [locale_language_en]) }
