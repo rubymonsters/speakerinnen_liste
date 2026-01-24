@@ -8,7 +8,7 @@ class CategoriesProfilesStats
     region = :'upper-austria' if region == :ooe
 
     # count all published profiles (optionally filtered by region)
-    # filter by locale language via tags and with tags that are not translated at all
+    # filter by locale language via tags and include tags that are not translated at all
     context.profiles_count = Rails.cache.fetch(
       profiles_count_cache_key(region),
       expires_in: 12.hours
