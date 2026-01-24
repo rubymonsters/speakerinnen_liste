@@ -39,7 +39,7 @@ describe CategoriesProfilesStats do
     end
   end
   context 'in locale en with no region' do
-    it '2 profiles have english tags ( winter_tag and spring_tag)' do
+    it 'shows profiles with english and non language tags' do
       I18n.locale = :en
       result = CategoriesProfilesStats.call(region: current_region)
       expect(result.categories_profiles_counts[category_seasons.id]).to eq 3
