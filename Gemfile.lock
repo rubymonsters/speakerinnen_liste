@@ -573,7 +573,7 @@ DEPENDENCIES
   webrick (~> 1.7)
 
 RUBY VERSION
-  ruby 3.2.10
+  ruby 3.3.0
 
 BUNDLED WITH
   4.0.2
