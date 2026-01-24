@@ -3,7 +3,7 @@
 describe ProfilesController, type: :controller do
   include AuthHelper
   let!(:profile_published) { create(:published_profile, topic_list: %w[ruby algorithms]) }
-  let!(:profile_unpublished) { create(:unpublished_profile) }
+  let!(:profile_unpublished) { create(:unpublished_profile, main_topic_de: 'Mathematik Genie') }
   let!(:ada) { create(:published_profile, email: 'ada@example.org', main_topic_en: 'math') }
   let(:admin) { create(:profile, :admin) }
   let!(:category) { create(:cat_science) }

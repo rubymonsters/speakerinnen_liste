@@ -15,6 +15,7 @@ FactoryBot.define do
 
     factory :published_profile do
       published { true }
+      main_topic_de { 'Mathematik Genie' }
     end
 
     factory :unpublished_profile do
@@ -26,7 +27,7 @@ FactoryBot.define do
     end
 
     factory :inactive do
-      inactive { true}
+      inactive { true }
     end
 
     factory :ada do
@@ -35,7 +36,7 @@ FactoryBot.define do
       city_en { 'London' }
       state { 'carinthia' }
       country { 'AT' }
-      iso_languages { ['en', 'de'] }
+      iso_languages { %w[en de] }
       bio_de { 'Sie hat den ersten Algorithmus veröffentlicht.' }
       bio_en { 'She published the first algorithm for a machine.' }
       main_topic_de { 'Mathematik Genie' }
@@ -53,7 +54,7 @@ FactoryBot.define do
       city_de { 'Paris' }
       city_en { 'Paris' }
       country { 'FR' }
-      iso_languages { ['en', 'pl'] }
+      iso_languages { %w[en pl] }
       bio_de { 'Marie Curie war die erste Frau, die einen Nobelpreis bekommen hat.' }
       bio_en { 'Marie Curie was the first woman to be awarded a Nobel Prize.' }
       main_topic_de { 'Radioaktivität' }
@@ -66,7 +67,7 @@ FactoryBot.define do
       firstname { 'Laura' }
       country { 'AT' }
       state { :vorarlberg }
-      iso_languages { ['de', 'en'] }
+      iso_languages { %w[de en] }
       main_topic_de { 'Umwelt' }
       published { true }
     end
@@ -75,7 +76,7 @@ FactoryBot.define do
       firstname { 'Paula' }
       country { 'AT' }
       state { :vorarlberg }
-      iso_languages { ['de', 'pl'] }
+      iso_languages { %w[de pl] }
       main_topic_de { 'Spiele' }
       published { true }
     end
@@ -83,15 +84,15 @@ FactoryBot.define do
     factory :phantom_of_the_opera do
       firstname { 'Phantom' }
       lastname { 'of the Opera' }
-      city_en { }
-      country { }
-      iso_languages { }
+      city_en {}
+      country {}
+      iso_languages {}
       bio_de { 'unknown' }
       bio_en { 'unknown' }
-      main_topic_de { }
-      main_topic_en { }
+      main_topic_de {}
+      main_topic_en {}
       published { true }
-      profession { }
+      profession {}
     end
   end
 end

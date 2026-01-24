@@ -1,6 +1,7 @@
 # app/interactors/profiles/index_interactor.rb
 class Profiles::IndexInteractor
   include Interactor
+  include Pagy::Backend
 
   def call
     # Determine which search to perform
@@ -56,16 +57,19 @@ class Profiles::IndexInteractor
   def build_result
     profiles = context.profiles_result.profiles
 
-    # Pagination
-    context.pagy, context.records = pagy(profiles)
+    # pass raw profiles to controller
+    context.records = profiles
 
-    # Category
+    # category
     context.category = context.profiles_result.respond_to?(:category) ? context.profiles_result.category : Category.first
 
-    # Aggregations
+    # categories
+    context.categories = Rails.cache.fetch('sorted_categories', expires_in: 12.hours) { Category.sorted_categories }
+
+    # aggregations
     context.aggregations = build_aggregations(profiles)
 
-    # Tags per category
+    # tags
     context.tags_by_category = build_tags_by_category
   end
 
