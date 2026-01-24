@@ -64,9 +64,6 @@ $ bundle exec rake db:test:clone
 
 # If tests are still failing, run:
 $ rails db:test:prepare
-
-# Run tests excluding elasticsearch specs, so without a running elasticsearch server
-$  bundle exec rspec spec --tag '~elasticsearch'
 ```
 
 # Please use Rubocop
@@ -84,7 +81,7 @@ Our database schema looks like that:
 
 ![db](https://user-images.githubusercontent.com/1218914/43900439-368fa600-9be5-11e8-8f9c-d209784de1ef.jpg)
 
-after upgrading the database in the docker-compose.yml:
+If you want to include a current dump in your development environment for the following steps:
 
 ```
 docker compose down -v
@@ -93,8 +90,6 @@ docker compose exec db psql -U postgres -c "DROP DATABASE IF EXISTS speakerinnen
 docker compose exec db psql -U postgres -c "CREATE DATABASE speakerinnen_development;"
 cat latest.dump | docker compose exec -T db pg_restore -U postgres -d speakerinnen_development --clean --if-exists --no-owner
 ```
-
--  
 
 # Metrics
 
