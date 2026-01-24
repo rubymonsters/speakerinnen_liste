@@ -24,8 +24,7 @@ describe CategoriesProfilesStats do
     tag_spring.save!
     tag_winter.save!
     tag_summer.save!
-    Rails.cache.delete('categories_profiles_counts.all')
-    Rails.cache.delete("categories_profiles_counts.#{current_region}")
+    Rails.cache.clear
   end
 
   context 'in locale de with no region' do
