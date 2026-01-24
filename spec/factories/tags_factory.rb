@@ -33,5 +33,9 @@ FactoryBot.define do
     factory :tag_spring do
       name { 'spring' }
     end
+
+    factory :tag_summer do
+      name { 'summer' }
+    end
   end
 end

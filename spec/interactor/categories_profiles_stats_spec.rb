@@ -8,18 +8,22 @@ describe CategoriesProfilesStats do
 
   let!(:tag_spring) { create(:tag_spring, locales: [en_locale]) }
   let!(:tag_winter) { create(:tag_winter, locales: [en_locale, de_locale]) }
+  let!(:tag_summer) { create(:tag_summer, locales: []) }
 
   let!(:category_seasons) { create(:category, name: 'Seasons') }
   let!(:category_got) { create(:category, name: 'Game of Thrones') }
 
-  let!(:ada) { create(:ada, topic_list: %w[spring winter]) }
-  let!(:marie) { create(:marie, topic_list: ['spring']) }
+  let!(:ada) { create(:published_profile, topic_list: %w[spring winter]) }
+  let!(:marie) { create(:published_profile, topic_list: ['spring']) }
+  let!(:sophia) { create(:published_profile, topic_list: ['summer']) }
   before do
     tag_spring.categories << category_seasons
     tag_winter.categories << category_seasons
+    tag_summer.categories << category_seasons
     tag_winter.categories << category_got
     tag_spring.save!
     tag_winter.save!
+    tag_summer.save!
     Rails.cache.delete('categories_profiles_counts.all')
     Rails.cache.delete("categories_profiles_counts.#{current_region}")
   end
@@ -29,43 +33,43 @@ describe CategoriesProfilesStats do
       I18n.locale = :de
       result = CategoriesProfilesStats.call(region: current_region)
 
-      expect(result.categories_profiles_counts[category_seasons.id]).to eq 1
+      expect(result.categories_profiles_counts[category_seasons.id]).to eq 2
       expect(result.categories_profiles_counts[category_got.id]).to eq 1
-      expect(result.profiles_count).to eq 1
+      expect(result.profiles_count).to eq 2
     end
   end
   context 'in locale en with no region' do
     it '2 profiles have english tags ( winter_tag and spring_tag)' do
       I18n.locale = :en
       result = CategoriesProfilesStats.call(region: current_region)
-      expect(result.categories_profiles_counts[category_seasons.id]).to eq 2
+      expect(result.categories_profiles_counts[category_seasons.id]).to eq 3
       expect(result.categories_profiles_counts[category_got.id]).to eq 1
-      expect(result.profiles_count).to eq 2
+      expect(result.profiles_count).to eq 3
     end
   end
 
   context 'in regions with default locale :de' do
     let!(:category_c) { create(:category, name: 'C') }
 
-    let!(:laura) { create(:laura, topic_list: %w[spring winter]) }
-    let!(:paula) { create(:paula, topic_list: %w[spring winter]) }
+    let!(:laura) { create(:published_profile, topic_list: %w[spring winter]) }
+    let!(:paula) { create(:published_profile, topic_list: %w[spring winter]) }
     describe 'on speakerinnen.org' do
       let(:current_region) { nil }
 
       it 'calculates the correct number of published profiles per category' do
         # laura and ada have german tags so are counted
         result = CategoriesProfilesStats.call(region: current_region)
-        expect(result.categories_profiles_counts[category_seasons.id]).to eq 3
+        expect(result.categories_profiles_counts[category_seasons.id]).to eq 4
         expect(result.categories_profiles_counts[category_got.id]).to eq 3
         expect(result.categories_profiles_counts[category_c.id]).to be_nil
-        expect(result.profiles_count).to eq 3
+        expect(result.profiles_count).to eq 4
       end
 
       it 'calculates the correct total number of published profiles' do
         # laura and ada have german tags so are counted
         ada.update(published: false)
         result = CategoriesProfilesStats.call(region: current_region)
-        expect(result.profiles_count).to eq 2
+        expect(result.profiles_count).to eq 3
       end
     end
 
