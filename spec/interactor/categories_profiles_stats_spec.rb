@@ -99,7 +99,7 @@ describe CategoriesProfilesStats do
       end
     end
 
-    describe 'on upper-austria.speakerinnen.org' do
+    describe 'on ooe.speakerinnen.org' do
       let(:current_region) { :ooe }
       before do
         ada.update(state: 'upper-austria')
