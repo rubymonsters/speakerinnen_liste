@@ -3,6 +3,7 @@ describe 'PagesController', type: :request do
   let!(:profile_unpublished) { create(:unpublished_profile) }
   let(:admin) { create(:profile, :admin) }
   let!(:category) { create(:cat_science) }
+  
   describe 'GET /' do
     it 'returns http success' do
       get '/'
