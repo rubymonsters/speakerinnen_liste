@@ -3,8 +3,14 @@
     <p id="category_explantation" class="py-2 fw-bold"><%= t(:choose_category, scope: 'category') %></p>
     <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
       <% @categories.each do |category| %>
-        <a class="h5 category-link pb-2 <%= "active show" if category.id.to_s == @category.id.to_s %>" id="v-pills-<%= category.slug %>-tab" data-bs-toggle="pill" href="#v-pills-<%= category.slug %>" role="tab" aria-controls="v-pills-<%= category.slug %>" aria-selected="false">
-          <i class="fa fa-circle pe-2 small" id="icon-<%= category.slug%>"></i><%= category.name %>
+        <a class="h5 category-link pb-2 <%= "active show" if category.id.to_s == @category.id.to_s %>"
+           id="v-pills-<%= category.slug %>-tab"
+           data-bs-toggle="pill"
+           href="#v-pills-<%= category.slug %>"
+           role="tab"
+           aria-controls="v-pills-<%= category.slug %>"
+           aria-selected="false">
+          <i class="fa fa-circle pe-2 small" id="icon-<%= category.slug %>"></i><%= category.name %>
         </a>
       <% end %>
     </div>
@@ -12,101 +18,35 @@
 
   <div class="col-md-8">
     <p id="tags_explantation" class="py-2 fw-bold <%= "d-none" unless params[:category_id] %>"><%= t(:filter, scope: 'category') %></p>
+
     <% @categories.each do |category| %>
-        <span id="<%= category.slug %>" class="btn btn-primary choose_all_tags mb-2 category-search category-search-<%= category.slug %> <%= "d-none" unless category.id.to_s ==  params[:category_id] %> ">
-          <%= t(:choose_all_button, scope: 'category', category_name: category.name ).html_safe %>
-        </span>
+      <span id="<%= category.slug %>"
+            class="btn btn-primary choose_all_tags mb-2 category-search category-search-<%= category.slug %> <%= "d-none" unless category.id.to_s == (params[:category_id] || @category.id.to_s) %>">
+        <%= t(:choose_all_button, scope: 'category', category_name: category.name).html_safe %>
+      </span>
     <% end %>
+
     <div class="tab-content mb-3" id="available-tags-box">
       <% @categories.each do |category| %>
-        <div style="min-height: 300px" class="tab-pane fade <%= "active show" if category.id.to_s == ( params[:category_id]  || @category.id.to_s )%>" id="v-pills-<%= category.slug %>" role="tabpanel" aria-labelledby="v-pills-<%= category.slug %>-tab" >
-          <%= render partial: "shared/tagbox", locals: { :tags => instance_variable_get("@tags_#{category.slug}"), :category => category } %>
+        <div style="min-height: 300px"
+             class="tab-pane fade <%= "active show" if category.id.to_s == (params[:category_id] || @category.id.to_s) %>"
+             id="v-pills-<%= category.slug %>"
+             role="tabpanel"
+             aria-labelledby="v-pills-<%= category.slug %>-tab">
+          <%= render partial: "shared/tagbox",
+                     locals: { tags: @tags_by_category[category.slug.to_sym] || [], category: category } %>
         </div>
       <% end %>
     </div>
-    <div id="selected-tags-box" class="my-3">
-    </div>
+
+    <div id="selected-tags-box" class="my-3"></div>
+
     <div class="mb-3 text-end">
       <%= form_tag("/profiles#speakers_anchor", method: "get") do %>
         <%= text_field_tag :tag_filter, params[:tag_filter], id: "hidden_tag_input", class: "form-control d-none" %>
-        <span class="btn text-primary btn-link" id="clear"><%= t(:clear_link, scope: 'category') %></span>
-        <%= hidden_field_tag("locale", params[:locale] ) if params[:locale] %>
+        <%= hidden_field_tag("locale", params[:locale]) if params[:locale] %>
         <%= submit_tag t(:"choose_button#{'_' + current_region.to_s if current_region}", scope: 'category'), class: "btn btn-primary", id: "search_in_topic" %>
       <% end %>
     </div>
   </div>
 </div>
-
-<script>
-  // category links
-  $( ".category-link" ).click(function() {
-    var category = $(this).attr('id').split('-');
-    category = category[2];
-    $(".category-title").addClass( "d-none" );
-    $("#category-" + category).removeClass( "d-none" );
-    $(".category-search").addClass("d-none");
-    $(".category-search-" + category).removeClass("d-none");
-    $("#tags_explantation").removeClass("d-none")
-  });
-
-// tag box
-
-  // move tags from tagbox to the selecetd tag box and set the css class to disabled in the tagbox
-  $( "#available-tags-box .available-tag" ).click(function() {
-    $(this).clone().appendTo( "#selected-tags-box" ).append("<i class='ps-2 fa fa-times-circle'></i>").removeClass("available-tag").addClass("selected-tag");
-    $(this).addClass( "disabled no-click" );
-    $(this).removeClass( "enabled" );
-    var category = $(this).attr('class').split(' ')[0];
-    category = category.split('_');
-    category = category[1];
-    $("#icon-" + category).addClass("icon-active-" + category);
-  });
-
-  // move already selected tags back to the tag-box
-  $(document).on('click','.selected-tag',function() {
-    var category = $(this).attr('class').split(' ')[0];
-    $(this).remove();
-    var tag_name = $(this).attr('id');
-    $("#available-tags-box #" + tag_name).removeClass( "disabled no-click" );
-    $("#available-tags-box #" + tag_name).addClass( "enabled" );
-
-    if (!$(".selected-tag").hasClass(category)) {
-      category = category.split('_');
-      category = category[1];
-      $("#icon-" + category).removeClass("icon-active-" + category);
-        }
-  });
-
-  $( "#search_in_topic" ).click(function() {
-    var all_tags = $('#selected-tags-box .selected-tag').map(function(){
-      return $(this).text();
-    }).get().join();
-    $('#hidden_tag_input').val(all_tags);
-  });
-
-  // remove all tags fro the selecetd tag box
-  $( "#clear" ).click(function() {
-    $( "#selected-tags-box .selected-tag" ).remove();
-    $(".available-tag").removeClass( "disabled no-click" );
-    $(".available-tag").removeClass( "enabled" );
-    window.location = window.location.pathname;
-  });
-
-  // choose all tags from a category
-  $( ".choose_all_tags" ).click(function() {
-    var category = $(this).attr('id');
-    $("#available-tags-box .enabled.category_" + category).clone().appendTo( "#selected-tags-box" ).append("<i class='ps-2 fa fa-times-circle'></i>").removeClass("available-tag").addClass("selected-tag");
-    $("#available-tags-box .category_" + category).addClass( "disabled no-click" );
-    $("#available-tags-box .category_" + category).removeClass( "enabled" );
-  });
-
-// add the correct css classes to the tags
-  $(document).ready(function() {
-    <% if params[:tag_filter] %>
-      <% params[:tag_filter].gsub(' ','-').split(",").each do |tag_name| %>
-        $("#<%= tag_name %>").clone().appendTo($( "#selected-tags-box" )).append($("<i class='ps-2 fa fa-times-circle'></i>")).removeClass("available-tag").addClass("selected-tag");
-        $("#<%= tag_name %>.available-tag").addClass( "disabled no-click" );
-      <% end %>
-    <% end %>
-  });
-</script>
