@@ -92,13 +92,13 @@ en:
       about: "About us"
       faq: "FAQ"
       code_of_conduct: "Code of Conduct"
-      special_mobility_title:
-      special_mobility_intro:
-      special_mobility_details:
+      special_mobility_title: "Women's Day 2026: The mobility transition is female!"
+      special_mobility_intro: "Women in the transport sector – register now!"
+      special_mobility_details: <a href="/de/frauentag2026">All information about the campaign (German)</a>
       special_mobility_register:
-        title:
-        text:
-        button:
+        title: "Mobility is your topic?"
+        text: "Sign up to be found as an expert!"
+        button: "Register as a speaker"
     footer:
       contact: "Contact"
       imprint: "Legal Details"
