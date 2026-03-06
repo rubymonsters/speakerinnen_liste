@@ -14,13 +14,12 @@ Registriert euch jetzt kostenlos bei Speakerinnen.org, nutzt dabei das Schlagwor
 </p>
 
 <div id="startpage-special" class="container py-5 bg--light-grey mt-5">
-  <h1 class=""><%= t(:special_frauentags_title, scope: 'pages.home') %></h1>
-  <h3 class=""><%= t(:special_frauentags_intro, scope: 'pages.home').html_safe %></h3>
   <div class="row pt-5">
     <%= render partial: "profiles/profile", collection: @special_mobility_profiles %>
     <%= render partial: "profiles/register_special" %>
   </div>
 </div>
+
 
 <h1 class="display-4 py-5">Frauen aus der Mobilitätsbranche auf die Bühne</h1>
 <p>
@@ -38,6 +37,12 @@ Erst in den letzten Jahren wächst das Bewusstsein für die Notwendigkeit, gende
 <p>
 „Die Mobilitätswende ist mehr als Technik und Infrastruktur", betont Women in Mobility. „Sie ist eine gesellschaftliche Aufgabe. Wer Mobilität für alle gestalten will, muss auch alle Perspektiven hören und darf Frauen als Expertinnen nicht systematisch ausschließen."
 Für eine gerechte, klimafreundliche und inklusive Mobilität ist es entscheidend, unterschiedliche Perspektiven sichtbar zu machen – auch und gerade auf der Bühne.
+</p>
+<p  class='underline_links'>
+<b>
+<%= link_to "Hier alle Profile von Speakerinnen mit dem Schlagwort #womeninmobility ansehen", "https://speakerinnen.org/de/profiles?search=womeninmobility&button=" %>
+</b>
+</p>
 
 <h1 class="display-4 py-5">Über Women in Mobility</h1>
 <p>
@@ -46,7 +51,7 @@ Women in Mobility ist ein branchenübergreifendes Netzwerk für Frauen* in der M
 <p>
 Wir vernetzen Frauen, machen deren Expertise sichtbar und bringen unterschiedliche Perspektiven in die Debatte um die Mobilitätswende ein. In regionalen Hubs in Deutschland, Österreich, der Schweiz und Großbritannien organisieren wir ehrenamtlich Austausch, Fachveranstaltungen und Mentoringformate und positionieren uns zu mobilitätspolitischen Fragen.
 </p>
-<p>
+<p class='underline_links'>
 Unser Anspruch: Mobilität gerechter, inklusiver, vielfältiger und zukunftsfähiger zu gestalten.<br>
 Ausgezeichnet mit dem Deutschen Mobilitätspreis 2020.<br>
 Zur Website von <%= link_to "Women in Mobility", "https://womeninmobility.org", target: "_blank", rel: "noopener" %></p>

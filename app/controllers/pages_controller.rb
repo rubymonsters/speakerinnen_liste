@@ -23,6 +23,10 @@ class PagesController < ApplicationController
     true
   end
 
+  def frauentag_2026
+    @special_mobility_profiles = select_special_mobility_profiles
+  end
+
   private
 
   def select_special_mobility_profiles
