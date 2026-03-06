@@ -9,6 +9,8 @@ class PagesController < ApplicationController
     end
     @categories = Category.sorted_categories
     @features   = features_and_profiles unless current_region
+    # Frauentagsspecial 2026: commented out until April 2026
+    @special_mobility_profiles = select_special_mobility_profiles
 
     stats = CategoriesProfilesStats.call(region: current_region)
 
@@ -20,7 +22,20 @@ class PagesController < ApplicationController
     true
   end
 
+  def frauentag_2026
+    @special_mobility_profiles = select_special_mobility_profiles
+  end
+
   private
+
+  def select_special_mobility_profiles
+    @special_profiles = Profile
+                        .with_attached_image
+                        .includes(:translations)
+                        .is_published
+                        .where(id: [1863, 9427, 16066, 16076, 16114, 16127, 16123])
+  end
+
 
   # Features preloaded to avoid N+1
   def features_and_profiles

@@ -71,6 +71,7 @@ Rails.application.routes.draw do
     get 'about_vorarlberg' => 'pages#about_vorarlberg'
     get 'about_ooe' => 'pages#about_ooe'
     get 'donate' => 'pages#donations'
+    get 'frauentag2026' => "pages#frauentag_2026"
 
     get '/', to: 'pages#home'
 
