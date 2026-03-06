@@ -8,9 +8,8 @@ class PagesController < ApplicationController
       ActsAsTaggableOn::Tag.count
     end
     @categories = Category.sorted_categories
-
-    # Frauentagsspecial 2026: commented out until April 2026
     @features   = features_and_profiles unless current_region
+    # Frauentagsspecial 2026: commented out until April 2026
     @special_mobility_profiles = select_special_mobility_profiles
 
     stats = CategoriesProfilesStats.call(region: current_region)
