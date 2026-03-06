@@ -8,18 +8,19 @@ Dabei arbeiten Frauen in allen Bereichen der Mobilität mit hoher fachlicher Exp
 </p>
 <p>
 Damit Verkehrsplanerinnen, Ingenieurinnen, Mobilitätsforscherinnen, ÖPNV-Expertinnen, Stadtentwicklerinnen, Managerinnen und politische Entscheiderinnen künftig besser von Event-Organisatorinnen, Journalistinnen und Moderator*innen gefunden werden können, rufen wir anlässlich des Internationalen Frauentags alle Frauen aus der Mobilitätsbranche dazu auf:
-<br>
+</p>
+<p>
 Registriert euch jetzt kostenlos bei Speakerinnen.org, nutzt dabei das Schlagwort <b>#womeninmobility</b> bei euren Themen und macht euch und eure Expertise sichtbar!
 </p>
 
 <div id="startpage-special" class="container py-5 bg--light-grey mt-5">
-    <h1 class=""><%= t(:special_frauentags_title, scope: 'pages.home') %></h1>
-    <h3 class=""><%= t(:special_frauentags_intro, scope: 'pages.home').html_safe %></h3>
-    <div class="row pt-5">
-      <%= render partial: "profiles/profile", collection: @special_profiles %>
-      <%= render partial: "profiles/register_special" %>
-    </div>
+  <h1 class=""><%= t(:special_frauentags_title, scope: 'pages.home') %></h1>
+  <h3 class=""><%= t(:special_frauentags_intro, scope: 'pages.home').html_safe %></h3>
+  <div class="row pt-5">
+    <%= render partial: "profiles/profile", collection: @special_mobility_profiles %>
+    <%= render partial: "profiles/register_special" %>
   </div>
+</div>
 
 <h1 class="display-4 py-5">Frauen aus der Mobilitätsbranche auf die Bühne</h1>
 <p>
@@ -48,6 +49,5 @@ Wir vernetzen Frauen, machen deren Expertise sichtbar und bringen unterschiedlic
 <p>
 Unser Anspruch: Mobilität gerechter, inklusiver, vielfältiger und zukunftsfähiger zu gestalten.<br>
 Ausgezeichnet mit dem Deutschen Mobilitätspreis 2020.<br>
-Zur Website von Women in Mobility<br>
-</p>
+Zur Website von <%= link_to "Women in Mobility", "https://womeninmobility.org", target: "_blank", rel: "noopener" %></p>
 </div>
