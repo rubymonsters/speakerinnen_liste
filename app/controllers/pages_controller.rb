@@ -10,7 +10,7 @@ class PagesController < ApplicationController
     @categories = Category.sorted_categories
 
     # Frauentagsspecial 2026: commented out until April 2026
-    # @features   = features_and_profiles unless current_region
+    @features   = features_and_profiles unless current_region
     @special_mobility_profiles = select_special_mobility_profiles
 
     stats = CategoriesProfilesStats.call(region: current_region)
