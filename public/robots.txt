@@ -63,3 +63,14 @@ Crawl-delay: 20
 
 User-Agent: SEOkicks
 Disallow: /
+
+User-Agent: ClaudeBot
+Crawl-delay: 5
+
+User-Agent: Claude-SearchBot
+Crawl-delay: 5
+
+User-Agent: Claude-User
+Crawl-delay: 5
+
+
