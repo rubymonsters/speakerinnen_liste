@@ -545,7 +545,6 @@ DEPENDENCIES
   mime-types
   mini_magick (~> 4.9.5)
   mini_racer
-  minitest (= 5.11.3)
   mobility
   normalize-rails
   pagy
