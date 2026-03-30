@@ -6,12 +6,12 @@ describe 'Changing the language' do
   it 'stays on start page' do
     visit root_path
 
-    click_on(class: 'choose-de')
+    click_on('DE')
 
     expect(page).to have_link('Einloggen')
     expect(page).to have_button('Finde deine Speakerin')
 
-    click_on(class: 'choose-en')
+    click_on('EN')
 
     expect(page).to have_link('Log in')
     expect(page).to have_button('Find your speaker')
@@ -21,7 +21,7 @@ describe 'Changing the language' do
     visit profile_path(id: ada.id)
     expect(page).to have_content('Request Ada Lovelace as a Speaker')
 
-    click_on(class: 'choose-de')
+    click_on('DE')
 
     expect(page).to have_content('Ada Lovelace als Speakerin anfragen')
   end
@@ -30,7 +30,7 @@ describe 'Changing the language' do
     visit profiles_path(search: 'Marie')
     expect(page).to have_content('Marie')
 
-    click_on(class: 'choose-de')
+    click_on('DE')
 
     expect(page).to have_content('Marie')
   end
