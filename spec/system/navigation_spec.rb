@@ -22,10 +22,8 @@ RSpec.describe 'Navigation', type: :system do
           expect(page).to have_css('#header__logo')
           expect(page).to have_link(I18n.t('layouts.application.signup'))
           expect(page).to have_link(I18n.t('layouts.application.login'))
-          expect(page).to have_link('EN') if language == 'de'
-          expect(page).to have_link('DE') if language == 'en'
-          expect(page).to have_no_link('DE') if language == 'de'
-          expect(page).to have_no_link('EN') if language == 'en'
+          expect(page).to have_link('EN')
+          expect(page).to have_link('DE')
           expect(page).to have_no_link('Admin')
         end
 
