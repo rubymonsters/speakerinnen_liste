@@ -91,9 +91,11 @@
     <div class="col-sm-10">
       <b>Salit Krac</b>
       <p>
-        Salit ist Produktdesignerin mit einem breiten Hintergrund im Bereich visuelles Design. Sie kam 2018 zu Speakerinnen.org, um bei der Navigation der Plattform mitzuhelfen, und will seitdem nicht mehr weg. Wenn sie nicht arbeitet, sitzt sie höchstwahrscheinlich an ihrem Schreibtisch und zeichnet etwas Gruseliges.      <p>
+        Salit ist Produktdesignerin mit einem breiten Hintergrund im Bereich visuelles Design. Sie kam 2018 zu Speakerinnen.org, um bei der Navigation der Plattform mitzuhelfen, und will seitdem nicht mehr weg. Wenn sie nicht arbeitet, sitzt sie höchstwahrscheinlich an ihrem Schreibtisch und zeichnet etwas Gruseliges.
+      </p>
     </div>
   </div>
+
   <h4 class="mt-5">Speakerinnen.org unterstützen</h4>
   <ul style="list-style-type: disc; padding-top: 10px;">
     <li><%= link_to "lege selbst ein Profil an", sign_up_path %>und werde mit deinen Themen und deiner Expertise sichtbarer.</li>
@@ -102,3 +104,17 @@
     <li>Bau mit oder unterstütze uns bei der Kommunikation. Wenn du dich mit Programmierung und Webdesign oder Kommunikation und Marketing auskennst, kontaktiere uns für eine ehrenamtliche Mitarbeit in unserem Team.</li>
     <li>Unterstütze unsere ehrenamtliche Arbeit mit deiner <a href=<%=donate_path%>>Spende</a>. Wir setzen Spenden für die kontinuierliche Weiterentwicklung und neue technische Funktionen ein – so bleibt Speakerinnen.org kostenfrei und offen für alle.</li>
   </ul>
+
+  <h4 class="mt-5">Deine Nachricht an uns:</h4>
+  <p>
+    Du hast eine Frage oder Idee? Dann schick uns gerne eine Mail - wir antworten so schnell wie möglich.
+  </p>
+  <!-- Make sure cookie consent is given -->
+  <% if cookies[:cookie_consent].blank? %>
+    <button type="button" class="btn btn-link px-2 pt-0" data-toggle="modal" data-target="#contactHint">
+      <%= t(:contact, scope: 'pages.footer') %>
+    </button>
+  <% else %>
+    <i class="fas fa-envelope"></i><%= link_to t(:contact, scope: 'pages.footer'), contact_path %>
+  <% end %>
+</div>

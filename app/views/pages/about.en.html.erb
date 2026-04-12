@@ -92,9 +92,10 @@
       <b>Salit Krac</b>
       <p>
         Salit is a product designer with a broad background in visual design. She joined Speakerinnen.org in 2018 to help with the platform's navigation and has refused to leave since. When she is not at work, she is most likely at her desk drawing something spooky.
-      <p>
+      </p>
     </div>
   </div>
+
   <h4 class="mt-5">Support Speakerinnen.org</h4>
   <ul style="list-style-type: disc; padding-top: 10px;">
     <li><%= link_to "Create your own profile", sign_up_path %>and become more visible with your topics and expertise.</li>
@@ -103,3 +104,17 @@
     <li>Help us build or support our communication. If you are familiar with programming and web design or communication and marketing, contact us to volunteer with our team.</li>
     <li>•	Support our volunteer work with your <a href=<%=donate_path%>>donation</a>. We use donations for continuous development and new technical features – this way, Speakerinnen.org remains free and open to everyone.</li>
   </ul>
+
+  <h4 class="mt-5">Deine Nachricht an uns:</h4>
+  <p>
+    Du hast eine Frage oder Idee? Dann schick uns gerne eine Mail - wir antworten so schnell wie möglich.
+  </p>
+  <!-- Make sure cookie consent is given -->
+  <% if cookies[:cookie_consent].blank? %>
+    <button type="button" class="btn btn-link px-2 pt-0" data-toggle="modal" data-target="#contactHint">
+      <%= t(:contact, scope: 'pages.footer') %>
+    </button>
+  <% else %>
+    <i class="fas fa-envelope"></i><%= link_to t(:contact, scope: 'pages.footer'), contact_path %>
+  <% end %>
+</div>
