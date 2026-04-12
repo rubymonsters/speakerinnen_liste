@@ -78,6 +78,13 @@ Rails.application.configure do
     Bullet.bullet_logger = true
     Bullet.console = true
     Bullet.rails_logger = true
+    # In development, profile images are replaced with a static avatar (see profile_image_link helper),
+    # so ActiveStorage associations are never accessed. They are still needed in production.
+    Bullet.add_safelist type: :unused_eager_loading, class_name: "Profile", association: :image_attachment
+    Bullet.add_safelist type: :unused_eager_loading, class_name: "ActiveStorage::Attachment", association: :blob
+    Bullet.add_safelist type: :unused_eager_loading, class_name: "ActiveStorage::Blob", association: :variant_records
+    Bullet.add_safelist type: :unused_eager_loading, class_name: "ActiveStorage::Blob", association: :preview_image_attachment
+    Bullet.add_safelist type: :unused_eager_loading, class_name: "ActiveStorage::VariantRecord", association: :image_attachment
   end
 
   # config.action_mailer.delivery_method = :letter_opener

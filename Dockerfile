@@ -1,4 +1,4 @@
-FROM ruby:3.3.10
+FROM ruby:3.4.9
 RUN apt-get update -qq && apt-get install -y nodejs postgresql-client
 RUN mkdir /speakerinnen_liste
 WORKDIR /speakerinnen_liste
