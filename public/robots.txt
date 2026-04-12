@@ -73,4 +73,7 @@ Crawl-delay: 5
 User-Agent: Claude-User
 Crawl-delay: 5
 
+User-agent: SERankingBacklinksBot
+Crawl-delay: 10
+
 
