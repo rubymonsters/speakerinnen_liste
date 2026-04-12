@@ -46,7 +46,7 @@ RSpec.describe 'Navigation', type: :system do
           expect(page).to have_link(I18n.t(:about, scope: 'pages.home'))
         end
 
-        it 'viewing the contact page' do
+        it 'viewing the about page' do
           all(:link, I18n.t(:about, scope: 'pages.home')).last.click
           click_link I18n.t(:contact, scope: 'pages.footer')
           expect(page).to have_css('form label', text: I18n.t(:name, scope: 'contact.form'))
