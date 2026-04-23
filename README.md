@@ -118,6 +118,22 @@ Find further details in [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Docker
 
+### Use upgraded Ruby version in Docker
+
+If the Ruby version is upgraded (in `Gemfile`, `Dockerfile`, and `.tool-versions`), you need to rebuild the Docker image so the container uses the new version:
+
+```
+make setup
+```
+
+If you switch between branches with different Ruby versions, run `make setup` again after switching to rebuild the image for that branch.
+
+**Without Docker:** If you develop locally using asdf instead of Docker, you don't need to rebuild any image. Just install the Ruby version and run `bundle install`:
+```
+asdf install ruby <version>
+bundle install
+```
+
 ### Use upgraded Postgres version in Docker
 If Postgres got upgraded in the docker-compose file, you need to delete all processes, images
 and volumes that still use the older version:
