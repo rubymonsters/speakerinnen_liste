@@ -4,6 +4,9 @@ source 'https://rubygems.org'
 ruby '3.4.9'
 gem 'rails', '~> 8.0.0'
 
+# patch for CVE‑2026‑41316, can be removed with ruby 4.0.3
+gem 'erb', '~> 6.0.4'
+
 # Needed for Javascript Runtime
 # gem 'therubyracer'
 gem 'mini_racer'
