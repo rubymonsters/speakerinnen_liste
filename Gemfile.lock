@@ -151,7 +151,6 @@ GEM
     crass (1.0.6)
     crawler_detect (1.2.4)
       qonfig (>= 0.24)
-    dalli (3.2.8)
     database_cleaner (2.1.0)
       database_cleaner-active_record (>= 2, < 3)
     database_cleaner-active_record (2.2.0)
@@ -400,6 +399,10 @@ GEM
     rdoc (6.3.4.1)
     record_tag_helper (1.0.1)
       actionview (>= 5)
+    redis (5.4.1)
+      redis-client (>= 0.22.0)
+    redis-client (0.28.0)
+      connection_pool
     regexp_parser (2.11.3)
     reline (0.6.3)
       io-console (~> 0.5)
@@ -530,7 +533,6 @@ DEPENDENCIES
   capybara (~> 3.38)
   country_select
   crawler_detect
-  dalli
   database_cleaner (~> 2.0, >= 2.0.2)
   derailed_benchmarks
   devise (~> 4.7)
@@ -567,6 +569,7 @@ DEPENDENCIES
   rails (~> 8.1.2)
   rails-controller-testing
   record_tag_helper (~> 1.0)
+  redis
   rexml (~> 3.4.2)
   rspec-rails
   rubocop (~> 1.65)
