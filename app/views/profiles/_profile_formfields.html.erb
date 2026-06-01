@@ -73,7 +73,9 @@
         <label class="form-check-label pb-2">
           <%= t(:languages, scope: 'profiles.form') %>
         </label><br>
-        <%= render partial: "shared/iso_languages", collection: IsoLanguage.top_list, locals: { profile: profile }  %>
+        <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 g-1 mt-1">
+          <%= render partial: "shared/iso_languages", collection: IsoLanguage.top_list, locals: { profile: profile }  %>
+        </div>
         <input name="profile[iso_languages][]" value="" type="hidden">
       </div>
       <div class="my-2">
@@ -83,7 +85,9 @@
       </div>
       <% display_value = IsoLanguage.rest_list & profile.iso_languages == [] ? "none" : "block" %>
       <div class="profile_iso_languages" id="rest_languages" style="display: <%= display_value %>;">
-        <%= render partial: "shared/iso_languages", collection: IsoLanguage.rest_list  %>
+        <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 g-1">
+          <%= render partial: "shared/iso_languages", collection: IsoLanguage.rest_list  %>
+        </div>
         <input name="profile[iso_languages][]" value="" type="hidden">
       </div>
     </div>
