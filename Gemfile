@@ -2,7 +2,7 @@
 
 source 'https://rubygems.org'
 ruby '3.4.9'
-gem 'rails', '~> 8.0.0'
+gem 'rails', '~> 8.1.2'
 
 # patch for CVE‑2026‑41316, can be removed with ruby 4.0.3
 gem 'erb', '~> 6.0.4'
