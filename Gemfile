@@ -51,7 +51,7 @@ gem 'sassc-rails'
 
 gem 'uglifier', '>= 1.0.3'
 
-gem 'dalli'
+gem 'solid_cache'
 
 gem 'rack-piwik', '~> 0.3.0', require: 'rack/piwik'
 
