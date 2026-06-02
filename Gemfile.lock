@@ -151,7 +151,6 @@ GEM
     crass (1.0.6)
     crawler_detect (1.2.4)
       qonfig (>= 0.24)
-    dalli (3.2.8)
     database_cleaner (2.1.0)
       database_cleaner-active_record (>= 2, < 3)
     database_cleaner-active_record (2.2.0)
@@ -474,6 +473,10 @@ GEM
     simple_form (5.3.1)
       actionpack (>= 5.2)
       activemodel (>= 5.2)
+    solid_cache (1.0.10)
+      activejob (>= 7.2)
+      activerecord (>= 7.2)
+      railties (>= 7.2)
     sprockets (4.2.1)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
@@ -530,7 +533,6 @@ DEPENDENCIES
   capybara (~> 3.38)
   country_select
   crawler_detect
-  dalli
   database_cleaner (~> 2.0, >= 2.0.2)
   derailed_benchmarks
   devise (~> 5.0)
@@ -574,6 +576,7 @@ DEPENDENCIES
   sassc-rails
   selenium-webdriver (= 3.141.0)
   simple_form
+  solid_cache
   stackprof
   terser (~> 1.2)
   uglifier (>= 1.0.3)
