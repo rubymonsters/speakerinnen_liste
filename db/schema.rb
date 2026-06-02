@@ -10,29 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_01_11_181333) do
+ActiveRecord::Schema[8.1].define(version: 2026_06_01_182113) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
   enable_extension "pg_stat_statements"
 
   create_table "active_storage_attachments", force: :cascade do |t|
-    t.string "name", null: false
-    t.string "record_type", null: false
-    t.bigint "record_id", null: false
     t.bigint "blob_id", null: false
     t.datetime "created_at", precision: nil, null: false
+    t.string "name", null: false
+    t.bigint "record_id", null: false
+    t.string "record_type", null: false
     t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
   end
 
   create_table "active_storage_blobs", force: :cascade do |t|
-    t.string "key", null: false
-    t.string "filename", null: false
-    t.string "content_type"
-    t.text "metadata"
     t.bigint "byte_size", null: false
     t.string "checksum"
+    t.string "content_type"
     t.datetime "created_at", precision: nil, null: false
+    t.string "filename", null: false
+    t.string "key", null: false
+    t.text "metadata"
     t.string "service_name", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
@@ -49,32 +49,32 @@ ActiveRecord::Schema[8.0].define(version: 2026_01_11_181333) do
   end
 
   create_table "blocked_emails", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
-    t.string "subject"
     t.text "body"
     t.string "contacted_profile_email"
-    t.string "reason"
-    t.datetime "sent_at"
     t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string "email"
+    t.string "name"
+    t.string "reason"
     t.boolean "reviewed", default: false, null: false
+    t.datetime "sent_at"
+    t.string "subject"
+    t.datetime "updated_at", null: false
   end
 
   create_table "blog_posts", id: :serial, force: :cascade do |t|
-    t.string "title", limit: 255
     t.text "body"
-    t.string "url", limit: 255
     t.datetime "created_at", precision: nil
+    t.string "title", limit: 255
     t.datetime "updated_at", precision: nil
+    t.string "url", limit: 255
   end
 
   create_table "categories", id: :serial, force: :cascade do |t|
-    t.string "name", limit: 255
     t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
+    t.string "name", limit: 255
     t.integer "position", default: 0
     t.string "slug"
+    t.datetime "updated_at", precision: nil, null: false
   end
 
   create_table "categories_tags", id: :serial, force: :cascade do |t|
@@ -87,47 +87,47 @@ ActiveRecord::Schema[8.0].define(version: 2026_01_11_181333) do
 
   create_table "category_translations", id: :serial, force: :cascade do |t|
     t.integer "category_id"
-    t.string "locale", limit: 255, null: false
     t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string "locale", limit: 255, null: false
     t.string "name", limit: 255
+    t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_category_translations_on_category_id"
     t.index ["locale"], name: "index_category_translations_on_locale"
   end
 
   create_table "feature_profiles", force: :cascade do |t|
+    t.datetime "created_at", precision: nil, null: false
     t.bigint "feature_id"
     t.bigint "profile_id"
-    t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.index ["feature_id"], name: "index_feature_profiles_on_feature_id"
     t.index ["profile_id"], name: "index_feature_profiles_on_profile_id"
   end
 
   create_table "feature_translations", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.text "description"
     t.bigint "feature_id", null: false
     t.string "locale", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.string "title"
-    t.text "description"
+    t.datetime "updated_at", null: false
     t.index ["feature_id"], name: "index_feature_translations_on_feature_id"
     t.index ["locale"], name: "index_feature_translations_on_locale"
   end
 
   create_table "features", force: :cascade do |t|
+    t.datetime "created_at", precision: nil, null: false
     t.integer "position"
     t.boolean "public"
-    t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
   end
 
   create_table "friendly_id_slugs", id: :serial, force: :cascade do |t|
+    t.datetime "created_at", precision: nil
+    t.string "scope", limit: 255
     t.string "slug", limit: 255, null: false
     t.integer "sluggable_id", null: false
     t.string "sluggable_type", limit: 50
-    t.string "scope", limit: 255
-    t.datetime "created_at", precision: nil
     t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
     t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
     t.index ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id"
@@ -135,86 +135,86 @@ ActiveRecord::Schema[8.0].define(version: 2026_01_11_181333) do
   end
 
   create_table "locale_languages", id: :serial, force: :cascade do |t|
-    t.string "iso_code", limit: 255
     t.datetime "created_at", precision: nil
+    t.string "iso_code", limit: 255
     t.datetime "updated_at", precision: nil
   end
 
   create_table "medialinks", id: :serial, force: :cascade do |t|
-    t.integer "profile_id"
-    t.text "url"
-    t.text "title"
-    t.text "description"
     t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
-    t.integer "position"
+    t.text "description"
     t.string "language", limit: 255
+    t.integer "position"
+    t.integer "profile_id"
+    t.text "title"
+    t.datetime "updated_at", precision: nil, null: false
+    t.text "url"
     t.index ["profile_id"], name: "index_medialinks_on_profile_id"
   end
 
   create_table "offensive_terms", force: :cascade do |t|
-    t.string "word"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "word"
   end
 
   create_table "profile_translations", id: :serial, force: :cascade do |t|
-    t.integer "profile_id"
-    t.string "locale", limit: 255, null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "main_topic", limit: 255
     t.text "bio"
-    t.string "twitter", limit: 255
-    t.string "website", limit: 255
     t.string "city", limit: 255
+    t.datetime "created_at", null: false
+    t.string "locale", limit: 255, null: false
+    t.string "main_topic", limit: 255
+    t.string "personal_note"
+    t.string "profession"
+    t.integer "profile_id"
+    t.string "twitter", limit: 255
+    t.datetime "updated_at", null: false
+    t.string "website", limit: 255
     t.string "website_2"
     t.string "website_3"
-    t.string "profession"
-    t.string "personal_note"
     t.index ["locale"], name: "index_profile_translations_on_locale"
     t.index ["profile_id"], name: "index_profile_translations_on_profile_id"
   end
 
   create_table "profiles", id: :serial, force: :cascade do |t|
-    t.string "firstname", limit: 255
-    t.string "lastname", limit: 255
-    t.string "email", limit: 255
-    t.string "picture", limit: 255
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
-    t.string "encrypted_password", limit: 255, default: "", null: false
-    t.string "reset_password_token", limit: 255
-    t.datetime "reset_password_sent_at", precision: nil
-    t.datetime "remember_created_at", precision: nil
-    t.integer "sign_in_count", default: 0
-    t.datetime "current_sign_in_at", precision: nil
-    t.datetime "last_sign_in_at", precision: nil
-    t.string "current_sign_in_ip", limit: 255
-    t.string "last_sign_in_ip", limit: 255
+    t.boolean "admin", default: false
+    t.text "admin_comment"
+    t.string "bluesky"
+    t.datetime "confirmation_sent_at", precision: nil
     t.string "confirmation_token", limit: 255
     t.datetime "confirmed_at", precision: nil
-    t.datetime "confirmation_sent_at", precision: nil
-    t.string "unconfirmed_email", limit: 255
-    t.boolean "admin", default: false
-    t.string "provider", limit: 255
-    t.string "uid", limit: 255
-    t.boolean "published", default: false
-    t.text "admin_comment"
-    t.string "slug", limit: 255
-    t.string "country", limit: 255
-    t.string "iso_languages", limit: 255
     t.string "copyright"
-    t.string "personal_note", limit: 175
-    t.boolean "willing_to_travel"
-    t.boolean "nonprofit"
-    t.string "state"
-    t.boolean "inactive", default: false
+    t.string "country", limit: 255
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "current_sign_in_at", precision: nil
+    t.string "current_sign_in_ip", limit: 255
+    t.string "email", limit: 255
+    t.string "encrypted_password", limit: 255, default: "", null: false
     t.datetime "exported_at", precision: nil
+    t.string "firstname", limit: 255
+    t.boolean "inactive", default: false
     t.string "instagram"
+    t.string "iso_languages", limit: 255
+    t.datetime "last_sign_in_at", precision: nil
+    t.string "last_sign_in_ip", limit: 255
+    t.string "lastname", limit: 255
     t.string "linkedin"
-    t.string "bluesky"
     t.string "mastodon"
+    t.boolean "nonprofit"
+    t.string "personal_note", limit: 175
+    t.string "picture", limit: 255
+    t.string "provider", limit: 255
+    t.boolean "published", default: false
+    t.datetime "remember_created_at", precision: nil
+    t.datetime "reset_password_sent_at", precision: nil
+    t.string "reset_password_token", limit: 255
+    t.integer "sign_in_count", default: 0
+    t.string "slug", limit: 255
+    t.string "state"
+    t.string "uid", limit: 255
+    t.string "unconfirmed_email", limit: 255
+    t.datetime "updated_at", precision: nil, null: false
+    t.boolean "willing_to_travel"
     t.index ["confirmation_token"], name: "index_profiles_on_confirmation_token", unique: true
     t.index ["email"], name: "index_profiles_on_email", unique: true
     t.index ["reset_password_token"], name: "index_profiles_on_reset_password_token", unique: true
@@ -222,8 +222,8 @@ ActiveRecord::Schema[8.0].define(version: 2026_01_11_181333) do
   end
 
   create_table "profiles_services", id: false, force: :cascade do |t|
-    t.bigint "service_id", null: false
     t.bigint "profile_id", null: false
+    t.bigint "service_id", null: false
     t.index ["service_id", "profile_id"], name: "index_profiles_services_on_service_id_and_profile_id"
   end
 
@@ -231,14 +231,25 @@ ActiveRecord::Schema[8.0].define(version: 2026_01_11_181333) do
     t.string "name"
   end
 
+  create_table "solid_cache_entries", force: :cascade do |t|
+    t.integer "byte_size", null: false
+    t.datetime "created_at", null: false
+    t.binary "key", null: false
+    t.bigint "key_hash", null: false
+    t.binary "value", null: false
+    t.index ["byte_size"], name: "index_solid_cache_entries_on_byte_size"
+    t.index ["key_hash", "byte_size"], name: "index_solid_cache_entries_on_key_hash_and_byte_size"
+    t.index ["key_hash"], name: "index_solid_cache_entries_on_key_hash", unique: true
+  end
+
   create_table "taggings", id: :serial, force: :cascade do |t|
+    t.string "context", limit: 128
+    t.datetime "created_at", precision: nil
     t.integer "tag_id"
     t.integer "taggable_id"
     t.string "taggable_type", limit: 255
     t.integer "tagger_id"
     t.string "tagger_type", limit: 255
-    t.string "context", limit: 128
-    t.datetime "created_at", precision: nil
     t.index ["context"], name: "index_taggings_on_context"
     t.index ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true
     t.index ["tag_id"], name: "index_taggings_on_tag_id"
@@ -257,9 +268,9 @@ ActiveRecord::Schema[8.0].define(version: 2026_01_11_181333) do
   end
 
   create_table "tags_locale_languages", id: :serial, force: :cascade do |t|
-    t.integer "tag_id"
-    t.integer "locale_language_id"
     t.datetime "created_at", precision: nil
+    t.integer "locale_language_id"
+    t.integer "tag_id"
     t.datetime "updated_at", precision: nil
   end
 

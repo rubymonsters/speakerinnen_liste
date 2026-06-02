@@ -1,267 +1,350 @@
-<div class="row">
-  <div class="col-sm-12 col-md-6">
-    <h5 class="pb-3 fw-bold"> <%= t(:your_picture, scope: 'profiles.form').html_safe %></h5>
-    <%= f.label :picture, t(:picture, scope: 'profiles.form').html_safe, class: "mb-2" %>
-    <% if @profile.image.attached? && @profile.validate(:image_format_size) %>
-      <p><%= image_tag(@profile.image, class: "img-thumbnail") %></p>
-      <%= link_to t(:delete_image, scope: 'profiles.form').html_safe, image_path(@profile.image.id), :method => :delete, data: { confirm: 'Are you sure?' } %>
-    <% else %>
-      <p><%= f.file_field :image %></p>
-      <small class="form-text text-muted">
-        <%= t(:image_info, scope: 'profiles.form').html_safe %><br>
-      </small>
-    <% end %>
-    <p>
-      <%= f.input :copyright, label: t(:copyright, scope: 'profiles.form'),
-      label_html: { class: "mb-2", id: "copyright" }, input_html: { class: "form-control" } %>
-    </p>
+<% wizard = local_assigns.fetch(:wizard, false) %>
+
+<% if wizard %>
+<div class="wizard-stepper mb-5">
+  <div class="wizard-step-nav active" data-step-nav="1">
+    <div class="wizard-step-circle">1</div>
+    <div class="wizard-step-label">Basisprofil</div>
+  </div>
+  <div class="wizard-step-connector"></div>
+  <div class="wizard-step-nav" data-step-nav="2">
+    <div class="wizard-step-circle">2</div>
+    <div class="wizard-step-label">Themen</div>
+  </div>
+  <div class="wizard-step-connector"></div>
+  <div class="wizard-step-nav" data-step-nav="3">
+    <div class="wizard-step-circle">3</div>
+    <div class="wizard-step-label">Expertise</div>
+  </div>
+  <div class="wizard-step-connector"></div>
+  <div class="wizard-step-nav" data-step-nav="4">
+    <div class="wizard-step-circle">4</div>
+    <div class="wizard-step-label">Veranstaltungsinfos</div>
+  </div>
+  <div class="wizard-step-connector"></div>
+  <div class="wizard-step-nav" data-step-nav="5">
+    <div class="wizard-step-circle">5</div>
+    <div class="wizard-step-label">Vorschau</div>
   </div>
 </div>
-<hr>
-<div class="row mt-3">
-  <div class="col-sm-12 col-md-8 col-lg-6 p-3">
-    <h5 class="pb-3 fw-bold"> <%= t(:personal_infos, scope: 'profiles.form').html_safe %></h5>
+<% end %>
 
-    <div class="mb-3">
-      <%= f.input :firstname, label: t(:firstname, scope: 'profiles.form'),
-          label_html: { id: "firstname" }, input_html: { class: "form-control" } %>
+<!-- Step 1: Basisprofil -->
+<div class="wizard-step" data-step="1">
+  <div class="row">
+    <div class="col-sm-12 col-md-6">
+      <h5 class="pb-3 fw-bold"> <%= t(:your_picture, scope: 'profiles.form').html_safe %></h5>
+      <%= f.label :picture, t(:picture, scope: 'profiles.form').html_safe, class: "mb-2" %>
+      <% if @profile.image.attached? && @profile.validate(:image_format_size) %>
+        <p><%= image_tag(@profile.image, class: "img-thumbnail") %></p>
+        <%= link_to t(:delete_image, scope: 'profiles.form').html_safe, image_path(@profile.image.id), :method => :delete, data: { confirm: 'Are you sure?' } %>
+      <% else %>
+        <p><%= f.file_field :image %></p>
+        <small class="form-text text-muted">
+          <%= t(:image_info, scope: 'profiles.form').html_safe %><br>
+        </small>
+      <% end %>
+      <p>
+        <%= f.input :copyright, label: t(:copyright, scope: 'profiles.form'),
+        label_html: { class: "mb-2", id: "copyright" }, input_html: { class: "form-control" } %>
+      </p>
     </div>
-    <div class="mb-3">
-      <%= f.input :lastname, label: t(:lastname, scope: 'profiles.form'),
-        label_html: { id: "lastname" }, input_html: { class: "form-control" } %>
-    </div>
-    <div class="mb-3">
-      <%= f.label :country, label: t(:country, scope: 'profiles.form') %>
-      <%= f.country_select :country,
-          { priority_countries: ["DE", "AT", "CH"], include_blank: t(:please_select, scope: 'profiles.form') },
-          class: 'form-control'
-      %>
-    </div>
-    <%= f.hidden_field :state, value: nil %>
-    <% t(:states).each do |key, value| %>
-      <div id="profile_states_group-<%= key %>" class="mb-3 profile_states_group" <%= 'style="display: none;"'.html_safe if key.to_s != @profile.country&.downcase %>>
-        <label class="form-label mb-2" for="profile_states-<%= key %>">
-          <%= t(:"state.#{key}") %>:
-        </label>
-        <select class="form-control" id="profile_states-<%= key %>">
-          <option value=""><%= t(:please_select, scope: 'profiles.form') %></option>
-          <% value.each do |key, value| %>
-            <option value="<%= key %>" <%= 'selected="selected"' if key.to_s == @profile.state %>>
-              <%= value %>
-            </option>
-          <% end %>
-        </select>
+  </div>
+  <hr>
+  <div class="row mt-3">
+    <div class="col-sm-12 col-md-8 col-lg-6 p-3">
+      <h5 class="pb-3 fw-bold"> <%= t(:personal_infos, scope: 'profiles.form').html_safe %></h5>
+
+      <div class="mb-3">
+        <%= f.input :firstname, label: t(:firstname, scope: 'profiles.form'),
+            label_html: { id: "firstname" }, input_html: { class: "form-control" } %>
       </div>
-    <% end %>
-    <script>
-      var updateStateSelects = function(country) {
-        $(".profile_states_group").hide();
-        $("#profile_states_group-" + country).show();
+      <div class="mb-3">
+        <%= f.input :lastname, label: t(:lastname, scope: 'profiles.form'),
+          label_html: { id: "lastname" }, input_html: { class: "form-control" } %>
+      </div>
+      <div class="mb-3">
+        <%= f.label :country, label: t(:country, scope: 'profiles.form') %>
+        <%= f.country_select :country,
+            { priority_countries: ["DE", "AT", "CH"], include_blank: t(:please_select, scope: 'profiles.form') },
+            class: 'form-control'
+        %>
+      </div>
+      <%= f.hidden_field :state, value: nil %>
+      <% t(:states).each do |key, value| %>
+        <div id="profile_states_group-<%= key %>" class="mb-3 profile_states_group" <%= 'style="display: none;"'.html_safe if key.to_s != @profile.country&.downcase %>>
+          <label class="form-label mb-2" for="profile_states-<%= key %>">
+            <%= t(:"state.#{key}") %>:
+          </label>
+          <select class="form-control" id="profile_states-<%= key %>">
+            <option value=""><%= t(:please_select, scope: 'profiles.form') %></option>
+            <% value.each do |key, value| %>
+              <option value="<%= key %>" <%= 'selected="selected"' if key.to_s == @profile.state %>>
+                <%= value %>
+              </option>
+            <% end %>
+          </select>
+        </div>
+      <% end %>
+      <script>
+        var updateStateSelects = function(country) {
+          $(".profile_states_group").hide();
+          $("#profile_states_group-" + country).show();
 
-        $(".profile_states_group select").removeAttr("name");
-        $("#profile_states_group-" + country + " select").attr("name", "profile[state]");
-      };
-      $(document).ready(function() {
-        updateStateSelects("<%= @profile.country&.downcase %>");
-        $("#profile_country").change(function() {
-          updateStateSelects(this.value.toLowerCase());
+          $(".profile_states_group select").removeAttr("name");
+          $("#profile_states_group-" + country + " select").attr("name", "profile[state]");
+        };
+        $(document).ready(function() {
+          updateStateSelects("<%= @profile.country&.downcase %>");
+          $("#profile_country").change(function() {
+            updateStateSelects(this.value.toLowerCase());
+          });
         });
-      });
-    </script>
-    <div class="mb-3">
-      <div class="profile_iso_languages mt-3">
-        <label class="form-check-label pb-2">
-          <%= t(:languages, scope: 'profiles.form') %>
-        </label><br>
-        <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 g-1 mt-1">
-          <%= render partial: "shared/iso_languages", collection: IsoLanguage.top_list, locals: { profile: profile }  %>
+      </script>
+      <div class="mb-3">
+        <div class="profile_iso_languages mt-3">
+          <label class="form-check-label pb-2">
+            <%= t(:languages, scope: 'profiles.form') %>
+          </label><br>
+          <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 g-1 mt-1">
+            <%= render partial: "shared/iso_languages", collection: IsoLanguage.top_list, locals: { profile: profile }  %>
+          </div>
+          <input name="profile[iso_languages][]" value="" type="hidden">
         </div>
-        <input name="profile[iso_languages][]" value="" type="hidden">
-      </div>
-      <div class="my-2">
-        <a id="expander">
-          <%= t(:show_more_languages, scope: 'profiles.form') %><i class="fa fa-caret-down ps-1"></i>
-        </a>
-      </div>
-      <% display_value = IsoLanguage.rest_list & profile.iso_languages == [] ? "none" : "block" %>
-      <div class="profile_iso_languages" id="rest_languages" style="display: <%= display_value %>;">
-        <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 g-1">
-          <%= render partial: "shared/iso_languages", collection: IsoLanguage.rest_list  %>
+        <div class="my-2">
+          <a id="expander">
+            <%= t(:show_more_languages, scope: 'profiles.form') %><i class="fa fa-caret-down ps-1"></i>
+          </a>
         </div>
-        <input name="profile[iso_languages][]" value="" type="hidden">
+        <% display_value = IsoLanguage.rest_list & profile.iso_languages == [] ? "none" : "block" %>
+        <div class="profile_iso_languages" id="rest_languages" style="display: <%= display_value %>;">
+          <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 g-1">
+            <%= render partial: "shared/iso_languages", collection: IsoLanguage.rest_list  %>
+          </div>
+          <input name="profile[iso_languages][]" value="" type="hidden">
+        </div>
       </div>
-    </div>
-  </div>
-</div>
-<hr>
-<div class="row mt-3">
-  <div class="col-sm-12 col-md-8 col-lg-6 p-3">
-    <h5 class="pb-3 fw-bold"> <%= t(:social_media_accouts, scope: 'profiles.form').html_safe %></h5>
-    <div class="mb-3">
-      <%= f.input :instagram, label: t(:instagram, scope: 'profiles.form'),
-          label_html: { id: "instagram" }, input_html: { class: "form-control" }, placeholder: "https://instagram.com/yourprofile" %>
-    </div>
-    <div class="mb-3">
-       <%= f.input :linkedin, label: t(:linkedin, scope: 'profiles.form'),
-          label_html: { id: "linkedin" }, input_html: { class: "form-control" }, placeholder: "https://linkedin.com/in/yourprofile" %>
-    </div>   
-    <div class="mb-3">
-      <%= f.input :bluesky, label: t(:bluesky, scope: 'profiles.form'),
-          label_html: { id: "bluesky" }, input_html: { class: "form-control" }, placeholder: "https://bsky.app/profile/yourhandle" %>
-    </div>
-    <div class="mb-3">
-      <%= f.input :mastodon, label: t(:mastodon, scope: 'profiles.form'),
-          label_html: { id: "mastodon" }, input_html: { class: "form-control" }, placeholder: "https://mastodon.social/@yourhandle" %>
     </div>
   </div>
 </div>
 
-<hr>
-<div class="row mt-3">
-  <div class="col-sm-12 col-md-8 col-lg-6 p-3">
-    <h5 class="pb-3 fw-bold"> <%= t(:talk_infos, scope: 'profiles.form').html_safe %></h5>
-    <div class="mb-3" id="form-group-willing-to-travel">
-      <p><%= t(:willing_to_travel, scope: 'profiles.form').html_safe %>:</p>
-      <label name="willing_to_travel_na">
-        <%= f.radio_button :willing_to_travel, "", checked: @profile.willing_to_travel.nil? %>
-        <%= t(:not_applicable, scope: 'profiles.form').html_safe %>
-      </label>
-      <label name="willing_to_travel_yes">
-        <%= f.radio_button :willing_to_travel, "1", checked: @profile.willing_to_travel == true %>
-        <%= t(:answer_yes, scope: 'profiles.form').html_safe %>
-      </label>
-      <label name="willing_to_travel_no">
-        <%= f.radio_button :willing_to_travel, "0", checked: @profile.willing_to_travel == false %>
-        <%= t(:answer_no, scope: 'profiles.form').html_safe %>
-      </label>
-    </div>
-    <div class="mb-3" id="form-group-nonprofit">
-      <p><%= t(:nonprofit, scope: 'profiles.form').html_safe %>:<p>
-      <label name="nonprofit_na">
-        <%= f.radio_button :nonprofit, "", checked: @profile.nonprofit.nil? %>
-        <%= t(:not_applicable, scope: 'profiles.form').html_safe %>
-      </label>
-      <label name="nonprofit_yes">
-        <%= f.radio_button :nonprofit, "1", checked: @profile.nonprofit == true %>
-        <%= t(:answer_yes, scope: 'profiles.form').html_safe %>
-      </label>
-      <label name="nonprofit_no">
-        <%= f.radio_button :nonprofit, "0", checked: @profile.nonprofit == false %>
-        <%= t(:answer_no, scope: 'profiles.form').html_safe %>
-      </label>
+<!-- Step 2: Themen -->
+<div class="wizard-step" data-step="2">
+  <div class="row mt-3">
+    <div class="col-sm-12 col-md-8 col-lg-6 p-3">
+      <div class="mb-3">
+        <h5 class="pb-3 fw-bold">Topics / Themen</h5>
+        <%= f.input :topic_list,
+            label: t(:topic_list, scope: 'profiles.form').html_safe,
+            label_html: {
+              id: "topic_list",
+              class: "",
+              title: t(:topic_list_tooltip, scope: 'profiles.form').html_safe
+            },
+            input_html: { value: @profile.topic_list.to_s, class: "form-control" } %>
+      </div>
     </div>
   </div>
+  <ul class="d-none" id='availableTags'>
+    <% ActsAsTaggableOn::Tag.distinct.pluck(:name).each do |tag_name| %>
+      <li><%= tag_name %></li>
+    <% end %>
+  </ul>
 </div>
-<hr>
-<div class="row mt-3">
-  <div class="col-sm-12 col-md-8 col-lg-6 p-3">
-    <h5 class="pb-3 fw-bold"> <%= t(:services_i_give, scope: 'profiles.form').html_safe %></h5>
-    <div class="mb-3">
-      <% Service.all.each do |service| %>
-        <label class="mb-2" name="service-<%= service.id %>">
-          <input type="checkbox" value="<%= service.id %>" name="profile[service_ids][]" <%="checked=true" if @profile.services.include?(service) %> />
-          <%= t(service.name, scope: 'profiles.form') %>
-        </label>
-        <br>
+
+<!-- Step 3: Expertise -->
+<div class="wizard-step" data-step="3">
+  <div class="row mt-3">
+    <div class="col-sm-12 col-md-8 col-lg-6 p-3">
+      <h5 class="pb-3 fw-bold">Expertise</h5>
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a data-locale-tab="de" data-wizard-tab-group="expertise"
+             class="nav-link <%= I18n.locale == :de ? 'active' : '' %>" href="#">
+            <%= t(:de, scope: 'i18n.language').html_safe %>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a data-locale-tab="en" data-wizard-tab-group="expertise"
+             class="nav-link <%= I18n.locale == :en ? 'active' : '' %>" href="#">
+            <%= t(:en, scope: 'i18n.language').html_safe %>
+          </a>
+        </li>
+      </ul>
+
+      <% ["de", "en"].each do |locale| %>
+        <div data-locale-panel="<%= locale %>" data-wizard-tab-group="expertise"
+             class="bg--light-grey p-3 <%= 'd-none' unless I18n.locale.to_s == locale %>">
+          <h5>Expertise (<%= t(locale, scope: 'i18n.language') %>)</h5>
+
+          <div class="mb-3">
+            <%= f.label "profession_#{locale}", t(:profession, scope: 'profiles.form'), class: "mb-2" %>
+            <%= f.text_field "profession_#{locale}", class: 'form-control mb-3', maxlength: 60 %>
+          </div>
+
+          <div class="mb-3">
+            <%= f.label "main_topic_#{locale}", t(:main_topic, scope: 'profiles.form', language: t(locale, scope: 'i18n.language')).html_safe, class: "mb-2" %>
+            <%= f.text_field "main_topic_#{locale}", class: 'form-control mb-3', maxlength: 30 %>
+          </div>
+
+          <div class="mb-3">
+            <%= f.label "bio_#{locale}", t(:bio, scope: 'profiles.form', language: t(locale, scope: 'i18n.language')).html_safe,
+              id: "bio_#{locale}", class: "mt-3 mb-2", title: t(:bio_tooltip, scope: 'profiles.form').html_safe %>
+            <%= f.text_area "bio_#{locale}", class: 'form-control mb-3', rows: 10 %>
+          </div>
+        </div>
       <% end %>
     </div>
   </div>
 </div>
-<hr>
-<div class="row mt-3">
-  <div class="col-sm-12 col-md-8 col-lg-6 p-3">
-    <div class="mb-3">
-      <h5 class="pb-3 fw-bold">Topics / Themen</h5>
-      <%= f.input :topic_list,
-          label: t(:topic_list, scope: 'profiles.form').html_safe,
-          label_html: {
-            id: "topic_list",
-            class: "",
-            title: t(:topic_list_tooltip, scope: 'profiles.form').html_safe
-          },
-          input_html: { value: @profile.topic_list.to_s, class: "form-control" } %>
+
+<!-- Step 4: Veranstaltungsinfos -->
+<div class="wizard-step" data-step="4">
+  <div class="row mt-3">
+    <div class="col-sm-12 col-md-8 col-lg-6 p-3">
+      <h5 class="pb-3 fw-bold"> <%= t(:social_media_accouts, scope: 'profiles.form').html_safe %></h5>
+      <div class="mb-3">
+        <%= f.input :instagram, label: t(:instagram, scope: 'profiles.form'),
+            label_html: { id: "instagram" }, input_html: { class: "form-control" }, placeholder: "https://instagram.com/yourprofile" %>
+      </div>
+      <div class="mb-3">
+         <%= f.input :linkedin, label: t(:linkedin, scope: 'profiles.form'),
+            label_html: { id: "linkedin" }, input_html: { class: "form-control" }, placeholder: "https://linkedin.com/in/yourprofile" %>
+      </div>
+      <div class="mb-3">
+        <%= f.input :bluesky, label: t(:bluesky, scope: 'profiles.form'),
+            label_html: { id: "bluesky" }, input_html: { class: "form-control" }, placeholder: "https://bsky.app/profile/yourhandle" %>
+      </div>
+      <div class="mb-3">
+        <%= f.input :mastodon, label: t(:mastodon, scope: 'profiles.form'),
+            label_html: { id: "mastodon" }, input_html: { class: "form-control" }, placeholder: "https://mastodon.social/@yourhandle" %>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div class="row mt-3">
+    <div class="col-sm-12 col-md-8 col-lg-6 p-3">
+      <h5 class="pb-3 fw-bold"> <%= t(:talk_infos, scope: 'profiles.form').html_safe %></h5>
+      <div class="mb-3" id="form-group-willing-to-travel">
+        <p><%= t(:willing_to_travel, scope: 'profiles.form').html_safe %>:</p>
+        <label name="willing_to_travel_na">
+          <%= f.radio_button :willing_to_travel, "", checked: @profile.willing_to_travel.nil? %>
+          <%= t(:not_applicable, scope: 'profiles.form').html_safe %>
+        </label>
+        <label name="willing_to_travel_yes">
+          <%= f.radio_button :willing_to_travel, "1", checked: @profile.willing_to_travel == true %>
+          <%= t(:answer_yes, scope: 'profiles.form').html_safe %>
+        </label>
+        <label name="willing_to_travel_no">
+          <%= f.radio_button :willing_to_travel, "0", checked: @profile.willing_to_travel == false %>
+          <%= t(:answer_no, scope: 'profiles.form').html_safe %>
+        </label>
+      </div>
+      <div class="mb-3" id="form-group-nonprofit">
+        <p><%= t(:nonprofit, scope: 'profiles.form').html_safe %>:<p>
+        <label name="nonprofit_na">
+          <%= f.radio_button :nonprofit, "", checked: @profile.nonprofit.nil? %>
+          <%= t(:not_applicable, scope: 'profiles.form').html_safe %>
+        </label>
+        <label name="nonprofit_yes">
+          <%= f.radio_button :nonprofit, "1", checked: @profile.nonprofit == true %>
+          <%= t(:answer_yes, scope: 'profiles.form').html_safe %>
+        </label>
+        <label name="nonprofit_no">
+          <%= f.radio_button :nonprofit, "0", checked: @profile.nonprofit == false %>
+          <%= t(:answer_no, scope: 'profiles.form').html_safe %>
+        </label>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div class="row mt-3">
+    <div class="col-sm-12 col-md-8 col-lg-6 p-3">
+      <h5 class="pb-3 fw-bold"> <%= t(:services_i_give, scope: 'profiles.form').html_safe %></h5>
+      <div class="mb-3">
+        <% Service.all.each do |service| %>
+          <label class="mb-2" name="service-<%= service.id %>">
+            <input type="checkbox" value="<%= service.id %>" name="profile[service_ids][]" <%="checked=true" if @profile.services.include?(service) %> />
+            <%= t(service.name, scope: 'profiles.form') %>
+          </label>
+          <br>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div class="row mt-3">
+    <div class="col-sm-12 col-md-8 col-lg-6 p-3">
+      <h5 class="pb-3 fw-bold"> <%= t(:translated_infos, scope: 'profiles.form').html_safe %></h5>
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a data-locale-tab="de" data-wizard-tab-group="event"
+             class="nav-link <%= I18n.locale == :de ? 'active' : '' %>" href="#">
+            <%= t(:de, scope: 'i18n.language').html_safe %>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a data-locale-tab="en" data-wizard-tab-group="event"
+             class="nav-link <%= I18n.locale == :en ? 'active' : '' %>" href="#">
+            <%= t(:en, scope: 'i18n.language').html_safe %>
+          </a>
+        </li>
+      </ul>
+
+      <% ["de", "en"].each do |locale| %>
+        <div data-locale-panel="<%= locale %>" data-wizard-tab-group="event"
+             class="bg--light-grey p-3 <%= 'd-none' unless I18n.locale.to_s == locale %>">
+          <h5><%= t(:translated_infos, scope: 'profiles.form') %> (<%= t(locale, scope: 'i18n.language') %>)</h5>
+
+          <div class="mb-3">
+            <%= f.label "city_#{locale}", t(:city, scope: 'profiles.form').html_safe,
+                id: "city_#{locale}", class: 'mb-2 pt-3', title: t(:city_tooltip, scope: 'profiles.form').html_safe %>
+            <%= f.text_field "city_#{locale}", class: 'form-control mb-3', maxlength: 30 %>
+          </div>
+
+          <% if @profile.twitter.present? %>
+            <div class="mb-3">
+              <%= f.label "twitter_#{locale}", t(:twitter, scope: 'profiles.form'), class: "mb-2" %>
+              <%= f.text_field "twitter_#{locale}", class: 'form-control mb-3', placeholder: '@', maxlength: 30 %>
+            </div>
+          <% end %>
+
+          <div class="mb-3">
+            <%= f.label "website_#{locale}", t(:website, scope: 'profiles.form'), class: "mb-2" %>
+            <%= f.text_field "website_#{locale}", class: "form-control mb-3", placeholder: 'https://' %>
+          </div>
+
+          <div class="mb-3">
+            <%= f.label "website_2_#{locale}", t(:website, scope: 'profiles.form'), class: "mb-2" %>
+            <%= f.text_field "website_2_#{locale}", class: "form-control mb-3", placeholder: 'https://' %>
+          </div>
+
+          <div class="mb-3">
+            <%= f.label "website_3_#{locale}", t(:website, scope: 'profiles.form'), class: "mb-2" %>
+            <%= f.text_field "website_3_#{locale}", class: "form-control mb-3", placeholder: 'https://' %>
+          </div>
+
+          <div class="mb-3">
+            <%= f.label "personal_note_#{locale}", t(:personal_note, scope: 'profiles.form', language: t(locale, scope: 'i18n.language')).html_safe,
+              id: "personal_note_#{locale}", class: "mt-3 mb-2", title: t(:personal_note_tooltip, scope: 'profiles.form').html_safe %>
+            <%= f.text_area "personal_note_#{locale}", class: 'form-control', rows: 5 %>
+          </div>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
-<ul class="d-none" id='availableTags'>
-  <% ActsAsTaggableOn::Tag.distinct.pluck(:name).each do |tag_name| %>
-    <li><%= tag_name %></li>
-  <% end %>
-</ul>
-<hr>
-<a id="translated-infos-anchor"></a>
-<!-- translated fields -->
-<div class="row mt-3">
-  <div class="col-sm-12 col-md-8 col-lg-6 p-3">
-    <h5 class="pb-3 fw-bold"> <%= t(:translated_infos, scope: 'profiles.form').html_safe %></h5>
-    <ul class="nav nav-tabs">
-      <li class="nav-item">
-        <a id="show-de" class="nav-link <%= I18n.locale == :de ? "active" : "" %>" href="#translated-infos-anchor">
-          <%= t(:de, scope: 'i18n.language').html_safe %>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a id="show-en" class="nav-link <%= I18n.locale == :en ? "active" : "" %>" href="#translated-infos-anchor">
-          <%= t(:en, scope: 'i18n.language').html_safe %>
-        </a>
-      </li>
-    </ul>
 
-<% ["de", "en"].each do |locale| %>
-  <div id="edit-<%= locale %>" class="bg--light-grey p-3 <%= 'd-none' unless I18n.locale.to_s == locale %>">
-    <h5><%= t(:translated_infos, scope: 'profiles.form') %> (<%= t(locale, scope: 'i18n.language') %>)</h5>
-
-    <div class="mb-3">
-      <%= f.label "profession_#{locale}", t(:profession, scope: 'profiles.form'), class: "mb-2" %>
-      <%= f.text_field "profession_#{locale}", class: 'form-control mb-3', maxlength: 60 %>
-    </div>
-
-    <div class="mb-3">
-      <%= f.label "city_#{locale}", t(:city, scope: 'profiles.form').html_safe,
-          id: "city_#{locale}", class: 'mb-2 pt-3', title: t(:city_tooltip, scope: 'profiles.form').html_safe %>
-      <%= f.text_field "city_#{locale}", class: 'form-control mb-3', maxlength: 30 %>
-    </div>
-
-    <% if @profile.twitter.present? %>
-      <div class="mb-3">
-        <%= f.label "twitter_#{locale}", t(:twitter, scope: 'profiles.form'), class: "mb-2" %>
-        <%= f.text_field "twitter_#{locale}", class: 'form-control mb-3', placeholder: '@', maxlength: 30 %>
-      </div>
-    <% end %>
-
-    <div class="mb-3">
-      <%= f.label "website_#{locale}", t(:website, scope: 'profiles.form'), class: "mb-2" %>
-      <%= f.text_field "website_#{locale}", class: "form-control mb-3", placeholder: 'https://' %>
-    </div>
-
-    <div class="mb-3">
-      <%= f.label "website_2_#{locale}", t(:website, scope: 'profiles.form'), class: "mb-2" %>
-      <%= f.text_field "website_2_#{locale}", class: "form-control mb-3", placeholder: 'https://' %>
-    </div>
-
-    <div class="mb-3">
-      <%= f.label "website_3_#{locale}", t(:website, scope: 'profiles.form'), class: "mb-2" %>
-      <%= f.text_field "website_3_#{locale}", class: "form-control mb-3", placeholder: 'https://' %>
-    </div>
-
-    <div class="mb-3">
-      <%= f.label "main_topic_#{locale}", t(:main_topic, scope: 'profiles.form', language: t(locale, scope: 'i18n.language')).html_safe, class: "mb-2" %>
-      <%= f.text_field "main_topic_#{locale}", class: 'form-control mb-3', maxlength: 30 %>
-    </div>
-
-    <div class="mb-3">
-      <%= f.label "personal_note_#{locale}", t(:personal_note, scope: 'profiles.form', language: t(locale, scope: 'i18n.language')).html_safe, 
-        id: "personal_note_#{locale}", class: "mt-3 mb-2", title: t(:personal_note_tooltip, scope: 'profiles.form').html_safe %>
-      <%= f.text_area "personal_note_#{locale}", class: 'form-control', rows: 5 %>
-    </div>
-
-    <div class="mb-3">
-      <%= f.label "bio_#{locale}", t(:bio, scope: 'profiles.form', language: t(locale, scope: 'i18n.language')).html_safe, 
-        id: "bio_#{locale}", class: "mt-3 mb-2", title: t(:bio_tooltip, scope: 'profiles.form').html_safe %>
-      <%= f.text_area "bio_#{locale}", class: 'form-control mb-3', rows: 10 %>
-    </div>
+<% if wizard %>
+<div class="wizard-navigation mt-4 d-flex justify-content-between align-items-center">
+  <button type="button" id="wizard-prev" class="btn btn-outline-primary">&#8592; Zurück</button>
+  <span id="wizard-step-counter" class="text-muted small"></span>
+  <div>
+    <button type="button" id="wizard-next" class="btn btn-primary">Weiter &#8594;</button>
+    <button type="submit" id="wizard-submit" class="btn btn-primary d-none">Speichern &amp; Vorschau</button>
   </div>
-<% end %>
+</div>
+<% else %>
 <div class="row mt-3">
   <div class="col">
     <p>
@@ -270,6 +353,7 @@
    </p>
   </div>
 </div>
+<% end %>
 
 <script type="text/javascript" charset="utf-8">
 
@@ -282,19 +366,16 @@ $('#expander').click(function(){
     $('#expander').html('<%= t(:show_more_languages, scope: 'profiles.form')%><i class="fa fa-caret-down ps-1"></i>');
   }});
 
-$('#show-de').click(function(){
-    $("#edit-de").removeClass('d-none').addClass('d-block');
-    $("#edit-en").removeClass('d-block').addClass('d-none');
-    $('#show-de').addClass('active');
-    $('#show-en').removeClass('active');
-  });
+$(document).on('click', '[data-locale-tab]', function(e) {
+  e.preventDefault();
+  var locale = $(this).data('locale-tab');
+  var group = $(this).data('wizard-tab-group');
 
-$('#show-en').click(function(){
-    $("#edit-en").removeClass('d-none').addClass('d-block');
-    $("#edit-de").removeClass('d-block').addClass('d-none');
-    $('#show-en').addClass('active');
-    $('#show-de').removeClass('active');
-  });
+  $('[data-locale-panel][data-wizard-tab-group="' + group + '"]').addClass('d-none').removeClass('d-block');
+  $('[data-locale-panel="' + locale + '"][data-wizard-tab-group="' + group + '"]').removeClass('d-none').addClass('d-block');
 
+  $('[data-locale-tab][data-wizard-tab-group="' + group + '"]').removeClass('active');
+  $(this).addClass('active');
+});
 
 </script>
