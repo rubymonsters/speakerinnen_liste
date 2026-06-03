@@ -179,7 +179,7 @@ h1 {
 }
 
 .form-control::placeholder {
-  color: lightgrey; 
+  color: lightgrey;
   opacity: 1; // Ensure full opacity in some browsers
 }
 
@@ -200,6 +200,7 @@ h1 {
 
 #footer {
   color: $header-grey;
+  background-color: $grey;
 }
 
 .single-profile {
@@ -232,7 +233,7 @@ h1 {
     }
   }
 }
-  
+
 
 
 #footer, .single-profile {
