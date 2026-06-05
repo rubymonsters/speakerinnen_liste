@@ -132,7 +132,7 @@ RSpec.describe 'Navigation', type: :system do
           click_on 'Ada Lovelace'
           click_link 'Edit', match: :first
           expect(page).to have_text('Administration::Profiles::Edit')
-          expect(page).to have_button('Update your profile')
+          expect(page).to have_button(I18n.t(:update_button, scope: 'profiles.form'))
           expect(page).to have_link('Show profile')
           expect(page).to have_link('List all profiles')
 
@@ -144,12 +144,12 @@ RSpec.describe 'Navigation', type: :system do
           expect(page).to have_css('#profile_website_2_de')
           expect(page).to have_css('#profile_website_3_de')
           expect(page).to have_css('div.profile_topic_list')
-          expect(page).to have_css('form label', text: 'country')
-          expect(page).to have_css('form label', text: 'picture')
-          expect(page).to have_css('form label', text: 'Main focus in German')
-          expect(page).to have_css('form label', text: 'My bio in German')
-          expect(page).to have_css('form label', text: 'Main focus in English')
-          expect(page).to have_css('form label', text: 'My bio in English')
+          expect(page).to have_css('form label', text: I18n.t(:country, scope: 'profiles.form'))
+          expect(page).to have_css('form h5', text: I18n.t(:picture, scope: 'profiles.form'))
+          expect(page).to have_css('form label', text: I18n.t(:main_topic, scope: 'profiles.form').split('<').first.strip)
+          expect(page).to have_css('form label', text: I18n.t(:bio, scope: 'profiles.form', language: I18n.t('de', scope: 'i18n.language')).split('<').first.strip)
+          expect(page).to have_css('form label', text: I18n.t(:main_topic, scope: 'profiles.form').split('<').first.strip)
+          expect(page).to have_css('form label', text: I18n.t(:bio, scope: 'profiles.form', language: I18n.t('en', scope: 'i18n.language')).split('<').first.strip)
         end
       end
     end # context profiles
