@@ -341,7 +341,7 @@ GEM
       method_source (~> 1.0)
     psych (3.3.4)
     public_suffix (7.0.5)
-    puma (7.1.0)
+    puma (7.2.1)
       nio4r (~> 2.0)
     qonfig (0.29.0)
     racc (1.8.1)
@@ -562,7 +562,7 @@ DEPENDENCIES
   poltergeist (= 1.18.1)
   pry
   psych (< 4.0)
-  puma (~> 7.1)
+  puma (~> 7.2)
   rack-attack
   rack-piwik (~> 0.3.0)
   rack-timeout
