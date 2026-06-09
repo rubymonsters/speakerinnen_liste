@@ -48,7 +48,7 @@ en:
       not_applicable: "By arrangement"
       personal_infos: "Personal Information"
       personal_note: "Personal Note:
-        <br><small class='form-text text-muted'> Here you can specify expertise and topics you are passionate or feel comfortable talking about, or tell more in detail about your agenda. This will help events organizers to understand the main issues you are talking about."
+        <br><small class='form-text text-muted'> Here you can specify expertise and topics you are passionate or feel comfortable talking about, or tell more in detail about your agenda. This will help events organizers to understand the main issues you are talking about.</small>"
       picture: "Profile Photo"
       please_select: "Please select"
       profession: "Professional Role:"
