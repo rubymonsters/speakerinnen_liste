@@ -28,7 +28,7 @@ describe 'displaying tags' do
     visit edit_profile_path(ada.id, locale: 'de')
 
     fill_in 'profile[topic_list]', with: 'fruehling'
-    click_button 'Aktualisiere dein Profil'
+    click_button I18n.t(:update_button, scope: 'profiles.form')
 
     expect(page).to have_content('fruehling')
   end
