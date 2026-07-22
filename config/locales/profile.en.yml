@@ -21,7 +21,7 @@ en:
     form:
       answer_no: "No"
       answer_yes: "Yes"
-      bio: "Biography in %{language}: <i class='fa fa-info-circle label-tooltip-icon' aria-hidden='true'></i>
+      bio: "Biography: <i class='fa fa-info-circle label-tooltip-icon' aria-hidden='true'></i>
         <br><small class='form-text text-muted'>Here you can add a short or long biography of yourself. Please also add specific expertise and topics you feel comfortable speaking about. This will help organizers of events to understand whether you might be the person they're looking for.</small>"
       bio_tooltip: "You can use simple HTML tags to format the text. For example: <i>< i > italic < /i ></i> or <b>< b > bold < /b ></b>."
       bluesky: "Bluesky Profile:"
@@ -44,7 +44,7 @@ en:
         <br>Please choose one topic as your favorite topic and enter it again. It will be visible along with your name and picture at the speaker overview site.</small>"
       mastodon: "Mastodon Profile:"
       Moderation: "Moderation"
-      nonprofit: "Available for Non-Profit Events"
+      nonprofit: "Available for nonprofit events"
       not_applicable: "By arrangement"
       personal_infos: "Personal Information"
       personal_note: "Personal Note:
@@ -88,8 +88,8 @@ en:
       media: "Examples of previous talks / appearances:"
       Moderation: "Moderation"
       no_contact: " does not wish to be contacted at the moment."
-      nonprofit: "Willing to talk for nonprofit."
-      not_nonprofit: "I don't want to talk for nonprofit."
+      nonprofit: "Available for nonprofit events."
+      not_nonprofit: "Not available for nonprofit events."
       not_willing_to_travel: "I don't want to travel for an event."
       personal_note: "Personal note:"
       services: "Services:"
