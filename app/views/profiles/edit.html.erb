@@ -5,7 +5,7 @@
 
   <%= simple_form_for(@profile, html: { multipart: true } ) do |f| %>
     <%= render partial: "profiles/profile_formfields",
-                 locals: { form_type: :update_profile, f: f, profile: @profile } %>
+                 locals: { form_type: :update_profile, f: f, profile: @profile, wizard: true } %>
   <% end %>
 
 </div>

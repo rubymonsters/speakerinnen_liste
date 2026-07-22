@@ -37,7 +37,7 @@ describe 'profile adding' do
     find(:css, '#profile_iso_languages_en').set(true)
     find(:css, '#profile_iso_languages_de').set(true)
 
-    click_button I18n.t(:update_button, scope: 'profiles.form')
+    find('#wizard-submit').click
 
     expect(page).to have_content('Ada')
     expect(page).to have_content('Lovelace')
