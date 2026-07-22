@@ -33,8 +33,7 @@
 <div class="wizard-step" data-step="1">
   <div class="row">
     <div class="col-sm-12 col-md-6">
-      <h5 class="pb-3 fw-bold"> <%= t(:your_picture, scope: 'profiles.form').html_safe %></h5>
-      <%= f.label :picture, t(:picture, scope: 'profiles.form').html_safe, class: "mb-2" %>
+      <h5 class="pb-3 fw-bold"> <%= t(:picture, scope: 'profiles.form').html_safe %></h5>
       <% if @profile.image.attached? && @profile.validate(:image_format_size) %>
         <p><%= image_tag(@profile.image, class: "img-thumbnail") %></p>
         <%= link_to t(:delete_image, scope: 'profiles.form').html_safe, image_path(@profile.image.id), :method => :delete, data: { confirm: 'Are you sure?' } %>
@@ -275,7 +274,7 @@
   <hr>
   <div class="row mt-3">
     <div class="col-sm-12 col-md-8 col-lg-6 p-3">
-      <h5 class="pb-3 fw-bold"> <%= t(:translated_infos, scope: 'profiles.form').html_safe %></h5>
+      <h5 class="pb-3 fw-bold"> <%= t(:translated_infos_label, scope: 'profiles.form').html_safe %></h5>
       <ul class="nav nav-tabs">
         <li class="nav-item">
           <a data-locale-tab="de" data-wizard-tab-group="event"
@@ -294,7 +293,7 @@
       <% ["de", "en"].each do |locale| %>
         <div data-locale-panel="<%= locale %>" data-wizard-tab-group="event"
              class="bg--light-grey p-3 <%= 'd-none' unless I18n.locale.to_s == locale %>">
-          <h5><%= t(:translated_infos, scope: 'profiles.form') %> (<%= t(locale, scope: 'i18n.language') %>)</h5>
+          <h5><%= t(:translated_infos_label, scope: 'profiles.form') %> (<%= t(locale, scope: 'i18n.language') %>)</h5>
 
           <div class="mb-3">
             <%= f.label "city_#{locale}", t(:city, scope: 'profiles.form').html_safe,
@@ -326,7 +325,7 @@
 
           <div class="mb-3">
             <%= f.label "personal_note_#{locale}", t(:personal_note, scope: 'profiles.form', language: t(locale, scope: 'i18n.language')).html_safe,
-              id: "personal_note_#{locale}", class: "mt-3 mb-2", title: t(:personal_note_tooltip, scope: 'profiles.form').html_safe %>
+              id: "personal_note_#{locale}", class: "mt-3 mb-2" %>
             <%= f.text_area "personal_note_#{locale}", class: 'form-control', rows: 5 %>
           </div>
         </div>
@@ -348,7 +347,7 @@
 <div class="row mt-3">
   <div class="col">
     <p>
-      <%= f.button :submit, t(:update, scope: 'profiles.form').html_safe, class:'btn btn-primary' %>
+      <%= f.button :submit, t(:update_button, scope: 'profiles.form').html_safe, class:'btn btn-primary' %>
       <%= link_to(t(:show, scope: 'profiles.edit').html_safe, profile_path, class: 'btn btn-outline-primary' ) %>
    </p>
   </div>
