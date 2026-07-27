@@ -151,6 +151,7 @@ GEM
     crass (1.0.6)
     crawler_detect (1.2.4)
       qonfig (>= 0.24)
+    csv (3.3.6)
     database_cleaner (2.1.0)
       database_cleaner-active_record (>= 2, < 3)
     database_cleaner-active_record (2.2.0)
@@ -533,6 +534,7 @@ DEPENDENCIES
   capybara (~> 3.38)
   country_select
   crawler_detect
+  csv
   database_cleaner (~> 2.0, >= 2.0.2)
   derailed_benchmarks
   devise (~> 5.0)

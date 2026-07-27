@@ -67,6 +67,9 @@ gem 'rack-attack'
 # downgrade gem to solve parsing error https://stackoverflow.com/questions/74725359/ruby-on-rails-legacy-application-update-generates-gem-psych-alias-error-psychb
 gem 'psych', '< 4.0'
 
+# not part of the default gems starting from Ruby 3.4.0
+gem 'csv'
+
 group :development do
   gem 'better_errors'
   gem 'bullet', '~> 8.1.0'
