@@ -1,0 +1,44 @@
+# See https://docs.docker.com/engine/reference/builder/#dockerignore-file
+
+# Git
+.git/
+.gitignore
+
+# Local dev tooling / meta
+docker-compose.yml
+Makefile
+README*
+.rubocop.yml
+.github/
+
+# Ignore bundler config.
+/.bundle
+
+# Ignore all environment files.
+.env*
+!.env.SAMPLE
+
+# Ignore all default key files (secrets are provided via env in production).
+/config/master.key
+/config/credentials/*.key
+
+# Ignore runtime files.
+/tmp/*
+!/tmp/.keep
+/tmp/pids/*
+!/tmp/pids/
+!/tmp/pids/.keep
+/log/*
+!/log/.keep
+/storage/*
+!/storage/.keep
+
+# Ignore local database dumps.
+*.dump
+
+# Ignore precompiled assets (rebuilt inside the image).
+/public/assets
+
+# Ignore test/spec files.
+/spec/
+/coverage/

@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  # Health check endpoint used by Kamal's proxy (and load balancers) to verify
+  # the app boots. Returns 200 when the app is up, 500 otherwise.
+  get "up" => "rails/health#show", as: :rails_health_check
+
   # for production devise routes
   devise_for :profiles,
               controllers: {
