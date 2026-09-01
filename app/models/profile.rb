@@ -2,29 +2,51 @@ class Profile < ApplicationRecord
   include PgSearch::Model
   include ActiveModel::Serialization
 
+  # Matching and ranking both run off the stored `searchable` column, which is
+  # GIN-indexed. `against` is only here because pg_search requires it; the listed
+  # columns are not read once tsvector_column is set.
   pg_search_scope :search,
-    against: [
-      [:firstname, 'A'],
-      [:lastname, 'A'],
-      [:state, 'C'],
-      [:country, 'C']
-    ],
-    associated_against: {
-      translations: [
-        [:bio, 'C'],
-        [:city, 'B'],
-        [:main_topic, 'A']
-      ],
-      topics: [[:name, 'A']]
-    },
+    against: %i[firstname lastname],
     using: {
-      tsearch: { prefix: true }
+      tsearch: { prefix: true, tsvector_column: 'searchable' }
     }
 
-  pg_search_scope :by_language, against: [:iso_languages]
-  pg_search_scope :by_country, against: [:country]
-  pg_search_scope :by_city, associated_against: { translations: [:city] }
-  pg_search_scope :by_state, against: [:state]
+  # Mirrors the tsvector pg_search used to build inline on every query, with the
+  # same weights. Kept as one expression so it can run as a set-based UPDATE.
+  SEARCH_VECTOR_SQL = <<~SQL.squish.freeze
+    setweight(to_tsvector('simple', coalesce(profiles.firstname, '')), 'A') ||
+    setweight(to_tsvector('simple', coalesce(profiles.lastname, '')), 'A') ||
+    setweight(to_tsvector('simple', coalesce(profiles.state, '')), 'C') ||
+    setweight(to_tsvector('simple', coalesce(profiles.country, '')), 'C') ||
+    setweight(to_tsvector('simple', coalesce((SELECT string_agg(pt.bio, ' ')
+      FROM profile_translations pt WHERE pt.profile_id = profiles.id), '')), 'C') ||
+    setweight(to_tsvector('simple', coalesce((SELECT string_agg(pt.city, ' ')
+      FROM profile_translations pt WHERE pt.profile_id = profiles.id), '')), 'B') ||
+    setweight(to_tsvector('simple', coalesce((SELECT string_agg(pt.main_topic, ' ')
+      FROM profile_translations pt WHERE pt.profile_id = profiles.id), '')), 'A') ||
+    setweight(to_tsvector('simple', coalesce((SELECT string_agg(t.name, ' ')
+      FROM taggings tg JOIN tags t ON t.id = tg.tag_id
+      WHERE tg.taggable_id = profiles.id AND tg.taggable_type = 'Profile'
+        AND tg.context = 'topics'), '')), 'A')
+  SQL
+
+  def self.refresh_search_vectors(ids = nil)
+    scope = ids ? where(id: ids) : all
+    scope.unscope(:select, :order, :includes, :limit).update_all("searchable = #{SEARCH_VECTOR_SQL}")
+  end
+
+  # Facet filters. The values come straight from the aggregation buckets in
+  # ProfileGrouper, so these are structural matches, not ranked full-text search.
+  scope :by_country, ->(country) { where(country: country) }
+  scope :by_state, ->(state) { where(state: state) }
+  scope :by_language, ->(language) { where('iso_languages LIKE ?', "%\n- #{language}\n%") }
+  scope :by_city, lambda { |city|
+    where(id: Profile::Translation.where('city ~* ?', "\\m#{escape_posix_regexp(city)}\\M").select(:profile_id))
+  }
+
+  def self.escape_posix_regexp(string)
+    string.to_s.gsub(/[\\^$.\[\]|()*+?{}]/) { |char| "\\#{char}" }
+  end
 
   has_many :medialinks
   has_many :feature_profiles
@@ -49,6 +71,10 @@ class Profile < ApplicationRecord
          :rememberable, :trackable, :validatable, :confirmable
 
   acts_as_taggable_on :topics
+
+  # after_save_commit, so translations (autosaved by Mobility) and taggings
+  # (written in acts_as_taggable_on's own after_save) are already persisted.
+  after_save_commit { self.class.refresh_search_vectors(id) }
 
   before_save(prepend: %i[create update]) do
     twitter&.gsub(%r{^@|https:|http:|:|//|www.|twitter.com/}, '')

@@ -216,4 +216,62 @@ end
       expect(Profile.search('Love').count).to eq 1
     end
   end
+
+  describe 'search vector maintenance' do
+    it 'is refreshed when a translated attribute changes' do
+      profile2.update!(main_topic_de: 'Lochkarten')
+
+      expect(Profile.search('Lochkarten')).to eq [profile2]
+      expect(Profile.search('Mathematik')).to be_empty
+    end
+
+    it 'is refreshed when topics are added' do
+      profile2.update!(topic_list: 'Rechenmaschine')
+
+      expect(Profile.search('Rechenmaschine')).to eq [profile2]
+    end
+
+    it 'is refreshed for every tagged profile when a tag is renamed' do
+      profile2.update!(topic_list: 'Rechenmaschine')
+      ActsAsTaggableOn::Tag.find_by(name: 'rechenmaschine').update!(name: 'analytical engine')
+
+      expect(Profile.search('Rechenmaschine')).to be_empty
+      expect(Profile.search('analytical engine')).to eq [profile2]
+    end
+  end
+
+  describe 'facet filters' do
+    describe '.by_state' do
+      it 'matches the state exactly rather than by word' do
+        saxony = FactoryBot.create(:published_profile, state: 'saxony')
+        FactoryBot.create(:published_profile, state: 'lower-saxony')
+        FactoryBot.create(:published_profile, state: 'saxony-anhalt')
+
+        expect(Profile.by_state('saxony')).to eq [saxony]
+      end
+    end
+
+    describe '.by_city' do
+      it 'finds cities listed alongside others without surrounding spaces' do
+        combined = FactoryBot.create(:published_profile, city_de: 'Köln/Berlin')
+        spaced = FactoryBot.create(:published_profile, city_de: 'Berlin, Potsdam')
+        FactoryBot.create(:published_profile, city_de: 'Berlingen')
+
+        expect(Profile.by_city('Berlin')).to contain_exactly(combined, spaced)
+      end
+
+      it 'treats regexp metacharacters in the filter as literal text' do
+        expect(Profile.by_city('Berlin.*')).to be_empty
+      end
+    end
+
+    describe '.by_language' do
+      it 'matches a whole iso code in the serialised list' do
+        polish = FactoryBot.create(:published_profile, iso_languages: %w[de pl])
+        FactoryBot.create(:published_profile, iso_languages: %w[de en])
+
+        expect(Profile.by_language('pl')).to eq [polish]
+      end
+    end
+  end
 end
