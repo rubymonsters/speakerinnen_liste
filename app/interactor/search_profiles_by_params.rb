@@ -4,7 +4,6 @@ class SearchProfilesByParams
   def call
     chain = Profile
               .includes(:translations)
-              .with_attached_image
               .is_published
               .by_region(context.region)
               .search(context.params[:search])
