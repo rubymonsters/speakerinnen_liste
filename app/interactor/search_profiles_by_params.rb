@@ -3,8 +3,6 @@ class SearchProfilesByParams
 
   def call
     chain = Profile
-              .includes(:translations)
-              .with_attached_image
               .is_published
               .by_region(context.region)
               .search(context.params[:search])
@@ -14,6 +12,8 @@ class SearchProfilesByParams
     chain = chain.by_language(context.params[:filter_language]) if context.params[:filter_language]
     chain = chain.by_state(context.params[:filter_state]) if context.params[:filter_state]
 
-    context.profiles = chain.map(&:profile_card_details)
+    # ids feed the aggregations and the page count; only one page gets rendered
+    context.profile_ids = chain.reorder(nil).pluck(:id)
+    context.profiles = chain.includes(:translations).with_attached_image
   end
 end
