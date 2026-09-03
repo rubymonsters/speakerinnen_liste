@@ -1,0 +1,94 @@
+# Kamal deploy configuration. Docs: https://kamal-deploy.org
+#
+# Placeholders marked TODO must be filled in before the first `kamal deploy`.
+# Secrets are read from .kamal/secrets (which pulls them from your environment
+# or password manager) — never put real secret values in this file.
+
+# Name of the app. Used to name Docker images and containers.
+service: speakerinnen_liste
+
+# TODO: your container image name, e.g. "ghcr.io/speakerinnen/speakerinnen_liste"
+# or "<dockerhub-user>/speakerinnen_liste".
+image: TODO_REGISTRY_USER/speakerinnen_liste
+
+# Deploy to these servers.
+servers:
+  web:
+    - TODO_SERVER_IP # e.g. 203.0.113.10
+  # A separate host for background jobs would go here if/when one is added.
+
+# kamal-proxy terminates TLS and routes traffic to the app.
+# NOTE: ssl is OFF for now so you can test over http://<server-ip> without a
+# domain pointed at this server. Flip ssl: true and set host to speakerinnen.org
+# only once DNS points here, or Let's Encrypt cert issuance will fail.
+proxy:
+  ssl: false
+  # host: speakerinnen.org   # enable together with ssl: true at cutover
+  # The container listens on 80 (Thruster); this is the default and can be omitted.
+  app_port: 80
+  # Health check — matches the /up route added to config/routes.rb.
+  healthcheck:
+    path: /up
+    interval: 3
+    timeout: 30
+
+# Container registry to push/pull the built image.
+registry:
+  # TODO: use "ghcr.io" for GitHub Container Registry, or omit for Docker Hub.
+  server: ghcr.io
+  username: TODO_REGISTRY_USER
+  # Password/token is read from .kamal/secrets.
+  password:
+    - KAMAL_REGISTRY_PASSWORD
+
+# Build the image. This repo is developed on Apple Silicon (arm64) but most
+# servers are amd64, so build for the server's architecture.
+builder:
+  arch: amd64
+
+# Environment for the app container.
+env:
+  clear:
+    RAILS_ENV: production
+    # Increase if the server has more cores/memory; keep DB pool >= this.
+    WEB_CONCURRENCY: 2
+    RAILS_MAX_THREADS: 5
+    RAILS_LOG_TO_STDOUT: "1"
+  secret:
+    - SECRET_KEY_BASE
+    - DATABASE_URL
+    - REDIS_URL
+    - AWS_ACCESS_KEY_ID
+    - AWS_SECRET_ACCESS_KEY
+    - POSTMARK_API_TOKEN
+    - HONEYBADGER_API_KEY
+
+# Handy aliases: `kamal console`, `kamal shell`, `kamal logs`, `kamal dbc`.
+aliases:
+  console: app exec --interactive --reuse "bin/rails console"
+  shell: app exec --interactive --reuse "bash"
+  logs: app logs -f
+  dbc: app exec --interactive --reuse "bin/rails dbconsole"
+
+# Backing services run as accessories on the same (or a dedicated) host.
+# If you use a managed Postgres/Redis instead, delete the matching accessory
+# and just point DATABASE_URL / REDIS_URL at the managed instance.
+accessories:
+  db:
+    image: postgres:16
+    host: TODO_SERVER_IP
+    port: "127.0.0.1:5432:5432"
+    env:
+      clear:
+        POSTGRES_USER: speakerinnen
+        POSTGRES_DB: speakerinnen_production
+      secret:
+        - POSTGRES_PASSWORD
+    directories:
+      - data:/var/lib/postgresql/data
+  redis:
+    image: redis:7
+    host: TODO_SERVER_IP
+    port: "127.0.0.1:6379:6379"
+    directories:
+      - data:/data

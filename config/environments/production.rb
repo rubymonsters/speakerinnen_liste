@@ -31,8 +31,10 @@ Rails.application.configure do
   # Store uploaded files on Amazon S3 (see config/storage.yml for options).
   config.active_storage.service = :amazon
 
-  # Assume all access to the app is happening through a SSL-terminating reverse proxy.
-  # config.assume_ssl = true
+  # Assume all access to the app is happening through a SSL-terminating reverse proxy
+  # (Kamal's kamal-proxy terminates TLS and forwards over HTTP). Without this,
+  # force_ssl below would send the proxy into an endless redirect loop.
+  config.assume_ssl = true
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   config.force_ssl = true
