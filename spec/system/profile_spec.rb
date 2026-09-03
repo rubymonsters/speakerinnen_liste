@@ -145,7 +145,7 @@ describe 'profile navigation' do
     end
 
     it 'does not show the edit for german' do
-      expect(page).to have_css('#edit-de.d-none')
+      expect(page).to have_css('[data-locale-panel="de"].d-none')
     end
   end
 
@@ -166,7 +166,7 @@ describe 'profile navigation' do
     end
 
     it 'does not show the edit for english' do
-      expect(page).to have_css('#edit-en.d-none')
+      expect(page).to have_css('[data-locale-panel="en"].d-none')
     end
   end
 

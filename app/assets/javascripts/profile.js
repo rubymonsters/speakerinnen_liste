@@ -51,6 +51,57 @@ $(document).ready(function(){
 });
 
 
+$(document).ready(function() {
+  if ($('.wizard-stepper').length === 0) return;
+
+  var currentStep = 1;
+  var totalSteps = 4;
+
+  function showStep(step) {
+    $('.wizard-step').hide();
+    $('.wizard-step[data-step="' + step + '"]').show();
+
+    $('.wizard-step-nav').removeClass('active completed');
+    for (var i = 1; i < step; i++) {
+      $('.wizard-step-nav[data-step-nav="' + i + '"]').addClass('completed');
+    }
+    $('.wizard-step-nav[data-step-nav="' + step + '"]').addClass('active');
+
+    if (step <= 1) {
+      $('#wizard-prev').hide();
+    } else {
+      $('#wizard-prev').show();
+    }
+
+    if (step >= totalSteps) {
+      $('#wizard-next').hide();
+      $('#wizard-submit').removeClass('d-none').show();
+    } else {
+      $('#wizard-next').show();
+      $('#wizard-submit').addClass('d-none').hide();
+    }
+
+    $('#wizard-step-counter').text('Schritt ' + step + ' von ' + totalSteps);
+    currentStep = step;
+    $('html, body').animate({ scrollTop: $('.wizard-stepper').offset().top - 80 }, 300);
+  }
+
+  $('#wizard-next').on('click', function() {
+    if (currentStep < totalSteps) showStep(currentStep + 1);
+  });
+
+  $('#wizard-prev').on('click', function() {
+    if (currentStep > 1) showStep(currentStep - 1);
+  });
+
+  $('.wizard-step-nav').on('click', function() {
+    var target = parseInt($(this).data('step-nav'));
+    if (target >= 1 && target <= totalSteps) showStep(target);
+  });
+
+  showStep(1);
+});
+
 var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
 console.log(tooltipTriggerList)
 var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {

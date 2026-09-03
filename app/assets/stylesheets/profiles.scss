@@ -325,6 +325,67 @@ ul#medialinks__list {
     color: $link-color-hover;
 }
 
+/* wizard */
+.wizard-stepper {
+  display: flex;
+  align-items: flex-start;
+
+  .wizard-step-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    cursor: pointer;
+
+    .wizard-step-circle {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: $grey;
+      color: $dark-grey;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 0.9rem;
+      transition: background 0.2s;
+    }
+
+    .wizard-step-label {
+      font-size: 0.75rem;
+      margin-top: 0.4rem;
+      text-align: center;
+      color: $font-color-grey;
+    }
+
+    &.active {
+      .wizard-step-circle {
+        background: $primary;
+        color: $very-dark-grey;
+      }
+      .wizard-step-label {
+        color: $dark-grey;
+        font-weight: bold;
+      }
+    }
+
+    &.completed {
+      .wizard-step-circle {
+        background: darken($primary, 15%);
+        color: $very-dark-grey;
+      }
+    }
+  }
+
+  .wizard-step-connector {
+    flex: 1;
+    height: 2px;
+    background: $grey;
+    margin-top: 17px;
+    align-self: flex-start;
+  }
+}
+
 /* edit form */
 #form-group-willing-to-travel label, #form-group-nonprofit label {
   margin-left: 0.3rem;
