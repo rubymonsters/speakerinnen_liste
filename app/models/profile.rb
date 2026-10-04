@@ -40,13 +40,24 @@ class Profile < ApplicationRecord
   scope :by_country, ->(country) { where(country: country) }
   scope :by_state, ->(state) { where(state: state) }
   scope :by_language, ->(language) { where('iso_languages LIKE ?', "%\n- #{language}\n%") }
-  scope :by_city, lambda { |city|
-    where(id: Profile::Translation.where('city ~* ?', "\\m#{escape_posix_regexp(city)}\\M").select(:profile_id))
+  # Matches the city the same way ProfileGrouper counts it: split the free-text
+  # field on the shared separator list, then compare whole tokens, case-folded.
+  # A free-text LIKE/regexp here would match cities the facet never counted
+  # (e.g. "Bernau bei Berlin" for the "Berlin" bucket) and the count next to the
+  # facet would disagree with the result list again.
+  scope :by_city, lambda { |city, locale = I18n.locale|
+    where(
+      id: Profile::Translation
+            .where(locale: locale)
+            .where(
+              'EXISTS (SELECT 1 FROM UNNEST(REGEXP_SPLIT_TO_ARRAY(city, ?)) AS c ' \
+              'WHERE LOWER(BTRIM(c)) = LOWER(?))',
+              ProfileGrouper::CITY_SPLIT_REGEXP,
+              city
+            )
+            .select(:profile_id)
+    )
   }
-
-  def self.escape_posix_regexp(string)
-    string.to_s.gsub(/[\\^$.\[\]|()*+?{}]/) { |char| "\\#{char}" }
-  end
 
   has_many :medialinks
   has_many :feature_profiles
