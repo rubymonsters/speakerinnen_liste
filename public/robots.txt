@@ -59,7 +59,7 @@ User-Agent: XoviOnpageCrawl
 Disallow: /
 
 User-Agent: Bingbot
-Crawl-delay: 10
+Crawl-delay: 20
 
 User-Agent: SEOkicks
 Disallow: /
@@ -74,7 +74,7 @@ User-Agent: Claude-User
 Crawl-delay: 20
 
 User-agent: SERankingBacklinksBot
-Crawl-delay: 10
+Crawl-delay: 20
 
 User-agent: IbouBot
-Crawl-delay: 10
+Crawl-delay: 20
