@@ -40,6 +40,9 @@ de:
       sub_menu_left_link: "<a href='/de#categories_anchor', class='stretched-link'>Zur Kategorien Suche >></a>"
       sub_menu_left_link_vorarlberg: "<a href='de/profiles#speakers_anchor', class='stretched-link'>Zu allen Expertinnen >></a>"
       sub_menu_left_link_ooe: "<a href='de/profiles#speakers_anchor', class='stretched-link'>Zu allen Expertinnen >></a>"
+      all_speakers_title: "Alle Expertinnen"
+      all_speakers_text: "Zu allen Speakerinnen:"
+      all_speakers_link: "Hier geht's zu allen Speakerinnen"
       auth_modal: "Du musst der <b>Verwendung von Cookies zustimmen</b>, bevor Du Dich einloggen oder anmelden kannst.<br>
       Mehr Informationen in unserer <a href='%{link}' class='link'>Datenschutzerklärung</a>.<br>"
       contact_modal: "Du musst der <b>Verwendung von Cookies zustimmen</b>, bevor Du das Kontaktformular benutzen kannst.<br>
