@@ -92,12 +92,10 @@ class ProfilesController < ApplicationController
   end
 
   def search_with_search_params
-    # these profiles we get back are just an array of hashes, not actual Profile objects!
     result = SearchProfilesByParams.call(params: params, region: current_region)
     if result.success?
-      profiles = result.profiles
-      @pagy, @records = pagy_array(profiles)
-      set_aggregations(profiles)
+      @pagy, @records = pagy(result.profiles, count: result.profile_ids.size)
+      set_aggregations(result.profile_ids)
     else
       handle_search_failure(result)
     end
@@ -151,8 +149,8 @@ class ProfilesController < ApplicationController
     end
   end
 
-  def set_aggregations(profiles)
-    aggs = ProfileGrouper.new(params[:locale], profiles.map { |profile| profile[:id] }).agg_hash
+  def set_aggregations(profile_ids)
+    aggs = ProfileGrouper.new(params[:locale], profile_ids).agg_hash
     @aggs_languages = aggs[:languages]
     @aggs_cities = aggs[:cities]
     @aggs_states = aggs[:states]

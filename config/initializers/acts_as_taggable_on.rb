@@ -32,6 +32,11 @@ ActsAsTaggableOn::Tag.class_eval do
 
   scope :belongs_to_more_than_one_profile, -> { self.joins(:taggings).where("taggings_count > ?", 1) }
 
+  # A renamed tag changes the search text of every profile carrying it.
+  after_save_commit do
+    Profile.refresh_search_vectors(profile_ids) if saved_change_to_name?
+  end
+
   def merge(wrong_tag)
     # update all taggings on any of these wrong tags to now point to the correct tag that we keep
     Profile.tagged_with(wrong_tag).each do |profile|
