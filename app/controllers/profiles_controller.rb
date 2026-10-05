@@ -150,9 +150,7 @@ class ProfilesController < ApplicationController
   end
 
   def set_aggregations(profile_ids)
-    # I18n.locale, not params[:locale]: the two differ when the route carries no
-    # locale, and Profile.by_city filters on I18n.locale. They must agree.
-    aggs = ProfileGrouper.new(I18n.locale.to_s, profile_ids).agg_hash
+    aggs = ProfileGrouper.new(params[:locale], profile_ids).agg_hash
     @aggs_languages = aggs[:languages]
     @aggs_cities = aggs[:cities]
     @aggs_states = aggs[:states]
