@@ -99,4 +99,14 @@
   <div id="startpage-categories__list" class="container p-0">
     <%= render "shared/categories" %>
   </div>
+
+  <% unless @is_global_speakerinnen %>
+    <div class="bg--purple container divider">
+      <h1><%= t(:"all_speakers_title#{'_' + current_region.to_s if current_region}", scope: 'pages.home')%></h1>
+      <p>
+        <%= t(:"all_speakers_text", scope: 'pages.home').html_safe %>
+      </p>
+      <%= link_to(t(:all_speakers_button, scope: 'pages.home'), root_url(host: current_domain), class: "btn btn-primary mt-4", type: "button") %>
+    </div>
+  <% end %>
 </section>
