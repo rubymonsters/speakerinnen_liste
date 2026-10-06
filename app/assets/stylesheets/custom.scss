@@ -176,6 +176,8 @@ h1 {
 
 .form-control {
   border-radius: 4px;
+  border: 1px solid $primary;
+
 }
 
 .form-control::placeholder {
@@ -341,7 +343,7 @@ textarea, input {
   }
 
 .container {
-  padding: 0 48px;
+  padding: 0 48px 100px 48px;
 }
 
 @media (min-width: 1200px) {

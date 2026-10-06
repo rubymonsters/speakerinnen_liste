@@ -5,16 +5,16 @@
 
 <section class="home">
   <section id='startpage__start-teaser<%= "_#{[0,2,3,4].sample}" unless (current_region == :ooe) %>' class="start-teaser startpage__photo-bar">
-    <div class="container">
+    <div class="container pb-5">
       <%# Headline %>
       <div class="row hero-headline" >
-        <div class="col-sm-5">
+        <div class="col-lg-5">
           <h1><%= t(:"heading#{'_' + current_region.to_s if current_region}", scope: 'pages.home') %></h1>
         </div>
       </div>
       <%# subtitle %>
       <div class="row">
-        <div class="col-sm-5">
+        <div class="col-lg-5">
           <h2 class="startpage-subtitle pb-3">
             <%= t(:"tagline#{'_' + current_region.to_s if current_region}", scope: 'pages.home').html_safe %>
           </h2>
