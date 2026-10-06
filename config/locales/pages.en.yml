@@ -40,6 +40,11 @@ en:
       sub_menu_left_link: "<a href='#categories_anchor', class='stretched-link'>Go to the Category Search >></a>"
       sub_menu_left_link_vorarlberg: "<a href='en/profiles#speakers_anchor', class='stretched-link'>Go to all female experts >></a>"
       sub_menu_left_link_ooe: "<a href='en/profiles#speakers_anchor', class='stretched-link'>Go to all female experts >></a>"
+      all_speakers_title: "No Speakerin found?"
+      all_speakers_title_vorarlberg: "No Speakerin found in Vorarlberg?"
+      all_speakers_title_ooe: "No Speakerin found in Oberösterreich?"
+      all_speakers_text: "Explore more female experts in the full Speakerinnen.org database."
+      all_speakers_button: "Explore more"
       auth_modal:
         "You have to <b>agree to the use of cookies</b> before using the register or login form.<br>
         Find more information about data security in our <a href='%{link}' class='link'>privacy policy</a>.<br>"

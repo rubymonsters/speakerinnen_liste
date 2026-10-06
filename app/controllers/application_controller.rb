@@ -47,6 +47,7 @@ class ApplicationController < ActionController::Base
   def current_domain
     ENV['DOMAIN'] or Rails.env.development? ? 'speakerinnen.local' : 'speakerinnen.org'
   end
+  helper_method :current_domain
 
   def validate_region(region)
     region if %i[vorarlberg ooe].include?(region)
