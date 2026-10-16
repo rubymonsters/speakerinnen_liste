@@ -1,4 +1,14 @@
 class ProfileGrouper
+  # The one definition of "how a free-text city field is broken into cities".
+  # Profile.by_city MUST normalise with this same regexp, otherwise the number
+  # shown next to a facet stops matching the number of results you get when you
+  # click it.
+  CITY_SPLIT_REGEXP = ',|/|\\|| und | and | I | & | - '.freeze
+
+  # Buckets are grouped case-insensitively ("berlin" and "Berlin" are one city)
+  # and counted with DISTINCT (a city of "Berlin, Berlin" is one profile, not
+  # two). The label shown in the UI is the most common spelling in the data, so
+  # the German page still reads "Berlin" rather than "berlin".
   CITY_QUERY =
     <<~HEREDOC
       WITH normalized_cities_table AS
@@ -10,7 +20,7 @@ class ProfileGrouper
                 NULLIF(
                   REGEXP_SPLIT_TO_ARRAY(
                     city,
-                    ',|/|\\|| und | and | I | & | - '
+                    '#{CITY_SPLIT_REGEXP}'
                   ),
                   '{""}'
                 )
@@ -19,24 +29,30 @@ class ProfileGrouper
             FROM profile_translations
             WHERE profile_id = ANY($1::int[]) AND locale = $2
         )
-      SELECT normalized_city, COUNT(profile_id)
+      SELECT
+          MODE() WITHIN GROUP (ORDER BY normalized_city) AS normalized_city,
+          COUNT(DISTINCT profile_id) AS count
         FROM normalized_cities_table
-        GROUP BY normalized_city
-        ORDER BY COUNT(profile_id) DESC
+        WHERE normalized_city <> ''
+        GROUP BY LOWER(normalized_city)
+        ORDER BY COUNT(DISTINCT profile_id) DESC
     HEREDOC
 
   LANGUAGE_QUERY =
     <<~HEREDOC
       SELECT
         ARRAY_TO_STRING(
-          REGEXP_MATCHES(iso_languages, '\- ([a-z]{2})', 'g'),
+          -- Capture the WHOLE code up to the end of the YAML line. Matching a
+          -- fixed [a-z]{2} truncated 3-letter codes ("sgn" -> "sg", "wen" ->
+          -- "we"), producing buckets that matched no profile when clicked.
+          REGEXP_MATCHES(iso_languages, '- ([a-z]+)(?=\n)', 'g'),
           ''
         ) AS iso_language,
-        COUNT(id)
+        COUNT(DISTINCT id)
         FROM profiles
         WHERE id = ANY($1::int[])
         GROUP BY iso_language
-        ORDER BY COUNT(id) DESC
+        ORDER BY COUNT(DISTINCT id) DESC
     HEREDOC
 
   REST_QUERY =

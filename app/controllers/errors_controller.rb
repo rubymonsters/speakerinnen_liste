@@ -1,6 +1,6 @@
 class ErrorsController < ApplicationController
   def not_found
-    render status: :not_found
+    head :not_found
   end
 
   def bad_request
