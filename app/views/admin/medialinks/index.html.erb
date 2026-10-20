@@ -14,7 +14,7 @@
     <%= t(:profile_status, scope: 'admin.profiles') + t(:public, scope: 'admin.profiles') + '.' if @profile.published? %>
   </div>
 
-  <%= link_to t(:new, scope: 'medialinks'),
+  <%= link_to t(:new, scope: 'medialinks').html_safe,
             new_admin_profile_medialink_path(@profile), class: 'btn btn-small btn-danger my-3' %>
 
   <%= t(:name_of_profile, scope: 'admin.profiles') %> <strong><%= @profile.fullname %></strong>.
@@ -30,3 +30,10 @@
     <%= render partial: 'medialinks/medialink', collection: @medialinks %>
   </ul>
 </div>
+
+<script>
+  var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+  var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+    return new bootstrap.Tooltip(tooltipTriggerEl)
+  })
+</script>
