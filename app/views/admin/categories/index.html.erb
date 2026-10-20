@@ -32,7 +32,7 @@
         <td>
           <%= link_to ('<i class="fa fa-trash">&nbsp;</i>' + t(:delete, scope: "general")).html_safe,
             admin_category_path(category.id), method: :delete,
-            confirm: "Do you want to delete the category #{category.name}?" %>
+            data: { confirm: "Do you want to delete the category #{category.name}?" } %>
         </td>
       </tr>
     <% end %>
