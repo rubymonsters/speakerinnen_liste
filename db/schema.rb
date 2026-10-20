@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_09_01_120000) do
+ActiveRecord::Schema[8.1].define(version: 2026_10_04_170000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
   enable_extension "pg_stat_statements"
@@ -173,6 +173,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_01_120000) do
     t.string "website_2"
     t.string "website_3"
     t.index ["locale"], name: "index_profile_translations_on_locale"
+    t.index ["profile_id", "locale"], name: "index_profile_translations_on_profile_id_and_locale", unique: true
     t.index ["profile_id"], name: "index_profile_translations_on_profile_id"
   end
 
