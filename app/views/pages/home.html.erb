@@ -8,13 +8,13 @@
     <div class="container">
       <%# Headline %>
       <div class="row hero-headline" >
-        <div class="col-sm-5">
+        <div class="col-lg-5">
           <h1><%= t(:"heading#{'_' + current_region.to_s if current_region}", scope: 'pages.home') %></h1>
         </div>
       </div>
       <%# subtitle %>
       <div class="row">
-        <div class="col-sm-5">
+        <div class="col-lg-5">
           <h2 class="startpage-subtitle pb-3">
             <%= t(:"tagline#{'_' + current_region.to_s if current_region}", scope: 'pages.home').html_safe %>
           </h2>
@@ -22,16 +22,14 @@
       </div>
       <%# search %>
       <%= render partial: 'shared/search_form' %>
-      <%# copyright %>
-      <div class="row align-items-end">
-        <div class="col align-self-end">
-          <% if current_region == :ooe %>
-            <p class="copyright-ooe">Copyright: iStock-1395588195_KOMPASS</p>
-          <% else %>
-            <p class="copyright">Copyright: Malwine - <a href="https://malweene.com/" target="_blank">malweene.com</a></p>
-          <% end %>
-        </div>
-      </div>
+    </div>
+    <%# copyright %>
+    <div class="hero-copyright">
+      <% if current_region == :ooe %>
+        <p class="copyright-ooe">Copyright: iStock-1395588195_KOMPASS</p>
+      <% else %>
+        <p class="copyright">Copyright: Malwine - <a href="https://malweene.com/" target="_blank">malweene.com</a></p>
+      <% end %>
     </div>
   </section>
 

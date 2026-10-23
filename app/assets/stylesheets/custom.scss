@@ -38,9 +38,24 @@ a.anchor {
   .start-teaser .container {
     display: flex;
     flex-flow: column;
+    padding-bottom: 150px; // moves headline and search up in the bottom-aligned hero
+  }
 
-    .align-items-end {
-      margin-top: auto;
+  .start-teaser .hero-copyright {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0.5rem 1rem;
+    font-style: italic;
+
+    p {
+      margin: 0;
+    }
+
+    // on phones the headline starts at the top, the image sits at the bottom
+    @media (max-width: 576px) {
+      top: auto;
+      bottom: 0;
     }
   }
 }
@@ -323,6 +338,10 @@ textarea, input {
   border-radius: 4px;
   font-family: sans-serif;
   text-decoration: none;
+}
+
+.home-search .form-control {
+  border: 1px solid $primary;
 }
 
 .home .home-search .twitter-typeahead {
