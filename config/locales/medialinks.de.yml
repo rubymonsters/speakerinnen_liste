@@ -1,7 +1,8 @@
 de:
   medialinks:
     edit: "Bearbeite Referenz"
-    new: "<i class='fa fa-plus-circle'></i> Referenz hinzufügen"
+    new: "Referenz hinzufügen"
+    back_to_profile: "Zurück zum Profil"
     show: "Referenz anzeigen"
     delete: "Referenz löschen"
     save: "Referenz speichern"

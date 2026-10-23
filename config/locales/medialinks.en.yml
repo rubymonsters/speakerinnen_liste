@@ -2,6 +2,7 @@ en:
   medialinks:
     edit: "Edit Previous Talk"
     new: "Add Previous Talk"
+    back_to_profile: "Back to profile"
     delete: "Delete previous talk"
     save: "Save talk"
     index: "Previous Talks"
