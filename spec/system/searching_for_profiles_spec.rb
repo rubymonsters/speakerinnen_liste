@@ -23,7 +23,7 @@ describe 'profile search' do
       before { visit root_path }
 
       it 'shows autofill search input' do
-        expect(page).to have_selector(".container #{form_selector} input#home_search.typeahead[type='search']")
+        expect(page).to have_selector(".container #{form_selector} input#home_search.search-autocomplete[type='search']")
       end
 
       it 'shows button search' do
