@@ -1,7 +1,7 @@
   <%= form_tag(profiles_path, method: 'get', class:"row g-0 home-search") do %>
     <div class="col-sm-3">
       <label class="visually-hidden" title="Searchfield" for="inlineFormInputSearch"><%=t(:search_placeholder, scope: 'pages.home')%></label>
-      <%= search_field_tag('search', params[:search], id: "home_search", class: 'form-control typeahead',
+      <%= search_field_tag('search', params[:search], id: "home_search", class: 'form-control search-autocomplete',
             type: 'text', placeholder: t(:search_placeholder, scope: 'pages.home')) %>
     </div>
     <div class="col-sm-6 col-lm-2">

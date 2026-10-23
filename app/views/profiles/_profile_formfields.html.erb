@@ -178,7 +178,7 @@
             class: "",
             title: t(:topic_list_tooltip, scope: 'profiles.form').html_safe
           },
-          input_html: { value: @profile.topic_list.to_s, class: "form-control" } %>
+          input_html: { value: @profile.topic_list.join(","), class: "form-control" } %>
     </div>
   </div>
 </div>
