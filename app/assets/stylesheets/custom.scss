@@ -132,6 +132,11 @@ h1 {
   color: $error;
 }
 
+// error under a form field that has a bottom margin (see field_error in ProfilesHelper)
+.form-control.mb-3 + .error {
+  margin-top: -0.75rem;
+}
+
 /* diverses */
 
 .alert {

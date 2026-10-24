@@ -70,9 +70,11 @@ class Profile < ApplicationRecord
   validate :image_format_size
   validates :profession, length: { maximum: 60, message: "Please use less than 80 characters." }
   validates :instagram, :linkedin, :bluesky, :mastodon, format: { with: URI::DEFAULT_PARSER.make_regexp, message: "must be a valid URL" }, allow_blank: true
-  # these columns are limited to 255 characters in the database
-  validates :firstname, :lastname, :website_de, :website_en, :city_de, :city_en, :main_topic_de, :main_topic_en,
-            :twitter_de, :twitter_en, length: { maximum: 255 }
+  # most of these columns are limited to 255 characters in the database,
+  # website_2 and website_3 are not, but get the same limit as website
+  validates :firstname, :lastname, :website_de, :website_en, :website_2_de, :website_2_en, :website_3_de, :website_3_en,
+            :city_de, :city_en, :main_topic_de, :main_topic_en, :twitter_de, :twitter_en, length: { maximum: 255 }
+  after_validation :keep_saved_slug, if: -> { errors.any? }
   before_save :clean_iso_languages!
 
   extend Mobility
@@ -185,6 +187,12 @@ class Profile < ApplicationRecord
 
   def should_generate_new_friendly_id?
     slug.blank? || firstname_changed? || lastname_changed?
+  end
+
+  # friendly_id builds the new slug before validation. If the profile is not saved,
+  # the form has to keep posting to the saved slug, otherwise the next save leads to a 404.
+  def keep_saved_slug
+    restore_attributes([:slug]) if slug_changed?
   end
 
   def website_in_language_scope(lang, number = '')
