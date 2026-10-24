@@ -224,7 +224,7 @@ $all_categories_darker_color: (
   font-weight: 400;
   padding: 0.4em 0.9em;
   color: $font-color;
-  background-color: $white;
+  background-color: $light-grey;
   text-decoration: none;
   white-space: normal;
   text-align: left;
@@ -232,22 +232,7 @@ $all_categories_darker_color: (
   &:hover,
   &:focus {
     color: $font-color;
-    background-color: $tag-box-background;
+    background-color: $grey;
     text-decoration: none;
-  }
-}
-
-// categories whose full colour needs white text for readable contrast
-$topic_pill_white_text: environment, internet, marketing, politics, science;
-
-@each $name, $color in $all_categories_brighter_color {
-  .topic-pills .topic-pill--#{$name} {
-    background-color: $color;
-
-    &:hover,
-    &:focus {
-      background-color: map-get($all_categories_darker_color, $name);
-      color: if(index($topic_pill_white_text, $name), $white, $font-color);
-    }
   }
 }
