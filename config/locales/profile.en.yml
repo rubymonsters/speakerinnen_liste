@@ -159,3 +159,16 @@ en:
     clear_link: "X Clear all"
     filter: "Choose one or more topics from any category:"
     title: "Look through all the speakerinnen of the category <b>%{category_name}</b> <i class='fa fa-caret-right' style='font-size: 21px'></i>"
+  activerecord:
+    attributes:
+      profile:
+        firstname: "First name"
+        lastname: "Last name"
+        website_de: "Website (German)"
+        website_en: "Website (English)"
+        city_de: "City (German)"
+        city_en: "City (English)"
+        main_topic_de: "Primary topic (German)"
+        main_topic_en: "Primary topic (English)"
+        twitter_de: "Twitter (German)"
+        twitter_en: "Twitter (English)"

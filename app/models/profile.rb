@@ -70,6 +70,9 @@ class Profile < ApplicationRecord
   validate :image_format_size
   validates :profession, length: { maximum: 60, message: "Please use less than 80 characters." }
   validates :instagram, :linkedin, :bluesky, :mastodon, format: { with: URI::DEFAULT_PARSER.make_regexp, message: "must be a valid URL" }, allow_blank: true
+  # these columns are limited to 255 characters in the database
+  validates :firstname, :lastname, :website_de, :website_en, :city_de, :city_en, :main_topic_de, :main_topic_en,
+            :twitter_de, :twitter_en, length: { maximum: 255 }
   before_save :clean_iso_languages!
 
   extend Mobility

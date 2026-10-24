@@ -141,6 +141,27 @@ end
     end
   end
 
+  describe 'length of fields limited in the database' do
+    it 'is invalid with a website longer than 255 characters' do
+      profile = Profile.new(website_de: "https://example.com/#{'a' * 236}")
+      profile.valid?
+      expect(profile.errors[:website_de].size).to eq(1)
+    end
+
+    it 'only reports the locale that is too long' do
+      profile = Profile.new(website_en: "https://example.com/#{'a' * 236}")
+      profile.valid?
+      expect(profile.errors[:website_en].size).to eq(1)
+      expect(profile.errors[:website_de]).to be_empty
+    end
+
+    it 'is valid with a website of 255 characters' do
+      profile = Profile.new(website_de: "https://example.com/#{'a' * 235}")
+      profile.valid?
+      expect(profile.errors[:website_de]).to be_empty
+    end
+  end
+
   describe 'scopes' do
     it 'returns only published profiles' do
       profile.update(published: false)
