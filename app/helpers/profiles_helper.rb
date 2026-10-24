@@ -13,7 +13,7 @@ module ProfilesHelper
   # shows the error of a plain form field under the field, styled like the simple_form errors
   def field_error(form, attribute)
     message = form.object.errors[attribute].first
-    tag.span(message, class: 'error d-block mb-3') if message
+    tag.span(message, class: 'error') if message
   end
 
   def topic_link(topic, options = {})
