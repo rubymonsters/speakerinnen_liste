@@ -10,6 +10,12 @@ module ProfilesHelper
     end
   end
 
+  # shows the error of a plain form field under the field, styled like the simple_form errors
+  def field_error(form, attribute)
+    message = form.object.errors[attribute].first
+    tag.span(message, class: 'error') if message
+  end
+
   def topic_link(topic, options = {})
     link_to topic, topic_path(topic: topic.to_s), options
   end

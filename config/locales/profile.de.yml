@@ -161,3 +161,20 @@ de:
     filter: "Wähle ein oder mehrere Themen aus verschiedenen Kategorien:"
     title: "Schau Dir <b>alle</b> Speakerinnen der Kategorie <b>%{category_name}</b> an oder<br>"
     title_2: "der Kategorie <b>%{category_name}</b> an oder<br>"
+  activerecord:
+    attributes:
+      profile:
+        firstname: "Vorname"
+        lastname: "Nachname"
+        website_de: "Website (Deutsch)"
+        website_en: "Website (Englisch)"
+        website_2_de: "Zusätzliche Webseite 1 (Deutsch)"
+        website_2_en: "Zusätzliche Webseite 1 (Englisch)"
+        website_3_de: "Zusätzliche Webseite 2 (Deutsch)"
+        website_3_en: "Zusätzliche Webseite 2 (Englisch)"
+        city_de: "Wohnort (Deutsch)"
+        city_en: "Wohnort (Englisch)"
+        main_topic_de: "Themenschwerpunkt (Deutsch)"
+        main_topic_en: "Themenschwerpunkt (Englisch)"
+        twitter_de: "Twitter (Deutsch)"
+        twitter_en: "Twitter (Englisch)"
