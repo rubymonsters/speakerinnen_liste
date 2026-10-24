@@ -84,19 +84,19 @@ de:
       inactive_profile: "Du hast Dein Profil <b>inaktiv</b> geschaltet. <br>Deshalb kannst Du im Moment <b>nicht</b> per Mail kontaktiert werden.<br>"
       Interview: "Interview"
       languages: "Sprache/n:"
-      main_topic: 'Themenschwerpunkt:'
+      main_topic_html: 'Schwerpunktthema: %{main_topic}'
       media: "Vorträge / Referenzen:"
       Moderation: "Moderation"
       no_contact: " möchte derzeit nicht kontaktiert werden."
-      nonprofit: "Ich bin bereit, für gemeinnützige Zwecke kostenfrei zu sprechen."
+      nonprofit: "Kostenfreie Vorträge für gemeinnützige Organisationen"
       not_nonprofit: "Ich bin nicht bereit, für gemeinnützige Zwecke kostenfrei zu sprechen."
       not_willing_to_travel: "Ich bin nicht bereit, für eine Veranstaltung zu reisen."
       personal_note: "Persönliche Anmerkung:"
-      services: "Ich biete:"
+      services: "Meine Angebote:"
       Talk: "Vortrag"
       topics: 'Themen:'
       twitter: "Mein Twittername:"
-      websites: "Webseiten/Blogs/Soziale Medien:"
+      websites: "Hier bin ich zu finden:"
       willing_to_travel: "Ich bin bereit, für eine Veranstaltung zu reisen."
       Workshop management: "Seminarleitung"
     medialinks:

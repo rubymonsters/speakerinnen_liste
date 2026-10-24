@@ -1,0 +1,6 @@
+<button type="button" class="btn btn-primary btn-stretch mt-2 px-5" data-bs-toggle="modal"
+  data-bs-target="<%= cookies[:cookie_consent].blank? ? '#contactHint' : '#contactModal' %>"
+  <%= disable_contact_button(profile) %>>
+  <i class="fa fa-envelope-o"></i>&nbsp;
+  <%= t(:contact, scope: 'profiles.show', profile: profile.fullname) %>
+</button>
