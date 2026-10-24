@@ -159,6 +159,15 @@ h1 {
   color: $error;
 }
 
+.alert-inline {
+  position: relative;
+  width: auto;
+  padding-right: $alert-dismissible-padding-r;
+  margin-top: $base-spacing-unit;
+  z-index: auto;
+  border-radius: $border-radius;
+}
+
 .border-vertical {
   border-top: $border;
   border-bottom: $border;
