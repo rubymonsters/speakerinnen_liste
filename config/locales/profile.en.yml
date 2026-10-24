@@ -84,11 +84,11 @@ en:
       inactive_profile: "You have set your profile to <b>inactive</b>.<br>Therefore, you <b>cannot</b> be contacted by mail at the moment.<br> "
       Interview: "Interview"
       languages: "Languages:"
-      main_topic: 'Main focus:'
+      main_topic_html: 'Main topic: %{main_topic}'
       media: "Examples of previous talks / appearances:"
       Moderation: "Moderation"
       no_contact: " does not wish to be contacted at the moment."
-      nonprofit: "Available for nonprofit events."
+      nonprofit: "Free talks for nonprofit organisations"
       not_nonprofit: "Not available for nonprofit events."
       not_willing_to_travel: "I don't want to travel for an event."
       personal_note: "Personal note:"
@@ -96,7 +96,7 @@ en:
       Talk: "Talk"
       topics: "Topics:"
       twitter: "Twitter handle:"
-      websites: "Websites/Blogs/Social Media Accounts:"
+      websites: "You can find me here:"
       willing_to_travel: "Willing to travel for an event."
       Workshop management: "Workshop management"
     medialinks:

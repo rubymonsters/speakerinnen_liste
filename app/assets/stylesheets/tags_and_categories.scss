@@ -217,3 +217,37 @@ $all_categories_darker_color: (
     background-color: $color;
   }
 }
+
+.topic-pills .topic-pill {
+  font-size: 0.85rem;
+  border-radius: 4px;
+  font-weight: 400;
+  padding: 0.4em 0.9em;
+  color: $font-color;
+  background-color: $white;
+  text-decoration: none;
+  white-space: normal;
+  text-align: left;
+
+  &:hover,
+  &:focus {
+    color: $font-color;
+    background-color: $tag-box-background;
+    text-decoration: none;
+  }
+}
+
+// categories whose full colour needs white text for readable contrast
+$topic_pill_white_text: environment, internet, marketing, politics, science;
+
+@each $name, $color in $all_categories_brighter_color {
+  .topic-pills .topic-pill--#{$name} {
+    background-color: $color;
+
+    &:hover,
+    &:focus {
+      background-color: map-get($all_categories_darker_color, $name);
+      color: if(index($topic_pill_white_text, $name), $white, $font-color);
+    }
+  }
+}
