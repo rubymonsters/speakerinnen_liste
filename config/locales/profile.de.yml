@@ -75,7 +75,7 @@ de:
       check_faq: "Fülle bitte die Felder via 'Profil bearbeiten' aus. <BR> Für mehr Informationen, wie du am besten dein Profil angelegst, kannst du hier nach schauen: <a href='https://speakerinnen.org/de/faq'>FAQ</a>"
       city: "Wohnort:"
       Coaching: "Training"
-      contact: "%{profile} als Speakerin anfragen"
+      contact: "Speakerin anfragen"
       Consulting: "Beratung"
       country: "Land:"
       edit: "Profil bearbeiten"
@@ -84,20 +84,20 @@ de:
       inactive_profile: "Du hast Dein Profil <b>inaktiv</b> geschaltet. <br>Deshalb kannst Du im Moment <b>nicht</b> per Mail kontaktiert werden.<br>"
       Interview: "Interview"
       languages: "Sprache/n:"
-      main_topic_html: 'Schwerpunktthema: %{main_topic}'
+      main_topic_html: 'Schwerpunktthema:<br>%{main_topic}'
       media: "Vorträge / Referenzen:"
       Moderation: "Moderation"
       no_contact: " möchte derzeit nicht kontaktiert werden."
       nonprofit: "Kostenfreie Vorträge für gemeinnützige Organisationen"
       not_nonprofit: "Ich bin nicht bereit, für gemeinnützige Zwecke kostenfrei zu sprechen."
       not_willing_to_travel: "Ich bin nicht bereit, für eine Veranstaltung zu reisen."
-      personal_note: "Persönliche Anmerkung:"
+      personal_note: "Weitere Hinweise:"
       services: "Meine Angebote:"
       Talk: "Vortrag"
       topics: 'Themen:'
       twitter: "Mein Twittername:"
-      websites: "Hier bin ich zu finden:"
-      willing_to_travel: "Ich bin bereit, für eine Veranstaltung zu reisen."
+      websites: "Website & Social Media:"
+      willing_to_travel: "Reist für Veranstaltungen an"
       Workshop management: "Seminarleitung"
     medialinks:
       edit: "Referenzen bearbeiten"

@@ -1,29 +1,14 @@
-<div class="row mt-5 profile-show">
-  <div class="col-lg-4 col-md-6 text-center pb-3">
-    <%= profile_image_link(@profile) %>
-    <% unless current_profile == @profile %>
-      <% if @profile.inactive? %>
-        <button type="button" class="btn btn-primary btn-stretch mt-2 px-5 disabled">
-          <i class="fa fa-times"></i>&nbsp;
-          <%= @profile.fullname + t(:no_contact, scope: 'profiles.show') %>
-        </button>
-      <% else %>
-        <%= render 'profiles/contact_button', profile: @profile %>
-      <% end %>
-    <% end %>
-  </div>
-  <div class="col-lg-6 col-md-6">
-    <% if current_profile == @profile && @profile.inactive? %>
+<% own_profile = current_profile == @profile %>
+<!-- name and profession across the full width -->
+<div class="row mt-5">
+  <div class="col-12">
+    <% if own_profile && @profile.inactive? %>
       <p class="alert-warning">
         <%= t(:inactive_profile, scope: 'profiles.show').html_safe %><%= link_to t(:activate_profile, scope: 'profiles.show'), edit_profile_registration_path(anchor: "inactive_anchor") %>
       </p>
     <% end %>
     <h1><%= @profile.fullname %></h1>
     <h3><%= @profile.profession %></h3>
-    <!-- city and languages -->
-    <% if (intro = profile_intro(@profile)) %>
-      <p><%= intro %></p>
-    <% end %>
     <% unless @profile.fullname.present? %>
       <p class="error">
         <%= t(:empty_profile, scope: 'profiles.show').html_safe %>
@@ -32,21 +17,71 @@
         <%= t(:check_faq, scope: 'profiles.show').html_safe %>
       </p>
     <% end %>
+  </div>
+</div>
+
+<%# three columns: photo | topics and contact button | websites, services and more %>
+<div class="row mt-4 gx-5 profile-show">
+  <div class="col-lg-4 col-md-6 pb-3">
+    <div class="profile-show__photo">
+      <%= profile_image_link(@profile) %>
+    </div>
+  </div>
+  <div class="col-lg-4 col-md-6">
+    <!-- city and languages -->
+    <% if (intro = profile_intro(@profile)) %>
+      <p><%= intro %></p>
+    <% end %>
     <!-- main topic -->
     <% if @profile.main_topic.present? %>
       <p><%= t(:main_topic_html, scope: 'profiles.show', main_topic: content_tag(:strong, @profile.main_topic)) %></p>
     <% end %>
     <!-- topics -->
-    <% topics = topics_for_profile(@profile).includes(:categories).to_a %>
+    <% topics = topics_for_profile(@profile).to_a %>
     <% if topics.any? %>
       <div class="mb-3">
         <ul class="topic-pills list-unstyled d-flex flex-wrap gap-2 mb-0">
           <% topics.each do |topic| %>
             <li>
-              <%= link_to topic.name, profiles_path(tag_filter: topic.name), class: "topic-pill topic-pill--#{topic.categories.first&.slug} badge text-lowercase" %>
+              <%= link_to topic.name, profiles_path(tag_filter: topic.name), class: "topic-pill badge text-lowercase" %>
             </li>
           <% end %>
         </ul>
+      </div>
+    <% end %>
+    <!-- main contact button -->
+    <% unless own_profile %>
+      <div class="mb-4">
+        <% if @profile.inactive? %>
+          <button type="button" class="btn btn-primary mt-2 px-4 disabled">
+            <i class="fa fa-times"></i>&nbsp;
+            <%= @profile.fullname + t(:no_contact, scope: 'profiles.show') %>
+          </button>
+        <% else %>
+          <%= render 'profiles/contact_button', profile: @profile %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+  <div class="col-lg-4 col-md-12">
+    <!-- edit action for user -->
+    <% if own_profile %>
+      <div class="d-grid gap-2 mb-4">
+        <%= link_to(edit_profile_path(@profile), class: 'button_link noHover') do %>
+          <div class='btn btn-primary d-block'>
+            <%= t(:edit, scope: 'profiles.show') %>
+          </div>
+        <% end %>
+        <%= link_to(profile_medialinks_path(@profile), class: 'button_link noHover') do %>
+          <div class='btn btn-primary d-block'>
+            <%= t(:edit, scope: 'profiles.medialinks') %>
+          </div>
+        <% end %>
+        <%= link_to(edit_profile_registration_path, class: 'button_link noHover') do %>
+          <div id='accountSettings' class='btn btn-primary d-block'>
+            <%= t(:account, scope: 'layouts.application') %>
+          </div>
+        <% end %>
       </div>
     <% end %>
     <!-- twitter -->
@@ -63,7 +98,7 @@
     <% if websites.any? %>
       <p>
         <%= t(:websites, scope: 'profiles.show') %><br>
-        <%= safe_join(websites.map { |website| link_to website, url_with_protocol(website), target: '_blank', rel: 'noopener' }, tag.br) %>
+        <%= safe_join(websites.map { |website| safe_join(['· ', link_to(truncate(website, length: 63), url_with_protocol(website), title: website, target: '_blank', rel: 'noopener')]) }, tag.br) %>
       </p>
     <% end %>
     <!-- social media -->
@@ -82,88 +117,54 @@
     <!-- services -->
     <% if @profile.services.any? %>
       <p>
-        <%= t(:services, scope: 'profiles.show') %>
+        <%= t(:services, scope: 'profiles.show') %><br>
         <%= safe_join(@profile.services.map { |s| content_tag(:strong, t(s.name, scope: 'profiles.show')) }, ' · ') %>
       </p>
     <% end %>
     <!-- willing to travel and willing to talk nonprofit, only shown if true -->
     <% if @profile.willing_to_travel %>
-      <p><%= t(:willing_to_travel, scope: 'profiles.show') %></p>
+      <p><i class="fa-solid fa-check me-1"></i><%= t(:willing_to_travel, scope: 'profiles.show') %></p>
     <% end %>
     <% if @profile.nonprofit %>
-      <p><%= t(:nonprofit, scope: 'profiles.show') %></p>
+      <p><i class="fa-solid fa-check me-1"></i><%= t(:nonprofit, scope: 'profiles.show') %></p>
     <% end %>
   </div>
+</div>
 
-  <!-- edit action for user -->
-  <div class="col-md-2">
-    <% if current_profile == @profile %>
-      <div class="d-grid gap-4">
-        <%= link_to(edit_profile_path(@profile), class: 'button_link noHover') do %>
-          <div class='btn btn-primary d-block'>
-            <%= t(:edit, scope: 'profiles.show') %>
-          </div>
+<!-- bio and additional notes on the left, medialinks on the right (or on the left if there is no text) -->
+<% has_text = @profile.bio.present? || @profile.personal_note.present? %>
+<% has_medialinks = @medialinks.load.any? %>
+<%# don't show the second contact button at all when the profile is not active %>
+<% show_second_contact = !own_profile && !@profile.inactive? %>
+<% if has_text || has_medialinks %>
+  <div class="row my-4 gx-5">
+    <% if has_text %>
+      <div class="col-lg-6">
+        <% if @profile.bio.present? %>
+          <p class="fw-bold mb-2"><%= t(:bio, scope: 'profiles.show') %></p>
+          <%= simple_format(@profile.bio) %>
         <% end %>
-        <%= link_to(profile_medialinks_path(@profile), class: 'button_link noHover') do %>
-          <div class='btn btn-primary d-block'>
-            <%= t(:edit, scope: 'profiles.medialinks') %>
-          </div>
+        <% if @profile.personal_note.present? %>
+          <p class="fw-bold mb-2 mt-4"><%= t(:personal_note, scope: 'profiles.show') %></p>
+          <%= simple_format(@profile.personal_note) %>
         <% end %>
-        <%= link_to(edit_profile_registration_path, class: 'button_link noHover') do %>
-          <div id='accountSettings' class='btn btn-primary d-block'>
-            <%= t(:account, scope: 'layouts.application') %>
-          </div>
+        <% if show_second_contact && !has_medialinks %>
+          <%= render 'profiles/contact_button', profile: @profile %>
+        <% end %>
+      </div>
+    <% end %>
+    <% if has_medialinks %>
+      <div class="col-lg-6">
+        <p class="fw-bold mb-2"><%= t(:media, scope: 'profiles.show') %></p>
+        <%= render partial: 'profiles/medialink', collection: @medialinks %>
+        <% if show_second_contact %>
+          <%= render 'profiles/contact_button', profile: @profile %>
         <% end %>
       </div>
     <% end %>
   </div>
-</div>
-
-<!-- personal note -->
-<% if @profile.personal_note.present? %>
-  <div class="row my-3">
-    <div class="col-md-12">
-        <span class="fw-bold">
-          <%= t(:personal_note, scope: 'profiles.show') %>
-        </span>
-        <%= simple_format(@profile.personal_note, class: '') %>
-    </div>
-  </div>
 <% end %>
 
-<!-- bio -->
-<% if @profile.bio.present? %>
-  <div class="row my-3">
-    <div class="col-md-12">
-        <span class="fw-bold">
-          <%= t(:bio, scope: 'profiles.show') %>
-        </span>
-        <%= simple_format(@profile.bio, class: '') %>
-    </div>
-  </div>
-<% end %>
-
-<!-- medialinks -->
-<% if @medialinks.load.any? %>
-  <div class="row">
-    <div class="col-md-12">
-      <p class="fw-bold">
-        <%= t(:media, scope: 'profiles.show') %>
-      </p>
-    <%= render partial: 'profiles/medialink', collection: @medialinks %>
-
-    </div>
-  </div>
-<% end %>
-
-<div class="row">
-  <div class="col-lg-4 col-md-6 text-center pb-3">
-    <%# don't show the second contact button at all when the profile is not active %>
-    <% unless current_profile == @profile || @profile.inactive? %>
-      <%= render 'profiles/contact_button', profile: @profile %>
-    <% end %>
-  </div>
-</div>
 
 
 <!-- Modal Contact -->
