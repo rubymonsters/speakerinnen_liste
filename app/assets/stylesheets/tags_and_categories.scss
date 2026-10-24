@@ -217,3 +217,22 @@ $all_categories_darker_color: (
     background-color: $color;
   }
 }
+
+.topic-pills .topic-pill {
+  font-size: 0.85rem;
+  border-radius: 4px;
+  font-weight: 400;
+  padding: 0.4em 0.9em;
+  color: $font-color;
+  background-color: $light-grey;
+  text-decoration: none;
+  white-space: normal;
+  text-align: left;
+
+  &:hover,
+  &:focus {
+    color: $font-color;
+    background-color: $grey;
+    text-decoration: none;
+  }
+}
