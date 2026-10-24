@@ -40,7 +40,7 @@ class Admin::ProfilesController < Admin::BaseController
 
   def update
     if @profile.update(profile_params)
-      redirect_to admin_profile_path(@profile), notice: I18n.t('flash.profiles.updated', profile_name: @profile.name_or_email)
+      redirect_to admin_profile_path(@profile), notice: I18n.t('flash.profiles.saved')
     else
       render :edit
     end

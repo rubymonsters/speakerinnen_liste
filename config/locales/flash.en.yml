@@ -3,6 +3,7 @@ en:
     profiles:
       created: 'Profile was successfully created.'
       updated: '%{profile_name} was successfully updated.'
+      saved: 'Profile saved.'
       destroyed: '%{profile_name} was successfully deleted.'
       no_permission: "You don’t have permission to edit the profile."
       show_no_permission: "You don’t have permission to see the profile."
