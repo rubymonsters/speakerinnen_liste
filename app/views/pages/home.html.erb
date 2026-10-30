@@ -22,14 +22,16 @@
       </div>
       <%# search %>
       <%= render partial: 'shared/search_form' %>
-    </div>
-    <%# copyright %>
-    <div class="hero-copyright">
-      <% if current_region == :ooe %>
-        <p class="copyright-ooe">Copyright: iStock-1395588195_KOMPASS</p>
-      <% else %>
-        <p class="copyright">Copyright: Malwine - <a href="https://malweene.com/" target="_blank">malweene.com</a></p>
-      <% end %>
+      <%# copyright %>
+      <div class="row align-items-end">
+        <div class="col align-self-end">
+          <% if current_region == :ooe %>
+            <p class="copyright-ooe">Copyright: iStock-1395588195_KOMPASS</p>
+          <% else %>
+            <p class="copyright">Copyright: Malwine - <a href="https://malweene.com/" target="_blank">malweene.com</a></p>
+          <% end %>
+        </div>
+      </div>
     </div>
   </section>
 
