@@ -35,12 +35,25 @@ a.anchor {
 
 .home {
 
+  $hero-padding-bottom: 150px;
+
+  // full width below 1200px instead of Bootstrap's fixed container widths
+  .container {
+    max-width: 100%;
+
+    @media (min-width: 1200px) {
+      max-width: 1600px;
+    }
+  }
+
   .start-teaser .container {
     display: flex;
     flex-flow: column;
+    padding-bottom: $hero-padding-bottom; // moves headline and search up in the bottom-aligned hero
 
     .align-items-end {
       margin-top: auto;
+      margin-bottom: -$hero-padding-bottom; // keeps the copyright at the bottom, right above the next row
     }
   }
 }
@@ -323,6 +336,10 @@ textarea, input {
   border-radius: 4px;
   font-family: sans-serif;
   text-decoration: none;
+}
+
+.home-search .form-control {
+  border: 1px solid $primary;
 }
 
 .home .home-search .twitter-typeahead {

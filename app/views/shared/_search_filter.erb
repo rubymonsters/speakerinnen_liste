@@ -22,7 +22,7 @@
         <% end %>
         <% if aggs_languages.length > 5 %>
           <li>
-            <a class="ps-1 expander_languages"><%= t(:show_more, scope: 'profiles.index') %></a>
+            <a class="ps-1 expander_languages text-decoration-underline"><%= t(:show_more, scope: 'profiles.index') %></a>
           </li>
           <div class="rest_facet_languages" style="display: none">
             <% aggs_languages.to_a.last(aggs_languages.length - 5).each do |term| %>
@@ -62,7 +62,7 @@
           <% end %>
           <% if aggs_countries.length > 5 %>
             <li>
-              <a class="ps-1 expander_countries"><%= t(:show_more, scope: 'profiles.index') %></a>
+              <a class="ps-1 expander_countries text-decoration-underline"><%= t(:show_more, scope: 'profiles.index') %></a>
             </li>
             <div class="rest_facet_countries" style="display: none">
               <% aggs_countries.to_a.last(aggs_countries.length - 5).each do |term| %>
@@ -127,7 +127,7 @@
           <% end %>
           <% if aggs_cities.length > 5 %>
             <li>
-              <a class="ps-1 expander_cities"><%= t(:show_more, scope: 'profiles.index') %></a>
+              <a class="ps-1 expander_cities text-decoration-underline"><%= t(:show_more, scope: 'profiles.index') %></a>
             </li>
             <div class="rest_facet_cities" style="display: none">
               <% aggs_cities.to_a.last(aggs_cities.length - 5).each do |term| %>
