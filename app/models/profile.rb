@@ -74,7 +74,6 @@ class Profile < ApplicationRecord
   # website_2 and website_3 are not, but get the same limit as website
   validates :firstname, :lastname, :website_de, :website_en, :website_2_de, :website_2_en, :website_3_de, :website_3_en,
             :city_de, :city_en, :main_topic_de, :main_topic_en, :twitter_de, :twitter_en, length: { maximum: 255 }
-  after_validation :keep_saved_slug, if: -> { errors.any? }
   before_save :clean_iso_languages!
 
   extend Mobility
@@ -191,8 +190,8 @@ class Profile < ApplicationRecord
 
   # friendly_id builds the new slug before validation. If the profile is not saved,
   # the form has to keep posting to the saved slug, otherwise the next save leads to a 404.
-  def keep_saved_slug
-    restore_attributes([:slug]) if slug_changed?
+  def to_param
+    slug_changed? && slug_was.present? ? slug_was : super
   end
 
   def website_in_language_scope(lang, number = '')

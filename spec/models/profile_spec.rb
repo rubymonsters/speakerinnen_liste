@@ -162,12 +162,11 @@ end
       expect(profile.errors[:website_de]).to be_empty
     end
 
-    it 'keeps the saved slug when a changed name is too long' do
+    it 'keeps the saved slug in the url when a changed name is too long' do
       profile = create(:published_profile, firstname: 'Ada', lastname: 'Lovelace')
       saved_slug = profile.slug
       profile.lastname = 'a' * 256
       expect(profile.save).to be false
-      expect(profile.slug).to eq(saved_slug)
       expect(profile.to_param).to eq(saved_slug)
     end
 
