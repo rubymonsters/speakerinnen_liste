@@ -2,6 +2,7 @@ de:
   medialinks:
     edit: "Bearbeite Referenz"
     new: "Referenz hinzufügen"
+    back_to_profile: "Zurück zum Profil"
     show: "Referenz anzeigen"
     delete: "Referenz löschen"
     save: "Referenz speichern"

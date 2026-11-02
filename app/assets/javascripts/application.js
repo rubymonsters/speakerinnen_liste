@@ -11,7 +11,7 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery3
-//= require jquery_ujs
+//= require rails-ujs
 //= require jquery-ui
 //= require typeahead/typeahead.bundle.min
 //= require typeahead/typeahead.jquery.min

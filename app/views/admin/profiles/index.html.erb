@@ -32,7 +32,7 @@
     </thead>
     <tbody>
       <% @records.each do |profile|  %>
-        <tr>
+        <tr id="<%= dom_id(profile) %>">
           <td><%= profile.id %></td>
           <td><%= link_to profile.name_or_email, admin_profile_path(profile),
               html_options = { title: t(:show, scope: 'admin.profiles.edit') } %></td>

@@ -43,7 +43,7 @@
           <td>
             <%= link_to ('<i class="fa fa-trash-o">&nbsp;</i>' + t(:delete, scope: "general")).html_safe,
               admin_feature_path(feature.id), method: :delete,
-              confirm: "Do you want to delete the Feature entitled #{feature.title} completely?" %>
+              data: { confirm: "Do you want to delete the Feature entitled #{feature.title} completely?" } %>
           </td>
         </tr>
       <% end %>
