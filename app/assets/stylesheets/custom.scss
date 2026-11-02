@@ -175,7 +175,8 @@ h1 {
 }
 
 .alert-error {
-  color: $error;
+  background: $error_background;
+  color: $black;
 }
 
 .alert-inline {
