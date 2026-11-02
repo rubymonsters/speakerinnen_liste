@@ -38,4 +38,35 @@ module ProfilesHelper
   def disable_contact_button(profile)
     'style=display:none' if profile.id == 309
   end
+
+  SOCIAL_MEDIA_ICONS = {
+    instagram: 'fa-brands fa-instagram',
+    linkedin: 'fa-brands fa-linkedin',
+    bluesky: 'fa-solid fa-cloud', # Bluesky has no official icon yet
+    mastodon: 'fa-brands fa-mastodon'
+  }.freeze
+
+  # "Berlin · German and English", or only the part that is filled in
+  def profile_intro(profile)
+    parts = []
+    parts << content_tag(:strong, profile.city) if profile.city.present?
+    if profile.iso_languages.present?
+      parts << to_sentence(profile.iso_languages.map { |iso| content_tag(:strong, t(iso, scope: 'iso_639_1').capitalize) })
+    end
+    safe_join(parts, ' · ') if parts.any?
+  end
+
+  # websites in the current language, or all websites with fallback if none is translated
+  def profile_websites(profile)
+    translated = ['', '2_', '3_'].map { |number| profile.website_in_language_scope(I18n.locale, number) }
+    websites = translated.any?(&:present?) ? translated : [profile.website, profile.website_2, profile.website_3]
+    websites.select(&:present?)
+  end
+
+  def profile_social_media_links(profile)
+    SOCIAL_MEDIA_ICONS.filter_map do |network, icon|
+      url = profile.public_send(network)
+      [url, icon] if url.present?
+    end
+  end
 end
