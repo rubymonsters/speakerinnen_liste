@@ -132,6 +132,25 @@ h1 {
   color: $error;
 }
 
+// error under a form field (simple_form errors and field_error in ProfilesHelper)
+.form-control + .error {
+  display: block;
+  margin-top: 0.125rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.875em;
+  font-style: italic;
+}
+
+// error under a form field that has a bottom margin
+.form-control.mb-3 + .error {
+  margin-top: -0.875rem;
+}
+
+// red border for fields with an error (simple_form and field_error both put the error right after the field)
+.form-control:has(+ .error) {
+  border-color: $error;
+}
+
 /* diverses */
 
 .alert {

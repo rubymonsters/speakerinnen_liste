@@ -212,39 +212,46 @@
         <div class="mb-3">
           <%= f.label "profession_#{locale}", t(:profession, scope: 'profiles.form'), class: "mb-2" %>
           <%= f.text_field "profession_#{locale}", class: 'form-control mb-3', maxlength: 60 %>
+          <%= field_error(f, :"profession_#{locale}") %>
         </div>
 
         <div class="mb-3">
           <%= f.label "city_#{locale}", t(:city, scope: 'profiles.form').html_safe,
               id: "city_#{locale}", class: 'mb-2 pt-3', title: t(:city_tooltip, scope: 'profiles.form').html_safe %>
           <%= f.text_field "city_#{locale}", class: 'form-control mb-3', maxlength: 30 %>
+          <%= field_error(f, :"city_#{locale}") %>
         </div>
 
         <% if @profile.twitter.present? %>
           <div class="mb-3">
             <%= f.label "twitter_#{locale}", t(:twitter, scope: 'profiles.form'), class: "mb-2" %>
             <%= f.text_field "twitter_#{locale}", class: 'form-control mb-3', placeholder: '@', maxlength: 30 %>
+            <%= field_error(f, :"twitter_#{locale}") %>
           </div>
         <% end %>
 
         <div class="mb-3">
           <%= f.label "website_#{locale}", t(:website, scope: 'profiles.form'), class: "mb-2" %>
           <%= f.text_field "website_#{locale}", class: "form-control mb-3", placeholder: 'https://' %>
+          <%= field_error(f, :"website_#{locale}") %>
         </div>
 
         <div class="mb-3">
           <%= f.label "website_2_#{locale}", t(:website_2, scope: 'profiles.form'), class: "mb-2" %>
           <%= f.text_field "website_2_#{locale}", class: "form-control mb-3", placeholder: 'https://' %>
+          <%= field_error(f, :"website_2_#{locale}") %>
         </div>
 
         <div class="mb-3">
           <%= f.label "website_3_#{locale}", t(:website_2, scope: 'profiles.form'), class: "mb-2" %>
           <%= f.text_field "website_3_#{locale}", class: "form-control mb-3", placeholder: 'https://' %>
+          <%= field_error(f, :"website_3_#{locale}") %>
         </div>
 
         <div class="mb-3">
           <%= f.label "main_topic_#{locale}", t(:main_topic, scope: 'profiles.form', language: t(locale, scope: 'i18n.language')).html_safe, class: "mb-2" %>
           <%= f.text_field "main_topic_#{locale}", class: 'form-control mb-3', maxlength: 30 %>
+          <%= field_error(f, :"main_topic_#{locale}") %>
         </div>
 
         <div class="mb-3">
