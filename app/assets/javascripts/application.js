@@ -12,7 +12,7 @@
 //
 //= require jquery3
 //= require rails-ujs
-//= require jquery-ui
+//= require sortablejs/Sortable.min
 //= require tom-select/tom-select.complete.min
 //= require popper
 //= require bootstrap-sprockets
