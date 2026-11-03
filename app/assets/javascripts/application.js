@@ -13,10 +13,7 @@
 //= require jquery3
 //= require rails-ujs
 //= require jquery-ui
-//= require typeahead/typeahead.bundle.min
-//= require typeahead/typeahead.jquery.min
-//= require typeahead/bloodhound.min
-//= require tag-it/tag-it
+//= require tom-select/tom-select.complete.min
 //= require popper
 //= require bootstrap-sprockets
 //= require_tree .

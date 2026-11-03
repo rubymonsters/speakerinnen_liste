@@ -246,35 +246,6 @@ ul#medialinks__list {
   color: $primary;
 }
 
-/* autocomplete in search */
-.typeahead {
-  font-family: $sans-serif;
-  vertical-align: middle;
-}
-
-.tt-dropdown-menu {
-  background: white;
-  width: 100%;
-  padding: 10px;
-  color: $dark-grey;
-}
-
-.tt-suggestion {
-  margin: 0;
-  background: $transparent-white;
-  padding: halve($base-spacing-unit) $base-spacing-unit;
-
-  p {
-    margin: 0;
-  }
-
-  &:hover {
-    background-color: whitesmoke;
-    color: $primary;
-    cursor: pointer;
-  }
-}
-
 /* paginate */
 
 .pagy-bootstrap-nav ul {
@@ -352,12 +323,4 @@ ul#medialinks__list {
 
 body .tooltip-inner.wide {
   max-width: 300px;
-}
-
-/* tags */
-.tagit-label {
-  margin-right: 10px;
-}
-.ui-icon {
-  margin-top: -10px;
 }

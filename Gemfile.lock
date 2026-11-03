@@ -585,7 +585,7 @@ DEPENDENCIES
   webrick (~> 1.7)
 
 RUBY VERSION
-  ruby 3.4.9
+  ruby 3.4.11
 
 BUNDLED WITH
   4.0.2

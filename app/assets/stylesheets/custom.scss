@@ -35,12 +35,25 @@ a.anchor {
 
 .home {
 
+  $hero-padding-bottom: 150px;
+
+  // full width below 1200px instead of Bootstrap's fixed container widths
+  .container {
+    max-width: 100%;
+
+    @media (min-width: 1200px) {
+      max-width: 1600px;
+    }
+  }
+
   .start-teaser .container {
     display: flex;
     flex-flow: column;
+    padding-bottom: $hero-padding-bottom; // moves headline and search up in the bottom-aligned hero
 
     .align-items-end {
       margin-top: auto;
+      margin-bottom: -$hero-padding-bottom; // keeps the copyright at the bottom, right above the next row
     }
   }
 }
@@ -132,6 +145,25 @@ h1 {
   color: $error;
 }
 
+// error under a form field (simple_form errors and field_error in ProfilesHelper)
+.form-control + .error {
+  display: block;
+  margin-top: 0.125rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.875em;
+  font-style: italic;
+}
+
+// error under a form field that has a bottom margin
+.form-control.mb-3 + .error {
+  margin-top: -0.875rem;
+}
+
+// red border for fields with an error (simple_form and field_error both put the error right after the field)
+.form-control:has(+ .error) {
+  border-color: $error;
+}
+
 /* diverses */
 
 .alert {
@@ -156,7 +188,17 @@ h1 {
 }
 
 .alert-error {
-  color: $error;
+  background: $error_background;
+  color: $black;
+}
+
+.alert-inline {
+  position: relative;
+  width: auto;
+  padding-right: $alert-dismissible-padding-r;
+  margin-top: $base-spacing-unit;
+  z-index: auto;
+  border-radius: $border-radius;
 }
 
 .border-vertical {
@@ -325,8 +367,32 @@ textarea, input {
   text-decoration: none;
 }
 
-.home .home-search .twitter-typeahead {
-  display: block !important;
+.home-search .form-control {
+  border: 1px solid $primary;
+}
+
+.navbar .ts-wrapper.search-autocomplete {
+  width: 11rem;
+}
+
+// keep the search on one line, otherwise the narrow header search grows
+// when the typed text becomes the selected item on Enter
+.ts-wrapper.search-autocomplete .ts-control {
+  flex-wrap: nowrap;
+
+  .item {
+    white-space: nowrap;
+  }
+}
+
+// no yellow background on the matching text in the search suggestions
+.ts-wrapper.search-autocomplete .ts-dropdown [data-selectable] .highlight {
+  background: none;
+}
+
+// suggestion chosen with the arrow keys or the mouse
+.ts-wrapper.search-autocomplete .ts-dropdown .active {
+  background-color: $light_green;
 }
 
 .startpage-subtitle {

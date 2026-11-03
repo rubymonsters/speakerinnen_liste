@@ -14,8 +14,9 @@
     <%= t(:profile_status, scope: 'admin.profiles') + t(:public, scope: 'admin.profiles') + '.' if @profile.published? %>
   </div>
 
-  <%= link_to t(:new, scope: 'medialinks').html_safe,
-            new_admin_profile_medialink_path(@profile), class: 'btn btn-small btn-danger my-3' %>
+  <%= link_to new_admin_profile_medialink_path(@profile), class: 'btn btn-small btn-danger my-3' do %>
+    <i class='fa fa-plus-circle'></i> <%= t(:new, scope: 'medialinks') %>
+  <% end %>
 
   <%= t(:name_of_profile, scope: 'admin.profiles') %> <strong><%= @profile.fullname %></strong>.
   <h1 class="mb-5"><%= t(:index, scope: 'medialinks')%></h1>
