@@ -30,6 +30,8 @@ RSpec.feature 'Editing a profile', type: :system do
 
       click_button I18n.t(:update_button, scope: 'profiles.form')
 
+      expect(page).to have_css('.alert-inline', text: I18n.t('flash.profiles.saved'))
+
       expect(page).to have_content('Ada')
       expect(page).to have_content('Lovelace')
       expect(page).to have_content('English')

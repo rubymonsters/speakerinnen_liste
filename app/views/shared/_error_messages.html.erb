@@ -1,9 +1,12 @@
 <% if @profile.errors.any? %>
-  <div id="error_explanation" class="alert-error">
-    <ul class="list-group list-group-flush">
-      <% @profile.errors.full_messages.each do |msg| %>
-        <li class="list-group-item"><%= msg %></li>
-      <% end %>
-    </ul>
+  <div class="container">
+    <div id="error_explanation" class="alert alert-inline alert-error alert-dismissible fade show" role="alert">
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="<%= t('general.close') %>"></button>
+      <ul class="mb-0">
+        <% @profile.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
   </div>
 <% end %>
