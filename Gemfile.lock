@@ -148,7 +148,7 @@ GEM
       unaccent (~> 0.3)
     country_select (10.0.0)
       countries (> 5.0, < 8.0)
-    crass (1.0.7)
+    crass (1.0.8)
     crawler_detect (1.2.4)
       qonfig (>= 0.24)
     csv (3.3.6)
