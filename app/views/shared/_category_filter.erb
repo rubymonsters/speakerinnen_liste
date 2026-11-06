@@ -38,75 +38,106 @@
 </div>
 
 <script>
-  // category links
-  $( ".category-link" ).click(function() {
-    var category = $(this).attr('id').split('-');
-    category = category[2];
-    $(".category-title").addClass( "d-none" );
-    $("#category-" + category).removeClass( "d-none" );
-    $(".category-search").addClass("d-none");
-    $(".category-search-" + category).removeClass("d-none");
-    $("#tags_explantation").removeClass("d-none")
-  });
+  (function() {
+    var availableTagsBox = document.getElementById('available-tags-box');
+    var selectedTagsBox = document.getElementById('selected-tags-box');
 
-// tag box
+    // the first css class of a tag is its category, e.g. "category_science"
+    var categoryClassOf = function(tag) {
+      return tag.classList[0];
+    };
 
-  // move tags from tagbox to the selecetd tag box and set the css class to disabled in the tagbox
-  $( "#available-tags-box .available-tag" ).click(function() {
-    $(this).clone().appendTo( "#selected-tags-box" ).append("<i class='ps-2 fa fa-times-circle'></i>").removeClass("available-tag").addClass("selected-tag");
-    $(this).addClass( "disabled no-click" );
-    $(this).removeClass( "enabled" );
-    var category = $(this).attr('class').split(' ')[0];
-    category = category.split('_');
-    category = category[1];
-    $("#icon-" + category).addClass("icon-active-" + category);
-  });
+    var availableTag = function(tagName) {
+      return availableTagsBox.querySelector('#' + CSS.escape(tagName));
+    };
 
-  // move already selected tags back to the tag-box
-  $(document).on('click','.selected-tag',function() {
-    var category = $(this).attr('class').split(' ')[0];
-    $(this).remove();
-    var tag_name = $(this).attr('id');
-    $("#available-tags-box #" + tag_name).removeClass( "disabled no-click" );
-    $("#available-tags-box #" + tag_name).addClass( "enabled" );
+    var addToSelectedTags = function(tag) {
+      var selectedTag = tag.cloneNode(true);
+      selectedTag.insertAdjacentHTML('beforeend', "<i class='ps-2 fa fa-times-circle'></i>");
+      selectedTag.classList.remove('available-tag');
+      selectedTag.classList.add('selected-tag');
+      selectedTagsBox.appendChild(selectedTag);
+    };
 
-    if (!$(".selected-tag").hasClass(category)) {
-      category = category.split('_');
-      category = category[1];
-      $("#icon-" + category).removeClass("icon-active-" + category);
-        }
-  });
+    // category links
+    document.querySelectorAll('.category-link').forEach(function(link) {
+      link.addEventListener('click', function() {
+        var category = this.id.split('-')[2];
+        document.querySelectorAll('.category-title').forEach(function(title) { title.classList.add('d-none'); });
+        var categoryTitle = document.getElementById('category-' + category);
+        if (categoryTitle) categoryTitle.classList.remove('d-none');
+        document.querySelectorAll('.category-search').forEach(function(button) { button.classList.add('d-none'); });
+        document.querySelectorAll('.category-search-' + category).forEach(function(button) { button.classList.remove('d-none'); });
+        document.getElementById('tags_explantation').classList.remove('d-none');
+      });
+    });
 
-  $( "#search_in_topic" ).click(function() {
-    var all_tags = $('#selected-tags-box .selected-tag').map(function(){
-      return $(this).text();
-    }).get().join();
-    $('#hidden_tag_input').val(all_tags);
-  });
+  // tag box
 
-  // remove all tags fro the selecetd tag box
-  $( "#clear" ).click(function() {
-    $( "#selected-tags-box .selected-tag" ).remove();
-    $(".available-tag").removeClass( "disabled no-click" );
-    $(".available-tag").removeClass( "enabled" );
-    window.location = window.location.pathname;
-  });
+    // move tags from tagbox to the selecetd tag box and set the css class to disabled in the tagbox
+    availableTagsBox.querySelectorAll('.available-tag').forEach(function(tag) {
+      tag.addEventListener('click', function() {
+        addToSelectedTags(this);
+        this.classList.add('disabled', 'no-click');
+        this.classList.remove('enabled');
+        var category = categoryClassOf(this).split('_')[1];
+        document.getElementById('icon-' + category).classList.add('icon-active-' + category);
+      });
+    });
 
-  // choose all tags from a category
-  $( ".choose_all_tags" ).click(function() {
-    var category = $(this).attr('id');
-    $("#available-tags-box .enabled.category_" + category).clone().appendTo( "#selected-tags-box" ).append("<i class='ps-2 fa fa-times-circle'></i>").removeClass("available-tag").addClass("selected-tag");
-    $("#available-tags-box .category_" + category).addClass( "disabled no-click" );
-    $("#available-tags-box .category_" + category).removeClass( "enabled" );
-  });
+    // move already selected tags back to the tag-box
+    selectedTagsBox.addEventListener('click', function(event) {
+      var tag = event.target.closest('.selected-tag');
+      if (!tag) return;
+      var categoryClass = categoryClassOf(tag);
+      tag.remove();
+      var originalTag = availableTag(tag.id);
+      if (originalTag) {
+        originalTag.classList.remove('disabled', 'no-click');
+        originalTag.classList.add('enabled');
+      }
 
-// add the correct css classes to the tags
-  $(document).ready(function() {
-    <% if params[:tag_filter] %>
-      <% params[:tag_filter].gsub(' ','-').split(",").each do |tag_name| %>
-        $("#<%= tag_name %>").clone().appendTo($( "#selected-tags-box" )).append($("<i class='ps-2 fa fa-times-circle'></i>")).removeClass("available-tag").addClass("selected-tag");
-        $("#<%= tag_name %>.available-tag").addClass( "disabled no-click" );
-      <% end %>
-    <% end %>
-  });
+      if (!selectedTagsBox.querySelector('.selected-tag.' + CSS.escape(categoryClass))) {
+        var category = categoryClass.split('_')[1];
+        document.getElementById('icon-' + category).classList.remove('icon-active-' + category);
+      }
+    });
+
+    document.getElementById('search_in_topic').addEventListener('click', function() {
+      var allTags = Array.from(selectedTagsBox.querySelectorAll('.selected-tag')).map(function(tag) {
+        return tag.textContent;
+      }).join();
+      document.getElementById('hidden_tag_input').value = allTags;
+    });
+
+    // remove all tags fro the selecetd tag box
+    document.getElementById('clear').addEventListener('click', function() {
+      selectedTagsBox.querySelectorAll('.selected-tag').forEach(function(tag) { tag.remove(); });
+      document.querySelectorAll('.available-tag').forEach(function(tag) {
+        tag.classList.remove('disabled', 'no-click', 'enabled');
+      });
+      window.location = window.location.pathname;
+    });
+
+    // choose all tags from a category
+    document.querySelectorAll('.choose_all_tags').forEach(function(button) {
+      button.addEventListener('click', function() {
+        var categoryClass = 'category_' + this.id;
+        availableTagsBox.querySelectorAll('.enabled.' + CSS.escape(categoryClass)).forEach(addToSelectedTags);
+        availableTagsBox.querySelectorAll('.' + CSS.escape(categoryClass)).forEach(function(tag) {
+          tag.classList.add('disabled', 'no-click');
+          tag.classList.remove('enabled');
+        });
+      });
+    });
+
+  // add the correct css classes to the tags
+    var filteredTagNames = <%= raw params[:tag_filter].to_s.gsub(' ', '-').split(',').to_json %>;
+    filteredTagNames.forEach(function(tagName) {
+      var tag = availableTag(tagName);
+      if (!tag) return;
+      addToSelectedTags(tag);
+      tag.classList.add('disabled', 'no-click');
+    });
+  })();
 </script>

@@ -54,15 +54,20 @@
     <% end %>
     <script>
       var updateStateSelects = function(country) {
-        $(".profile_states_group").hide();
-        $("#profile_states_group-" + country).show();
-
-        $(".profile_states_group select").removeAttr("name");
-        $("#profile_states_group-" + country + " select").attr("name", "profile[state]");
+        document.querySelectorAll('.profile_states_group').forEach(function(group) {
+          var select = group.querySelector('select');
+          if (group.id == 'profile_states_group-' + country) {
+            group.style.display = '';
+            select.setAttribute('name', 'profile[state]');
+          } else {
+            group.style.display = 'none';
+            select.removeAttribute('name');
+          }
+        });
       };
-      $(document).ready(function() {
+      document.addEventListener('DOMContentLoaded', function() {
         updateStateSelects("<%= @profile.country&.downcase %>");
-        $("#profile_country").change(function() {
+        document.getElementById('profile_country').addEventListener('change', function() {
           updateStateSelects(this.value.toLowerCase());
         });
       });
@@ -279,28 +284,15 @@
 
 <script type="text/javascript" charset="utf-8">
 
-$('#expander').click(function(){
-  if ( $('#rest_languages').css('display') == 'none' ) {
-    $('#rest_languages').css('display','block');
-    $('#expander').html('<%= t(:show_less_languages, scope: 'profiles.form')%><i class="fa fa-caret-down ps-1"></i>');
+document.getElementById('expander').addEventListener('click', function() {
+  var restLanguages = document.getElementById('rest_languages');
+  if (restLanguages.style.display == 'none') {
+    restLanguages.style.display = 'block';
+    this.innerHTML = '<%= j t(:show_less_languages, scope: 'profiles.form') %><i class="fa fa-caret-down ps-1"></i>';
   } else {
-    $('#rest_languages').css('display','none');
-    $('#expander').html('<%= t(:show_more_languages, scope: 'profiles.form')%><i class="fa fa-caret-down ps-1"></i>');
-  }});
-
-$('#show-de').click(function(){
-    $("#edit-de").removeClass('d-none').addClass('d-block');
-    $("#edit-en").removeClass('d-block').addClass('d-none');
-    $('#show-de').addClass('active');
-    $('#show-en').removeClass('active');
-  });
-
-$('#show-en').click(function(){
-    $("#edit-en").removeClass('d-none').addClass('d-block');
-    $("#edit-de").removeClass('d-block').addClass('d-none');
-    $('#show-en').addClass('active');
-    $('#show-de').removeClass('active');
-  });
-
+    restLanguages.style.display = 'none';
+    this.innerHTML = '<%= j t(:show_more_languages, scope: 'profiles.form') %><i class="fa fa-caret-down ps-1"></i>';
+  }
+});
 
 </script>

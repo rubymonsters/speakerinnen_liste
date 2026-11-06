@@ -26,8 +26,6 @@ gem 'pagy'
 gem "acts-as-taggable-on", "~> 13.0"
 gem 'devise', '~> 5.0'
 gem 'invisible_captcha', '2.3'
-gem 'jquery-rails', '~> 4.4.0'
-gem 'jquery-ui-rails', '~> 8.0.0'
 gem 'mini_magick', '~> 4.9.5'
 gem 'pg', '~> 1.5.9'
 gem 'simple_form'

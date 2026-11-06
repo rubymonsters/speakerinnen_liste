@@ -85,33 +85,20 @@
 <script type="text/javascript" charset="utf-8">
 
   // search filter
-  $('.expander_countries').click(function(){
-    if ( $('.rest_facet_countries').css('display') == 'none' ) {
-      $('.rest_facet_countries').css('display','block');
-      $('.expander_countries').html('<%= t(:show_less, scope: 'profiles.index')%>');
-    } else {
-      $('.rest_facet_countries').css('display','none');
-      $('.expander_countries').html('<%= t(:show_more, scope: 'profiles.index')%>');
-    }});
+  ['countries', 'cities', 'languages'].forEach(function(facet) {
+    var expander = document.querySelector('.expander_' + facet);
+    var restFacet = document.querySelector('.rest_facet_' + facet);
+    if (!expander || !restFacet) return;
 
-  $('.expander_cities').click(function(){
-    if ( $('.rest_facet_cities').css('display') == 'none' ) {
-      $('.rest_facet_cities').css('display','block');
-      $('.expander_cities').html('<%= t(:show_less, scope: 'profiles.index')%>');
-    } else {
-      $('.rest_facet_cities').css('display','none');
-      $('.expander_cities').html('<%= t(:show_more, scope: 'profiles.index')%>');
-    }});
-
-  $('.expander_languages').click(function(){
-    if ( $('.rest_facet_languages').css('display') == 'none' ) {
-      $('.rest_facet_languages').css('display','block');
-      $('.expander_languages').html('<%= t(:show_less, scope: 'profiles.index')%>');
-    } else {
-      $('.rest_facet_languages').css('display','none');
-      $('.expander_languages').html('<%= t(:show_more, scope: 'profiles.index')%>');
-    }});
-
-    $('.filter-themes-next-line').css('display', 'block').css('margin-top', '1em');
+    expander.addEventListener('click', function() {
+      if (restFacet.style.display == 'none') {
+        restFacet.style.display = 'block';
+        expander.textContent = '<%= j t(:show_less, scope: 'profiles.index') %>';
+      } else {
+        restFacet.style.display = 'none';
+        expander.textContent = '<%= j t(:show_more, scope: 'profiles.index') %>';
+      }
+    });
+  });
 
 </script>

@@ -90,6 +90,8 @@
 </div>
 <% if cookies[:cookie_consent].blank? %>
   <script>
-    $('#authModal').modal('show')
+    document.addEventListener('DOMContentLoaded', function() {
+      bootstrap.Modal.getOrCreateInstance(document.getElementById('authModal')).show();
+    });
   </script>
 <% end %>
