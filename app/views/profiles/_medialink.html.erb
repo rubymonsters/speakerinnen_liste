@@ -1,15 +1,22 @@
-<div class="mb-5 p-3 border">
-  <b style="text-decoration: underline">
-    <%= link_to medialink.title, url_with_protocol(medialink.url) %>
-  </b>
-  <br>
-  <% if medialink.url =~ /youtube|youtu.be/i %>
-    <img src=<%= medialink.youtube_thumbnail_url %> alt="Video Thumbnail">
-  <% end %>
-  <p>
-    <%= simple_format(medialink.description, class: '') %>
-  </p>
-  <span class="color-grey">
-    <%= t(:select_language, scope: 'medialinks') + t("#{medialink.language}", scope: 'iso_639_1').capitalize if medialink.language.present? %>
-  </span>
+<div class="card medialink-card mb-3">
+  <div class="card-body d-flex gap-3 p-3">
+    <% if medialink.url =~ /youtube|youtu.be/i && medialink.youtube_thumbnail_url %>
+      <img src="<%= medialink.youtube_thumbnail_url %>" alt="Video Thumbnail" class="medialink-card__thumbnail rounded">
+    <% end %>
+    <div class="medialink-card__content">
+      <h6 class="mb-1">
+        <%= link_to medialink.title, url_with_protocol(medialink.url), class: 'stretched-link' %>
+      </h6>
+      <% if medialink.description.present? %>
+        <div class="medialink-card__description small mb-1">
+          <%= simple_format(medialink.description) %>
+        </div>
+      <% end %>
+      <% if medialink.language.present? %>
+        <span class="small color-grey">
+          <%= t(:select_language, scope: 'medialinks') + t("#{medialink.language}", scope: 'iso_639_1').capitalize %>
+        </span>
+      <% end %>
+    </div>
+  </div>
 </div>
