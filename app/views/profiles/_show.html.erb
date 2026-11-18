@@ -20,7 +20,7 @@
   </div>
 </div>
 
-<%# three columns: photo | topics and contact button | websites, services and more %>
+<%# three columns: photo | topics, services and contact button | websites, social media and more %>
 <div class="row mt-4 gx-5 profile-show">
   <div class="col-lg-4 col-md-6 pb-3">
     <div class="profile-show__photo">
@@ -28,10 +28,6 @@
     </div>
   </div>
   <div class="col-lg-4 col-md-6">
-    <!-- city and languages -->
-    <% if (intro = profile_intro(@profile)) %>
-      <p><%= intro %></p>
-    <% end %>
     <!-- main topic -->
     <% if @profile.main_topic.present? %>
       <p><%= t(:main_topic_html, scope: 'profiles.show', main_topic: content_tag(:strong, @profile.main_topic)) %></p>
@@ -40,6 +36,7 @@
     <% topics = topics_for_profile(@profile).to_a %>
     <% if topics.any? %>
       <div class="mb-3">
+        <p class="mb-2"><%= t(@profile.main_topic.present? ? :more_topics : :topics, scope: 'profiles.show') %></p>
         <ul class="topic-pills list-unstyled d-flex flex-wrap gap-2 mb-0">
           <% topics.each do |topic| %>
             <li>
@@ -48,6 +45,13 @@
           <% end %>
         </ul>
       </div>
+    <% end %>
+    <!-- services -->
+    <% if @profile.services.any? %>
+      <p>
+        <%= t(:services, scope: 'profiles.show') %><br>
+        <%= safe_join(@profile.services.map { |s| content_tag(:strong, t(s.name, scope: 'profiles.show')) }, ' · ') %>
+      </p>
     <% end %>
     <!-- main contact button -->
     <% unless own_profile %>
@@ -84,15 +88,6 @@
         <% end %>
       </div>
     <% end %>
-    <!-- twitter -->
-    <% if @profile.twitter.present? %>
-      <p>
-        <span class="fw-bold">
-          <%= t(:twitter, scope: 'profiles.show') %>
-        </span>
-        <%= link_to '@' + @profile.twitter_name_formatted, @profile.twitter_link_formatted, target: '_blank', rel: 'noopener' %>
-      </p>
-    <% end %>
     <!-- websites -->
     <% websites = profile_websites(@profile) %>
     <% if websites.any? %>
@@ -104,7 +99,8 @@
     <!-- social media -->
     <% social_media_links = profile_social_media_links(@profile) %>
     <% if social_media_links.any? %>
-      <ul class="list-unstyled d-flex gap-3">
+      <p class="mb-2"><%= t(:social_media, scope: 'profiles.show') %></p>
+      <ul class="list-unstyled d-flex flex-wrap gap-3">
         <% social_media_links.each do |url, icon| %>
           <li>
             <%= link_to url, target: "_blank", rel: "noopener", class: "social-icon" do %>
@@ -114,12 +110,11 @@
         <% end %>
       </ul>
     <% end %>
-    <!-- services -->
-    <% if @profile.services.any? %>
-      <p>
-        <%= t(:services, scope: 'profiles.show') %><br>
-        <%= safe_join(@profile.services.map { |s| content_tag(:strong, t(s.name, scope: 'profiles.show')) }, ' · ') %>
-      </p>
+    <!-- city, country and languages -->
+    <% location = profile_location(@profile) %>
+    <% languages = profile_languages(@profile) %>
+    <% if location || languages %>
+      <p><%= safe_join([location, languages].compact, ' · ') %></p>
     <% end %>
     <!-- willing to travel and willing to talk nonprofit, only shown if true -->
     <% if @profile.willing_to_travel %>
@@ -131,7 +126,7 @@
   </div>
 </div>
 
-<!-- bio and additional notes on the left, medialinks on the right (or on the left if there is no text) -->
+<!-- personal note and bio on the left, medialinks on the right (or on the left if there is no text) -->
 <% has_text = @profile.bio.present? || @profile.personal_note.present? %>
 <% has_medialinks = @medialinks.load.any? %>
 <%# don't show the second contact button at all when the profile is not active %>
@@ -140,13 +135,13 @@
   <div class="row my-4 gx-5">
     <% if has_text %>
       <div class="col-lg-6">
-        <% if @profile.bio.present? %>
-          <p class="fw-bold mb-2"><%= t(:bio, scope: 'profiles.show') %></p>
-          <%= simple_format(@profile.bio) %>
-        <% end %>
         <% if @profile.personal_note.present? %>
-          <p class="fw-bold mb-2 mt-4"><%= t(:personal_note, scope: 'profiles.show') %></p>
+          <p class="fw-bold mb-2"><%= t(:personal_note, scope: 'profiles.show') %></p>
           <%= simple_format(@profile.personal_note) %>
+        <% end %>
+        <% if @profile.bio.present? %>
+          <p class="fw-bold mb-2 <%= 'mt-4' if @profile.personal_note.present? %>"><%= t(:bio, scope: 'profiles.show') %></p>
+          <%= simple_format(@profile.bio) %>
         <% end %>
         <% if show_second_contact && !has_medialinks %>
           <%= render 'profiles/contact_button', profile: @profile %>
