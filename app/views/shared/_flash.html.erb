@@ -1,7 +1,10 @@
-<% flash.each do |type, message| %>
-  <div class="alert <%= bootstrap_class_for(type) %> alert-dismissible fade show" role="alert">
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    <%= message %>
+<% if flash.any? %>
+  <div class="container">
+    <% flash.each do |type, message| %>
+      <div class="alert alert-inline <%= bootstrap_class_for(type) %> alert-dismissible fade show" role="alert">
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="<%= t('general.close') %>"></button>
+        <%= message %>
+      </div>
+    <% end %>
   </div>
 <% end %>
-

@@ -141,6 +141,42 @@ end
     end
   end
 
+  describe 'length of fields limited in the database' do
+    it 'is invalid with a website longer than 255 characters' do
+      profile = Profile.new(website_de: "https://example.com/#{'a' * 236}")
+      profile.valid?
+      expect(profile.errors[:website_de].size).to eq(1)
+    end
+
+    it 'is invalid with an additional website longer than 255 characters' do
+      profile = Profile.new(website_2_de: "https://example.com/#{'a' * 236}", website_3_en: "https://example.com/#{'a' * 236}")
+      profile.valid?
+      expect(profile.errors[:website_2_de].size).to eq(1)
+      expect(profile.errors[:website_3_en].size).to eq(1)
+    end
+
+    it 'only reports the locale that is too long' do
+      profile = Profile.new(website_en: "https://example.com/#{'a' * 236}")
+      profile.valid?
+      expect(profile.errors[:website_en].size).to eq(1)
+      expect(profile.errors[:website_de]).to be_empty
+    end
+
+    it 'keeps the saved slug in the url when a changed name is too long' do
+      profile = create(:published_profile, firstname: 'Ada', lastname: 'Lovelace')
+      saved_slug = profile.slug
+      profile.lastname = 'a' * 256
+      expect(profile.save).to be false
+      expect(profile.to_param).to eq(saved_slug)
+    end
+
+    it 'is valid with a website of 255 characters' do
+      profile = Profile.new(website_de: "https://example.com/#{'a' * 235}")
+      profile.valid?
+      expect(profile.errors[:website_de]).to be_empty
+    end
+  end
+
   describe 'scopes' do
     it 'returns only published profiles' do
       profile.update(published: false)
@@ -272,6 +308,16 @@ end
 
         expect(Profile.by_language('pl')).to eq [polish]
       end
+    end
+  end
+
+  describe '.typeahead' do
+    it 'suggests a topic only once when it differs in surrounding spaces' do
+      FactoryBot.create(:published_profile, topic_list: ['social media'])
+      FactoryBot.create(:published_profile, main_topic_de: 'social media ')
+      FactoryBot.create(:published_profile, main_topic_de: ' Social Media')
+
+      expect(Profile.typeahead('social media')).to eq ['social media']
     end
   end
 end

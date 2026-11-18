@@ -35,7 +35,7 @@ class MedialinksController < ApplicationController
       flash[:notice] = I18n.t('flash.medialink.created')
       redirect_to profile_medialinks_path(@profile)
     else
-      flash[:notice] = I18n.t('flash.medialink.error')
+      flash.now[:alert] = I18n.t('flash.medialink.error')
       render action: 'new'
     end
   end
