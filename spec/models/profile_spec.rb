@@ -310,4 +310,14 @@ end
       end
     end
   end
+
+  describe '.typeahead' do
+    it 'suggests a topic only once when it differs in surrounding spaces' do
+      FactoryBot.create(:published_profile, topic_list: ['social media'])
+      FactoryBot.create(:published_profile, main_topic_de: 'social media ')
+      FactoryBot.create(:published_profile, main_topic_de: ' Social Media')
+
+      expect(Profile.typeahead('social media')).to eq ['social media']
+    end
+  end
 end
