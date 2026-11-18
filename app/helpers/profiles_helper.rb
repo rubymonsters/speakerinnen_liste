@@ -52,14 +52,18 @@ module ProfilesHelper
     mastodon: 'fa-brands fa-mastodon'
   }.freeze
 
-  # "Berlin · German and English", or only the part that is filled in
-  def profile_intro(profile)
-    parts = []
-    parts << content_tag(:strong, profile.city) if profile.city.present?
-    if profile.iso_languages.present?
-      parts << to_sentence(profile.iso_languages.map { |iso| content_tag(:strong, t(iso, scope: 'iso_639_1').capitalize) })
-    end
-    safe_join(parts, ' · ') if parts.any?
+  # "Berlin, Germany", or only the part that is filled in
+  def profile_location(profile)
+    country = ISO3166::Country[profile.country]&.translation(I18n.locale.to_s) if profile.country.present?
+    parts = [profile.city, country].select(&:present?)
+    parts.join(', ') if parts.any?
+  end
+
+  # "German, English, French"
+  def profile_languages(profile)
+    return if profile.iso_languages.blank?
+
+    profile.iso_languages.map { |iso| t(iso, scope: 'iso_639_1').capitalize }.join(', ')
   end
 
   # websites in the current language, or all websites with fallback if none is translated
@@ -70,9 +74,11 @@ module ProfilesHelper
   end
 
   def profile_social_media_links(profile)
-    SOCIAL_MEDIA_ICONS.filter_map do |network, icon|
+    links = SOCIAL_MEDIA_ICONS.filter_map do |network, icon|
       url = profile.public_send(network)
       [url, icon] if url.present?
     end
+    links << [profile.twitter_link_formatted, 'fa-brands fa-x-twitter'] if profile.twitter.present?
+    links
   end
 end
