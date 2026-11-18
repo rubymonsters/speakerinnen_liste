@@ -145,7 +145,7 @@ class Profile < ApplicationRecord
     main_topics = profiles.where('main_topic ILIKE ?', "%#{term}%").pluck(:main_topic)
 
     suggestions = firstnames + lastnames + tags + main_topics
-    suggestions.map { |s| s.downcase }.uniq
+    suggestions.map { |s| s.squish.downcase }.uniq
   end
 
   def fullname
