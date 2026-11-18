@@ -48,6 +48,8 @@ document.addEventListener('DOMContentLoaded', function() {
       refreshThrottle: 0,
       persist: false,
       maxItems: 1,
+      // keep commas in the search term ("social media, ai"), a text field can't contain line breaks
+      delimiter: '\n',
       maxOptions: 20,
       valueField: 'text',
       labelField: 'text',
