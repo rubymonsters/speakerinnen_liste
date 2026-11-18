@@ -58,6 +58,15 @@
   width: 100%;
 }
 
+.contact-button {
+  --bs-btn-hover-bg: #{$speakerinnen-purple};
+  --bs-btn-hover-border-color: #{$speakerinnen-purple};
+  --bs-btn-hover-color: #{$white};
+  --bs-btn-active-bg: #{$speakerinnen-purple};
+  --bs-btn-active-border-color: #{$speakerinnen-purple};
+  --bs-btn-active-color: #{$white};
+}
+
 .nav-link {
   color: $dark-grey;
 
@@ -246,6 +255,50 @@ ul#medialinks__list {
   color: $primary;
 }
 
+.single-profile .medialink-card {
+  border-color: $grey;
+  transition: border-color 0.15s;
+
+  &:hover {
+    border-color: $primary;
+  }
+
+  a {
+    padding: 0;
+    color: $font-color;
+    text-decoration: none;
+
+    &:hover {
+      background-color: transparent;
+      text-decoration: underline;
+    }
+  }
+}
+
+.medialink-card__thumbnail {
+  width: 120px;
+  height: 68px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.medialink-card__content {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+// keep the cards compact: show at most three lines of the description
+.medialink-card__description {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+
+  p {
+    margin-bottom: 0;
+  }
+}
+
 /* autocomplete in search */
 .typeahead {
   font-family: $sans-serif;
@@ -360,4 +413,17 @@ body .tooltip-inner.wide {
 }
 .ui-icon {
   margin-top: -10px;
+}
+
+.profile-show {
+  margin-bottom: 100px;
+}
+
+.profile-show__photo {
+  max-width: 450px;
+
+  img {
+    width: 100%;
+    height: auto;
+  }
 }
