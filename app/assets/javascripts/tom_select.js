@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
       addPrecedence: true,
       refreshThrottle: 0, // so a quick Enter after typing never picks a stale suggestion
       persist: false,
+      clearAfterSelect: true, // remove the typed "klima" after picking "klimabewegung"
       delimiter: ',',
       plugins: ['remove_button']
     });

@@ -385,13 +385,13 @@ textarea, input {
   }
 }
 
-// no yellow background on the matching text in the search suggestions
-.ts-wrapper.search-autocomplete .ts-dropdown [data-selectable] .highlight {
+// no yellow background on the matching text in the suggestions
+.ts-wrapper .ts-dropdown [data-selectable] .highlight {
   background: none;
 }
 
 // suggestion chosen with the arrow keys or the mouse
-.ts-wrapper.search-autocomplete .ts-dropdown .active {
+.ts-wrapper .ts-dropdown .active {
   background-color: $light_green;
 }
 
