@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
       addPrecedence: true,
       refreshThrottle: 0, // so a quick Enter after typing never picks a stale suggestion
       persist: false,
+      clearAfterSelect: true, // remove the typed "klima" after picking "klimabewegung"
       delimiter: ',',
       plugins: ['remove_button']
     });
@@ -31,19 +32,33 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
+  // the loaded suggestion that equals the given text, ignoring upper and lower case
+  function findSuggestion(select, text) {
+    var lowerText = text.toLowerCase();
+    return Object.values(select.options).find(function(option) {
+      return option.text.toLowerCase() === lowerText;
+    });
+  }
+
   // autocomplete for the header and home search
   document.querySelectorAll('.search-autocomplete').forEach(function(input) {
-    new TomSelect(input, {
+    var searchSelect = new TomSelect(input, {
       create: true,
       createOnBlur: true,
       addPrecedence: true,
       refreshThrottle: 0,
       persist: false,
       maxItems: 1,
+      // keep commas in the search term ("social media, ai"), a text field can't contain line breaks
+      delimiter: '\n',
       maxOptions: 20,
       valueField: 'text',
       labelField: 'text',
       searchField: 'text',
+      // don't offer the typed text when a suggestion only differs in upper and lower case
+      createFilter: function(text) {
+        return !findSuggestion(this, text);
+      },
       shouldLoad: function(query) {
         return query.length >= 3;
       },
@@ -75,5 +90,15 @@ document.addEventListener('DOMContentLoaded', function() {
         no_results: null
       }
     });
+    // typing "klima" and leaving the field (e.g. clicking the search button) uses the suggestion "Klima"
+    var createItem = searchSelect.createItem;
+    searchSelect.createItem = function(text, callback) {
+      var suggestion = findSuggestion(this, text || this.inputValue());
+      if (!suggestion) return createItem.apply(this, arguments);
+      this.setTextboxValue();
+      this.addItem(suggestion.text);
+      if (typeof callback === 'function') callback();
+      return true;
+    };
   });
 });
