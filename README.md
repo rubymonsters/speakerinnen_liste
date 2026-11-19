@@ -120,11 +120,26 @@ Find further details in [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ### Use upgraded Ruby version in Docker
 
-If the Ruby version is upgraded (in `Gemfile`, `Dockerfile`, and `.tool-versions`), you need to rebuild the Docker image so the container uses the new version:
+To upgrade Ruby, change the version in all of these files:
+
+- `Gemfile` (`ruby '<version>'`)
+- `Gemfile.lock` (`RUBY VERSION` section)
+- `Dockerfile` (`FROM ruby:<version>`)
+- `.tool-versions`
+
+Then rebuild the Docker image so the container uses the new version:
 
 ```
 make setup
 ```
+
+Check that the container runs the new version:
+
+```
+docker compose run --rm web ruby -v
+```
+
+Don't use `docker compose down -v` (or `make restore-db`) for this: it also deletes the Postgres volume with your local database.
 
 If you switch between branches with different Ruby versions, run `make setup` again after switching to rebuild the image for that branch.
 
