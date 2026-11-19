@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 source 'https://rubygems.org'
-ruby '3.4.11'
+ruby '3.4.13'
 gem 'rails', '~> 8.1.2'
 
 # patch for CVE‑2026‑41316, can be removed with ruby 4.0.3
