@@ -29,6 +29,9 @@
             </a>
             <div class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdownMenuLink">
               <%= render "layouts/header_links#{'_' + current_region.to_s if current_region}" %>
+              <% if profile_signed_in? %>
+                <%= link_to t(:sharepics, scope: 'layouts.application'), sharepics_path, class: 'dropdown-item' %>
+              <% end %>
             </div>
           </li>
 
@@ -46,9 +49,6 @@
           <% if profile_signed_in? %>
             <li class="nav-item active px-3 pt-3">
               <%= link_to(t(:my_profile, scope: 'layouts.application'), profile_path(current_profile), class: "dropdown-item")%>
-            </li>
-            <li class="nav-item active px-3 pt-3">
-              <%= link_to(t(:sharepics, scope: 'layouts.application'), sharepics_path, class: "dropdown-item")%>
             </li>
             <li class="nav-item active px-3 pt-3">
               <%= link_to(t(:logout, scope: 'layouts.application'), destroy_profile_session_path, method: :delete, class: "dropdown-item") %>
