@@ -48,6 +48,9 @@
               <%= link_to(t(:my_profile, scope: 'layouts.application'), profile_path(current_profile), class: "dropdown-item")%>
             </li>
             <li class="nav-item active px-3 pt-3">
+              <%= link_to(t(:sharepics, scope: 'layouts.application'), sharepics_path, class: "dropdown-item")%>
+            </li>
+            <li class="nav-item active px-3 pt-3">
               <%= link_to(t(:logout, scope: 'layouts.application'), destroy_profile_session_path, method: :delete, class: "dropdown-item") %>
             </li>
           <% else %>

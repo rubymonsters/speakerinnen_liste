@@ -1,0 +1,31 @@
+<div class="m-5">
+  <h1>Administration::<%= t('admin.sharepics.title') %></h1>
+
+  <%= link_to t(:add, scope: 'general'), new_admin_sharepic_path, class: 'btn btn-primary btn-sm my-5' %>
+
+  <table class="table">
+    <thead class="bg--lightgrey">
+      <tr>
+        <th></th>
+        <th><%= t('admin.sharepics.fields.title') %></th>
+        <th><%= t('admin.sharepics.fields.position') %></th>
+        <th><%= t('admin.sharepics.fields.published') %></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <% @sharepics.each do |sharepic| %>
+      <tr>
+        <td><%= image_tag sharepic.image.variant(:thumb), alt: sharepic.title, width: 80 if sharepic.image.attached? %></td>
+        <td><%= sharepic.title %></td>
+        <td><%= sharepic.position %></td>
+        <td><%= sharepic.published? ? '✓' : '—' %></td>
+        <td><%= link_to t(:edit, scope: 'general'), edit_admin_sharepic_path(sharepic) %></td>
+        <td>
+          <%= button_to t(:delete, scope: 'general'), admin_sharepic_path(sharepic), method: :delete,
+                        class: 'btn btn-link p-0', data: { confirm: t('admin.sharepics.confirm_delete', title: sharepic.title) } %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</div>

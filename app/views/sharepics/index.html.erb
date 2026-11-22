@@ -1,0 +1,28 @@
+<div class="container py-5 bg--white">
+  <h1><%= t('sharepics.index.title') %></h1>
+  <p class="mb-5"><%= t('sharepics.index.intro') %></p>
+
+  <% if @sharepics.empty? %>
+    <p><%= t('sharepics.index.empty') %></p>
+  <% else %>
+    <div class="row g-4">
+      <% @sharepics.each do |sharepic| %>
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="card h-100">
+            <%= image_tag sharepic.image.variant(:thumb), alt: sharepic.title, class: 'card-img-top', loading: 'lazy' %>
+            <div class="card-body">
+              <h5 class="card-title"><%= sharepic.title %></h5>
+              <% if sharepic.description.present? %>
+                <p class="card-text"><%= sharepic.description %></p>
+              <% end %>
+            </div>
+            <div class="card-footer bg-transparent border-0 pb-3">
+              <%= link_to t('sharepics.index.download'), download_sharepic_path(sharepic),
+                          class: 'btn btn-primary btn-sm', download: true %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>
