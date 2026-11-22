@@ -9,7 +9,6 @@ class SharepicsController < ApplicationController
 
   def download
     sharepic = Sharepic.published.find(params[:id])
-    redirect_to sharepic.image.url(disposition: :attachment, expires_in: 1.minute),
-                allow_other_host: true
+    redirect_to rails_blob_path(sharepic.image, disposition: :attachment)
   end
 end

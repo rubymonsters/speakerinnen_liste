@@ -22,28 +22,28 @@ RSpec.describe 'Admin::Sharepics', type: :request do
     end
 
     it 'creates a sharepic' do
-      expect {
+      expect do
         post admin_sharepics_path, params: { sharepic: { title: 'Neu', image: image } }
-      }.to change(Sharepic, :count).by(1)
+      end.to change(Sharepic, :count).by(1)
       expect(response).to redirect_to(admin_sharepics_path(locale: I18n.locale))
     end
 
     it 'renders errors for invalid input' do
-      expect {
+      expect do
         post admin_sharepics_path, params: { sharepic: { title: '' } }
-      }.not_to change(Sharepic, :count)
+      end.not_to change(Sharepic, :count)
       expect(response).to have_http_status(:unprocessable_entity)
     end
 
     it 'updates a sharepic' do
       sharepic = create(:sharepic)
-      patch admin_sharepic_path(sharepic), params: { sharepic: { title: 'Geändert' } }
+      patch admin_sharepic_path(sharepic.id, locale: I18n.locale), params: { sharepic: { title: 'Geändert' } }
       expect(sharepic.reload.title).to eq('Geändert')
     end
 
     it 'deletes a sharepic' do
       sharepic = create(:sharepic)
-      expect { delete admin_sharepic_path(sharepic) }.to change(Sharepic, :count).by(-1)
+      expect { delete admin_sharepic_path(sharepic.id, locale: I18n.locale) }.to change(Sharepic, :count).by(-1)
     end
   end
 end
