@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 class SharepicsController < ApplicationController
-  before_action :authenticate_profile!
-
   def index
     @sharepics = Sharepic.published.ordered.with_attached_image
   end

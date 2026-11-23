@@ -5,21 +5,7 @@ RSpec.describe 'Sharepics', type: :request do
   let!(:hidden) { create(:sharepic, title: 'Entwurf', published: false) }
   let(:profile) { create(:published_profile) }
 
-  context 'when logged out' do
-    it 'redirects the index to the login' do
-      get sharepics_path(locale: I18n.locale)
-      expect(response).to redirect_to(%r{/profiles/sign_in})
-    end
-
-    it 'does not allow downloads' do
-      get download_sharepic_path(sharepic.id, locale: I18n.locale)
-      expect(response).to redirect_to(%r{/profiles/sign_in})
-    end
-  end
-
-  context 'when logged in' do
-    before { sign_in profile }
-
+  shared_examples 'public sharepics' do
     it 'lists published sharepics only' do
       get sharepics_path(locale: I18n.locale)
       expect(response).to have_http_status(:ok)
@@ -39,5 +25,15 @@ RSpec.describe 'Sharepics', type: :request do
       get download_sharepic_path(hidden.id, locale: I18n.locale)
       expect(response).to have_http_status(:not_found)
     end
+  end
+
+  context 'when logged out' do
+    it_behaves_like 'public sharepics'
+  end
+
+  context 'when logged in' do
+    before { sign_in profile }
+
+    it_behaves_like 'public sharepics'
   end
 end
