@@ -29,9 +29,6 @@
             </a>
             <div class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdownMenuLink">
               <%= render "layouts/header_links#{'_' + current_region.to_s if current_region}" %>
-              <% if profile_signed_in? %>
-                <%= link_to t(:sharepics, scope: 'layouts.application'), sharepics_path, class: 'dropdown-item' %>
-              <% end %>
             </div>
           </li>
 

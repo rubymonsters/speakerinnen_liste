@@ -33,7 +33,6 @@ de:
       logout: "Ausloggen"
       signup: "Registrieren"
       login: "Einloggen"
-      sharepics: "Sharepics"
   sharepics:
     index:
       title: "Sharepics zum Download"
