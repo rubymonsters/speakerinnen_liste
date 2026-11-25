@@ -33,3 +33,42 @@ de:
       logout: "Ausloggen"
       signup: "Registrieren"
       login: "Einloggen"
+  sharepics:
+    index:
+      title: "Sharepics zum Download"
+      intro: "Du willst zeigen, dass du Teil von Speakerinnen.org bist oder uns unterstützt? Dann lade hier Sharepics deiner Wahl herunter — für deine Website oder Social Media."
+      empty: "Aktuell gibt es noch keine Sharepics."
+      download: "Herunterladen"
+  admin:
+    dashboard:
+      sharepics: "Sharepics"
+    sharepics:
+      title: "Sharepics"
+      confirm_delete: "Soll das Sharepic %{title} wirklich gelöscht werden?"
+      image_hint: "PNG, JPG oder WebP, maximal 10 MB."
+      replace_image_hint: "Nur ausfüllen, um das aktuelle Bild zu ersetzen. PNG, JPG oder WebP, maximal 10 MB."
+      description_hint: "Optional. Wird auf der öffentlichen Seite unter dem Titel angezeigt."
+      position_hint: "Kleinere Zahlen werden weiter oben angezeigt."
+      published_hint: "Nur veröffentlichte Sharepics erscheinen auf der öffentlichen Seite."
+      current_image: "Aktuelles Bild"
+      open_original: "Original öffnen"
+      public_page: "Öffentliche Seite ansehen"
+      fields:
+        title: "Titel"
+        description: "Beschreibung"
+        image: "Bild"
+        position: "Position"
+        published: "Veröffentlicht"
+  flash:
+    sharepics:
+      created: '%{title} wurde erfolgreich erstellt.'
+      updated: '%{title} wurde erfolgreich geändert.'
+      destroyed: '%{title} wurde erfolgreich gelöscht.'
+  activerecord:
+    errors:
+      models:
+        sharepic:
+          attributes:
+            image:
+              invalid_content_type: "muss ein PNG, JPG oder WebP sein"
+              too_big: "ist zu groß (maximal %{max} MB)"

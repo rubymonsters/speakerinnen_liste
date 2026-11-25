@@ -1,0 +1,52 @@
+<%= simple_form_for [:admin, @sharepic] do |f| %>
+  <%= f.error_notification %>
+
+  <div class="row">
+    <div class="col-md-7">
+      <%= f.input :title, label: t('admin.sharepics.fields.title'),
+                  label_html: { class: 'mb-2' }, input_html: { class: 'form-control mb-3' } %>
+
+      <%= f.input :description, as: :text, label: t('admin.sharepics.fields.description'),
+                  hint: t('admin.sharepics.description_hint'),
+                  label_html: { class: 'mt-3 mb-2' }, input_html: { class: 'form-control', rows: 4 } %>
+
+      <%= f.input :image, as: :file, label: t('admin.sharepics.fields.image'),
+                  hint: @sharepic.persisted? ? t('admin.sharepics.replace_image_hint') : t('admin.sharepics.image_hint'),
+                  label_html: { class: 'mt-4 mb-2' },
+                  input_html: { class: 'form-control', accept: Sharepic::ALLOWED_CONTENT_TYPES.join(',') } %>
+
+      <%= f.input :position, as: :integer, label: t('admin.sharepics.fields.position'),
+                  hint: t('admin.sharepics.position_hint'),
+                  label_html: { class: 'mt-4 mb-2' }, input_html: { class: 'form-control', min: 0 } %>
+
+      <div class="mt-4">
+        <%= f.input :published, as: :boolean, label: t('admin.sharepics.fields.published'),
+                    hint: t('admin.sharepics.published_hint') %>
+      </div>
+    </div>
+
+    <% if @sharepic.image.attached? && @sharepic.image.blob.persisted? %>
+      <div class="col-md-5 mt-4 mt-md-0">
+        <div class="card">
+          <%= image_tag @sharepic.image.variant(:thumb), alt: @sharepic.title, class: 'card-img-top' %>
+          <div class="card-body small">
+            <p class="card-text mb-1"><strong><%= t('admin.sharepics.current_image') %></strong></p>
+            <p class="card-text mb-1 text-break"><%= @sharepic.image.filename %></p>
+            <p class="card-text mb-2">
+              <% if @sharepic.image.metadata[:width] %>
+                <%= @sharepic.image.metadata[:width] %> × <%= @sharepic.image.metadata[:height] %> px ·
+              <% end %>
+              <%= number_to_human_size(@sharepic.image.byte_size) %>
+            </p>
+            <%= link_to t('admin.sharepics.open_original'), rails_blob_path(@sharepic.image), target: '_blank', rel: 'noopener' %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="my-4">
+    <%= f.button :submit, t(:save, scope: 'general'), class: 'btn btn-primary btn-sm' %>
+    <%= link_to t(:back, scope: 'general'), admin_sharepics_path, class: 'btn btn-link btn-sm' %>
+  </div>
+<% end %>

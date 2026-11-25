@@ -24,6 +24,7 @@ Rails.application.routes.draw do
         end
       end
       resources :categories
+      resources :sharepics, except: :show
       resources :offensive_terms
       resources :blocked_emails, only: [:index, :show] do
         member do
@@ -54,6 +55,10 @@ Rails.application.routes.draw do
       namespace :v1 do
         resources :profiles, only: [:index, :show]
       end
+    end
+
+    resources :sharepics, only: :index do
+      get :download, on: :member
     end
 
     get 'profiles_typeahead' => 'profiles#typeahead'

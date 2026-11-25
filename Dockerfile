@@ -1,5 +1,5 @@
 FROM ruby:3.4.13
-RUN apt-get update -qq && apt-get install -y nodejs postgresql-client
+RUN apt-get update -qq && apt-get install -y nodejs postgresql-client libvips42t64
 RUN mkdir /speakerinnen_liste
 WORKDIR /speakerinnen_liste
 ENV BUNDLE_PATH=/bundle \
