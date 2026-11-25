@@ -18,6 +18,21 @@ $(function() {
   });
 });
 
+// show the more/less toggle only for medialink descriptions that are cut off
+$(document).ready(function() {
+  $('.medialink-card__description').each(function() {
+    if (this.scrollHeight > this.clientHeight) {
+      $(this).next('.medialink-card__toggle').removeClass('d-none');
+    }
+  });
+
+  $('.medialink-card__toggle').click(function() {
+    var description = $(this).prev('.medialink-card__description');
+    description.toggleClass('is-expanded');
+    $(this).text(description.hasClass('is-expanded') ? $(this).data('less') : $(this).data('more'));
+  });
+});
+
 var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
 console.log(tooltipTriggerList)
 var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {

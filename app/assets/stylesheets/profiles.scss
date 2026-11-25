@@ -297,6 +297,19 @@ ul#medialinks__list {
   p {
     margin-bottom: 0;
   }
+
+  &.is-expanded {
+    display: block;
+    overflow: visible;
+  }
+}
+
+// sits above the stretched link so clicking it does not open the medialink
+.medialink-card__toggle {
+  position: relative;
+  z-index: 2;
+  color: $primary;
+  text-decoration: none;
 }
 
 /* paginate */

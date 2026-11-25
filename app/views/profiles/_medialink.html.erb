@@ -11,6 +11,11 @@
         <div class="medialink-card__description small mb-1">
           <%= simple_format(medialink.description) %>
         </div>
+        <button type="button" class="medialink-card__toggle btn btn-link small p-0 mb-1 d-none"
+                data-more="<%= t(:show_more, scope: 'profiles.index') %>"
+                data-less="<%= t(:show_less, scope: 'profiles.index') %>">
+          <%= t(:show_more, scope: 'profiles.index') %>
+        </button>
       <% end %>
       <% if medialink.language.present? %>
         <span class="small color-grey">

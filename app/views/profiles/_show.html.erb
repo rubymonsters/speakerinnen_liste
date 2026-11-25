@@ -20,7 +20,7 @@
   </div>
 </div>
 
-<%# three columns: photo | topics, services and contact button | websites, social media and more %>
+<%# three columns: photo | topics, services and contact button | social media, websites and more %>
 <div class="row mt-4 gx-5 profile-show">
   <div class="col-lg-4 col-md-6 pb-3">
     <div class="profile-show__photo">
@@ -88,14 +88,6 @@
         <% end %>
       </div>
     <% end %>
-    <!-- websites -->
-    <% websites = profile_websites(@profile) %>
-    <% if websites.any? %>
-      <p>
-        <%= t(:websites, scope: 'profiles.show') %><br>
-        <%= safe_join(websites.map { |website| safe_join(['· ', link_to(truncate(website, length: 63), url_with_protocol(website), title: website, target: '_blank', rel: 'noopener')]) }, tag.br) %>
-      </p>
-    <% end %>
     <!-- social media -->
     <% social_media_links = profile_social_media_links(@profile) %>
     <% if social_media_links.any? %>
@@ -109,6 +101,14 @@
           </li>
         <% end %>
       </ul>
+    <% end %>
+    <!-- websites -->
+    <% websites = profile_websites(@profile) %>
+    <% if websites.any? %>
+      <p>
+        <%= t(:websites, scope: 'profiles.show') %><br>
+        <%= safe_join(websites.map { |website| safe_join(['· ', link_to(truncate(website, length: 63), url_with_protocol(website), title: website, target: '_blank', rel: 'noopener')]) }, tag.br) %>
+      </p>
     <% end %>
     <!-- city, country and languages -->
     <% location = profile_location(@profile) %>
