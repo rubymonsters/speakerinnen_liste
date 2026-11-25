@@ -43,6 +43,7 @@ env:
     - AWS_SECRET_ACCESS_KEY
     - POSTMARK_API_TOKEN
     - FISHY_EMAILS
+    - HONEYBADGER_API_KEY
   clear:
     RAILS_LOG_LEVEL: info
     # Match this to the number of CPU cores on the server.

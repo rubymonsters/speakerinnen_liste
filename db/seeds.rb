@@ -246,4 +246,6 @@ class Seeds
   puts 'Offensive Terms were created'
 end
 
-Seeds.new.run
+# Never seed production or staging: the seeds create an admin with a known password, and
+# db:prepare (bin/docker-entrypoint) runs them whenever it creates a new database.
+Seeds.new.run unless Rails.env.production? || Rails.env.staging?

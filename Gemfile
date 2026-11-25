@@ -69,6 +69,8 @@ gem 'psych', '< 4.0'
 
 # not part of the default gems starting from Ruby 3.4.0
 gem 'csv'
+# not part of the default gems starting from Ruby 4.0.0, needed by interactor
+gem 'ostruct'
 
 group :development do
   gem 'kamal', require: false

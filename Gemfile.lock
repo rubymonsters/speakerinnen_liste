@@ -587,6 +587,7 @@ DEPENDENCIES
   mini_racer
   mobility
   normalize-rails
+  ostruct
   pagy
   pg (~> 1.5.9)
   pg_search

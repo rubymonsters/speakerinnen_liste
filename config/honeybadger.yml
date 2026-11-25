@@ -1,6 +1,6 @@
 # For more options, see https://docs.honeybadger.io/lib/ruby/gem-reference/configuration
 
-api_key: 'hbp_GmXCMiafwHwJAVktJXxD8ulOKCp2KM2lXo26'
+# api_key is read from the HONEYBADGER_API_KEY environment variable (Heroku config var / Kamal secret)
 
 # The environment your app is running in.
 env: "<%= Rails.env %>"

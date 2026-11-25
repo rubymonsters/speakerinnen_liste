@@ -29,7 +29,7 @@ You can start a server or run the tests as usual.
 
 ## Admin user
 
-If you build or test admin features, you can use the test admin user to test those. The admin user can be found in [db/seeds.rb](db/seeds.rb#L156-L179).
+If you build or test admin features, you can use the test admin user to test those. The admin user can be found in [db/seeds.rb](db/seeds.rb#L176-L198).
 
 Alternatively, assign the `admin` status to another user via the rails console:
 
@@ -115,12 +115,45 @@ bin/kamal console  # rails console on the server
 bin/kamal logs     # follow the logs
 ```
 
-To try the production image locally:
+## Running the production image locally
+
+Use this to check that the production image (`Dockerfile`) builds and boots before deploying. For everyday development use `make up` / `make dev` instead.
+
+The container runs with `RAILS_ENV=production` and uses the Postgres from docker compose, but its own database `speakerinnen_docker_check`, so your development database is not touched.
+
+1. Start the database and build the image:
 
 ```
+docker compose up -d db
 docker build -t speakerinnen_liste .
-docker run --rm -p 3000:3000 -e SECRET_KEY_BASE=$(openssl rand -hex 64) -e DATABASE_URL=postgresql://... speakerinnen_liste
 ```
+
+2. Optional: copy your development database, so the app has content (production never runs the seeds). Stop everything that is connected to the development database first:
+
+```
+docker compose stop web
+docker compose exec db psql -U postgres -c "DROP DATABASE IF EXISTS speakerinnen_docker_check;"
+docker compose exec db psql -U postgres -c "CREATE DATABASE speakerinnen_docker_check TEMPLATE speakerinnen_development;"
+```
+
+3. Run the container. On start it creates or migrates the database (`bin/docker-entrypoint`):
+
+```
+docker run --rm --name speakerinnen_prod_test -p 3000:3000 \
+  -e SECRET_KEY_BASE=$(openssl rand -hex 64) \
+  -e DATABASE_URL=postgresql://postgres:password@host.docker.internal:5432/speakerinnen_docker_check \
+  -e FORCE_SSL=false \
+  -e AWS_ACCESS_KEY_ID=dummy -e AWS_SECRET_ACCESS_KEY=dummy \
+  speakerinnen_liste
+```
+
+4. Open http://127.0.0.1:3000 (the health check is at http://127.0.0.1:3000/up).
+
+* `FORCE_SSL=false` turns off the redirect to https, which only works behind a proxy with SSL. If your browser still redirects to https, it has cached an earlier redirect: use a private window.
+* The dummy AWS keys avoid a slow boot; uploaded images are stored on S3 and will not load locally.
+* Rails console in the running container: `docker exec -it speakerinnen_prod_test ./bin/rails console`
+* Stop the container: `docker stop speakerinnen_prod_test`
+* Remove the test database afterwards: `docker compose exec db psql -U postgres -c "DROP DATABASE speakerinnen_docker_check;"`
 
 # Contributing
 
