@@ -102,7 +102,25 @@ We are using honeybadger.
 
 # Deployment
 
-We use Heroku to deploy.
+We are moving from Heroku to [Kamal](https://kamal-deploy.org).
+
+* `Dockerfile` builds the production image; `Dockerfile.dev` is only used by docker compose for local development.
+* `config/deploy.yml` configures servers, domains and registry; `.kamal/secrets` lists the secrets, which are read from your shell environment (never put real values into that file).
+* Kamal builds from a clean git checkout, so only committed changes are deployed.
+
+```
+bin/kamal setup    # first deploy: installs Docker and kamal-proxy on the server, then deploys
+bin/kamal deploy   # every following deploy
+bin/kamal console  # rails console on the server
+bin/kamal logs     # follow the logs
+```
+
+To try the production image locally:
+
+```
+docker build -t speakerinnen_liste .
+docker run --rm -p 3000:3000 -e SECRET_KEY_BASE=$(openssl rand -hex 64) -e DATABASE_URL=postgresql://... speakerinnen_liste
+```
 
 # Contributing
 
@@ -124,7 +142,8 @@ To upgrade Ruby, change the version in all of these files:
 
 - `Gemfile` (`ruby '<version>'`)
 - `Gemfile.lock` (`RUBY VERSION` section)
-- `Dockerfile` (`FROM ruby:<version>`)
+- `Dockerfile.dev` (`FROM ruby:<version>`)
+- `Dockerfile` (`ARG RUBY_VERSION=<version>`)
 - `.tool-versions`
 
 Then rebuild the Docker image so the container uses the new version:

@@ -71,6 +71,7 @@ gem 'psych', '< 4.0'
 gem 'csv'
 
 group :development do
+  gem 'kamal', require: false
   gem 'better_errors'
   gem 'bullet', '~> 8.1.0'
   gem 'derailed_benchmarks'
