@@ -84,7 +84,8 @@ de:
       inactive_profile: "Du hast Dein Profil <b>inaktiv</b> geschaltet. <br>Deshalb kannst Du im Moment <b>nicht</b> per Mail kontaktiert werden.<br>"
       Interview: "Interview"
       languages: "Sprache/n:"
-      main_topic_html: 'Schwerpunktthema:<br>%{main_topic}'
+      location: "Ort:"
+      main_topic_html: '<span class="color-grey">Schwerpunktthema:</span><br>%{main_topic}'
       more_topics: "Weitere Themen:"
       media: "Vorträge / Referenzen:"
       Moderation: "Moderation"
@@ -98,7 +99,7 @@ de:
       Talk: "Vortrag"
       topics: 'Themen:'
       twitter: "Mein Twittername:"
-      websites: "Websites:"
+      websites: "Webseiten:"
       willing_to_travel: "Ich reise für Veranstaltungen an."
       Workshop management: "Seminarleitung"
     medialinks:

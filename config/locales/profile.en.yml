@@ -84,7 +84,8 @@ en:
       inactive_profile: "You have set your profile to <b>inactive</b>.<br>Therefore, you <b>cannot</b> be contacted by mail at the moment.<br> "
       Interview: "Interview"
       languages: "Languages:"
-      main_topic_html: 'Main topic:<br>%{main_topic}'
+      location: "Location:"
+      main_topic_html: '<span class="color-grey">Main topic:</span><br>%{main_topic}'
       more_topics: "More topics:"
       media: "Examples of previous talks / appearances:"
       Moderation: "Moderation"

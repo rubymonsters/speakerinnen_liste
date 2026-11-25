@@ -20,7 +20,7 @@
   </div>
 </div>
 
-<%# three columns: photo | topics, services and contact button | social media, websites and more %>
+<%# three columns: photo | topics and services | social media, websites, more and contact button %>
 <div class="row mt-4 gx-5 profile-show">
   <div class="col-lg-4 col-md-6 pb-3">
     <div class="profile-show__photo">
@@ -36,7 +36,7 @@
     <% topics = topics_for_profile(@profile).to_a %>
     <% if topics.any? %>
       <div class="mb-3">
-        <p class="mb-2"><%= t(@profile.main_topic.present? ? :more_topics : :topics, scope: 'profiles.show') %></p>
+        <p class="mb-2 color-grey"><%= t(@profile.main_topic.present? ? :more_topics : :topics, scope: 'profiles.show') %></p>
         <ul class="topic-pills list-unstyled d-flex flex-wrap gap-2 mb-0">
           <% topics.each do |topic| %>
             <li>
@@ -49,22 +49,9 @@
     <!-- services -->
     <% if @profile.services.any? %>
       <p>
-        <%= t(:services, scope: 'profiles.show') %><br>
+        <span class="color-grey"><%= t(:services, scope: 'profiles.show') %></span><br>
         <%= safe_join(@profile.services.map { |s| content_tag(:strong, t(s.name, scope: 'profiles.show')) }, ' · ') %>
       </p>
-    <% end %>
-    <!-- main contact button -->
-    <% unless own_profile %>
-      <div class="mb-4">
-        <% if @profile.inactive? %>
-          <button type="button" class="btn btn-primary mt-2 px-4 disabled">
-            <i class="fa fa-times"></i>&nbsp;
-            <%= @profile.fullname + t(:no_contact, scope: 'profiles.show') %>
-          </button>
-        <% else %>
-          <%= render 'profiles/contact_button', profile: @profile %>
-        <% end %>
-      </div>
     <% end %>
   </div>
   <div class="col-lg-4 col-md-12">
@@ -91,7 +78,7 @@
     <!-- social media -->
     <% social_media_links = profile_social_media_links(@profile) %>
     <% if social_media_links.any? %>
-      <p class="mb-2"><%= t(:social_media, scope: 'profiles.show') %></p>
+      <p class="mb-2 color-grey"><%= t(:social_media, scope: 'profiles.show') %></p>
       <ul class="list-unstyled d-flex flex-wrap gap-3">
         <% social_media_links.each do |url, icon| %>
           <li>
@@ -106,15 +93,25 @@
     <% websites = profile_websites(@profile) %>
     <% if websites.any? %>
       <p>
-        <%= t(:websites, scope: 'profiles.show') %><br>
-        <%= safe_join(websites.map { |website| safe_join(['· ', link_to(truncate(website, length: 63), url_with_protocol(website), title: website, target: '_blank', rel: 'noopener')]) }, tag.br) %>
+        <span class="color-grey"><%= t(:websites, scope: 'profiles.show') %></span><br>
+        <%= safe_join(websites.map { |website| safe_join(['· ', link_to(truncate(website, length: 63), url_with_protocol(website), title: website, target: '_blank', rel: 'noopener', class: 'fw-bold')]) }, tag.br) %>
       </p>
     <% end %>
-    <!-- city, country and languages -->
+    <!-- city and country -->
     <% location = profile_location(@profile) %>
+    <% if location %>
+      <p>
+        <span class="color-grey"><%= t(:location, scope: 'profiles.show') %></span><br>
+        <strong><%= location %></strong>
+      </p>
+    <% end %>
+    <!-- languages -->
     <% languages = profile_languages(@profile) %>
-    <% if location || languages %>
-      <p><%= safe_join([location, languages].compact, ' · ') %></p>
+    <% if languages %>
+      <p>
+        <span class="color-grey"><%= t(:languages, scope: 'profiles.show') %></span><br>
+        <strong><%= languages %></strong>
+      </p>
     <% end %>
     <!-- willing to travel and willing to talk nonprofit, only shown if true -->
     <% if @profile.willing_to_travel %>
@@ -122,6 +119,19 @@
     <% end %>
     <% if @profile.nonprofit %>
       <p><i class="fa-solid fa-check me-1"></i><%= t(:nonprofit, scope: 'profiles.show') %></p>
+    <% end %>
+    <!-- main contact button -->
+    <% unless own_profile %>
+      <div class="mb-4">
+        <% if @profile.inactive? %>
+          <button type="button" class="btn btn-primary px-4 disabled">
+            <i class="fa fa-times"></i>&nbsp;
+            <%= @profile.fullname + t(:no_contact, scope: 'profiles.show') %>
+          </button>
+        <% else %>
+          <%= render 'profiles/contact_button', profile: @profile %>
+        <% end %>
+      </div>
     <% end %>
   </div>
 </div>

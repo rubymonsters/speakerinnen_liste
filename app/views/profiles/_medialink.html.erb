@@ -18,9 +18,9 @@
         </button>
       <% end %>
       <% if medialink.language.present? %>
-        <span class="small color-grey">
+        <div class="small color-grey">
           <%= t(:select_language, scope: 'medialinks') + t("#{medialink.language}", scope: 'iso_639_1').capitalize %>
-        </span>
+        </div>
       <% end %>
     </div>
   </div>
