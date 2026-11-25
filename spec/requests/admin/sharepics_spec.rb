@@ -19,6 +19,19 @@ RSpec.describe 'Admin::Sharepics', type: :request do
       create(:sharepic, title: 'Frauentag')
       get admin_sharepics_path
       expect(response.body).to include('Frauentag')
+      expect(response.body).to include(sharepics_path(locale: I18n.locale))
+    end
+
+    it 'renders the new form' do
+      get new_admin_sharepic_path(locale: I18n.locale)
+      expect(response).to have_http_status(:ok)
+    end
+
+    it 'renders the edit form with the current image' do
+      sharepic = create(:sharepic)
+      get edit_admin_sharepic_path(sharepic.id, locale: I18n.locale)
+      expect(response).to have_http_status(:ok)
+      expect(response.body).to include('dummy.png')
     end
 
     it 'creates a sharepic' do

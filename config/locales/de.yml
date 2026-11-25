@@ -46,6 +46,13 @@ de:
       title: "Sharepics"
       confirm_delete: "Soll das Sharepic %{title} wirklich gelöscht werden?"
       image_hint: "PNG, JPG oder WebP, maximal 10 MB."
+      replace_image_hint: "Nur ausfüllen, um das aktuelle Bild zu ersetzen. PNG, JPG oder WebP, maximal 10 MB."
+      description_hint: "Optional. Wird auf der öffentlichen Seite unter dem Titel angezeigt."
+      position_hint: "Kleinere Zahlen werden weiter oben angezeigt."
+      published_hint: "Nur veröffentlichte Sharepics erscheinen auf der öffentlichen Seite."
+      current_image: "Aktuelles Bild"
+      open_original: "Original öffnen"
+      public_page: "Öffentliche Seite ansehen"
       fields:
         title: "Titel"
         description: "Beschreibung"

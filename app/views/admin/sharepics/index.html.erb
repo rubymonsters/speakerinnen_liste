@@ -1,7 +1,10 @@
 <div class="m-5">
   <h1>Administration::<%= t('admin.sharepics.title') %></h1>
 
-  <%= link_to t(:add, scope: 'general'), new_admin_sharepic_path, class: 'btn btn-primary btn-sm my-5' %>
+  <div class="my-5">
+    <%= link_to t(:add, scope: 'general'), new_admin_sharepic_path, class: 'btn btn-primary btn-sm' %>
+    <%= link_to t('admin.sharepics.public_page'), sharepics_path, class: 'btn btn-outline-secondary btn-sm ms-2', target: '_blank', rel: 'noopener' %>
+  </div>
 
   <table class="table">
     <thead class="bg--lightgrey">
