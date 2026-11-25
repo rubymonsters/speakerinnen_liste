@@ -555,7 +555,6 @@ DEPENDENCIES
   jquery-ui-rails (~> 8.0.0)
   letter_opener
   mime-types
-  mini_magick (~> 4.9.5)
   mini_racer
   mobility
   normalize-rails
