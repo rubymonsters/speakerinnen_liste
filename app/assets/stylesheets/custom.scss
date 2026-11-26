@@ -246,7 +246,8 @@ h1 {
 }
 
 .single-profile {
-  a {
+  // :where keeps the specificity of a plain `a`, so component styles like .topic-pill still win
+  a:where(:not(.btn)) {
     text-decoration: underline;
     cursor: pointer;
     padding: 0.2em;

@@ -44,4 +44,41 @@ module ProfilesHelper
   def disable_contact_button(profile)
     'style=display:none' if profile.id == 309
   end
+
+  SOCIAL_MEDIA_ICONS = {
+    instagram: 'fa-brands fa-instagram',
+    linkedin: 'fa-brands fa-linkedin',
+    bluesky: 'fa-solid fa-cloud', # Bluesky has no official icon yet
+    mastodon: 'fa-brands fa-mastodon'
+  }.freeze
+
+  # "Berlin, Germany", or only the part that is filled in
+  def profile_location(profile)
+    country = ISO3166::Country[profile.country]&.translation(I18n.locale.to_s) if profile.country.present?
+    parts = [profile.city, country].select(&:present?)
+    parts.join(', ') if parts.any?
+  end
+
+  # "German, English, French"
+  def profile_languages(profile)
+    return if profile.iso_languages.blank?
+
+    profile.iso_languages.map { |iso| t(iso, scope: 'iso_639_1').capitalize }.join(', ')
+  end
+
+  # websites in the current language, or all websites with fallback if none is translated
+  def profile_websites(profile)
+    translated = ['', '2_', '3_'].map { |number| profile.website_in_language_scope(I18n.locale, number) }
+    websites = translated.any?(&:present?) ? translated : [profile.website, profile.website_2, profile.website_3]
+    websites.select(&:present?)
+  end
+
+  def profile_social_media_links(profile)
+    links = SOCIAL_MEDIA_ICONS.filter_map do |network, icon|
+      url = profile.public_send(network)
+      [url, icon] if url.present?
+    end
+    links << [profile.twitter_link_formatted, 'fa-brands fa-x-twitter'] if profile.twitter.present?
+    links
+  end
 end

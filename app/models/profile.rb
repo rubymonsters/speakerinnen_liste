@@ -92,7 +92,6 @@ class Profile < ApplicationRecord
   after_save_commit { self.class.refresh_search_vectors(id) }
 
   before_save(prepend: %i[create update]) do
-    twitter&.gsub(%r{^@|https:|http:|:|//|www.|twitter.com/}, '')
     firstname&.strip!
     lastname&.strip!
   end
