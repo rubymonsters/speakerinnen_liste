@@ -69,8 +69,11 @@ gem 'psych', '< 4.0'
 
 # not part of the default gems starting from Ruby 3.4.0
 gem 'csv'
+# not part of the default gems starting from Ruby 4.0.0, needed by interactor
+gem 'ostruct'
 
 group :development do
+  gem 'kamal', require: false
   gem 'better_errors'
   gem 'bullet', '~> 8.1.0'
   gem 'derailed_benchmarks'

@@ -1,0 +1,85 @@
+# Kamal deploy configuration. See https://kamal-deploy.org/docs/configuration/overview/
+# First deploy: `bin/kamal setup`, afterwards: `bin/kamal deploy`.
+# Kamal builds from a clean git checkout, so only committed changes are deployed.
+
+# Name of your application. Used to uniquely configure containers.
+service: speakerinnen_liste
+
+# Name of the container image. TODO: replace with your registry user/organisation.
+image: your-registry-user/speakerinnen_liste
+
+# Deploy to these servers. TODO: replace with the IP/hostname of your server.
+servers:
+  web:
+    - 192.168.0.1
+  # TODO: jobs from Heroku Scheduler (e.g. `rake import_blog`) need a replacement,
+  # e.g. a cron role here or a host crontab running `bin/kamal app exec "bin/rails import_blog"`.
+
+# kamal-proxy terminates SSL (via Let's Encrypt) and forwards to the app.
+# The DNS records for these hosts must point at the server before the first deploy.
+proxy:
+  ssl: true
+  hosts:
+    - speakerinnen.org
+    - www.speakerinnen.org
+  app_port: 3000
+  healthcheck:
+    path: /up
+
+# Credentials for your image host. TODO: adjust server and username.
+registry:
+  # server: ghcr.io
+  username: your-registry-user
+  # Always use an access token rather than real password when possible.
+  password:
+    - KAMAL_REGISTRY_PASSWORD
+
+# Inject ENV variables into containers (secrets come from .kamal/secrets).
+env:
+  secret:
+    - SECRET_KEY_BASE
+    - DATABASE_URL
+    - AWS_ACCESS_KEY_ID
+    - AWS_SECRET_ACCESS_KEY
+    - POSTMARK_API_TOKEN
+    - FISHY_EMAILS
+    - HONEYBADGER_API_KEY
+  clear:
+    RAILS_LOG_LEVEL: info
+    # Match this to the number of CPU cores on the server.
+    # WEB_CONCURRENCY: 2
+
+# Aliases are triggered with "bin/kamal <alias>". You can overwrite arguments on invocation:
+# "bin/kamal logs -r web" will tail logs from the first web server.
+aliases:
+  console: app exec --interactive --reuse "bin/rails console"
+  shell: app exec --interactive --reuse "bash"
+  logs: app logs -f
+  dbc: app exec --interactive --reuse "bin/rails dbconsole"
+
+# Bridge fingerprinted assets, like JS and CSS, between versions to avoid
+# hitting 404 on in-flight requests. Combines all files from new and old
+# version inside the asset_path.
+asset_path: /rails/public/assets
+
+# Configure the image builder.
+builder:
+  # Most servers are x86; set to arm64 for ARM servers (e.g. Hetzner CAX).
+  arch: amd64
+
+# Use a different ssh user than root
+# ssh:
+#   user: app
+
+# Run Postgres on the same server instead of a managed database.
+# DATABASE_URL would then be postgresql://postgres:<password>@speakerinnen_liste-db/speakerinnen_production
+# accessories:
+#   db:
+#     image: postgres:16
+#     host: 192.168.0.1
+#     port: "127.0.0.1:5432:5432"
+#     env:
+#       secret:
+#         - POSTGRES_PASSWORD
+#     directories:
+#       - data:/var/lib/postgresql/data
