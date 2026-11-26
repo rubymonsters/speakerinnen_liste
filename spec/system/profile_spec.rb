@@ -198,6 +198,23 @@ describe 'profile navigation' do
     end
   end
 
+  context 'user has a photo credit' do
+    before do
+      ada.update!(copyright: 'Photo by Charles Babbage')
+    end
+
+    it 'shows the photo credit under the image' do
+      ada.image.attach(io: File.open(Rails.root + 'spec/dummy.png'), filename: 'dummy.png', content_type: 'image')
+      sign_in ada
+      expect(page).to have_content('© Photo by Charles Babbage')
+    end
+
+    it 'does not show the photo credit without an image' do
+      sign_in ada
+      expect(page).not_to have_content('Photo by Charles Babbage')
+    end
+  end
+
   context 'user has already existing twitter account' do
     describe 'show view' do
       before do
@@ -209,11 +226,9 @@ describe 'profile navigation' do
       end
 
       it 'visible in the profile show' do
-        expect(page).to have_content('twitteradalovelace_en')
-        expect(page).to have_content('Twitter')
+        expect(page).to have_link(href: 'https://twitter.com/twitteradalovelace_en')
         click_on 'DE', match: :first
-        expect(page).to have_content('twitteradalovelace_de')
-        expect(page).to have_content('Twitter')
+        expect(page).to have_link(href: 'https://twitter.com/twitteradalovelace_de')
       end
     end
 

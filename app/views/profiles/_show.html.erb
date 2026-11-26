@@ -1,5 +1,5 @@
 <% own_profile = current_profile == @profile %>
-<!-- name and profession across the full width -->
+<!-- name and profession across the full width, edit buttons on the right -->
 <div class="row mt-5">
   <div class="col-12">
     <% if own_profile && @profile.inactive? %>
@@ -7,8 +7,20 @@
         <%= t(:inactive_profile, scope: 'profiles.show').html_safe %><%= link_to t(:activate_profile, scope: 'profiles.show'), edit_profile_registration_path(anchor: "inactive_anchor") %>
       </p>
     <% end %>
-    <h1><%= @profile.fullname %></h1>
-    <h3><%= @profile.profession %></h3>
+    <div class="d-flex flex-wrap justify-content-between align-items-start gap-3">
+      <div>
+        <h1><%= @profile.fullname %></h1>
+        <h3><%= @profile.profession %></h3>
+      </div>
+      <!-- edit action for user -->
+      <% if own_profile %>
+        <div class="d-flex flex-wrap gap-2">
+          <%= link_to t(:edit, scope: 'profiles.show'), edit_profile_path(@profile), class: 'btn btn-primary btn-sm btn-purple-hover' %>
+          <%= link_to t(:edit, scope: 'profiles.medialinks'), profile_medialinks_path(@profile), class: 'btn btn-primary btn-sm btn-purple-hover' %>
+          <%= link_to t(:account, scope: 'layouts.application'), edit_profile_registration_path, id: 'accountSettings', class: 'btn btn-primary btn-sm btn-purple-hover' %>
+        </div>
+      <% end %>
+    </div>
     <% unless @profile.fullname.present? %>
       <p class="error">
         <%= t(:empty_profile, scope: 'profiles.show').html_safe %>
@@ -26,6 +38,10 @@
     <div class="profile-show__photo">
       <%= profile_image_link(@profile) %>
     </div>
+    <!-- photo credit -->
+    <% if @profile.image.attached? && @profile.copyright.present? %>
+      <p class="small color-grey mt-1 mb-0">&copy; <%= @profile.copyright %></p>
+    <% end %>
   </div>
   <div class="col-lg-4 col-md-6">
     <!-- main topic -->
@@ -55,26 +71,6 @@
     <% end %>
   </div>
   <div class="col-lg-4 col-md-12">
-    <!-- edit action for user -->
-    <% if own_profile %>
-      <div class="d-grid gap-2 mb-4">
-        <%= link_to(edit_profile_path(@profile), class: 'button_link noHover') do %>
-          <div class='btn btn-primary d-block'>
-            <%= t(:edit, scope: 'profiles.show') %>
-          </div>
-        <% end %>
-        <%= link_to(profile_medialinks_path(@profile), class: 'button_link noHover') do %>
-          <div class='btn btn-primary d-block'>
-            <%= t(:edit, scope: 'profiles.medialinks') %>
-          </div>
-        <% end %>
-        <%= link_to(edit_profile_registration_path, class: 'button_link noHover') do %>
-          <div id='accountSettings' class='btn btn-primary d-block'>
-            <%= t(:account, scope: 'layouts.application') %>
-          </div>
-        <% end %>
-      </div>
-    <% end %>
     <!-- social media -->
     <% social_media_links = profile_social_media_links(@profile) %>
     <% if social_media_links.any? %>
